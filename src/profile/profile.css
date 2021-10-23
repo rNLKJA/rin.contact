@@ -1,0 +1,79 @@
+.personal-profile {
+  background: #fff;
+  height: 400px;
+  width: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px rgba(226, 205, 150, 0.4);
+  text-align: justify;
+}
+
+.profileImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px double pink;
+  padding: 5px;
+}
+
+.link-item > a > img {
+  width: 47px;
+  height: 47px;
+  /* border-radius: 5px; */
+}
+
+.link-container {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-between;
+}
+
+.link-container > a {
+  text-decoration: none;
+}
+
+.front:hover {
+  background-color: rgba(235, 235, 235, 0.37);
+}
+
+.back:hover {
+  background-color: rgba(235, 235, 235, 0.37);
+}
+
+.skill-items > img {
+  width: 40px;
+  height: 40px;
+}
+
+.skill-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.verticalLine {
+  border-left: 2px solid #96969657;
+}
+
+.horizontalLine {
+  padding: 5px;
+  /* border-left: 2px solid #96969657; */
+}
+
+.back {
+  justify-content: space-around;
+}
+
+p {
+  line-height: 20px;
+}
