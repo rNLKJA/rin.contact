@@ -101,15 +101,11 @@ export const BackCard = ({ flip, setFlip }) => {
       </div>
 
       <p>
-        I am an undergraduate Data Science student currently study in{" "}
-        <a href="https://www.unimelb.edu.au/"> the University of Melbourne</a>{" "}
-        from China.
-      </p>
-
-      <p>
-        I'm interesting in data science and passionating in data. I want to use
-        data to improve people's lives improve the quality of life and bring
-        more benefits in any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
+        I am a Data Science student currently study in{" "}
+        <a href="https://www.unimelb.edu.au/"> the University of Melbourne</a>.
+        I'm interesting in data science industry and passionating in data. I
+        want to use data to improve people's lives improve the quality of life
+        and bring more benefits in any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
       </p>
 
       <div style={{ textAlign: "left", width: "100%" }}>
