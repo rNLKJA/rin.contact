@@ -7,16 +7,27 @@ import jsIcon from "./javascript.png";
 import sqlIcon from "./sql.png";
 import rIcon from "./R.png";
 import "./profile.css";
+import { useTransition, animated } from "react-spring";
 
 /* main component */
 const Profile = () => {
   const [flip, setFlip] = useState(false);
+  const transition = useTransition(flip, {
+    from: { opacity: 0.5, config: { duration: 1000 } },
+    enter: { opacity: 1, config: { duration: 1000 } },
+    leave: { opacity: 0.5, config: { duration: 1000 } },
+  });
+
   return (
     <React.Fragment>
-      {!flip ? (
-        <FrontCard flip={flip} setFlip={setFlip} />
-      ) : (
-        <BackCard flip={flip} setFlip={setFlip} />
+      {transition((style, item) =>
+        item ? (
+          <animated.div style={style}>
+            <BackCard flip={flip} setFlip={setFlip} />
+          </animated.div>
+        ) : (
+          <FrontCard flip={flip} setFlip={setFlip} />
+        ),
       )}
     </React.Fragment>
   );
@@ -103,9 +114,12 @@ export const BackCard = ({ flip, setFlip }) => {
       <p>
         I am a Data Science student currently study in{" "}
         <a href="https://www.unimelb.edu.au/"> the University of Melbourne</a>.
-        I'm interesting in data science industry and passionating in data. I
-        want to use data to improve people's lives improve the quality of life
-        and bring more benefits in any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
+        I'm interesting in data science industry and passionating in data.
+      </p>
+
+      <p>
+        I want to use data to improve people's lives and bring more benefits in
+        any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
       </p>
 
       <div style={{ textAlign: "left", width: "100%" }}>

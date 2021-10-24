@@ -1,6 +1,7 @@
 // import required libraries
 import React, { useEffect } from "react";
 import "./App.css";
+import { motion } from "framer-motion";
 
 import Profile from "./profile/profile.jsx";
 
@@ -9,9 +10,14 @@ function App() {
     document.title = "Rin";
   }, []);
   return (
-    <div className="App">
+    <motion.div
+      className="App"
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0.1 }}
+      transition={{ duration: 2 }}
+    >
       <Profile />
-    </div>
+    </motion.div>
   );
 }
 
