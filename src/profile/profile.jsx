@@ -26,7 +26,9 @@ const Profile = () => {
             <BackCard flip={flip} setFlip={setFlip} />
           </animated.div>
         ) : (
-          <FrontCard flip={flip} setFlip={setFlip} />
+          <animated.div style={style}>
+            <FrontCard flip={flip} setFlip={setFlip} />
+          </animated.div>
         ),
       )}
     </React.Fragment>
