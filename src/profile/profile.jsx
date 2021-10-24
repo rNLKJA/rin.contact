@@ -86,7 +86,7 @@ export const FrontCard = ({ flip, setFlip }) => {
           alt="rin-huang profile"
         />
       </div>
-      <h2>Sunchuangyu Huang</h2>
+      <h2 data-testid="author">Sunchuangyu Huang</h2>
       <LinkContainer />
     </div>
   );
