@@ -20,13 +20,17 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 5px double pink;
+  border: 5px double rgba(226, 205, 150, 1);
   padding: 5px;
 }
 
+.personal-profile:hover .profileImage {
+  border: 5px double #fff;
+}
+
 .link-item > a > img {
-  width: 47px;
-  height: 47px;
+  width: 40px;
+  height: 40px;
   /* border-radius: 5px; */
 }
 
@@ -34,7 +38,7 @@
   display: flex;
   flex-direction: row;
   width: 300px;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .link-container > a {
@@ -42,11 +46,11 @@
 }
 
 .front:hover {
-  background-color: rgba(235, 235, 235, 0.37);
+  background-color: rgba(226, 205, 150, 1);
 }
 
 .back:hover {
-  background-color: rgba(235, 235, 235, 0.37);
+  background-color: rgba(226, 205, 150, 1);
 }
 
 .skill-items > img {

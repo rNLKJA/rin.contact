@@ -7,16 +7,29 @@ import jsIcon from "./javascript.png";
 import sqlIcon from "./sql.png";
 import rIcon from "./R.png";
 import "./profile.css";
+import { useTransition, animated } from "react-spring";
 
 /* main component */
 const Profile = () => {
   const [flip, setFlip] = useState(false);
+  const transition = useTransition(flip, {
+    from: { opacity: 0.5, config: { duration: 1000 } },
+    enter: { opacity: 1, config: { duration: 1000 } },
+    leave: { opacity: 0.5, config: { duration: 1000 } },
+  });
+
   return (
     <React.Fragment>
-      {!flip ? (
-        <FrontCard flip={flip} setFlip={setFlip} />
-      ) : (
-        <BackCard flip={flip} setFlip={setFlip} />
+      {transition((style, item) =>
+        item ? (
+          <animated.div style={style}>
+            <BackCard flip={flip} setFlip={setFlip} />
+          </animated.div>
+        ) : (
+          <animated.div style={style}>
+            <FrontCard flip={flip} setFlip={setFlip} />
+          </animated.div>
+        ),
       )}
     </React.Fragment>
   );
@@ -75,7 +88,7 @@ export const FrontCard = ({ flip, setFlip }) => {
           alt="rin-huang profile"
         />
       </div>
-      <h2>Sunchuangyu Huang</h2>
+      <h2 data-testid="author">Sunchuangyu Huang</h2>
       <LinkContainer />
     </div>
   );
@@ -101,15 +114,14 @@ export const BackCard = ({ flip, setFlip }) => {
       </div>
 
       <p>
-        I am an undergraduate Data Science student currently study in{" "}
-        <a href="https://www.unimelb.edu.au/"> the University of Melbourne</a>{" "}
-        from China.
+        I am a Data Science student currently study in{" "}
+        <a href="https://www.unimelb.edu.au/"> the University of Melbourne</a>.
+        I'm interesting in data science industry and passionating in data.
       </p>
 
       <p>
-        I'm interesting in data science and passionating in data. I want to use
-        data to improve people's lives improve the quality of life and bring
-        more benefits in any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
+        I want to use data to improve people's lives and bring more benefits in
+        any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
       </p>
 
       <div style={{ textAlign: "left", width: "100%" }}>
