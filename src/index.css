@@ -12,10 +12,15 @@ code {
     monospace;
 }
 
-p {
-  padding: 0px;
-}
-
 a {
   text-decoration: none;
+  color: rgb(4, 37, 133);
+}
+
+body {
+  background: rgba(226, 205, 150, 0.4);
+}
+
+p {
+  padding: 0px;
 }
