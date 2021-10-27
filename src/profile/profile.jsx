@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import profileImage from "../img/profileImage.jpg";
 import LinkContainer from "../links/Links.jsx";
-import pythonIcon from "./python.png";
-import reactIcon from "./react.png";
-import jsIcon from "./javascript.png";
-import sqlIcon from "./sql.png";
-import rIcon from "./R.png";
+import pythonIcon from "./img/python.png";
+import reactIcon from "./img/react.png";
+import jsIcon from "./img/javascript.png";
+import sqlIcon from "./img/sql.png";
+import rIcon from "./img/R.png";
 import "./profile.css";
 import { useTransition, animated } from "react-spring";
 

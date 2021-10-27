@@ -26,6 +26,7 @@
 
 .personal-profile:hover .profileImage {
   border: 5px double #fff;
+  cursor: pointer;
 }
 
 .link-item > a > img {
@@ -47,10 +48,12 @@
 
 .front:hover {
   background-color: rgba(226, 205, 150, 1);
+  cursor: pointer;
 }
 
 .back:hover {
   background-color: rgba(226, 205, 150, 1);
+  cursor: pointer;
 }
 
 .skill-items > img {
