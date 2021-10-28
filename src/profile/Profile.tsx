@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, FC, SetStateAction, Dispatch } from "react";
 import profileImage from "../img/profileImage.jpg";
-import LinkContainer from "../links/Links.jsx";
-import pythonIcon from "./img/python.png";
-import reactIcon from "./img/react.png";
-import jsIcon from "./img/javascript.png";
-import sqlIcon from "./img/sql.png";
-import rIcon from "./img/R.png";
+import LinkContainer from "../links/Links";
+import pythonIcon from "../img/python.png";
+import reactIcon from "../img/react.png";
+import jsIcon from "../img/javascript.png";
+import sqlIcon from "../img/sql.png";
+import rIcon from "../img/R.png";
 import "./profile.css";
 import { useTransition, animated } from "react-spring";
 
 /* main component */
-const Profile = () => {
-  const [flip, setFlip] = useState(false);
+const Profile: FC = () => {
+  const [flip, setFlip] = useState<true | false>(false);
   const transition = useTransition(flip, {
     from: { opacity: 0.5, config: { duration: 1000 } },
     enter: { opacity: 1, config: { duration: 1000 } },
@@ -73,7 +73,12 @@ export const HorizontalLine = () => {
   return <div className="horizontalLine"></div>;
 };
 
-export const FrontCard = ({ flip, setFlip }) => {
+interface flip {
+  flip: boolean;
+  setFlip: Dispatch<SetStateAction<boolean>>;
+}
+
+export const FrontCard: FC<flip> = ({ flip, setFlip }) => {
   return (
     <div
       className="personal-profile front"
@@ -94,7 +99,7 @@ export const FrontCard = ({ flip, setFlip }) => {
   );
 };
 
-export const BackCard = ({ flip, setFlip }) => {
+export const BackCard: FC<flip> = ({ flip, setFlip }) => {
   return (
     <div
       className="personal-profile back"
@@ -105,7 +110,7 @@ export const BackCard = ({ flip, setFlip }) => {
       <HorizontalLine />
       <div style={{ textAlign: "left", width: "100%" }}>
         <p>
-          <b>Hello there ~ {"(ฅ ' ω ' ฅ)"}</b>
+          <b>Hello there ~{"(ฅ ' ω ' ฅ)"}</b>
         </p>
 
         <p>
@@ -116,7 +121,7 @@ export const BackCard = ({ flip, setFlip }) => {
       <p>
         I am a Data Science student currently study in{" "}
         <a href="https://www.unimelb.edu.au/"> the University of Melbourne</a>.
-        I'm interesting in data science industry and passionating in data.
+        I'm interesting in data science industry and passionate in data.
       </p>
 
       <p>
