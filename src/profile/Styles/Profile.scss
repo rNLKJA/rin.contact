@@ -1,3 +1,5 @@
+@import "./ProfileVar.scss";
+
 .personal-profile {
   background: #fff;
   height: 400px;
@@ -12,7 +14,7 @@
   justify-content: space-around;
   padding: 25px;
   border-radius: 15px;
-  box-shadow: 10px 10px 10px rgba(4, 37, 133, 0.8);
+  box-shadow: 10px 10px 10px $blueColor;
   text-align: justify;
 }
 
@@ -20,12 +22,12 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 5px double rgba(4, 37, 133, 0.8);
+  border: 5px double $blueColor;
   padding: 5px;
 }
 
 .personal-profile:hover .profileImage {
-  /* border: 5px double rgba(4, 37, 133, 0.8); */
+  /* border: 5px double $blueColor; */
   cursor: pointer;
 }
 
@@ -47,12 +49,12 @@
 }
 
 .front:hover {
-  /* background-color: rgba(4, 37, 133, 0.8); */
+  /* background-color: $blueColor; */
   cursor: pointer;
 }
 
 .back:hover {
-  /* background-color: rgba(4, 37, 133, 0.8); */
+  /* background-color: $blueColor; */
   cursor: pointer;
 }
 

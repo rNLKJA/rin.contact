@@ -1,12 +1,12 @@
 import React, { useState, FC, SetStateAction, Dispatch } from "react";
 import profileImage from "../img/profileImage.jpg";
-import LinkContainer from "../links/Links";
+import LinkContainer from "../Links/Links";
 import pythonIcon from "../img/python.png";
 import reactIcon from "../img/react.png";
 import jsIcon from "../img/javascript.png";
 import sqlIcon from "../img/sql.png";
 import rIcon from "../img/R.png";
-import "./profile.css";
+import "./Styles/Profile.css";
 import { useTransition, animated } from "react-spring";
 
 /* main component */

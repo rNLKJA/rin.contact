@@ -1,3 +1,5 @@
+$blueColor: rgb(4, 37, 133);
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -14,11 +16,11 @@ code {
 
 a {
   text-decoration: none;
-  color: rgb(4, 37, 133);
+  color: $blueColor;
 }
 
 body {
-  background: rgba(4, 37, 133, 0.8);
+  background: $blueColor;
 }
 
 p {
