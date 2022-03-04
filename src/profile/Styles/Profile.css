@@ -134,13 +134,17 @@ p {
 }
 
 .more-profile {
-  position: fixed;
-  width: 920px;
-  height: 100%;
+  /* position: fixed; */
+  width: 900px;
+  height: 680px;
   background-color: rgba(68, 71, 90, 0.618);
   overflow-y: scroll;
-  padding: 20px;
+  padding: 10px;
   color: #f8f8f2;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .roles {
@@ -199,6 +203,16 @@ p {
   color: #b8022b;
 }
 
-.highScholl > b {
+.highSchool > b {
   color: #0076a2;
+}
+
+.moreInfoContainer {
+  background-color: #44475a;
+  width: 960px;
+  height: calc(100%);
+  position: relative;
+  top: 50%;
+  /* left: 50%; */
+  transform: translateY(-50%);
 }

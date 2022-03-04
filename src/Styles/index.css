@@ -26,3 +26,9 @@ p {
 }
 
 /*# sourceMappingURL=index.css.map */
+* {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}

@@ -33,7 +33,9 @@ const Profile: FC = () => {
         </div>
 
         <div className="moreInfo">
-          <MoreProfile />
+          <div className="moreInfoContainer">
+            <MoreProfile />
+          </div>
         </div>
       </Card>
     </React.Fragment>
@@ -82,16 +84,16 @@ export const BriefProfile = () => {
         <p style={{ width: 290, textAlign: "justify" }}>
           I am a Data Science student currently study in{" "}
           <a href="https://www.unimelb.edu.au/"> the University of Melbourne</a>
-          .
+          {" &"} I'm interesting in data science industry and passionate in
+          data. I want to use data to improve people's lives and bring more
+          benefits in any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
         </p>
 
         <p style={{ width: 290, textAlign: "justify" }}>
-          I'm interesting in data science industry and passionate in data.
-        </p>
-
-        <p style={{ width: 290, textAlign: "justify" }}>
-          I want to use data to improve people's lives and bring more benefits
-          in any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
+          Currently I'm working on my IT project <b>[[ Project Cradle ]]</b>,
+          which is a website and it will integral all knowledge that I have into
+          one. For more information, please click{" "}
+          <a href="https://github.com/chuangyu-hscy/-">[HERE]</a>!
         </p>
 
         <HorizontalLine />
@@ -106,7 +108,7 @@ export const MoreProfile = () => {
       <h2 style={{ color: "#bd93f9" }}>More About Me</h2>
 
       <hr />
-      <p style={{ width: 920, wordWrap: "break-word", textAlign: "justify" }}>
+      <p style={{ width: 900, wordWrap: "break-word", textAlign: "justify" }}>
         An international student who majoring in Data Science and passionate
         about data and building digital applications that intend to help people
         improve their life quality and maximise companies profits. Comfortable
