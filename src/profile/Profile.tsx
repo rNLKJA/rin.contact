@@ -4,6 +4,8 @@ import LinkContainer from "../Links/Links";
 import SkillIcons from "../components/SkillIcons";
 import { List, ListItem, Card } from "@mui/material";
 
+import { CardActionArea } from "@mui/material";
+
 import "./Styles/Profile.css";
 // import { useTransition, animated } from "react-spring";
 
@@ -57,14 +59,13 @@ export const BriefProfile = () => {
     <Card
       style={{
         width: 320,
-        backgroundColor: "#44475a",
-        // padding: 10,
         justifyContent: "justify",
         alignItems: "center",
         display: "flex",
         flexDirection: "column",
         height: "100%",
         color: "#f8f8f2",
+        backgroundColor: "#323442",
       }}
       className="brief-profile"
     >
@@ -83,17 +84,20 @@ export const BriefProfile = () => {
 
         <p style={{ width: 290, textAlign: "justify" }}>
           I am a Data Science student currently study in{" "}
-          <a href="https://www.unimelb.edu.au/"> the University of Melbourne</a>
+          <a style={{ color: "#4da0ff" }} href="https://www.unimelb.edu.au/">
+            {" "}
+            <b>the University of Melbourne</b>
+          </a>
           {" &"} I'm interesting in data science industry and passionate in
           data. I want to use data to improve people's lives and bring more
           benefits in any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
         </p>
 
         <p style={{ width: 290, textAlign: "justify" }}>
-          Currently I'm working on my IT project <b>[[ Project Cradle ]]</b>,
-          which is a website and it will integral all knowledge that I have into
-          one. For more information, please click{" "}
-          <a href="https://github.com/chuangyu-hscy/-">[HERE]</a>!
+          Currently I'm working on a full stack project{" "}
+          <b>[[ Project Cradle ]]</b>, which it will integral all knowledge that
+          I learn into a one stop accessible place. For more information, please
+          click <a href="https://github.com/chuangyu-hscy/-">[HERE]</a>!
         </p>
 
         <HorizontalLine />
