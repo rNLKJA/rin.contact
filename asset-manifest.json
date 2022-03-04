@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/rin.io/static/css/main.62516e68.chunk.css",
+    "main.js": "/rin.io/static/js/main.6112723e.chunk.js",
+    "main.js.map": "/rin.io/static/js/main.6112723e.chunk.js.map",
+    "runtime-main.js": "/rin.io/static/js/runtime-main.08f1e906.js",
+    "runtime-main.js.map": "/rin.io/static/js/runtime-main.08f1e906.js.map",
+    "static/js/2.10000378.chunk.js": "/rin.io/static/js/2.10000378.chunk.js",
+    "static/js/2.10000378.chunk.js.map": "/rin.io/static/js/2.10000378.chunk.js.map",
+    "static/js/3.91b32b08.chunk.js": "/rin.io/static/js/3.91b32b08.chunk.js",
+    "static/js/3.91b32b08.chunk.js.map": "/rin.io/static/js/3.91b32b08.chunk.js.map",
+    "index.html": "/rin.io/index.html",
+    "static/css/main.62516e68.chunk.css.map": "/rin.io/static/css/main.62516e68.chunk.css.map",
+    "static/js/2.10000378.chunk.js.LICENSE.txt": "/rin.io/static/js/2.10000378.chunk.js.LICENSE.txt",
+    "static/media/R.89e40e22.png": "/rin.io/static/media/R.89e40e22.png",
+    "static/media/agile.7d7a6673.png": "/rin.io/static/media/agile.7d7a6673.png",
+    "static/media/anshunHighSchool.2ec6c69a.jpeg": "/rin.io/static/media/anshunHighSchool.2ec6c69a.jpeg",
+    "static/media/github.b392be3f.png": "/rin.io/static/media/github.b392be3f.png",
+    "static/media/instagram.80e598d8.png": "/rin.io/static/media/instagram.80e598d8.png",
+    "static/media/javascript.36baf6b7.png": "/rin.io/static/media/javascript.36baf6b7.png",
+    "static/media/jupyter.3fcc360d.png": "/rin.io/static/media/jupyter.3fcc360d.png",
+    "static/media/mongodb.a8889d62.png": "/rin.io/static/media/mongodb.a8889d62.png",
+    "static/media/profileImage.18eaad45.jpg": "/rin.io/static/media/profileImage.18eaad45.jpg",
+    "static/media/python.07a98139.png": "/rin.io/static/media/python.07a98139.png",
+    "static/media/react.35639ed9.png": "/rin.io/static/media/react.35639ed9.png",
+    "static/media/spark-logo-reverse.950c2de4.png": "/rin.io/static/media/spark-logo-reverse.950c2de4.png",
+    "static/media/sql.d9845239.png": "/rin.io/static/media/sql.d9845239.png",
+    "static/media/statistic.3e1583bd.png": "/rin.io/static/media/statistic.3e1583bd.png",
+    "static/media/twitter.3e59d50a.png": "/rin.io/static/media/twitter.3e59d50a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.08f1e906.js",
+    "static/js/2.10000378.chunk.js",
+    "static/css/main.62516e68.chunk.css",
+    "static/js/main.6112723e.chunk.js"
+  ]
+}
