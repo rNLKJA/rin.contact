@@ -9,7 +9,7 @@ import tfIcon from "../img/tf.png";
 import jupyterIcon from "../img/jupyter.png";
 import statIcon from "../img/statistic.png";
 import agileIcon from "../img/agile.png";
-import "../Profile/Styles/Profile.css";
+import "../profile/Styles/Profile.css";
 
 const SkillIcons = () => {
   return (

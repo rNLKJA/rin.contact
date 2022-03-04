@@ -1,6 +1,6 @@
 import React from "react";
 import profileImage from "../img/profileImage.jpg";
-import LinkContainer from "../Links/Links";
+import LinkContainer from "../links/Links";
 import Card from "@mui/material/Card";
 
 import SkillIcons from "../components/SkillIcons";

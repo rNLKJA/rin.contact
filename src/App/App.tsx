@@ -2,7 +2,7 @@
 import React, { useEffect, FC } from "react";
 import "./App.css";
 
-import Profile from "../Profile/Profile";
+import Profile from "../profile/Profile";
 
 const App: FC = () => {
   useEffect(() => {
