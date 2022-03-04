@@ -1,12 +1,12 @@
 .personal-profile {
-  /* background: #fff; */
+  background: #fff;
   height: 400px;
   width: 300px;
-  /* position: fixed;
-  top: 50%;
+  /* position: fixed; */
+  /* top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%); */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,8 +21,8 @@
   justify-content: space-around;
   padding: 25px;
   border-radius: 15px;
-  -webkit-box-shadow: 10px 10px 10px #44475a;
-  box-shadow: 10px 10px 10px #44475a;
+  -webkit-box-shadow: 10px 10px 10px rgba(4, 37, 133, 0.8);
+  box-shadow: 10px 10px 10px rgba(4, 37, 133, 0.8);
   text-align: justify;
 }
 
@@ -30,7 +30,7 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 5px double #44475a;
+  border: 5px double rgba(4, 37, 133, 0.8);
   padding: 5px;
 }
 
@@ -77,13 +77,6 @@
   height: 40px;
 }
 
-.skill-items {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .skill-container {
   width: 100%;
   display: -webkit-box;
@@ -95,7 +88,6 @@
   flex-direction: row;
   -ms-flex-pack: distribute;
   justify-content: space-around;
-  /* justify-content: center; */
 }
 
 .verticalLine {
@@ -115,90 +107,4 @@
 p {
   line-height: 20px;
 }
-/*# sourceMappingURL=Profile.css.map */
-
-.profile-grid {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  grid-template-columns: 1fr 3fr;
-  width: 1280px;
-  height: 720px;
-  /* background-color: #44475a; */
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  /* overflow-y: scroll; */
-
-  /* border-radius: 75px; */
-}
-
-.more-profile {
-  position: fixed;
-  width: 920px;
-  height: 100%;
-  background-color: rgba(68, 71, 90, 0.618);
-  overflow-y: scroll;
-  padding: 20px;
-  color: #f8f8f2;
-}
-
-.roles {
-  width: 75px;
-  font-size: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.project-p {
-  font-size: 12px;
-  width: 600px;
-  word-wrap: break-word;
-  text-align: justify;
-}
-
-.briefProfile {
-  /* transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  position: fixed; */
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
-}
-
-.brief-profile {
-}
-
-.brief {
-  /* position: fixed;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-  width: calc(1280px / 4);
-  top: 50%;
-  /* left: 50% */
-  transform: translateY(-50%);
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.dateTimeStyle {
-  text-align: center;
-}
-
-.unimelb > b {
-  color: #4da0ff;
-}
-
-.trinity > b {
-  color: #b8022b;
-}
-
-.highScholl > b {
-  color: rgb(0, 118, 162);
-}
+/*# sourceMappingURL=profile.css.map */
