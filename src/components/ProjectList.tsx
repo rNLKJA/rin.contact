@@ -1,6 +1,14 @@
-import React from "react";
+// import required libraries
+import React, { FunctionComponent } from "react";
 import { List, ListItem } from "@mui/material";
 
+/**
+ * This component will contain all project that you involved as part of your
+ * skill showcase! please edit it based on your needs, here I write as a normal
+ * JSX.Element since I may have one or two project in the same subject, so you
+ * have to adjust it based on your needs
+ * @returns ProjectList<FunctionComponent>
+ */
 const ProjectList = () => {
   return (
     <React.Fragment>
@@ -194,4 +202,5 @@ const ProjectList = () => {
   );
 };
 
+// return React.Component
 export default ProjectList;
