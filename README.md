@@ -8,6 +8,15 @@ This repository is my personal react-app, I want to build this webpage as my per
 
 ---
 
+#### Table of Content
+- [About the useage](#about-the-usage)
+- [Deploy your website](#deploy-your-website)
+- [Problem with custom domain](#problem-with-custom-domain)
+- [Next TODO](#next-todo)
+- [License](#license)
+
+---
+
 #### About the usage
 
 To update your own profile information. Please make sure that you copy this repository and install all required packages. To avoid package conflicts, please avoid use `npm audit fix` feature.
@@ -46,7 +55,7 @@ In the end, upload your own `favicon.ico` to replace the original one under path
 
 ---
 
-#### Deployment your website
+#### Deploy your website
 
 You could deploy this application on various platforms like heroku, aws, google, etc. Here I will suggest you deploy this on github pages since this is a light website and most importantly, it's free and convenience!
 
@@ -69,11 +78,13 @@ If you want some reading guides for `gh-pages` deployment, please visit this art
 ### Problem with custom domain
 If you add your custom domain, you need to change `"homepage"` attribute the same as the custom domain, otherwise you will have a blank page. After deploy, please wait for 5 mins to visit your webpage, if you still receive a 404 error after 5-10 mins, you may need to check the above steps again or looking for help via stack overflow or google.
 
-You may receive a error message that Github says: _TLS certificate is being provisioned. This may take up to 15 minutes to complete. 1 of 3  Certificate Request Error: Certificate provisioning will retry automatically in a short period, please be patient_. In this case you may need to check your DNS configuration. Here is an example of my domain DNS configuration:
+You may receive a error message that Github says: _TLS certificate is being provisioned. This may take up to 15 minutes to complete. 1 of 3  Certificate Request Error: Certificate provisioning will retry automatically in a short period, please be patient_. In this case you may need to check your DNS configuration. Here is an example of my Google domain DNS configuration:
 
-<img src="" alt="DNS config" />
+<img src="https://github.com/chuangyu-hscy/rNLKJA/blob/rin-profile-ts/public/README/DNS_setting.png" alt="Google DNS config" />
 
-After configure your DNS setting, please remove your custom domain and add again. Github will automatically re-issue your TLS certificate so you could activate __HTTPS enforce__.
+DNS configuration should be similar cross different platforms, if anything confuse please lookup the github pages official guidance.
+
+After configure your DNS setting, please remove your custom domain and add again. Github will automatically re-issue your TLS certificate so you could activate __HTTPS enforce__ option.
 
 ---
 
@@ -81,9 +92,11 @@ After configure your DNS setting, please remove your custom domain and add again
 
 - Add tsx file descriptions
 - Web page responsive design on Tablet and Mobile Phone
-  - [ ] Tablet: 1024 x 768 (iPad, landscape)
-  - [ ] Phone: 375 x 812 (iPhoneX, portrait)
+  - [ ] Tablet: 1024 x 768 (iPad, landscape), layout is similar to PC
+  - [ ] Phone: 375 x 812 (iPhoneX, portrait), focus on width adaption using flexbox with flex column direction
   - [x] PC: 1920 x 1080
+  - [ ] Add some animation, or gif to make it look more fancy
+  - [ ] Add some background music? 
 - Convert all descriptive information into couple json files and Update React component to gain more convenience for future users.
 
 ---
@@ -93,3 +106,7 @@ After configure your DNS setting, please remove your custom domain and add again
 In this project, all images were downloaded from copyright free website, e.g. Unsplash, pngTree, etc. If you want to use this web page for commercial usage, I strongly recommend you to check the copyright documents to avoid any legal issue.
 
 To check the license for this repo, please click [here](https://github.com/chuangyu-hscy/rNLKJA/blob/rin-profile-ts/LICENSE).
+
+---
+
+2022-03-05 @rNLKJA
