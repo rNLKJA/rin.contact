@@ -32,3 +32,10 @@ p {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.app-Bg {
+  position: absolute;
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+}

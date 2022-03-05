@@ -3,9 +3,11 @@ import ReactDOM from "react-dom";
 import "./Styles/index.css";
 import App from "./App/App";
 import reportWebVitals from "./reportWebVitals";
+import skyBg from "./img/skysBg2.jpg";
 
 ReactDOM.render(
   <React.StrictMode>
+    <img className="app-Bg" src={skyBg} alt="galaxy background" />;
     <App />
   </React.StrictMode>,
   document.getElementById("root"),
