@@ -36,10 +36,10 @@ export const BriefProfile = () => {
         <HorizontalLine />
 
         <p style={{ width: 290, textAlign: "justify" }}>
-          I am a Data Science student currently study in{" "}
+          I am an 🇨🇳 international student study Data Science at{" "}
           <a style={{ color: "#4da0ff" }} href="https://www.unimelb.edu.au/">
             {" "}
-            <b>the University of Melbourne</b>
+            <b>{"🇦🇺"} the University of Melbourne</b>
           </a>
           {" &"} I'm interesting in data science industry and passionate in
           data. I want to use data to improve people's lives and bring more
