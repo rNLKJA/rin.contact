@@ -8,7 +8,7 @@ This repository is my personal react-app, I want to build this webpage as my per
 
 ---
 
-#### Table of Content
+### Table of Content
 - [About the useage](#about-the-usage)
 - [Deploy your website](#deploy-your-website)
 - [Problem with custom domain](#problem-with-custom-domain)
@@ -17,7 +17,7 @@ This repository is my personal react-app, I want to build this webpage as my per
 
 ---
 
-#### About the usage
+### About the usage
 
 To update your own profile information. Please make sure that you copy this repository and install all required packages. To avoid package conflicts, please avoid use `npm audit fix` feature.
 
@@ -88,7 +88,7 @@ After configure your DNS setting, please remove your custom domain and add again
 
 ---
 
-#### Next TODO
+### Next TODO
 
 - Add tsx file descriptions
 - Web page responsive design on Tablet and Mobile Phone
