@@ -20,9 +20,12 @@ yarn install
 npm i
 ```
 
-After install these libraries, you could modify the information under the directory `./src/components`.
+After install process, try use command `yarn start` to run the react app, this is what you should have in first start up!
+<img src="https://github.com/chuangyu-hscy/rNLKJA/tree/rin-profile-ts/public/README/webpagePreview.png" alt="web preview">
 
-There are five components you could edit:
+If you see the above page, then you could modify the information under the directory `./src/components`.
+
+There are **five components** you could edit:
 
 - Brief Information: short introduction about yourself
 - More profile
