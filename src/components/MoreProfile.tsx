@@ -1,32 +1,45 @@
-import React from "react";
-// import profileImage from "../img/profileImage.jpg";
-// import LinkContainer from "../links/Links";
-// import Card from "@mui/material/Card";
-
+// import required libraries
+import React, { FunctionComponent } from "react";
 import SkillIcons from "../components/SkillIcons";
 import Certificates from "../components/Certificates";
 import EducationTimeline from "../components/EducationTimeline";
 import ProjectList from "../components/ProjectList";
 
+// import background images
 import nwBg from "../img/nwBg.png";
 
+/**
+ * This component is the main container for more personal information page,
+ * please edit the self-intro below
+ * @returns MoreProfile<FunctionComponent>
+ */
 export const MoreProfile = () => {
+  const selfIntro =
+    "An international student who majoring in Data Science and passionate about data and building digital applications that intend to help people improve their life quality and maximize companies profits. Comfortable taking the initiative with working in both established and greenfield environments, whilst also keen on adapting to the latest technologies.";
+
   return (
     <div className="more-profile">
+      {/* Define the background image */}
       <img src={nwBg} alt="background" className="more-Bg"></img>
-      <h2 style={{ color: "#bd93f9" }}>More About Me</h2>
 
+      <h2 style={{ color: "#bd93f9" }}>More About Me</h2>
       <hr />
-      <p style={{ width: 900, wordWrap: "break-word", textAlign: "justify" }}>
-        An international student who majoring in Data Science and passionate
-        about data and building digital applications that intend to help people
-        improve their life quality and maximise companies profits. Comfortable
-        taking the initiative with working in both established and greenfield
-        environments, whilst also keen on adapting to the latest technologies.
+
+      {/* Edit self intro here! */}
+      <p
+        style={{
+          width: 900,
+          wordWrap: "break-word",
+          textAlign: "justify",
+          fontSize: 14,
+        }}
+      >
+        {selfIntro}
       </p>
 
       <hr />
 
+      {/* import different components  */}
       <div style={{ textAlign: "left", width: "100%" }}>
         <h4 style={{ color: "#f1fa8c" }}>Programming skills that I have</h4>
       </div>
