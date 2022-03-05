@@ -1,13 +1,14 @@
 // import required libraries
 import { useEffect, FC } from "react";
+
+// import ESSENTIAL Profile component
+import Profile from "../profile/Profile";
+
+// import css stylesheet
 import "./App.css";
 
 // config dotenv which enable the react program read parameters from .env file
 require("dotenv").config();
-
-// import ESSENTIAL Profile component
-import Profile from "../profile/Profile";
-import { stringify } from "querystring";
 
 /**
  * This is the Main function which contains the Profile component and
