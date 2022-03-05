@@ -1,3 +1,6 @@
+import { FunctionComponent } from "react";
+
+// import required icons
 import pythonIcon from "../img/python.png";
 import reactIcon from "../img/react.png";
 import jsIcon from "../img/javascript.png";
@@ -11,7 +14,15 @@ import statIcon from "../img/statistic.png";
 import agileIcon from "../img/agile.png";
 import "../profile/Styles/Profile.css";
 
-const SkillIcons = () => {
+/**
+ * This component will display all programming skill that you have, you may
+ * notice there is a vertical line between icons, icons on the left are
+ * programming language you use the most, the other side is the rest of skill you
+ * have, please add you own skill and adjust image size, for beauty purpose i
+ * suggest using png file instead of jpg or other format.
+ * @returns SkillIcons<FunctionComponent>
+ */
+const SkillIcons: FunctionComponent = () => {
   return (
     <div className="skill-container">
       <div className="skill-items">
@@ -74,8 +85,12 @@ const SkillIcons = () => {
   );
 };
 
+// export React.Component
 export default SkillIcons;
 
-export const VerticalLine = () => {
+/**
+ * @returns VerticalLine Component
+ */
+export const VerticalLine: FunctionComponent = () => {
   return <div className="verticalLine"></div>;
 };
