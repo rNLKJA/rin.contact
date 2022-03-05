@@ -1,38 +1,33 @@
-import React from "react";
+// import required libraries
+import { FunctionComponent } from "react";
 
-import twitterImage from "../img/twitter.png";
-import githubImage from "../img/github.png";
-import linkedInImage from "../img/linkedIn.png";
-import instagram from "../img/instagram.png";
+// import linkItems from the data folder
+import { linkItems, linkItemProp } from "../data/linkItems";
 
-const LinkContainer = () => {
+/**
+ * This function will construct a React.Component which contain the social media information
+ * e.g. github, linkedin, ins, twitter.
+ * In addition, you could change this to any prefer platforms but remember to store a image under img
+ * folder or other specified location.
+ * @returns LinkContainer<React.Component>
+ */
+const LinkContainer: FunctionComponent = () => {
   return (
+    // define the social media links main container
     <div className="link-container">
-      <div className="link-item">
-        <a href="https://github.com/chuangyu-hscy">
-          <img src={githubImage} alt="github" className="github" />
-        </a>
-      </div>
-
-      <div className="link-item">
-        <a href="https://www.linkedin.com/in/chuangyu-hscy">
-          <img src={linkedInImage} alt="linkedIn" />
-        </a>
-      </div>
-
-      <div className="link-item">
-        <a href="https://www.instagram.com/chuangyu_hscy/">
-          <img src={instagram} alt="instagram" />
-        </a>
-      </div>
-
-      <div className="link-item">
-        <a href="https://twitter.com/chuangyu_hscy">
-          <img src={twitterImage} alt="instagram" />
-        </a>
-      </div>
+      {/* Mapping each item from the linkItems array */}
+      {linkItems.map((linkItem: linkItemProp) => {
+        return (
+          <div className="link-item" key={linkItem.alt}>
+            <a href={linkItem.href}>
+              <img src={linkItem.image} alt={linkItem.alt} />
+            </a>
+          </div>
+        );
+      })}
     </div>
   );
 };
 
+// export the React.Component
 export default LinkContainer;
