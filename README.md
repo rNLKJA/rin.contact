@@ -21,7 +21,8 @@ npm i
 ```
 
 After install process, try use command `yarn start` to run the react app, this is what you should have in first start up!
-<img src="https://github.com/chuangyu-hscy/rNLKJA/tree/rin-profile-ts/public/README/webpagePreview.png" alt="web preview">
+
+<img src="https://github.com/chuangyu-hscy/rNLKJA/blob/rin-profile-ts/public/README/webpagePreview.png" alt="web preview">
 
 If you see the above page, then you could modify the information under the directory `./src/components`.
 
