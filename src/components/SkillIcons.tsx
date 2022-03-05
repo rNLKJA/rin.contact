@@ -42,11 +42,6 @@ const SkillIcons = () => {
       </div>
 
       <div className="skill-items">
-        <img src={sqlIcon} alt="sql" />
-        <p>SQL</p>
-      </div>
-
-      <div className="skill-items">
         <img src={sparkIcon} alt="mongodb" style={{ width: 75 }} />
         <p>PySpark</p>
       </div>
