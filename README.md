@@ -71,7 +71,7 @@ If you want some reading guides for `gh-pages` deployment, please visit this art
 
 - Add tsx file descriptions
 - Web page responsive design on Tablet and Mobile Phone
-  - [ ]Tablet: 1024 x 768 (iPad, landscape)
+  - [ ] Tablet: 1024 x 768 (iPad, landscape)
   - [ ] Phone: 375 x 812 (iPhoneX, portrait)
   - [x] PC: 1920 x 1080
 - Convert all descriptive information into couple json files and Update React component to gain more convenience for future users.
