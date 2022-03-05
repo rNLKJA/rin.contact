@@ -6,6 +6,8 @@ I'm interesting in data science and passionate in data.
 
 This repository is my personal react-app, I want to build this webpage as my personal CV page/blog page, I don't know how long this will take but I will try my best!
 
+---
+
 #### About the usage
 
 To update your own profile information. Please make sure that you copy this repository and install all required packages. To avoid package conflicts, please avoid use `npm audit fix` feature.
@@ -34,9 +36,11 @@ If you want to add some working experience, you could also create your own compo
 
 As the custom css, please edit `./src/profile/Styles/Profile.css`, you may notice that I do add scss as part of npm dependencies, you could remove this if you don't want any scss/sass support for pure css experience.
 
-Btw, you may also want to edit page title in `index.html`, or you could use `useEffect(() => {document.title={$`${YOUR_CUSTOM_TITLE}`}})` to change it.
+Btw, you may also want to edit page title in `index.html`, or you could use `` useEffect(() => {document.title={`${YOUR_CUSTOM_TITLE}`}}) `` to change it.
 
 In the end, upload your own `favicon.ico` to replace the original one under path `./public/favicon.ico`, otherwise you will see my photo on browser tag, which is, well, if you are happy to keep it.
+
+---
 
 #### Deployment your website
 
@@ -61,6 +65,8 @@ Some potential issues:
 
 If you want some reading guides for `gh-pages` deployment, please visit this article written by [freeCodeCamp](https://www.freecodecamp.org/news/deploy-a-react-app-to-github-pages/).
 
+---
+
 #### Next TODO
 
 - Add tsx file descriptions
@@ -70,4 +76,8 @@ If you want some reading guides for `gh-pages` deployment, please visit this art
   - [x] PC: 1920 x 1080
 - Convert all descriptive information into couple json files and Update React component to gain more convenience for future users.
 
+---
+
 ### License
+
+In this project, all images were downloaded from copyright free website, e.g. Unsplash, pngTree, etc. If you want to use this web page for commercial usage, I strongly recommend you to check the copyright documents to avoid any legal issue.
