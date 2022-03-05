@@ -6,9 +6,9 @@ const Certificates = () => {
     justifyContent: "space-between",
     width: "95%",
     display: "flex",
-    // flexDirection: "row",
+
     fontSize: 12,
-    color: "#6272a4",
+    color: "#fff9",
   };
 
   const dateTimeStyle = {
@@ -19,27 +19,40 @@ const Certificates = () => {
   return (
     <React.Fragment>
       <List sx={{ width: "100%" }}>
-        <ListItem key={2}>
+        <ListItem key={6}>
           <div style={certificateStyle}>
-            <a href="">Google Project Management</a>{" "}
+            <a
+              href=""
+              style={{
+                color: "#f8f8f2",
+                fontWeight: "bold",
+              }}
+            >
+              Google Project Management
+            </a>{" "}
             <div style={dateTimeStyle}>
               <p className="dateTimeStyle">IN PROGRESS</p>
             </div>
           </div>
         </ListItem>
 
-        <ListItem key={2}>
+        <ListItem key={5}>
           <div style={certificateStyle}>
-            <a href="">Artificial Intelligence Specialization</a>{" "}
+            <a href="" style={{ color: "#f8f8f2", fontWeight: "bold" }}>
+              Artificial Intelligence Specialization
+            </a>{" "}
             <div style={dateTimeStyle}>
               <p className="dateTimeStyle">IN PROGRESS</p>
             </div>
           </div>
         </ListItem>
 
-        <ListItem key={1}>
+        <ListItem key={4}>
           <div style={certificateStyle}>
-            <a href="https://www.credly.com/badges/1574e63e-3bce-4b5e-9eaa-f5f85b0b4848?source=linked_in_profile">
+            <a
+              href="https://www.credly.com/badges/1574e63e-3bce-4b5e-9eaa-f5f85b0b4848?source=linked_in_profile"
+              style={{ color: "#f8f8f2", fontWeight: "bold" }}
+            >
               Google Data Analytics
             </a>{" "}
             <p style={dateTimeStyle} className="dateTimeStyle">
@@ -49,9 +62,12 @@ const Certificates = () => {
           </div>
         </ListItem>
 
-        <ListItem key={2}>
+        <ListItem key={3}>
           <div style={certificateStyle}>
-            <a href="https://www.coursera.org/account/accomplishments/certificate/M55XTFHKHJH4">
+            <a
+              href="https://www.coursera.org/account/accomplishments/certificate/M55XTFHKHJH4"
+              style={{ color: "#f8f8f2", fontWeight: "bold" }}
+            >
               Agile with Atlassian Jira
             </a>{" "}
             <div style={dateTimeStyle} className="dateTimeStyle">
@@ -60,9 +76,12 @@ const Certificates = () => {
           </div>
         </ListItem>
 
-        <ListItem key={3}>
+        <ListItem key={2}>
           <div style={certificateStyle}>
-            <a href="https://www.linkedin.com/in/chuangyu-hscy/details/certifications/">
+            <a
+              href="https://www.linkedin.com/in/chuangyu-hscy/details/certifications/"
+              style={{ color: "#f8f8f2", fontWeight: "bold" }}
+            >
               Probability and Statistics for Business and Data Science
             </a>{" "}
             <div style={dateTimeStyle} className="dateTimeStyle">
@@ -71,9 +90,12 @@ const Certificates = () => {
           </div>
         </ListItem>
 
-        <ListItem key={3}>
+        <ListItem key={1}>
           <div style={certificateStyle}>
-            <a href="https://www.linkedin.com/in/chuangyu-hscy/details/certifications/">
+            <a
+              href="https://www.linkedin.com/in/chuangyu-hscy/details/certifications/"
+              style={{ color: "#f8f8f2", fontWeight: "bold" }}
+            >
               Mental Health First Aid for Tertiary Students Blended Course
             </a>{" "}
             <div style={dateTimeStyle} className="dateTimeStyle">

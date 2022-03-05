@@ -137,7 +137,7 @@ p {
   /* position: fixed; */
   width: 900px;
   height: 680px;
-  background-color: rgba(68, 71, 90, 0.618);
+  /* background-color: rgba(68, 71, 90, 0.618); */
   overflow-y: scroll;
   padding: 10px;
   color: #f8f8f2;
@@ -145,6 +145,8 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  /* filter: invert(10%); */
 }
 
 .roles {
@@ -169,10 +171,15 @@ p {
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+  /* background-image: url("../../img/techbackground.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; */
 }
 
 .brief {
   /* background-color: #323442; */
+  /* background-image: url(../../img/gearBg.png);
+  background-size: cover; */
 }
 
 .brief {
@@ -194,6 +201,7 @@ p {
 
 .dateTimeStyle {
   text-align: center;
+  vertical-align: middle;
 }
 
 .unimelb > b {
@@ -216,4 +224,17 @@ p {
   top: 50%;
   /* left: 50%; */
   transform: translateY(-50%);
+}
+
+.briefBg {
+  position: absolute;
+  opacity: 0.1;
+  filter: invert(50%);
+}
+
+.more-Bg {
+  /* position: relative; */
+  position: absolute;
+  opacity: 0.2;
+  filter: invert(100%);
 }

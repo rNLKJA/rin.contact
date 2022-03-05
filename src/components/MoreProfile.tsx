@@ -8,9 +8,12 @@ import Certificates from "../components/Certificates";
 import EducationTimeline from "../components/EducationTimeline";
 import ProjectList from "../components/ProjectList";
 
+import nwBg from "../img/nwBg.png";
+
 export const MoreProfile = () => {
   return (
     <div className="more-profile">
+      <img src={nwBg} alt="background" className="more-Bg"></img>
       <h2 style={{ color: "#bd93f9" }}>More About Me</h2>
 
       <hr />

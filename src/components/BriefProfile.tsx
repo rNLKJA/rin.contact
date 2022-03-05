@@ -3,6 +3,8 @@ import profileImage from "../img/profileImage.jpg";
 import LinkContainer from "../links/Links";
 import Card from "@mui/material/Card";
 
+import gearBg from "../img/gearBg.png";
+
 export const BriefProfile = () => {
   return (
     <Card
@@ -19,6 +21,8 @@ export const BriefProfile = () => {
       className="brief-profile"
     >
       <div className="brief">
+        <img src={gearBg} alt="gear background" className="briefBg" />
+
         <div className="profileImage-container">
           <img
             className="profileImage"
