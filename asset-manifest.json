@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.62516e68.chunk.css",
-    "main.js": "/static/js/main.6112723e.chunk.js",
-    "main.js.map": "/static/js/main.6112723e.chunk.js.map",
+    "main.css": "/static/css/main.13328816.chunk.css",
+    "main.js": "/static/js/main.68e8558c.chunk.js",
+    "main.js.map": "/static/js/main.68e8558c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.34fa76e9.js",
     "runtime-main.js.map": "/static/js/runtime-main.34fa76e9.js.map",
     "static/js/2.10000378.chunk.js": "/static/js/2.10000378.chunk.js",
@@ -10,19 +10,22 @@
     "static/js/3.91b32b08.chunk.js": "/static/js/3.91b32b08.chunk.js",
     "static/js/3.91b32b08.chunk.js.map": "/static/js/3.91b32b08.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.62516e68.chunk.css.map": "/static/css/main.62516e68.chunk.css.map",
+    "static/css/main.13328816.chunk.css.map": "/static/css/main.13328816.chunk.css.map",
     "static/js/2.10000378.chunk.js.LICENSE.txt": "/static/js/2.10000378.chunk.js.LICENSE.txt",
     "static/media/R.89e40e22.png": "/static/media/R.89e40e22.png",
     "static/media/agile.7d7a6673.png": "/static/media/agile.7d7a6673.png",
     "static/media/anshunHighSchool.2ec6c69a.jpeg": "/static/media/anshunHighSchool.2ec6c69a.jpeg",
+    "static/media/gearBg.040572fe.png": "/static/media/gearBg.040572fe.png",
     "static/media/github.b392be3f.png": "/static/media/github.b392be3f.png",
     "static/media/instagram.80e598d8.png": "/static/media/instagram.80e598d8.png",
     "static/media/javascript.36baf6b7.png": "/static/media/javascript.36baf6b7.png",
     "static/media/jupyter.3fcc360d.png": "/static/media/jupyter.3fcc360d.png",
     "static/media/mongodb.a8889d62.png": "/static/media/mongodb.a8889d62.png",
+    "static/media/nwBg.bd80f0c4.png": "/static/media/nwBg.bd80f0c4.png",
     "static/media/profileImage.18eaad45.jpg": "/static/media/profileImage.18eaad45.jpg",
     "static/media/python.07a98139.png": "/static/media/python.07a98139.png",
     "static/media/react.35639ed9.png": "/static/media/react.35639ed9.png",
+    "static/media/skysBg2.3856325c.jpg": "/static/media/skysBg2.3856325c.jpg",
     "static/media/spark-logo-reverse.950c2de4.png": "/static/media/spark-logo-reverse.950c2de4.png",
     "static/media/sql.d9845239.png": "/static/media/sql.d9845239.png",
     "static/media/statistic.3e1583bd.png": "/static/media/statistic.3e1583bd.png",
@@ -31,7 +34,7 @@
   "entrypoints": [
     "static/js/runtime-main.34fa76e9.js",
     "static/js/2.10000378.chunk.js",
-    "static/css/main.62516e68.chunk.css",
-    "static/js/main.6112723e.chunk.js"
+    "static/css/main.13328816.chunk.css",
+    "static/js/main.68e8558c.chunk.js"
   ]
 }
