@@ -235,6 +235,7 @@ p {
 .more-Bg {
   /* position: relative; */
   position: absolute;
-  opacity: 0.2;
+  opacity: 0.168;
   filter: invert(100%);
+  width: 100%;
 }
