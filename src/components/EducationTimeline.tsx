@@ -1,3 +1,4 @@
+// import required libraries
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -7,11 +8,21 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import { TimelineOppositeContent } from "@mui/lab";
 import Typography from "@mui/material/Typography";
 
+import { FunctionComponent } from "react";
+
+// import education background / school, uni, college, institution logos
 import unimelbIcon from "../img/unimelbLogo.png";
 import trinityIcon from "../img/trinityCollegeLogo.jpeg";
 import highSchoolIcon from "../img/anshunHighSchool.jpeg";
 
-const EducationTimeline = () => {
+/**
+ * This component contains information about your education background,
+ * Please edit required information based on your needs, for @mui/Timeline component
+ * please refer the @mui/lab official handbook
+ * @returns EducationTimeline<FunctionComponent>
+ */
+const EducationTimeline: FunctionComponent = () => {
+  // define education timeline div width
   const style = {
     width: "100%",
   };
@@ -19,6 +30,7 @@ const EducationTimeline = () => {
   return (
     <div style={style}>
       <Timeline position="alternate">
+        {/* Education background 3 */}
         <TimelineItem>
           <TimelineOppositeContent
             sx={{ m: "auto 0" }}
@@ -68,6 +80,7 @@ const EducationTimeline = () => {
           </TimelineContent>
         </TimelineItem>
 
+        {/* Education background 2 */}
         <TimelineItem>
           <TimelineOppositeContent
             sx={{ m: "auto 0" }}
@@ -105,6 +118,7 @@ const EducationTimeline = () => {
           </TimelineContent>
         </TimelineItem>
 
+        {/* Education background 1 */}
         <TimelineItem>
           <TimelineOppositeContent
             sx={{ m: "auto 0" }}

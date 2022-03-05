@@ -7,6 +7,8 @@ import { certificates, certificate } from "../data/certificates";
 
 /**
  * This components will include all certificates you have earned as a display window.
+ * For edit certificates list, adding or delete please edit the file locate at
+ *                             ./src/data/cerfificates.ts file
  * @returns Certificates<FunctionComponent>
  */
 const Certificates: FunctionComponent = () => {
@@ -61,4 +63,5 @@ const Certificates: FunctionComponent = () => {
   );
 };
 
+// export React.Component
 export default Certificates;
