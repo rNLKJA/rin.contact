@@ -1,12 +1,22 @@
-// import React from "react";
-import profileImage from "../img/profileImage.jpg";
-import LinkContainer from "../links/Links";
+// import required components
+import { FunctionComponent } from "react";
 import Card from "@mui/material/Card";
+import LinkContainer from "../links/Links";
 
+// import required images
+import profileImage from "../img/profileImage.jpg"; // this is the alias for your own photo
 import gearBg from "../img/gearBg.png";
 
-export const BriefProfile = () => {
+/**
+ * This ReactFunctionComponent will contain the brief introduction about yourself,
+ * I suggest you upload your image and change the required information.
+ *
+ * You could modify the links information ins ./src/data/ folder
+ * @returns BriefProfile<ReactFunctionComponent>
+ */
+export const BriefProfile: FunctionComponent = () => {
   return (
+    // Define the main card container
     <Card
       style={{
         width: 320,
@@ -21,19 +31,25 @@ export const BriefProfile = () => {
       className="brief-profile"
     >
       <div className="brief">
+        {/* Define the background image  */}
         <img src={gearBg} alt="gear background" className="briefBg" />
 
+        {/* Change profile image at here */}
         <div className="profileImage-container">
           <img
             className="profileImage"
-            src={profileImage}
+            src={profileImage} // change this variable source path to your profile path
             alt="rin-huang profile"
           />
         </div>
+
+        {/* Change it to your name, data-testid attribute could be removed */}
         <h2 data-testid="author">Rin / Sunchuangyu Huang</h2>
         <LinkContainer />
 
         <HorizontalLine />
+
+        {/* Modify your brief at here! */}
 
         <p style={{ width: 290, textAlign: "justify" }}>
           I am an 🇨🇳 international student study Data Science at{" "}
@@ -59,10 +75,16 @@ export const BriefProfile = () => {
   );
 };
 
+/**
+ * @returns ReactComponent, a Vertical BreakLine
+ */
 export const VerticalLine = () => {
   return <div className="verticalLine"></div>;
 };
 
+/**
+ * @returns ReactComponent, a Horizontal BreakLine
+ */
 export const HorizontalLine = () => {
   return <div className="horizontalLine"></div>;
 };
