@@ -62,12 +62,18 @@ After that, you need to modify the package.json file.
 4. It is time to deploy your react webpage! Run `npm run deploy` and you will receive a success output!
 5. Go to your repository, go to setting and click pages tag on the left navigation column. Once you in the right page, you should see the webpage link and good to go!
 
-Some potential issues:
-
-- If you add your custom domain, you need to change `"homepage"` attribute the same as the custom domain, otherwise you will have a blank page.
-- After deploy, please wait for 5 mins to visit your webpage, if you still receive a 404 error after 5-10 mins, you may need to check the above steps again or looking for help via stack overflow or google.
-
 If you want some reading guides for `gh-pages` deployment, please visit this article written by [freeCodeCamp](https://www.freecodecamp.org/news/deploy-a-react-app-to-github-pages/).
+
+---
+
+### Problem with custom domain
+If you add your custom domain, you need to change `"homepage"` attribute the same as the custom domain, otherwise you will have a blank page. After deploy, please wait for 5 mins to visit your webpage, if you still receive a 404 error after 5-10 mins, you may need to check the above steps again or looking for help via stack overflow or google.
+
+You may receive a error message that Github says: _TLS certificate is being provisioned. This may take up to 15 minutes to complete. 1 of 3  Certificate Request Error: Certificate provisioning will retry automatically in a short period, please be patient_. In this case you may need to check your DNS configuration. Here is an example of my domain DNS configuration:
+
+<img src="" alt="DNS config" />
+
+After configure your DNS setting, please remove your custom domain and add again. Github will automatically re-issue your TLS certificate so you could activate __HTTPS enforce__.
 
 ---
 
