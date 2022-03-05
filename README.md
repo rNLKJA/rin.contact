@@ -81,3 +81,5 @@ If you want some reading guides for `gh-pages` deployment, please visit this art
 ### License
 
 In this project, all images were downloaded from copyright free website, e.g. Unsplash, pngTree, etc. If you want to use this web page for commercial usage, I strongly recommend you to check the copyright documents to avoid any legal issue.
+
+To check the license for this repo, please click [here](https://github.com/chuangyu-hscy/rNLKJA/blob/rin-profile-ts/LICENSE).
