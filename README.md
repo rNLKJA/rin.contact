@@ -98,8 +98,7 @@ After configure your DNS setting, please remove your custom domain and add again
   - [x] Phone: 375 x 812 (iPhoneX, portrait), focus on width adaption using flexbox with flex column direction
   - [x] PC: 1920 x 1080
 - [x] Convert all descriptive information into couple json/ts files and Update
-- [ ] i18n support for both Chinese and English
-      React component to gain more convenience for future users.
+- [ ] i18n support for both Chinese and English to provide more convenience experience for future users. (MAY NOT SUPPORT IT, X X too lazy hhhahha)
 
 ---
 
