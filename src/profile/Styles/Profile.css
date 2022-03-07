@@ -239,3 +239,7 @@ p {
   filter: invert(100%);
   width: 100%;
 }
+
+.project-divider {
+  border: 2px dashed gray;
+}

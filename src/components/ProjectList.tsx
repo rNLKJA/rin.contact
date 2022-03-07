@@ -41,19 +41,72 @@ const ProjectList = () => {
             <br />
             Applied Data Science
           </h5>{" "}
-          <p className="roles">
-            Group Project
-            <br />
-            Team Leader
-            <br />
-            Scrum Master
-          </p>
-          <p className="project-p" style={{ paddingLeft: 20 }}>
-            Make CSL company historical data satisfy FAIR principles, that data
-            can be collaborated and used across different labs and research
-            departments. Find potential labels among different experiment
-            results using unsupervised learning techniques.
-          </p>
+          <div>
+            <List
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <ListItem>
+                <p className="roles">Individual Project</p>
+                <br />
+                <br />
+                <p></p>
+              </ListItem>
+
+              <ListItem>
+                <p className="roles">
+                  Group Project
+                  <br /> Team Leader
+                  <br />
+                  Scrum Master
+                </p>
+              </ListItem>
+            </List>
+          </div>
+          <List>
+            <ListItem>
+              <span
+                style={{
+                  width: 565,
+                  paddingRight: 5,
+                  paddingLeft: 5,
+                  fontSize: 12,
+                }}
+              >
+                <b>Project 1: </b> New York Taxi travel fee modelling and
+                analysis
+                <p className="project-p" style={{ width: 580 }}>
+                  Use modern big data analysis tools folium, plotly to analysis
+                  the relationship between geolocation and taxi fees based on
+                  2015 taxi data, use PySpark to construct a linear relation
+                  statistic model to predict the travel fee with given travel
+                  coordinates and travel time.
+                </p>
+              </span>
+            </ListItem>
+            <hr className="project-divider" />
+            <ListItem>
+              <span
+                style={{
+                  width: 500,
+                  paddingRight: 5,
+                  paddingLeft: 5,
+                  fontSize: 12,
+                }}
+              >
+                <b>Project 2: </b> Applied Industrial Data Science Project
+                <p className="project-p" style={{ width: 580 }}>
+                  Make CSL company historical data satisfy FAIR principles, that
+                  data can be collaborated and used across different labs and
+                  research departments. Find potential labels among different
+                  experiment results using unsupervised learning techniques.
+                </p>
+              </span>
+            </ListItem>
+          </List>
         </ListItem>
         <hr />
         <ListItem>
@@ -65,7 +118,7 @@ const ProjectList = () => {
             <br />
             IT Project
           </h5>{" "}
-          <p className="roles">
+          <p className="roles" style={{ width: 150 }}>
             Group Project
             <br />
             Team Leader
@@ -74,7 +127,7 @@ const ProjectList = () => {
             <br />
             Front-End Developer
           </p>
-          <p className="project-p" style={{ paddingLeft: 20 }}>
+          <p className="project-p" style={{ paddingLeft: 20, width: 565 }}>
             Build a Customer Relationship Management (CRM) application from
             scratch strictly following the Agile development cycle, using the
             modern IT technology including Node.js, express for back-end server
@@ -91,8 +144,10 @@ const ProjectList = () => {
             <br />
             Machine Learning
           </h5>
-          <p className="roles">Individual Project</p>
-          <p className="project-p" style={{ paddingLeft: 20 }}>
+          <p className="roles" style={{ width: 150 }}>
+            Individual Project
+          </p>
+          <p className="project-p" style={{ paddingLeft: 20, width: 565 }}>
             Build and critically analyse supervised Machine Learning methods to
             predict the cooking time for recipes based on their steps,
             ingredients and other features using python, Word2Vec, bag of words,
@@ -131,14 +186,14 @@ const ProjectList = () => {
             <br />
             Web Information Technology
           </h5>{" "}
-          <p className="roles">
+          <p className="roles" style={{ width: 120 }}>
             Group Project
             <br />
             Team Leader
             <br />
             Full Stack Developer
           </p>
-          <p className="project-p" style={{ paddingLeft: 20 }}>
+          <p className="project-p" style={{ paddingLeft: 20, width: 575 }}>
             Design, build and deploy a web app for a fictitious food company
             that contains an order system and deliver system. The app was from
             scratch by adapting modern IT technologies using Node.js, Express,
@@ -155,30 +210,32 @@ const ProjectList = () => {
             <br />
             Element of Data Processing
           </h5>
-          <p className="roles">Individual Projects</p>
+          <p className="roles" style={{ width: 120 }}>
+            Individual Projects
+          </p>
           <List>
             <ListItem>
               <span
                 style={{
-                  width: 600,
+                  width: 500,
                   paddingRight: 5,
                   paddingLeft: 5,
                   fontSize: 12,
                 }}
               >
                 <b>Project 1: </b> Web Scraping and analysis of Rugby Game
-                <p className="project-p" style={{ width: 600 }}>
+                <p className="project-p" style={{ width: 565 }}>
                   Use modern web scraping libraries in python to extract the
                   ruby game score from xml based articles. After processing game
                   score data to calculate average game difference.
                 </p>
               </span>
             </ListItem>
-
+            <hr className="project-divider" />
             <ListItem>
               <span
                 style={{
-                  width: 600,
+                  width: 500,
                   paddingRight: 5,
                   paddingLeft: 5,
                   fontSize: 12,
@@ -186,7 +243,7 @@ const ProjectList = () => {
               >
                 <b>Project 2: </b> Data linkage and classification of product
                 life expectancy
-                <p className="project-p" style={{ width: 600 }}>
+                <p className="project-p" style={{ width: 565 }}>
                   Processing and linking 6 shopping datasets on electric
                   products which data are stored in different format into a
                   single file based on text distance. Then construct
