@@ -291,7 +291,10 @@ p {
   width: 450px;
 }
 
-@media only screen and (max-width: 1900px) {
+@media only screen and (min-width: 1920px) {
+}
+
+@media only screen and (max-width: 1280px) {
   .profile-grid {
     width: 1000px;
     height: 720px;
