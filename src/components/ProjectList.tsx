@@ -14,7 +14,7 @@ const ProjectList = () => {
     <React.Fragment>
       <List sx={{ width: "100%", m: "auto 0" }}>
         <ListItem>
-          <h5 style={{ width: 150 }}>
+          <h5 className="project-heading-h5">
             2022 S1{" "}
             <a href="https://handbook.unimelb.edu.au/2022/subjects/comp30022">
               COMP30022
@@ -33,7 +33,7 @@ const ProjectList = () => {
         </ListItem>
         <hr />
         <ListItem>
-          <h5 style={{ width: 150 }}>
+          <h5 className="project-heading-h5">
             2021 S2{" "}
             <a href="https://handbook.unimelb.edu.au/2021/subjects/mast30034">
               MAST30034
@@ -78,6 +78,7 @@ const ProjectList = () => {
               </span>
             </ListItem>
             <hr className="project-divider" />
+
             <ListItem>
               <span
                 style={{
@@ -100,7 +101,7 @@ const ProjectList = () => {
         </ListItem>
         <hr />
         <ListItem>
-          <h5 style={{ width: 150 }}>
+          <h5 className="project-heading-h5">
             2021 S2{" "}
             <a href="https://handbook.unimelb.edu.au/2021/subjects/comp30024">
               COMP30024
@@ -126,7 +127,7 @@ const ProjectList = () => {
         </ListItem>
         <hr />
         <ListItem>
-          <h5 style={{ width: 150 }}>
+          <h5 className="project-heading-h5">
             2021 S1{" "}
             <a href="https://handbook.unimelb.edu.au/2021/subjects/comp30027">
               COMP30027
@@ -166,7 +167,7 @@ const ProjectList = () => {
         </ListItem>
         <hr />
         <ListItem>
-          <h5 style={{ width: 150 }}>
+          <h5 className="project-heading-h5">
             2021 S1{" "}
             <a href="https://handbook.unimelb.edu.au/2021/subjects/info30005">
               INFO30005
@@ -190,7 +191,7 @@ const ProjectList = () => {
         </ListItem>
         <hr />
         <ListItem>
-          <h5 style={{ width: 150 }}>
+          <h5 className="project-heading-h5">
             2020 S2{" "}
             <a href="https://handbook.unimelb.edu.au/2020/subjects/comp20008">
               COMP30022

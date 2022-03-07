@@ -19,12 +19,6 @@ export const BriefProfile: FunctionComponent = () => {
     // Define the main card container
     <Card
       style={{
-        width: 320,
-        justifyContent: "justify",
-        alignItems: "center",
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
         color: "#f8f8f2",
         backgroundColor: "#323442",
       }}
@@ -51,7 +45,7 @@ export const BriefProfile: FunctionComponent = () => {
 
         {/* Modify your brief at here! */}
 
-        <p style={{ width: 290, textAlign: "justify" }}>
+        <p className="brief-text" style={{ textAlign: "justify" }}>
           I am an 🇨🇳 international student study Data Science at{" "}
           <a style={{ color: "#4da0ff" }} href="https://www.unimelb.edu.au/">
             {" "}
@@ -62,7 +56,7 @@ export const BriefProfile: FunctionComponent = () => {
           benefits in any industrial aspect {"♬ヽ(*・ω・)ﾉ"}
         </p>
 
-        <p style={{ width: 290, textAlign: "justify" }}>
+        <p className="brief-text" style={{ textAlign: "justify" }}>
           Currently I'm working on a full stack project{" "}
           <b>[[ Project Cradle ]]</b>, which it will integral all knowledge that
           I learn into a one stop accessible place. For more information, please

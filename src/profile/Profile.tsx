@@ -17,7 +17,7 @@ import "./Styles/Profile.css";
  */
 const Profile: FunctionComponent = () => {
   return (
-    <React.Fragment>
+    <div className="main-container">
       {/* Define the main container */}
       <Card
         className="profile-grid"
@@ -35,9 +35,8 @@ const Profile: FunctionComponent = () => {
           </div>
         </div>
       </Card>
-    </React.Fragment>
+    </div>
   );
 };
 
-// export the React.Component
 export default Profile;

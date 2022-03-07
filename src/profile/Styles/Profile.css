@@ -177,12 +177,6 @@ p {
 }
 
 .brief {
-  /* background-color: #323442; */
-  /* background-image: url(../../img/gearBg.png);
-  background-size: cover; */
-}
-
-.brief {
   /* position: fixed;
 
   top: 50%;
@@ -197,6 +191,17 @@ p {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+.brief-profile {
+  width: 320px;
+  justify-content: justify;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #323442;
+  color: #f8f8f2;
 }
 
 .dateTimeStyle {
@@ -254,4 +259,103 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5px;
+}
+
+.project-heading-h5 {
+  width: 150px;
+}
+
+.brief-text {
+  width: 285px;
+}
+
+@media only screen and (max-width: 1920px) {
+  .profile-grid {
+    width: 1000px;
+    height: 720px;
+  }
+
+  .briefProfile {
+    width: 250px;
+    height: 100%;
+  }
+
+  .moreInfo {
+    width: 650px;
+    height: 100%;
+  }
+
+  .brief-profile {
+    width: 250px;
+  }
+
+  .brief {
+    width: 250px;
+  }
+
+  .brief > h2 {
+    font-size: 18px;
+  }
+
+  .brief > p {
+    font-size: 15px;
+  }
+
+  .brief-text {
+    width: 230px;
+  }
+
+  .link-container {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .profile-grid {
+    display: grid;
+    grid-template-columns: none;
+    width: 720px;
+
+    overflow-y: scroll;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .briefProfile {
+    width: 350px;
+    min-height: 720px;
+  }
+
+  .brief-profile {
+    width: 350px;
+    min-height: 720px;
+    overflow: hidden;
+  }
+
+  .brief {
+    width: 350px;
+    min-height: 780px;
+    overflow: hidden;
+  }
+
+  .moreInfo {
+    display: none;
+    /* height: 3000px; */
+    width: 350px;
+  }
+
+  .more-profile {
+    display: none;
+    min-height: min-content;
+  }
+
+  .moreInfoContainer {
+    overflow: none;
+  }
+
+  .main-container {
+    width: 100%;
+    height: 100%;
+  }
 }
