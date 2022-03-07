@@ -41,30 +41,20 @@ const ProjectList = () => {
             <br />
             Applied Data Science
           </h5>{" "}
-          <div>
-            <List
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-              }}
-            >
-              <ListItem>
-                <p className="roles">Individual Project</p>
-                <br />
-                <br />
-                <p></p>
-              </ListItem>
-
-              <ListItem>
-                <p className="roles">
-                  Group Project
-                  <br /> Team Leader
-                  <br />
-                  Scrum Master
-                </p>
-              </ListItem>
-            </List>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+            }}
+          >
+            <p className="roles">Individual Project</p>
+            <p className="roles">
+              Group Project
+              <br /> Team Leader
+              <br />
+              Scrum Master
+            </p>
           </div>
           <List>
             <ListItem>
@@ -78,7 +68,7 @@ const ProjectList = () => {
               >
                 <b>Project 1: </b> New York Taxi travel fee modelling and
                 analysis
-                <p className="project-p" style={{ width: 580 }}>
+                <p className="project-p" style={{ width: 620 }}>
                   Use modern big data analysis tools folium, plotly to analysis
                   the relationship between geolocation and taxi fees based on
                   2015 taxi data, use PySpark to construct a linear relation
@@ -98,7 +88,7 @@ const ProjectList = () => {
                 }}
               >
                 <b>Project 2: </b> Applied Industrial Data Science Project
-                <p className="project-p" style={{ width: 580 }}>
+                <p className="project-p" style={{ width: 620 }}>
                   Make CSL company historical data satisfy FAIR principles, that
                   data can be collaborated and used across different labs and
                   research departments. Find potential labels among different
@@ -118,16 +108,16 @@ const ProjectList = () => {
             <br />
             IT Project
           </h5>{" "}
-          <p className="roles" style={{ width: 150 }}>
+          <p className="roles">
             Group Project
             <br />
             Team Leader
             <br />
             Scrum Master
             <br />
-            Front-End Developer
+            Front End Dev
           </p>
-          <p className="project-p" style={{ paddingLeft: 20, width: 565 }}>
+          <p className="project-p" style={{ paddingLeft: 20, width: 620 }}>
             Build a Customer Relationship Management (CRM) application from
             scratch strictly following the Agile development cycle, using the
             modern IT technology including Node.js, express for back-end server
@@ -144,10 +134,8 @@ const ProjectList = () => {
             <br />
             Machine Learning
           </h5>
-          <p className="roles" style={{ width: 150 }}>
-            Individual Project
-          </p>
-          <p className="project-p" style={{ paddingLeft: 20, width: 565 }}>
+          <p className="roles">Individual Project</p>
+          <p className="project-p" style={{ paddingLeft: 20, width: 620 }}>
             Build and critically analyse supervised Machine Learning methods to
             predict the cooking time for recipes based on their steps,
             ingredients and other features using python, Word2Vec, bag of words,
@@ -186,14 +174,14 @@ const ProjectList = () => {
             <br />
             Web Information Technology
           </h5>{" "}
-          <p className="roles" style={{ width: 120 }}>
+          <p className="roles">
             Group Project
             <br />
             Team Leader
             <br />
-            Full Stack Developer
+            Full Stack Dev
           </p>
-          <p className="project-p" style={{ paddingLeft: 20, width: 575 }}>
+          <p className="project-p" style={{ paddingLeft: 20, width: 620 }}>
             Design, build and deploy a web app for a fictitious food company
             that contains an order system and deliver system. The app was from
             scratch by adapting modern IT technologies using Node.js, Express,
@@ -210,9 +198,7 @@ const ProjectList = () => {
             <br />
             Element of Data Processing
           </h5>
-          <p className="roles" style={{ width: 120 }}>
-            Individual Projects
-          </p>
+          <p className="roles">Individual Projects</p>
           <List>
             <ListItem>
               <span
@@ -224,7 +210,7 @@ const ProjectList = () => {
                 }}
               >
                 <b>Project 1: </b> Web Scraping and analysis of Rugby Game
-                <p className="project-p" style={{ width: 565 }}>
+                <p className="project-p" style={{ width: 620 }}>
                   Use modern web scraping libraries in python to extract the
                   ruby game score from xml based articles. After processing game
                   score data to calculate average game difference.
@@ -243,7 +229,7 @@ const ProjectList = () => {
               >
                 <b>Project 2: </b> Data linkage and classification of product
                 life expectancy
-                <p className="project-p" style={{ width: 565 }}>
+                <p className="project-p" style={{ width: 620 }}>
                   Processing and linking 6 shopping datasets on electric
                   products which data are stored in different format into a
                   single file based on text distance. Then construct

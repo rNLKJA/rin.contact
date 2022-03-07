@@ -210,11 +210,11 @@ p {
 }
 
 .trinity > b {
-  color: #b8022b;
+  color: #ec5377;
 }
 
 .highSchool > b {
-  color: #0076a2;
+  color: #75a9ec;
 }
 
 .moreInfoContainer {
@@ -243,6 +243,11 @@ p {
 
 .project-divider {
   border: 1px dashed gray;
+  padding: 0;
+  margin: 0;
+  width: 600px;
+  margin-left: 30px;
+  margin-bottom: 10px;
 }
 
 .cert-container {
