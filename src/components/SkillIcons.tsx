@@ -12,6 +12,7 @@ import tfIcon from "../img/tf.png";
 import jupyterIcon from "../img/jupyter.png";
 import statIcon from "../img/statistic.png";
 import agileIcon from "../img/agile.png";
+import excelIcon from "../img/excel.png";
 import "../profile/Styles/Profile.css";
 
 /**
@@ -38,27 +39,32 @@ const SkillIcons: FunctionComponent = () => {
       <VerticalLine />
 
       <div className="skill-items">
-        <img src={statIcon} alt="mongodb" />
+        <img src={statIcon} alt="statistic" />
         <p>Statistic</p>
       </div>
 
       <div className="skill-items">
-        <img src={jupyterIcon} alt="mongodb" style={{ width: 35 }} />
+        <img src={excelIcon} alt="Excel" />
+        <p>Excel</p>
+      </div>
+
+      <div className="skill-items">
+        <img src={jupyterIcon} alt="jupyter" style={{ width: 35 }} />
         <p>Jupyter</p>
       </div>
 
       <div className="skill-items">
-        <img src={tfIcon} alt="mongodb" />
+        <img src={tfIcon} alt="tensorflow" />
         <p>TensorFlow</p>
       </div>
 
       <div className="skill-items">
-        <img src={sparkIcon} alt="mongodb" style={{ width: 75 }} />
+        <img src={sparkIcon} alt="spark" style={{ width: 75 }} />
         <p>PySpark</p>
       </div>
 
       <div className="skill-items">
-        <img src={agileIcon} alt="mongodb" />
+        <img src={agileIcon} alt="agile" />
         <p>Agile</p>
       </div>
 

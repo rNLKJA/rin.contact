@@ -105,7 +105,7 @@ const EducationTimeline: FunctionComponent = () => {
             <div className="eduContent">
               <p className="trinity" style={{ fontSize: 14 }}>
                 <a
-                  style={{ color: "#b8022b" }}
+                  style={{ color: "#ec5377" }}
                   href="https://www.trinity.unimelb.edu.au/pathways-school"
                 >
                   <b>
@@ -142,7 +142,7 @@ const EducationTimeline: FunctionComponent = () => {
           <TimelineContent sx={{ py: "15px" }}>
             <div className="eduContent">
               <p className="trinity" style={{ fontSize: 14 }}>
-                <a style={{ color: "#0076a2" }} href="https://www.asez1957.cn">
+                <a style={{ color: "#75a9ec" }} href="https://www.asez1957.cn">
                   <b>No. 2 High School of Anshun, Guizhou, China</b>
                 </a>
               </p>
