@@ -58,17 +58,10 @@ const ProjectList = () => {
           </div>
           <List>
             <ListItem>
-              <span
-                style={{
-                  width: 565,
-                  paddingRight: 5,
-                  paddingLeft: 5,
-                  fontSize: 12,
-                }}
-              >
+              <span className="multi-project">
                 <b>Project 1: </b> New York Taxi travel fee modelling and
                 analysis
-                <p className="project-p" style={{ width: 620 }}>
+                <p className="project-p">
                   Use modern big data analysis tools folium, plotly to analysis
                   the relationship between geolocation and taxi fees based on
                   2015 taxi data, use PySpark to construct a linear relation
@@ -80,16 +73,9 @@ const ProjectList = () => {
             <hr className="project-divider" />
 
             <ListItem>
-              <span
-                style={{
-                  width: 500,
-                  paddingRight: 5,
-                  paddingLeft: 5,
-                  fontSize: 12,
-                }}
-              >
+              <span className="multi-project">
                 <b>Project 2: </b> Applied Industrial Data Science Project
-                <p className="project-p" style={{ width: 620 }}>
+                <p className="project-p">
                   Make CSL company historical data satisfy FAIR principles, that
                   data can be collaborated and used across different labs and
                   research departments. Find potential labels among different
@@ -118,7 +104,7 @@ const ProjectList = () => {
             <br />
             Front End Dev
           </p>
-          <p className="project-p" style={{ paddingLeft: 20, width: 620 }}>
+          <p className="project-p" style={{ paddingLeft: 20 }}>
             Build a Customer Relationship Management (CRM) application from
             scratch strictly following the Agile development cycle, using the
             modern IT technology including Node.js, express for back-end server
@@ -136,7 +122,7 @@ const ProjectList = () => {
             Machine Learning
           </h5>
           <p className="roles">Individual Project</p>
-          <p className="project-p" style={{ paddingLeft: 20, width: 620 }}>
+          <p className="project-p" style={{ paddingLeft: 20 }}>
             Build and critically analyse supervised Machine Learning methods to
             predict the cooking time for recipes based on their steps,
             ingredients and other features using python, Word2Vec, bag of words,
@@ -182,7 +168,7 @@ const ProjectList = () => {
             <br />
             Full Stack Dev
           </p>
-          <p className="project-p" style={{ paddingLeft: 20, width: 620 }}>
+          <p className="project-p" style={{ paddingLeft: 20 }}>
             Design, build and deploy a web app for a fictitious food company
             that contains an order system and deliver system. The app was from
             scratch by adapting modern IT technologies using Node.js, Express,

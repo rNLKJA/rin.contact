@@ -32,8 +32,8 @@ const Certificates: FunctionComponent = () => {
 
   return (
     <React.Fragment>
-      <div className="cert-container" style={{ width: "100%" }}>
-        <List sx={{ width: 450 }}>
+      <div className="cert-container">
+        <List className="cert-div">
           {certList1.map((cert: certificate) => {
             return (
               <ListItem key={cert.title}>
@@ -64,7 +64,7 @@ const Certificates: FunctionComponent = () => {
           })}
         </List>
 
-        <List sx={{ width: 450 }}>
+        <List className="cert-div">
           {certList2.map((cert: certificate) => {
             return (
               <ListItem key={cert.title}>

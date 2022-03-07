@@ -94,10 +94,9 @@ After configure your DNS setting, please remove your custom domain and add again
 
 - [x] Add tsx file descriptions
 - Web page responsive design on Tablet and Mobile Phone
-  - [ ] Tablet: 1024 x 768 (iPad, landscape), layout is similar to PC
-  - [ ] Phone: 375 x 812 (iPhoneX, portrait), focus on width adaption using flexbox with flex column direction
+  - [x] Tablet: 1024 x 768 (iPad, landscape), layout is similar to PC
+  - [x] Phone: 375 x 812 (iPhoneX, portrait), focus on width adaption using flexbox with flex column direction
   - [x] PC: 1920 x 1080
-  - [ ] Add some animation, or gif to make it look more fancy
 - [x] Convert all descriptive information into couple json/ts files and Update
 - [ ] i18n support for both Chinese and English
       React component to gain more convenience for future users.

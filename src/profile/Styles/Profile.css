@@ -158,7 +158,7 @@ p {
 
 .project-p {
   font-size: 12px;
-  width: 600px;
+  width: 620px;
   word-wrap: break-word;
   text-align: justify;
 }
@@ -269,7 +269,29 @@ p {
   width: 285px;
 }
 
-@media only screen and (max-width: 1920px) {
+.self-intro {
+  width: 900;
+  word-wrap: break-word;
+  text-align: justify;
+  font-size: 12;
+}
+
+.multi-project {
+  width: 575px;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 12px;
+}
+
+.cert-container {
+  width: 100%;
+}
+
+.cert-div {
+  width: 450px;
+}
+
+@media only screen and (max-width: 1900px) {
   .profile-grid {
     width: 1000px;
     height: 720px;
@@ -281,7 +303,7 @@ p {
   }
 
   .moreInfo {
-    width: 650px;
+    width: 750px;
     height: 100%;
   }
 
@@ -307,6 +329,74 @@ p {
 
   .link-container {
     width: 250px;
+  }
+
+  .moreInfoContainer {
+    width: 750px;
+  }
+
+  .more-profile {
+    width: 750px;
+  }
+
+  .more-profile > h2 {
+    font-size: 20px;
+    padding-left: 20px;
+  }
+
+  .skill-container {
+    width: 750px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+  }
+
+  .skill-container > div > p {
+    font-size: 12px;
+  }
+
+  .self-intro {
+    width: 730px;
+    margin-left: 10px;
+    height: auto;
+    font-size: 13px;
+  }
+
+  .roles {
+    display: none;
+  }
+
+  .project-heading-h5 {
+    width: 150px;
+  }
+
+  .multi-project {
+    width: 525px;
+  }
+
+  .project-p {
+    width: 525px;
+  }
+
+  .project-divider {
+    width: 525px;
+  }
+
+  .dateTimeStyle {
+    /* display: none; */
+    font-size: 10px;
+  }
+
+  .cert-container {
+    width: 650px;
+  }
+
+  .cert-div {
+    width: 375px;
+  }
+
+  h4 {
+    padding-left: 20px;
   }
 }
 

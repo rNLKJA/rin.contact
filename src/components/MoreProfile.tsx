@@ -26,16 +26,7 @@ export const MoreProfile = () => {
       <hr />
 
       {/* Edit self intro here! */}
-      <p
-        style={{
-          width: 900,
-          wordWrap: "break-word",
-          textAlign: "justify",
-          fontSize: 14,
-        }}
-      >
-        {selfIntro}
-      </p>
+      <p className="self-intro">{selfIntro}</p>
 
       <hr />
 
