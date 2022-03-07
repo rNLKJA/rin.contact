@@ -23,24 +23,24 @@ export const certificates: certificate[] = [
     title: "Agile with Atlassian Jira",
     authLink:
       "https://www.coursera.org/account/accomplishments/certificate/M55XTFHKHJH4",
-    issueDate: "2021 - 11",
+    issueDate: "11 / 2021",
   },
   {
     title: "Google Data Analytics",
     authLink:
       "https://www.credly.com/badges/1574e63e-3bce-4b5e-9eaa-f5f85b0b4848?source=linked_in_profile",
-    issueDate: "2021 - 06",
+    issueDate: "06 / 2021",
   },
   {
     title: "Probability and Statistics for Business and Data Science",
     authLink:
       "https://www.linkedin.com/in/chuangyu-hscy/details/certifications/",
-    issueDate: "2020 - 11",
+    issueDate: "11 / 2020",
   },
   {
     title: "Mental Health First Aid for Tertiary Students Blended Course",
     authLink:
       "https://www.linkedin.com/in/chuangyu-hscy/details/certifications/",
-    issueDate: "2019 - 22",
+    issueDate: "12 / 2019",
   },
 ];

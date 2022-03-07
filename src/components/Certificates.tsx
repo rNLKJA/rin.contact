@@ -27,38 +27,74 @@ const Certificates: FunctionComponent = () => {
     fontSize: 12,
   };
 
+  const certList1 = certificates.slice(0, 3);
+  const certList2 = certificates.slice(3, 6);
+
   return (
     <React.Fragment>
-      <List sx={{ width: "100%" }}>
-        {certificates.map((cert: certificate) => {
-          return (
-            <ListItem key={cert.title}>
-              <div
-                style={{
-                  justifyContent: "space-between",
-                  width: "100%",
-                  display: "flex",
-                  flexDirection: "row",
-                }}
-              >
-                <a
-                  href={cert.authLink}
+      <div className="cert-container" style={{ width: "100%" }}>
+        <List sx={{ width: 450 }}>
+          {certList1.map((cert: certificate) => {
+            return (
+              <ListItem key={cert.title}>
+                <div
                   style={{
-                    color: "#f8f8f2",
-                    fontWeight: "bold",
-                    fontSize: 12,
+                    justifyContent: "space-between",
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
                   }}
                 >
-                  {cert.title}
-                </a>{" "}
-                <div style={dateTimeStyle}>
-                  <p className="dateTimeStyle">{cert.issueDate}</p>
+                  <a
+                    href={cert.authLink}
+                    style={{
+                      color: "#f8f8f2",
+                      fontWeight: "bold",
+                      fontSize: 12,
+                    }}
+                  >
+                    {cert.title}
+                  </a>{" "}
+                  <div style={dateTimeStyle}>
+                    <p className="dateTimeStyle">{cert.issueDate}</p>
+                  </div>
                 </div>
-              </div>
-            </ListItem>
-          );
-        })}
-      </List>
+              </ListItem>
+            );
+          })}
+        </List>
+
+        <List sx={{ width: 450 }}>
+          {certList2.map((cert: certificate) => {
+            return (
+              <ListItem key={cert.title}>
+                <div
+                  style={{
+                    justifyContent: "space-between",
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
+                  <a
+                    href={cert.authLink}
+                    style={{
+                      color: "#f8f8f2",
+                      fontWeight: "bold",
+                      fontSize: 12,
+                    }}
+                  >
+                    {cert.title}
+                  </a>{" "}
+                  <div style={dateTimeStyle}>
+                    <p className="dateTimeStyle">{cert.issueDate}</p>
+                  </div>
+                </div>
+              </ListItem>
+            );
+          })}
+        </List>
+      </div>
     </React.Fragment>
   );
 };

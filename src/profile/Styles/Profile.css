@@ -241,5 +241,11 @@ p {
 }
 
 .project-divider {
-  border: 2px dashed gray;
+  border: 1px dashed gray;
+}
+
+.cert-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
 }
