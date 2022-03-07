@@ -32,7 +32,7 @@ export const MoreProfile = () => {
 
       {/* import different components  */}
       <div style={{ textAlign: "left", width: "100%" }}>
-        <h4 style={{ color: "#f1fa8c" }}>{"Programming & others skills"}</h4>
+        <h4 style={{ color: "#f1fa8c" }}>{"Programming & Others skills"}</h4>
       </div>
       {/* <hr /> */}
       <SkillIcons />
