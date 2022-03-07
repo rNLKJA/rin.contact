@@ -295,6 +295,14 @@ p {
   p {
     font-family: "DM Sans";
   }
+
+  .project-p {
+    font-size: 14px;
+  }
+
+  .roles {
+    font-size: 13px;
+  }
 }
 
 @media only screen and (max-width: 1280px) {
