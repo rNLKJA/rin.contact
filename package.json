@@ -1,5 +1,6 @@
 {
-  "name": "new-homepage",
+  "name": "rin-new-homepage",
+  "homepage": "https://rin.contact",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
