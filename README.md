@@ -1,14 +1,14 @@
-### Hello there (ฅ'ω'ฅ) This is Rin Huang
+# Hello there (ฅ'ω'ฅ) This is Rin Huang
 
-#### I am a Data Science student currently study in the [University of Melbourne](https://www.unimelb.edu.au/) 🇦🇺 from China 🇨🇳
-
-I'm interesting in data science and passionate in data.
-
-This repository is my personal react-app, I want to build this webpage as my personal CV page/blog page, I don't know how long this will take but I will try my best!
+> I am a Data Science student currently study in the [University of Melbourne](https://www.unimelb.edu.au/) 🇦🇺 from China 🇨🇳
+>
+> I'm interesting in data science and passionate in data.
+>
+> This repository is my personal react-app, I want to build this webpage as my personal CV page/blog page, I don't know how long this will take but I will try my best!
 
 ---
 
-### Table of Content
+## Table of Content
 
 - [About the useage](#about-the-usage)
 - [Deploy your website](#deploy-your-website)
@@ -18,7 +18,7 @@ This repository is my personal react-app, I want to build this webpage as my per
 
 ---
 
-### About the usage
+## About the usage
 
 To update your own profile information. Please make sure that you copy this repository and install all required packages. To avoid package conflicts, please avoid use `npm audit fix` feature.
 
@@ -32,31 +32,36 @@ npm i
 
 After install process, try use command `yarn start` to run the react app, this is what you should have in first start up!
 
-<img src="https://github.com/chuangyu-hscy/rNLKJA/blob/rin-profile-ts/public/README/webpagePreview.png" alt="web preview">
+If you see the above page, then you could modify the information under the directory `./src/`.
 
-If you see the above page, then you could modify the information under the directory `./src/components`.
+Since there is a significant change of my github profile pages, so please read the source code carefully. And this time, I try to divide all into different sub-functions. Here is the code structure:
 
-There are **five components** you could edit:
+```{plainText}
+|- main
+    |- __test__              : testing library (in progress)
+    |- components            : store react components
+        |- Certification     : personal certification
+        |- Education         : education background
+        |- Home              : home component
+        |- MasterProjects    : master coursework projects
+        |- Navbar            : navigation bar
+        |- Projects          : undergrad coursework projects and other projects
+        |- Skills            : personal skills
+        |- Summary           : summary information
+        |- VirtualInternship : virtual internship projects
+        |- WorkExperience    : working experience
+    |- data                  : any components required data
+    |- hook                  : hook use for any API requests
+    |- locales               : i18n functionalities and translation dictionaries
+        |- core              : core function
+        |- translation       : translation text
+    |- pages                 : main page structures and components code
 
-- Brief Information: short introduction about yourself
-- More profile
-  - Add more complex description about
-  - Programming skills: add your relevant skills, you could edit these in `./src/components/SkillIcons.tsx`
-  - Education Backgrounds: edit this file: `./src/components/EducationTimeline.tsx`
-  - Past involved Projects: `./src/components/ProjectList.tsx`
-  - Certificates: `./src/components/Certificates.tsx`
-
-If you want to add some working experience, you could also create your own components and call it in `./src/profile/Profile.tsx`.
-
-As the custom css, please edit `./src/profile/Styles/Profile.css`, you may notice that I do add scss as part of npm dependencies, you could remove this if you don't want any scss/sass support for pure css experience.
-
-Btw, you may also want to edit page title in `index.html`, or you could use `` useEffect(() => {document.title={`${YOUR_CUSTOM_TITLE}`}}) `` to change it.
-
-In the end, upload your own `favicon.ico` to replace the original one under path `./public/favicon.ico`, otherwise you will see my photo on browser tag, which is, well, if you are happy to keep it.
+```
 
 ---
 
-#### Deploy your website
+## Deploy your website
 
 You could deploy this application on various platforms like heroku, aws, google, etc. Here I will suggest you deploy this on github pages since this is a light website and most importantly, it's free and convenience!
 
@@ -76,7 +81,7 @@ If you want some reading guides for `gh-pages` deployment, please visit this art
 
 ---
 
-### Problem with custom domain
+## Problem with custom domain
 
 If you add your custom domain, you need to change `"homepage"` attribute the same as the custom domain, otherwise you will have a blank page. After deploy, please wait for 5 mins to visit your webpage, if you still receive a 404 error after 5-10 mins, you may need to check the above steps again or looking for help via stack overflow or google.
 
@@ -90,7 +95,7 @@ After configure your DNS setting, please remove your custom domain and add again
 
 ---
 
-### Next TODO
+## Next TODO
 
 - [x] Add tsx file descriptions
 - Web page responsive design on Tablet and Mobile Phone
@@ -98,11 +103,11 @@ After configure your DNS setting, please remove your custom domain and add again
   - [x] Phone: 375 x 812 (iPhoneX, portrait), focus on width adaption using flexbox with flex column direction
   - [x] PC: 1920 x 1080
 - [x] Convert all descriptive information into couple json/ts files and Update
-- [ ] i18n support for both Chinese and English to provide more convenience experience for future users. (MAY NOT SUPPORT IT, X X too lazy hhhahha)
+- [ ] i18n support for both Chinese and English to provide more convenience experience for future users. (Ok I'm working on it !!!!)
 
 ---
 
-### License
+## License
 
 In this project, all images were downloaded from copyright free website, e.g. Unsplash, pngTree, etc. If you want to use this web page for commercial usage, I strongly recommend you to check the copyright documents to avoid any legal issue.
 

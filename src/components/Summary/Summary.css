@@ -1,0 +1,5 @@
+@media screen and (min-width: 250px) {
+  .summary-container {
+    width: 78vw;
+  }
+}

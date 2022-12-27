@@ -1,0 +1,32 @@
+@media screen and (max-width: 1920px) {
+  .header-container {
+    width: 78vw;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .home-div {
+    height: 100vh;
+  }
+}
+
+.greeting-container {
+  height: calc(100vh - 80px * 2);
+}
+
+.background-image::before {
+  /* position: absolute; */
+  /* z-index: -1; */
+  /* width: 80%; */
+  /* height: 80%; */
+  /* opacity: 0.23; */
+  /* backdrop-filter: blur(20px); */
+  background-image: url("./images/bg1.jpg");
+  opacity: 0.2;
+  padding: 2vw;
+  border-radius: 25px;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-position: center;
+  background-size: cover;
+}
