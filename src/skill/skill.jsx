@@ -65,12 +65,7 @@ function Skills() {
         <Grid container spacing={2} className="w-full">
           {data.map((item) => (
             <Grid item xs={12} sm={6} md={3} key={item.skill}>
-              <Typography
-                fontFamily="Times New Roman"
-                paragraph
-                color="#201D30"
-                fontWeight={"bold"}
-              >
+              <Typography paragraph color="#201D30" fontWeight={"bold"}>
                 {item.skill}
               </Typography>
 
