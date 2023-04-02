@@ -4,7 +4,7 @@ import Portrait from "./portfolio/portfolio";
 import ElevatorPitch from "./brief/elevatorPtich";
 import Footer from "./footer/footer";
 import Skills from "./skill/skill";
-import Projects from "./project/project";
+// import Projects from "./project/project";
 
 function App() {
   return (

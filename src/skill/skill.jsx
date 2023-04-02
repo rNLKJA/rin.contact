@@ -18,7 +18,7 @@ const data = [
     ],
   },
   {
-    skill: "Programming Language",
+    skill: "Programming Lang.",
     value: ["Python", "R", "SQL", "JavaScript", "HTML", "CSS", "React.js"],
   },
   {
@@ -53,8 +53,8 @@ const certifications = [
 ];
 
 const education = [
-  "2019-2022 University of Melbourne (Bachelor of Science)",
-  "2023-2024 University of Melbourne (Master of Data Science)",
+  "2019-22 University of Melbourne Bachelor of Science",
+  "2023-24 University of Melbourne Master of Data Science",
 ];
 
 function Skills() {

@@ -1,7 +1,7 @@
 {
   "name": "rin-portfoilo-v3",
   "homepage": "https://rin.contact",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -25,7 +25,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --watch",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
