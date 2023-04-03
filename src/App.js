@@ -14,7 +14,7 @@ function App() {
       <Container maxWidth="xl">
         <Grid container spacing={1} style={{ maxHeight: "50vh" }}>
           <Grid item xs={12}>
-            <Grid container spacing={2}>
+            <Grid container spacing={1}>
               <Grid item xs={12} md={6}>
                 <ElevatorPitch />
               </Grid>
