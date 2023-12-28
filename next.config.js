@@ -5,6 +5,7 @@ const nextConfig = {
   // Only add the basePath and assetPrefix if it's in production
   basePath: isProd ? "/rin.contact" : "",
   assetPrefix: isProd ? "/rin.contact/" : "",
+  output: "export",
   // Additional configurations can go here
   reactStrictMode: true,
 };
