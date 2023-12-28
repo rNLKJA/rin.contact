@@ -7,7 +7,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import TermsComponent from "@/components/layout/index/Tos";
 
-import "../styles/globals.css";
+import "../app/globals.css";
 
 // Functional Component
 const TermsOfService = () => {
