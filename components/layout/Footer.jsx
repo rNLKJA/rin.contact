@@ -18,6 +18,7 @@ const Footer = () => {
             pawssibilities, unleashing extraordinary potential with each
             innovative leap.
           </p>
+          <br />
         </div>
 
         <div className="tablet:col-span-2 laptop: flex-col text-left">

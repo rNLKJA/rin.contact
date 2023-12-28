@@ -33,8 +33,9 @@ const HeroHeaderSection = () => {
                   backgroundColor: "rgba(0, 0, 0, 0.6)",
                 },
               }}
+              href="/about-me"
             >
-              Learn More
+              Learn more about Rin
             </Button>
           </div>
         </div>
