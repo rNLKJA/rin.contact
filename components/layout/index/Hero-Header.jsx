@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import Image from "next/image";
 
 const HeroHeaderSection = () => {
   return (
@@ -42,7 +43,13 @@ const HeroHeaderSection = () => {
       </div>
       <br />
       <br />
-      <img src="/heroSection.png" alt="hero section image" />
+      <Image
+        src="/heroSection.png"
+        alt="hero section image"
+        width={300}
+        height={300}
+        layout="responsive"
+      />
     </>
   );
 };

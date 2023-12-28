@@ -3,12 +3,19 @@ import { TfiEmail } from "react-icons/tfi";
 import { HiOutlinePhone } from "react-icons/hi2";
 import { CiLocationOn } from "react-icons/ci";
 import { PiDiscordLogoLight } from "react-icons/pi";
+import Image from "next/image";
 
 const ContactSection = () => {
   return (
     <div className="grid md:grid-cols-2 pt-10 pb-10 pl-4 pr-4 gap-4">
       <div className="order-first md:order-last flex flex-col justify-center gap-5">
-        <img src="/connection.svg" alt="connection image" />
+        <Image
+          src="/connection.svg"
+          alt="connection image"
+          width={300}
+          height={300}
+          layout="responsive"
+        />
       </div>
 
       <div className="flex flex-col justify-center">

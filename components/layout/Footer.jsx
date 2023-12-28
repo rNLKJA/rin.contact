@@ -1,16 +1,17 @@
 import React from "react";
-
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FiGithub } from "react-icons/fi";
+import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="pt-10 pb-10 pt-10 pb-10 pl-4 pr-4 ">
+    <footer className="pt-10 pb-10 pl-4 pr-4 ">
       <div className="grid md:grid-cols-4 grid-cols-1 gap-10 items-center text-center ">
         <div className="md:col-span-2">
           <div className="inline-block">
-            <img src="/logo.svg" alt="Logo" style={{ height: "200px" }} />
+            <Image src="/logo.svg" alt="Logo" width={200} height={200} />
           </div>
           <p className="text-pretty">
             Fueling the future with purr-cision and cutting-edge data science
@@ -25,6 +26,7 @@ const Footer = () => {
           <h4>Follow me</h4>
           <br />
           <div className="flex flex-col md:flex-row flex-start gap-8 justify-center md:justify-start">
+            {/* External links can remain as <a> tags */}
             <div className="flex items-center gap-3">
               <BsTwitterX />
               <a href="https://twitter.com/rNLKJA" alt="Twitter">
@@ -63,11 +65,13 @@ const Footer = () => {
 
       <div className="flex flex-col md:flex-row justify-between p-4">
         <p>
-          © 2024 <a href="/">rNLKJA</a>. All rights reserved.
+          © 2024 {/* Correct usage of Link component for internal navigation */}
+          <Link href="/">rNLKJA</Link>. All rights reserved.
         </p>
         <div className="flex space-x-4 justify-center mt-4 md:mt-0">
-          <a href="/privacy-policy">Privacy Policy</a>
-          <a href="/terms-of-service">Terms of Service</a>
+          {/* Internal navigation should use Link component */}
+          <Link href="/privacy-policy">Privacy Policy</Link>
+          <Link href="/terms-of-service">Terms of Service</Link>
         </div>
       </div>
     </footer>

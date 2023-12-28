@@ -47,3 +47,7 @@ span {
   font-size: 0.875rem; /* 14px */
   font-family: "Open Sans", sans-serif;
 }
+
+* {
+  user-select: none; /* Disables text selection */
+}

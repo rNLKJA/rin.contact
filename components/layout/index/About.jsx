@@ -1,5 +1,6 @@
 import React from "react";
 import { IoPawOutline } from "react-icons/io5";
+import Image from "next/image";
 
 const AboutSection = () => {
   return (
@@ -18,7 +19,13 @@ const AboutSection = () => {
         </p>
       </div>
       <div>
-        <img src="/about-curious-cat.svg" alt="about image" />
+        <Image
+          src="/about-curious-cat.svg"
+          alt="about image"
+          width={300}
+          height={300}
+          layout="responsive"
+        />
       </div>
     </div>
   );

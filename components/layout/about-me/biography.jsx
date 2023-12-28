@@ -9,6 +9,7 @@ import { GiSpiderWeb } from "react-icons/gi";
 import { SiGooglecloud } from "react-icons/si";
 import { SiJfrogpipelines } from "react-icons/si";
 import { BiMath } from "react-icons/bi";
+import Image from "next/image";
 
 export default function Biography() {
   return (
@@ -153,7 +154,13 @@ export const Section4 = () => {
   return (
     <div className="order-first md:order-last  grid md:grid-cols-2 justify-center items-center py-10 px-4 gap-10">
       <div>
-        <img src="/coffee.svg" alt="coffee" />
+        <Image
+          src="/coffee.svg"
+          alt="coffee"
+          width={250}
+          height={250}
+          layout="responsive"
+        />
       </div>
       <div>
         <h2>🌈 Curiosity and Coffee: Beyond the Data</h2>
