@@ -30,36 +30,14 @@ yarn install
 
 # Install required npm packages
 npm i
+
+# Run the Next.js app in the development mode.
+npm run dev
 ```
 
-After install process, try use command `yarn start` to run the react app, this is what you should have in first start up!
+After install process, try use command `npm run dev` to run the next.js app, this is what you should have in first start up!
 
-If you see the above page, then you could modify the information under the directory `./src/`.
-
-Since there is a significant change of my github profile pages, so please read the source code carefully. And this time, I try to divide all into different _sub_-functions. Here is the code structure:
-
-```{plainText}
-|- main
-    |- __test__              : testing library (in progress)
-    |- components            : store react components
-        |- Certification     : personal certification
-        |- Education         : education background
-        |- Home              : home component
-        |- MasterProjects    : master coursework projects
-        |- Navbar            : navigation bar
-        |- Projects          : undergrad coursework projects and other projects
-        |- Skills            : personal skills
-        |- Summary           : summary information
-        |- VirtualInternship : virtual internship projects
-        |- WorkExperience    : working experience
-    |- data                  : any components required data
-    |- hook                  : hook use for any API requests
-    |- locales               : i18n functionalities and translation dictionaries
-        |- core              : core function
-        |- translation       : translation text
-    |- pages                 : main page structures and components code
-
-```
+If you see the above page, then you could modify the information under the directory `./`, components are available in `/components` folder, and pages available in `/pages`.
 
 ---
 
