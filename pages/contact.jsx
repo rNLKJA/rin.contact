@@ -2,17 +2,15 @@ import React from "react";
 import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-
+import emailjs from "emailjs-com";
 import "../styles/globals.css";
 
 export default function ContactPage() {
@@ -36,20 +34,21 @@ export default function ContactPage() {
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    from_name: "",
+    from_email: "",
     message: "",
   });
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     let tempErrors = {};
-    tempErrors.name = formData.name ? "" : "This field is required.";
-    tempErrors.email = formData.email ? "" : "This field is required.";
+    tempErrors.from_name = formData.from_name ? "" : "This field is required.";
+    tempErrors.from_email = formData.from_email
+      ? ""
+      : "This field is required.";
     tempErrors.message = formData.message ? "" : "This field is required.";
-    setErrors({
-      ...tempErrors,
-    });
+    setErrors(tempErrors);
     return Object.values(tempErrors).every((x) => x === "");
   };
 
@@ -59,46 +58,67 @@ const ContactForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (validate()) {
-      console.log(formData);
-      alert("Thank you for your message!");
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
-    }
+    if (!validate()) return;
+    setIsSubmitting(true);
+
+    emailjs
+      .send(
+        "service_usy8iyr",
+        "template_ofletrk",
+        formData,
+        "FNtLdbiCQJAHye8jA",
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Thank you for your message! We will be in touch.");
+          setFormData({
+            from_name: "",
+            from_email: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.log("FAILED...", error);
+          alert("Failed to send the message, please try again later.");
+        },
+      )
+      .finally(() => setIsSubmitting(false));
   };
 
   return (
     <Container component="main" maxWidth="sm">
       <Paper elevation={6} sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
         <Typography variant="h5" component="h1" gutterBottom>
-          Contact Rin
+          Contact Us
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={handleSubmit}>
           <TextField
             margin="normal"
             required
             fullWidth
-            id="name"
+            id="from_name"
             label="Name"
-            name="name"
+            name="from_name"
             autoComplete="name"
             autoFocus
-            value={formData.name}
+            value={formData.from_name}
             onChange={handleChange}
+            error={!!errors.from_name}
+            helperText={errors.from_name}
           />
           <TextField
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="from_email"
             label="Email Address"
-            name="email"
+            name="from_email"
             autoComplete="email"
-            value={formData.email}
+            value={formData.from_email}
             onChange={handleChange}
+            error={!!errors.from_email}
+            helperText={errors.from_email}
           />
           <TextField
             margin="normal"
@@ -111,15 +131,18 @@ const ContactForm = () => {
             rows={4}
             value={formData.message}
             onChange={handleChange}
+            error={!!errors.message}
+            helperText={errors.message}
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            disabled={isSubmitting}
             style={{ backgroundColor: "#000000" }}
           >
-            Send Message
+            {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
         </Box>
       </Paper>
