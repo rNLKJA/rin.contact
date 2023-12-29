@@ -58,7 +58,7 @@ const GallerySection = () => {
                 "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.6)" },
               }}
             >
-              Learn More
+              See All Projects
             </Button>
           </div>
         )}
