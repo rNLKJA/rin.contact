@@ -21,7 +21,7 @@ export default function BlogBrowsing() {
 
   return (
     <div>
-      <h4>The Meow-nificent Blog for Digital Crafters 🧶</h4>
+      <h2>The Meow-nificent Blog for Digital Crafters 🧶</h2>
 
       <div className="grid md:grid-cols-2  items-center py-10 px-4 gap-5">
         <div className="flex col-span-1 justify-center items-center">
