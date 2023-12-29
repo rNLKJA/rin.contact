@@ -23,12 +23,11 @@ const HeroHeaderSection = () => {
             !
           </p>
           <br />
-          <div className="flex flex-end items-center ">
+          <div className="flex flex-end items-center gap-4">
             <Button
               variant="contained"
-              size="large"
+              size="medium"
               style={{
-                margin: "1rem",
                 backgroundColor: "black",
                 "&:hover": {
                   backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -37,6 +36,15 @@ const HeroHeaderSection = () => {
               href="/about-me"
             >
               Learn more about Rin
+            </Button>
+            <Button
+              variant="outlined"
+              size="medium"
+              style={{ borderColor: "black", color: "black" }}
+              href="/data/resume.pdf"
+              download="resume.pdf"
+            >
+              Resume
             </Button>
           </div>
         </div>
