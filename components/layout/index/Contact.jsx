@@ -2,7 +2,6 @@ import React from "react";
 import { TfiEmail } from "react-icons/tfi";
 import { HiOutlinePhone } from "react-icons/hi2";
 import { CiLocationOn } from "react-icons/ci";
-import { PiDiscordLogoLight } from "react-icons/pi";
 import Image from "next/image";
 import { RiWechat2Line } from "react-icons/ri";
 
@@ -13,8 +12,8 @@ const ContactSection = () => {
         <Image
           src="/connection.svg"
           alt="connection image"
-          width={300}
-          height={300}
+          width={250}
+          height={250}
           layout="responsive"
           quality={75}
         />
@@ -22,7 +21,8 @@ const ContactSection = () => {
 
       <div className="flex flex-col justify-center">
         <h2>Get in Touch</h2>
-        <p>
+        <br />
+        <p className="leading-10">
           I'm absolutely paw-sitive I'd love to hear from you! If you have any
           questions or are thinking about collaborating, just pawse for a moment
           and reach out – I'm all whiskers and ears! 🐾

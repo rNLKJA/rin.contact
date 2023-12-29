@@ -10,8 +10,8 @@ const AboutSection = () => {
           The Data Cat-alytic Converter: Unlocking the Power of Data to Drive
           Business Success
         </h2>
-
-        <p className="">
+        <br />
+        <p className="leading-10">
           I am a purr-fessional data whisperer, weaving intricate tales from
           numbers with the stealth and grace of a night-prowling cat. In the
           vast, shadowy realm of analytics, I illuminate complex mysteries with
