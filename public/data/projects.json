@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Project One",
+    "description": "This is a brief description of Project One.",
+    "skills": ["React", "Next.js", "Material-UI"],
+    "imageUrl": "/images/project1.jpg",
+    "moreLink": "/projects/1"
+  },
+  {
+    "id": 2,
+    "title": "Project Two",
+    "description": "This is a brief description of Project Two.",
+    "skills": ["Node.js", "Express", "MongoDB"],
+    "imageUrl": "/images/project2.jpg",
+    "moreLink": "/projects/2"
+  },
+  {
+    "id": 3,
+    "title": "Australia Social Media Analytics on the Cloud",
+    "description": "Our team successfully completed the \"Australia Social Media Analytics on the Cloud\" project, where we leveraged Twitter data from the Australian Data Observatory (ADO), Mastodon APIs, and the Spatial Urban Data Observatory (SUDO) to gain insights into life in Australia. We explored how social media data can be used alongside official data from the SUDO platform to enhance our understanding of life in Australia. The project involved data harvesting, processing, and analysis using cloud-based technologies, culminating in the development of a Social Sense Dashboard that provides valuable insights into Australian social trends and sentiments.",
+    "skills": [
+      "Python",
+      "Flask",
+      "Data Visualisation",
+      "Cloud Computing",
+      "Parallel Computing",
+      "IT Automation",
+      "Full Stack Development",
+      "Docker",
+      "CouchDB",
+      "MapReduce",
+      "Agile Project Management"
+    ],
+    "imageUrl": "/images/project3.jpg",
+    "moreLink": "/projects/3"
+  }
+]
