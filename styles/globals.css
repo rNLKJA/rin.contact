@@ -32,29 +32,30 @@ h1 {
 
 h2 {
   font-size: 1.5rem; /* 32px */
+
   font-family: "Roboto", sans-serif;
 }
 
 h3 {
   font-size: 1.3rem;
-  @apply text-3xl md:text-4xl;
+  @apply text-3xl md:text-xl;
 }
 
 h4 {
   font-size: 1.2rem;
-  @apply text-2xl md:text-3xl;
+  @apply text-2xl md:text-lg;
 }
 
 h5 {
   font-size: 1rem;
-  @apply text-xl md:text-2xl;
+  @apply text-xl md:text-base;
 }
 
 /* Paragraphs and Spans - Soft and gentle text */
 p,
 span {
-  font-size: 1rem;
-  @apply text-base md:text-lg;
+  font-size: 0.9rem;
+  @apply text-base md:text-base;
 }
 
 /* Responsive Design Adjustments */

@@ -28,7 +28,7 @@ const Footer = () => {
           <br />
         </div>
 
-        <Fade direction="right" duration={1500}>
+        <Fade triggerOnce direction="right" duration={1500}>
           <div className="tablet:col-span-2 laptop: flex-col text-left">
             <h4>Follow me</h4>
             <br />

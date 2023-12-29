@@ -37,6 +37,7 @@ const CtaSection = () => {
               borderColor: "rgba(0, 0, 0, 0.8)",
             },
           }}
+          href="/blogs/data/"
         >
           Learn More
         </Button>
