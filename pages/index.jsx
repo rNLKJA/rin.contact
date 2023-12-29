@@ -8,8 +8,8 @@ import HeroHeaderSection from "@/components/layout/index/Hero-Header";
 import CtaSection from "@/components/layout/index/CTA";
 import ContactSection from "@/components/layout/index/Contact";
 import AboutSection from "@/components/layout/index/About";
-import FeaturedTestimonials from "@/components/layout/index/Testimonials";
 import Footer from "@/components/layout/Footer";
+import GallerySection from "@/components/layout/index/Gallery";
 
 import "../styles/globals.css";
 
@@ -21,20 +21,19 @@ export default function Home() {
     <Container maxWidth={isMobile ? "xs" : "lg"}>
       <Header />
       <br />
+
       <HeroHeaderSection />
       <br />
-      {/* 
-      
+
       <GallerySection />
       <br />
-      
-       */}
+
       <AboutSection />
       <br />
-      {/* <FeaturedTestimonials /> */}
-      {/* <br /> */}
+
       <CtaSection />
       <br />
+
       <ContactSection />
       <br />
       <Footer />
