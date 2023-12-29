@@ -11,7 +11,7 @@ import AboutSection from "@/components/layout/index/About";
 import FeaturedTestimonials from "@/components/layout/index/textmonials";
 import Footer from "@/components/layout/Footer";
 
-import "../app/globals.css";
+import "../styles/globals.css";
 
 export default function Home() {
   const theme = useTheme();

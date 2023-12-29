@@ -2,43 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Importing specific 'cute' and 'lofi' style fonts */
-@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap"); /* Handwriting-like, casual */
-@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"); /* Friendly, informal */
-@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"); /* Playful, carefree */
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap"); /* Soft, rounded */
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap"); /* Soft, script-like */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
-/* Base styles */
 body {
-  font-family: "Comfortaa", cursive; /* Soft, rounded */
-  font-size: 1rem; /* 16px */
-  max-width: 100%;
-  margin: 0 auto;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
 }
 
-/* Headings - Customized with 'cute' fonts */
 h1 {
-  @apply text-5xl md:text-6xl;
-  font-family: "Pacifico", cursive; /* Soft, script-like */
+  font-size: 2rem; /* 40px */
+  font-family: "Roboto", sans-serif;
 }
 
 h2 {
-  @apply text-4xl md:text-5xl;
-  font-family: "Patrick Hand", cursive; /* Friendly, informal */
+  font-size: 1.5rem; /* 32px */
+  font-family: "Roboto", sans-serif;
 }
 
 h3 {
+  font-size: 1.35rem;
   @apply text-3xl md:text-4xl;
   font-family: "Indie Flower", cursive; /* Playful, carefree */
 }
 
 h4 {
+  font-size: 1.2rem;
   @apply text-2xl md:text-3xl;
   font-family: "Handlee", cursive; /* Handwriting-like, casual */
 }
 
 h5 {
+  font-size: 1rem;
   @apply text-xl md:text-2xl;
   font-family: "Comfortaa", cursive; /* Soft, rounded */
 }
@@ -46,6 +49,7 @@ h5 {
 /* Paragraphs and Spans - Soft and gentle text */
 p,
 span {
+  font-size: 1rem;
   @apply text-base md:text-lg;
   font-family: "Comfortaa", cursive; /* Soft, rounded */
 }
@@ -73,7 +77,7 @@ html {
 }
 
 body {
-  background-color: #f0eae2; /* Soft background color */
+  background-color: #ffffff; /* Soft background color */
   color: #333; /* Primary text color */
   line-height: 1.6; /* Improved readability */
 }
@@ -91,14 +95,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #ffffff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #ffffff;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #ffffff;
 }

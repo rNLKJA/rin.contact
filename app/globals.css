@@ -7,47 +7,109 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 body {
   font-family: "JetBrains Mono", monospace;
   font-size: 1rem;
+  background-color: #ffffff; /* Soft background color */
+  color: #333; /* Primary text color */
+  line-height: 1.6; /* Improved readability */
+  margin: 0 auto; /* Center content horizontally */
+  padding: 0 1rem; /* Add some padding on the sides */
+  max-width: 100%; /* Ensure it doesn't exceed the viewport width */
+  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 h1 {
-  font-size: 2.5rem; /* 40px */
+  font-size: 2rem; /* 40px */
   font-family: "Roboto", sans-serif;
 }
 
 h2 {
-  font-size: 2rem; /* 32px */
+  font-size: 1.5rem; /* 32px */
   font-family: "Roboto", sans-serif;
 }
 
 h3 {
-  font-size: 1.75rem; /* 28px */
-  font-family: "Open Sans", sans-serif;
+  font-size: 1.35rem;
+  @apply text-3xl md:text-4xl;
+  font-family: "Indie Flower", cursive; /* Playful, carefree */
 }
 
 h4 {
-  font-size: 1.5rem; /* 24px */
-  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  @apply text-2xl md:text-3xl;
+  font-family: "Handlee", cursive; /* Handwriting-like, casual */
 }
 
 h5 {
-  font-size: 1.25rem; /* 20px */
-  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  @apply text-xl md:text-2xl;
+  font-family: "Comfortaa", cursive; /* Soft, rounded */
 }
 
-p {
-  font-size: 1rem; /* 16px */
-  font-family: "Open Sans", sans-serif;
-}
-
+/* Paragraphs and Spans - Soft and gentle text */
+p,
 span {
-  font-size: 0.875rem; /* 14px */
-  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  @apply text-base md:text-lg;
+  font-family: "Comfortaa", cursive; /* Soft, rounded */
 }
 
+/* Responsive Design Adjustments */
+@media (min-width: 768px) {
+  body {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    max-width: 1100px;
+  }
+}
+
+/* Utility */
 * {
   user-select: none; /* Disables text selection */
+}
+
+html {
+  scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+body {
+  background-color: #ffffff; /* Soft background color */
+  color: #333; /* Primary text color */
+  line-height: 1.6; /* Improved readability */
+}
+
+/* Soft box shadows and rounded corners for cards and buttons */
+.card,
+.button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
 }

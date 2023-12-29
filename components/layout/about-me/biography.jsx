@@ -15,6 +15,7 @@ export default function Biography() {
   return (
     <div className="flex flex-col py-10 px-4">
       <Section1 />
+      <br />
       <Section2 />
       <br />
       <Section3 />
@@ -28,15 +29,21 @@ export default function Biography() {
 
 export const Section1 = () => {
   return (
-    <div className="grid md:grid-cols-2 gap-20 justify-center items-center px-4">
-      <Card style={{ height: "450px", position: "relative" }}>
-        <CardMedia
-          component="img"
-          src="/rin.svg"
-          alt="rin"
-          style={{ height: "100%", padding: "20px" }}
-        />
-      </Card>
+    <div className="grid md:grid-cols-2 gap-20 justify-center items-center px-4 pb-10">
+      <div className="flex justify-center">
+        <Card
+          className="w-full max-w-md md:max-w-lg lg:max-w-xl"
+          style={{ position: "relative" }}
+        >
+          <CardMedia
+            component="img"
+            image="/rin.svg"
+            alt="rin"
+            className="object-cover w-full"
+            style={{ height: "100%" }}
+          />
+        </Card>
+      </div>
       <div>
         <h2>🐾 Paws and Progress</h2>
         <h2>The Journey Begins</h2>
@@ -68,7 +75,7 @@ export const Section1 = () => {
 
 export const Section2 = () => {
   return (
-    <div className="order-first md:order-last flex flex-row justify-center items-center pb-10 px-4 ">
+    <div className="flex flex-row justify-center items-center pb-10 px-4 ">
       <div></div>
       <div>
         <h2>🌟 Starry-Eyed Explorer: Education and Passion</h2>
@@ -109,7 +116,7 @@ export const Section3 = () => {
   ];
 
   return (
-    <div className="order-first md:order-last flex flex-row justify-center items-center py-10 px-4">
+    <div className="flex flex-row justify-center items-center py-10 px-4">
       <div></div>
       <div>
         <h2>🛠️ Toolbox of Treats: Skills and Experience</h2>
@@ -152,7 +159,7 @@ export const Section3 = () => {
 
 export const Section4 = () => {
   return (
-    <div className="order-first md:order-last  grid md:grid-cols-2 justify-center items-center py-10 px-4 gap-10">
+    <div className="grid md:grid-cols-2 justify-center items-center py-10 px-4 gap-10">
       <div>
         <Image
           src="/coffee.svg"
@@ -181,7 +188,7 @@ export const Section4 = () => {
 
 export const Section5 = () => {
   return (
-    <div className="order-first md:order-last flex flex-row justify-center items-center pt-10 px-4">
+    <div className="flex flex-row justify-center items-center pt-10 px-4">
       <div></div>
       <div>
         <h2>🤝 Whisker Whispers: Team Contribution and Connection</h2>
