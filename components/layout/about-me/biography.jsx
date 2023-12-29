@@ -23,6 +23,7 @@ export default function Biography() {
       <Section4 />
       <br />
       <Section5 />
+      <br />
     </div>
   );
 }
@@ -160,13 +161,14 @@ export const Section3 = () => {
 export const Section4 = () => {
   return (
     <div className="grid md:grid-cols-2 justify-center items-center py-10 px-4 gap-10">
-      <div>
+      <div className="flex justify-center items-center">
         <Image
           src="/coffee.svg"
           alt="coffee"
           width={250}
           height={250}
-          layout="responsive"
+          // layout="responsive"
+          sizes="(max-width: 300px)"
         />
       </div>
       <div>

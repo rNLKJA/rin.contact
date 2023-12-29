@@ -23,7 +23,7 @@ export default function Home() {
     >
       <Header />
       <Biography />
-      <hr />
+
       <Footer />
     </Container>
   );
