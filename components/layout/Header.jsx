@@ -22,7 +22,7 @@ export const DesktopHeader = () => {
         <Image src="/logo.svg" alt="Logo" width={80} height={80} quality={50} />
         <span className="ml-2 font-bold">rNLKJA</span>
       </Link>
-      <Fade triggerOnce duration={1500} direction="right">
+      <Fade triggerOnce duration={1500} direction="down">
         <nav className="space-x-4">
           <Link className="px-2 mr-4" href="/about-me">
             About Me

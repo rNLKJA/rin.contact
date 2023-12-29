@@ -6,6 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 import ProjectsBrowsing from "../../components/layout/project/Browsing";
+import { Fade } from "react-awesome-reveal";
 
 import "../../styles/globals.css";
 
@@ -24,6 +25,7 @@ export default function Home() {
       <Header />
 
       <ProjectsBrowsing />
+
       <Footer />
     </Container>
   );

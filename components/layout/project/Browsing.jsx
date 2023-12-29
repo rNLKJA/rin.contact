@@ -44,89 +44,90 @@ export default function ProjectsBrowsing() {
           pixel at a time!
         </p>
       </div>
-      <Fade triggerOnce>
-        {projects &&
-          projects
-            .reverse()
-            .map((project) => (
-              <ProjectContent {...project} key={project.title} />
-            ))}
-      </Fade>
+
+      {projects &&
+        projects
+          .reverse()
+          .map((project) => (
+            <ProjectContent {...project} key={project.title} />
+          ))}
     </div>
   );
 }
 
 export const ProjectContent = (project) => {
   return (
-    <div className="py-10">
-      <div className="flex justify-between">
-        <div className="flex flex-wrap gap-4">
-          <Image
-            src={project.icon}
-            width={35}
-            height={35}
-            alt="Project Icons"
-            quality={50}
-            responsive
-          />
-          <h4>{project.title}</h4>
+    <Fade triggerOnce duration={1500} direction="up">
+      <div className="py-10">
+        <div className="flex justify-between">
+          <div className="flex flex-wrap gap-4">
+            <Image
+              src={project.icon}
+              width={35}
+              height={35}
+              alt="Project Icons"
+              quality={50}
+              responsive
+            />
+            <h4>{project.title}</h4>
+          </div>
+        </div>
+        <br />
+        <p className="leading-5">{project.date}</p>
+        <br />
+
+        <p className="leading-10">{project.description}</p>
+        <br />
+        <ul className="flex flex-wrap gap-4">
+          {project.skills.map((skill) => (
+            <li
+              key={skill}
+              style={{
+                color: "grey",
+                fontWeight: "normal",
+                transition: "font-weight 0.3s",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.fontWeight = "bold";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.fontWeight = "normal";
+              }}
+            >
+              {skill}
+            </li>
+          ))}
+        </ul>
+
+        <br />
+        <div className="flex flex-start gap-4">
+          {project.github_link && (
+            <Button
+              href={project.github_link}
+              variant="contained"
+              style={{ backgroundColor: "black" }}
+              className="flex flex-start gap-4"
+              target="_blank"
+            >
+              <SiGithub />
+              Github
+            </Button>
+          )}
+
+          {project.overleaf_link && (
+            <Button
+              href={project.overleaf_link}
+              variant="contained"
+              style={{ backgroundColor: "black" }}
+              className="flex flex-start gap-4"
+              target="_blank"
+            >
+              <SiOverleaf />
+              Overleaf
+            </Button>
+          )}
         </div>
       </div>
-      <br />
-      <p className="leading-5">{project.date}</p>
-      <br />
-
-      <p className="leading-10">{project.description}</p>
-      <br />
-      <ul className="flex flex-wrap gap-4">
-        {project.skills.map((skill) => (
-          <li
-            key={skill}
-            style={{
-              color: "grey",
-              fontWeight: "normal",
-              transition: "font-weight 0.3s",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.fontWeight = "bold";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.fontWeight = "normal";
-            }}
-          >
-            {skill}
-          </li>
-        ))}
-      </ul>
-
-      <br />
-      <div className="flex flex-start gap-4">
-        {project.github_link && (
-          <Button
-            href={project.github_link}
-            variant="contained"
-            style={{ backgroundColor: "black" }}
-            className="flex flex-start gap-4"
-            target="_blank"
-          >
-            <SiGithub />
-            Github
-          </Button>
-        )}
-
-        {project.overleaf_link && (
-          <Button
-            href={project.overleaf_link}
-            variant="contained"
-            style={{ backgroundColor: "black" }}
-            className="flex flex-start gap-4"
-            target="_blank"
-          >
-            <SiOverleaf />
-            Overleaf
-          </Button>
-        )}
-      </div>
-    </div>
+    </Fade>
   );
 };
