@@ -38,19 +38,16 @@ h2 {
 h3 {
   font-size: 1.3rem;
   @apply text-3xl md:text-4xl;
-  font-family: "Indie Flower", cursive; /* Playful, carefree */
 }
 
 h4 {
   font-size: 1.2rem;
   @apply text-2xl md:text-3xl;
-  font-family: "Handlee", cursive; /* Handwriting-like, casual */
 }
 
 h5 {
   font-size: 1rem;
   @apply text-xl md:text-2xl;
-  font-family: "Comfortaa", cursive; /* Soft, rounded */
 }
 
 /* Paragraphs and Spans - Soft and gentle text */
@@ -58,7 +55,6 @@ p,
 span {
   font-size: 1rem;
   @apply text-base md:text-lg;
-  font-family: "Comfortaa", cursive; /* Soft, rounded */
 }
 
 /* Responsive Design Adjustments */
