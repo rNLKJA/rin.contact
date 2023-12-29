@@ -33,7 +33,12 @@ const Footer = () => {
           <br />
           <div className="flex flex-col md:flex-row flex-start gap-8 justify-center md:justify-start">
             <div className="flex items-center gap-3">
-              <Image src="/redbook.svg" width={20} height={20} />
+              <Image
+                src="/redbook.svg"
+                width={20}
+                height={20}
+                alt="litteredbook"
+              />
               <a
                 href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
                 alt="little red book"
