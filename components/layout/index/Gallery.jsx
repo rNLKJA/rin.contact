@@ -29,6 +29,7 @@ const GallerySection = () => {
             width={300}
             height={300}
             quality={50}
+            alt="thumbnail"
             responsive
           />
         </Zoom>

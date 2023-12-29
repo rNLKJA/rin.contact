@@ -156,7 +156,7 @@ export const DataArticle = () => {
             <h3>References</h3>
             <ul className="list-disc pl-10">
               {data.References.map((ref) => (
-                <li>{ref}</li>
+                <li key={ref}>{ref}</li>
               ))}
             </ul>
           </div>

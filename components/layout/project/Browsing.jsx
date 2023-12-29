@@ -34,6 +34,7 @@ export default function ProjectsBrowsing() {
             responsive
             style={{ borderRadius: 20 }}
             quality={50}
+            alt="working cat"
           />
         </div>
         <p className="leading-10">
