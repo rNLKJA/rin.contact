@@ -78,7 +78,22 @@ export const ProjectContent = (project) => {
       <br />
       <ul className="flex flex-wrap gap-4">
         {project.skills.map((skill) => (
-          <li key={skill}>{skill}</li>
+          <li
+            key={skill}
+            style={{
+              color: "grey",
+              fontWeight: "normal",
+              transition: "font-weight 0.3s",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.fontWeight = "bold";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.fontWeight = "normal";
+            }}
+          >
+            {skill}
+          </li>
         ))}
       </ul>
 
