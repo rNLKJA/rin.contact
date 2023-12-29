@@ -101,7 +101,7 @@ const ContactForm = () => {
     <Container component="main" maxWidth="sm">
       <Paper elevation={6} sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
         <Typography variant="h5" component="h1" gutterBottom>
-          Contact Us
+          Contact Me ( ´ ω ` )
         </Typography>
         <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={handleSubmit}>
           <TextField
