@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="pt-10 pb-10 pl-4 pr-4 ">
       <div className="grid md:grid-cols-4 grid-cols-1 gap-10 items-center text-center ">
@@ -41,6 +43,7 @@ const Footer = () => {
                   alt="litteredbook"
                 />
                 <a
+                  className="link-hover"
                   href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
                   alt="little red book"
                 >
@@ -50,6 +53,7 @@ const Footer = () => {
               <div className="flex items-center gap-3">
                 <FaInstagram />
                 <a
+                  className="link-hover"
                   href="https://www.instagram.com/chuangyu_hscy/"
                   alt="Instagram"
                 >
@@ -59,6 +63,7 @@ const Footer = () => {
               <div className="flex items-center gap-3">
                 <FaLinkedin />
                 <a
+                  className="link-hover"
                   href="https://www.linkedin.com/in/sunchuangyuhuang/"
                   alt="LinkedIn"
                 >
@@ -67,7 +72,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <FiGithub />
-                <a href="https://github.com/rNLKJA" alt="GitHub">
+                <a
+                  className="link-hover"
+                  href="https://github.com/rNLKJA"
+                  alt="GitHub"
+                >
                   GitHub
                 </a>
               </div>
@@ -80,13 +89,21 @@ const Footer = () => {
 
       <div className="flex flex-col md:flex-row justify-between p-4">
         <p>
-          © 2024 {/* Correct usage of Link component for internal navigation */}
-          <Link href="/">rNLKJA</Link>. All rights reserved.
+          © {year}{" "}
+          {/* Correct usage of Link component for internal navigation */}
+          <Link className="link-hover" href="/">
+            rNLKJA
+          </Link>
+          . All rights reserved.
         </p>
         <div className="flex space-x-4 justify-center mt-4 md:mt-0">
           {/* Internal navigation should use Link component */}
-          <Link href="/privacy-policy">Privacy Policy</Link>
-          <Link href="/terms-of-service">Terms of Service</Link>
+          <Link className="link-hover" href="/privacy-policy">
+            Privacy Policy
+          </Link>
+          <Link className="link-hover" href="/terms-of-service">
+            Terms of Service
+          </Link>
         </div>
       </div>
     </footer>
