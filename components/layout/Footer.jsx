@@ -11,7 +11,13 @@ const Footer = () => {
       <div className="grid md:grid-cols-4 grid-cols-1 gap-10 items-center text-center ">
         <div className="md:col-span-2">
           <div className="inline-block">
-            <Image src="/logo.svg" alt="Logo" width={200} height={200} />
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              width={200}
+              height={200}
+              quality={75}
+            />
           </div>
           <p className="text-pretty">
             Fueling the future with purr-cision and cutting-edge data science
