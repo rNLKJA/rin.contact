@@ -18,13 +18,7 @@ export default function Home() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Container
-      maxWidth={isMobile ? "xs" : "lg"}
-      style={{
-        width: isMobile ? "100%" : "1100px",
-        backgroundColor: "",
-      }}
-    >
+    <Container maxWidth={isMobile ? "xs" : "lg"}>
       <Header />
       <br />
       <HeroHeaderSection />
