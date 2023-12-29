@@ -10,20 +10,39 @@ import { SiGooglecloud } from "react-icons/si";
 import { SiJfrogpipelines } from "react-icons/si";
 import { BiMath } from "react-icons/bi";
 import Image from "next/image";
+import { Fade, Zoom } from "react-awesome-reveal";
 
 export default function Biography() {
   return (
     <div className="flex flex-col py-10 px-4">
       <h2>🐾 Paws and Progress The Journey Begins</h2>
-      <Section1 />
+      <Fade triggerOnce>
+        <Section1 />
+      </Fade>
+
       <br />
-      <Section2 />
+
+      <Fade triggerOnce>
+        <Section2 />
+      </Fade>
+
       <br />
-      <Section3 />
+
+      <Fade triggerOnce>
+        <Section3 />
+      </Fade>
+
       <br />
-      <Section4 />
+
+      <Fade triggerOnce>
+        <Section4 />
+      </Fade>
+
       <br />
-      <Section5 />
+      <Fade triggerOnce>
+        <Section5 />
+      </Fade>
+
       <br />
     </div>
   );
@@ -33,18 +52,20 @@ export const Section1 = () => {
   return (
     <div className="grid md:grid-cols-2 gap-20 justify-center items-center px-4 pb-10">
       <div className="flex justify-center">
-        <Card
-          className="w-full max-w-md md:max-w-lg lg:max-w-xl"
-          style={{ position: "relative", height: "350px", width: "350px" }}
-        >
-          <CardMedia
-            component="img"
-            image="/rin.svg"
-            alt="rin"
-            className="object-cover w-full"
-            style={{ height: "100%" }}
-          />
-        </Card>
+        <Zoom triggerOnce>
+          <Card
+            className="w-full max-w-md md:max-w-lg lg:max-w-xl"
+            style={{ position: "relative", height: "350px", width: "350px" }}
+          >
+            <CardMedia
+              component="img"
+              image="/rin.svg"
+              alt="rin"
+              className="object-cover w-full"
+              style={{ height: "100%" }}
+            />
+          </Card>
+        </Zoom>
       </div>
       <div>
         <p className="font-bold leading-10">

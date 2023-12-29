@@ -1,9 +1,9 @@
 import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
 import { FiGithub } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
 
 const Footer = () => {
   return (
@@ -28,50 +28,52 @@ const Footer = () => {
           <br />
         </div>
 
-        <div className="tablet:col-span-2 laptop: flex-col text-left">
-          <h4>Follow me</h4>
-          <br />
-          <div className="flex flex-col md:flex-row flex-start gap-8 justify-center md:justify-start">
-            <div className="flex items-center gap-3">
-              <Image
-                src="/redbook.svg"
-                width={20}
-                height={20}
-                alt="litteredbook"
-              />
-              <a
-                href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
-                alt="little red book"
-              >
-                Xiaohongshu
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <FaInstagram />
-              <a
-                href="https://www.instagram.com/chuangyu_hscy/"
-                alt="Instagram"
-              >
-                Instagram
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <FaLinkedin />
-              <a
-                href="https://www.linkedin.com/in/sunchuangyuhuang/"
-                alt="LinkedIn"
-              >
-                LinkedIn
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <FiGithub />
-              <a href="https://github.com/rNLKJA" alt="GitHub">
-                GitHub
-              </a>
+        <Fade direction="right" duration={1500}>
+          <div className="tablet:col-span-2 laptop: flex-col text-left">
+            <h4>Follow me</h4>
+            <br />
+            <div className="flex flex-col md:flex-row flex-start gap-8 justify-center md:justify-start">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/redbook.svg"
+                  width={20}
+                  height={20}
+                  alt="litteredbook"
+                />
+                <a
+                  href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
+                  alt="little red book"
+                >
+                  Xiaohongshu
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaInstagram />
+                <a
+                  href="https://www.instagram.com/chuangyu_hscy/"
+                  alt="Instagram"
+                >
+                  Instagram
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaLinkedin />
+                <a
+                  href="https://www.linkedin.com/in/sunchuangyuhuang/"
+                  alt="LinkedIn"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <FiGithub />
+                <a href="https://github.com/rNLKJA" alt="GitHub">
+                  GitHub
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </Fade>
       </div>
 
       <hr className="my-4" />

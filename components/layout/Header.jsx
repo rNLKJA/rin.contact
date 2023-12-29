@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
 
 const Header = () => {
   // Both headers are rendered, but CSS controls which one is displayed based on screen size
@@ -16,27 +17,27 @@ export default Header;
 
 export const DesktopHeader = () => {
   return (
-    // Only display this div on medium screens and larger
     <div className="hidden md:flex justify-between items-center py-10 px-4">
       <Link className="flex flex-row items-center" href="/">
         <Image src="/logo.svg" alt="Logo" width={80} height={80} quality={50} />
         <span className="ml-2 font-bold">rNLKJA</span>
       </Link>
-
-      <nav className="space-x-4">
-        <Link className="px-2 mr-4" href="/about-me">
-          About Me
-        </Link>
-        <Link className="px-2 mr-4" href="/projects">
-          Projects
-        </Link>
-        <Link className="px-2 mr-4" href="/blogs">
-          Blogs
-        </Link>
-        <Link className="px-2 mr-4" href="/contact">
-          Contact
-        </Link>
-      </nav>
+      <Fade triggerOnce duration={1500} direction="right">
+        <nav className="space-x-4">
+          <Link className="px-2 mr-4" href="/about-me">
+            About Me
+          </Link>
+          <Link className="px-2 mr-4" href="/projects">
+            Projects
+          </Link>
+          <Link className="px-2 mr-4" href="/blogs">
+            Blogs
+          </Link>
+          <Link className="px-2 mr-4" href="/contact">
+            Contact
+          </Link>
+        </nav>
+      </Fade>
     </div>
   );
 };

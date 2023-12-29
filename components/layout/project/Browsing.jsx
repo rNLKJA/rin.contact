@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { SiGithub, SiOverleaf } from "react-icons/si";
+import { Fade } from "react-awesome-reveal";
 
 export default function ProjectsBrowsing() {
   const [projects, setProjects] = useState([]);
@@ -43,13 +44,14 @@ export default function ProjectsBrowsing() {
           pixel at a time!
         </p>
       </div>
-
-      {projects &&
-        projects
-          .reverse()
-          .map((project) => (
-            <ProjectContent {...project} key={project.title} />
-          ))}
+      <Fade triggerOnce>
+        {projects &&
+          projects
+            .reverse()
+            .map((project) => (
+              <ProjectContent {...project} key={project.title} />
+            ))}
+      </Fade>
     </div>
   );
 }

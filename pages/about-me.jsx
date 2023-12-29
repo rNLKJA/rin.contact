@@ -8,6 +8,7 @@ import Footer from "../components/layout/Footer";
 import Biography from "@/components/layout/about-me/biography";
 
 import "../styles/globals.css";
+import { Fade } from "react-awesome-reveal";
 
 export default function Home() {
   const theme = useTheme();
@@ -22,6 +23,7 @@ export default function Home() {
       }}
     >
       <Header />
+
       <Biography />
 
       <Footer />

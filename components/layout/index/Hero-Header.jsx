@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import Image from "next/image";
+import { Zoom } from "react-awesome-reveal";
 
 const HeroHeaderSection = () => {
   return (
@@ -51,14 +52,16 @@ const HeroHeaderSection = () => {
       </div>
       <br />
       <br />
-      <Image
-        src="/heroSection.png"
-        alt="hero section image"
-        width={300}
-        height={300}
-        layout="responsive"
-        quality={50}
-      />
+      <Zoom triggerOnce>
+        <Image
+          src="/heroSection.png"
+          alt="hero section image"
+          width={300}
+          height={300}
+          layout="responsive"
+          quality={50}
+        />
+      </Zoom>
     </>
   );
 };

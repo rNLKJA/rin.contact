@@ -12,6 +12,7 @@ import Footer from "@/components/layout/Footer";
 import GallerySection from "@/components/layout/index/Gallery";
 
 import "../styles/globals.css";
+import { Fade } from "react-awesome-reveal";
 
 export default function Home() {
   const theme = useTheme();
@@ -22,20 +23,31 @@ export default function Home() {
       <Header />
       <br />
 
-      <HeroHeaderSection />
+      <Fade triggerOnce duration={1500} direction="left">
+        <HeroHeaderSection />
+      </Fade>
       <br />
 
-      <GallerySection />
+      <Fade triggerOnce duration={1500} direction="right">
+        <GallerySection />
+      </Fade>
       <br />
 
-      <AboutSection />
+      <Fade triggerOnce duration={1500} direction="left">
+        <AboutSection />
+      </Fade>
       <br />
 
-      <CtaSection />
+      <Fade triggerOnce duration={1500} direction="up">
+        <CtaSection />
+      </Fade>
       <br />
 
-      <ContactSection />
+      <Fade triggerOnce duration={1500} direction="right">
+        <ContactSection />
+      </Fade>
       <br />
+
       <Footer />
     </Container>
   );

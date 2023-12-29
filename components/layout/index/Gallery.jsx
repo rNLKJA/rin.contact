@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Image from "next/image";
+import { Zoom } from "react-awesome-reveal";
 
 const GallerySection = () => {
   const [projects, setProjects] = useState([]);
@@ -22,13 +23,15 @@ const GallerySection = () => {
   return (
     <div className="grid md:grid-cols-2 py-10 px-4 justify-center items-center">
       <div className="flex justify-center items-center">
-        <Image
-          src="/project_thumbnail.svg"
-          width={300}
-          height={300}
-          quality={50}
-          responsive
-        />
+        <Zoom triggerOnce>
+          <Image
+            src="/project_thumbnail.svg"
+            width={300}
+            height={300}
+            quality={50}
+            responsive
+          />
+        </Zoom>
       </div>
 
       <div className="flex flex-col gap-5">
