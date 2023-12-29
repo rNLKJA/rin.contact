@@ -13,6 +13,12 @@ import Paper from "@mui/material/Paper";
 import emailjs from "emailjs-com";
 import "../styles/globals.css";
 
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+
 export default function ContactPage() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -33,6 +39,11 @@ export default function ContactPage() {
 }
 
 const ContactForm = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const handleDialogClose = () => {
+    setOpenDialog(false);
+  };
+
   const [formData, setFormData] = useState({
     from_name: "",
     from_email: "",
@@ -71,7 +82,7 @@ const ContactForm = () => {
       .then(
         (response) => {
           console.log("SUCCESS!", response.status, response.text);
-          alert("Thank you for your message! We will be in touch.");
+          setOpenDialog(true); // Open the dialog here
           setFormData({
             from_name: "",
             from_email: "",
@@ -144,6 +155,30 @@ const ContactForm = () => {
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
+
+          <Dialog open={openDialog} onClose={handleDialogClose}>
+            <DialogTitle style={{ textAlign: "center" }}>
+              🐾 Meow! Message Sent 🐾
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText
+                style={{ textAlign: "center", fontSize: "18px" }}
+              >
+                Thanks for sending me the email! 😺 I'll paw-sitively get back
+                to you ASAP! 🐱💕
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions style={{ justifyContent: "center" }}>
+              <Button
+                onClick={handleDialogClose}
+                color="primary"
+                variant="contained"
+                style={{ backgroundColor: "#FFA726" }}
+              >
+                Close 🐾
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Box>
       </Paper>
     </Container>
