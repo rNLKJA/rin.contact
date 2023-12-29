@@ -24,16 +24,16 @@ export const DesktopHeader = () => {
       </Link>
       <Fade triggerOnce duration={1500} direction="down">
         <nav className="space-x-4">
-          <Link className="px-2 mr-4" href="/about-me">
+          <Link className="link-hover px-2 mr-4" href="/about-me">
             About Me
           </Link>
-          <Link className="px-2 mr-4" href="/projects">
+          <Link className="link-hover px-2 mr-4" href="/projects">
             Projects
           </Link>
-          <Link className="px-2 mr-4" href="/blogs">
+          <Link className="link-hover px-2 mr-4" href="/blogs">
             Blogs
           </Link>
-          <Link className="px-2 mr-4" href="/contact">
+          <Link className="link-hover px-2 mr-4" href="/contact">
             Contact
           </Link>
         </nav>
