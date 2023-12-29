@@ -1,92 +1,100 @@
-# Hello there (ฅ'ω'ฅ) This is Rin Huang
+# Hello there (ฅ'ω'ฅ) it's rNLKJA here!
 
-> I am a Data Science student currently study in the [University of Melbourne](https://www.unimelb.edu.au/) 🇦🇺 from China 🇨🇳
->
-> I'm interesting in data science and passionate in data.
->
-> This repository is my personal react-app, I want to build this webpage as my personal CV page/blog page, I don't know how long this will take but I will try my best!
+<img src="https://rin.contact/heroSection.png" width=100% alt='image of me'/>
 
----
+After months of ideation and development, I'm excited to introduce the latest iteration of my personal website, built with `React` and `Next.js`. This 4th rebuild represents a continuous evolution of my online presence, with a focus on showcasing my data science skills and publishing content I'm passionate about. While this may not be the final version, my goal is for it to be a flexible, easily updated foundation for future expansions.
 
 ## Table of Content
 
-- [Hello there (ฅ'ω'ฅ) This is Rin Huang](#hello-there-ฅωฅ-this-is-rin-huang)
+- [Hello there (ฅ'ω'ฅ) it's rNLKJA here!](#hello-there-ฅωฅ-its-rnlkja-here)
   - [Table of Content](#table-of-content)
-  - [About the usage](#about-the-usage)
-  - [Deploy your website](#deploy-your-website)
-  - [Problem with custom domain](#problem-with-custom-domain)
-  - [Next TODO](#next-todo)
+  - [Tech Stack](#tech-stack)
+  - [Getting Started](#getting-started)
+  - [Project Structure](#project-structure)
+  - [Deployment](#deployment)
+  - [Future Plan](#future-plan)
+  - [Contribution Guidelines](#contribution-guidelines)
   - [LICENSE](#license)
+  - [Contact](#contact)
 
----
+## Tech Stack
 
-## About the usage
+The site is built using the following technologies:
 
-To update your own profile information. Please make sure that you copy this repository and install all required packages. To avoid package conflicts, please avoid use `npm audit fix` feature.
+- **Next.js**: A React framework offering features like server-side rendering and static site generation, enhancing SEO and performance.
+- **React**: A JavaScript library for building user interfaces with reusable components.
+- **TailwindCSS**: A utility-first CSS framework for creating custom designs without leaving your HTML.
+- **Additional Libraries**: `react-icons`, `bootstrap`, `mui`, `react-awesome-reveal`, etc., which provide ready-to-use components and animations.
 
-```bash
-# Install required react packages
-yarn install
+## Getting Started
 
-# Install required npm packages
-npm i
+To get the project up and running on your local machine, follow these steps:
 
-# Run the Next.js app in the development mode.
-npm run dev
+**Prerequisites**:
+
+- Ensure you have node.js and npm installed.
+
+**Installation**:
+
+- Clone the repository: `git clone https://github.com/rNLKJA/rin.contact.git`
+- Navigate to the project directory: cd rin.contact
+- Install dependencies: npm install
+
+**Local Development**:
+
+- Start the development server: npm run dev
+- Visit `http://localhost:3000` in your browser to view the site.
+
+## Project Structure
+
+```text
+rin.contact/
+├── app/             # App configuration (e.g., next.config.js, tailwind.config.js)
+├── components/      # Reusable UI components (e.g., Navbar, Footer)
+├── pages/           # Page components (e.g., index.js, about.js)
+├── public/          # Static files like images and favicon
+└── styles/          # Global and individual stylesheets
 ```
 
-After install process, try use command `npm run dev` to run the next.js app, this is what you should have in first start up!
+The project structure is pretty simple, the `app` folder contains the configuration of the app, e.g. `next.config.js`, `tailwind.config.js`, etc. The `components` folder contains all the components used in the website, e.g. `Navbar`, `Footer`, `HeroSection`, etc. The `pages` folder contains all the pages, e.g. `index.js`, `about.js`, etc. The `public` folder contains all the static files, e.g. `favicon.ico`, `heroSection.png`, etc. The `styles` folder contains all the stylesheets, e.g. `global.css`, `index.css`, etc.
 
-If you see the above page, then you could modify the information under the directory `./`, components are available in `/components` folder, and pages available in `/pages`.
+To add a new page, simply create a new file in `pages` folder, e.g. `contact.js`, the new page will be automatically generated and access via `http://localhost:3000/contact`. To add a new component, simply create a new file in `components` folder, e.g. `Contact.js`, then you can import it in any page you want.
 
----
+## Deployment
 
-## Deploy your website
+The site is deployed via GitHub Pages with automated deployment through GitHub Actions. If you encounter a 404 error or other deployment issues, consider the following:
 
-You could deploy this application on various platforms like heroku, aws, google, etc. Here I will suggest you deploy this on github pages since this is a light website and most importantly, it's free and convenience!
+- **404 Error**: Ensure the `next.config.js` is correctly configured, especially if next export has been deprecated.
+- **Initial Setup**: If problems persist, initializing a fresh `Next.js` app with the recommended structure might help.
+- **GitHub Pages Configuration**: Ensure your repository settings correctly point to the build output folder.
 
-Before deploy your website, the first thing is create a github repository with your prefer repo name.
+## Future Plan
 
-Second, you need to make sure `gh-pages` is installed correctly, if not, please install using command `npm install gh-pages --save-dev` or `npm install gh-pages -g` to install globally.
+- **Hosting**: Migrate to Vercel for improved performance and developer experience.
+- **TypeScript**: Convert .jsx files to .tsx for enhanced code quality and maintainability.
+- **Database Integration**: Incorporate a database like MongoDB for dynamic content and use `Next.js` API routes for server-side operations.
+- **AI Gallery**: Create a gallery featuring AI-generated images, with prompts and details about the creation process.
+- ****tests****: Add unit tests for components and pages using `Jest` and `React Testing Library`.
+- ...
 
-After that, you need to modify the package.json file.
+## Contribution Guidelines
 
-1. You need to change the `"homepage"` attribute to your github repository with the format`https://<github username>.github.io/<repo name>`, for example: `https://chuangyu-hscy.github.io/rNLKJA`.
-2. Change the `"name"` attribute which is below `"homepage"`, because this is your own webpage, change it with your prefer name! Notice there is no space allow in `"name"` otherwise it will cause a compile error.
-3. Check both `"predeploy"` and `"deploy"` command exist in `"script"` attribute, if not you need to add the following lines: `"predeploy": "npm run build","deploy": "gh-pages -d build"` in `"script"` attribute.
-4. It is time to deploy your react webpage! Run `npm run deploy` and you will receive a success output!
-5. Go to your repository, go to setting and click pages tag on the left navigation column. Once you in the right page, you should see the webpage link and good to go!
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-If you want some reading guides for `gh-pages` deployment, please visit this article written by [freeCodeCamp](https://www.freecodecamp.org/news/deploy-a-react-app-to-github-pages/).
-
----
-
-## Problem with custom domain
-
-If you add your custom domain, you need to change `"homepage"` attribute the same as the custom domain, otherwise you will have a blank page. After deploy, please wait for 5 mins to visit your webpage, if you still receive a 404 error after 5-10 mins, you may need to check the above steps again or looking for help via stack overflow or google.
-
-You may receive a error message that Github says: _TLS certificate is being provisioned. This may take up to 15 minutes to complete. 1 of 3 Certificate Request Error: Certificate provisioning will retry automatically in a short period, please be patient_. In this case you may need to check your DNS configuration. Here is an example of my Google domain DNS configuration:
-
-<img src="https://github.com/chuangyu-hscy/rNLKJA/blob/rin-profile-ts/public/README/DNS_setting.png" alt="Google DNS config" />
-
-DNS configuration should be similar cross different platforms, if anything confuse please lookup the github pages official guidance.
-
-After configure your DNS setting, please remove your custom domain and add again. Github will automatically re-issue your TLS certificate so you could activate **HTTPS enforce** option.
-
----
-
-## Next TODO
-
-- [ ] i18n support for both Chinese and English to provide more convenience experience for future users. (Ok I'm working on it !!!!)
-
----
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3. Commit your Changes (git commit -m 'Add some AmazingFeature')
+4. Push to the Branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
 
 ## LICENSE
 
-In this project, all images were downloaded from copyright free website, e.g. Unsplash, pngTree, etc. If you want to use this web page for commercial usage, I strongly recommend you to check the copyright documents to avoid any legal issue.
+This project is under a specific license. Please review the [LICENSE](/LICENSE) file in the repository for more information. If you plan to use any content commercially, ensure compliance with all relevant licenses.
 
-To check the license for this repo, please click [here](https://github.com/chuangyu-hscy/rNLKJA/blob/rin-profile-ts/LICENSE).
+## Contact
+
+For any further queries or suggestions, please reach out to me at GitHub @[rNLKJA](https://github.com/rNLKJA) or submit a quest via [Contact Form](https://rin.contact/contact).
 
 ---
 
-2023-12-29 @rNLKJA
+<p align=right>2023-12-30 @<a href='https://github.com/rNLKJA'>rNLKJA</a></p>
