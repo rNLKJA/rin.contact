@@ -8,7 +8,7 @@ import HeroHeaderSection from "@/components/layout/index/Hero-Header";
 import CtaSection from "@/components/layout/index/CTA";
 import ContactSection from "@/components/layout/index/Contact";
 import AboutSection from "@/components/layout/index/About";
-import FeaturedTestimonials from "@/components/layout/index/textmonials";
+import FeaturedTestimonials from "@/components/layout/index/Testimonials";
 import Footer from "@/components/layout/Footer";
 
 import "../styles/globals.css";
@@ -31,8 +31,8 @@ export default function Home() {
        */}
       <AboutSection />
       <br />
-      {/* <FeaturedTestimonials />
-      <br /> */}
+      {/* <FeaturedTestimonials /> */}
+      {/* <br /> */}
       <CtaSection />
       <br />
       <ContactSection />
