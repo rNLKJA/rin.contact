@@ -8,6 +8,8 @@ import Footer from "../../components/layout/Footer";
 
 import "../../styles/globals.css";
 
+import BlogBrowsing from "@/components/layout/blog/gallary";
+
 export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -21,7 +23,7 @@ export default function Home() {
       }}
     >
       <Header />
-
+      <BlogBrowsing />
       <Footer />
     </Container>
   );
