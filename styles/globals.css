@@ -2,52 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+/* Importing specific 'cute' and 'lofi' style fonts */
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap"); /* Handwriting-like, casual */
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"); /* Friendly, informal */
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"); /* Playful, carefree */
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap"); /* Soft, rounded */
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap"); /* Soft, script-like */
 
+/* Base styles */
 body {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 1rem;
+  font-family: "Comfortaa", cursive; /* Soft, rounded */
+  font-size: 1rem; /* 16px */
+  max-width: 100%;
+  margin: 0 auto;
 }
 
+/* Headings - Customized with 'cute' fonts */
 h1 {
-  font-size: 2.5rem; /* 40px */
-  font-family: "Roboto", sans-serif;
+  @apply text-5xl md:text-6xl;
+  font-family: "Pacifico", cursive; /* Soft, script-like */
 }
 
 h2 {
-  font-size: 2rem; /* 32px */
-  font-family: "Roboto", sans-serif;
+  @apply text-4xl md:text-5xl;
+  font-family: "Patrick Hand", cursive; /* Friendly, informal */
 }
 
 h3 {
-  font-size: 1.75rem; /* 28px */
-  font-family: "Open Sans", sans-serif;
+  @apply text-3xl md:text-4xl;
+  font-family: "Indie Flower", cursive; /* Playful, carefree */
 }
 
 h4 {
-  font-size: 1.5rem; /* 24px */
-  font-family: "Open Sans", sans-serif;
+  @apply text-2xl md:text-3xl;
+  font-family: "Handlee", cursive; /* Handwriting-like, casual */
 }
 
 h5 {
-  font-size: 1.25rem; /* 20px */
-  font-family: "Open Sans", sans-serif;
+  @apply text-xl md:text-2xl;
+  font-family: "Comfortaa", cursive; /* Soft, rounded */
 }
 
-p {
-  font-size: 1rem; /* 16px */
-  font-family: "Open Sans", sans-serif;
-}
-
+/* Paragraphs and Spans - Soft and gentle text */
+p,
 span {
-  font-size: 0.875rem; /* 14px */
-  font-family: "Open Sans", sans-serif;
+  @apply text-base md:text-lg;
+  font-family: "Comfortaa", cursive; /* Soft, rounded */
 }
 
+/* Responsive Design Adjustments */
+@media (min-width: 768px) {
+  body {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    max-width: 1100px;
+  }
+}
+
+/* Utility */
 * {
   user-select: none; /* Disables text selection */
 }
