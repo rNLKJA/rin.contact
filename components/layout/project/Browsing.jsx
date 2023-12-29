@@ -44,7 +44,11 @@ export default function ProjectsBrowsing() {
       </div>
 
       {projects &&
-        projects.reverse().map((project) => <ProjectContent {...project} />)}
+        projects
+          .reverse()
+          .map((project) => (
+            <ProjectContent {...project} key={project.title} />
+          ))}
     </div>
   );
 }
@@ -54,7 +58,12 @@ export const ProjectContent = (project) => {
     <div className="py-10">
       <div className="flex justify-between">
         <div className="flex flex-wrap gap-4">
-          <Image src={project.icon} width={35} height={35} />
+          <Image
+            src={project.icon}
+            width={35}
+            height={35}
+            alt="Project Icons"
+          />
           <h4>{project.title}</h4>
         </div>
       </div>
