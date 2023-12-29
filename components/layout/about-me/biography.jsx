@@ -14,6 +14,7 @@ import Image from "next/image";
 export default function Biography() {
   return (
     <div className="flex flex-col py-10 px-4">
+      <h2>🐾 Paws and Progress The Journey Begins</h2>
       <Section1 />
       <br />
       <Section2 />
@@ -34,7 +35,7 @@ export const Section1 = () => {
       <div className="flex justify-center">
         <Card
           className="w-full max-w-md md:max-w-lg lg:max-w-xl"
-          style={{ position: "relative" }}
+          style={{ position: "relative", height: "350px", width: "350px" }}
         >
           <CardMedia
             component="img"
@@ -46,9 +47,6 @@ export const Section1 = () => {
         </Card>
       </div>
       <div>
-        <h2>🐾 Paws and Progress</h2>
-        <h2>The Journey Begins</h2>
-        <br />
         <p className="font-bold leading-10">
           Hello, I'm Rin, a curious kitty in the vast world of data science.
         </p>
