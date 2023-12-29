@@ -24,7 +24,7 @@ export default function ProjectsBrowsing() {
 
   return (
     <div>
-      <h4>The Cat's Meow Projects</h4>
+      <h2>The Cat's Meow Projects</h2>
       <div className="grid md:grid-cols-2 gap-4 py-10 px-4 items-center">
         <div className="flex justify-center items-center">
           <Image
@@ -70,7 +70,7 @@ export const ProjectContent = (project) => {
               quality={50}
               responsive
             />
-            <h4>{project.title}</h4>
+            <h3 className="link-hover">{project.title}</h3>
           </div>
         </div>
         <br />
