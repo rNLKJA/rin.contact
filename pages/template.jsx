@@ -3,10 +3,10 @@ import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import Header from "../../components/layout/Header";
-import Footer from "../../components/layout/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
-import "../../styles/globals.css";
+import "@/styles/globals.css";
 
 export default function Home() {
   const theme = useTheme();
