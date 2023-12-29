@@ -24,8 +24,8 @@ const GallerySection = () => {
       <div className="flex justify-center items-center">
         <Image
           src="/project_thumbnail.svg"
-          width={200}
-          height={200}
+          width={300}
+          height={300}
           quality={75}
           responsive
         />
