@@ -21,7 +21,7 @@ export default function Home() {
       }}
     >
       <Header />
-
+      <h4>The Cat's Meow Projects</h4>
       <Footer />
     </Container>
   );
