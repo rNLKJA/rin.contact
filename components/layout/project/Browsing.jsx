@@ -53,14 +53,16 @@ export const ProjectContent = (project) => {
   return (
     <div className="py-10">
       <div className="flex justify-between">
-        <div className="flex flex-start gap-4">
+        <div className="flex flex-wrap gap-4">
           <Image src={project.icon} width={35} height={35} />
           <h4>{project.title}</h4>
         </div>
-        <p>{project.date}</p>
       </div>
       <br />
-      <p>{project.description}</p>
+      <p className="leading-5">{project.date}</p>
+      <br />
+
+      <p className="leading-10">{project.description}</p>
       <br />
       <ul className="flex flex-wrap gap-4">
         {project.skills.map((skill) => (
