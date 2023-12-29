@@ -32,13 +32,13 @@ To get the project up and running on your local machine, follow these steps:
 
 **Prerequisites**:
 
-- Ensure you have node.js and npm installed.
+- Ensure you have `node.js` and `npm` installed.
 
 **Installation**:
 
 - Clone the repository: `git clone https://github.com/rNLKJA/rin.contact.git`
-- Navigate to the project directory: cd rin.contact
-- Install dependencies: npm install
+- Navigate to the project directory: `cd rin.contact`
+- Install dependencies: `npm install`
 
 **Local Development**:
 
@@ -74,7 +74,7 @@ The site is deployed via GitHub Pages with automated deployment through GitHub A
 - **TypeScript**: Convert .jsx files to .tsx for enhanced code quality and maintainability.
 - **Database Integration**: Incorporate a database like MongoDB for dynamic content and use `Next.js` API routes for server-side operations.
 - **AI Gallery**: Create a gallery featuring AI-generated images, with prompts and details about the creation process.
-- ****tests****: Add unit tests for components and pages using `Jest` and `React Testing Library`.
+- **\_\_tests\_\_**: Add unit tests for components and pages using `Jest` and `React Testing Library`.
 - ...
 
 ## Contribution Guidelines
@@ -82,9 +82,9 @@ The site is deployed via GitHub Pages with automated deployment through GitHub A
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 1. Fork the Project
-2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
-3. Commit your Changes (git commit -m 'Add some AmazingFeature')
-4. Push to the Branch (git push origin feature/AmazingFeature)
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## LICENSE
