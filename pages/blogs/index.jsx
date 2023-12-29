@@ -6,7 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 
-import "../../app/globals.css";
+import "../../styles/globals.css";
 
 export default function Home() {
   const theme = useTheme();

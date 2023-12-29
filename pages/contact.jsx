@@ -13,7 +13,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 
-import "../app/globals.css";
+import "../styles/globals.css";
 
 export default function ContactPage() {
   const theme = useTheme();

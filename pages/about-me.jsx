@@ -7,7 +7,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import Biography from "@/components/layout/about-me/biography";
 
-import "../app/globals.css";
+import "../styles/globals.css";
 
 export default function Home() {
   const theme = useTheme();
