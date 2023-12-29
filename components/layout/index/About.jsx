@@ -25,7 +25,7 @@ const AboutSection = () => {
           width={300}
           height={300}
           layout="responsive"
-          quality={75}
+          quality={50}
         />
       </div>
     </div>

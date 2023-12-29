@@ -31,7 +31,7 @@ export default function BlogBrowsing() {
             height={400}
             alt="melbourne style"
             responsive
-            quality={75}
+            quality={50}
             style={{ borderRadius: 20 }}
           />
         </div>

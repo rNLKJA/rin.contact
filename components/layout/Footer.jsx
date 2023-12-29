@@ -16,7 +16,7 @@ const Footer = () => {
               alt="Logo"
               width={200}
               height={200}
-              quality={75}
+              quality={50}
             />
           </div>
           <p className="text-pretty">

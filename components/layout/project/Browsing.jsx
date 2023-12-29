@@ -32,7 +32,7 @@ export default function ProjectsBrowsing() {
             height={280}
             responsive
             style={{ borderRadius: 20 }}
-            quality={75}
+            quality={50}
           />
         </div>
         <p className="leading-10">
@@ -64,7 +64,7 @@ export const ProjectContent = (project) => {
             width={35}
             height={35}
             alt="Project Icons"
-            quality={75}
+            quality={50}
             responsive
           />
           <h4>{project.title}</h4>

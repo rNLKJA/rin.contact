@@ -26,7 +26,7 @@ const GallerySection = () => {
           src="/project_thumbnail.svg"
           width={300}
           height={300}
-          quality={75}
+          quality={50}
           responsive
         />
       </div>
@@ -39,16 +39,16 @@ const GallerySection = () => {
           <div className="flex flex-col gap-4">
             <h2>{recentProject.title}</h2>
             <p>{recentProject.description}</p>
-            <ul className="flex flex-row flex-wrap gap-5">
+            {/* <ul className="flex flex-row flex-wrap gap-5">
               {recentProject.skills.map((skill) => (
                 <li key={skill}>{skill}</li>
               ))}
-            </ul>
+            </ul> */}
 
             <Button
               variant="contained"
               color="primary"
-              href={recentProject.moreLink}
+              href={"/projects"}
               style={{
                 backgroundColor: "black",
                 "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.6)" },

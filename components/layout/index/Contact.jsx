@@ -15,7 +15,7 @@ const ContactSection = () => {
           width={250}
           height={250}
           layout="responsive"
-          quality={75}
+          quality={50}
         />
       </div>
 
