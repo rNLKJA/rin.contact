@@ -16,6 +16,13 @@
 body {
   font-family: "JetBrains Mono", monospace;
   font-size: 1rem;
+  background-color: #ffffff; /* Soft background color */
+  color: #333; /* Primary text color */
+  line-height: 1.6; /* Improved readability */
+  margin: 0 auto; /* Center content horizontally */
+  padding: 0 1rem; /* Add some padding on the sides */
+  max-width: 100%; /* Ensure it doesn't exceed the viewport width */
+  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 h1 {
