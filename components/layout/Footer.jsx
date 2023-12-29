@@ -38,7 +38,7 @@ const Footer = () => {
                 href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
                 alt="little red book"
               >
-                小红书
+                Xiaohongshu
               </a>
             </div>
             <div className="flex items-center gap-3">
