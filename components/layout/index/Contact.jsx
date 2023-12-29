@@ -4,6 +4,7 @@ import { HiOutlinePhone } from "react-icons/hi2";
 import { CiLocationOn } from "react-icons/ci";
 import { PiDiscordLogoLight } from "react-icons/pi";
 import Image from "next/image";
+import { RiWechat2Line } from "react-icons/ri";
 
 const ContactSection = () => {
   return (
@@ -41,10 +42,10 @@ const ContactSection = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <PiDiscordLogoLight style={{ fontSize: "1.5rem" }} />
+            <RiWechat2Line style={{ fontSize: "1.5rem" }} />
             <div className="flex flex-col">
-              <p className="font-bold">Discord</p>
-              <p>两小姐的小迷妹</p>
+              <p className="font-bold">Wechat</p>
+              <p>+86 138 8533 0703</p>
             </div>
           </div>
         </div>

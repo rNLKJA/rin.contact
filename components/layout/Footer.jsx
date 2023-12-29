@@ -32,11 +32,13 @@ const Footer = () => {
           <h4>Follow me</h4>
           <br />
           <div className="flex flex-col md:flex-row flex-start gap-8 justify-center md:justify-start">
-            {/* External links can remain as <a> tags */}
             <div className="flex items-center gap-3">
-              <BsTwitterX />
-              <a href="https://twitter.com/rNLKJA" alt="Twitter">
-                Twitter
+              <Image src="/redbook.svg" width={20} height={20} />
+              <a
+                href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
+                alt="little red book"
+              >
+                小红书
               </a>
             </div>
             <div className="flex items-center gap-3">
