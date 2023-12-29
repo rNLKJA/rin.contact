@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function BlogBrowsing() {
   const [projects, setProjects] = useState([]);
@@ -23,7 +24,7 @@ export default function BlogBrowsing() {
     <div>
       <h2>The Meow-nificent Blog for Digital Crafters 🧶</h2>
 
-      <div className="grid md:grid-cols-2  items-center py-10 px-4 gap-5">
+      <div className="grid md:grid-cols-2 py-10 px-4 gap-5">
         <div className="flex col-span-1 justify-center items-center">
           <Image
             src="/melbourne-style.png"
@@ -35,8 +36,39 @@ export default function BlogBrowsing() {
             style={{ borderRadius: 20 }}
           />
         </div>
-        <div>Lastest Blog</div>
+        <div className="flex flex-col flex-start gap-5">
+          <StarredBlog />
+          <LatestBlog />
+        </div>
       </div>
     </div>
   );
 }
+
+export const StarredBlog = () => {
+  return (
+    <div className="flex flex-col flex-start gap-5">
+      <div className="flex justify-between">
+        <h3>⭐ Starred</h3>
+      </div>
+      <Link href="/blogs/data/">
+        <h4 className="link-hover">
+          The Transformative Impact of Data Science on Business Efficiency and
+          Growth
+        </h4>
+      </Link>
+    </div>
+  );
+};
+
+export const LatestBlog = () => {
+  return (
+    <div className="flex flex-col flex-start gap-5 ">
+      <h3>📅 Latest Post</h3>
+
+      <Link href="/blogs/data/">
+        <h4 className="link-hover">Lorem Ipsum</h4>
+      </Link>
+    </div>
+  );
+};
