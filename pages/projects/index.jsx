@@ -5,6 +5,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
+import ProjectsBrowsing from "../../components/layout/project/Browsing";
 
 import "../../styles/globals.css";
 
@@ -21,7 +22,8 @@ export default function Home() {
       }}
     >
       <Header />
-      <h4>The Cat's Meow Projects</h4>
+
+      <ProjectsBrowsing />
       <Footer />
     </Container>
   );
