@@ -22,6 +22,21 @@ export default function BlogBrowsing() {
   return (
     <div>
       <h4>The Meow-nificent Blog for Digital Crafters 🧶</h4>
+
+      <div className="grid md:grid-cols-2  items-center py-10 px-4 gap-5">
+        <div className="flex col-span-1 justify-center items-center">
+          <Image
+            src="/melbourne-style.png"
+            width={400}
+            height={400}
+            alt="melbourne style"
+            responsive
+            quality={75}
+            style={{ borderRadius: 20 }}
+          />
+        </div>
+        <div>Lastest Blog</div>
+      </div>
     </div>
   );
 }
