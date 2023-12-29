@@ -35,7 +35,7 @@ const HeroHeaderSection = () => {
               }}
               href="/about-me"
             >
-              Learn more about Rin
+              More about Rin
             </Button>
             <Button
               variant="outlined"
