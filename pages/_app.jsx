@@ -70,7 +70,7 @@ const SEOHead = () => {
         property="og:description"
         content="Explore my data science projects and read my latest tech insights."
       />
-      <meta property="og:image" content="https://rin.contact/meta-image.jpg" />
+      <meta property="og:image" content="https://rin.contact/meta-image.png" />
 
       <script
         type="application/ld+json"
