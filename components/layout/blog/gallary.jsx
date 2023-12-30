@@ -23,7 +23,7 @@ export default function BlogBrowsing() {
 
   return (
     <Fade triggerOnce duration={1500} direction="left" fraction={0.5}>
-      <div>
+      <div className="px-4">
         <h2>The Meow-nificent Blog for Digital Crafters 🧶</h2>
 
         <div className="grid md:grid-cols-2 py-10 px-4 gap-5">
