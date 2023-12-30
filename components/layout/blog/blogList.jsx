@@ -19,18 +19,20 @@ export default function BlogList() {
       <div className="flex flex-col gap-8">
         {blogList &&
           blogList.map((blog) => (
-            <Fade triggerOnce duration={1500} direction="up">
-              <Link href={blog.link}>
-                <div key={blog.title}>
-                  <h3 className="link-hover">{blog.title}</h3>
-                  <div className="flex md:flex-row gap-4">
-                    <p>{blog.author}</p>
-                    <p className="italic">{blog.date}</p>
+            <div key={blog.title + blog.author + blog.date}>
+              <Fade triggerOnce duration={1500} direction="up">
+                <Link href={blog.link}>
+                  <div key={blog.title}>
+                    <h3 className="link-hover">{blog.title}</h3>
+                    <div className="flex md:flex-row gap-4">
+                      <p>{blog.author}</p>
+                      <p className="italic">{blog.date}</p>
+                    </div>
+                    <p className="leading-5 text-hover">{blog.brief}</p>
                   </div>
-                  <p className="leading-5 text-hover">{blog.brief}</p>
-                </div>
-              </Link>
-            </Fade>
+                </Link>
+              </Fade>
+            </div>
           ))}
       </div>
     </div>
