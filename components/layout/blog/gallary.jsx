@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
+import { LastPage } from "@mui/icons-material";
 
 export default function BlogBrowsing() {
   const [projects, setProjects] = useState([]);
@@ -38,7 +39,7 @@ export default function BlogBrowsing() {
               style={{ borderRadius: 20 }}
             />
           </div>
-          <div className="flex flex-col flex-start gap-5">
+          <div className="flex flex-col flex-start gap-10">
             <StarredBlog />
             <LatestBlog />
           </div>
@@ -59,19 +60,45 @@ export const StarredBlog = () => {
           The Transformative Impact of Data Science on Business Efficiency and
           Growth
         </h4>
+        <div className="flex flex-row justify-between">
+          <p>rNLKJA</p>
+          <p>29th-Dec-2023</p>
+        </div>
       </Link>
     </div>
   );
 };
 
 export const LatestBlog = () => {
+  const [latestBlogData, setLatestBlogData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/data/blog_list.json");
+        const data = await response.json();
+        setLatestBlogData(data[data.length - 1]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="flex flex-col flex-start gap-5 ">
       <h3>📅 Latest Post</h3>
 
-      <Link href="/blogs/data/">
-        <h4 className="link-hover">Lorem Ipsum</h4>
-      </Link>
+      {latestBlogData && latestBlogData.title && (
+        <Link href="/blogs/data/">
+          <h4 className="link-hover">{latestBlogData.title}</h4>
+          <div className="flex flex-row justify-between">
+            <p>{latestBlogData.author}</p>
+            <p>{latestBlogData.date}</p>
+          </div>
+        </Link>
+      )}
     </div>
   );
 };
