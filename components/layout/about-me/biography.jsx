@@ -11,6 +11,8 @@ import { SiJfrogpipelines } from "react-icons/si";
 import { BiMath } from "react-icons/bi";
 import Image from "next/image";
 import { Fade, Zoom } from "react-awesome-reveal";
+import { FaGitAlt, FaLinux, FaBusinessTime } from "react-icons/fa6";
+import { TbBrandNextjs } from "react-icons/tb";
 
 export default function Biography() {
   return (
@@ -128,7 +130,7 @@ export const Section3 = () => {
       icon: <GiSpiderWeb style={{ fontSize: "2rem" }} />,
     },
     {
-      name: "Google Cloud",
+      name: "Cloud Computing",
       icon: <SiGooglecloud style={{ fontSize: "2rem" }} />,
     },
     {
@@ -136,7 +138,46 @@ export const Section3 = () => {
       icon: <SiJfrogpipelines style={{ fontSize: "2rem" }} />,
     },
     { name: "Statistics", icon: <BiMath style={{ fontSize: "2rem" }} /> },
+    {
+      name: "Git",
+      icon: <FaGitAlt style={{ fontSize: "2rem" }} />,
+    },
+    {
+      name: "Linux",
+      icon: <FaLinux style={{ fontSize: "2rem" }} />,
+    },
+    {
+      name: "Full Stack Development",
+      icon: <TbBrandNextjs style={{ fontSize: "2rem" }} />,
+    },
+    {
+      name: "Agile Project Management",
+      icon: <FaBusinessTime style={{ fontSize: "2rem" }} />,
+    },
   ];
+
+  // Sort the techStack array based on skill priority
+  techStack.sort((a, b) => {
+    const dataScienceSkills = [
+      "Python",
+      "Jupyter",
+      "Plotly",
+      "PySpark",
+      "Web Scraping",
+      "Machine Learning",
+      "Statistics",
+    ];
+    const aIsDataScienceSkill = dataScienceSkills.includes(a.name);
+    const bIsDataScienceSkill = dataScienceSkills.includes(b.name);
+
+    if (aIsDataScienceSkill && !bIsDataScienceSkill) {
+      return -1; // a comes before b
+    } else if (!aIsDataScienceSkill && bIsDataScienceSkill) {
+      return 1; // b comes before a
+    } else {
+      return 0; // maintain the original order
+    }
+  });
 
   return (
     <div className="flex flex-row justify-center items-center py-10 px-4">
@@ -152,10 +193,10 @@ export const Section3 = () => {
           {techStack.map((tech) => (
             <div
               key={tech.name}
-              className="flex flex-row gap-4 justify-items center-items"
+              className="flex flex-row gap-4 justify-items center-items py-2 "
             >
               {tech.icon}
-              <p>{tech.name}</p>
+              <p className="toolbox-hover">{tech.name}</p>
             </div>
           ))}
         </div>
