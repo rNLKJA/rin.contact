@@ -36,9 +36,10 @@ export const DataArticle = () => {
               src="/article/more-about-data-science/data-intro.png"
               width={600}
               height={300}
-              responsive
+              layout="responsive"
               quality={50}
               alt="data intro"
+              priority={true}
             />
           </div>
 
@@ -67,16 +68,20 @@ export const DataArticle = () => {
                   width={300}
                   height={300}
                   alt="data case"
+                  layout="fixed"
+                  priority={true}
                 />
               </div>
               <div>
                 <h3 className="py-5">Case Studies</h3>
                 <p className="leading-8">
-                  <ul className="list-disc pl-10">
-                    <li>{data["Case Studies"].case1}</li>
-                    <li>{data["Case Studies"].case2}</li>
-                    <li>{data["Case Studies"].case3}</li>
-                  </ul>
+                  <div>
+                    <ul className="list-disc pl-10">
+                      <li>{data["Case Studies"].case1}</li>
+                      <li>{data["Case Studies"].case2}</li>
+                      <li>{data["Case Studies"].case3}</li>
+                    </ul>
+                  </div>
                 </p>
               </div>
             </div>
@@ -90,16 +95,19 @@ export const DataArticle = () => {
                 <p className="leading-8">
                   {data["Challenges and Solutions"].Description}
                 </p>
-                <ul class="list-disc pl-10">
-                  <li>Use free or low-cost tools and platforms.</li>
-                  <li>
-                    Partner with universities or hire interns to access talent.
-                  </li>
-                  <li>
-                    Implement strict data governance policies to ensure privacy
-                    and compliance.
-                  </li>
-                </ul>
+                <div>
+                  <ul className="list-disc pl-10">
+                    <li>Use free or low-cost tools and platforms.</li>
+                    <li>
+                      Partner with universities or hire interns to access
+                      talent.
+                    </li>
+                    <li>
+                      Implement strict data governance policies to ensure
+                      privacy and compliance.
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className="flex justify-center items-center">
                 <Image
@@ -108,6 +116,8 @@ export const DataArticle = () => {
                   height={300}
                   quality={50}
                   alt="data solution"
+                  layout="fixed"
+                  priority={true}
                 />
               </div>
             </div>
@@ -120,9 +130,10 @@ export const DataArticle = () => {
                 src="/article/more-about-data-science/data-trend.png"
                 width={800}
                 height={300}
-                responsive
+                layout="responsive"
                 quality={50}
                 alt="data intro"
+                priority={true}
               />
             </div>
 
@@ -133,11 +144,13 @@ export const DataArticle = () => {
             <p className="leading-8">{data.Conclusion}</p>
 
             <h3>References</h3>
-            <ul className="list-disc pl-10">
-              {data.References.map((ref) => (
-                <li key={ref}>{ref}</li>
-              ))}
-            </ul>
+            <div>
+              <ul className="list-disc pl-10">
+                {data.References.map((ref) => (
+                  <li key={ref}>{ref}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       )}

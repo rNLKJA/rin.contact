@@ -192,6 +192,7 @@ export const Section4 = () => {
           // layout="responsive"
           sizes="(max-width: 300px)"
           quality={30}
+          layout="fixed"
         />
       </div>
       <div>

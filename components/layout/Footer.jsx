@@ -19,6 +19,7 @@ const Footer = () => {
               width={200}
               height={200}
               quality={50}
+              layout="fixed"
             />
           </div>
           <p className="text-pretty">
@@ -41,6 +42,7 @@ const Footer = () => {
                   width={20}
                   height={20}
                   alt="litteredbook"
+                  layout="fixed"
                 />
                 <a
                   className="link-hover"

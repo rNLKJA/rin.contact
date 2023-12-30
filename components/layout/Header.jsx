@@ -19,7 +19,14 @@ export const DesktopHeader = () => {
   return (
     <div className="hidden md:flex justify-between items-center py-10 ">
       <Link className="flex flex-row items-center" href="/">
-        <Image src="/logo.svg" alt="Logo" width={80} height={80} quality={50} />
+        <Image
+          src="/logo.svg"
+          alt="Logo"
+          width={80}
+          height={80}
+          quality={50}
+          layout="fixed"
+        />
         <span className="ml-2 font-bold link-hover">rNLKJA</span>
       </Link>
       <Fade triggerOnce duration={1500} direction="down">
@@ -53,7 +60,14 @@ export const MobileHeader = () => {
     // Always display this div, but its contents are controlled by isOpen
     <div className="md:hidden flex justify-between items-center p-4">
       <Link className="flex flex-row items-center" href="/">
-        <Image src="/logo.svg" alt="Logo" width={80} height={80} quality={50} />
+        <Image
+          src="/logo.svg"
+          alt="Logo"
+          width={80}
+          height={80}
+          quality={50}
+          layout="fixed"
+        />
         <span className="ml-2 font-bold">rNLKJA</span>
       </Link>
 

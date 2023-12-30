@@ -28,36 +28,40 @@ const PrivacyContent = () => {
         </ul>
         <br />
         <p>This policy applies to information I collect:</p>
-        <ul className="list-disc ml-4">
-          <li>On this Website.</li>
-          <li>
-            In email, text, and other electronic messages between you and this
-            Website.
-          </li>
-          <li>
-            Through mobile and desktop applications you download from this
-            Website, which provide dedicated non-browser-based interaction
-            between you and this Website.
-          </li>
-          <li>
-            When you interact with my advertising and applications on
-            third-party websites and services if those applications or
-            advertising include links to this policy.
-          </li>
-        </ul>
+        <div>
+          <ul className="list-disc ml-4">
+            <li>On this Website.</li>
+            <li>
+              In email, text, and other electronic messages between you and this
+              Website.
+            </li>
+            <li>
+              Through mobile and desktop applications you download from this
+              Website, which provide dedicated non-browser-based interaction
+              between you and this Website.
+            </li>
+            <li>
+              When you interact with my advertising and applications on
+              third-party websites and services if those applications or
+              advertising include links to this policy.
+            </li>
+          </ul>
+        </div>
         <br />
         <p>It does not apply to information collected by:</p>
-        <ul className="list-disc ml-4">
-          <li>
-            Me offline or through any other means, including on any other
-            website operated by any third party; or
-          </li>
-          <li>
-            Any third party, including through any application or content
-            (including advertising) that may link to or be accessible from the
-            Website.
-          </li>
-        </ul>
+        <div>
+          <ul className="list-disc ml-4">
+            <li>
+              Me offline or through any other means, including on any other
+              website operated by any third party; or
+            </li>
+            <li>
+              Any third party, including through any application or content
+              (including advertising) that may link to or be accessible from the
+              Website.
+            </li>
+          </ul>
+        </div>
       </div>
     </Fade>
   );

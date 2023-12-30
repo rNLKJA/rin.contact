@@ -33,7 +33,7 @@ export default function ProjectsBrowsing() {
                 src="/working-cat.png"
                 width={280}
                 height={280}
-                responsive
+                layout="responsive"
                 style={{ borderRadius: 20 }}
                 quality={50}
                 alt="working cat"
@@ -72,7 +72,7 @@ export const ProjectContent = (project) => {
               height={35}
               alt="Project Icons"
               quality={50}
-              responsive
+              layout="responsive"
             />
             <h3 className="link-hover">{project.title}</h3>
           </div>
@@ -83,26 +83,28 @@ export const ProjectContent = (project) => {
 
         <p className="leading-10">{project.description}</p>
         <br />
-        <ul className="flex flex-wrap gap-4">
-          {project.skills.map((skill) => (
-            <li
-              key={skill}
-              style={{
-                color: "grey",
-                fontWeight: "normal",
-                transition: "font-weight 0.3s",
-              }}
-              onMouseOver={(e) => {
-                e.target.style.fontWeight = "bold";
-              }}
-              onMouseOut={(e) => {
-                e.target.style.fontWeight = "normal";
-              }}
-            >
-              {skill}
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul className="flex flex-wrap gap-4">
+            {project.skills.map((skill) => (
+              <li
+                key={skill}
+                style={{
+                  color: "grey",
+                  fontWeight: "normal",
+                  transition: "font-weight 0.3s",
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.fontWeight = "bold";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.fontWeight = "normal";
+                }}
+              >
+                {skill}
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <br />
         <div className="flex flex-start gap-4">

@@ -30,7 +30,7 @@ const GallerySection = () => {
             height={300}
             quality={50}
             alt="thumbnail"
-            responsive
+            layout="responsive"
           />
         </Zoom>
       </div>
@@ -43,11 +43,6 @@ const GallerySection = () => {
           <div className="flex flex-col gap-4">
             <h2>{recentProject.title}</h2>
             <p>{recentProject.description}</p>
-            {/* <ul className="flex flex-row flex-wrap gap-5">
-              {recentProject.skills.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul> */}
 
             <Button
               variant="contained"
