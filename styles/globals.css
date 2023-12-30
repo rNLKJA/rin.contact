@@ -116,3 +116,9 @@ body {
   color: #ff6f61; /* or any color you want for highlighting */
   cursor: pointer; /* changes the cursor to indicate it's clickable */
 }
+
+.toolbox-hover:hover {
+  font-weight: bold;
+  color: grey;
+  cursor: pointer;
+}
