@@ -11,7 +11,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 
 const HeroHeaderSection = () => {
   const [open, setOpen] = useState(false);
-  const isMobile = useMediaQuery("(max-width:600px)"); // Adjust breakpoint as needed
+  const isMobile = useMediaQuery("(max-width:900px)"); // Adjust breakpoint as needed
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -172,7 +172,11 @@ const MobileViewContent = () => (
       learn more.
     </p>
     <br />
-    <div className="flex flex-col justify-center items-center w-full">
+    <div
+      className={`flex ${
+        useMediaQuery("(max-width: 600px)") ? "flex-col" : "flex-row"
+      } justify-center items-center w-full`}
+    >
       <Button
         className="flex w-full"
         variant="contained"
