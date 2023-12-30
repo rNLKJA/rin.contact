@@ -13,7 +13,7 @@ export default function ProjectsBrowsing() {
       try {
         const response = await fetch("/data/projects.json");
         const data = await response.json();
-        setProjects(data);
+        setProjects(data.reverse());
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -51,11 +51,9 @@ export default function ProjectsBrowsing() {
       </Fade>
 
       {projects &&
-        projects
-          .reverse()
-          .map((project) => (
-            <ProjectContent {...project} key={project.title} />
-          ))}
+        projects.map((project) => (
+          <ProjectContent {...project} key={project.title} />
+        ))}
     </div>
   );
 }
@@ -72,7 +70,7 @@ export const ProjectContent = (project) => {
               height={35}
               alt="Project Icons"
               quality={50}
-              layout="responsive"
+              layout="fixed"
             />
             <h3 className="link-hover">{project.title}</h3>
           </div>
