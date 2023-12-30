@@ -90,7 +90,7 @@ export const LatestBlog = () => {
       <h3>📅 Latest Post</h3>
 
       {latestBlogData && latestBlogData.title && (
-        <Link href="/blogs/data/">
+        <Link href={latestBlogData.link}>
           <h4 className="link-hover">{latestBlogData.title}</h4>
           <div className="flex flex-row justify-between">
             <p>{latestBlogData.author}</p>
