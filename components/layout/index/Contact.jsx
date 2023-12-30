@@ -34,7 +34,7 @@ const ContactSection = () => {
 
           <br />
 
-          <div className="grid grid-cols-2">
+          <div className="grid md:grid-cols-2 gap-3">
             <div className="flex items-center gap-3">
               <TfiEmail style={{ fontSize: "1.5rem" }} />
               <div className="flex flex-col">
@@ -53,13 +53,13 @@ const ContactSection = () => {
             <div className="flex items-center gap-3">
               <RiWechat2Line style={{ fontSize: "1.5rem" }} />
               <div className="flex flex-col">
-                <p className="font-bold">Wechat</p>
+                <p className="font-bold">WeChat</p>
                 <p>+86 138 8533 0703</p>
               </div>
             </div>
           </div>
           <br />
-          <div className="grid grid-cols-2">
+          <div className="grid md:grid-cols-2 gap-3">
             <div className="flex items-center gap-3">
               <HiOutlinePhone style={{ fontSize: "1.5rem" }} />
               <div className="flex flex-col">
