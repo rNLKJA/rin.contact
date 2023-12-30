@@ -96,6 +96,9 @@ const SEOHead = () => {
           }),
         }}
       />
+
+      <link rel="canonical" href="https://rin.contact" />
+      <link rel="alternate" hreflang="x" href="https://x.rin.contact/" />
     </Head>
   );
 };
