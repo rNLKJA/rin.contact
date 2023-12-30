@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
-import { LastPage } from "@mui/icons-material";
 
 export default function BlogBrowsing() {
   const [projects, setProjects] = useState([]);
