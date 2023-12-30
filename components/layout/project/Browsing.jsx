@@ -79,10 +79,10 @@ export const ProjectContent = (project) => {
         <p className="leading-5">{project.date}</p>
         <br />
 
-        <p className="leading-10">{project.description}</p>
+        <p className="leading-5">{project.description}</p>
         <br />
         <div>
-          <ul className="flex flex-wrap gap-4">
+          <ul className="flex flex-wrap gap-6">
             {project.skills.map((skill) => (
               <li
                 key={skill}
@@ -90,6 +90,8 @@ export const ProjectContent = (project) => {
                   color: "grey",
                   fontWeight: "normal",
                   transition: "font-weight 0.3s",
+                  margin: "0",
+                  padding: "0",
                 }}
                 onMouseOver={(e) => {
                   e.target.style.fontWeight = "bold";
