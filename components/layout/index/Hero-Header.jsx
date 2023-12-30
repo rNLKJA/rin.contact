@@ -5,9 +5,13 @@ import { Zoom } from "react-awesome-reveal";
 import { useState } from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import { useMediaQuery } from "@mui/material";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import DownloadIcon from "@mui/icons-material/Download";
 
 const HeroHeaderSection = () => {
   const [open, setOpen] = useState(false);
+  const isMobile = useMediaQuery("(max-width:600px)"); // Adjust breakpoint as needed
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -70,7 +74,29 @@ const HeroHeaderSection = () => {
         />
       </Zoom>
 
-      {open && <PdfViewer open={open} handleClose={handleClose} />}
+      {isMobile
+        ? // Mobile view: Display simplified content with links
+          open && (
+            <Modal open={open} onClose={handleClose}>
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "90vw",
+                  bgcolor: "background.paper",
+                  boxShadow: 24,
+                  p: 4,
+                  outline: "none",
+                }}
+              >
+                <MobileViewContent />
+              </Box>
+            </Modal>
+          )
+        : // Desktop view: Display the PDF viewer modal
+          open && <PdfViewer open={open} handleClose={handleClose} />}
     </>
   );
 };
@@ -136,3 +162,40 @@ const PdfViewer = ({ open, handleClose }) => {
     </div>
   );
 };
+
+const MobileViewContent = () => (
+  <div style={{ textAlign: "center", padding: 20 }}>
+    <h2>Welcome!</h2>
+    <br />
+    <p>
+      Discover my journey and experiences on LinkedIn or download my resume to
+      learn more.
+    </p>
+    <br />
+    <div className="flex flex-col justify-center items-center w-full">
+      <Button
+        className="flex w-full"
+        variant="contained"
+        href="https://www.linkedin.com/in/sunchuangyuhuang/"
+        style={{
+          margin: 5,
+          backgroundColor: "black",
+          color: "white",
+        }}
+        startIcon={<LinkedInIcon />}
+      >
+        View on LinkedIn
+      </Button>
+      <Button
+        className="flex w-full"
+        variant="outlined"
+        href="/data/resume.pdf"
+        download="RinHuangResume.pdf"
+        startIcon={<DownloadIcon />}
+        style={{ borderColor: "black", color: "black" }}
+      >
+        Download Resume
+      </Button>
+    </div>
+  </div>
+);
