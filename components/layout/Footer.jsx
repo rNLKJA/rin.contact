@@ -9,7 +9,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="pt-10 pb-10 pl-4 pr-4 ">
+    <footer className="pt-10 pb-10 ">
       <div className="grid md:grid-cols-4 grid-cols-1 gap-10 items-center text-center ">
         <div className="md:col-span-2">
           <div className="inline-block">

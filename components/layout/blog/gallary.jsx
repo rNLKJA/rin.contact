@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Fade } from "react-awesome-reveal";
 
 export default function BlogBrowsing() {
   const [projects, setProjects] = useState([]);
@@ -21,27 +22,29 @@ export default function BlogBrowsing() {
   }, []);
 
   return (
-    <div>
-      <h2>The Meow-nificent Blog for Digital Crafters 🧶</h2>
+    <Fade triggerOnce duration={1500} direction="left" fraction={0.5}>
+      <div>
+        <h2>The Meow-nificent Blog for Digital Crafters 🧶</h2>
 
-      <div className="grid md:grid-cols-2 py-10 px-4 gap-5">
-        <div className="flex col-span-1 justify-center items-center">
-          <Image
-            src="/melbourne-style.png"
-            width={400}
-            height={400}
-            alt="melbourne style"
-            responsive
-            quality={50}
-            style={{ borderRadius: 20 }}
-          />
-        </div>
-        <div className="flex flex-col flex-start gap-5">
-          <StarredBlog />
-          <LatestBlog />
+        <div className="grid md:grid-cols-2 py-10 px-4 gap-5">
+          <div className="flex col-span-1 justify-center items-center">
+            <Image
+              src="/melbourne-style.png"
+              width={400}
+              height={400}
+              alt="melbourne style"
+              responsive
+              quality={50}
+              style={{ borderRadius: 20 }}
+            />
+          </div>
+          <div className="flex flex-col flex-start gap-5">
+            <StarredBlog />
+            <LatestBlog />
+          </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 }
 

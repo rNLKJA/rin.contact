@@ -17,7 +17,7 @@ export default Header;
 
 export const DesktopHeader = () => {
   return (
-    <div className="hidden md:flex justify-between items-center py-10 px-4">
+    <div className="hidden md:flex justify-between items-center py-10 ">
       <Link className="flex flex-row items-center" href="/">
         <Image src="/logo.svg" alt="Logo" width={80} height={80} quality={50} />
         <span className="ml-2 font-bold link-hover">rNLKJA</span>

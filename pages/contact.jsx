@@ -1,9 +1,5 @@
 import React from "react";
 import Container from "@mui/material/Container";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -19,22 +15,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function ContactPage() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+import { Zoom } from "react-awesome-reveal";
 
+export default function ContactPage() {
   return (
-    <Container
-      maxWidth={isMobile ? "xs" : "lg"}
-      style={{
-        width: isMobile ? "100%" : "1100px",
-        backgroundColor: "",
-      }}
-    >
-      <Header />
-      <ContactForm />
-      <Footer />
-    </Container>
+    <Zoom triggerOnce cascade duration={1000} damping={0.5}>
+      <ContactForm />;
+    </Zoom>
   );
 }
 

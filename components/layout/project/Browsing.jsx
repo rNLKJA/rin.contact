@@ -23,28 +23,32 @@ export default function ProjectsBrowsing() {
   }, []);
 
   return (
-    <div>
-      <h2>The Cat's Meow Projects</h2>
-      <div className="grid md:grid-cols-2 gap-4 py-10 px-4 items-center">
-        <div className="flex justify-center items-center">
-          <Image
-            src="/working-cat.png"
-            width={280}
-            height={280}
-            responsive
-            style={{ borderRadius: 20 }}
-            quality={50}
-            alt="working cat"
-          />
+    <div className="px-4">
+      <Fade triggerOnce duration={2000} direction="left">
+        <div>
+          <h2>The Cat's Meow Projects</h2>
+          <div className="grid md:grid-cols-2 gap-4 py-10 px-4 items-center">
+            <div className="flex justify-center items-center">
+              <Image
+                src="/working-cat.png"
+                width={280}
+                height={280}
+                responsive
+                style={{ borderRadius: 20 }}
+                quality={50}
+                alt="working cat"
+              />
+            </div>
+            <p className="leading-10">
+              🐾 Welcome to our cozy corner of creativity! 🎨 Here, each project
+              is a paw-some adventure in innovation. From the initial sketch to
+              the final touch, we pour love and imagination into every detail.
+              Explore our gallery to see how we're making the digital world
+              purr-fect, one pixel at a time!
+            </p>
+          </div>
         </div>
-        <p className="leading-10">
-          🐾 Welcome to our cozy corner of creativity! 🎨 Here, each project is
-          a paw-some adventure in innovation. From the initial sketch to the
-          final touch, we pour love and imagination into every detail. Explore
-          our gallery to see how we're making the digital world purr-fect, one
-          pixel at a time!
-        </p>
-      </div>
+      </Fade>
 
       {projects &&
         projects

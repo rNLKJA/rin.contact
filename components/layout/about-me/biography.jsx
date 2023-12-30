@@ -14,8 +14,10 @@ import { Fade, Zoom } from "react-awesome-reveal";
 
 export default function Biography() {
   return (
-    <div className="flex flex-col py-10 px-4 gap-3">
-      <h2 className="leading-20">🐾 Paws and Progress The Journey Begins</h2>
+    <div className="flex flex-col px-4 gap-3">
+      <h2 className="leading-20 pb-10">
+        🐾 Paws and Progress The Journey Begins
+      </h2>
 
       <Fade triggerOnce>
         <Section1 />
