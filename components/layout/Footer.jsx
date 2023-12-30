@@ -18,7 +18,7 @@ const Footer = () => {
               alt="Logo"
               width={200}
               height={200}
-              quality={50}
+              quality={25}
               layout="fixed"
             />
           </div>

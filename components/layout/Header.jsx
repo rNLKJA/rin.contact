@@ -24,7 +24,7 @@ export const DesktopHeader = () => {
           alt="Logo"
           width={80}
           height={80}
-          quality={50}
+          quality={25}
           layout="fixed"
         />
         <span className="ml-2 font-bold link-hover">rNLKJA</span>
@@ -65,7 +65,7 @@ export const MobileHeader = () => {
           alt="Logo"
           width={80}
           height={80}
-          quality={50}
+          quality={25}
           layout="fixed"
         />
         <span className="ml-2 font-bold">rNLKJA</span>
