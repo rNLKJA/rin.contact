@@ -122,3 +122,9 @@ body {
   color: grey;
   cursor: pointer;
 }
+
+.text-hover:hover {
+  /* font-weight: bold; */
+  color: #3b3434;
+  cursor: pointer;
+}
