@@ -24,7 +24,7 @@
   {
     "title": "Quantitative Analysis of Yellow Taxi in NYC",
     "date": "Jul 2021 - Aug 2021",
-    "icon": "https://i.pinimg.com/564x/93/62/1b/93621ba0ccb51e3422edb2d81f79bbf5.jpg",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Uber_App_Icon.svg/640px-Uber_App_Icon.svg.png",
     "description": "I utilized applied data science techniques to analyze New York City taxi data, specifically focusing on the 2014-2017 Yellow Taxi Data. Using the big data analysis framework Spark, I handled large taxi data parquet files, processed and transformed the data into a human-readable format, and converted it into various graphic interpretations. I applied machine learning methods, such as linear modeling, to predict the trip cost and used clustering to discover traffic hotspots.",
     "skills": [
       "Python",

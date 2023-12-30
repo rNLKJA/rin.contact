@@ -1,6 +1,6 @@
 // Import the necessary styles and components
 import "../styles/globals.css";
-
+import { AnimatePresence } from "framer-motion";
 import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -13,21 +13,23 @@ function MyApp({ Component, pageProps }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Container
-      maxWidth={isMobile ? "xs" : "lg"}
-      style={{
-        width: isMobile ? "100%" : "1100px",
-        backgroundColor: "",
-      }}
-    >
-      <SEOHead />
+    <AnimatePresence mode="wait">
+      <Container
+        maxWidth={isMobile ? "xs" : "lg"}
+        style={{
+          width: isMobile ? "100%" : "1100px",
+          backgroundColor: "",
+        }}
+      >
+        <SEOHead />
 
-      <Header />
+        <Header />
 
-      <Component {...pageProps} />
+        <Component {...pageProps} />
 
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </AnimatePresence>
   );
 }
 

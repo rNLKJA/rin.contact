@@ -16,12 +16,15 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import { Zoom } from "react-awesome-reveal";
+import PageTransition from "../components/PageTransition";
 
 export default function ContactPage() {
   return (
-    <Zoom triggerOnce cascade duration={1000} damping={0.5}>
-      <ContactForm />;
-    </Zoom>
+    <PageTransition>
+      <Zoom triggerOnce cascade duration={1000} damping={0.5}>
+        <ContactForm />;
+      </Zoom>
+    </PageTransition>
   );
 }
 

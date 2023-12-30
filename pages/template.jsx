@@ -1,4 +1,5 @@
 import React from "react";
+import PageTransition from "../components/PageTransition";
 
 export default function Home() {
   return <DataArticle />;
@@ -6,11 +7,13 @@ export default function Home() {
 
 export const DataArticle = () => {
   return (
-    <div>
-      <h2>
-        The Transformative Impact of Data Science on Business Efficiency and
-        Growth
-      </h2>
-    </div>
+    <PageTransition>
+      <div>
+        <h2>
+          The Transformative Impact of Data Science on Business Efficiency and
+          Growth
+        </h2>
+      </div>
+    </PageTransition>
   );
 };
