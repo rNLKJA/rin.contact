@@ -154,8 +154,12 @@ const ContactForm = () => {
               <DialogContentText
                 style={{ textAlign: "center", fontSize: "18px" }}
               >
-                Thanks for sending me the email! 😺 I'll paw-sitively get back
-                to you ASAP! 🐱💕
+                Thanks for sending me the email! 😺
+              </DialogContentText>
+              <DialogContentText
+                style={{ textAlign: "center", fontSize: "18px" }}
+              >
+                I'll paw-sitively get back to you ASAP! 🐱💕
               </DialogContentText>
             </DialogContent>
             <DialogActions style={{ justifyContent: "center" }}>
