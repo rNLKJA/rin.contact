@@ -13,23 +13,21 @@ function MyApp({ Component, pageProps }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <AnimatePresence mode="wait">
-      <Container
-        maxWidth={isMobile ? "xs" : "lg"}
-        style={{
-          width: isMobile ? "100%" : "1100px",
-          backgroundColor: "",
-        }}
-      >
-        <SEOHead />
+    <Container
+      maxWidth={isMobile ? "xs" : "lg"}
+      style={{
+        width: isMobile ? "100%" : "1100px",
+        backgroundColor: "",
+      }}
+    >
+      <SEOHead />
 
-        <Header />
-
+      <Header />
+      <AnimatePresence mode="wait">
         <Component {...pageProps} />
-
-        <Footer />
-      </Container>
-    </AnimatePresence>
+      </AnimatePresence>
+      <Footer />
+    </Container>
   );
 }
 
