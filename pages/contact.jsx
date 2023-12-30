@@ -62,17 +62,21 @@ const ContactForm = () => {
     if (!validate()) return;
     setIsSubmitting(true);
 
+    // Send the initial contact email
     emailjs
       .send(
-        "service_usy8iyr",
-        "template_ofletrk",
+        "service_usy8iyr", // Your EmailJS service ID
+        "template_ofletrk", // Your EmailJS template ID for the contact form
         formData,
-        "FNtLdbiCQJAHye8jA",
+        "FNtLdbiCQJAHye8jA", // Your EmailJS user ID
       )
       .then(
         (response) => {
           console.log("SUCCESS!", response.status, response.text);
           setOpenDialog(true); // Open the dialog here
+          // Send the confirmation email to the user
+          sendConfirmationEmail(formData, setIsSubmitting);
+          // Reset form data
           setFormData({
             from_name: "",
             from_email: "",
@@ -82,9 +86,9 @@ const ContactForm = () => {
         (error) => {
           console.log("FAILED...", error);
           alert("Failed to send the message, please try again later.");
+          setIsSubmitting(false);
         },
-      )
-      .finally(() => setIsSubmitting(false));
+      );
   };
 
   return (
@@ -156,6 +160,13 @@ const ContactForm = () => {
               >
                 Thanks for sending me the email! 😺
               </DialogContentText>
+              <br />
+              <DialogContentText
+                style={{ textAlign: "center", fontSize: "18px" }}
+              >
+                I've send you a confirmation email!
+              </DialogContentText>
+              <br />
               <DialogContentText
                 style={{ textAlign: "center", fontSize: "18px" }}
               >
@@ -177,4 +188,34 @@ const ContactForm = () => {
       </Paper>
     </Container>
   );
+};
+
+const sendConfirmationEmail = (formData, setIsSubmitting) => {
+  const userConfirmationData = {
+    to_name: formData.from_name,
+    to_email: formData.from_email,
+  };
+
+  emailjs
+    .send(
+      "service_usy8iyr",
+      "template_e1p2t9b",
+      userConfirmationData,
+      "FNtLdbiCQJAHye8jA",
+    )
+    .then(
+      (response) => {
+        console.log(
+          "Confirmation Email SUCCESS!",
+          response.status,
+          response.text,
+        );
+      },
+      (error) => {
+        console.log("Confirmation Email FAILED...", error);
+      },
+    )
+    .finally(() => {
+      setIsSubmitting(false);
+    });
 };
