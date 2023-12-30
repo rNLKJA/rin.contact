@@ -33,9 +33,9 @@ export default function ProjectsBrowsing() {
                 src="/working-cat.png"
                 width={280}
                 height={280}
-                layout="responsive"
+                layout="fixed"
                 style={{ borderRadius: 20 }}
-                quality={50}
+                quality={20}
                 alt="working cat"
               />
             </div>

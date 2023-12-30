@@ -28,7 +28,7 @@ const GallerySection = () => {
             src="/project_thumbnail.svg"
             width={300}
             height={300}
-            quality={50}
+            quality={25}
             alt="thumbnail"
             layout="responsive"
           />
