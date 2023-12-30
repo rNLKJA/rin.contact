@@ -24,7 +24,7 @@ export default function Home() {
             </div>
             <div className="mt-4 flex flex-col gap-2">
               {blogContent.content.map((paragraph, index) => (
-                <p key={index} className="my-2 text-justify leading-6">
+                <p key={index} className="my-2 text-justify leading-8">
                   {paragraph}
                 </p>
               ))}

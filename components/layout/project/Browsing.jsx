@@ -35,7 +35,7 @@ export default function ProjectsBrowsing() {
                 height={280}
                 layout="fixed"
                 style={{ borderRadius: 20 }}
-                quality={20}
+                quality={10}
                 alt="working cat"
               />
             </div>
