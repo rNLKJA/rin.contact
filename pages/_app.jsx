@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
       maxWidth={isMobile ? "xs" : "lg"}
       style={{
         width: isMobile ? "100%" : "1100px",
-        backgroundColor: "",
+        backgroundColor: "#ffffff",
       }}
     >
       <Header />

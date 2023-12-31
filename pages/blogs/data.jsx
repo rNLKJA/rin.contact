@@ -74,15 +74,13 @@ export const DataArticle = () => {
               </div>
               <div>
                 <h3 className="py-5">Case Studies</h3>
-                <p className="leading-8">
-                  <div>
-                    <ul className="list-disc pl-10">
-                      <li>{data["Case Studies"].case1}</li>
-                      <li>{data["Case Studies"].case2}</li>
-                      <li>{data["Case Studies"].case3}</li>
-                    </ul>
-                  </div>
-                </p>
+                <div>
+                  <ul className="list-disc pl-10">
+                    <li>{data["Case Studies"].case1}</li>
+                    <li>{data["Case Studies"].case2}</li>
+                    <li>{data["Case Studies"].case3}</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -110,7 +108,7 @@ export const DataArticle = () => {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                {/* <Image
+                <Image
                   src="/article/more-about-data-science/data-solution.png"
                   width={300}
                   height={300}
@@ -118,7 +116,7 @@ export const DataArticle = () => {
                   alt="data solution"
                   layout="fixed"
                   priority={true}
-                /> */}
+                />
               </div>
             </div>
 
@@ -126,7 +124,7 @@ export const DataArticle = () => {
             <p className="leading-8">{data["Best Practices"]}</p>
 
             <div className="flex flex-start justify-center items-center">
-              <Image
+              {/* <Image
                 src="/article/more-about-data-science/data-trend.png"
                 width={800}
                 height={300}
@@ -134,7 +132,7 @@ export const DataArticle = () => {
                 quality={50}
                 alt="data intro"
                 priority={true}
-              />
+              /> */}
             </div>
 
             <h3>Future Trends"</h3>
