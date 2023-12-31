@@ -6,10 +6,10 @@ import { Fade } from "react-awesome-reveal";
 const Header = () => {
   // Both headers are rendered, but CSS controls which one is displayed based on screen size
   return (
-    <>
+    <div>
       <DesktopHeader />
       <MobileHeader />
-    </>
+    </div>
   );
 };
 

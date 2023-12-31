@@ -28,7 +28,7 @@ export const DataArticle = () => {
   }, []);
 
   return (
-    <>
+    <div>
       {data && (
         <div className="flex flex-col py-10 px-4">
           <div className="flex flex-start justify-center items-center">
@@ -152,6 +152,6 @@ export const DataArticle = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };

@@ -17,7 +17,7 @@ const HeroHeaderSection = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <>
+    <div>
       <div className="grid md:grid-cols-2 gap-5 pb-10 px-4 pb-10 items-center">
         <div>
           <h1>Inspring, Innovation & Unlock the Power of Data Analytics</h1>
@@ -98,7 +98,7 @@ const HeroHeaderSection = () => {
           )
         : // Desktop view: Display the PDF viewer modal
           open && <PdfViewer open={open} handleClose={handleClose} />}
-    </>
+    </div>
   );
 };
 
