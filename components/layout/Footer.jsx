@@ -20,6 +20,7 @@ const Footer = () => {
               height={200}
               quality={25}
               layout="fixed"
+              priority
             />
           </div>
           <p className="text-pretty">
