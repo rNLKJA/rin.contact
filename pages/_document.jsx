@@ -88,6 +88,8 @@ const SEOHead = () => {
       <meta property="高中" content="安顺第二高级中学" />
       <meta property="college" content="trinity college" />
       <meta property="姓名" content="Sunchuangyu Huang" />
+
+      <meta charSet="utf-8" />
     </Head>
   );
 };
