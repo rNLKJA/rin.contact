@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
@@ -36,6 +36,7 @@ export default function BlogBrowsing() {
               layout="responsive"
               quality={75}
               style={{ borderRadius: 20 }}
+              loading="lazy"
             />
           </div>
           <div className="flex flex-col flex-start gap-10">

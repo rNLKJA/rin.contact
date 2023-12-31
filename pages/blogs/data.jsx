@@ -32,7 +32,7 @@ export const DataArticle = () => {
       {data && (
         <div className="flex flex-col py-10 px-4">
           <div className="flex flex-start justify-center items-center">
-            <Image
+            {/* <Image
               src="/article/more-about-data-science/data-intro.png"
               width={600}
               height={300}
@@ -40,7 +40,7 @@ export const DataArticle = () => {
               quality={50}
               alt="data intro"
               priority={true}
-            />
+            /> */}
           </div>
 
           <h2>
@@ -110,7 +110,7 @@ export const DataArticle = () => {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                <Image
+                {/* <Image
                   src="/article/more-about-data-science/data-solution.png"
                   width={300}
                   height={300}
@@ -118,7 +118,7 @@ export const DataArticle = () => {
                   alt="data solution"
                   layout="fixed"
                   priority={true}
-                />
+                /> */}
               </div>
             </div>
 
