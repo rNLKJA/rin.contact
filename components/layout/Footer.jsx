@@ -2,7 +2,7 @@ import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Fade } from "react-awesome-reveal";
 
 const Footer = () => {

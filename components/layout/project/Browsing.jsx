@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { SiGithub, SiOverleaf } from "react-icons/si";

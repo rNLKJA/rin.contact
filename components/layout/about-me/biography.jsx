@@ -9,7 +9,7 @@ import { GiSpiderWeb } from "react-icons/gi";
 import { SiGooglecloud } from "react-icons/si";
 import { SiJfrogpipelines } from "react-icons/si";
 import { BiMath } from "react-icons/bi";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Fade, Zoom } from "react-awesome-reveal";
 import { FaGitAlt, FaLinux, FaBusinessTime } from "react-icons/fa6";
 import { TbBrandNextjs } from "react-icons/tb";

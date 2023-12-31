@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Zoom } from "react-awesome-reveal";
 import { useState } from "react";
 import Modal from "@mui/material/Modal";

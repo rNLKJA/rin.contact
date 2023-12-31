@@ -2,7 +2,7 @@ import React from "react";
 import { TfiEmail } from "react-icons/tfi";
 import { HiOutlinePhone } from "react-icons/hi2";
 import { CiLocationOn } from "react-icons/ci";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { RiWechat2Line } from "react-icons/ri";
 import { Slide, Zoom } from "react-awesome-reveal";
 
