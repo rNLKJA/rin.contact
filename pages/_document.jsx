@@ -82,6 +82,12 @@ const SEOHead = () => {
 
       <link rel="canonical" href="https://rin.contact" />
       <link rel="alternate" hreflang="x" href="https://x.rin.contact/" />
+      <title>Pawsibly Rin</title>
+
+      <meta property="highschool" content="安顺第二高级中学" />
+      <meta property="高中" content="安顺第二高级中学" />
+      <meta property="college" content="trinity college" />
+      <meta property="姓名" content="Sunchuangyu Huang" />
     </Head>
   );
 };

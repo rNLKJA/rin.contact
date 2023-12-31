@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const theme = useTheme();
@@ -17,6 +18,9 @@ function MyApp({ Component, pageProps }) {
         backgroundColor: "#ffffff",
       }}
     >
+      <Head>
+        <title>Pawsibly Rin</title>
+      </Head>
       <Header />
       <AnimatePresence mode="wait">
         <Component {...pageProps} />
