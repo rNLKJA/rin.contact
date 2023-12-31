@@ -12,9 +12,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap");
 
 body {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Sarabun", monospace; /* Updated font-family */
   font-size: 1rem;
   background-color: #ffffff; /* Soft background color */
   color: #333; /* Primary text color */
@@ -25,15 +26,20 @@ body {
   scroll-behavior: smooth; /* Smooth scrolling */
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Sarabun", sans-serif; /* Apply 'Sarabun' to all headings */
+}
+
 h1 {
   font-size: 2rem; /* 40px */
-  font-family: "Roboto", sans-serif;
 }
 
 h2 {
   font-size: 1.5rem; /* 32px */
-
-  font-family: "Roboto", sans-serif;
 }
 
 h3 {
