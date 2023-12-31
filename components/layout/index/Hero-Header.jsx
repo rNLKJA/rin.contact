@@ -67,9 +67,10 @@ const HeroHeaderSection = () => {
         <Image
           src="/heroSection.png"
           alt="hero section image"
-          width={300}
-          height={300}
+          width={1100}
+          height={650}
           layout="responsive"
+          sizes="(max-width: 768px) 100vw, 768px"
           quality={50}
         />
       </Zoom>

@@ -59,7 +59,7 @@ export const MobileHeader = () => {
 
   return (
     // Always display this div, but its contents are controlled by isOpen
-    <div className="md:hidden flex justify-between items-center p-4">
+    <div className="md:hidden flex justify-between items-center py-4">
       <Link className="flex flex-row items-center" href="/">
         <Image
           src="/logo.svg"

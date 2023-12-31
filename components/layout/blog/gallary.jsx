@@ -36,7 +36,6 @@ export default function BlogBrowsing() {
               layout="responsive"
               quality={75}
               style={{ borderRadius: 20 }}
-              loading="lazy"
             />
           </div>
           <div className="flex flex-col flex-start gap-10">
