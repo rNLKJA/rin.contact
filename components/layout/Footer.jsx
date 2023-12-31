@@ -48,6 +48,7 @@ const Footer = () => {
                   className="link-hover"
                   href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
                   alt="little red book"
+                  target="_blank"
                 >
                   Xiaohongshu
                 </a>
@@ -58,6 +59,7 @@ const Footer = () => {
                   className="link-hover"
                   href="https://www.instagram.com/chuangyu_hscy/"
                   alt="Instagram"
+                  target="_blank"
                 >
                   Instagram
                 </a>
@@ -68,6 +70,7 @@ const Footer = () => {
                   className="link-hover"
                   href="https://www.linkedin.com/in/sunchuangyuhuang/"
                   alt="LinkedIn"
+                  target="_blank"
                 >
                   LinkedIn
                 </a>
@@ -78,6 +81,7 @@ const Footer = () => {
                   className="link-hover"
                   href="https://github.com/rNLKJA"
                   alt="GitHub"
+                  target="_blank"
                 >
                   GitHub
                 </a>
