@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Custom404 = () => {
   return (
-    <div className="flex md:flex-row w-full  justify-center items-center gap-10">
+    <div className="flex md:flex-row w-full justify-center items-center gap-10">
       <div>
         <Image src="/404.png" alt="404.png" width={250} height={250} />
       </div>
