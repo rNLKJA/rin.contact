@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Fade } from "react-awesome-reveal";
+import Typography from "@mui/material/Typography";
 
 export default function Home() {
   const [blogContent, setBlogContent] = useState(null);
@@ -24,9 +25,9 @@ export default function Home() {
             </div>
             <div className="mt-4 flex flex-col gap-2">
               {blogContent.content.map((paragraph, index) => (
-                <p key={index} className="my-2 text-justify leading-8">
+                <Typography key={index} className="my-2 text-justify leading-8">
                   {paragraph}
-                </p>
+                </Typography>
               ))}
             </div>
           </div>
