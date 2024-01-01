@@ -2,6 +2,7 @@ import React, { useState, useEffect, use } from "react";
 import { Fade } from "react-awesome-reveal";
 import Link from "next/link";
 import Typography from "@mui/material/Typography";
+import BlogAuthor from "@/components/specific/blogAuthor";
 
 export default function BlogContent() {
   const [blogContent, setBlogContent] = useState([]);
@@ -21,10 +22,10 @@ export default function BlogContent() {
         {blogContent.header && (
           <div>
             <h1 className="text-left">{blogContent.header.title}</h1>
-            <div className="flex flex-row gap-5 py-5">
-              <p>@{blogContent.header.author}</p>
-              <p>{blogContent.header.date}</p>
-            </div>
+            <BlogAuthor
+              author={blogContent.header.author}
+              date={blogContent.header.date}
+            />
 
             <Typography>{blogContent.header.description}</Typography>
           </div>

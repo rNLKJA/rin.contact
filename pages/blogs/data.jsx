@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-
 import Image from "next/legacy/image";
 import Typography from "@mui/material/Typography";
+import BlogAuthor from "@/components/specific/blogAuthor";
 
 export default function Home() {
   return <DataArticle />;
@@ -29,28 +29,13 @@ export const DataArticle = () => {
   return (
     <div className="text-justify">
       {data && (
-        <div className="flex flex-col py-10 px-4">
-          <div className="flex flex-start justify-center items-center ">
-            {/* <Image
-              src="/article/more-about-data-science/data-intro.png"
-              width={600}
-              height={300}
-              layout="responsive"
-              quality={50}
-              alt="data intro"
-              priority={true}
-            /> */}
-          </div>
-
-          <h2>
+        <div className="flex flex-col ">
+          <h1>
             The Transformative Impact of Data Science on Business Efficiency and
             Growth
-          </h2>
+          </h1>
 
-          <div className="flex flex-start gap-3 py-5">
-            <p className="leading-8">@rNLKJA</p>
-            <p className="leading-8">29th-Dec-2023</p>
-          </div>
+          <BlogAuthor author={"rNLKJA"} date={"29th-Dec-2023"} />
 
           <div className="flex flex-col pb-10 gap-5">
             <Typography className="leading-8">{data.Introduction}</Typography>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Fade } from "react-awesome-reveal";
 import Typography from "@mui/material/Typography";
+import BlogAuthor from "@/components/specific/blogAuthor";
 
 export default function Home() {
   const [blogContent, setBlogContent] = useState(null);
@@ -16,13 +17,11 @@ export default function Home() {
     <div>
       {blogContent && (
         <Fade triggerOnce duration={1500} direction="up">
-          <div className="flex flex-col p-5">
+          <div className="flex flex-col">
             <h1 className="text-3xl font-bold">{blogContent.title}</h1>
-            <br />
-            <div className="flex flex-row gap-5">
-              <p>@{blogContent.author}</p>
-              <p>{blogContent.date}</p>
-            </div>
+
+            <BlogAuthor author={blogContent.author} date={blogContent.date} />
+
             <div className="mt-4 flex flex-col gap-2">
               {blogContent.content.map((paragraph, index) => (
                 <Typography key={index} className="my-2 text-justify leading-8">
