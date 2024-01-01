@@ -44,6 +44,9 @@ export const DesktopHeader = () => {
           <Link className="link-hover px-2 mr-4" href="/blogs">
             Blogs
           </Link>
+          <Link className="link-hover px-2 mr-4" href="/data-science">
+            DS Study
+          </Link>
           <Link className="link-hover px-2 mr-4" href="/contact">
             Contact
           </Link>
@@ -98,6 +101,9 @@ export const MobileHeader = () => {
         <MenuItem onClick={() => setIsOpen(null)}>
           <Link href="/blogs">Blogs</Link>
         </MenuItem>
+        <Link className="link-hover px-2 mr-4" href="/data-science">
+          DS Study
+        </Link>
         <MenuItem onClick={() => setIsOpen(null)}>
           <Link href="/contact">Contact</Link>
         </MenuItem>
