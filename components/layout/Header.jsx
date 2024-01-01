@@ -2,9 +2,12 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/legacy/image";
 import { Fade } from "react-awesome-reveal";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 
 const Header = () => {
-  // Both headers are rendered, but CSS controls which one is displayed based on screen size
   return (
     <div>
       <DesktopHeader />
@@ -51,14 +54,17 @@ export const DesktopHeader = () => {
 };
 
 export const MobileHeader = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(null);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const toggleDropdown = (event) => {
+    if (isOpen) {
+      setIsOpen(null);
+    } else {
+      setIsOpen(event.currentTarget);
+    }
   };
 
   return (
-    // Always display this div, but its contents are controlled by isOpen
     <div className="md:hidden flex justify-between items-center py-4">
       <Link className="flex flex-row items-center" href="/">
         <Image
@@ -73,25 +79,29 @@ export const MobileHeader = () => {
         <span className="ml-2 font-bold">rNLKJA</span>
       </Link>
 
-      <button onClick={toggleDropdown} className="px-2">
-        Menu
-      </button>
-      {isOpen && (
-        <div className="absolute top-16 right-0 bg-white shadow-md z-10">
-          <Link className="block px-4 py-2" href="/about-me">
-            About Me
-          </Link>
-          <Link className="block px-4 py-2" href="/projects">
-            Projects
-          </Link>
-          <Link className="block px-4 py-2" href="/blogs">
-            Blogs
-          </Link>
-          <Link className="block px-4 py-2" href="/contact">
-            Contact
-          </Link>
-        </div>
-      )}
+      <IconButton onClick={toggleDropdown} className="px-2">
+        <MenuIcon />
+      </IconButton>
+      <Menu
+        id="simple-menu"
+        anchorEl={isOpen}
+        keepMounted
+        open={Boolean(isOpen)}
+        onClose={() => setIsOpen(null)}
+      >
+        <MenuItem onClick={() => setIsOpen(null)}>
+          <Link href="/about-me">About Me</Link>
+        </MenuItem>
+        <MenuItem onClick={() => setIsOpen(null)}>
+          <Link href="/projects">Projects</Link>
+        </MenuItem>
+        <MenuItem onClick={() => setIsOpen(null)}>
+          <Link href="/blogs">Blogs</Link>
+        </MenuItem>
+        <MenuItem onClick={() => setIsOpen(null)}>
+          <Link href="/contact">Contact</Link>
+        </MenuItem>
+      </Menu>
     </div>
   );
 };
