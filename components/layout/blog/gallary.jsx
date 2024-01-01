@@ -12,15 +12,13 @@ export default function BlogBrowsing() {
 
         <div className="grid md:grid-cols-2 py-10 px-4 gap-10">
           <div className="flex col-span-1 justify-center items-center">
-            <Image
+            <ImageLoader
               src="/melbourne-style.png"
               width={400}
               height={400}
               alt="melbourne style"
-              layout="responsive"
               quality={75}
-              style={{ borderRadius: 20 }}
-              loading="lazy"
+              style={{ width: "100%", height: "auto", position: "relative" }}
             />
           </div>
           <div className="flex flex-col flex-start gap-10">
@@ -33,6 +31,27 @@ export default function BlogBrowsing() {
     </Fade>
   );
 }
+
+const ImageLoader = ({ src, width, height, alt, quality, style }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div className="flex justify-center items-center" style={style}>
+      {isLoading && <div className="loading-animation">Loading...</div>}
+      <Image
+        src={src}
+        width={width}
+        height={height}
+        alt={alt}
+        layout="responsive"
+        quality={quality}
+        loading="lazy"
+        onLoadingComplete={() => setIsLoading(false)}
+        style={{ borderRadius: isLoading ? 0 : "20px" }}
+      />
+    </div>
+  );
+};
 
 export const StarredBlog = () => {
   return (
