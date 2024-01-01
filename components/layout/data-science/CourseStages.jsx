@@ -47,6 +47,7 @@ export const CourseStages = () => {
             >
               {stage.details.map((detail, detailIndex) => (
                 <Link
+                  key={detail.link}
                   href={detail.link}
                   passHref
                   target="_blank"
