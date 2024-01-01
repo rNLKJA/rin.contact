@@ -63,7 +63,7 @@ export const ProjectContent = (project) => {
     <Fade triggerOnce duration={1500} direction="up">
       <div className="py-10">
         <div className="flex justify-between">
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 items-center">
             <Image
               src={project.icon}
               width={35}
@@ -72,7 +72,7 @@ export const ProjectContent = (project) => {
               quality={50}
               layout="fixed"
             />
-            <h3 className="link-hover">{project.title}</h3>
+            <h3 className="link-hover-unclicable">{project.title}</h3>
           </div>
         </div>
         <br />

@@ -123,6 +123,11 @@ body {
   cursor: pointer; /* changes the cursor to indicate it's clickable */
 }
 
+.link-hover-unclicable:hover {
+  font-weight: bold;
+  color: #121f22; /* or any color you want for highlighting */
+}
+
 .toolbox-hover:hover {
   font-weight: bold;
   color: grey;
