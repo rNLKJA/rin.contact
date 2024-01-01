@@ -46,16 +46,20 @@ export default function BlogContent() {
       <br />
 
       <h3>References</h3>
-      <div>
+      <ul className="list-disc pl-8">
         {blogContent.references &&
           blogContent.references.map((reference) => (
-            <ul key={reference.name} className="list-disc pl-8">
-              <Link href={reference.link} target="_blank" alt={reference.link}>
-                <li>{reference.name}</li>
-              </Link>
-            </ul>
+            <Link
+              key={reference.name}
+              href={reference.link}
+              target="_blank"
+              alt={reference.link}
+              className="link-hover"
+            >
+              <li>{reference.name}</li>
+            </Link>
           ))}
-      </div>
+      </ul>
     </Fade>
   );
 }
