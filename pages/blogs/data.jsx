@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Image from "next/legacy/image";
-
-import "@/styles/globals.css";
+import Typography from "@mui/material/Typography";
 
 export default function Home() {
   return <DataArticle />;
@@ -28,10 +27,10 @@ export const DataArticle = () => {
   }, []);
 
   return (
-    <div>
+    <div className="text-justify">
       {data && (
         <div className="flex flex-col py-10 px-4">
-          <div className="flex flex-start justify-center items-center">
+          <div className="flex flex-start justify-center items-center ">
             {/* <Image
               src="/article/more-about-data-science/data-intro.png"
               width={600}
@@ -54,12 +53,12 @@ export const DataArticle = () => {
           </div>
 
           <div className="flex flex-col pb-10 gap-5">
-            <p className="leading-8">{data.Introduction}</p>
+            <Typography className="leading-8">{data.Introduction}</Typography>
 
             <h3>The Impact of Data Science on SMEs</h3>
-            <p className="leading-8">
+            <Typography className="leading-8">
               {data["The Impact of Data Science on SMEs"]}
-            </p>
+            </Typography>
 
             <div className="grid md:grid-cols-2">
               <div className="flex justify-center items-center">
@@ -75,34 +74,50 @@ export const DataArticle = () => {
               <div>
                 <h3 className="py-5">Case Studies</h3>
                 <div>
-                  <ul className="list-disc pl-10">
-                    <li>{data["Case Studies"].case1}</li>
-                    <li>{data["Case Studies"].case2}</li>
-                    <li>{data["Case Studies"].case3}</li>
+                  <ul className="list-disc pl-10 text-left">
+                    <li>
+                      <Typography>{data["Case Studies"].case1}</Typography>
+                    </li>
+                    <li>
+                      <Typography>{data["Case Studies"].case2}</Typography>
+                    </li>
+                    <li>
+                      <Typography>{data["Case Studies"].case3}</Typography>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
 
             <h3>Tools and Technologies</h3>
-            <p className="leading-8">{data["Tools and Technologies"]}</p>
+            <Typography className="leading-8">
+              {data["Tools and Technologies"]}
+            </Typography>
 
             <div className="grid md:grid-cols-2">
               <div>
                 <h3 className="py-5">Challenges and Solutions</h3>
-                <p className="leading-8">
+                <Typography className="leading-8">
                   {data["Challenges and Solutions"].Description}
-                </p>
+                </Typography>
                 <div>
-                  <ul className="list-disc pl-10">
-                    <li>Use free or low-cost tools and platforms.</li>
+                  <ul className="list-disc pl-10 text-left">
                     <li>
-                      Partner with universities or hire interns to access
-                      talent.
+                      <Typography>
+                        Use free or low-cost tools and platforms.
+                      </Typography>
                     </li>
                     <li>
-                      Implement strict data governance policies to ensure
-                      privacy and compliance.
+                      <Typography>
+                        Partner with universities or hire interns to access
+                        talent.
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography>
+                        Implement strict data governance policies to ensure
+                        privacy and compliance.
+                      </Typography>
                     </li>
                   </ul>
                 </div>
@@ -121,7 +136,9 @@ export const DataArticle = () => {
             </div>
 
             <h3>Best Practices</h3>
-            <p className="leading-8">{data["Best Practices"]}</p>
+            <Typography className="leading-8">
+              {data["Best Practices"]}
+            </Typography>
 
             <div className="flex flex-start justify-center items-center">
               {/* <Image
@@ -136,10 +153,12 @@ export const DataArticle = () => {
             </div>
 
             <h3>Future Trends"</h3>
-            <p className="leading-8">{data["Future Trends"]}</p>
+            <Typography className="leading-8">
+              {data["Future Trends"]}
+            </Typography>
 
             <h3>Conclusion</h3>
-            <p className="leading-8">{data.Conclusion}</p>
+            <Typography className="leading-8">{data.Conclusion}</Typography>
 
             <h3>References</h3>
             <div>
