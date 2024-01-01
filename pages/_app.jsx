@@ -21,11 +21,11 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Pawsibly Rin</title>
       </Head>
-      <Header />
+      <Header className="sticky  top-0" />
       <AnimatePresence mode="wait">
         <Component {...pageProps} />
       </AnimatePresence>
-      <Footer />
+      <Footer className="sticky  bottom-0" />
     </Container>
   );
 }
