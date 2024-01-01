@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import Link from "next/link";
@@ -11,6 +11,20 @@ import Button from "@mui/material/Button";
 const Footer = () => {
   const year = new Date().getFullYear();
   const [isHovered, setIsHovered] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setShowScrollButton(true);
+    } else {
+      setShowScrollButton(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -125,33 +139,37 @@ const Footer = () => {
         </div>
       </div>
 
-      {typeof window !== "undefined" && window.innerWidth > 1100 && (
-        <Button
-          style={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            backgroundColor: isHovered ? "black" : "white",
-            color: isHovered ? "white" : "black",
-            transition: "all 0.3s ease",
-            borderRadius: "20px",
-            padding: "10px 20px",
-            width: isHovered ? "160px" : "60px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            overflow: "hidden",
-          }}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onClick={scrollToTop}
-        >
-          <NavigationIcon />
-          {isHovered && (
-            <span style={{ marginLeft: "10px" }}>Scroll to Top</span>
-          )}{" "}
-        </Button>
-      )}
+      {typeof window !== "undefined" &&
+        window.innerWidth > 1100 &&
+        showScrollButton && (
+          <Button
+            className="flex flex-start"
+            style={{
+              position: "fixed",
+              bottom: "20px",
+              right: "20px",
+              backgroundColor: isHovered ? "black" : "white",
+              color: isHovered ? "white" : "black",
+              transition: "all 0.5s ease",
+              borderRadius: "20px",
+              padding: "10px 20px",
+              width: isHovered ? "100px" : "60px",
+
+              justifyContent: "center",
+              alignItems: "center",
+              overflow: "hidden",
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={scrollToTop}
+          >
+            {" "}
+            <Fade duration={1000} direction="right">
+              <NavigationIcon />
+              {isHovered && <p style={{ marginLeft: "10px" }}>Top</p>}{" "}
+            </Fade>
+          </Button>
+        )}
     </footer>
   );
 };
