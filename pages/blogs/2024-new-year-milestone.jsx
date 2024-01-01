@@ -20,7 +20,7 @@ export default function Home() {
             <h1 className="text-3xl font-bold">{blogContent.title}</h1>
             <br />
             <div className="flex flex-row gap-5">
-              <p>{blogContent.author}</p>
+              <p>@{blogContent.author}</p>
               <p>{blogContent.date}</p>
             </div>
             <div className="mt-4 flex flex-col gap-2">

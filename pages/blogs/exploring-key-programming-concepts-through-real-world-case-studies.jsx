@@ -21,12 +21,11 @@ export default function BlogContent() {
         {blogContent.header && (
           <div>
             <h1 className="text-left">{blogContent.header.title}</h1>
-            <div className="flex flex-start">
-              <p>
-                {blogContent.header.author} - {blogContent.header.date}
-              </p>
+            <div className="flex flex-row gap-5 py-5">
+              <p>@{blogContent.header.author}</p>
+              <p>{blogContent.header.date}</p>
             </div>
-            <br />
+
             <Typography>{blogContent.header.description}</Typography>
           </div>
         )}
