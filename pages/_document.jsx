@@ -1,6 +1,5 @@
 // pages/_document.js
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import SEOHead from "@/components/specific/SEOHead"; // Import the component
 
 class MyDocument extends Document {
   render() {
