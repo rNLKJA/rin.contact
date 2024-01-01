@@ -15,7 +15,7 @@ export default function StageComponent({ stageData }) {
   return (
     <Container className="flex flex-col gap-3">
       <h1>{stageData.title}</h1>
-      <Fade triggerOnce duration={1500} direction="up">
+      <Fade triggerOnce duration={1500} direction="left">
         <Timeline
           className="flex flex-col items-center gap-4"
           position="alternate-reverse"
