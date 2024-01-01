@@ -25,7 +25,7 @@ const GallerySection = () => {
       <div className="flex justify-center items-center">
         <Zoom triggerOnce>
           <Image
-            src="/project_thumbnail.svg"
+            src="/index/project_thumbnail.svg"
             width={300}
             height={300}
             quality={25}

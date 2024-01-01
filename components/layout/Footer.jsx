@@ -64,7 +64,7 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row flex-start gap-8 justify-center md:justify-start">
               <div className="flex items-center gap-3">
                 <Image
-                  src="/redbook.svg"
+                  src="/footer/redbook.svg"
                   width={20}
                   height={20}
                   alt="litteredbook"

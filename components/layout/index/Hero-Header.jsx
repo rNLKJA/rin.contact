@@ -65,7 +65,7 @@ const HeroHeaderSection = () => {
       <br />
       <Zoom triggerOnce>
         <Image
-          src="/heroSection.png"
+          src="/index/heroSection.png"
           alt="hero section image"
           width={1100}
           height={650}
