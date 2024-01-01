@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/legacy/image";
 import { Fade } from "react-awesome-reveal";
+import IconButton from "@mui/material/IconButton";
+import NavigationIcon from "@mui/icons-material/Navigation";
+import Button from "@mui/material/Button";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const [isHovered, setIsHovered] = useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <footer className="pt-10 pb-10 ">
@@ -113,6 +124,34 @@ const Footer = () => {
           </Link>
         </div>
       </div>
+
+      {typeof window !== "undefined" && window.innerWidth > 1100 && (
+        <Button
+          style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            backgroundColor: isHovered ? "black" : "white",
+            color: isHovered ? "white" : "black",
+            transition: "all 0.3s ease",
+            borderRadius: "20px",
+            padding: "10px 20px",
+            width: isHovered ? "160px" : "60px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "hidden",
+          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={scrollToTop}
+        >
+          <NavigationIcon />
+          {isHovered && (
+            <span style={{ marginLeft: "10px" }}>Scroll to Top</span>
+          )}{" "}
+        </Button>
+      )}
     </footer>
   );
 };
