@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
 import Button from "@mui/material/Button";
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineDot,
+  TimelineContent,
+  TimelineConnector,
+} from "@mui/lab";
+import { timelineItemClasses } from "@mui/lab/TimelineItem";
 
 export default function BlogList() {
   const [blogList, setBlogList] = useState([]);
@@ -25,13 +34,23 @@ export default function BlogList() {
     <div>
       <h2>Blog List</h2>
       <br />
-      <div className="flex flex-col gap-8">
+      <Timeline
+        sx={{
+          [`& .${timelineItemClasses.root}:before`]: {
+            flex: 0,
+            padding: 0,
+          },
+        }}
+        className="flex flex-col gap-4"
+      >
         {blogList &&
-          blogList.slice(0, displayCount).map(
-            (
-              blog, // Only display a slice of the list
-            ) => (
-              <div key={blog.title + blog.author + blog.date}>
+          blogList.slice(0, displayCount).map((blog) => (
+            <TimelineItem key={blog.title + blog.author + blog.date}>
+              <TimelineSeparator>
+                <TimelineDot />
+                <TimelineConnector />
+              </TimelineSeparator>
+              <TimelineContent>
                 <Fade triggerOnce duration={1500} direction="up">
                   <Link href={blog.link}>
                     <div key={blog.title}>
@@ -44,21 +63,18 @@ export default function BlogList() {
                     </div>
                   </Link>
                 </Fade>
-              </div>
-            ),
-          )}
-      </div>
-      {blogList.length > displayCount && ( // Only show the More button if there are more items to display
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+      </Timeline>
+      {blogList.length > displayCount && (
         <div className="flex flex-start justify-center items-center">
           <Fade triggerOnce duration={1500}>
             <Button
               onClick={handleShowMore}
               className="mt-4"
               varient="contained"
-              style={{
-                backgroundColor: "black",
-                color: "white",
-              }}
+              style={{ backgroundColor: "black", color: "white" }}
             >
               More
             </Button>
