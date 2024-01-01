@@ -6,6 +6,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/InfoOutlined";
+import WorkIcon from "@mui/icons-material/WorkOutline";
+import BookIcon from "@mui/icons-material/BookOutlined";
+import EmailIcon from "@mui/icons-material/EmailOutlined";
 
 const Header = () => {
   return (
@@ -36,19 +41,19 @@ export const DesktopHeader = () => {
       <Fade triggerOnce duration={1500} direction="down">
         <nav className="space-x-4">
           <Link className="link-hover px-2 mr-4" href="/about-me">
-            About Me
+            <InfoIcon /> About Me
           </Link>
           <Link className="link-hover px-2 mr-4" href="/projects">
-            Projects
+            <WorkIcon /> Projects
           </Link>
           <Link className="link-hover px-2 mr-4" href="/blogs">
-            Blogs
+            <BookIcon /> Blogs
           </Link>
           <Link className="link-hover px-2 mr-4" href="/data-science">
-            DS Study
+            <BookIcon /> DS Study
           </Link>
           <Link className="link-hover px-2 mr-4" href="/contact">
-            Contact
+            <EmailIcon /> Contact
           </Link>
         </nav>
       </Fade>
@@ -93,19 +98,29 @@ export const MobileHeader = () => {
         onClose={() => setIsOpen(null)}
       >
         <MenuItem onClick={() => setIsOpen(null)}>
-          <Link href="/about-me">About Me</Link>
+          <Link href="/about-me">
+            <InfoIcon /> About Me
+          </Link>
         </MenuItem>
         <MenuItem onClick={() => setIsOpen(null)}>
-          <Link href="/projects">Projects</Link>
+          <Link href="/projects">
+            <WorkIcon /> Projects
+          </Link>
         </MenuItem>
         <MenuItem onClick={() => setIsOpen(null)}>
-          <Link href="/blogs">Blogs</Link>
+          <Link href="/blogs">
+            <BookIcon /> Blogs
+          </Link>
         </MenuItem>
-        <Link className="link-hover px-2 mr-4" href="/data-science">
-          DS Study
-        </Link>
         <MenuItem onClick={() => setIsOpen(null)}>
-          <Link href="/contact">Contact</Link>
+          <Link href="/data-science">
+            <BookIcon /> DS Study
+          </Link>
+        </MenuItem>
+        <MenuItem onClick={() => setIsOpen(null)}>
+          <Link href="/contact">
+            <EmailIcon /> Contact
+          </Link>
         </MenuItem>
       </Menu>
     </div>
