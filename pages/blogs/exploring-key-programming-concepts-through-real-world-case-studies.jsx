@@ -34,7 +34,7 @@ export default function BlogContent() {
         {blogContent.body &&
           blogContent.body.map((paragraph) => (
             <div key={paragraph.subTitle}>
-              <h3>{paragraph.subTitle}</h3>
+              <h3 className="text-left">{paragraph.subTitle}</h3>
               <br />
               <Typography>{paragraph.description}</Typography>
             </div>
@@ -45,7 +45,7 @@ export default function BlogContent() {
 
       <br />
 
-      <h3>References</h3>
+      <h3 className="text-left">References</h3>
       <ul className="list-disc pl-8">
         {blogContent.references &&
           blogContent.references.map((reference) => (
