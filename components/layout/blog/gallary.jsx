@@ -5,28 +5,12 @@ import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
 
 export default function BlogBrowsing() {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/data/projects.json");
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <Fade triggerOnce duration={1500} direction="left" fraction={0.5}>
       <div className="px-4">
         <h2>The Meow-nificent Blog for Digital Crafters 🧶</h2>
 
-        <div className="grid md:grid-cols-2 py-10 px-4 gap-5">
+        <div className="grid md:grid-cols-2 py-10 px-4 gap-10">
           <div className="flex col-span-1 justify-center items-center">
             <Image
               src="/melbourne-style.png"
@@ -40,6 +24,7 @@ export default function BlogBrowsing() {
             />
           </div>
           <div className="flex flex-col flex-start gap-10">
+            <DailyQuotes />
             <StarredBlog />
             <LatestBlog />
           </div>
@@ -98,6 +83,42 @@ export const LatestBlog = () => {
             <p>{latestBlogData.date}</p>
           </div>
         </Link>
+      )}
+    </div>
+  );
+};
+
+const DailyQuotes = () => {
+  const [dailyQuote, setDailyQuote] = useState({ text: "", author: "" }); // New state variable for the daily quote
+
+  useEffect(() => {
+    const fetchDailyQuote = async () => {
+      try {
+        // Replace 'https://api.quotable.io/random' with the API you intend to use
+        const response = await fetch("https://api.quotable.io/random");
+        const data = await response.json();
+        if (data.content && data.author) {
+          setDailyQuote({ text: data.content, author: data.author });
+        }
+      } catch (error) {
+        console.error("Error fetching quote:", error);
+      }
+    };
+
+    fetchDailyQuote();
+  }, []);
+
+  return (
+    <div>
+      {" "}
+      {dailyQuote.text && (
+        <div className="daily-quote">
+          <h3>Daily Inspiration</h3>
+          <br />
+          <p>
+            "{dailyQuote.text}" - {dailyQuote.author}
+          </p>
+        </div>
       )}
     </div>
   );
