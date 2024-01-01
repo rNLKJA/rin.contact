@@ -20,7 +20,7 @@ export default function BlogContent() {
       <div className="flex flex-col flex-start gap-10 text-justify leading-8">
         {blogContent.header && (
           <div>
-            <h1>{blogContent.header.title}</h1>
+            <h1 className="text-left">{blogContent.header.title}</h1>
             <div className="flex flex-start">
               <p>
                 {blogContent.header.author} - {blogContent.header.date}
