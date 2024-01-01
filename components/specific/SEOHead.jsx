@@ -1,24 +1,10 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import { Head } from "next/document";
 
-class MyDocument extends Document {
-  render() {
-    return (
-      <Html lang="en">
-        <SEOHead />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
-
-export default MyDocument;
-
-const SEOHead = () => {
+export function SEOHead() {
   return (
     <Head>
+      <title>Pawsibly Rin</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta
         name="description"
         content="Personal Profile website for Rin Huang"
@@ -80,6 +66,7 @@ const SEOHead = () => {
 
       <link rel="canonical" href="https://rin.contact" />
       <link rel="alternate" hreflang="x" href="https://x.rin.contact/" />
+      <title>Pawsibly Rin</title>
 
       <meta property="highschool" content="安顺第二高级中学" />
       <meta property="高中" content="安顺第二高级中学" />
@@ -89,4 +76,4 @@ const SEOHead = () => {
       <meta charSet="utf-8" />
     </Head>
   );
-};
+}
