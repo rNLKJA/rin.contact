@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
     <Container
       maxWidth={isMobile ? "xs" : "lg"}
       style={{
-        width: isMobile ? "100%" : "1100px",
+        width: isMobile ? "100%" : "1200px",
         backgroundColor: "#ffffff",
       }}
       className="flex flex-col h-screen justify-between"
