@@ -46,25 +46,6 @@ export default function StageComponent({ stageData }) {
                   <Typography className="text-left" variant="body1" paragraph>
                     {detail.content}
                   </Typography>
-                  <Typography varient="h6" component="h3" className="text-bold">
-                    Course Outline
-                  </Typography>
-                  <ul className="list-disc ml-4">
-                    {detail.courses &&
-                      detail.courses.map((link, idx) => (
-                        <li key={idx} className="text-left">
-                          <Link
-                            href={link.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ textDecoration: "none" }}
-                            className="link-hover"
-                          >
-                            {link.title}
-                          </Link>
-                        </li>
-                      ))}
-                  </ul>
                 </div>
               </TimelineContent>
             </TimelineItem>
