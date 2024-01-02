@@ -32,43 +32,41 @@ const MathematicalFoundationsAgenda = () => {
 
       {agenda &&
         agenda.map((week, index) => (
-          <div>
-            <Accordion key={index}>
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>{week.week}</Typography>
-              </AccordionSummary>{" "}
-              <AccordionDetails>
-                <div>
-                  <Timeline
-                    sx={{
-                      [`& .${timelineItemClasses.root}:before`]: {
-                        flex: 0,
-                        padding: 0,
-                      },
-                    }}
-                  >
-                    {week.details &&
-                      week.details.map((detail, idx) => (
-                        <TimelineItem key={idx} className="flex items-center">
-                          <TimelineSeparator>
-                            <TimelineDot color="primary" />
-                            {idx < week.details.length - 1 && (
-                              <TimelineConnector />
-                            )}
-                          </TimelineSeparator>
-                          <TimelineContent>
-                            <Typography component="span">
-                              Day {idx + 1}:{" "}
-                            </Typography>
-                            {detail}
-                          </TimelineContent>
-                        </TimelineItem>
-                      ))}
-                  </Timeline>
-                </div>
-              </AccordionDetails>
-            </Accordion>
-          </div>
+          <Accordion key={index}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>{week.week}</Typography>
+            </AccordionSummary>{" "}
+            <AccordionDetails>
+              <div>
+                <Timeline
+                  sx={{
+                    [`& .${timelineItemClasses.root}:before`]: {
+                      flex: 0,
+                      padding: 0,
+                    },
+                  }}
+                >
+                  {week.details &&
+                    week.details.map((detail, idx) => (
+                      <TimelineItem key={idx} className="flex items-center">
+                        <TimelineSeparator>
+                          <TimelineDot color="primary" />
+                          {idx < week.details.length - 1 && (
+                            <TimelineConnector />
+                          )}
+                        </TimelineSeparator>
+                        <TimelineContent>
+                          <Typography component="span">
+                            Day {idx + 1}:{" "}
+                          </Typography>
+                          {detail}
+                        </TimelineContent>
+                      </TimelineItem>
+                    ))}
+                </Timeline>
+              </div>
+            </AccordionDetails>
+          </Accordion>
         ))}
 
       <StudyTips />
