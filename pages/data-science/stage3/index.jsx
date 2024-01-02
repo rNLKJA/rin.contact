@@ -23,7 +23,7 @@ const Stage2 = () => {
   }, []);
 
   if (!stageData) {
-    return <Typography>Loading Stage 2 Data...</Typography>;
+    return <Typography>Loading Stage 3 Data...</Typography>;
   }
 
   return <StageComponent stageData={stageData} />;

@@ -27,14 +27,14 @@ export default function StageComponent({ stageData }) {
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
-                <Link
-                  href={detail.link}
-                  passHref
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: "none" }}
-                >
-                  <div>
+                <div className="flex flex-col items-start">
+                  <Link
+                    href={detail.link}
+                    passHref
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography
                       variant="h5"
                       component="h3"
@@ -42,11 +42,30 @@ export default function StageComponent({ stageData }) {
                     >
                       {detail.title}
                     </Typography>
-                    <Typography variant="body1" paragraph>
-                      {detail.content}
-                    </Typography>
-                  </div>
-                </Link>
+                  </Link>
+                  <Typography className="text-left" variant="body1" paragraph>
+                    {detail.content}
+                  </Typography>
+                  <Typography varient="h6" component="h3" className="text-bold">
+                    Course Outline
+                  </Typography>
+                  <ul className="list-disc ml-4">
+                    {detail.courses &&
+                      detail.courses.map((link, idx) => (
+                        <li key={idx} className="text-left">
+                          <Link
+                            href={link.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ textDecoration: "none" }}
+                            className="link-hover"
+                          >
+                            {link.title}
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
               </TimelineContent>
             </TimelineItem>
           ))}

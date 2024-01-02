@@ -11,7 +11,7 @@ export default function Home() {
         <CourseDescription />
       </Fade>
       <br />
-      <Fade duration={1500} triggerOnce direction="right">
+      <Fade duration={1500} triggerOnce direction="ri">
         <Considerations />
       </Fade>
       <br />

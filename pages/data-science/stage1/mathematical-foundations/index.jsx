@@ -28,7 +28,7 @@ const MathematicalFoundationsAgenda = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1>Study Agenda for Mathematical Foundations</h1>
+      <h1>Mathematical Foundations</h1>
 
       {agenda &&
         agenda.map((week, index) => (

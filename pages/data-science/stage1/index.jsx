@@ -13,6 +13,7 @@ const Stage2 = () => {
         const stage2Data = data.find((stage) =>
           stage.title.includes("Stage 1"),
         );
+
         setStageData(stage2Data);
       } catch (error) {
         console.error("Failed to fetch data:", error);
@@ -23,7 +24,7 @@ const Stage2 = () => {
   }, []);
 
   if (!stageData) {
-    return <Typography>Loading Stage 2 Data...</Typography>;
+    return <Typography>Loading Stage 1 Data...</Typography>;
   }
 
   return <StageComponent stageData={stageData} />;
