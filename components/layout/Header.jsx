@@ -26,19 +26,21 @@ export default Header;
 export const DesktopHeader = () => {
   return (
     <div className="hidden md:flex justify-between items-center py-10 ">
-      <Link className="flex flex-row items-center" href="/">
-        <Image
-          src="/logo.svg"
-          alt="Logo"
-          width={80}
-          height={80}
-          quality={25}
-          layout="fixed"
-          priority
-        />
-        <span className="ml-2 font-bold link-hover">rNLKJA</span>
-      </Link>
       <Fade triggerOnce duration={1500} direction="down">
+        <Link className="flex flex-row items-center" href="/">
+          <Image
+            src="/logo.svg"
+            alt="Logo"
+            width={80}
+            height={80}
+            quality={25}
+            layout="fixed"
+            priority
+          />
+          <span className="ml-2 font-bold link-hover">rNLKJA</span>
+        </Link>
+      </Fade>
+      <Fade triggerOnce duration={1500} direction="right">
         <nav className="space-x-4">
           <Link className="link-hover px-2 mr-4" href="/about-me">
             <InfoIcon /> About Me
