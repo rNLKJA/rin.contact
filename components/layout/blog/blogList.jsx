@@ -70,25 +70,26 @@ export default function BlogList() {
             <TimelineContent>
               <Fade triggerOnce duration={1500} direction="up">
                 <Link href={blog.link}>
-                  <div key={blog.title}>
+                  <div key={blog.title} className="flex flex-col">
                     <h3 className="link-hover">{blog.title}</h3>
-                    <div className="flex justify-between items-center">
+
+                    <div className="flex flex-wrap justify-between items-center">
                       <div className="flex md:flex-row gap-4 py-2">
                         <p>{blog.author}</p>
                         <p className="italic">{blog.date}</p>
                       </div>
+                    </div>
 
-                      <div className="flex flex-end gap-2">
-                        {blog.tags.map((tag) => (
-                          <p
-                            className="px-2 rounded-full"
-                            style={{ backgroundColor: "#f9d9a9" }}
-                            key={Date.now() + Math.random()}
-                          >
-                            {tag}
-                          </p>
-                        ))}
-                      </div>
+                    <div className="flex flex-wrap gap-2">
+                      {blog.tags.map((tag) => (
+                        <p
+                          className="px-2 rounded-full"
+                          style={{ backgroundColor: "#f9d9a9" }}
+                          key={Date.now() + Math.random()}
+                        >
+                          {tag}
+                        </p>
+                      ))}
                     </div>
                     <p className="leading-5 text-hover">{blog.brief}</p>
                   </div>
