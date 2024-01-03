@@ -81,29 +81,26 @@ export const ProjectContent = (project) => {
 
         <p className="leading-5">{project.description}</p>
         <br />
-        <div>
-          <ul className="flex flex-wrap gap-6">
-            {project.skills.map((skill) => (
-              <li
-                key={skill}
-                style={{
-                  color: "grey",
-                  fontWeight: "normal",
-                  transition: "font-weight 0.3s",
-                  margin: "0",
-                  padding: "0",
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.fontWeight = "bold";
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.fontWeight = "normal";
-                }}
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
+        <div className="flex flex-wrap gap-2">
+          {project.skills.map((skill) => (
+            <div
+              key={skill}
+              style={{
+                fontWeight: "normal",
+                transition: "font-weight 0.3s",
+                backgroundColor: "#f9d9a9",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.fontWeight = "bold";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.fontWeight = "normal";
+              }}
+              className="flex rounded-full px-2"
+            >
+              {skill}
+            </div>
+          ))}
         </div>
 
         <br />
