@@ -11,7 +11,7 @@ import {
   TimelineConnector,
 } from "@mui/lab";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
-import TextField from "@mui/material/TextField";
+import { SearchBar } from "../../ui/SearchBar";
 
 export default function BlogList() {
   const [blogList, setBlogList] = useState([]);
@@ -113,25 +113,3 @@ export default function BlogList() {
     </div>
   );
 }
-
-const SearchBar = ({ searchQuery, setSearchQuery }) => {
-  return (
-    <div className="flex space-x-4 my-4">
-      <TextField
-        variant="outlined"
-        label="Search Blogs"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className="flex-1"
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => setSearchQuery("")}
-        style={{ backgroundColor: "black", color: "white" }}
-      >
-        Clear
-      </Button>
-    </div>
-  );
-};

@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { SiGithub, SiOverleaf } from "react-icons/si";
 import { Fade } from "react-awesome-reveal";
+import { SearchBar } from "@/components/ui/SearchBar";
 
 export default function ProjectsBrowsing() {
   const [projects, setProjects] = useState([]);
+  const [displayCount, setDisplayCount] = useState(5);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +24,20 @@ export default function ProjectsBrowsing() {
 
     fetchData();
   }, []);
+
+  const handleViewMore = () => {
+    setDisplayCount((prevCount) => prevCount + 5);
+  };
+
+  const filteredProjects = projects.filter(
+    (project) =>
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (project.skills &&
+        project.skills.some((tag) =>
+          tag.toLowerCase().includes(searchQuery.toLowerCase()),
+        )),
+  );
 
   return (
     <div className="px-4">
@@ -50,10 +67,25 @@ export default function ProjectsBrowsing() {
         </div>
       </Fade>
 
-      {projects &&
-        projects.map((project) => (
-          <ProjectContent {...project} key={project.title} />
-        ))}
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+
+      {filteredProjects.slice(0, displayCount).map((project) => (
+        <ProjectContent {...project} key={project.title} />
+      ))}
+
+      <Fade triggerOnce duration={3000} direction="up">
+        <div className="flex justify-center items-center">
+          {displayCount < projects.length && (
+            <Button
+              onClick={handleViewMore}
+              varient="contained"
+              style={{ backgroundColor: "black", color: "white" }}
+            >
+              More Projects
+            </Button>
+          )}
+        </div>
+      </Fade>
     </div>
   );
 }
