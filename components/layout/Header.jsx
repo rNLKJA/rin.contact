@@ -10,6 +10,7 @@ import InfoIcon from "@mui/icons-material/InfoOutlined";
 import WorkIcon from "@mui/icons-material/WorkOutline";
 import BookIcon from "@mui/icons-material/BookOutlined";
 import EmailIcon from "@mui/icons-material/EmailOutlined";
+import HistoryEduIcon from "@mui/icons-material/HistoryEduOutlined";
 
 const Header = () => {
   return (
@@ -51,7 +52,7 @@ export const DesktopHeader = () => {
             <BookIcon /> Blogs
           </Link>
           <Link className="link-hover px-2 mr-4" href="/data-science">
-            <BookIcon /> DS Study
+            <HistoryEduIcon /> DS Study
           </Link>
           <Link className="link-hover px-2 mr-4" href="/contact">
             <EmailIcon /> Contact
