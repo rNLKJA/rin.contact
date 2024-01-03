@@ -11,10 +11,12 @@ import {
   TimelineConnector,
 } from "@mui/lab";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
+import TextField from "@mui/material/TextField";
 
 export default function BlogList() {
   const [blogList, setBlogList] = useState([]);
   const [displayCount, setDisplayCount] = useState(5);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch("/data/blog_list.json")
@@ -25,15 +27,26 @@ export default function BlogList() {
       .catch((error) => console.log(error));
   }, []);
 
-  const handleShowMore = () => {
-    // Increase the number of items displayed by 5 (or set to total count if less than 5 remaining)
-    setDisplayCount((prevCount) => Math.min(prevCount + 5, blogList.length));
-  };
+  // Filtered blog list based on search query
+  const filteredBlogs = blogList.filter(
+    (blog) =>
+      blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      blog.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      blog.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (blog.tags &&
+        blog.tags.some((tag) =>
+          tag.toLowerCase().includes(searchQuery.toLowerCase()),
+        )),
+  );
 
   return (
     <div>
-      <h2>Blog List</h2>
+      <div className="flex justify-between items-center">
+        <h2>Blog List</h2>
+        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      </div>
       <br />
+
       <Timeline
         sx={{
           [`& .${timelineItemClasses.root}:before`]: {
@@ -43,36 +56,51 @@ export default function BlogList() {
         }}
         className="flex flex-col gap-4"
       >
-        {blogList &&
-          blogList.slice(0, displayCount).map((blog) => (
-            <TimelineItem key={blog.title + blog.author + blog.date}>
-              <TimelineSeparator>
-                <TimelineDot />
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <Fade triggerOnce duration={1500} direction="up">
-                  <Link href={blog.link}>
-                    <div key={blog.title}>
-                      <h3 className="link-hover">{blog.title}</h3>
-                      <div className="flex md:flex-row gap-4">
+        {filteredBlogs.slice(0, displayCount).map((blog) => (
+          <TimelineItem key={blog.title + blog.author + blog.date}>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Fade triggerOnce duration={1500} direction="up">
+                <Link href={blog.link}>
+                  <div key={blog.title}>
+                    <h3 className="link-hover">{blog.title}</h3>
+                    <div className="flex justify-between items-center">
+                      <div className="flex md:flex-row gap-4 py-2">
                         <p>{blog.author}</p>
                         <p className="italic">{blog.date}</p>
                       </div>
-                      <p className="leading-5 text-hover">{blog.brief}</p>
+
+                      <div className="flex flex-end gap-2">
+                        {blog.tags.map((tag) => (
+                          <p
+                            className="px-2 rounded-full"
+                            style={{ backgroundColor: "#f9d9a9" }}
+                          >
+                            {tag}
+                          </p>
+                        ))}
+                      </div>
                     </div>
-                  </Link>
-                </Fade>
-              </TimelineContent>
-            </TimelineItem>
-          ))}
+                    <p className="leading-5 text-hover">{blog.brief}</p>
+                  </div>
+                </Link>
+              </Fade>
+            </TimelineContent>
+          </TimelineItem>
+        ))}
       </Timeline>
-      {blogList.length > displayCount && (
-        <div className="flex flex-start justify-center items-center">
+      {filteredBlogs.length > displayCount && (
+        <div className="flex justify-center items-center">
           <Fade triggerOnce duration={1500}>
             <Button
-              onClick={handleShowMore}
-              className="mt-4"
+              onClick={() =>
+                setDisplayCount((prevCount) =>
+                  Math.min(prevCount + 5, filteredBlogs.length),
+                )
+              }
               varient="contained"
               style={{ backgroundColor: "black", color: "white" }}
             >
@@ -84,3 +112,25 @@ export default function BlogList() {
     </div>
   );
 }
+
+const SearchBar = ({ searchQuery, setSearchQuery }) => {
+  return (
+    <div className="flex space-x-4 mb-4">
+      <TextField
+        variant="outlined"
+        label="Search Blogs"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="flex-1"
+      />
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setSearchQuery("")}
+        style={{ backgroundColor: "black", color: "white" }}
+      >
+        Clear
+      </Button>
+    </div>
+  );
+};

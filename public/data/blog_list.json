@@ -4,6 +4,7 @@
     "date": "29th-Dec-2023",
     "author": "rNLKJA",
     "link": "/blogs/data",
+    "tags": ["Data Science", "Business", "SMEs", "Analytics", "Case Studies"],
     "brief": "In the contemporary business landscape, data science has emerged as a pivotal force, particularly for Small and Medium-sized Enterprises (SMEs). It democratizes access to insightful analytics, allowing SMEs to make informed decisions, understand customer needs better, optimize operations, and uncover new market opportunities. With practical case studies from Stitch Fix's personalized shopping experience to Zara's supply chain revolution, SMEs are proving that strategic use of data science can lead to significant competitive advantages. Despite challenges like budget constraints and the need for expertise, the future looks promising with accessible tools, growing AI advancements, and community support paving the way for SMEs to thrive in a data-driven economy."
   },
   {
@@ -11,6 +12,14 @@
     "date": "31th-Dec-2023",
     "link": "/blogs/2024-new-year-milestone",
     "author": "Sunchuangyu Huang",
+    "tags": [
+      "Personal Development",
+      "New Year",
+      "Career",
+      "Freelancing",
+      "Inspiration"
+    ],
+
     "brief": "As 2023 unfolds, I've embarked on a transformative journey with the start of my master's degree, a period of self-discovery and contemplation about my future identity and aspirations. Although faced with confusion and without significant achievements initially, a turning point came with my internship at HEX, where I realized the commonality of shared ideas and the importance of making them a reality. This realization prompted me to rebuild my profile website and set concrete goals for 2024, aiming to embrace freelance work, document my life through blogs, vlogs, and podcasts, and continually explore new ventures. This blog marks the beginning of an ambitious journey, hoping to inspire others to pursue their dreams in the coming year."
   },
   {
@@ -18,6 +27,13 @@
     "date": "1st-Jan-2024",
     "link": "/blogs/exploring-key-programming-concepts-through-real-world-case-studies",
     "author": "rNLKJA",
+    "tags": [
+      "Programming",
+      "Concepts",
+      "Case Studies",
+      "Continuous Learning",
+      "Community"
+    ],
     "brief": "In this exploration of key programming concepts through real-world case studies, we delve into the importance of logical reasoning, solid foundations, comprehensive documentation, hands-on practice, understanding various programming paradigms, and the value of community and continuous learning. From Google's complex search algorithms and Unix's influential operating system to Python's extensive documentation, Spotify's innovative feature development, the versatility of JavaScript paradigms, and the collaborative power of open-source projects on platforms like GitHub, this guide underscores the indispensable principles that every developer should understand. These case studies not only highlight the practical application of these concepts but also serve as a valuable resource for further exploration and growth in the ever-evolving field of programming."
   }
 ]
