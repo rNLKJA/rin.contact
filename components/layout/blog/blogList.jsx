@@ -78,6 +78,7 @@ export default function BlogList() {
                           <p
                             className="px-2 rounded-full"
                             style={{ backgroundColor: "#f9d9a9" }}
+                            key={Date.now() + Math.random()}
                           >
                             {tag}
                           </p>
