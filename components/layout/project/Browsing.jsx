@@ -67,7 +67,9 @@ export default function ProjectsBrowsing() {
         </div>
       </Fade>
 
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Fade duration={1500} triggerOnce direction="right">
+        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      </Fade>
 
       {filteredProjects.slice(0, displayCount).map((project) => (
         <ProjectContent {...project} key={project.title} />

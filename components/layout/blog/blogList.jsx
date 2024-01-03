@@ -43,7 +43,12 @@ export default function BlogList() {
     <div>
       <div className="flex justify-between items-center">
         <h2>Blog List</h2>
-        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <Fade duration={1500} triggerOnce direction="right">
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+        </Fade>
       </div>
       <br />
 
