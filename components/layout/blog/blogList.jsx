@@ -116,7 +116,7 @@ export default function BlogList() {
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
   return (
-    <div className="flex space-x-4 mb-4">
+    <div className="flex space-x-4 my-4">
       <TextField
         variant="outlined"
         label="Search Blogs"
