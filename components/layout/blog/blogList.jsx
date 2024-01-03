@@ -80,7 +80,7 @@ export default function BlogList() {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 pb-2">
                       {blog.tags.map((tag) => (
                         <p
                           className="px-2 rounded-full"
