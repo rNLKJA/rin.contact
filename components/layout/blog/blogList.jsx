@@ -41,7 +41,7 @@ export default function BlogList() {
 
   return (
     <div>
-      <div className="flex justify-between items-center">
+      <div className="flex md:flex-row xs:flex-col justify-between items-center">
         <h2>Blog List</h2>
         <Fade duration={1500} triggerOnce direction="right">
           <SearchBar

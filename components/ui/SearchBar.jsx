@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 
 export const SearchBar = ({ searchQuery, setSearchQuery }) => {
   return (
-    <div className="flex space-x-4 my-4">
+    <div className="flex space-x-4 my-2">
       <TextField
         variant="outlined"
         label="Search Content"
