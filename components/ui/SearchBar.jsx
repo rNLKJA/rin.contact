@@ -7,7 +7,7 @@ export const SearchBar = ({ searchQuery, setSearchQuery }) => {
     <div className="flex space-x-4 my-4">
       <TextField
         variant="outlined"
-        label="Search Content View by Title, Author, Date, or Tag"
+        label="Search Content"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="flex-1"
