@@ -3,7 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import { Box, Typography } from "@mui/material";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs/docco";
-import BlogAuthor from "../components/specific/BlogAuthor";
+import BlogAuthor from "@/components/specific/blogAuthor";
 
 export default function BlogContent() {
   return (
