@@ -3,6 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import { Box, Typography } from "@mui/material";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs/docco";
+import BlogAuthor from "@/components/specific/BlogAuthor";
 
 export default function BlogContent() {
   return (
@@ -11,6 +12,8 @@ export default function BlogContent() {
         <Typography variant="h4" component="h1">
           Intermediate SQL for Data Scientists: Enhancing Your Analysis Skills
         </Typography>
+
+        <BlogAuthor author="rNLKJA" date="4th-Jan-2024" />
         <Typography paragraph className="leading-8">
           In this blog post, we delve into the world of intermediate SQL
           concepts, a pivotal tool in any data scientist's arsenal. SQL, or
