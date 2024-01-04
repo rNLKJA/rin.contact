@@ -52,9 +52,9 @@ export const DesktopHeader = () => {
           <AnimatedLink href="/blogs" IconComponent={BookIcon}>
             Blogs
           </AnimatedLink>
-          <AnimatedLink href="/data-science" IconComponent={HistoryEduIcon}>
+          {/* <AnimatedLink href="/data-science" IconComponent={HistoryEduIcon}>
             DS Study
-          </AnimatedLink>
+          </AnimatedLink> */}
           <AnimatedLink href="/contact" IconComponent={EmailIcon}>
             Contact
           </AnimatedLink>
@@ -115,11 +115,11 @@ export const MobileHeader = () => {
             <BookIcon /> Blogs
           </Link>
         </MenuItem>
-        <MenuItem onClick={() => setIsOpen(null)}>
+        {/* <MenuItem onClick={() => setIsOpen(null)}>
           <Link href="/data-science">
             <HistoryEduIcon /> DS Study
           </Link>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={() => setIsOpen(null)}>
           <Link href="/contact">
             <EmailIcon /> Contact
