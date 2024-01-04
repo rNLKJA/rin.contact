@@ -32,7 +32,8 @@
     "react-pageflip": "^2.0.3",
     "react-pdf": "^7.6.0",
     "react-pdf-viewer": "^0.1.0",
-    "react-redux": "^9.0.4"
+    "react-redux": "^9.0.4",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
