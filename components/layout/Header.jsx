@@ -11,6 +11,7 @@ import WorkIcon from "@mui/icons-material/WorkOutline";
 import BookIcon from "@mui/icons-material/BookOutlined";
 import EmailIcon from "@mui/icons-material/EmailOutlined";
 import HistoryEduIcon from "@mui/icons-material/HistoryEduOutlined";
+import AnimatedLink from "../ui/AnimatedLink";
 
 const Header = () => {
   return (
@@ -41,22 +42,22 @@ export const DesktopHeader = () => {
         </Link>
       </Fade>
       <Fade triggerOnce duration={1500} direction="right">
-        <nav className="space-x-4">
-          <Link className="link-hover px-2 mr-4" href="/about-me">
-            <InfoIcon /> About Me
-          </Link>
-          <Link className="link-hover px-2 mr-4" href="/projects">
-            <WorkIcon /> Projects
-          </Link>
-          <Link className="link-hover px-2 mr-4" href="/blogs">
-            <BookIcon /> Blogs
-          </Link>
-          <Link className="link-hover px-2 mr-4" href="/data-science">
-            <HistoryEduIcon /> DS Study
-          </Link>
-          <Link className="link-hover px-2 mr-4" href="/contact">
-            <EmailIcon /> Contact
-          </Link>
+        <nav className="flex flex-row space-x-4 gap-5 ease-in-out transition-all whitespace-nowrap">
+          <AnimatedLink href="/about-me" IconComponent={InfoIcon}>
+            About Me
+          </AnimatedLink>
+          <AnimatedLink href="/projects" IconComponent={WorkIcon}>
+            Projects
+          </AnimatedLink>
+          <AnimatedLink href="/blogs" IconComponent={BookIcon}>
+            Blogs
+          </AnimatedLink>
+          <AnimatedLink href="/data-science" IconComponent={HistoryEduIcon}>
+            DS Study
+          </AnimatedLink>
+          <AnimatedLink href="/contact" IconComponent={EmailIcon}>
+            Contact
+          </AnimatedLink>
         </nav>
       </Fade>
     </div>
@@ -116,7 +117,7 @@ export const MobileHeader = () => {
         </MenuItem>
         <MenuItem onClick={() => setIsOpen(null)}>
           <Link href="/data-science">
-            <BookIcon /> DS Study
+            <HistoryEduIcon /> DS Study
           </Link>
         </MenuItem>
         <MenuItem onClick={() => setIsOpen(null)}>

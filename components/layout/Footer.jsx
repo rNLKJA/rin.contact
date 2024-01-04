@@ -4,7 +4,6 @@ import { FiGithub } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/legacy/image";
 import { Fade } from "react-awesome-reveal";
-import IconButton from "@mui/material/IconButton";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Button from "@mui/material/Button";
 
@@ -79,39 +78,21 @@ const Footer = () => {
                   Xiaohongshu
                 </a>
               </div>
-              <div className="flex items-center gap-3">
-                <FaInstagram />
-                <a
-                  className="link-hover"
-                  href="https://www.instagram.com/chuangyu_hscy/"
-                  alt="Instagram"
-                  target="_blank"
-                >
-                  Instagram
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <FaLinkedin />
-                <a
-                  className="link-hover"
-                  href="https://www.linkedin.com/in/sunchuangyuhuang/"
-                  alt="LinkedIn"
-                  target="_blank"
-                >
-                  LinkedIn
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <FiGithub />
-                <a
-                  className="link-hover"
-                  href="https://github.com/rNLKJA"
-                  alt="GitHub"
-                  target="_blank"
-                >
-                  GitHub
-                </a>
-              </div>
+              <FooterIconLink
+                href="https://www.instagram.com/chuangyu_hscy/"
+                IconComponent={FaInstagram}
+                content="Instagram"
+              />
+              <FooterIconLink
+                href="https://www.linkedin.com/in/sunchuangyuhuang/"
+                IconComponent={FaLinkedin}
+                content="LinkedIn"
+              />
+              <FooterIconLink
+                href="https://github.com/rNLKJA"
+                IconComponent={FiGithub}
+                content="GitHub"
+              />
             </div>
           </div>
         </Fade>
@@ -122,20 +103,14 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row justify-between p-4">
         <p>
           © {year}{" "}
-          {/* Correct usage of Link component for internal navigation */}
           <Link className="link-hover" href="/">
             rNLKJA
           </Link>
           . All rights reserved.
         </p>
         <div className="flex space-x-4 justify-center mt-4 md:mt-0">
-          {/* Internal navigation should use Link component */}
-          <Link className="link-hover" href="/privacy-policy">
-            Privacy Policy
-          </Link>
-          <Link className="link-hover" href="/terms-of-service">
-            Terms of Service
-          </Link>
+          <FooterLink href="/privacy-policy">Privacy Policy</FooterLink>
+          <FooterLink href="/terms-of-service">Terms of Services</FooterLink>
         </div>
       </div>
 
@@ -175,3 +150,22 @@ const Footer = () => {
 };
 
 export default Footer;
+
+function FooterLink({ href, children }) {
+  return (
+    <Link className="link-hover" href={href}>
+      {children}
+    </Link>
+  );
+}
+
+function FooterIconLink({ href, IconComponent, content }) {
+  return (
+    <div className="flex items-center gap-3">
+      <IconComponent />
+      <a className="link-hover" href={href} alt={content} target="_blank">
+        {content}
+      </a>
+    </div>
+  );
+}
