@@ -2,7 +2,7 @@ import React from "react";
 import { Fade } from "react-awesome-reveal";
 import { Box, Typography } from "@mui/material";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco as style } from "react-syntax-highlighter/dist/cjs/styles/hljs/darcula";
+import { docco as style } from "react-syntax-highlighter/dist/cjs/styles/hljs/docco";
 
 export default function BlogContent() {
   return (
