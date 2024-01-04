@@ -69,7 +69,7 @@ class MyDocument extends Document {
           />
 
           <link rel="canonical" href="https://rin.contact" />
-          <link rel="alternate" hreflang="x" href="https://x.rin.contact/" />
+          <link rel="alternate" hrefLang="x" href="https://x.rin.contact/" />
 
           <meta property="highschool" content="安顺第二高级中学" />
           <meta property="高中" content="安顺第二高级中学" />
