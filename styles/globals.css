@@ -118,7 +118,7 @@ body {
 }
 
 .link-hover:hover {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #ff6f61; /* or any color you want for highlighting */
   cursor: pointer; /* changes the cursor to indicate it's clickable */
 }
