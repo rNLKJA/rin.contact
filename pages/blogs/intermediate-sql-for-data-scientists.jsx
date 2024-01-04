@@ -2,7 +2,7 @@ import React from "react";
 import { Fade } from "react-awesome-reveal";
 import { Box, Typography } from "@mui/material";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { docco as style } from "react-syntax-highlighter/dist/cjs/styles/hljs/darcula";
 
 export default function BlogContent() {
   return (
@@ -38,7 +38,7 @@ export default function BlogContent() {
           component="pre"
           sx={{ overflow: "auto", bgcolor: "#f5f5f5", p: 2, borderRadius: 1 }}
         >
-          <SyntaxHighlighter language="sql" style={docco}>
+          <SyntaxHighlighter language="sql" style={style}>
             {`SELECT AVG(salary) 
 FROM employees 
 WHERE department = 'Sales';`}
@@ -62,12 +62,11 @@ WHERE department = 'Sales';`}
           component="pre"
           sx={{ overflow: "auto", bgcolor: "#f5f5f5", p: 2, borderRadius: 1 }}
         >
-          <SyntaxHighlighter language="sql" style={docco}>
+          <SyntaxHighlighter language="sql" style={style}>
             {`SELECT department, COUNT(*) 
 FROM employees 
 GROUP BY department
-HAVING 
-    COUNT(*) {">"} 10;`}
+HAVING COUNT(*) {">"} 10;`}
           </SyntaxHighlighter>
         </Box>
 
@@ -85,11 +84,11 @@ HAVING
           component="pre"
           sx={{ overflow: "auto", bgcolor: "#f5f5f5", p: 2, borderRadius: 1 }}
         >
-          <SyntaxHighlighter language="sql" style={docco}>
+          <SyntaxHighlighter language="sql" style={style}>
             {`SELECT employees.name, departments.name 
 FROM  employees 
-INNER JOIN
-    departments ON employees.department_id = departments.id`}
+INNER JOIN departments 
+ON employees.department_id = departments.id`}
           </SyntaxHighlighter>
         </Box>
 
@@ -111,7 +110,7 @@ INNER JOIN
           component="pre"
           sx={{ overflow: "auto", bgcolor: "#f5f5f5", p: 2, borderRadius: 1 }}
         >
-          <SyntaxHighlighter language="sql" style={docco}>
+          <SyntaxHighlighter language="sql" style={style}>
             {`SELECT CONCAT(first_name, ' ', last_name) AS full_name 
 FROM employees;`}
           </SyntaxHighlighter>
@@ -133,13 +132,10 @@ FROM employees;`}
           component="pre"
           sx={{ overflow: "auto", bgcolor: "#f5f5f5", p: 2, borderRadius: 1 }}
         >
-          <SyntaxHighlighter language="sql" style={docco}>
-            {`SELECT 
-    department, SUM(salary) 
-FROM 
-    employees 
-GROUP BY department
-    WITH ROLLUP;`}
+          <SyntaxHighlighter language="sql" style={style}>
+            {`SELECT department, SUM(salary) 
+FROM employees 
+GROUP BY department WITH ROLLUP;`}
           </SyntaxHighlighter>
         </Box>
 
@@ -158,9 +154,8 @@ GROUP BY department
           component="pre"
           sx={{ overflow: "auto", bgcolor: "#f5f5f5", p: 2, borderRadius: 1 }}
         >
-          <SyntaxHighlighter language="sql" style={docco}>
-            {`SELECT 
-    name, salary, 
+          <SyntaxHighlighter language="sql" style={style}>
+            {`SELECT name, salary, 
     AVG(salary) OVER (PARTITION BY department) AS
             avg_department_salary 
 FROM employees;`}
@@ -183,7 +178,7 @@ FROM employees;`}
           component="pre"
           sx={{ overflow: "auto", bgcolor: "#f5f5f5", p: 2, borderRadius: 1 }}
         >
-          <SyntaxHighlighter language="sql" style={docco}>
+          <SyntaxHighlighter language="sql" style={style}>
             {`WITH recursive_cte AS 
 (
     SELECT id, name 
