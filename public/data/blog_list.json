@@ -34,5 +34,20 @@
       "Community"
     ],
     "brief": "In this exploration of key programming concepts through real-world case studies, we delve into the importance of logical reasoning, solid foundations, comprehensive documentation, hands-on practice, understanding various programming paradigms, and the value of community and continuous learning. From Google's complex search algorithms and Unix's influential operating system to Python's extensive documentation, Spotify's innovative feature development, the versatility of JavaScript paradigms, and the collaborative power of open-source projects on platforms like GitHub, this guide underscores the indispensable principles that every developer should understand. These case studies not only highlight the practical application of these concepts but also serve as a valuable resource for further exploration and growth in the ever-evolving field of programming."
+  },
+  {
+    "title": "Intermediate SQL for Data Scientists: Enhancing Your Analysis Skills",
+    "date": "03-Jan-2024",
+    "link": "/blogs/intermediate-sql-for-data-scientists/",
+    "author": "rNLKJA",
+    "tags": [
+      "SQL",
+      "Data Analysis",
+      "Statistical Measures",
+      "Data Munging",
+      "Window Functions",
+      "CTEs"
+    ],
+    "brief": "Dive into intermediate SQL concepts vital for any data scientist. Master statistical measures, understand grouping and filtering, learn joining and combining data, and explore advanced techniques like data munging, window functions, and Common Table Expressions (CTEs). This guide not only elaborates on these essential skills but also provides practical insights and examples, empowering you to leverage SQL for more effective data analysis and decision-making. Enhance your data manipulation and analysis skills with this in-depth exploration."
   }
 ]
