@@ -10,18 +10,28 @@ import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isXSmall = useMediaQuery(theme.breakpoints.down("xs"));
+  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMedium = useMediaQuery(theme.breakpoints.down("md"));
+  const isLarge = useMediaQuery(theme.breakpoints.down("lg"));
   const router = useRouter();
-  const isNot404 = router.pathname !== "/404";
+
+  const determineMaxWidth = () => {
+    if (isXSmall) return "100%"; // Tailwind CSS's 'xs'
+    if (isSmall) return "640px"; // Tailwind CSS's 'sm'
+    if (isMedium) return "768px"; // Tailwind CSS's 'md'
+    if (isLarge) return "1024px"; // Tailwind CSS's 'lg'
+    return "1280px"; // Tailwind CSS's 'xl' and '2xl'
+  };
 
   return (
     <Container
-      maxWidth={isMobile ? "xs" : "lg"}
+      maxWidth={false} // Disable the maxWidth of MUI Container
       style={{
-        width: isMobile ? "100%" : "1200px",
+        maxWidth: determineMaxWidth(),
         backgroundColor: "#ffffff",
       }}
-      className="flex flex-col h-screen justify-between"
+      className="flex flex-col min-h-screen justify-between" // 'min-h-screen' to ensure the footer is at the bottom
     >
       <Head>
         <title>Pawsibly Rin</title>

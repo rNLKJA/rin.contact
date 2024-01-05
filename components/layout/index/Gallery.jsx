@@ -50,7 +50,6 @@ const GallerySection = () => {
               href={"/projects"}
               style={{
                 backgroundColor: "black",
-                "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.6)" },
               }}
             >
               See All Projects

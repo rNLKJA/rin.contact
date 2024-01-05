@@ -8,6 +8,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Button from "@mui/material/Button";
 import Head from "next/head";
 import { CiCoffeeBean, CiCalendar } from "react-icons/ci";
+import { SiVirginmedia } from "react-icons/si";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -86,96 +87,74 @@ const Footer = () => {
           <br />
         </div>
 
-        <Fade triggerOnce direction="right" duration={1500}>
-          <div className="tablet:col-span-2 laptop: flex-col text-left">
-            <h3>Schedule with me</h3>
-            <br />
-            <div
-              className="flex flex-col md:flex-row gap-2 md:gap-2 justify-between"
-              style={{ width: "400px" }}
+        <div className="text-left flex flex-col h-full">
+          <p className="font-bold text-2xl">Schedule with me</p>
+          <br />
+          <div className="flex flex-start space-x-4 items-center p-3">
+            <CiCoffeeBean className="text-2xl" />
+            <p
+              onClick={handleCoffeeCalendlyClick}
+              className="text-lg leading-loose link-hover"
             >
-              <div
-                className="flex flex-start space-x-4 items-center"
-                style={{ minWidth: "140px" }}
-              >
-                <CiCoffeeBean style={{ fontSize: "24px" }} />
-                <a
-                  href="#"
-                  onClick={handleCoffeeCalendlyClick}
-                  style={{ fontSize: "18px", padding: "12px" }}
-                >
-                  Coffee Chat?
-                </a>
-              </div>
-              <div
-                className="flex space-x-4 items-center"
-                style={{ minWidth: "140px" }}
-              >
-                <CiCalendar style={{ fontSize: "24px" }} />
-                <a
-                  href="#"
-                  onClick={handleCoffeeCalendlyClick}
-                  style={{ fontSize: "18px", padding: "12px" }}
-                >
-                  Business Talk?
-                </a>
-              </div>
-            </div>
-
-            <br />
-
-            <h3>Follow me</h3>
-            <br />
-            <div className="flex flex-col md:flex-row flex-start gap-8 justify-center md:justify-start">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/footer/redbook.svg"
-                  width={20}
-                  height={20}
-                  alt="litteredbook"
-                  layout="fixed"
-                />
-                <a
-                  className="link-hover"
-                  href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
-                  alt="little red book"
-                  target="_blank"
-                >
-                  Xiaohongshu
-                </a>
-              </div>
-              <FooterIconLink
-                href="https://www.instagram.com/chuangyu_hscy/"
-                IconComponent={FaInstagram}
-                content="Instagram"
-              />
-              <FooterIconLink
-                href="https://www.linkedin.com/in/sunchuangyuhuang/"
-                IconComponent={FaLinkedin}
-                content="LinkedIn"
-              />
-              <FooterIconLink
-                href="https://github.com/rNLKJA"
-                IconComponent={FiGithub}
-                content="GitHub"
-              />
-            </div>
+              Coffee Chat?
+            </p>
           </div>
-        </Fade>
+          <div className="flex space-x-4 items-center p-3">
+            <CiCalendar className="text-2xl" />
+            <p
+              onClick={handleBusinessCalendlyClick}
+              className="text-lg leading-loose link-hover"
+            >
+              Business Talk?
+            </p>
+          </div>
+        </div>
+
+        <div className="text-left flex flex-col h-full">
+          <p className="font-bold text-2xl">Follow me</p>
+          <br />
+          <div className="flex flex-col tablet:flex-wrap gap-8 justify-center">
+            <FooterIconLink
+              IconComponent={SiVirginmedia}
+              href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
+              content="Xiaohongshu"
+              styleClasses="p-3 text-2xl text-lg "
+            />
+            <FooterIconLink
+              href="https://www.instagram.com/chuangyu_hscy/"
+              IconComponent={FaInstagram}
+              content="Instagram"
+              styleClasses="p-3 text-2xl text-lg "
+            />
+            <FooterIconLink
+              href="https://www.linkedin.com/in/sunchuangyuhuang/"
+              IconComponent={FaLinkedin}
+              content="LinkedIn"
+              styleClasses="p-3 text-2xl text-lg "
+            />
+            <FooterIconLink
+              href="https://github.com/rNLKJA"
+              IconComponent={FiGithub}
+              content="GitHub"
+              styleClasses="p-3 text-2xl text-lg "
+            />
+          </div>
+        </div>
       </div>
 
       <hr className="my-4" />
 
-      <div className="flex flex-col md:flex-row justify-between p-4">
+      <div className="flex flex-col items-center justify-center md:flex-col lg:flex-row lg:justify-between">
         <p>
           © 2020-{year}{" "}
-          <Link className="link-hover" href="/">
+          <Link className="link-hover mx-2" href="/">
             rNLKJA
           </Link>
           . All rights reserved.
         </p>
-        <div className="flex space-x-4 justify-center mt-4 md:mt-0">
+        <div className="flex space-x-4 justify-center ">
           <FooterLink href="/privacy-policy">Privacy Policy</FooterLink>
+
           <FooterLink href="/terms-of-service">Terms of Services</FooterLink>
         </div>
       </div>
@@ -187,7 +166,7 @@ const Footer = () => {
             className="flex flex-start"
             style={{
               position: "fixed",
-              bottom: "20px",
+              bottom: "150px",
               right: "20px",
               backgroundColor: isHovered ? "black" : "white",
               color: isHovered ? "white" : "black",
