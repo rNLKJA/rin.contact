@@ -6,6 +6,8 @@ import Image from "next/legacy/image";
 import { Fade } from "react-awesome-reveal";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Button from "@mui/material/Button";
+import Head from "next/head";
+import { CiCoffeeBean, CiCalendar } from "react-icons/ci";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -25,6 +27,27 @@ const Footer = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  const handleCoffeeCalendlyClick = (e) => {
+    e.preventDefault();
+    Calendly.initPopupWidget({
+      url: "https://calendly.com/huangsunchuangyu/coffee-chat",
+    });
+  };
+
+  const handleBusinessCalendlyClick = (e) => {
+    e.preventDefault();
+    Calendly.initPopupWidget({
+      url: "https://calendly.com/huangsunchuangyu/business",
+    });
+  };
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -34,6 +57,13 @@ const Footer = () => {
 
   return (
     <footer className="pt-10 pb-10 ">
+      <Head>
+        <link
+          href="https://assets.calendly.com/assets/external/widget.css"
+          rel="stylesheet"
+        />
+      </Head>
+
       <div className="grid md:grid-cols-4 grid-cols-1 gap-10 items-center text-center ">
         <div className="md:col-span-2">
           <div className="inline-block">
@@ -58,6 +88,34 @@ const Footer = () => {
 
         <Fade triggerOnce direction="right" duration={1500}>
           <div className="tablet:col-span-2 laptop: flex-col text-left">
+            <h4>Schedule with me</h4>
+            <br />
+            <div
+              className="flex flex-col md:flex-row gap-4 justify-between "
+              style={{ width: "300px" }}
+            >
+              <div
+                className="flex flex-start space-x-4 items-center"
+                // style={{ width: "200px" }}
+              >
+                <CiCoffeeBean />
+                <a href="#" onClick={handleCoffeeCalendlyClick}>
+                  Coffee Chat?
+                </a>
+              </div>
+              <div
+                className="flex space-x-4 items-center"
+                // style={{ width: "200px" }}
+              >
+                <CiCalendar />
+                <a href="#" onClick={handleCoffeeCalendlyClick}>
+                  Business Talk?
+                </a>
+              </div>
+            </div>
+
+            <br />
+
             <h4>Follow me</h4>
             <br />
             <div className="flex flex-col md:flex-row flex-start gap-8 justify-center md:justify-start">
