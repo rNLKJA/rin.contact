@@ -8,7 +8,7 @@ export default function BlogBrowsing() {
   return (
     <Fade triggerOnce duration={1500} direction="left" fraction={0.5}>
       <div className="px-4">
-        <h2>The Meow-nificent Blog for Digital Crafters 🧶</h2>
+        <h1>The Meow-nificent Blog for Digital Crafters 🧶</h1>
 
         <div className="grid md:grid-cols-2 py-10 px-4 gap-10">
           <div className="flex col-span-1 justify-center items-center">
@@ -57,13 +57,13 @@ export const StarredBlog = () => {
   return (
     <div className="flex flex-col flex-start gap-5">
       <div className="flex justify-between">
-        <h3>⭐ Starred</h3>
+        <h2>⭐ Starred</h2>
       </div>
       <Link href="/blogs/data/">
-        <h4 className="link-hover">
+        <p className="link-hover">
           The Transformative Impact of Data Science on Business Efficiency and
           Growth
-        </h4>
+        </p>
         <div className="flex flex-row justify-between">
           <p>rNLKJA</p>
           <p>29th-Dec-2023</p>
@@ -92,11 +92,11 @@ export const LatestBlog = () => {
 
   return (
     <div className="flex flex-col flex-start gap-5 ">
-      <h3>📅 Latest Post</h3>
+      <h2>📅 Latest Post</h2>
 
       {latestBlogData && latestBlogData.title && (
         <Link href={latestBlogData.link}>
-          <h4 className="link-hover">{latestBlogData.title}</h4>
+          <p className="link-hover">{latestBlogData.title}</p>
           <div className="flex flex-row justify-between">
             <p>{latestBlogData.author}</p>
             <p>{latestBlogData.date}</p>
@@ -132,7 +132,7 @@ const DailyQuotes = () => {
       {" "}
       {dailyQuote.text && (
         <div className="daily-quote">
-          <h3>Daily Inspiration</h3>
+          <h2>Daily Inspiration</h2>
           <br />
           <p>
             "{dailyQuote.text}" - {dailyQuote.author}

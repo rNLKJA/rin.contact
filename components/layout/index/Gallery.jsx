@@ -37,7 +37,7 @@ const GallerySection = () => {
 
       <div className="flex flex-col gap-5">
         <div>
-          <h3 className="">My Recent Project</h3>
+          <h2 className="">My Recent Project</h2>
         </div>
         {recentProject && (
           <div className="flex flex-col gap-4">

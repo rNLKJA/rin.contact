@@ -88,27 +88,35 @@ const Footer = () => {
 
         <Fade triggerOnce direction="right" duration={1500}>
           <div className="tablet:col-span-2 laptop: flex-col text-left">
-            <h4>Schedule with me</h4>
+            <h3>Schedule with me</h3>
             <br />
             <div
-              className="flex flex-col md:flex-row gap-4 justify-between "
-              style={{ width: "300px" }}
+              className="flex flex-col md:flex-row gap-2 md:gap-2 justify-between"
+              style={{ width: "400px" }}
             >
               <div
                 className="flex flex-start space-x-4 items-center"
-                // style={{ width: "200px" }}
+                style={{ minWidth: "140px" }}
               >
-                <CiCoffeeBean />
-                <a href="#" onClick={handleCoffeeCalendlyClick}>
+                <CiCoffeeBean style={{ fontSize: "24px" }} />
+                <a
+                  href="#"
+                  onClick={handleCoffeeCalendlyClick}
+                  style={{ fontSize: "18px", padding: "12px" }}
+                >
                   Coffee Chat?
                 </a>
               </div>
               <div
                 className="flex space-x-4 items-center"
-                // style={{ width: "200px" }}
+                style={{ minWidth: "140px" }}
               >
-                <CiCalendar />
-                <a href="#" onClick={handleCoffeeCalendlyClick}>
+                <CiCalendar style={{ fontSize: "24px" }} />
+                <a
+                  href="#"
+                  onClick={handleCoffeeCalendlyClick}
+                  style={{ fontSize: "18px", padding: "12px" }}
+                >
                   Business Talk?
                 </a>
               </div>
@@ -116,7 +124,7 @@ const Footer = () => {
 
             <br />
 
-            <h4>Follow me</h4>
+            <h3>Follow me</h3>
             <br />
             <div className="flex flex-col md:flex-row flex-start gap-8 justify-center md:justify-start">
               <div className="flex items-center gap-3">
@@ -160,7 +168,7 @@ const Footer = () => {
 
       <div className="flex flex-col md:flex-row justify-between p-4">
         <p>
-          © {year}{" "}
+          © 2020-{year}{" "}
           <Link className="link-hover" href="/">
             rNLKJA
           </Link>
@@ -220,7 +228,7 @@ function FooterLink({ href, children }) {
 function FooterIconLink({ href, IconComponent, content }) {
   return (
     <div className="flex items-center gap-3">
-      <IconComponent />
+      <IconComponent style={{ fontSize: "24px" }} />
       <a className="link-hover" href={href} alt={content} target="_blank">
         {content}
       </a>

@@ -8,7 +8,7 @@ class MyDocument extends Document {
         <Head>
           <meta
             name="description"
-            content="Personal Profile website for Rin Huang"
+            content="Data Scientist Rin Huang: Explore my tech insights and data-driven solutions to real-world problems using modern tools"
           />
           <meta name="author-full-name" content="Sunchuangyu Huang" />
           <meta name="author-prefer-name" content="Rin Huang" />
@@ -36,7 +36,7 @@ class MyDocument extends Document {
           <meta property="og:title" content="rNLKJA's Portfolio" />
           <meta
             property="og:description"
-            content="Explore my data science projects and read my latest tech insights."
+            content="Explore Rin Huang's data science projects and read his latest thoughts on tech, data science and life."
           />
           <meta
             property="og:image"
@@ -77,6 +77,10 @@ class MyDocument extends Document {
           <meta property="姓名" content="Sunchuangyu Huang" />
 
           <meta charSet="utf-8" />
+
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="canonical" href="https://rin.contact" />
+          <meta name="theme-color" content="#f5f5f5" />
         </Head>
         <body>
           <Main />

@@ -17,9 +17,9 @@ import { TbBrandNextjs } from "react-icons/tb";
 export default function Biography() {
   return (
     <div className="flex flex-col px-4 gap-3">
-      <h2 className="leading-20 pb-10">
+      <h1 className="leading-20 pb-10">
         🐾 Paws and Progress The Journey Begins
-      </h2>
+      </h1>
 
       <Fade triggerOnce>
         <Section1 />

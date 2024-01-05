@@ -1,0 +1,3 @@
+# robots.txt
+User-agent: *
+Disallow: /api/  # Block web crawlers from accessing your API routes

@@ -34,24 +34,24 @@ const ContactSection = () => {
 
           <br />
 
-          <div className="grid md:grid-cols-2 gap-3">
-            <div className="flex items-center gap-3">
-              <TfiEmail style={{ fontSize: "1.5rem" }} />
+          <div className="grid md:grid-cols-2 gap-2">
+            <div className="flex items-center gap-8">
+              <TfiEmail style={{ fontSize: "24px" }} />
               <div className="flex flex-col">
-                <a
+                <p
                   href="mailto:huangsunchuangyu@gmail.com"
                   className="font-bold"
                 >
                   Email
-                </a>
-                <a href="mailto:huangsunchuangyu@gmail.com">
+                </p>
+                <p href="mailto:huangsunchuangyu@gmail.com">
                   huang@rin.contact
-                </a>
+                </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <RiWechat2Line style={{ fontSize: "1.5rem" }} />
+            <div className="flex items-center gap-8">
+              <RiWechat2Line style={{ fontSize: "24px" }} />
               <div className="flex flex-col">
                 <p className="font-bold">WeChat</p>
                 <p>+86 138 8533 0703</p>
@@ -59,18 +59,18 @@ const ContactSection = () => {
             </div>
           </div>
           <br />
-          <div className="grid md:grid-cols-2 gap-3">
-            <div className="flex items-center gap-3">
-              <HiOutlinePhone style={{ fontSize: "1.5rem" }} />
+          <div className="grid md:grid-cols-2 gap-2 items-center ">
+            <div className="flex items-center gap-8">
+              <HiOutlinePhone style={{ fontSize: "24px" }} />
               <div className="flex flex-col">
                 <p className="font-bold">Phone</p>
                 <p>+61 450 270 703</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <CiLocationOn style={{ fontSize: "1.5rem" }} />
-              <div className="flex flex-col">
+            <div className="flex items-center gap-8">
+              <CiLocationOn style={{ fontSize: "24px" }} />
+              <div className="flex flex-col ">
                 <p className="font-bold">Location</p>
                 <p>Melbourne</p>
               </div>
