@@ -113,7 +113,7 @@ const Footer = () => {
         <div className="text-left flex flex-col h-full">
           <p className="font-bold text-2xl">Follow me</p>
           <br />
-          <div className="flex flex-col tablet:flex-wrap gap-8 justify-center">
+          <div className="flex flex-col tablet:flex-wrap justify-center">
             <FooterIconLink
               IconComponent={SiVirginmedia}
               href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
@@ -206,9 +206,14 @@ function FooterLink({ href, children }) {
 
 function FooterIconLink({ href, IconComponent, content }) {
   return (
-    <div className="flex items-center gap-3">
-      <IconComponent style={{ fontSize: "24px" }} />
-      <a className="link-hover" href={href} alt={content} target="_blank">
+    <div className="flex space-x-4 items-center p-3">
+      <IconComponent className="text-2xl" />
+      <a
+        className="link-hover text-lg leading-loose link-hover"
+        href={href}
+        alt={content}
+        target="_blank"
+      >
         {content}
       </a>
     </div>
