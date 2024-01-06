@@ -6,7 +6,6 @@ import HeroHeaderSection from "@/components/layout/index/Hero-Header";
 import CtaSection from "@/components/layout/index/CTA";
 import ContactSection from "@/components/layout/index/Contact";
 import AboutSection from "@/components/layout/index/About";
-import Footer from "@/components/layout/Footer";
 import GallerySection from "@/components/layout/index/Gallery";
 import PageTransition from "../components/PageTransition";
 

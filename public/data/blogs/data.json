@@ -5,7 +5,7 @@
   "content": [
     {
       "type": "image",
-      "src": "/article/more-about-data-science/data-intro.png",
+      "src": "/images/article/more-about-data-science/data-intro.png",
       "alt": "data-intro",
       "laytout": "responsive",
       "height": 500,
@@ -24,7 +24,7 @@
     },
     {
       "type": "image-content",
-      "image": "/article/more-about-data-science/data-case.png",
+      "image": "/images/article/more-about-data-science/data-case.png",
       "content": [
         {
           "type": "list",
@@ -53,7 +53,7 @@
 
     {
       "type": "content-image",
-      "image": "/article/more-about-data-science/data-solution.png",
+      "image": "/images/article/more-about-data-science/data-solution.png",
       "content": [
         {
           "type": "content",

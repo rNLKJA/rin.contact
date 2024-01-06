@@ -64,7 +64,7 @@ export const Section1 = () => {
           >
             <CardMedia
               component="img"
-              image="/about-me/rin.svg"
+              image="/images/about-me/rin.svg"
               alt="rin"
               className="object-cover w-full"
               style={{ height: "100%" }}
@@ -226,7 +226,7 @@ export const Section4 = () => {
     <div className="grid md:grid-cols-2 justify-center items-center py-10 px-4 gap-10">
       <div className="flex justify-center items-center">
         <Image
-          src="/about-me/coffee.svg"
+          src="/images/about-me/coffee.svg"
           alt="coffee"
           width={250}
           height={250}

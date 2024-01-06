@@ -47,7 +47,7 @@ export default function ProjectsBrowsing() {
           <div className="grid md:grid-cols-2 gap-4 py-10 px-4 items-center">
             <div className="flex justify-center items-center">
               <Image
-                src="/project/working-cat.png"
+                src="/images/project/working-cat.png"
                 width={280}
                 height={280}
                 layout="fixed"

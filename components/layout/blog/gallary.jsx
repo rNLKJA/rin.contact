@@ -13,7 +13,7 @@ export default function BlogBrowsing() {
         <div className="grid md:grid-cols-2 py-10 px-4 gap-10">
           <div className="flex col-span-1 justify-center items-center">
             <ImageLoader
-              src="/blog/melbourne-style.png"
+              src="/images/blog/melbourne-style.png"
               width={400}
               height={400}
               alt="melbourne style"

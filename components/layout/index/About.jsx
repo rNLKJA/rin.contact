@@ -21,7 +21,7 @@ const AboutSection = () => {
       <div>
         <Zoom triggerOnce>
           <Image
-            src="/index/about-curious-cat.svg"
+            src="/images/index/about-curious-cat.svg"
             alt="about image"
             width={300}
             height={300}

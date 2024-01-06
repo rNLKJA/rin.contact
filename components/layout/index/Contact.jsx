@@ -12,7 +12,7 @@ const ContactSection = () => {
       <div className="order-first md:order-last flex flex-col justify-center gap-5">
         <Zoom triggerOnce>
           <Image
-            src="/index/connection.svg"
+            src="/images//index/connection.svg"
             alt="connection image"
             width={250}
             height={250}
