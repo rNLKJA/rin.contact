@@ -4,6 +4,15 @@
   "date": "31th-Dec-2023",
   "content": [
     {
+      "type": "image",
+      "src": "/article/more-about-data-science/data-intro.png",
+      "alt": "data-intro",
+      "laytout": "responsive",
+      "height": 500,
+      "width": 800,
+      "objectFit": "cover"
+    },
+    {
       "type": "content",
       "subTitle": "",
       "content": "In an era where information is power, data science has emerged as a transformative force in the business world. For SMEs, which often operate with limited resources and tight budgets, the ability to extract meaningful insights from data can level the playing field, allowing them to compete with larger corporations. Data science encompasses a range of techniques and tools, from predictive analytics to machine learning, all aimed at helping businesses understand and leverage their data."

@@ -1,9 +1,13 @@
 // pages/blogs/[filename].js
-import { ConstructionOutlined } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import Typography from "@mui/material/Typography";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import docco from "react-syntax-highlighter/dist/cjs/styles/hljs/docco";
+import DOMPurify from "dompurify";
+
+const highlighterStyle = docco;
 
 const BlogPost = () => {
   const router = useRouter();
@@ -75,7 +79,7 @@ const HeaderComponent = ({ title, author, date }) => {
 const ContentComponent = ({ item }) => {
   switch (item.type) {
     case "image":
-      return <img src={item.image} alt="Blog" className="w-full" />;
+      return <ImageComponent content={item} />;
     case "content":
       return <Content content={item} />;
     case "image-content":
@@ -83,7 +87,7 @@ const ContentComponent = ({ item }) => {
     case "content-image":
       return <ContentImage content={item} />;
     case "code":
-      return <pre>{item.content}</pre>;
+      return <Code content={item} />;
     case "reference":
       return <Reference content={item.content} />;
     case "list":
@@ -92,11 +96,56 @@ const ContentComponent = ({ item }) => {
       return null;
   }
 };
+
+const Code = ({ content }) => {
+  return (
+    <Box
+      component="pre"
+      sx={{ overflow: "auto", bgcolor: "#f5f5f5", p: 2, borderRadius: 1 }}
+    >
+      <SyntaxHighlighter language={content.lang} style={highlighterStyle}>
+        {content.code}
+      </SyntaxHighlighter>
+    </Box>
+  );
+};
+
+const ImageComponent = ({ content }) => {
+  // Default responsive settings for the image
+  const defaultWidth = 600; // Adjust as needed
+  const defaultHeight = 400; // Adjust as needed
+  const defaultLayout = "fixed"; // Adjust as needed
+  const defaultObjectFit = "cover"; // Adjust as needed
+
+  return (
+    <div className="flex items-center justify-center w-full">
+      <Image
+        src={content.src}
+        alt={content.alt}
+        width={content.width || defaultWidth}
+        height={content.height || defaultHeight}
+        layout={content.layout || defaultLayout}
+        priority={true}
+        objectFit={content.objectFit || defaultObjectFit}
+      />
+    </div>
+  );
+};
+
 const Content = ({ content }) => {
+  // Sanitize the content to prevent XSS attacks
+  const sanitizedContent = DOMPurify.sanitize(content.content);
+
   return (
     <div className="flex flex-col gap-2 my-2">
-      {content.subTitle && <h2 className="font-bold">{content.subTitle}</h2>}
-      <Typography paragraph>{content.content}</Typography>
+      {content.subTitle && <h2>{content.subTitle}</h2>}
+
+      {sanitizedContent && (
+        <Typography
+          paragraph
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+        ></Typography>
+      )}
     </div>
   );
 };
