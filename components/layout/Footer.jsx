@@ -58,13 +58,6 @@ const Footer = () => {
 
   return (
     <footer className="pt-10 pb-10 ">
-      <Head>
-        <link
-          href="https://assets.calendly.com/assets/external/widget.css"
-          rel="stylesheet"
-        />
-      </Head>
-
       <div className="grid md:grid-cols-4 grid-cols-1 gap-10 items-center text-center ">
         <div className="md:col-span-2">
           <div className="inline-block">
@@ -78,32 +71,27 @@ const Footer = () => {
               priority
             />
           </div>
-          <p className="text-pretty">
-            Fueling the future with purr-cision and cutting-edge data science
-            technology, I enthusiastically craft a trail of endless
-            pawssibilities, unleashing extraordinary potential with each
-            innovative leap.
-          </p>
+
           <br />
         </div>
 
         <div className="text-left flex flex-col h-full">
-          <p className="font-bold text-2xl">Schedule with me</p>
+          <p className="font-bold text-xl">Schedule with me</p>
           <br />
-          <div className="flex flex-start space-x-4 items-center p-3">
-            <CiCoffeeBean className="text-2xl" />
+          <div className="flex flex-start space-x-4 items-center p-1">
+            <CiCoffeeBean className="text-xl" />
             <p
               onClick={handleCoffeeCalendlyClick}
-              className="text-lg leading-loose link-hover"
+              className="text-md link-hover"
             >
               Coffee Chat?
             </p>
           </div>
-          <div className="flex space-x-4 items-center p-3">
-            <CiCalendar className="text-2xl" />
+          <div className="flex space-x-4 items-center p-1">
+            <CiCalendar className="text-xl" />
             <p
               onClick={handleBusinessCalendlyClick}
-              className="text-lg leading-loose link-hover"
+              className="text-md  link-hover"
             >
               Business Talk?
             </p>
@@ -111,7 +99,7 @@ const Footer = () => {
         </div>
 
         <div className="text-left flex flex-col h-full">
-          <p className="font-bold text-2xl">Follow me</p>
+          <p className="font-bold text-xl">Follow me</p>
           <br />
           <div className="flex flex-col tablet:flex-wrap justify-center">
             <FooterIconLink
@@ -141,6 +129,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      <p className="text-pretty">
+        Fueling the future with purr-cision and cutting-edge data science
+        technology, I enthusiastically craft a trail of endless pawssibilities,
+        unleashing extraordinary potential with each innovative leap.
+      </p>
 
       <hr className="my-4" />
 
@@ -206,10 +200,10 @@ function FooterLink({ href, children }) {
 
 function FooterIconLink({ href, IconComponent, content }) {
   return (
-    <div className="flex space-x-4 items-center p-3">
-      <IconComponent className="text-2xl" />
+    <div className="flex space-x-4 items-center p-1">
+      <IconComponent className="text-xl" />
       <a
-        className="link-hover text-lg leading-loose link-hover"
+        className="link-hover text-md  link-hover"
         href={href}
         alt={content}
         target="_blank"
