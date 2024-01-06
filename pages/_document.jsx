@@ -7,6 +7,10 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          <link
+            href="https://assets.calendly.com/assets/external/widget.css"
+            rel="stylesheet"
+          />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
