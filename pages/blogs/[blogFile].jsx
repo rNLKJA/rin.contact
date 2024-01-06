@@ -21,7 +21,7 @@ const BlogPost = () => {
       }
 
       try {
-        const response = await fetch(`/${blogFile}.json`);
+        const response = await fetch(`/data/blogs/${blogFile}.json`);
         if (!response.ok) {
           throw new Error(
             `Failed to fetch data: ${response.status} ${response.statusText}`,
