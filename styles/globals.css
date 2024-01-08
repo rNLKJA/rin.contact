@@ -64,7 +64,7 @@ span {
   @apply text-base md:text-base;
 }
 
-/* Responsive Design Adjustments */
+/* Responsive Design Adjustments
 @media (min-width: 768px) {
   body {
     max-width: 768px;
@@ -75,7 +75,7 @@ span {
   body {
     max-width: 1200px;
   }
-}
+} */
 
 /* Utility */
 * {
