@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
@@ -29,6 +29,7 @@ const Page = () => {
   const [date, setDate] = useState("");
   const [selectedContentType, setSelectedContentType] = useState("");
   const [contentInput, setContentInput] = useState("");
+  const fileInputRef = useRef(null);
 
   const addSection = (layout) => {
     const newSection = {
@@ -39,29 +40,18 @@ const Page = () => {
     setSections([...sections, newSection]);
   };
 
-  const addContentToSection = (index) => {
+  const handleFileChange = (index, e) => {
+    const file = e.target.files[0];
+    const filePath = URL.createObjectURL(file);
+    addContentToSection(index, selectedContentType, filePath);
+  };
+
+  const addContentToSection = (index, type, data) => {
     const updatedSections = [...sections];
-    const newContent = {
-      type: selectedContentType,
-      data: contentInput,
-      isEditable: true,
-    };
+    const newContent = { type, data: data || contentInput, isEditable: true };
     updatedSections[index].content.push(newContent);
     setSections(updatedSections);
     setContentInput(""); // Clear input after adding
-  };
-
-  const editContentInSection = (sectionIndex, contentIndex) => {
-    const updatedSections = [...sections];
-    updatedSections[sectionIndex].content[contentIndex].isEditable = true;
-    setSections(updatedSections);
-  };
-
-  const updateContentInSection = (sectionIndex, contentIndex, newData) => {
-    const updatedSections = [...sections];
-    updatedSections[sectionIndex].content[contentIndex].data = newData;
-    updatedSections[sectionIndex].content[contentIndex].isEditable = false;
-    setSections(updatedSections);
   };
 
   const deleteSection = (index) => {
@@ -79,17 +69,84 @@ const Page = () => {
     console.log(JSON.stringify(pageData));
   };
 
+  const renderContent = (content) => {
+    switch (content.type) {
+      case "image":
+        return (
+          <img
+            src={content.data}
+            alt="Uploaded"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "300px",
+              objectFit: "contain",
+            }}
+          />
+        );
+      case "file":
+        return <a href={content.data}>Download File</a>;
+      default:
+        return <p>{content.data}</p>;
+    }
+  };
+
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh", p: 3 }}>
       <Container maxWidth="lg">
-        {/* Existing inputs and layout */}
+        <Grid container spacing={2} alignItems="center">
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              label="Page Title"
+              value={pageTitle}
+              onChange={(e) => setPageTitle(e.target.value)}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} display="flex" justifyContent="flex-end">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={savePage}
+              style={{ backgroundColor: "black" }}
+            >
+              Save Page
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <InputLabel id="author-label">Author</InputLabel>
+            <TextField
+              fullWidth
+              labelId="author-label"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <InputLabel id="date-label">Date</InputLabel>
+            <TextField
+              fullWidth
+              labelId="date-label"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              margin="normal"
+            />
+          </Grid>
+        </Grid>
         {sections.map((section, index) => (
           <Paper
             key={index}
             elevation={3}
             sx={{ p: 2, my: 2, position: "relative" }}
           >
-            {/* Existing delete button */}
+            <Button
+              onClick={() => deleteSection(index)}
+              sx={{ position: "absolute", top: 10, right: 10 }}
+            >
+              <DeleteIcon />
+            </Button>
             <FormControl fullWidth sx={{ mb: 2 }}>
               <InputLabel id="content-type-label">Content Type</InputLabel>
               <Select
@@ -105,21 +162,42 @@ const Page = () => {
                 ))}
               </Select>
             </FormControl>
-            <TextField
-              fullWidth
-              label="Content"
-              value={contentInput}
-              onChange={(e) => setContentInput(e.target.value)}
-              margin="normal"
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => addContentToSection(index)}
-              style={{ backgroundColor: "black", marginTop: "10px" }}
-            >
-              Add Content
-            </Button>
+            {selectedContentType === "file" ||
+            selectedContentType === "image" ? (
+              <Button
+                variant="contained"
+                component="label"
+                style={{ backgroundColor: "black", marginTop: "10px" }}
+              >
+                Upload File
+                <input
+                  type="file"
+                  hidden
+                  onChange={(e) => handleFileChange(index, e)}
+                  ref={fileInputRef}
+                />
+              </Button>
+            ) : (
+              <>
+                <TextField
+                  fullWidth
+                  label="Content"
+                  value={contentInput}
+                  onChange={(e) => setContentInput(e.target.value)}
+                  margin="normal"
+                />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() =>
+                    addContentToSection(index, selectedContentType)
+                  }
+                  style={{ backgroundColor: "black", marginTop: "10px" }}
+                >
+                  Add Content
+                </Button>
+              </>
+            )}
             <Grid container spacing={2}>
               {section.content.map((content, cIndex) => (
                 <Grid
@@ -127,30 +205,29 @@ const Page = () => {
                   xs={12}
                   lg={section["section-grid-layout"] === 1 ? 12 : 6}
                   key={cIndex}
-                  onDoubleClick={() => editContentInSection(index, cIndex)}
                 >
                   <Paper elevation={1} sx={{ p: 2, minHeight: "150px" }}>
-                    {content.isEditable ? (
-                      <TextField
-                        fullWidth
-                        value={content.data}
-                        onChange={(e) =>
-                          updateContentInSection(index, cIndex, e.target.value)
-                        }
-                        onBlur={() =>
-                          updateContentInSection(index, cIndex, content.data)
-                        }
-                      />
-                    ) : (
-                      <p>{content.data}</p>
-                    )}
+                    {renderContent(content)}
                   </Paper>
                 </Grid>
               ))}
             </Grid>
           </Paper>
         ))}
-        {/* Existing section add buttons */}
+        <Button
+          variant="contained"
+          onClick={() => addSection(1)}
+          style={{ marginRight: "10px", backgroundColor: "black" }}
+        >
+          Add Full-Width Section
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => addSection(2)}
+          style={{ backgroundColor: "black" }}
+        >
+          Add Grid-2 Section
+        </Button>
       </Container>
     </Box>
   );
