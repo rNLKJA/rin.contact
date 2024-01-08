@@ -13,6 +13,7 @@ const BlogPost = () => {
   const router = useRouter();
   const [data, setData] = useState();
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,8 +25,15 @@ const BlogPost = () => {
         return;
       }
 
+      const timeout = setTimeout(() => {
+        setError("404: Data not found");
+        setIsLoading(false);
+      }, 15000);
+
       try {
         const response = await fetch(`/data/blogs/${blogFile}.json`);
+        clearTimeout(timeout);
+
         if (!response.ok) {
           throw new Error(
             `Failed to fetch data: ${response.status} ${response.statusText}`,
@@ -34,17 +42,27 @@ const BlogPost = () => {
         const jsonData = await response.json();
         console.log(jsonData);
         setData(jsonData);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(error.message);
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, [router.isReady, router.query.filename]);
 
-  if (!data) {
+  if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!data) {
+    return <div>404: Data not found</div>;
   }
 
   return (
