@@ -9,6 +9,7 @@ After months of ideation and development, I'm excited to introduce the latest it
 - [Hello there (ฅ'ω'ฅ) it's rNLKJA here!](#hello-there-ฅωฅ-its-rnlkja-here)
   - [Table of Content](#table-of-content)
   - [Tech Stack](#tech-stack)
+  - [Documentation](#documentation)
   - [Getting Started](#getting-started)
   - [Project Structure](#project-structure)
   - [Deployment](#deployment)
@@ -25,6 +26,12 @@ The site is built using the following technologies:
 - **React**: A JavaScript library for building user interfaces with reusable components.
 - **TailwindCSS**: A utility-first CSS framework for creating custom designs without leaving your HTML.
 - **Additional Libraries**: `react-icons`, `bootstrap`, `mui`, `react-awesome-reveal`, etc., which provide ready-to-use components and animations.
+- **Database**: use MongoDB free tier to store data. Data base is hosted on MongoDB Atlas Sydney server.
+
+## Documentation
+
+- For website polling, follow documentation at [app.earser.io](https://app.eraser.io/workspace/juqNSio2wyvFy79ovWRI?origin=share)
+- For project planner, refer to [projectplanner.ai]()
 
 ## Getting Started
 
