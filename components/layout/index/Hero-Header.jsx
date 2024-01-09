@@ -145,9 +145,9 @@ const PdfViewer = ({ open, handleClose }) => {
             allowFullScreen
           ></iframe>
 
-          <p id="modal-modal-description">
+          {/* <p id="modal-modal-description">
             You can download my resume by clicking the link below.
-          </p>
+          </p> */}
           <Button
             href={pdfUrl}
             download="RinHuangResume.pdf"
