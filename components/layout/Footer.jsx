@@ -76,12 +76,12 @@ const Footer = () => {
         </div>
 
         <div className="text-left flex flex-col h-full gap-2">
-          <p className="font-bold text-lg">Schedule with me</p>
+          <p className="font-bold text-lg text-pretty">Schedule </p>
           <div className="flex flex-start space-x-4 items-center p-1">
             <CiCoffeeBean className="text-xl" />
             <p
               onClick={handleCoffeeCalendlyClick}
-              className="text-md link-hover"
+              className="text-sm link-hover"
             >
               Coffee Chat?
             </p>
@@ -90,7 +90,7 @@ const Footer = () => {
             <CiCalendar className="text-xl" />
             <p
               onClick={handleBusinessCalendlyClick}
-              className="text-md  link-hover"
+              className="text-sm link-hover"
             >
               Business Talk?
             </p>
@@ -202,7 +202,7 @@ function FooterIconLink({ href, IconComponent, content }) {
     <div className="flex space-x-4 items-center p-1">
       <IconComponent className="text-xl" />
       <a
-        className="link-hover text-md  link-hover"
+        className="link-hover text-sm link-hover"
         href={href}
         alt={content}
         target="_blank"
