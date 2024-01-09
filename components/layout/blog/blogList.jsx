@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
 import Button from "@mui/material/Button";
@@ -12,20 +12,31 @@ import {
 } from "@mui/lab";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
 import { SearchBar } from "../../ui/SearchBar";
+import { useQuery } from "@tanstack/react-query";
+
+async function fetchBlogList() {
+  const response = await fetch("/data/blog_list.json");
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return response.json();
+}
 
 export default function BlogList() {
-  const [blogList, setBlogList] = useState([]);
   const [displayCount, setDisplayCount] = useState(5);
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    fetch("/data/blog_list.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setBlogList(data.reverse());
-      })
-      .catch((error) => console.log(error));
-  }, []);
+  const {
+    data: blogList,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["blogList"],
+    queryFn: fetchBlogList,
+  });
+
+  if (isLoading) return "Loading...";
+  if (error) return "An error has occurred: " + error.message;
 
   // Filtered blog list based on search query
   const filteredBlogs = blogList.filter(
