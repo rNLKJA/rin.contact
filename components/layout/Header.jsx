@@ -34,7 +34,7 @@ export const DesktopHeader = () => {
             alt="Logo"
             width={50}
             height={50}
-            quality={25}
+            quality={75}
             layout="fixed"
             priority
           />
@@ -84,8 +84,8 @@ export const MobileHeader = () => {
         <Image
           src="/logo.svg"
           alt="Logo"
-          width={80}
-          height={80}
+          width={50}
+          height={50}
           quality={75}
           layout="fixed"
           priority
