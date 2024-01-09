@@ -55,12 +55,12 @@ export default function Biography() {
 
 export const Section1 = () => {
   return (
-    <div className="grid md:grid-cols-2 gap-20 justify-center items-center px-4 pb-10">
-      <div className="flex justify-center">
+    <div className="grid md:grid-cols-3 gap-5 justify-center items-center ">
+      <div className="flex justify-center col-span-1">
         <Zoom triggerOnce>
           <Card
             className="w-full max-w-md md:max-w-lg lg:max-w-xl"
-            style={{ position: "relative", height: "350px", width: "350px" }}
+            style={{ position: "relative", height: "300px", width: "300px" }}
           >
             <CardMedia
               component="img"
@@ -72,11 +72,11 @@ export const Section1 = () => {
           </Card>
         </Zoom>
       </div>
-      <div>
-        <p className="font-bold leading-10">
+      <div className="col-span-2">
+        <p className="font-bold leading-8 text-pretty">
           Hello, I'm Rin, a curious kitty in the vast world of data science.
         </p>
-        <p className="leading-10">
+        <p className="leading-8 text-pretty">
           Just like a cat exploring every nook of its territory, I hail from the
           cozy corners of{" "}
           <a href="https://en.wikipedia.org/wiki/Anshun" className="italic ">
@@ -107,7 +107,7 @@ export const Section2 = () => {
           🌟 Starry-Eyed Explorer: Education and Passion
         </h2>
 
-        <p className="leading-10">
+        <p className="leading-8">
           <span className="font-bold">
             Currently, I'm sharpening my claws in a rigorous Master's program{" "}
           </span>
@@ -190,11 +190,11 @@ export const Section3 = () => {
           🛠️ Toolbox of Treats: Skills and Experience
         </h2>
         <br />
-        <p className="font-bold leading-10">
+        <p className="font-bold leading-8">
           My toolbox is a treasure chest filled with the fanciest gadgets:
         </p>
         <br />
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-2">
           {techStack.map((tech) => (
             <div
               key={tech.name}
@@ -208,7 +208,7 @@ export const Section3 = () => {
 
         <br />
 
-        <p className="leading-10">
+        <p className="leading-8">
           I've roamed the real-world jungles with{" "}
           <a className="italic" href="https://www.csiro.au/en/">
             CSIRO
@@ -246,11 +246,11 @@ export const Section4 = () => {
           🌈 Curiosity and Coffee: Beyond the Data
         </h2>
         <br />
-        <p className="font-bold leading-10">
+        <p className="font-bold leading-8 text-pretty">
           I'm not just any data kitty; I'm a feline fanatic for new experiences
           and continuous learning.
         </p>
-        <p className="leading-10">
+        <p className="leading-8 text-pretty">
           My journey is sprinkled with certifications and a love affair with
           Melbourne's coffee spots. Like a cat basking in the sun, I find joy in
           balancing analytical rigor with creative exploration.
@@ -269,10 +269,10 @@ export const Section5 = () => {
           🤝 Whisker Whispers: Team Contribution and Connection
         </h2>
         <br />
-        <p className="font-bold leading-10">
+        <p className="font-bold leading-8">
           As you consider welcoming a new member to your pack,
         </p>
-        <p className="leading-10">
+        <p className="leading-10 text-pretty">
           know that I bring more than just a sharp mind and nimble paws. I bring
           a heart full of curiosity and a spirit of adventure. Let's have a
           purr-fect coffee chat, and I'll show you how, together, we can make
