@@ -63,10 +63,32 @@ const ScrollArrow = styled.div`
   ${({ isLeft }) => (isLeft ? "left: 10px;" : "right: 10px;")}
 `;
 
+const ScrollHint = styled.div`
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: rgba(0, 0, 0);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px #f8f8f8;
+  font-size: 14px;
+`;
+
 const Home = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(undefined);
   const sectionsRef = useRef([]);
   const [currentSection, setCurrentSection] = useState(0);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+
+  useEffect(() => {
+    // 延时隐藏滚动提示
+    const timer = setTimeout(() => {
+      setShowScrollHint(false);
+    }, 10000); // 5秒后隐藏提示
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const sections = [
     <HeroHeaderSection />,
@@ -76,8 +98,14 @@ const Home = () => {
     <ContactSection />,
   ];
 
+  const infiniteSections = [
+    ...sections.slice(-1),
+    ...sections,
+    ...sections.slice(0, 1),
+  ];
+
   const renderSections = () => {
-    return sections.map((SectionComponent, index) => (
+    return infiniteSections.map((SectionComponent, index) => (
       <Section
         key={`section-${index}`}
         ref={(el) => (sectionsRef.current[index] = el)}
@@ -109,7 +137,7 @@ const Home = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
       let newCurrentSection = currentSection;
 
       for (let i = 0; i < sectionsRef.current.length; i++) {
@@ -128,7 +156,7 @@ const Home = () => {
       }
 
       if (newCurrentSection !== currentSection) {
-        setCurrentSection(newCurrentSection);
+        setCurrentSection(newCurrentSection % sections.length);
       }
     };
 
@@ -141,20 +169,14 @@ const Home = () => {
         window.removeEventListener("scroll", handleScroll);
       }
     };
-  }, [currentSection, isLargeScreen]);
+  }, [currentSection, isLargeScreen, sections.length]);
 
   const renderLargeScreenLayout = () => (
     <PageTransition>
       <HorizontalScrollContainer>{renderSections()}</HorizontalScrollContainer>
-      <ScrollDotContainer>
-        {sections.map((_, index) => (
-          <ScrollDot
-            key={index}
-            isActive={currentSection === index}
-            onClick={() => scrollToSection(index)}
-          />
-        ))}
-      </ScrollDotContainer>
+      {showScrollHint && (
+        <ScrollHint>Scroll horizontally to see more &rarr;</ScrollHint>
+      )}
     </PageTransition>
   );
 
