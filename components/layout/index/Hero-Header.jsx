@@ -20,11 +20,24 @@ const HeroHeaderSection = () => {
     <div>
       <div className="grid md:grid-cols-2 gap-5 pb-10 px-4 pb-10 items-center">
         <div>
-          <h1>Inspring, Innovation & Unlock the Power of Data Analytics</h1>
+          {" "}
+          <Zoom triggerOnce>
+            <Image
+              src="/images/index/heroSection.png"
+              alt="hero section image"
+              width={1100}
+              height={650}
+              layout="responsive"
+              sizes="(max-width: 768px) 100vw, 768px"
+              quality={50}
+            />
+          </Zoom>
         </div>
 
         <div>
-          <p>
+          <h1>Inspring, Innovation & Unlock the Power of Data Analytics</h1>
+          <br />
+          <p className="leading-8">
             Embrace the Meow-gic of Data and Modern Tech: Inspurr & Innovate
             with Expert Guidance with{" "}
             <a
@@ -61,19 +74,6 @@ const HeroHeaderSection = () => {
           </div>
         </div>
       </div>
-      <br />
-      <br />
-      <Zoom triggerOnce>
-        <Image
-          src="/images//index/heroSection.png"
-          alt="hero section image"
-          width={1100}
-          height={650}
-          layout="responsive"
-          sizes="(max-width: 768px) 100vw, 768px"
-          quality={50}
-        />
-      </Zoom>
 
       {isMobile
         ? // Mobile view: Display simplified content with links

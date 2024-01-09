@@ -1,7 +1,7 @@
-import React from "react";
-import Container from "@mui/material/Container";
+"use client";
 
-import Header from "@/components/layout/Header";
+import React from "react";
+
 import HeroHeaderSection from "@/components/layout/index/Hero-Header";
 import CtaSection from "@/components/layout/index/CTA";
 import ContactSection from "@/components/layout/index/Contact";

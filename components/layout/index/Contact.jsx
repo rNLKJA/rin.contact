@@ -26,7 +26,7 @@ const ContactSection = () => {
         <div className="flex flex-col justify-center">
           <h2>Get in Touch</h2>
           <br />
-          <p className="leading-10">
+          <p className="leading-8">
             I'm absolutely paw-sitive I'd love to hear from you! If you have any
             questions or are thinking about collaborating, just pawse for a
             moment and reach out – I'm all whiskers and ears! 🐾

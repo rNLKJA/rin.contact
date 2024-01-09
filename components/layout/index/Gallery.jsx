@@ -21,8 +21,8 @@ const GallerySection = () => {
   const recentProject = projects[projects.length - 1];
 
   return (
-    <div className="grid md:grid-cols-2 py-10 px-4 justify-center items-center">
-      <div className="flex justify-center items-center">
+    <div className="grid  py-10 px-4 justify-center items-center">
+      {/* <div className="flex justify-center items-center">
         <Zoom triggerOnce>
           <Image
             src="/images/index/project_thumbnail.svg"
@@ -33,27 +33,26 @@ const GallerySection = () => {
             layout="responsive"
           />
         </Zoom>
-      </div>
+      </div> */}
 
       <div className="flex flex-col gap-5">
-        <div>
-          <h2 className="">My Recent Project</h2>
+        <div className="flex justify-between items-center">
+          <h2>Latest Project</h2>
+          <Button
+            variant="contained"
+            color="primary"
+            href={"/projects"}
+            style={{
+              backgroundColor: "black",
+            }}
+          >
+            See All Projects
+          </Button>
         </div>
         {recentProject && (
           <div className="flex flex-col gap-4">
-            <h2>{recentProject.title}</h2>
+            <p className="font-bold text-lg">{recentProject.title}</p>
             <p>{recentProject.description}</p>
-
-            <Button
-              variant="contained"
-              color="primary"
-              href={"/projects"}
-              style={{
-                backgroundColor: "black",
-              }}
-            >
-              See All Projects
-            </Button>
           </div>
         )}
       </div>
