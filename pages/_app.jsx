@@ -1,34 +1,16 @@
 import "../styles/globals.css";
 import { AnimatePresence } from "framer-motion";
 import Container from "@mui/material/Container";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { DefaultSeo } from "next-seo";
-import { useRouter } from "next/router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
-  const theme = useTheme();
-  const isXSmall = useMediaQuery(theme.breakpoints.down("xs"));
-  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMedium = useMediaQuery(theme.breakpoints.down("md"));
-  const isLarge = useMediaQuery(theme.breakpoints.down("lg"));
-
-  const determineMaxWidth = () => {
-    if (isXSmall) return "100%";
-    if (isSmall) return "640px";
-    if (isMedium) return "768px";
-    if (isLarge) return "1024px";
-    return "1280px";
-  };
-
   return (
-    <Container
-      maxWidth={false}
-      style={{ maxWidth: determineMaxWidth(), backgroundColor: "#ffffff" }}
-      className="flex flex-col min-h-screen justify-between"
-    >
+    <Container className="flex flex-col min-h-screen justify-between">
       <DefaultSeo
         title="Pawsibly Rin"
         description="Data Scientist Rin Huang: Explore my tech insights and data-driven solutions to real-world problems using modern tools"
@@ -85,9 +67,12 @@ function MyApp({ Component, pageProps }) {
         ]}
       />
       <Header />
-      <AnimatePresence mode="wait">
-        <Component {...pageProps} />
-      </AnimatePresence>
+
+      <QueryClientProvider client={queryClient}>
+        <AnimatePresence mode="wait">
+          <Component {...pageProps} />
+        </AnimatePresence>
+      </QueryClientProvider>
       <Footer />
     </Container>
   );
