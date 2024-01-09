@@ -68,7 +68,6 @@ const Footer = () => {
               height={150}
               quality={25}
               layout="fixed"
-              priority
             />
           </div>
 

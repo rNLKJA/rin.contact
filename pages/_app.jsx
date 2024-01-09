@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
           title: "rNLKJA's Portfolio",
           description:
             "Explore Rin Huang's data science projects and read his latest thoughts on tech, data science and life.",
-          images: [{ url: "https://rin.contact/images/meta-image.png" }],
+          images: [{ url: "https://rin.contact/logo.svg" }],
         }}
         additionalMetaTags={[
           { name: "author-full-name", content: "Sunchuangyu Huang" },
@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }) {
           },
           {
             property: "og:image",
-            content: "https://rin.contact/images/meta-image.png",
+            content: "https://rin.contact/images/logo.svg",
           },
           { property: "highschool", content: "安顺第二高级中学" },
           { property: "高中", content: "安顺第二高级中学" },
@@ -61,10 +61,7 @@ function MyApp({ Component, pageProps }) {
           { name: "viewport", content: "width=device-width, initial-scale=1" },
           { name: "theme-color", content: "#f5f5f5" },
         ]}
-        additionalLinkTags={[
-          { rel: "icon", href: "/favicon.ico" },
-          // Add any additional link tags if needed
-        ]}
+        additionalLinkTags={[{ rel: "icon", href: "/logo.ico" }]}
       />
       <Header />
 
