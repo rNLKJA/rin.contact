@@ -17,7 +17,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 export default function Biography() {
   return (
     <div className="flex flex-col px-4 gap-3">
-      <h1 className="leading-20 pb-10">
+      <h1 className="leading-20 pb-10 text-xl font-bold">
         🐾 Paws and Progress The Journey Begins
       </h1>
 
@@ -100,14 +100,17 @@ export const Section1 = () => {
 
 export const Section2 = () => {
   return (
-    <div className="flex flex-row justify-center items-center pb-10 px-4 ">
+    <div className="flex flex-row justify-center items-center px-4 ">
       <div></div>
       <div>
-        <h2>🌟 Starry-Eyed Explorer: Education and Passion</h2>
-        <p className="font-bold leading-10">
-          Currently, I'm sharpening my claws in a rigorous Master's program
-        </p>
+        <h2 className="text-xl font-bold">
+          🌟 Starry-Eyed Explorer: Education and Passion
+        </h2>
+
         <p className="leading-10">
+          <span className="font-bold">
+            Currently, I'm sharpening my claws in a rigorous Master's program{" "}
+          </span>
           expected to be a full-fledged data whisperer by mid-2024. My whiskers
           twitch at the thought of diving into data pools, extracting shiny
           insights like a cat fishing for its next meal. I've watched the tech
@@ -180,10 +183,12 @@ export const Section3 = () => {
   });
 
   return (
-    <div className="flex flex-row justify-center items-center py-10 px-4">
+    <div className="flex flex-row justify-center items-center px-4">
       <div></div>
       <div>
-        <h2>🛠️ Toolbox of Treats: Skills and Experience</h2>
+        <h2 className="text-xl font-bold">
+          🛠️ Toolbox of Treats: Skills and Experience
+        </h2>
         <br />
         <p className="font-bold leading-10">
           My toolbox is a treasure chest filled with the fanciest gadgets:
@@ -223,7 +228,7 @@ export const Section3 = () => {
 
 export const Section4 = () => {
   return (
-    <div className="grid md:grid-cols-2 justify-center items-center py-10 px-4 gap-10">
+    <div className="grid md:grid-cols-2 justify-center items-center px-4 gap-10">
       <div className="flex justify-center items-center">
         <Image
           src="/images/about-me/coffee.svg"
@@ -237,7 +242,9 @@ export const Section4 = () => {
         />
       </div>
       <div>
-        <h2>🌈 Curiosity and Coffee: Beyond the Data</h2>
+        <h2 className="text-xl font-bold">
+          🌈 Curiosity and Coffee: Beyond the Data
+        </h2>
         <br />
         <p className="font-bold leading-10">
           I'm not just any data kitty; I'm a feline fanatic for new experiences
@@ -258,7 +265,9 @@ export const Section5 = () => {
     <div className="flex flex-row justify-center items-center pt-10 px-4">
       <div></div>
       <div>
-        <h2>🤝 Whisker Whispers: Team Contribution and Connection</h2>
+        <h2 className="text-xl font-bold">
+          🤝 Whisker Whispers: Team Contribution and Connection
+        </h2>
         <br />
         <p className="font-bold leading-10">
           As you consider welcoming a new member to your pack,

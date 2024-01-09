@@ -4,7 +4,9 @@ import Button from "@mui/material/Button";
 const CtaSection = () => {
   return (
     <div className="flex flex-col justify-center items-center pt-10 pb-10 pt-10 pb-10 pl-4 pr-4 ">
-      <h2>Transforming Data into Actionable Insights</h2>
+      <h2 className="font-bold text-lg">
+        Transforming Data into Actionable Insights
+      </h2>
       <p className="leading-10">
         Unlock the power of your data with our expert consultation and project
         discussions.

@@ -24,7 +24,7 @@ const ContactSection = () => {
 
       <Slide triggerOnce>
         <div className="flex flex-col justify-center">
-          <h2>Get in Touch</h2>
+          <h2 className="font-bold text-lg">Get in Touch</h2>
           <br />
           <p className="leading-8">
             I'm absolutely paw-sitive I'd love to hear from you! If you have any

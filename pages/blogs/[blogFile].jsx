@@ -85,7 +85,7 @@ export default BlogPost;
 const HeaderComponent = ({ title, author, date }) => {
   return (
     <div className="flex flex-col gap-2">
-      <h1 className="text-left">{title}</h1>
+      <h1 className="text-left text-2xl font-bold">{title}</h1>
       <div className="flex flex-row space-x-4">
         <Typography>{author}</Typography>
         <Typography>{date}</Typography>
@@ -156,7 +156,9 @@ const Content = ({ content }) => {
 
   return (
     <div className="flex flex-col gap-2 my-2">
-      {content.subTitle && <h2>{content.subTitle}</h2>}
+      {content.subTitle && (
+        <h2 className="font-bold text-lg">{content.subTitle}</h2>
+      )}
 
       {sanitizedContent && (
         <Typography

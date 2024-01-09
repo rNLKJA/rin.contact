@@ -11,6 +11,12 @@ class MyDocument extends Document {
             href="https://assets.calendly.com/assets/external/widget.css"
             rel="stylesheet"
           />
+
+          <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
+
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{

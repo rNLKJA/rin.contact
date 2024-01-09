@@ -37,7 +37,7 @@ const GallerySection = () => {
 
       <div className="flex flex-col gap-5">
         <div className="flex justify-between items-center">
-          <h2>Latest Project</h2>
+          <h2 className="font-bold text-lg">Latest Project</h2>
           <Button
             variant="contained"
             color="primary"

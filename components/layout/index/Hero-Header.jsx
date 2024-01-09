@@ -35,7 +35,9 @@ const HeroHeaderSection = () => {
         </div>
 
         <div>
-          <h1>Inspring, Innovation & Unlock the Power of Data Analytics</h1>
+          <h1 className="font-bold text-lg">
+            Inspring, Innovation & Unlock the Power of Data Analytics
+          </h1>
           <br />
           <p className="leading-8">
             Embrace the Meow-gic of Data and Modern Tech: Inspurr & Innovate
@@ -166,7 +168,7 @@ const PdfViewer = ({ open, handleClose }) => {
 
 const MobileViewContent = () => (
   <div style={{ textAlign: "center", padding: 20 }}>
-    <h2>Welcome!</h2>
+    <h2 className="font-bold">Welcome!</h2>
     <br />
     <p>
       Discover my journey and experiences on LinkedIn or download my resume to

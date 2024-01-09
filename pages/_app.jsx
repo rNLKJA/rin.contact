@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps }) {
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
   const isMedium = useMediaQuery(theme.breakpoints.down("md"));
   const isLarge = useMediaQuery(theme.breakpoints.down("lg"));
-  const router = useRouter();
 
   const determineMaxWidth = () => {
     if (isXSmall) return "100%";

@@ -14,7 +14,7 @@ export default function BlogContent() {
   return (
     <Fade triggerOnce duration={1500} direction="left">
       <div>
-        <h1>Blog Content</h1>
+        <h1 className="text-xl text-bold">Blog Content</h1>
         <p></p>
       </div>
     </Fade>

@@ -57,15 +57,15 @@ const Footer = () => {
   };
 
   return (
-    <footer className="pt-10 pb-10 ">
+    <footer className="py-10 ">
       <div className="grid md:grid-cols-4 grid-cols-1 gap-10 items-center text-center ">
         <div className="md:col-span-2">
           <div className="inline-block">
             <Image
               src="/logo.svg"
               alt="Logo"
-              width={200}
-              height={200}
+              width={150}
+              height={150}
               quality={25}
               layout="fixed"
               priority
@@ -75,9 +75,8 @@ const Footer = () => {
           <br />
         </div>
 
-        <div className="text-left flex flex-col h-full">
-          <p className="font-bold text-xl">Schedule with me</p>
-          <br />
+        <div className="text-left flex flex-col h-full gap-2">
+          <p className="font-bold text-lg">Schedule with me</p>
           <div className="flex flex-start space-x-4 items-center p-1">
             <CiCoffeeBean className="text-xl" />
             <p
@@ -98,9 +97,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="text-left flex flex-col h-full">
-          <p className="font-bold text-xl">Follow me</p>
-          <br />
+        <div className="text-left flex flex-col h-full gap-2">
+          <p className="font-bold text-lg">Follow me</p>
+
           <div className="flex flex-col tablet:flex-wrap justify-center">
             <FooterIconLink
               IconComponent={SiVirginmedia}
@@ -129,7 +128,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
+      <br />
       <p className="text-pretty">
         Fueling the future with purr-cision and cutting-edge data science
         technology, I enthusiastically craft a trail of endless pawssibilities,

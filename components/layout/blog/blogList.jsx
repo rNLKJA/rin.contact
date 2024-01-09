@@ -42,7 +42,7 @@ export default function BlogList() {
   return (
     <div>
       <div className="flex md:flex-row xs:flex-col justify-between items-center">
-        <h2>Blog List</h2>
+        <h2 className="text-xl text-bold">Blog List</h2>
         <Fade duration={1500} triggerOnce direction="right">
           <SearchBar
             searchQuery={searchQuery}
@@ -71,7 +71,7 @@ export default function BlogList() {
               <Fade triggerOnce duration={1500} direction="up">
                 <Link href={blog.link}>
                   <div key={blog.title} className="flex flex-col">
-                    <h3 className="link-hover">{blog.title}</h3>
+                    <h3 className="link-hover font-bold">{blog.title}</h3>
 
                     <div className="flex flex-wrap justify-between items-center">
                       <div className="flex md:flex-row gap-4 py-2">
