@@ -183,19 +183,27 @@ const Home = () => {
   const renderSmallScreenLayout = () => (
     <PageTransition>
       <Fade triggerOnce duration={1500} direction="left">
-        <HeroHeaderSection />
+        <div className="my-20">
+          <HeroHeaderSection />
+        </div>
       </Fade>
       <br />
       <Fade triggerOnce duration={1500} direction="left">
-        <AboutSection />
+        <div className="my-20">
+          <AboutSection />
+        </div>
       </Fade>
       <br />
       <Fade triggerOnce duration={1500} direction="up">
-        <CtaSection />
+        <div className="my-20">
+          <CtaSection />
+        </div>
       </Fade>
       <br />
       <Fade triggerOnce duration={1500} direction="right">
-        <ContactSection />
+        <div className="my-20">
+          <ContactSection />
+        </div>
       </Fade>
     </PageTransition>
   );
