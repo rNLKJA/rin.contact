@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import { SiGithub, SiOverleaf } from "react-icons/si";
 import { Fade } from "react-awesome-reveal";
 import { SearchBar } from "@/components/ui/SearchBar";
+import { ClearButton } from "../../ui/ClearButton";
+import { SearchInput } from "../../ui/SearchInput";
 
 export default function ProjectsBrowsing() {
   const [projects, setProjects] = useState([]);
@@ -27,6 +29,14 @@ export default function ProjectsBrowsing() {
 
   const handleViewMore = () => {
     setDisplayCount((prevCount) => prevCount + 5);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
   };
 
   const filteredProjects = projects.filter(
@@ -68,7 +78,15 @@ export default function ProjectsBrowsing() {
       </Fade>
 
       <Fade duration={1500} triggerOnce direction="right">
-        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <div className="flex flex-row justify-between items-center">
+          <SearchInput
+            type="text"
+            placeholder="Search projects..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <ClearButton onClick={clearSearch}>Clear</ClearButton>
+        </div>
       </Fade>
 
       {filteredProjects.slice(0, displayCount).map((project) => (

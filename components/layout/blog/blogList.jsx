@@ -14,23 +14,8 @@ import { timelineItemClasses } from "@mui/lab/TimelineItem";
 import { SearchBar } from "../../ui/SearchBar";
 import { useQuery } from "@tanstack/react-query";
 
-import styled from "styled-components";
-
-const SearchInput = styled.input`
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-right: 0.5rem;
-`;
-
-const ClearButton = styled.button`
-  background-color: #000000;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-`;
+import { ClearButton } from "../../ui/ClearButton";
+import { SearchInput } from "../../ui/SearchInput";
 
 async function fetchBlogList() {
   const response = await fetch("/data/blog_list.json");
