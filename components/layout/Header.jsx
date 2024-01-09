@@ -86,7 +86,7 @@ export const MobileHeader = () => {
           alt="Logo"
           width={80}
           height={80}
-          quality={25}
+          quality={75}
           layout="fixed"
           priority
         />
