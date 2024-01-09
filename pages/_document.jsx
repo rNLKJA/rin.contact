@@ -1,4 +1,3 @@
-// pages/_document.js
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
@@ -6,17 +5,49 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* Favicon and Apple Touch Icon */}
           <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+
+          {/* SEO & Metadata */}
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="canonical" href="https://rin.contact" />
+          <link
+            rel="alternate"
+            hrefLang="x-default"
+            href="https://rin.contact/"
+          />
+          <link rel="alternate" hrefLang="x" href="https://x.rin.contact/" />
+
+          {/* External CSS and Fonts */}
           <link
             href="https://assets.calendly.com/assets/external/widget.css"
             rel="stylesheet"
           />
-
           <link
             href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
             rel="stylesheet"
           />
 
+          {/* Schema.org JSON-LD */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -41,9 +72,8 @@ class MyDocument extends Document {
               }),
             }}
           />
-          <link rel="canonical" href="https://rin.contact" />
-          <link rel="alternate" hrefLang="x" href="https://x.rin.contact/" />
-          <link rel="canonical" href="https://rin.contact" />
+
+          {/* Add any additional meta tags here as needed */}
         </Head>
         <body>
           <Main />

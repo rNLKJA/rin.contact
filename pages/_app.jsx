@@ -20,7 +20,15 @@ function MyApp({ Component, pageProps }) {
           title: "rNLKJA's Portfolio",
           description:
             "Explore Rin Huang's data science projects and read his latest thoughts on tech, data science and life.",
-          images: [{ url: "https://rin.contact/logo.svg" }],
+          images: [
+            {
+              url: "https://rin.contact/logo.svg",
+              width: 300,
+              height: 300,
+              alt: "thumbnail image",
+            },
+          ],
+          siteName: "rNLKJA's Portfolio",
         }}
         additionalMetaTags={[
           { name: "author-full-name", content: "Sunchuangyu Huang" },
@@ -52,7 +60,7 @@ function MyApp({ Component, pageProps }) {
           },
           {
             property: "og:image",
-            content: "https://rin.contact/images/logo.svg",
+            content: "https://rin.contact/logo.svg",
           },
           { property: "highschool", content: "安顺第二高级中学" },
           { property: "高中", content: "安顺第二高级中学" },
@@ -61,7 +69,17 @@ function MyApp({ Component, pageProps }) {
           { name: "viewport", content: "width=device-width, initial-scale=1" },
           { name: "theme-color", content: "#f5f5f5" },
         ]}
-        additionalLinkTags={[{ rel: "icon", href: "/logo.ico" }]}
+        additionalLinkTags={[
+          {
+            rel: "icon",
+            href: "/logo.ico", // URL of your favicon
+          },
+          {
+            rel: "apple-touch-icon",
+            href: "/logo.svg", // URL of Apple touch icon
+            sizes: "76x76",
+          },
+        ]}
       />
       <Header />
 
