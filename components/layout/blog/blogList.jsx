@@ -14,6 +14,24 @@ import { timelineItemClasses } from "@mui/lab/TimelineItem";
 import { SearchBar } from "../../ui/SearchBar";
 import { useQuery } from "@tanstack/react-query";
 
+import styled from "styled-components";
+
+const SearchInput = styled.input`
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+`;
+
+const ClearButton = styled.button`
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+`;
+
 async function fetchBlogList() {
   const response = await fetch("/data/blog_list.json");
   if (!response.ok) {
@@ -50,15 +68,28 @@ export default function BlogList() {
         )),
   );
 
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+  };
+
   return (
     <div>
       <div className="flex md:flex-row xs:flex-col justify-between items-center">
         <h2 className="text-xl text-bold">Blog List</h2>
         <Fade duration={1500} triggerOnce direction="right">
-          <SearchBar
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-          />
+          <div className="search-bar">
+            <SearchInput
+              type="text"
+              placeholder="Search blogs..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <ClearButton onClick={clearSearch}>Clear</ClearButton>
+          </div>
         </Fade>
       </div>
       <br />

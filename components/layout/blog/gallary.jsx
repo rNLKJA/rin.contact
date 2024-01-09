@@ -136,7 +136,7 @@ const DailyQuotes = () => {
         <div className="daily-quote">
           <h2 className="text-lg text-bold">Daily Inspiration</h2>
           <br />
-          <p>
+          <p className="text-pretty">
             "{dailyQuote.text}" - {dailyQuote.author}
           </p>
         </div>
