@@ -10,7 +10,6 @@ import InfoIcon from "@mui/icons-material/InfoOutlined";
 import WorkIcon from "@mui/icons-material/WorkOutline";
 import BookIcon from "@mui/icons-material/BookOutlined";
 import EmailIcon from "@mui/icons-material/EmailOutlined";
-import HistoryEduIcon from "@mui/icons-material/HistoryEduOutlined";
 import AnimatedLink from "../ui/AnimatedLink";
 
 const Header = () => {
@@ -32,8 +31,8 @@ export const DesktopHeader = () => {
           <Image
             src="/logo.svg"
             alt="Logo"
-            width={80}
-            height={80}
+            width={50}
+            height={50}
             quality={25}
             layout="fixed"
             priority
@@ -42,7 +41,7 @@ export const DesktopHeader = () => {
         </Link>
       </Fade>
       <Fade triggerOnce duration={1500} direction="right">
-        <nav className="flex flex-row space-x-4 gap-5 ease-in-out transition-all whitespace-nowrap">
+        <nav className="flex flex-row space-x-4 gap-4 ease-in-out transition-all">
           <AnimatedLink href="/about-me" IconComponent={InfoIcon}>
             About Me
           </AnimatedLink>

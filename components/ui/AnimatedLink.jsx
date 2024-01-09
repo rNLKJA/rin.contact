@@ -14,15 +14,15 @@ const AnimatedLink = ({ href, IconComponent, children }) => {
     <Tooltip title={children} placement="top" arrow>
       <Link
         href={href}
-        className="relative group mx-2"
+        className="relative group "
         onMouseEnter={handleMouseEnter} // Bind the event handler
         onMouseLeave={handleMouseLeave} // Bind the event handler
       >
         <div className="flex items-center overflow-hidden space-x-2 transition-all duration-300 ease-in-out">
-          {/* Icon as a component, always visible */}
-          <IconComponent />
+          <div className="flex items-center justify-center">
+            <IconComponent />
+          </div>
 
-          {/* Fade animation tied with isHovered state */}
           {isHovered && (
             <Fade duration={1000} direction="right" triggerOnce>
               <span
