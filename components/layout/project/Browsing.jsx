@@ -57,13 +57,13 @@ export default function ProjectsBrowsing() {
           <div className="grid md:grid-cols-2 gap-4 py-10 px-4 items-center">
             <div className="flex justify-center items-center">
               <Image
-                src="/images/project/working-cat.png"
+                src="/images/project/working-cat.svg"
                 width={280}
                 height={280}
                 layout="fixed"
                 style={{ borderRadius: 20 }}
                 quality={10}
-                alt="working cat"
+                alt="working cat - its me :)"
               />
             </div>
             <p className="leading-10">
@@ -133,15 +133,11 @@ export const ProjectContent = (project) => {
 
         <p className="leading-5">{project.description}</p>
         <br />
-        <div className="flex flex-wrap gap-2">
+
+        <div className="flex flex-wrap gap-1">
           {project.skills.map((skill) => (
             <div
               key={skill}
-              style={{
-                fontWeight: "normal",
-                transition: "font-weight 0.3s",
-                backgroundColor: "#f9d9a9",
-              }}
               onMouseOver={(e) => {
                 e.target.style.fontWeight = "bold";
               }}
