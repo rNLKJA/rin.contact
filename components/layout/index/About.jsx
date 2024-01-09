@@ -18,14 +18,13 @@ const AboutSection = () => {
           a glint of insight as sharp as a cat's gaze.
         </p>
       </div>
-      <div className="flex justify-center items-center">
+      <div>
         <Zoom triggerOnce>
           <Image
             src="/images/index/about-curious-cat.svg"
             alt="about image"
-            width={500}
+            width={300}
             height={300}
-            layout="responsive"
             quality={50}
           />
         </Zoom>

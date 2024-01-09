@@ -9,15 +9,15 @@ import { Slide, Zoom } from "react-awesome-reveal";
 const ContactSection = () => {
   return (
     <div className="grid md:grid-cols-2 pt-10 pb-10 pl-4 pr-4 gap-4">
-      <div className="order-first md:order-last flex flex-col justify-center gap-5">
+      <div className="order-first md:order-last flex flex-col justify-center gap-5 items-center">
         <Zoom triggerOnce>
           <Image
             src="/images//index/connection.svg"
             alt="connection image"
-            width={250}
-            height={250}
-            layout="responsive"
+            width={300}
+            height={300}
             quality={50}
+            layout="intrinsic"
           />
         </Zoom>
       </div>
