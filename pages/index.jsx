@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import HeroHeaderSection from "@/components/layout/index/Hero-Header";
@@ -39,14 +37,6 @@ const Section = styled.div`
   }
 `;
 
-const ScrollDotContainer = styled.div`
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-`;
-
 const ScrollDot = styled.div`
   width: 10px;
   height: 10px;
@@ -56,8 +46,25 @@ const ScrollDot = styled.div`
   cursor: pointer;
 `;
 
-export default function Home() {
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+const ScrollDotContainer = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+`;
+
+const ScrollArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10; // Ensure it's clickable and above other content
+  ${({ isLeft }) => (isLeft ? "left: 10px;" : "right: 10px;")}
+`;
+
+const Home = () => {
+  const [isLargeScreen, setIsLargeScreen] = useState(undefined);
   const sectionsRef = useRef([]);
   const [currentSection, setCurrentSection] = useState(0);
 
@@ -70,67 +77,77 @@ export default function Home() {
   ];
 
   const renderSections = () => {
-    // Infinite loop of sections
-    let renderedSections = [];
-    for (let i = 0; i < 10; i++) {
-      // Repeat sections 10 times (adjust as needed)
-      renderedSections = renderedSections.concat(
-        sections.map((SectionComponent, index) => (
-          <Section key={`section-${i}-${index}`}>{SectionComponent}</Section>
-        )),
-      );
+    return sections.map((SectionComponent, index) => (
+      <Section
+        key={`section-${index}`}
+        ref={(el) => (sectionsRef.current[index] = el)}
+      >
+        {SectionComponent}
+      </Section>
+    ));
+  };
+
+  const scrollToSection = (index) => {
+    const section = sectionsRef.current[index];
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setCurrentSection(index);
     }
-    return renderedSections;
   };
 
   useEffect(() => {
-    // Define a function to update the screen size state
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth > 1024);
-    };
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setIsLargeScreen(window.innerWidth > 1024);
+      };
 
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Call the function to set the initial state
-    handleResize();
-
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResize);
+      handleResize();
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate the center of the screen
-      const centerOfScreen = window.scrollX + window.innerWidth / 2;
-      // Find the section that should be centered
-      const current = sectionsRef.current.findIndex(
-        (section) =>
-          section &&
-          section.offsetLeft <= centerOfScreen &&
-          section.offsetLeft + section.clientWidth >= centerOfScreen,
-      );
-      if (current !== -1) {
-        setCurrentSection(current % sections.length); // Adjust for repeated sections
+      const scrollPosition = window.scrollY;
+      let newCurrentSection = currentSection;
+
+      for (let i = 0; i < sectionsRef.current.length; i++) {
+        const section = sectionsRef.current[i];
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            newCurrentSection = i;
+            break;
+          }
+        }
+      }
+
+      if (newCurrentSection !== currentSection) {
+        setCurrentSection(newCurrentSection);
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    if (isLargeScreen) {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (isLargeScreen) {
+        window.removeEventListener("scroll", handleScroll);
+      }
     };
-  }, []);
+  }, [currentSection, isLargeScreen]);
 
-  const scrollToSection = (index) => {
-    sectionsRef.current[index]?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  // Render for large screens
   const renderLargeScreenLayout = () => (
     <PageTransition>
       <HorizontalScrollContainer>{renderSections()}</HorizontalScrollContainer>
-      <ScrollDotContainer className="hidden lg:flex">
-        {sectionsRef.current.map((_, index) => (
+      <ScrollDotContainer>
+        {sections.map((_, index) => (
           <ScrollDot
             key={index}
             isActive={currentSection === index}
@@ -141,7 +158,6 @@ export default function Home() {
     </PageTransition>
   );
 
-  // Render for small and medium screens
   const renderSmallScreenLayout = () => (
     <PageTransition>
       <Fade triggerOnce duration={1500} direction="left">
@@ -162,5 +178,11 @@ export default function Home() {
     </PageTransition>
   );
 
-  return isLargeScreen ? renderLargeScreenLayout() : renderSmallScreenLayout();
-}
+  return isLargeScreen !== undefined
+    ? isLargeScreen
+      ? renderLargeScreenLayout()
+      : renderSmallScreenLayout()
+    : null;
+};
+
+export default Home;
