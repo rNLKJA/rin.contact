@@ -63,15 +63,16 @@ export default function BlogList() {
 
   return (
     <div>
-      <div className="flex md:flex-row xs:flex-col justify-between items-center">
-        <h2 className="text-xl text-bold">Blog List</h2>
+      <div className="flex flex-col sm:flex-col md:flex-row md:justify-between md:items-center gap-2">
+        <h2 className="text-xl text-bold text-left">Blog List</h2>
         <Fade duration={1500} triggerOnce direction="right">
-          <div className="search-bar">
+          <div className="search-bar flex sm:flex-row justify-between">
             <SearchInput
               type="text"
               placeholder="Search blogs..."
               value={searchQuery}
               onChange={handleSearchChange}
+              className="w-full"
             />
             <ClearButton onClick={clearSearch}>Clear</ClearButton>
           </div>
