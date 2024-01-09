@@ -5,7 +5,8 @@ import { Fade } from "react-awesome-reveal";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from "@mui/icons-material/MenuRounded";
+import FaceRetouchingNaturalOutlinedIcon from "@mui/icons-material/FaceRetouchingNaturalOutlined";
 import InfoIcon from "@mui/icons-material/InfoOutlined";
 import WorkIcon from "@mui/icons-material/WorkOutline";
 import BookIcon from "@mui/icons-material/BookOutlined";
@@ -42,7 +43,10 @@ export const DesktopHeader = () => {
       </Fade>
       <Fade triggerOnce duration={1500} direction="right">
         <nav className="flex flex-row space-x-4 gap-4 ease-in-out transition-all">
-          <AnimatedLink href="/about-me" IconComponent={InfoIcon}>
+          <AnimatedLink
+            href="/about-me"
+            IconComponent={FaceRetouchingNaturalOutlinedIcon}
+          >
             About Me
           </AnimatedLink>
           <AnimatedLink href="/projects" IconComponent={WorkIcon}>
