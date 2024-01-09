@@ -35,11 +35,11 @@ const HeroHeaderSection = () => {
         </div>
 
         <div>
-          <h1 className="font-bold text-lg">
+          <h1 className="font-bold text-2xl text-pretty">
             Inspring, Innovation & Unlock the Power of Data Analytics
           </h1>
           <br />
-          <p className="leading-8">
+          <p className="leading-8 text-pretty">
             Embrace the Meow-gic of Data and Modern Tech: Inspurr & Innovate
             with Expert Guidance with{" "}
             <a
@@ -170,7 +170,7 @@ const MobileViewContent = () => (
   <div style={{ textAlign: "center", padding: 20 }}>
     <h2 className="font-bold">Welcome!</h2>
     <br />
-    <p>
+    <p className="text-pretty">
       Discover my journey and experiences on LinkedIn or download my resume to
       learn more.
     </p>

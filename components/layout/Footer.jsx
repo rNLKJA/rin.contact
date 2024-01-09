@@ -129,7 +129,7 @@ const Footer = () => {
         </div>
       </div>
       <br />
-      <p className="text-pretty">
+      <p className="text-wrap text-pretty">
         Fueling the future with purr-cision and cutting-edge data science
         technology, I enthusiastically craft a trail of endless pawssibilities,
         unleashing extraordinary potential with each innovative leap.
