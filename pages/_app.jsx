@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Head from "next/head";
+import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
@@ -17,65 +17,74 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   const determineMaxWidth = () => {
-    if (isXSmall) return "100%"; // Tailwind CSS's 'xs'
-    if (isSmall) return "640px"; // Tailwind CSS's 'sm'
-    if (isMedium) return "768px"; // Tailwind CSS's 'md'
-    if (isLarge) return "1024px"; // Tailwind CSS's 'lg'
-    return "1280px"; // Tailwind CSS's 'xl' and '2xl'
+    if (isXSmall) return "100%";
+    if (isSmall) return "640px";
+    if (isMedium) return "768px";
+    if (isLarge) return "1024px";
+    return "1280px";
   };
 
   return (
     <Container
-      maxWidth={false} // Disable the maxWidth of MUI Container
-      style={{
-        maxWidth: determineMaxWidth(),
-        backgroundColor: "#ffffff",
-      }}
-      className="flex flex-col min-h-screen justify-between" // 'min-h-screen' to ensure the footer is at the bottom
+      maxWidth={false}
+      style={{ maxWidth: determineMaxWidth(), backgroundColor: "#ffffff" }}
+      className="flex flex-col min-h-screen justify-between"
     >
-      <Head>
-        <title>Pawsibly Rin</title>
-        <meta
-          name="description"
-          content="Data Scientist Rin Huang: Explore my tech insights and data-driven solutions to real-world problems using modern tools"
-        />
-        <meta name="author-full-name" content="Sunchuangyu Huang" />
-        <meta name="author-prefer-name" content="Rin Huang" />
-        <meta name="author-chinese-name" content="黄孙创宇" />
-        <meta name="author-email" content="huangsunchuangyu@gmail.com" />
-        <meta name="author-github" content="https://github/rNLKJA" />
-        <meta
-          name="author-linkedin"
-          content="https://www.linkedin.com/in/sunchuangyuhuang/"
-        />
-        <meta name="author-website" content="https://rin.contact" />
-        <meta
-          name="instagram"
-          content="https://www.instagram.com/chuangyu_hscy"
-        />
-        <meta
-          name="xiaohongshu"
-          content="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
-        />{" "}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://rin.contact/" />
-        <meta property="og:title" content="rNLKJA's Portfolio" />
-        <meta
-          property="og:description"
-          content="Explore Rin Huang's data science projects and read his latest thoughts on tech, data science and life."
-        />
-        <meta
-          property="og:image"
-          content="https://rin.contact/meta-image.png"
-        />{" "}
-        <meta property="highschool" content="安顺第二高级中学" />
-        <meta property="高中" content="安顺第二高级中学" />
-        <meta property="college" content="trinity college" />
-        <meta property="姓名" content="Sunchuangyu Huang" />
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#f5f5f5" />
-      </Head>
+      <DefaultSeo
+        title="Pawsibly Rin"
+        description="Data Scientist Rin Huang: Explore my tech insights and data-driven solutions to real-world problems using modern tools"
+        openGraph={{
+          type: "website",
+          url: "https://rin.contact/",
+          title: "rNLKJA's Portfolio",
+          description:
+            "Explore Rin Huang's data science projects and read his latest thoughts on tech, data science and life.",
+          images: [{ url: "https://rin.contact/images/meta-image.png" }],
+        }}
+        additionalMetaTags={[
+          { name: "author-full-name", content: "Sunchuangyu Huang" },
+          { name: "author-prefer-name", content: "Rin Huang" },
+          { name: "author-chinese-name", content: "黄孙创宇" },
+          { name: "author-email", content: "huangsunchuangyu@gmail.com" },
+          { name: "author-github", content: "https://github/rNLKJA" },
+          {
+            name: "author-linkedin",
+            content: "https://www.linkedin.com/in/sunchuangyuhuang/",
+          },
+          { name: "author-website", content: "https://rin.contact" },
+          {
+            name: "instagram",
+            content: "https://www.instagram.com/chuangyu_hscy",
+          },
+          {
+            name: "xiaohongshu",
+            content:
+              "https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab",
+          },
+          { property: "og:type", content: "website" },
+          { property: "og:url", content: "https://rin.contact/" },
+          { property: "og:title", content: "rNLKJA's Portfolio" },
+          {
+            property: "og:description",
+            content:
+              "Explore Rin Huang's data science projects and read his latest thoughts on tech, data science and life.",
+          },
+          {
+            property: "og:image",
+            content: "https://rin.contact/images/meta-image.png",
+          },
+          { property: "highschool", content: "安顺第二高级中学" },
+          { property: "高中", content: "安顺第二高级中学" },
+          { property: "college", content: "trinity college" },
+          { property: "姓名", content: "Sunchuangyu Huang" },
+          { name: "viewport", content: "width=device-width, initial-scale=1" },
+          { name: "theme-color", content: "#f5f5f5" },
+        ]}
+        additionalLinkTags={[
+          { rel: "icon", href: "/favicon.ico" },
+          // Add any additional link tags if needed
+        ]}
+      />
       <Header />
       <AnimatePresence mode="wait">
         <Component {...pageProps} />
