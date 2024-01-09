@@ -17,7 +17,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 export default function Biography() {
   return (
     <div className="flex flex-col px-4 gap-3">
-      <h1 className="leading-20 pb-10 text-xl font-bold">
+      <h1 className="leading-20 pb-10 text-xl font-bold text-pretty">
         🐾 Paws and Progress The Journey Begins
       </h1>
 
@@ -56,18 +56,17 @@ export default function Biography() {
 export const Section1 = () => {
   return (
     <div className="grid md:grid-cols-3 gap-5 justify-center items-center ">
-      <div className="flex justify-center col-span-1">
+      <div className="flex col-span-1 ">
         <Zoom triggerOnce>
           <Card
-            className="w-full max-w-md md:max-w-lg lg:max-w-xl"
-            style={{ position: "relative", height: "300px", width: "300px" }}
+            className="w-full max-w-md md:max-w-lg lg:max-w-xl "
+            style={{ position: "relative", height: "350px", width: "350px" }}
           >
             <CardMedia
               component="img"
               image="/images/about-me/rin.svg"
               alt="rin"
-              className="object-cover w-full"
-              style={{ height: "100%" }}
+              className="object-cover justify-center items-center"
             />
           </Card>
         </Zoom>
@@ -101,7 +100,6 @@ export const Section1 = () => {
 export const Section2 = () => {
   return (
     <div className="flex flex-row justify-center items-center px-4 ">
-      <div></div>
       <div>
         <h2 className="text-xl font-bold">
           🌟 Starry-Eyed Explorer: Education and Passion
