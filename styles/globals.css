@@ -16,44 +16,6 @@ body {
   scroll-behavior: smooth; /* Smooth scrolling */
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: "Sarabun", sans-serif; /* Apply 'Sarabun' to all headings */
-}
-
-h1 {
-  font-size: 2rem; /* 40px */
-}
-
-h2 {
-  font-size: 1.5rem; /* 32px */
-}
-
-h3 {
-  font-size: 1.3rem;
-  @apply text-3xl md:text-xl;
-}
-
-h4 {
-  font-size: 1.2rem;
-  @apply text-2xl md:text-lg;
-}
-
-h5 {
-  font-size: 1rem;
-  @apply text-xl md:text-base;
-}
-
-/* Paragraphs and Spans - Soft and gentle text */
-p,
-span {
-  font-size: 0.9rem;
-  @apply text-base md:text-base;
-}
-
 /* Responsive Design Adjustments
 @media (min-width: 768px) {
   body {
@@ -134,10 +96,6 @@ body {
   width: 1100px;
   background-color: #ffffff /* default color */;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   :root {

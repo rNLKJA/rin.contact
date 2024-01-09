@@ -1,13 +1,13 @@
-const { fontFamily } = require("tailwindcss/defaultTheme");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
   ],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -17,47 +17,6 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-        heading: ['"Playfair Display"', "serif"], // Add this line
-      },
-      typography: {
-        // Define styles for h1 to h6
-        DEFAULT: {
-          css: {
-            h1: {
-              fontFamily: '"Playfair Display", serif',
-              fontWeight: "700",
-              letterSpacing: "-0.025em",
-            },
-            h2: {
-              fontFamily: '"Playfair Display", serif',
-              fontWeight: "700",
-              letterSpacing: "-0.025em",
-            },
-            h3: {
-              fontFamily: '"Playfair Display", serif',
-              fontWeight: "700",
-            },
-            h4: {
-              fontFamily: '"Playfair Display", serif',
-              fontWeight: "700",
-            },
-            h5: {
-              fontFamily: '"Playfair Display", serif',
-              fontWeight: "700",
-            },
-            h6: {
-              fontFamily: '"Playfair Display", serif',
-              fontWeight: "700",
-            },
-            // Add styles for other elements as needed
-          },
-        },
-      },
-      maxWidth: {
-        custom: "1200px",
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -94,12 +53,9 @@ module.exports = {
         },
       },
       borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-      },
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {
@@ -117,5 +73,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
-};
+  plugins: [require("tailwindcss-animate")],
+}
