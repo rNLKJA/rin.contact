@@ -19,10 +19,10 @@ export default function Home() {
       </Fade>
       <br />
 
-      <Fade triggerOnce duration={1500} direction="right">
+      {/* <Fade triggerOnce duration={1500} direction="right">
         <GallerySection />
       </Fade>
-      <br />
+      <br /> */}
 
       <Fade triggerOnce duration={1500} direction="left">
         <AboutSection />
