@@ -1,4 +1,7 @@
+"use client";
 import "../styles/globals.css";
+
+import React, { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Container from "@mui/material/Container";
 import Header from "@/components/layout/Header";
@@ -9,6 +12,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time (you can replace this with your own loading logic)
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Adjust the time as needed
+
+    return () => clearTimeout(loadingTimer);
+  }, []);
+
   return (
     <Container className="flex flex-col min-h-screen justify-between">
       <DefaultSeo
@@ -81,7 +95,11 @@ function MyApp({ Component, pageProps }) {
 
       <QueryClientProvider client={queryClient}>
         <AnimatePresence mode="wait">
-          <Component {...pageProps} />
+          {isLoading ? (
+            <LoadingBar isLoading={isLoading} />
+          ) : (
+            <Component {...pageProps} />
+          )}
         </AnimatePresence>
       </QueryClientProvider>
       <Footer />
@@ -90,3 +108,22 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+
+const LoadingBar = ({ isLoading }) => {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "4px",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        backgroundColor: "blue", // Adjust the color as needed
+        transform: `scaleX(${isLoading ? 1 : 0})`,
+        transformOrigin: "left",
+        transition: "transform 0.3s ease",
+        zIndex: 9999,
+      }}
+    />
+  );
+};
