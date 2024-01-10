@@ -21,7 +21,7 @@ const GallerySection = () => {
   const recentProject = projects[projects.length - 1];
 
   return (
-    <div className="grid  py-10 px-4 justify-center items-center">
+    <div className="grid  py-10 px-4 justify-center items-center h-screen w-full">
       {/* <div className="flex justify-center items-center">
         <Zoom triggerOnce>
           <Image

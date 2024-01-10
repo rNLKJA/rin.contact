@@ -18,7 +18,7 @@ const HeroHeaderSection = () => {
 
   return (
     <div>
-      <div className="grid md:grid-cols-2 gap-5 pb-10 px-4 pb-10 items-center">
+      <div className="grid md:grid-cols-2 gap-5 pb-10 px-4 pb-10 items-center justify-center h-screen">
         <div>
           {" "}
           <Zoom triggerOnce>
@@ -110,7 +110,7 @@ const PdfViewer = ({ open, handleClose }) => {
   const pdfUrl = "/data/resume.pdf"; // Path to your PDF file
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex items-center justify-center h-screen">
       <Modal
         open={open}
         onClose={handleClose}

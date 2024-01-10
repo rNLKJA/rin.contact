@@ -5,7 +5,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* Favicon and Apple Touch Icon */}
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="apple-touch-icon"

@@ -71,10 +71,6 @@ function MyApp({ Component, pageProps }) {
         ]}
         additionalLinkTags={[
           {
-            rel: "icon",
-            href: "/logo.ico", // URL of your favicon
-          },
-          {
             rel: "apple-touch-icon",
             href: "/logo.svg", // URL of Apple touch icon
             sizes: "76x76",

@@ -8,7 +8,7 @@ import { Slide, Zoom } from "react-awesome-reveal";
 
 const ContactSection = () => {
   return (
-    <div className="grid md:grid-cols-2 pt-10 pb-10 pl-4 pr-4 gap-4">
+    <div className="grid md:grid-cols-2 py-10 gap-4 items-center justify-center h-screen w-full">
       <div className="order-first md:order-last flex flex-col justify-center gap-5 items-center">
         <Zoom triggerOnce>
           <Image

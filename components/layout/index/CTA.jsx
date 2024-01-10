@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 
 const CtaSection = () => {
   return (
-    <div className="flex flex-col justify-center items-center pt-10 pb-10 pt-10 pb-10 pl-4 pr-4 ">
+    <div className="flex flex-col justify-center items-center py-10 h-screen w-full">
       <h2 className="font-bold text-center text-lg text-pretty">
         Transforming Data into Actionable Insights
       </h2>
