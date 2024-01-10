@@ -1,6 +1,6 @@
 # Hello there (ฅ'ω'ฅ) it's rNLKJA here!
 
-<img src="https://rin.contact/images/index/heroSection.png" width=100% alt='image of me'/>
+<img src="https://rin.contact/images/index/heroSection1.png" width=100% alt='image of me'/>
 
 After months of ideation and development, I'm excited to introduce the latest iteration of my personal website, built with `React` and `Next.js`. This 4th rebuild represents a continuous evolution of my online presence, with a focus on showcasing my data science skills and publishing content I'm passionate about. While this may not be the final version, my goal is for it to be a flexible, easily updated foundation for future expansions.
 
