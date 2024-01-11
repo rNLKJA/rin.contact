@@ -182,3 +182,8 @@ body {
 .cursor-right {
   cursor: e-resize; /* or your custom right arrow cursor */
 }
+
+/* Add this CSS to your globals.css file */
+body {
+  background: linear-gradient(135deg, #e6e6e6 0%, #ffffff 10%);
+}
