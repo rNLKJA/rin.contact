@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import { Fade } from "react-awesome-reveal";
 import { ClearButton } from "../../ui/ClearButton";
 import { SearchInput } from "../../ui/SearchInput";
-import { ProjectContent } from "./ProjectContent";
+import { ProjectContent } from "./ProjectContentCurator";
 import { ContentContainer } from "../../ui/ContentContainer";
 
 export default function ProjectsBrowsing() {

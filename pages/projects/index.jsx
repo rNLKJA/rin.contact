@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectsBrowsing from "../../components/layout/project/Browsing";
+import ProjectsBrowsing from "../../components/pages/project/ProjectBrowsing";
 
 import "../../styles/globals.css";
 
