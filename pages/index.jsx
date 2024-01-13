@@ -6,7 +6,7 @@ import CtaSection from "@/components/layout/index/CTA";
 import ContactSection from "@/components/layout/index/Contact";
 import AboutSection from "@/components/layout/index/About";
 import GallerySection from "@/components/layout/index/Gallery";
-import PageTransition from "../components/PageTransition";
+import PageTransition from "../components/framer-motion/PageTransition";
 
 import { Fade } from "react-awesome-reveal";
 

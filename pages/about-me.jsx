@@ -1,6 +1,6 @@
 import React from "react";
 import Biography from "@/components/layout/about-me/biography";
-import PageTransition from "../components/PageTransition";
+import PageTransition from "../components/framer-motion/PageTransition";
 import "../styles/globals.css";
 
 export default function Home() {

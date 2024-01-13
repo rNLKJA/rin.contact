@@ -16,7 +16,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import { Zoom } from "react-awesome-reveal";
-import PageTransition from "../components/PageTransition";
+import PageTransition from "../components/framer-motion/PageTransition";
 
 export default function ContactPage() {
   return (
