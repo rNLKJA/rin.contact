@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
-import StageComponent from "@/components/layout/data-science/StageComponent";
+import StageComponent from "@/components/pages/ds/StageComponent";
 
 const Stage2 = () => {
   const [stageData, setStageData] = useState(null);
