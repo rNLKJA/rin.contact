@@ -1,7 +1,7 @@
 import React from "react";
-import { Considerations } from "@/components/layout/data-science/Considerations";
-import { CourseDescription } from "@/components/layout/data-science/CourseDescription";
-import { CourseStages } from "@/components/layout/data-science/CourseStages";
+import { Considerations } from "@/components/pages/ds/Considerations";
+import { CourseDescription } from "@/components/pages/ds/CourseDescription";
+import { CourseStages } from "@/components/pages/ds/CourseStages";
 import { Fade } from "react-awesome-reveal";
 
 export default function Home() {
