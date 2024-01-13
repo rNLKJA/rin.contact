@@ -6,7 +6,7 @@ export function NextSEO() {
   return (
     <DefaultSeo
       title="Pawsibly Rin"
-      description="Data Scientist Rin Huang: Explore my tech insights and data-driven solutions to real-world problems using modern tools"
+      description="Explore the innovative portfolio of Sunchuangyu Huang, a seasoned Data Scientist and Full Stack Developer, showcasing expertise in data-driven solutions and modern web technologies."
       openGraph={{
         type: "website",
         url: "https://rin.contact/",
@@ -21,7 +21,7 @@ export function NextSEO() {
             alt: "thumbnail image",
           },
         ],
-        siteName: "rNLKJA's Portfolio",
+        siteName: "Rin, Sunchuangyu Huang's Portfolio",
       }}
       additionalMetaTags={[
         { name: "author-full-name", content: "Sunchuangyu Huang" },
@@ -59,6 +59,26 @@ export function NextSEO() {
         { property: "高中", content: "安顺第二高级中学" },
         { property: "college", content: "trinity college" },
         { property: "姓名", content: "Sunchuangyu Huang" },
+        {
+          name: "education:university-bachelor",
+          content: "University of Melbourne",
+        },
+        {
+          name: "education:bachelor-degree",
+          content: "Bachelor's Degree in Science (Data Science)",
+        },
+        { name: "education:field_of_study", content: "Data Science" },
+        { name: "education:graduation_year", content: "2022" },
+        {
+          name: "education:university-master",
+          content: "University of Melbourne",
+        },
+        {
+          name: "education:degree-master",
+          content: "Master in Data Science",
+        },
+        { name: "education:graduation_year", content: "2024" },
+        { name: "education:alumni", content: "Sunchuangyu Huang" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "theme-color", content: "#f5f5f5" },
       ]}
