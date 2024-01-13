@@ -4,16 +4,26 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
 
+* {
+  min-height: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
 body {
   font-family: "Sarabun", monospace; /* Updated font-family */
   font-size: 1rem;
-  background-color: #ffffff; /* Soft background color */
-  color: #333; /* Primary text color */
-  line-height: 1.5; /* Improved readability */
+
   margin: 0 auto; /* Center content horizontally */
   padding: 0; /* Add some padding on the sides */
   max-width: 100%; /* Ensure it doesn't exceed the viewport width */
   scroll-behavior: smooth; /* Smooth scrolling */
+
+  background-color: #fff; /* Soft background color */
+  color: #333; /* Primary text color */
+  line-height: 1.5; /* Improved readability */
 }
 
 /* Responsive Design Adjustments
@@ -29,19 +39,8 @@ body {
   }
 } */
 
-/* Utility */
-* {
-  user-select: none; /* Disables text selection */
-}
-
 html {
   scroll-behavior: smooth; /* Smooth scrolling */
-}
-
-body {
-  background-color: #ffffff; /* Soft background color */
-  color: #333; /* Primary text color */
-  line-height: 1.5; /* Improved readability */
 }
 
 /* Soft box shadows and rounded corners for cards and buttons */
@@ -57,16 +56,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #fff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ffffff;
+  background: #fff;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+  background: #fff;
 }
 
 .link-hover:hover {
@@ -94,7 +93,7 @@ body {
 
 .myContainer {
   width: 1100px;
-  background-color: #ffffff /* default color */;
+  background-color: #fff /* default color */;
 }
 
 @layer base {
@@ -181,9 +180,4 @@ body {
 
 .cursor-right {
   cursor: e-resize; /* or your custom right arrow cursor */
-}
-
-/* Add this CSS to your globals.css file */
-body {
-  background: linear-gradient(135deg, #e6e6e6 0%, #ffffff 10%);
 }
