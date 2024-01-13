@@ -1,12 +1,12 @@
-import "../../styles/globals.css";
-import BlogBrowsing from "@/components/layout/blog/gallary";
+import { Fragment } from "react";
+import BlogBrowsing from "@/components/layout/blog/blogBrowsing";
 import BlogList from "@/components/layout/blog/blogList";
 
 export default function Home() {
   return (
-    <div>
+    <Fragment>
       <BlogBrowsing />
       <BlogList />
-    </div>
+    </Fragment>
   );
 }

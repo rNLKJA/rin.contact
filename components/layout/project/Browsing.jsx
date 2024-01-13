@@ -2,11 +2,11 @@ import React from "react";
 import Image from "next/legacy/image";
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
-import { SiGithub, SiOverleaf } from "react-icons/si";
 import { Fade } from "react-awesome-reveal";
-import { SearchBar } from "@/components/ui/SearchBar";
 import { ClearButton } from "../../ui/ClearButton";
 import { SearchInput } from "../../ui/SearchInput";
+import { ProjectContent } from "./ProjectContent";
+import { ContentContainer } from "../../ui/ContentContainer";
 
 export default function ProjectsBrowsing() {
   const [projects, setProjects] = useState([]);
@@ -39,18 +39,10 @@ export default function ProjectsBrowsing() {
     setSearchQuery("");
   };
 
-  const filteredProjects = projects.filter(
-    (project) =>
-      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (project.skills &&
-        project.skills.some((tag) =>
-          tag.toLowerCase().includes(searchQuery.toLowerCase()),
-        )),
-  );
+  const filteredProjects = projectFiltering(projects, searchQuery);
 
   return (
-    <div className="px-4">
+    <ContentContainer>
       <Fade triggerOnce duration={2000} direction="left">
         <div>
           <h1 className="text-xl font-bold">The Cat's Meow Projects</h1>
@@ -106,80 +98,18 @@ export default function ProjectsBrowsing() {
           )}
         </div>
       </Fade>
-    </div>
+    </ContentContainer>
   );
 }
 
-export const ProjectContent = (project) => {
-  return (
-    <Fade triggerOnce duration={1500} direction="up">
-      <div className="py-10">
-        <div className="flex justify-between">
-          <div className="flex flex-wrap gap-4 items-center">
-            <Image
-              src={project.icon}
-              width={35}
-              height={35}
-              alt="Project Icons"
-              quality={50}
-              layout="fixed"
-            />
-            <h2 className="text-lg text-bold">{project.title}</h2>
-          </div>
-        </div>
-        <br />
-        <p className="leading-5">{project.date}</p>
-        <br />
-
-        <p className="leading-5">{project.description}</p>
-        <br />
-
-        <div className="flex flex-wrap gap-1">
-          {project.skills.map((skill) => (
-            <div
-              key={skill}
-              onMouseOver={(e) => {
-                e.target.style.fontWeight = "bold";
-              }}
-              onMouseOut={(e) => {
-                e.target.style.fontWeight = "normal";
-              }}
-              className="flex rounded-full px-2"
-            >
-              {skill}
-            </div>
-          ))}
-        </div>
-
-        <br />
-        <div className="flex flex-start gap-4">
-          {project.github_link && (
-            <Button
-              href={project.github_link}
-              variant="contained"
-              style={{ backgroundColor: "black" }}
-              className="flex flex-start gap-4"
-              target="_blank"
-            >
-              <SiGithub />
-              Github
-            </Button>
-          )}
-
-          {project.overleaf_link && (
-            <Button
-              href={project.overleaf_link}
-              variant="contained"
-              style={{ backgroundColor: "black" }}
-              className="flex flex-start gap-4"
-              target="_blank"
-            >
-              <SiOverleaf />
-              Overleaf
-            </Button>
-          )}
-        </div>
-      </div>
-    </Fade>
+function projectFiltering(projects, searchQuery) {
+  return projects.filter(
+    (project) =>
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (project.skills &&
+        project.skills.some((tag) =>
+          tag.toLowerCase().includes(searchQuery.toLowerCase()),
+        )),
   );
-};
+}

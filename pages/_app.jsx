@@ -27,20 +27,28 @@ function MyApp({ Component, pageProps }) {
   return (
     <Container className="flex flex-col min-h-screen justify-between">
       {NextSEO()}
+
       <Header />
 
-      <QueryClientProvider client={queryClient}>
-        <AnimatePresence mode="wait">
-          {isLoading ? (
-            <LoadingBarComponent isLoading={isLoading} />
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </AnimatePresence>
-      </QueryClientProvider>
+      {Body(isLoading, Component, pageProps)}
+
       <Footer />
     </Container>
   );
 }
 
 export default MyApp;
+
+function Body(isLoading, Component, pageProps) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <LoadingBarComponent isLoading={isLoading} />
+        ) : (
+          <Component {...pageProps} />
+        )}
+      </AnimatePresence>
+    </QueryClientProvider>
+  );
+}
