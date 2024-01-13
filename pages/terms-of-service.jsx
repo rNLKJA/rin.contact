@@ -1,13 +1,8 @@
 import React from "react";
-import TermsComponent from "@/components/layout/index/Tos";
-import PageTransition from "../components/framer-motion/PageTransition";
+import TermsComponent from "@/components/pages/terms-of-service/TermsOfServices";
 
 const TermsOfService = () => {
-  return (
-    <PageTransition>
-      <TermsComponent />
-    </PageTransition>
-  );
+  return <TermsComponent />;
 };
 
 export default TermsOfService;

@@ -6,7 +6,6 @@ import CtaSection from "@/components/layout/index/CTA";
 import ContactSection from "@/components/layout/index/Contact";
 import AboutSection from "@/components/layout/index/About";
 import GallerySection from "@/components/layout/index/Gallery";
-import PageTransition from "../components/framer-motion/PageTransition";
 
 import { Fade } from "react-awesome-reveal";
 
@@ -75,15 +74,15 @@ const Home = () => {
   };
 
   const renderLargeScreenLayout = () => (
-    <PageTransition>
+    <div>
       <HorizontalScrollContainer>{renderSections()}</HorizontalScrollContainer>
 
       {renderDotNavigation()}
-    </PageTransition>
+    </div>
   );
 
   const renderSmallScreenLayout = () => (
-    <PageTransition>
+    <div>
       <Fade triggerOnce duration={1500} direction="left">
         <div className="my-20">
           <HeroHeaderSection />
@@ -114,7 +113,7 @@ const Home = () => {
           <ContactSection />
         </div>
       </Fade>
-    </PageTransition>
+    </div>
   );
 
   return isLargeScreen !== undefined

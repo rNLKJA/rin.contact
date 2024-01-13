@@ -1,14 +1,8 @@
 import React from "react";
-import PrivacyContent from "@/components/layout/index/PrivacyContent";
-import PageTransition from "../components/framer-motion/PageTransition";
-import "../styles/globals.css";
+import PrivacyContent from "@/components/pages/privacy-policy/PrivacyContent";
 
 const PrivacyPolicy = () => {
-  return (
-    <PageTransition>
-      <PrivacyContent />
-    </PageTransition>
-  );
+  return <PrivacyContent />;
 };
 
 export default PrivacyPolicy;
