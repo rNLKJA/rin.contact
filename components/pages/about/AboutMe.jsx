@@ -1,12 +1,12 @@
 import React from "react";
 import { Fade } from "react-awesome-reveal";
-import { Section1 } from "./Section1";
-import { Section2 } from "./Section2";
-import { Section3 } from "./Section3";
-import { Section4 } from "./Section4";
-import { Section5 } from "./Section5";
+import { Section1 } from "./layout/Section1";
+import { Section2 } from "./layout/Section2";
+import { Section3 } from "./layout/Section3";
+import { Section4 } from "./layout/Section4";
+import { Section5 } from "./layout/Section5";
 
-export default function Biography() {
+export default function About() {
   return (
     <div className="flex flex-col px-4 gap-10">
       <h1 className="leading-20 text-xl font-bold text-pretty">
