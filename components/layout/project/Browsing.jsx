@@ -43,62 +43,80 @@ export default function ProjectsBrowsing() {
 
   return (
     <ContentContainer>
-      <Fade triggerOnce duration={2000} direction="left">
-        <div>
-          <h1 className="text-xl font-bold">The Cat's Meow Projects</h1>
-          <div className="grid md:grid-cols-2 gap-4 py-10 px-4 items-center">
-            <div className="flex justify-center items-center">
-              <Image
-                src="/images/project/working-cat.svg"
-                width={280}
-                height={280}
-                layout="fixed"
-                style={{ borderRadius: 20 }}
-                quality={10}
-                alt="working cat - its me :)"
-              />
-            </div>
-            <p className="leading-10">
-              🐾 Welcome to our cozy corner of creativity! 🎨 Here, each project
-              is a paw-some adventure in innovation. From the initial sketch to
-              the final touch, we pour love and imagination into every detail.
-              Explore our gallery to see how we're making the digital world
-              purr-fect, one pixel at a time!
-            </p>
-          </div>
-        </div>
-      </Fade>
+      {ProjectBrowsingWelcomeSection()}
 
-      <Fade duration={1500} triggerOnce direction="right">
-        <div className="flex flex-row justify-between items-center">
-          <SearchInput
-            type="text"
-            placeholder="Search projects..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-          <ClearButton onClick={clearSearch}>Clear</ClearButton>
-        </div>
-      </Fade>
+      {ProjectSearchBar(searchQuery, handleSearchChange, clearSearch)}
 
       {filteredProjects.slice(0, displayCount).map((project) => (
         <ProjectContent {...project} key={project.title} />
       ))}
 
-      <Fade triggerOnce duration={3000} direction="up">
-        <div className="flex justify-center items-center">
-          {displayCount < projects.length && (
-            <Button
-              onClick={handleViewMore}
-              varient="contained"
-              style={{ backgroundColor: "black", color: "white" }}
-            >
-              More Projects
-            </Button>
-          )}
-        </div>
-      </Fade>
+      {MoreProjectLoadingButton(displayCount, projects, handleViewMore)}
     </ContentContainer>
+  );
+}
+
+function ProjectBrowsingWelcomeSection() {
+  return (
+    <Fade triggerOnce duration={2000} direction="left">
+      <div>
+        <h1 className="text-xl font-bold">The Cat's Meow Projects</h1>
+        <div className="grid md:grid-cols-2 gap-4 py-10 px-4 items-center">
+          <div className="flex justify-center items-center">
+            <Image
+              src="/images/project/working-cat.svg"
+              width={280}
+              height={280}
+              layout="fixed"
+              style={{ borderRadius: 20 }}
+              quality={10}
+              alt="working cat - its me :)"
+            />
+          </div>
+          <p className="leading-10">
+            🐾 Welcome to our cozy corner of creativity! 🎨 Here, each project
+            is a paw-some adventure in innovation. From the initial sketch to
+            the final touch, we pour love and imagination into every detail.
+            Explore our gallery to see how we're making the digital world
+            purr-fect, one pixel at a time!
+          </p>
+        </div>
+      </div>
+    </Fade>
+  );
+}
+
+function ProjectSearchBar(searchQuery, handleSearchChange, clearSearch) {
+  return (
+    <Fade duration={1500} triggerOnce direction="right">
+      <div className="flex flex-row justify-between items-center">
+        <SearchInput
+          type="text"
+          placeholder="Search projects..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <ClearButton onClick={clearSearch}>Clear</ClearButton>
+      </div>
+    </Fade>
+  );
+}
+
+function MoreProjectLoadingButton(displayCount, projects, handleViewMore) {
+  return (
+    <Fade triggerOnce duration={3000} direction="up">
+      <div className="flex justify-center items-center">
+        {displayCount < projects.length && (
+          <Button
+            onClick={handleViewMore}
+            varient="contained"
+            style={{ backgroundColor: "black", color: "white" }}
+          >
+            More Projects
+          </Button>
+        )}
+      </div>
+    </Fade>
   );
 }
 
