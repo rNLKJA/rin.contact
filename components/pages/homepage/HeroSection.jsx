@@ -71,6 +71,7 @@ const HeroHeaderSection = () => {
           height={500}
           layout="responsive"
           quality={50}
+          priority={true}
         />
       </div>
 

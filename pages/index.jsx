@@ -1,48 +1,22 @@
-import React, { Suspense } from "react";
-
-import LoadingDots from "@/components/ui/LoadingDots";
-
-const HeroHeaderSection = React.lazy(() =>
-  import("@/components/pages/homepage/HeroSection"),
-);
-const AboutSection = React.lazy(() =>
-  import("@/components/pages/homepage/About"),
-);
-const GallerySection = React.lazy(() =>
-  import("@/components/pages/homepage/Gallery"),
-);
-const CtaSection = React.lazy(() => import("@/components/pages/homepage/CTA"));
-const ContactSection = React.lazy(() =>
-  import("@/components/pages/homepage/Contact"),
-);
+import React from "react";
+import HeroHeaderSection from "@/components/pages/homepage/HeroSection";
+import AboutSection from "@/components/pages/homepage/About";
+import GallerySection from "@/components/pages/homepage/Gallery";
+import CtaSection from "@/components/pages/homepage/CTA";
+import ContactSection from "@/components/pages/homepage/Contact";
 
 const Home = () => {
   return (
     <React.Fragment>
-      <Suspense
-        fallback={
-          <div className="flex justify-center items-center h-screen">
-            Loading Hero Section...
-          </div>
-        }
-      >
-        <HeroHeaderSection />
-      </Suspense>
-      <Suspense fallback={<LoadingDots />}>
-        <AboutSection />
-      </Suspense>
-
-      <Suspense fallback={<LoadingDots />}>
-        <GallerySection />
-      </Suspense>
-
-      <Suspense fallback={<LoadingDots />}>
-        <CtaSection />
-      </Suspense>
-
-      <Suspense fallback={<LoadingDots />}>
-        <ContactSection />
-      </Suspense>
+      <HeroHeaderSection />
+      <br />
+      <AboutSection />
+      <br />
+      <GallerySection />
+      <br />
+      <CtaSection />
+      <br />
+      <ContactSection />
     </React.Fragment>
   );
 };
