@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import dynamic from "next/dynamic";
+
 
 import LoadingDots from "@/components/ui/LoadingDots";
 
@@ -22,7 +22,7 @@ const Home = () => {
     <React.Fragment>
       <Suspense
         fallback={
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center h-screen">
             Loading Hero Section...
           </div>
         }
