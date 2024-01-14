@@ -3,51 +3,42 @@ import dynamic from "next/dynamic";
 
 import LoadingDots from "@/components/ui/LoadingDots";
 
-// Dynamically import your components with custom loading component
-const HeroHeaderSection = dynamic(
-  () => import("@/components/pages/homepage/HeroSection"),
-  {
-    loading: () => <LoadingDots />,
-    ssr: false,
-  },
+const HeroHeaderSection = React.lazy(() =>
+  import("@/components/pages/homepage/HeroSection"),
 );
-const CtaSection = dynamic(() => import("@/components/pages/homepage/CTA"), {
-  loading: () => <LoadingDots />,
-  ssr: false,
-});
-const ContactSection = dynamic(
-  () => import("@/components/pages/homepage/Contact"),
-  {
-    loading: () => <LoadingDots />,
-    ssr: false,
-  },
+const AboutSection = React.lazy(() =>
+  import("@/components/pages/homepage/About"),
 );
-const AboutSection = dynamic(
-  () => import("@/components/pages/homepage/About"),
-  {
-    loading: () => <LoadingDots />,
-    ssr: false,
-  },
+const GallerySection = React.lazy(() =>
+  import("@/components/pages/homepage/Gallery"),
 );
-const GallerySection = dynamic(
-  () => import("@/components/pages/homepage/Gallery"),
-  {
-    loading: () => <LoadingDots />,
-    ssr: false,
-  },
+const CtaSection = React.lazy(() => import("@/components/pages/homepage/CTA"));
+const ContactSection = React.lazy(() =>
+  import("@/components/pages/homepage/Contact"),
 );
 
 const Home = () => {
   return (
-    <Suspense fallback={<LoadingDots />}>
-      <div>
+    <React.Fragment>
+      <Suspense fallback={<LoadingDots />}>
         <HeroHeaderSection />
+      </Suspense>
+      <Suspense fallback={<LoadingDots />}>
         <AboutSection />
+      </Suspense>
+
+      <Suspense fallback={<LoadingDots />}>
         <GallerySection />
+      </Suspense>
+
+      <Suspense fallback={<LoadingDots />}>
         <CtaSection />
+      </Suspense>
+
+      <Suspense fallback={<LoadingDots />}>
         <ContactSection />
-      </div>
-    </Suspense>
+      </Suspense>
+    </React.Fragment>
   );
 };
 
