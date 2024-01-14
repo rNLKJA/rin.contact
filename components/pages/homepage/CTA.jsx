@@ -20,7 +20,7 @@ const CtaSection = () => {
 
 const CtaButtons = () => {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col md:flex-row">
       <ContactButton />
       <LearnMoreButton />
     </div>
