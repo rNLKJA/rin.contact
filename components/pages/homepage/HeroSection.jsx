@@ -21,12 +21,12 @@ const HeroHeaderSection = () => {
       <div className="grid gird-col gap-20 items-center justify-center py-20 px-4 xs:h-screen md:auto">
         <div className="grid md:grid-cols-2 gap-20">
           <div className="flex flex-col items-center justify-center">
-            <h1 className="font-bold text-5xl text-pretty">
+            <h1 className="font-bold text-5xl text-pretty leading-normal">
               Inspring, Innovation & Unlock the Power of Data Analytics
             </h1>
           </div>
 
-          <div className="grid grid-rows-2 gap-5">
+          <div className="flex flex-col gap-5 items-center pt-5">
             <p className="leading-8 text-pretty">
               Embrace the Magic of Data and Modern Tech: Inspire and Innovate
               with Expert Guidance with{" "}

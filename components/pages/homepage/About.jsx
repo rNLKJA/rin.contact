@@ -9,12 +9,14 @@ const AboutSection = () => {
       style={{ height: 900 }}
     >
       <div className="flex flex-col justify-between">
-        <h2 className="font-bold text-4xl text-pretty">
+        <h2 className="font-bold text-4xl text-pretty leading-normal">
           The Data Cat-alytic Converter: Unlocking the Power of Data to Drive
           Business Success
         </h2>
+
         <br />
-        <p className="leading-8 text-lg text-pretty">
+
+        <p className="leading-loose text-lg text-pretty">
           I am a purr-fessional data whisperer, weaving intricate tales from
           numbers with the stealth and grace of a night-prowling cat. In the
           vast, shadowy realm of analytics, I illuminate complex mysteries with

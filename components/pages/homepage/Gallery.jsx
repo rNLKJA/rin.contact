@@ -18,29 +18,25 @@ const GallerySection = () => {
   const recentProject = projects[projects.length - 1];
 
   return (
-    <div className="grid py-20 px-4 justify-center items-center ">
+    <div className="grid md:grid-cols-2 justify-center my-20">
       <div className="flex flex-col gap-10">
-        <div className="flex justify-between items-center">
-          <h2 className="font-bold text-3xl">Latest Project</h2>
-          <Button
-            variant="contained"
-            color="primary"
-            href={"/projects"}
-            style={{
-              backgroundColor: "black",
-            }}
-          >
-            See All Projects
-          </Button>
-        </div>
-        {recentProject && (
-          <div className="flex flex-col gap-4">
-            <p className="font-bold text-xl">{recentProject.title}</p>
-            <p className="text-lg text-pretty leading-8">
-              {recentProject.description}
-            </p>
-          </div>
-        )}
+        <h2 className="font-bold text-3xl">Latest Project</h2>
+        <p className="font-bold text-xl">{recentProject.title}</p>
+        <Button
+          variant="contained"
+          color="primary"
+          href={"/projects"}
+          style={{
+            backgroundColor: "black",
+          }}
+          className="w-1/2"
+        >
+          See All Projects
+        </Button>
+      </div>
+
+      <div className="text-lg text-pretty leading-loose">
+        {recentProject.description}
       </div>
     </div>
   );

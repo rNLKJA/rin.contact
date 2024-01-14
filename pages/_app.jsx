@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NextSEO } from "../SEO/NextSEO";
 import { LoadingBarComponent } from "../components/ui/loading/LoadingBarComponent";
+import Head from "next/head";
 
 import "../styles/globals.css";
 
@@ -26,6 +27,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Container className="flex flex-col min-h-screen justify-between">
+      <Head>
+        {" "}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       {NextSEO()}
 
       <Header />
