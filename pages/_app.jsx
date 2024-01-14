@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { AnimatePresence } from "framer-motion";
 import Container from "@mui/material/Container";
 import Header from "@/components/layout/Header";
@@ -14,16 +14,6 @@ import "../styles/globals.css";
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadingTimer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(loadingTimer);
-  }, []);
-
   return (
     <Container className="flex flex-col min-h-screen justify-between">
       <Head>
@@ -34,7 +24,11 @@ function MyApp({ Component, pageProps }) {
 
       <Header />
 
-      {Body(isLoading, Component, pageProps)}
+      <QueryClientProvider client={queryClient}>
+        <AnimatePresence mode="wait">
+          <Component {...pageProps} />
+        </AnimatePresence>
+      </QueryClientProvider>
 
       <Footer />
     </Container>
@@ -42,13 +36,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-
-function Body(isLoading, Component, pageProps) {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <AnimatePresence mode="wait">
-        <Component {...pageProps} />
-      </AnimatePresence>
-    </QueryClientProvider>
-  );
-}
