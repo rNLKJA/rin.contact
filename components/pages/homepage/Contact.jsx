@@ -20,7 +20,7 @@ const ContactSection = () => {
       </div>
 
       <div className="flex flex-col justify-center">
-        <h2 className="font-bold text-2xl">Get in Touch</h2>
+        <h2 className="font-bold text-3xl">Get in Touch</h2>
         <br />
         <p className="leading-8 text-pretty">
           I'm absolutely paw-sitive I'd love to hear from you! If you have any

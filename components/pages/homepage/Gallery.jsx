@@ -23,7 +23,7 @@ const GallerySection = () => {
     <div className="grid  py-10 px-4 justify-center items-center ">
       <div className="flex flex-col gap-5">
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-2xl">Latest Project</h2>
+          <h2 className="font-bold text-3xl">Latest Project</h2>
           <Button
             variant="contained"
             color="primary"
