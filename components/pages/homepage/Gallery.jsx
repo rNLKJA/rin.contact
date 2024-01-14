@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
-import Image from "next/image";
-import { Zoom } from "react-awesome-reveal";
 
 const GallerySection = () => {
   const [projects, setProjects] = useState([]);
@@ -20,8 +18,8 @@ const GallerySection = () => {
   const recentProject = projects[projects.length - 1];
 
   return (
-    <div className="grid  py-10 px-4 justify-center items-center ">
-      <div className="flex flex-col gap-5">
+    <div className="grid py-20 px-4 justify-center items-center ">
+      <div className="flex flex-col gap-10">
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-3xl">Latest Project</h2>
           <Button
@@ -37,8 +35,10 @@ const GallerySection = () => {
         </div>
         {recentProject && (
           <div className="flex flex-col gap-4">
-            <p className="font-bold text-lg">{recentProject.title}</p>
-            <p>{recentProject.description}</p>
+            <p className="font-bold text-xl">{recentProject.title}</p>
+            <p className="text-lg text-pretty leading-8">
+              {recentProject.description}
+            </p>
           </div>
         )}
       </div>
