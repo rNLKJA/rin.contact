@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 
 const GallerySection = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([
+    {
+      title: "Project",
+      description: "Description",
+    },
+  ]);
 
   // Fetch projects from the local JSON file
   useEffect(() => {

@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 
-
 import LoadingDots from "@/components/ui/LoadingDots";
 
 const HeroHeaderSection = React.lazy(() =>
