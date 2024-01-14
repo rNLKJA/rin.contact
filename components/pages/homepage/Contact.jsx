@@ -1,9 +1,6 @@
 import React from "react";
-import { TfiEmail } from "react-icons/tfi";
-import { HiOutlinePhone } from "react-icons/hi2";
-import { CiLocationOn } from "react-icons/ci";
 import Image from "next/legacy/image";
-import { RiWechat2Line } from "react-icons/ri";
+import ContactDetail from "./ContactDetail";
 
 const ContactSection = () => {
   return (
@@ -31,42 +28,14 @@ const ContactSection = () => {
         <br />
 
         <div className="grid md:grid-cols-2 gap-5">
-          <ContactDetail
-            icon={<TfiEmail style={{ fontSize: "24px" }} />}
-            title="Email"
-            value="huang@rin.contact"
-          />
+          <ContactDetail type="email" value="huang@rin.contact" />
 
-          <ContactDetail
-            icon={<RiWechat2Line style={{ fontSize: "24px" }} />}
-            title="WeChat"
-            value="+86 138 8533 0703"
-          />
+          <ContactDetail type="wechat" value="+86 138 8533 0703" />
 
-          <ContactDetail
-            icon={<HiOutlinePhone style={{ fontSize: "24px" }} />}
-            title="Phone"
-            value="+61 450 270 703"
-          />
+          <ContactDetail type="phone" value="+61 450 270 703" />
 
-          <ContactDetail
-            icon={<CiLocationOn style={{ fontSize: "24px" }} />}
-            title="Location"
-            value="Melbourne"
-          />
+          <ContactDetail type="location" value="Melbourne" />
         </div>
-      </div>
-    </div>
-  );
-};
-
-const ContactDetail = ({ icon, title, value }) => {
-  return (
-    <div className="flex items-center gap-8">
-      {icon}
-      <div className="flex flex-col">
-        <p className="font-bold">{title}</p>
-        <p>{value}</p>
       </div>
     </div>
   );
