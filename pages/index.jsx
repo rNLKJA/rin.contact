@@ -1,21 +1,53 @@
-import React, { useLayoutEffect, useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import React, { Suspense } from "react";
+import dynamic from "next/dynamic";
 
-import HeroHeaderSection from "@/components/pages/homepage/HeroSection";
-import CtaSection from "@/components/pages/homepage/CTA";
-import ContactSection from "@/components/pages/homepage/Contact";
-import AboutSection from "@/components/pages/homepage/About";
-import GallerySection from "@/components/pages/homepage/Gallery";
+import LoadingDots from "@/components/ui/LoadingDots";
+
+// Dynamically import your components with custom loading component
+const HeroHeaderSection = dynamic(
+  () => import("@/components/pages/homepage/HeroSection"),
+  {
+    loading: () => <LoadingDots />,
+    ssr: false,
+  },
+);
+const CtaSection = dynamic(() => import("@/components/pages/homepage/CTA"), {
+  loading: () => <LoadingDots />,
+  ssr: false,
+});
+const ContactSection = dynamic(
+  () => import("@/components/pages/homepage/Contact"),
+  {
+    loading: () => <LoadingDots />,
+    ssr: false,
+  },
+);
+const AboutSection = dynamic(
+  () => import("@/components/pages/homepage/About"),
+  {
+    loading: () => <LoadingDots />,
+    ssr: false,
+  },
+);
+const GallerySection = dynamic(
+  () => import("@/components/pages/homepage/Gallery"),
+  {
+    loading: () => <LoadingDots />,
+    ssr: false,
+  },
+);
 
 const Home = () => {
   return (
-    <div>
-      <HeroHeaderSection />,
-      <AboutSection />,
-      <GallerySection />,
-      <CtaSection />,
-      <ContactSection />,
-    </div>
+    <Suspense fallback={<LoadingDots />}>
+      <div>
+        <HeroHeaderSection />
+        <AboutSection />
+        <GallerySection />
+        <CtaSection />
+        <ContactSection />
+      </div>
+    </Suspense>
   );
 };
 
