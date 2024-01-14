@@ -70,7 +70,6 @@ const HeroHeaderSection = () => {
           width={900}
           height={500}
           layout="responsive"
-          sizes="(max-width: 768px) 100vw, 768px"
           quality={50}
         />
       </div>

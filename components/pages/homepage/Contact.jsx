@@ -1,5 +1,9 @@
 import React from "react";
 import Image from "next/legacy/image";
+import { TfiEmail } from "react-icons/tfi";
+import { HiOutlinePhone } from "react-icons/hi2";
+import { CiLocationOn } from "react-icons/ci";
+import { RiWechat2Line } from "react-icons/ri";
 
 const ContactSection = () => {
   return (
@@ -27,13 +31,29 @@ const ContactSection = () => {
         <br />
 
         <div className="grid md:grid-cols-2 gap-5">
-          <ContactDetail type="email" value="huang@rin.contact" />
+          <ContactDetail
+            title="Email"
+            value="huang@rin.contact"
+            icon=<TfiEmail style={{ fontSize: "24px" }} />
+          />
 
-          <ContactDetail type="wechat" value="+86 138 8533 0703" />
+          <ContactDetail
+            title="Wechat"
+            value="+86 138 8533 0703"
+            icon=<RiWechat2Line style={{ fontSize: "24px" }} />
+          />
 
-          <ContactDetail type="phone" value="+61 450 270 703" />
+          <ContactDetail
+            title="Phone"
+            value="+61 450 270 703"
+            icon=<HiOutlinePhone style={{ fontSize: "24px" }} />
+          />
 
-          <ContactDetail type="location" value="Melbourne" />
+          <ContactDetail
+            title="Location"
+            value="Melbourne"
+            icon=<CiLocationOn style={{ fontSize: "24px" }} />
+          />
         </div>
       </div>
     </div>

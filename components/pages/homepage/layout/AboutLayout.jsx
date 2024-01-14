@@ -15,10 +15,9 @@ export const AboutLayout = () => {
           <Image
             src="/images/index/about-curious-cat.svg"
             alt="about image"
-            width={400}
-            height={400}
+            width={350}
+            height={350}
             quality={50}
-            responsive
           />
         </Zoom>
       </div>
