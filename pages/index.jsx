@@ -20,7 +20,13 @@ const ContactSection = React.lazy(() =>
 const Home = () => {
   return (
     <React.Fragment>
-      <Suspense fallback={<LoadingDots />}>
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center">
+            Loading Hero Section...
+          </div>
+        }
+      >
         <HeroHeaderSection />
       </Suspense>
       <Suspense fallback={<LoadingDots />}>
