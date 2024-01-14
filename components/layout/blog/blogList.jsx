@@ -11,7 +11,6 @@ import {
   TimelineConnector,
 } from "@mui/lab";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
-import { SearchBar } from "../../ui/SearchBar";
 import { useQuery } from "@tanstack/react-query";
 
 import { ClearButton } from "../../ui/ClearButton";

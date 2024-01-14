@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/legacy/image";
-import ContactDetail from "./ContactDetail";
 
 const ContactSection = () => {
   return (
@@ -20,9 +19,9 @@ const ContactSection = () => {
         <h2 className="font-bold text-3xl">Get in Touch</h2>
         <br />
         <p className="leading-loose text-pretty text-lg">
-          I'm absolutely paw-sitive I'd love to hear from you! If you have any
-          questions or are thinking about collaborating, just pawse for a moment
-          and reach out – I'm all whiskers and ears! 🐾
+          I&apos;m absolutely paw-sitive I&apos;d love to hear from you! If you
+          have any questions or are thinking about collaborating, just pawse for
+          a moment and reach out – I&apos;m all whiskers and ears! 🐾
         </p>
 
         <br />
@@ -42,3 +41,15 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
+
+const ContactDetail = ({ icon, title, value }) => {
+  return (
+    <div className="flex items-center gap-8">
+      {icon}
+      <div className="flex flex-col">
+        <p className="font-bold">{title}</p>
+        <p>{value}</p>
+      </div>
+    </div>
+  );
+};

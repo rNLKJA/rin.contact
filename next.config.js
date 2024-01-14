@@ -12,6 +12,9 @@ const nextConfig = {
     return config;
   },
   reactStrictMode: true,
+  experimental: {
+    forceSwcTransforms: true,
+  },
 };
 
 module.exports = nextConfig;

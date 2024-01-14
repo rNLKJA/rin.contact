@@ -97,7 +97,7 @@ export const Section3 = () => {
         <br />
 
         <p className="leading-8">
-          I've roamed the real-world jungles with{" "}
+          I&apos;ve roamed the real-world jungles with{" "}
           <a className="italic" href="https://www.csiro.au/en/">
             CSIRO
           </a>{" "}

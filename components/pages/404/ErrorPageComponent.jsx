@@ -10,7 +10,7 @@ export function ErrorPageComponent() {
       </div>
       <div className="flex flex-col text-center gap-2">
         <h1>404</h1>
-        <p>Oops! The page you're looking for was not found.</p>
+        <p>Oops! The page you&apos;re looking for was not found.</p>
       </div>
     </div>
   );

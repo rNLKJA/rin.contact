@@ -6,7 +6,6 @@ import Image from "next/legacy/image";
 import { Fade } from "react-awesome-reveal";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Button from "@mui/material/Button";
-import Head from "next/head";
 import { CiCoffeeBean, CiCalendar } from "react-icons/ci";
 import { SiVirginmedia } from "react-icons/si";
 
@@ -37,15 +36,16 @@ const Footer = () => {
 
   const handleCoffeeCalendlyClick = (e) => {
     e.preventDefault();
-    Calendly.initPopupWidget({
+
+    window.Calendly.initPopupWidget({
       url: "https://calendly.com/huangsunchuangyu/coffee-chat",
     });
   };
 
   const handleBusinessCalendlyClick = (e) => {
     e.preventDefault();
-    Calendly.initPopupWidget({
-      url: "https://calendly.com/huangsunchuangyu/business",
+    window.Calendly.initPopupWidget({
+      url: "https://calendly.com/huangsunchuangyu/coffee-chat",
     });
   };
 
@@ -205,6 +205,7 @@ function FooterIconLink({ href, IconComponent, content }) {
         href={href}
         alt={content}
         target="_blank"
+        rel="noreferrer"
       >
         {content}
       </a>

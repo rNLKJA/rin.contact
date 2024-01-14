@@ -119,11 +119,11 @@ export function ContactForm() {
           </DialogContentText>
           <br />
           <DialogContentText style={{ textAlign: "center", fontSize: "18px" }}>
-            I've send you a confirmation email!
+            I&apos;ve send you a confirmation email!
           </DialogContentText>
           <br />
           <DialogContentText style={{ textAlign: "center", fontSize: "18px" }}>
-            I'll paw-sitively get back to you ASAP! 🐱💕
+            I&apos;ll paw-sitively get back to you ASAP! 🐱💕
           </DialogContentText>
         </DialogContent>
         <DialogActions style={{ justifyContent: "center" }}>

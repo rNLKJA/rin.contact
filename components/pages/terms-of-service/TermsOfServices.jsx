@@ -11,9 +11,10 @@ const TermsComponent = () => {
         </p>
 
         <p>
-          Welcome to my website. These Terms of Service ("Terms") govern your
-          access to and use of my website and services ("Service"). By accessing
-          or using the Service, you agree to be bound by these Terms.
+          Welcome to my website. These Terms of Service (&quot;Terms&quot;)
+          govern your access to and use of my website and services
+          (&quot;Service&quot;). By accessing or using the Service, you agree to
+          be bound by these Terms.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">1. Acceptance of Terms</h2>
@@ -51,9 +52,10 @@ const TermsComponent = () => {
         </h2>
         <p>
           The service and all products and services delivered to you through the
-          service are (except as expressly stated by us) provided 'as is' and
-          'as available' for your use, without any representation, warranties,
-          or conditions of any kind, either express or implied.
+          service are (except as expressly stated by us) provided &apos;as
+          is&apos; and &apos;as available&apos; for your use, without any
+          representation, warranties, or conditions of any kind, either express
+          or implied.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">
@@ -61,7 +63,7 @@ const TermsComponent = () => {
         </h2>
         <p>
           In no event will I be liable for any indirect, incidental, special,
-          consequential or punitive damages, including without limitation, loss
+          consequential or punitive damagaes, including without limitation, loss
           of profits, data, use, goodwill, or other intangible losses, resulting
           from your access to or use of or inability to access or use the
           service.

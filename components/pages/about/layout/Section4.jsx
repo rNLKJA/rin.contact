@@ -22,13 +22,13 @@ export const Section4 = () => {
         </h2>
         <br />
         <p className="font-bold leading-8 text-pretty">
-          I'm not just any data kitty; I'm a feline fanatic for new experiences
-          and continuous learning.
+          I&apos;m not just any data kitty; I&apos;m a feline fanatic for new
+          experiences and continuous learning.
         </p>
         <p className="leading-8 text-pretty">
           My journey is sprinkled with certifications and a love affair with
-          Melbourne's coffee spots. Like a cat basking in the sun, I find joy in
-          balancing analytical rigor with creative exploration.
+          Melbourne&apos;s coffee spots. Like a cat basking in the sun, I find
+          joy in balancing analytical rigor with creative exploration.
         </p>
       </div>
     </div>

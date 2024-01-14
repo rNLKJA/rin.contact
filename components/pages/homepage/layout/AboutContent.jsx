@@ -14,7 +14,7 @@ export const AboutContent = () => {
         I am a purr-fessional data whisperer, weaving intricate tales from
         numbers with the stealth and grace of a night-prowling cat. In the vast,
         shadowy realm of analytics, I illuminate complex mysteries with a glint
-        of insight as sharp as a cat's gaze.
+        of insight as sharp as a cat&apos;s gaze.
       </p>
     </div>
   );

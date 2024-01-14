@@ -11,15 +11,15 @@ const PrivacyContent = () => {
         </p>
 
         <p>
-          Welcome to my website ("I", "me", "my"). I respect your privacy and am
-          committed to protecting it through my compliance with this policy.
-          This policy describes:
+          Welcome to my website (&quot;I&quot;, &quot;me&quot;, &quot;my&quot;).
+          I respect your privacy and am committed to protecting it through my
+          compliance with this policy. This policy describes:
         </p>
 
         <ul className="list-disc ml-4">
           <li>
             The types of information I may collect from you or that you may
-            provide when you visit my website ("Website").
+            provide when you visit my website (&quot;Website&quot;).
           </li>
           <li>
             My practices for collecting, using, maintaining, protecting, and

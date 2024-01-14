@@ -29,8 +29,8 @@ export const Considerations = () => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              It's more important to understand concepts deeply than to rush
-              through material. Adjust your daily hours accordingly.
+              It&apos;s more important to understand concepts deeply than to
+              rush through material. Adjust your daily hours accordingly.
             </Typography>
           </AccordionDetails>
         </Accordion>

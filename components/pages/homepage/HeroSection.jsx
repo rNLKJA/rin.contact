@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import Image from "next/legacy/image";
-import { Zoom } from "react-awesome-reveal";
 import { useState } from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -136,7 +135,7 @@ const PdfViewer = ({ open, handleClose }) => {
             alignItems: "center",
           }}
         >
-          <h2 id="modal-modal-title">Rin Huang's Resume</h2>
+          <h2 id="modal-modal-title">Rin Huang&rsquo;s Resume</h2>
           <iframe
             src={pdfUrl}
             style={{ width: "100%", height: "70vh" }} // Adjust as needed

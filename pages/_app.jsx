@@ -7,7 +7,6 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NextSEO } from "../SEO/NextSEO";
-import { LoadingBarComponent } from "../components/ui/loading/LoadingBarComponent";
 import Head from "next/head";
 
 import "../styles/globals.css";
@@ -48,11 +47,7 @@ function Body(isLoading, Component, pageProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <AnimatePresence mode="wait">
-        {isLoading ? (
-          <LoadingBarComponent isLoading={isLoading} />
-        ) : (
-          <Component {...pageProps} />
-        )}
+        <Component {...pageProps} />
       </AnimatePresence>
     </QueryClientProvider>
   );

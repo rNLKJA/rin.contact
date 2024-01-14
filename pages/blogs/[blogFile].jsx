@@ -40,7 +40,6 @@ const BlogPost = () => {
           );
         }
         const jsonData = await response.json();
-        console.log(jsonData);
         setData(jsonData);
         setIsLoading(false);
       } catch (error) {
@@ -51,7 +50,7 @@ const BlogPost = () => {
     };
 
     fetchData();
-  }, [router.isReady, router.query.filename]);
+  }, [router.isReady, router.query.blogFile]);
 
   if (isLoading) {
     return <div>Loading...</div>;

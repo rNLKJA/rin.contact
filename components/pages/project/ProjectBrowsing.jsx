@@ -60,7 +60,8 @@ function ProjectBrowsingWelcomeSection() {
   return (
     <Fade triggerOnce duration={2000} direction="left">
       <div>
-        <h1 className="text-xl font-bold">The Cat's Meow Projects</h1>
+        <h1 className="text-xl font-bold">The Cat&apos;s Meow Projects</h1>
+
         <div className="grid md:grid-cols-2 gap-4 py-10 px-4 items-center">
           <div className="flex justify-center items-center">
             <Image
@@ -77,7 +78,7 @@ function ProjectBrowsingWelcomeSection() {
             🐾 Welcome to our cozy corner of creativity! 🎨 Here, each project
             is a paw-some adventure in innovation. From the initial sketch to
             the final touch, we pour love and imagination into every detail.
-            Explore our gallery to see how we're making the digital world
+            Explore our gallery to see how we&apos;re making the digital world
             purr-fect, one pixel at a time!
           </p>
         </div>

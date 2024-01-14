@@ -23,7 +23,8 @@ export const Section1 = () => {
       </div>
       <div className="col-span-2">
         <p className="font-bold leading-8 text-pretty">
-          Hello, I'm Rin, a curious kitty in the vast world of data science.
+          Hello, I&apos;m Rin, a curious kitty in the vast world of data
+          science.
         </p>
         <p className="leading-8 text-pretty">
           Just like a cat exploring every nook of its territory, I hail from the

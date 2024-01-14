@@ -5,8 +5,6 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
-// import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const testimonials = [
   {

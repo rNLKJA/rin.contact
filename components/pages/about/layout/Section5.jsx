@@ -14,9 +14,9 @@ export const Section5 = () => {
         </p>
         <p className="leading-10 text-pretty">
           know that I bring more than just a sharp mind and nimble paws. I bring
-          a heart full of curiosity and a spirit of adventure. Let's have a
-          purr-fect coffee chat, and I'll show you how, together, we can make
-          the data dance and the business purr with progress.
+          a heart full of curiosity and a spirit of adventure. Let&apos;s have a
+          purr-fect coffee chat, and I&apos;ll show you how, together, we can
+          make the data dance and the business purr with progress.
         </p>
       </div>
     </div>

@@ -35,8 +35,9 @@ export const CourseDescription = () => {
       <br />
 
       <Typography>
-        Given the depth and breadth of the material, you'll need to dedicate a
-        significant amount of time each day. Here's how you might structure it:
+        Given the depth and breadth of the material, you&apos;ll need to
+        dedicate a significant amount of time each day. Here&apos;s how you
+        might structure it:
       </Typography>
 
       <br />
@@ -88,9 +89,10 @@ export const CourseDescription = () => {
       </Accordion>
       <br />
       <Typography>
-        Given these estimates, you'll be spending approximately 2-5 hours daily,
-        depending on the current stage and topic complexity. This is a rigorous
-        schedule, but necessary to cover all the material by the end of May.
+        Given these estimates, you&apos;ll be spending approximately 2-5 hours
+        daily, depending on the current stage and topic complexity. This is a
+        rigorous schedule, but necessary to cover all the material by the end of
+        May.
       </Typography>
     </div>
   );
