@@ -17,27 +17,13 @@ const GallerySection = () => {
     fetchProjects();
   }, []);
 
-  // Get the most recent project (assuming the last one in the array is the most recent)
   const recentProject = projects[projects.length - 1];
 
   return (
-    <div className="grid  py-10 px-4 justify-center items-center h-screen w-full">
-      {/* <div className="flex justify-center items-center">
-        <Zoom triggerOnce>
-          <Image
-            src="/images/index/project_thumbnail.svg"
-            width={300}
-            height={300}
-            quality={25}
-            alt="thumbnail"
-            layout="responsive"
-          />
-        </Zoom>
-      </div> */}
-
+    <div className="grid  py-10 px-4 justify-center items-center ">
       <div className="flex flex-col gap-5">
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-xl">Latest Project</h2>
+          <h2 className="font-bold text-2xl">Latest Project</h2>
           <Button
             variant="contained"
             color="primary"

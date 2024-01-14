@@ -11,70 +11,69 @@ import DownloadIcon from "@mui/icons-material/Download";
 
 const HeroHeaderSection = () => {
   const [open, setOpen] = useState(false);
-  const isMobile = useMediaQuery("(max-width:900px)"); // Adjust breakpoint as needed
+  const isMobile = useMediaQuery("(max-width:900px)");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <div className="grid md:grid-cols-2 gap-5 pb-10 px-4 pb-10 items-center justify-center h-screen">
-        <div>
-          {" "}
-          <Zoom triggerOnce>
-            <Image
-              src="/images/index/heroSection1.png"
-              alt="hero section image"
-              width={1100}
-              height={650}
-              layout="responsive"
-              sizes="(max-width: 768px) 100vw, 768px"
-              quality={50}
-            />
-          </Zoom>
-        </div>
+      <div className="grid gird-col gap-20 items-center justify-center py-20 px-4 xs:h-screen md:auto">
+        <div className="grid md:grid-cols-2 gap-20">
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="font-bold text-5xl text-pretty">
+              Inspring, Innovation & Unlock the Power of Data Analytics
+            </h1>
+          </div>
 
-        <div>
-          <h1 className="font-bold text-2xl text-pretty">
-            Inspring, Innovation & Unlock the Power of Data Analytics
-          </h1>
-          <br />
-          <p className="leading-8 text-pretty">
-            Embrace the Meow-gic of Data and Modern Tech: Inspurr & Innovate
-            with Expert Guidance with{" "}
-            <a
-              className="font-bold"
-              href="https://www.linkedin.com/in/sunchuangyuhuang/"
-            >
-              Rin Huang
-            </a>
-            !
-          </p>
-          <br />
-          <div className="flex flex-end items-center gap-4">
-            <Button
-              variant="contained"
-              size="medium"
-              style={{
-                backgroundColor: "black",
-                "&:hover": {
-                  backgroundColor: "rgba(0, 0, 0, 0.6)",
-                },
-              }}
-              href="/about-me"
-            >
-              More about Rin
-            </Button>
-            <Button
-              variant="outlined"
-              size="medium"
-              style={{ borderColor: "black", color: "black" }}
-              onClick={handleOpen}
-            >
-              Resume
-            </Button>
+          <div className="grid grid-rows-2 gap-5">
+            <p className="leading-8 text-pretty">
+              Embrace the Magic of Data and Modern Tech: Inspire and Innovate
+              with Expert Guidance with{" "}
+              <a
+                className="font-bold"
+                href="https://www.linkedin.com/in/sunchuangyuhuang/"
+              >
+                Sunchuangyu (Rin) Huang
+              </a>
+              !
+            </p>
+
+            <div className="flex flex-end items-center gap-4">
+              <Button
+                variant="contained"
+                size="medium"
+                style={{
+                  backgroundColor: "black",
+                  "&:hover": {
+                    backgroundColor: "rgba(0, 0, 0, 0.6)",
+                  },
+                }}
+                href="/about-me"
+              >
+                More about Rin
+              </Button>
+              <Button
+                variant="outlined"
+                size="medium"
+                style={{ borderColor: "black", color: "black" }}
+                onClick={handleOpen}
+              >
+                Resume
+              </Button>
+            </div>
           </div>
         </div>
+
+        <Image
+          src="/images/index/heroSection1.png"
+          alt="hero section image"
+          width={900}
+          height={500}
+          layout="responsive"
+          sizes="(max-width: 768px) 100vw, 768px"
+          quality={50}
+        />
       </div>
 
       {isMobile
