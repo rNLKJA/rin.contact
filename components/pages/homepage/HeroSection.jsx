@@ -17,7 +17,7 @@ const HeroHeaderSection = () => {
 
   return (
     <div>
-      <div className="grid gird-col gap-20 items-center justify-center py-20 px-4 xs:h-screen md:auto">
+      <div className="grid gird-col gap-20 items-center justify-center py-20 px-4  md:auto">
         <div className="grid md:grid-cols-2 gap-20">
           <div className="flex flex-col items-center justify-center">
             <h1 className="font-bold text-5xl text-pretty leading-normal">

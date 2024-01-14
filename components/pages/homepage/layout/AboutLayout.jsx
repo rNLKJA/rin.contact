@@ -5,10 +5,7 @@ import { AboutContent } from "./AboutContent";
 
 export const AboutLayout = () => {
   return (
-    <div
-      className="grid md:grid-cols-2 items-center justify-center gap-20 px-4"
-      style={{ height: 900 }}
-    >
+    <div className="grid md:grid-cols-2 items-center justify-center gap-20 px-4">
       <AboutContent />
       <div className="flex justify-center items-center">
         <Zoom triggerOnce>
