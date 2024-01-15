@@ -65,7 +65,7 @@ export default function BlogList() {
       <div className="flex flex-col sm:flex-col md:flex-row md:justify-between md:items-center gap-2">
         <h2 className="text-xl text-bold text-left">Blog List</h2>
         <Fade duration={1500} triggerOnce direction="right">
-          <div className="search-bar flex sm:flex-row justify-between">
+          <div className="search-bar flex flex-col md:flex-row  justify-between gap-2">
             <SearchInput
               type="text"
               placeholder="Search blogs..."

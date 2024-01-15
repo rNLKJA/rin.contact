@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/legacy/image";
+// import Image from "next/image";
 import Button from "@mui/material/Button";
 import { SiGithub, SiOverleaf } from "react-icons/si";
 import { Fade } from "react-awesome-reveal";
@@ -10,22 +10,22 @@ export const ProjectContent = (project) => {
       <div className="py-10">
         <div className="flex justify-between">
           <div className="flex flex-wrap gap-4 items-center">
-            <Image
+            {/* <Image
               src={project.icon}
               width={35}
               height={35}
               alt="Project Icons"
               quality={50}
               layout="fixed"
-            />
-            <h2 className="text-lg text-bold">{project.title}</h2>
+            /> */}
+            <h2 className="text-lg font-bold">{project.title}</h2>
           </div>
         </div>
         <br />
         <p className="leading-5">{project.date}</p>
         <br />
 
-        <p className="leading-5">{project.description}</p>
+        <p className="leading-loose">{project.description}</p>
         <br />
 
         <div className="flex flex-wrap gap-1">

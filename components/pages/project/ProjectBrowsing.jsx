@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { Fade } from "react-awesome-reveal";
@@ -90,14 +90,17 @@ function ProjectBrowsingWelcomeSection() {
 function ProjectSearchBar(searchQuery, handleSearchChange, clearSearch) {
   return (
     <Fade duration={1500} triggerOnce direction="right">
-      <div className="flex flex-row justify-between items-center">
+      <div className="flex flex-col justify-center md:flex-row  md:justify-between items-center gap-2">
         <SearchInput
+          className="flex w-full"
           type="text"
           placeholder="Search projects..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <ClearButton onClick={clearSearch}>Clear</ClearButton>
+        <ClearButton className="flex w-full" onClick={clearSearch}>
+          Clear
+        </ClearButton>
       </div>
     </Fade>
   );
@@ -107,6 +110,7 @@ function MoreProjectLoadingButton(displayCount, projects, handleViewMore) {
   return (
     <Fade triggerOnce duration={3000} direction="up">
       <div className="flex justify-center items-center">
+        <br />
         {displayCount < projects.length && (
           <Button
             onClick={handleViewMore}

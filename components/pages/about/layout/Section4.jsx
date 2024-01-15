@@ -1,9 +1,9 @@
 import React from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 export const Section4 = () => {
   return (
-    <div className="grid md:grid-cols-2 justify-center items-center px-4 gap-10">
+    <div className="grid md:grid-cols-2 justify-center items-center gap-10">
       <div className="flex justify-center items-center">
         <Image
           src="/images/about-me/coffee.svg"
@@ -11,7 +11,7 @@ export const Section4 = () => {
           width={250}
           height={250}
           // layout="responsive"
-          sizes="(max-width: 300px)"
+          // sizes="(max-width: 300px)"
           quality={30}
           layout="fixed"
         />

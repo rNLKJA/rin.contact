@@ -71,7 +71,7 @@ export const Section3 = () => {
   });
 
   return (
-    <div className="flex flex-row justify-center items-center px-4">
+    <div className="flex flex-col justify-center items-center">
       <div></div>
       <div>
         <h2 className="text-xl font-bold">
@@ -82,7 +82,7 @@ export const Section3 = () => {
           My toolbox is a treasure chest filled with the fanciest gadgets:
         </p>
         <br />
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid xs:grid-cols-2 md:grid-cols-4 gap-2">
           {techStack.map((tech) => (
             <div
               key={tech.name}
@@ -96,7 +96,7 @@ export const Section3 = () => {
 
         <br />
 
-        <p className="leading-8">
+        <p className="leading-normal">
           I&apos;ve roamed the real-world jungles with{" "}
           <a className="italic" href="https://www.csiro.au/en/">
             CSIRO

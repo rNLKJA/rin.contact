@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import BlogBrowsing from "@/components/layout/blog/blogBrowsing";
-import BlogList from "@/components/layout/blog/blogList";
+import BlogBrowsing from "@/components/pages/blog/blogBrowsing";
+import BlogList from "@/components/pages/blog/blogList";
 
 export default function Home() {
   return (

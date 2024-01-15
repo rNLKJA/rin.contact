@@ -2,7 +2,7 @@ import React from "react";
 
 export const Section2 = () => {
   return (
-    <div className="flex flex-row justify-center items-center px-4 ">
+    <div className="flex flex-row justify-center items-center ">
       <div>
         <h2 className="text-xl font-bold">
           🌟 Starry-Eyed Explorer: Education and Passion
