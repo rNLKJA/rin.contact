@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
-import Link from "next/link";
+import { Link } from "@nextui-org/link";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 import NavigationIcon from "@mui/icons-material/Navigation";
@@ -66,7 +66,7 @@ const Footer = () => {
               alt="Logo"
               width={150}
               height={150}
-              quality={25}
+              quality={100}
               layout="fixed"
             />
           </div>

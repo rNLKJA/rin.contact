@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Link from "next/link";
+import { Link } from "@nextui-org/link";
 import { Tooltip } from "@mui/material";
 import { Fade } from "react-awesome-reveal";
 

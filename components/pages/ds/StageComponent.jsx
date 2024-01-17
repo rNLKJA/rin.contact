@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import Link from "next/link";
+import { Link } from "@nextui-org/link";
 import Typography from "@mui/material/Typography";
 import {
   Timeline,

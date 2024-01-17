@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import { Link } from "@nextui-org/link";
 import Image from "next/legacy/image";
 import { Fade } from "react-awesome-reveal";
 import Menu from "@mui/material/Menu";
@@ -86,7 +86,7 @@ export const MobileHeader = () => {
           alt="Logo"
           width={50}
           height={50}
-          quality={75}
+          quality={100}
           layout="fixed"
           priority
         />

@@ -6,7 +6,7 @@ import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import Typography from "@mui/material/Typography";
 import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
-import Link from "next/link";
+import { Link } from "@nextui-org/link";
 
 export const CourseStages = () => {
   const [stages, setStages] = useState([]);

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@nextui-org/link";
 import { Fade } from "react-awesome-reveal";
 
 export default function BlogBrowsing() {
