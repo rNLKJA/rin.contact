@@ -26,19 +26,6 @@ body {
   line-height: 1.5; /* Improved readability */
 }
 
-/* Responsive Design Adjustments
-@media (min-width: 768px) {
-  body {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    max-width: 1200px;
-  }
-} */
-
 html {
   scroll-behavior: smooth; /* Smooth scrolling */
 }
