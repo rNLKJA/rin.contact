@@ -9,7 +9,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NextSEO } from "../SEO/NextSEO";
 import Head from "next/head";
 
-import "../styles/globals.css";
+import "../public/styles/globals.css";
 
 const queryClient = new QueryClient();
 
