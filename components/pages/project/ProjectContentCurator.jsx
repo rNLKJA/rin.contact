@@ -1,8 +1,8 @@
 import React from "react";
-// import Image from "next/image";
 import Button from "@mui/material/Button";
 import { SiGithub, SiOverleaf } from "react-icons/si";
 import { Fade } from "react-awesome-reveal";
+import { CiShoppingTag } from "react-icons/ci";
 
 export const ProjectContent = (project) => {
   return (
@@ -10,14 +10,6 @@ export const ProjectContent = (project) => {
       <div className="py-10">
         <div className="flex justify-between">
           <div className="flex flex-wrap gap-4 items-center">
-            {/* <Image
-              src={project.icon}
-              width={35}
-              height={35}
-              alt="Project Icons"
-              quality={50}
-              layout="fixed"
-            /> */}
             <h2 className="text-lg font-bold">{project.title}</h2>
           </div>
         </div>
@@ -38,8 +30,9 @@ export const ProjectContent = (project) => {
               onMouseOut={(e) => {
                 e.target.style.fontWeight = "normal";
               }}
-              className="flex rounded-full px-2"
+              className="flex flex-row items-center gap-2 rounded-full px-2 hover:bg-gray-200 text-gray-700"
             >
+              <CiShoppingTag />
               {skill}
             </div>
           ))}

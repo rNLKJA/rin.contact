@@ -92,13 +92,13 @@ function ProjectSearchBar(searchQuery, handleSearchChange, clearSearch) {
     <Fade duration={1500} triggerOnce direction="right">
       <div className="flex flex-col justify-center md:flex-row  md:justify-between items-center gap-2">
         <SearchInput
-          className="flex w-full"
+          className="flex "
           type="text"
           placeholder="Search projects..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <ClearButton className="flex w-full" onClick={clearSearch}>
+        <ClearButton className="flex " onClick={clearSearch}>
           Clear
         </ClearButton>
       </div>

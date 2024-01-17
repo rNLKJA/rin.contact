@@ -16,6 +16,8 @@ import { useQuery } from "@tanstack/react-query";
 import { ClearButton } from "../../ui/ClearButton";
 import { SearchInput } from "../../ui/SearchInput";
 
+import { CiShoppingTag } from "react-icons/ci";
+
 async function fetchBlogList() {
   const response = await fetch("/data/blog_list.json");
   if (!response.ok) {
@@ -110,10 +112,10 @@ export default function BlogList() {
                     <div className="flex flex-wrap gap-2 pb-2">
                       {blog.tags.map((tag) => (
                         <p
-                          className="px-2 rounded-full"
-                          style={{ backgroundColor: "#f9d9a9" }}
+                          className="flex flex-row items-center gap-2 px-2 rounded-full  hover:bg-orange-100"
                           key={Date.now() + Math.random()}
                         >
+                          <CiShoppingTag />
                           {tag}
                         </p>
                       ))}
