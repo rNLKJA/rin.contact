@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/globals.css";
 
 import { Zoom } from "react-awesome-reveal";
 import { ContactForm } from "../components/pages/contact/ContactForm";
