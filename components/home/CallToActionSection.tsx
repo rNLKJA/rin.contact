@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 const CallToActionContainer = styled.div`
   ${cn}
 `;
+
 export const CallToActionSection: React.FC = () => {
   const router = useRouter();
 
