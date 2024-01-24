@@ -1,22 +1,3 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "react/no-unescaped-entities": "off",
-    "@next/next/no-page-custom-font": "off",
-    "indent": ["error", 2],                           // Enforce a 2-space indentation
-    "no-unused-vars": "warn",                         // Warn about variables that are declared but not used
-    "no-console": "warn",                             // Warn about console.log statements
-    "react/react-in-jsx-scope": "off",                // Not necessary in Next.js as of version 9.5.4
-    "react/prop-types": "off",                        // Disable prop-types as TypeScript is often used with Next.js
-    "jsx-a11y/anchor-is-valid": [                     // Enforce valid anchors
-      "error", {
-        "components": ["Link"],
-        "specialLink": ["hrefLeft", "hrefRight"],
-        "aspects": ["invalidHref", "preferButton"]
-      }
-    ],
-    "import/no-anonymous-default-export": "warn",     // Warn against anonymous default exports
-    "react-hooks/rules-of-hooks": "error",            // Enforce rules of hooks
-    "react-hooks/exhaustive-deps": "warn"             // Warn if dependencies are missing in useEffect
-  }
+  "extends": "next/core-web-vitals"
 }
