@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="flex-center w-full border-b-2 py-4">
-      <div className="flex-between mx-auto w-full max-w-screen-2xl">
+      <div className="flex-between mx-auto w-full max-w-screen-2xl px-8">
         <div className="pl-8">
           <NavLogoContainer />
         </div>

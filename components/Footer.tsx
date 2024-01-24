@@ -38,8 +38,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-10 ">
-      <div className="flex-col mx-auto w-full max-w-screen-2xl px-8">
+    <footer className="py-10">
+      <div className="flex-col mx-auto w-full max-w-screen-2xl px-10">
         <div className="grid md:grid-cols-4 grid-cols-1 gap-10 items-center text-center">
           {FooterLogo}
 
@@ -50,9 +50,9 @@ const Footer = () => {
 
           {FollowMeLinksContainer}
         </div>
-
+        <br />
         {MiddleTextSection}
-
+        <br />
         <hr className="my-4" />
 
         <div className="flex flex-col items-center justify-center md:flex-col lg:flex-row lg:justify-between">

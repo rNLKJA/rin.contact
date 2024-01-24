@@ -1,0 +1,185 @@
+[
+  {
+    "title": "Food Track Order System",
+    "date": "Apr 2021 - Jun 2021",
+    "icon": "https://png.pngtree.com/png-clipart/20230522/original/pngtree-cute-van-life-illustration-vector-pastel-color-png-image_9167100.png",
+    "description": "The Food Track Order System is a comprehensive mobile application designed to manage personal finances. It utilizes a robust tech stack that includes Handlebar for cross-platform development, NodeJs for backend services, and MongoDB for efficient database management. As a data-driven application, it offers users the ability to track expenses, set budgets, and receive personalized financial tips. The project emphasizes intuitive design and prioritizes data security to ensure a seamless user experience.",
+    "skills": [
+      "NodeJs",
+      "MongoDB",
+      "Handlebar",
+      "Express",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "UI/UX Design",
+      "Full Stack Development",
+      "Agile Project Management",
+      "Data Analysis",
+      "Data Visualization",
+      "Data Security"
+    ],
+    "github_link": "https://github.com/rNLKJA/Unimelb-undergraduate-2021-INFO30005-Project"
+  },
+  {
+    "title": "Quantitative Analysis of Yellow Taxi in NYC",
+    "date": "Jul 2021 - Aug 2021",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Uber_App_Icon.svg/640px-Uber_App_Icon.svg.png",
+    "description": "I utilized applied data science techniques to analyze New York City taxi data, specifically focusing on the 2014-2017 Yellow Taxi Data. Using the big data analysis framework Spark, I handled large taxi data parquet files, processed and transformed the data into a human-readable format, and converted it into various graphic interpretations. I applied machine learning methods, such as linear modeling, to predict the trip cost and used clustering to discover traffic hotspots.",
+    "skills": [
+      "Python",
+      "PySpark",
+      "Data Visualisation",
+      "Jupyter Notebook",
+      "Clustering",
+      "Statistical Analysis",
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Personal Customer Relation Management (PCRM)",
+    "date": "Aug 2021 - Nov 2021",
+    "icon": "https://cdn-icons-png.flaticon.com/512/5706/5706401.png",
+    "description": "The PCRM project aims to develop a comprehensive customer relationship management system. It involves the use of Node.js, React.js, Express.js, CSS, HTML, and MongoDB to create a robust platform for managing customer interactions and data.",
+    "skills": [
+      "Full Stack Development",
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "UI/UX Design",
+      "Agile Project Management",
+      "UI/UX Design",
+      "Scrum Master"
+    ],
+    "github_link": "https://github.com/rNLKJA/Personal-Customer-Relation-Management-PCRM"
+  },
+  {
+    "title": "Digital Transformation",
+    "date": "Feb 2022 - Jun 2022",
+    "icon": "https://cdn-icons-png.flaticon.com/512/10439/10439403.png",
+    "description": "During my tenure at CSL, I held multifaceted roles as a Data Analyst, Scrum Master, and Team Leader. I combined analytical expertise with agile team management to ensure the timely and accurate delivery of project deliverables. My responsibilities included developing an experiment evaluation chart using advanced visualization tools, analyzing historical HPLC data, and applying unsupervised clustering algorithms to identify distinct data clusters. As a leader, I fostered collaborative environments, championed clear communication, and adhered to agile methodologies. My contributions exceeded supervisor expectations and facilitated digital transformation initiatives.",
+    "skills": [
+      "Python",
+      "Data Analysis",
+      "Data Visualization",
+      "Machine Learning",
+      "Data Pipelines",
+      "Data Storage",
+      "Data Processing",
+      "Data Optimisation",
+      "Data Analytics",
+      "Real-time Analytics",
+      "Statistical Analysis",
+      "Predictive Modeling",
+      "Agile Project Management",
+      "Leadership"
+    ]
+  },
+  {
+    "title": "Cachex-AI",
+    "date": "Apr 2022 - Jun 2022",
+    "icon": "https://cdn-icons-png.flaticon.com/512/2500/2500116.png",
+    "description": "Cachex-AI is a project focused on implementing AI agents for the game of Cachex. This two-player connection game requires strategic thinking, anticipation, and sabotage. The project consists of two main parts: searching and competitive game agent. In the searching part, I implemented a heuristic and A* pathfinding algorithm to solve search-based problems on the Cachex game board. For the competitive game agent, I designed and implemented a program that plays the game competitively using various strategies.",
+    "skills": [
+      "Python",
+      "Artificial Intelligence",
+      "Game Theory",
+      "Search Algorithms",
+      "A* Pathfinding",
+      "Heuristics",
+      "Game Agent",
+      "Data Analysis",
+      "Algorithm Design",
+      "Problem Solving"
+    ],
+    "github_link": "https://media.licdn.com/dms/image/sync/D5627AQEx7i68zu2QYg/articleshare-shrink_160/0/1703239395918?e=1704438000&v=beta&t=tN6sT1mGX2ZOKDU8IuCX4sZlJjd0W-sw0e-apaNIH0U"
+  },
+  {
+    "title": "Twitter Social Media Data Analysis",
+    "date": "Mar 2023 - Apr 2023",
+    "icon": "https://about.twitter.com/content/dam/about-twitter/x/brand-toolkit/logo-black.png.twimg.1920.png",
+    "description": "This project aims to create a parallelized program for the University of Melbourne’s HPC facility, SPARTAN, to effectively analyze a large Twitter dataset and achieve three data processing tasks. The report discusses the parallelization strategy using MPI via mpi4py and examines Amdahl’s Law’s impact on enhancing computational performance through parallelization and its consequences.",
+    "skills": [
+      "Python",
+      "Parallel Computing",
+      "Message Passing Interface (MPI)",
+      "Data Analysis",
+      "Polars",
+      "Data Visualisation"
+    ],
+    "overleaf_link": "https://www.overleaf.com/read/sdsczmmdxzvq#388cff",
+    "github_link": "https://github.com/rNLKJA/Australia-Social-Media-Analytics-on-the-Cloud"
+  },
+  {
+    "title": "Australia Social Media Analytics on the Cloud",
+    "date": "Apr 2023 - Jun 2023",
+    "icon": "https://cdn-icons-png.flaticon.com/512/8899/8899687.png",
+    "description": "Our team successfully completed the \"Australia Social Media Analytics on the Cloud\" project, which involved leveraging Twitter data from the Australian Data Observatory (ADO), Mastodon APIs, and the Spatial Urban Data Observatory (SUDO) to gain valuable insights into life in Australia. By combining social media data with official data from the SUDO platform, we enhanced our understanding of various social trends and sentiments. The project encompassed data harvesting, processing, and analysis using cloud-based technologies. As a result, we developed a Social Sense Dashboard that provides actionable insights for decision-making.",
+    "skills": [
+      "Python",
+      "Flask",
+      "Data Visualization",
+      "Cloud Computing",
+      "Parallel Computing",
+      "IT Automation",
+      "Full Stack Development",
+      "Docker",
+      "CouchDB",
+      "MapReduce",
+      "Agile Project Management",
+      "Data Analysis",
+      "Data Processing",
+      "Sentiment Analysis",
+      "Text Mining"
+    ],
+    "overleaf_link": "https://www.overleaf.com/read/fvkvxvsrtsxs#3e4f00",
+    "github_link": "https://github.com/rNLKJA/Australia-Social-Media-Analytics-on-the-Cloud"
+  },
+  {
+    "title": "Self-Driving Database Research",
+    "date": "Jun 2023 - Jul 2023",
+    "icon": "https://cdn-icons-png.flaticon.com/512/9243/9243391.png",
+    "description": "The Self-Driving Database Research project explores essential components of self-driving databases, with a focus on workload-driven optimization and index selection. These components are crucial for improving the performance of autonomous databases. By leveraging artificial intelligence and machine learning technologies, we aim to optimize resource allocation and query performance, ultimately reducing total ownership costs and relieving the burden on database administrators.",
+    "skills": [
+      "Research Skills",
+      "Database",
+      "Workload-driven Optimization",
+      "Index Selection",
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Data Analysis",
+      "Data Modeling",
+      "Query Optimization"
+    ],
+    "overleaf_link": "https://www.overleaf.com/read/yfhjthxykvgp"
+  },
+
+  {
+    "title": "Machine Learning for Climate Change and Food Security",
+    "date": "Feb 2023 - Nov 2023",
+    "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/9/92/CSIRO_Logo.svg/1024px-CSIRO_Logo.svg.png",
+    "description": "At the Commonwealth Scientific and Industrial Research Organisation (CSIRO), I gained extensive experience in data engineering and analysis. Working closely with Dr. Vassili Kitsios, I developed and maintained data pipelines to ensure reliable and timely availability of data for various analytical endeavors. My expertise in Python, Jupyter Notebook, and machine learning enabled me to comprehend complex data needs and deliver meticulously architected data solutions. I focused on optimizing data storage, retrieval, and processing mechanisms, which enhanced real-time analytics and facilitated research on food security and climate change.",
+    "skills": [
+      "Python",
+      "Jupyter Notebook",
+      "Data Engineering",
+      "Data Analysis",
+      "Data Visualization",
+      "Machine Learning",
+      "Data Science",
+      "Data Pipelines",
+      "Data Processing",
+      "Data Optimisation",
+      "Data Analytics",
+      "Real-time Analytics",
+      "Food Security",
+      "Climate Change",
+      "Statistical Analysis",
+      "Predictive Modeling"
+    ]
+  }
+]

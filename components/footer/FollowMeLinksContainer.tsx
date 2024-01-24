@@ -9,7 +9,7 @@ export const FollowMeLinksContainer = (
   <div className="text-left flex flex-col h-full gap-2">
     <p className="font-bold text-lg text-gradient_blue-purple">Follow me</p>
 
-    <div className="flex flex-col tablet:flex-wrap justify-center">
+    <div className="flex flex-col tablet:flex-wrap justify-center gap-2">
       <FooterIconLink
         IconComponent={SiVirginmedia}
         href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"

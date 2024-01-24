@@ -1,0 +1,88 @@
+[
+  {
+    "title": "Stage 1: Foundational Knowledge & Problem Solving",
+    "completion": "Expected Completion: Mid-February 2024",
+    "link": "/data-science/stage1",
+    "details": [
+      {
+        "title": "1. Mathematical Foundations",
+        "link": "/data-science/stage1/mathematical-foundations",
+        "content": "Focus on problem-solving with real-world scenarios and common interview questions related to statistics, probability, and linear algebra. Outcome: Ability to solve complex mathematical problems and explain your reasoning, a common interview requirement."
+      },
+      {
+        "title": "2. Basic Data Analysis & Case Studies",
+        "link": "/data-science/stage1/basic-data-analysis",
+        "content": "Incorporate case studies and typical data analysis interview questions from top companies. Outcome: Proficiency in explaining and executing data analysis tasks, critical for technical interviews."
+      },
+      {
+        "title": "3. Introduction to Databases & SQL Challenges",
+        "link": "/data-science/stage1/introduction-to-databases",
+        "content": "Intensive practice with SQL through common interview questions and scenarios. Outcome: Ability to solve complex SQL queries and database design questions, often asked in interviews."
+      }
+    ]
+  },
+  {
+    "title": "Stage 2: Intermediate Skills, Specializations & Coding Interviews",
+    "completion": "Expected Completion: Early April 2024",
+    "link": "/data-science/stage2",
+    "details": [
+      {
+        "title": "4. Advanced Data Analysis & Interview Simulations",
+        "link": "/data-science/stage2/advanced-data-analysis",
+        "content": "Enhancements: Focus on scenarios and questions commonly presented in interviews, including machine learning model evaluation and data interpretation. Outcomes: Confidence in tackling advanced data analysis questions, a staple in many technical interviews."
+      },
+      {
+        "title": "5. Bayesian Inference & Case-Based Learning",
+        "link": "/data-science/stage2/bayesian-inference",
+        "content": "Enhancements: Emphasis on real-world applications and typical interview questions regarding Bayesian methods. Outcomes: Ability to articulate and apply Bayesian methods in various scenarios, a valuable skill in interviews."
+      },
+      {
+        "title": "6. Comparative & Hypothesis Testing in Business Contexts",
+        "link": "/data-science/stage2/comparative-testing",
+        "content": "Enhancements: Focus on designing and interpreting tests with real business cases and common interview questions. Outcomes: Mastery in explaining and conducting comparative tests, a skill often explored in interviews."
+      }
+    ]
+  },
+  {
+    "title": "Stage 3: Advanced Techniques, Emerging Technologies & System Design",
+    "completion": "Expected Completion: End of May 2024",
+    "link": "/data-science/stage3",
+    "details": [
+      {
+        "title": "7. Big Data Technologies & Scenario-Based Learning",
+        "link": "/data-science/stage3/big-data-technologies",
+        "content": "Enhancements: Hands-on experience with big data scenarios and interview-style questions on big data tools and architectures. Outcomes: Demonstrated understanding of big data technologies, crucial for roles in leading companies."
+      },
+      {
+        "title": "8. NLP & AI in Practice",
+        "link": "/data-science/stage3/nlp-and-ai",
+        "content": "Enhancements: Integration of practical NLP/AI applications and common interview questions in these domains. Outcomes: Ability to discuss and implement NLP and AI solutions, showcasing your knowledge depth."
+      },
+      {
+        "title": "9. Deep Learning & Neural Networks with Practical Challenges",
+        "link": "/data-science/stage3/deep-learning",
+        "content": "Enhancements: Focus on deep learning concepts and architectures through the lens of common interview challenges. Outcomes: Proficiency in explaining and utilizing deep learning techniques, a sought-after skill."
+      },
+      {
+        "title": "10. Reinforcement Learning & Strategic Thinking",
+        "link": "/data-science/stage3/reinforcement-learning",
+        "content": "Enhancements: Emphasis on applying reinforcement learning to strategic problems, similar to those in interviews. Outcomes: Capability to devise and articulate solutions using reinforcement learning, demonstrating strategic thinking."
+      },
+      {
+        "title": "11. Advanced AI Topics & Ethical Considerations",
+        "link": "/data-science/stage3/advanced-ai-topics",
+        "content": "Enhancements: Discussion on cutting-edge AI, including ethical implications, often a topic in interviews for senior positions. Outcomes: Ability to engage in thoughtful discussions on advanced AI topics, showing your forward-thinking approach."
+      },
+      {
+        "title": "12. System Design & Architecture",
+        "link": "/data-science/stage3/system-design",
+        "content": "Enhancements: Understanding of system design principles through common interview questions and scenarios. Outcomes: Ability to design and critique systems and architectures, a key aspect of technology leadership roles."
+      },
+      {
+        "title": "13. Capstone Project with Interview Focus",
+        "link": "/data-science/stage3/capstone-project",
+        "content": "Enhancements: The project will be geared towards solving a complex problem commonly presented in big company interviews. Outcomes: A showcase of your ability to tackle real-world problems from start to finish, as expected in interviews."
+      }
+    ]
+  }
+]
