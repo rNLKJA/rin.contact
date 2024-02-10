@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "@nextui-org/link";
-import { Fade } from "react-awesome-reveal";
-import Button from "@mui/material/Button";
 import {
   Timeline,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
   TimelineItem,
   TimelineSeparator,
-  TimelineDot,
-  TimelineContent,
-  TimelineConnector,
 } from "@mui/lab";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
+import Button from "@mui/material/Button";
+import { Link } from "@nextui-org/link";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 import { ClearButton } from "../../ui/ClearButton";
 import { SearchInput } from "../../ui/SearchInput";
@@ -43,16 +43,19 @@ export default function BlogList() {
   if (error) return "An error has occurred: " + error.message;
 
   // Filtered blog list based on search query
-  const filteredBlogs = blogList.filter(
-    (blog) =>
-      blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      blog.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      blog.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (blog.tags &&
-        blog.tags.some((tag) =>
-          tag.toLowerCase().includes(searchQuery.toLowerCase()),
-        )),
-  );
+  const filteredBlogs = blogList
+    .filter(
+      (blog) =>
+        blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        blog.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        blog.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (blog.tags &&
+          blog.tags.some((tag) =>
+            tag.toLowerCase().includes(searchQuery.toLowerCase()),
+          )),
+    )
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .reverse();
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
