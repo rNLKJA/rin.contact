@@ -49,5 +49,13 @@
       "CTEs"
     ],
     "brief": "Dive into intermediate SQL concepts vital for any data scientist. Master statistical measures, understand grouping and filtering, learn joining and combining data, and explore advanced techniques like data munging, window functions, and Common Table Expressions (CTEs). This guide not only elaborates on these essential skills but also provides practical insights and examples, empowering you to leverage SQL for more effective data analysis and decision-making. Enhance your data manipulation and analysis skills with this in-depth exploration."
+  },
+  {
+    "title": "Building Your Narrative Castle: The Three Pillars of Storytelling",
+    "date": "10th-Feb-2024",
+    "link": "/blogs/the-three-pillars-of-storytelling",
+    "author": "rNLKJA",
+    "tags": ["Storytelling", "Data Analysis", "Visualisation"],
+    "brief": "Every captivating story needs a strong foundation, just like a magnificent castle needs a sturdy base. Forget haphazardly piled bricks – your narrative deserves more! Enter the \"Three Pillars of Storytelling\": Big Idea, 3-Minute Story, and Storyboarding. These elements, working together, will lay the groundwork for a captivating tale that keeps your audience enthralled."
   }
 ]

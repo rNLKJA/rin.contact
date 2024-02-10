@@ -1,7 +1,6 @@
-import React from "react";
+import { Link } from "@nextui-org/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Link } from "@nextui-org/link";
 import { Fade } from "react-awesome-reveal";
 
 export default function BlogBrowsing() {
@@ -66,7 +65,7 @@ export const StarredBlog = () => {
           The Transformative Impact of Data Science on Business Efficiency and
           Growth
         </p>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-wrap justify-between">
           <p>rNLKJA</p>
           <p>29th-Dec-2023</p>
         </div>
@@ -99,7 +98,7 @@ export const LatestBlog = () => {
       {latestBlogData && latestBlogData.title && (
         <Link href={latestBlogData.link}>
           <p className="link-hover">{latestBlogData.title}</p>
-          <div className="flex flex-row justify-between">
+          <div className="flex flex-wrap  justify-between">
             <p>{latestBlogData.author}</p>
             <p>{latestBlogData.date}</p>
           </div>
