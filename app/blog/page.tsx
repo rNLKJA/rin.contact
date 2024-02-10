@@ -1,9 +1,12 @@
-"use client";
+import BlogBrowsing from "@/components/blog/BlogBrowsing";
+import BlogList from "@/components/blog/BlogList";
+import { Fragment } from "react";
 
-export default function BlogPage() {
+export default function Home() {
   return (
-    <div>
-      <h1 className="text-2xl text-underline">BlogPage</h1>
-    </div>
+    <Fragment>
+      <BlogBrowsing />
+      <BlogList />
+    </Fragment>
   );
 }
