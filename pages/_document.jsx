@@ -1,5 +1,4 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
-import Script from "next/script";
 
 class MyDocument extends Document {
   render() {
@@ -69,19 +68,6 @@ class MyDocument extends Document {
             }}
           />
 
-          {/* Google Analytics — using next/script to satisfy the ESLint rule */}
-          <Script
-            src="https://www.googletagmanager.com/gtag/js?id=G-7W1VX9PH20"
-            strategy="afterInteractive"
-          />
-          <Script id="gtag-init" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-7W1VX9PH20');
-            `}
-          </Script>
         </Head>
 
         <body>
