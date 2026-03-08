@@ -5,7 +5,8 @@
   "installCommand": "npm install",
   "git": {
     "deploymentEnabled": {
-      "v5": true
+      "v5": true,
+      "*": true
     }
   }
 }
