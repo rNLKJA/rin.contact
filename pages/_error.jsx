@@ -8,6 +8,7 @@ export default function Error({ statusCode }) {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <title>{statusCode ? `${statusCode} — Error` : "Error"} · Rin Huang</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>

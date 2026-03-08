@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 
 const CAREER = [
@@ -229,18 +230,17 @@ function TimelineItem({ item, index }) {
         {item.logo && (
           <div className="flex-shrink-0 mt-0.5">
             <div
-              className={`w-9 h-9 overflow-hidden flex items-center justify-center bg-white ${
+              className={`relative w-9 h-9 overflow-hidden flex items-center justify-center bg-white ${
                 (item.noBorder || (item.org && item.org.includes("CSIRO"))) ? "" : "border border-[#E0E0E0]"
               }`}
               style={{ borderRadius: "22%" }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={item.logo}
                 alt={`${item.org} logo`}
-                width={36}
-                height={36}
-                style={{ objectFit: "contain", width: "100%", height: "100%" }}
+                fill
+                sizes="36px"
+                className="object-contain"
               />
             </div>
           </div>

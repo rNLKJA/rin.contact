@@ -5,6 +5,7 @@ const SECTIONS = [
   { id: "timeline", label: "Journey" },
   { id: "projects", label: "Work" },
   { id: "skills",   label: "Expertise" },
+  { id: "faq",      label: "FAQ" },
   { id: "contact",  label: "Contact" },
 ];
 

@@ -39,7 +39,7 @@ const PROJECTS = [
     org: "Personal Research",
     period: "Aug 2025",
     tag: "Data Engineering",
-    domain: "Research",
+    domain: ["Research", "Open Source"],
     status: "Open source",
     stack: ["Python", "Web scraping", "Multi-threading", "CSV pipeline"],
     summary:
@@ -96,7 +96,7 @@ const PROJECTS = [
     org: "WEHI",
     period: "Feb 2024 – Jul 2024",
     tag: "Data Science",
-    domain: "Biotech",
+    domain: ["Biotech", "Open Source"],
     status: "Open source contributor",
     stack: ["Python", "Cloud HPC", "celseq2", "Git"],
     summary:
@@ -367,7 +367,9 @@ function ProjectDetail({ project }) {
         </div>
         <div>
           <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] mb-1">Domain</p>
-          <p className="text-xs text-[#3D3D3D]">{project.domain}</p>
+          <p className="text-xs text-[#3D3D3D]">
+            {Array.isArray(project.domain) ? project.domain.join(" · ") : project.domain}
+          </p>
         </div>
       </div>
     </div>
@@ -388,6 +390,12 @@ export default function ProjectsSection() {
 
   const isAllView = activeFilter === "All";
 
+  const domainMatch = (p, filter) =>
+    Array.isArray(p.domain) ? p.domain.includes(filter) : p.domain === filter;
+
+  const domainStr = (p) =>
+    Array.isArray(p.domain) ? p.domain.join(" ").toLowerCase() : p.domain.toLowerCase();
+
   const filtered = isAllView
     ? PROJECTS.filter(
         (p) =>
@@ -395,9 +403,9 @@ export default function ProjectsSection() {
           p.title.toLowerCase().includes(search.toLowerCase()) ||
           p.subtitle.toLowerCase().includes(search.toLowerCase()) ||
           p.tag.toLowerCase().includes(search.toLowerCase()) ||
-          p.domain.toLowerCase().includes(search.toLowerCase())
+          domainStr(p).includes(search.toLowerCase())
       )
-    : PROJECTS.filter((p) => p.domain === activeFilter);
+    : PROJECTS.filter((p) => domainMatch(p, activeFilter));
 
   const activeProject = filtered.find((p) => p.id === openId) ?? null;
 
@@ -496,7 +504,8 @@ export default function ProjectsSection() {
             )}
             {filtered.map((project, i) => {
               const isOpen = openId === project.id;
-              const dc = DOMAIN_COLORS[project.domain];
+              const primaryDomain = Array.isArray(project.domain) ? project.domain[0] : project.domain;
+              const dc = DOMAIN_COLORS[primaryDomain];
               return (
                 <div
                   key={project.id}

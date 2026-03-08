@@ -1,16 +1,35 @@
 import React from "react";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+
+// Hero is above the fold — load immediately
 import HeroSection from "@/components/sections/HeroSection";
-import TimelineSection from "@/components/sections/TimelineSection";
-import ProjectsSection from "@/components/sections/ProjectsSection";
-import SkillsSection from "@/components/sections/SkillsSection";
-import ContactSection from "@/components/sections/ContactSection";
 import SectionProgress from "@/components/layout/SectionProgress";
+
+// Below-fold sections — code-split so they don't inflate the initial JS bundle.
+// SSR is kept (default) so content is still in the HTML for SEO crawlers.
+const TimelineSection = dynamic(() => import("@/components/sections/TimelineSection"), {
+  loading: () => <div className="bg-[#F5F5F5] min-h-[480px]" aria-hidden="true" />,
+});
+const ProjectsSection = dynamic(() => import("@/components/sections/ProjectsSection"), {
+  loading: () => <div className="bg-white min-h-[480px]" aria-hidden="true" />,
+});
+const SkillsSection = dynamic(() => import("@/components/sections/SkillsSection"), {
+  loading: () => <div className="bg-[#F5F5F5] min-h-[480px]" aria-hidden="true" />,
+});
+const FAQSection = dynamic(() => import("@/components/sections/FAQSection"), {
+  loading: () => <div className="bg-white min-h-[320px]" aria-hidden="true" />,
+});
+const ContactSection = dynamic(() => import("@/components/sections/ContactSection"), {
+  loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" />,
+});
 
 export default function Home() {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
         {/* ── Primary meta ── */}
         <title>Rin Huang | Senior Data Analyst · Research Software Engineer · Adelaide</title>
         <meta
@@ -57,6 +76,59 @@ export default function Home() {
         />
         <meta name="twitter:image" content="https://rin.contact/images/meta-image.png" />
         <meta name="twitter:image:alt" content="Rin Huang — portfolio preview" />
+
+        {/* ── FAQPage structured data ── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "What does a Senior Data Analyst do at South Australia Police?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "As an ASO7 Senior Data Analyst in SAPOL's Professional and Ethical Standards Branch (PESB), I develop analytical models and statistical frameworks that translate complex policing data into decision-ready intelligence. This includes strategic planning, parliamentary reporting, and governance of end-to-end analytics solutions across IAPro and connected systems.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What is strategic intelligence analytics and how does it differ from standard data analysis?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Standard data analysis answers 'what happened'. Strategic intelligence analytics answers 'what should we do about it' — it frames data within operational context, risk tolerance, and organisational objectives, producing intelligence products that directly inform executive and ministerial decision-making.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What programming languages and tools do you use professionally?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Python is my primary language for data engineering, statistical modelling, and automation. I also use R for advanced statistical analysis, SQL for structured queries, Power BI and Tableau for dashboards, ArcGIS and Mapbox for geospatial work, and Next.js, React Native, and AWS for software development.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Are you available for consulting, contract, or advisory work?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes — I am open to strategic data consulting, government analytics advisory, and research data engineering engagements. You can reach me at huang@rin.contact.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What is your educational background?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "I hold two degrees from the University of Melbourne: a Bachelor of Science (Computing and Software Systems) and a Master of Data Science, along with 23 professional certifications across cloud, analytics, and project management.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <SectionProgress />
@@ -93,6 +165,13 @@ export default function Home() {
           <div className="bg-[#F5F5F5]">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12">
               <SkillsSection />
+            </div>
+          </div>
+
+          {/* FAQ — white */}
+          <div className="bg-white">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <FAQSection />
             </div>
           </div>
 

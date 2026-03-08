@@ -7,6 +7,7 @@ export default function Custom404() {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <title>404 — Page Not Found · Rin Huang</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>

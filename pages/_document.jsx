@@ -71,9 +71,8 @@ class MyDocument extends Document {
     return (
       <Html lang="en-AU" suppressHydrationWarning>
         <Head>
-          {/* ── Character set & viewport ── */}
+          {/* ── Character set ── */}
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
           {/* ── Theme ── */}
           <meta name="theme-color" content="#ffffff" />

@@ -129,7 +129,7 @@ export default function ContactSection() {
           }`}
         >
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
-            05 — Contact
+            07 — Contact
           </p>
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6 text-white">
             Get in Touch
