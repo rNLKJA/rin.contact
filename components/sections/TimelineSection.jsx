@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 
 const CAREER = [
@@ -321,12 +321,35 @@ function TimelineItem({ item, index }) {
 export default function TimelineSection() {
   const [ref, inView] = useInView();
   const [tab, setTab] = useState("career");
+  const timelineRef = useRef(null);
+  const [lineHeight, setLineHeight] = useState(0);
 
   useEffect(() => {
     const handler = (e) => setTab(e.detail.tab);
     window.addEventListener("timeline-tab", handler);
     return () => window.removeEventListener("timeline-tab", handler);
   }, []);
+
+  // Animate the timeline line drawing down as user scrolls through it
+  useEffect(() => {
+    const el = timelineRef.current;
+    if (!el) return;
+
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      // How far the bottom of the viewport has travelled through the timeline
+      const progress = Math.min(
+        Math.max((windowH - rect.top) / (rect.height + windowH * 0.3), 0),
+        1
+      );
+      setLineHeight(progress * 100);
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", update);
+  }, [tab]); // re-run when tab changes so line resets
 
   const items = tab === "career" ? CAREER : EDUCATION;
 
@@ -370,12 +393,39 @@ export default function TimelineSection() {
       </div>
 
       {/* Timeline */}
-      <div className="relative">
-        <div className="timeline-line" aria-hidden="true" />
-        <div className="pl-0">
-          {items.map((item, i) => (
-            <TimelineItem key={`${tab}-${i}`} item={item} index={i} isEdu={tab === "education"} />
-          ))}
+      <div className="relative" ref={timelineRef}>
+        {/* Static track — offset right on desktop to make room for year labels */}
+        <div className="timeline-line md:left-16" aria-hidden="true" />
+        {/* Animated fill */}
+        <div
+          aria-hidden="true"
+          className="absolute left-0 md:left-16 top-0 w-px bg-[#FF3C3C] pointer-events-none"
+          style={{
+            height: `${lineHeight}%`,
+            transition: "height 0.1s linear",
+          }}
+        />
+        <div className="md:pl-20 pl-0">
+          {items.map((item, i) => {
+            const prevItem = items[i - 1];
+            const showYearLabel = i === 0 || item.year !== prevItem?.year;
+            return (
+              <div key={`${tab}-${i}`} className="relative">
+                {/* Year label on the left rail — desktop only */}
+                {showYearLabel && (
+                  <div
+                    className="hidden md:block absolute -left-20 top-2 w-14 text-right"
+                    aria-hidden="true"
+                  >
+                    <span className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-medium">
+                      {item.year}
+                    </span>
+                  </div>
+                )}
+                <TimelineItem item={item} index={i} isEdu={tab === "education"} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

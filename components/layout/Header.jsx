@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/legacy/image";
 
@@ -17,12 +17,20 @@ function dispatchTimelineTab(tab) {
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrollPct, setScrollPct] = useState(0);
+
+  const onScroll = useCallback(() => {
+    setScrolled(window.scrollY > 40);
+    const doc = document.documentElement;
+    const scrollTop = window.scrollY;
+    const scrollHeight = doc.scrollHeight - doc.clientHeight;
+    setScrollPct(scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0);
+  }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [onScroll]);
 
   return (
     <header
@@ -31,6 +39,12 @@ export default function Header() {
       }`}
       role="banner"
     >
+      {/* Scroll progress bar */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 h-[2px] bg-[#FF3C3C] transition-none pointer-events-none"
+        style={{ width: `${scrollPct}%` }}
+      />
       <div className="max-w-[1100px] mx-auto px-6 md:px-12 flex justify-between items-center py-5">
         {/* Logo */}
         <Link href="/" className="flex flex-row items-center gap-3 group" aria-label="Rin Huang — home">

@@ -5,6 +5,7 @@ import TimelineSection from "@/components/sections/TimelineSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ContactSection from "@/components/sections/ContactSection";
+import SectionProgress from "@/components/layout/SectionProgress";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
+      <SectionProgress />
       <div className="relative">
         {/* Dot-matrix background accent (top-right corner) */}
         <div

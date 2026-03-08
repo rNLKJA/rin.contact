@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useInView } from "@/hooks/useInView";
 
 const PROJECTS = [
@@ -265,6 +265,18 @@ const PROJECTS = [
   },
 ];
 
+const DOMAIN_COLORS = {
+  "Government":      { color: "#3B82F6", bg: "#EFF6FF" },
+  "Climate Research":{ color: "#14B8A6", bg: "#F0FDFA" },
+  "Biotech":         { color: "#8B5CF6", bg: "#F5F3FF" },
+  "Startup":         { color: "#F97316", bg: "#FFF7ED" },
+  "Research":        { color: "#22C55E", bg: "#F0FDF4" },
+  "AI / ML":         { color: "#FF3C3C", bg: "#FFF1F1" },
+  "Cloud / HPC":     { color: "#F59E0B", bg: "#FFFBEB" },
+  "Open Source":     { color: "#06B6D4", bg: "#ECFEFF" },
+  "Personal":        { color: "#7A7A7A", bg: "#F5F5F5" },
+};
+
 const DOMAINS = [
   "All",
   "Government",
@@ -277,6 +289,26 @@ const DOMAINS = [
   "Open Source",
   "Personal",
 ];
+
+function CountUp({ target, duration = 900, started }) {
+  const [count, setCount] = useState(0);
+  const frameRef = useRef(null);
+
+  useEffect(() => {
+    if (!started) return;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * target));
+      if (progress < 1) frameRef.current = requestAnimationFrame(tick);
+    };
+    frameRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frameRef.current);
+  }, [started, target, duration]);
+
+  return <>{count}</>;
+}
 
 function ProjectDetail({ project }) {
   return (
@@ -347,6 +379,12 @@ export default function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [openId, setOpenId] = useState(null);
   const [search, setSearch] = useState("");
+  const [countStarted, setCountStarted] = useState(false);
+
+  // Start count-up as soon as section header enters view
+  useEffect(() => {
+    if (inView) setCountStarted(true);
+  }, [inView]);
 
   const isAllView = activeFilter === "All";
 
@@ -378,7 +416,7 @@ export default function ProjectsSection() {
       >
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">03 — Work</p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
-          Selected Projects
+          <CountUp target={PROJECTS.length} started={countStarted} /> Selected Projects
         </h2>
         <p className="text-base font-light text-[#3D3D3D] max-w-xl leading-relaxed">
           Projects spanning government intelligence, climate science, biomedical
@@ -388,20 +426,41 @@ export default function ProjectsSection() {
 
         {/* Filter pills */}
         <div className="flex flex-wrap gap-2 mt-8" role="group" aria-label="Filter projects">
-          {DOMAINS.map((d) => (
-            <button
-              key={d}
-              onClick={() => { setActiveFilter(d); setOpenId(null); setSearch(""); }}
-              className={`border px-4 py-1.5 text-xs tracking-widest uppercase transition-colors duration-200 ${
-                activeFilter === d
-                  ? "border-[#FF3C3C] bg-[#FF3C3C] text-white"
-                  : "border-[#E0E0E0] text-[#7A7A7A] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
-              }`}
-              aria-pressed={activeFilter === d}
-            >
-              {d}
-            </button>
-          ))}
+          {DOMAINS.map((d) => {
+            const dc = DOMAIN_COLORS[d];
+            const isActive = activeFilter === d;
+            const activeStyle = dc
+              ? { borderColor: dc.color, backgroundColor: dc.color, color: "#fff" }
+              : { borderColor: "#FF3C3C", backgroundColor: "#FF3C3C", color: "#fff" };
+            const idleStyle = { borderColor: "#E0E0E0", color: "#7A7A7A" };
+            return (
+              <button
+                key={d}
+                onClick={() => { setActiveFilter(d); setOpenId(null); setSearch(""); }}
+                className="border px-4 py-1.5 text-xs tracking-widest uppercase transition-all duration-200 flex items-center gap-1"
+                style={isActive ? activeStyle : idleStyle}
+                onMouseEnter={(e) => {
+                  if (isActive) return;
+                  if (dc) { e.currentTarget.style.borderColor = dc.color; e.currentTarget.style.color = dc.color; }
+                  else { e.currentTarget.style.borderColor = "#FF3C3C"; e.currentTarget.style.color = "#FF3C3C"; }
+                }}
+                onMouseLeave={(e) => {
+                  if (isActive) return;
+                  e.currentTarget.style.borderColor = "#E0E0E0";
+                  e.currentTarget.style.color = "#7A7A7A";
+                }}
+                aria-pressed={isActive}
+              >
+                {dc && (
+                  <span
+                    className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: isActive ? "#fff" : dc.color }}
+                  />
+                )}
+                {d}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -437,11 +496,21 @@ export default function ProjectsSection() {
             )}
             {filtered.map((project, i) => {
               const isOpen = openId === project.id;
+              const dc = DOMAIN_COLORS[project.domain];
               return (
-                <div key={project.id} className="border-b border-[#E0E0E0]">
+                <div
+                  key={project.id}
+                  className="border-b border-[#E0E0E0] group/row transition-colors duration-150 hover:bg-[#FAFAFA] relative"
+                >
+                  {/* Domain colour left accent bar */}
+                  <div
+                    className="absolute left-0 top-0 bottom-0 w-[3px] transition-opacity duration-200 opacity-0 group-hover/row:opacity-100"
+                    style={{ backgroundColor: dc?.color ?? "#FF3C3C" }}
+                    aria-hidden="true"
+                  />
                   <button
                     onClick={() => handleSelect(project.id)}
-                    className="w-full flex items-center gap-4 py-3.5 text-left group"
+                    className="w-full flex items-center gap-4 py-3.5 text-left group pl-2"
                     aria-expanded={isOpen}
                   >
                     <span className="text-[10px] text-[#B0B0B0] tabular-nums w-6 flex-shrink-0">
@@ -454,7 +523,10 @@ export default function ProjectsSection() {
                       </span>
                       <span className="text-xs text-[#7A7A7A] truncate hidden md:block">{project.subtitle}</span>
                       <span className="hidden md:flex items-center gap-3 justify-end">
-                        <span className="text-[10px] tracking-widest uppercase border border-[#E0E0E0] px-2 py-0.5 text-[#B0B0B0]">
+                        <span
+                          className="text-[10px] tracking-widest uppercase border px-2 py-0.5"
+                          style={dc ? { borderColor: dc.color, color: dc.color } : { borderColor: "#E0E0E0", color: "#B0B0B0" }}
+                        >
                           {project.tag}
                         </span>
                         <span className="text-xs text-[#B0B0B0]">{project.period}</span>

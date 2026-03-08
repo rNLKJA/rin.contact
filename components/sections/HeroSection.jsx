@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 
@@ -11,6 +11,21 @@ const ROLES = [
   "Full-Stack Engineer",
 ];
 
+const STATS = [
+  { value: 6,  label: "Roles",    sub: "across gov, research & startup" },
+  { value: 17, label: "Projects", sub: "shipped to production" },
+  { value: 2,  label: "Degrees",  sub: "University of Melbourne" },
+  { value: 23, label: "Certs",    sub: "cloud · analytics · agile" },
+];
+
+const TAGS = [
+  "Strategic Thinking", "Continuous Improvement", "Data Science",
+  "Statistical Intelligence", "Government Analytics", "Web Development",
+  "Mobile Development", "Research Engineering", "Cloud & Infrastructure",
+  "UI/UX Design", "Project Management",
+];
+
+// ─── Typewriter ──────────────────────────────────────────────────────────────
 function useTypewriter(words, speed = 80, pause = 1800) {
   const [display, setDisplay] = useState("");
   const [wordIdx, setWordIdx] = useState(0);
@@ -20,7 +35,6 @@ function useTypewriter(words, speed = 80, pause = 1800) {
   useEffect(() => {
     const current = words[wordIdx];
     let timeout;
-
     if (!deleting && charIdx < current.length) {
       timeout = setTimeout(() => setCharIdx((c) => c + 1), speed);
     } else if (!deleting && charIdx === current.length) {
@@ -31,7 +45,6 @@ function useTypewriter(words, speed = 80, pause = 1800) {
       setDeleting(false);
       setWordIdx((w) => (w + 1) % words.length);
     }
-
     setDisplay(current.slice(0, charIdx));
     return () => clearTimeout(timeout);
   }, [charIdx, deleting, wordIdx, words, speed, pause]);
@@ -39,127 +52,226 @@ function useTypewriter(words, speed = 80, pause = 1800) {
   return display;
 }
 
+// ─── Count-up ────────────────────────────────────────────────────────────────
+function CountUp({ target, duration = 1200, started }) {
+  const [count, setCount] = useState(0);
+  const frameRef = useRef(null);
+
+  useEffect(() => {
+    if (!started) return;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * target));
+      if (progress < 1) frameRef.current = requestAnimationFrame(tick);
+    };
+    frameRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frameRef.current);
+  }, [started, target, duration]);
+
+  return <>{count}</>;
+}
+
+// ─── Magnetic button ─────────────────────────────────────────────────────────
+function MagneticButton({ href, primary, children }) {
+  const btnRef = useRef(null);
+
+  const handleMove = useCallback((e) => {
+    const el = btnRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.28;
+    const dy = (e.clientY - cy) * 0.28;
+    el.style.transform = `translate(${dx}px, ${dy}px)`;
+  }, []);
+
+  const handleLeave = useCallback(() => {
+    if (btnRef.current) btnRef.current.style.transform = "translate(0,0)";
+  }, []);
+
+  return (
+    <a
+      ref={btnRef}
+      href={href}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      style={{ transition: "transform 0.2s cubic-bezier(0.23,1,0.32,1)" }}
+      className={
+        primary
+          ? "inline-block bg-[#FF3C3C] border border-[#FF3C3C] text-white px-6 py-2.5 text-sm tracking-widest uppercase hover:bg-transparent hover:text-[#FF3C3C] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
+          : "inline-block border border-[#E0E0E0] px-6 py-2.5 text-sm tracking-widest uppercase text-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
+      }
+    >
+      {children}
+    </a>
+  );
+}
+
+// ─── Main ─────────────────────────────────────────────────────────────────────
 export default function HeroSection() {
   const role = useTypewriter(ROLES);
+  const [statsStarted, setStatsStarted] = useState(false);
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStatsStarted(true); observer.disconnect(); } },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
       id="hero"
-      className="pt-16 pb-20 md:pt-20 md:pb-28"
+      className="relative pt-8 pb-20 md:pt-12 md:pb-28 overflow-hidden"
       aria-label="Introduction"
     >
-      {/* Dot-matrix decorative strip */}
+      {/* Animated blob — slow drift in top-right */}
       <div
-        className="dot-matrix absolute top-0 right-0 w-48 h-48 opacity-40 pointer-events-none"
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, rgba(255,60,60,0.09) 0%, transparent 70%)",
+          animation: "blob-drift 18s ease-in-out infinite alternate",
+        }}
+      />
+      {/* Dot-matrix overlay */}
+      <div
+        className="dot-matrix pointer-events-none absolute top-0 right-0 w-64 h-64 opacity-20"
         aria-hidden="true"
       />
 
-      <div className="max-w-3xl">
-        {/* Status pill */}
-        <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink" aria-hidden="true" />
-          Strategic Thinking & Continuous Improvement · ASO7 Senior Data Analyst · Adelaide, SA
-        </div>
+      {/* ── Two-column grid ── */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">01 — Profile</p>
-
-        {/* Name */}
-        <h1 className="text-5xl md:text-7xl font-semibold leading-none tracking-tight mb-4 animate-fade-up">
-          Rin Huang
-        </h1>
-        <p className="text-sm tracking-widest uppercase text-[#7A7A7A] mb-8 animate-fade-up delay-100">
-          Sunchuangyu Huang · Adelaide & Melbourne, Australia
-        </p>
-
-        {/* Typewriter role */}
-        <div
-          className="text-xl md:text-2xl font-light text-[#3D3D3D] mb-8 h-8 animate-fade-up delay-200"
-          aria-live="polite"
-          aria-label={`Current role: ${role}`}
-        >
-          {role}
-          <span className="animate-blink ml-0.5" aria-hidden="true">_</span>
-        </div>
-
-        {/* Bio */}
-        <p className="text-base font-light text-[#3D3D3D] leading-relaxed max-w-2xl mb-12 animate-fade-up delay-300">
-          From climate risk modelling at CSIRO to ministerial dashboards for the
-          SA Government, from genomics pipelines at WEHI to a mental health mobile
-          app at UniMelb — I work at the edges of disciplines where data, strategy,
-          and engineering intersect. My approach is grounded in first-principles
-          thinking and a genuine commitment to continuous improvement.
-          Generalist by nature, specialist by discipline.
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col gap-4 animate-fade-up delay-400">
-          {/* Row 1 — action buttons */}
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href="#timeline"
-              className="bg-[#FF3C3C] border border-[#FF3C3C] text-white px-6 py-2.5 text-sm tracking-widest uppercase
-                         hover:bg-transparent hover:text-[#FF3C3C] transition-colors duration-200
-                         focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
-            >
-              Career Path
-            </a>
-            <a
-              href="#contact"
-              className="border border-[#E0E0E0] px-6 py-2.5 text-sm tracking-widest uppercase
-                         text-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
-            >
-              Get in Touch
-            </a>
+        {/* LEFT — identity + copy */}
+        <div>
+          {/* Status pill */}
+          <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink" aria-hidden="true" />
+            ASO7 Senior Data Analyst · Adelaide, SA
           </div>
 
-          {/* Row 2 — social icons */}
-          <div className="flex items-center gap-4">
-            <a
-              href="https://www.linkedin.com/in/sunchuangyuhuang/"
-              target="_blank"
-              rel="noreferrer"
+          <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4">01 — Profile</p>
+
+          {/* Name */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-4 animate-fade-up">
+            Rin Huang
+          </h1>
+
+          {/* Subtitle + socials */}
+          <div className="flex flex-wrap items-center gap-3 mb-8 animate-fade-up delay-100">
+            <div className="flex flex-col">
+              <span className="text-sm tracking-widest uppercase text-[#7A7A7A]">
+                Sunchuangyu Huang
+              </span>
+              <span className="text-sm tracking-widest uppercase text-[#7A7A7A]">
+                He/Him · Adelaide &amp; Melbourne
+              </span>
+            </div>
+            <span className="text-sm tracking-widest uppercase text-[#7A7A7A]">|</span>
+            <a href="https://www.linkedin.com/in/sunchuangyuhuang/" target="_blank" rel="noreferrer"
               aria-label="LinkedIn profile"
-              className="text-[#7A7A7A] hover:text-black transition-colors duration-200"
-            >
-              <FaLinkedin size={18} />
+              className="text-[#B0B0B0] hover:text-black transition-colors duration-200 flex-shrink-0">
+              <FaLinkedin size={16} />
             </a>
-            <a
-              href="https://github.com/rNLKJA"
-              target="_blank"
-              rel="noreferrer"
+            <a href="https://github.com/rNLKJA" target="_blank" rel="noreferrer"
               aria-label="GitHub profile"
-              className="text-[#7A7A7A] hover:text-black transition-colors duration-200"
-            >
-              <FiGithub size={18} />
+              className="text-[#B0B0B0] hover:text-black transition-colors duration-200 flex-shrink-0">
+              <FiGithub size={16} />
             </a>
+          </div>
+
+          {/* Typewriter */}
+          <div
+            className="text-xl md:text-2xl font-light text-[#3D3D3D] mb-8 h-8 animate-fade-up delay-200"
+            aria-live="polite" aria-label={`Current role: ${role}`}
+          >
+            {role}<span className="animate-blink ml-0.5" aria-hidden="true">_</span>
+          </div>
+
+          {/* Bio */}
+          <p className="text-base font-light text-[#3D3D3D] leading-relaxed mb-10 animate-fade-up delay-300">
+            From climate risk modelling at CSIRO to ministerial dashboards for the
+            SA Government, from genomics pipelines at WEHI to a mental health mobile
+            app at UniMelb — I work at the edges of disciplines where data, strategy,
+            and engineering intersect. Generalist by nature, specialist by discipline.
+          </p>
+
+          {/* CTAs — magnetic on desktop */}
+          <div className="flex flex-wrap items-center gap-3 animate-fade-up delay-400">
+            <MagneticButton href="#timeline" primary>Career Path</MagneticButton>
+            <MagneticButton href="#contact">Get in Touch</MagneticButton>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mt-10">
+            {TAGS.map((tag, i) => (
+              <span
+                key={tag}
+                className="border border-[#E0E0E0] px-3 py-1 text-xs tracking-wider uppercase text-[#7A7A7A]
+                           hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200 cursor-default
+                           animate-fade-up opacity-0"
+                style={{ animationDelay: `${500 + i * 50}ms`, animationFillMode: "forwards" }}
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
 
-        {/* Domain tags */}
-        <div className="flex flex-wrap gap-2 mt-12 animate-fade-up delay-500">
-          {[
-            "Strategic Thinking",
-            "Continuous Improvement",
-            "Data Science",
-            "Statistical Intelligence",
-            "Government Analytics",
-            "Web Development",
-            "Mobile Development",
-            "Research Engineering",
-            "Cloud & Infrastructure",
-            "UI/UX Design",
-            "Project Management",
-          ].map((tag) => (
-            <span
-              key={tag}
-              className="border border-[#E0E0E0] px-3 py-1 text-xs tracking-wider uppercase text-[#7A7A7A]
-                         hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200 cursor-default"
+        {/* RIGHT — stats 2×2 grid */}
+        <div
+          ref={statsRef}
+          className="hidden md:grid grid-cols-2 gap-px animate-fade-up delay-300"
+        >
+          {STATS.map(({ value, label, sub }, i) => (
+            <div
+              key={label}
+              className="bg-white px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300"
             >
-              {tag}
-            </span>
+              <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight group-hover:text-white transition-colors duration-300">
+                <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
+                <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-300">+</span>
+              </span>
+              <span className="text-sm font-medium tracking-wide uppercase group-hover:text-white transition-colors duration-300">
+                {label}
+              </span>
+              <span className="text-xs text-[#B0B0B0] font-light group-hover:text-white/70 transition-colors duration-300">
+                {sub}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile stats — flat strip (shown below md) */}
+        <div ref={null} className="flex flex-wrap gap-8 md:hidden">
+          {STATS.map(({ value, label }, i) => (
+            <div key={label} className="flex flex-col items-start">
+              <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight">
+                <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
+                <span className="text-[#FF3C3C]">+</span>
+              </span>
+              <span className="text-[10px] tracking-widest uppercase text-[#7A7A7A] mt-1">{label}</span>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* Blob keyframe */}
+      <style>{`
+        @keyframes blob-drift {
+          from { transform: translate(0, 0) scale(1); }
+          to   { transform: translate(-40px, 30px) scale(1.12); }
+        }
+      `}</style>
     </section>
   );
 }

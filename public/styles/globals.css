@@ -151,7 +151,17 @@ h1, h2, h3, h4 {
   background-color: var(--divider);
 }
 
-/* ─── Dot matrix accent pattern ─────────────────────────────────── */
+/* ─── Marquee ────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 80s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
 .dot-matrix {
   background-image: radial-gradient(circle, var(--divider) 1px, transparent 1px);
   background-size: 16px 16px;

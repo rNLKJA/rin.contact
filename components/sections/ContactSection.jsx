@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import emailjs from "@emailjs/browser";
 import { FaLinkedin } from "react-icons/fa";
 import { FiGithub, FiMail, FiPhone, FiMapPin, FiX, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
@@ -68,6 +68,18 @@ export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
   const [toast, setToast] = useState(null); // { type: "success" | "error", message }
+  const sectionRef = useRef(null);
+  const [spotlight, setSpotlight] = useState({ x: -9999, y: -9999 });
+
+  const handleMouseMove = useCallback((e) => {
+    const rect = sectionRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setSpotlight({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setSpotlight({ x: -9999, y: -9999 });
+  }, []);
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
@@ -96,11 +108,23 @@ export default function ContactSection() {
         <Toast type={toast.type} message={toast.message} onClose={closeToast} />
       )}
 
-      <section id="contact" className="py-24" aria-label="Contact">
+      <section id="contact" className="py-24 relative overflow-hidden" aria-label="Contact"
+        ref={sectionRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Cursor spotlight */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(400px circle at ${spotlight.x}px ${spotlight.y}px, rgba(255,60,60,0.07) 0%, rgba(255,60,60,0.03) 40%, transparent 70%)`,
+          }}
+        />
         {/* Header */}
         <div
           ref={ref}
-          className={`mb-16 transition-all duration-600 ${
+          className={`mb-16 transition-all duration-600 relative z-10 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
@@ -119,7 +143,7 @@ export default function ContactSection() {
 
         <div
           ref={formRef}
-          className={`grid grid-cols-1 md:grid-cols-2 gap-16 transition-all duration-600 ${
+          className={`grid grid-cols-1 md:grid-cols-2 gap-16 transition-all duration-600 relative z-10 ${
             formInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >

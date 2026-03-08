@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useInView } from "@/hooks/useInView";
 
 const DOMAINS = [
@@ -88,88 +88,148 @@ const DOMAINS = [
   },
 ];
 
-const CERTS = [
-  // ── Professional Assessment (top priority) ──────────────────────────
-  { label: "VETASSESS — Statistician (ANZSCO 224113)", issuer: "Australian Skills Assessment · Feb 2026" },
-  { label: "IELTS General Training — Band 8", issuer: "IELTS Official · Feb 2026" },
-  { label: "Credentialed Community Language — Mandarin", issuer: "NAATI · Dec 2025" },
-  // ── Cloud & Technical ───────────────────────────────────────────────
-  { label: "Microsoft Certified: Azure Fundamentals (AZ-900)", issuer: "Microsoft · Jul 2024" },
-  { label: "Neo4j Certified Professional", issuer: "Neo4j · Aug 2025" },
-  { label: "Neo4j Graph Data Science Certification", issuer: "Neo4j · Aug 2025" },
-  // ── Google Specialisations ──────────────────────────────────────────
-  { label: "Google UX Design Specialisation", issuer: "Google · Dec 2025" },
-  { label: "Google Business Intelligence Specialisation", issuer: "Google · Dec 2025" },
-  { label: "Google Project Management Specialisation", issuer: "Google · Dec 2025" },
-  { label: "Google IT Automation with Python", issuer: "Google · May 2022" },
-  { label: "Google Data Analytics Specialisation", issuer: "Google · Jun 2021" },
-  // ── Intelligence & Security ─────────────────────────────────────────
-  { label: "Open-Source Intelligence (OSINT) Fundamentals", issuer: "TCM Security · Oct 2025" },
-  // ── Analytics & BI ──────────────────────────────────────────────────
-  { label: "Advanced Google Analytics", issuer: "Google Analytics by Liontech · Jun 2024" },
-  { label: "Google Analytics Individual Qualification (GAIQ)", issuer: "Google · May 2024" },
-  { label: "Advanced SQL for Data Scientists", issuer: "LinkedIn · Jan 2024" },
-  // ── AI & Productivity ───────────────────────────────────────────────
-  { label: "From Users to Builders: AI-Powered Productivity for Tech Roles", issuer: "Maven · Jul 2024" },
-  // ── Project Management & Agile ──────────────────────────────────────
-  { label: "Atlassian Agile Project Management Professional Certificate", issuer: "Atlassian · Apr 2024" },
-  { label: "Agile with Atlassian Jira", issuer: "Atlassian · Nov 2021" },
-  // ── Developer & Engineering ─────────────────────────────────────────
-  { label: "Career Essentials in GitHub Professional Certificate", issuer: "GitHub · Jan 2024" },
-  // ── Leadership & Recognition ────────────────────────────────────────
-  { label: "Melbourne Plus: Innovation", issuer: "University of Melbourne · May 2024" },
-  { label: "Melbourne Plus: People Leadership", issuer: "University of Melbourne · Oct 2024" },
-  { label: "ANU CBE Analytics Plus Program Mentor", issuer: "Practera · Jul 2024" },
-  // ── Community & Compliance ──────────────────────────────────────────
-  { label: "Working with Children Check", issuer: "Victorian Government · Jul 2024" },
-  { label: "Mental Health First Aid — Tertiary Students", issuer: "Mental Health First Aid International · Nov 2019" },
-  { label: "Inbound Marketing", issuer: "HubSpot Academy · Dec 2023" },
+const CERT_GROUPS = [
+  {
+    group: "Professional Assessment",
+    items: [
+      { label: "VETASSESS — Statistician (ANZSCO 224113)", issuer: "Australian Skills Assessment · Feb 2026" },
+      { label: "IELTS General Training — Band 8", issuer: "IELTS Official · Feb 2026" },
+      { label: "Credentialed Community Language — Mandarin", issuer: "NAATI · Dec 2025" },
+    ],
+  },
+  {
+    group: "Cloud & Technical",
+    items: [
+      { label: "Microsoft Certified: Azure Fundamentals (AZ-900)", issuer: "Microsoft · Jul 2024" },
+      { label: "Neo4j Certified Professional", issuer: "Neo4j · Aug 2025" },
+      { label: "Neo4j Graph Data Science Certification", issuer: "Neo4j · Aug 2025" },
+    ],
+  },
+  {
+    group: "Google Specialisations",
+    items: [
+      { label: "UX Design Specialisation", issuer: "Google · Dec 2025" },
+      { label: "Business Intelligence Specialisation", issuer: "Google · Dec 2025" },
+      { label: "Project Management Specialisation", issuer: "Google · Dec 2025" },
+      { label: "IT Automation with Python", issuer: "Google · May 2022" },
+      { label: "Data Analytics Specialisation", issuer: "Google · Jun 2021" },
+    ],
+  },
+  {
+    group: "Analytics & Intelligence",
+    items: [
+      { label: "Open-Source Intelligence (OSINT) Fundamentals", issuer: "TCM Security · Oct 2025" },
+      { label: "Advanced Google Analytics", issuer: "Liontech · Jun 2024" },
+      { label: "Google Analytics Individual Qualification (GAIQ)", issuer: "Google · May 2024" },
+      { label: "Advanced SQL for Data Scientists", issuer: "LinkedIn · Jan 2024" },
+      { label: "AI-Powered Productivity for Tech Roles", issuer: "Maven · Jul 2024" },
+    ],
+  },
+  {
+    group: "Agile & Engineering",
+    items: [
+      { label: "Atlassian Agile Project Management Professional Certificate", issuer: "Atlassian · Apr 2024" },
+      { label: "Agile with Atlassian Jira", issuer: "Atlassian · Nov 2021" },
+      { label: "Career Essentials in GitHub Professional Certificate", issuer: "GitHub · Jan 2024" },
+    ],
+  },
+  {
+    group: "Leadership & Community",
+    items: [
+      { label: "Melbourne Plus: Innovation", issuer: "University of Melbourne · May 2024" },
+      { label: "Melbourne Plus: People Leadership", issuer: "University of Melbourne · Oct 2024" },
+      { label: "ANU CBE Analytics Plus Program Mentor", issuer: "Practera · Jul 2024" },
+      { label: "Working with Children Check", issuer: "Victorian Government · Jul 2024" },
+      { label: "Mental Health First Aid — Tertiary Students", issuer: "MHFA International · Nov 2019" },
+      { label: "Inbound Marketing", issuer: "HubSpot Academy · Dec 2023" },
+    ],
+  },
 ];
 
 function DomainCard({ domain, index }) {
   const [ref, inView] = useInView();
+  const [open, setOpen] = useState(index < 2); // first two open by default
 
   return (
     <div
       ref={ref}
-      className={`pt-8 pb-8 transition-all duration-500 ${
+      className={`transition-all duration-500 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
-      style={{
-        transitionDelay: `${index * 70}ms`,
-        borderTop: `3px solid ${domain.color}`,
-      }}
+      style={{ transitionDelay: `${index * 70}ms` }}
     >
-      <div className="flex items-center gap-2 mb-2">
-        <span
-          className="inline-block w-2 h-2 rounded-full flex-shrink-0"
-          style={{ backgroundColor: domain.color }}
-          aria-hidden="true"
-        />
-        <h3 className="text-base font-semibold">{domain.label}</h3>
-      </div>
-      <p className="text-sm text-[#3D3D3D] leading-relaxed mb-4 font-light">
-        {domain.description}
-      </p>
-      <div className="flex flex-wrap gap-1.5">
-        {domain.skills.map((s) => (
+      {/* Clickable header row */}
+      <button
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="w-full flex items-center justify-between pt-8 pb-4 text-left group"
+        style={{ borderTop: `3px solid ${domain.color}` }}
+      >
+        <div className="flex items-center gap-2">
           <span
-            key={s}
-            className="border border-[#E0E0E0] px-2.5 py-1 text-xs tracking-wide text-[#7A7A7A]
-                       cursor-default transition-all duration-200"
-            style={{ ["--hover-color"]: domain.color }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = domain.color;
-              e.currentTarget.style.color = domain.color;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "";
-              e.currentTarget.style.color = "";
-            }}
-          >
-            {s}
-          </span>
-        ))}
+            className="inline-block w-2 h-2 rounded-full flex-shrink-0"
+            style={{ backgroundColor: domain.color }}
+            aria-hidden="true"
+          />
+          <h3 className="text-base font-semibold">{domain.label}</h3>
+        </div>
+        <span
+          className="text-[#B0B0B0] text-sm flex-shrink-0 transition-transform duration-200 group-hover:text-black"
+          style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
+          aria-hidden="true"
+        >
+          +
+        </span>
+      </button>
+
+      {/* Collapsible body */}
+      <div
+        className="overflow-hidden"
+        style={{
+          maxHeight: open ? "500px" : "0px",
+          opacity: open ? 1 : 0,
+          transition: "max-height 0.35s ease, opacity 0.25s ease",
+        }}
+      >
+        <div className="pb-8">
+          {/* Animated fill bar */}
+          <div className="h-px w-full bg-[#E0E0E0] mb-4 overflow-hidden">
+            <div
+              className="h-full"
+              style={{
+                backgroundColor: domain.color,
+                width: open ? "100%" : "0%",
+                transition: "width 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
+            />
+          </div>
+          <p className="text-sm text-[#3D3D3D] leading-relaxed mb-4 font-light">
+            {domain.description}
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {domain.skills.map((s, si) => (
+              <span
+                key={s}
+                className="border border-[#E0E0E0] px-2.5 py-1 text-xs tracking-wide text-[#7A7A7A]
+                           cursor-default transition-all duration-200 animate-fade-up opacity-0"
+                style={{
+                  animationDelay: open ? `${si * 30}ms` : "0ms",
+                  animationFillMode: "forwards",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = domain.color;
+                  e.currentTarget.style.color = domain.color;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "";
+                  e.currentTarget.style.color = "";
+                }}
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -204,14 +264,47 @@ export default function SkillsSection() {
         </p>
       </div>
 
+      {/* ── Marquee tape ── infinite scrolling skill strip ── */}
+      <div
+        className="relative mt-10 mb-2 overflow-hidden border-y border-[#E0E0E0] py-4 select-none"
+        aria-hidden="true"
+      >
+        {/* Fade masks on edges */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10"
+          style={{ background: "linear-gradient(to right, #F5F5F5 40%, transparent)" }} />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10"
+          style={{ background: "linear-gradient(to left, #F5F5F5 40%, transparent)" }} />
+
+        <div
+          className="flex animate-marquee"
+          style={{ width: "max-content", gap: "2.5rem" }}
+        >
+          {/* Two full copies for seamless loop */}
+          {[0, 1].map((copy) =>
+            DOMAINS.flatMap((d) =>
+              d.skills.map((skill) => (
+                <span
+                  key={`${copy}-${d.label}-${skill}`}
+                  className="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-[#7A7A7A] whitespace-nowrap flex-shrink-0"
+                >
+                  <span
+                    className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: d.color }}
+                  />
+                  {skill}
+                </span>
+              ))
+            )
+          )}
+        </div>
+      </div>
+
       {/* Domain grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
         {DOMAINS.map((d, i) => (
           <DomainCard key={d.label} domain={d} index={i} />
         ))}
-      </div>
-
-      {/* Certifications */}
+      </div>      {/* Certifications */}
       <div
         ref={certRef}
         className={`mt-16 transition-all duration-600 ${
@@ -221,46 +314,52 @@ export default function SkillsSection() {
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">
           Certifications & Assessment
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-          {CERTS.map((c) => (
-            <div
-              key={c.label}
-              className="border border-[#E0E0E0] p-5 bg-white cursor-default
-                         hover:border-black transition-colors duration-200"
-            >
-              <p className="text-sm font-medium mb-1">{c.label}</p>
-              <p className="text-xs text-[#7A7A7A]">{c.issuer}</p>
+
+        {/* Two-column grouped layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
+          {CERT_GROUPS.map((g) => (
+            <div key={g.group} className="border-t border-[#E0E0E0] py-5">
+              <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] mb-3">{g.group}</p>
+              <ul className="space-y-2.5">
+                {g.items.map((c) => (
+                  <li key={c.label} className="flex items-start justify-between gap-4 group">
+                    <span className="text-sm text-[#1A1A1A] leading-snug">{c.label}</span>
+                    <span className="text-xs text-[#B0B0B0] whitespace-nowrap flex-shrink-0 mt-0.5">{c.issuer}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
       </div>
 
       {/* Languages */}
-      <div className="mt-12 flex flex-wrap gap-3">
-        {[
-          {
-            lang: "English",
-            level: "Full Professional",
-            detail: "IELTS General Training · Band 8",
-          },
-          {
-            lang: "Mandarin Chinese",
-            level: "Native / Bilingual",
-            detail: null,
-          },
-        ].map((l) => (
-          <div
-            key={l.lang}
-            className="border border-[#E0E0E0] px-5 py-3 cursor-default
-                       hover:border-black transition-colors duration-200"
-          >
-            <p className="text-sm font-medium">{l.lang}</p>
-            <p className="text-xs text-[#7A7A7A] mt-0.5">{l.level}</p>
-            {l.detail && (
-              <p className="text-xs text-[#7A7A7A] mt-0.5">{l.detail}</p>
-            )}
-          </div>
-        ))}
+      <div
+        className={`mt-16 transition-all duration-600 ${
+          certInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">
+          Languages
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {[
+            { lang: "English", level: "Full Professional", detail: "IELTS General Training · Band 8" },
+            { lang: "Mandarin Chinese", level: "Native / Bilingual", detail: null },
+          ].map((l) => (
+            <div
+              key={l.lang}
+              className="border border-[#E0E0E0] px-5 py-3 cursor-default
+                         hover:border-black transition-colors duration-200"
+            >
+              <p className="text-sm font-medium">{l.lang}</p>
+              <p className="text-xs text-[#7A7A7A] mt-0.5">{l.level}</p>
+              {l.detail && (
+                <p className="text-xs text-[#7A7A7A] mt-0.5">{l.detail}</p>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
