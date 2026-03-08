@@ -153,11 +153,7 @@ export default function HeroSection() {
 
         {/* LEFT — identity + copy */}
         <div>
-          {/* Status pill */}
-          <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink" aria-hidden="true" />
-            ASO7 Senior Data Analyst · Adelaide, SA
-          </div>
+
           {/* Status pill */}
           <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink" aria-hidden="true" />
