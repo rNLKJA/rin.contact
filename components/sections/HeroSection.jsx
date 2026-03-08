@@ -158,6 +158,11 @@ export default function HeroSection() {
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink" aria-hidden="true" />
             ASO7 Senior Data Analyst · Adelaide, SA
           </div>
+          {/* Status pill */}
+          <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink" aria-hidden="true" />
+            ASO7 Senior Data Analyst · Adelaide, SA
+          </div>
 
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4">01 — Profile</p>
 
@@ -227,41 +232,41 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT — stats 2×2 grid */}
-        <div
-          ref={statsRef}
-          className="hidden md:grid grid-cols-2 gap-px animate-fade-up delay-300"
-        >
-          {STATS.map(({ value, label, sub }, i) => (
-            <div
-              key={label}
-              className="bg-white px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300"
-            >
-              <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight group-hover:text-white transition-colors duration-300">
-                <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
-                <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-300">+</span>
-              </span>
-              <span className="text-sm font-medium tracking-wide uppercase group-hover:text-white transition-colors duration-300">
-                {label}
-              </span>
-              <span className="text-xs text-[#B0B0B0] font-light group-hover:text-white/70 transition-colors duration-300">
-                {sub}
-              </span>
-            </div>
-          ))}
-        </div>
+        {/* RIGHT — stats (ref here so observer works on all screen sizes) */}
+        <div ref={statsRef}>
+          {/* Desktop 2×2 grid */}
+          <div className="hidden md:grid grid-cols-2 gap-px animate-fade-up delay-300">
+            {STATS.map(({ value, label, sub }, i) => (
+              <div
+                key={label}
+                className="bg-white px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300"
+              >
+                <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight group-hover:text-white transition-colors duration-300">
+                  <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
+                  <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-300">+</span>
+                </span>
+                <span className="text-sm font-medium tracking-wide uppercase group-hover:text-white transition-colors duration-300">
+                  {label}
+                </span>
+                <span className="text-xs text-[#B0B0B0] font-light group-hover:text-white/70 transition-colors duration-300">
+                  {sub}
+                </span>
+              </div>
+            ))}
+          </div>
 
-        {/* Mobile stats — flat strip (shown below md) */}
-        <div ref={null} className="flex flex-wrap gap-8 md:hidden">
-          {STATS.map(({ value, label }, i) => (
-            <div key={label} className="flex flex-col items-start">
-              <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight">
-                <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
-                <span className="text-[#FF3C3C]">+</span>
-              </span>
-              <span className="text-[10px] tracking-widest uppercase text-[#7A7A7A] mt-1">{label}</span>
-            </div>
-          ))}
+          {/* Mobile — flat strip */}
+          <div className="flex flex-wrap gap-8 md:hidden">
+            {STATS.map(({ value, label }, i) => (
+              <div key={label} className="flex flex-col items-start">
+                <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight">
+                  <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
+                  <span className="text-[#FF3C3C]">+</span>
+                </span>
+                <span className="text-[10px] tracking-widest uppercase text-[#7A7A7A] mt-1">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
