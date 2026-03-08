@@ -89,16 +89,41 @@ const DOMAINS = [
 ];
 
 const CERTS = [
-  { label: "Microsoft Certified: Azure Fundamentals (AZ-900)", issuer: "Microsoft" },
-  { label: "VETASSESS — Statistician (ANZSCO 224113)", issuer: "Australian Skills Assessment" },
-  { label: "Credentialed Community Language — Mandarin", issuer: "NAATI" },
-  { label: "Working with Children Check", issuer: "Victorian Government" },
-  { label: "Google Business Intelligence", issuer: "Google · Coursera" },
-  { label: "Google Data Analytics", issuer: "Google · Coursera" },
-  { label: "Google IT Automation with Python", issuer: "Google · Coursera" },
-  { label: "Google Project Management", issuer: "Google · Coursera" },
-  { label: "Google UI/UX Design", issuer: "Google · Coursera" },
-  { label: "Agile Project Management", issuer: "Atlassian" },
+  // ── Professional Assessment (top priority) ──────────────────────────
+  { label: "VETASSESS — Statistician (ANZSCO 224113)", issuer: "Australian Skills Assessment · Feb 2026" },
+  { label: "IELTS General Training — Band 8", issuer: "IELTS Official · Feb 2026" },
+  { label: "Credentialed Community Language — Mandarin", issuer: "NAATI · Dec 2025" },
+  // ── Cloud & Technical ───────────────────────────────────────────────
+  { label: "Microsoft Certified: Azure Fundamentals (AZ-900)", issuer: "Microsoft · Jul 2024" },
+  { label: "Neo4j Certified Professional", issuer: "Neo4j · Aug 2025" },
+  { label: "Neo4j Graph Data Science Certification", issuer: "Neo4j · Aug 2025" },
+  // ── Google Specialisations ──────────────────────────────────────────
+  { label: "Google UX Design Specialisation", issuer: "Google · Dec 2025" },
+  { label: "Google Business Intelligence Specialisation", issuer: "Google · Dec 2025" },
+  { label: "Google Project Management Specialisation", issuer: "Google · Dec 2025" },
+  { label: "Google IT Automation with Python", issuer: "Google · May 2022" },
+  { label: "Google Data Analytics Specialisation", issuer: "Google · Jun 2021" },
+  // ── Intelligence & Security ─────────────────────────────────────────
+  { label: "Open-Source Intelligence (OSINT) Fundamentals", issuer: "TCM Security · Oct 2025" },
+  // ── Analytics & BI ──────────────────────────────────────────────────
+  { label: "Advanced Google Analytics", issuer: "Google Analytics by Liontech · Jun 2024" },
+  { label: "Google Analytics Individual Qualification (GAIQ)", issuer: "Google · May 2024" },
+  { label: "Advanced SQL for Data Scientists", issuer: "LinkedIn · Jan 2024" },
+  // ── AI & Productivity ───────────────────────────────────────────────
+  { label: "From Users to Builders: AI-Powered Productivity for Tech Roles", issuer: "Maven · Jul 2024" },
+  // ── Project Management & Agile ──────────────────────────────────────
+  { label: "Atlassian Agile Project Management Professional Certificate", issuer: "Atlassian · Apr 2024" },
+  { label: "Agile with Atlassian Jira", issuer: "Atlassian · Nov 2021" },
+  // ── Developer & Engineering ─────────────────────────────────────────
+  { label: "Career Essentials in GitHub Professional Certificate", issuer: "GitHub · Jan 2024" },
+  // ── Leadership & Recognition ────────────────────────────────────────
+  { label: "Melbourne Plus: Innovation", issuer: "University of Melbourne · May 2024" },
+  { label: "Melbourne Plus: People Leadership", issuer: "University of Melbourne · Oct 2024" },
+  { label: "ANU CBE Analytics Plus Program Mentor", issuer: "Practera · Jul 2024" },
+  // ── Community & Compliance ──────────────────────────────────────────
+  { label: "Working with Children Check", issuer: "Victorian Government · Jul 2024" },
+  { label: "Mental Health First Aid — Tertiary Students", issuer: "Mental Health First Aid International · Nov 2019" },
+  { label: "Inbound Marketing", issuer: "HubSpot Academy · Dec 2023" },
 ];
 
 function DomainCard({ domain, index }) {

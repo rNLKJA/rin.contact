@@ -140,13 +140,13 @@ const EDUCATION = [
     logo: UNIMELB_LOGO,
     tag: "Postgraduate · AQF Level 9",
     summary:
-      "A rigorous programme spanning statistical learning, cloud computing, Bayesian methods, and applied data science, culminating in a year-long capstone research project with CSIRO. WAM: 74.833.",
+      "A rigorous programme spanning statistical learning, cloud computing, Bayesian methods, and applied data science, culminating in a year-long capstone research project with CSIRO.",
     noBorder: true,
     bullets: [
-      "Statistics: Statistical Machine Learning (H3) · Statistical Modelling for Data Science (H2B) · Bayesian Statistical Learning (H3) · Multivariate Statistics for Data Science (H1) · Computational Statistics & Data Science",
-      "Computing: Advanced Database Systems (H2A) · Cluster and Cloud Computing · Natural Language Processing (H2A)",
-      "Capstone: Data Science Project Pt 1 & 2 (MAST90106/07) — H1, conducted in partnership with CSIRO",
-      "Industry: Science & Technology Internship at CSIRO (H1) · Communicating Science at Work (H1)",
+      "Statistics: Statistical Machine Learning · Statistical Modelling for Data Science · Bayesian Statistical Learning · Multivariate Statistics for Data Science · Computational Statistics & Data Science",
+      "Computing: Advanced Database Systems · Cluster and Cloud Computing · Natural Language Processing",
+      "Capstone: Data Science Project Pt 1 & 2 (MAST90106/07), conducted in partnership with CSIRO",
+      "Industry: Science & Technology Internship at CSIRO · Communicating Science at Work",
     ],
   },
   {
@@ -159,14 +159,14 @@ const EDUCATION = [
     logo: UNIMELB_LOGO,
     tag: "Undergraduate · AQF Level 7",
     summary:
-      "Three years building mathematical, statistical, and computational foundations across data science, machine learning, algorithms, and software engineering. WAM: 71.000.",
+      "Three years building mathematical, statistical, and computational foundations across data science, machine learning, algorithms, and software engineering.",
     noBorder: true,
     bullets: [
       "Computing: Foundations of Computing · Foundations of Algorithms · Algorithms & Data Structures · Elements of Data Processing · Database Systems · Web Information Technologies · Artificial Intelligence",
-      "Data Science & ML: Machine Learning (H2A) · Applied Data Science (H2A) · Modern Applied Statistics (H2B)",
+      "Data Science & ML: Machine Learning · Applied Data Science · Modern Applied Statistics",
       "Mathematics & Statistics: Calculus 2 · Linear Algebra · Probability · Statistics · Discrete Maths & Operations Research · Linear Statistical Models · Techniques in Operations Research",
-      "Capstone: IT Project — COMP30022 (H2B), collaborative software engineering",
-      "Breadth: Positive Leadership & Careers (H2B) · Business Negotiations (H2B) · Principles of Finance · Principles of Marketing",
+      "Capstone: IT Project — COMP30022, collaborative software engineering",
+      "Breadth: Positive Leadership & Careers · Business Negotiations · Principles of Finance · Principles of Marketing",
     ],
   },
   {
