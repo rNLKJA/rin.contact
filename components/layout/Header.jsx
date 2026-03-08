@@ -31,7 +31,7 @@ export default function Header() {
       }`}
       role="banner"
     >
-      <div className="flex justify-between items-center py-5">
+      <div className="max-w-[1100px] mx-auto px-6 md:px-12 flex justify-between items-center py-5">
         {/* Logo */}
         <Link href="/" className="flex flex-row items-center gap-3 group" aria-label="Rin Huang — home">
           <div style={{ borderRadius: "22%", overflow: "hidden", width: 36, height: 36 }}>
@@ -96,22 +96,24 @@ export default function Header() {
 
       {/* Mobile nav */}
       {menuOpen && (
-        <nav
-          id="mobile-menu"
-          className="md:hidden border-t border-[#E0E0E0] py-6 flex flex-col gap-5"
-          aria-label="Mobile navigation"
-        >
-          {NAV_LINKS.map(({ href, label, tab }) => (
-            <a
-              key={label}
-              href={href}
-              onClick={() => { dispatchTimelineTab(tab); setMenuOpen(false); }}
-              className="text-xs tracking-widest uppercase text-[#7A7A7A] hover:text-black transition-colors duration-200"
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <nav
+            id="mobile-menu"
+            className="md:hidden border-t border-[#E0E0E0] py-6 flex flex-col gap-5"
+            aria-label="Mobile navigation"
+          >
+            {NAV_LINKS.map(({ href, label, tab }) => (
+              <a
+                key={label}
+                href={href}
+                onClick={() => { dispatchTimelineTab(tab); setMenuOpen(false); }}
+                className="text-xs tracking-widest uppercase text-[#7A7A7A] hover:text-black transition-colors duration-200"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        </div>
       )}
     </header>
   );

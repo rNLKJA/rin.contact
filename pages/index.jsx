@@ -10,12 +10,12 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Rin Huang — Data Scientist, Engineer, Generalist</title>
+        <title>Rin Huang | Strategic Thinking & Continuous Improvement, Senior Data Analyst</title>
         <meta
           name="description"
-          content="Sunchuangyu (Rin) Huang — Senior Data Analyst at SAPOL, Research Software Engineer, Full-Stack Developer. Data science, web dev, mobile dev, and strategic intelligence."
+          content="Sunchuangyu (Rin) Huang — Senior Data Analyst at SAPOL, Research Software Engineer, Full-Stack Developer. Strategic thinking and continuous improvement."
         />
-        <meta property="og:title" content="Rin Huang — Data Scientist & Engineer" />
+        <meta property="og:title" content="Rin Huang — Strategic Thinking & Continuous Improvement, Senior Data Analyst" />
         <meta
           property="og:description"
           content="At the intersection of data science, software engineering, and strategic intelligence."
@@ -31,25 +31,41 @@ export default function Home() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10">
-          <HeroSection />
+      <div className="relative z-10">
+          {/* Hero — white */}
+          <div className="bg-white">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <HeroSection />
+            </div>
+          </div>
 
-          {/* Section divider */}
-          <hr className="border-[#E0E0E0]" />
+          {/* Timeline — light surface */}
+          <div className="bg-[#F5F5F5]">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <TimelineSection />
+            </div>
+          </div>
 
-          <TimelineSection />
+          {/* Projects — white */}
+          <div className="bg-white">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <ProjectsSection />
+            </div>
+          </div>
 
-          <hr className="border-[#E0E0E0]" />
+          {/* Skills — light surface */}
+          <div className="bg-[#F5F5F5]">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <SkillsSection />
+            </div>
+          </div>
 
-          <ProjectsSection />
-
-          <hr className="border-[#E0E0E0]" />
-
-          <SkillsSection />
-
-          <hr className="border-[#E0E0E0]" />
-
-          <ContactSection />
+          {/* Contact — dark */}
+          <div className="bg-[#1A1A1A]">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <ContactSection />
+            </div>
+          </div>
         </div>
       </div>
     </>

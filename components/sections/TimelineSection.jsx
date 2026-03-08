@@ -339,7 +339,7 @@ export default function TimelineSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-3">
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
           02 — Journey
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">

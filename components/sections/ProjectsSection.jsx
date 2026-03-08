@@ -132,7 +132,7 @@ export default function ProjectsSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-3">03 — Work</p>
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">03 — Work</p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
           Selected Projects
         </h2>
@@ -181,8 +181,8 @@ export default function ProjectsSection() {
                   px-4 py-3 min-w-[110px] max-w-[160px] text-left
                   border-t border-l border-r transition-colors duration-200
                   ${isActive
-                    ? "bg-black text-white border-black"
-                    : "bg-white text-[#3D3D3D] border-[#E0E0E0] hover:border-black hover:text-black"
+                    ? "bg-[#FF3C3C] text-white border-[#FF3C3C]"
+                    : "bg-white text-[#3D3D3D] border-[#E0E0E0] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
                   }
                 `}
                 style={{ borderRadius: "4px 4px 0 0" }}
@@ -211,7 +211,7 @@ export default function ProjectsSection() {
         {/* Folder content panel */}
         <div
           className={`border transition-all duration-400 overflow-hidden ${
-            activeProject ? "border-black" : "border-[#E0E0E0]"
+            activeProject ? "border-[#FF3C3C]" : "border-[#E0E0E0]"
           }`}
           style={{
             maxHeight: activeProject ? "600px" : "52px",
@@ -250,7 +250,7 @@ export default function ProjectsSection() {
                 <p className="text-sm text-[#3D3D3D] leading-relaxed">
                   {activeProject.summary}
                 </p>
-                <p className="text-xs text-[#3D3D3D] border-l-2 border-black pl-3 leading-relaxed">
+                <p className="text-xs text-[#3D3D3D] border-l-2 border-[#FF3C3C] pl-3 leading-relaxed">
                   {activeProject.impact}
                 </p>
                 {activeProject.link && (

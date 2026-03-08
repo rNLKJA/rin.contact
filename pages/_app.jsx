@@ -7,13 +7,11 @@ import "../public/styles/globals.css";
 function MyApp({ Component, pageProps }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="max-w-[1100px] mx-auto w-full px-6 flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-1">
-          <Component {...pageProps} />
-        </main>
-        <Footer />
-      </div>
+      <Header />
+      <main className="flex-1">
+        <Component {...pageProps} />
+      </main>
+      <Footer />
     </div>
   );
 }

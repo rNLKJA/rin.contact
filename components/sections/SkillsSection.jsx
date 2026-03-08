@@ -4,6 +4,7 @@ import { useInView } from "@/hooks/useInView";
 const DOMAINS = [
   {
     label: "Strategic Thinking & Leadership",
+    color: "#FF3C3C",
     description:
       "First-principles thinking is the foundation — breaking complex problems down to their core before rebuilding solutions from the ground up. Across government intelligence, regulatory compliance, and startup contexts, this means designing analytical roadmaps, intelligence frameworks, and decision structures that hold up under scrutiny. Strategic thinking here includes systems thinking, risk-based prioritisation, stakeholder alignment, and translating ambiguous briefs into structured, actionable plans.",
     skills: [
@@ -23,6 +24,7 @@ const DOMAINS = [
   },
   {
     label: "Continuous Improvement",
+    color: "#F59E0B",
     description:
       "Shaped by mentorship at WEHI under Rowland Mosbergen and reinforced across every role since — continuous improvement is not a process, it is a disposition. It means staying functional when problems are ill-defined, asking better questions rather than accepting the first answer, and building systems that improve themselves over time.",
     skills: [
@@ -36,6 +38,7 @@ const DOMAINS = [
   },
   {
     label: "Data Science & Intelligence",
+    color: "#3B82F6",
     description:
       "Statistical modelling, time series analysis, regression, clustering, GIS mapping, Power BI dashboards, and regulatory intelligence built for government and research contexts.",
     skills: [
@@ -45,6 +48,7 @@ const DOMAINS = [
   },
   {
     label: "Web Development",
+    color: "#22C55E",
     description:
       "Full-stack web applications from frontend to backend, with a strong leaning toward minimal, performant React and Next.js architectures.",
     skills: [
@@ -54,6 +58,7 @@ const DOMAINS = [
   },
   {
     label: "Mobile Development",
+    color: "#8B5CF6",
     description:
       "Cross-platform mobile applications built with Expo and React Native, with production-grade infrastructure on AWS and CI/CD pipelines.",
     skills: [
@@ -63,6 +68,7 @@ const DOMAINS = [
   },
   {
     label: "Research Engineering",
+    color: "#14B8A6",
     description:
       "Cloud and HPC-based bioinformatics pipelines, test infrastructure for reproducibility, and open-source contributions in genomics and medical research.",
     skills: [
@@ -72,6 +78,7 @@ const DOMAINS = [
   },
   {
     label: "Cloud & Infrastructure",
+    color: "#F97316",
     description:
       "Cloud infrastructure management across AWS and Azure, with practical experience deploying scalable, cost-optimised services for research and community applications.",
     skills: [
@@ -100,12 +107,22 @@ function DomainCard({ domain, index }) {
   return (
     <div
       ref={ref}
-      className={`border-t border-[#E0E0E0] pt-8 pb-8 transition-all duration-500 ${
+      className={`pt-8 pb-8 transition-all duration-500 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
-      style={{ transitionDelay: `${index * 70}ms` }}
+      style={{
+        transitionDelay: `${index * 70}ms`,
+        borderTop: `3px solid ${domain.color}`,
+      }}
     >
-      <h3 className="text-base font-semibold mb-2">{domain.label}</h3>
+      <div className="flex items-center gap-2 mb-2">
+        <span
+          className="inline-block w-2 h-2 rounded-full flex-shrink-0"
+          style={{ backgroundColor: domain.color }}
+          aria-hidden="true"
+        />
+        <h3 className="text-base font-semibold">{domain.label}</h3>
+      </div>
       <p className="text-sm text-[#3D3D3D] leading-relaxed mb-4 font-light">
         {domain.description}
       </p>
@@ -114,7 +131,16 @@ function DomainCard({ domain, index }) {
           <span
             key={s}
             className="border border-[#E0E0E0] px-2.5 py-1 text-xs tracking-wide text-[#7A7A7A]
-                       cursor-default hover:border-black hover:text-black transition-colors duration-200"
+                       cursor-default transition-all duration-200"
+            style={{ ["--hover-color"]: domain.color }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = domain.color;
+              e.currentTarget.style.color = domain.color;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "";
+              e.currentTarget.style.color = "";
+            }}
           >
             {s}
           </span>
@@ -137,7 +163,7 @@ export default function SkillsSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-3">
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
           04 — Expertise
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
@@ -167,7 +193,7 @@ export default function SkillsSection() {
           certInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-6">
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">
           Certifications & Assessment
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">

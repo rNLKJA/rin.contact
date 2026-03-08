@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FaLinkedin } from "react-icons/fa";
+import { FiGithub } from "react-icons/fi";
 
 const ROLES = [
   "Senior Data Analyst",
@@ -54,13 +56,12 @@ export default function HeroSection() {
 
       <div className="max-w-3xl">
         {/* Status pill */}
-        <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-12 text-xs tracking-widest uppercase">
-          <span
-            className="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink"
-            aria-hidden="true"
-          />
+        <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink" aria-hidden="true" />
           Strategic Thinking & Continuous Improvement · ASO7 Senior Data Analyst · Adelaide, SA
         </div>
+
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">01 — Profile</p>
 
         {/* Name */}
         <h1 className="text-5xl md:text-7xl font-semibold leading-none tracking-tight mb-4 animate-fade-up">
@@ -91,21 +92,42 @@ export default function HeroSection() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap gap-4 animate-fade-up delay-400">
+        <div className="flex flex-wrap items-center gap-4 animate-fade-up delay-400">
           <a
             href="#timeline"
-            className="border border-black px-6 py-2.5 text-sm tracking-widest uppercase
-                       hover:bg-black hover:text-white transition-colors duration-200
-                       focus-visible:outline-2 focus-visible:outline-black"
+            className="bg-[#FF3C3C] border border-[#FF3C3C] text-white px-6 py-2.5 text-sm tracking-widest uppercase
+                       hover:bg-transparent hover:text-[#FF3C3C] transition-colors duration-200
+                       focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
           >
             Career Path
           </a>
           <a
             href="#contact"
             className="border border-[#E0E0E0] px-6 py-2.5 text-sm tracking-widest uppercase
-                       text-[#3D3D3D] hover:border-black hover:text-black transition-colors duration-200"
+                       text-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
           >
             Get in Touch
+          </a>
+
+          {/* Social links */}
+          <span className="w-px h-6 bg-[#E0E0E0]" aria-hidden="true" />
+          <a
+            href="https://www.linkedin.com/in/sunchuangyuhuang/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn profile"
+            className="text-[#7A7A7A] hover:text-black transition-colors duration-200"
+          >
+            <FaLinkedin size={18} />
+          </a>
+          <a
+            href="https://github.com/rNLKJA"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub profile"
+            className="text-[#7A7A7A] hover:text-black transition-colors duration-200"
+          >
+            <FiGithub size={18} />
           </a>
         </div>
 
@@ -126,7 +148,8 @@ export default function HeroSection() {
           ].map((tag) => (
             <span
               key={tag}
-              className="border border-[#E0E0E0] px-3 py-1 text-xs tracking-wider uppercase text-[#7A7A7A]"
+              className="border border-[#E0E0E0] px-3 py-1 text-xs tracking-wider uppercase text-[#7A7A7A]
+                         hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200 cursor-default"
             >
               {tag}
             </span>
