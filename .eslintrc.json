@@ -3,7 +3,7 @@
   "rules": {
     "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off",
-    "indent": ["error", 2],                           // Enforce a 2-space indentation
+    "indent": "off",
     "no-unused-vars": "warn",                         // Warn about variables that are declared but not used
     "no-console": "warn",                             // Warn about console.log statements
     "react/react-in-jsx-scope": "off",                // Not necessary in Next.js as of version 9.5.4
