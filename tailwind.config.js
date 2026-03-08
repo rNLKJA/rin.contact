@@ -17,7 +17,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['"Bitcount Prop Double"', "monospace"],
+        // Wisr × Nothing three-font system
+        sans:      ['"DM Sans"', "system-ui", "sans-serif"],
+        editorial: ['"Playfair Display"', "Georgia", "serif"],
+        display:   ['"Bitcount Prop Double"', "monospace"],
       },
     },
   },

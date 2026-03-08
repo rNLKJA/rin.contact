@@ -162,8 +162,8 @@ export default function HeroSection() {
 
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4">01 — Profile</p>
 
-          {/* Name */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 animate-fade-up">
+          {/* Name — pinned to Bitcount display font */}
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 animate-fade-up">
             Rin Huang
           </h1>
           {/* Wisr-style wavy underline accent */}

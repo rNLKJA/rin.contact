@@ -49,7 +49,7 @@ html {
 }
 
 body {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.7;
@@ -59,17 +59,31 @@ body {
   letter-spacing: -0.01em;
 }
 
+/* ─── Wisr editorial serif — all section headings ───────────────── */
+h2, h3 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+/* ─── DM Sans UI overrides — nav, labels, buttons ───────────────── */
+nav, button, input, textarea, label, select {
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
 /* ─── Typography Scale ───────────────────────────────────────────── */
-h1, h2, h3, h4 {
+/* h1 brand name only — pixel display (Bitcount) */
+h1 {
   font-family: "Bitcount Prop Double", monospace;
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.0;
 }
 
-/* Small labels / tags / meta — Space Grotesk for legibility */
+/* Small labels / tags / meta */
 .label {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;

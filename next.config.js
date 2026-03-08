@@ -41,8 +41,16 @@ const nextConfig = {
         ],
       },
       {
-        // Static assets — aggressive caching improves LCP / CLS scores
-        source: "/(.*)\\.(ico|png|jpg|jpeg|svg|webp|woff2|woff|ttf|otf|css|js)",
+        // Immutable static assets — Next.js content-hashed chunks only
+        // (scoped to /_next/static/ so HMR scripts in dev are never cached)
+        source: "/_next/static/(.*)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+      {
+        // Other static assets (images, fonts, icons)
+        source: "/(.*)\\.(ico|png|jpg|jpeg|svg|webp|woff2|woff|ttf|otf)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
+import ReferencesPanel from "@/components/sections/ReferencesPanel";
 
 const CAREER = [
   {
@@ -129,6 +130,98 @@ const CAREER = [
 
 const UNIMELB_LOGO = "https://yt3.googleusercontent.com/wD1YaCDSytQDbDcSAkR21j8IQTl9lyC6LDr3p5ZC2yGX-RzU1ayGmn6swOS_LLzMKpvyA--UJQY=s176-c-k-c0x00ffffff-no-rj-mo";
 const TRINITY_LOGO = "https://media.licdn.com/dms/image/v2/C560BAQHbsXv7y0802A/company-logo_200_200/company-logo_200_200/0/1630627937392/trinityunimelb_logo?e=2147483647&v=beta&t=L-l1ISC0casA8uKqb1QYyFZWMyfe9n8A_tuT_MyOG_c";
+const PRACTERA_LOGO = "data:image/jpeg;base64,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";
+
+const VOLUNTEER = [
+  {
+    year: "2025",
+    org: "University of Melbourne",
+    orgDesc: "One of Australia's leading research universities — STEM industry outreach and student mentorship.",
+    role: "2025 STEM Industry Mentoring Program — Mentor",
+    period: "Jul 2025 – Dec 2025",
+    location: "Melbourne, VIC",
+    logo: UNIMELB_LOGO,
+    tag: "Science & Technology",
+    summary:
+      "Mentoring undergraduate and postgraduate STEM students through the University of Melbourne's 2025 Industry Mentoring Program — sharing industry experience across data science, analytics, and software engineering to help students bridge the gap between academia and professional practice.",
+    bullets: [
+      "Providing career guidance and industry context to students pursuing STEM pathways.",
+      "Sharing practical experience in data analytics, government intelligence, and research software engineering.",
+      "Supporting students in building professional confidence and navigating early-career decisions.",
+    ],
+  },
+  {
+    year: "2024",
+    org: "University of Melbourne",
+    orgDesc: "World-class research university — Data Science postgraduate programme.",
+    role: "2024 Data Science Peer-to-Peer Mentor",
+    period: "Aug 2024 – Sep 2024",
+    location: "Parkville, VIC",
+    logo: UNIMELB_LOGO,
+    tag: "Education",
+    summary:
+      "Served as a peer mentor in the Data Science Peer-to-Peer Mentoring Program, supporting new Master of Data Science students during their transition to university life and earning a verified People Leadership credential through Melbourne Plus.",
+    bullets: [
+      "Guided and supported incoming Master of Data Science students in their transition to university life.",
+      "Organised and participated in training sessions, welcome morning teas, independent meet-ups, and wrap-up events.",
+      "Fostered a sense of community among students, helping them connect and share experiences.",
+      "Earned a verified digital credential in People Leadership through Melbourne Plus.",
+    ],
+  },
+  {
+    year: "2024",
+    org: "University of Melbourne",
+    orgDesc: "Faculty of Engineering and Information Technology — annual flagship student project exhibition.",
+    role: "2024 FEIT Endeavour Exhibition — Volunteer Staff",
+    period: "Oct 2024",
+    location: "Parkville, VIC",
+    logo: UNIMELB_LOGO,
+    tag: "Education",
+    summary:
+      "Volunteered as event staff for the FEIT Endeavour Exhibition — welcoming guests, managing registrations, guiding visitors through the exhibition, and supporting project students and the Endeavour Events Team.",
+    bullets: [
+      "Welcomed and registered guests, providing name tags and guiding them with interactive maps.",
+      "Supported project students and helped maintain an inviting, informative exhibition space.",
+      "Promoted the People's Choice Awards and encouraged visitor participation in voting.",
+      "Conducted guest counts and encouraged QR code access to exhibition information.",
+    ],
+  },
+  {
+    year: "2024",
+    org: "Practera",
+    orgDesc: "Experiential learning platform connecting students with real-world industry projects.",
+    role: "ANU CBE Analytics Plus Program — Mentor",
+    period: "Jul 2024",
+    location: "Remote",
+    logo: PRACTERA_LOGO,
+    noBorder: true,
+    tag: "Education",
+    summary:
+      "Mentored talented ANU students through a 3-week virtual data analytics challenge for BrandHook — sharing industry insights, keeping the team on track, and earning a completer badge with excellent student feedback.",
+    bullets: [
+      "Mentored ANU CBE students across a 3-week virtual data analytics engagement for BrandHook.",
+      "Shared industry insights on data science methodology and communication, keeping the team focused and on track.",
+      "Supported the team in preparing a final presentation that received strong client feedback.",
+      "Earned a completer badge and received excellent feedback from students on mentoring style and support.",
+    ],
+  },
+  {
+    year: "2017",
+    org: "Elite Talks Inc.",
+    orgDesc: "Events company co-organising cultural and professional summits.",
+    role: "Event Executive & Staff",
+    period: "Nov 2017",
+    location: "China",
+    logo: "https://media.licdn.com/dms/image/v2/D560BAQFZULyFlO9ftA/company-logo_100_100/company-logo_100_100/0/1689137982258/elite_talks_inc_logo?e=1774483200&v=beta&t=h5J2RxhdXmovEdv4_0MF1kVezmBuiHiymojdlSq6yDI",
+    tag: "Arts & Culture",
+    summary:
+      "Volunteered as event executor at a summit jointly organised by Fanmo and Elite Talks — guiding visitors to enter the venue and ensuring order and security throughout the event.",
+    bullets: [
+      "Guided visitors to enter the venue and ensured order and security throughout the event.",
+      "Participated in the summit jointly organised by Fanmo and Elite Talks as part of the volunteer event team.",
+    ],
+  },
+];
 
 const EDUCATION = [
   {
@@ -215,9 +308,9 @@ function TimelineItem({ item, index }) {
       }`}
       style={{ transitionDelay: `${index * 80}ms` }}
     >
-      {/* Timeline dot */}
+      {/* Timeline dot — centred on the 1px track line */}
       <div
-        className={`absolute left-0 top-1.5 w-2 h-2 rounded-full border ${
+        className={`absolute left-0 md:-left-5 top-1.5 w-2 h-2 rounded-full border ${
           item.current
             ? "bg-[#FF3C3C] border-[#FF3C3C]"
             : "bg-white border-[#3D3D3D]"
@@ -323,6 +416,7 @@ export default function TimelineSection() {
   const [tab, setTab] = useState("career");
   const timelineRef = useRef(null);
   const [lineHeight, setLineHeight] = useState(0);
+  const [refOpen, setRefOpen] = useState(false);
 
   useEffect(() => {
     const handler = (e) => setTab(e.detail.tab);
@@ -351,10 +445,10 @@ export default function TimelineSection() {
     return () => window.removeEventListener("scroll", update);
   }, [tab]); // re-run when tab changes so line resets
 
-  const items = tab === "career" ? CAREER : EDUCATION;
+  const items = tab === "career" ? CAREER : tab === "education" ? EDUCATION : VOLUNTEER;
 
   return (
-    <section id="timeline" className="py-24" aria-label="Career timeline">
+    <section id="timeline" className="py-24 relative" aria-label="Career timeline">
       {/* Section header */}
       <div
         ref={ref}
@@ -376,7 +470,7 @@ export default function TimelineSection() {
 
         {/* Tab switcher */}
         <div className="flex gap-0 mt-8 border border-[#E0E0E0] w-fit">
-          {["career", "education"].map((t) => (
+          {["career", "education", "volunteer"].map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
@@ -428,6 +522,21 @@ export default function TimelineSection() {
           })}
         </div>
       </div>
+
+      {/* ── Easter egg: barely-visible trigger — only discoverable if you look ── */}
+      <button
+        onClick={() => setRefOpen(true)}
+        aria-label="View professional references"
+        title="Professional References"
+        className="absolute bottom-3 right-4 text-[#CCCCCC] hover:text-[#999999]
+                   transition-colors duration-300 text-[10px] tracking-[0.3em] select-none
+                   pointer-events-auto"
+      >
+        · · ·
+      </button>
+
+      {/* References modal */}
+      {refOpen && <ReferencesPanel onClose={() => setRefOpen(false)} />}
     </section>
   );
 }

@@ -95,17 +95,22 @@ class MyDocument extends Document {
           <link rel="alternate" hrefLang="en-AU" href="https://rin.contact/" />
           <link rel="alternate" hrefLang="x-default" href="https://rin.contact/" />
 
-          {/* ── Font preconnect (performance → Core Web Vitals → ranking) ── */}
+          {/* ── Font preconnect ── */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-          {/* Both fonts in one request — fewer round-trips, display=swap prevents FOIT */}
+          {/*
+            Three-font system (Wisr × Nothing):
+            • Bitcount Prop Double — pixel display, hero h1 brand name only
+            • Playfair Display    — editorial serif, all section h2/h3 headings
+            • DM Sans             — humanist sans, body, nav, buttons, labels
+          */}
           <link
             rel="preload"
             as="style"
-            href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@300..600&family=Space+Grotesk:wght@300;400;500;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@300..600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@300..600&family=Space+Grotesk:wght@300;400;500;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@300..600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
             rel="stylesheet"
           />
 
