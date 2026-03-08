@@ -1,40 +1,20 @@
-"use client";
-
 import React from "react";
-import { AnimatePresence } from "framer-motion";
-import Container from "@mui/material/Container";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { NextSEO } from "../lib/seo/NextSEO";
-import Head from "next/head";
 
 import "../public/styles/globals.css";
 
-const queryClient = new QueryClient();
-
 function MyApp({ Component, pageProps }) {
   return (
-    <Container
-      maxWidth="xl"
-      className="flex flex-col min-h-screen justify-between"
-    >
-      <Head>
-        {" "}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      {NextSEO()}
-
-      <Header />
-
-      <QueryClientProvider client={queryClient}>
-        <AnimatePresence mode="wait">
+    <div className="flex flex-col min-h-screen">
+      <div className="max-w-[1100px] mx-auto w-full px-6 flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">
           <Component {...pageProps} />
-        </AnimatePresence>
-      </QueryClientProvider>
-
-      <Footer />
-    </Container>
+        </main>
+        <Footer />
+      </div>
+    </div>
   );
 }
 

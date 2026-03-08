@@ -1,134 +1,118 @@
-import React from "react";
-import { Link } from "@nextui-org/link";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import Image from "next/legacy/image";
-import { Fade } from "react-awesome-reveal";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/MenuRounded";
-import FaceRetouchingNaturalOutlinedIcon from "@mui/icons-material/FaceRetouchingNaturalOutlined";
-import InfoIcon from "@mui/icons-material/InfoOutlined";
-import WorkIcon from "@mui/icons-material/WorkOutline";
-import BookIcon from "@mui/icons-material/BookOutlined";
-import EmailIcon from "@mui/icons-material/EmailOutlined";
-import AnimatedLink from "../ui/AnimatedLink";
 
-const Header = () => {
+const NAV_LINKS = [
+  { href: "#timeline", label: "Career", tab: "career" },
+  { href: "#timeline", label: "Education", tab: "education" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Expertises" },
+  { href: "#contact", label: "Contact" },
+];
+
+function dispatchTimelineTab(tab) {
+  if (tab) window.dispatchEvent(new CustomEvent("timeline-tab", { detail: { tab } }));
+}
+
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div>
-      <DesktopHeader />
-      <MobileHeader />
-    </div>
-  );
-};
-
-export default Header;
-
-export const DesktopHeader = () => {
-  return (
-    <div className="hidden md:flex justify-between items-center py-10 ">
-      <Fade triggerOnce duration={1500} direction="down">
-        <Link className="flex flex-row items-center" href="/">
-          <Image
-            src="/logo.svg"
-            alt="Logo"
-            width={50}
-            height={50}
-            quality={75}
-            layout="fixed"
-            priority
-          />
-          <span className="ml-2 font-bold link-hover">rNLKJA</span>
+    <header
+      className={`sticky top-0 z-50 bg-white transition-all duration-200 ${
+        scrolled ? "border-b border-[#E0E0E0]" : ""
+      }`}
+      role="banner"
+    >
+      <div className="flex justify-between items-center py-5">
+        {/* Logo */}
+        <Link href="/" className="flex flex-row items-center gap-3 group" aria-label="Rin Huang — home">
+          <div style={{ borderRadius: "22%", overflow: "hidden", width: 36, height: 36 }}>
+            <Image
+              src="/logo.svg"
+              alt="rNLKJA logo"
+              width={36}
+              height={36}
+              quality={100}
+              layout="fixed"
+              priority
+            />
+          </div>
+          <span className="font-semibold text-sm tracking-tight group-hover:opacity-60 transition-opacity duration-200">
+            rNLKJA
+          </span>
         </Link>
-      </Fade>
-      <Fade triggerOnce duration={1500} direction="right">
-        <nav className="flex flex-row space-x-4 gap-4 ease-in-out transition-all">
-          <AnimatedLink
-            href="/about-me"
-            IconComponent={FaceRetouchingNaturalOutlinedIcon}
-          >
-            About Me
-          </AnimatedLink>
-          <AnimatedLink href="/projects" IconComponent={WorkIcon}>
-            Projects
-          </AnimatedLink>
-          <AnimatedLink href="/blogs" IconComponent={BookIcon}>
-            Blogs
-          </AnimatedLink>
-          {/* <AnimatedLink href="/data-science" IconComponent={HistoryEduIcon}>
-            DS Study
-          </AnimatedLink> */}
-          <AnimatedLink href="/contact" IconComponent={EmailIcon}>
-            Contact
-          </AnimatedLink>
+
+        {/* Desktop nav */}
+        <nav
+          className="hidden md:flex flex-row items-center gap-8 text-xs tracking-widest uppercase"
+          aria-label="Primary navigation"
+        >
+          {NAV_LINKS.map(({ href, label, tab }) => (
+            <a
+              key={label}
+              href={href}
+              onClick={() => dispatchTimelineTab(tab)}
+              className="text-[#7A7A7A] hover:text-black transition-colors duration-200"
+            >
+              {label}
+            </a>
+          ))}
+
         </nav>
-      </Fade>
-    </div>
+
+        {/* Mobile burger */}
+        <button
+          className="md:hidden flex flex-col gap-1.5 p-2"
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+        >
+          <span
+            className={`block w-5 h-px bg-black transition-all duration-200 ${
+              menuOpen ? "rotate-45 translate-y-[5px]" : ""
+            }`}
+          />
+          <span
+            className={`block w-5 h-px bg-black transition-all duration-200 ${
+              menuOpen ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block w-5 h-px bg-black transition-all duration-200 ${
+              menuOpen ? "-rotate-45 -translate-y-[5px]" : ""
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* Mobile nav */}
+      {menuOpen && (
+        <nav
+          id="mobile-menu"
+          className="md:hidden border-t border-[#E0E0E0] py-6 flex flex-col gap-5"
+          aria-label="Mobile navigation"
+        >
+          {NAV_LINKS.map(({ href, label, tab }) => (
+            <a
+              key={label}
+              href={href}
+              onClick={() => { dispatchTimelineTab(tab); setMenuOpen(false); }}
+              className="text-xs tracking-widest uppercase text-[#7A7A7A] hover:text-black transition-colors duration-200"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      )}
+    </header>
   );
-};
-
-export const MobileHeader = () => {
-  const [isOpen, setIsOpen] = React.useState(null);
-
-  const toggleDropdown = (event) => {
-    if (isOpen) {
-      setIsOpen(null);
-    } else {
-      setIsOpen(event.currentTarget);
-    }
-  };
-
-  return (
-    <div className="md:hidden flex justify-between items-center py-4">
-      <Link className="flex flex-row items-center" href="/">
-        <Image
-          src="/logo.svg"
-          alt="Logo"
-          width={50}
-          height={50}
-          quality={100}
-          layout="fixed"
-          priority
-        />
-        <span className="ml-2 font-bold">rNLKJA</span>
-      </Link>
-
-      <IconButton onClick={toggleDropdown} className="px-2">
-        <MenuIcon />
-      </IconButton>
-      <Menu
-        id="simple-menu"
-        anchorEl={isOpen}
-        keepMounted
-        open={Boolean(isOpen)}
-        onClose={() => setIsOpen(null)}
-      >
-        <MenuItem onClick={() => setIsOpen(null)}>
-          <Link href="/about-me">
-            <InfoIcon /> About Me
-          </Link>
-        </MenuItem>
-        <MenuItem onClick={() => setIsOpen(null)}>
-          <Link href="/projects">
-            <WorkIcon /> Projects
-          </Link>
-        </MenuItem>
-        <MenuItem onClick={() => setIsOpen(null)}>
-          <Link href="/blogs">
-            <BookIcon /> Blogs
-          </Link>
-        </MenuItem>
-        {/* <MenuItem onClick={() => setIsOpen(null)}>
-          <Link href="/data-science">
-            <HistoryEduIcon /> DS Study
-          </Link>
-        </MenuItem> */}
-        <MenuItem onClick={() => setIsOpen(null)}>
-          <Link href="/contact">
-            <EmailIcon /> Contact
-          </Link>
-        </MenuItem>
-      </Menu>
-    </div>
-  );
-};
+}

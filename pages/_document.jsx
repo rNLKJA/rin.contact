@@ -38,11 +38,7 @@ class MyDocument extends Document {
 
           {/* External CSS and Fonts */}
           <link
-            href="https://assets.calendly.com/assets/external/widget.css"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&display=swap"
             rel="stylesheet"
           />
 
@@ -53,21 +49,21 @@ class MyDocument extends Document {
               __html: JSON.stringify({
                 "@context": "http://schema.org",
                 "@type": "Person",
-                name: "rNLKJA",
+                name: "Sunchuangyu (Rin) Huang",
                 url: "https://rin.contact",
                 sameAs: [
                   "https://github.com/rNLKJA",
                   "https://linkedin.com/in/sunchuangyuhuang",
                   "https://www.instagram.com/chuangyu_hscy/",
                 ],
-                jobTitle: "Master of Data Science",
+                jobTitle: "Senior Data Analyst",
                 worksFor: {
                   "@type": "Organization",
-                  name: "University of Melbourne",
+                  name: "South Australia Police",
                 },
                 alumniOf: "University of Melbourne",
                 description:
-                  "rNLKJA - Data Scientist, Programmer, and Tech Enthusiast. Explore my portfolio, blog posts, and data science projects.",
+                  "Sunchuangyu (Rin) Huang — Senior Data Analyst at SAPOL, Research Software Engineer, and Full-Stack Developer specialising in data science, strategic intelligence, and continuous improvement.",
               }),
             }}
           />
