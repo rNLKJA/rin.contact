@@ -315,10 +315,10 @@ function ProjectDetail({ project }) {
     <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white">
       <div className="md:col-span-2 space-y-4">
         <div>
-          <h3 className="text-xl font-semibold tracking-tight mb-1">
+          <h3 className="text-xl font-semibold tracking-tight mb-1 flex items-center gap-3 flex-wrap">
             {project.title}
             {project.current && (
-              <span className="ml-3 border border-[#FF3C3C] px-2 py-0.5 text-[10px] tracking-widest uppercase text-[#FF3C3C] align-middle">
+              <span className="border border-[#FF3C3C] px-3 py-0.5 text-[10px] tracking-widest uppercase text-[#FF3C3C] rounded-full">
                 Active
               </span>
             )}
@@ -339,8 +339,8 @@ function ProjectDetail({ project }) {
             href={project.link}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1 text-xs tracking-widest uppercase
-                       text-[#7A7A7A] hover:text-black transition-colors duration-200"
+            className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 text-xs tracking-widest uppercase
+                       text-[#7A7A7A] rounded-full hover:border-black hover:text-black transition-colors duration-200"
           >
             View on GitHub ↗
           </a>
@@ -353,7 +353,7 @@ function ProjectDetail({ project }) {
             {project.stack.map((t) => (
               <span
                 key={t}
-                className="border border-[#E0E0E0] px-2 py-0.5 text-xs text-[#7A7A7A]
+                className="border border-[#E0E0E0] px-2.5 py-0.5 text-xs text-[#7A7A7A] rounded-full
                            cursor-default hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
               >
                 {t}
@@ -423,9 +423,14 @@ export default function ProjectsSection() {
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">03 — Work</p>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
           <CountUp target={PROJECTS.length} started={countStarted} /> Selected Projects
         </h2>
+        {/* Wisr-style wavy accent */}
+        <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
+          <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
+                stroke="#E0E0E0" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+        </svg>
         <p className="text-base font-light text-[#3D3D3D] max-w-xl leading-relaxed">
           Projects spanning government intelligence, climate science, biomedical
           research, mobile apps, and web development — each one a chance to build
@@ -445,7 +450,7 @@ export default function ProjectsSection() {
               <button
                 key={d}
                 onClick={() => { setActiveFilter(d); setOpenId(null); setSearch(""); }}
-                className="border px-4 py-1.5 text-xs tracking-widest uppercase transition-all duration-200 flex items-center gap-1"
+                className="border px-4 py-1.5 text-xs tracking-widest uppercase transition-all duration-200 flex items-center gap-1 rounded-full"
                 style={isActive ? activeStyle : idleStyle}
                 onMouseEnter={(e) => {
                   if (isActive) return;
@@ -533,7 +538,7 @@ export default function ProjectsSection() {
                       <span className="text-xs text-[#7A7A7A] truncate hidden md:block">{project.subtitle}</span>
                       <span className="hidden md:flex items-center gap-3 justify-end">
                         <span
-                          className="text-[10px] tracking-widest uppercase border px-2 py-0.5"
+                          className="text-[10px] tracking-widest uppercase border px-2.5 py-0.5 rounded-full"
                           style={dc ? { borderColor: dc.color, color: dc.color } : { borderColor: "#E0E0E0", color: "#B0B0B0" }}
                         >
                           {project.tag}
@@ -647,12 +652,12 @@ export default function ProjectsSection() {
                       <p className="text-xs text-[#3D3D3D] border-l-2 border-black pl-3 leading-relaxed">{project.impact}</p>
                       <div className="flex flex-wrap gap-1.5">
                         {project.stack.map((t) => (
-                          <span key={t} className="border border-[#E0E0E0] px-2 py-0.5 text-xs text-[#7A7A7A] hover:border-black hover:text-black transition-colors duration-200">{t}</span>
+                          <span key={t} className="border border-[#E0E0E0] px-2.5 py-0.5 text-xs text-[#7A7A7A] rounded-full hover:border-black hover:text-black transition-colors duration-200">{t}</span>
                         ))}
                       </div>
                       {project.link && (
                         <a href={project.link} target="_blank" rel="noreferrer"
-                           className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#7A7A7A] hover:text-black transition-colors duration-200">
+                           className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 text-xs tracking-widest uppercase text-[#7A7A7A] rounded-full hover:border-black hover:text-black transition-colors duration-200">
                           View on GitHub ↗
                         </a>
                       )}

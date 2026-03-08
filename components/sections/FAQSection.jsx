@@ -43,26 +43,35 @@ function FAQItem({ q, a, index }) {
   return (
     <div
       className={`border-b border-[#E0E0E0] transition-colors duration-200 ${
-        open ? "bg-white" : ""
+        open ? "bg-[#FAFAFA]" : ""
       }`}
     >
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-start justify-between gap-4 py-5 text-left group"
+        className="w-full flex items-start gap-5 py-5 text-left group"
         aria-expanded={open}
       >
+        {/* Wisr editorial: inline index number — functional, not blocking */}
         <span
-          className={`text-sm md:text-base font-medium leading-snug transition-colors duration-200 pr-4
+          className="flex-shrink-0 tabular-nums font-semibold text-[11px] tracking-widest text-[#CCCCCC] mt-0.5 w-6 select-none"
+          aria-hidden="true"
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        <span
+          className={`flex-1 text-sm md:text-base font-medium leading-snug transition-colors duration-200
                       ${open ? "text-[#000]" : "text-[#1A1A1A] group-hover:text-[#000]"}`}
         >
           {q}
         </span>
+
         <span
           className={`flex-shrink-0 mt-0.5 transition-transform duration-200 ${
-            open ? "rotate-45 text-[#FF3C3C]" : "text-[#7A7A7A]"
+            open ? "rotate-45 text-[#FF3C3C]" : "text-[#B0B0B0]"
           }`}
         >
-          <FiPlus size={18} />
+          <FiPlus size={16} />
         </span>
       </button>
 
@@ -70,7 +79,8 @@ function FAQItem({ q, a, index }) {
         className="overflow-hidden transition-all duration-300 ease-in-out"
         style={{ maxHeight: open ? "400px" : "0px" }}
       >
-        <p className="text-sm text-[#3D3D3D] leading-relaxed pb-5 pr-8">
+        {/* Indent answer under the question (align with text column) */}
+        <p className="text-sm text-[#3D3D3D] leading-relaxed pb-6 pl-11 pr-8 border-l-2 border-[#FF3C3C] ml-6">
           {a}
         </p>
       </div>
@@ -94,9 +104,14 @@ export default function FAQSection() {
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
             06 — FAQ
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
             Common Questions
           </h2>
+          {/* Wisr-style wavy accent */}
+          <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
+            <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
+                  stroke="#E0E0E0" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+          </svg>
           <p className="text-sm text-[#7A7A7A] max-w-xl leading-relaxed">
             Things people often ask about my work, background, and approach.
           </p>

@@ -101,8 +101,8 @@ function MagneticButton({ href, primary, children }) {
       style={{ transition: "transform 0.2s cubic-bezier(0.23,1,0.32,1)" }}
       className={
         primary
-          ? "inline-block bg-[#FF3C3C] border border-[#FF3C3C] text-white px-6 py-2.5 text-sm tracking-widest uppercase hover:bg-transparent hover:text-[#FF3C3C] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
-          : "inline-block border border-[#E0E0E0] px-6 py-2.5 text-sm tracking-widest uppercase text-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
+          ? "inline-block bg-[#FF3C3C] border border-[#FF3C3C] text-white px-8 py-3 text-xs tracking-widest uppercase rounded-full hover:bg-transparent hover:text-[#FF3C3C] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
+          : "inline-block border border-[#3D3D3D] px-8 py-3 text-xs tracking-widest uppercase text-[#3D3D3D] rounded-full hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
       }
     >
       {children}
@@ -155,7 +155,7 @@ export default function HeroSection() {
         <div>
 
           {/* Status pill */}
-          <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink" aria-hidden="true" />
             ASO7 Senior Data Analyst · Adelaide, SA
           </div>
@@ -163,9 +163,14 @@ export default function HeroSection() {
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4">01 — Profile</p>
 
           {/* Name */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-4 animate-fade-up">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 animate-fade-up">
             Rin Huang
           </h1>
+          {/* Wisr-style wavy underline accent */}
+          <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
+            <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
+                  stroke="#FF3C3C" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeOpacity="0.5"/>
+          </svg>
 
           {/* Subtitle + socials */}
           <div className="flex flex-wrap items-center gap-3 mb-8 animate-fade-up delay-100">
@@ -218,7 +223,7 @@ export default function HeroSection() {
               <span
                 key={tag}
                 className="border border-[#E0E0E0] px-3 py-1 text-xs tracking-wider uppercase text-[#7A7A7A]
-                           hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200 cursor-default
+                           rounded-full hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200 cursor-default
                            animate-fade-up opacity-0"
                 style={{ animationDelay: `${500 + i * 50}ms`, animationFillMode: "forwards" }}
               >

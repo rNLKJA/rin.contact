@@ -162,9 +162,17 @@ function DomainCard({ domain, index }) {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="w-full flex items-center justify-between pt-8 pb-4 text-left group"
+        className="w-full flex items-center justify-between pt-8 pb-4 text-left group relative overflow-hidden"
         style={{ borderTop: `3px solid ${domain.color}` }}
       >
+        {/* Wisr editorial: ghost index number */}
+        <span
+          className="absolute right-6 top-1/2 -translate-y-1/2 text-[4.5rem] font-bold leading-none select-none pointer-events-none tabular-nums"
+          style={{ color: domain.color, opacity: 0.08 }}
+          aria-hidden="true"
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
         <div className="flex items-center gap-2">
           <span
             className="inline-block w-2 h-2 rounded-full flex-shrink-0"
@@ -174,7 +182,7 @@ function DomainCard({ domain, index }) {
           <h3 className="text-base font-semibold">{domain.label}</h3>
         </div>
         <span
-          className="text-[#B0B0B0] text-sm flex-shrink-0 transition-transform duration-200 group-hover:text-black"
+          className="text-[#B0B0B0] text-sm flex-shrink-0 transition-transform duration-200 group-hover:text-black z-10"
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
           aria-hidden="true"
         >
@@ -210,7 +218,7 @@ function DomainCard({ domain, index }) {
             {domain.skills.map((s, si) => (
               <span
                 key={s}
-                className="border border-[#E0E0E0] px-2.5 py-1 text-xs tracking-wide text-[#7A7A7A]
+                className="border border-[#E0E0E0] px-3 py-1 text-xs tracking-wide text-[#7A7A7A] rounded-full
                            cursor-default transition-all duration-200 animate-fade-up opacity-0"
                 style={{
                   animationDelay: open ? `${si * 30}ms` : "0ms",
@@ -251,9 +259,14 @@ export default function SkillsSection() {
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
           04 — Expertise
         </p>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
           Generalist. Specialist.
         </h2>
+        {/* Wisr-style wavy accent */}
+        <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
+          <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
+                stroke="#E0E0E0" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+        </svg>
         <p className="text-base font-light text-[#3D3D3D] max-w-2xl leading-relaxed">
           I have found that the most interesting problems sit at the edges of
           disciplines. My work has taken me from flow cytometry pipelines at WEHI

@@ -164,3 +164,28 @@ h1, h2, h3, h4 {
   background-image: radial-gradient(circle, var(--divider) 1px, transparent 1px);
   background-size: 16px 16px;
 }
+
+/* ─── Background shape animations ───────────────────────────────── */
+@keyframes art-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+@keyframes art-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes art-breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.09); }
+}
+/* Wisr Water element — organic blob morphing */
+@keyframes art-morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%       { border-radius: 50% 50% 40% 60% / 40% 60% 50% 40%; }
+  75%       { border-radius: 40% 60% 60% 30% / 60% 30% 60% 40%; }
+}
+.animate-art-float   { animation: art-float   10s ease-in-out infinite; }
+.animate-art-spin    { animation: art-spin    30s linear      infinite; }
+.animate-art-breathe { animation: art-breathe  8s ease-in-out infinite; }
+.animate-art-morph   { animation: art-morph   14s ease-in-out infinite; }

@@ -131,9 +131,14 @@ export default function ContactSection() {
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
             07 — Contact
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6 text-white">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-white">
             Get in Touch
           </h2>
+          {/* Wisr-style wavy accent */}
+          <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
+            <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
+                  stroke="#3D3D3D" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+          </svg>
           <p className="text-base text-[#9A9A9A] max-w-xl leading-relaxed">
             Whether it is a data challenge, a research collaboration, a project
             idea, or just a coffee — I would genuinely love to hear from you.
@@ -170,18 +175,19 @@ export default function ContactSection() {
 
             <hr className="border-[#3D3D3D]" />
 
-            <div className="space-y-3">
+            <div className="flex flex-wrap gap-2">
               {SOCIALS.map(({ label, href, icon: Icon, handle }) => (
                 <a
                   key={label}
                   href={href}
                   target={label !== "Email" ? "_blank" : undefined}
                   rel="noreferrer"
-                  className="flex items-center gap-3 group"
+                  className="inline-flex items-center gap-2 border border-[#3D3D3D] px-4 py-2 rounded-full
+                             text-xs text-[#9A9A9A] hover:border-white hover:text-white transition-colors duration-200"
                   aria-label={`${label}: ${handle}`}
                 >
-                  <Icon size={16} className="text-[#7A7A7A] group-hover:text-white transition-colors duration-200" aria-hidden="true" />
-                  <span className="text-sm text-[#9A9A9A] group-hover:text-white transition-colors duration-200">{handle}</span>
+                  <Icon size={13} aria-hidden="true" />
+                  {handle}
                 </a>
               ))}
             </div>
@@ -197,9 +203,9 @@ export default function ContactSection() {
               <input
                 id="name" name="name" type="text" required autoComplete="name"
                 value={form.name} onChange={handleChange} placeholder="Your name"
-                className="border border-[#3D3D3D] px-4 py-3 text-sm bg-[#252525] text-white
+                className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
                            placeholder:text-[#5A5A5A] focus:outline-none focus:border-[#FF3C3C]
-                           transition-colors duration-200 rounded-none"
+                           transition-colors duration-200 rounded-full"
               />
             </div>
 
@@ -208,9 +214,9 @@ export default function ContactSection() {
               <input
                 id="email" name="email" type="email" required autoComplete="email"
                 value={form.email} onChange={handleChange} placeholder="your@email.com"
-                className="border border-[#3D3D3D] px-4 py-3 text-sm bg-[#252525] text-white
+                className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
                            placeholder:text-[#5A5A5A] focus:outline-none focus:border-[#FF3C3C]
-                           transition-colors duration-200 rounded-none"
+                           transition-colors duration-200 rounded-full"
               />
             </div>
 
@@ -219,17 +225,17 @@ export default function ContactSection() {
               <textarea
                 id="message" name="message" required rows={6}
                 value={form.message} onChange={handleChange} placeholder="Leave your message here..."
-                className="border border-[#3D3D3D] px-4 py-3 text-sm bg-[#252525] text-white resize-none
+                className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white resize-none
                            placeholder:text-[#5A5A5A] focus:outline-none focus:border-[#FF3C3C]
-                           transition-colors duration-200 rounded-none"
+                           transition-colors duration-200 rounded-2xl"
               />
             </div>
 
             <button
               type="submit"
               disabled={status === "sending" || status === "sent"}
-              className={`px-6 py-3 text-sm tracking-widest uppercase transition-colors duration-200
-                         disabled:opacity-40 disabled:cursor-not-allowed border
+              className={`px-8 py-3 text-sm tracking-widest uppercase transition-colors duration-200
+                         disabled:opacity-40 disabled:cursor-not-allowed border rounded-full
                          ${status === "sent"
                            ? "border-[#22C55E] text-[#22C55E] bg-transparent"
                            : "border-[#FF3C3C] bg-[#FF3C3C] text-white hover:bg-transparent hover:text-[#FF3C3C]"
