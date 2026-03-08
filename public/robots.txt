@@ -1,3 +1,25 @@
-# robots.txt
+# robots.txt — rin.contact
+
+# Allow all well-behaved crawlers
 User-agent: *
-Disallow: /api/  # Block web crawlers from accessing your API routes
+Allow: /
+Disallow: /api/
+
+# Block known AI training scrapers that do not respect content
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Sitemap
+Sitemap: https://rin.contact/sitemap.xml
