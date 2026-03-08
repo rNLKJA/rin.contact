@@ -12,13 +12,15 @@ const Footer = () => {
       <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
-            <Image
-              src="/logo.svg"
-              alt="rNLKJA logo"
-              width={36}
-              height={36}
-              quality={100}
-            />
+            <div className="rounded-full bg-white flex items-center justify-center w-9 h-9 flex-shrink-0">
+              <Image
+                src="/logo.svg"
+                alt="rNLKJA logo"
+                width={28}
+                height={28}
+                quality={100}
+              />
+            </div>
             <span className="font-semibold text-sm text-white">rNLKJA</span>
           </div>
 

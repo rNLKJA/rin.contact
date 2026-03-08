@@ -45,7 +45,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center py-24"
+      className="pt-16 pb-20 md:pt-20 md:pb-28"
       aria-label="Introduction"
     >
       {/* Dot-matrix decorative strip */}
@@ -92,43 +92,47 @@ export default function HeroSection() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap items-center gap-4 animate-fade-up delay-400">
-          <a
-            href="#timeline"
-            className="bg-[#FF3C3C] border border-[#FF3C3C] text-white px-6 py-2.5 text-sm tracking-widest uppercase
-                       hover:bg-transparent hover:text-[#FF3C3C] transition-colors duration-200
-                       focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
-          >
-            Career Path
-          </a>
-          <a
-            href="#contact"
-            className="border border-[#E0E0E0] px-6 py-2.5 text-sm tracking-widest uppercase
-                       text-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
-          >
-            Get in Touch
-          </a>
+        <div className="flex flex-col gap-4 animate-fade-up delay-400">
+          {/* Row 1 — action buttons */}
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="#timeline"
+              className="bg-[#FF3C3C] border border-[#FF3C3C] text-white px-6 py-2.5 text-sm tracking-widest uppercase
+                         hover:bg-transparent hover:text-[#FF3C3C] transition-colors duration-200
+                         focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
+            >
+              Career Path
+            </a>
+            <a
+              href="#contact"
+              className="border border-[#E0E0E0] px-6 py-2.5 text-sm tracking-widest uppercase
+                         text-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
+            >
+              Get in Touch
+            </a>
+          </div>
 
-          {/* Social links */}
-          <span className="w-px h-6 bg-[#E0E0E0]" aria-hidden="true" />
-          <a
-            href="https://www.linkedin.com/in/sunchuangyuhuang/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn profile"
-            className="text-[#7A7A7A] hover:text-black transition-colors duration-200"
-          >
-            <FaLinkedin size={18} />
-          </a>
-          <a
-            href="https://github.com/rNLKJA"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub profile"
-            className="text-[#7A7A7A] hover:text-black transition-colors duration-200"
-          >
-            <FiGithub size={18} />
-          </a>
+          {/* Row 2 — social icons */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/sunchuangyuhuang/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn profile"
+              className="text-[#7A7A7A] hover:text-black transition-colors duration-200"
+            >
+              <FaLinkedin size={18} />
+            </a>
+            <a
+              href="https://github.com/rNLKJA"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub profile"
+              className="text-[#7A7A7A] hover:text-black transition-colors duration-200"
+            >
+              <FiGithub size={18} />
+            </a>
+          </div>
         </div>
 
         {/* Domain tags */}
