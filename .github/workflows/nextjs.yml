@@ -1,4 +1,0 @@
-# GitHub Pages deployment disabled — site is deployed via Vercel.
-# This workflow is intentionally empty.
-name: Disabled
-on: []
