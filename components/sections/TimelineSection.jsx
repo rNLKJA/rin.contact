@@ -359,8 +359,8 @@ export default function TimelineSection() {
               onClick={() => setTab(t)}
               className={`px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
                 tab === t
-                  ? "bg-black text-white"
-                  : "bg-white text-[#7A7A7A] hover:text-black"
+                  ? "bg-[#FF3C3C] text-white border-[#FF3C3C]"
+                  : "bg-white text-[#7A7A7A] hover:text-[#FF3C3C]"
               }`}
             >
               {t}

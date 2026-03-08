@@ -153,8 +153,8 @@ export default function ProjectsSection() {
               }}
               className={`border px-4 py-1.5 text-xs tracking-widest uppercase transition-colors duration-200 ${
                 activeFilter === d
-                  ? "border-black bg-black text-white"
-                  : "border-[#E0E0E0] text-[#7A7A7A] hover:border-black hover:text-black"
+                  ? "border-[#FF3C3C] bg-[#FF3C3C] text-white"
+                  : "border-[#E0E0E0] text-[#7A7A7A] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
               }`}
               aria-pressed={activeFilter === d}
             >
@@ -276,7 +276,7 @@ export default function ProjectsSection() {
                       <span
                         key={t}
                         className="border border-[#E0E0E0] px-2 py-0.5 text-xs text-[#7A7A7A]
-                                   cursor-default hover:border-black hover:text-black transition-colors duration-200"
+                                   cursor-default hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
                       >
                         {t}
                       </span>
