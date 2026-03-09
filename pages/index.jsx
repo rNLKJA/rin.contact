@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import NotionGraph from "@/components/ui/NotionGraph";
 
 // ── Background art helpers (Nothing OS + Wisr design language) ───────────────
 
@@ -222,6 +223,7 @@ export default function Home() {
           {/* ══ HERO — white ══ */}
           {/* Water: 3 concentric rings bottom-right · Fire: statement squircle · Water: organic blob · Air: dot texture */}
           <div className="bg-white relative overflow-hidden">
+            <NotionGraph nodeCount={38} maxDist={120} nodeAlpha={0.10} edgeAlpha={0.07} speed={0.8} />
             <ArtCross className="top-10 left-8 text-[#C0C0C0]" />
             <ArtCross className="bottom-12 right-12 text-[#C0C0C0]" />
             {/* Water — concentric rings, bottom-right (shared centre: 200px inside corner) */}
@@ -285,6 +287,7 @@ export default function Home() {
           {/* ══ SKILLS — light surface ══ */}
           {/* Water: large floating circle right · Water: blob left · Fire: squircle · Air: dot+wave */}
           <div className="bg-[#F5F5F5] relative overflow-hidden">
+            <NotionGraph nodeCount={50} maxDist={140} nodeAlpha={0.13} edgeAlpha={0.09} speed={1} color="26,26,26" />
             <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-black opacity-[0.045]">SKILLS</GhostLabel>
             <div className="dot-matrix absolute left-0 top-0 w-80 h-80 opacity-[0.18] pointer-events-none" aria-hidden="true" />
             <ArtCross className="top-10 right-10 text-[#BEBEBE]" />
@@ -306,6 +309,7 @@ export default function Home() {
           {/* ══ FAQ — white ══ */}
           {/* Water: concentric arcs top-right · Fire: squircle · Water: blob */}
           <div className="bg-white relative overflow-hidden">
+            <NotionGraph nodeCount={32} maxDist={110} nodeAlpha={0.08} edgeAlpha={0.06} speed={0.6} />
             <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.04]">FAQ</GhostLabel>
             <ArtCross className="top-10 right-10 text-[#C8C8C8]" />
             <ArtCross className="bottom-12 right-12 text-[#C8C8C8]" />
