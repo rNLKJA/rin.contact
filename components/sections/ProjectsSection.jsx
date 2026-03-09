@@ -26,7 +26,7 @@ const PROJECTS = [
     tag: "Data Engineering",
     domain: "Government",
     status: "Delivered",
-    stack: ["Python", "Mapbox API", "SEIFA", "ABS Remoteness"],
+    stack: ["Python", "Mapbox API", "SEIFA", "ABS Remoteness", "GeoPandas", "Pandas", "Data Validation", "Faker"],
     summary:
       "Built an internal tool to generate validated real South Australian addresses based on socio-economic status (SEIFA indices) and remoteness classifications — filling a gap no public API could address. All outputs verified via Mapbox API.",
     impact: "Validated address generation · SEIFA + remoteness filtering · Internal QA tool",
@@ -41,7 +41,7 @@ const PROJECTS = [
     tag: "Data Engineering",
     domain: ["Research", "Open Source"],
     status: "Open source",
-    stack: ["Python", "Web scraping", "Multi-threading", "CSV pipeline"],
+    stack: ["Python", "Web scraping", "Multi-threading", "CSV pipeline", "BeautifulSoup", "Requests", "Pandas", "Rate limiting"],
     summary:
       "Scraped the UC Santa Barbara American Presidency Project to collect ~180 presidential debate transcripts and ~25,000 campaign documents, with multi-threaded processing, rate limiting, and full metadata extraction.",
     impact: "~25,000 documents collected · Decades of US political communication data",
@@ -56,7 +56,7 @@ const PROJECTS = [
     tag: "Analytics",
     domain: "Government",
     status: "In production",
-    stack: ["Power BI", "Python", "GIS/ArcGIS", "Time series", "Regression"],
+    stack: ["Power BI", "Python", "GIS/ArcGIS", "Time series", "Regression", "SQL", "DAX", "Statistical Analysis", "DataSA", "ABS API"],
     summary:
       "Built the first intelligence analytics capability within the CBS Prevention Team — integrating ABS, SA Health, ACCC, and DataSA data into unified dashboards and GIS maps used by the Minister's Office.",
     impact: "Minister's Office reporting · First cross-agency MOUs · SOPs institutionalised",
@@ -98,7 +98,7 @@ const PROJECTS = [
     tag: "Data Science",
     domain: ["Biotech", "Open Source"],
     status: "Open source contributor",
-    stack: ["Python", "Cloud HPC", "celseq2", "Git", "Shiny R"],
+    stack: ["Python", "Cloud HPC", "celseq2", "Git", "Shiny R", "Nextflow", "Bioinformatics", "Bash", "Linux", "Data Pipelines"],
     summary:
       "Automated flow cytometry data analysis using cloud and HPC, developed test infrastructure for improved reproducibility, and contributed to the open-source celseq2 workflow toolkit.",
     impact: "Reduced manual processing · celseq2 open-source contribution",
@@ -112,7 +112,7 @@ const PROJECTS = [
     tag: "NLP / ML",
     domain: "Climate Research",
     status: "Completed",
-    stack: ["Python", "TF-IDF", "Transformers", "NLP", "Virtual Environment"],
+    stack: ["Python", "TF-IDF", "Transformers", "NLP", "Virtual Environment", "BERT", "Hugging Face", "PyTorch", "spaCy", "Scikit-learn"],
     summary:
       "Designed a two-stage automated fact-checking system for climate change claims — TF-IDF evidence retrieval followed by Transformer-based classification (SUPPORTS / REFUTES / NOT ENOUGH INFO / DISPUTED), outperforming LSTM baselines.",
     impact: "Transformer model outperformed LSTM · Scalable misinformation detection pipeline",
@@ -126,7 +126,7 @@ const PROJECTS = [
     period: "Nov 2023 – Jun 2024",
     tag: "EdTech",
     domain: "Startup",
-    stack: ["Content Design", "EdTech", "Market Research", "LLMs"],
+    stack: ["Content Design", "EdTech", "Market Research", "LLMs", "Instructional Design", "Curriculum Development", "Notion", "Interactive Content"],
     summary:
       "Built and refined interactive digital educational content aimed at bridging the gap between education and professional success. Conducted market research on leveraging advanced technologies to improve course engagement and learner outcomes for students across Australia and beyond.",
     impact: "80+ students supported · Improved course engagement through technology-driven content innovation",
@@ -140,7 +140,7 @@ const PROJECTS = [
     tag: "Research",
     domain: "AI / ML",
     status: "Completed",
-    stack: ["Database systems", "ML optimisation", "Query planning"],
+    stack: ["Database systems", "ML optimisation", "Query planning", "PostgreSQL", "B-tree Indexing", "Cost Models", "Query Optimisation", "Literature Review"],
     summary:
       "Research project exploring AI/ML techniques for autonomous database management — covering workload-driven optimisation and automatic index selection to reduce DBA overhead and improve query performance.",
     impact: "Literature review · Autonomous DB optimisation frameworks",
@@ -154,7 +154,7 @@ const PROJECTS = [
     tag: "Cloud / Analytics",
     domain: "Cloud / HPC",
     status: "Completed",
-    stack: ["Python", "Twitter API", "Mastodon API", "CouchDB", "AWS", "SUDO"],
+    stack: ["Python", "Twitter API", "Mastodon API", "CouchDB", "AWS", "SUDO", "Pandas", "Folium", "Matplotlib", "Spatial Analysis", "REST APIs"],
     summary:
       "Harvested and analysed Twitter and Mastodon data alongside ABS SUDO spatial data to produce a Social Sense Dashboard illuminating Australian sentiment, social trends, and regional behavioural patterns.",
     impact: "Cross-platform social analytics · Spatial + social data fusion",
@@ -198,7 +198,7 @@ const PROJECTS = [
     tag: "AI / Algorithms",
     domain: "AI / ML",
     status: "Completed",
-    stack: ["Python", "A* pathfinding", "Heuristic search", "Game theory","AI Agents"],
+    stack: ["Python", "A* pathfinding", "Heuristic search", "Game theory", "AI Agents", "Minimax", "Alpha-beta pruning", "Graph search"],
     summary:
       "Implemented AI agents for Cachex — a two-player connection game — covering heuristic A* search for the exploration phase and a competitive game agent using strategic anticipation and sabotage logic.",
     impact: "A* pathfinding · Competitive AI agent · Game theory application",
@@ -227,7 +227,7 @@ const PROJECTS = [
     tag: "Full Stack",
     domain: "Research",
     status: "Completed",
-    stack: ["Node.js", "React.js", "Express.js", "MongoDB", "HTML/CSS"],
+    stack: ["Node.js", "React.js", "Express.js", "MongoDB", "HTML/CSS", "REST API", "JWT Auth", "Mongoose", "Agile"],
     summary:
       "Collaborative full-stack CRM system built as the COMP30022 IT Project — managing customer interactions and data with a responsive React frontend, Express REST API, and MongoDB backend.",
     impact: "Full-stack delivery · Team project · Production-grade architecture",
@@ -256,7 +256,7 @@ const PROJECTS = [
     tag: "Web Dev",
     domain: "Personal",
     status: "v5 in development",
-    stack: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+    stack: ["Next.js", "React", "Tailwind CSS", "Vercel", "JavaScript", "SEO", "Schema.org", "JSON-LD", "CSS Animations", "GitHub Actions"],
     summary:
       "Five major iterations of a personal website — currently rebuilt in v5 with a Nothing OS-inspired minimal design language. A living record of technical and professional development since 2020.",
     impact: "5 major versions · rin.contact · Open source",

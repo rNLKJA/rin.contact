@@ -20,7 +20,7 @@ function ArtCircle({ className = "", style = {} }) {
   return (
     <div
       aria-hidden="true"
-      className={`absolute rounded-full border pointer-events-none select-none ${className}`}
+      className={`absolute rounded-full border pointer-events-none select-none opacity-10 md:opacity-40 ${className}`}
       style={style}
     />
   );
@@ -31,7 +31,7 @@ function ArtSquircle({ className = "", style = {} }) {
   return (
     <div
       aria-hidden="true"
-      className={`absolute border pointer-events-none select-none ${className}`}
+      className={`absolute border pointer-events-none select-none opacity-10 md:opacity-40 ${className}`}
       style={{ borderRadius: "22%", ...style }}
     />
   );
@@ -42,7 +42,7 @@ function ArtBlob({ className = "", style = {} }) {
   return (
     <div
       aria-hidden="true"
-      className={`absolute border pointer-events-none select-none animate-art-morph ${className}`}
+      className={`absolute border pointer-events-none select-none animate-art-morph opacity-10 md:opacity-40 ${className}`}
       style={style}
     />
   );
@@ -55,7 +55,7 @@ function WaveArc({ className = "", stroke = "#E0E0E0" }) {
       aria-hidden="true"
       viewBox="0 0 1440 80"
       preserveAspectRatio="none"
-      className={`absolute w-full pointer-events-none select-none ${className}`}
+      className={`absolute w-full pointer-events-none select-none opacity-[0.08] md:opacity-30 ${className}`}
     >
       <path
         d="M0,40 C180,8 360,72 540,40 C720,8 900,72 1080,40 C1260,8 1380,64 1440,40"
@@ -222,7 +222,7 @@ export default function Home() {
       <div className="relative">
         {/* Dot-matrix — fixed top-right anchor (persists across all sections) */}
         <div
-          className="dot-matrix fixed top-0 right-0 w-72 h-72 opacity-25 pointer-events-none z-0"
+          className="dot-matrix fixed top-0 right-0 w-72 h-72 opacity-[0.03] md:opacity-10 pointer-events-none z-0"
           aria-hidden="true"
         />
 
@@ -245,7 +245,7 @@ export default function Home() {
             {/* Air — wave arc across the section */}
             <WaveArc className="top-[38%] h-20" stroke="#EBEBEB" />
             {/* Air — dot-matrix texture bottom-left */}
-            <div className="dot-matrix absolute left-0 bottom-0 w-80 h-80 opacity-[0.18] pointer-events-none" aria-hidden="true" />
+            <div className="dot-matrix absolute left-0 bottom-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08] pointer-events-none" aria-hidden="true" />
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
               <HeroSection />
             </div>
@@ -254,7 +254,7 @@ export default function Home() {
           {/* ══ TIMELINE — light surface ══ */}
           {/* Water: concentric arcs top-left · Water: floating circle · Fire: large squircle · Water: blob */}
           <div className="bg-[#F5F5F5] relative overflow-hidden">
-            <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-black opacity-[0.045]">JOURNEY</GhostLabel>
+            <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.045]">JOURNEY</GhostLabel>
             <ArtCross className="top-10 left-8 text-[#BEBEBE]" />
             <ArtCross className="top-10 right-10 text-[#BEBEBE]" />
             {/* Water — concentric rings, top-left (shared centre: 200px inside corner) */}
@@ -274,7 +274,7 @@ export default function Home() {
           {/* ══ PROJECTS — white ══ */}
           {/* Water: massive concentric arcs bottom-left · Fire: bold squircle · Water: wave arc · blob */}
           <div className="bg-white relative overflow-hidden">
-            <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.04]">WORK</GhostLabel>
+            <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.04]">WORK</GhostLabel>
             <ArtCross className="top-10 right-10 text-[#C8C8C8]" />
             <ArtCross className="bottom-12 left-8 text-[#C8C8C8]" />
             {/* Water — concentric rings, bottom-left (shared centre: 200px inside corner) */}
@@ -296,8 +296,8 @@ export default function Home() {
           {/* Water: large floating circle right · Water: blob left · Fire: squircle · Air: dot+wave */}
           <div className="bg-[#F5F5F5] relative overflow-hidden">
             <NotionGraph nodeCount={50} maxDist={140} nodeAlpha={0.13} edgeAlpha={0.09} speed={1} color="26,26,26" />
-            <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-black opacity-[0.045]">SKILLS</GhostLabel>
-            <div className="dot-matrix absolute left-0 top-0 w-80 h-80 opacity-[0.18] pointer-events-none" aria-hidden="true" />
+            <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.045]">SKILLS</GhostLabel>
+            <div className="dot-matrix absolute left-0 top-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08] pointer-events-none" aria-hidden="true" />
             <ArtCross className="top-10 right-10 text-[#BEBEBE]" />
             <ArtCross className="bottom-12 left-8 text-[#BEBEBE]" />
             {/* Water — concentric rings, right (shared centre: 200px inside right edge, vertically centred) */}
@@ -318,7 +318,7 @@ export default function Home() {
           {/* Water: concentric arcs top-right · Fire: squircle · Water: blob */}
           <div className="bg-white relative overflow-hidden">
             <NotionGraph nodeCount={32} maxDist={110} nodeAlpha={0.08} edgeAlpha={0.06} speed={0.6} />
-            <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.04]">FAQ</GhostLabel>
+            <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.04]">FAQ</GhostLabel>
             <ArtCross className="top-10 right-10 text-[#C8C8C8]" />
             <ArtCross className="bottom-12 right-12 text-[#C8C8C8]" />
             {/* Water — concentric rings, top-right (shared centre: 200px inside corner) */}
@@ -336,9 +336,9 @@ export default function Home() {
           {/* ══ CONTACT — dark ══ */}
           {/* All four elements — maximum drama in dark palette */}
           <div className="bg-[#1A1A1A] relative overflow-hidden">
-            <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-white opacity-[0.06]">CONNECT</GhostLabel>
+            <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-white opacity-[0.02] md:opacity-[0.06]">CONNECT</GhostLabel>
             {/* Air — dot-matrix texture */}
-            <div aria-hidden="true" className="absolute left-0 top-0 w-80 h-80 opacity-40 pointer-events-none"
+            <div aria-hidden="true" className="absolute left-0 top-0 w-80 h-80 opacity-[0.05] md:opacity-20 pointer-events-none"
               style={{ backgroundImage:"radial-gradient(circle, #2E2E2E 1px, transparent 1px)", backgroundSize:"16px 16px" }} />
             <ArtCross className="top-10 left-8 text-[#2C2C2C]" />
             <ArtCross className="bottom-12 right-12 text-[#2C2C2C]" />

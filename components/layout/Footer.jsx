@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FiGithub, FiMail } from "react-icons/fi";
+import DesignPhilosophyModal from "@/components/ui/DesignPhilosophyModal";
 
 const NAV_COLS = [
   {
@@ -144,14 +145,17 @@ const Footer = () => {
             ))}
           </div>
 
-          {/* Copyright */}
-          <p className="text-[11px] text-[#5A5A5A] tracking-wide">
-            © 2020–{year}{" "}
-            <Link href="/" className="text-[#7A7A7A] hover:text-white transition-colors duration-200">
-              rNLKJA
-            </Link>
-            . All rights reserved.
-          </p>
+          {/* Design system + copyright */}
+          <div className="flex flex-wrap items-center gap-4">
+            <DesignPhilosophyModal />
+            <p className="text-[11px] text-[#5A5A5A] tracking-wide">
+              © 2020–{year}{" "}
+              <Link href="/" className="text-[#7A7A7A] hover:text-white transition-colors duration-200">
+                rNLKJA
+              </Link>
+              . All rights reserved.
+            </p>
+          </div>
         </div>
 
       </div>

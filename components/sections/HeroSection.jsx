@@ -138,13 +138,13 @@ export default function HeroSection() {
         aria-hidden="true"
         className="pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(255,60,60,0.09) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(255,60,60,0.05) 0%, transparent 70%)",
           animation: "blob-drift 18s ease-in-out infinite alternate",
         }}
       />
       {/* Dot-matrix overlay */}
       <div
-        className="dot-matrix pointer-events-none absolute top-0 right-0 w-64 h-64 opacity-20"
+        className="dot-matrix pointer-events-none absolute top-0 right-0 w-64 h-64 opacity-[0.03] md:opacity-10"
         aria-hidden="true"
       />
 
