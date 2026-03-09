@@ -133,7 +133,7 @@ h1 {
 .animate-fade-up   { animation: fade-up   600ms ease-in-out both; }
 .animate-fade-in   { animation: fade-in   600ms ease-in-out both; }
 .animate-slide-right { animation: slide-right 500ms ease-in-out both; }
-.animate-blink     { animation: blink 1.2s ease-in-out infinite; }
+.animate-blink     { animation: blink 1.2s ease-in-out infinite; contain: layout; will-change: opacity; }
 
 /* Stagger delay helpers */
 .delay-100 { animation-delay: 100ms; }
@@ -152,8 +152,17 @@ h1 {
   #hero #hero-bio,
   #hero .hero-ctas {
     animation: none !important;
+    animation-delay: 0 !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* ─── Mobile: disable art-morph (border-radius animation is non-composited, causes jank) ── */
+@media (max-width: 767px) {
+  .animate-art-morph {
+    animation: none !important;
+    border-radius: 50% 40% 30% 60% / 60% 30% 70% 40%;
   }
 }
 
@@ -215,3 +224,10 @@ h1 {
 .animate-art-spin    { animation: art-spin    30s linear      infinite; will-change: transform; }
 .animate-art-breathe { animation: art-breathe  8s ease-in-out infinite; will-change: transform; }
 .animate-art-morph   { animation: art-morph   14s ease-in-out infinite; will-change: border-radius, transform; }
+
+/* ─── Below-fold section optimisation ──────────────────────────────────── */
+/* Skips layout/paint until near viewport — reduces main-thread Style & Layout work */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}

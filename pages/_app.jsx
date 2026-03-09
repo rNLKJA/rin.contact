@@ -1,10 +1,13 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import CustomCursor from "@/components/ui/CustomCursor";
 import { bitcount, dmSans, playfair } from "@/lib/fonts";
 
 import "../public/styles/globals.css";
+
+const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
+// Footer is below the fold — defer to improve LCP on mobile
+const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
 
 function MyApp({ Component, pageProps }) {
   return (

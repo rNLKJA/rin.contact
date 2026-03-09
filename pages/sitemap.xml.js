@@ -24,13 +24,13 @@ const IMAGES = [
   {
     loc:     "https://upload.wikimedia.org/wikipedia/commons/e/e0/Coat_of_arms_of_the_South_Australia_Police.svg",
     title:   "South Australia Police",
-    caption: "Rin Huang — ASO7 Senior Data Analyst at South Australia Police (SAPOL), Professional & Ethical Standards Branch, Mar 2026–Present",
+    caption: "Rin Huang — ASO7 Senior Data Analyst at South Australia Police (SAPOL), Professional & Ethical Standards Branch, 23 Mar 2026–Present",
     license: "https://www.police.sa.gov.au",
   },
   {
     loc:     "https://media.licdn.com/dms/image/v2/C560BAQEbZveHn7HVCQ/company-logo_200_200/company-logo_200_200/0/1630651674988/attorney_generals_logo?e=2147483647&v=beta&t=V5cMKtM1QRUW0fqwpysEvD4iHxPO5FmaPoXIJpNQs5c",
     title:   "Attorney-General's Department SA — Consumer and Business Services",
-    caption: "Rin Huang — ASO4 Intelligence & Coordination Officer at Consumer and Business Services (CBS), Attorney-General's Department SA, Jan 2025–Mar 2026",
+    caption: "Rin Huang — ASO4 Intelligence & Coordination Officer at Consumer and Business Services (CBS), Attorney-General's Department SA, Jan 2025–20 Mar 2026",
     license: "https://www.agd.sa.gov.au",
   },
   {
@@ -68,8 +68,8 @@ const IMAGES = [
 
 // ─── Career timeline ──────────────────────────────────────────────────────────
 const CAREER = [
-  { role: "ASO7 Senior Data Analyst",                  org: "South Australia Police",                                     period: "Mar 2026–Present",    location: "Adelaide, SA" },
-  { role: "ASO4 Intelligence & Coordination Officer",  org: "Consumer and Business Services, Attorney-General's Dept SA", period: "Jan 2025–Mar 2026",   location: "Adelaide, SA" },
+  { role: "ASO7 Senior Data Analyst",                  org: "South Australia Police",                                     period: "23 Mar 2026–Present", location: "Adelaide, SA" },
+  { role: "ASO4 Intelligence & Coordination Officer",  org: "Consumer and Business Services, Attorney-General's Dept SA", period: "Jan 2025–20 Mar 2026",location: "Adelaide, SA" },
   { role: "Research Assistant — MoodQ",                org: "University of Melbourne, Psychiatry Dept",                   period: "Aug 2024–Feb 2026",   location: "Parkville, VIC" },
   { role: "Software Engineer Intern (Data Science)",   org: "WEHI",                                                       period: "Feb 2024–Jul 2024",   location: "Parkville, VIC" },
   { role: "Data Science Industrial Consultant",        org: "CSIRO — Climate & Earth Systems",                            period: "Feb 2023–Nov 2023",   location: "Melbourne, VIC" },

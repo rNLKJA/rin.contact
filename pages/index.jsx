@@ -82,7 +82,8 @@ function GhostLabel({ children, className = "" }) {
 
 // Hero is above the fold — load immediately
 import HeroSection from "@/components/sections/HeroSection";
-import SectionProgress from "@/components/layout/SectionProgress";
+
+const SectionProgress = dynamic(() => import("@/components/layout/SectionProgress"), { ssr: false });
 
 // Below-fold sections — code-split so they don't inflate the initial JS bundle.
 // SSR is kept (default) so content is still in the HTML for SEO crawlers.
@@ -107,6 +108,9 @@ export default function Home() {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+        {/* ── LCP: preload above-the-fold assets ── */}
+        <link rel="preload" href="/logo.svg" as="image" fetchPriority="high" />
 
         {/* ── Primary meta ── */}
         <title>Rin Huang | Data Analyst &amp; Research Software Engineer</title>
@@ -228,131 +232,114 @@ export default function Home() {
       <div className="relative z-10">
 
           {/* ══ HERO — white ══ */}
-          {/* Water: 3 concentric rings bottom-right · Fire: statement squircle · Water: organic blob · Air: dot texture */}
+          {/* LCP: hero content first in DOM; decorative elements deferred on mobile */}
           <div className="bg-white relative overflow-hidden">
-            <ArtCross className="top-10 left-8 text-[#C0C0C0]" />
-            <ArtCross className="bottom-12 right-12 text-[#C0C0C0]" />
-            {/* Water — concentric rings, bottom-right (shared centre: 200px inside corner) */}
-            <ArtCircle className="animate-art-breathe border-[#E0E0E0]"       style={{ width:"1300px", height:"1300px", right:"-450px", bottom:"-450px" }} />
-            <ArtCircle className="animate-art-breathe border-[#E4E4E4]"       style={{ width: "840px", height: "840px",  right:"-220px", bottom:"-220px", animationDelay:"1.2s" }} />
-            <ArtCircle className="animate-art-breathe border-[#EBEBEB]"       style={{ width: "420px", height: "420px",  right: "-10px", bottom: "-10px", animationDelay:"2.4s" }} />
-            {/* Fire — large squircle, top-left, slow spin */}
-            <ArtSquircle className="animate-art-spin border-[#DCDCDC]"        style={{ width:"320px",  height:"320px",  top:"48px",  left:"40px",   animationDelay:"1.5s" }} />
-            {/* Water — organic blob, mid-left, morphing */}
-            <ArtBlob     className="border-[#E8E8E8]"                         style={{ width:"420px",  height:"380px",  top:"30%",   left:"-100px", animationDelay:"3s" }} />
-            {/* Air — wave arc across the section */}
-            <WaveArc className="top-[38%] h-20" stroke="#EBEBEB" />
-            {/* Air — dot-matrix texture bottom-left */}
-            <div className="dot-matrix absolute left-0 bottom-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08] pointer-events-none" aria-hidden="true" />
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
               <HeroSection />
+            </div>
+            {/* Decorative elements — hidden on mobile for faster LCP, desktop only */}
+            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
+              <ArtCross className="top-10 left-8 text-[#C0C0C0]" />
+              <ArtCross className="bottom-12 right-12 text-[#C0C0C0]" />
+              <ArtCircle className="animate-art-breathe border-[#E0E0E0]"       style={{ width:"1300px", height:"1300px", right:"-450px", bottom:"-450px" }} />
+              <ArtCircle className="animate-art-breathe border-[#E4E4E4]"       style={{ width: "840px", height: "840px",  right:"-220px", bottom:"-220px", animationDelay:"1.2s" }} />
+              <ArtCircle className="animate-art-breathe border-[#EBEBEB]"       style={{ width: "420px", height: "420px",  right: "-10px", bottom: "-10px", animationDelay:"2.4s" }} />
+              <ArtSquircle className="animate-art-spin border-[#DCDCDC]"        style={{ width:"320px",  height:"320px",  top:"48px",  left:"40px",   animationDelay:"1.5s" }} />
+              <ArtBlob     className="border-[#E8E8E8]"                         style={{ width:"420px",  height:"380px",  top:"30%",   left:"-100px", animationDelay:"3s" }} />
+              <WaveArc className="top-[38%] h-20" stroke="#EBEBEB" />
+              <div className="dot-matrix absolute left-0 bottom-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08]" />
             </div>
           </div>
 
           {/* ══ TIMELINE — light surface ══ */}
-          {/* Water: concentric arcs top-left · Water: floating circle · Fire: large squircle · Water: blob */}
-          <div className="bg-[#F5F5F5] relative overflow-hidden">
-            <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.045]">JOURNEY</GhostLabel>
-            <ArtCross className="top-10 left-8 text-[#BEBEBE]" />
-            <ArtCross className="top-10 right-10 text-[#BEBEBE]" />
-            {/* Water — concentric rings, top-left (shared centre: 200px inside corner) */}
-            <ArtCircle className="animate-art-breathe border-[#D8D8D8]"       style={{ width:"1200px", height:"1200px", top:"-400px",  left:"-400px",  animationDelay:"2s" }} />
-            <ArtCircle className="animate-art-breathe border-[#DCDCDC]"       style={{ width: "720px", height: "720px",  top:"-160px",  left:"-160px",  animationDelay:"3.2s" }} />
-            {/* Water — floating circle, bottom-right */}
-            <ArtCircle className="animate-art-float border-[#DEDEDE]"         style={{ width: "460px", height: "460px",  bottom:"-100px", right:"-100px", animationDelay:"4s" }} />
-            {/* Fire — large squircle, right-centre, slow spin */}
-            <ArtSquircle className="animate-art-spin border-[#D4D4D4]"        style={{ width:"300px",  height:"300px",  top:"50%",   right:"-80px", animationDelay:"0.5s" }} />
-            {/* Water — organic blob, bottom-left, morphing */}
-            <ArtBlob     className="border-[#DCDCDC]"                         style={{ width:"380px",  height:"350px",  bottom:"40px", left:"-60px",  animationDelay:"5s" }} />
+          <div className="bg-[#F5F5F5] relative overflow-hidden content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
               <TimelineSection />
+            </div>
+            {/* Decorative elements — desktop only, reduces mobile LCP/main-thread */}
+            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
+              <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.045]">JOURNEY</GhostLabel>
+              <ArtCross className="top-10 left-8 text-[#BEBEBE]" />
+              <ArtCross className="top-10 right-10 text-[#BEBEBE]" />
+              <ArtCircle className="animate-art-breathe border-[#D8D8D8]"       style={{ width:"1200px", height:"1200px", top:"-400px",  left:"-400px",  animationDelay:"2s" }} />
+              <ArtCircle className="animate-art-breathe border-[#DCDCDC]"       style={{ width: "720px", height: "720px",  top:"-160px",  left:"-160px",  animationDelay:"3.2s" }} />
+              <ArtCircle className="animate-art-float border-[#DEDEDE]"         style={{ width: "460px", height: "460px",  bottom:"-100px", right:"-100px", animationDelay:"4s" }} />
+              <ArtSquircle className="animate-art-spin border-[#D4D4D4]"        style={{ width:"300px",  height:"300px",  top:"50%",   right:"-80px", animationDelay:"0.5s" }} />
+              <ArtBlob     className="border-[#DCDCDC]"                         style={{ width:"380px",  height:"350px",  bottom:"40px", left:"-60px",  animationDelay:"5s" }} />
             </div>
           </div>
 
           {/* ══ PROJECTS — white ══ */}
-          {/* Water: massive concentric arcs bottom-left · Fire: bold squircle · Water: wave arc · blob */}
-          <div className="bg-white relative overflow-hidden">
-            <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.04]">WORK</GhostLabel>
-            <ArtCross className="top-10 right-10 text-[#C8C8C8]" />
-            <ArtCross className="bottom-12 left-8 text-[#C8C8C8]" />
-            {/* Water — concentric rings, bottom-left (shared centre: 200px inside corner) */}
-            <ArtCircle className="animate-art-breathe border-[#E0E0E0]"       style={{ width:"1440px", height:"1440px", bottom:"-520px", left:"-520px" }} />
-            <ArtCircle className="animate-art-breathe border-[#E6E6E6]"       style={{ width: "900px", height: "900px",  bottom:"-250px", left:"-250px",  animationDelay:"3s" }} />
-            <ArtCircle className="animate-art-breathe border-[#EBEBEB]"       style={{ width: "440px", height: "440px",  bottom: "-20px", left: "-20px",  animationDelay:"4.5s" }} />
-            {/* Fire — bold squircle, top-right, slow spin */}
-            <ArtSquircle className="animate-art-spin border-[#E0E0E0]"        style={{ width:"360px",  height:"360px",  top:"48px",  right:"40px",  animationDelay:"1s" }} />
-            {/* Water — organic blob, mid-right */}
-            <ArtBlob     className="border-[#EAEAEA]"                         style={{ width:"360px",  height:"400px",  top:"25%",   right:"-80px", animationDelay:"2s" }} />
-            {/* Air — wave arc */}
-            <WaveArc className="bottom-[15%] h-20" stroke="#EBEBEB" />
+          <div className="bg-white relative overflow-hidden content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
               <ProjectsSection />
+            </div>
+            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
+              <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.04]">WORK</GhostLabel>
+              <ArtCross className="top-10 right-10 text-[#C8C8C8]" />
+              <ArtCross className="bottom-12 left-8 text-[#C8C8C8]" />
+              <ArtCircle className="animate-art-breathe border-[#E0E0E0]"       style={{ width:"1440px", height:"1440px", bottom:"-520px", left:"-520px" }} />
+              <ArtCircle className="animate-art-breathe border-[#E6E6E6]"       style={{ width: "900px", height: "900px",  bottom:"-250px", left:"-250px",  animationDelay:"3s" }} />
+              <ArtCircle className="animate-art-breathe border-[#EBEBEB]"       style={{ width: "440px", height: "440px",  bottom: "-20px", left: "-20px",  animationDelay:"4.5s" }} />
+              <ArtSquircle className="animate-art-spin border-[#E0E0E0]"        style={{ width:"360px",  height:"360px",  top:"48px",  right:"40px",  animationDelay:"1s" }} />
+              <ArtBlob     className="border-[#EAEAEA]"                         style={{ width:"360px",  height:"400px",  top:"25%",   right:"-80px", animationDelay:"2s" }} />
+              <WaveArc className="bottom-[15%] h-20" stroke="#EBEBEB" />
             </div>
           </div>
 
           {/* ══ SKILLS — light surface ══ */}
-          {/* Water: large floating circle right · Water: blob left · Fire: squircle · Air: dot+wave */}
-          <div className="bg-[#F5F5F5] relative overflow-hidden">
-            <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.045]">SKILLS</GhostLabel>
-            <div className="dot-matrix absolute left-0 top-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08] pointer-events-none" aria-hidden="true" />
-            <ArtCross className="top-10 right-10 text-[#BEBEBE]" />
-            <ArtCross className="bottom-12 left-8 text-[#BEBEBE]" />
-            {/* Water — concentric rings, right (shared centre: 200px inside right edge, vertically centred) */}
-            <ArtCircle className="animate-art-float border-[#D8D8D8]"         style={{ width:"1100px", height:"1100px", top:"calc(50% - 550px)", right:"-350px", animationDelay:"1s" }} />
-            <ArtCircle className="animate-art-float border-[#DCDCDC]"         style={{ width: "660px", height: "660px",  top:"calc(50% - 330px)", right:"-130px", animationDelay:"2s" }} />
-            {/* Water — organic blob, left side */}
-            <ArtBlob     className="border-[#D4D4D4]"                         style={{ width:"460px",  height:"420px",  top:"20%",   left:"-120px", animationDelay:"4s" }} />
-            {/* Fire — large squircle bottom-left, spin */}
-            <ArtSquircle className="animate-art-spin border-[#D0D0D0]"        style={{ width:"280px",  height:"280px",  bottom:"40px", left:"40px",   animationDelay:"2.5s" }} />
-            {/* Air — wave arc */}
-            <WaveArc className="top-[42%] h-20" stroke="#DCDCDC" />
+          <div className="bg-[#F5F5F5] relative overflow-hidden content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
               <SkillsSection />
+            </div>
+            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
+              <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.045]">SKILLS</GhostLabel>
+              <div className="dot-matrix absolute left-0 top-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08]" />
+              <ArtCross className="top-10 right-10 text-[#BEBEBE]" />
+              <ArtCross className="bottom-12 left-8 text-[#BEBEBE]" />
+              <ArtCircle className="animate-art-float border-[#D8D8D8]"         style={{ width:"1100px", height:"1100px", top:"calc(50% - 550px)", right:"-350px", animationDelay:"1s" }} />
+              <ArtCircle className="animate-art-float border-[#DCDCDC]"         style={{ width: "660px", height: "660px",  top:"calc(50% - 330px)", right:"-130px", animationDelay:"2s" }} />
+              <ArtBlob     className="border-[#D4D4D4]"                         style={{ width:"460px",  height:"420px",  top:"20%",   left:"-120px", animationDelay:"4s" }} />
+              <ArtSquircle className="animate-art-spin border-[#D0D0D0]"        style={{ width:"280px",  height:"280px",  bottom:"40px", left:"40px",   animationDelay:"2.5s" }} />
+              <WaveArc className="top-[42%] h-20" stroke="#DCDCDC" />
             </div>
           </div>
 
           {/* ══ FAQ — white ══ */}
-          {/* Water: concentric arcs top-right · Fire: squircle · Water: blob */}
-          <div className="bg-white relative overflow-hidden">
-            <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.04]">FAQ</GhostLabel>
-            <ArtCross className="top-10 right-10 text-[#C8C8C8]" />
-            <ArtCross className="bottom-12 right-12 text-[#C8C8C8]" />
-            {/* Water — concentric rings, top-right (shared centre: 200px inside corner) */}
-            <ArtCircle className="animate-art-breathe border-[#EBEBEB]"       style={{ width:"1000px", height:"1000px", top:"-300px",  right:"-300px" }} />
-            <ArtCircle className="animate-art-breathe border-[#EEEEEE]"       style={{ width: "560px", height: "560px",  top:"-80px",   right:"-80px",   animationDelay:"1s" }} />
-            {/* Fire — squircle bottom-left */}
-            <ArtSquircle className="animate-art-spin border-[#E2E2E2]"        style={{ width:"240px",  height:"240px",  bottom:"40px", left:"40px",   animationDelay:"3s" }} />
-            {/* Water — organic blob, mid-left */}
-            <ArtBlob     className="border-[#EBEBEB]"                         style={{ width:"380px",  height:"340px",  top:"30%",   left:"-80px",  animationDelay:"6s" }} />
+          <div className="bg-white relative overflow-hidden content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
               <FAQSection />
+            </div>
+            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
+              <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.04]">FAQ</GhostLabel>
+              <ArtCross className="top-10 right-10 text-[#C8C8C8]" />
+              <ArtCross className="bottom-12 right-12 text-[#C8C8C8]" />
+              <ArtCircle className="animate-art-breathe border-[#EBEBEB]"       style={{ width:"1000px", height:"1000px", top:"-300px",  right:"-300px" }} />
+              <ArtCircle className="animate-art-breathe border-[#EEEEEE]"       style={{ width: "560px", height: "560px",  top:"-80px",   right:"-80px",   animationDelay:"1s" }} />
+              <ArtSquircle className="animate-art-spin border-[#E2E2E2]"        style={{ width:"240px",  height:"240px",  bottom:"40px", left:"40px",   animationDelay:"3s" }} />
+              <ArtBlob     className="border-[#EBEBEB]"                         style={{ width:"380px",  height:"340px",  top:"30%",   left:"-80px",  animationDelay:"6s" }} />
             </div>
           </div>
 
           {/* ══ CONTACT — dark ══ */}
-          {/* All four elements — maximum drama in dark palette */}
-          <div className="bg-[#1A1A1A] relative overflow-hidden">
-            <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-white opacity-[0.02] md:opacity-[0.06]">CONNECT</GhostLabel>
-            {/* Air — dot-matrix texture */}
-            <div aria-hidden="true" className="absolute left-0 top-0 w-80 h-80 opacity-[0.05] md:opacity-20 pointer-events-none"
-              style={{ backgroundImage:"radial-gradient(circle, #2E2E2E 1px, transparent 1px)", backgroundSize:"16px 16px" }} />
-            <ArtCross className="top-10 left-8 text-[#2C2C2C]" />
-            <ArtCross className="bottom-12 right-12 text-[#2C2C2C]" />
-            {/* Water — concentric rings, bottom-right (shared centre: 200px inside corner) */}
-            <ArtCircle className="animate-art-breathe border-[#222222]"       style={{ width:"1300px", height:"1300px", bottom:"-450px", right:"-450px" }} />
-            <ArtCircle className="animate-art-breathe border-[#242424]"       style={{ width: "760px", height: "760px",  bottom:"-180px", right:"-180px", animationDelay:"1.5s" }} />
-            <ArtCircle className="animate-art-breathe border-[#262626]"       style={{ width: "360px", height: "360px",  bottom:  "20px", right:  "20px", animationDelay:"3s" }} />
-            {/* Water — secondary concentric arcs, top-left */}
-            <ArtCircle className="animate-art-float border-[#222222]"         style={{ width: "560px", height: "560px",  top:"-160px",  left:"-160px",  animationDelay:"3s" }} />
-            <ArtCircle className="animate-art-float border-[#232323]"         style={{ width: "280px", height: "280px",  top:"-20px",   left:"-20px",   animationDelay:"4.5s" }} />
-            {/* Fire — bold squircle, mid-right, slow spin */}
-            <ArtSquircle className="animate-art-spin border-[#222222]"        style={{ width:"300px",  height:"300px",  top:"30%",   right:"-60px", animationDelay:"0s" }} />
-            {/* Water — organic blob, bottom-left, morphing */}
-            <ArtBlob     className="border-[#212121]"                         style={{ width:"400px",  height:"360px",  bottom:"60px", left:"-80px",  animationDelay:"7s" }} />
-            {/* Air — wave arc */}
-            <WaveArc className="top-[35%] h-20" stroke="#222222" />
+          <div className="bg-[#1A1A1A] relative overflow-hidden content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
               <ContactSection />
+            </div>
+            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
+              <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-white opacity-[0.02] md:opacity-[0.06]">CONNECT</GhostLabel>
+              <div className="absolute left-0 top-0 w-80 h-80 opacity-[0.05] md:opacity-20"
+                style={{ backgroundImage:"radial-gradient(circle, #2E2E2E 1px, transparent 1px)", backgroundSize:"16px 16px" }} />
+              <ArtCross className="top-10 left-8 text-[#2C2C2C]" />
+              <ArtCross className="bottom-12 right-12 text-[#2C2C2C]" />
+              <ArtCircle className="animate-art-breathe border-[#222222]"       style={{ width:"1300px", height:"1300px", bottom:"-450px", right:"-450px" }} />
+              <ArtCircle className="animate-art-breathe border-[#242424]"       style={{ width: "760px", height: "760px",  bottom:"-180px", right:"-180px", animationDelay:"1.5s" }} />
+              <ArtCircle className="animate-art-breathe border-[#262626]"       style={{ width: "360px", height: "360px",  bottom:  "20px", right:  "20px", animationDelay:"3s" }} />
+              <ArtCircle className="animate-art-float border-[#222222]"         style={{ width: "560px", height: "560px",  top:"-160px",  left:"-160px",  animationDelay:"3s" }} />
+              <ArtCircle className="animate-art-float border-[#232323]"         style={{ width: "280px", height: "280px",  top:"-20px",   left:"-20px",   animationDelay:"4.5s" }} />
+              <ArtSquircle className="animate-art-spin border-[#222222]"        style={{ width:"300px",  height:"300px",  top:"30%",   right:"-60px", animationDelay:"0s" }} />
+              <ArtBlob     className="border-[#212121]"                         style={{ width:"400px",  height:"360px",  bottom:"60px", left:"-80px",  animationDelay:"7s" }} />
+              <WaveArc className="top-[35%] h-20" stroke="#222222" />
             </div>
           </div>
 
@@ -361,3 +348,4 @@ export default function Home() {
     </>
   );
 }
+

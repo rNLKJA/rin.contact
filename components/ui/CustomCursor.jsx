@@ -46,8 +46,9 @@ export default function CustomCursor() {
         : "0 0 0 2px rgba(255,60,60,0.15), 0 0 10px rgba(255,60,60,0.75), 0 0 22px rgba(255,60,60,0.3)";
     };
 
-    // ── RAF loop — only updates transforms ────────────────────────────
+    // ── RAF loop — only runs when cursor visible; stops when mouse leaves ──
     const tick = () => {
+      if (!visible) return; // stop scheduling when hidden
       let prev = mouse;
       for (let i = 0; i < TRAIL_COUNT; i++) {
         trails[i].x = lerp(trails[i].x, prev.x, LERP_RATES[i]);
@@ -65,7 +66,16 @@ export default function CustomCursor() {
 
       rafId = requestAnimationFrame(tick);
     };
-    rafId = requestAnimationFrame(tick);
+
+    const startTick = () => {
+      if (rafId == null) rafId = requestAnimationFrame(tick);
+    };
+    const stopTick = () => {
+      if (rafId != null) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    };
 
     // ── Event handlers ────────────────────────────────────────────────
     const onMove = (e) => {
@@ -77,11 +87,13 @@ export default function CustomCursor() {
         trailRefs.current.forEach((el, i) => {
           if (el) el.style.opacity = String(TRAIL_ALPHA[i]);
         });
+        startTick();
       }
     };
 
     const onLeave = () => {
       visible = false;
+      stopTick();
       if (dotRef.current) dotRef.current.style.opacity = "0";
       trailRefs.current.forEach((el) => { if (el) el.style.opacity = "0"; });
     };

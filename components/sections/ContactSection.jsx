@@ -73,21 +73,29 @@ export default function ContactSection() {
   const sectionDocTop   = useRef(0);    // absolute document position — constant on scroll
   const sectionDocLeft  = useRef(0);
 
-  // Cache the section's absolute document position — only needs updating on resize,
-  // NOT on every scroll (the position in the document doesn't change as you scroll).
-  // ResizeObserver fires after layout so getBCR here is never a forced reflow.
+  // Cache the section's absolute document position — only needs updating on resize.
+  // Defer getBCR to rAF so layout reads never cause forced reflow.
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
-    const measure = () => {
-      const rect = el.getBoundingClientRect();
+    let rafScheduled = false;
+    const doMeasure = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
       sectionDocTop.current  = rect.top  + window.scrollY;
       sectionDocLeft.current = rect.left + window.scrollX;
+    };
+    const measure = () => {
+      if (rafScheduled) return;
+      rafScheduled = true;
+      requestAnimationFrame(() => {
+        rafScheduled = false;
+        doMeasure();
+      });
     };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
-    // No scroll listener here — document-relative position is stable across scroll
     return () => ro.disconnect();
   }, []);
 

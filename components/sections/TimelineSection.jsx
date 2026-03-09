@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
+import { isSAPOLPeriod } from "@/lib/employment-period";
 
-const CAREER = [
+const CAREER_RAW = [
   {
     year: "2026",
     org: "South Australia Police",
     orgDesc: "SA's state police force — evidence-based policing and integrity governance.",
     role: "ASO7 Senior Data Analyst",
     team: "Professional & Ethical Standards Branch",
-    period: "Mar 2026 – Present",
+    period: "23 Mar 2026 – Present",
     location: "Adelaide, SA",
     logo: "/images/sapol-logo.svg",
     tag: "Government · Analytics",
@@ -24,7 +25,6 @@ const CAREER = [
       "Collaborating with EPSB leadership, the Intelligence and Probity Unit, enterprise architects, and cross-organisational working groups.",
     ],
     tools: ["IAPro", "Python", "Statistical modelling", "Power BI", "GIS", "Data Visualisation", "Microsoft SQL Server", "Power Query"],
-    current: true,
   },
   {
     year: "2025",
@@ -32,9 +32,9 @@ const CAREER = [
     orgDesc: "SA government agency protecting consumers across tobacco, building work, and product safety.",
     role: "ASO4 Intelligence & Coordination Officer",
     team: "Prevention Team — Compliance & Enforcement",
-    period: "Jan 2025 – Mar 2026",
+    period: "Jan 2025 – 20 Mar 2026",
     location: "Adelaide, SA",
-    logo: "https://media.licdn.com/dms/image/v2/C560BAQEbZveHn7HVCQ/company-logo_200_200/company-logo_200_200/0/1630651674988/attorney_generals_logo?e=2147483647&v=beta&t=V5cMKtM1QRUW0fqwpysEvD4iHxPO5FmaPoXIJpNQs5c",
+    logo: "/images/agd-logo.png",
     tag: "Government · Intelligence",
     summary:
       "Using strategic thinking to design risk-based intelligence frameworks and compliance schedules — then applying statistical analysis to make those frameworks data-driven. Built Consumer and Business Services' analytics capability from scratch, turning fragmented multi-source data into dashboards and GIS maps used by Senior Management and the Minister's Office.",
@@ -56,7 +56,7 @@ const CAREER = [
     team: "Psychiatry Department",
     period: "Aug 2024 – Feb 2026",
     location: "Parkville, VIC",
-    logo: "https://yt3.googleusercontent.com/wD1YaCDSytQDbDcSAkR21j8IQTl9lyC6LDr3p5ZC2yGX-RzU1ayGmn6swOS_LLzMKpvyA--UJQY=s176-c-k-c0x00ffffff-no-rj-mo",
+    logo: "/images/unimelb-logo.png",
     tag: "Research · Mobile Dev",
     summary:
       "Led full-stack development of MoodQ, a mental health mobile app — migrating from Uniapp to Expo React Native, building the clinician dashboard, and managing the AWS infrastructure across 18 months before a successful handover to a professional team.",
@@ -77,7 +77,7 @@ const CAREER = [
     team: "Bioinformatics",
     period: "Feb 2024 – Jul 2024",
     location: "Parkville, VIC",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjRIgIQHaq6ZhUDwJUqfFa5xZJ9Tn5f6YLBA&s",
+    logo: "/images/wehi-logo.png",
     tag: "Bioinformatics · Open Source",
     summary:
       "Automated flow cytometry analysis pipelines using cloud and HPC, developed test infrastructure to improve research reproducibility, and contributed to the open-source celseq2 workflow toolkit.",
@@ -96,7 +96,7 @@ const CAREER = [
     team: "Climate & Earth Systems",
     period: "Feb 2023 – Nov 2023",
     location: "Melbourne, VIC",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/92/CSIRO_Logo.svg/120px-CSIRO_Logo.svg.png?_=20210607115415",
+    logo: "/images/csiro-logo.png",
     tag: "Climate Science · ML",
     summary:
       "Collaborated with Dr. Vassili Kitsios on climate-economic research, developing AR time series models to quantify how ENSO patterns could amplify commodity price volatility and food security-induced conflict risk.",
@@ -115,7 +115,7 @@ const CAREER = [
     team: "Research & Development",
     period: "Feb 2022 – Jun 2022",
     location: "Melbourne, VIC",
-    logo: "https://s3-symbol-logo.tradingview.com/csl--600.png",
+    logo: "/images/csl-logo.png",
     tag: "Biotech · Agile",
     summary:
       "Applied Python automation and unsupervised clustering (T-SNE, DBSCAN, UMAP) to HPLC laboratory data, reducing processing time and improving confidence in medical research data quality.",
@@ -128,8 +128,8 @@ const CAREER = [
   },
 ];
 
-const UNIMELB_LOGO = "https://yt3.googleusercontent.com/wD1YaCDSytQDbDcSAkR21j8IQTl9lyC6LDr3p5ZC2yGX-RzU1ayGmn6swOS_LLzMKpvyA--UJQY=s176-c-k-c0x00ffffff-no-rj-mo";
-const TRINITY_LOGO = "https://media.licdn.com/dms/image/v2/C560BAQHbsXv7y0802A/company-logo_200_200/company-logo_200_200/0/1630627937392/trinityunimelb_logo?e=2147483647&v=beta&t=L-l1ISC0casA8uKqb1QYyFZWMyfe9n8A_tuT_MyOG_c";
+const UNIMELB_LOGO = "/images/unimelb-logo.png";
+const TRINITY_LOGO = "/images/trinity-logo.png";
 const PRACTERA_LOGO = "/images/practera-logo.jpg";
 
 const VOLUNTEER = [
@@ -212,7 +212,7 @@ const VOLUNTEER = [
     role: "Event Executive & Staff",
     period: "Nov 2017",
     location: "China",
-    logo: "https://media.licdn.com/dms/image/v2/D560BAQFZULyFlO9ftA/company-logo_100_100/company-logo_100_100/0/1689137982258/elite_talks_inc_logo?e=1774483200&v=beta&t=h5J2RxhdXmovEdv4_0MF1kVezmBuiHiymojdlSq6yDI",
+    logo: "/images/elite-talks-logo.png",
     tag: "Arts & Culture",
     summary:
       "Volunteered as event executor at a summit jointly organised by Fanmo and Elite Talks — guiding visitors to enter the venue and ensuring order and security throughout the event.",
@@ -354,6 +354,11 @@ function TimelineItem({ item, index }) {
                 Current
               </span>
             )}
+            {item.future && (
+              <span className="border border-[#7A7A7A] px-2 py-0.5 text-xs tracking-wider uppercase text-[#7A7A7A]">
+                Future
+              </span>
+            )}
           </div>
 
           <h3 className="text-base font-semibold leading-tight">{item.role}</h3>
@@ -435,7 +440,6 @@ export default function TimelineSection() {
 
     const update = () => {
       const windowH = window.innerHeight;
-      // rect.top equivalent using cached absolute position — zero layout reads
       const rectTop = sectionDocTop.current - window.scrollY;
       const progress = Math.min(
         Math.max((windowH - rectTop) / (sectionHeight.current + windowH * 0.3), 0),
@@ -444,13 +448,20 @@ export default function TimelineSection() {
       lineEl.style.height = `${progress * 100}%`;
     };
 
-    // Cache the element's absolute document position; re-measure on resize.
-    // getBCR inside ResizeObserver fires after layout — never a forced reflow.
+    // Defer getBCR to rAF — avoids forced reflow when layout may be invalid.
+    let rafScheduled = false;
     const measure = () => {
-      const rect = el.getBoundingClientRect();
-      sectionDocTop.current = rect.top + window.scrollY;
-      sectionHeight.current = rect.height;
-      update();
+      if (rafScheduled) return;
+      rafScheduled = true;
+      requestAnimationFrame(() => {
+        rafScheduled = false;
+        const currentEl = timelineRef.current;
+        if (!currentEl || !lineElRef.current) return;
+        const rect = currentEl.getBoundingClientRect();
+        sectionDocTop.current = rect.top + window.scrollY;
+        sectionHeight.current = rect.height;
+        update();
+      });
     };
 
     measure();
@@ -462,6 +473,18 @@ export default function TimelineSection() {
       window.removeEventListener("scroll", update);
     };
   }, [tab]); // re-run when tab changes so line resets
+
+  // Derive current/future from employment period — AGD before 23 Mar 2026, SAPOL on or after
+  const CAREER = CAREER_RAW.map((item) => {
+    const sapolActive = isSAPOLPeriod();
+    if (item.org === "South Australia Police") {
+      return { ...item, current: sapolActive, future: !sapolActive };
+    }
+    if (item.org?.includes("Attorney-General") || item.org?.includes("Consumer and Business Services")) {
+      return { ...item, current: !sapolActive };
+    }
+    return item;
+  });
 
   const items = tab === "career" ? CAREER : tab === "education" ? EDUCATION : VOLUNTEER;
 

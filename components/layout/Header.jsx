@@ -45,13 +45,21 @@ export default function Header() {
   useEffect(() => {
     // Defer layout reads to rAF — avoids forced reflow when ResizeObserver
     // fires during or immediately after a DOM mutation.
+    let rafScheduled = false;
     const updateMax = () => {
+      if (rafScheduled) return;
+      rafScheduled = true;
       requestAnimationFrame(() => {
+        rafScheduled = false;
         const doc = document.documentElement;
         maxScrollRef.current = doc.scrollHeight - doc.clientHeight;
       });
     };
-    updateMax();
+
+    // Defer initial layout read to idle — keeps it off the critical path
+    const idle = typeof requestIdleCallback !== "undefined" ? requestIdleCallback : (cb) => setTimeout(cb, 1);
+    idle(() => updateMax(), { timeout: 100 });
+
     const ro = new ResizeObserver(updateMax);
     ro.observe(document.documentElement);
     window.addEventListener("scroll", onScroll, { passive: true });

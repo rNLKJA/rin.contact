@@ -468,6 +468,19 @@ class MyDocument extends Document {
           {/* ── Character set ── */}
           <meta charSet="utf-8" />
 
+          {/* ── Trusted Types default policy (must run before any DOM XSS sink) ── */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `if (typeof trustedTypes !== "undefined" && trustedTypes.createPolicy) {
+  trustedTypes.createPolicy("default", {
+    createHTML: function(s) { return s; },
+    createScript: function(s) { return s; },
+    createScriptURL: function(s) { return s; }
+  });
+}`,
+            }}
+          />
+
           {/* ── Theme ── */}
           <meta name="theme-color" content="#ffffff" />
           <meta name="msapplication-TileColor" content="#ffffff" />

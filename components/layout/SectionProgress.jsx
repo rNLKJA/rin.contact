@@ -35,6 +35,7 @@ export default function SectionProgress() {
 
   // IntersectionObserver — never touches getBoundingClientRect() on the scroll path
   // A section is "active" when its top edge enters the upper 40% of the viewport
+  // Defer setup to idle so dynamic sections (Timeline, etc.) have time to mount
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -45,10 +46,16 @@ export default function SectionProgress() {
       { rootMargin: "0px 0px -60% 0px", threshold: 0 },
     );
 
-    const targets = SECTIONS
-      .map(({ id }) => document.getElementById(id))
-      .filter(Boolean);
-    targets.forEach((el) => observer.observe(el));
+    const setup = () => {
+      const targets = SECTIONS
+        .map(({ id }) => document.getElementById(id))
+        .filter(Boolean);
+      targets.forEach((el) => observer.observe(el));
+    };
+
+    const idle = typeof requestIdleCallback !== "undefined" ? requestIdleCallback : (cb) => setTimeout(cb, 100);
+    idle(setup, { timeout: 500 });
+
     return () => observer.disconnect();
   }, []);
 

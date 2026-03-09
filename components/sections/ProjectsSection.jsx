@@ -31,6 +31,7 @@ const PROJECTS = [
       "Built an internal tool to generate validated real South Australian addresses based on socio-economic status (SEIFA indices) and remoteness classifications — filling a gap no public API could address. All outputs verified via Mapbox API.",
     impact: "Validated address generation · SEIFA + remoteness filtering · Internal QA tool",
     link: "https://github.com/rNLKJA/SA-Mock-Address-Generator",
+    linkLabel: "View SA Address Generator repository on GitHub",
   },
   {
     id: "us-political",
@@ -46,6 +47,7 @@ const PROJECTS = [
       "Scraped the UC Santa Barbara American Presidency Project to collect ~180 presidential debate transcripts and ~25,000 campaign documents, with multi-threaded processing, rate limiting, and full metadata extraction.",
     impact: "~25,000 documents collected · Decades of US political communication data",
     link: "https://github.com/rNLKJA/Political-Data-Collection-System",
+    linkLabel: "View US Political Data Collection System repository on GitHub",
   },
   {
     id: "cbs",
@@ -119,6 +121,7 @@ const PROJECTS = [
       "Designed a two-stage automated fact-checking system for climate change claims — TF-IDF evidence retrieval followed by Transformer-based classification (SUPPORTS / REFUTES / NOT ENOUGH INFO / DISPUTED), outperforming LSTM baselines.",
     impact: "Transformer model outperformed LSTM · Scalable misinformation detection pipeline",
     link: "https://github.com/rNLKJA",
+    linkLabel: "View Climate Fact-Checker on GitHub profile",
   },
   {
     id: "hex",
@@ -132,6 +135,9 @@ const PROJECTS = [
     summary:
       "Built and refined interactive digital educational content aimed at bridging the gap between education and professional success. Conducted market research on leveraging advanced technologies to improve course engagement and learner outcomes for students across Australia and beyond.",
     impact: "80+ students supported · Improved course engagement through technology-driven content innovation",
+    link: "https://www.startwithhex.com/",
+    linkLabel: "Visit HEX company homepage",
+    linkText: "Visit HEX homepage ↗",
   },
   {
     id: "selfdriving-db",
@@ -146,6 +152,8 @@ const PROJECTS = [
     summary:
       "Research project exploring AI/ML techniques for autonomous database management — covering workload-driven optimisation and automatic index selection to reduce DBA overhead and improve query performance.",
     impact: "Literature review · Autonomous DB optimisation frameworks",
+    link: "https://github.com/rNLKJA",
+    linkLabel: "View Self-Driving Databases research on GitHub profile",
   },
   {
     id: "social-cloud",
@@ -161,6 +169,7 @@ const PROJECTS = [
       "Harvested and analysed Twitter and Mastodon data alongside ABS SUDO spatial data to produce a Social Sense Dashboard illuminating Australian sentiment, social trends, and regional behavioural patterns.",
     impact: "Cross-platform social analytics · Spatial + social data fusion",
     link: "https://github.com/rNLKJA/Australia-Social-Media-Analytics-on-the-Cloud",
+    linkLabel: "View Australia Social Media Analytics repository on GitHub",
   },
   {
     id: "twitter-hpc",
@@ -176,6 +185,7 @@ const PROJECTS = [
       "Processed a large-scale Twitter dataset on the University of Melbourne's SPARTAN HPC cluster using MPI and Python, identifying tweet distribution across Australian cities and top contributors.",
     impact: "HPC parallel processing · City-level tweet distribution insights",
     link: "https://github.com/rNLKJA/Twitter-Data-Analysis-with-HPC",
+    linkLabel: "View Twitter HPC Analysis repository on GitHub",
   },
   {
     id: "climate",
@@ -205,6 +215,7 @@ const PROJECTS = [
       "Implemented AI agents for Cachex — a two-player connection game — covering heuristic A* search for the exploration phase and a competitive game agent using strategic anticipation and sabotage logic.",
     impact: "A* pathfinding · Competitive AI agent · Game theory application",
     link: "https://github.com/rNLKJA/Cachex-AI",
+    linkLabel: "View Cachex AI repository on GitHub",
   },
   {
     id: "hplc",
@@ -234,6 +245,7 @@ const PROJECTS = [
       "Collaborative full-stack CRM system built as the COMP30022 IT Project — managing customer interactions and data with a responsive React frontend, Express REST API, and MongoDB backend.",
     impact: "Full-stack delivery · Team project · Production-grade architecture",
     link: "https://github.com/rNLKJA/Personal-Customer-Relation-Management-PCRM",
+    linkLabel: "View PCRM repository on GitHub",
   },
   {
     id: "nyc-taxi",
@@ -263,6 +275,7 @@ const PROJECTS = [
       "Five major iterations of a personal website — currently rebuilt in v5 with a Nothing OS-inspired minimal design language. A living record of technical and professional development since 2020.",
     impact: "5 major versions · rin.contact · Open source",
     link: "https://github.com/rNLKJA",
+    linkLabel: "View rin.contact portfolio on GitHub",
     current: true,
   },
 ];
@@ -341,10 +354,11 @@ function ProjectDetail({ project }) {
             href={project.link}
             target="_blank"
             rel="noreferrer"
+            aria-label={project.linkLabel || `View ${project.title} on GitHub`}
             className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 text-xs tracking-widest uppercase
                        text-[#595959] rounded-full hover:border-black hover:text-black transition-colors duration-200"
           >
-            View on GitHub ↗
+            {project.linkText || (project.link?.includes("github.com") ? "View on GitHub ↗" : "Visit site ↗")}
           </a>
         )}
       </div>
@@ -659,8 +673,9 @@ export default function ProjectsSection() {
                       </div>
                       {project.link && (
                         <a href={project.link} target="_blank" rel="noreferrer"
+                           aria-label={project.linkLabel || `View ${project.title} on GitHub`}
                            className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] rounded-full hover:border-black hover:text-black transition-colors duration-200">
-                          View on GitHub ↗
+                          {project.linkText || (project.link?.includes("github.com") ? "View on GitHub ↗" : "Visit site ↗")}
                         </a>
                       )}
                     </div>
