@@ -415,8 +415,10 @@ function TimelineItem({ item, index }) {
 export default function TimelineSection() {
   const [ref, inView] = useInView();
   const [tab, setTab] = useState("career");
-  const timelineRef = useRef(null);
-  const [lineHeight, setLineHeight] = useState(0);
+  const timelineRef     = useRef(null);
+  const lineElRef       = useRef(null); // direct DOM ref — no React state on scroll
+  const sectionDocTop   = useRef(0);    // absolute document-top (doesn't change on scroll)
+  const sectionHeight   = useRef(0);    // cached height
   const [refOpen, setRefOpen] = useState(false);
 
   useEffect(() => {
@@ -427,23 +429,40 @@ export default function TimelineSection() {
 
   // Animate the timeline line drawing down as user scrolls through it
   useEffect(() => {
-    const el = timelineRef.current;
-    if (!el) return;
+    const el     = timelineRef.current;
+    const lineEl = lineElRef.current;
+    if (!el || !lineEl) return;
+
+    lineEl.style.height = "0%"; // reset when tab changes
 
     const update = () => {
-      const rect = el.getBoundingClientRect();
       const windowH = window.innerHeight;
-      // How far the bottom of the viewport has travelled through the timeline
+      // rect.top equivalent using cached absolute position — zero layout reads
+      const rectTop = sectionDocTop.current - window.scrollY;
       const progress = Math.min(
-        Math.max((windowH - rect.top) / (rect.height + windowH * 0.3), 0),
-        1
+        Math.max((windowH - rectTop) / (sectionHeight.current + windowH * 0.3), 0),
+        1,
       );
-      setLineHeight(progress * 100);
+      lineEl.style.height = `${progress * 100}%`;
     };
 
+    // Cache the element's absolute document position; re-measure on resize.
+    // getBCR inside ResizeObserver fires after layout — never a forced reflow.
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      sectionDocTop.current = rect.top + window.scrollY;
+      sectionHeight.current = rect.height;
+      update();
+    };
+
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
     window.addEventListener("scroll", update, { passive: true });
-    update();
-    return () => window.removeEventListener("scroll", update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("scroll", update);
+    };
   }, [tab]); // re-run when tab changes so line resets
 
   const items = tab === "career" ? CAREER : tab === "education" ? EDUCATION : VOLUNTEER;
@@ -491,14 +510,12 @@ export default function TimelineSection() {
       <div className="relative" ref={timelineRef}>
         {/* Static track — offset right on desktop to make room for year labels */}
         <div className="timeline-line md:left-16" aria-hidden="true" />
-        {/* Animated fill */}
+        {/* Animated fill — height written directly via lineElRef, no React state */}
         <div
+          ref={lineElRef}
           aria-hidden="true"
           className="absolute left-0 md:left-16 top-0 w-px bg-[#FF3C3C] pointer-events-none"
-          style={{
-            height: `${lineHeight}%`,
-            transition: "height 0.1s linear",
-          }}
+          style={{ transition: "height 0.1s linear" }}
         />
         <div className="md:pl-20 pl-0">
           {items.map((item, i) => {

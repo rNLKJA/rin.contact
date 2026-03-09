@@ -65,20 +65,40 @@ function Toast({ type, message, onClose }) {
 export default function ContactSection() {
   const [ref, inView] = useInView();
   const [formRef, formInView] = useInView();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form,   setForm]   = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
-  const [toast, setToast] = useState(null); // { type: "success" | "error", message }
-  const sectionRef = useRef(null);
-  const [spotlight, setSpotlight] = useState({ x: -9999, y: -9999 });
+  const [toast,  setToast]  = useState(null);   // { type: "success" | "error", message }
+  const sectionRef   = useRef(null);
+  const spotlightRef = useRef(null); // direct DOM ref — no React state on mousemove
+  const rectRef      = useRef(null); // cached section rect — no getBCR in the hot path
+
+  // Measure once and keep the rect fresh on resize / scroll.
+  // ResizeObserver fires after layout so reading getBCR here is never a forced reflow.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const measure = () => { rectRef.current = el.getBoundingClientRect(); };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    window.addEventListener("scroll", measure, { passive: true });
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("scroll", measure);
+    };
+  }, []);
 
   const handleMouseMove = useCallback((e) => {
-    const rect = sectionRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    setSpotlight({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    const rect = rectRef.current;
+    const el   = spotlightRef.current;
+    if (!rect || !el) return;
+    // Pure arithmetic + one style write — zero layout reads, zero React re-renders
+    el.style.background = `radial-gradient(400px circle at ${e.clientX - rect.left}px ${e.clientY - rect.top}px, rgba(255,60,60,0.07) 0%, rgba(255,60,60,0.03) 40%, transparent 70%)`;
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    setSpotlight({ x: -9999, y: -9999 });
+    const el = spotlightRef.current;
+    if (el) el.style.background = "none";
   }, []);
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -113,13 +133,11 @@ export default function ContactSection() {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        {/* Cursor spotlight */}
+        {/* Cursor spotlight — background written directly via spotlightRef, no React state */}
         <div
+          ref={spotlightRef}
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
-          style={{
-            background: `radial-gradient(400px circle at ${spotlight.x}px ${spotlight.y}px, rgba(255,60,60,0.07) 0%, rgba(255,60,60,0.03) 40%, transparent 70%)`,
-          }}
         />
         {/* Header */}
         <div
