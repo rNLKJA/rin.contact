@@ -158,12 +158,10 @@ h1 {
   }
 }
 
-/* ─── Mobile: disable art-morph (border-radius animation is non-composited, causes jank) ── */
-@media (max-width: 767px) {
-  .animate-art-morph {
-    animation: none !important;
-    border-radius: 50% 40% 30% 60% / 60% 30% 70% 40%;
-  }
+/* ─── Disable art-morph globally (border-radius animation is non-composited, causes jank & CLS) ── */
+.animate-art-morph {
+  animation: none !important;
+  border-radius: 50% 40% 30% 60% / 60% 30% 70% 40%;
 }
 
 /* ─── Reduced motion ─────────────────────────────────────────────── */
