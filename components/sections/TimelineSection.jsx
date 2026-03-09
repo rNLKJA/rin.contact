@@ -23,7 +23,7 @@ const CAREER = [
       "Governing end-to-end analytics solutions across IAPro and connected systems with a continuous improvement mindset.",
       "Collaborating with EPSB leadership, the Intelligence and Probity Unit, enterprise architects, and cross-organisational working groups.",
     ],
-    tools: ["IAPro", "Python", "Statistical modelling"],
+    tools: ["IAPro", "Python", "Statistical modelling", "Power BI", "GIS", "Data Visualisation", "Microsoft SQL Server", "Power Query"],
     current: true,
   },
   {
@@ -46,7 +46,7 @@ const CAREER = [
       "Built Power BI dashboards and GIS visualisations used directly by Senior Management and the Minister's Office.",
       "Supported investigations through metadata inspection and network mapping to strengthen evidentiary confidence.",
     ],
-    tools: ["Power BI", "Python", "GIS", "Time series", "Regression"],
+    tools: ["Power BI", "Python", "GIS", "Time series", "Regression", "Microsoft SQL Server", "Scheduling", "Power Query"],
   },
   {
     year: "2025",
@@ -67,7 +67,7 @@ const CAREER = [
       "Maintained GDPR-compliant data protection and configured CI/CD pipelines.",
       "Successfully transitioned the production-ready application to a professional development team.",
     ],
-    tools: ["Expo", "React Native", "AWS", "Node.js", "CI/CD"],
+    tools: ["Expo", "React Native", "AWS", "Node.js", "CI/CD", "PostgreSQL", "SQLite", "Django"],
   },
   {
     year: "2024",
@@ -86,7 +86,7 @@ const CAREER = [
       "Developed test infrastructure that improved reproducibility of genomics research outcomes.",
       "Contributed to the open-source celseq2 toolkit, extending benefit to the broader scRNA-seq community.",
     ],
-    tools: ["Python", "Cloud HPC", "celseq2", "Git"],
+    tools: ["Python", "Cloud HPC", "celseq2", "Git", "GitHub Actions", "Shiny R"],
   },
   {
     year: "2023",
@@ -105,7 +105,7 @@ const CAREER = [
       "Delivered insights connecting climate change patterns to global food security risk.",
       "Bridged communication between University of Melbourne faculty and CSIRO research leadership.",
     ],
-    tools: ["Python", "AR time series", "Rolling window", "Statistical modelling"],
+    tools: ["Python", "AR time series", "Rolling window", "Statistical modelling", "Jupyter Notebook", "Research Software Engineering"],
   },
   {
     year: "2022",
@@ -124,7 +124,7 @@ const CAREER = [
       "Applied T-SNE, DBSCAN, and UMAP to identify hidden patterns in complex medical datasets.",
       "Led Agile ceremonies, supporting the team's delivery rhythm across the project lifecycle.",
     ],
-    tools: ["Python", "Scikit-learn", "T-SNE", "DBSCAN", "UMAP"],
+    tools: ["Python", "Scikit-learn", "T-SNE", "DBSCAN", "UMAP", "Jupyter Notebook", "Research Software Engineering"],
   },
 ];
 

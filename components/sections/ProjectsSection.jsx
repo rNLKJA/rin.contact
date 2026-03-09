@@ -11,7 +11,7 @@ const PROJECTS = [
     tag: "Mobile Dev",
     domain: "Startup",
     status: "MVP Jan 2027",
-    stack: ["React Native", "Expo", "Product design"],
+    stack: ["React Native", "Expo", "Product design", "GitHub Actions", "CI/CD", "PostgreSQL", "SQLite", "Django", "Rust"],
     summary:
       "Co-founded a mobile app to help people discover and connect with others. Full product ownership from architecture through implementation as Dev Lead.",
     impact: "Co-founder · Full product ownership · MVP ETA Jan 2027",
@@ -70,7 +70,7 @@ const PROJECTS = [
     tag: "Mobile Dev",
     domain: "Research",
     status: "Handed to production team",
-    stack: ["Expo", "React Native", "AWS RDS", "LightSail", "Node.js", "CI/CD"],
+    stack: ["Expo", "React Native", "AWS RDS", "LightSail", "Rust", "CI/CD", "PostgreSQL", "SQLite", "Django"],
     summary:
       "A clinician-facing and patient-facing mental health mobile app developed for the University of Melbourne's Psychiatry research group. Migrated from Uniapp to Expo React Native, reducing costs by ~$500/month and delivering a GDPR-compliant production application.",
     impact: "~$500/month cost saved · Production deployed · Cross-platform iOS + Android",
@@ -84,7 +84,7 @@ const PROJECTS = [
     tag: "Analytics",
     domain: "Government",
     status: "In production",
-    stack: ["Power BI", "Python", "SQL", "ArcGIS", "Time series"],
+    stack: ["Power BI", "Python", "SQL", "ArcGIS", "Time series", "Jupyter Notebook", "Research Software Engineering", "Power Query","IAPro"],
     summary:
       "Contributed to operational intelligence and crime analytics as an Intelligence and Coordination Officer. Built dashboards and analytical products supporting frontline policing, resource allocation, and command-level decision-making across South Australia.",
     impact: "Operational decision support · Crime pattern analytics · Cross-unit coordination",
@@ -98,7 +98,7 @@ const PROJECTS = [
     tag: "Data Science",
     domain: ["Biotech", "Open Source"],
     status: "Open source contributor",
-    stack: ["Python", "Cloud HPC", "celseq2", "Git"],
+    stack: ["Python", "Cloud HPC", "celseq2", "Git", "Shiny R"],
     summary:
       "Automated flow cytometry data analysis using cloud and HPC, developed test infrastructure for improved reproducibility, and contributed to the open-source celseq2 workflow toolkit.",
     impact: "Reduced manual processing · celseq2 open-source contribution",
@@ -112,7 +112,7 @@ const PROJECTS = [
     tag: "NLP / ML",
     domain: "Climate Research",
     status: "Completed",
-    stack: ["Python", "TF-IDF", "Transformers", "NLP"],
+    stack: ["Python", "TF-IDF", "Transformers", "NLP", "Virtual Environment"],
     summary:
       "Designed a two-stage automated fact-checking system for climate change claims — TF-IDF evidence retrieval followed by Transformer-based classification (SUPPORTS / REFUTES / NOT ENOUGH INFO / DISPUTED), outperforming LSTM baselines.",
     impact: "Transformer model outperformed LSTM · Scalable misinformation detection pipeline",
@@ -169,7 +169,7 @@ const PROJECTS = [
     tag: "HPC / Big Data",
     domain: "Cloud / HPC",
     status: "Completed",
-    stack: ["Python", "MPI", "SPARTAN HPC", "Parallel computing"],
+    stack: ["Python", "MPI", "SPARTAN HPC", "Parallel computing", "Slurm"],
     summary:
       "Processed a large-scale Twitter dataset on the University of Melbourne's SPARTAN HPC cluster using MPI and Python, identifying tweet distribution across Australian cities and top contributors.",
     impact: "HPC parallel processing · City-level tweet distribution insights",
@@ -184,7 +184,7 @@ const PROJECTS = [
     tag: "Data Science",
     domain: "Climate Research",
     status: "Research published",
-    stack: ["Python", "AR time series", "Rolling window", "Statistical modelling"],
+    stack: ["Python", "AR time series", "Rolling window", "Statistical modelling", "Research Software Engineering", "Jupyter Notebook"],
     summary:
       "Built AutoRegressive time series models with rolling window forecasting to quantify how El Niño-Southern Oscillation patterns amplify commodity price volatility and food security-induced conflict risk.",
     impact: "Climate → conflict risk insights · 10-month CSIRO research engagement",
@@ -198,7 +198,7 @@ const PROJECTS = [
     tag: "AI / Algorithms",
     domain: "AI / ML",
     status: "Completed",
-    stack: ["Python", "A* pathfinding", "Heuristic search", "Game theory"],
+    stack: ["Python", "A* pathfinding", "Heuristic search", "Game theory","AI Agents"],
     summary:
       "Implemented AI agents for Cachex — a two-player connection game — covering heuristic A* search for the exploration phase and a competitive game agent using strategic anticipation and sabotage logic.",
     impact: "A* pathfinding · Competitive AI agent · Game theory application",
@@ -213,7 +213,7 @@ const PROJECTS = [
     tag: "Data Science",
     domain: "Biotech",
     status: "Delivered",
-    stack: ["Python", "Scikit-learn", "T-SNE", "DBSCAN", "UMAP"],
+    stack: ["Python", "Scikit-learn", "T-SNE", "DBSCAN", "UMAP","Machine Learning","Research Software Engineering","Jupyter Notebook"],
     summary:
       "Built a Python automation script to streamline HPLC experiment result processing, and applied unsupervised clustering methods to uncover hidden patterns in complex medical research datasets.",
     impact: "Reduced HPLC processing time · Improved data quality confidence",
@@ -242,7 +242,7 @@ const PROJECTS = [
     tag: "Data Science",
     domain: "Research",
     status: "Completed",
-    stack: ["Python", "Apache Spark", "Machine Learning", "Clustering"],
+    stack: ["Python", "Apache Spark", "Machine Learning", "Clustering", "Pandas", "PySpark","Research Software Engineering","Jupyter Notebook"],
     summary:
       "Analysed 2014–2017 New York City Yellow Taxi data using Apache Spark for big data processing, applying linear modelling to predict trip costs and clustering to identify traffic hotspots.",
     impact: "Big data Spark pipeline · Traffic hotspot clustering · Trip cost modelling",
