@@ -154,22 +154,67 @@ export default function ContactSection() {
         >
           {/* Left — contact details */}
           <div className="flex flex-col gap-8">
-            <address className="space-y-4 not-italic">
+            {/* address wraps contact info for the page owner — semantic HTML5 + Schema.org microdata */}
+            <address
+              className="space-y-4 not-italic"
+              itemScope
+              itemType="https://schema.org/Person"
+            >
+              <meta itemProp="name"          content="Sunchuangyu (Rin) Huang" />
+              <meta itemProp="alternateName" content="Rin Huang" />
+              <meta itemProp="alternateName" content="黄孙创宇" />
+              <meta itemProp="url"           content="https://rin.contact/" />
+
               <div className="flex items-center gap-3">
                 <FiMail size={16} className="text-[#7A7A7A]" aria-hidden="true" />
-                <a href="mailto:huang@rin.contact" className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200">
+                <a
+                  href="mailto:huang@rin.contact"
+                  itemProp="email"
+                  className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200"
+                >
                   huang@rin.contact
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <FiPhone size={16} className="text-[#7A7A7A]" aria-hidden="true" />
-                <a href="tel:+61450270703" className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200">
+                <a
+                  href="tel:+61450270703"
+                  itemProp="telephone"
+                  className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200"
+                >
                   +61 450 270 703
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <FiMapPin size={16} className="text-[#7A7A7A]" aria-hidden="true" />
+                {/* Visible display text */}
                 <span className="text-sm text-[#9A9A9A]">Adelaide &amp; Melbourne, Australia</span>
+                {/* Hidden microdata — all locations associated with Rin Huang */}
+                <span className="sr-only">
+                  <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                    <span itemProp="addressLocality">Adelaide</span>,{" "}
+                    <span itemProp="addressRegion">South Australia</span>,{" "}
+                    <span itemProp="addressCountry">Australia</span>
+                  </span>
+                  <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                    <span itemProp="addressLocality">Melbourne</span>,{" "}
+                    <span itemProp="addressRegion">Victoria</span>,{" "}
+                    <span itemProp="addressCountry">Australia</span>
+                  </span>
+                  <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                    <span itemProp="addressLocality">Sydney</span>,{" "}
+                    <span itemProp="addressRegion">New South Wales</span>,{" "}
+                    <span itemProp="addressCountry">Australia</span>
+                  </span>
+                  <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                    <span itemProp="addressLocality">Anshun</span>,{" "}
+                    <span itemProp="addressRegion" lang="zh-Hans">贵州 (Guizhou)</span>,{" "}
+                    <span itemProp="addressCountry">China</span>
+                  </span>
+                  <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                    <span itemProp="addressCountry">China</span>
+                  </span>
+                </span>
               </div>
             </address>
 

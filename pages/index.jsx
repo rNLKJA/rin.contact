@@ -150,6 +150,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@rNLKJA" />
         <meta name="twitter:creator" content="@rNLKJA" />
+        <meta name="twitter:domain" content="rin.contact" />
         <meta name="twitter:title" content="Rin Huang — Senior Data Analyst · Research Software Engineer" />
         <meta
           name="twitter:description"
@@ -157,6 +158,11 @@ export default function Home() {
         />
         <meta name="twitter:image" content="https://rin.contact/images/meta-image.png" />
         <meta name="twitter:image:alt" content="Rin Huang — portfolio preview" />
+        {/* label/data pairs — rendered as key-value rows inside the card */}
+        <meta name="twitter:label1" content="Role" />
+        <meta name="twitter:data1" content="Senior Data Analyst · Adelaide, SA" />
+        <meta name="twitter:label2" content="Specialisation" />
+        <meta name="twitter:data2" content="Data Science · Strategic Intelligence" />
 
         {/* ── FAQPage structured data ── */}
         <script

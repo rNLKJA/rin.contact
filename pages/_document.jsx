@@ -20,6 +20,37 @@ const PERSON_SCHEMA = {
     addressRegion: "SA",
     addressCountry: "AU",
   },
+  homeLocation: [
+    {
+      "@type": "Place",
+      name: "Adelaide, South Australia, Australia",
+      geo: { "@type": "GeoCoordinates", latitude: -34.9285, longitude: 138.6007 },
+      address: { "@type": "PostalAddress", addressLocality: "Adelaide", addressRegion: "SA", addressCountry: "AU" },
+    },
+    {
+      "@type": "Place",
+      name: "Melbourne, Victoria, Australia",
+      geo: { "@type": "GeoCoordinates", latitude: -37.8136, longitude: 144.9631 },
+      address: { "@type": "PostalAddress", addressLocality: "Melbourne", addressRegion: "VIC", addressCountry: "AU" },
+    },
+    {
+      "@type": "Place",
+      name: "Sydney, New South Wales, Australia",
+      geo: { "@type": "GeoCoordinates", latitude: -33.8688, longitude: 151.2093 },
+      address: { "@type": "PostalAddress", addressLocality: "Sydney", addressRegion: "NSW", addressCountry: "AU" },
+    },
+    {
+      "@type": "Place",
+      name: "Anshun, Guizhou, China",
+      geo: { "@type": "GeoCoordinates", latitude: 26.2457, longitude: 105.9468 },
+      address: { "@type": "PostalAddress", addressLocality: "Anshun", addressRegion: "Guizhou", addressCountry: "CN" },
+    },
+  ],
+  workLocation: {
+    "@type": "Place",
+    name: "Adelaide, South Australia, Australia",
+    address: { "@type": "PostalAddress", addressLocality: "Adelaide", addressRegion: "SA", addressCountry: "AU" },
+  },
   jobTitle: "Senior Data Analyst",
   hasOccupation: {
     "@type": "Occupation",
@@ -430,7 +461,15 @@ const BREADCRUMB_SCHEMA = {
 };
 
 class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    // Read the nonce injected by middleware.js via the x-nonce request header
+    const nonce = ctx.req?.headers?.["x-nonce"] ?? "";
+    return { ...initialProps, nonce };
+  }
+
   render() {
+    const { nonce } = this.props;
     return (
       <Html lang="en-AU" suppressHydrationWarning>
         <Head>
@@ -504,35 +543,17 @@ class MyDocument extends Document {
           />
 
           {/* ── JSON-LD structured data ── */}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFILE_PAGE_SCHEMA) }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_SCHEMA) }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(PROJECTS_SCHEMA) }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(CREDENTIALS_SCHEMA) }}
-          />
+          <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }} />
+          <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }} />
+          <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFILE_PAGE_SCHEMA) }} />
+          <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_SCHEMA) }} />
+          <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PROJECTS_SCHEMA) }} />
+          <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CREDENTIALS_SCHEMA) }} />
         </Head>
 
         <body>
           <Main />
-          <NextScript />
+          <NextScript nonce={nonce} />
         </body>
       </Html>
     );
