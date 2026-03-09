@@ -58,19 +58,23 @@ export default function NotionGraph({
       });
     };
 
-    const resize = () => {
-      const parent = canvas.parentElement;
-      const w = parent?.offsetWidth  || window.innerWidth;
-      const h = parent?.offsetHeight || window.innerHeight;
-      if (w === 0 || h === 0) { requestAnimationFrame(resize); return; }
-      canvas.width  = w;
-      canvas.height = h;
-      initNodes(w, h);
+    // Use contentRect from the ResizeObserver entry — avoids reading offsetWidth
+    // which would force a synchronous layout recalculation (forced reflow).
+    const applySize = (w, h) => {
+      if (w === 0 || h === 0) return;
+      canvas.width  = Math.round(w);
+      canvas.height = Math.round(h);
+      initNodes(Math.round(w), Math.round(h));
     };
 
-    requestAnimationFrame(resize);
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas.parentElement);
+    const ro = new ResizeObserver((entries) => {
+      const { width, height } = entries[0].contentRect;
+      applySize(width, height);
+    });
+    const parent = canvas.parentElement;
+    ro.observe(parent);
+    // Seed initial size synchronously from the first layout (already computed at mount)
+    applySize(parent.offsetWidth, parent.offsetHeight);
 
     const draw = () => {
       const { width: W, height: H } = canvas;

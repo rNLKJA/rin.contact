@@ -1,3 +1,5 @@
+const path = require("path");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
@@ -13,8 +15,26 @@ const nextConfig = {
     ],
   },
 
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
     config.resolve.alias.canvas = false;
+
+    // Drop Next.js's built-in polyfill-module from client bundles.
+    // The module is a static pre-compiled file that patches String.trimStart/trimEnd,
+    // Array.flat/flatMap/at, Object.fromEntries/hasOwn, Promise.finally, and URL.canParse
+    // using inline feature detection. Our browserslist targets (Chrome ≥93, Firefox ≥92,
+    // Safari ≥15.4, Edge ≥93) support all of these natively, so the implementations
+    // are never executed — but they're always bundled (13 KiB). Replacing the module
+    // with a no-op removes that dead weight from the main chunk entirely.
+    if (!isServer) {
+      const { NormalModuleReplacementPlugin } = require("webpack");
+      config.plugins.push(
+        new NormalModuleReplacementPlugin(
+          /next[\\/]dist[\\/]build[\\/]polyfills[\\/]polyfill-module/,
+          path.resolve(__dirname, "lib/noop.js"),
+        ),
+      );
+    }
+
     return config;
   },
 

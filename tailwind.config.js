@@ -17,10 +17,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        // Wisr × Nothing three-font system
-        sans:      ['"DM Sans"', "system-ui", "sans-serif"],
-        editorial: ['"Playfair Display"', "Georgia", "serif"],
-        display:   ['"Bitcount Prop Double"', "monospace"],
+        // Wisr × Nothing three-font system — CSS variables injected by next/font
+        sans:      ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        editorial: ["var(--font-playfair)", "Georgia", "serif"],
+        display:   ["var(--font-bitcount)", "monospace"],
       },
     },
   },

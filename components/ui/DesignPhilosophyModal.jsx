@@ -126,7 +126,7 @@ function Modal({ onClose }) {
           {/* Nothing OS */}
           <section>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-[10px] tracking-widest uppercase text-[#B0B0B0]">Nothing OS</span>
+              <span className="text-[10px] tracking-widest uppercase text-[#595959]">Nothing OS</span>
               <div className="flex-1 h-px bg-[#E0E0E0]" />
             </div>
             <p className="text-sm text-[#3D3D3D] leading-relaxed mb-4">
@@ -135,7 +135,7 @@ function Modal({ onClose }) {
               Cards have sharp corners or none. The dot-matrix motif — a reference to
               Nothing's physical device aesthetic — appears as subtle texture.
             </p>
-            <ul className="space-y-2 text-xs text-[#7A7A7A]">
+            <ul className="space-y-2 text-xs text-[#595959]">
               <li className="flex gap-2"><span className="text-black font-medium w-20 flex-shrink-0">Typography</span>Bitcount Prop Double — weight 300–600, tracks wide at small sizes</li>
               <li className="flex gap-2"><span className="text-black font-medium w-20 flex-shrink-0">Buttons</span>Outlined, full invert on hover — never rounded-xl, never filled colour</li>
               <li className="flex gap-2"><span className="text-black font-medium w-20 flex-shrink-0">Icons</span>Squircle shape (border-radius 22%), black on white or white on black only</li>
@@ -146,7 +146,7 @@ function Modal({ onClose }) {
           {/* Colour palette */}
           <section>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-[10px] tracking-widest uppercase text-[#B0B0B0]">Colour Palette</span>
+              <span className="text-[10px] tracking-widest uppercase text-[#595959]">Colour Palette</span>
               <div className="flex-1 h-px bg-[#E0E0E0]" />
             </div>
             <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
@@ -160,8 +160,8 @@ function Modal({ onClose }) {
                     }}
                     title={hex}
                   />
-                  <p className="text-[9px] tracking-wide text-[#7A7A7A] leading-tight">{name}</p>
-                  <p className="text-[9px] font-mono text-[#B0B0B0]">{hex}</p>
+                  <p className="text-[9px] tracking-wide text-[#595959] leading-tight">{name}</p>
+                  <p className="text-[9px] font-mono text-[#595959]">{hex}</p>
                 </div>
               ))}
             </div>
@@ -170,7 +170,7 @@ function Modal({ onClose }) {
           {/* Wisr — four elements */}
           <section>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-[10px] tracking-widest uppercase text-[#B0B0B0]">Wisr Elements</span>
+              <span className="text-[10px] tracking-widest uppercase text-[#595959]">Wisr Elements</span>
               <div className="flex-1 h-px bg-[#E0E0E0]" />
             </div>
             <p className="text-sm text-[#3D3D3D] leading-relaxed mb-5">
@@ -189,7 +189,7 @@ function Modal({ onClose }) {
                   </div>
                   <div>
                     <p className="text-xs font-semibold tracking-wide mb-1" style={{ color: colour }}>{name}</p>
-                    <p className="text-xs text-[#7A7A7A] leading-relaxed">{desc}</p>
+                    <p className="text-xs text-[#595959] leading-relaxed">{desc}</p>
                   </div>
                 </div>
               ))}
@@ -199,16 +199,16 @@ function Modal({ onClose }) {
           {/* Design principles */}
           <section>
             <div className="flex items-center gap-3 mb-5">
-              <span className="text-[10px] tracking-widest uppercase text-[#B0B0B0]">Principles</span>
+              <span className="text-[10px] tracking-widest uppercase text-[#595959]">Principles</span>
               <div className="flex-1 h-px bg-[#E0E0E0]" />
             </div>
             <div className="space-y-5">
               {PRINCIPLES.map(({ num, title, body }) => (
                 <div key={num} className="flex gap-4">
-                  <span className="text-[10px] text-[#B0B0B0] tabular-nums w-6 flex-shrink-0 mt-0.5">{num}</span>
+                  <span className="text-[10px] text-[#595959] tabular-nums w-6 flex-shrink-0 mt-0.5">{num}</span>
                   <div>
                     <p className="text-xs font-semibold tracking-wide text-black mb-1">{title}</p>
-                    <p className="text-xs text-[#7A7A7A] leading-relaxed">{body}</p>
+                    <p className="text-xs text-[#595959] leading-relaxed">{body}</p>
                   </div>
                 </div>
               ))}
@@ -217,11 +217,11 @@ function Modal({ onClose }) {
 
           {/* Footer credits */}
           <section className="border-t border-[#E0E0E0] pt-6 flex flex-wrap gap-4 items-center justify-between">
-            <div className="text-xs text-[#B0B0B0] space-y-1">
-              <p>Inspired by <a href="https://nothing.tech" target="_blank" rel="noreferrer" className="text-[#7A7A7A] hover:text-black transition-colors duration-200 underline underline-offset-2">Nothing Technology</a></p>
-              <p>Inspired by <a href="https://wisr.com.au" target="_blank" rel="noreferrer" className="text-[#7A7A7A] hover:text-black transition-colors duration-200 underline underline-offset-2">Wisr</a></p>
+            <div className="text-xs text-[#595959] space-y-1">
+              <p>Inspired by <a href="https://nothing.tech" target="_blank" rel="noreferrer" className="text-[#595959] hover:text-black transition-colors duration-200 underline underline-offset-2">Nothing Technology</a></p>
+              <p>Inspired by <a href="https://wisr.com.au" target="_blank" rel="noreferrer" className="text-[#595959] hover:text-black transition-colors duration-200 underline underline-offset-2">Wisr</a></p>
             </div>
-            <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0]">v5.5.0</p>
+            <p className="text-[10px] tracking-widest uppercase text-[#595959]">v5.5.0</p>
           </section>
         </div>
       </div>
@@ -238,7 +238,7 @@ export default function DesignPhilosophyModal() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="text-[10px] tracking-widest uppercase text-[#5A5A5A]
+        className="text-[10px] tracking-widest uppercase text-[#888888]
                    hover:text-white transition-colors duration-200 flex items-center gap-1.5 group"
         aria-label="View design philosophy"
       >

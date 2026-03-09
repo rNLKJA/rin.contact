@@ -3,12 +3,12 @@ import { FaLinkedin } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 
 const ROLES = [
-  "Senior Data Analyst",
-  "Research Software Engineer",
-  "Data Science Consultant",
-  "Co-Founder & Dev Lead",
-  "Intelligence & Coordination Officer",
-  "Full-Stack Engineer",
+  "Senior Data Analyst @ SAPOL",
+  "Research Software Engineer @ WEHI & Unimelb",
+  "Data Science Consultant @ CSIRO & CSL",
+  "Co-Founder & Dev Lead @ Mapiva",
+  "Intelligence & Coordination Officer @ AGD",
+  "Full-Stack Engineer @ Unimelb",
 ];
 
 const STATS = [
@@ -75,14 +75,21 @@ function CountUp({ target, duration = 1200, started }) {
 
 // ─── Magnetic button ─────────────────────────────────────────────────────────
 function MagneticButton({ href, primary, children }) {
-  const btnRef = useRef(null);
+  const btnRef  = useRef(null);
+  // Rect cached once on mouseenter — avoids read-after-write forced reflow on
+  // every mousemove (previous pattern: write transform → read getBCR → forced layout).
+  const rectRef = useRef(null);
+
+  const handleEnter = useCallback(() => {
+    if (btnRef.current) rectRef.current = btnRef.current.getBoundingClientRect();
+  }, []);
 
   const handleMove = useCallback((e) => {
-    const el = btnRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
+    const el   = btnRef.current;
+    const rect = rectRef.current;
+    if (!el || !rect) return;
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
     const dx = (e.clientX - cx) * 0.28;
     const dy = (e.clientY - cy) * 0.28;
     el.style.transform = `translate(${dx}px, ${dy}px)`;
@@ -90,12 +97,14 @@ function MagneticButton({ href, primary, children }) {
 
   const handleLeave = useCallback(() => {
     if (btnRef.current) btnRef.current.style.transform = "translate(0,0)";
+    rectRef.current = null;
   }, []);
 
   return (
     <a
       ref={btnRef}
       href={href}
+      onMouseEnter={handleEnter}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       style={{ transition: "transform 0.2s cubic-bezier(0.23,1,0.32,1)" }}

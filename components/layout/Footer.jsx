@@ -60,7 +60,7 @@ const Footer = () => {
         aria-hidden="true"
         className="absolute right-0 bottom-4 text-[10rem] md:text-[14rem] font-bold leading-none
                    select-none pointer-events-none tracking-tighter text-white opacity-[0.025]"
-        style={{ fontFamily: '"Bitcount Prop Double", monospace' }}
+        style={{ fontFamily: 'var(--font-bitcount), monospace' }}
       >
         RIN
       </span>
@@ -85,7 +85,7 @@ const Footer = () => {
               </div>
               <span className="font-semibold text-sm text-white tracking-tight">rNLKJA</span>
             </div>
-            <p className="text-xs text-[#7A7A7A] leading-relaxed max-w-[220px]">
+            <p className="text-xs text-[#AAAAAA] leading-relaxed max-w-[220px]">
               Senior Data Analyst · Research Software Engineer · Adelaide, Australia.
             </p>
             {/* Wisr wavy micro accent */}
@@ -98,18 +98,18 @@ const Footer = () => {
           {/* Nav columns */}
           {NAV_COLS.map(({ heading, links }) => (
             <div key={heading}>
-              <p className="text-[10px] tracking-widest uppercase text-[#5A5A5A] mb-4">{heading}</p>
+              <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">{heading}</p>
               <ul className="space-y-2.5">
                 {links.map(({ href, label, external }) => (
                   <li key={label}>
                     {external
                       ? <a href={href} target="_blank" rel="noreferrer"
-                           className="text-xs text-[#9A9A9A] hover:text-white transition-colors duration-200 flex items-center gap-1.5 group">
+                           className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200 flex items-center gap-1.5 group">
                           {label}
-                          <span className="text-[#3D3D3D] group-hover:text-white transition-colors duration-200 text-[10px]">↗</span>
+                          <span className="text-[#555555] group-hover:text-white transition-colors duration-200 text-[10px]">↗</span>
                         </a>
                       : <a href={href}
-                           className="text-xs text-[#9A9A9A] hover:text-white transition-colors duration-200">
+                           className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200">
                           {label}
                         </a>
                     }
@@ -136,7 +136,7 @@ const Footer = () => {
                 rel="noreferrer"
                 aria-label={label}
                 className="inline-flex items-center gap-1.5 border border-[#333333] px-3.5 py-1.5 rounded-full
-                           text-[10px] tracking-widest uppercase text-[#7A7A7A]
+                           text-[10px] tracking-widest uppercase text-[#AAAAAA]
                            hover:border-white hover:text-white transition-all duration-200"
               >
                 <Icon size={11} aria-hidden="true" />
@@ -148,9 +148,9 @@ const Footer = () => {
           {/* Design system + copyright */}
           <div className="flex flex-wrap items-center gap-4">
             <DesignPhilosophyModal />
-            <p className="text-[11px] text-[#5A5A5A] tracking-wide">
+            <p className="text-[11px] text-[#AAAAAA] tracking-wide">
               © 2020–{year}{" "}
-              <Link href="/" className="text-[#7A7A7A] hover:text-white transition-colors duration-200">
+              <Link href="/" className="text-white underline underline-offset-2 decoration-[#555555] hover:text-[#FF3C3C] hover:decoration-[#FF3C3C] transition-colors duration-200">
                 rNLKJA
               </Link>
               . All rights reserved.

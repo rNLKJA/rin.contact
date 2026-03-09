@@ -509,30 +509,13 @@ class MyDocument extends Document {
           <link rel="dns-prefetch" href="https://yt3.googleusercontent.com" />
           <link rel="dns-prefetch" href="https://encrypted-tbn0.gstatic.com" />
           <link rel="dns-prefetch" href="https://media.licdn.com" />
-          <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
           <link rel="dns-prefetch" href="https://s3-symbol-logo.tradingview.com" />
           <link rel="dns-prefetch" href="https://api.emailjs.com" />
-          <link rel="preconnect" href="https://media.licdn.com" />
-          <link rel="preconnect" href="https://yt3.googleusercontent.com" />
 
-          {/* ── Font preconnect ── */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
           {/*
-            Three-font system (Wisr × Nothing):
-            • Bitcount Prop Double — pixel display, hero h1 brand name only
-            • Playfair Display    — editorial serif, all section h2/h3 headings
-            • DM Sans             — humanist sans, body, nav, buttons, labels
+            Fonts are self-hosted at build time via next/font/google (lib/fonts.js).
+            No external Google Fonts requests — eliminates the critical request chain.
           */}
-          <link
-            rel="preload"
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@300..600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@300..600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
-            rel="stylesheet"
-          />
 
           {/* ── JSON-LD structured data ── */}
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }} />

@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/legacy/image";
+
 
 const NAV_LINKS = [
   { href: "#timeline", label: "Career",     tab: "career"    },
@@ -18,18 +19,29 @@ export default function Header() {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
   const [scrollPct, setScrollPct] = useState(0);
+  // Cache maxScroll so the scroll handler never triggers layout (forced reflow)
+  const maxScrollRef = useRef(0);
 
   const onScroll = useCallback(() => {
-    setScrolled(window.scrollY > 40);
-    const doc        = document.documentElement;
-    const scrollTop  = window.scrollY;
-    const maxScroll  = doc.scrollHeight - doc.clientHeight;
-    setScrollPct(maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0);
+    const scrollTop = window.scrollY;
+    setScrolled(scrollTop > 40);
+    const max = maxScrollRef.current;
+    setScrollPct(max > 0 ? (scrollTop / max) * 100 : 0);
   }, []);
 
   useEffect(() => {
+    const updateMax = () => {
+      const doc = document.documentElement;
+      maxScrollRef.current = doc.scrollHeight - doc.clientHeight;
+    };
+    updateMax();
+    const ro = new ResizeObserver(updateMax);
+    ro.observe(document.documentElement);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [onScroll]);
 
   return (
@@ -75,7 +87,7 @@ export default function Header() {
               key={label}
               href={href}
               onClick={() => dispatchTimelineTab(tab)}
-              className="px-3 py-1.5 rounded-full text-[#7A7A7A] hover:text-black hover:bg-[#F5F5F5]
+              className="px-3 py-1.5 rounded-full text-[#595959] hover:text-black hover:bg-[#F5F5F5]
                          transition-all duration-200"
             >
               {label}
@@ -105,7 +117,7 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
-        aria-hidden={!menuOpen}
+        {...(!menuOpen ? { inert: "" } : {})}
       >
         {/* Top bar */}
         <div className="flex justify-between items-center px-6 py-4 border-b border-[#E0E0E0]">
@@ -113,7 +125,7 @@ export default function Header() {
           <button
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
-            className="p-1.5 rounded-full text-[#7A7A7A] hover:bg-[#F5F5F5] hover:text-black transition-all duration-200"
+            className="p-1.5 rounded-full text-[#595959] hover:bg-[#F5F5F5] hover:text-black transition-all duration-200"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
               <line x1="1" y1="1" x2="15" y2="15" />
@@ -155,7 +167,7 @@ export default function Header() {
               target="_blank"
               rel="noreferrer"
               className="border border-[#E0E0E0] px-3.5 py-1.5 text-[10px] tracking-widest uppercase
-                         rounded-full text-[#7A7A7A] hover:border-black hover:text-black transition-all duration-200"
+                         rounded-full text-[#595959] hover:border-black hover:text-black transition-all duration-200"
             >
               {label}
             </a>

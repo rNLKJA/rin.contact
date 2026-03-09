@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 
 const SECTIONS = [
   { id: "hero",     label: "Profile" },
@@ -13,29 +13,31 @@ export default function SectionProgress() {
   const [active, setActive] = useState("hero");
   const [visible, setVisible] = useState(false);
 
-  const onScroll = useCallback(() => {
-    // Show after scrolling past the hero
-    setVisible(window.scrollY > 80);
-
-    // Find which section is closest to the top of the viewport
-    let current = SECTIONS[0].id;
-    for (const { id } of SECTIONS) {
-      const el = document.getElementById(id);
-      if (!el) continue;
-      const rect = el.getBoundingClientRect();
-      // Section is considered "active" when its top is above the 40% viewport mark
-      if (rect.top <= window.innerHeight * 0.4) {
-        current = id;
-      }
-    }
-    setActive(current);
+  // window.scrollY is not a layout read — no forced reflow
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // IntersectionObserver — never touches getBoundingClientRect() on the scroll path
+  // A section is "active" when its top edge enters the upper 40% of the viewport
   useEffect(() => {
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // run once on mount
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [onScroll]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "0px 0px -60% 0px", threshold: 0 },
+    );
+
+    const targets = SECTIONS
+      .map(({ id }) => document.getElementById(id))
+      .filter(Boolean);
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <nav

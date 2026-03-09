@@ -12,8 +12,9 @@ const CAREER = [
     team: "Professional & Ethical Standards Branch",
     period: "Mar 2026 – Present",
     location: "Adelaide, SA",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Coat_of_arms_of_the_South_Australia_Police.svg",
+    logo: "/images/sapol-logo.svg",
     tag: "Government · Analytics",
+    noBorder: true,
     summary:
       "Anchored in first-principles thinking and strategic planning, I develop analytical models and statistical frameworks that translate SAPOL's complex policing data into authoritative, decision-ready intelligence for the Ethical and Professional Standards Branch.",
     bullets: [
@@ -511,7 +512,7 @@ export default function TimelineSection() {
                     className="hidden md:block absolute -left-20 top-2 w-14 text-right"
                     aria-hidden="true"
                   >
-                    <span className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-medium">
+                    <span className="text-[10px] tracking-widest uppercase text-[#CC0000] font-medium">
                       {item.year}
                     </span>
                   </div>
@@ -528,7 +529,7 @@ export default function TimelineSection() {
         onClick={() => setRefOpen(true)}
         aria-label="View professional references"
         title="Professional References"
-        className="absolute bottom-3 right-4 text-[#CCCCCC] hover:text-[#999999]
+        className="absolute bottom-3 right-4 text-[#6B6B6B] hover:text-[#3D3D3D]
                    transition-colors duration-300 text-[10px] tracking-[0.3em] select-none
                    pointer-events-auto"
       >

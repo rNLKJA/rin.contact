@@ -21,6 +21,19 @@
   "engines": {
     "node": ">=24.x"
   },
+  "browserslist": {
+    "production": [
+      "chrome >= 93",
+      "firefox >= 92",
+      "safari >= 15.4",
+      "edge >= 93"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",

@@ -74,7 +74,7 @@ function GhostLabel({ children, className = "" }) {
       aria-hidden="true"
       className={`absolute pointer-events-none select-none font-bold leading-none tracking-tighter
                   text-[clamp(5rem,11vw,13rem)] ${className}`}
-      style={{ fontFamily: '"Bitcount Prop Double", monospace' }}
+      style={{ fontFamily: 'var(--font-bitcount), monospace' }}
     >
       {children}
     </span>

@@ -44,7 +44,7 @@ function Toast({ type, message, onClose }) {
       </div>
       <button
         onClick={onClose}
-        className="flex-shrink-0 text-[#7A7A7A] hover:text-white transition-colors duration-200 mt-0.5"
+        className="flex-shrink-0 text-[#9A9A9A] hover:text-white transition-colors duration-200 mt-0.5"
         aria-label="Dismiss notification"
       >
         <FiX size={16} />
@@ -241,7 +241,7 @@ export default function ContactSection() {
 
             {/* Buy Me a Coffee */}
             <div className="flex flex-col gap-3">
-              <p className="text-xs tracking-widest uppercase text-[#5A5A5A]">Support</p>
+              <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">Support</p>
               <a
                 href="https://www.buymeacoffee.com/rNLKJA"
                 target="_blank"
@@ -261,34 +261,34 @@ export default function ContactSection() {
           {/* Right — contact form */}
           <form onSubmit={handleSubmit} noValidate aria-label="Contact form" className="flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#7A7A7A]">Name</label>
+              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#AAAAAA]">Name</label>
               <input
                 id="name" name="name" type="text" required autoComplete="name"
                 value={form.name} onChange={handleChange} placeholder="Your name"
                 className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
-                           placeholder:text-[#5A5A5A] focus:outline-none focus:border-[#FF3C3C]
+                           placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#7A7A7A]">Email</label>
+              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#AAAAAA]">Email</label>
               <input
                 id="email" name="email" type="email" required autoComplete="email"
                 value={form.email} onChange={handleChange} placeholder="your@email.com"
                 className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
-                           placeholder:text-[#5A5A5A] focus:outline-none focus:border-[#FF3C3C]
+                           placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#7A7A7A]">Message</label>
+              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#AAAAAA]">Message</label>
               <textarea
                 id="message" name="message" required rows={6}
                 value={form.message} onChange={handleChange} placeholder="Leave your message here..."
                 className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white resize-none
-                           placeholder:text-[#5A5A5A] focus:outline-none focus:border-[#FF3C3C]
+                           placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-2xl"
               />
             </div>
