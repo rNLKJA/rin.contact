@@ -68,32 +68,37 @@ export default function ContactSection() {
   const [form,   setForm]   = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
   const [toast,  setToast]  = useState(null);   // { type: "success" | "error", message }
-  const sectionRef   = useRef(null);
-  const spotlightRef = useRef(null); // direct DOM ref — no React state on mousemove
-  const rectRef      = useRef(null); // cached section rect — no getBCR in the hot path
+  const sectionRef      = useRef(null);
+  const spotlightRef    = useRef(null); // direct DOM ref — no React state on mousemove
+  const sectionDocTop   = useRef(0);    // absolute document position — constant on scroll
+  const sectionDocLeft  = useRef(0);
 
-  // Measure once and keep the rect fresh on resize / scroll.
-  // ResizeObserver fires after layout so reading getBCR here is never a forced reflow.
+  // Cache the section's absolute document position — only needs updating on resize,
+  // NOT on every scroll (the position in the document doesn't change as you scroll).
+  // ResizeObserver fires after layout so getBCR here is never a forced reflow.
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
-    const measure = () => { rectRef.current = el.getBoundingClientRect(); };
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      sectionDocTop.current  = rect.top  + window.scrollY;
+      sectionDocLeft.current = rect.left + window.scrollX;
+    };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
-    window.addEventListener("scroll", measure, { passive: true });
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("scroll", measure);
-    };
+    // No scroll listener here — document-relative position is stable across scroll
+    return () => ro.disconnect();
   }, []);
 
   const handleMouseMove = useCallback((e) => {
-    const rect = rectRef.current;
-    const el   = spotlightRef.current;
-    if (!rect || !el) return;
-    // Pure arithmetic + one style write — zero layout reads, zero React re-renders
-    el.style.background = `radial-gradient(400px circle at ${e.clientX - rect.left}px ${e.clientY - rect.top}px, rgba(255,60,60,0.07) 0%, rgba(255,60,60,0.03) 40%, transparent 70%)`;
+    const el = spotlightRef.current;
+    if (!el) return;
+    // Compute viewport-relative position using only cached values + window.scrollY/X —
+    // zero layout reads, zero React re-renders
+    const relX = e.clientX - (sectionDocLeft.current - window.scrollX);
+    const relY = e.clientY - (sectionDocTop.current  - window.scrollY);
+    el.style.background = `radial-gradient(400px circle at ${relX}px ${relY}px, rgba(255,60,60,0.07) 0%, rgba(255,60,60,0.03) 40%, transparent 70%)`;
   }, []);
 
   const handleMouseLeave = useCallback(() => {

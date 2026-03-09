@@ -145,6 +145,18 @@ h1 {
 .delay-700 { animation-delay: 700ms; }
 .delay-800 { animation-delay: 800ms; }
 
+/* ─── LCP: skip hero animations on mobile so h1/role/bio paint immediately ── */
+@media (max-width: 767px) {
+  #hero h1,
+  #hero .hero-role,
+  #hero #hero-bio,
+  #hero .hero-ctas {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ─── Reduced motion ─────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

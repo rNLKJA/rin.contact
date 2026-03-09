@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
-import ReferencesPanel from "@/components/sections/ReferencesPanel";
 
 const CAREER = [
   {
@@ -419,7 +418,6 @@ export default function TimelineSection() {
   const lineElRef       = useRef(null); // direct DOM ref — no React state on scroll
   const sectionDocTop   = useRef(0);    // absolute document-top (doesn't change on scroll)
   const sectionHeight   = useRef(0);    // cached height
-  const [refOpen, setRefOpen] = useState(false);
 
   useEffect(() => {
     const handler = (e) => setTab(e.detail.tab);
@@ -540,21 +538,6 @@ export default function TimelineSection() {
           })}
         </div>
       </div>
-
-      {/* ── Easter egg: barely-visible trigger — only discoverable if you look ── */}
-      <button
-        onClick={() => setRefOpen(true)}
-        aria-label="View professional references"
-        title="Professional References"
-        className="absolute bottom-3 right-4 text-[#6B6B6B] hover:text-[#3D3D3D]
-                   transition-colors duration-300 text-[10px] tracking-[0.3em] select-none
-                   pointer-events-auto"
-      >
-        · · ·
-      </button>
-
-      {/* References modal */}
-      {refOpen && <ReferencesPanel onClose={() => setRefOpen(false)} />}
     </section>
   );
 }

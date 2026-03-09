@@ -16,23 +16,40 @@ function dispatchTimelineTab(tab) {
 }
 
 export default function Header() {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen,  setMenuOpen]  = useState(false);
-  const [scrollPct, setScrollPct] = useState(0);
-  // Cache maxScroll so the scroll handler never triggers layout (forced reflow)
+  const [menuOpen, setMenuOpen] = useState(false);
+  // Direct DOM refs — scroll state never goes through React, so no re-renders on scroll
+  const headerRef   = useRef(null);
+  const progressRef = useRef(null);
+  const scrolledRef = useRef(false); // guards against redundant border toggles
   const maxScrollRef = useRef(0);
 
   const onScroll = useCallback(() => {
     const scrollTop = window.scrollY;
-    setScrolled(scrollTop > 40);
-    const max = maxScrollRef.current;
-    setScrollPct(max > 0 ? (scrollTop / max) * 100 : 0);
+    const max       = maxScrollRef.current;
+
+    // Progress bar — direct style write, zero React involvement
+    if (progressRef.current) {
+      progressRef.current.style.width = max > 0 ? `${(scrollTop / max) * 100}%` : "0%";
+    }
+
+    // Border — only toggle when the threshold is actually crossed
+    const isScrolled = scrollTop > 40;
+    if (isScrolled !== scrolledRef.current) {
+      scrolledRef.current = isScrolled;
+      if (headerRef.current) {
+        headerRef.current.style.borderBottom = isScrolled ? "1px solid #E0E0E0" : "";
+      }
+    }
   }, []);
 
   useEffect(() => {
+    // Defer layout reads to rAF — avoids forced reflow when ResizeObserver
+    // fires during or immediately after a DOM mutation.
     const updateMax = () => {
-      const doc = document.documentElement;
-      maxScrollRef.current = doc.scrollHeight - doc.clientHeight;
+      requestAnimationFrame(() => {
+        const doc = document.documentElement;
+        maxScrollRef.current = doc.scrollHeight - doc.clientHeight;
+      });
     };
     updateMax();
     const ro = new ResizeObserver(updateMax);
@@ -46,16 +63,15 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-white transition-all duration-200 ${
-        scrolled ? "border-b border-[#E0E0E0]" : ""
-      }`}
+      ref={headerRef}
+      className="sticky top-0 z-50 bg-white transition-all duration-200"
       role="banner"
     >
       {/* Scroll progress bar */}
       <div
+        ref={progressRef}
         aria-hidden="true"
         className="absolute bottom-0 left-0 h-[2px] bg-[#FF3C3C] transition-none pointer-events-none"
-        style={{ width: `${scrollPct}%` }}
       />
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12 flex justify-between items-center py-4">

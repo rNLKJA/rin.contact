@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const SECTIONS = [
   { id: "hero",     label: "Profile" },
@@ -11,11 +11,24 @@ const SECTIONS = [
 
 export default function SectionProgress() {
   const [active, setActive] = useState("hero");
-  const [visible, setVisible] = useState(false);
+  const navRef = useRef(null);
+  const visibleRef = useRef(false);
 
-  // window.scrollY is not a layout read — no forced reflow
+  // Direct DOM write for visibility — no React re-renders on scroll, no forced reflow
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 80);
+    const onScroll = () => {
+      const show = window.scrollY > 80;
+      if (show !== visibleRef.current) {
+        visibleRef.current = show;
+        const el = navRef.current;
+        if (el) {
+          el.style.opacity = show ? "1" : "0";
+          el.style.transform = show ? "translateY(-50%)" : "translate(16px, -50%)";
+          el.style.pointerEvents = show ? "auto" : "none";
+        }
+      }
+    };
+    onScroll(); // set initial state
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -41,9 +54,10 @@ export default function SectionProgress() {
 
   return (
     <nav
+      ref={navRef}
       aria-label="Page sections"
-      className={`fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-end gap-3
-                  transition-all duration-300 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 pointer-events-none"}`}
+      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-end gap-3
+                  transition-all duration-300 opacity-0 pointer-events-none"
     >
       {SECTIONS.map(({ id, label }) => {
         const isActive = active === id;

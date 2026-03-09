@@ -205,9 +205,9 @@ export default function HeroSection() {
             </a>
           </div>
 
-          {/* Typewriter */}
+          {/* Typewriter — hero-role for LCP: no animation on mobile */}
           <div
-            className="text-xl md:text-2xl font-light text-[#3D3D3D] mb-8 h-8 animate-fade-up delay-200"
+            className="hero-role text-xl md:text-2xl font-light text-[#3D3D3D] mb-8 h-8 animate-fade-up delay-200"
             aria-live="polite" aria-label={`Current role: ${role}`}
           >
             {role}<span className="animate-blink ml-0.5" aria-hidden="true">_</span>
@@ -221,8 +221,8 @@ export default function HeroSection() {
             and engineering intersect. Generalist by nature, specialist by discipline.
           </p>
 
-          {/* CTAs — magnetic on desktop */}
-          <div className="flex flex-wrap items-center gap-3 animate-fade-up delay-400">
+          {/* CTAs — hero-ctas for LCP; magnetic on desktop */}
+          <div className="hero-ctas flex flex-wrap items-center gap-3 animate-fade-up delay-400">
             <MagneticButton href="#timeline" primary>Career Path</MagneticButton>
             <MagneticButton href="#contact">Get in Touch</MagneticButton>
           </div>
