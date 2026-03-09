@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Rin Huang</ShortName>
+  <Description>Search Rin Huang's portfolio — Senior Data Analyst &amp; Research Software Engineer, Adelaide</Description>
+  <Url type="text/html" template="https://rin.contact/?s={searchTerms}" />
+  <Image height="16" width="16" type="image/x-icon">https://rin.contact/favicon.ico</Image>
+  <Image height="32" width="32" type="image/png">https://rin.contact/favicon-32x32.png</Image>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Language>en-AU</Language>
+  <Contact>huang@rin.contact</Contact>
+  <Tags>data science analytics software engineering Adelaide Australia</Tags>
+</OpenSearchDescription>

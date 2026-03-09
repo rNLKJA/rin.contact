@@ -110,10 +110,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
         {/* ── Primary meta ── */}
-        <title>Rin Huang | Senior Data Analyst · Research Software Engineer · Adelaide</title>
+        <title>Rin Huang | Data Analyst &amp; Research Software Engineer</title>
         <meta
           name="description"
-          content="Sunchuangyu (Rin) Huang — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO, and Full-Stack Developer. Data science, strategic intelligence, and continuous improvement in Adelaide & Melbourne, Australia."
+          content="Senior Data Analyst at South Australia Police and Research Software Engineer at WEHI &amp; CSIRO. Data science, full-stack development, based in Adelaide, Australia."
         />
         <meta
           name="keywords"
@@ -140,6 +140,8 @@ export default function Home() {
         <meta property="og:image:alt" content="Rin Huang — portfolio preview" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:updated_time" content="2026-03-08T00:00:00+10:30" />
         <meta property="profile:first_name" content="Sunchuangyu" />
         <meta property="profile:last_name" content="Huang" />
         <meta property="profile:username" content="rNLKJA" />

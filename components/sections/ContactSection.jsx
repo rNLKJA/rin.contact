@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import emailjs from "@emailjs/browser";
 import { FaLinkedin } from "react-icons/fa";
-import { FiGithub, FiMail, FiPhone, FiMapPin, FiX, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
+import { FiGithub, FiMail, FiPhone, FiMapPin, FiX, FiCheckCircle, FiAlertCircle, FiCoffee } from "react-icons/fi";
 import { useInView } from "@/hooks/useInView";
 
 // ─── EmailJS config ───────────────────────────────────────────────
@@ -154,7 +154,7 @@ export default function ContactSection() {
         >
           {/* Left — contact details */}
           <div className="flex flex-col gap-8">
-            <div className="space-y-4">
+            <address className="space-y-4 not-italic">
               <div className="flex items-center gap-3">
                 <FiMail size={16} className="text-[#7A7A7A]" aria-hidden="true" />
                 <a href="mailto:huang@rin.contact" className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200">
@@ -171,7 +171,7 @@ export default function ContactSection() {
                 <FiMapPin size={16} className="text-[#7A7A7A]" aria-hidden="true" />
                 <span className="text-sm text-[#9A9A9A]">Adelaide &amp; Melbourne, Australia</span>
               </div>
-            </div>
+            </address>
 
             <hr className="border-[#3D3D3D]" />
 
@@ -193,6 +193,23 @@ export default function ContactSection() {
             </div>
 
             <hr className="border-[#3D3D3D]" />
+
+            {/* Buy Me a Coffee */}
+            <div className="flex flex-col gap-3">
+              <p className="text-xs tracking-widest uppercase text-[#5A5A5A]">Support</p>
+              <a
+                href="https://www.buymeacoffee.com/rNLKJA"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2.5 self-start border border-[#3D3D3D] px-5 py-2.5
+                           rounded-full text-xs text-[#9A9A9A] hover:border-[#F5C542] hover:text-[#F5C542]
+                           transition-colors duration-200"
+                aria-label="Buy Rin a coffee on buymeacoffee.com"
+              >
+                <FiCoffee size={13} aria-hidden="true" />
+                Buy me a coffee
+              </a>
+            </div>
 
           </div>
 

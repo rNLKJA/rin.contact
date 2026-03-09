@@ -130,7 +130,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative pt-8 pb-20 md:pt-12 md:pb-28 overflow-hidden"
+      className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden"
       aria-label="Introduction"
     >
       {/* Animated blob — slow drift in top-right */}
@@ -165,6 +165,7 @@ export default function HeroSection() {
           {/* Name — pinned to Bitcount display font */}
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 animate-fade-up">
             Rin Huang
+            <span className="sr-only" lang="zh-Hans"> — Sunchuangyu Huang 黄孙创宇</span>
           </h1>
           {/* Wisr-style wavy underline accent */}
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
@@ -204,7 +205,7 @@ export default function HeroSection() {
           </div>
 
           {/* Bio */}
-          <p className="text-base font-light text-[#3D3D3D] leading-relaxed mb-10 animate-fade-up delay-300">
+          <p id="hero-bio" className="text-base font-light text-[#3D3D3D] leading-relaxed mb-10 animate-fade-up delay-300">
             From climate risk modelling at CSIRO to ministerial dashboards for the
             SA Government, from genomics pipelines at WEHI to a mental health mobile
             app at UniMelb — I work at the edges of disciplines where data, strategy,
