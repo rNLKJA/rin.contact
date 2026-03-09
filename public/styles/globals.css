@@ -199,7 +199,7 @@ h1 {
   50%       { border-radius: 50% 50% 40% 60% / 40% 60% 50% 40%; }
   75%       { border-radius: 40% 60% 60% 30% / 60% 30% 60% 40%; }
 }
-.animate-art-float   { animation: art-float   10s ease-in-out infinite; }
-.animate-art-spin    { animation: art-spin    30s linear      infinite; }
-.animate-art-breathe { animation: art-breathe  8s ease-in-out infinite; }
-.animate-art-morph   { animation: art-morph   14s ease-in-out infinite; }
+.animate-art-float   { animation: art-float   10s ease-in-out infinite; will-change: transform; }
+.animate-art-spin    { animation: art-spin    30s linear      infinite; will-change: transform; }
+.animate-art-breathe { animation: art-breathe  8s ease-in-out infinite; will-change: transform; }
+.animate-art-morph   { animation: art-morph   14s ease-in-out infinite; will-change: border-radius, transform; }
