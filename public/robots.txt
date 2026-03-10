@@ -5,7 +5,30 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# Block known AI training scrapers that do not respect content
+# ── Baidu ───────────────────────────────────────────────────────────────────
+# Explicitly welcome Baiduspider (covers both desktop and mobile variants)
+User-agent: Baiduspider
+Allow: /
+Disallow: /api/
+
+User-agent: Baiduspider-image
+Allow: /
+
+User-agent: Baiduspider-video
+Allow: /
+
+# ── Bing ─────────────────────────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+User-agent: msnbot
+Allow: /
+
+User-agent: msnbot-media
+Allow: /
+
+# ── Block known AI training scrapers that do not respect content ──────────────
 User-agent: GPTBot
 Disallow: /
 
@@ -21,5 +44,5 @@ Disallow: /
 User-agent: Claude-Web
 Disallow: /
 
-# Sitemap
+# ── Sitemaps ──────────────────────────────────────────────────────────────────
 Sitemap: https://rin.contact/sitemap.xml

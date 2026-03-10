@@ -28,7 +28,11 @@
   <!-- ── Example queries ───────────────────────────────────────────────────── -->
   <Query role="example" searchTerms="Rin Huang" />
   <Query role="example" searchTerms="Sunchuangyu Huang" />
+  <Query role="example" searchTerms="Huang Sunchuangyu" />
   <Query role="example" searchTerms="黄孙创宇" />
+  <Query role="example" searchTerms="黄孙 Rin" />
+  <Query role="example" searchTerms="HUANGSUNCHUANGYU" />
+  <Query role="example" searchTerms="HUANG SUNCHUANGYU" />
   <Query role="example" searchTerms="data analyst Adelaide" />
   <Query role="example" searchTerms="SAPOL data analyst" />
   <Query role="example" searchTerms="WEHI research software engineer" />
@@ -49,7 +53,9 @@
   <SyndicationRight>open</SyndicationRight>
   <AdultContent>false</AdultContent>
   <Tags>
-    Rin Huang Sunchuangyu 黄孙创宇 data science analytics machine learning
+    Rin Huang Sunchuangyu Huang Sunchuangyu 黄孙创宇 黄孙 Rin
+    HUANGSUNCHUANGYU HUANG SUNCHUANGYU HUANG SUN CHUANG YU
+    data science analytics machine learning
     software engineering government intelligence SAPOL WEHI CSIRO
     Adelaide Melbourne Australia Python React Next.js
   </Tags>

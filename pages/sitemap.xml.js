@@ -1,14 +1,14 @@
 /**
  * Dynamic sitemap for rin.contact
- * Version: 5.5.0 — Sunchuangyu (Rin) Huang 黄孙创宇
+ * Version: 5.7.0 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
  *
  * Sections documented:
  *   Profile · Career · Projects · Skills · FAQ · Contact
  */
 
 const BASE_URL = "https://rin.contact";
-const VERSION  = "5.5.0";
-const AUTHOR   = "Sunchuangyu (Rin) Huang 黄孙创宇";
+const VERSION  = "5.7.0";
+const AUTHOR   = "Sunchuangyu (Rin) Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU";
 
 // ─── Images to register with Google Image Search ─────────────────────────────
 // All logos / assets associated with this page (external CDN images are allowed)
@@ -17,7 +17,7 @@ const IMAGES = [
   {
     loc:     `${BASE_URL}/images/meta-image.png`,
     title:   "Rin Huang — Portfolio",
-    caption: "Rin Huang (Sunchuangyu Huang 黄孙创宇) — Senior Data Analyst & Research Software Engineer, Adelaide, Australia",
+    caption: "Rin Huang — Sunchuangyu Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU — Senior Data Analyst & Research Software Engineer, Adelaide, Australia",
     license: `${BASE_URL}/`,
   },
   // ── Career ──
@@ -197,6 +197,7 @@ ${projectsComment}
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en-AU"     href="${BASE_URL}/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans"   href="${BASE_URL}/" />
     <xhtml:link rel="alternate" hreflang="x-default"  href="${BASE_URL}/" />${allImages}
   </url>
 </urlset>`;

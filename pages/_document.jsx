@@ -5,7 +5,18 @@ const PERSON_SCHEMA = {
   "@type": "Person",
   "@id": "https://rin.contact/#person",
   name: "Sunchuangyu (Rin) Huang",
-  alternateName: ["Rin Huang", "黄孙创宇", "Sunchuangyu Huang"],
+  alternateName: [
+    "Rin Huang",
+    "黄孙创宇",
+    "黄孙 Rin",
+    "Sunchuangyu Huang",
+    "Huang Sunchuangyu",
+    "HUANG SUNCHUANGYU",
+    "HUANGSUNCHUANGYU",
+    "HUANG SUN CHUANG YU",
+    "Huang Sun Chuang Yu",
+    "Sun Chuang Yu Huang",
+  ],
   givenName: "Sunchuangyu",
   additionalName: "Rin",
   familyName: "Huang",
@@ -94,8 +105,21 @@ const PERSON_SCHEMA = {
     "https://twitter.com/rNLKJA",
     "https://buymeacoffee.com/rNLKJA",
   ],
+  // mainEntityOfPage declares rin.contact as THE primary web page for this person entity.
+  // This is the key signal that lets Google favour rin.contact over LinkedIn in name searches.
+  mainEntityOfPage: { "@id": "https://rin.contact/#profilepage" },
+  subjectOf: { "@id": "https://rin.contact/#profilepage" },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "huang@rin.contact",
+    contactType: "professional enquiries",
+    availableLanguage: [
+      { "@type": "Language", name: "English" },
+      { "@type": "Language", name: "Mandarin Chinese" },
+    ],
+  },
   description:
-    "Sunchuangyu (Rin) Huang — also known as 黄孙创宇 — is a Senior Data Analyst at South Australia Police, Research Software Engineer, and Full-Stack Developer specialising in data science, strategic intelligence, and continuous improvement.",
+    "Sunchuangyu (Rin) Huang — also known as 黄孙创宇 (黄孙 Rin), Huang Sunchuangyu, HUANG SUNCHUANGYU, and HUANGSUNCHUANGYU — is a Senior Data Analyst at South Australia Police, Research Software Engineer, and Full-Stack Developer specialising in data science, strategic intelligence, and continuous improvement.",
 };
 
 const WEBSITE_SCHEMA = {
@@ -103,14 +127,25 @@ const WEBSITE_SCHEMA = {
   "@type": "WebSite",
   "@id": "https://rin.contact/#website",
   url: "https://rin.contact",
-  name: "Rin Huang — Portfolio",
+  name: "Rin Huang — Official Portfolio",
   description:
-    "Personal portfolio of Sunchuangyu (Rin) Huang — Senior Data Analyst, Research Software Engineer, and Full-Stack Developer based in Adelaide, Australia.",
+    "Official personal portfolio of Sunchuangyu (Rin) Huang — Senior Data Analyst, Research Software Engineer, and Full-Stack Developer based in Adelaide, Australia.",
   author: { "@id": "https://rin.contact/#person" },
-  inLanguage: "en-AU",
+  publisher: { "@id": "https://rin.contact/#person" },
+  inLanguage: ["en-AU", "zh-Hans"],
   copyrightYear: 2026,
-  datePublished: "2024-01-01",
-  dateModified: "2026-03-09",
+  datePublished: "2024-01-01T00:00:00+10:30",
+  dateModified: "2026-03-10T00:00:00+10:30",
+  // SearchAction enables a site search box in Google rich results and signals
+  // this is a first-class website (not just a social profile).
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://rin.contact/?s={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 const PROFILE_PAGE_SCHEMA = {
@@ -118,14 +153,32 @@ const PROFILE_PAGE_SCHEMA = {
   "@type": "ProfilePage",
   "@id": "https://rin.contact/#profilepage",
   url: "https://rin.contact",
-  name: "Rin Huang — Portfolio",
-  datePublished: "2024-01-01",
-  dateModified: "2026-03-09",
+  name: "Rin Huang (黄孙创宇) — Official Portfolio",
+  datePublished: "2024-01-01T00:00:00+10:30",
+  dateModified: "2026-03-10T00:00:00+10:30",
   mainEntity: { "@id": "https://rin.contact/#person" },
   about: { "@id": "https://rin.contact/#person" },
+  // isPartOf links this page into the WebSite entity — completing the entity graph
+  isPartOf: { "@id": "https://rin.contact/#website" },
+  // breadcrumb cross-reference tightens the structured data graph
+  breadcrumb: { "@id": "https://rin.contact/#breadcrumb" },
+  // primaryImageOfPage helps Google associate the OG image with this entity in image search
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    "@id": "https://rin.contact/#og-image",
+    url: "https://rin.contact/images/meta-image.png",
+    width: 1200,
+    height: 630,
+    caption: "Rin Huang (黄孙创宇, Sunchuangyu Huang) — Senior Data Analyst & Research Software Engineer",
+  },
+  // significantLinks tells Google that LinkedIn/GitHub are related pages, not competitors
+  significantLinks: [
+    "https://linkedin.com/in/sunchuangyuhuang",
+    "https://github.com/rNLKJA",
+  ],
   speakable: {
     "@type": "SpeakableSpecification",
-    cssSelector: ["h1", "#hero-bio"],
+    cssSelector: ["h1", "#hero-bio", ".hero-role", "h2"],
   },
 };
 
@@ -281,7 +334,7 @@ const CREDENTIALS_SCHEMA = {
       name: "VETASSESS — Statistician (ANZSCO 224113)",
       credentialCategory: "ProfessionalAssessment",
       recognizedBy: { "@type": "Organization", name: "VETASSESS" },
-      dateCreated: "2026-02",
+      dateCreated: "2026-02-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -289,7 +342,7 @@ const CREDENTIALS_SCHEMA = {
       name: "IELTS General Training — Band 8",
       credentialCategory: "LanguageAssessment",
       recognizedBy: { "@type": "Organization", name: "IELTS Official" },
-      dateCreated: "2026-02",
+      dateCreated: "2026-02-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -297,7 +350,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Credentialed Community Language — Mandarin",
       credentialCategory: "LanguageCredential",
       recognizedBy: { "@type": "Organization", name: "NAATI" },
-      dateCreated: "2025-12",
+      dateCreated: "2025-12-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -305,7 +358,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Microsoft Certified: Azure Fundamentals (AZ-900)",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Microsoft", url: "https://microsoft.com" },
-      dateCreated: "2024-07",
+      dateCreated: "2024-07-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -313,7 +366,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Neo4j Certified Professional",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Neo4j", url: "https://neo4j.com" },
-      dateCreated: "2025-08",
+      dateCreated: "2025-08-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -321,7 +374,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Neo4j Graph Data Science Certification",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Neo4j", url: "https://neo4j.com" },
-      dateCreated: "2025-08",
+      dateCreated: "2025-08-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -329,7 +382,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Google UX Design Specialisation",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2025-12",
+      dateCreated: "2025-12-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -337,7 +390,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Google Business Intelligence Specialisation",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2025-12",
+      dateCreated: "2025-12-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -345,7 +398,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Google Project Management Specialisation",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2025-12",
+      dateCreated: "2025-12-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -353,7 +406,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Google IT Automation with Python",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2022-05",
+      dateCreated: "2022-05-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -361,7 +414,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Google Data Analytics Specialisation",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2021-06",
+      dateCreated: "2021-06-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -369,7 +422,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Open-Source Intelligence (OSINT) Fundamentals",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "TCM Security" },
-      dateCreated: "2025-10",
+      dateCreated: "2025-10-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -377,7 +430,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Google Analytics Individual Qualification (GAIQ)",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2024-05",
+      dateCreated: "2024-05-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -385,7 +438,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Advanced SQL for Data Scientists",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "LinkedIn Learning" },
-      dateCreated: "2024-01",
+      dateCreated: "2024-01-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -393,7 +446,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Atlassian Agile Project Management Professional Certificate",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Atlassian", url: "https://atlassian.com" },
-      dateCreated: "2024-04",
+      dateCreated: "2024-04-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -401,7 +454,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Career Essentials in GitHub Professional Certificate",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "GitHub", url: "https://github.com" },
-      dateCreated: "2024-01",
+      dateCreated: "2024-01-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -409,7 +462,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Melbourne Plus: Innovation",
       credentialCategory: "microcredential",
       recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Melbourne", url: "https://www.unimelb.edu.au" },
-      dateCreated: "2024-05",
+      dateCreated: "2024-05-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
     {
@@ -417,7 +470,7 @@ const CREDENTIALS_SCHEMA = {
       name: "Melbourne Plus: People Leadership",
       credentialCategory: "microcredential",
       recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Melbourne", url: "https://www.unimelb.edu.au" },
-      dateCreated: "2024-10",
+      dateCreated: "2024-10-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
   ],
@@ -426,6 +479,7 @@ const CREDENTIALS_SCHEMA = {
 const BREADCRUMB_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
+  "@id": "https://rin.contact/#breadcrumb",
   itemListElement: [
     {
       "@type": "ListItem",
@@ -488,8 +542,26 @@ class MyDocument extends Document {
 
           {/* ── Authorship ── */}
           <meta name="author" content="Sunchuangyu (Rin) Huang" />
+          <meta name="rating" content="general" />
+
+          {/* ── Search engine verification ── */}
           <meta name="google-site-verification" content="uQJ5D6LcYS7OR9_3FJ9XiOezDuy2XJz9uNMoyxXTWoM" />
+          <meta name="msvalidate.01" content="1A11F7338CB1C8779DDBD51D691938EE" />
+          <meta name="baidu-site-verification" content="codeva-AxSgaBAlpG" />
           <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+          {/* ── Bing / IndexNow ── */}
+          {/* IndexNow lets Bing index page changes near-instantly — key verified via /d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9.txt */}
+          <meta name="indexnow-key" content="d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9" />
+          <link rel="indexnow-key" href="https://rin.contact/d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9.txt" />
+
+          {/* ── Baidu mobile indexing ── */}
+          {/* applicable-device tells Baidu Spider this page renders correctly on both desktop and mobile */}
+          <meta name="applicable-device" content="pc,mobile" />
+          {/* mobile-agent tells Baiduspider-Mobile where the mobile URL is (same page — responsive) */}
+          <meta name="mobile-agent" content="format=html5;url=https://rin.contact/" />
+          {/* Chinese keywords — Baidu still uses the keywords meta for ranking signals */}
+          <meta name="keywords" content="黄孙创宇, 黄孙 Rin, 黄孙创宇简历, 黄孙创宇数据分析师, Sunchuangyu Huang, Huang Sunchuangyu, HUANGSUNCHUANGYU, 南澳大利亚警察, 数据分析, 数据科学, 软件工程师, 澳大利亚" />
 
           {/* ── Favicons & PWA ── */}
           <link rel="icon" href="/favicon.ico" />
@@ -501,6 +573,7 @@ class MyDocument extends Document {
           {/* ── Canonical & hreflang ── */}
           <link rel="canonical" href="https://rin.contact/" />
           <link rel="alternate" hrefLang="en-AU" href="https://rin.contact/" />
+          <link rel="alternate" hrefLang="zh-Hans" href="https://rin.contact/" />
           <link rel="alternate" hrefLang="x-default" href="https://rin.contact/" />
 
           {/* ── rel="me" — cross-profile identity verification ── */}

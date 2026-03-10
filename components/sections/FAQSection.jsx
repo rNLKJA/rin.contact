@@ -91,6 +91,10 @@ const CATEGORIES = [
     description: "Background, culture, and life outside the screen",
     items: [
       {
+        q: "What is your Chinese name, and how do you spell it?",
+        a: "My Chinese legal name is 黄孙创宇 (Huang Sunchuangyu). 黄 (Huang) is my family name and 孙创宇 (Sunchuangyu) is my given name. In Australian formal documents you may also see it written as HUANG SUNCHUANGYU, HUANGSUNCHUANGYU, HUANG SUN CHUANG YU, or informally as 黄孙 Rin. All of these forms refer to the same person. In everyday English I go by Rin Huang, and you can find me at rin.contact.",
+      },
+      {
         q: "Where are you from originally, and how has that shaped your work?",
         a: "I grew up in Anshun (安顺), a small city in Guizhou Province, southwestern China — a place better known for its karst landscapes and the Huangguoshu Waterfall than for technology. Growing up far from major economic centres meant that opportunities were not handed to me; they had to be pursued deliberately. That mindset — identifying where effort compounds — carried me through a foundation year at Trinity College, two degrees at the University of Melbourne, and into a career spanning government intelligence, biomedical research, and software engineering. Being a bilingual Chinese-Australian professional has also given me a different lens on cross-cultural communication, which shows up in how I work with diverse stakeholders and translate complex data into decisions people actually act on.",
       },

@@ -165,6 +165,8 @@ export default function HeroSection() {
       id="hero"
       className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden"
       aria-label="Introduction"
+      itemScope
+      itemType="https://schema.org/Person"
     >
       {/* Decorative elements — hidden on mobile for faster LCP */}
       <div aria-hidden="true" className="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full"
@@ -188,9 +190,16 @@ export default function HeroSection() {
           <p className="text-xs tracking-widest uppercase text-[#B71C1C] mb-4">01 — Profile</p>
 
           {/* Name — pinned to Bitcount display font; no animation on mobile for LCP */}
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 md:animate-fade-up">
+          <h1
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 md:animate-fade-up"
+            itemProp="name"
+          >
             Rin Huang
-            <span className="sr-only" lang="zh-Hans"> — Sunchuangyu Huang 黄孙创宇</span>
+            <span className="sr-only">
+              {/* All canonical name forms — indexed by crawlers, read by screen readers */}
+              {" "}— Sunchuangyu Huang · Huang Sunchuangyu · 黄孙创宇 · 黄孙 Rin ·
+              HUANG SUNCHUANGYU · HUANGSUNCHUANGYU · HUANG SUN CHUANG YU
+            </span>
           </h1>
           {/* Wisr-style wavy underline accent */}
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
@@ -201,8 +210,11 @@ export default function HeroSection() {
           {/* Subtitle + socials — black on mobile for AA contrast; no animation on mobile for LCP */}
           <div className="flex flex-wrap items-center gap-3 mb-8 md:animate-fade-up md:delay-100">
             <div className="flex flex-col">
-              <span className="text-sm tracking-widest uppercase text-black md:text-[#5C5C5C]">
+              <span className="text-sm tracking-widest uppercase text-black md:text-[#5C5C5C]" itemProp="alternateName">
                 Sunchuangyu Huang
+              </span>
+              <span className="text-sm tracking-wide text-black md:text-[#7A7A7A]" lang="zh-Hans" itemProp="alternateName">
+                黄孙创宇
               </span>
               <span className="text-sm tracking-widest uppercase text-black md:text-[#5C5C5C]">
                 He/Him · Adelaide &amp; Melbourne

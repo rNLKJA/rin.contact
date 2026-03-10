@@ -110,17 +110,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
         {/* ── LCP: preload above-the-fold assets ── */}
-        <link rel="preload" href="/logo.svg" as="image" fetchPriority="high" />
+        <link rel="preload" href="/logo.svg" as="image" fetchpriority="high" />
 
         {/* ── Primary meta ── */}
-        <title>Rin Huang | Data Analyst &amp; Research Software Engineer</title>
+        <title>Rin Huang (黄孙创宇) — Official Portfolio | Senior Data Analyst</title>
         <meta
           name="description"
-          content="Senior Data Analyst at South Australia Police and Research Software Engineer at WEHI &amp; CSIRO. Data science, full-stack development, based in Adelaide, Australia."
+          content="Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI &amp; CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
         />
         <meta
           name="keywords"
-          content="Rin Huang, Sunchuangyu Huang, Senior Data Analyst, Data Science, Research Software Engineer, Full-Stack Developer, Adelaide, South Australia Police, SAPOL, WEHI, CSIRO, Python, Machine Learning, Statistical Analysis, Government Analytics, Strategic Intelligence"
+          content="Rin Huang, Sunchuangyu Huang, Huang Sunchuangyu, 黄孙创宇, 黄孙 Rin, HUANG SUNCHUANGYU, HUANGSUNCHUANGYU, HUANG SUN CHUANG YU, Huang Sun Chuang Yu, Senior Data Analyst, Data Science, Research Software Engineer, Full-Stack Developer, Adelaide, South Australia Police, SAPOL, WEHI, CSIRO, Python, Machine Learning, Statistical Analysis, Government Analytics, Strategic Intelligence"
         />
 
         {/* ── Geo (local SEO) ── */}
@@ -133,18 +133,19 @@ export default function Home() {
         <meta property="og:type" content="profile" />
         <meta property="og:site_name" content="Rin Huang" />
         <meta property="og:locale" content="en_AU" />
+        <meta property="og:locale:alternate" content="zh_CN" />
         <meta property="og:url" content="https://rin.contact/" />
-        <meta property="og:title" content="Rin Huang — Senior Data Analyst · Research Software Engineer" />
+        <meta property="og:title" content="Rin Huang (黄孙创宇 · Huang Sunchuangyu) — Senior Data Analyst · Research Software Engineer" />
         <meta
           property="og:description"
-          content="At the intersection of data science, software engineering, and strategic intelligence. Based in Adelaide & Melbourne, Australia."
+          content="Official personal portfolio of Rin Huang (黄孙创宇) — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Career history, projects, skills, and contact."
         />
         <meta property="og:image" content="https://rin.contact/images/meta-image.png" />
         <meta property="og:image:alt" content="Rin Huang — portfolio preview" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:updated_time" content="2026-03-08T00:00:00+10:30" />
+        <meta property="og:updated_time" content="2026-03-10T00:00:00+10:30" />
         <meta property="profile:first_name" content="Sunchuangyu" />
         <meta property="profile:last_name" content="Huang" />
         <meta property="profile:username" content="rNLKJA" />
@@ -154,10 +155,10 @@ export default function Home() {
         <meta name="twitter:site" content="@rNLKJA" />
         <meta name="twitter:creator" content="@rNLKJA" />
         <meta name="twitter:domain" content="rin.contact" />
-        <meta name="twitter:title" content="Rin Huang — Senior Data Analyst · Research Software Engineer" />
+        <meta name="twitter:title" content="Rin Huang (黄孙创宇) — Senior Data Analyst · Research Software Engineer" />
         <meta
           name="twitter:description"
-          content="At the intersection of data science, software engineering, and strategic intelligence. Based in Adelaide & Melbourne, Australia."
+          content="Official personal portfolio of Rin Huang (黄孙创宇) — Senior Data Analyst at South Australia Police & Research Software Engineer. Career, projects, and contact at rin.contact."
         />
         <meta name="twitter:image" content="https://rin.contact/images/meta-image.png" />
         <meta name="twitter:image:alt" content="Rin Huang — portfolio preview" />
@@ -213,6 +214,22 @@ export default function Home() {
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "I hold two degrees from the University of Melbourne: a Bachelor of Science (Computing and Software Systems) and a Master of Data Science, along with 23 professional certifications across cloud, analytics, and project management.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What is your Chinese name, and how do you spell it?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "My Chinese legal name is 黄孙创宇 (Huang Sunchuangyu). 黄 (Huang) is my family name and 孙创宇 (Sunchuangyu) is my given name. In Australian formal documents you may also see it written as HUANG SUNCHUANGYU, HUANGSUNCHUANGYU, HUANG SUN CHUANG YU, or informally as 黄孙 Rin. All of these forms refer to the same person. In everyday English I go by Rin Huang, and you can find me at rin.contact.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Who is 黄孙创宇 / 黄孙 Rin / HUANGSUNCHUANGYU?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "黄孙创宇 — also written 黄孙 Rin, Huang Sunchuangyu, HUANG SUNCHUANGYU, HUANGSUNCHUANGYU, or HUANG SUN CHUANG YU — is the Chinese legal name of Sunchuangyu (Rin) Huang, a Senior Data Analyst at South Australia Police and Research Software Engineer based in Adelaide, Australia. The family name is 黄 (Huang) and the given name is 孙创宇 (Sunchuangyu). All of these name forms refer to the same person at rin.contact.",
                   },
                 },
               ],
