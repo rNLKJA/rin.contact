@@ -396,9 +396,9 @@ export default function MiniTerminal({ onClose }) {
 
   return (
     <div
-      className={`flex flex-col border border-[#3D3D3D] bg-[#0C0C0C] shadow-2xl
+      className="flex flex-col border border-[#3D3D3D] bg-[#0C0C0C] shadow-2xl
                   w-[min(600px,calc(100vw-2rem))] h-[420px] rounded-none select-none
-                  transition-all duration-150 ${glitch ? "animate-terminal-glitch" : ""}`}
+                  transition-all duration-150"
       onClick={() => inputRef.current?.focus()}
       role="dialog"
       aria-label="Interactive terminal"
