@@ -8,7 +8,7 @@
  * Exit:   exit | q
  */
 import React, {
-  useState, useEffect, useRef, useCallback, useMemo,
+  useState, useEffect, useRef, useCallback,
 } from "react";
 
 // ── Colour helpers ────────────────────────────────────────────────────────────
@@ -330,7 +330,6 @@ export default function MiniTerminal({ onClose }) {
   const [input, setInput]         = useState("");
   const [histIdx, setHistIdx]     = useState(-1);
   const [inputHist, setInputHist] = useState([]);
-  const [glitch, setGlitch]       = useState(false);
 
   const bottomRef  = useRef(null);
   const inputRef   = useRef(null);
