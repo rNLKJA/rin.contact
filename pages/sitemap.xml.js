@@ -1,13 +1,14 @@
 /**
  * Dynamic sitemap for rin.contact
- * Version: 5.11.0 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
+ * Version: 5.13.0 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
  *
  * Sections documented:
- *   Profile · Career · Projects · Skills · FAQ · Contact
+ *   Profile · Career Map · Projects · Skills · Dataset Card · Intelligence · FAQ · Contact
+ *   Pages: /card · /hire-me · /coffee · /secret
  */
 
 const BASE_URL = "https://rin.contact";
-const VERSION  = "5.11.0";
+const VERSION  = "5.13.0";
 const AUTHOR   = "Sunchuangyu (Rin) Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU";
 
 // ─── Images to register with Google Image Search ─────────────────────────────
@@ -199,6 +200,18 @@ ${projectsComment}
     <xhtml:link rel="alternate" hreflang="en-AU"     href="${BASE_URL}/" />
     <xhtml:link rel="alternate" hreflang="zh-Hans"   href="${BASE_URL}/" />
     <xhtml:link rel="alternate" hreflang="x-default"  href="${BASE_URL}/" />${allImages}
+  </url>
+  <url>
+    <loc>${BASE_URL}/card</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/hire-me</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>`;
 }

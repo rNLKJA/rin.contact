@@ -147,6 +147,12 @@ const FAQSection = dynamic(() => import("@/components/sections/FAQSection"), {
 const ContactSection = dynamic(() => import("@/components/sections/ContactSection"), {
   loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" />,
 });
+const MetroMapSection = dynamic(() => import("@/components/sections/MetroMapSection"), {
+  loading: () => <div className="bg-white min-h-[360px]" aria-hidden="true" />,
+});
+const DatasetCard = dynamic(() => import("@/components/sections/DatasetCard"), {
+  loading: () => <div className="bg-[#F5F5F5] min-h-[320px]" aria-hidden="true" />,
+});
 
 export default function Home() {
   const [termOpen,  setTermOpen]  = useState(false);
@@ -380,6 +386,20 @@ export default function Home() {
             </div>
           </div>
 
+          {/* ══ CAREER MAP — white ══ */}
+          <div className="bg-white relative overflow-hidden content-visibility-auto">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
+              <MetroMapSection />
+            </div>
+            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
+              <ArtCross className="top-10 left-8 text-[#C8C8C8]" />
+              <ArtCross className="bottom-12 right-12 text-[#C8C8C8]" />
+              <ArtCircle className="animate-art-breathe border-[#EEEEEE]" style={{ width:"1100px", height:"1100px", top:"-380px", left:"-380px" }} />
+              <ArtCircle className="animate-art-breathe border-[#F0F0F0]" style={{ width: "560px", height: "560px",  top:"-100px", left:"-100px", animationDelay:"2s" }} />
+              <ArtBlob className="border-[#EEEEEE]" style={{ width:"380px", height:"360px", bottom:"40px", right:"-80px", animationDelay:"4s" }} />
+            </div>
+          </div>
+
           {/* ══ PROJECTS — white ══ */}
           <div className="bg-white relative overflow-hidden content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
@@ -416,6 +436,18 @@ export default function Home() {
             </div>
           </div>
 
+          {/* ══ DATASET CARD — white ══ */}
+          <div className="bg-white relative overflow-hidden content-visibility-auto">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
+              <DatasetCard />
+            </div>
+            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
+              <ArtCross className="top-10 right-10 text-[#E0E0E0]" />
+              <ArtCross className="bottom-12 left-8 text-[#E0E0E0]" />
+              <div className="dot-matrix absolute right-0 top-0 w-64 h-64 opacity-[0.03] md:opacity-[0.07]" />
+            </div>
+          </div>
+
           {/* ══ INTELLIGENCE — light surface ══ */}
           <div className="bg-[#F5F5F5] relative overflow-hidden content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
@@ -443,6 +475,38 @@ export default function Home() {
           <div className="bg-[#1A1A1A] relative overflow-hidden content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
               <ContactSection />
+            </div>
+            {/* ── Morse code easter egg — HELLO encoded as dots & dashes ─────── */}
+            {/* H=....  E=.  L=.-..  L=.-..  O=--- */}
+            {/* Hint: /secret */}
+            <div
+              className="flex items-center justify-center pb-5 gap-px"
+              aria-hidden="true"
+              title="Can you decode this?"
+              style={{ opacity: 0.12 }}
+            >
+              {/* H = . . . . */}
+              {[1,1,1,1].map((_, i) => <span key={`h${i}`} className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />)}
+              <span className="inline-block w-3" />
+              {/* E = . */}
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
+              <span className="inline-block w-3" />
+              {/* L = . - . . */}
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
+              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
+              <span className="inline-block w-3" />
+              {/* L = . - . . */}
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
+              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
+              <span className="inline-block w-3" />
+              {/* O = - - - */}
+              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
+              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
+              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
             </div>
             <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
               <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-white opacity-[0.02] md:opacity-[0.06]">CONNECT</GhostLabel>
