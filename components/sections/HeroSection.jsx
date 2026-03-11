@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { isSAPOLPeriod } from "@/lib/employment-period";
 
 // Inline SVGs — avoids react-icons bundle on critical hero path
@@ -143,11 +143,57 @@ function MagneticButton({ href, primary, children }) {
   );
 }
 
+// ─── Dot burst click effect ───────────────────────────────────────────────────
+function useDotBurst() {
+  const [bursts, setBursts] = useState([]);
+
+  const spawn = useCallback((e) => {
+    // Don't fire on interactive elements
+    if (e.target.closest("a,button,input")) return;
+    const id = Date.now() + Math.random();
+    const x  = e.clientX;
+    const y  = e.clientY;
+    setBursts((prev) => [...prev, { id, x, y }]);
+    setTimeout(() => setBursts((prev) => prev.filter((b) => b.id !== id)), 700);
+  }, []);
+
+  const Bursts = useMemo(() => () => (
+    <>
+      {bursts.map(({ id, x, y }) => (
+        <span
+          key={id}
+          aria-hidden="true"
+          className="pointer-events-none fixed z-50"
+          style={{ left: x, top: y, transform: "translate(-50%,-50%)" }}
+        >
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
+            <span
+              key={deg}
+              className="absolute block rounded-full bg-[#FF3C3C]"
+              style={{
+                width: i % 2 === 0 ? 3 : 2,
+                height: i % 2 === 0 ? 3 : 2,
+                animation: `dot-burst 0.65s ease-out forwards`,
+                animationDelay: `${i * 18}ms`,
+                "--deg": `${deg}deg`,
+                "--dist": `${18 + (i % 3) * 8}px`,
+              }}
+            />
+          ))}
+        </span>
+      ))}
+    </>
+  ), [bursts]);
+
+  return { spawn, Bursts };
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export default function HeroSection() {
   const role = useTypewriter(ROLES);
   const [statsStarted, setStatsStarted] = useState(false);
   const statsRef = useRef(null);
+  const { spawn, Bursts } = useDotBurst();
 
   useEffect(() => {
     const el = statsRef.current;
@@ -163,11 +209,13 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden"
+      className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden cursor-crosshair"
       aria-label="Introduction"
       itemScope
       itemType="https://schema.org/Person"
+      onClick={spawn}
     >
+      <Bursts />
       {/* Decorative elements — hidden on mobile for faster LCP */}
       <div aria-hidden="true" className="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full"
         style={{ background: "radial-gradient(circle, rgba(255,60,60,0.05) 0%, transparent 70%)", animation: "blob-drift 18s ease-in-out infinite alternate" }} />

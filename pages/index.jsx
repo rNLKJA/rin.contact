@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
@@ -82,6 +82,48 @@ function GhostLabel({ children, className = "" }) {
 
 // Hero is above the fold — load immediately
 import HeroSection from "@/components/sections/HeroSection";
+import MiniTerminal from "@/components/MiniTerminal";
+
+// ── Konami sequence ───────────────────────────────────────────────────────────
+const KONAMI = [
+  "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
+  "ArrowLeft","ArrowRight","ArrowLeft","ArrowRight",
+  "b","a",
+];
+
+// ── Glitch overlay ────────────────────────────────────────────────────────────
+function GlitchOverlay({ onDone }) {
+  useEffect(() => {
+    const t = setTimeout(onDone, 2200);
+    return () => clearTimeout(t);
+  }, [onDone]);
+  return (
+    <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
+      {/* Scanline sweep */}
+      <div
+        className="absolute left-0 w-full h-1 bg-[#FF3C3C] opacity-60"
+        style={{ animation: "glitch-scan 0.6s linear infinite", top: 0 }}
+        aria-hidden="true"
+      />
+      {/* Dark vignette */}
+      <div className="absolute inset-0 bg-black/40" />
+      {/* Centre message */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="border border-[#FF3C3C] bg-black/90 px-8 py-5 text-center animate-glitch-shake">
+          <p className="font-mono text-[#FF3C3C] text-xs tracking-widest uppercase mb-1">
+            ↑↑↓↓←→←→BA  ·  UNLOCKED
+          </p>
+          <p className="font-mono text-white text-sm font-bold tracking-wider">
+            You found the easter egg.
+          </p>
+          <p className="font-mono text-[#585858] text-xs mt-1">
+            Achievement: 30 extra years of curiosity.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const SectionProgress = dynamic(() => import("@/components/layout/SectionProgress"), { ssr: false });
 
@@ -104,8 +146,57 @@ const ContactSection = dynamic(() => import("@/components/sections/ContactSectio
 });
 
 export default function Home() {
+  const [termOpen,  setTermOpen]  = useState(false);
+  const [glitchOn,  setGlitchOn]  = useState(false);
+  const konamiRef = useRef([]);
+
+  // Backtick toggles terminal; Escape closes it
+  const handleKeyDown = useCallback((e) => {
+    // Konami code tracking
+    const next = [...konamiRef.current, e.key].slice(-KONAMI.length);
+    konamiRef.current = next;
+    if (next.join(",") === KONAMI.join(",")) {
+      konamiRef.current = [];
+      setGlitchOn(true);
+      return;
+    }
+    // Terminal toggle
+    if (e.key === "`" && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      e.preventDefault();
+      setTermOpen((o) => !o);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
+
   return (
     <>
+      {glitchOn && <GlitchOverlay onDone={() => setGlitchOn(false)} />}
+
+      {/* Floating terminal trigger — bottom-right */}
+      <button
+        onClick={() => setTermOpen((o) => !o)}
+        aria-label={termOpen ? "Close terminal" : "Open terminal (or press `)"}
+        title={termOpen ? "Close terminal" : "Open terminal  ·  press `"}
+        className="fixed bottom-6 right-6 z-40 w-11 h-11 border border-[#3D3D3D] bg-[#0C0C0C]
+                   flex items-center justify-center text-[#FF3C3C] font-mono text-sm
+                   hover:border-[#FF3C3C] hover:bg-[#111111] transition-colors duration-200
+                   focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
+        style={{ borderRadius: 0 }}
+      >
+        {termOpen ? "✕" : ">_"}
+      </button>
+
+      {/* Terminal panel */}
+      {termOpen && (
+        <div className="fixed bottom-20 right-6 z-40 shadow-2xl animate-fade-up">
+          <MiniTerminal onClose={() => setTermOpen(false)} />
+        </div>
+      )}
+
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 

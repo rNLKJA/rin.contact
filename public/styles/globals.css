@@ -223,6 +223,27 @@ h1 {
 .animate-art-breathe { animation: art-breathe  8s ease-in-out infinite; will-change: transform; }
 .animate-art-morph   { animation: art-morph   14s ease-in-out infinite; will-change: border-radius, transform; }
 
+/* ─── Dot-burst click particles ─────────────────────────────────────────── */
+@keyframes dot-burst {
+  0%   { transform: rotate(var(--deg)) translateX(0)            scale(1.2); opacity: 1; }
+  60%  { opacity: 0.7; }
+  100% { transform: rotate(var(--deg)) translateX(var(--dist))  scale(0);   opacity: 0; }
+}
+
+/* ─── Konami / terminal glitch overlay ──────────────────────────────────── */
+@keyframes glitch-scan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes glitch-shake {
+  0%,100% { transform: translate(0); }
+  20%     { transform: translate(-3px, 1px); }
+  40%     { transform: translate(3px, -1px); }
+  60%     { transform: translate(-2px, 2px); }
+  80%     { transform: translate(2px, -2px); }
+}
+.animate-glitch-shake { animation: glitch-shake 0.4s ease-in-out; }
+
 /* ─── Below-fold section optimisation ──────────────────────────────────── */
 /* Skips layout/paint until near viewport — reduces main-thread Style & Layout work */
 .content-visibility-auto {
