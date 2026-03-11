@@ -138,6 +138,9 @@ const ProjectsSection = dynamic(() => import("@/components/sections/ProjectsSect
 const SkillsSection = dynamic(() => import("@/components/sections/SkillsSection"), {
   loading: () => <div className="bg-[#F5F5F5] min-h-[480px]" aria-hidden="true" />,
 });
+const IntelligenceSection = dynamic(() => import("@/components/sections/IntelligenceSection"), {
+  loading: () => <div className="bg-[#F5F5F5] min-h-[480px]" aria-hidden="true" />,
+});
 const FAQSection = dynamic(() => import("@/components/sections/FAQSection"), {
   loading: () => <div className="bg-white min-h-[320px]" aria-hidden="true" />,
 });
@@ -410,6 +413,13 @@ export default function Home() {
               <ArtBlob     className="border-[#D4D4D4]"                         style={{ width:"460px",  height:"420px",  top:"20%",   left:"-120px", animationDelay:"4s" }} />
               <ArtSquircle className="animate-art-spin border-[#D0D0D0]"        style={{ width:"280px",  height:"280px",  bottom:"40px", left:"40px",   animationDelay:"2.5s" }} />
               <WaveArc className="top-[42%] h-20" stroke="#DCDCDC" />
+            </div>
+          </div>
+
+          {/* ══ INTELLIGENCE — light surface ══ */}
+          <div className="bg-[#F5F5F5] relative overflow-hidden content-visibility-auto">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
+              <IntelligenceSection />
             </div>
           </div>
 
