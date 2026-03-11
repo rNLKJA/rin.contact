@@ -4,12 +4,12 @@ import Image from "next/legacy/image";
 
 
 const NAV_LINKS = [
-  { href: "#timeline",   label: "Career",     tab: "career"    },
-  { href: "#timeline",   label: "Education",  tab: "education" },
-  { href: "#career-map", label: "Map"                          },
-  { href: "#projects",   label: "Projects"                     },
-  { href: "#skills",     label: "Expertises"                   },
-  { href: "#contact",    label: "Contact"                      },
+  { href: "/#timeline",   label: "Career",     tab: "career"    },
+  { href: "/#timeline",   label: "Education",  tab: "education" },
+  { href: "/#career-map", label: "Map"                          },
+  { href: "/#projects",   label: "Projects"                     },
+  { href: "/#skills",     label: "Expertises"                   },
+  { href: "/#contact",    label: "Contact"                      },
 ];
 
 // Standalone page links — rendered as distinct CTA buttons, not inline nav items

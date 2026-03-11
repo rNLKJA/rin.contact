@@ -9,13 +9,13 @@ const NAV_COLS = [
   {
     heading: "Navigate",
     links: [
-      { href: "#timeline",   label: "Career"     },
-      { href: "#timeline",   label: "Education"  },
-      { href: "#career-map", label: "Career Map" },
-      { href: "#projects",   label: "Projects"   },
-      { href: "#skills",     label: "Expertises" },
-      { href: "#faq",        label: "FAQ"        },
-      { href: "#contact",    label: "Contact"    },
+      { href: "/#timeline",   label: "Career"     },
+      { href: "/#timeline",   label: "Education"  },
+      { href: "/#career-map", label: "Career Map" },
+      { href: "/#projects",   label: "Projects"   },
+      { href: "/#skills",     label: "Expertises" },
+      { href: "/#faq",        label: "FAQ"        },
+      { href: "/#contact",    label: "Contact"    },
     ],
   },
   {
