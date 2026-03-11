@@ -161,27 +161,6 @@ const RIN_INDEXED = [
   { year: 2026, idx: 5.37, event: "SAPOL ASO7 · Strategic Leadership operating at its peak" },
 ];
 
-// Projected forward (compound rate sustained ~13–15%/yr post-2026)
-const RIN_PROJECTED = [
-  { year: 2026, idx: 5.37 },
-  { year: 2027, idx: 6.10 },
-  { year: 2028, idx: 6.90 },
-];
-
-// Benchmark: linear learner — +0.27 index units per year (IAPA 2023 median progression)
-// Single-sector, no cross-domain compounding
-const BENCH_INDEXED = [
-  { year: 2020, idx: 1.00 },
-  { year: 2021, idx: 1.27 },
-  { year: 2022, idx: 1.55 },
-  { year: 2023, idx: 1.82 },
-  { year: 2024, idx: 2.09 },
-  { year: 2025, idx: 2.36 },
-  { year: 2026, idx: 2.64 },
-  { year: 2027, idx: 2.90 },
-  { year: 2028, idx: 3.20 },
-];
-
 // Pre-computed SVG coords — viewBox "0 0 500 270", plot x∈[60,460] y∈[15,240]
 // toX = 60 + (year-2020)*50 | toY = 240 - (idx/7)*225
 // Smooth cubic bezier control points: C (x+25,yA) (xB-25,yB) xB,yB
