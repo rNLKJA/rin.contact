@@ -169,19 +169,9 @@ export default function Header() {
         aria-label="Mobile navigation"
         {...(!menuOpen ? { inert: "" } : {})}
       >
-        {/* Top bar */}
-        <div className="flex justify-between items-center px-6 py-4 border-b border-[#E0E0E0]">
+        {/* Top bar — close button lives in the sticky header (burger → ✕), so only the brand label is needed here */}
+        <div className="flex items-center px-6 py-4 border-b border-[#E0E0E0]">
           <span className="font-semibold text-sm tracking-tight">rNLKJA</span>
-          <button
-            onClick={() => setMenuOpen(false)}
-            aria-label="Close menu"
-            className="p-1.5 rounded-full text-[#595959] hover:bg-[#F5F5F5] hover:text-black transition-all duration-200"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <line x1="1" y1="1" x2="15" y2="15" />
-              <line x1="15" y1="1" x2="1" y2="15" />
-            </svg>
-          </button>
         </div>
 
         {/* Nav links — editorial numbered style */}
