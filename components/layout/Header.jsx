@@ -4,11 +4,18 @@ import Image from "next/legacy/image";
 
 
 const NAV_LINKS = [
-  { href: "#timeline", label: "Career",     tab: "career"    },
-  { href: "#timeline", label: "Education",  tab: "education" },
-  { href: "#projects", label: "Projects"                     },
-  { href: "#skills",   label: "Expertises"                   },
-  { href: "#contact",  label: "Contact"                      },
+  { href: "#timeline",   label: "Career",     tab: "career"    },
+  { href: "#timeline",   label: "Education",  tab: "education" },
+  { href: "#career-map", label: "Map"                          },
+  { href: "#projects",   label: "Projects"                     },
+  { href: "#skills",     label: "Expertises"                   },
+  { href: "#contact",    label: "Contact"                      },
+];
+
+// Standalone page links — rendered as distinct CTA buttons, not inline nav items
+const PAGE_LINKS = [
+  { href: "/card",     label: "Card",    title: "Download business card (.vcf)" },
+  { href: "/hire-me",  label: "Hire Me", title: "Hiring info and contact pitch", cta: true },
 ];
 
 function dispatchTimelineTab(tab) {
@@ -117,6 +124,25 @@ export default function Header() {
               {label}
             </a>
           ))}
+
+          {/* Thin separator */}
+          <span className="h-3.5 w-px bg-[#E0E0E0] mx-1.5" aria-hidden="true" />
+
+          {/* Page links — card + hire-me */}
+          {PAGE_LINKS.map(({ href, label, title, cta }) => (
+            <Link
+              key={label}
+              href={href}
+              title={title}
+              className={
+                cta
+                  ? "px-3.5 py-1.5 border border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white transition-all duration-200"
+                  : "px-3 py-1.5 rounded-full text-[#595959] hover:text-black hover:bg-[#F5F5F5] transition-all duration-200"
+              }
+            >
+              {label}
+            </Link>
+          ))}
         </nav>
 
         {/* ── Mobile burger ── */}
@@ -159,7 +185,7 @@ export default function Header() {
         </div>
 
         {/* Nav links — editorial numbered style */}
-        <nav className="flex-1 flex flex-col justify-center px-8 gap-0">
+        <nav className="flex-1 flex flex-col justify-center px-8 gap-0" aria-label="Mobile navigation">
           {NAV_LINKS.map(({ href, label, tab }, i) => (
             <a
               key={label}
@@ -168,14 +194,31 @@ export default function Header() {
               className="flex items-baseline gap-4 py-5 border-b border-[#F0F0F0] group
                          text-black hover:text-[#FF3C3C] transition-colors duration-200"
             >
-              {/* Wisr editorial index number */}
               <span className="text-[10px] tracking-widest tabular-nums text-[#C8C8C8] flex-shrink-0 w-5 group-hover:text-[#FF3C3C] transition-colors duration-200">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span className="text-2xl font-semibold tracking-tight">{label}</span>
-              {/* Wisr-style arrow */}
               <span className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm">↗</span>
             </a>
+          ))}
+
+          {/* Page links — separated by a subtle label */}
+          <p className="text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">Pages</p>
+          {PAGE_LINKS.map(({ href, label, cta }) => (
+            <Link
+              key={label}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className={`flex items-center gap-4 py-4 border-b border-[#F0F0F0] group transition-colors duration-200 ${
+                cta
+                  ? "text-[#FF3C3C] hover:text-[#CC2020]"
+                  : "text-[#595959] hover:text-black"
+              }`}
+            >
+              <span className="text-[10px] tracking-widest text-[#E0E0E0] flex-shrink-0 w-5">→</span>
+              <span className="text-xl font-semibold tracking-tight">{label}</span>
+              <span className="ml-auto text-[#E0E0E0] group-hover:text-current transition-colors duration-200 text-sm">↗</span>
+            </Link>
           ))}
         </nav>
 

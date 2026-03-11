@@ -9,17 +9,20 @@ const NAV_COLS = [
   {
     heading: "Navigate",
     links: [
-      { href: "#timeline", label: "Career"     },
-      { href: "#timeline", label: "Education"  },
-      { href: "#projects", label: "Projects"   },
-      { href: "#skills",   label: "Expertises" },
-      { href: "#faq",      label: "FAQ"        },
-      { href: "#contact",  label: "Contact"    },
+      { href: "#timeline",   label: "Career"     },
+      { href: "#timeline",   label: "Education"  },
+      { href: "#career-map", label: "Career Map" },
+      { href: "#projects",   label: "Projects"   },
+      { href: "#skills",     label: "Expertises" },
+      { href: "#faq",        label: "FAQ"        },
+      { href: "#contact",    label: "Contact"    },
     ],
   },
   {
-    heading: "Connect",
+    heading: "Pages",
     links: [
+      { href: "/hire-me", label: "Hire Me",       cta: true                },
+      { href: "/card",    label: "Business Card"                            },
       { href: "https://www.linkedin.com/in/sunchuangyuhuang/", label: "LinkedIn",  external: true },
       { href: "https://github.com/rNLKJA",                     label: "GitHub",    external: true },
       { href: "https://www.instagram.com/chuangyu_hscy/",      label: "Instagram", external: true },
@@ -100,22 +103,46 @@ const Footer = () => {
             <div key={heading}>
               <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">{heading}</p>
               <ul className="space-y-2.5">
-                {links.map(({ href, label, external }) => (
+                {links.map(({ href, label, external, cta }) => (
                   <li key={label}>
-                    {external
-                      ? <a href={href} target="_blank" rel="noreferrer"
-                           className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200 flex items-center gap-1.5 group">
-                          {label}
-                          <span className="text-[#555555] group-hover:text-white transition-colors duration-200 text-[10px]">↗</span>
-                        </a>
-                      : <a href={href}
-                           className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200">
-                          {label}
-                        </a>
-                    }
+                    {external ? (
+                      <a
+                        href={href} target="_blank" rel="noreferrer"
+                        className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200 flex items-center gap-1.5 group"
+                      >
+                        {label}
+                        <span className="text-[#555555] group-hover:text-white transition-colors duration-200 text-[10px]">↗</span>
+                      </a>
+                    ) : href.startsWith("/") ? (
+                      <Link
+                        href={href}
+                        className={`text-xs transition-colors duration-200 ${
+                          cta
+                            ? "text-[#FF3C3C] hover:text-white font-medium"
+                            : "text-[#AAAAAA] hover:text-white"
+                        }`}
+                      >
+                        {label}{cta && " →"}
+                      </Link>
+                    ) : (
+                      <a
+                        href={href}
+                        className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200"
+                      >
+                        {label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
+
+              {/* Subtle easter egg hint on the "Pages" column */}
+              {heading === "Pages" && (
+                <p className="text-[9px] text-[#333333] mt-5 leading-relaxed font-mono">
+                  · · ·{" "}
+                  <span title="Try /secret">there&apos;s more if you look</span>
+                </p>
+              )}
             </div>
           ))}
         </div>
