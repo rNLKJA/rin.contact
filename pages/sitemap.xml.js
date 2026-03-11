@@ -1,13 +1,13 @@
 /**
  * Dynamic sitemap for rin.contact
- * Version: 5.8.0 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
+ * Version: 5.10.0 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
  *
  * Sections documented:
  *   Profile · Career · Projects · Skills · FAQ · Contact
  */
 
 const BASE_URL = "https://rin.contact";
-const VERSION  = "5.8.0";
+const VERSION  = "5.10.0";
 const AUTHOR   = "Sunchuangyu (Rin) Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU";
 
 // ─── Images to register with Google Image Search ─────────────────────────────

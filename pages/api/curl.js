@@ -1,101 +1,181 @@
 /**
  * GET /api/curl  (internal — invoked via middleware rewrite for CLI clients)
  *
- * Serves a minimalist ANSI-coloured profile page when someone runs:
+ * Serves a creative ANSI terminal profile when someone runs:
  *   curl rin.contact
  *
- * Colour palette mirrors the site's Nothing OS / Wisr design system:
- *   White  #FFFFFF  — primary labels, role titles
- *   Red    #FF3C3C  — Nothing accent, section markers
- *   Mid    #6E6E6E  — secondary text, org names, bio
- *   Subtle #505050  — tertiary, periods, locations
- *   Border #3C3C3C  — dot-matrix / dashed structural lines
+ * Creative elements:
+ *   · Vertical timeline with ─●─ / ─○─ connectors and │ linking lines
+ *   · ████░░░ skill bars rated by professional depth
+ *   · Proportional █ bar chart for stats
+ *   · [[ system header ]] with live status
+ *   · Block-quote style bio
  */
 
-// ── ANSI tokens ───────────────────────────────────────────────────────────────
-const X   = "\x1b[0m";                    // reset
-const W   = "\x1b[97m";                   // bright white
-const RED = "\x1b[38;2;255;60;60m";       // #FF3C3C
-const M   = "\x1b[38;2;110;110;110m";     // mid grey
-const S   = "\x1b[38;2;80;80;80m";        // subtle grey
-const D   = "\x1b[38;2;60;60;60m";        // border grey
+// ── ANSI palette ──────────────────────────────────────────────────────────────
+const X   = "\x1b[0m";
+const W   = "\x1b[97m";
+const RED = "\x1b[38;2;255;60;60m";
+const G   = "\x1b[38;2;175;175;175m";
+const M   = "\x1b[38;2;120;120;120m";
+const S   = "\x1b[38;2;88;88;88m";
+const D   = "\x1b[38;2;65;65;65m";
+const DIM = "\x1b[38;2;38;38;38m";
 
-// ── Structural lines ──────────────────────────────────────────────────────────
-const DOTS = D + "· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·" + X;
-const DASH = D + "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" + X;
+// ── Structural ────────────────────────────────────────────────────────────────
+const DOTS = D + "· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·" + X;
+const RULE = D + "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" + X;
+const H    = (t) => `  ${RED}▸${X}  ${W}${t}${X}`;
 
-const h = (label) => `  ${RED}//${X} ${W}${label}${X}`;
-const dot = `  ${RED}·${X}  `;
+// ── Timeline entry ────────────────────────────────────────────────────────────
+//  Visual format:
+//    2026  ─●─  Role Title                    Org Name
+//          │    Team · Sub-team
+//          │    Location  ·  Period
+//          │                                  ← omitted for last entry
+//
+function tEntry(year, active, title, org, team, period, loc, isLast = false) {
+  const PIPE  = `${D}│${X}`;
+  const HDASH = `${D}─${X}`;
+  const dot   = active ? `${RED}●${X}` : `${S}○${X}`;
+  // year column is always 6 visible chars ("  2026" or "      ")
+  const ycol  = year
+    ? (active ? `  ${RED}${year}${X}` : `  ${S}${year}${X}`)
+    : "      ";
+  const cont = `        ${PIPE}    `;   // 8 spaces + │ + 4 spaces
+
+  const rows = [
+    `${ycol}  ${HDASH}${dot}${HDASH}  ${W}${title}${X}    ${G}${org}${X}`,
+    `${cont}${M}${team}${X}`,
+    `${cont}${S}${loc}  ·  ${period}${X}`,
+  ];
+  if (!isLast) rows.push(`        ${PIPE}`);
+  return rows.join("\n");
+}
+
+// ── Skill bar — ████████░░ rated depth ───────────────────────────────────────
+function skillBar(label, filled, level) {
+  const BAR_W = 22;
+  const lbl   = label.padEnd(15);
+  const bar   = `${RED}${"█".repeat(filled)}${DIM}${"░".repeat(BAR_W - filled)}${X}`;
+  return `  ${M}${lbl}${X}  ${bar}  ${S}${level}${X}`;
+}
+
+// ── Stat bar — proportional █ chart ──────────────────────────────────────────
+function statBar(n, label, desc) {
+  const MAX = 23;
+  const w   = Math.max(1, Math.round((n / MAX) * 20));
+  const num = String(n).padStart(2);
+  const lbl = label.padEnd(14);
+  return `  ${RED}${num}${X}  ${RED}${"█".repeat(w)}${X}  ${G}${lbl}${X}  ${M}${desc}${X}`;
+}
 
 // ── Content ───────────────────────────────────────────────────────────────────
 const lines = [
   "",
+
+  // System header bar
+  `  ${D}[[${X} ${M}rin.contact${X} ${D}]]${X}    ${D}[[${X} ${RED}●${X} ${W}ONLINE${X} ${D}]]${X}    ${D}[[${X} ${M}Adelaide, AU${X} ${D}]]${X}    ${D}[[${X} ${M}v5.9.0${X} ${D}]]${X}`,
+  "",
   DOTS,
   "",
+
+  // Identity
   `  ${W}Rin Huang${X}  ${RED}·${X}  ${M}黄孙创宇  ·  Sunchuangyu Huang${X}`,
-  `  ${M}Adelaide & Melbourne, Australia  ·  he/him${X}`,
+  `  ${M}Senior Data Analyst  ·  Adelaide & Melbourne, Australia  ·  he/him${X}`,
   "",
-  `  ${M}From climate risk models at CSIRO to ministerial dashboards for the${X}`,
-  `  ${M}SA Government, from genomics pipelines at WEHI to a mental health${X}`,
-  `  ${M}app at UniMelb — I work where data, strategy, and engineering meet.${X}`,
+  `  ${D}"${X}${M}I work where data, strategy, and engineering meet.${X}`,
+  `   ${M}Generalist by nature, specialist by discipline.${X}${D}"${X}`,
   "",
-  `  ${S}Generalist by nature, specialist by discipline.${X}`,
+  DOTS,
   "",
-  DASH,
+
+  // Career
+  H("CAREER TIMELINE"),
   "",
-  h("CAREER"),
+  tEntry("2026", true,
+    "Senior Data Analyst",
+    "South Australia Police",
+    "ASO7  ·  Professional & Ethical Standards",
+    "2026 → present", "Adelaide, SA"),
+
+  tEntry("2025", false,
+    "Intelligence & Coordination Officer",
+    "Attorney-General's Dept SA",
+    "ASO4  ·  Prevention  ·  Compliance & Enforcement",
+    "2025 – 2026", "Adelaide, SA"),
+
+  tEntry("2024", false,
+    "Research Assistant — MoodQ",
+    "University of Melbourne",
+    "RA.1  ·  Psychiatry Department",
+    "2024 – 2026", "Parkville, VIC"),
+
+  tEntry(null, false,
+    "Software Engineer Intern",
+    "WEHI",
+    "Bioinformatics",
+    "2024", "Parkville, VIC"),
+
+  tEntry("2023", false,
+    "Data Science Consultant",
+    "CSIRO",
+    "Climate & Earth Systems",
+    "2023", "Melbourne, VIC"),
+
+  tEntry("2022", false,
+    "Data Analyst  ·  Agile Leader",
+    "CSL Behring",
+    "Research & Development",
+    "2022", "Melbourne, VIC", true),
+
   "",
-  `  ${W}ASO7  Senior Data Analyst${X}               ${M}South Australia Police${X}`,
-  `  ${S}      Professional & Ethical Standards    2026 → present  Adelaide${X}`,
+  RULE,
   "",
-  `  ${W}ASO4  Intelligence & Coordination Officer${X}  ${M}Attorney-General's Dept SA${X}`,
-  `  ${S}      Prevention · Compliance & Enforcement  2025 → 2026  Adelaide${X}`,
+
+  // Skills
+  H("SKILLS"),
+  `  ${S}rated by professional depth${X}`,
   "",
-  `  ${W}RA.1  Research Assistant — MoodQ${X}         ${M}University of Melbourne${X}`,
-  `  ${S}      Psychiatry Department                 2024 → 2026  Parkville VIC${X}`,
+  skillBar("Python",        20, "expert"),
+  skillBar("SQL",           20, "expert"),
+  skillBar("Next.js",       20, "expert"),
+  skillBar("R",             17, "advanced"),
+  skillBar("Power BI",      17, "advanced"),
+  skillBar("React Native",  17, "advanced"),
+  skillBar("GIS / ArcGIS",  15, "proficient"),
+  skillBar("AWS",           14, "proficient"),
   "",
-  `  ${W}      Software Engineer Intern${X}            ${M}WEHI${X}`,
-  `  ${S}      Bioinformatics                        2024  Parkville VIC${X}`,
+  RULE,
   "",
-  `  ${W}      Data Science Consultant${X}             ${M}CSIRO${X}`,
-  `  ${S}      Climate & Earth Systems               2023  Melbourne VIC${X}`,
+
+  // Stats
+  H("BY THE NUMBERS"),
   "",
-  `  ${W}      Data Analyst · Agile Leader${X}         ${M}CSL Behring${X}`,
-  `  ${S}      Research & Development                2022  Melbourne VIC${X}`,
+  statBar( 6, "roles",          "across gov, research & startup"),
+  statBar(17, "projects",       "shipped to production"),
+  statBar( 2, "degrees",        "University of Melbourne"),
+  statBar(23, "certifications", "cloud · analytics · agile · language"),
   "",
-  DASH,
+  RULE,
   "",
-  h("EDUCATION"),
+
+  // Education
+  H("EDUCATION"),
   "",
-  `  ${W}Master of Data Science${X}                  ${M}University of Melbourne${X}  ${S}2023–24${X}`,
-  `  ${W}Bachelor of Science  (Computing)${X}        ${M}University of Melbourne${X}  ${S}2019–22${X}`,
+  `  ${W}Master of Data Science${X}              ${G}University of Melbourne${X}  ${S}2023 – 24${X}`,
+  `  ${W}Bachelor of Science (Data Science)${X}  ${G}University of Melbourne${X}  ${S}2019 – 22${X}`,
   "",
-  DASH,
+  RULE,
   "",
-  h("SKILLS"),
+
+  // Connect
+  H("CONNECT"),
   "",
-  `  ${M}Analysis    ${X}  Python ${RED}·${X} R ${RED}·${X} SQL ${RED}·${X} Power BI ${RED}·${X} GIS ${RED}·${X} Statistical Modelling`,
-  `  ${M}Build       ${X}  Next.js ${RED}·${X} React Native ${RED}·${X} Node.js ${RED}·${X} AWS ${RED}·${X} Expo`,
-  `  ${M}Intelligence${X}  Risk Frameworks ${RED}·${X} Strategic Advisory ${RED}·${X} Gov Analytics`,
-  `  ${M}Research    ${X}  Bioinformatics ${RED}·${X} Cloud HPC ${RED}·${X} Open Source`,
-  "",
-  DASH,
-  "",
-  h("BY THE NUMBERS"),
-  "",
-  `  ${W} 6${X}  ${M}roles         ${X}  across gov, research & startup`,
-  `  ${W}17${X}  ${M}projects      ${X}  shipped to production`,
-  `  ${W} 2${X}  ${M}degrees       ${X}  University of Melbourne`,
-  `  ${W}23${X}  ${M}certifications${X}  cloud · analytics · agile · language`,
-  "",
-  DASH,
-  "",
-  h("CONNECT"),
-  "",
-  `  ${M}web   ${X}  https://rin.contact`,
-  `  ${M}github${X}  https://github.com/rNLKJA`,
-  `  ${M}linked${X}  https://linkedin.com/in/sunchuangyuhuang`,
-  `  ${M}email ${X}  huang@rin.contact`,
+  `  ${G}web   ${X}  ${W}https://rin.contact${X}`,
+  `  ${G}github${X}  https://github.com/rNLKJA`,
+  `  ${G}linked${X}  https://linkedin.com/in/sunchuangyuhuang`,
+  `  ${G}email ${X}  huang@rin.contact`,
   "",
   DOTS,
   `  ${S}$ curl rin.contact${X}`,
@@ -104,10 +184,7 @@ const lines = [
 
 // ── Handler ───────────────────────────────────────────────────────────────────
 export default function handler(req, res) {
-  if (req.method !== "GET") {
-    return res.status(405).end("Method Not Allowed");
-  }
-
+  if (req.method !== "GET") return res.status(405).end("Method Not Allowed");
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
   res.setHeader("Cache-Control", "public, max-age=3600, stale-while-revalidate=86400");
   res.status(200).send(lines.join("\n"));
