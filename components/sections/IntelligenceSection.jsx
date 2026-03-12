@@ -57,40 +57,40 @@ const RIN_BUBBLES = [
     why: "Automated genomics pipelines on SPARTAN HPC. Open-source contributor to celseq2 scRNA-seq toolkit.",
   },
   {
-    id: "moodq", label: "MoodQ", year: "2024–26",
-    exp: 2.5, sen: 6.5, breadth: 6,
+    id: "moodq", label: "RA1/MoodQ", year: "2024–26",
+    exp: 2.5, sen: 3.5, breadth: 6,
     r: 32, noisy: { x: 90, y: 250 },
     color: "#CCCCCC", domain: "Research",
     period: "Aug 2024–Feb 2026",
-    detail: "Research Assistant · UniMelb Psychiatry · Full-stack mobile app · GDPR-compliant AWS",
-    why: "Full product ownership: Uniapp → Expo RN migration, clinician dashboard, ~$500/mo AWS cost reduction.",
+    detail: "RA1 Research Assistant (casual) · UniMelb Psychiatry · Full-stack mobile app · GDPR-compliant AWS",
+    why: "Casual role — not official career start. Full product ownership: Uniapp → Expo RN migration, clinician dashboard, ~$500/mo AWS cost reduction. Breadth high; seniority reflects casual/entry framing.",
   },
   {
     id: "cbs", label: "CBS/AGD", year: "2025",
-    exp: 3.0, sen: 7.5, breadth: 6,
+    exp: 3.0, sen: 4.5, breadth: 6,
     r: 32, noisy: { x: 430, y: 230 },
     color: "#FF3C3C", domain: "Government",
     period: "Jan 2025–Mar 2026",
     detail: "ASO4 Intelligence Officer · Power BI & GIS · Ministerial reporting · Cross-agency MOUs",
-    why: "Built CBS's analytics capability from zero. Dashboards fed directly to the Minister's Office.",
+    why: "First formal government role. Mid-junior level — built CBS's analytics capability from zero. Dashboards fed directly to the Minister's Office.",
   },
   {
     id: "mapiva", label: "Mapiva", year: "2025–",
-    exp: 3.5, sen: 7.0, breadth: 5,
+    exp: 3.5, sen: 5.0, breadth: 5,
     r: 28, noisy: { x: 100, y: 210 },
     color: "#888888", domain: "Startup",
     period: "Aug 2025–present",
     detail: "Co-founder & Dev Lead · Expo React Native · Architecture · CI/CD · MVP Jan 2027",
-    why: "Full product ownership. Sole developer. Built from architecture through implementation.",
+    why: "Full product ownership. Sole developer. Built from architecture through implementation. Mid-level breadth.",
   },
   {
     id: "sapol", label: "SAPOL", year: "2026",
-    exp: 4.0, sen: 9.0, breadth: 7,
+    exp: 4.0, sen: 8.0, breadth: 7,
     r: 36, noisy: { x: 200, y: 260 },
     color: "#FF3C3C", domain: "Government",
     period: "Mar 2026–present",
     detail: "ASO7 Senior Data Analyst · PESB · First-principles analytics · Parliamentary reporting",
-    why: "ASO7 is the top of the analyst classification band. APS Data Stream graduates typically enter at APS5 — ASO7 commonly reached after 8–12 years. Rin reached it at 26.",
+    why: "ASO7 = mid-management level. Top of the analyst classification band. APS Data Stream graduates typically enter at APS5 — ASO7 commonly reached after 8–12 years. Rin reached it at 26.",
   },
 ];
 
@@ -502,17 +502,17 @@ function BubblePanel() {
           {step >= 2 && (
             <g style={{ animation: "fadeUp 0.4s ease 0.8s both" }}>
               {/* Bracket line */}
-              <line x1={430} y1={toY(9.0)} x2={430} y2={toY(6.0)}
+              <line x1={430} y1={toY(8.0)} x2={430} y2={toY(6.0)}
                 stroke="#FF3C3C" strokeWidth={1} strokeOpacity={0.6} />
-              <line x1={427} y1={toY(9.0)} x2={433} y2={toY(9.0)}
+              <line x1={427} y1={toY(8.0)} x2={433} y2={toY(8.0)}
                 stroke="#FF3C3C" strokeWidth={1} strokeOpacity={0.6} />
               <line x1={427} y1={toY(6.0)} x2={433} y2={toY(6.0)}
                 stroke="#FF3C3C" strokeWidth={1} strokeOpacity={0.6} />
-              <text x={449} y={(toY(9.0) + toY(6.0)) / 2 + 3}
+              <text x={449} y={(toY(8.0) + toY(6.0)) / 2 + 3}
                 textAnchor="middle" fontSize={9} fill="#FF3C3C" fontFamily="monospace">
-                +3
+                +2
               </text>
-              <text x={449} y={(toY(9.0) + toY(6.0)) / 2 + 14}
+              <text x={449} y={(toY(8.0) + toY(6.0)) / 2 + 14}
                 textAnchor="middle" fontSize={7} fill="#686868" fontFamily="monospace">
                 grades
               </text>
@@ -567,10 +567,12 @@ function BubblePanel() {
             <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">Pattern Detected</p>
             <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">
               By Year 4, Rin&apos;s trajectory sits{" "}
-              <span className="text-white font-normal">3 seniority grades above</span> the typical analyst benchmark —
-              reaching ASO7 (Senior/Principal band) while the industry average for the same tenure points to
-              mid-level consolidation. The APS Data Stream graduate pathway typically enters at APS5,
-              with 3–5 years to APS6 and 8–12 years to reach ASO7 equivalent
+              <span className="text-white font-normal">2 seniority grades above</span> the typical analyst benchmark —
+              reaching ASO7 (mid-management level) while the industry average for the same tenure points to
+              mid-level consolidation. Career framing: RA1 at UniMelb was casual (not official career start);
+              CBS ASO4 was first formal government role at mid-junior level; SAPOL ASO7 is mid-management.
+              The APS Data Stream graduate pathway typically enters at APS5, with 3–5 years to APS6 and
+              8–12 years to reach ASO7 equivalent
               <span className="text-[#555]"> (APSC Career Pathfinder, 2024)</span>.
               Rin reached ASO7 at 26.
             </p>
@@ -578,21 +580,47 @@ function BubblePanel() {
           <div className="border-l-2 border-[#2A2A2A] pl-4">
             <p className="text-[10px] text-[#555] uppercase tracking-widest mb-2 font-mono">What the bubble sizes say</p>
             <p className="text-sm text-[#686868] leading-relaxed font-light">
-              The largest bubbles (SAPOL, CBS, MoodQ) each operated across 6–7 distinct technical domains
+              The largest bubbles (SAPOL, CBS, RA1/MoodQ) each operated across 6–7 distinct technical domains
               simultaneously. The benchmark cohort at Year 4 is plotted with breadth ≈ 3.5 domains —
               consistent with IAPA 2023 findings that fewer than 15% of analysts under 28 have
               meaningful cross-sector experience. Bigger bubbles compounded more; broader context
-              produced faster seniority growth.
+              produced faster seniority growth. RA1/MoodQ has high breadth but lower seniority (casual framing).
             </p>
           </div>
           <div className="border-l-2 border-[#1A1A1A] pl-4">
             <p className="text-[10px] text-[#444] uppercase tracking-widest mb-2 font-mono">A note of honest context</p>
             <p className="text-sm text-[#555] leading-relaxed font-light">
               Rapid cross-sector mobility carries a real cost: less specialist depth than a domain expert
-              who stayed in one area for four years. The Mapiva bubble (year 3.5) dips slightly below
-              the CBS peak — a deliberate trade-off between startup learning and vertical career momentum.
-              The comparison isn&apos;t about ranking. It surfaces what happens when continuous improvement
-              is treated as a first principle rather than a HR talking point.
+              who stayed in one area for four years. RA1/MoodQ is plotted as casual (not official career start) —
+              high breadth, lower seniority. CBS (mid-junior) to SAPOL (mid-management) shows the formal
+              government trajectory. The comparison isn&apos;t about ranking. It surfaces what happens when
+              continuous improvement is treated as a first principle rather than a HR talking point.
+            </p>
+          </div>
+          <div className="border-l-2 border-[#2A2A2A] pl-4">
+            <p className="text-[10px] text-[#555] uppercase tracking-widest mb-2 font-mono">Cross-jurisdiction equivalence</p>
+            <p className="text-sm text-[#686868] leading-relaxed font-light mb-3">
+              Approximate level mapping across Australian government streams (roles vary by agency):
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+              <div className="border border-[#1E1E1E] p-3 bg-[#0A0A0A]">
+                <p className="text-[#FF3C3C] font-medium mb-2">CBS ASO4 (mid-junior)</p>
+                <p className="text-[#666]">SA · ASO4</p>
+                <p className="text-[#666]">APS · APS5</p>
+                <p className="text-[#666]">VPS · VPS4</p>
+                <p className="text-[#666]">NSW · Clerk 5/6</p>
+              </div>
+              <div className="border border-[#1E1E1E] p-3 bg-[#0A0A0A]">
+                <p className="text-[#FF3C3C] font-medium mb-2">SAPOL ASO7 (mid-management)</p>
+                <p className="text-[#666]">SA · ASO7</p>
+                <p className="text-[#666]">APS · EL1</p>
+                <p className="text-[#666]">VPS · VPS6</p>
+                <p className="text-[#666]">NSW · Clerk 9/10</p>
+              </div>
+            </div>
+            <p className="text-[10px] text-[#444] mt-2 font-mono">
+              Sources: SA Public Sector Wages Parity, VPS Agreement, NSW Crown Employees, APSC classification guides.
+              Equivalence is indicative — actual duties and seniority vary by role and agency.
             </p>
           </div>
           <p className="text-[10px] text-[#333] font-mono pt-1">
