@@ -80,7 +80,7 @@ export default function CardPage() {
                 <div>
                   <p className="text-[10px] font-semibold tracking-wide">ASO7 Senior Data Analyst</p>
                   <p className="text-[10px] text-[#7A7A7A] tracking-wide">South Australia Police</p>
-                  <p className="text-[10px] text-[#AAAAAA] mt-1.5 tracking-wide">info@rin.contact · rin.contact</p>
+                  <p className="text-[10px] text-[#AAAAAA] mt-1.5 tracking-wide">huang@rin.contact · rin.contact</p>
                 </div>
                 {/* Nothing-style dot accent */}
                 <div className="w-2 h-2 rounded-full bg-[#FF3C3C] opacity-70" aria-hidden="true" />
@@ -99,7 +99,7 @@ export default function CardPage() {
           </button>
           <div className="flex gap-3">
             <a
-              href="mailto:info@rin.contact"
+              href="mailto:huang@rin.contact"
               className="flex-1 border border-[#E0E0E0] text-[#3D3D3D] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black transition-colors duration-200 font-mono text-center"
             >
               Email

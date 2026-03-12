@@ -238,7 +238,7 @@ export default function ResumePage() {
 
       // Add to command history
       setCmdHist((h) => [raw, ...h].slice(0, 50));
-      setHistIdx(-1);
+      histIdxRef.current = -1;
 
       // Echo the command
       push([`  rin@portfolio:~$ ${raw}`]);

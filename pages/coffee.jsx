@@ -39,7 +39,7 @@ export default function CoffeePage() {
 
           <div className="space-y-3">
             <a
-              href="mailto:info@rin.contact"
+              href="mailto:huang@rin.contact"
               className="block border border-[#FF3C3C] text-[#FF3C3C] px-6 py-2.5 text-xs tracking-widest uppercase hover:bg-[#FF3C3C] hover:text-white transition-colors duration-200"
             >
               Say hello →

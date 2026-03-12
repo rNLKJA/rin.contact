@@ -81,7 +81,7 @@ export default function HireMePage() {
           {/* CTA */}
           <div className="space-y-3">
             <a
-              href="mailto:info@rin.contact?subject=Let's%20talk"
+              href="mailto:huang@rin.contact?subject=Let's%20talk"
               className="block border border-[#FF3C3C] text-[#FF3C3C] px-6 py-3 text-xs tracking-widest uppercase hover:bg-[#FF3C3C] hover:text-white transition-colors duration-200 text-center"
             >
               Get in touch →
