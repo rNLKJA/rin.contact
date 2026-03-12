@@ -7,6 +7,7 @@ import { bitcount, dmSans, playfair } from "@/lib/fonts";
 import "../public/styles/globals.css";
 
 const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
+const BootOverlay = dynamic(() => import("@/components/ui/BootOverlay"), { ssr: false });
 const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
 
 // ── Idle toast ────────────────────────────────────────────────────────────────
@@ -224,6 +225,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}>
+        <BootOverlay />
         <CustomCursor />
         <IdleToast />
         <CopyEmailConfetti />

@@ -107,6 +107,7 @@ export default function ColophonPage() {
           <Row name="/art"        value="generative spiral"    href="/art"          note="Fibonacci phyllotaxis" />
           <Row name="/haiku"      value="haiku collection"     href="/haiku"        note="5–7–5 data science absurdism" />
           <Row name="/coffee"     value="you know why"         href="/coffee"       note="" />
+          <Row name="/roast"      value="honest feedback"      href="/roast"        note="data science roasts" />
           <Row name="/secret"     value="morse code reveal"    href="/secret"       note="" />
           <Row name="/card"       value="draggable card"       href="/card"         note="try throwing it" />
           <Row name="↑↑↓↓←→←→BA" value="Konami code"                               note="try it on the homepage" />
