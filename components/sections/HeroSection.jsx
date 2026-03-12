@@ -157,9 +157,26 @@ function useDotBurst() {
   return { spawn, bursts };
 }
 
+// ─── Time-of-day greeting ─────────────────────────────────────────────────────
+function useTimeGreeting() {
+  const [greeting, setGreeting] = useState("");
+  useEffect(() => {
+    const h = new Date().getHours();
+    if      (h >= 5  && h < 9)  setGreeting("Early bird, I see.");
+    else if (h >= 9  && h < 12) setGreeting("Good morning.");
+    else if (h >= 12 && h < 14) setGreeting("Hope you've had lunch.");
+    else if (h >= 14 && h < 17) setGreeting("Good afternoon.");
+    else if (h >= 17 && h < 20) setGreeting("Good evening.");
+    else if (h >= 20 && h < 23) setGreeting("Burning the midnight oil?");
+    else                         setGreeting("It's late. Hope you're well.");
+  }, []);
+  return greeting;
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export default function HeroSection() {
   const role = useTypewriter(ROLES);
+  const greeting = useTimeGreeting();
   const [statsStarted, setStatsStarted] = useState(false);
   const statsRef = useRef(null);
   const { spawn, bursts } = useDotBurst();
@@ -218,6 +235,17 @@ export default function HeroSection() {
 
         {/* LEFT — identity + copy */}
         <div>
+
+          {/* Time-of-day greeting — client-side only, fades in */}
+          {greeting && (
+            <p
+              className="text-[11px] tracking-widest uppercase text-[#B0B0B0] mb-5 font-mono"
+              style={{ animation: "fade-in 0.8s ease-out both" }}
+              aria-label={greeting}
+            >
+              {greeting}
+            </p>
+          )}
 
           {/* Status pill — AGD before 23 Mar 2026, SAPOL on or after */}
           <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase rounded-full text-[#1A1A1A]">

@@ -33,6 +33,7 @@ const HELP_TEXT = [
   "  cat projects.txt    shipped projects",
   "  cat certs.txt       professional certifications",
   "  ping rin.contact    heartbeat check",
+  "  type                typing speed test",
   "  open /hire-me       hiring pitch & contact",
   "  open /card          digital business card",
   "  open /career        career timeline & metro map",
@@ -42,6 +43,22 @@ const HELP_TEXT = [
   "  ─────────────────────────────────────────────────",
   "",
 ];
+
+// Sentences for the typing challenge
+const TYPE_SENTENCES = [
+  "All models are wrong, but some are useful.",
+  "Generalist by nature, specialist by discipline.",
+  "The best dataset is a well-framed question.",
+  "Ship it. Iterate. Improve. Repeat.",
+  "Data without context is just noise.",
+  "Strategic thinking is knowing which questions to ask.",
+  "Compound interest applies to skills, not just money.",
+  "Good code is code your future self can read.",
+];
+
+function pickSentence() {
+  return TYPE_SENTENCES[Math.floor(Math.random() * TYPE_SENTENCES.length)];
+}
 
 const WHOAMI_TEXT = [
   "",
@@ -219,6 +236,11 @@ export default function ResumePage() {
   const outputRef   = useRef(null);  // scroll container, not the page
   const inputRef    = useRef(null);
 
+  // Typing challenge state
+  const [typingMode, setTypingMode] = useState(false);
+  const typingSentenceRef = useRef("");
+  const typingStartRef    = useRef(null);
+
   // Scroll the output div itself — never touches the outer page scroll position
   useEffect(() => {
     const el = outputRef.current;
@@ -272,6 +294,25 @@ export default function ResumePage() {
         return;
       }
 
+      if (cmd === "type") {
+        const sentence = pickSentence();
+        typingSentenceRef.current = sentence;
+        typingStartRef.current    = null;
+        setTypingMode(true);
+        push([
+          "",
+          "  ── TYPING SPEED TEST ─────────────────────────────",
+          "",
+          `  ${sentence}`,
+          "",
+          "  Type the line above exactly, then press Enter.",
+          "  Timer starts with your first keystroke.",
+          "  (Esc to cancel)",
+          "",
+        ]);
+        return;
+      }
+
       if (COMMANDS[cmd]) {
         push(COMMANDS[cmd]());
         return;
@@ -289,6 +330,63 @@ export default function ResumePage() {
 
   const onKey = useCallback(
     (e) => {
+      // ── Typing challenge mode ────────────────────────────────────────────
+      if (typingMode) {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          setTypingMode(false);
+          setInput("");
+          push(["", "  Typing test cancelled.", ""]);
+          return;
+        }
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const elapsed   = typingStartRef.current ? (Date.now() - typingStartRef.current) / 1000 / 60 : 1;
+          const target    = typingSentenceRef.current;
+          const wordCount = target.trim().split(/\s+/).length;
+          const wpm       = Math.round(wordCount / elapsed);
+
+          // Accuracy — char-by-char comparison
+          let correct = 0;
+          const typed = input;
+          for (let i = 0; i < Math.max(typed.length, target.length); i++) {
+            if (typed[i] === target[i]) correct++;
+          }
+          const accuracy = target.length > 0
+            ? Math.round((correct / target.length) * 100)
+            : 0;
+
+          let grade = accuracy >= 98 && wpm >= 60 ? "S — flawless"
+            : accuracy >= 95 && wpm >= 45 ? "A — excellent"
+            : accuracy >= 90 && wpm >= 30 ? "B — solid"
+            : accuracy >= 80 ? "C — keep practising"
+            : "D — slow down, accuracy first";
+
+          push([
+            "",
+            "  ── RESULTS ───────────────────────────────────────",
+            `  Speed     ${wpm} WPM`,
+            `  Accuracy  ${accuracy}%`,
+            `  Grade     ${grade}`,
+            "",
+            `  Your input: ${typed}`,
+            `  Expected:   ${target}`,
+            "",
+            `  ${accuracy === 100 ? "Perfect. Rin would approve." : "Try  type  again to improve."}`,
+            "",
+          ]);
+          setTypingMode(false);
+          setInput("");
+          return;
+        }
+        // Start timer on first character input
+        if (!typingStartRef.current && e.key.length === 1) {
+          typingStartRef.current = Date.now();
+        }
+        return;
+      }
+
+      // ── Normal command mode ──────────────────────────────────────────────
       if (e.key === "Enter") {
         e.preventDefault();
         run(input);
@@ -305,7 +403,7 @@ export default function ResumePage() {
         setInput(next === -1 ? "" : cmdHist[next] ?? "");
       }
     },
-    [input, run, cmdHist]
+    [input, run, cmdHist, typingMode, push]
   );
 
   return (
@@ -345,7 +443,9 @@ export default function ResumePage() {
 
           {/* Input row */}
           <div className="flex items-center mt-1">
-            <span className="text-[#FF3C3C] mr-2 flex-shrink-0">rin@portfolio:~$</span>
+            <span className="text-[#FF3C3C] mr-2 flex-shrink-0">
+              {typingMode ? "type >" : "rin@portfolio:~$"}
+            </span>
             <input
               ref={inputRef}
               value={input}
@@ -356,17 +456,27 @@ export default function ResumePage() {
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck={false}
-              aria-label="Terminal input"
+              aria-label={typingMode ? "Typing challenge input" : "Terminal input"}
             />
           </div>
         </div>
 
         {/* Hint bar */}
         <div className="flex-shrink-0 border-t border-[#141414] px-4 py-2 text-[9px] font-mono text-[#2E2E2E] flex gap-6">
-          <span>↑↓ history</span>
-          <span>Enter run</span>
-          <span>help — list commands</span>
-          <span>exit — go home</span>
+          {typingMode ? (
+            <>
+              <span className="text-[#FF3C3C]">typing mode</span>
+              <span>Enter submit</span>
+              <span>Esc cancel</span>
+            </>
+          ) : (
+            <>
+              <span>↑↓ history</span>
+              <span>Enter run</span>
+              <span>help — list commands</span>
+              <span>exit — go home</span>
+            </>
+          )}
         </div>
       </div>
     </>
