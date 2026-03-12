@@ -8,7 +8,7 @@
  */
 
 const BASE_URL = "https://rin.contact";
-const VERSION  = "5.18.1";
+const VERSION  = "5.18.2";
 const AUTHOR   = "Sunchuangyu (Rin) Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU | HUANG SUN CHUANG YU | SUN CHUANG YU HUANG | Sunchuangyu Huang";
 
 // ─── Images to register with Google Image Search ─────────────────────────────

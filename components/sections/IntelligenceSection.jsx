@@ -17,119 +17,116 @@ import { useInView } from "@/hooks/useInView";
 
 // ─── SVG helpers ──────────────────────────────────────────────────────────────
 // Panel A viewBox "0 0 520 310", plot area x∈[70,470] y∈[20,280] (400×260)
-const toX = (years)    => Math.round(70  + (years      / 5)  * 400);
+// X-axis: Years in formal workforce. 0 = CBS start (Jan 2025). Pre-career at -2 to -0.5.
+const toX = (years)    => Math.round(70  + ((years + 2) / 7) * 400);  // -2..5 → 70..470
 const toY = (seniority)=> Math.round(280 - (seniority  / 10) * 260);
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // PANEL A — Bubble chart data
-// X  = years of professional experience (starting Feb 2022)
-// Y  = career seniority level (0–10; Junior≈3, Mid≈5, Senior≈7, Principal≈9)
-// r  = cross-domain breadth × 4 + 8  (bigger = more distinct technical domains)
-// Sources: APS Career Pathfinder (APSC 2024), LinkedIn Work Change Report,
-//          IAPA Skills & Salary Survey 2023, Randstad Gen Z Workplace Blueprint 2025
+// X  = years in formal workforce (0 = CBS). Pre-career roles at -2 to -0.5 (not officially workforce).
+// Y  = career seniority level (0–10; Entry≈2, Junior≈3–4, Mid≈5–6, Senior≈7, Principal≈9)
+// Key: CBS (yr 0) → SAPOL (yr 1) = level 4 to 7 in 1 year. Typical: 4 years minimum.
+// Sources: APS Career Pathfinder (APSC 2024), IAPA Skills & Salary Survey 2023
 // ═══════════════════════════════════════════════════════════════════════════════
 const RIN_BUBBLES = [
   {
     id: "csl", label: "CSL", year: "2022",
-    exp: 0.5, sen: 4.0, breadth: 3,
-    r: 20, noisy: { x: 380, y: 245 },
-    color: "#888888", domain: "Industry",
+    exp: -2.0, sen: 2.5, breadth: 3,
+    r: 20, noisy: { x: 100, y: 250 },
+    color: "#555555", domain: "Pre-career",
     period: "Feb–Jun 2022",
     detail: "Data Analyst & Agile Lead · HPLC automation · T-SNE/DBSCAN/UMAP clustering",
-    why: "First industry role at a global biotech (CSL Behring). Breadth: Python, ML clustering, Agile leadership.",
+    why: "Entry/junior. Not officially workforce — internship/industry placement. CSL Behring biotech.",
   },
   {
     id: "csiro", label: "CSIRO", year: "2023",
-    exp: 1.5, sen: 5.5, breadth: 4,
-    r: 24, noisy: { x: 130, y: 60 },
-    color: "#AAAAAA", domain: "Research",
+    exp: -1.5, sen: 3.0, breadth: 4,
+    r: 24, noisy: { x: 180, y: 230 },
+    color: "#555555", domain: "Pre-career",
     period: "Feb–Nov 2023",
     detail: "Data Science Consultant · Climate & Food Security · AR time series modelling",
-    why: "Consulting with Dr Vassili Kitsios at Australia's national science agency. ENSO → commodity → conflict risk.",
+    why: "Junior. Not officially workforce — capstone/consulting. Dr Vassili Kitsios, CSIRO.",
   },
   {
     id: "wehi", label: "WEHI", year: "2024",
-    exp: 2.0, sen: 5.8, breadth: 4,
-    r: 24, noisy: { x: 450, y: 55 },
-    color: "#AAAAAA", domain: "Research",
+    exp: -1.0, sen: 3.0, breadth: 4,
+    r: 24, noisy: { x: 250, y: 230 },
+    color: "#555555", domain: "Pre-career",
     period: "Feb–Jul 2024",
     detail: "Software Engineer Intern · Bioinformatics · Cloud HPC · celseq2 open-source",
-    why: "Automated genomics pipelines on SPARTAN HPC. Open-source contributor to celseq2 scRNA-seq toolkit.",
+    why: "Junior. Not officially workforce — internship. Automated genomics pipelines, celseq2 contributor.",
   },
   {
     id: "moodq", label: "RA1/MoodQ", year: "2024–26",
-    exp: 2.5, sen: 3.5, breadth: 6,
-    r: 32, noisy: { x: 90, y: 250 },
-    color: "#CCCCCC", domain: "Research",
+    exp: -0.5, sen: 3.5, breadth: 6,
+    r: 32, noisy: { x: 320, y: 210 },
+    color: "#555555", domain: "Pre-career",
     period: "Aug 2024–Feb 2026",
-    detail: "RA1 Research Assistant (casual) · UniMelb Psychiatry · Full-stack mobile app · GDPR-compliant AWS",
-    why: "Casual role — not official career start. Full product ownership: Uniapp → Expo RN migration, clinician dashboard, ~$500/mo AWS cost reduction. Breadth high; seniority reflects casual/entry framing.",
+    detail: "RA1 Research Assistant (casual) · UniMelb Psychiatry · Full-stack mobile app",
+    why: "Junior. Not officially workforce — casual RA1. Full product ownership, MoodQ mobile app.",
   },
   {
     id: "cbs", label: "CBS/AGD", year: "2025",
-    exp: 3.0, sen: 4.5, breadth: 6,
-    r: 32, noisy: { x: 430, y: 230 },
+    exp: 0, sen: 4.0, breadth: 6,
+    r: 32, noisy: { x: 380, y: 180 },
     color: "#FF3C3C", domain: "Government",
     period: "Jan 2025–Mar 2026",
     detail: "ASO4 Intelligence Officer · Power BI & GIS · Ministerial reporting · Cross-agency MOUs",
-    why: "First formal government role. Mid-junior level — built CBS's analytics capability from zero. Dashboards fed directly to the Minister's Office.",
-  },
-  {
-    id: "mapiva", label: "Mapiva", year: "2025–",
-    exp: 3.5, sen: 5.0, breadth: 5,
-    r: 28, noisy: { x: 100, y: 210 },
-    color: "#888888", domain: "Startup",
-    period: "Aug 2025–present",
-    detail: "Co-founder & Dev Lead · Expo React Native · Architecture · CI/CD · MVP Jan 2027",
-    why: "Full product ownership. Sole developer. Built from architecture through implementation. Mid-level breadth.",
+    why: "First formal workforce role. Mid-junior (level 4). Built CBS analytics from zero.",
   },
   {
     id: "sapol", label: "SAPOL", year: "2026",
-    exp: 4.0, sen: 8.0, breadth: 7,
-    r: 36, noisy: { x: 200, y: 260 },
+    exp: 1.0, sen: 7.0, breadth: 7,
+    r: 36, noisy: { x: 450, y: 80 },
     color: "#FF3C3C", domain: "Government",
     period: "Mar 2026–present",
     detail: "ASO7 Senior Data Analyst · PESB · First-principles analytics · Parliamentary reporting",
-    why: "ASO7 = mid-management level. Top of the analyst classification band. APS Data Stream graduates typically enter at APS5 — ASO7 commonly reached after 8–12 years. Rin reached it at 26.",
+    why: "Mid-management (level 7). 1 year from CBS to SAPOL. Typical pathway: 4 years minimum (APSC).",
   },
 ];
 
-// Benchmark cohort — typical data analyst career progression
-// Source: APS Career Pathfinder (APSC 2024) for APS-equivalent seniority levels;
-//         LinkedIn Work Change Report (2024) for Gen Z avg tenure 1.1 yrs/role;
-//         IAPA Skills & Salary Survey 2023 for skills distribution by career stage.
+// Benchmark — typical progression from ASO4-equivalent (level 4) to ASO7-equivalent (level 7)
+// APSC Career Pathfinder: 4 years minimum for APS5 → ASO7 pathway.
 const BENCHMARKS = [
   {
-    id: "yr1",
-    labelLines: ["Typical", "Year 1"],
-    exp: 1.0, sen: 2.5, breadth: 2,
-    r: 18,
+    id: "yr0",
+    labelLines: ["Typical", "Yr 0"],
+    exp: 0, sen: 4.0, breadth: 2.5,
+    r: 20,
     color: "#1A1A1A", borderColor: "#3D3D3D",
-    detail: "Year 1 benchmark: graduate/entry-level (APS5-equivalent). Most Gen Z analysts hold 1–2 tools and a single domain. Avg tenure: 1.1 yrs (Randstad 2025).",
+    detail: "Year 0: Entry at mid-junior (ASO4/APS5 equivalent). Graduate or first promotion.",
+  },
+  {
+    id: "yr1",
+    labelLines: ["Typical", "Yr 1"],
+    exp: 1.0, sen: 4.5, breadth: 2.5,
+    r: 20,
+    color: "#1A1A1A", borderColor: "#3D3D3D",
+    detail: "Year 1: Consolidating at APS5. First full year in role.",
   },
   {
     id: "yr2",
-    labelLines: ["Typical", "Year 2"],
-    exp: 1.8, sen: 3.5, breadth: 2.5,
-    r: 20,
+    labelLines: ["Typical", "Yr 2"],
+    exp: 2.0, sen: 5.0, breadth: 3,
+    r: 22,
     color: "#1A1A1A", borderColor: "#3D3D3D",
-    detail: "Year 2 benchmark: junior professional. First promotion possible. APS graduates typically consolidating at APS5 level (APSC Career Pathfinder, 2024).",
+    detail: "Year 2: Junior–mid transition. APS5–6 consolidation.",
   },
   {
     id: "yr3",
-    labelLines: ["Typical", "Year 3"],
-    exp: 2.9, sen: 5.0, breadth: 3,
+    labelLines: ["Typical", "Yr 3"],
+    exp: 3.0, sen: 5.5, breadth: 3,
     r: 22,
     color: "#1A1A1A", borderColor: "#3D3D3D",
-    detail: "Year 3 benchmark: junior–mid transition. IAPA 2023: most analysts under 28 operate with intermediate tools (SQL, Power BI) in a single sector.",
+    detail: "Year 3: Mid-level. APS6 equivalent.",
   },
   {
     id: "yr4",
-    labelLines: ["Typical", "Year 4"],
-    exp: 4.1, sen: 6.0, breadth: 3.5,
+    labelLines: ["Typical", "Yr 4"],
+    exp: 4.0, sen: 7.0, breadth: 3.5,
     r: 24,
     color: "#1A1A1A", borderColor: "#3D3D3D",
-    detail: "Year 4 benchmark: mid-level. APS5–6 consolidation. IAPA 2023: <15% of analysts under 28 have cross-sector experience or strategic advisory responsibilities.",
+    detail: "Year 4: ASO7/EL1 equivalent. Minimum 4 years from entry to mid-management (APSC).",
   },
 ];
 
@@ -383,11 +380,11 @@ function BubblePanel() {
           <line x1={70} y1={20}  x2={70}  y2={280} stroke="#3D3D3D" strokeWidth={1} />
 
           {/* X-axis ticks */}
-          {[0,1,2,3,4,5].map((v) => (
+          {[-2, -1, 0, 1, 2, 3, 4].map((v) => (
             <g key={v}>
               <line x1={toX(v)} y1={280} x2={toX(v)} y2={284} stroke="#3D3D3D" strokeWidth={1} />
-              <text x={toX(v)} y={294} textAnchor="middle" fontSize={9} fill="#555" fontFamily="monospace">
-                {v === 0 ? "0" : `Yr ${v}`}
+              <text x={toX(v)} y={294} textAnchor="middle" fontSize={9} fill={v < 0 ? "#444" : "#555"} fontFamily="monospace">
+                {v === -2 ? "Pre" : v < 0 ? "" : v === 0 ? "0" : `${v}`}
               </text>
             </g>
           ))}
@@ -402,7 +399,7 @@ function BubblePanel() {
 
           {/* Axis labels */}
           <text x={270} y={309} textAnchor="middle" fontSize={10} fill="#555" fontFamily="monospace">
-            Years of Professional Experience →
+            Years in formal workforce (0 = CBS) →
           </text>
           <text x={14} y={150} textAnchor="middle" fontSize={10} fill="#555" fontFamily="monospace"
             transform="rotate(-90 14 150)">
@@ -498,23 +495,22 @@ function BubblePanel() {
             );
           })}
 
-          {/* Gap annotation at Year 4 — step 2 */}
+          {/* Gap annotation at Year 1 — Rin at 7 vs benchmark at 4.5; 1 yr vs 4 yr to reach 7 */}
           {step >= 2 && (
             <g style={{ animation: "fadeUp 0.4s ease 0.8s both" }}>
-              {/* Bracket line */}
-              <line x1={430} y1={toY(8.0)} x2={430} y2={toY(6.0)}
+              <line x1={toX(1) + 8} y1={toY(7)} x2={toX(1) + 8} y2={toY(4.5)}
                 stroke="#FF3C3C" strokeWidth={1} strokeOpacity={0.6} />
-              <line x1={427} y1={toY(8.0)} x2={433} y2={toY(8.0)}
+              <line x1={toX(1) + 5} y1={toY(7)} x2={toX(1) + 11} y2={toY(7)}
                 stroke="#FF3C3C" strokeWidth={1} strokeOpacity={0.6} />
-              <line x1={427} y1={toY(6.0)} x2={433} y2={toY(6.0)}
+              <line x1={toX(1) + 5} y1={toY(4.5)} x2={toX(1) + 11} y2={toY(4.5)}
                 stroke="#FF3C3C" strokeWidth={1} strokeOpacity={0.6} />
-              <text x={449} y={(toY(8.0) + toY(6.0)) / 2 + 3}
-                textAnchor="middle" fontSize={9} fill="#FF3C3C" fontFamily="monospace">
-                +2
+              <text x={toX(1) + 22} y={(toY(7) + toY(4.5)) / 2 + 3}
+                textAnchor="start" fontSize={9} fill="#FF3C3C" fontFamily="monospace">
+                +2.5
               </text>
-              <text x={449} y={(toY(8.0) + toY(6.0)) / 2 + 14}
-                textAnchor="middle" fontSize={7} fill="#686868" fontFamily="monospace">
-                grades
+              <text x={toX(1) + 22} y={(toY(7) + toY(4.5)) / 2 + 14}
+                textAnchor="start" fontSize={7} fill="#686868" fontFamily="monospace">
+                1 yr vs 4 yr
               </text>
             </g>
           )}
@@ -554,7 +550,7 @@ function BubblePanel() {
           {step === 0 ? "Run Analysis →" : "↺  Reset"}
         </button>
         <span className="text-xs text-[#555] font-mono">
-          {step === 0 && "7 career roles · 4 benchmark cohorts · click to reveal the pattern"}
+          {step === 0 && "6 roles (4 pre-career + 2 formal) · 5 benchmark cohorts · click to reveal the pattern"}
           {step === 1 && "Plotting true positions…"}
           {step === 2 && "Hover any bubble for context"}
         </span>
@@ -566,15 +562,12 @@ function BubblePanel() {
           <div className="border-l-2 border-[#FF3C3C] pl-4">
             <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">Pattern Detected</p>
             <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">
-              By Year 4, Rin&apos;s trajectory sits{" "}
-              <span className="text-white font-normal">2 seniority grades above</span> the typical analyst benchmark —
-              reaching ASO7 (mid-management level) while the industry average for the same tenure points to
-              mid-level consolidation. Career framing: RA1 at UniMelb was casual (not official career start);
-              CBS ASO4 was first formal government role at mid-junior level; SAPOL ASO7 is mid-management.
-              The APS Data Stream graduate pathway typically enters at APS5, with 3–5 years to APS6 and
-              8–12 years to reach ASO7 equivalent
+              Formal career starts at CBS/AGD (level 4). From there, Rin reached SAPOL ASO7 (level 7) in{" "}
+              <span className="text-white font-normal">1 year</span>. The typical analyst pathway requires{" "}
+              <span className="text-white font-normal">4 years minimum</span> to reach ASO7-equivalent
               <span className="text-[#555]"> (APSC Career Pathfinder, 2024)</span>.
-              Rin reached ASO7 at 26.
+              CSL, CSIRO, WEHI and RA1/MoodQ are not counted as workforce — internships, capstone, casual RA1.
+              At Year 1, Rin sits +2.5 seniority grades above the benchmark. Rin reached ASO7 at 26.
             </p>
           </div>
           <div className="border-l-2 border-[#2A2A2A] pl-4">
@@ -624,7 +617,7 @@ function BubblePanel() {
             </p>
           </div>
           <p className="text-[10px] text-[#333] font-mono pt-1">
-            n = 7 career roles · benchmarks: APS Career Pathfinder (APSC 2024) · LinkedIn Work Change Report (2024) · IAPA Skills &amp; Salary Survey (2023) · Randstad Gen Z Workplace Blueprint (2025)
+            n = 6 roles (4 pre-career + 2 formal) · benchmarks: APS Career Pathfinder (APSC 2024) · LinkedIn Work Change Report (2024) · IAPA Skills &amp; Salary Survey (2023) · Randstad Gen Z Workplace Blueprint (2025)
           </p>
           <AiDeclaration />
         </div>
