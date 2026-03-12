@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import Header from "@/components/layout/Header";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { bitcount, dmSans, playfair } from "@/lib/fonts";
 
 import "../public/styles/globals.css";
@@ -49,7 +50,8 @@ function IdleToast() {
   return (
     <div
       className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[999] font-mono text-[11px]
-                 tracking-widest uppercase border border-[#E0E0E0] bg-white text-[#3D3D3D]
+                 tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D]
+                 bg-white dark:bg-[#1A1A1A] text-[#3D3D3D] dark:text-[#AAAAAA]
                  px-5 py-2.5 shadow-none pointer-events-none select-none"
       style={{ animation: "fade-in 0.4s ease-out both" }}
       aria-live="polite"
@@ -220,17 +222,19 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen`}>
-      <CustomCursor />
-      <IdleToast />
-      <CopyEmailConfetti />
-      <SecretWordTrigger />
-      <Header />
-      <main className="flex-1">
-        <Component {...pageProps} />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}>
+        <CustomCursor />
+        <IdleToast />
+        <CopyEmailConfetti />
+        <SecretWordTrigger />
+        <Header />
+        <main className="flex-1">
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

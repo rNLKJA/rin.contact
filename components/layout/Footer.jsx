@@ -42,7 +42,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#1A1A1A] relative overflow-hidden" role="contentinfo">
+    <footer className="bg-[#1A1A1A] dark:bg-[#0A0A0A] relative overflow-hidden" role="contentinfo">
 
       {/* Wisr-style wavy top divider */}
       <svg
@@ -54,7 +54,7 @@ const Footer = () => {
       >
         <path
           d="M0,16 C180,4 360,28 540,16 C720,4 900,28 1080,16 C1260,4 1380,24 1440,16 L1440,32 L0,32 Z"
-          fill="#1A1A1A"
+          className="fill-[#1A1A1A] dark:fill-[#0A0A0A]"
         />
       </svg>
 

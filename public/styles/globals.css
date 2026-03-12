@@ -35,6 +35,18 @@
   --radius: 0rem;
 }
 
+/* Dark theme — Nothing OS: white on black */
+.dark,
+[data-theme="dark"] {
+  --white:          #0A0A0A;
+  --black:          #FFFFFF;
+  --dark:           #1A1A1A;
+  --mid:            #7A7A7A;
+  --subtle:         #AAAAAA;
+  --divider:        #3D3D3D;
+  --surface:        #141414;
+}
+
 /* ─── Reset ─────────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -57,6 +69,7 @@ body {
   color: var(--black);
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.01em;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 /* ─── Wisr editorial serif — all section headings ───────────────── */
@@ -107,6 +120,14 @@ h1 {
   outline: 2px solid var(--black);
   outline-offset: 2px;
 }
+
+/* Dark theme scrollbar */
+.dark ::-webkit-scrollbar-track,
+[data-theme="dark"] ::-webkit-scrollbar-track { background: var(--white); }
+.dark ::-webkit-scrollbar-thumb,
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: var(--divider); }
+.dark ::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: var(--mid); }
 
 /* ─── Tailwind base layer ────────────────────────────────────────── */
 @layer base {

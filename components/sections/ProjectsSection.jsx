@@ -327,7 +327,7 @@ function CountUp({ target, duration = 900, started }) {
 
 function ProjectDetail({ project }) {
   return (
-    <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white">
+    <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white dark:bg-[#0A0A0A]">
       <div className="md:col-span-2 space-y-4">
         <div>
           <h3 className="text-xl font-semibold tracking-tight mb-1 flex items-center gap-3 flex-wrap">

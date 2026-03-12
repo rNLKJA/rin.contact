@@ -12,8 +12,9 @@
  * Panel C  First Principles    4-branch decomposition tree
  *           Branches: Strategy, Data Science, Engineering, Continuous Improvement
  */
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
+import ConfettiBurst from "@/components/ui/ConfettiBurst";
 
 // ─── SVG helpers ──────────────────────────────────────────────────────────────
 // Panel A viewBox "0 0 520 310", plot area x∈[70,470] y∈[20,280] (400×260)
@@ -324,12 +325,22 @@ function SeniorityBands() {
 function BubblePanel() {
   const [step, setStep]       = useState(0);
   const [hovered, setHovered] = useState(null);
+  const [confettiTrigger, setConfettiTrigger] = useState(null);
+  const confettiFiredRef = useRef(false);
 
   const handleRun = () => {
-    if (step > 0) { setStep(0); return; }
+    if (step > 0) { setStep(0); confettiFiredRef.current = false; return; }
     setStep(1);
     setTimeout(() => setStep(2), 1400);
   };
+
+  // Confetti when gap annotation appears (step 2)
+  useEffect(() => {
+    if (step === 2 && !confettiFiredRef.current) {
+      confettiFiredRef.current = true;
+      setConfettiTrigger(Date.now());
+    }
+  }, [step]);
 
   const hovRin   = RIN_BUBBLES.find((b) => b.id === hovered);
   const hovBench = BENCHMARKS.find((b) => b.id === hovered);
@@ -622,6 +633,9 @@ function BubblePanel() {
           <AiDeclaration />
         </div>
       )}
+
+      {/* Confetti when "1 yr vs 4 yr" gap annotation appears */}
+      <ConfettiBurst trigger={confettiTrigger} />
     </div>
   );
 }

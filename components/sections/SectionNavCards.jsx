@@ -54,7 +54,7 @@ export default function SectionNavCards() {
           <MagneticWrapper key={card.title} strength={6}>
             <Link
               href={card.href}
-              className="group block bg-white p-8 h-full hover:bg-[#FAFAFA] transition-colors duration-200"
+              className="group block bg-white dark:bg-[#141414] p-8 h-full hover:bg-[#FAFAFA] dark:hover:bg-[#1A1A1A] transition-colors duration-200"
             >
               {/* Header row */}
               <div className="flex items-start justify-between mb-6">

@@ -83,6 +83,7 @@ function GhostLabel({ children, className = "" }) {
 // Hero is above the fold — load immediately
 import HeroSection from "@/components/sections/HeroSection";
 import MiniTerminal from "@/components/MiniTerminal";
+import ConfettiBurst from "@/components/ui/ConfettiBurst";
 
 // ── Konami sequence ───────────────────────────────────────────────────────────
 const KONAMI = [
@@ -134,6 +135,7 @@ const ContactSection   = dynamic(() => import("@/components/sections/ContactSect
 export default function Home() {
   const [termOpen,  setTermOpen]  = useState(false);
   const [glitchOn,  setGlitchOn]  = useState(false);
+  const [konamiConfetti, setKonamiConfetti] = useState(null);
   const konamiRef = useRef([]);
 
   // Backtick toggles terminal; Escape closes it
@@ -144,6 +146,7 @@ export default function Home() {
     if (next.join(",") === KONAMI.join(",")) {
       konamiRef.current = [];
       setGlitchOn(true);
+      setKonamiConfetti(Date.now());
       return;
     }
     // Terminal toggle
@@ -161,6 +164,7 @@ export default function Home() {
   return (
     <>
       {glitchOn && <GlitchOverlay onDone={() => setGlitchOn(false)} />}
+      <ConfettiBurst trigger={konamiConfetti} size="big" />
 
       {/* Floating terminal trigger — bottom-right */}
       <button

@@ -535,10 +535,15 @@ class MyDocument extends Document {
             }}
           />
 
-          {/* ── Theme ── */}
+          {/* ── Theme (no-flash: runs before paint) ── */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){var s=localStorage.getItem("rin_theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";var t=s==="light"||s==="dark"?s:d;document.documentElement.classList.toggle("dark",t==="dark");document.documentElement.setAttribute("data-theme",t);})();`,
+            }}
+          />
           <meta name="theme-color" content="#ffffff" />
           <meta name="msapplication-TileColor" content="#ffffff" />
-          <meta name="color-scheme" content="light" />
+          <meta name="color-scheme" content="light dark" />
 
           {/* ── Authorship ── */}
           <meta name="author" content="Sunchuangyu (Rin) Huang" />

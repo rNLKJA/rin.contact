@@ -1,14 +1,14 @@
 /**
  * Dynamic sitemap for rin.contact
- * Version: 5.13.0 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
+ * Version: 5.18.3 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
  *
  * Sections documented:
  *   Profile · Career Map · Projects · Skills · Dataset Card · Intelligence · FAQ · Contact
- *   Pages: /card · /hire-me · /coffee · /secret
+ *   Pages: /card · /hire-me · /coffee · /secret · dark/light theme toggle
  */
 
 const BASE_URL = "https://rin.contact";
-const VERSION  = "5.18.2";
+const VERSION  = "5.18.3";
 const AUTHOR   = "Sunchuangyu (Rin) Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU | HUANG SUN CHUANG YU | SUN CHUANG YU HUANG | Sunchuangyu Huang";
 
 // ─── Images to register with Google Image Search ─────────────────────────────

@@ -348,7 +348,7 @@ export default function HeroSection() {
             {STATS.map(({ value, label, sub }, i) => (
               <div
                 key={label}
-                className="bg-white px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300"
+                className="bg-white dark:bg-[#141414] px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300"
               >
                 <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight group-hover:text-white transition-colors duration-300">
                   <CountUp target={value} duration={900 + i * 120} started={statsStarted} />

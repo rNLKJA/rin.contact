@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/legacy/image";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 // ── Logo with double-click glitch easter egg ──────────────────────────────────
 const GLITCH_ALTS = ["rNLKJA", "r̷N̸L̵K̶J̷A̸", "404", "Rin?", "¯\\_(ツ)_/¯", "rNLKJA"];
@@ -37,6 +38,7 @@ function LogoWithGlitch() {
       onDoubleClick={onDoubleClick}
     >
       <div
+        className="flex items-center justify-center bg-white flex-shrink-0"
         style={{
           borderRadius: "22%", overflow: "hidden", width: 32, height: 32,
           filter: glitching ? "invert(1)" : "none",
@@ -94,7 +96,9 @@ export default function Header() {
     if (isScrolled !== scrolledRef.current) {
       scrolledRef.current = isScrolled;
       if (headerRef.current) {
-        headerRef.current.style.borderBottom = isScrolled ? "1px solid #E0E0E0" : "";
+        headerRef.current.style.borderBottom = isScrolled
+          ? "1px solid var(--divider)"
+          : "";
       }
     }
   }, []);
@@ -129,7 +133,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 bg-white transition-all duration-200"
+      className="sticky top-0 z-50 bg-white dark:bg-[#0A0A0A] transition-all duration-200"
       role="banner"
     >
       {/* Scroll progress bar */}
@@ -152,7 +156,7 @@ export default function Header() {
             <Link
               key={label}
               href={href}
-              className="px-3 py-1.5 rounded-full text-[#595959] hover:text-black hover:bg-[#F5F5F5]
+              className="px-3 py-1.5 rounded-full text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]
                          transition-all duration-200"
             >
               {label}
@@ -160,7 +164,10 @@ export default function Header() {
           ))}
 
           {/* Thin separator */}
-          <span className="h-3.5 w-px bg-[#E0E0E0] mx-1.5" aria-hidden="true" />
+          <span className="h-3.5 w-px bg-[#E0E0E0] dark:bg-[#3D3D3D] mx-1.5" aria-hidden="true" />
+
+          {/* Theme toggle — desktop */}
+          <ThemeToggle className="ml-1" />
 
           {/* Page links — card + hire-me */}
           {PAGE_LINKS.map(({ href, label, title, cta }) => (
@@ -171,7 +178,7 @@ export default function Header() {
               className={
                 cta
                   ? "px-3.5 py-1.5 border border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white transition-all duration-200"
-                  : "px-3 py-1.5 rounded-full text-[#595959] hover:text-black hover:bg-[#F5F5F5] transition-all duration-200"
+                  : "px-3 py-1.5 rounded-full text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-all duration-200"
               }
             >
               {label}
@@ -187,25 +194,26 @@ export default function Header() {
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >
-          <span className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-[6px] bg-black" : "bg-black"}`} />
-          <span className={`block w-5 h-px bg-black transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-[6px] bg-black" : "bg-black"}`} />
+          <span className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""} bg-black dark:bg-white`} />
+          <span className={`block w-5 h-px bg-black dark:bg-white transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""} bg-black dark:bg-white`} />
         </button>
       </div>
 
       {/* ══ Full-page mobile menu ══ */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-50 bg-white flex flex-col md:hidden
+        className={`fixed inset-0 z-50 bg-white dark:bg-[#0A0A0A] flex flex-col md:hidden
                     transition-opacity duration-200 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
         {...(!menuOpen ? { inert: "" } : {})}
       >
-        {/* Top bar — close button lives in the sticky header (burger → ✕), so only the brand label is needed here */}
-        <div className="flex items-center px-6 py-4 border-b border-[#E0E0E0]">
-          <span className="font-semibold text-sm tracking-tight">rNLKJA</span>
+        {/* Top bar — brand + theme toggle */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
+          <span className="font-semibold text-sm tracking-tight text-black dark:text-white">rNLKJA</span>
+          <ThemeToggle size="mobile" />
         </div>
 
         {/* Nav links — editorial numbered style */}
@@ -215,8 +223,8 @@ export default function Header() {
               key={label}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className="flex items-baseline gap-4 py-5 border-b border-[#F0F0F0] group
-                         text-black hover:text-[#FF3C3C] transition-colors duration-200"
+              className="flex items-baseline gap-4 py-5 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group
+                         text-black dark:text-white hover:text-[#FF3C3C] transition-colors duration-200"
             >
               <span className="text-[10px] tracking-widest tabular-nums text-[#C8C8C8] flex-shrink-0 w-5 group-hover:text-[#FF3C3C] transition-colors duration-200">
                 {String(i + 1).padStart(2, "0")}
@@ -233,10 +241,10 @@ export default function Header() {
               key={label}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className={`flex items-center gap-4 py-4 border-b border-[#F0F0F0] group transition-colors duration-200 ${
+              className={`flex items-center gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                 cta
                   ? "text-[#FF3C3C] hover:text-[#CC2020]"
-                  : "text-[#595959] hover:text-black"
+                  : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white"
               }`}
             >
               <span className="text-[10px] tracking-widest text-[#E0E0E0] flex-shrink-0 w-5">→</span>
@@ -247,7 +255,7 @@ export default function Header() {
         </nav>
 
         {/* Bottom bar — social pill chips */}
-        <div className="px-8 py-6 border-t border-[#F0F0F0] flex items-center gap-2">
+        <div className="px-8 py-6 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex items-center gap-2">
           {[
             { label: "LinkedIn", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },
             { label: "GitHub",   href: "https://github.com/rNLKJA"                     },
