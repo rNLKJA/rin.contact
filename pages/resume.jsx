@@ -215,13 +215,14 @@ export default function ResumePage() {
   const [lines, setLines] = useState(WELCOME);
   const [input, setInput]  = useState("");
   const [cmdHist, setCmdHist] = useState([]);
-  const histIdxRef = useRef(-1);
-  const bottomRef = useRef(null);
-  const inputRef  = useRef(null);
+  const histIdxRef  = useRef(-1);
+  const outputRef   = useRef(null);  // scroll container, not the page
+  const inputRef    = useRef(null);
 
-  // Auto-scroll to bottom whenever lines change
+  // Scroll the output div itself — never touches the outer page scroll position
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = outputRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
   }, [lines]);
 
   // Focus input on mount and click anywhere in terminal
@@ -289,6 +290,7 @@ export default function ResumePage() {
   const onKey = useCallback(
     (e) => {
       if (e.key === "Enter") {
+        e.preventDefault();
         run(input);
         setInput("");
       } else if (e.key === "ArrowUp") {
@@ -335,8 +337,8 @@ export default function ResumePage() {
           </Link>
         </div>
 
-        {/* Output area */}
-        <div className="flex-1 overflow-y-auto p-4 font-mono text-xs text-[#CCCCCC] leading-relaxed">
+        {/* Output area — ref used for direct scrollTop, never scrollIntoView */}
+        <div ref={outputRef} className="flex-1 overflow-y-auto p-4 font-mono text-xs text-[#CCCCCC] leading-relaxed">
           {lines.map((line, i) => (
             <div key={i} className="whitespace-pre">{line}</div>
           ))}
@@ -357,7 +359,6 @@ export default function ResumePage() {
               aria-label="Terminal input"
             />
           </div>
-          <div ref={bottomRef} />
         </div>
 
         {/* Hint bar */}
