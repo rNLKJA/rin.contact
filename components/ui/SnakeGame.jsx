@@ -17,13 +17,24 @@ function rndFood(snake) {
   return pos;
 }
 
+const LS_KEY = "rin404_snake_best";
+
 export default function SnakeGame() {
   const canvasRef = useRef(null);
   const stateRef  = useRef(null);
   const tickRef   = useRef(null);
-  const [status, setStatus] = useState("idle");
-  const [score,  setScore]  = useState(0);
-  const [best,   setBest]   = useState(0);
+  const [status,  setStatus]  = useState("idle");
+  const [score,   setScore]   = useState(0);
+  const [best,    setBest]    = useState(0);
+  const [allTime, setAllTime] = useState(0);
+
+  // Load all-time best from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = parseInt(localStorage.getItem(LS_KEY) || "0", 10);
+      setAllTime(isNaN(saved) ? 0 : saved);
+    } catch { /* localStorage unavailable */ }
+  }, []);
 
   const initState = useCallback(() => {
     const snake = [[10, 7], [9, 7], [8, 7]];
@@ -62,6 +73,12 @@ export default function SnakeGame() {
     if (st.snake.some(([sx, sy]) => sx === nx && sy === ny)) {
       setStatus("dead");
       setBest((b) => Math.max(b, st.score));
+      // Persist all-time best to localStorage
+      setAllTime((prev) => {
+        const next = Math.max(prev, st.score);
+        try { localStorage.setItem(LS_KEY, String(next)); } catch { /* ignore */ }
+        return next;
+      });
       clearInterval(tickRef.current);
       return;
     }
@@ -134,7 +151,10 @@ export default function SnakeGame() {
         </p>
         <div className="flex gap-4 font-mono text-[10px] text-[#3A3A3A]">
           <span>score: <span className="text-[#888]">{score}</span></span>
-          <span>best: <span className="text-[#888]">{best}</span></span>
+          <span>session: <span className="text-[#888]">{best}</span></span>
+          {allTime > 0 && (
+            <span>all-time: <span className="text-[#FF3C3C]">{allTime}</span></span>
+          )}
         </div>
       </div>
 

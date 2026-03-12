@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import Header from "@/components/layout/Header";
 import { bitcount, dmSans, playfair } from "@/lib/fonts";
@@ -7,6 +7,112 @@ import "../public/styles/globals.css";
 
 const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
 const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
+
+// ── Idle toast ────────────────────────────────────────────────────────────────
+const IDLE_MS   = 30_000;
+const IDLE_MSGS = [
+  "Still there?",
+  "The model is still training.",
+  "Coffee break?",
+  "Waiting for input...",
+  "⏳ idle detected",
+  "Take your time. I'll be here.",
+];
+
+function IdleToast() {
+  const [visible, setVisible] = useState(false);
+  const [msg, setMsg]         = useState(IDLE_MSGS[0]);
+  const timerRef              = useRef(null);
+  const msgIdxRef             = useRef(0);
+
+  const reset = useCallback(() => {
+    setVisible(false);
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      msgIdxRef.current = (msgIdxRef.current + 1) % IDLE_MSGS.length;
+      setMsg(IDLE_MSGS[msgIdxRef.current]);
+      setVisible(true);
+    }, IDLE_MS);
+  }, []);
+
+  useEffect(() => {
+    reset();
+    const events = ["mousemove", "keydown", "scroll", "click", "touchstart"];
+    events.forEach((e) => window.addEventListener(e, reset, { passive: true }));
+    return () => {
+      clearTimeout(timerRef.current);
+      events.forEach((e) => window.removeEventListener(e, reset));
+    };
+  }, [reset]);
+
+  if (!visible) return null;
+  return (
+    <div
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[999] font-mono text-[11px]
+                 tracking-widest uppercase border border-[#E0E0E0] bg-white text-[#3D3D3D]
+                 px-5 py-2.5 shadow-none pointer-events-none select-none"
+      style={{ animation: "fade-in 0.4s ease-out both" }}
+      aria-live="polite"
+    >
+      {msg}
+    </div>
+  );
+}
+
+// ── Secret word trigger — type "data" anywhere ────────────────────────────────
+function SecretWordTrigger() {
+  const bufRef = useRef("");
+  const [burst, setBurst] = useState(null);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) return;
+      bufRef.current = (bufRef.current + e.key).slice(-4).toLowerCase();
+      if (bufRef.current === "data") {
+        bufRef.current = "";
+        // Spawn dots burst from a random point
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight * 0.7 + window.innerHeight * 0.1;
+        setBurst({ id: Date.now(), x, y });
+        setTimeout(() => setBurst(null), 1200);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  if (!burst) return null;
+  const angles = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
+  return (
+    <div
+      key={burst.id}
+      className="pointer-events-none fixed z-[9999]"
+      style={{ left: burst.x, top: burst.y, transform: "translate(-50%,-50%)" }}
+    >
+      {angles.map((deg, i) => (
+        <span
+          key={deg}
+          className="absolute block rounded-full bg-[#FF3C3C]"
+          style={{
+            width: i % 3 === 0 ? 4 : 3,
+            height: i % 3 === 0 ? 4 : 3,
+            animation: "dot-burst 1s ease-out forwards",
+            animationDelay: `${i * 15}ms`,
+            "--deg": `${deg}deg`,
+            "--dist": `${22 + (i % 4) * 10}px`,
+          }}
+        />
+      ))}
+      <span
+        className="absolute -top-7 left-1/2 -translate-x-1/2 font-mono text-[10px]
+                   text-[#FF3C3C] whitespace-nowrap tracking-widest"
+        style={{ animation: "fade-in 0.3s ease-out both" }}
+      >
+        data!
+      </span>
+    </div>
+  );
+}
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -70,6 +176,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen`}>
       <CustomCursor />
+      <IdleToast />
+      <SecretWordTrigger />
       <Header />
       <main className="flex-1">
         <Component {...pageProps} />

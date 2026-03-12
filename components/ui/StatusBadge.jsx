@@ -1,7 +1,7 @@
 /**
  * StatusBadge — live system status indicator for the hero section.
- * Shows current roles, build status, and Adelaide local time.
- * Renders client-side only (clock + matchMedia).
+ * Shows current roles, Adelaide local time, and live weather via wttr.in.
+ * Renders client-side only (clock + matchMedia + fetch).
  */
 import { useState, useEffect } from "react";
 
@@ -24,6 +24,44 @@ function useClock() {
   return time;
 }
 
+// wttr.in weather codes → minimal emoji
+const WEATHER_ICON = {
+  113: "☀️", 116: "⛅", 119: "☁️", 122: "☁️",
+  143: "🌫️", 176: "🌦️", 179: "🌨️", 182: "🌧️",
+  185: "🌧️", 200: "⛈️", 227: "❄️", 230: "❄️",
+  248: "🌫️", 260: "🌫️", 263: "🌦️", 266: "🌦️",
+  281: "🌧️", 284: "🌧️", 293: "🌦️", 296: "🌦️",
+  299: "🌧️", 302: "🌧️", 305: "🌧️", 308: "🌧️",
+  311: "🌧️", 314: "🌧️", 317: "🌨️", 320: "🌨️",
+  323: "🌨️", 326: "🌨️", 329: "❄️", 332: "❄️",
+  335: "❄️", 338: "❄️", 350: "🌧️", 353: "🌦️",
+  356: "🌧️", 359: "🌧️", 362: "🌨️", 365: "🌨️",
+  368: "🌨️", 371: "❄️", 374: "🌨️", 377: "🌨️",
+  386: "⛈️", 389: "⛈️", 392: "⛈️", 395: "❄️",
+};
+
+function useAdelaideWeather() {
+  const [weather, setWeather] = useState(null);
+  useEffect(() => {
+    let cancelled = false;
+    fetch("https://wttr.in/Adelaide?format=j1")
+      .then((r) => r.json())
+      .then((data) => {
+        if (cancelled) return;
+        const current = data?.current_condition?.[0];
+        if (!current) return;
+        const tempC   = current.temp_C;
+        const code    = parseInt(current.weatherCode, 10);
+        const icon    = WEATHER_ICON[code] ?? "🌡️";
+        const desc    = current.weatherDesc?.[0]?.value ?? "";
+        setWeather({ tempC, icon, desc });
+      })
+      .catch(() => { /* silently fail — weather is a bonus */ });
+    return () => { cancelled = true; };
+  }, []);
+  return weather;
+}
+
 const STATUSES = [
   { dot: "green",  label: "SAPOL ASO7",  sub: "Live" },
   { dot: "red",    label: "Mapiva",      sub: "Building" },
@@ -31,7 +69,8 @@ const STATUSES = [
 ];
 
 export default function StatusBadge() {
-  const time = useClock();
+  const time    = useClock();
+  const weather = useAdelaideWeather();
 
   return (
     <div
@@ -57,6 +96,14 @@ export default function StatusBadge() {
         <>
           <span className="text-[#DDDDDD]" aria-hidden="true">·</span>
           <span className="text-[#AAAAAA]">ADL {time}</span>
+        </>
+      )}
+      {weather && (
+        <>
+          <span className="text-[#DDDDDD]" aria-hidden="true">·</span>
+          <span className="text-[#AAAAAA]" title={weather.desc}>
+            {weather.icon} {weather.tempC}°C
+          </span>
         </>
       )}
     </div>

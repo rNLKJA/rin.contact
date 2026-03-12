@@ -2,6 +2,59 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/legacy/image";
 
+// ── Logo with double-click glitch easter egg ──────────────────────────────────
+const GLITCH_ALTS = ["rNLKJA", "r̷N̸L̵K̶J̷A̸", "404", "Rin?", "¯\\_(ツ)_/¯", "rNLKJA"];
+
+function LogoWithGlitch() {
+  const [glitching, setGlitching] = useState(false);
+  const [label, setLabel]         = useState("rNLKJA");
+  const phaseRef                  = useRef(0);
+
+  const onDoubleClick = useCallback((e) => {
+    e.preventDefault();
+    if (glitching) return;
+    setGlitching(true);
+    phaseRef.current = 0;
+
+    const next = () => {
+      phaseRef.current++;
+      if (phaseRef.current < GLITCH_ALTS.length) {
+        setLabel(GLITCH_ALTS[phaseRef.current]);
+        setTimeout(next, phaseRef.current === GLITCH_ALTS.length - 1 ? 400 : 120);
+      } else {
+        setLabel("rNLKJA");
+        setGlitching(false);
+      }
+    };
+    setTimeout(next, 80);
+  }, [glitching]);
+
+  return (
+    <Link
+      href="/"
+      className="flex flex-row items-center gap-2.5 group"
+      aria-label="Rin Huang — home"
+      onDoubleClick={onDoubleClick}
+    >
+      <div
+        style={{
+          borderRadius: "22%", overflow: "hidden", width: 32, height: 32,
+          filter: glitching ? "invert(1)" : "none",
+          transition: "filter 0.08s",
+        }}
+      >
+        <Image src="/logo.svg" alt="rNLKJA logo" width={32} height={32} quality={100} layout="fixed" priority />
+      </div>
+      <span
+        className="font-semibold text-sm tracking-tight group-hover:opacity-60 transition-opacity duration-200"
+        style={{ color: glitching ? "#FF3C3C" : undefined }}
+      >
+        {label}
+      </span>
+    </Link>
+  );
+}
+
 
 const NAV_LINKS = [
   { href: "/career",   label: "Career"    },
@@ -87,23 +140,8 @@ export default function Header() {
       />
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12 flex justify-between items-center py-4">
-        {/* ── Logo ── */}
-        <Link href="/" className="flex flex-row items-center gap-2.5 group" aria-label="Rin Huang — home">
-          <div style={{ borderRadius: "22%", overflow: "hidden", width: 32, height: 32 }}>
-            <Image
-              src="/logo.svg"
-              alt="rNLKJA logo"
-              width={32}
-              height={32}
-              quality={100}
-              layout="fixed"
-              priority
-            />
-          </div>
-          <span className="font-semibold text-sm tracking-tight group-hover:opacity-60 transition-opacity duration-200">
-            rNLKJA
-          </span>
-        </Link>
+        {/* ── Logo — double-click to glitch ── */}
+        <LogoWithGlitch />
 
         {/* ── Desktop nav ── */}
         <nav
