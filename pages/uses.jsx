@@ -59,7 +59,7 @@ export default function UsesPage() {
 
         {/* Hardware */}
         <Section label="Hardware">
-          <Row name="MacBook Pro M2" desc="Primary machine. The M2 chip handles PyTorch training, Docker containers, and 47 browser tabs simultaneously." badge="daily driver" />
+          <Row name="Mac Mini M4" desc="Primary machine. The M4 chip handles PyTorch training, Docker containers, and 47 browser tabs simultaneously." badge="daily driver" />
           <Row name="LG UltraWide 34'" desc="One wide monitor. No more alt-tabbing between terminals and notebooks." />
           <Row name="Keychron K2" desc="Tactile switches. The clickety-clack is 40% of the productivity." />
           <Row name="AirPods Pro" desc="Active noise cancellation — the second-best productivity tool after good coffee." />
