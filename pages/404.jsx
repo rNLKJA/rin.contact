@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 // Canvas + browser APIs — must never run on the server
 const SnakeGame = dynamic(() => import("@/components/ui/SnakeGame"), {
@@ -27,7 +28,10 @@ const SUGGESTIONS = [
 
 export default function Custom404() {
   const { asPath } = useRouter();
-  const path = asPath.split("?")[0];
+  // asPath differs between server ("/404/") and client (the real missing URL).
+  // Only render it after mount so server and client initial HTML always match.
+  const [path, setPath] = useState(null);
+  useEffect(() => { setPath(asPath.split("?")[0]); }, [asPath]);
 
   return (
     <>
@@ -52,7 +56,7 @@ export default function Custom404() {
           </p>
           <p className="text-[#444] mt-2">
             <span className="text-[#686868]">KeyError: </span>
-            <span className="text-[#FF6B6B]">&apos;{path}&apos;</span>
+            <span className="text-[#FF6B6B]">&apos;{path ?? "…"}&apos;</span>
             <span className="text-[#444]"> does not exist in this namespace</span>
           </p>
           <p className="text-[#555] mt-3">
