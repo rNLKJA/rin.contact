@@ -195,7 +195,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden cursor-crosshair"
+      className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden cursor-crosshair bg-white"
       aria-label="Introduction"
       itemScope
       itemType="https://schema.org/Person"
@@ -259,7 +259,7 @@ export default function HeroSection() {
 
           {/* Name — pinned to Bitcount display font; no animation on mobile for LCP */}
           <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 md:animate-fade-up"
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 md:animate-fade-up text-black"
             itemProp="name"
           >
             Rin Huang
@@ -348,13 +348,13 @@ export default function HeroSection() {
             {STATS.map(({ value, label, sub }, i) => (
               <div
                 key={label}
-                className="bg-white dark:bg-[#141414] px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300"
+                className="bg-white px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300 text-black"
               >
-                <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight group-hover:text-white transition-colors duration-300">
+                <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight text-black group-hover:text-white transition-colors duration-300">
                   <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
                   <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-300">+</span>
                 </span>
-                <span className="text-sm font-medium tracking-wide uppercase group-hover:text-white transition-colors duration-300">
+                <span className="text-sm font-medium tracking-wide uppercase text-black group-hover:text-white transition-colors duration-300">
                   {label}
                 </span>
                 <span className="text-xs text-[#B0B0B0] font-light group-hover:text-white/70 transition-colors duration-300">
@@ -365,14 +365,14 @@ export default function HeroSection() {
           </div>
 
           {/* Mobile — flat strip */}
-          <div className="flex flex-wrap gap-8 md:hidden">
+          <div className="flex flex-wrap gap-8 md:hidden text-black">
             {STATS.map(({ value, label }, i) => (
               <div key={label} className="flex flex-col items-start">
-                <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight">
+                <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight text-black">
                   <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
                   <span className="text-[#FF3C3C]">+</span>
                 </span>
-                <span className="text-[10px] tracking-widest uppercase text-black md:text-[#5C5C5C] mt-1">{label}</span>
+                <span className="text-[10px] tracking-widest uppercase text-black mt-1">{label}</span>
               </div>
             ))}
           </div>

@@ -210,10 +210,9 @@ export default function Header() {
         aria-label="Mobile navigation"
         {...(!menuOpen ? { inert: "" } : {})}
       >
-        {/* Top bar — brand + theme toggle */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
+        {/* Top bar — brand only (close button stays in header, top-right) */}
+        <div className="flex items-center px-6 py-4 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
           <span className="font-semibold text-sm tracking-tight text-black dark:text-white">rNLKJA</span>
-          <ThemeToggle size="mobile" />
         </div>
 
         {/* Nav links — editorial numbered style */}
@@ -254,23 +253,26 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Bottom bar — social pill chips */}
-        <div className="px-8 py-6 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex items-center gap-2">
-          {[
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },
-            { label: "GitHub",   href: "https://github.com/rNLKJA"                     },
-          ].map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              className="border border-[#E0E0E0] px-3.5 py-1.5 text-[10px] tracking-widest uppercase
-                         rounded-full text-[#595959] hover:border-black hover:text-black transition-all duration-200"
-            >
-              {label}
-            </a>
-          ))}
+        {/* Bottom bar — theme toggle + social pill chips */}
+        <div className="px-8 py-6 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex items-center justify-between gap-4">
+          <ThemeToggle size="mobile" />
+          <div className="flex items-center gap-2">
+            {[
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },
+              { label: "GitHub",   href: "https://github.com/rNLKJA"                     },
+            ].map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 py-1.5 text-[10px] tracking-widest uppercase
+                           rounded-full text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all duration-200"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </header>

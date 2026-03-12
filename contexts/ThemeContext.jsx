@@ -1,6 +1,6 @@
 /**
  * ThemeContext — Nothing-style light/dark toggle
- * Follows system preference by default; user override persisted to localStorage.
+ * Defaults to light mode; user override persisted to localStorage.
  */
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 
@@ -10,11 +10,6 @@ const ThemeContext = createContext({
   resolved: "light",
   setTheme: () => {},
 });
-
-function getSystemTheme() {
-  if (typeof window === "undefined") return "light";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
 
 function getStoredTheme() {
   if (typeof window === "undefined") return null;
@@ -27,7 +22,7 @@ function getStoredTheme() {
 }
 
 function getResolved(stored) {
-  return stored ?? getSystemTheme();
+  return stored ?? "light";
 }
 
 export function ThemeProvider({ children }) {
@@ -40,7 +35,7 @@ export function ThemeProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    const next = stored !== null ? stored : getSystemTheme();
+    const next = stored !== null ? stored : "light";
     setResolved(next);
   }, [stored]);
 
@@ -48,14 +43,6 @@ export function ThemeProvider({ children }) {
     document.documentElement.classList.toggle("dark", resolved === "dark");
     document.documentElement.setAttribute("data-theme", resolved);
   }, [resolved]);
-
-  useEffect(() => {
-    if (stored !== null) return;
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const handler = () => setResolved(getSystemTheme());
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, [stored]);
 
   const setTheme = useCallback((theme) => {
     const next = theme === "light" || theme === "dark" ? theme : (resolved === "light" ? "dark" : "light");
