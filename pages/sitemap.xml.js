@@ -8,7 +8,7 @@
  */
 
 const BASE_URL = "https://rin.contact";
-const VERSION  = "5.13.0";
+const VERSION  = "5.14.0";
 const AUTHOR   = "Sunchuangyu (Rin) Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU";
 
 // ─── Images to register with Google Image Search ─────────────────────────────
@@ -200,6 +200,36 @@ ${projectsComment}
     <xhtml:link rel="alternate" hreflang="en-AU"     href="${BASE_URL}/" />
     <xhtml:link rel="alternate" hreflang="zh-Hans"   href="${BASE_URL}/" />
     <xhtml:link rel="alternate" hreflang="x-default"  href="${BASE_URL}/" />${allImages}
+  </url>
+  <url>
+    <loc>${BASE_URL}/career</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/projects</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/lab</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/about</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/resume</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>${BASE_URL}/card</loc>

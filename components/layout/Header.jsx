@@ -4,12 +4,12 @@ import Image from "next/legacy/image";
 
 
 const NAV_LINKS = [
-  { href: "/#timeline",   label: "Career",     tab: "career"    },
-  { href: "/#timeline",   label: "Education",  tab: "education" },
-  { href: "/#career-map", label: "Map"                          },
-  { href: "/#projects",   label: "Projects"                     },
-  { href: "/#skills",     label: "Expertises"                   },
-  { href: "/#contact",    label: "Contact"                      },
+  { href: "/career",   label: "Career"    },
+  { href: "/projects", label: "Projects"  },
+  { href: "/lab",      label: "Lab"       },
+  { href: "/about",    label: "About"     },
+  { href: "/resume",   label: "Resume"    },
+  { href: "/#contact", label: "Contact"   },
 ];
 
 // Standalone page links — rendered as distinct CTA buttons, not inline nav items
@@ -18,9 +18,6 @@ const PAGE_LINKS = [
   { href: "/hire-me",  label: "Hire Me", title: "Hiring info and contact pitch", cta: true },
 ];
 
-function dispatchTimelineTab(tab) {
-  if (tab) window.dispatchEvent(new CustomEvent("timeline-tab", { detail: { tab } }));
-}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -113,16 +110,15 @@ export default function Header() {
           className="hidden md:flex flex-row items-center gap-1 text-[11px] tracking-widest uppercase"
           aria-label="Primary navigation"
         >
-          {NAV_LINKS.map(({ href, label, tab }) => (
-            <a
+          {NAV_LINKS.map(({ href, label }) => (
+            <Link
               key={label}
               href={href}
-              onClick={() => dispatchTimelineTab(tab)}
               className="px-3 py-1.5 rounded-full text-[#595959] hover:text-black hover:bg-[#F5F5F5]
                          transition-all duration-200"
             >
               {label}
-            </a>
+            </Link>
           ))}
 
           {/* Thin separator */}
@@ -176,11 +172,11 @@ export default function Header() {
 
         {/* Nav links — editorial numbered style */}
         <nav className="flex-1 flex flex-col justify-center px-8 gap-0" aria-label="Mobile navigation">
-          {NAV_LINKS.map(({ href, label, tab }, i) => (
-            <a
+          {NAV_LINKS.map(({ href, label }, i) => (
+            <Link
               key={label}
               href={href}
-              onClick={() => { dispatchTimelineTab(tab); setMenuOpen(false); }}
+              onClick={() => setMenuOpen(false)}
               className="flex items-baseline gap-4 py-5 border-b border-[#F0F0F0] group
                          text-black hover:text-[#FF3C3C] transition-colors duration-200"
             >
@@ -189,7 +185,7 @@ export default function Header() {
               </span>
               <span className="text-2xl font-semibold tracking-tight">{label}</span>
               <span className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm">↗</span>
-            </a>
+            </Link>
           ))}
 
           {/* Page links — separated by a subtle label */}

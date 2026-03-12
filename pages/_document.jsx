@@ -612,6 +612,29 @@ class MyDocument extends Document {
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CREDENTIALS_SCHEMA) }} />
         </Head>
 
+        {/*
+          ┌──────────────────────────────────────────────────────────────────────┐
+          │                                                                      │
+          │   Hello, developer. You found the page source.                      │
+          │                                                                      │
+          │   Since you're reading this, you're probably the kind of person     │
+          │   Rin would enjoy working with.                                     │
+          │                                                                      │
+          │   Stack: Next.js 14 · Tailwind CSS · EmailJS · Vercel              │
+          │   Design: Nothing OS aesthetic — stark, minimal, monochromatic      │
+          │   Every decision is intentional.                                    │
+          │                                                                      │
+          │   Easter eggs:                                                       │
+          │     /secret  →  Morse code reveal                                  │
+          │     /resume  →  interactive CLI                                     │
+          │     /coffee  →  you know why                                        │
+          │     ↑↑↓↓←→←→BA  →  try it on the homepage                         │
+          │     curl rin.contact  →  a different view entirely                  │
+          │                                                                      │
+          │   Want to hire Rin?  →  rin.contact/hire-me                         │
+          │                                                                      │
+          └──────────────────────────────────────────────────────────────────────┘
+        */}
         <body>
           <Main />
           <NextScript />

@@ -125,34 +125,11 @@ function GlitchOverlay({ onDone }) {
   );
 }
 
-const SectionProgress = dynamic(() => import("@/components/layout/SectionProgress"), { ssr: false });
-
-// Below-fold sections — code-split so they don't inflate the initial JS bundle.
-// SSR is kept (default) so content is still in the HTML for SEO crawlers.
-const TimelineSection = dynamic(() => import("@/components/sections/TimelineSection"), {
-  loading: () => <div className="bg-[#F5F5F5] min-h-[480px]" aria-hidden="true" />,
-});
-const ProjectsSection = dynamic(() => import("@/components/sections/ProjectsSection"), {
-  loading: () => <div className="bg-white min-h-[480px]" aria-hidden="true" />,
-});
-const SkillsSection = dynamic(() => import("@/components/sections/SkillsSection"), {
-  loading: () => <div className="bg-[#F5F5F5] min-h-[480px]" aria-hidden="true" />,
-});
-const IntelligenceSection = dynamic(() => import("@/components/sections/IntelligenceSection"), {
-  loading: () => <div className="bg-[#F5F5F5] min-h-[480px]" aria-hidden="true" />,
-});
-const FAQSection = dynamic(() => import("@/components/sections/FAQSection"), {
-  loading: () => <div className="bg-white min-h-[320px]" aria-hidden="true" />,
-});
-const ContactSection = dynamic(() => import("@/components/sections/ContactSection"), {
-  loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" />,
-});
-const MetroMapSection = dynamic(() => import("@/components/sections/MetroMapSection"), {
-  loading: () => <div className="bg-white min-h-[360px]" aria-hidden="true" />,
-});
-const DatasetCard = dynamic(() => import("@/components/sections/DatasetCard"), {
-  loading: () => <div className="bg-[#F5F5F5] min-h-[320px]" aria-hidden="true" />,
-});
+const SectionProgress  = dynamic(() => import("@/components/layout/SectionProgress"),      { ssr: false });
+const StatusBadge      = dynamic(() => import("@/components/ui/StatusBadge"),               { ssr: false });
+const ReadingToast     = dynamic(() => import("@/components/ui/ReadingToast"),              { ssr: false });
+const SectionNavCards  = dynamic(() => import("@/components/sections/SectionNavCards"),     { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
+const ContactSection   = dynamic(() => import("@/components/sections/ContactSection"),      { loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" /> });
 
 export default function Home() {
   const [termOpen,  setTermOpen]  = useState(false);
@@ -368,108 +345,18 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ══ TIMELINE — light surface ══ */}
-          <div className="bg-[#F5F5F5] relative overflow-hidden content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <TimelineSection />
+          {/* ══ STATUS + SECTION NAV CARDS — white ══ */}
+          <div className="bg-white border-t border-[#F5F5F5]">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12 pt-10">
+              <StatusBadge />
             </div>
-            {/* Decorative elements — desktop only, reduces mobile LCP/main-thread */}
-            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
-              <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.045]">JOURNEY</GhostLabel>
-              <ArtCross className="top-10 left-8 text-[#BEBEBE]" />
-              <ArtCross className="top-10 right-10 text-[#BEBEBE]" />
-              <ArtCircle className="animate-art-breathe border-[#D8D8D8]"       style={{ width:"1200px", height:"1200px", top:"-400px",  left:"-400px",  animationDelay:"2s" }} />
-              <ArtCircle className="animate-art-breathe border-[#DCDCDC]"       style={{ width: "720px", height: "720px",  top:"-160px",  left:"-160px",  animationDelay:"3.2s" }} />
-              <ArtCircle className="animate-art-float border-[#DEDEDE]"         style={{ width: "460px", height: "460px",  bottom:"-100px", right:"-100px", animationDelay:"4s" }} />
-              <ArtSquircle className="animate-art-spin border-[#D4D4D4]"        style={{ width:"300px",  height:"300px",  top:"50%",   right:"-80px", animationDelay:"0.5s" }} />
-              <ArtBlob     className="border-[#DCDCDC]"                         style={{ width:"380px",  height:"350px",  bottom:"40px", left:"-60px",  animationDelay:"5s" }} />
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <SectionNavCards />
             </div>
           </div>
 
-          {/* ══ CAREER MAP — white ══ */}
-          <div className="bg-white relative overflow-hidden content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <MetroMapSection />
-            </div>
-            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
-              <ArtCross className="top-10 left-8 text-[#C8C8C8]" />
-              <ArtCross className="bottom-12 right-12 text-[#C8C8C8]" />
-              <ArtCircle className="animate-art-breathe border-[#EEEEEE]" style={{ width:"1100px", height:"1100px", top:"-380px", left:"-380px" }} />
-              <ArtCircle className="animate-art-breathe border-[#F0F0F0]" style={{ width: "560px", height: "560px",  top:"-100px", left:"-100px", animationDelay:"2s" }} />
-              <ArtBlob className="border-[#EEEEEE]" style={{ width:"380px", height:"360px", bottom:"40px", right:"-80px", animationDelay:"4s" }} />
-            </div>
-          </div>
-
-          {/* ══ PROJECTS — white ══ */}
-          <div className="bg-white relative overflow-hidden content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <ProjectsSection />
-            </div>
-            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
-              <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.04]">WORK</GhostLabel>
-              <ArtCross className="top-10 right-10 text-[#C8C8C8]" />
-              <ArtCross className="bottom-12 left-8 text-[#C8C8C8]" />
-              <ArtCircle className="animate-art-breathe border-[#E0E0E0]"       style={{ width:"1440px", height:"1440px", bottom:"-520px", left:"-520px" }} />
-              <ArtCircle className="animate-art-breathe border-[#E6E6E6]"       style={{ width: "900px", height: "900px",  bottom:"-250px", left:"-250px",  animationDelay:"3s" }} />
-              <ArtCircle className="animate-art-breathe border-[#EBEBEB]"       style={{ width: "440px", height: "440px",  bottom: "-20px", left: "-20px",  animationDelay:"4.5s" }} />
-              <ArtSquircle className="animate-art-spin border-[#E0E0E0]"        style={{ width:"360px",  height:"360px",  top:"48px",  right:"40px",  animationDelay:"1s" }} />
-              <ArtBlob     className="border-[#EAEAEA]"                         style={{ width:"360px",  height:"400px",  top:"25%",   right:"-80px", animationDelay:"2s" }} />
-              <WaveArc className="bottom-[15%] h-20" stroke="#EBEBEB" />
-            </div>
-          </div>
-
-          {/* ══ SKILLS — light surface ══ */}
-          <div className="bg-[#F5F5F5] relative overflow-hidden content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <SkillsSection />
-            </div>
-            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
-              <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.045]">SKILLS</GhostLabel>
-              <div className="dot-matrix absolute left-0 top-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08]" />
-              <ArtCross className="top-10 right-10 text-[#BEBEBE]" />
-              <ArtCross className="bottom-12 left-8 text-[#BEBEBE]" />
-              <ArtCircle className="animate-art-float border-[#D8D8D8]"         style={{ width:"1100px", height:"1100px", top:"calc(50% - 550px)", right:"-350px", animationDelay:"1s" }} />
-              <ArtCircle className="animate-art-float border-[#DCDCDC]"         style={{ width: "660px", height: "660px",  top:"calc(50% - 330px)", right:"-130px", animationDelay:"2s" }} />
-              <ArtBlob     className="border-[#D4D4D4]"                         style={{ width:"460px",  height:"420px",  top:"20%",   left:"-120px", animationDelay:"4s" }} />
-              <ArtSquircle className="animate-art-spin border-[#D0D0D0]"        style={{ width:"280px",  height:"280px",  bottom:"40px", left:"40px",   animationDelay:"2.5s" }} />
-              <WaveArc className="top-[42%] h-20" stroke="#DCDCDC" />
-            </div>
-          </div>
-
-          {/* ══ DATASET CARD — white ══ */}
-          <div className="bg-white relative overflow-hidden content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <DatasetCard />
-            </div>
-            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
-              <ArtCross className="top-10 right-10 text-[#E0E0E0]" />
-              <ArtCross className="bottom-12 left-8 text-[#E0E0E0]" />
-              <div className="dot-matrix absolute right-0 top-0 w-64 h-64 opacity-[0.03] md:opacity-[0.07]" />
-            </div>
-          </div>
-
-          {/* ══ INTELLIGENCE — light surface ══ */}
-          <div className="bg-[#F5F5F5] relative overflow-hidden content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <IntelligenceSection />
-            </div>
-          </div>
-
-          {/* ══ FAQ — white ══ */}
-          <div className="bg-white relative overflow-hidden content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <FAQSection />
-            </div>
-            <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
-              <GhostLabel className="left-0 bottom-0 translate-y-[28%] text-black opacity-[0.02] md:opacity-[0.04]">FAQ</GhostLabel>
-              <ArtCross className="top-10 right-10 text-[#C8C8C8]" />
-              <ArtCross className="bottom-12 right-12 text-[#C8C8C8]" />
-              <ArtCircle className="animate-art-breathe border-[#EBEBEB]"       style={{ width:"1000px", height:"1000px", top:"-300px",  right:"-300px" }} />
-              <ArtCircle className="animate-art-breathe border-[#EEEEEE]"       style={{ width: "560px", height: "560px",  top:"-80px",   right:"-80px",   animationDelay:"1s" }} />
-              <ArtSquircle className="animate-art-spin border-[#E2E2E2]"        style={{ width:"240px",  height:"240px",  bottom:"40px", left:"40px",   animationDelay:"3s" }} />
-              <ArtBlob     className="border-[#EBEBEB]"                         style={{ width:"380px",  height:"340px",  top:"30%",   left:"-80px",  animationDelay:"6s" }} />
-            </div>
-          </div>
+          {/* Reading progress toast — client-side only */}
+          <ReadingToast threshold={0.7} />
 
           {/* ══ CONTACT — dark ══ */}
           <div className="bg-[#1A1A1A] relative overflow-hidden content-visibility-auto">
