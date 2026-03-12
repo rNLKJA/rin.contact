@@ -8,7 +8,7 @@
  */
 
 const BASE_URL = "https://rin.contact";
-const VERSION  = "5.15.0";
+const VERSION  = "5.16.0";
 const AUTHOR   = "Sunchuangyu (Rin) Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU | HUANG SUN CHUANG YU | SUN CHUANG YU HUANG | Sunchuangyu Huang";
 
 // ─── Images to register with Google Image Search ─────────────────────────────
@@ -248,6 +248,30 @@ ${projectsComment}
     <lastmod>${today}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/now</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/uses</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/art</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/colophon</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>`;
 }
