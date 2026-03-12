@@ -59,6 +59,52 @@ function IdleToast() {
   );
 }
 
+// ── Copy email confetti — when user copies huang@rin.contact ───────────────────
+const RIN_EMAIL = "huang@rin.contact";
+
+function CopyEmailConfetti() {
+  const [burst, setBurst] = useState(null);
+
+  useEffect(() => {
+    const onCopy = (e) => {
+      const sel = document.getSelection?.();
+      const text = (sel?.toString() || "").trim();
+      if (!text || !text.includes(RIN_EMAIL)) return;
+      const x = window.innerWidth / 2 + (Math.random() - 0.5) * 120;
+      const y = window.innerHeight / 2 + (Math.random() - 0.5) * 80;
+      setBurst({ id: Date.now(), x, y });
+      setTimeout(() => setBurst(null), 1000);
+    };
+    document.addEventListener("copy", onCopy);
+    return () => document.removeEventListener("copy", onCopy);
+  }, []);
+
+  if (!burst) return null;
+  const angles = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
+  return (
+    <div
+      key={burst.id}
+      className="pointer-events-none fixed z-[9999]"
+      style={{ left: burst.x, top: burst.y, transform: "translate(-50%,-50%)" }}
+    >
+      {angles.map((deg, i) => (
+        <span
+          key={deg}
+          className="absolute block rounded-full bg-[#FF3C3C]"
+          style={{
+            width: i % 3 === 0 ? 4 : 3,
+            height: i % 3 === 0 ? 4 : 3,
+            animation: "dot-burst 1s ease-out forwards",
+            animationDelay: `${i * 12}ms`,
+            "--deg": `${deg}deg`,
+            "--dist": `${18 + (i % 4) * 8}px`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 // ── Secret word trigger — type "data" anywhere ────────────────────────────────
 function SecretWordTrigger() {
   const bufRef = useRef("");
@@ -177,6 +223,7 @@ function MyApp({ Component, pageProps }) {
     <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen`}>
       <CustomCursor />
       <IdleToast />
+      <CopyEmailConfetti />
       <SecretWordTrigger />
       <Header />
       <main className="flex-1">

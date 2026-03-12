@@ -82,13 +82,26 @@ export default function Custom404() {
           ))}
         </div>
 
-        <Link
-          href="/"
-          className="inline-block border border-black px-6 py-2.5 text-xs tracking-widest uppercase
-                     hover:bg-black hover:text-white transition-colors duration-200"
-        >
-          ← Home
-        </Link>
+        <div className="flex flex-wrap items-center gap-3 mb-8">
+          <Link
+            href="/"
+            className="inline-block border border-black px-6 py-2.5 text-xs tracking-widest uppercase
+                       hover:bg-black hover:text-white transition-colors duration-200"
+          >
+            ← Home
+          </Link>
+          <a
+            href={`mailto:huang@rin.contact?subject=${encodeURIComponent(
+              `404 at ${path ?? "unknown"} — but it's not a bug, the page just doesn't exist`
+            )}&body=${encodeURIComponent(
+              `I tried to visit: ${path ?? "(unknown path)"}\n\n(No action needed — just letting you know. Or maybe I'm confused. Either way.)`
+            )}`}
+            className="inline-block border border-[#3D3D3D] px-6 py-2.5 text-xs tracking-widest uppercase
+                       text-[#555] hover:border-[#555] hover:text-[#888] transition-colors duration-200"
+          >
+            Report a bug
+          </a>
+        </div>
 
         {/* Snake game — client-only, no SSR */}
         <SnakeGame />
