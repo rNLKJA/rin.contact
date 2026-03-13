@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import pkg from "../../package.json";
 
 const Section = ({ label, children }) => (
   <div className="mb-10">
@@ -128,13 +129,13 @@ export default function ColophonPage() {
           <Row name="principle 3" value="Mobile-first, always"                     note="375px is the source of truth" />
           <Row name="principle 4" value="No gradients, no drop-shadows"            note="flat monochrome — the Nothing way" />
           <Row name="principle 5" value="Accessibility is not optional"            note="AA contrast, focus rings, descriptive alt text" />
-          <Row name="principle 6" value="Ship it, then improve it"                 note="v5.16.0 and counting" />
+          <Row name="principle 6" value="Ship it, then improve it"                 note={`v${pkg.version} and counting`} />
         </Section>
 
         {/* Footer */}
         <div className="pt-10 border-t border-[#F0F0F0] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <p className="text-[11px] text-[#AAAAAA] font-mono">
-            Designed & built by Rin Huang · v5.16.0
+            Designed & built by Rin Huang · v{pkg.version}
           </p>
           <div className="flex gap-4">
             <Link href="/"

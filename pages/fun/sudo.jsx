@@ -48,7 +48,7 @@ export default function SudoPage() {
           </div>
 
           <p className="mt-8 text-[9px] text-[#222] tracking-widest">
-            hint: try /hire-me instead
+            hint: try /hire-me or explore /fun
           </p>
         </div>
       </div>
