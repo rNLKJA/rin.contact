@@ -6,7 +6,12 @@ const ITEMS = [
   { href: "/info/uses",         label: "uses",         note: "tools, apps, setup" },
   { href: "/info/roadmap",      label: "roadmap",      note: "where this site is headed" },
   { href: "/info/accessibility", label: "accessibility", note: "how this site is accessible" },
-  { href: "/info/colophon",    label: "colophon",     note: "how this site is built" },
+  { href: "/info/colophon",     label: "colophon",      note: "how this site is built" },
+  { href: "/info/site-map",     label: "site-map",     note: "human-readable sitemap" },
+  { href: "/info/manifest",     label: "manifest",     note: "what I believe" },
+  { href: "/info/changelog",    label: "changelog",    note: "what changed" },
+  { href: "/info/thank-you",    label: "thank-you",    note: "thanks for reaching out" },
+  { href: "/info/references",   label: "references",   note: "people who might say nice things" },
 ];
 
 export default function InfoIndexPage() {

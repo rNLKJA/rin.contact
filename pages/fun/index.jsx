@@ -15,6 +15,23 @@ const ITEMS = [
   { href: "/fun/inception", label: "inception", note: "turtles all the way down" },
   { href: "/fun/sudo",     label: "sudo",     note: "elevated access" },
   { href: "/fun/error",    label: "error",    note: "something went wrong" },
+  { href: "/fun/pronouns", label: "pronouns", note: "he/him, like variables" },
+  { href: "/fun/timezone", label: "timezone", note: "UTC+9:30, we refuse to round" },
+  { href: "/fun/name",     label: "name",     note: "黄孙创宇 · Rin" },
+  { href: "/fun/float404", label: "float404", note: "404.404 precision error" },
+  { href: "/fun/glitch",   label: "glitch",   note: "sometimes it glitches" },
+  { href: "/fun/correlation", label: "correlation", note: "correlation ≠ causation" },
+  { href: "/fun/outlier",  label: "outlier",  note: "you are one" },
+  { href: "/fun/normalise", label: "normalise", note: "normalise expectations" },
+  { href: "/fun/debug",    label: "debug",    note: "rin.brain line 42" },
+  { href: "/fun/tarot",    label: "tarot",    note: "data science tarot" },
+  { href: "/fun/dice",     label: "dice",     note: "roll d20" },
+  { href: "/fun/blank",    label: "blank",    note: "sometimes nothing is best" },
+  { href: "/fun/eta",      label: "eta",      note: "ETA: ∞" },
+  { href: "/fun/silence",  label: "silence",  note: "no analytics, no tracking" },
+  { href: "/fun/rejections", label: "rejections", note: "every no is training data" },
+  { href: "/fun/mood",     label: "mood",     note: "how is Rin today?" },
+  { href: "/fun/typing",   label: "typing",   note: "typing speed test" },
   { href: "/ds",           label: "ds",       note: "Rin as data science" },
 ];
 
@@ -46,7 +63,7 @@ export default function FunIndexPage() {
                 className="block py-4 flex items-baseline justify-between gap-6 group"
               >
                 <span className="font-mono text-sm text-[#1A1A1A] group-hover:text-[#FF3C3C] transition-colors">
-                  /fun/{label}
+                  {href.startsWith("/fun") ? `/fun/${label}` : href}
                 </span>
                 <span className="text-[11px] text-[#AAAAAA] flex-shrink-0">{note}</span>
               </Link>

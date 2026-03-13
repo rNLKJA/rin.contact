@@ -1,6 +1,6 @@
 {
   "name": "rin-contact",
-  "version": "5.18.9",
+  "version": "5.19.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

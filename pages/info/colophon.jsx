@@ -113,6 +113,8 @@ export default function ColophonPage() {
           <Row name="/fun/secret" value="morse code reveal"    href="/fun/secret"   note="" />
           <Row name="/tools/card" value="draggable card"       href="/tools/card"   note="try throwing it" />
           <Row name="/ds"        value="Rin as data science"   href="/ds"           note="model cards, SHAP, confusion matrices" />
+          <Row name="/info/site-map" value="human sitemap"     href="/info/site-map" note="every page, not XML" />
+          <Row name="/info/changelog" value="what changed"     href="/info/changelog" note="" />
           <Row name="↑↑↓↓←→←→BA" value="Konami code"                               note="try it on the homepage" />
           <Row name="DevTools"    value="console easter egg"                        note="open your browser console" />
           <Row name="curl"        value="terminal view"                             note="curl rin.contact" />

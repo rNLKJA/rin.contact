@@ -62,6 +62,7 @@ const nextConfig = {
       ["accessibility", "info/accessibility"],
       ["colophon", "info/colophon"],
       ["card", "tools/card"],
+      ["404.404", "fun/float404"],
     ];
     return moved.flatMap(([from, to]) => [
       { source: `/${from}`, destination: `/${to}`, permanent: true },
