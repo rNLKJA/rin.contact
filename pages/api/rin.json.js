@@ -75,14 +75,14 @@ export default function handler(req, res) {
       resume:   "https://rin.contact/resume",
       linkedin: "https://www.linkedin.com/in/sunchuangyuhuang/",
       github:   "https://github.com/rNLKJA",
-      card:     "https://rin.contact/card",
+      card:     "https://rin.contact/tools/card",
       hire:     "https://rin.contact/hire-me",
     },
     easter_eggs: {
       terminal:   "curl rin.contact",
       cli_resume: "https://rin.contact/resume",
       konami:     "↑↑↓↓←→←→BA — try it on the homepage",
-      matrix:     "https://rin.contact/matrix",
+      matrix:     "https://rin.contact/fun/matrix",
       source:     "check the HTML comments",
     },
   });

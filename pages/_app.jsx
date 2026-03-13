@@ -62,6 +62,37 @@ function IdleToast() {
   );
 }
 
+// ── Copy URL toast — when user copies rin.contact URL (not email) ───────────────
+function CopyUrlToast() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const onCopy = () => {
+      const sel = document.getSelection?.();
+      const text = (sel?.toString() || "").trim();
+      if (!text || !text.includes("rin.contact") || text.includes("huang@")) return;
+      setShow(true);
+      setTimeout(() => setShow(false), 2500);
+    };
+    document.addEventListener("copy", onCopy);
+    return () => document.removeEventListener("copy", onCopy);
+  }, []);
+
+  if (!show) return null;
+  return (
+    <div
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[999] font-mono text-[10px]
+                 tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D]
+                 bg-white dark:bg-[#1A1A1A] text-[#3D3D3D] dark:text-[#AAAAAA]
+                 px-4 py-2 pointer-events-none select-none"
+      style={{ animation: "fade-in 0.3s ease-out both" }}
+      aria-live="polite"
+    >
+      Link copied. Share responsibly.
+    </div>
+  );
+}
+
 // ── Copy email confetti — when user copies huang@rin.contact ───────────────────
 const RIN_EMAIL = "huang@rin.contact";
 
@@ -199,10 +230,10 @@ function MyApp({ Component, pageProps }) {
         "%cAuthor:   %cRin Huang  ·  rin.contact\n\n" +
         "%cHidden routes:\n" +
         "%c  /resume   →  interactive CLI\n" +
-        "%c  /matrix   →  you'll know it when you see it\n" +
-        "%c  /coffee   →  you know why\n" +
-        "%c  /secret   →  morse code reveal\n" +
-        "%c  /card     →  digital business card\n" +
+        "%c  /fun/matrix   →  you'll know it when you see it\n" +
+        "%c  /fun/coffee   →  you know why\n" +
+        "%c  /fun/secret   →  morse code reveal\n" +
+        "%c  /tools/card   →  digital business card\n" +
         "%c  ↑↑↓↓←→←→BA  →  try it on the homepage\n\n" +
         "%cAPIs:\n" +
         "%c  GET /api/rin.json   →  structured profile\n" +
@@ -227,6 +258,7 @@ function MyApp({ Component, pageProps }) {
       <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}>
         <BootOverlay />
         <CustomCursor />
+        <CopyUrlToast />
         <IdleToast />
         <CopyEmailConfetti />
         <SecretWordTrigger />

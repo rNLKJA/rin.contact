@@ -26,8 +26,8 @@ export default function handler(req, res) {
         "",
         "  Try also:",
         "    curl rin.contact           → full profile",
-        "    open https://rin.contact/card    → business card",
-        "    open https://rin.contact/secret  → 👀",
+        "    open https://rin.contact/tools/card    → business card",
+        "    open https://rin.contact/fun/secret  → 👀",
         "",
       ].join("\n")
     );

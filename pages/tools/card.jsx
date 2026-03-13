@@ -153,7 +153,7 @@ export default function CardPage() {
       <Head>
         <title>Card — Rin Huang · rin.contact</title>
         <meta name="description" content="Digital business card for Sunchuangyu (Rin) Huang — Senior Data Analyst, Adelaide SA. Download contact card (VCF)." />
-        <link rel="canonical" href="https://rin.contact/card" />
+        <link rel="canonical" href="https://rin.contact/tools/card" />
       </Head>
 
       <div className="min-h-screen bg-[#F5F5F5] flex flex-col items-center justify-center px-6 py-20">
@@ -249,7 +249,7 @@ export default function CardPage() {
         </div>
 
         <p className="mt-8 text-[10px] text-[#AAAAAA] font-mono text-center">
-          rin.contact/card · Adelaide SA · UTC+9:30
+          rin.contact/tools/card · Adelaide SA · UTC+9:30
         </p>
       </div>
     </>

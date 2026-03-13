@@ -369,7 +369,7 @@ export default function Home() {
             </div>
             {/* ── Morse code easter egg — HELLO encoded as dots & dashes ─────── */}
             {/* H=....  E=.  L=.-..  L=.-..  O=--- */}
-            {/* Hint: /secret */}
+            {/* Hint: /fun/secret */}
             <div
               className="flex items-center justify-center pb-5 gap-px"
               aria-hidden="true"

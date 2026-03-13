@@ -35,7 +35,7 @@ const HELP_TEXT = [
   "  ping rin.contact    heartbeat check",
   "  type                typing speed test",
   "  open /hire-me       hiring pitch & contact",
-  "  open /card          digital business card",
+  "  open /tools/card    digital business card",
   "  open /career        career timeline & metro map",
   "  open /lab           data playground",
   "  clear               clear the terminal",
@@ -224,7 +224,7 @@ const COMMANDS = {
   "ping rin.contact":    () => PING_TEXT,
 };
 
-const INTERNAL_ROUTES = ["/hire-me", "/card", "/career", "/projects", "/lab", "/about", "/secret"];
+const INTERNAL_ROUTES = ["/hire-me", "/tools/card", "/career", "/projects", "/lab", "/about", "/fun/secret"];
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function ResumePage() {

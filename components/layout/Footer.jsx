@@ -21,7 +21,7 @@ const NAV_COLS = [
     heading: "Pages",
     links: [
       { href: "/hire-me", label: "Hire Me",       cta: true },
-      { href: "/card",    label: "Business Card"            },
+      { href: "/tools/card",    label: "Business Card"            },
       { href: "/resume",  label: "CLI Resume"               },
       { href: "https://www.linkedin.com/in/sunchuangyuhuang/", label: "LinkedIn",  external: true },
       { href: "https://github.com/rNLKJA",                     label: "GitHub",    external: true },
@@ -140,7 +140,7 @@ const Footer = () => {
               {heading === "Pages" && (
                 <p className="text-[9px] text-[#333333] mt-5 leading-relaxed font-mono">
                   · · ·{" "}
-                  <span title="Try /secret">there&apos;s more if you look</span>
+                  <span title="Try /fun/secret">there&apos;s more if you look</span>
                 </p>
               )}
             </div>

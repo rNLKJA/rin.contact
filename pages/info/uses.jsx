@@ -39,14 +39,14 @@ export default function UsesPage() {
       <Head>
         <title>Uses — Rin Huang · rin.contact</title>
         <meta name="description" content="Tools, hardware, and software Rin Huang uses daily for data science, development, and design." />
-        <link rel="canonical" href="https://rin.contact/uses" />
+        <link rel="canonical" href="https://rin.contact/info/uses" />
       </Head>
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
 
         {/* Header */}
         <div className="mb-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/uses</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/info/uses</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">What I use.</h1>
           <p className="text-sm text-[#7A7A7A] leading-relaxed">
             Hardware, software, tools, and setups I rely on daily. Inspired by{" "}

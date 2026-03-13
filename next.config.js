@@ -40,6 +40,35 @@ const nextConfig = {
 
   reactStrictMode: true,
 
+  // ── Redirects: legacy URLs → new subfolder structure ───────────────────────
+  async redirects() {
+    const moved = [
+      ["coffee", "fun/coffee"],
+      ["roast", "fun/roast"],
+      ["spin", "fun/spin"],
+      ["secret", "fun/secret"],
+      ["matrix", "fun/matrix"],
+      ["haiku", "fun/haiku"],
+      ["art", "fun/art"],
+      ["loading", "fun/loading"],
+      ["void", "fun/void"],
+      ["rickroll", "fun/rickroll"],
+      ["inception", "fun/inception"],
+      ["sudo", "fun/sudo"],
+      ["error", "fun/error"],
+      ["now", "info/now"],
+      ["uses", "info/uses"],
+      ["roadmap", "info/roadmap"],
+      ["accessibility", "info/accessibility"],
+      ["colophon", "info/colophon"],
+      ["card", "tools/card"],
+    ];
+    return moved.flatMap(([from, to]) => [
+      { source: `/${from}`, destination: `/${to}`, permanent: true },
+      { source: `/${from}/`, destination: `/${to}/`, permanent: true },
+    ]);
+  },
+
   // ── HTTP headers ──────────────────────────────────────────────────────────
   // Security headers → applied in all environments.
   // Cache headers → production ONLY — in dev these cause the browser to cache

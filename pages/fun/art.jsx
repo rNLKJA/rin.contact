@@ -102,7 +102,7 @@ export default function ArtPage() {
       <Head>
         <title>art — rin.contact</title>
         <meta name="description" content="Generative art by Rin Huang — a Fibonacci phyllotaxis spiral that slowly morphs." />
-        <link rel="canonical" href="https://rin.contact/art" />
+        <link rel="canonical" href="https://rin.contact/fun/art" />
       </Head>
 
       <div className="min-h-screen bg-white flex flex-col">
@@ -142,9 +142,9 @@ export default function ArtPage() {
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">
               ← Home
             </Link>
-            <Link href="/matrix"
+            <Link href="/fun/matrix"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">
-              /matrix →
+              /fun/matrix →
             </Link>
           </div>
         </div>

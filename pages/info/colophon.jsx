@@ -103,13 +103,14 @@ export default function ColophonPage() {
         {/* Easter eggs */}
         <Section label="Hidden Routes & Easter Eggs">
           <Row name="/resume"     value="interactive CLI"      href="/resume"       note="type commands, explore career data" />
-          <Row name="/matrix"     value="data science rain"    href="/matrix"       note="∑ ∇ λ σ and friends" />
-          <Row name="/art"        value="generative spiral"    href="/art"          note="Fibonacci phyllotaxis" />
-          <Row name="/haiku"      value="haiku collection"     href="/haiku"        note="5–7–5 data science absurdism" />
-          <Row name="/coffee"     value="you know why"         href="/coffee"       note="" />
-          <Row name="/roast"      value="honest feedback"      href="/roast"        note="data science roasts" />
-          <Row name="/secret"     value="morse code reveal"    href="/secret"       note="" />
-          <Row name="/card"       value="draggable card"       href="/card"         note="try throwing it" />
+          <Row name="/fun/matrix" value="data science rain"    href="/fun/matrix"   note="∑ ∇ λ σ and friends" />
+          <Row name="/fun/art"    value="generative spiral"    href="/fun/art"      note="Fibonacci phyllotaxis" />
+          <Row name="/fun/haiku"  value="haiku collection"     href="/fun/haiku"    note="5–7–5 data science absurdism" />
+          <Row name="/fun/coffee" value="you know why"         href="/fun/coffee"   note="" />
+          <Row name="/fun/roast"  value="honest feedback"      href="/fun/roast"    note="data science roasts" />
+          <Row name="/fun/spin"   value="what is Rin doing?"   href="/fun/spin"     note="spin the wheel" />
+          <Row name="/fun/secret" value="morse code reveal"    href="/fun/secret"   note="" />
+          <Row name="/tools/card" value="draggable card"       href="/tools/card"   note="try throwing it" />
           <Row name="↑↑↓↓←→←→BA" value="Konami code"                               note="try it on the homepage" />
           <Row name="DevTools"    value="console easter egg"                        note="open your browser console" />
           <Row name="curl"        value="terminal view"                             note="curl rin.contact" />

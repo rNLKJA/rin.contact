@@ -46,7 +46,7 @@ export default function InceptionPage() {
             ← exit the dream
           </Link>
           <Link
-            href="/void"
+            href="/fun/void"
             className="font-mono text-[11px] tracking-widest uppercase border border-[#E0E0E0] text-[#7A7A7A]
                        px-5 py-2 hover:border-black hover:text-black transition-colors"
           >

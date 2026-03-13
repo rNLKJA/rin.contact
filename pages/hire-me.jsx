@@ -94,7 +94,7 @@ export default function HireMePage() {
                 ← Full Profile
               </Link>
               <Link
-                href="/card"
+                href="/tools/card"
                 className="flex-1 block border border-[#2A2A2A] text-[#555] px-6 py-2.5 text-xs tracking-widest uppercase hover:border-[#555] hover:text-white transition-colors duration-200 text-center"
               >
                 Business Card

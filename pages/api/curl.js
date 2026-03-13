@@ -185,15 +185,15 @@ const lines = [
   // Easter eggs
   H("EXPLORE"),
   "",
-  `  ${G}card   ${X}  ${W}https://rin.contact/card${X}    ${S}→ digital business card + .vcf${X}`,
+  `  ${G}card   ${X}  ${W}https://rin.contact/tools/card${X}    ${S}→ digital business card + .vcf${X}`,
   `  ${G}map    ${X}  ${W}https://rin.contact/#career-map${X} ${S}→ career as a metro map${X}`,
   `  ${G}ping   ${X}  ${W}curl rin.contact/api/ping${X}   ${S}→ pong${X}`,
   `  ${G}hire   ${X}  ${W}https://rin.contact/hire-me${X} ${S}→ the honest pitch${X}`,
-  `  ${G}secret ${X}  ${W}https://rin.contact/secret${X}  ${S}→ 👀${X}`,
+  `  ${G}secret ${X}  ${W}https://rin.contact/fun/secret${X}  ${S}→ 👀${X}`,
   "",
   // Morse code hint — the answer is hidden on the homepage
   `  ${DIM}.... . .-.. .-.. ---${X}`,
-  `  ${S}↑ decode this at${X} ${W}https://rin.contact/secret${X}`,
+  `  ${S}↑ decode this at${X} ${W}https://rin.contact/fun/secret${X}`,
   "",
   DOTS,
   `  ${S}$ curl rin.contact${X}`,

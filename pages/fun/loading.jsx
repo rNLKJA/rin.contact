@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import FibonacciFlower from "@/components/ui/FibonacciFlower";
 
 const MESSAGES = [
   "Initialising neural pathways...",
@@ -50,13 +51,9 @@ export default function LoadingPage() {
       <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 font-mono">
         <div className="max-w-sm w-full text-center">
 
-          {/* Spinner */}
-          <div className="mb-10 flex justify-center">
-            <div
-              className="w-8 h-8 border border-black border-t-transparent rounded-full"
-              style={{ animation: "spin 1s linear infinite" }}
-              aria-hidden="true"
-            />
+          {/* Fibonacci flower */}
+          <div className="mb-10 flex justify-center text-black">
+            <FibonacciFlower size={100} animate />
           </div>
 
           {/* Status message */}
@@ -93,9 +90,6 @@ export default function LoadingPage() {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes spin { to { transform: rotate(360deg); } }
-      `}</style>
     </>
   );
 }

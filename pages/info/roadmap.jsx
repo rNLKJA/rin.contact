@@ -69,13 +69,13 @@ export default function RoadmapPage() {
       <Head>
         <title>Roadmap — Rin Huang · rin.contact</title>
         <meta name="description" content="Past and future features for rin.contact — shipped, in progress, and absurd." />
-        <link rel="canonical" href="https://rin.contact/roadmap" />
+        <link rel="canonical" href="https://rin.contact/info/roadmap" />
       </Head>
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
 
         <div className="mb-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/roadmap</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/info/roadmap</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
             Where we&apos;ve been. Where we&apos;re going.
           </h1>

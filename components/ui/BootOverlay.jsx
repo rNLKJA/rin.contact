@@ -3,6 +3,7 @@
  * Shows on first visit per session; ~2s sequence then fades out.
  */
 import { useState, useEffect } from "react";
+import FibonacciFlower from "./FibonacciFlower";
 
 const BOOT_LINES = [
   { t: 0, text: "[ 0.0s] Booting rin.contact..." },
@@ -51,7 +52,12 @@ export default function BootOverlay() {
       style={{ fontFamily: "'Courier New', monospace" }}
       aria-hidden="true"
     >
-      <div className="max-w-md">
+      {/* Fibonacci flower — top centre */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#22C55E] opacity-20">
+        <FibonacciFlower size={140} animate />
+      </div>
+
+      <div className="max-w-md relative z-10">
         {lines.map((text, i) => (
           <p
             key={i}

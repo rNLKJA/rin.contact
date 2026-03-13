@@ -1,6 +1,6 @@
 /**
  * Dynamic sitemap for rin.contact
- * Version: 5.18.5 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
+ * Version: 5.18.6 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
  *
  * Sections documented:
  *   Profile · Career Map · Projects · Skills · Dataset Card · Intelligence · FAQ · Contact
@@ -8,7 +8,7 @@
  */
 
 const BASE_URL = "https://rin.contact";
-const VERSION  = "5.18.5";
+const VERSION  = "5.18.6";
 const AUTHOR   = "Sunchuangyu (Rin) Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU | HUANG SUN CHUANG YU | SUN CHUANG YU HUANG | Sunchuangyu Huang";
 
 // ─── Images to register with Google Image Search ─────────────────────────────
@@ -232,7 +232,7 @@ ${projectsComment}
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/card</loc>
+    <loc>${BASE_URL}/tools/card</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -244,73 +244,73 @@ ${projectsComment}
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/matrix</loc>
+    <loc>${BASE_URL}/fun/matrix</loc>
     <lastmod>${today}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/now</loc>
+    <loc>${BASE_URL}/info/now</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/uses</loc>
+    <loc>${BASE_URL}/info/uses</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/art</loc>
+    <loc>${BASE_URL}/fun/art</loc>
     <lastmod>${today}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/colophon</loc>
+    <loc>${BASE_URL}/info/colophon</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/sudo</loc>
+    <loc>${BASE_URL}/fun/sudo</loc>
     <lastmod>${today}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/loading</loc>
+    <loc>${BASE_URL}/fun/loading</loc>
     <lastmod>${today}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/error</loc>
+    <loc>${BASE_URL}/fun/error</loc>
     <lastmod>${today}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/void</loc>
+    <loc>${BASE_URL}/fun/void</loc>
     <lastmod>${today}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/inception</loc>
+    <loc>${BASE_URL}/fun/inception</loc>
     <lastmod>${today}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/roadmap</loc>
+    <loc>${BASE_URL}/info/roadmap</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/accessibility</loc>
+    <loc>${BASE_URL}/info/accessibility</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

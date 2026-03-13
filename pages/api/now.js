@@ -9,7 +9,7 @@ export default function handler(req, res) {
       timezone:   "ACST (UTC+9:30)",
       location:   "Adelaide, SA, Australia",
       note:       "Manually curated. Inspired by nownownow.com",
-      source:     "https://rin.contact/now",
+      source:     "https://rin.contact/info/now",
     },
     status: "open_to_opportunities",
     building: [

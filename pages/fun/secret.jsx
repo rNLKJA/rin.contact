@@ -107,7 +107,7 @@ export default function SecretPage() {
               <li>→ <span className="text-[#888]">↑↑↓↓←→←→BA</span> — try it on the homepage</li>
               <li>→ <code className="text-[#888]">curl rin.contact</code> — a different view entirely</li>
               <li>→ <code className="text-[#888]">curl rin.contact/api/ping</code> — pong</li>
-              <li>→ <span className="text-[#888]">/coffee</span> — you know why</li>
+              <li>→ <span className="text-[#888]">/fun/coffee</span> — you know why</li>
               <li>→ <span className="text-[#888]">/hire-me</span> — in case that is why you are here</li>
             </ul>
           </div>

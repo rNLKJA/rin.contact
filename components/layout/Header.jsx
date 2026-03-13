@@ -69,7 +69,7 @@ const NAV_LINKS = [
 
 // Standalone page links — rendered as distinct CTA buttons, not inline nav items
 const PAGE_LINKS = [
-  { href: "/card",     label: "Card",    title: "Download business card (.vcf)" },
+  { href: "/tools/card",     label: "Card",    title: "Download business card (.vcf)" },
   { href: "/hire-me",  label: "Hire Me", title: "Hiring info and contact pitch", cta: true },
 ];
 

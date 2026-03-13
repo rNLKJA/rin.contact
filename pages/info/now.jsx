@@ -36,7 +36,7 @@ export default function NowPage() {
       <Head>
         <title>Now — Rin Huang · rin.contact</title>
         <meta name="description" content="What Rin Huang is working on, reading, and thinking about right now." />
-        <link rel="canonical" href="https://rin.contact/now" />
+        <link rel="canonical" href="https://rin.contact/info/now" />
       </Head>
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
@@ -44,7 +44,7 @@ export default function NowPage() {
         {/* Header */}
         <div className="mb-14">
           <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">
-            /now — updated {UPDATED}
+            /info/now — updated {UPDATED}
           </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">What I&apos;m doing now.</h1>
           <p className="text-sm text-[#7A7A7A] leading-relaxed">

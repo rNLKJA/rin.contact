@@ -23,7 +23,7 @@ const SUGGESTIONS = [
   { href: "/about",    label: "About"        },
   { href: "/resume",   label: "CLI Resume"   },
   { href: "/hire-me",  label: "Hire Me"      },
-  { href: "/card",     label: "Business Card"},
+  { href: "/tools/card",     label: "Business Card"},
 ];
 
 export default function Custom404() {

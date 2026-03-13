@@ -23,13 +23,13 @@ export default function AccessibilityPage() {
       <Head>
         <title>Accessibility — Rin Huang · rin.contact</title>
         <meta name="description" content="How rin.contact handles accessibility — contrast, focus, screen readers, motion, and keyboard navigation." />
-        <link rel="canonical" href="https://rin.contact/accessibility" />
+        <link rel="canonical" href="https://rin.contact/info/accessibility" />
       </Head>
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
 
         <div className="mb-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/accessibility</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/info/accessibility</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
             Accessibility at rin.contact
           </h1>

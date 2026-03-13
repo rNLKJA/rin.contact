@@ -57,7 +57,7 @@ export default function ErrorPage() {
               ← home
             </Link>
             <Link
-              href="/coffee"
+              href="/fun/coffee"
               className="text-[11px] tracking-widest uppercase border border-[#FF3C3C] text-[#FF3C3C]
                          px-5 py-2 hover:bg-[#FF3C3C] hover:text-black transition-colors"
             >

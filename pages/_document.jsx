@@ -630,9 +630,9 @@ class MyDocument extends Document {
           │   Every decision is intentional.                                    │
           │                                                                      │
           │   Easter eggs:                                                       │
-          │     /secret  →  Morse code reveal                                  │
-          │     /resume  →  interactive CLI                                     │
-          │     /coffee  →  you know why                                        │
+          │     /fun/secret  →  Morse code reveal                               │
+          │     /resume     →  interactive CLI                                  │
+          │     /fun/coffee →  you know why                                     │
           │     ↑↑↓↓←→←→BA  →  try it on the homepage                         │
           │     curl rin.contact  →  a different view entirely                  │
           │                                                                      │
