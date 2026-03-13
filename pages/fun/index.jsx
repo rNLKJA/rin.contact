@@ -15,6 +15,7 @@ const ITEMS = [
   { href: "/fun/inception", label: "inception", note: "turtles all the way down" },
   { href: "/fun/sudo",     label: "sudo",     note: "elevated access" },
   { href: "/fun/error",    label: "error",    note: "something went wrong" },
+  { href: "/ds",           label: "ds",       note: "Rin as data science" },
 ];
 
 export default function FunIndexPage() {

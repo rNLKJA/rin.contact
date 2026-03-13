@@ -234,6 +234,7 @@ function MyApp({ Component, pageProps }) {
         "%c  /fun/coffee   →  you know why\n" +
         "%c  /fun/secret   →  morse code reveal\n" +
         "%c  /tools/card   →  digital business card\n" +
+        "%c  /ds           →  Rin as data science\n" +
         "%c  ↑↑↓↓←→←→BA  →  try it on the homepage\n\n" +
         "%cAPIs:\n" +
         "%c  GET /api/rin.json   →  structured profile\n" +
@@ -245,7 +246,7 @@ function MyApp({ Component, pageProps }) {
         s("#7A7A7A"), s("#CCCCCC"),
         s("#7A7A7A"), s("#CCCCCC"),
         s("#7A7A7A"),
-        s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),
+        s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),
         s("#7A7A7A"),
         s("#3D3D3D"),s("#3D3D3D"),
         s("#FF3C3C","font-weight:bold"),
