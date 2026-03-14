@@ -7,6 +7,7 @@ const ITEMS = [
   { href: "/info/roadmap",      label: "roadmap",      note: "where this site is headed" },
   { href: "/info/accessibility", label: "accessibility", note: "how this site is accessible" },
   { href: "/info/colophon",     label: "colophon",      note: "how this site is built" },
+  { href: "/info/api",          label: "api",          note: "available API endpoints" },
   { href: "/info/site-map",     label: "site-map",     note: "human-readable sitemap" },
   { href: "/info/manifest",     label: "manifest",     note: "what I believe" },
   { href: "/info/changelog",    label: "changelog",    note: "what changed" },

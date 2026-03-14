@@ -17,6 +17,7 @@ const SECTIONS = [
   ]},
   { heading: "Info", links: [
     { href: "/info", label: "Info" },
+    { href: "/info/api", label: "API" },
     { href: "/info/now", label: "Now" },
     { href: "/info/uses", label: "Uses" },
     { href: "/info/roadmap", label: "Roadmap" },
