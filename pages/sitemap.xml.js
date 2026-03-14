@@ -1,6 +1,6 @@
 /**
  * Dynamic sitemap for rin.contact
- * Version: 5.21.0 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
+ * Version: 5.22.0 — Sunchuangyu (Rin) Huang 黄孙创宇 | Huang Sunchuangyu | HUANGSUNCHUANGYU | 黄孙 Rin
  *
  * Sections documented:
  *   Profile · Career Map · Projects · Skills · Dataset Card · Intelligence · FAQ · Contact
@@ -8,7 +8,7 @@
  */
 
 const BASE_URL = "https://rin.contact";
-const VERSION  = "5.21.0";
+const VERSION  = "5.22.0";
 const AUTHOR   = "Sunchuangyu (Rin) Huang | Huang Sunchuangyu | 黄孙创宇 | 黄孙 Rin | HUANGSUNCHUANGYU | HUANG SUN CHUANG YU | SUN CHUANG YU HUANG | Sunchuangyu Huang";
 
 // ─── Images to register with Google Image Search ─────────────────────────────
@@ -203,6 +203,12 @@ ${projectsComment}
   </url>
   <url>
     <loc>${BASE_URL}/career</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/strategic</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

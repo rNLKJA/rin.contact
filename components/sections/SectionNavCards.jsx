@@ -8,15 +8,24 @@ import MagneticWrapper from "@/components/ui/MagneticWrapper";
 const CARDS = [
   {
     num: "01",
+    title: "Strategic",
+    href: "/strategic",
+    desc: "Strategic thinking + data science — problem-first, not model-first. How understanding the question and applying analytics strategically creates meaningful impact.",
+    tags: ["Problem framing", "Government", "Policy"],
+    stat: "Problem-first",
+    accent: "#FF3C3C",
+  },
+  {
+    num: "02",
     title: "Career",
     href: "/career",
     desc: "Three domain lines. Seven stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
     tags: ["Government", "Research", "Engineering"],
     stat: "4 years · 7 stations",
-    accent: "#FF3C3C",
+    accent: "#686868",
   },
   {
-    num: "02",
+    num: "03",
     title: "Projects",
     href: "/projects",
     desc: "Seventeen shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
@@ -25,7 +34,7 @@ const CARDS = [
     accent: "#686868",
   },
   {
-    num: "03",
+    num: "04",
     title: "Lab",
     href: "/lab",
     desc: "The data playground. Career intelligence reports, dataset self-portrait, compound growth analysis.",
@@ -34,13 +43,22 @@ const CARDS = [
     accent: "#AAAAAA",
   },
   {
-    num: "04",
+    num: "05",
     title: "About",
     href: "/about",
     desc: "Skills across seven technical domains, 23 professional credentials, and answers to the questions people actually ask.",
     tags: ["23 certs", "7 domains", "FAQ"],
     stat: "6 sectors",
     accent: "#3D3D3D",
+  },
+  {
+    num: "06",
+    title: "Resume",
+    href: "/resume",
+    desc: "Interactive CLI-style CV. Type commands, explore career data. Ping, open, ls — the terminal experience.",
+    tags: ["CLI", "Interactive", "Terminal"],
+    stat: "Type to explore",
+    accent: "#7A7A7A",
   },
 ];
 

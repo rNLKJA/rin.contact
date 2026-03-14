@@ -9,6 +9,7 @@ const NAV_COLS = [
   {
     heading: "Navigate",
     links: [
+      { href: "/strategic", label: "Strategic" },
       { href: "/career",   label: "Career"   },
       { href: "/projects", label: "Projects" },
       { href: "/lab",      label: "Lab"      },

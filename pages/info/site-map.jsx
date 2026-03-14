@@ -4,6 +4,7 @@ import Link from "next/link";
 const SECTIONS = [
   { heading: "Main", links: [
     { href: "/", label: "Home" },
+    { href: "/strategic", label: "Strategic Data Science" },
     { href: "/career", label: "Career" },
     { href: "/projects", label: "Projects" },
     { href: "/lab", label: "Lab" },
