@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { isSAPOLPeriod } from "@/lib/employment-period";
 
 // Inline SVGs — avoids react-icons bundle on critical hero path
 const LinkedInIcon = () => (
@@ -20,6 +19,8 @@ const ROLES = [
   "Co-Founder & Dev Lead @ Mapiva",
   "Intelligence & Coordination Officer @ AGD",
   "Full-Stack Engineer @ Unimelb",
+  "Continuous Improvement Specialist @ Life",
+  "Strategic Thinking Specialist @ Life",
 ];
 
 const STATS = [
@@ -247,12 +248,10 @@ export default function HeroSection() {
             </p>
           )}
 
-          {/* Status pill — AGD before 23 Mar 2026, SAPOL on or after */}
+          {/* Status pill */}
           <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase rounded-full text-[#1A1A1A]">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 md:animate-blink" aria-hidden="true" />
-            {isSAPOLPeriod()
-              ? "ASO7 Senior Data Analyst · Adelaide, SA"
-              : "ASO4 Intelligence & Coordination Officer @ AGD"}
+            ASO7 Senior Data Analyst · Adelaide, SA
           </div>
 
           <p className="text-xs tracking-widest uppercase text-[#B71C1C] mb-4">01 — Profile</p>
