@@ -139,22 +139,30 @@ function CopyEmailConfetti() {
   );
 }
 
-// ── Secret word trigger — type "data" anywhere ────────────────────────────────
+// ── Secret word trigger — type "data" or "iddqd" anywhere ──────────────────────
 function SecretWordTrigger() {
   const bufRef = useRef("");
   const [burst, setBurst] = useState(null);
+  const [label, setLabel] = useState("data!");
 
   useEffect(() => {
     const onKey = (e) => {
       if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) return;
-      bufRef.current = (bufRef.current + e.key).slice(-4).toLowerCase();
+      bufRef.current = (bufRef.current + e.key).slice(-5).toLowerCase();
       if (bufRef.current === "data") {
         bufRef.current = "";
-        // Spawn dots burst from a random point
+        setLabel("data!");
         const x = Math.random() * window.innerWidth;
         const y = Math.random() * window.innerHeight * 0.7 + window.innerHeight * 0.1;
         setBurst({ id: Date.now(), x, y });
         setTimeout(() => setBurst(null), 1200);
+      } else if (bufRef.current === "iddqd") {
+        bufRef.current = "";
+        setLabel("GOD MODE");
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight * 0.7 + window.innerHeight * 0.1;
+        setBurst({ id: Date.now(), x, y });
+        setTimeout(() => setBurst(null), 1500);
       }
     };
     window.addEventListener("keydown", onKey);
@@ -188,7 +196,7 @@ function SecretWordTrigger() {
                    text-[#FF3C3C] whitespace-nowrap tracking-widest"
         style={{ animation: "fade-in 0.3s ease-out both" }}
       >
-        data!
+        {label}
       </span>
     </div>
   );
@@ -233,9 +241,11 @@ function MyApp({ Component, pageProps }) {
         "%c  /fun/matrix   →  you'll know it when you see it\n" +
         "%c  /fun/coffee   →  you know why\n" +
         "%c  /fun/secret   →  morse code reveal\n" +
+        "%c  /fun/vault    →  achievement tracker\n" +
         "%c  /tools/card   →  digital business card\n" +
         "%c  /ds           →  Rin as data science\n" +
-        "%c  ↑↑↓↓←→←→BA  →  try it on the homepage\n\n" +
+        "%c  ↑↑↓↓←→←→BA  →  try it on the homepage\n" +
+        "%c  Type 'data' or 'iddqd'  →  anywhere (not in inputs)\n\n" +
         "%cAPIs:\n" +
         "%c  GET /api/rin.json   →  structured profile\n" +
         "%c  GET /api/fortune    →  random wisdom\n\n" +
@@ -246,11 +256,21 @@ function MyApp({ Component, pageProps }) {
         s("#7A7A7A"), s("#CCCCCC"),
         s("#7A7A7A"), s("#CCCCCC"),
         s("#7A7A7A"),
-        s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),
+        s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),
         s("#7A7A7A"),
         s("#3D3D3D"),s("#3D3D3D"),
         s("#FF3C3C","font-weight:bold"),
       );
+
+      const DS_JOKES = [
+        "Correlation ≠ causation. But it's a great conversation starter.",
+        "All models are wrong, but some are useful. — George Box",
+        "In God we trust. All others must bring data. — Deming",
+        "Torture the data, and it will confess to anything. — Ronald Coase",
+        "p < 0.05. Science is not a slot machine.",
+      ];
+      const joke = DS_JOKES[Math.floor(Math.random() * DS_JOKES.length)];
+      console.log("%c" + joke, s("#555555", "font-style:italic"));
     }
   }, []);
 

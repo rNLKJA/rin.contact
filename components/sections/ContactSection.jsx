@@ -114,7 +114,19 @@ export default function ContactSection() {
     if (el) el.style.background = "none";
   }, []);
 
-  const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const magicShownRef = useRef(false);
+
+  const handleChange = (e) => {
+    const next = { ...form, [e.target.name]: e.target.value };
+    setForm(next);
+    if (e.target.name === "message" && !magicShownRef.current) {
+      const msg = (next.message || "").toUpperCase();
+      if (msg.includes("RANDOM_STATE=42") || msg.includes("SELECT * FROM")) {
+        magicShownRef.current = true;
+        showToast("success", "Easter egg detected. You're a data person. Rin approves.");
+      }
+    }
+  };
 
   const showToast = (type, message) => setToast({ type, message });
   const closeToast = () => setToast(null);
