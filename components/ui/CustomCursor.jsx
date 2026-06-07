@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 
-const TRAIL_COUNT = 6;
-// Each trail dot lags progressively more behind the cursor
-const LERP_RATES  = [0.22, 0.17, 0.13, 0.10, 0.08, 0.06];
-const TRAIL_SIZES = [6.5,  5.0,  4.0,  3.0,  2.2,  1.6];
-const TRAIL_ALPHA = [0.55, 0.40, 0.28, 0.18, 0.10, 0.06];
+const TRAIL_COUNT = 3;
+// Reduced from 6 to 3 dots — halves RAF workload, lowers GPU pressure
+const LERP_RATES  = [0.22, 0.14, 0.08];
+const TRAIL_SIZES = [6.5,  4.0,  2.2];
+const TRAIL_ALPHA = [0.55, 0.30, 0.10];
 
 export default function CustomCursor() {
   const dotRef      = useRef(null);
@@ -40,10 +40,10 @@ export default function CustomCursor() {
       inner.style.marginLeft   = `${-size / 2}px`;
       inner.style.marginTop    = `${-size / 2}px`;
       inner.style.boxShadow    = clicking
-        ? "0 0 0 3px rgba(255,60,60,0.25), 0 0 18px rgba(255,60,60,1), 0 0 32px rgba(255,60,60,0.5)"
+        ? "0 0 14px rgba(255,60,60,1)"
         : hovering
-        ? "0 0 0 2px rgba(255,60,60,0.2), 0 0 14px rgba(255,60,60,0.9), 0 0 28px rgba(255,60,60,0.5)"
-        : "0 0 0 2px rgba(255,60,60,0.15), 0 0 10px rgba(255,60,60,0.75), 0 0 22px rgba(255,60,60,0.3)";
+        ? "0 0 10px rgba(255,60,60,0.8)"
+        : "0 0 8px rgba(255,60,60,0.5)";
     };
 
     // ── RAF loop — only runs when cursor visible; stops when mouse leaves ──

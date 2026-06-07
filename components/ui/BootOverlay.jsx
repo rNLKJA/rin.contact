@@ -1,17 +1,16 @@
 /**
  * BootOverlay — Terminal-style boot sequence for first load
- * Shows on first visit per session; ~2s sequence then fades out.
+ * Shows on first visit per session; ~0.8s sequence then fades out.
+ * Reduced from 2.2s for better LCP/TTI. FibonacciFlower skipped on mobile.
  */
 import { useState, useEffect } from "react";
 import FibonacciFlower from "./FibonacciFlower";
 
 const BOOT_LINES = [
   { t: 0, text: "[ 0.0s] Booting rin.contact..." },
-  { t: 300, text: "[ 0.3s] Loading Bitcount font..." },
-  { t: 600, text: "[ 0.6s] Initialising components..." },
-  { t: 900, text: "[ 0.9s] Mounting layout..." },
-  { t: 1200, text: "[ 1.2s] Parsing career data..." },
-  { t: 1500, text: "[ 1.5s] Ready." },
+  { t: 120, text: "[ 0.1s] Loading modules..." },
+  { t: 280, text: "[ 0.3s] Mounting layout..." },
+  { t: 480, text: "[ 0.5s] Ready." },
 ];
 
 const LS_KEY = "rin_boot_seen";
@@ -20,12 +19,14 @@ export default function BootOverlay() {
   const [visible, setVisible] = useState(false);
   const [lines, setLines] = useState([]);
   const [done, setDone] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const seen = sessionStorage.getItem(LS_KEY);
     if (seen) return;
 
+    setIsMobile(window.matchMedia("(max-width: 767px)").matches);
     setVisible(true);
     const timers = BOOT_LINES.map(({ t, text }) =>
       setTimeout(() => setLines((prev) => [...prev, text]), t)
@@ -34,8 +35,8 @@ export default function BootOverlay() {
     const doneTimer = setTimeout(() => {
       setDone(true);
       sessionStorage.setItem(LS_KEY, "1");
-      setTimeout(() => setVisible(false), 500);
-    }, 2200);
+      setTimeout(() => setVisible(false), 400);
+    }, 800);
 
     return () => {
       timers.forEach(clearTimeout);
@@ -52,10 +53,12 @@ export default function BootOverlay() {
       style={{ fontFamily: "'Courier New', monospace" }}
       aria-hidden="true"
     >
-      {/* Fibonacci flower — top centre */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#22C55E] opacity-20">
-        <FibonacciFlower size={140} animate />
-      </div>
+      {/* Fibonacci flower — top centre, desktop only to save GPU */}
+      {!isMobile && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#22C55E] opacity-20">
+          <FibonacciFlower size={140} animate />
+        </div>
+      )}
 
       <div className="max-w-md relative z-10">
         {lines.map((text, i) => (
