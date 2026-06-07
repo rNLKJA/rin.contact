@@ -1,5 +1,6 @@
 // rin.contact service worker — caches static assets for offline + repeat-visit speed
-const CACHE = "rin-contact-v1";
+// Versioned: bump CACHE name when precache list changes to trigger clean reinstall.
+const CACHE = "rin-contact-v2";
 const PRECACHE = [
   "/",
   "/logo.svg",
@@ -9,7 +10,18 @@ const PRECACHE = [
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(PRECACHE).catch(() => {}))
+    caches.open(CACHE).then((cache) =>
+      // addAll rejects entirely if any single request fails — use individual
+      // add() calls wrapped in allSettled so one flaky resource doesn't
+      // block the whole install.
+      Promise.allSettled(
+        PRECACHE.map((url) =>
+          cache.add(url).catch((err) => {
+            console.debug(`[sw] precache skip: ${url} — ${err.message}`);
+          })
+        )
+      )
+    )
   );
   self.skipWaiting();
 });
@@ -24,7 +36,6 @@ self.addEventListener("activate", (e) => {
 });
 
 self.addEventListener("fetch", (e) => {
-  // Only cache GET requests for same origin (skip API, external, and POST)
   if (e.request.method !== "GET") return;
   const url = new URL(e.request.url);
   if (url.origin !== self.location.origin) return;
