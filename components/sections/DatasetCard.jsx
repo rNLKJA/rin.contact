@@ -45,7 +45,7 @@ export default function DatasetCard() {
       <div className="flex flex-wrap items-center gap-4 mb-6">
         <div>
           <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-1">◈ — If I were a dataset</p>
-          <p className="text-[10px] text-[#AAAAAA] font-mono">
+          <p className="text-[10px] text-[#AAAAAA] dark:text-[#9A9A9A] font-mono">
             What does a data scientist look like as data?
           </p>
         </div>
@@ -68,55 +68,55 @@ export default function DatasetCard() {
       </div>
 
       {/* Terminal card */}
-      <div className="bg-[#0C0C0C] border border-[#232323] overflow-x-auto">
+      <div className="bg-[#F5F5F5] dark:bg-[#0C0C0C] border border-[#E0E0E0] dark:border-[#232323] overflow-x-auto">
 
         {/* Title bar */}
-        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#181818]">
+        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#E0E0E0] dark:border-[#181818]">
           <span className="w-2.5 h-2.5 rounded-full bg-[#FF3C3C] opacity-60" aria-hidden="true" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#222]" aria-hidden="true" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#222]" aria-hidden="true" />
-          <span className="ml-3 text-[10px] font-mono text-[#3A3A3A]">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#DDD] dark:bg-[#222]" aria-hidden="true" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#DDD] dark:bg-[#222]" aria-hidden="true" />
+          <span className="ml-3 text-[10px] font-mono text-[#999] dark:text-[#3A3A3A]">
             rin@universe:~$ python3
           </span>
         </div>
 
         <div className="p-5 font-mono text-xs leading-relaxed">
-          <p className="text-[#555] mb-0.5">&gt;&gt;&gt; import rin</p>
-          <p className="text-[#555] mb-4">&gt;&gt;&gt; rin.{tab}()</p>
+          <p className="text-[#888] dark:text-[#555] mb-0.5">&gt;&gt;&gt; import rin</p>
+          <p className="text-[#888] dark:text-[#555] mb-4">&gt;&gt;&gt; rin.{tab}()</p>
 
           {/* ── .info() view ──────────────────────────────────────────────── */}
           {tab === "info" && (
             <>
-              <p className="text-[#888]">
+              <p className="text-[#777] dark:text-[#888]">
                 RinDataFrame — 1 row × {INFO_ROWS.length} columns
               </p>
-              <p className="text-[#2E2E2E] mb-3">{LINE}</p>
+              <p className="text-[#CCC] dark:text-[#2E2E2E] mb-3">{LINE}</p>
 
               {/* Column headers */}
-              <div className="flex gap-4 text-[#454545] mb-1.5 text-[10px]">
+              <div className="flex gap-4 text-[#777] dark:text-[#454545] mb-1.5 text-[10px]">
                 <span className="w-5 flex-shrink-0">#</span>
                 <span className="w-36 flex-shrink-0">Column</span>
                 <span className="w-14 flex-shrink-0">Dtype</span>
                 <span>Value</span>
               </div>
-              <p className="text-[#252525] mb-2">{LINE}</p>
+              <p className="text-[#DDD] dark:text-[#252525] mb-2">{LINE}</p>
 
               {INFO_ROWS.map((r, i) => (
-                <div key={r.col} className="flex gap-4 group hover:bg-[#111] transition-colors px-1 -mx-1">
-                  <span className="w-5 flex-shrink-0 text-[#2E2E2E] select-none">{i}</span>
-                  <span className="w-36 flex-shrink-0 text-[#686868]">{r.col}</span>
-                  <span className="w-14 flex-shrink-0 text-[#494949]">{r.dtype}</span>
-                  <span className="text-[#CCCCCC] group-hover:text-white transition-colors">
+                <div key={r.col} className="flex gap-4 group hover:bg-[#E8E8E8] dark:hover:bg-[#111] transition-colors px-1 -mx-1">
+                  <span className="w-5 flex-shrink-0 text-[#AAA] dark:text-[#2E2E2E] select-none">{i}</span>
+                  <span className="w-36 flex-shrink-0 text-[#888] dark:text-[#686868]">{r.col}</span>
+                  <span className="w-14 flex-shrink-0 text-[#888] dark:text-[#494949]">{r.dtype}</span>
+                  <span className="text-[#333] dark:text-[#CCCCCC] group-hover:text-black dark:group-hover:text-white transition-colors">
                     {r.value}
                   </span>
                 </div>
               ))}
 
-              <p className="text-[#252525] mt-2 mb-1">{LINE}</p>
-              <p className="text-[#444]">dtypes: bool(3), int64(3), object(5)</p>
-              <p className="text-[#333]">
+              <p className="text-[#DDD] dark:text-[#252525] mt-2 mb-1">{LINE}</p>
+              <p className="text-[#888] dark:text-[#444]">dtypes: bool(3), int64(3), object(5)</p>
+              <p className="text-[#999] dark:text-[#333]">
                 memory_usage:{" "}
-                <span className="text-[#555]">
+                <span className="text-[#777] dark:text-[#555]">
                   not applicable — experience doesn&apos;t compress
                 </span>
               </p>
@@ -126,41 +126,41 @@ export default function DatasetCard() {
           {/* ── .describe() view ──────────────────────────────────────────── */}
           {tab === "describe" && (
             <>
-              <p className="text-[#888]">Statistical summary of career metrics:</p>
-              <p className="text-[#2E2E2E] mb-3">{LINE}</p>
+              <p className="text-[#777] dark:text-[#888]">Statistical summary of career metrics:</p>
+              <p className="text-[#CCC] dark:text-[#2E2E2E] mb-3">{LINE}</p>
 
-              <div className="flex gap-4 text-[#454545] mb-1.5 text-[10px]">
+              <div className="flex gap-4 text-[#777] dark:text-[#454545] mb-1.5 text-[10px]">
                 <span className="w-40 flex-shrink-0">metric</span>
                 <span className="w-14 flex-shrink-0">value</span>
                 <span>note</span>
               </div>
-              <p className="text-[#252525] mb-2">{LINE}</p>
+              <p className="text-[#DDD] dark:text-[#252525] mb-2">{LINE}</p>
 
               {DESCRIBE_ROWS.map((r) => (
-                <div key={r.metric} className="flex gap-4 group hover:bg-[#111] transition-colors px-1 -mx-1">
-                  <span className="w-40 flex-shrink-0 text-[#686868]">{r.metric}</span>
+                <div key={r.metric} className="flex gap-4 group hover:bg-[#E8E8E8] dark:hover:bg-[#111] transition-colors px-1 -mx-1">
+                  <span className="w-40 flex-shrink-0 text-[#888] dark:text-[#686868]">{r.metric}</span>
                   <span className="w-14 flex-shrink-0 text-[#FF3C3C]">{r.val}</span>
-                  <span className="text-[#444] group-hover:text-[#666] transition-colors">
+                  <span className="text-[#777] dark:text-[#444] group-hover:text-[#999] dark:group-hover:text-[#666] transition-colors">
                     # {r.note}
                   </span>
                 </div>
               ))}
 
-              <p className="text-[#252525] mt-2 mb-1">{LINE}</p>
-              <p className="text-[#333]">
+              <p className="text-[#DDD] dark:text-[#252525] mt-2 mb-1">{LINE}</p>
+              <p className="text-[#999] dark:text-[#333]">
                 distribution:{" "}
-                <span className="text-[#555]">right-skewed · </span>
+                <span className="text-[#777] dark:text-[#555]">right-skewed · </span>
                 outliers:{" "}
-                <span className="text-[#555]">1 confirmed · </span>
+                <span className="text-[#777] dark:text-[#555]">1 confirmed · </span>
                 missing_values:{" "}
-                <span className="text-[#555]">0</span>
+                <span className="text-[#777] dark:text-[#555]">0</span>
               </p>
             </>
           )}
 
           {/* Blinking cursor */}
-          <p className="text-[#555] mt-4">
-            &gt;&gt;&gt; <span className="inline-block w-1.5 h-3 bg-[#555] animate-pulse align-middle" aria-hidden="true" />
+          <p className="text-[#888] dark:text-[#555] mt-4">
+            &gt;&gt;&gt; <span className="inline-block w-1.5 h-3 bg-[#999] dark:bg-[#555] animate-pulse align-middle" aria-hidden="true" />
           </p>
         </div>
       </div>

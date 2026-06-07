@@ -284,7 +284,7 @@ function GridLines() {
         <g key={v}>
           <line
             x1={70} y1={toY(v)} x2={470} y2={toY(v)}
-            stroke="#1C1C1C" strokeWidth={0.5}
+            className="stroke-[#D0D0D0] dark:stroke-[#1C1C1C]" strokeWidth={0.5}
             strokeDasharray={v % 2 === 0 ? "none" : "3,6"}
           />
         </g>
@@ -293,7 +293,7 @@ function GridLines() {
         <line
           key={v}
           x1={toX(v)} y1={20} x2={toX(v)} y2={280}
-          stroke="#1C1C1C" strokeWidth={0.5} strokeDasharray="3,6"
+          className="stroke-[#D0D0D0] dark:stroke-[#1C1C1C]" strokeWidth={0.5} strokeDasharray="3,6"
         />
       ))}
     </>
@@ -313,9 +313,9 @@ function SeniorityBands() {
       {bands.map((b, i) => (
         <g key={i}>
           <rect x={70} y={b.yTop} width={400} height={b.yBot - b.yTop}
-            fill={i % 2 === 0 ? "#080808" : "#050505"} />
+            className={i % 2 === 0 ? "fill-[#E8E8E8] dark:fill-[#080808]" : "fill-[#F0F0F0] dark:fill-[#050505]"} />
           <text x={466} y={b.y + 4} textAnchor="end" fontSize={8}
-            fill="#333" fontFamily="monospace">{b.label}</text>
+            className="fill-[#999] dark:fill-[#333]" fontFamily="monospace">{b.label}</text>
         </g>
       ))}
     </>
@@ -357,7 +357,7 @@ function BubblePanel() {
   return (
     <div>
       {/* Framing context */}
-      <p className="text-[11px] text-[#555] font-mono mb-4 leading-relaxed">
+      <p className="text-[11px] text-[#888] dark:text-[#555] font-mono mb-4 leading-relaxed">
         Plotted against the typical career trajectory for analytics professionals at each year of experience.
         Bubble size = cross-domain breadth (number of distinct technical domains actively used).
         Source: APS Career Pathfinder (APSC 2024) · LinkedIn Work Change Report (2024) · IAPA Skills &amp; Salary Survey (2023).
@@ -366,17 +366,17 @@ function BubblePanel() {
       <div className="relative overflow-x-auto">
         {/* Tooltip */}
         {hovPt && step > 0 && (
-          <div className="absolute top-0 right-0 z-10 border border-[#2A2A2A] bg-[#0A0A0A] p-3 text-xs max-w-[230px] pointer-events-none">
-            <p className="font-medium text-white text-sm">
+          <div className="absolute top-0 right-0 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] p-3 text-xs max-w-[230px] pointer-events-none">
+            <p className="font-medium text-black dark:text-white text-sm">
               {hovPt.label?.replace(/\n/g, " ")}
-              {hovPt.year ? <span className="text-[#555] ml-2 text-xs">· {hovPt.year}</span> : null}
+              {hovPt.year ? <span className="text-[#999] dark:text-[#555] ml-2 text-xs">· {hovPt.year}</span> : null}
             </p>
             {hovPt.domain && (
-              <p className="text-[10px] tracking-widest uppercase text-[#444] mt-0.5 mb-1.5">{hovPt.domain}</p>
+              <p className="text-[10px] tracking-widest uppercase text-[#999] dark:text-[#444] mt-0.5 mb-1.5">{hovPt.domain}</p>
             )}
-            <p className="text-[#888] leading-relaxed">{hovPt.detail || hovPt.source}</p>
+            <p className="text-[#666] dark:text-[#888] leading-relaxed">{hovPt.detail || hovPt.source}</p>
             {hovPt.why && (
-              <p className="text-[#555] mt-1.5 text-[10px] italic leading-relaxed">{hovPt.why}</p>
+              <p className="text-[#999] dark:text-[#555] mt-1.5 text-[10px] italic leading-relaxed">{hovPt.why}</p>
             )}
           </div>
         )}
@@ -387,14 +387,14 @@ function BubblePanel() {
           <GridLines />
 
           {/* Axes */}
-          <line x1={70} y1={280} x2={470} y2={280} stroke="#3D3D3D" strokeWidth={1} />
-          <line x1={70} y1={20}  x2={70}  y2={280} stroke="#3D3D3D" strokeWidth={1} />
+          <line x1={70} y1={280} x2={470} y2={280} className="stroke-[#E0E0E0] dark:stroke-[#3D3D3D]" strokeWidth={1} />
+          <line x1={70} y1={20}  x2={70}  y2={280} className="stroke-[#E0E0E0] dark:stroke-[#3D3D3D]" strokeWidth={1} />
 
           {/* X-axis ticks */}
           {[-2, -1, 0, 1, 2, 3, 4].map((v) => (
             <g key={v}>
-              <line x1={toX(v)} y1={280} x2={toX(v)} y2={284} stroke="#3D3D3D" strokeWidth={1} />
-              <text x={toX(v)} y={294} textAnchor="middle" fontSize={9} fill={v < 0 ? "#444" : "#555"} fontFamily="monospace">
+              <line x1={toX(v)} y1={280} x2={toX(v)} y2={284} className="stroke-[#E0E0E0] dark:stroke-[#3D3D3D]" strokeWidth={1} />
+              <text x={toX(v)} y={294} textAnchor="middle" fontSize={9} className={v < 0 ? "fill-[#888] dark:fill-[#444]" : "fill-[#999] dark:fill-[#555]"} fontFamily="monospace">
                 {v === -2 ? "Pre" : v < 0 ? "" : v === 0 ? "0" : `${v}`}
               </text>
             </g>
@@ -403,16 +403,16 @@ function BubblePanel() {
           {/* Y-axis ticks */}
           {[0,2,4,6,8,10].map((v) => (
             <g key={v}>
-              <line x1={66} y1={toY(v)} x2={70} y2={toY(v)} stroke="#3D3D3D" strokeWidth={1} />
-              <text x={62} y={toY(v)+3} textAnchor="end" fontSize={8} fill="#444" fontFamily="monospace">{v}</text>
+              <line x1={66} y1={toY(v)} x2={70} y2={toY(v)} className="stroke-[#E0E0E0] dark:stroke-[#3D3D3D]" strokeWidth={1} />
+              <text x={62} y={toY(v)+3} textAnchor="end" fontSize={8} className="fill-[#888] dark:fill-[#444]" fontFamily="monospace">{v}</text>
             </g>
           ))}
 
           {/* Axis labels */}
-          <text x={270} y={309} textAnchor="middle" fontSize={10} fill="#555" fontFamily="monospace">
+          <text x={270} y={309} textAnchor="middle" fontSize={10} className="fill-[#999] dark:fill-[#555]" fontFamily="monospace">
             Years in formal workforce (0 = CBS) →
           </text>
-          <text x={14} y={150} textAnchor="middle" fontSize={10} fill="#555" fontFamily="monospace"
+          <text x={14} y={150} textAnchor="middle" fontSize={10} className="fill-[#999] dark:fill-[#555]" fontFamily="monospace"
             transform="rotate(-90 14 150)">
             Career Seniority →
           </text>
@@ -421,7 +421,7 @@ function BubblePanel() {
           {step >= 2 && (
             <path
               d={benchPath}
-              fill="none" stroke="#2A2A2A" strokeWidth={1.5} strokeDasharray="4,3"
+              fill="none" className="stroke-[#999] dark:stroke-[#2A2A2A]" strokeWidth={1.5} strokeDasharray="4,3"
               style={{ animation: "fadeUp 0.5s ease 0.1s both" }}
             />
           )}
@@ -457,7 +457,7 @@ function BubblePanel() {
                   key={i}
                   x={toX(b.exp)}
                   y={toY(b.sen) + (i - (b.labelLines.length - 1) / 2) * 10}
-                  textAnchor="middle" fontSize={7} fill="#555" fontFamily="monospace"
+                  textAnchor="middle" fontSize={7} className="fill-[#999] dark:fill-[#555]" fontFamily="monospace"
                 >
                   {line}
                 </text>
@@ -480,9 +480,9 @@ function BubblePanel() {
                 <circle
                   cx={cx} cy={cy}
                   r={isHov ? b.r + 4 : b.r}
-                  fill={step >= 1 ? b.color : "#2A2A2A"}
+                  fill={step >= 1 ? b.color : "#999"}
                   fillOpacity={step >= 1 ? 0.8 : 1}
-                  stroke={step >= 1 ? b.color : "#3A3A3A"}
+                  stroke={step >= 1 ? b.color : "#AAA"}
                   strokeWidth={step >= 1 ? 1.5 : 1}
                   style={{
                     transition: [
@@ -520,7 +520,7 @@ function BubblePanel() {
                 +2.5
               </text>
               <text x={toX(1) + 22} y={(toY(7) + toY(4.5)) / 2 + 14}
-                textAnchor="start" fontSize={7} fill="#686868" fontFamily="monospace">
+                textAnchor="start" fontSize={7} className="fill-[#999] dark:fill-[#686868]" fontFamily="monospace">
                 1 yr vs 4 yr
               </text>
             </g>
@@ -529,7 +529,7 @@ function BubblePanel() {
       </div>
 
       {/* Legend */}
-      <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[10px] text-[#555] font-mono">
+      <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[10px] text-[#888] dark:text-[#555] font-mono">
         <span>Bubble size = cross-domain breadth</span>
         {[
           { color: "#FF3C3C", label: "Government" },
@@ -543,7 +543,7 @@ function BubblePanel() {
           </span>
         ))}
         <span className="flex items-center gap-1.5">
-          <span className="inline-block w-2.5 h-2.5 rounded-full border border-dashed border-[#444] bg-[#1A1A1A] flex-shrink-0" />
+          <span className="inline-block w-2.5 h-2.5 rounded-full border border-dashed border-[#CCC] dark:border-[#444] bg-[#E8E8E8] dark:bg-[#1A1A1A] flex-shrink-0" />
           Benchmark cohort
         </span>
       </div>
@@ -554,13 +554,13 @@ function BubblePanel() {
           onClick={handleRun}
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
-              ? "border-[#444] text-[#888] hover:border-[#888] hover:text-[#ccc]"
+              ? "border-[#CCC] dark:border-[#444] text-[#888] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
               : "border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
           }`}
         >
           {step === 0 ? "Run Analysis →" : "↺  Reset"}
         </button>
-        <span className="text-xs text-[#555] font-mono">
+        <span className="text-xs text-[#888] dark:text-[#555] font-mono">
           {step === 0 && "6 roles (4 pre-career + 2 formal) · 5 benchmark cohorts · click to reveal the pattern"}
           {step === 1 && "Plotting true positions…"}
           {step === 2 && "Hover any bubble for context"}
@@ -572,18 +572,18 @@ function BubblePanel() {
         <div className="mt-6 space-y-3" style={{ animation: "fadeUp 0.4s ease 1.1s both" }}>
           <div className="border-l-2 border-[#FF3C3C] pl-4">
             <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">Pattern Detected</p>
-            <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">
+            <p className="text-sm text-[#666] dark:text-[#AAAAAA] leading-relaxed font-light">
               Formal career starts at CBS/AGD (level 4). From there, Rin reached SAPOL ASO7 (level 7) in{" "}
-              <span className="text-white font-normal">1 year</span>. The typical analyst pathway requires{" "}
-              <span className="text-white font-normal">4 years minimum</span> to reach ASO7-equivalent
-              <span className="text-[#555]"> (APSC Career Pathfinder, 2024)</span>.
+              <span className="text-black dark:text-white font-normal">1 year</span>. The typical analyst pathway requires{" "}
+              <span className="text-black dark:text-white font-normal">4 years minimum</span> to reach ASO7-equivalent
+              <span className="text-[#999] dark:text-[#555]"> (APSC Career Pathfinder, 2024)</span>.
               CSL, CSIRO, WEHI and RA1/MoodQ are not counted as workforce — internships, capstone, casual RA1.
               At Year 1, Rin sits +2.5 seniority grades above the benchmark. Rin reached ASO7 at 26.
             </p>
           </div>
-          <div className="border-l-2 border-[#2A2A2A] pl-4">
-            <p className="text-[10px] text-[#555] uppercase tracking-widest mb-2 font-mono">What the bubble sizes say</p>
-            <p className="text-sm text-[#686868] leading-relaxed font-light">
+          <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">
+            <p className="text-[10px] text-[#999] dark:text-[#555] uppercase tracking-widest mb-2 font-mono">What the bubble sizes say</p>
+            <p className="text-sm text-[#888] dark:text-[#686868] leading-relaxed font-light">
               The largest bubbles (SAPOL, CBS, RA1/MoodQ) each operated across 6–7 distinct technical domains
               simultaneously. The benchmark cohort at Year 4 is plotted with breadth ≈ 3.5 domains —
               consistent with IAPA 2023 findings that fewer than 15% of analysts under 28 have
@@ -591,9 +591,9 @@ function BubblePanel() {
               produced faster seniority growth. RA1/MoodQ has high breadth but lower seniority (casual framing).
             </p>
           </div>
-          <div className="border-l-2 border-[#1A1A1A] pl-4">
-            <p className="text-[10px] text-[#444] uppercase tracking-widest mb-2 font-mono">A note of honest context</p>
-            <p className="text-sm text-[#555] leading-relaxed font-light">
+          <div className="border-l-2 border-[#DDD] dark:border-[#1A1A1A] pl-4">
+            <p className="text-[10px] text-[#999] dark:text-[#444] uppercase tracking-widest mb-2 font-mono">A note of honest context</p>
+            <p className="text-sm text-[#777] dark:text-[#555] leading-relaxed font-light">
               Rapid cross-sector mobility carries a real cost: less specialist depth than a domain expert
               who stayed in one area for four years. RA1/MoodQ is plotted as casual (not official career start) —
               high breadth, lower seniority. CBS (mid-junior) to SAPOL (mid-management) shows the formal
@@ -601,33 +601,33 @@ function BubblePanel() {
               continuous improvement is treated as a first principle rather than a HR talking point.
             </p>
           </div>
-          <div className="border-l-2 border-[#2A2A2A] pl-4">
-            <p className="text-[10px] text-[#555] uppercase tracking-widest mb-2 font-mono">Cross-jurisdiction equivalence</p>
-            <p className="text-sm text-[#686868] leading-relaxed font-light mb-3">
+          <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">
+            <p className="text-[10px] text-[#999] dark:text-[#555] uppercase tracking-widest mb-2 font-mono">Cross-jurisdiction equivalence</p>
+            <p className="text-sm text-[#888] dark:text-[#686868] leading-relaxed font-light mb-3">
               Approximate level mapping across Australian government streams (roles vary by agency):
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
-              <div className="border border-[#1E1E1E] p-3 bg-[#0A0A0A]">
+              <div className="border border-[#E0E0E0] dark:border-[#1E1E1E] p-3 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
                 <p className="text-[#FF3C3C] font-medium mb-2">CBS ASO4 (mid-junior)</p>
-                <p className="text-[#666]">SA · ASO4</p>
-                <p className="text-[#666]">APS · APS5</p>
-                <p className="text-[#666]">VPS · VPS4</p>
-                <p className="text-[#666]">NSW · Clerk 5/6</p>
+                <p className="text-[#999] dark:text-[#666]">SA · ASO4</p>
+                <p className="text-[#999] dark:text-[#666]">APS · APS5</p>
+                <p className="text-[#999] dark:text-[#666]">VPS · VPS4</p>
+                <p className="text-[#999] dark:text-[#666]">NSW · Clerk 5/6</p>
               </div>
-              <div className="border border-[#1E1E1E] p-3 bg-[#0A0A0A]">
+              <div className="border border-[#E0E0E0] dark:border-[#1E1E1E] p-3 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
                 <p className="text-[#FF3C3C] font-medium mb-2">SAPOL ASO7 (mid-management)</p>
-                <p className="text-[#666]">SA · ASO7</p>
-                <p className="text-[#666]">APS · EL1</p>
-                <p className="text-[#666]">VPS · VPS6</p>
-                <p className="text-[#666]">NSW · Clerk 9/10</p>
+                <p className="text-[#999] dark:text-[#666]">SA · ASO7</p>
+                <p className="text-[#999] dark:text-[#666]">APS · EL1</p>
+                <p className="text-[#999] dark:text-[#666]">VPS · VPS6</p>
+                <p className="text-[#999] dark:text-[#666]">NSW · Clerk 9/10</p>
               </div>
             </div>
-            <p className="text-[10px] text-[#444] mt-2 font-mono">
+            <p className="text-[10px] text-[#999] dark:text-[#444] mt-2 font-mono">
               Sources: SA Public Sector Wages Parity, VPS Agreement, NSW Crown Employees, APSC classification guides.
               Equivalence is indicative — actual duties and seniority vary by role and agency.
             </p>
           </div>
-          <p className="text-[10px] text-[#333] font-mono pt-1">
+          <p className="text-[10px] text-[#AAA] dark:text-[#333] font-mono pt-1">
             n = 6 roles (4 pre-career + 2 formal) · benchmarks: APS Career Pathfinder (APSC 2024) · LinkedIn Work Change Report (2024) · IAPA Skills &amp; Salary Survey (2023) · Randstad Gen Z Workplace Blueprint (2025)
           </p>
           <AiDeclaration />
@@ -662,7 +662,7 @@ function GrowthPanel() {
 
   return (
     <div>
-      <p className="text-[11px] text-[#555] font-mono mb-5 leading-relaxed">
+      <p className="text-[11px] text-[#888] dark:text-[#555] font-mono mb-5 leading-relaxed">
         Compound growth index — not a capped score, but a ratio against the 2020 baseline.
         Strategic thinking and continuous improvement have no ceiling; every new context
         reactivates and deepens all prior knowledge.
@@ -671,8 +671,8 @@ function GrowthPanel() {
 
       <div className="relative overflow-x-auto">
         {hovPt && step >= 2 && (
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 border border-[#2A2A2A] bg-[#0A0A0A] px-4 py-2.5 text-xs font-mono text-[#888] pointer-events-none whitespace-nowrap">
-            <span className="text-white font-medium mr-2">{hovPt.year}</span>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] px-4 py-2.5 text-xs font-mono text-[#888] pointer-events-none whitespace-nowrap">
+            <span className="text-black dark:text-white font-medium mr-2">{hovPt.year}</span>
             <span className="text-[#FF3C3C] mr-2">{hovPt.idx.toFixed(2)}×</span>
             {hovPt.event}
           </div>
@@ -681,16 +681,16 @@ function GrowthPanel() {
           {/* Grid */}
           {yTicks.map((v) => (
             <line key={v} x1={60} y1={py(v)} x2={460} y2={py(v)}
-              stroke="#111" strokeWidth={v === 1 ? 0.8 : 0.4} strokeDasharray={v === 1 ? "none" : "3,6"} />
+              className="stroke-[#DDD] dark:stroke-[#111]" strokeWidth={v === 1 ? 0.8 : 0.4} strokeDasharray={v === 1 ? "none" : "3,6"} />
           ))}
 
           {/* Axes */}
-          <line x1={60} y1={240} x2={460} y2={240} stroke="#2A2A2A" strokeWidth={1} />
-          <line x1={60} y1={15}  x2={60}  y2={240} stroke="#2A2A2A" strokeWidth={1} />
+          <line x1={60} y1={240} x2={460} y2={240} className="stroke-[#CCC] dark:stroke-[#2A2A2A]" strokeWidth={1} />
+          <line x1={60} y1={15}  x2={60}  y2={240} className="stroke-[#CCC] dark:stroke-[#2A2A2A]" strokeWidth={1} />
 
           {/* Y labels */}
           {yTicks.map((v) => (
-            <text key={v} x={54} y={py(v) + 3} textAnchor="end" fontSize={9} fill="#444" fontFamily="monospace">
+            <text key={v} x={54} y={py(v) + 3} textAnchor="end" fontSize={9} className="fill-[#888] dark:fill-[#444]" fontFamily="monospace">
               {v}×
             </text>
           ))}
@@ -698,20 +698,20 @@ function GrowthPanel() {
           {/* X labels */}
           {xYears.map((yr) => (
             <g key={yr}>
-              <line x1={px(yr)} y1={240} x2={px(yr)} y2={244} stroke="#2A2A2A" strokeWidth={1} />
-              <text x={px(yr)} y={254} textAnchor="middle" fontSize={9} fill="#444" fontFamily="monospace">{yr}</text>
+              <line x1={px(yr)} y1={240} x2={px(yr)} y2={244} className="stroke-[#CCC] dark:stroke-[#2A2A2A]" strokeWidth={1} />
+              <text x={px(yr)} y={254} textAnchor="middle" fontSize={9} className="fill-[#888] dark:fill-[#444]" fontFamily="monospace">{yr}</text>
             </g>
           ))}
           {[2027, 2028].map((yr) => (
             <g key={yr}>
-              <line x1={px(yr)} y1={240} x2={px(yr)} y2={244} stroke="#1A1A1A" strokeWidth={1} />
-              <text x={px(yr)} y={254} textAnchor="middle" fontSize={9} fill="#2A2A2A" fontFamily="monospace">{yr}</text>
+              <line x1={px(yr)} y1={240} x2={px(yr)} y2={244} className="stroke-[#DDD] dark:stroke-[#1A1A1A]" strokeWidth={1} />
+              <text x={px(yr)} y={254} textAnchor="middle" fontSize={9} className="fill-[#CCC] dark:fill-[#2A2A2A]" fontFamily="monospace">{yr}</text>
             </g>
           ))}
 
           {/* Axis labels */}
-          <text x={260} y={267} textAnchor="middle" fontSize={9} fill="#444" fontFamily="monospace">Year →</text>
-          <text x={14} y={130} textAnchor="middle" fontSize={9} fill="#444" fontFamily="monospace"
+          <text x={260} y={267} textAnchor="middle" fontSize={9} className="fill-[#888] dark:fill-[#444]" fontFamily="monospace">Year →</text>
+          <text x={14} y={130} textAnchor="middle" fontSize={9} className="fill-[#888] dark:fill-[#444]" fontFamily="monospace"
             transform="rotate(-90 14 130)">Growth Index (1× = 2020) →</text>
 
           {/* Gap fill — step 3 */}
@@ -723,12 +723,12 @@ function GrowthPanel() {
           {/* Benchmark — step 1 */}
           {step >= 1 && (
             <>
-              <path d={BENCH_PATH} stroke="#2A2A2A" strokeWidth={1.5} strokeDasharray="4,3" fill="none"
+              <path d={BENCH_PATH} className="stroke-[#999] dark:stroke-[#2A2A2A]" strokeWidth={1.5} strokeDasharray="4,3" fill="none"
                 style={{ animation: "fadeUp 0.5s ease" }} />
-              <path d={BENCH_PROJ_PATH} stroke="#1A1A1A" strokeWidth={1} strokeDasharray="3,4" fill="none"
+              <path d={BENCH_PROJ_PATH} className="stroke-[#BBB] dark:stroke-[#1A1A1A]" strokeWidth={1} strokeDasharray="3,4" fill="none"
                 style={{ animation: "fadeUp 0.5s ease 0.2s both" }} />
-              <text x={366} y={py(2.64) - 6} fontSize={8} fill="#2A2A2A" fontFamily="monospace">benchmark</text>
-              <text x={366} y={py(2.64) + 5} fontSize={8} fill="#2A2A2A" fontFamily="monospace">(linear)</text>
+              <text x={366} y={py(2.64) - 6} fontSize={8} className="fill-[#999] dark:fill-[#2A2A2A]" fontFamily="monospace">benchmark</text>
+              <text x={366} y={py(2.64) + 5} fontSize={8} className="fill-[#999] dark:fill-[#2A2A2A]" fontFamily="monospace">(linear)</text>
             </>
           )}
 
@@ -752,7 +752,8 @@ function GrowthPanel() {
             return (
               <circle key={d.year} cx={px(d.year)} cy={py(d.idx)}
                 r={isBk ? 5 : isHov ? 4.5 : 3.5}
-                fill={isBk ? "#FF3C3C" : "#0D0D0D"}
+                fill={isBk ? "#FF3C3C" : "#CCC"}
+                className="dark:fill-[#0D0D0D]"
                 stroke="#FF3C3C" strokeWidth={isBk ? 0 : 1.5}
                 style={{
                   animation: `fadeUp 0.3s ease ${0.3 + (d.year - 2020) * 0.12}s both`,
@@ -778,16 +779,16 @@ function GrowthPanel() {
           {step >= 3 && (
             <g style={{ animation: "fadeUp 0.4s ease 0.5s both" }}>
               <line x1={392} y1={py(5.37)} x2={392} y2={py(2.64)}
-                stroke="#686868" strokeWidth={0.8} />
-              <line x1={389} y1={py(5.37)} x2={395} y2={py(5.37)} stroke="#686868" strokeWidth={0.8} />
-              <line x1={389} y1={py(2.64)} x2={395} y2={py(2.64)} stroke="#686868" strokeWidth={0.8} />
-              <text x={398} y={(py(5.37) + py(2.64)) / 2 + 3} fontSize={8} fill="#686868" fontFamily="monospace">×2.0</text>
-              <text x={398} y={(py(5.37) + py(2.64)) / 2 + 13} fontSize={7} fill="#444" fontFamily="monospace">gap</text>
+                className="stroke-[#CCC] dark:stroke-[#686868]" strokeWidth={0.8} />
+              <line x1={389} y1={py(5.37)} x2={395} y2={py(5.37)} className="stroke-[#CCC] dark:stroke-[#686868]" strokeWidth={0.8} />
+              <line x1={389} y1={py(2.64)} x2={395} y2={py(2.64)} className="stroke-[#CCC] dark:stroke-[#686868]" strokeWidth={0.8} />
+              <text x={398} y={(py(5.37) + py(2.64)) / 2 + 3} fontSize={8} className="fill-[#999] dark:fill-[#686868]" fontFamily="monospace">×2.0</text>
+              <text x={398} y={(py(5.37) + py(2.64)) / 2 + 13} fontSize={7} className="fill-[#999] dark:fill-[#444]" fontFamily="monospace">gap</text>
             </g>
           )}
 
           {/* 1× baseline label */}
-          <text x={464} y={py(1) + 3} fontSize={8} fill="#2A2A2A" fontFamily="monospace">baseline</text>
+          <text x={464} y={py(1) + 3} fontSize={8} className="fill-[#999] dark:fill-[#2A2A2A]" fontFamily="monospace">baseline</text>
         </svg>
       </div>
 
@@ -797,13 +798,13 @@ function GrowthPanel() {
           onClick={handleRun}
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
-              ? "border-[#444] text-[#888] hover:border-[#888] hover:text-[#ccc]"
+              ? "border-[#CCC] dark:border-[#444] text-[#888] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
               : "border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
           }`}
         >
           {step === 0 ? "Play →" : "↺  Reset"}
         </button>
-        <span className="text-xs font-mono text-[#555]">
+        <span className="text-xs font-mono text-[#888] dark:text-[#555]">
           {step === 0 && "compound vs linear — click to compare"}
           {step === 1 && "benchmark drawn — a straight, predictable climb"}
           {step >= 2 && "hover the dots · see what drove each leap"}
@@ -812,19 +813,19 @@ function GrowthPanel() {
 
       {/* Stats — step 3 */}
       {step >= 3 && (
-        <div className="mt-6 border-t border-[#1E1E1E] pt-5 grid grid-cols-3 gap-4"
+        <div className="mt-6 border-t border-[#E0E0E0] dark:border-[#1E1E1E] pt-5 grid grid-cols-3 gap-4"
           style={{ animation: "fadeUp 0.4s ease 0.6s both" }}>
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-[#444] mb-1 font-mono">Index at 2026</p>
-            <p className="text-2xl font-semibold tabular-nums text-white">5.37<span className="text-[#555] text-base">×</span></p>
+            <p className="text-[10px] uppercase tracking-widest text-[#999] dark:text-[#444] mb-1 font-mono">Index at 2026</p>
+            <p className="text-2xl font-semibold tabular-nums text-black dark:text-white">5.37<span className="text-[#999] dark:text-[#555] text-base">×</span></p>
           </div>
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-[#444] mb-1 font-mono">CAGR (2020–26)</p>
+            <p className="text-[10px] uppercase tracking-widest text-[#999] dark:text-[#444] mb-1 font-mono">CAGR (2020–26)</p>
             <p className="text-2xl font-semibold tabular-nums text-[#FF3C3C]">32.7<span className="text-base">%</span></p>
           </div>
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-[#444] mb-1 font-mono">vs Benchmark</p>
-            <p className="text-2xl font-semibold tabular-nums text-[#888]">2.0<span className="text-base text-[#555]">× ahead</span></p>
+            <p className="text-[10px] uppercase tracking-widest text-[#999] dark:text-[#444] mb-1 font-mono">vs Benchmark</p>
+            <p className="text-2xl font-semibold tabular-nums text-[#888]">2.0<span className="text-base text-[#999] dark:text-[#555]">× ahead</span></p>
           </div>
         </div>
       )}
@@ -834,7 +835,7 @@ function GrowthPanel() {
         <div className="mt-6 space-y-3" style={{ animation: "fadeUp 0.4s ease 0.8s both" }}>
           <div className="border-l-2 border-[#FF3C3C] pl-4">
             <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">Why compound beats linear</p>
-            <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">
+            <p className="text-sm text-[#666] dark:text-[#AAAAAA] leading-relaxed font-light">
               A linear learner adds knowledge sequentially. A compound learner puts each new context
               to work <em>on top of</em> everything before it. Strategic thinking deepened at CSIRO
               made the CBS intelligence framework sharper. Bioinformatics at WEHI informed how data
@@ -843,9 +844,9 @@ function GrowthPanel() {
               one — visible as the steepest segment of the curve.
             </p>
           </div>
-          <div className="border-l-2 border-[#2A2A2A] pl-4">
-            <p className="text-[10px] text-[#555] uppercase tracking-widest mb-2 font-mono">The two skills with no ceiling</p>
-            <p className="text-sm text-[#686868] leading-relaxed font-light">
+          <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">
+            <p className="text-[10px] text-[#999] dark:text-[#555] uppercase tracking-widest mb-2 font-mono">The two skills with no ceiling</p>
+            <p className="text-sm text-[#888] dark:text-[#686868] leading-relaxed font-light">
               Every technical domain has a practical depth boundary — there is only so much Python
               one person needs. Strategic thinking and continuous improvement do not.
               They grow every time a new problem is encountered, every time a mentee asks a question
@@ -854,7 +855,7 @@ function GrowthPanel() {
               a learning habit already compounding across six sectors and six years.
             </p>
           </div>
-          <p className="text-[10px] text-[#333] font-mono">
+          <p className="text-[10px] text-[#AAA] dark:text-[#333] font-mono">
             CAGR = Compound Annual Growth Rate. Index calibrated against role deliverables and cross-domain breadth.
             Benchmark: linear progression modelled on IAPA Skills & Salary Survey (2023) median analyst trajectory.
           </p>
@@ -871,17 +872,17 @@ function GrowthPanel() {
 function FPLeaf({ leaf }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-l border-[#222] pl-4 py-1">
+    <div className="border-l border-[#DDD] dark:border-[#222] pl-4 py-1">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="text-xs text-[#888] hover:text-white transition-colors text-left flex items-center gap-2 w-full"
+        className="text-xs text-[#888] hover:text-black dark:hover:text-white transition-colors text-left flex items-center gap-2 w-full"
       >
-        <span className="text-[#3D3D3D] flex-shrink-0">{open ? "▾" : "▸"}</span>
+        <span className="text-[#999] dark:text-[#3D3D3D] flex-shrink-0">{open ? "▾" : "▸"}</span>
         {leaf.label}
       </button>
       {open && (
         <p
-          className="text-[11px] text-[#555] mt-1.5 leading-relaxed font-mono"
+          className="text-[11px] text-[#777] dark:text-[#555] mt-1.5 leading-relaxed font-mono"
           style={{ animation: "fadeUp 0.2s ease" }}
         >
           {leaf.proof}
@@ -902,11 +903,11 @@ function FPBranch({ branch }) {
         <span className="flex-shrink-0 mt-1.5 w-[3px] h-5 rounded-full"
           style={{ backgroundColor: branch.color }} />
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-white group-hover:text-[#DDDDDD] transition-colors flex items-center gap-2">
+          <p className="text-sm font-medium text-black dark:text-white group-hover:text-[#555] dark:group-hover:text-[#DDDDDD] transition-colors flex items-center gap-2">
             {branch.label}
-            <span className="text-[#3D3D3D] text-xs font-normal">{open ? "▾" : "▸"}</span>
+            <span className="text-[#999] dark:text-[#3D3D3D] text-xs font-normal">{open ? "▾" : "▸"}</span>
           </p>
-          <p className="text-xs text-[#555] font-light">{branch.desc}</p>
+          <p className="text-xs text-[#777] dark:text-[#555] font-light">{branch.desc}</p>
         </div>
       </button>
       {open && (
@@ -925,7 +926,7 @@ function FirstPrinciplesPanel() {
 
   return (
     <div>
-      <p className="text-[11px] text-[#555] font-mono mb-5 leading-relaxed">
+      <p className="text-[11px] text-[#888] dark:text-[#555] font-mono mb-5 leading-relaxed">
         Each branch is a capability cluster. Each leaf is a real project, deliverable, or credentialled outcome.
         The fourth branch — Continuous Improvement — is the meta-skill that enables the other three to compound.
       </p>
@@ -934,11 +935,11 @@ function FirstPrinciplesPanel() {
         onClick={() => setRootOpen((o) => !o)}
         className="w-full text-left mb-6 group"
       >
-        <div className="border border-[#2A2A2A] px-5 py-4 hover:border-[#FF3C3C] transition-colors duration-200 group-hover:bg-[#111]">
-          <p className="text-[10px] uppercase tracking-widest text-[#444] mb-1 font-mono">First Principles Question</p>
-          <p className="text-base font-medium text-white group-hover:text-[#DDDDDD] transition-colors flex items-center gap-3">
+        <div className="border border-[#DDD] dark:border-[#2A2A2A] px-5 py-4 hover:border-[#FF3C3C] transition-colors duration-200 hover:bg-[#FAFAFA] dark:hover:bg-[#111]">
+          <p className="text-[10px] uppercase tracking-widest text-[#999] dark:text-[#444] mb-1 font-mono">First Principles Question</p>
+          <p className="text-base font-medium text-black dark:text-white group-hover:text-[#333] dark:group-hover:text-[#DDDDDD] transition-colors flex items-center gap-3">
             {FP_TREE.label}
-            <span className="text-[#3D3D3D] text-sm font-normal">
+            <span className="text-[#999] dark:text-[#3D3D3D] text-sm font-normal">
               {rootOpen ? "▾ collapse" : "▸ decompose"}
             </span>
           </p>
@@ -946,14 +947,14 @@ function FirstPrinciplesPanel() {
       </button>
 
       {rootOpen && (
-        <div className="ml-2 border-l border-[#1E1E1E] pl-6 space-y-1"
+        <div className="ml-2 border-l border-[#DDD] dark:border-[#1E1E1E] pl-6 space-y-1"
           style={{ animation: "fadeUp 0.25s ease" }}>
           {FP_TREE.branches.map((b) => (
             <FPBranch key={b.label} branch={b} />
           ))}
 
-          <div className="mt-6 pt-4 border-t border-[#1A1A1A] space-y-2">
-            <p className="text-[11px] text-[#444] font-mono leading-relaxed">
+          <div className="mt-6 pt-4 border-t border-[#E0E0E0] dark:border-[#1A1A1A] space-y-2">
+            <p className="text-[11px] text-[#999] dark:text-[#444] font-mono leading-relaxed">
               Strategy + Data Science + Engineering compound naturally when embedded in real problems.
               Continuous Improvement is the meta-layer that keeps the other three growing — and
               the one most frequently missing from a standard CV.
@@ -971,8 +972,8 @@ function FirstPrinciplesPanel() {
 // ═══════════════════════════════════════════════════════════════════════════════
 function AiDeclaration() {
   return (
-    <p className="text-[9px] text-[#333] font-mono mt-1 flex items-center gap-1.5">
-      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#333] flex-shrink-0" />
+    <p className="text-[9px] text-[#AAA] dark:text-[#333] font-mono mt-1 flex items-center gap-1.5">
+      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#AAA] dark:bg-[#333] flex-shrink-0" />
       Analysis assisted by AI (Claude · Anthropic) · For reference only · Self-assessed approximations
     </p>
   );
@@ -1002,7 +1003,7 @@ export default function IntelligenceSection() {
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">◈ — Intelligence Report</p>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">Analyse Me.</h2>
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">Analyse Me.</h2>
         <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
           <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
             stroke="#E0E0E0" strokeWidth="1.5" fill="none" strokeLinecap="round" />
@@ -1033,7 +1034,7 @@ export default function IntelligenceSection() {
       </div>
 
       {/* Dark panel */}
-      <div className="bg-[#0D0D0D] border border-t-0 border-[#2A2A2A] p-6 md:p-8 min-h-[480px]">
+      <div className="bg-[#F5F5F5] dark:bg-[#0D0D0D] border border-t-0 border-[#E0E0E0] dark:border-[#2A2A2A] p-6 md:p-8 min-h-[480px]">
         {tab === "signal"   && <BubblePanel />}
         {tab === "compound" && <GrowthPanel />}
         {tab === "first"    && <FirstPrinciplesPanel />}

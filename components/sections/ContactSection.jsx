@@ -174,15 +174,15 @@ export default function ContactSection() {
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
             07 — Contact
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-white">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">
             Get in Touch
           </h2>
           {/* Wisr-style wavy accent */}
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
             <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-                  stroke="#3D3D3D" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                  className="stroke-[#E0E0E0] dark:stroke-[#3D3D3D]" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
           </svg>
-          <p className="text-base text-[#9A9A9A] max-w-xl leading-relaxed">
+          <p className="text-base text-[#3D3D3D] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
             Whether it is a data challenge, a research collaboration, a project
             idea, or just a coffee — I would genuinely love to hear from you.
             I am always open to conversations that push things forward.
@@ -209,29 +209,29 @@ export default function ContactSection() {
               <meta itemProp="url"           content="https://rin.contact/" />
 
               <div className="flex items-center gap-3">
-                <FiMail size={16} className="text-[#7A7A7A]" aria-hidden="true" />
+                <FiMail size={16} className="text-[#B0B0B0] dark:text-[#7A7A7A]" aria-hidden="true" />
                 <a
                   href="mailto:huang@rin.contact"
                   itemProp="email"
-                  className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200"
+                  className="text-sm text-[#595959] hover:text-black dark:text-[#C0C0C0] dark:hover:text-white transition-colors duration-200"
                 >
                   huang@rin.contact
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <FiPhone size={16} className="text-[#7A7A7A]" aria-hidden="true" />
+                <FiPhone size={16} className="text-[#B0B0B0] dark:text-[#7A7A7A]" aria-hidden="true" />
                 <a
                   href="tel:+61450270703"
                   itemProp="telephone"
-                  className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200"
+                  className="text-sm text-[#595959] hover:text-black dark:text-[#C0C0C0] dark:hover:text-white transition-colors duration-200"
                 >
                   +61 450 270 703
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <FiMapPin size={16} className="text-[#7A7A7A]" aria-hidden="true" />
+                <FiMapPin size={16} className="text-[#B0B0B0] dark:text-[#7A7A7A]" aria-hidden="true" />
                 {/* Visible display text */}
-                <span className="text-sm text-[#9A9A9A]">Adelaide &amp; Melbourne, Australia</span>
+                <span className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">Adelaide &amp; Melbourne, Australia</span>
                 {/* Hidden microdata — all locations associated with Rin Huang */}
                 <span className="sr-only">
                   <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
@@ -261,7 +261,7 @@ export default function ContactSection() {
               </div>
             </address>
 
-            <hr className="border-[#3D3D3D]" />
+            <hr className="border-[#E0E0E0] dark:border-[#3D3D3D]" />
 
             <div className="flex flex-wrap gap-2">
               {SOCIALS.map(({ label, href, icon: Icon, handle }) => (
@@ -270,8 +270,8 @@ export default function ContactSection() {
                   href={href}
                   target={label !== "Email" ? "_blank" : undefined}
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 border border-[#3D3D3D] px-4 py-2 rounded-full
-                             text-xs text-[#9A9A9A] hover:border-white hover:text-white transition-colors duration-200"
+                  className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-2 rounded-full
+                             text-xs text-[#7A7A7A] dark:text-[#9A9A9A] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200"
                   aria-label={`${label}: ${handle}`}
                 >
                   <Icon size={13} aria-hidden="true" />
@@ -283,7 +283,7 @@ export default function ContactSection() {
             {/* Schedule a call — Calendly */}
             {process.env.NEXT_PUBLIC_CALENDLY_URL && (
               <div className="flex flex-col gap-3">
-                <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">Schedule</p>
+                <p className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Schedule</p>
                 <a
                   href={process.env.NEXT_PUBLIC_CALENDLY_URL}
                   target="_blank"
@@ -299,17 +299,17 @@ export default function ContactSection() {
               </div>
             )}
 
-            <hr className="border-[#3D3D3D]" />
+            <hr className="border-[#E0E0E0] dark:border-[#3D3D3D]" />
 
             {/* Buy Me a Coffee */}
             <div className="flex flex-col gap-3">
-              <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">Support</p>
+              <p className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Support</p>
               <a
                 href="https://www.buymeacoffee.com/rNLKJA"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2.5 self-start border border-[#3D3D3D] px-5 py-2.5
-                           rounded-full text-xs text-[#9A9A9A] hover:border-[#F5C542] hover:text-[#F5C542]
+                className="inline-flex items-center gap-2.5 self-start border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-2.5
+                           rounded-full text-xs text-[#7A7A7A] dark:text-[#9A9A9A] hover:border-[#F5C542] hover:text-[#F5C542]
                            transition-colors duration-200"
                 aria-label="Buy Rin a coffee on buymeacoffee.com"
               >
@@ -323,34 +323,34 @@ export default function ContactSection() {
           {/* Right — contact form */}
           <form onSubmit={handleSubmit} noValidate aria-label="Contact form" className="flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#AAAAAA]">Name</label>
+              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Name</label>
               <input
                 id="name" name="name" type="text" required autoComplete="name"
                 value={form.name} onChange={handleChange} placeholder="Your name"
-                className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
-                           placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 text-sm bg-white dark:bg-[#252525] text-black dark:text-white
+                           placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#AAAAAA]">Email</label>
+              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Email</label>
               <input
                 id="email" name="email" type="email" required autoComplete="email"
                 value={form.email} onChange={handleChange} placeholder="your@email.com"
-                className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
-                           placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 text-sm bg-white dark:bg-[#252525] text-black dark:text-white
+                           placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#AAAAAA]">Message</label>
+              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Message</label>
               <textarea
                 id="message" name="message" required rows={6}
                 value={form.message} onChange={handleChange} placeholder="Leave your message here..."
-                className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white resize-none
-                           placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 text-sm bg-white dark:bg-[#252525] text-black dark:text-white resize-none
+                           placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-2xl"
               />
             </div>
