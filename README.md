@@ -71,11 +71,11 @@ To add a new page, simply create a new file in `pages` folder, e.g. `contact.js`
 
 ## Deployment
 
-The site is deployed via GitHub Pages with automated deployment through GitHub Actions. If you encounter a 404 error or other deployment issues, consider the following:
+The site is deployed on **Vercel**. Push to the `v5` branch triggers automatic deployment via the [Vercel Git integration](https://vercel.com/docs/deployments/git).
 
-- **404 Error**: Ensure the `next.config.js` is correctly configured, especially if next export has been deprecated.
-- **Initial Setup**: If problems persist, initializing a fresh `Next.js` app with the recommended structure might help.
-- **GitHub Pages Configuration**: Ensure your repository settings correctly point to the build output folder.
+- **Production**: [rin.contact](https://rin.contact)
+- **Preview**: Auto-generated per-branch preview URLs on each push
+- **Config**: See `vercel.json` for build settings and deployment rules
 
 ## Project Tracking
 
@@ -127,7 +127,6 @@ Tracked in [Linear](https://linear.app/rnlkja/team/RNL/projects/rincontact). **2
 
 ## Future Plan
 
-- **Hosting**: Migrate to Vercel for improved performance and developer experience.
 - **TypeScript**: Convert .jsx files to .tsx for enhanced code quality and maintainability.
 - **Database Integration**: Incorporate a database like MongoDB for dynamic content and use `Next.js` API routes for server-side operations.
 - **AI Gallery**: Create a gallery featuring AI-generated images, with prompts and details about the creation process.
