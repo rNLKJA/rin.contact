@@ -62,6 +62,7 @@ const NAV_LINKS = [
   { href: "/career",   label: "Career"    },
   { href: "/projects", label: "Projects"  },
   { href: "/lab",      label: "Lab"       },
+  { href: "/blog",     label: "Blog"      },
   { href: "/about",    label: "About"     },
   { href: "/resume",   label: "Resume"    },
   { href: "/#contact", label: "Contact"   },

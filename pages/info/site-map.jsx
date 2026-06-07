@@ -13,6 +13,9 @@ const SECTIONS = [
     { href: "/resume", label: "Resume" },
     { href: "/hire-me", label: "Hire Me" },
   ]},
+  { heading: "Blog", links: [
+    { href: "/blog", label: "Blog" },
+  ]},
   { heading: "Tools", links: [
     { href: "/tools", label: "Tools" },
     { href: "/tools/card", label: "Business Card" },

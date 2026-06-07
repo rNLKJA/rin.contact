@@ -3,6 +3,8 @@
  * Excludes all pages with <meta name="robots" content="noindex">
  */
 
+import { getAllPosts } from "@/lib/posts";
+
 const BASE_URL = "https://rin.contact";
 
 // ── Image sitemap (Google Image Search) ───────────────────────────────────────
@@ -28,6 +30,7 @@ const CORE = [
   { path: "/resume",         priority: 0.7, freq: "monthly" },
   { path: "/hire-me",        priority: 0.7, freq: "monthly" },
   { path: "/tools/card",     priority: 0.7, freq: "monthly" },
+  { path: "/blog",           priority: 0.8, freq: "weekly"  },
 ];
 
 // ── Section index pages ───────────────────────────────────────────────────────
@@ -82,10 +85,15 @@ function urlXml({ path, priority, freq }, today, extra = "") {
 }
 
 // ── Generate ───────────────────────────────────────────────────────────────────
-function generateSitemap() {
+async function generateSitemap() {
   const today = new Date().toISOString().split("T")[0];
 
   const imageExtra = IMAGES.map(imageXml).join("\n");
+
+  const posts = await getAllPosts();
+  const blogPostUrls = posts.map((p) =>
+    urlXml({ path: `/blog/${p.slug}`, priority: 0.7, freq: "monthly" }, today)
+  );
 
   const urls = [
     // Homepage with hreflang + image sitemap
@@ -101,6 +109,8 @@ function generateSitemap() {
     ...INDEXES.map(p => urlXml(p, today)),
     // Info sub-pages
     ...INFO.map(p => urlXml(p, today)),
+    // Blog posts
+    ...blogPostUrls,
   ].join("\n");
 
   return [
@@ -117,10 +127,10 @@ export default function Sitemap() {
   return null;
 }
 
-export function getServerSideProps({ res }) {
+export async function getServerSideProps({ res }) {
   res.setHeader("Content-Type", "text/xml; charset=utf-8");
   res.setHeader("Cache-Control", "public, s-maxage=86400, stale-while-revalidate=43200");
-  res.write(generateSitemap());
+  res.write(await generateSitemap());
   res.end();
   return { props: {} };
 }

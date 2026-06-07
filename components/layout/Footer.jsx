@@ -23,6 +23,7 @@ const NAV_COLS = [
     links: [
       { href: "/hire-me", label: "Hire Me",       cta: true },
       { href: "/tools/card",    label: "Business Card"            },
+      { href: "/blog",     label: "Blog"                     },
       { href: "/info/api",     label: "API"                      },
       { href: "/resume",  label: "CLI Resume"               },
       { href: "https://www.linkedin.com/in/sunchuangyuhuang/", label: "LinkedIn",  external: true },
