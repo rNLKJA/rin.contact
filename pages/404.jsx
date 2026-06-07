@@ -21,6 +21,7 @@ const SUGGESTIONS = [
   { href: "/career",   label: "Career"       },
   { href: "/projects", label: "Projects"     },
   { href: "/lab",      label: "Lab"          },
+  { href: "/blog",     label: "Blog"         },
   { href: "/about",    label: "About"        },
   { href: "/resume",   label: "CLI Resume"   },
   { href: "/hire-me",  label: "Hire Me"      },
