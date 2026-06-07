@@ -538,10 +538,11 @@ class MyDocument extends Document {
           {/* ── Theme (no-flash: runs before paint) ── */}
           <script
             dangerouslySetInnerHTML={{
-              __html: `(function(){var s=localStorage.getItem("rin_theme");var t=s==="light"||s==="dark"?s:"light";document.documentElement.classList.toggle("dark",t==="dark");document.documentElement.setAttribute("data-theme",t);})();`,
+              __html: `(function(){var s=localStorage.getItem("rin_theme");var t=s==="light"||s==="dark"?s:"light";document.documentElement.classList.toggle("dark",t==="dark");document.documentElement.setAttribute("data-theme",t);var m=document.querySelector("meta[name=theme-color]");if(m)m.setAttribute("content",t==="dark"?"#0A0A0A":"#ffffff");})();`,
             }}
           />
-          <meta name="theme-color" content="#ffffff" />
+          <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+          <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="color-scheme" content="light dark" />
 

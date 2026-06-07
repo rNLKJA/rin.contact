@@ -42,6 +42,9 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", resolved === "dark");
     document.documentElement.setAttribute("data-theme", resolved);
+    // Update theme-color meta for browser chrome (manual toggle overrides system media query)
+    const meta = document.querySelector("meta[name=theme-color]");
+    if (meta) meta.setAttribute("content", resolved === "dark" ? "#0A0A0A" : "#ffffff");
   }, [resolved]);
 
   const setTheme = useCallback((theme) => {
