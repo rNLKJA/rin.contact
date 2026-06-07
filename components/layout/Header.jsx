@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 
 // ── Logo with double-click glitch easter egg ──────────────────────────────────
@@ -45,7 +45,7 @@ function LogoWithGlitch() {
           transition: "filter 0.08s",
         }}
       >
-        <Image src="/logo.svg" alt="rNLKJA logo" width={32} height={32} quality={100} layout="fixed" priority />
+        <Image src="/logo.svg" alt="rNLKJA logo" width={32} height={32} priority />
       </div>
       <span
         className="font-semibold text-sm tracking-tight group-hover:opacity-60 transition-opacity duration-200"
