@@ -68,6 +68,11 @@ const STATUSES = [
   { dot: "white",  label: "Open to collab" },
 ];
 
+// Set NEXT_PUBLIC_AVAILABLE_FOR in .env.local to a comma-separated list
+// e.g. NEXT_PUBLIC_AVAILABLE_FOR=Contract,Consulting,Full-time
+// If not set, the availability pill does not render.
+const AVAILABLE_PILL = process.env.NEXT_PUBLIC_AVAILABLE_FOR || null;
+
 export default function StatusBadge() {
   const time    = useClock();
   const weather = useAdelaideWeather();
@@ -92,6 +97,15 @@ export default function StatusBadge() {
           {sub && <span className="text-[#AAAAAA]">· {sub}</span>}
         </span>
       ))}
+      {AVAILABLE_PILL && (
+        <>
+          <span className="text-[#DDDDDD]" aria-hidden="true">·</span>
+          <span className="flex items-center gap-1.5 text-[#FF3C3C]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-blink" aria-hidden="true" />
+            Available for: {AVAILABLE_PILL}
+          </span>
+        </>
+      )}
       {time && (
         <>
           <span className="text-[#DDDDDD]" aria-hidden="true">·</span>

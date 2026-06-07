@@ -412,6 +412,17 @@ export default function ResumePage() {
         <title>Resume CLI — Rin Huang · rin.contact</title>
         <meta name="description" content="Interactive CLI resume for Rin Huang. Type commands to explore career, skills, projects, and education." />
         <link rel="canonical" href="https://rin.contact/resume" />
+        <meta property="og:title" content="Resume — Sunchuangyu (Rin) Huang" />
+        <meta property="og:description" content="Interactive CLI resume. Type commands to explore career, skills, projects, and education." />
+        <meta property="og:url" content="https://rin.contact/resume" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Interactive%20Resume&subtitle=Type%20commands%20to%20explore%20career%20%26%20projects&section=resume" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Resume — Sunchuangyu (Rin) Huang" />
+        <meta name="twitter:description" content="Interactive CLI resume. Type commands to explore." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Interactive%20Resume&subtitle=Type%20commands%20to%20explore%20career%20%26%20projects&section=resume" />
       </Head>
 
       {/* Terminal container */}

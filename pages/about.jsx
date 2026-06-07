@@ -2,8 +2,9 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-const SkillsSection = dynamic(() => import("@/components/sections/SkillsSection"), { loading: () => <div className="min-h-[480px]" /> });
-const FAQSection    = dynamic(() => import("@/components/sections/FAQSection"),    { loading: () => <div className="min-h-[320px]" /> });
+const SkillsSection        = dynamic(() => import("@/components/sections/SkillsSection"),        { loading: () => <div className="min-h-[480px]" /> });
+const FAQSection           = dynamic(() => import("@/components/sections/FAQSection"),           { loading: () => <div className="min-h-[320px]" /> });
+const TestimonialsSection  = dynamic(() => import("@/components/sections/TestimonialsSection"), { loading: () => <div className="min-h-[200px]" /> });
 
 function PageHeader() {
   return (
@@ -29,7 +30,16 @@ export default function AboutPage() {
         <meta name="description" content="Rin Huang's skills, technical domains, 23 professional certifications, and FAQ. Data science, cloud, geospatial, full-stack, strategic intelligence." />
         <link rel="canonical" href="https://rin.contact/about" />
         <meta property="og:title" content="About — Sunchuangyu (Rin) Huang" />
+        <meta property="og:description" content="Skills, 23 certifications, and FAQ. Data science, cloud, geospatial, full-stack, strategic intelligence." />
         <meta property="og:url" content="https://rin.contact/about" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=About%20Rin%20Huang&subtitle=Skills%2C%20certifications%20%26%20FAQ&section=about" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About — Sunchuangyu (Rin) Huang" />
+        <meta name="twitter:description" content="Skills, 23 certifications, and FAQ." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=About%20Rin%20Huang&subtitle=Skills%2C%20certifications%20%26%20FAQ&section=about" />
       </Head>
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
@@ -45,6 +55,12 @@ export default function AboutPage() {
       <div className="bg-white relative overflow-hidden">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <FAQSection />
+        </div>
+      </div>
+
+      <div className="bg-[#F5F5F5] relative overflow-hidden">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <TestimonialsSection />
         </div>
       </div>
     </>

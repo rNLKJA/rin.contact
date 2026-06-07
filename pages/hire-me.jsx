@@ -16,6 +16,17 @@ export default function HireMePage() {
         <title>Hire Rin — rin.contact</title>
         <meta name="description" content="Looking to hire Sunchuangyu (Rin) Huang? Senior Data Analyst · Data Scientist · Government Intelligence · Adelaide, SA" />
         <link rel="canonical" href="https://rin.contact/hire-me" />
+        <meta property="og:title" content="Hire Rin Huang — rin.contact" />
+        <meta property="og:description" content="Senior Data Analyst @ SAPOL. Data Science, Government Intelligence, Full-Stack Engineering. Open to opportunities." />
+        <meta property="og:url" content="https://rin.contact/hire-me" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Hire%20Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%7C%20Open%20to%20opportunities&section=hire-me" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hire Rin Huang — rin.contact" />
+        <meta name="twitter:description" content="Senior Data Analyst @ SAPOL. Open to opportunities." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Hire%20Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%7C%20Open%20to%20opportunities&section=hire-me" />
       </Head>
 
       <div className="min-h-screen bg-black text-white font-mono">

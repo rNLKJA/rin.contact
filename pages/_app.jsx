@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
+import { Analytics } from "@vercel/analytics/react";
 import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { bitcount, dmSans, playfair } from "@/lib/fonts";
@@ -288,6 +289,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </main>
         <Footer />
+        <Analytics />
       </div>
     </ThemeProvider>
   );
