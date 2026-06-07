@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const Row = ({ label, value }) => (
   <div className="py-2.5 flex items-baseline gap-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] last:border-0">
@@ -17,8 +18,19 @@ export default function ModelCardPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/model-card" />
       </Head>
+      <SeoHead
+        title="Model Card — rin.contact"
+        description="Rin Huang as an ML model — architecture, training data, limitations."
+        path="/ds/model-card"
+        ogImage={{
+          title: "Model Card",
+          subtitle: "Rin Huang as an ML model — architecture, training data",
+          section: "ds",
+        }}
+        noindex
+      />
 
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
           <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/ds/model-card</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Model Card: Rin Huang</h1>

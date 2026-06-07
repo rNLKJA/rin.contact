@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import SeoHead from "@/components/seo/SeoHead";
 
 const VCARD = `BEGIN:VCARD
 VERSION:3.0
@@ -155,6 +156,16 @@ export default function CardPage() {
         <meta name="description" content="Digital business card for Sunchuangyu (Rin) Huang — Senior Data Analyst, Adelaide SA. Download contact card (VCF)." />
         <link rel="canonical" href="https://rin.contact/tools/card" />
       </Head>
+      <SeoHead
+        title="Card — Rin Huang · rin.contact"
+        description="Digital business card for Sunchuangyu (Rin) Huang — Senior Data Analyst, Adelaide SA. Download contact card (VCF)."
+        path="/tools/card"
+        ogImage={{
+          title: "Digital Business Card",
+          subtitle: "rin.contact digital business card",
+          section: "tools",
+        }}
+      />
 
       <div className="min-h-screen bg-[#F5F5F5] flex flex-col items-center justify-center px-6 py-20">
 

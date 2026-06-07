@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const ENDPOINTS = [
@@ -60,6 +61,13 @@ export default function ApiPage() {
         <meta name="description" content="Available API endpoints for rin.contact — ping, profile, now, fortune, roast, stack." />
         <link rel="canonical" href="https://rin.contact/info/api" />
       </Head>
+
+      <SeoHead
+        title="API — rin.contact"
+        description="Available API endpoints for rin.contact — ping, profile, now, fortune, roast, stack."
+        path="/info/api"
+        ogImage={{ title: "API", subtitle: "Available API endpoints for rin.contact — ping, profile, now...", section: "info" }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

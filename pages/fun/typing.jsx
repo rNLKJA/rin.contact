@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 
@@ -36,6 +37,14 @@ export default function TypingPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/typing" />
       </Head>
+
+      <SeoHead
+        title="Typing — rin.contact"
+        description="Typing speed test with data science quotes."
+        path="/fun/typing"
+        ogImage={{ title: "Typing", subtitle: "Typing speed test with data science quotes.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

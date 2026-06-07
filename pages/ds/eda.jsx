@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 export default function EdaPage() {
   return (
@@ -10,6 +11,17 @@ export default function EdaPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/eda" />
       </Head>
+      <SeoHead
+        title="EDA — rin.contact"
+        description="Rin as a dataset."
+        path="/ds/eda"
+        ogImage={{
+          title: "EDA",
+          subtitle: "Rin as a dataset.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

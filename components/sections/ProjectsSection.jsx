@@ -346,8 +346,8 @@ function ProjectDetail({ project }) {
           <span>{project.period}</span>
         </div>
         <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
-        <div className="mt-3 p-4 bg-[#FFF5F5] dark:bg-[#1A1111] border-l-2 border-[#FF3C3C]">
-          <p className="text-[9px] tracking-widest uppercase text-[#FF3C3C] mb-1.5 font-mono">Impact</p>
+        <div className="mt-3 p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
+          <span className="inline-block mb-2 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">Impact</span>
           <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
             {project.impact}
           </p>
@@ -668,8 +668,8 @@ export default function ProjectsSection() {
                     <div className="pb-6 pl-9 space-y-4">
                       <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">{project.org} · {project.period}</p>
                       <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
-                      <div className="p-3 bg-[#FFF5F5] dark:bg-[#1A1111] border-l-2 border-[#FF3C3C]">
-                        <p className="text-[9px] tracking-widest uppercase text-[#FF3C3C] mb-1 font-mono">Impact</p>
+                      <div className="p-3 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
+                        <span className="inline-block mb-1.5 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">Impact</span>
                         <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">{project.impact}</p>
                       </div>
                       <div className="flex flex-wrap gap-1.5">

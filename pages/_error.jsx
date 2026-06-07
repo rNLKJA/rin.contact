@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 
 export default function Error({ statusCode }) {
   const is404 = statusCode === 404;
@@ -12,6 +13,13 @@ export default function Error({ statusCode }) {
         <title>{statusCode ? `${statusCode} — Error` : "Error"} · Rin Huang</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
+      <SeoHead
+        title="Error — Rin Huang · rin.contact"
+        description="An error occurred"
+        path="/_error"
+        noindex
+        ogImage={false}
+      />
 
       <section className="flex flex-col items-center justify-center min-h-[70vh] text-center gap-6 px-6">
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C]">

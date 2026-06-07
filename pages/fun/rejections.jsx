@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function RejectionsPage() {
@@ -10,6 +11,14 @@ export default function RejectionsPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/rejections" />
       </Head>
+
+      <SeoHead
+        title="Rejections — rin.contact"
+        description="Every no is training data."
+        path="/fun/rejections"
+        ogImage={{ title: "Rejections", subtitle: "Every no is training data.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

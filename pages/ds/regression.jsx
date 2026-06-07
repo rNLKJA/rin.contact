@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 export default function RegressionPage() {
   return (
@@ -10,6 +11,17 @@ export default function RegressionPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/regression" />
       </Head>
+      <SeoHead
+        title="Regression — rin.contact"
+        description="Predict Rin in 5 years."
+        path="/ds/regression"
+        ogImage={{
+          title: "Regression",
+          subtitle: "Predict Rin in 5 years.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function OverfitSimPage() {
@@ -10,6 +11,14 @@ export default function OverfitSimPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/overfit-sim" />
       </Head>
+
+      <SeoHead
+        title="Overfitting Simulator — rin.contact"
+        description="Your model memorised the training set."
+        path="/fun/overfit-sim"
+        ogImage={{ title: "Overfitting Simulator", subtitle: "Your model memorised the training set.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

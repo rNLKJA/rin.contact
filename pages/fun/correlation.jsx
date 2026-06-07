@@ -1,6 +1,7 @@
 "use client";
 
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useState, useCallback } from "react";
 
@@ -45,6 +46,14 @@ export default function CorrelationPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/correlation" />
       </Head>
+
+      <SeoHead
+        title="Correlation — rin.contact"
+        description="Correlation ≠ causation."
+        path="/fun/correlation"
+        ogImage={{ title: "Correlation", subtitle: "Correlation ≠ causation.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

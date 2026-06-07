@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function ReferencesPage() {
@@ -9,6 +10,13 @@ export default function ReferencesPage() {
         <meta name="description" content="People who might say nice things about Rin." />
         <link rel="canonical" href="https://rin.contact/info/references" />
       </Head>
+
+      <SeoHead
+        title="References — rin.contact"
+        description="People who might say nice things about Rin."
+        path="/info/references"
+        ogImage={{ title: "References", subtitle: "People who might say nice things about Rin.", section: "info" }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

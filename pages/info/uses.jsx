@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const Section = ({ label, children }) => (
@@ -41,6 +42,13 @@ export default function UsesPage() {
         <meta name="description" content="Tools, hardware, and software Rin Huang uses daily for data science, development, and design." />
         <link rel="canonical" href="https://rin.contact/info/uses" />
       </Head>
+
+      <SeoHead
+        title="Uses — Rin Huang · rin.contact"
+        description="Tools, hardware, and software Rin Huang uses daily for data science, development, and design."
+        path="/info/uses"
+        ogImage={{ title: "Uses", subtitle: "Tools, hardware, and software Rin Huang uses daily for data...", section: "info" }}
+      />
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
 

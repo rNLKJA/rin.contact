@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const STEPS = [
@@ -18,6 +19,14 @@ export default function ForestPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/forest" />
       </Head>
+
+      <SeoHead
+        title="Model Escalation — rin.contact"
+        description="Tell me more about random forest."
+        path="/fun/forest"
+        ogImage={{ title: "Model Escalation", subtitle: "Tell me more about random forest.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

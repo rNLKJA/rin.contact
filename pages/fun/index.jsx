@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const ITEMS = [
@@ -53,6 +54,13 @@ export default function FunIndexPage() {
         <meta name="description" content="Easter eggs and hidden routes. Coffee, matrix rain, haiku, and more." />
         <link rel="canonical" href="https://rin.contact/fun" />
       </Head>
+
+      <SeoHead
+        title="Fun — rin.contact"
+        description="Easter eggs and hidden routes. Coffee, matrix rain, haiku, and more."
+        path="/fun"
+        ogImage={{ title: "Fun & Easter Eggs", subtitle: "Hidden routes, data haikus, and more", section: "fun" }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const ITEMS = [
   { href: "/tools/card", label: "card", note: "digital business card + .vcf download" },
@@ -13,6 +14,16 @@ export default function ToolsIndexPage() {
         <meta name="description" content="Handy tools — digital business card, contact download." />
         <link rel="canonical" href="https://rin.contact/tools" />
       </Head>
+      <SeoHead
+        title="Tools — rin.contact"
+        description="Handy tools — digital business card, contact download."
+        path="/tools"
+        ogImage={{
+          title: "Tools",
+          subtitle: "Business card and utilities",
+          section: "tools",
+        }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

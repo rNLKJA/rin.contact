@@ -9,26 +9,41 @@ const RED = "#FF3C3C";
 const MID = "#3D3D3D";
 const SUBTLE = "#7A7A7A";
 
-// ── Inline Inter font (Latin, regular + semibold) ──────────────────────────────
-const fetchFont = async (url) => {
-  const res = await fetch(url);
-  return res.arrayBuffer();
-};
+// ── Module-level font cache ────────────────────────────────────────────────────
+// Edge Functions may persist module state across invocations.
+// First request fetches fonts from CDN; subsequent requests skip the network.
+let fontCache = null;
 
+async function getFonts() {
+  if (fontCache) return fontCache;
+
+  const [interRegular, interSemiBold] = await Promise.all([
+    fetch(
+      "https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.ttf"
+    ).then((r) => r.arrayBuffer()),
+    fetch(
+      "https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.ttf"
+    ).then((r) => r.arrayBuffer()),
+  ]);
+
+  fontCache = [
+    { name: "Inter", data: interRegular, weight: 400, style: "normal" },
+    { name: "Inter", data: interSemiBold, weight: 600, style: "normal" },
+  ];
+
+  return fontCache;
+}
+
+// ── Handler ────────────────────────────────────────────────────────────────────
 export default async function handler(req) {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get("title") || "Rin Huang";
   const subtitle = searchParams.get("subtitle") || "Senior Data Analyst";
   const section = searchParams.get("section") || "";
 
-  const interRegular = await fetchFont(
-    "https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.ttf"
-  );
-  const interSemiBold = await fetchFont(
-    "https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.ttf"
-  );
+  const fonts = await getFonts();
 
-  return new ImageResponse(
+  const response = new ImageResponse(
     (
       <div
         style={{
@@ -141,10 +156,15 @@ export default async function handler(req) {
     {
       width: 1200,
       height: 630,
-      fonts: [
-        { name: "Inter", data: interRegular, weight: 400, style: "normal" },
-        { name: "Inter", data: interSemiBold, weight: 600, style: "normal" },
-      ],
+      fonts,
     }
   );
+
+  // Cache OG images for 1 year — social crawlers request the same params repeatedly
+  response.headers.set(
+    "Cache-Control",
+    "public, max-age=31536000, immutable"
+  );
+
+  return response;
 }

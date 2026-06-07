@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import SeoHead from "@/components/seo/SeoHead";
 
 // ── Background art helpers (Nothing OS + Wisr design language) ───────────────
 
@@ -210,45 +211,6 @@ export default function Home() {
         <meta name="geo.position" content="-34.9285;138.6007" />
         <meta name="ICBM" content="-34.9285, 138.6007" />
 
-        {/* ── Open Graph ── */}
-        <meta property="og:type" content="profile" />
-        <meta property="og:site_name" content="Rin Huang" />
-        <meta property="og:locale" content="en_AU" />
-        <meta property="og:locale:alternate" content="zh_CN" />
-        <meta property="og:url" content="https://rin.contact/" />
-        <meta property="og:title" content="Rin Huang (黄孙创宇 · Huang Sunchuangyu) — Senior Data Analyst · Research Software Engineer" />
-        <meta
-          property="og:description"
-          content="Official personal portfolio of Rin Huang (黄孙创宇) — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Career history, projects, skills, and contact."
-        />
-        <meta property="og:image" content="https://rin.contact/images/meta-image.png" />
-        <meta property="og:image:alt" content="Rin Huang — portfolio preview" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:updated_time" content="2026-03-10T00:00:00+10:30" />
-        <meta property="profile:first_name" content="Sunchuangyu" />
-        <meta property="profile:last_name" content="Huang" />
-        <meta property="profile:username" content="rNLKJA" />
-
-        {/* ── Twitter / X Card ── */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@rNLKJA" />
-        <meta name="twitter:creator" content="@rNLKJA" />
-        <meta name="twitter:domain" content="rin.contact" />
-        <meta name="twitter:title" content="Rin Huang (黄孙创宇) — Senior Data Analyst · Research Software Engineer" />
-        <meta
-          name="twitter:description"
-          content="Official personal portfolio of Rin Huang (黄孙创宇) — Senior Data Analyst at South Australia Police & Research Software Engineer. Career, projects, and contact at rin.contact."
-        />
-        <meta name="twitter:image" content="https://rin.contact/images/meta-image.png" />
-        <meta name="twitter:image:alt" content="Rin Huang — portfolio preview" />
-        {/* label/data pairs — rendered as key-value rows inside the card */}
-        <meta name="twitter:label1" content="Role" />
-        <meta name="twitter:data1" content="Senior Data Analyst · Adelaide, SA" />
-        <meta name="twitter:label2" content="Specialisation" />
-        <meta name="twitter:data2" content="Data Science · Strategic Intelligence" />
-
         {/* ── FAQPage structured data ── */}
         <script
           type="application/ld+json"
@@ -318,6 +280,30 @@ export default function Home() {
           }}
         />
       </Head>
+
+      <SeoHead
+        title="Rin Huang (黄孙创宇) — Official Portfolio | Senior Data Analyst"
+        description="Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI &amp; CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+        path="/"
+        ogImage={{ title: "Rin Huang", subtitle: "Senior Data Analyst @ SAPOL", section: "home" }}
+        ogType="profile"
+        ogTitle="Rin Huang (黄孙创宇 · Huang Sunchuangyu) — Senior Data Analyst · Research Software Engineer"
+        ogDescription="Official personal portfolio of Rin Huang (黄孙创宇) — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Career history, projects, skills, and contact."
+        extraMeta={[
+          { name: "twitter:site", content: "@rNLKJA" },
+          { name: "twitter:creator", content: "@rNLKJA" },
+          { name: "twitter:domain", content: "rin.contact" },
+          { name: "twitter:label1", content: "Role" },
+          { name: "twitter:data1", content: "Senior Data Analyst &middot; Adelaide, SA" },
+          { name: "twitter:label2", content: "Specialisation" },
+          { name: "twitter:data2", content: "Data Science &middot; Strategic Intelligence" },
+          { property: "profile:first_name", content: "Sunchuangyu" },
+          { property: "profile:last_name", content: "Huang" },
+          { property: "profile:username", content: "rNLKJA" },
+          { property: "og:updated_time", content: "2026-03-10T00:00:00+10:30" },
+          { property: "og:locale:alternate", content: "zh_CN" },
+        ]}
+      />
 
       <SectionProgress />
       <div className="relative">

@@ -14,22 +14,32 @@ import { useInView } from "@/hooks/useInView";
 
 const TESTIMONIALS = [
   {
-    name: "Name",
-    title: "Title / Organisation",
-    quote: "Replace with a real testimonial from a manager or colleague. A specific outcome or impact statement works best — for example, how the work changed a process, saved time, or influenced a decision.",
-    linkedIn: "",
+    name: "Rowland Mosbergen",
+    title: "Data, AI & Digital Transformation Leader | DEI Innovator",
+    quote:
+      "Sunchuangyu learns technical concepts very quickly, understands domain concepts and communicates them regularly. He is highly collaborative, has a high tolerance for ambiguity and complexity, and is highly adaptable. He was extremely impressive and I would highly recommend him. It is my opinion that he could be placed in an elite team and quickly contribute and continue to improve.",
+    linkedIn: "https://www.linkedin.com/in/rowlandmosbergen/",
   },
   {
-    name: "Name",
-    title: "Title / Organisation",
-    quote: "Second testimonial. Vary the source — government for one, research or startup for another — to show cross-sector credibility.",
-    linkedIn: "",
+    name: "Jalal Hobbs",
+    title: "Software Engineer",
+    quote:
+      "I worked with Rin at CBS/AGD and he made a strong impact on the team. He's direct, thoughtful and has a sharp eye for what's really going on in a problem. When something didn't add up, he asked clear, simple questions that helped everyone understand the issue. Rin has a steady way of working — he takes the time to understand the situation properly, then focuses on what will actually move things forward.",
+    linkedIn: "https://www.linkedin.com/in/jalal-hobbs/",
   },
   {
-    name: "Name",
-    title: "Title / Organisation",
-    quote: "Third testimonial. Three to five testimonials with specific, varied contexts create the strongest social proof section.",
-    linkedIn: "",
+    name: "Dr Vassili Kitsios",
+    title: "Climate AI / ML Researcher — CSIRO",
+    quote:
+      "Rin was a leading student in his final year project of his Masters of Data Science, delivered to the CSIRO Environment department. The focus was on developing machine learning solutions for forecasting the role of climate variability on agricultural crop affordability and food security. He is a very competent programmer, project manager and communicator. I would highly recommend him for any data science role.",
+    linkedIn: "https://www.linkedin.com/in/vkitsios/",
+  },
+  {
+    name: "Sandy Pan",
+    title: "Program Coordinator — University of Melbourne",
+    quote:
+      "I highly recommend Rin. He dedicated his time, experience and knowledge to junior Data Science students in the Faculty of Science's Peer to Peer Mentoring Program. Rin was amazing at reaching out and connecting with students to assist with their transition to graduate studies. He took the initiative to collaborate with other mentors for creative catch-ups, and went out of his way to ensure his mentees got the most out of the program.",
+    linkedIn: "https://www.linkedin.com/in/sandypan-/",
   },
 ];
 
@@ -104,7 +114,13 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-black dark:text-white">
-                    {t.name}
+                    {t.linkedIn ? (
+                      <a href={t.linkedIn} target="_blank" rel="noreferrer" className="hover:text-[#FF3C3C] transition-colors">
+                        {t.name}
+                      </a>
+                    ) : (
+                      t.name
+                    )}
                   </p>
                   <p className="text-xs text-[#7A7A7A]">{t.title}</p>
                 </div>

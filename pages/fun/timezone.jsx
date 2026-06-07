@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function TimezonePage() {
@@ -10,6 +11,14 @@ export default function TimezonePage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/timezone" />
       </Head>
+
+      <SeoHead
+        title="Timezone — rin.contact"
+        description="Adelaide UTC+9:30. We're not on a full hour."
+        path="/fun/timezone"
+        ogImage={{ title: "Timezone", subtitle: "Adelaide UTC+9:30. We're not on a full hour.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

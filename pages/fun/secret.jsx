@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -37,6 +38,14 @@ export default function SecretPage() {
         <title>Secret — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="Secret — rin.contact"
+        description=""
+        path="/fun/secret"
+        ogImage={{ title: "Secret", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-black text-white flex items-center justify-center px-6">
         <div className="max-w-lg w-full font-mono">

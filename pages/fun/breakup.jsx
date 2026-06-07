@@ -1,6 +1,7 @@
 "use client";
 
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -23,6 +24,14 @@ export default function BreakupPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/breakup" />
       </Head>
+
+      <SeoHead
+        title="Breakup — rin.contact"
+        description="Too many missing values."
+        path="/fun/breakup"
+        ogImage={{ title: "Breakup", subtitle: "Too many missing values.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

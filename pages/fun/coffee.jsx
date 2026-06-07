@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function CoffeePage() {
@@ -8,6 +9,14 @@ export default function CoffeePage() {
         <title>Coffee — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="Coffee — rin.contact"
+        description=""
+        path="/fun/coffee"
+        ogImage={{ title: "Coffee", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-black flex items-center justify-center px-6">
         <div className="max-w-md w-full text-center font-mono">

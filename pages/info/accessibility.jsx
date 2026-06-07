@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const Section = ({ title, children }) => (
@@ -25,6 +26,13 @@ export default function AccessibilityPage() {
         <meta name="description" content="How rin.contact handles accessibility — contrast, focus, screen readers, motion, and keyboard navigation." />
         <link rel="canonical" href="https://rin.contact/info/accessibility" />
       </Head>
+
+      <SeoHead
+        title="Accessibility — Rin Huang · rin.contact"
+        description="How rin.contact handles accessibility — contrast, focus, screen readers, motion, and keyboard navigation."
+        path="/info/accessibility"
+        ogImage={{ title: "Accessibility", subtitle: "How rin.contact handles accessibility — contrast, focus...", section: "info" }}
+      />
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
 

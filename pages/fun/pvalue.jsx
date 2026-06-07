@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -31,6 +32,14 @@ export default function PValuePage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/pvalue" />
       </Head>
+
+      <SeoHead
+        title="P-Value Oracle — rin.contact"
+        description="Always returns p < 0.05."
+        path="/fun/pvalue"
+        ogImage={{ title: "P-Value Oracle", subtitle: "Always returns p < 0.05.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

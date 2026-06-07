@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const PRINCIPLES = [
@@ -18,6 +19,13 @@ export default function ManifestPage() {
         <meta name="description" content="What I believe about data, work, and building things." />
         <link rel="canonical" href="https://rin.contact/info/manifest" />
       </Head>
+
+      <SeoHead
+        title="Manifest — rin.contact"
+        description="What I believe about data, work, and building things."
+        path="/info/manifest"
+        ogImage={{ title: "Manifest", subtitle: "What I believe about data, work, and building things.", section: "info" }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

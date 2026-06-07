@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 export default function DataDriftPage() {
   return (
@@ -10,6 +11,17 @@ export default function DataDriftPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/data-drift" />
       </Head>
+      <SeoHead
+        title="Data Drift — rin.contact"
+        description="Retrain your mental model."
+        path="/ds/data-drift"
+        ogImage={{
+          title: "Data Drift",
+          subtitle: "Retrain your mental model.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

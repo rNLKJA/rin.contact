@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import { useEffect, useState } from "react";
 
 export default function RickrollPage() {
@@ -21,6 +22,14 @@ export default function RickrollPage() {
         <title>definitely not a rickroll — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="definitely not a rickroll — rin.contact"
+        description=""
+        path="/fun/rickroll"
+        ogImage={{ title: "definitely not a rickroll", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-black flex flex-col items-center justify-center px-6 font-mono text-center">
         {!gone ? (

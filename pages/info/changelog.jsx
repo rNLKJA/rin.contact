@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import pkg from "../../package.json";
 
@@ -18,6 +19,13 @@ export default function ChangelogPage() {
         <meta name="description" content="Site changelog." />
         <link rel="canonical" href="https://rin.contact/info/changelog" />
       </Head>
+
+      <SeoHead
+        title="Changelog — rin.contact"
+        description="Site changelog."
+        path="/info/changelog"
+        ogImage={{ title: "Changelog", subtitle: "Site changelog.", section: "info" }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

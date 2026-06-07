@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function NamePage() {
@@ -10,6 +11,14 @@ export default function NamePage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/name" />
       </Head>
+
+      <SeoHead
+        title="Name — rin.contact"
+        description="黄孙创宇 · Huang Sunchuangyu · Rin"
+        path="/fun/name"
+        ogImage={{ title: "Name", subtitle: "黄孙创宇 · Huang Sunchuangyu · Rin", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

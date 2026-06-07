@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const SECTIONS = [
@@ -63,6 +64,13 @@ export default function SiteMapPage() {
         <meta name="description" content="Human-readable site map." />
         <link rel="canonical" href="https://rin.contact/info/site-map" />
       </Head>
+
+      <SeoHead
+        title="Site Map — rin.contact"
+        description="Human-readable site map."
+        path="/info/site-map"
+        ogImage={{ title: "Site Map", subtitle: "Human-readable site map.", section: "info" }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

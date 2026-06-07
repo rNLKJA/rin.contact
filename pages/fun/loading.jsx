@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import FibonacciFlower from "@/components/ui/FibonacciFlower";
@@ -47,6 +48,14 @@ export default function LoadingPage() {
         <title>Loading{dots} — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="Loading... — rin.contact"
+        description=""
+        path="/fun/loading"
+        ogImage={{ title: "Loading...", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 font-mono">
         <div className="max-w-sm w-full text-center">

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function Float404Page() {
@@ -10,6 +11,14 @@ export default function Float404Page() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/float404" />
       </Head>
+
+      <SeoHead
+        title="404.404 — rin.contact"
+        description="Floating-point precision error."
+        path="/fun/float404"
+        ogImage={{ title: "404.404", subtitle: "Floating-point precision error.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

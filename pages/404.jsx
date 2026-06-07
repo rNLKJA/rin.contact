@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import SeoHead from "@/components/seo/SeoHead";
 
 // Canvas + browser APIs — must never run on the server
 const SnakeGame = dynamic(() => import("@/components/ui/SnakeGame"), {
@@ -39,6 +40,13 @@ export default function Custom404() {
         <title>404 · rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+      <SeoHead
+        title="404 — Rin Huang · rin.contact"
+        description="Page not found"
+        path="/404"
+        noindex
+        ogImage={false}
+      />
 
       <div className="max-w-[720px] mx-auto px-6 py-16 md:py-24 font-mono">
 

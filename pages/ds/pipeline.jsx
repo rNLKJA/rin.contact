@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const STAGES = [
   { stage: "Raw", desc: "High school, China" },
@@ -18,6 +19,17 @@ export default function PipelinePage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/pipeline" />
       </Head>
+      <SeoHead
+        title="Data Pipeline — rin.contact"
+        description="Career as a data pipeline."
+        path="/ds/pipeline"
+        ogImage={{
+          title: "Data Pipeline",
+          subtitle: "Career as a data pipeline.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import pkg from "../../package.json";
 
@@ -36,6 +37,13 @@ export default function ColophonPage() {
         <meta name="description" content="How rin.contact is built — tools, fonts, libraries, and design decisions." />
         <link rel="canonical" href="https://rin.contact/colophon" />
       </Head>
+
+      <SeoHead
+        title="Colophon — rin.contact"
+        description="How rin.contact is built — tools, fonts, libraries, and design decisions."
+        path="/info/colophon"
+        ogImage={{ title: "Colophon", subtitle: "How rin.contact is built — tools, fonts, libraries, and d...", section: "info" }}
+      />
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
 

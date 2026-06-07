@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 
@@ -31,6 +32,14 @@ export default function RoastPage() {
         <title>Roast — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="Roast — rin.contact"
+        description=""
+        path="/fun/roast"
+        ogImage={{ title: "Roast", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-black flex flex-col items-center justify-center px-6 font-mono">
         <div className="max-w-lg w-full">

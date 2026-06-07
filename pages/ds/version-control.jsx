@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const COMMITS = [
   { hash: "a1b2c3d", msg: "Added SAPOL role", date: "2026-03-23" },
@@ -18,6 +19,17 @@ export default function VersionControlPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/version-control" />
       </Head>
+      <SeoHead
+        title="Version Control — rin.contact"
+        description="Git commits for your life."
+        path="/ds/version-control"
+        ogImage={{
+          title: "Version Control",
+          subtitle: "Git commits for your life.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

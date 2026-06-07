@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function SudoPage() {
@@ -8,6 +9,14 @@ export default function SudoPage() {
         <title>sudo — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="sudo — rin.contact"
+        description=""
+        path="/fun/sudo"
+        ogImage={{ title: "sudo", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-[#0C0C0C] flex items-center justify-center px-6 font-mono">
         <div className="max-w-lg w-full">

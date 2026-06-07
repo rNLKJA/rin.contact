@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -126,6 +127,14 @@ export default function HaikuPage() {
         <link rel="canonical" href="https://rin.contact/fun/haiku" />
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="haiku — rin.contact"
+        description="Data science haikus by Rin Huang. Absurd, accurate, 5-7-5."
+        path="/fun/haiku"
+        ogImage={{ title: "haiku", subtitle: "Data science haikus by Rin Huang. Absurd, accurate, 5-7-5.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-[#0C0C0C] flex flex-col items-center justify-center px-6 py-16">
 

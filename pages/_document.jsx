@@ -21,7 +21,7 @@ const PERSON_SCHEMA = {
   additionalName: "Rin",
   familyName: "Huang",
   url: "https://rin.contact",
-  image: "https://rin.contact/images/meta-image.png",
+  image: "https://rin.contact/api/og?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
   email: "huang@rin.contact",
   gender: "Male",
   nationality: { "@type": "Country", name: "Australia" },
@@ -166,7 +166,7 @@ const PROFILE_PAGE_SCHEMA = {
   primaryImageOfPage: {
     "@type": "ImageObject",
     "@id": "https://rin.contact/#og-image",
-    url: "https://rin.contact/images/meta-image.png",
+    url: "https://rin.contact/api/og?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
     width: 1200,
     height: 630,
     caption: "Rin Huang (黄孙创宇, Sunchuangyu Huang) — Senior Data Analyst & Research Software Engineer",
@@ -553,7 +553,6 @@ class MyDocument extends Document {
           <meta name="google-site-verification" content="uQJ5D6LcYS7OR9_3FJ9XiOezDuy2XJz9uNMoyxXTWoM" />
           <meta name="msvalidate.01" content="1A11F7338CB1C8779DDBD51D691938EE" />
           <meta name="baidu-site-verification" content="codeva-AxSgaBAlpG" />
-          <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
           {/* ── Bing / IndexNow ── */}
           {/* IndexNow lets Bing index page changes near-instantly — key verified via /d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9.txt */}

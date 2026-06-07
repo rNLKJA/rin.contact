@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const ITEMS = [
   { href: "/ds/model-card",        label: "model-card",        note: "Rin as an ML model" },
@@ -32,6 +33,16 @@ export default function DsIndexPage() {
         <meta name="description" content="Rin Huang as data science — model cards, SHAP, confusion matrices, and more." />
         <link rel="canonical" href="https://rin.contact/ds" />
       </Head>
+      <SeoHead
+        title="Data Science Profile — rin.contact"
+        description="Rin Huang as data science — model cards, SHAP, confusion matrices, and more."
+        path="/ds"
+        ogImage={{
+          title: "Data Science",
+          subtitle: "Explanations, model cards, and technical notes",
+          section: "ds",
+        }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

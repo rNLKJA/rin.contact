@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -35,6 +36,14 @@ export default function GlitchPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/glitch" />
       </Head>
+
+      <SeoHead
+        title="Glitch — rin.contact"
+        description="Sometimes it glitches."
+        path="/fun/glitch"
+        ogImage={{ title: "Glitch", subtitle: "Sometimes it glitches.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className={`max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1 transition-all duration-75 ${glitch ? "opacity-0" : "opacity-100"}`}>

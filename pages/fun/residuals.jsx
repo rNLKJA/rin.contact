@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function ResidualsPage() {
@@ -10,6 +11,14 @@ export default function ResidualsPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/residuals" />
       </Head>
+
+      <SeoHead
+        title="Residuals — rin.contact"
+        description="What's left after you subtract expectations from reality."
+        path="/fun/residuals"
+        ogImage={{ title: "Residuals", subtitle: "What's left after you subtract expectations from reality.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

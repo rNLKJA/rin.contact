@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const STAGES = [
   { name: "Build", desc: "Education", status: "✓" },
@@ -16,6 +17,17 @@ export default function CicdPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/cicd" />
       </Head>
+      <SeoHead
+        title="CI/CD — rin.contact"
+        description="Career deployment pipeline."
+        path="/ds/cicd"
+        ogImage={{
+          title: "CI/CD",
+          subtitle: "Career deployment pipeline.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

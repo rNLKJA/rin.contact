@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const CSV_ROWS = [
@@ -23,6 +24,14 @@ export default function CsvPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/csv" />
       </Head>
+
+      <SeoHead
+        title="Data-And-More — rin.contact"
+        description="Joke CSV. Data science puns as column headers."
+        path="/fun/csv"
+        ogImage={{ title: "Data-And-More", subtitle: "Joke CSV. Data science puns as column headers.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const UPDATED = "10 March 2026";
@@ -38,6 +39,13 @@ export default function NowPage() {
         <meta name="description" content="What Rin Huang is working on, reading, and thinking about right now." />
         <link rel="canonical" href="https://rin.contact/info/now" />
       </Head>
+
+      <SeoHead
+        title="Now — Rin Huang · rin.contact"
+        description="What Rin Huang is working on, reading, and thinking about right now."
+        path="/info/now"
+        ogImage={{ title: "Now", subtitle: "What Rin Huang is working on, reading, and thinking about...", section: "info" }}
+      />
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
 

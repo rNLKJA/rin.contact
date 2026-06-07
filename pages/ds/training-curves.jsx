@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const EPOCHS = [
   { epoch: 1, label: "Uni dropout risk", loss: 0.9 },
@@ -18,6 +19,17 @@ export default function TrainingCurvesPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/training-curves" />
       </Head>
+      <SeoHead
+        title="Training Curves — rin.contact"
+        description="Loss over life epochs."
+        path="/ds/training-curves"
+        ogImage={{
+          title: "Training Curves",
+          subtitle: "Loss over life epochs.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

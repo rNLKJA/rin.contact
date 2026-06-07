@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function BlankPage() {
@@ -10,6 +11,14 @@ export default function BlankPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/fun/blank" />
       </Head>
+
+      <SeoHead
+        title="Blank — rin.contact"
+        description="Sometimes the best design is nothing."
+        path="/fun/blank"
+        ogImage={{ title: "Blank", subtitle: "Sometimes the best design is nothing.", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6">
         <p className="text-[9px] text-[#CCCCCC] font-mono tracking-widest uppercase">

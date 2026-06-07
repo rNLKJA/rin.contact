@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const ITEMS = [
@@ -23,6 +24,13 @@ export default function InfoIndexPage() {
         <meta name="description" content="Site info — now, uses, roadmap, accessibility, colophon." />
         <link rel="canonical" href="https://rin.contact/info" />
       </Head>
+
+      <SeoHead
+        title="Info — rin.contact"
+        description="Site info — now, uses, roadmap, accessibility, colophon."
+        path="/info"
+        ogImage={{ title: "Info & Colophon", subtitle: "Site map, changelog, and tech stack", section: "info" }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

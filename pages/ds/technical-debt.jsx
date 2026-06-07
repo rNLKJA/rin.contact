@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const DEBT = [
   { item: "Rust", payoff: "2030", priority: "Low" },
@@ -16,6 +17,17 @@ export default function TechnicalDebtPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/technical-debt" />
       </Head>
+      <SeoHead
+        title="Technical Debt — rin.contact"
+        description="Known debt, estimated payoff."
+        path="/ds/technical-debt"
+        ogImage={{
+          title: "Technical Debt",
+          subtitle: "Known debt, estimated payoff.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

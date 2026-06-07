@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function InceptionPage() {
@@ -8,6 +9,14 @@ export default function InceptionPage() {
         <title>inception — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="inception — rin.contact"
+        description=""
+        path="/fun/inception"
+        ogImage={{ title: "inception", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       {/* Outer shell — visible label */}
       <div className="min-h-screen bg-[#F5F5F5] flex flex-col items-center justify-center p-6">

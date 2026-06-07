@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 // Phyllotaxis spiral — Fibonacci-based sunflower arrangement.
@@ -104,6 +105,13 @@ export default function ArtPage() {
         <meta name="description" content="Generative art by Rin Huang — a Fibonacci phyllotaxis spiral that slowly morphs." />
         <link rel="canonical" href="https://rin.contact/fun/art" />
       </Head>
+
+      <SeoHead
+        title="art — rin.contact"
+        description="Generative art by Rin Huang — a Fibonacci phyllotaxis spiral that slowly morphs."
+        path="/fun/art"
+        ogImage={{ title: "art", subtitle: "Generative art by Rin Huang — a Fibonacci phyllotaxis spir…", section: "fun" }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
 

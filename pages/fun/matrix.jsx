@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 // ── Symbols pulled from data science / maths / code ──────────────────────────
@@ -105,6 +106,14 @@ export default function MatrixPage() {
         <title>matrix — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="matrix — rin.contact"
+        description=""
+        path="/fun/matrix"
+        ogImage={{ title: "matrix", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       {/* Full-screen canvas */}
       <canvas

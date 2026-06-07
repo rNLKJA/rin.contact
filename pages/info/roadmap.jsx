@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 const Section = ({ label, items }) => (
@@ -71,6 +72,13 @@ export default function RoadmapPage() {
         <meta name="description" content="Past and future features for rin.contact — shipped, in progress, and absurd." />
         <link rel="canonical" href="https://rin.contact/info/roadmap" />
       </Head>
+
+      <SeoHead
+        title="Roadmap — Rin Huang · rin.contact"
+        description="Past and future features for rin.contact — shipped, in progress, and absurd."
+        path="/info/roadmap"
+        ogImage={{ title: "Roadmap", subtitle: "Past and future features for rin.contact — shipped, in progress...", section: "info" }}
+      />
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
 

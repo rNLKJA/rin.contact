@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const COMPONENTS = [
   { type: "Analyst", weight: 30 },
@@ -18,6 +19,17 @@ export default function EnsemblePage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/ensemble" />
       </Head>
+      <SeoHead
+        title="Ensemble — rin.contact"
+        description="Rin Huang as an ensemble model."
+        path="/ds/ensemble"
+        ogImage={{
+          title: "Ensemble",
+          subtitle: "Rin Huang as an ensemble model.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const FEATURES = [
   { name: "Coffee", importance: 0.23, bar: "w-[23%]" },
@@ -22,6 +23,17 @@ export default function FeatureImportancePage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/feature-importance" />
       </Head>
+      <SeoHead
+        title="Feature Importance — rin.contact"
+        description="SHAP-style feature importance for Rin Huang."
+        path="/ds/feature-importance"
+        ogImage={{
+          title: "Feature Importance",
+          subtitle: "SHAP-style feature importance for Rin Huang.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

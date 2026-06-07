@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const ROLES = [
   { role: "CSL", months: 5 },
@@ -19,6 +20,17 @@ export default function SurvivalPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/survival" />
       </Head>
+      <SeoHead
+        title="Survival Analysis — rin.contact"
+        description="Kaplan-Meier of tenure."
+        path="/ds/survival"
+        ogImage={{
+          title: "Survival Analysis",
+          subtitle: "Kaplan-Meier of tenure.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

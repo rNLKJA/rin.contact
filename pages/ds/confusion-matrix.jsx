@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const ROWS = [
   { who: "Recruiter thinks", reality: "Analyses spreadsheets", correct: false },
@@ -17,6 +18,17 @@ export default function ConfusionMatrixPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/confusion-matrix" />
       </Head>
+      <SeoHead
+        title="Confusion Matrix — rin.contact"
+        description="What people think vs what Rin actually does."
+        path="/ds/confusion-matrix"
+        ogImage={{
+          title: "Confusion Matrix",
+          subtitle: "What people think vs what Rin actually does.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

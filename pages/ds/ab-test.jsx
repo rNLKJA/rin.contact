@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 export default function AbTestPage() {
   return (
@@ -10,6 +11,17 @@ export default function AbTestPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/ab-test" />
       </Head>
+      <SeoHead
+        title="A/B Test — rin.contact"
+        description="Corporate vs this website."
+        path="/ds/ab-test"
+        ogImage={{
+          title: "A/B Test",
+          subtitle: "Corporate vs this website.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -22,6 +23,14 @@ export default function VoidPage() {
         <title>void — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="void — rin.contact"
+        description=""
+        path="/fun/void"
+        ogImage={{ title: "void", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       <div
         className="min-h-screen bg-black flex items-center justify-center cursor-crosshair"

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 export default function BiasVariancePage() {
   return (
@@ -10,6 +11,17 @@ export default function BiasVariancePage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/bias-variance" />
       </Head>
+      <SeoHead
+        title="Bias-Variance Tradeoff — rin.contact"
+        description="Rin Huang: low bias, moderate variance."
+        path="/ds/bias-variance"
+        ogImage={{
+          title: "Bias-Variance Tradeoff",
+          subtitle: "Rin Huang: low bias, moderate variance.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

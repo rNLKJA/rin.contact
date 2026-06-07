@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import { useState, useCallback } from "react";
 
@@ -43,6 +44,14 @@ export default function SpinPage() {
         <title>Spin — rin.contact</title>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <SeoHead
+        title="Spin — rin.contact"
+        description=""
+        path="/fun/spin"
+        ogImage={{ title: "Spin", subtitle: "", section: "fun" }}
+        noindex={true}
+      />
 
       <div className="min-h-screen bg-black flex flex-col items-center justify-center px-6 font-mono">
         <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-6">

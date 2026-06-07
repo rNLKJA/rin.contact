@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 export default function PhackingPage() {
   return (
@@ -10,6 +11,17 @@ export default function PhackingPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/phacking" />
       </Head>
+      <SeoHead
+        title="P-Hacking — rin.contact"
+        description="1000 regressions, 3 published."
+        path="/ds/phacking"
+        ogImage={{
+          title: "P-Hacking",
+          subtitle: "1000 regressions, 3 published.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import SeoHead from "@/components/seo/SeoHead";
 
 const SCORES = [
   { label: "Optimism", value: 0.92 },
@@ -18,6 +19,17 @@ export default function SentimentPage() {
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/sentiment" />
       </Head>
+      <SeoHead
+        title="NLP Sentiment — rin.contact"
+        description="NLP analysis of Rin."
+        path="/ds/sentiment"
+        ogImage={{
+          title: "NLP Sentiment",
+          subtitle: "NLP analysis of Rin.",
+          section: "ds",
+        }}
+        noindex
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">

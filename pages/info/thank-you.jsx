@@ -1,4 +1,5 @@
 import Head from "next/head";
+import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
 export default function ThankYouPage() {
@@ -9,6 +10,13 @@ export default function ThankYouPage() {
         <meta name="description" content="Thanks for reaching out." />
         <link rel="canonical" href="https://rin.contact/info/thank-you" />
       </Head>
+
+      <SeoHead
+        title="Thank You — rin.contact"
+        description="Thanks for reaching out."
+        path="/info/thank-you"
+        ogImage={{ title: "Thank You", subtitle: "Thanks for reaching out.", section: "info" }}
+      />
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
