@@ -77,6 +77,54 @@ The site is deployed via GitHub Pages with automated deployment through GitHub A
 - **Initial Setup**: If problems persist, initializing a fresh `Next.js` app with the recommended structure might help.
 - **GitHub Pages Configuration**: Ensure your repository settings correctly point to the build output folder.
 
+## Project Tracking
+
+Tracked in [Linear](https://linear.app/rnlkja/team/RNL/projects/rincontact). **25 issues** across 2 sprints.
+
+### Sprint 1 — Dark Mode (full site coverage)
+
+| Phase | Status |
+|-------|--------|
+| HeroSection + index.jsx decorative elements | 🟢 In Progress |
+| FAQSection | 🟢 In Progress |
+| TimelineSection | 🟢 In Progress |
+| SkillsSection + marquee gradient | ⚪ Planned |
+| MetroMapSection SVG colors | ⚪ Planned |
+| ProjectsSection + DOMAIN_COLORS | ⚪ Planned |
+| IntelligenceSection + DatasetCard + ContactSection | ⚪ Planned |
+| Pattern A content pages (ds/\* + info/\*, 33 files) | ⚪ Planned |
+| Section landing pages + standalone pages | ⚪ Planned |
+| Polish + verification pass | ⚪ Planned |
+
+### Sprint 2 — SEO, Marketing & Performance
+
+#### SEO
+| Issue | Priority |
+|-------|----------|
+| Generate sitemap.xml for ~80 pages | 🔴 Critical |
+| Add og:image + Twitter cards to all indexable pages | 🔴 Critical |
+| Add breadcrumb + Article structured data to sub-pages | 🟡 High |
+| Fix theme-color meta for dark mode | 🟢 Medium |
+
+#### Marketing
+| Issue | Priority |
+|-------|----------|
+| Add testimonials + client logos section | 🔴 Critical |
+| Add Calendly + auto-reply to contact flow | 🔴 Critical |
+| Display certifications + project impact metrics | 🟡 High |
+| Add share buttons to project details | 🟢 Medium |
+| Blog + RSS + newsletter content pipeline | 🟢 Medium |
+| PWA service worker for install prompt | 🟢 Medium |
+
+#### Performance
+| Issue | Priority |
+|-------|----------|
+| Reduce BootOverlay + optimize CustomCursor | 🔴 Critical |
+| Move /api/rin.json to static file + ISR homepage + AVIF | 🔴 Critical |
+| Logo.svg compression + next/legacy→next/image + WOFF2 | 🟡 High |
+| Lazy-load MiniTerminal + Web Vitals reporting | 🟡 High |
+| Clean up dead CSS + optimize animation strategy | 🟢 Medium |
+
 ## Future Plan
 
 - **Hosting**: Migrate to Vercel for improved performance and developer experience.
