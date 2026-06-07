@@ -7,13 +7,13 @@ const MetroMapSection   = dynamic(() => import("@/components/sections/MetroMapSe
 
 function PageHeader() {
   return (
-    <div className="py-20 border-b border-[#F0F0F0]">
-      <Link href="/" className="inline-block text-[10px] tracking-widest uppercase text-[#AAAAAA] hover:text-black transition-colors mb-6">
+    <div className="py-20 border-b border-[#F0F0F0] dark:border-[#1E1E1E]">
+      <Link href="/" className="inline-block text-[10px] tracking-widest uppercase text-[#AAAAAA] hover:text-black dark:hover:text-white transition-colors mb-6">
         ← Back
       </Link>
       <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">◈ — Career</p>
       <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">Journey.</h1>
-      <p className="text-base font-light text-[#3D3D3D] max-w-xl leading-relaxed">
+      <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
         Four years across Government, Research, and Engineering.
         Seven roles. One co-founded startup. Timeline and metro map below.
       </p>
@@ -46,14 +46,14 @@ export default function CareerPage() {
       </div>
 
       {/* Timeline */}
-      <div className="bg-[#F5F5F5] relative overflow-hidden">
+      <div className="bg-[#F5F5F5] dark:bg-[#141414] relative overflow-hidden">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <TimelineSection />
         </div>
       </div>
 
       {/* Metro Map */}
-      <div className="bg-white relative overflow-hidden">
+      <div className="bg-white dark:bg-[#0A0A0A] relative overflow-hidden">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <MetroMapSection />
         </div>
