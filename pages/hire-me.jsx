@@ -97,6 +97,17 @@ export default function HireMePage() {
             >
               Get in touch →
             </a>
+            {/* Schedule a call — Calendly */}
+            {process.env.NEXT_PUBLIC_CALENDLY_URL && (
+              <a
+                href={process.env.NEXT_PUBLIC_CALENDLY_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="block border border-[#22C55E] text-[#22C55E] px-6 py-3 text-xs tracking-widest uppercase hover:bg-[#22C55E] hover:text-white transition-colors duration-200 text-center"
+              >
+                Schedule a call ↗
+              </a>
+            )}
             <div className="flex gap-3">
               <Link
                 href="/"

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import emailjs from "@emailjs/browser";
 import { FaLinkedin } from "react-icons/fa";
-import { FiGithub, FiMail, FiPhone, FiMapPin, FiX, FiCheckCircle, FiAlertCircle, FiCoffee } from "react-icons/fi";
+import { FiGithub, FiMail, FiPhone, FiMapPin, FiX, FiCheckCircle, FiAlertCircle, FiCoffee, FiCalendar } from "react-icons/fi";
 import { useInView } from "@/hooks/useInView";
 
 // ─── EmailJS config ───────────────────────────────────────────────
@@ -279,6 +279,25 @@ export default function ContactSection() {
                 </a>
               ))}
             </div>
+
+            {/* Schedule a call — Calendly */}
+            {process.env.NEXT_PUBLIC_CALENDLY_URL && (
+              <div className="flex flex-col gap-3">
+                <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">Schedule</p>
+                <a
+                  href={process.env.NEXT_PUBLIC_CALENDLY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2.5 self-start border border-[#FF3C3C] px-5 py-2.5
+                             rounded-full text-xs text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white
+                             transition-colors duration-200"
+                  aria-label="Schedule a call with Rin via Calendly"
+                >
+                  <FiCalendar size={13} aria-hidden="true" />
+                  Schedule a call
+                </a>
+              </div>
+            )}
 
             <hr className="border-[#3D3D3D]" />
 
