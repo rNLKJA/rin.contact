@@ -313,7 +313,7 @@ function TimelineItem({ item, index }) {
         className={`absolute left-0 md:-left-5 top-1.5 w-2 h-2 rounded-full border ${
           item.current
             ? "bg-[#FF3C3C] border-[#FF3C3C]"
-            : "bg-white border-[#3D3D3D]"
+            : "bg-white dark:bg-[#0A0A0A] border-[#3D3D3D] dark:border-[#7A7A7A]"
         }`}
         aria-hidden="true"
       />
@@ -323,8 +323,8 @@ function TimelineItem({ item, index }) {
         {item.logo && (
           <div className="flex-shrink-0 mt-0.5">
             <div
-              className={`relative w-9 h-9 overflow-hidden flex items-center justify-center bg-white ${
-                (item.noBorder || (item.org && item.org.includes("CSIRO"))) ? "" : "border border-[#E0E0E0]"
+              className={`relative w-9 h-9 overflow-hidden flex items-center justify-center bg-white dark:bg-[#0A0A0A] ${
+                (item.noBorder || (item.org && item.org.includes("CSIRO"))) ? "" : "border border-[#E0E0E0] dark:border-[#3D3D3D]"
               }`}
               style={{ borderRadius: "22%" }}
             >
@@ -341,11 +341,11 @@ function TimelineItem({ item, index }) {
 
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-3 mb-1">
-            <span className="text-xs tracking-widest uppercase text-[#7A7A7A]">
+            <span className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A]">
               {item.period}
             </span>
             {item.tag && (
-              <span className="border border-[#E0E0E0] px-2 py-0.5 text-xs tracking-wider uppercase text-[#7A7A7A]">
+              <span className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs tracking-wider uppercase text-[#7A7A7A] dark:text-[#9A9A9A]">
                 {item.tag}
               </span>
             )}
@@ -362,12 +362,12 @@ function TimelineItem({ item, index }) {
           </div>
 
           <h3 className="text-base font-semibold leading-tight">{item.role}</h3>
-          <p className="text-sm text-[#3D3D3D] mb-1">{item.org}</p>
+          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] mb-1">{item.org}</p>
           {item.orgDesc && (
-            <p className="text-xs text-[#7A7A7A] mb-3 italic">{item.orgDesc}</p>
+            <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] mb-3 italic">{item.orgDesc}</p>
           )}
 
-          <p className="text-sm text-[#3D3D3D] leading-relaxed mb-3">
+          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-3">
             {item.summary}
           </p>
 
@@ -376,7 +376,7 @@ function TimelineItem({ item, index }) {
             <>
               <button
                 onClick={() => setExpanded((e) => !e)}
-                className="text-xs tracking-widest uppercase text-[#7A7A7A] hover:text-black
+                className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white
                            transition-colors duration-200 flex items-center gap-1 mb-3"
                 aria-expanded={expanded}
               >
@@ -387,7 +387,7 @@ function TimelineItem({ item, index }) {
                 <div className="animate-fade-in">
                   <ul className="space-y-1.5 mb-3">
                     {item.bullets.map((b, i) => (
-                      <li key={i} className="flex gap-2 text-sm text-[#3D3D3D]">
+                      <li key={i} className="flex gap-2 text-sm text-[#3D3D3D] dark:text-[#AAAAAA]">
                         <span className="text-[#FF3C3C] flex-shrink-0 mt-0.5" aria-hidden="true">·</span>
                         {b}
                       </li>
@@ -399,7 +399,7 @@ function TimelineItem({ item, index }) {
                       {item.tools.map((t) => (
                         <span
                           key={t}
-                          className="border border-[#E0E0E0] px-2 py-0.5 text-xs text-[#7A7A7A]"
+                          className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#7A7A7A] dark:text-[#9A9A9A]"
                         >
                           {t}
                         </span>
@@ -503,14 +503,14 @@ export default function TimelineSection() {
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
           Career Path
         </h2>
-        <p className="text-base font-light text-[#3D3D3D] max-w-xl leading-relaxed">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
           A path built on curiosity across government intelligence, biomedical
           research, climate science, and software engineering — always looking
           for where data can make a genuine difference.
         </p>
 
         {/* Tab switcher */}
-        <div className="flex gap-0 mt-8 border border-[#E0E0E0] w-fit">
+        <div className="flex gap-0 mt-8 border border-[#E0E0E0] dark:border-[#3D3D3D] w-fit">
           {["career", "education", "volunteer"].map((t) => (
             <button
               key={t}
@@ -518,7 +518,7 @@ export default function TimelineSection() {
               className={`px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
                 tab === t
                   ? "bg-[#FF3C3C] text-white border-[#FF3C3C]"
-                  : "bg-white text-[#7A7A7A] hover:text-[#FF3C3C]"
+                  : "bg-white dark:bg-[#0A0A0A] text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-[#FF3C3C]"
               }`}
             >
               {t}
@@ -550,7 +550,7 @@ export default function TimelineSection() {
                     className="hidden md:block absolute -left-20 top-2 w-14 text-right"
                     aria-hidden="true"
                   >
-                    <span className="text-[10px] tracking-widest uppercase text-[#CC0000] font-medium">
+                    <span className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-medium">
                       {item.year}
                     </span>
                   </div>

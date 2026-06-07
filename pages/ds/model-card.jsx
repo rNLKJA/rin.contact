@@ -2,9 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 
 const Row = ({ label, value }) => (
-  <div className="py-2.5 flex items-baseline gap-4 border-b border-[#F0F0F0] last:border-0">
+  <div className="py-2.5 flex items-baseline gap-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] last:border-0">
     <span className="font-mono text-[10px] text-[#7A7A7A] w-48 flex-shrink-0">{label}</span>
-    <span className="text-sm text-[#1A1A1A]">{value}</span>
+    <span className="text-sm text-[#1A1A1A] dark:text-white">{value}</span>
   </div>
 );
 
@@ -26,7 +26,7 @@ export default function ModelCardPage() {
             A model card describes a trained ML model. This one describes a human.
           </p>
 
-          <div className="border border-[#E0E0E0] p-6 font-mono text-xs">
+          <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 font-mono text-xs">
             <div className="mb-6">
               <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-3">Model details</p>
               <Row label="Model type" value="GeneralistClassifier (human)" />
@@ -52,9 +52,9 @@ export default function ModelCardPage() {
             </div>
           </div>
 
-          <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4">
-            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /ds</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4">
+            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">← /ds</Link>
+            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Home</Link>
           </div>
         </div>
       </div>

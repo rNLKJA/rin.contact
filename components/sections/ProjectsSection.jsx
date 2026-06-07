@@ -338,25 +338,28 @@ function ProjectDetail({ project }) {
               </span>
             )}
           </h3>
-          <p className="text-xs text-[#595959] tracking-wide">{project.subtitle}</p>
+          <p className="text-xs text-[#595959] dark:text-[#AAAAAA] tracking-wide">{project.subtitle}</p>
         </div>
-        <div className="flex flex-wrap gap-2 text-xs text-[#595959]">
+        <div className="flex flex-wrap gap-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
           <span>{project.org}</span>
           <span>·</span>
           <span>{project.period}</span>
         </div>
-        <p className="text-sm text-[#3D3D3D] leading-relaxed">{project.summary}</p>
-        <p className="text-xs text-[#3D3D3D] border-l-2 border-[#FF3C3C] pl-3 leading-relaxed">
-          {project.impact}
-        </p>
+        <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
+        <div className="mt-3 p-4 bg-[#FFF5F5] dark:bg-[#1A1111] border-l-2 border-[#FF3C3C]">
+          <p className="text-[9px] tracking-widest uppercase text-[#FF3C3C] mb-1.5 font-mono">Impact</p>
+          <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
+            {project.impact}
+          </p>
+        </div>
         {project.link && (
           <a
             href={project.link}
             target="_blank"
             rel="noreferrer"
             aria-label={project.linkLabel || `View ${project.title} on GitHub`}
-            className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 text-xs tracking-widest uppercase
-                       text-[#595959] rounded-full hover:border-black hover:text-black transition-colors duration-200"
+            className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
+                       text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
           >
             {project.linkText || (project.link?.includes("github.com") ? "View on GitHub ↗" : "Visit site ↗")}
           </a>
@@ -364,12 +367,12 @@ function ProjectDetail({ project }) {
       </div>
       <div className="space-y-5">
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] mb-2">Stack</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">Stack</p>
           <div className="flex flex-wrap gap-1.5">
             {project.stack.map((t) => (
               <span
                 key={t}
-                className="border border-[#E0E0E0] px-2.5 py-0.5 text-xs text-[#595959] rounded-full
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full
                            cursor-default hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
               >
                 {t}
@@ -378,12 +381,12 @@ function ProjectDetail({ project }) {
           </div>
         </div>
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] mb-1">Status</p>
-          <p className="text-xs text-[#3D3D3D]">{project.status}</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">Status</p>
+          <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">{project.status}</p>
         </div>
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] mb-1">Domain</p>
-          <p className="text-xs text-[#3D3D3D]">
+          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">Domain</p>
+          <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">
             {Array.isArray(project.domain) ? project.domain.join(" · ") : project.domain}
           </p>
         </div>
@@ -445,9 +448,9 @@ export default function ProjectsSection() {
         {/* Wisr-style wavy accent */}
         <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
           <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-                stroke="#E0E0E0" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                stroke="#E0E0E0" className="dark:stroke-[#3D3D3D]" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
         </svg>
-        <p className="text-base font-light text-[#3D3D3D] max-w-xl leading-relaxed">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
           Projects spanning government intelligence, climate science, biomedical
           research, mobile apps, and web development — each one a chance to build
           something that genuinely mattered.
@@ -497,20 +500,20 @@ export default function ProjectsSection() {
       {isAllView && (
         <div className="w-full">
           {/* Search */}
-          <div className="mb-4 flex items-center border border-[#E0E0E0] focus-within:border-[#FF3C3C] focus-within:outline-none transition-colors duration-200">
-            <span className="pl-4 text-[#6B6B6B] text-sm select-none">⌕</span>
+          <div className="mb-4 flex items-center border border-[#E0E0E0] dark:border-[#3D3D3D] focus-within:border-[#FF3C3C] focus-within:outline-none transition-colors duration-200">
+            <span className="pl-4 text-[#6B6B6B] dark:text-[#9A9A9A] text-sm select-none">⌕</span>
             <input
               type="text"
               value={search}
               onChange={(e) => { setSearch(e.target.value); setOpenId(null); }}
               placeholder="Search projects..."
-              className="flex-1 px-3 py-2.5 text-sm bg-transparent outline-none placeholder:text-[#6B6B6B]"
+              className="flex-1 px-3 py-2.5 text-sm bg-transparent outline-none placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A]"
               aria-label="Search projects"
             />
             {search && (
               <button
                 onClick={() => setSearch("")}
-                className="pr-4 text-[#6B6B6B] hover:text-black transition-colors duration-200 text-xs"
+                className="pr-4 text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 aria-label="Clear search"
               >
                 ✕
@@ -519,9 +522,9 @@ export default function ProjectsSection() {
           </div>
 
           {/* List */}
-          <div className="border-t border-[#E0E0E0]">
+          <div className="border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
             {filtered.length === 0 && (
-              <p className="py-8 text-sm text-[#6B6B6B] text-center">No projects match &ldquo;{search}&rdquo;</p>
+              <p className="py-8 text-sm text-[#6B6B6B] dark:text-[#9A9A9A] text-center">No projects match &ldquo;{search}&rdquo;</p>
             )}
             {filtered.map((project, i) => {
               const isOpen = openId === project.id;
@@ -530,7 +533,7 @@ export default function ProjectsSection() {
               return (
                 <div
                   key={project.id}
-                  className="border-b border-[#E0E0E0] group/row transition-colors duration-150 hover:bg-[#FAFAFA] relative"
+                  className="border-b border-[#E0E0E0] dark:border-[#3D3D3D] group/row transition-colors duration-150 hover:bg-[#FAFAFA] dark:hover:bg-[#1A1A1A] relative"
                 >
                   {/* Domain colour left accent bar */}
                   <div
@@ -543,7 +546,7 @@ export default function ProjectsSection() {
                     className="w-full flex items-center gap-4 py-3.5 text-left group pl-2"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-[10px] text-[#6B6B6B] tabular-nums w-6 flex-shrink-0">
+                    <span className="text-[10px] text-[#6B6B6B] dark:text-[#9A9A9A] tabular-nums w-6 flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="flex-1 min-w-0 grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-4 items-center">
@@ -551,7 +554,7 @@ export default function ProjectsSection() {
                         {project.title}
                         {project.current && <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" />}
                       </span>
-                      <span className="text-xs text-[#595959] truncate hidden md:block">{project.subtitle}</span>
+                      <span className="text-xs text-[#595959] dark:text-[#AAAAAA] truncate hidden md:block">{project.subtitle}</span>
                       <span className="hidden md:flex items-center gap-3 justify-end">
                         <span
                           className="text-[10px] tracking-widest uppercase border px-2.5 py-0.5 rounded-full"
@@ -559,7 +562,7 @@ export default function ProjectsSection() {
                         >
                           {project.tag}
                         </span>
-                        <span className="text-xs text-[#6B6B6B]">{project.period}</span>
+                        <span className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{project.period}</span>
                       </span>
                     </span>
                     <span className={`text-[#6B6B6B] transition-transform duration-200 flex-shrink-0 text-sm ${isOpen ? "rotate-45 text-[#FF3C3C]" : "group-hover:text-[#FF3C3C]"}`}>
@@ -574,7 +577,7 @@ export default function ProjectsSection() {
                       transition: "max-height 0.4s ease, opacity 0.25s ease",
                     }}
                   >
-                    <div className="border-t border-[#F0F0F0]">
+                    <div className="border-t border-[#F0F0F0] dark:border-[#1E1E1E]">
                       <ProjectDetail project={project} />
                     </div>
                   </div>
@@ -582,7 +585,7 @@ export default function ProjectsSection() {
               );
             })}
           </div>
-          <p className="mt-3 text-xs text-[#6B6B6B]">{filtered.length} project{filtered.length !== 1 ? "s" : ""}</p>
+          <p className="mt-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{filtered.length} project{filtered.length !== 1 ? "s" : ""}</p>
         </div>
       )}
 
@@ -605,12 +608,12 @@ export default function ProjectsSection() {
                       border-t border-l border-r transition-colors duration-200
                       ${isActive
                         ? "bg-[#FF3C3C] text-white border-[#FF3C3C]"
-                        : "bg-white text-[#3D3D3D] border-[#E0E0E0] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
+                        : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#AAAAAA] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
                       }
                     `}
                     style={{ borderRadius: "4px 4px 0 0" }}
                   >
-                    <span className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B]"}`}>
+                    <span className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}`}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="flex items-center gap-1.5 min-w-0">
@@ -624,11 +627,11 @@ export default function ProjectsSection() {
               })}
             </div>
             <div
-              className={`border transition-all duration-400 overflow-hidden ${activeProject ? "border-[#FF3C3C]" : "border-[#E0E0E0]"}`}
+              className={`border transition-all duration-400 overflow-hidden ${activeProject ? "border-[#FF3C3C]" : "border-[#E0E0E0] dark:border-[#3D3D3D]"}`}
               style={{ maxHeight: activeProject ? "600px" : "52px", transition: "max-height 0.4s ease, border-color 0.2s ease" }}
             >
               {!activeProject && (
-                <div className="px-6 py-4 flex items-center gap-3 text-xs text-[#6B6B6B] tracking-wide select-none">
+                <div className="px-6 py-4 flex items-center gap-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] tracking-wide select-none">
                   <span>↑</span>
                   <span>Select a folder to view project details</span>
                 </div>
@@ -638,43 +641,46 @@ export default function ProjectsSection() {
           </div>
 
           {/* Mobile accordion */}
-          <div className="md:hidden border-t border-[#E0E0E0]">
+          <div className="md:hidden border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
             {filtered.map((project, i) => {
               const isOpen = openId === project.id;
               return (
-                <div key={project.id} className="border-b border-[#E0E0E0]">
+                <div key={project.id} className="border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
                   <button
                     onClick={() => handleSelect(project.id)}
                     className="w-full flex items-center gap-4 py-4 text-left"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-xs text-[#6B6B6B] tabular-nums w-5 flex-shrink-0">
+                    <span className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] tabular-nums w-5 flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="flex-1 min-w-0">
                       <span className="text-sm font-medium block truncate">{project.title}</span>
-                      <span className="text-xs text-[#595959]">{project.tag}</span>
+                      <span className="text-xs text-[#595959] dark:text-[#AAAAAA]">{project.tag}</span>
                     </span>
                     {project.current && <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" />}
-                    <span className={`text-[#595959] transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-45" : ""}`}>+</span>
+                    <span className={`text-[#595959] dark:text-[#AAAAAA] transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-45" : ""}`}>+</span>
                   </button>
                   <div
                     className="overflow-hidden"
                     style={{ maxHeight: isOpen ? "800px" : "0px", opacity: isOpen ? 1 : 0, transition: "max-height 0.4s ease, opacity 0.25s ease" }}
                   >
                     <div className="pb-6 pl-9 space-y-4">
-                      <p className="text-xs text-[#595959]">{project.org} · {project.period}</p>
-                      <p className="text-sm text-[#3D3D3D] leading-relaxed">{project.summary}</p>
-                      <p className="text-xs text-[#3D3D3D] border-l-2 border-black pl-3 leading-relaxed">{project.impact}</p>
+                      <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">{project.org} · {project.period}</p>
+                      <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
+                      <div className="p-3 bg-[#FFF5F5] dark:bg-[#1A1111] border-l-2 border-[#FF3C3C]">
+                        <p className="text-[9px] tracking-widest uppercase text-[#FF3C3C] mb-1 font-mono">Impact</p>
+                        <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">{project.impact}</p>
+                      </div>
                       <div className="flex flex-wrap gap-1.5">
                         {project.stack.map((t) => (
-                          <span key={t} className="border border-[#E0E0E0] px-2.5 py-0.5 text-xs text-[#595959] rounded-full hover:border-black hover:text-black transition-colors duration-200">{t}</span>
+                          <span key={t} className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200">{t}</span>
                         ))}
                       </div>
                       {project.link && (
                         <a href={project.link} target="_blank" rel="noreferrer"
                            aria-label={project.linkLabel || `View ${project.title} on GitHub`}
-                           className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] rounded-full hover:border-black hover:text-black transition-colors duration-200">
+                           className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200">
                           {project.linkText || (project.link?.includes("github.com") ? "View on GitHub ↗" : "Visit site ↗")}
                         </a>
                       )}

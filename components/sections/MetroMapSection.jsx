@@ -127,7 +127,7 @@ export default function MetroMapSection() {
       <div className="mb-8">
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">◈ — Career Map</p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">Three lines.</h2>
-        <p className="text-sm font-light text-[#3D3D3D] max-w-xl leading-relaxed">
+        <p className="text-sm font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
           Government · Research · Engineering. Seven stations across four years.
           One convergence point where all three lines ran simultaneously.
           Hover any station for the full record.
@@ -148,11 +148,11 @@ export default function MetroMapSection() {
               <g key={yr}>
                 <line
                   x1={toX(yr)} y1={MARGIN_T + 4} x2={toX(yr)} y2={VH - 20}
-                  stroke="#F2F2F2" strokeWidth={1}
+                  stroke="#F2F2F2" className="dark:stroke-[#1E1E1E]" strokeWidth={1}
                 />
                 <text
                   x={toX(yr)} y={MARGIN_T - 4}
-                  textAnchor="middle" fontSize={10} fill="#C0C0C0"
+                  textAnchor="middle" fontSize={10} fill="#C0C0C0" className="dark:fill-[#666666]"
                   fontFamily="ui-monospace,monospace"
                 >
                   {yr}
@@ -197,11 +197,11 @@ export default function MetroMapSection() {
             {/* ── Triple-convergence connector ──────────────────────────────── */}
             <line
               x1={CONNECTOR_X} y1={78} x2={CONNECTOR_X} y2={246}
-              stroke="#CCCCCC" strokeWidth={1} strokeDasharray="3,4"
+              stroke="#CCCCCC" className="dark:stroke-[#555555]" strokeWidth={1} strokeDasharray="3,4"
             />
             <text
               x={CONNECTOR_X + 4} y={166}
-              fontSize={7.5} fill="#C0C0C0"
+              fontSize={7.5} fill="#C0C0C0" className="dark:fill-[#666666]"
               fontFamily="ui-monospace,monospace"
             >
               3 concurrent
@@ -263,6 +263,7 @@ export default function MetroMapSection() {
                     y={s.labelAbove ? s.y - 11 : s.y + 20}
                     textAnchor="middle" fontSize={9}
                     fill={isHov ? ln.color : "#3D3D3D"}
+                    className={isHov ? "" : "dark:fill-[#AAAAAA]"}
                     fontFamily="ui-monospace,monospace"
                     fontWeight={isHov ? "600" : "400"}
                     style={{ transition: "fill 0.12s ease" }}
@@ -286,10 +287,10 @@ export default function MetroMapSection() {
       >
         {active ? (
           <>
-            <p className="text-[10px] tracking-widest uppercase text-[#7A7A7A] mb-0.5">{active.period}</p>
+            <p className="text-[10px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] mb-0.5">{active.period}</p>
             <p className="font-semibold text-sm mb-0.5">{active.label}</p>
-            <p className="text-xs text-[#3D3D3D] mb-1">{active.role}</p>
-            <p className="text-xs text-[#7A7A7A] leading-relaxed max-w-xl">{active.detail}</p>
+            <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] mb-1">{active.role}</p>
+            <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] leading-relaxed max-w-xl">{active.detail}</p>
             {active.current && (
               <span className="inline-block mt-1.5 text-[10px] tracking-widest uppercase text-[#FF3C3C]">
                 ● Live
@@ -297,12 +298,12 @@ export default function MetroMapSection() {
             )}
           </>
         ) : (
-          <p className="text-xs text-[#AAAAAA] italic">Hover a station to read its record.</p>
+          <p className="text-xs text-[#AAAAAA] dark:text-[#666666] italic">Hover a station to read its record.</p>
         )}
       </div>
 
       {/* Legend */}
-      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] text-[#AAAAAA] font-mono">
+      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] text-[#AAAAAA] dark:text-[#666666] font-mono">
         {LINES.map((ln) => (
           <span key={ln.id} className="flex items-center gap-1.5">
             <span className="inline-block w-5 h-0.5" style={{ backgroundColor: ln.color }} />

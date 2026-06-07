@@ -30,8 +30,8 @@ export default function EnsemblePage() {
           <div className="space-y-3">
             {COMPONENTS.map(({ type, weight }) => (
               <div key={type} className="flex items-center gap-4">
-                <span className="font-mono text-sm text-[#1A1A1A] w-40">{type}</span>
-                <div className="flex-1 h-4 bg-[#F5F5F5]">
+                <span className="font-mono text-sm text-[#1A1A1A] dark:text-white w-40">{type}</span>
+                <div className="flex-1 h-4 bg-[#F5F5F5] dark:bg-[#141414]">
                   <div className="h-full bg-black" style={{ width: `${weight}%` }} />
                 </div>
                 <span className="font-mono text-[10px] text-[#7A7A7A] w-8">{weight}%</span>
@@ -40,13 +40,13 @@ export default function EnsemblePage() {
           </div>
 
           <p className="text-sm text-[#7A7A7A] mt-8">
-            Final prediction: <span className="font-mono text-[#1A1A1A]">GeneralistClassifier</span>.
+            Final prediction: <span className="font-mono text-[#1A1A1A] dark:text-white">GeneralistClassifier</span>.
             Weighted average of all components. No single model dominates.
           </p>
 
-          <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /ds</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
+            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">← /ds</Link>
+            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Home</Link>
           </div>
         </div>
       </div>

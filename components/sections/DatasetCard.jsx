@@ -50,7 +50,7 @@ export default function DatasetCard() {
           </p>
         </div>
         {/* Tab switcher */}
-        <div className="flex border border-[#E0E0E0] overflow-hidden font-mono ml-auto">
+        <div className="flex border border-[#E0E0E0] dark:border-[#3D3D3D] overflow-hidden font-mono ml-auto">
           {TABS.map((t) => (
             <button
               key={t}
@@ -58,7 +58,7 @@ export default function DatasetCard() {
               className={`px-4 py-1.5 text-[10px] tracking-widest uppercase transition-colors ${
                 tab === t
                   ? "bg-black text-white"
-                  : "text-[#7A7A7A] hover:text-black hover:bg-[#F5F5F5]"
+                  : "text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
               }`}
             >
               .{t}()
@@ -165,7 +165,7 @@ export default function DatasetCard() {
         </div>
       </div>
 
-      <p className="text-[10px] text-[#B0B0B0] mt-2 font-mono leading-relaxed">
+      <p className="text-[10px] text-[#B0B0B0] dark:text-[#7A7A7A] mt-2 font-mono leading-relaxed">
         For reference only · self-assessed metrics calibrated against role deliverables ·
         generated with the assistance of an AI tool (Claude · Anthropic)
       </p>

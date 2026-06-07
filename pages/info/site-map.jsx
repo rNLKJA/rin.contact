@@ -79,7 +79,7 @@ export default function SiteMapPage() {
                 <ul className="space-y-2">
                   {links.map(({ href, label }) => (
                     <li key={href}>
-                      <Link href={href} className="text-sm text-[#1A1A1A] hover:text-[#FF3C3C] border-b border-[#E0E0E0] hover:border-[#FF3C3C] transition-colors">
+                      <Link href={href} className="text-sm text-[#1A1A1A] dark:text-white hover:text-[#FF3C3C] border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] transition-colors">
                         {href}
                       </Link>
                       <span className="text-[#AAAAAA] text-xs ml-2">— {label}</span>
@@ -90,9 +90,9 @@ export default function SiteMapPage() {
             ))}
           </div>
 
-          <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/info" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /info</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
+            <Link href="/info" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">← /info</Link>
+            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Home</Link>
           </div>
         </div>
       </div>

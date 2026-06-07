@@ -1007,7 +1007,7 @@ export default function IntelligenceSection() {
           <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
             stroke="#E0E0E0" strokeWidth="1.5" fill="none" strokeLinecap="round" />
         </svg>
-        <p className="text-base font-light text-[#3D3D3D] max-w-2xl leading-relaxed">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed">
           Three interactive lenses on the same dataset — my career. Each one tells a different part
           of the same story: deliberate growth, compounding breadth, and the principle that
           continuous improvement is not a soft skill. It&apos;s infrastructure.
@@ -1015,7 +1015,7 @@ export default function IntelligenceSection() {
       </div>
 
       {/* Tab navigation */}
-      <div className="flex border-b border-[#E0E0E0] overflow-x-auto">
+      <div className="flex border-b border-[#E0E0E0] dark:border-[#3D3D3D] overflow-x-auto">
         {TABS.map((t) => (
           <button
             key={t.id}
@@ -1023,8 +1023,8 @@ export default function IntelligenceSection() {
             aria-selected={tab === t.id}
             className={`px-5 py-3 text-xs tracking-widest uppercase flex-shrink-0 transition-colors duration-150 border-b-2 -mb-px ${
               tab === t.id
-                ? "border-[#FF3C3C] text-black"
-                : "border-transparent text-[#7A7A7A] hover:text-black"
+                ? "border-[#FF3C3C] text-black dark:text-white"
+                : "border-transparent text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
             }`}
           >
             {t.label}
@@ -1040,9 +1040,9 @@ export default function IntelligenceSection() {
       </div>
 
       {/* Disclaimer */}
-      <div className="mt-4 border-t border-[#E0E0E0] pt-4">
-        <p className="text-[10px] text-[#B0B0B0] leading-relaxed max-w-4xl">
-          <span className="text-[#7A7A7A] font-medium">For reference only.</span>{" "}
+      <div className="mt-4 border-t border-[#E0E0E0] dark:border-[#3D3D3D] pt-4">
+        <p className="text-[10px] text-[#B0B0B0] dark:text-[#7A7A7A] leading-relaxed max-w-4xl">
+          <span className="text-[#7A7A7A] dark:text-[#9A9A9A] font-medium">For reference only.</span>{" "}
           Career seniority scores and domain depth values are self-assessed approximations calibrated
           against real role deliverables. Industry benchmarks are derived from publicly available sources:
           IAPA Skills &amp; Salary Survey (2023), LinkedIn Work Change Report (2024),

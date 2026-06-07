@@ -30,9 +30,9 @@ export default function PipelinePage() {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0">
             {STAGES.map(({ stage, desc }, i) => (
               <div key={stage} className="flex items-center gap-2">
-                <div className="border border-[#E0E0E0] p-4 flex-1 min-w-[100px]">
+                <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-4 flex-1 min-w-[100px]">
                   <p className="font-mono text-[10px] text-[#FF3C3C] mb-1">{stage}</p>
-                  <p className="text-xs text-[#1A1A1A]">{desc}</p>
+                  <p className="text-xs text-[#1A1A1A] dark:text-white">{desc}</p>
                 </div>
                 {i < STAGES.length - 1 && (
                   <span className="hidden sm:inline text-[#CCCCCC] font-mono text-sm">→</span>
@@ -45,9 +45,9 @@ export default function PipelinePage() {
             Pipeline status: running. No scheduled downtime.
           </p>
 
-          <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /ds</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
+            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">← /ds</Link>
+            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Home</Link>
           </div>
         </div>
       </div>

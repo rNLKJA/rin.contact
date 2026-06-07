@@ -117,8 +117,8 @@ function FAQItem({ q, a, index }) {
 
   return (
     <div
-      className={`border-b border-[#EEEEEE] last:border-0 transition-colors duration-200 ${
-        open ? "bg-white" : ""
+      className={`border-b border-[#EEEEEE] dark:border-[#2A2A2A] last:border-0 transition-colors duration-200 ${
+        open ? "bg-white dark:bg-[#0A0A0A]" : ""
       }`}
     >
       <button
@@ -134,13 +134,13 @@ function FAQItem({ q, a, index }) {
         </span>
         <span
           className={`flex-1 text-sm font-medium leading-snug transition-colors duration-200
-                      ${open ? "text-[#000]" : "text-[#3D3D3D] group-hover:text-[#000]"}`}
+                      ${open ? "text-[#000] dark:text-white" : "text-[#3D3D3D] dark:text-[#AAAAAA] group-hover:text-[#000] dark:group-hover:text-white"}`}
         >
           {q}
         </span>
         <span
           className={`flex-shrink-0 mt-0.5 transition-transform duration-200 ${
-            open ? "rotate-45 text-[#FF3C3C]" : "text-[#CCCCCC]"
+            open ? "rotate-45 text-[#FF3C3C]" : "text-[#CCCCCC] dark:text-[#666666]"
           }`}
         >
           <FiPlus size={14} />
@@ -151,7 +151,7 @@ function FAQItem({ q, a, index }) {
         className="overflow-hidden transition-all duration-300 ease-in-out"
         style={{ maxHeight: open ? "800px" : "0px" }}
       >
-        <p className="text-sm text-[#5A5A5A] leading-relaxed pb-5 pl-9 pr-6 border-l border-[#FF3C3C] ml-5">
+        <p className="text-sm text-[#5A5A5A] dark:text-[#9A9A9A] leading-relaxed pb-5 pl-9 pr-6 border-l border-[#FF3C3C] ml-5">
           {a}
         </p>
       </div>
@@ -165,12 +165,12 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className="border border-[#E8E8E8] mb-3 last:mb-0">
+    <div className="border border-[#E8E8E8] dark:border-[#3D3D3D] mb-3 last:mb-0">
       {/* Category header */}
       <button
         onClick={() => setOpen((o) => !o)}
         className={`w-full flex items-center gap-5 px-6 py-5 text-left group transition-colors duration-200
-                    ${open ? "bg-[#FAFAFA]" : "bg-white hover:bg-[#FAFAFA]"}`}
+                    ${open ? "bg-[#FAFAFA] dark:bg-[#1A1A1A]" : "bg-white dark:bg-[#0A0A0A] hover:bg-[#FAFAFA] dark:hover:bg-[#1A1A1A]"}`}
         aria-expanded={open}
       >
         {/* Category number */}
@@ -183,7 +183,7 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
 
         {/* Label + description */}
         <div className="flex-1 min-w-0">
-          <span className="font-editorial text-base md:text-lg font-semibold text-[#1A1A1A] leading-tight block">
+          <span className="font-editorial text-base md:text-lg font-semibold text-[#1A1A1A] dark:text-white leading-tight block">
             {cat.label}
           </span>
           <span className="text-[11px] text-[#9A9A9A] leading-none mt-0.5 block">
@@ -192,7 +192,7 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
         </div>
 
         {/* Question count pill */}
-        <span className="flex-shrink-0 text-[10px] tracking-widest text-[#AAAAAA] border border-[#EBEBEB] px-2.5 py-0.5 rounded-full select-none hidden md:block">
+        <span className="flex-shrink-0 text-[10px] tracking-widest text-[#AAAAAA] dark:text-[#666666] border border-[#EBEBEB] dark:border-[#3D3D3D] px-2.5 py-0.5 rounded-full select-none hidden md:block">
           {cat.items.length} {cat.items.length === 1 ? "question" : "questions"}
         </span>
 
@@ -211,7 +211,7 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
         className="overflow-hidden transition-all duration-400 ease-in-out"
         style={{ maxHeight: open ? `${cat.items.length * 400}px` : "0px" }}
       >
-        <div className="px-6 pt-1 pb-2 border-t border-[#F0F0F0]">
+        <div className="px-6 pt-1 pb-2 border-t border-[#F0F0F0] dark:border-[#1E1E1E]">
           {cat.items.map((item, i) => (
             <FAQItem key={i} index={i} q={item.q} a={item.a} />
           ))}
@@ -245,13 +245,13 @@ export default function FAQSection() {
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
             <path
               d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-              stroke="#E0E0E0"
+              stroke="#E0E0E0" className="dark:stroke-[#3D3D3D]"
               strokeWidth="1.5"
               fill="none"
               strokeLinecap="round"
             />
           </svg>
-          <p className="text-sm text-[#7A7A7A] max-w-xl leading-relaxed">
+          <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
             Browse by topic — open a category then expand any question.
           </p>
         </div>

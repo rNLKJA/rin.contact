@@ -14,16 +14,16 @@ const Item = ({ text, sub }) => (
   <div className="flex items-start gap-3 mb-3">
     <span className="mt-[3px] w-1 h-1 rounded-full bg-[#3D3D3D] flex-shrink-0" aria-hidden="true" />
     <div>
-      <p className="text-sm text-[#1A1A1A] leading-relaxed">{text}</p>
+      <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed">{text}</p>
       {sub && <p className="text-xs text-[#7A7A7A] mt-0.5">{sub}</p>}
     </div>
   </div>
 );
 
 const BookCard = ({ title, author }) => (
-  <div className="border border-[#E0E0E0] px-4 py-3 mb-2 flex items-center justify-between group hover:border-black transition-colors duration-150">
+  <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-3 mb-2 flex items-center justify-between group hover:border-black dark:hover:border-white transition-colors duration-150">
     <div>
-      <p className="text-xs font-medium text-[#1A1A1A]">{title}</p>
+      <p className="text-xs font-medium text-[#1A1A1A] dark:text-white">{title}</p>
       <p className="text-[11px] text-[#7A7A7A] mt-0.5">{author}</p>
     </div>
     <span className="text-[10px] font-mono text-[#CCCCCC] group-hover:text-[#7A7A7A] transition-colors">reading</span>
@@ -51,7 +51,7 @@ export default function NowPage() {
             A snapshot. Last updated from Adelaide, SA — ACST (UTC+9:30).
             Inspired by{" "}
             <a href="https://nownownow.com" target="_blank" rel="noreferrer"
-               className="border-b border-[#E0E0E0] hover:border-black transition-colors">
+               className="border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
               nownownow.com
             </a>.
           </p>
@@ -111,17 +111,17 @@ export default function NowPage() {
         </Section>
 
         {/* Footer */}
-        <div className="pt-10 border-t border-[#F0F0F0] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+        <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <p className="text-[11px] text-[#AAAAAA] font-mono">
             This page updates manually — no bots, no automation.
           </p>
           <div className="flex gap-4">
             <Link href="/"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
               ← Home
             </Link>
             <a href="https://rin.contact/api/now" target="_blank" rel="noreferrer"
-               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">
+               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
               JSON →
             </a>
           </div>

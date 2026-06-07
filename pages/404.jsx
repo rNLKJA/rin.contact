@@ -74,8 +74,8 @@ export default function Custom404() {
             <Link
               key={href}
               href={href}
-              className="border border-[#E0E0E0] px-3 py-2 text-xs text-[#595959]
-                         hover:border-black hover:text-black transition-colors duration-150"
+              className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-2 text-xs text-[#595959] dark:text-[#AAAAAA]
+                         hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-150"
             >
               → {label}
             </Link>

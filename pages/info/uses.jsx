@@ -4,7 +4,7 @@ import Link from "next/link";
 const Section = ({ label, children }) => (
   <div className="mb-12">
     <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-5 font-mono">{label}</p>
-    <div className="space-y-0 divide-y divide-[#F5F5F5]">
+    <div className="space-y-0 divide-y divide-[#F5F5F5] dark:divide-[#1E1E1E]">
       {children}
     </div>
   </div>
@@ -16,14 +16,14 @@ const Row = ({ name, desc, href, badge }) => (
       <div className="flex items-center gap-2 flex-wrap">
         {href ? (
           <a href={href} target="_blank" rel="noreferrer"
-             className="text-sm font-medium text-[#1A1A1A] hover:text-[#FF3C3C] transition-colors border-b border-transparent hover:border-[#FF3C3C]">
+             className="text-sm font-medium text-[#1A1A1A] dark:text-white hover:text-[#FF3C3C] transition-colors border-b border-transparent hover:border-[#FF3C3C]">
             {name}
           </a>
         ) : (
-          <span className="text-sm font-medium text-[#1A1A1A]">{name}</span>
+          <span className="text-sm font-medium text-[#1A1A1A] dark:text-white">{name}</span>
         )}
         {badge && (
-          <span className="text-[9px] tracking-widest uppercase border border-[#E0E0E0] px-2 py-0.5 text-[#7A7A7A] font-mono rounded-full">
+          <span className="text-[9px] tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-[#7A7A7A] font-mono rounded-full">
             {badge}
           </span>
         )}
@@ -51,7 +51,7 @@ export default function UsesPage() {
           <p className="text-sm text-[#7A7A7A] leading-relaxed">
             Hardware, software, tools, and setups I rely on daily. Inspired by{" "}
             <a href="https://uses.tech" target="_blank" rel="noreferrer"
-               className="border-b border-[#E0E0E0] hover:border-black transition-colors">
+               className="border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
               uses.tech
             </a>.
           </p>
@@ -107,12 +107,12 @@ export default function UsesPage() {
         </Section>
 
         {/* Footer */}
-        <div className="pt-10 border-t border-[#F0F0F0] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+        <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <p className="text-[11px] text-[#AAAAAA] font-mono">
             Last updated March 2026.
           </p>
           <Link href="/"
-            className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">
+            className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
             ← Home
           </Link>
         </div>

@@ -34,8 +34,8 @@ export default function FeatureImportancePage() {
           <div className="space-y-4">
             {FEATURES.map(({ name, importance, bar }) => (
               <div key={name} className="flex items-center gap-4">
-                <span className="font-mono text-xs text-[#1A1A1A] w-28 flex-shrink-0">{name}</span>
-                <div className="flex-1 h-6 bg-[#F5F5F5] flex">
+                <span className="font-mono text-xs text-[#1A1A1A] dark:text-white w-28 flex-shrink-0">{name}</span>
+                <div className="flex-1 h-6 bg-[#F5F5F5] dark:bg-[#141414] flex">
                   <div className={`h-full bg-[#FF3C3C] ${bar}`} />
                 </div>
                 <span className="font-mono text-[10px] text-[#7A7A7A] w-8">{importance.toFixed(2)}</span>
@@ -47,9 +47,9 @@ export default function FeatureImportancePage() {
             * Not actual SHAP. Feature importance is approximate. Coffee is not a real feature.
           </p>
 
-          <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /ds</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
+            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">← /ds</Link>
+            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Home</Link>
           </div>
         </div>
       </div>

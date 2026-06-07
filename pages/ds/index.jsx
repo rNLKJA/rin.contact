@@ -44,14 +44,14 @@ export default function DsIndexPage() {
             Because every data scientist deserves to be a dataset.
           </p>
 
-          <div className="space-y-0 divide-y divide-[#E0E0E0]">
+          <div className="space-y-0 divide-y divide-[#E0E0E0] dark:divide-[#3D3D3D]">
             {ITEMS.map(({ href, label, note }) => (
               <Link
                 key={href}
                 href={href}
                 className="block py-4 flex items-baseline justify-between gap-6 group"
               >
-                <span className="font-mono text-sm text-[#1A1A1A] group-hover:text-[#FF3C3C] transition-colors">
+                <span className="font-mono text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#FF3C3C] transition-colors">
                   /ds/{label}
                 </span>
                 <span className="text-[11px] text-[#AAAAAA] flex-shrink-0">{note}</span>
@@ -59,10 +59,10 @@ export default function DsIndexPage() {
             ))}
           </div>
 
-          <div className="pt-10 border-t border-[#F0F0F0]">
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E]">
             <Link
               href="/"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
               ← Home
             </Link>

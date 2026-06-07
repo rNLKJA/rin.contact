@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const Section = ({ title, children }) => (
   <div className="mb-10">
-    <h2 className="text-lg font-semibold tracking-tight text-[#1A1A1A] mb-4">{title}</h2>
-    <div className="space-y-3 text-sm text-[#3D3D3D] leading-relaxed">
+    <h2 className="text-lg font-semibold tracking-tight text-[#1A1A1A] dark:text-white mb-4">{title}</h2>
+    <div className="space-y-3 text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
       {children}
     </div>
   </div>
@@ -12,7 +12,7 @@ const Section = ({ title, children }) => (
 
 const Item = ({ label, detail }) => (
   <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
-    <span className="font-medium text-[#1A1A1A] sm:w-40 flex-shrink-0">{label}</span>
+    <span className="font-medium text-[#1A1A1A] dark:text-white sm:w-40 flex-shrink-0">{label}</span>
     <span className="text-[#7A7A7A]">{detail}</span>
   </div>
 );
@@ -75,21 +75,21 @@ export default function AccessibilityPage() {
         <Section title="Feedback">
           <p className="text-[#7A7A7A]">
             If you encounter a barrier, please reach out.{" "}
-            <a href="mailto:huang@rin.contact" className="text-[#1A1A1A] border-b border-[#E0E0E0] hover:border-black transition-colors">
+            <a href="mailto:huang@rin.contact" className="text-[#1A1A1A] dark:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
               huang@rin.contact
             </a>
             {" "}— I take accessibility seriously and will do my best to fix issues.
           </p>
         </Section>
 
-        <div className="pt-10 border-t border-[#F0F0F0] flex justify-between items-center">
+        <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex justify-between items-center">
           <p className="text-[11px] text-[#AAAAAA] font-mono">
             Last updated March 2026
           </p>
           <Link
             href="/"
             className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black
-                       border-b border-[#E0E0E0] hover:border-black transition-colors"
+                       border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
           >
             ← Home
           </Link>

@@ -19,18 +19,18 @@ export default function DataDriftPage() {
             Your assumptions about Rin have drifted. Last updated: 2024. Retrain your mental model.
           </p>
 
-          <div className="border border-[#E0E0E0] p-6 font-mono text-sm">
+          <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 font-mono text-sm">
             <p className="text-[#FF3C3C] mb-4">WARNING: Distribution shift detected</p>
-            <p className="text-[#1A1A1A] mb-2">• Role: Junior → Senior</p>
-            <p className="text-[#1A1A1A] mb-2">• Location: Melbourne → Adelaide</p>
-            <p className="text-[#1A1A1A] mb-2">• Domain: Added government, research, startup</p>
+            <p className="text-[#1A1A1A] dark:text-white mb-2">• Role: Junior → Senior</p>
+            <p className="text-[#1A1A1A] dark:text-white mb-2">• Location: Melbourne → Adelaide</p>
+            <p className="text-[#1A1A1A] dark:text-white mb-2">• Domain: Added government, research, startup</p>
             <p className="text-[#7A7A7A] mt-4">Recommended action: Retrain. Visit /career for updated data.</p>
           </div>
 
-          <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /ds</Link>
-            <Link href="/career" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Career</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
+            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">← /ds</Link>
+            <Link href="/career" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Career</Link>
+            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Home</Link>
           </div>
         </div>
       </div>

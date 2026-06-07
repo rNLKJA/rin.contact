@@ -331,26 +331,26 @@ export default function Home() {
 
           {/* ══ HERO — white ══ */}
           {/* LCP: hero content first in DOM; decorative elements deferred on mobile */}
-          <div className="bg-white relative overflow-hidden">
+          <div className="bg-white dark:bg-[#0A0A0A] relative overflow-hidden">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
               <HeroSection />
             </div>
             {/* Decorative elements — hidden on mobile for faster LCP, desktop only */}
             <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
-              <ArtCross className="top-10 left-8 text-[#C0C0C0]" />
-              <ArtCross className="bottom-12 right-12 text-[#C0C0C0]" />
-              <ArtCircle className="animate-art-breathe border-[#E0E0E0]"       style={{ width:"1300px", height:"1300px", right:"-450px", bottom:"-450px" }} />
-              <ArtCircle className="animate-art-breathe border-[#E4E4E4]"       style={{ width: "840px", height: "840px",  right:"-220px", bottom:"-220px", animationDelay:"1.2s" }} />
-              <ArtCircle className="animate-art-breathe border-[#EBEBEB]"       style={{ width: "420px", height: "420px",  right: "-10px", bottom: "-10px", animationDelay:"2.4s" }} />
-              <ArtSquircle className="animate-art-spin border-[#DCDCDC]"        style={{ width:"320px",  height:"320px",  top:"48px",  left:"40px",   animationDelay:"1.5s" }} />
-              <ArtBlob     className="border-[#E8E8E8]"                         style={{ width:"420px",  height:"380px",  top:"30%",   left:"-100px", animationDelay:"3s" }} />
-              <WaveArc className="top-[38%] h-20" stroke="#EBEBEB" />
+              <ArtCross className="top-10 left-8 text-[#C0C0C0] dark:text-[#3D3D3D]" />
+              <ArtCross className="bottom-12 right-12 text-[#C0C0C0] dark:text-[#3D3D3D]" />
+              <ArtCircle className="animate-art-breathe border-[#E0E0E0] dark:border-[#3D3D3D]"       style={{ width:"1300px", height:"1300px", right:"-450px", bottom:"-450px" }} />
+              <ArtCircle className="animate-art-breathe border-[#E4E4E4] dark:border-[#3D3D3D]"       style={{ width: "840px", height: "840px",  right:"-220px", bottom:"-220px", animationDelay:"1.2s" }} />
+              <ArtCircle className="animate-art-breathe border-[#EBEBEB] dark:border-[#3D3D3D]"       style={{ width: "420px", height: "420px",  right: "-10px", bottom: "-10px", animationDelay:"2.4s" }} />
+              <ArtSquircle className="animate-art-spin border-[#DCDCDC] dark:border-[#3D3D3D]"        style={{ width:"320px",  height:"320px",  top:"48px",  left:"40px",   animationDelay:"1.5s" }} />
+              <ArtBlob     className="border-[#E8E8E8] dark:border-[#2A2A2A]"                         style={{ width:"420px",  height:"380px",  top:"30%",   left:"-100px", animationDelay:"3s" }} />
+              <WaveArc className="top-[38%] h-20 dark:[&>path]:stroke-[#3D3D3D]" stroke="#EBEBEB" />
               <div className="dot-matrix absolute left-0 bottom-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08]" />
             </div>
           </div>
 
           {/* ══ STATUS + SECTION NAV CARDS — white ══ */}
-          <div className="bg-white border-t border-[#F5F5F5]">
+          <div className="bg-white dark:bg-[#0A0A0A] border-t border-[#F5F5F5] dark:border-[#1E1E1E]">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 pt-10">
               <StatusBadge />
             </div>

@@ -5,7 +5,7 @@ import pkg from "../../package.json";
 const Section = ({ label, children }) => (
   <div className="mb-10">
     <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-5 font-mono">{label}</p>
-    <div className="space-y-0 divide-y divide-[#F5F5F5]">
+    <div className="space-y-0 divide-y divide-[#F5F5F5] dark:divide-[#1E1E1E]">
       {children}
     </div>
   </div>
@@ -17,11 +17,11 @@ const Row = ({ name, value, href, note }) => (
     <div className="flex-1 text-right">
       {href ? (
         <a href={href} target="_blank" rel="noreferrer"
-           className="text-xs text-[#1A1A1A] hover:text-[#FF3C3C] border-b border-[#E0E0E0] hover:border-[#FF3C3C] transition-colors">
+           className="text-xs text-[#1A1A1A] dark:text-white hover:text-[#FF3C3C] border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] transition-colors">
           {value}
         </a>
       ) : (
-        <span className="text-xs text-[#1A1A1A]">{value}</span>
+        <span className="text-xs text-[#1A1A1A] dark:text-white">{value}</span>
       )}
       {note && <p className="text-[11px] text-[#AAAAAA] mt-0.5">{note}</p>}
     </div>
@@ -136,17 +136,17 @@ export default function ColophonPage() {
         </Section>
 
         {/* Footer */}
-        <div className="pt-10 border-t border-[#F0F0F0] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+        <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <p className="text-[11px] text-[#AAAAAA] font-mono">
             Designed & built by Rin Huang · v{pkg.version}
           </p>
           <div className="flex gap-4">
             <Link href="/"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
               ← Home
             </Link>
             <a href="/api/stack" target="_blank" rel="noreferrer"
-               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">
+               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
               JSON →
             </a>
           </div>

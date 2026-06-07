@@ -12,6 +12,7 @@
   --divider:        #E0E0E0;
   --surface:        #F5F5F5;
   --accent:         #FF3C3C;
+  --marquee-fade:   #F5F5F5;
 
   --background: 0 0% 100%;
   --foreground: 222.2 47.4% 11.2%;
@@ -45,6 +46,7 @@
   --subtle:         #AAAAAA;
   --divider:        #3D3D3D;
   --surface:        #141414;
+  --marquee-fade:   #141414;
 }
 
 /* ─── Reset ─────────────────────────────────────────────────────── */

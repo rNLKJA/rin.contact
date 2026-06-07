@@ -4,11 +4,11 @@ import Link from "next/link";
 const Section = ({ label, items }) => (
   <div className="mb-12">
     <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-5 font-mono">{label}</p>
-    <ul className="space-y-0 divide-y divide-[#F5F5F5]">
+    <ul className="space-y-0 divide-y divide-[#F5F5F5] dark:divide-[#1E1E1E]">
       {items.map(({ title, status, note, joke }) => (
         <li key={title} className="py-4 flex items-start justify-between gap-6">
           <div>
-            <p className="text-sm font-medium text-[#1A1A1A]">{title}</p>
+            <p className="text-sm font-medium text-[#1A1A1A] dark:text-white">{title}</p>
             {(note || joke) && (
               <p className="text-xs text-[#7A7A7A] mt-0.5 leading-relaxed">{note || joke}</p>
             )}
@@ -17,8 +17,8 @@ const Section = ({ label, items }) => (
             className={`text-[10px] font-mono tracking-widest uppercase flex-shrink-0 px-2 py-0.5 ${
               status === "done"   ? "border border-[#22C55E] text-[#22C55E]" :
               status === "wip"   ? "border border-[#FF3C3C] text-[#FF3C3C]" :
-              status === "planned" ? "border border-[#E0E0E0] text-[#7A7A7A]" :
-              "border border-[#E0E0E0] text-[#AAAAAA]"
+              status === "planned" ? "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A]" :
+              "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#AAAAAA]"
             }`}
           >
             {status}
@@ -49,7 +49,7 @@ const WIP = [
 const PLANNED = [
   { title: "Blog / writing section", status: "planned", note: "Data science notes. Lessons learned." },
   { title: "RSS feed", status: "planned", note: "For when the blog exists." },
-  { title: "Dark mode toggle", status: "planned", joke: "Nothing OS already is dark. We'll see." },
+  { title: "Dark mode toggle", status: "done", joke: "Nothing OS already is dark. Now the code is too." },
   { title: "i18n — Mandarin version", status: "planned", note: "黄孙创宇 deserves a zh-Hans site." },
   { title: "PWA / offline support", status: "planned", note: "Service worker. Install prompt. Maybe." },
   { title: "API versioning", status: "planned", joke: "v1 is forever. v2 when we break everything." },
@@ -90,14 +90,14 @@ export default function RoadmapPage() {
         <Section label="Planned" items={PLANNED} />
         <Section label="Backlog (questionable)" items={BACKLOG} />
 
-        <div className="pt-10 border-t border-[#F0F0F0] flex justify-between items-center">
+        <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex justify-between items-center">
           <p className="text-[11px] text-[#AAAAAA] font-mono">
             Roadmaps are living documents. This one is also a bit silly.
           </p>
           <Link
             href="/"
             className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black
-                       border-b border-[#E0E0E0] hover:border-black transition-colors"
+                       border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
           >
             ← Home
           </Link>

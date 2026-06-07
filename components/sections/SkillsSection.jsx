@@ -182,7 +182,7 @@ function DomainCard({ domain, index }) {
           <h3 className="text-base font-semibold">{domain.label}</h3>
         </div>
         <span
-          className="text-[#B0B0B0] text-sm flex-shrink-0 transition-transform duration-200 group-hover:text-black z-10"
+          className="text-[#B0B0B0] dark:text-[#7A7A7A] text-sm flex-shrink-0 transition-transform duration-200 group-hover:text-black dark:group-hover:text-white z-10"
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
           aria-hidden="true"
         >
@@ -201,7 +201,7 @@ function DomainCard({ domain, index }) {
       >
         <div className="pb-8">
           {/* Animated fill bar */}
-          <div className="h-px w-full bg-[#E0E0E0] mb-4 overflow-hidden">
+          <div className="h-px w-full bg-[#E0E0E0] dark:bg-[#3D3D3D] mb-4 overflow-hidden">
             <div
               className="h-full"
               style={{
@@ -211,14 +211,14 @@ function DomainCard({ domain, index }) {
               }}
             />
           </div>
-          <p className="text-sm text-[#3D3D3D] leading-relaxed mb-4 font-light">
+          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-4 font-light">
             {domain.description}
           </p>
           <div className="flex flex-wrap gap-1.5">
             {domain.skills.map((s, si) => (
               <span
                 key={s}
-                className="border border-[#E0E0E0] px-3 py-1 text-xs tracking-wide text-[#7A7A7A] rounded-full
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wide text-[#7A7A7A] dark:text-[#9A9A9A] rounded-full
                            cursor-default transition-all duration-200 animate-fade-up opacity-0"
                 style={{
                   animationDelay: open ? `${si * 30}ms` : "0ms",
@@ -265,9 +265,9 @@ export default function SkillsSection() {
         {/* Wisr-style wavy accent */}
         <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
           <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-                stroke="#E0E0E0" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                stroke="#E0E0E0" className="dark:stroke-[#3D3D3D]" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
         </svg>
-        <p className="text-base font-light text-[#3D3D3D] max-w-2xl leading-relaxed">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed">
           I have found that the most interesting problems sit at the edges of
           disciplines. My work has taken me from flow cytometry pipelines at WEHI
           to ministerial dashboards at CBS to mobile health apps at UniMelb —
@@ -279,14 +279,14 @@ export default function SkillsSection() {
 
       {/* ── Marquee tape ── infinite scrolling skill strip ── */}
       <div
-        className="relative mt-10 mb-2 overflow-hidden border-y border-[#E0E0E0] py-4 select-none"
+        className="relative mt-10 mb-2 overflow-hidden border-y border-[#E0E0E0] dark:border-[#3D3D3D] py-4 select-none"
         aria-hidden="true"
       >
         {/* Fade masks on edges */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10"
-          style={{ background: "linear-gradient(to right, #F5F5F5 40%, transparent)" }} />
+          style={{ background: "linear-gradient(to right, var(--marquee-fade, #F5F5F5) 40%, transparent)" }} />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10"
-          style={{ background: "linear-gradient(to left, #F5F5F5 40%, transparent)" }} />
+          style={{ background: "linear-gradient(to left, var(--marquee-fade, #F5F5F5) 40%, transparent)" }} />
 
         <div
           className="flex animate-marquee"
@@ -331,13 +331,13 @@ export default function SkillsSection() {
         {/* Two-column grouped layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
           {CERT_GROUPS.map((g) => (
-            <div key={g.group} className="border-t border-[#E0E0E0] py-5">
-              <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] mb-3">{g.group}</p>
+            <div key={g.group} className="border-t border-[#E0E0E0] dark:border-[#3D3D3D] py-5">
+              <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] dark:text-[#7A7A7A] mb-3">{g.group}</p>
               <ul className="space-y-2.5">
                 {g.items.map((c) => (
                   <li key={c.label} className="flex items-start justify-between gap-4 group">
-                    <span className="text-sm text-[#1A1A1A] leading-snug">{c.label}</span>
-                    <span className="text-xs text-[#B0B0B0] whitespace-nowrap flex-shrink-0 mt-0.5">{c.issuer}</span>
+                    <span className="text-sm text-[#1A1A1A] dark:text-white leading-snug">{c.label}</span>
+                    <span className="text-xs text-[#B0B0B0] dark:text-[#7A7A7A] whitespace-nowrap flex-shrink-0 mt-0.5">{c.issuer}</span>
                   </li>
                 ))}
               </ul>
@@ -362,13 +362,13 @@ export default function SkillsSection() {
           ].map((l) => (
             <div
               key={l.lang}
-              className="border border-[#E0E0E0] px-5 py-3 cursor-default
-                         hover:border-black transition-colors duration-200"
+              className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 cursor-default
+                         hover:border-black dark:hover:border-white transition-colors duration-200"
             >
               <p className="text-sm font-medium">{l.lang}</p>
-              <p className="text-xs text-[#7A7A7A] mt-0.5">{l.level}</p>
+              <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] mt-0.5">{l.level}</p>
               {l.detail && (
-                <p className="text-xs text-[#7A7A7A] mt-0.5">{l.detail}</p>
+                <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] mt-0.5">{l.detail}</p>
               )}
             </div>
           ))}

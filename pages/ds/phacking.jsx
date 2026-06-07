@@ -19,18 +19,18 @@ export default function PhackingPage() {
             We ran 1000 regressions on Rin&apos;s career. We found 47 significant results. Here are the 3 we&apos;re publishing.
           </p>
 
-          <div className="border border-[#E0E0E0] p-6 font-mono text-xs space-y-4">
+          <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 font-mono text-xs space-y-4">
             <div>
               <p className="text-[#FF3C3C] mb-1">Result 1 (p=0.032)</p>
-              <p className="text-[#1A1A1A]">Coffee consumption correlates with project completion rate.</p>
+              <p className="text-[#1A1A1A] dark:text-white">Coffee consumption correlates with project completion rate.</p>
             </div>
             <div>
               <p className="text-[#FF3C3C] mb-1">Result 2 (p=0.047)</p>
-              <p className="text-[#1A1A1A]">Python proficiency predicts government employment.</p>
+              <p className="text-[#1A1A1A] dark:text-white">Python proficiency predicts government employment.</p>
             </div>
             <div>
               <p className="text-[#FF3C3C] mb-1">Result 3 (p=0.021)</p>
-              <p className="text-[#1A1A1A]">Adelaide timezone associated with strategic thinking at midnight.</p>
+              <p className="text-[#1A1A1A] dark:text-white">Adelaide timezone associated with strategic thinking at midnight.</p>
             </div>
           </div>
 
@@ -38,9 +38,9 @@ export default function PhackingPage() {
             * This is satire. Don&apos;t p-hack. Pre-register your hypotheses.
           </p>
 
-          <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /ds</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
+            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">← /ds</Link>
+            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Home</Link>
           </div>
         </div>
       </div>

@@ -74,25 +74,25 @@ export default function ApiPage() {
             {ENDPOINTS.map(({ path, method, description, example }) => (
               <div
                 key={path}
-                className="border border-[#E0E0E0] p-6 rounded-none bg-white"
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 rounded-none bg-white"
               >
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <code className="text-xs font-mono px-2 py-0.5 border border-black text-black">
                     {method}
                   </code>
-                  <code className="text-sm font-mono text-[#1A1A1A]">{path}</code>
+                  <code className="text-sm font-mono text-[#1A1A1A] dark:text-white">{path}</code>
                 </div>
-                <p className="text-sm text-[#3D3D3D] mb-4">{description}</p>
-                <pre className="text-[11px] font-mono text-[#7A7A7A] bg-[#F5F5F5] p-3 overflow-x-auto border border-[#E0E0E0]">
+                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] mb-4">{description}</p>
+                <pre className="text-[11px] font-mono text-[#7A7A7A] bg-[#F5F5F5] dark:bg-[#141414] p-3 overflow-x-auto border border-[#E0E0E0] dark:border-[#3D3D3D]">
                   {example}
                 </pre>
               </div>
             ))}
           </div>
 
-          <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/info" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /info</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
+            <Link href="/info" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">← /info</Link>
+            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Home</Link>
           </div>
         </div>
       </div>

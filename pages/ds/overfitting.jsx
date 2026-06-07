@@ -19,14 +19,14 @@ export default function OverfittingPage() {
             Scans your CV. Reports buzzword density and generalisation.
           </p>
 
-          <div className="border border-[#E0E0E0] p-6 font-mono text-sm space-y-4">
+          <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 font-mono text-sm space-y-4">
             <div className="flex justify-between">
               <span className="text-[#7A7A7A]">Buzzwords per square inch</span>
-              <span className="text-[#1A1A1A]">Low ✓</span>
+              <span className="text-[#1A1A1A] dark:text-white">Low ✓</span>
             </div>
             <div className="flex justify-between">
               <span className="text-[#7A7A7A]">Overfitting detected</span>
-              <span className="text-[#1A1A1A]">No</span>
+              <span className="text-[#1A1A1A] dark:text-white">No</span>
             </div>
             <div className="flex justify-between">
               <span className="text-[#7A7A7A]">Underfitting detected</span>
@@ -38,10 +38,10 @@ export default function OverfittingPage() {
             Recommendation: Add more specific metrics. &quot;Led 3 projects&quot; &gt; &quot;Led projects&quot;.
           </p>
 
-          <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /ds</Link>
-            <Link href="/resume" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Resume</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
+            <Link href="/ds" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">← /ds</Link>
+            <Link href="/resume" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Resume</Link>
+            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">Home</Link>
           </div>
         </div>
       </div>

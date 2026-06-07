@@ -196,7 +196,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden cursor-crosshair bg-white"
+      className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden cursor-crosshair bg-white dark:bg-[#0A0A0A]"
       aria-label="Introduction"
       itemScope
       itemType="https://schema.org/Person"
@@ -240,7 +240,7 @@ export default function HeroSection() {
           {/* Time-of-day greeting — client-side only, fades in */}
           {greeting && (
             <p
-              className="text-[11px] tracking-widest uppercase text-[#B0B0B0] mb-5 font-mono"
+              className="text-[11px] tracking-widest uppercase text-[#B0B0B0] dark:text-[#7A7A7A] mb-5 font-mono"
               style={{ animation: "fade-in 0.8s ease-out both" }}
               aria-label={greeting}
             >
@@ -249,7 +249,7 @@ export default function HeroSection() {
           )}
 
           {/* Status pill */}
-          <div className="inline-flex items-center gap-2 border border-[#E0E0E0] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase rounded-full text-[#1A1A1A]">
+          <div className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase rounded-full text-[#1A1A1A] dark:text-white">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 md:animate-blink" aria-hidden="true" />
             ASO7 Senior Data Analyst · Adelaide, SA
           </div>
@@ -258,7 +258,7 @@ export default function HeroSection() {
 
           {/* Name — pinned to Bitcount display font; no animation on mobile for LCP */}
           <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 md:animate-fade-up text-black"
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 md:animate-fade-up text-black dark:text-white"
             itemProp="name"
           >
             Rin Huang
@@ -277,25 +277,25 @@ export default function HeroSection() {
           {/* Subtitle + socials — black on mobile for AA contrast; no animation on mobile for LCP */}
           <div className="flex flex-wrap items-center gap-3 mb-8 md:animate-fade-up md:delay-100">
             <div className="flex flex-col">
-              <span className="text-sm tracking-widest uppercase text-black md:text-[#5C5C5C]" itemProp="alternateName">
+              <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]" itemProp="alternateName">
                 Sunchuangyu Huang
               </span>
-              <span className="text-sm tracking-wide text-black md:text-[#7A7A7A]" lang="zh-Hans" itemProp="alternateName">
+              <span className="text-sm tracking-wide text-black dark:text-white md:text-[#7A7A7A] dark:md:text-[#AAAAAA]" lang="zh-Hans" itemProp="alternateName">
                 黄孙创宇
               </span>
-              <span className="text-sm tracking-widest uppercase text-black md:text-[#5C5C5C]">
+              <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]">
                 He/Him · Adelaide &amp; Melbourne
               </span>
             </div>
-            <span className="text-sm tracking-widest uppercase text-black md:text-[#5C5C5C]">|</span>
+            <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]">|</span>
             <a href="https://www.linkedin.com/in/sunchuangyuhuang/" target="_blank" rel="noreferrer"
               aria-label="LinkedIn profile"
-              className="text-[#B0B0B0] hover:text-black transition-colors duration-200 flex-shrink-0">
+              className="text-[#B0B0B0] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0">
               <LinkedInIcon />
             </a>
             <a href="https://github.com/rNLKJA" target="_blank" rel="noreferrer"
               aria-label="GitHub profile"
-              className="text-[#B0B0B0] hover:text-black transition-colors duration-200 flex-shrink-0">
+              className="text-[#B0B0B0] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0">
               <GitHubIcon />
             </a>
           </div>
@@ -305,13 +305,13 @@ export default function HeroSection() {
             role="status"
             aria-live="polite"
             aria-label={role ? `Current role: ${role}` : undefined}
-            className="hero-role text-xl md:text-2xl font-light text-[#3D3D3D] mb-8 h-8 md:animate-fade-up md:delay-200"
+            className="hero-role text-xl md:text-2xl font-light text-[#3D3D3D] dark:text-[#AAAAAA] mb-8 h-8 md:animate-fade-up md:delay-200"
           >
             {role}<span className="md:animate-blink ml-0.5 inline-block w-[0.5em] text-center" aria-hidden="true">_</span>
           </div>
 
           {/* Bio — LCP element: no animation on mobile so it paints immediately */}
-          <p id="hero-bio" className="text-base font-light text-[#3D3D3D] leading-relaxed mb-10 md:animate-fade-up md:delay-300">
+          <p id="hero-bio" className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-10 md:animate-fade-up md:delay-300">
             From climate risk modelling at CSIRO to ministerial dashboards for the
             SA Government, from genomics pipelines at WEHI to a mental health mobile
             app at UniMelb — I work at the edges of disciplines where data, strategy,
@@ -329,7 +329,7 @@ export default function HeroSection() {
             {TAGS.map((tag, i) => (
               <span
                 key={tag}
-                className="border border-[#E0E0E0] px-3 py-1 text-xs tracking-wider uppercase text-black md:text-[#5C5C5C]
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wider uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]
                            rounded-full hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200 cursor-default
                            md:animate-fade-up md:opacity-0"
                 style={{ animationDelay: `${500 + i * 50}ms`, animationFillMode: "forwards" }}
@@ -347,16 +347,16 @@ export default function HeroSection() {
             {STATS.map(({ value, label, sub }, i) => (
               <div
                 key={label}
-                className="bg-white px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300 text-black"
+                className="bg-white dark:bg-[#0A0A0A] px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300 text-black dark:text-white"
               >
-                <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight text-black group-hover:text-white transition-colors duration-300">
+                <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight text-black dark:text-white group-hover:text-white transition-colors duration-300">
                   <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
                   <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-300">+</span>
                 </span>
-                <span className="text-sm font-medium tracking-wide uppercase text-black group-hover:text-white transition-colors duration-300">
+                <span className="text-sm font-medium tracking-wide uppercase text-black dark:text-white group-hover:text-white transition-colors duration-300">
                   {label}
                 </span>
-                <span className="text-xs text-[#B0B0B0] font-light group-hover:text-white/70 transition-colors duration-300">
+                <span className="text-xs text-[#B0B0B0] dark:text-[#7A7A7A] font-light group-hover:text-white/70 transition-colors duration-300">
                   {sub}
                 </span>
               </div>
@@ -364,14 +364,14 @@ export default function HeroSection() {
           </div>
 
           {/* Mobile — flat strip */}
-          <div className="flex flex-wrap gap-8 md:hidden text-black">
+          <div className="flex flex-wrap gap-8 md:hidden text-black dark:text-white">
             {STATS.map(({ value, label }, i) => (
               <div key={label} className="flex flex-col items-start">
-                <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight text-black">
+                <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight text-black dark:text-white">
                   <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
                   <span className="text-[#FF3C3C]">+</span>
                 </span>
-                <span className="text-[10px] tracking-widest uppercase text-black mt-1">{label}</span>
+                <span className="text-[10px] tracking-widest uppercase text-black dark:text-white mt-1">{label}</span>
               </div>
             ))}
           </div>
