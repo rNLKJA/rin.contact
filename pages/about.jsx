@@ -2,9 +2,10 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-const SkillsSection        = dynamic(() => import("@/components/sections/SkillsSection"),        { loading: () => <div className="min-h-[480px]" /> });
-const FAQSection           = dynamic(() => import("@/components/sections/FAQSection"),           { loading: () => <div className="min-h-[320px]" /> });
-const TestimonialsSection  = dynamic(() => import("@/components/sections/TestimonialsSection"), { loading: () => <div className="min-h-[200px]" /> });
+const SkillsSection           = dynamic(() => import("@/components/sections/SkillsSection"),           { loading: () => <div className="min-h-[480px]" /> });
+const CertificationsSection  = dynamic(() => import("@/components/sections/CertificationsSection"), { loading: () => <div className="min-h-[320px]" /> });
+const FAQSection              = dynamic(() => import("@/components/sections/FAQSection"),              { loading: () => <div className="min-h-[320px]" /> });
+const TestimonialsSection     = dynamic(() => import("@/components/sections/TestimonialsSection"),    { loading: () => <div className="min-h-[200px]" /> });
 
 function PageHeader() {
   return (
@@ -53,6 +54,12 @@ export default function AboutPage() {
       </div>
 
       <div className="bg-white relative overflow-hidden">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <CertificationsSection />
+        </div>
+      </div>
+
+      <div className="bg-[#F5F5F5] relative overflow-hidden">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <FAQSection />
         </div>
