@@ -38,6 +38,15 @@ export default function NowPage() {
         <title>Now — Rin Huang · rin.contact</title>
         <meta name="description" content="What Rin Huang is working on, reading, and thinking about right now." />
         <link rel="canonical" href="https://rin.contact/info/now" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Now&subtitle=What%20Rin%20Huang%20is%20doing%20now&section=info" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Now" />
+        <meta name="twitter:description" content="What Rin Huang is doing now." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Now&subtitle=What%20Rin%20Huang%20is%20doing%20now&section=info" />
       </Head>
 
       <SeoHead

@@ -71,6 +71,15 @@ export default function RoadmapPage() {
         <title>Roadmap — Rin Huang · rin.contact</title>
         <meta name="description" content="Past and future features for rin.contact — shipped, in progress, and absurd." />
         <link rel="canonical" href="https://rin.contact/info/roadmap" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Roadmap&subtitle=What%20is%20coming%20next%20for%20rin&section=info" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Roadmap" />
+        <meta name="twitter:description" content="What is coming next for rin." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Roadmap&subtitle=What%20is%20coming%20next%20for%20rin&section=info" />
       </Head>
 
       <SeoHead

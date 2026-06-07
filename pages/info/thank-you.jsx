@@ -9,6 +9,15 @@ export default function ThankYouPage() {
         <title>Thank You — rin.contact</title>
         <meta name="description" content="Thanks for reaching out." />
         <link rel="canonical" href="https://rin.contact/info/thank-you" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Thank%20You&subtitle=Acknowledgments%20and%20gratitude%20to%20everyone%20who%20contributed%20to%20rin&section=info" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Thank You" />
+        <meta name="twitter:description" content="Acknowledgments and gratitude to everyone who contributed to rin." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Thank%20You&subtitle=Acknowledgments%20and%20gratitude%20to%20everyone%20who%20contributed%20to%20rin&section=info" />
       </Head>
 
       <SeoHead

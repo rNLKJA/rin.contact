@@ -25,6 +25,15 @@ export default function AccessibilityPage() {
         <title>Accessibility — Rin Huang · rin.contact</title>
         <meta name="description" content="How rin.contact handles accessibility — contrast, focus, screen readers, motion, and keyboard navigation." />
         <link rel="canonical" href="https://rin.contact/info/accessibility" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Accessibility&subtitle=WCAG%202&section=info" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Accessibility" />
+        <meta name="twitter:description" content="WCAG 2." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Accessibility&subtitle=WCAG%202&section=info" />
       </Head>
 
       <SeoHead

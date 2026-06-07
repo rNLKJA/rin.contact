@@ -41,6 +41,15 @@ export default function UsesPage() {
         <title>Uses — Rin Huang · rin.contact</title>
         <meta name="description" content="Tools, hardware, and software Rin Huang uses daily for data science, development, and design." />
         <link rel="canonical" href="https://rin.contact/info/uses" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Uses&subtitle=Hardware%2C%20software%2C%20and%20tools%20that%20Rin%20Huang%20uses%20for%20work%20and%20side%20projects&section=info" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Uses" />
+        <meta name="twitter:description" content="Hardware, software, and tools that Rin Huang uses for work and side projects." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Uses&subtitle=Hardware%2C%20software%2C%20and%20tools%20that%20Rin%20Huang%20uses%20for%20work%20and%20side%20projects&section=info" />
       </Head>
 
       <SeoHead

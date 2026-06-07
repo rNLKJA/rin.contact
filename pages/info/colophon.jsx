@@ -36,6 +36,15 @@ export default function ColophonPage() {
         <title>Colophon — rin.contact</title>
         <meta name="description" content="How rin.contact is built — tools, fonts, libraries, and design decisions." />
         <link rel="canonical" href="https://rin.contact/colophon" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Colophon&subtitle=How%20this%20site%20was%20built&section=info" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Colophon" />
+        <meta name="twitter:description" content="How this site was built." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Colophon&subtitle=How%20this%20site%20was%20built&section=info" />
       </Head>
 
       <SeoHead

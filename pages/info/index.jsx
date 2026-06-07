@@ -23,6 +23,15 @@ export default function InfoIndexPage() {
         <title>Info — rin.contact</title>
         <meta name="description" content="Site info — now, uses, roadmap, accessibility, colophon." />
         <link rel="canonical" href="https://rin.contact/info" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Site%20Info&subtitle=Colophon%2C%20changelog%2C%20roadmap%2C%20accessibility%2C%20and%20site%20documentation%20for%20rin&section=info" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Site Info" />
+        <meta name="twitter:description" content="Colophon, changelog, roadmap, accessibility, and site documentation for rin." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Site%20Info&subtitle=Colophon%2C%20changelog%2C%20roadmap%2C%20accessibility%2C%20and%20site%20documentation%20for%20rin&section=info" />
       </Head>
 
       <SeoHead

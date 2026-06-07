@@ -18,6 +18,15 @@ export default function ChangelogPage() {
         <title>Changelog — rin.contact</title>
         <meta name="description" content="Site changelog." />
         <link rel="canonical" href="https://rin.contact/info/changelog" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Changelog&subtitle=Version%20history%20and%20release%20notes%20for%20rin&section=info" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Changelog" />
+        <meta name="twitter:description" content="Version history and release notes for rin." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Changelog&subtitle=Version%20history%20and%20release%20notes%20for%20rin&section=info" />
       </Head>
 
       <SeoHead

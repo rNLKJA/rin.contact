@@ -13,6 +13,15 @@ export default function ToolsIndexPage() {
         <title>Tools — rin.contact</title>
         <meta name="description" content="Handy tools — digital business card, contact download." />
         <link rel="canonical" href="https://rin.contact/tools" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Tools&subtitle=Free%20utilities%20from%20Rin%20Huang%20including%20digital%20business%20card%20and%20QR%20code&section=tools" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tools" />
+        <meta name="twitter:description" content="Free utilities from Rin Huang including digital business card and QR code." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Tools&subtitle=Free%20utilities%20from%20Rin%20Huang%20including%20digital%20business%20card%20and%20QR%20code&section=tools" />
       </Head>
       <SeoHead
         title="Tools — rin.contact"

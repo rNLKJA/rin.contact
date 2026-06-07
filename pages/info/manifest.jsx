@@ -18,6 +18,15 @@ export default function ManifestPage() {
         <title>Manifest — rin.contact</title>
         <meta name="description" content="What I believe about data, work, and building things." />
         <link rel="canonical" href="https://rin.contact/info/manifest" />
+      
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=Manifest&subtitle=The%20principles%2C%20values%2C%20and%20philosophy%20behind%20rin&section=info" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Manifest" />
+        <meta name="twitter:description" content="The principles, values, and philosophy behind rin." />
+        <meta name="twitter:image" content="https://rin.contact/api/og?title=Manifest&subtitle=The%20principles%2C%20values%2C%20and%20philosophy%20behind%20rin&section=info" />
       </Head>
 
       <SeoHead
