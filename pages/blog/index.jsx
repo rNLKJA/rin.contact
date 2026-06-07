@@ -1,8 +1,14 @@
 import React from "react";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import SeoHead from "@/components/seo/SeoHead";
 import PostCard from "@/components/blog/PostCard";
 import { getAllPosts } from "@/lib/posts";
+
+const NewsletterSignup = dynamic(
+  () => import("@/components/blog/NewsletterSignup"),
+  { ssr: false }
+);
 
 export default function BlogIndex({ posts }) {
   return (
@@ -62,6 +68,8 @@ export default function BlogIndex({ posts }) {
             ))}
           </div>
         )}
+
+        <NewsletterSignup />
       </div>
     </>
   );

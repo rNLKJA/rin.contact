@@ -1,8 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import SeoHead from "@/components/seo/SeoHead";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
+
+const NewsletterSignup = dynamic(
+  () => import("@/components/blog/NewsletterSignup"),
+  { ssr: false }
+);
 
 /**
  * Client-side only — loads mermaid and renders all .mermaid divs.
@@ -119,8 +125,11 @@ export default function BlogPost({ post }) {
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 
+        {/* Newsletter signup */}
+        <NewsletterSignup />
+
         {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
+        <div className="mt-8 pt-8 border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
           <Link
             href="/blog"
             className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
