@@ -83,7 +83,7 @@ function GhostLabel({ children, className = "" }) {
 
 // Hero is above the fold — load immediately
 import HeroSection from "@/components/sections/HeroSection";
-import MiniTerminal from "@/components/MiniTerminal";
+const MiniTerminal = dynamic(() => import("@/components/MiniTerminal"), { ssr: false });
 import ConfettiBurst from "@/components/ui/ConfettiBurst";
 
 // ── Konami sequence ───────────────────────────────────────────────────────────

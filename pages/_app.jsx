@@ -303,3 +303,12 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+
+// ── Web Vitals reporting — logs to Vercel Analytics and console (dev) ─────────
+export function reportWebVitals(metric) {
+  if (process.env.NODE_ENV === "development") {
+    console.log("[Web Vitals]", metric.name, Math.round(metric.value), metric.id);
+  }
+  // Vercel Analytics automatically captures Web Vitals when both are present.
+  // This function exists so you can also pipe metrics to a custom endpoint if needed.
+}
