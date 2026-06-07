@@ -13,27 +13,6 @@
   --surface:        #F5F5F5;
   --accent:         #FF3C3C;
   --marquee-fade:   #F5F5F5;
-
-  --background: 0 0% 100%;
-  --foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 47.4% 11.2%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 47.4% 11.2%;
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --accent-hsl: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 100% 50%;
-  --destructive-foreground: 210 40% 98%;
-  --ring: 215 20.2% 65.1%;
-  --radius: 0rem;
 }
 
 /* Dark theme — Nothing OS: white on black */
@@ -96,15 +75,6 @@ h1 {
   line-height: 1.0;
 }
 
-/* Small labels / tags / meta */
-.label {
-  font-family: "DM Sans", system-ui, sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-}
-
 /* ─── Scrollbar ──────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--white); }
@@ -130,16 +100,6 @@ h1 {
 [data-theme="dark"] ::-webkit-scrollbar-thumb { background: var(--divider); }
 .dark ::-webkit-scrollbar-thumb:hover,
 [data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: var(--mid); }
-
-/* ─── Tailwind base layer ────────────────────────────────────────── */
-@layer base {
-  * { @apply border-border; }
-  body { @apply bg-background text-foreground; font-feature-settings: "rlig" 1, "calt" 1; }
-}
-
-/* ─── Link hover ─────────────────────────────────────────────────── */
-.link-hover { transition: color 200ms ease-in-out; }
-.link-hover:hover { color: var(--accent); cursor: pointer; }
 
 /* ─── Scroll-reveal animation primitives ────────────────────────── */
 @keyframes fade-up {
@@ -169,10 +129,6 @@ h1 {
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-.delay-600 { animation-delay: 600ms; }
-.delay-700 { animation-delay: 700ms; }
-.delay-800 { animation-delay: 800ms; }
 
 /* ─── LCP: skip hero animations on mobile so h1/role/bio paint immediately ── */
 @media (max-width: 767px) {
@@ -239,7 +195,6 @@ h1 {
   0%, 100% { transform: scale(1); }
   50%       { transform: scale(1.09); }
 }
-/* Wisr Water element — organic blob morphing */
 .animate-art-float   { animation: art-float   10s ease-in-out infinite; will-change: transform; }
 .animate-art-spin    { animation: art-spin    30s linear      infinite; will-change: transform; }
 .animate-art-breathe { animation: art-breathe  8s ease-in-out infinite; will-change: transform; }
@@ -252,10 +207,6 @@ h1 {
 }
 
 /* ─── Konami / terminal glitch overlay ──────────────────────────────────── */
-@keyframes glitch-scan {
-  0%   { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
 @keyframes glitch-shake {
   0%,100% { transform: translate(0); }
   20%     { transform: translate(-3px, 1px); }
