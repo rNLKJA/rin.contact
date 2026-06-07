@@ -112,6 +112,13 @@ const nextConfig = {
           { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
         ],
       },
+      {
+        source: "/sw\.js",
+        headers: [
+          { key: "Cache-Control", value: "no-cache" },
+        ],
+      },
+
       // ── Cache headers — production builds only ──────────────────────────
       ...(isProd
         ? [
