@@ -204,6 +204,13 @@ function SecretWordTrigger() {
 }
 
 function MyApp({ Component, pageProps }) {
+  // ── Register service worker for PWA / offline caching ──────────────────────
+  useEffect(() => {
+    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
+    }
+  }, []);
+
   useEffect(() => {
     // ── Console easter egg — fires once per session ──────────────────────────
     if (typeof window !== "undefined" && !window.__rinConsoleShown) {
