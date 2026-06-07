@@ -78,7 +78,7 @@ export default function ApiPage() {
         ogImage={{ title: "API", subtitle: "Available API endpoints for rin.contact — ping, profile, now...", section: "info" }}
       />
 
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
           <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/info/api</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">API</h1>
@@ -91,7 +91,7 @@ export default function ApiPage() {
             {ENDPOINTS.map(({ path, method, description, example }) => (
               <div
                 key={path}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 rounded-none bg-white"
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 rounded-none bg-white dark:bg-[#1A1A1A]"
               >
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <code className="text-xs font-mono px-2 py-0.5 border border-black text-black">

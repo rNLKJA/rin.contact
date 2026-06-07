@@ -45,7 +45,7 @@ export default function GlitchPage() {
         noindex={true}
       />
 
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className={`max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1 transition-all duration-75 ${glitch ? "opacity-0" : "opacity-100"}`}>
           <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/fun/glitch</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Glitch</h1>

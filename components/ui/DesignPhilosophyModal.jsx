@@ -88,12 +88,12 @@ function Modal({ onClose }) {
 
       {/* Panel */}
       <div
-        className="relative bg-white w-full md:max-w-2xl max-h-[90vh] overflow-y-auto
-                   border-t md:border border-black"
+        className="relative bg-white dark:bg-[#1A1A1A] w-full md:max-w-2xl max-h-[90vh] overflow-y-auto
+                   border-t md:border border-black dark:border-[#3D3D3D]"
         style={{ scrollbarWidth: "thin" }}
       >
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-[#E0E0E0] px-6 py-4 flex items-center justify-between z-10">
+        <div className="sticky top-0 bg-white dark:bg-[#1A1A1A] border-b border-[#E0E0E0] dark:border-[#3D3D3D] px-6 py-4 flex items-center justify-between z-10">
           <div>
             <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-0.5">Design System</p>
             <h2 className="text-base font-semibold tracking-tight">Design Philosophy</h2>

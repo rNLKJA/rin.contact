@@ -38,7 +38,7 @@ function LogoWithGlitch() {
       onDoubleClick={onDoubleClick}
     >
       <div
-        className="flex items-center justify-center bg-white flex-shrink-0"
+        className="flex items-center justify-center bg-white dark:bg-[#0A0A0A] flex-shrink-0"
         style={{
           borderRadius: "22%", overflow: "hidden", width: 32, height: 32,
           filter: glitching ? "invert(1)" : "none",

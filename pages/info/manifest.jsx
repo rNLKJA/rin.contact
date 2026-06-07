@@ -36,7 +36,7 @@ export default function ManifestPage() {
         ogImage={{ title: "Manifest", subtitle: "What I believe about data, work, and building things.", section: "info" }}
       />
 
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
           <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/info/manifest</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Manifest</h1>

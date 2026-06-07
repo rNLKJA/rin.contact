@@ -29,7 +29,7 @@ export default function InceptionPage() {
 
         {/* Framed iframe — the site inside itself */}
         <div
-          className="w-full border border-[#E0E0E0] bg-white overflow-hidden relative"
+          className="w-full border border-[#E0E0E0] bg-white dark:bg-[#1A1A1A] overflow-hidden relative"
           style={{ maxWidth: 900, height: "65vh" }}
         >
           {/* Level label */}

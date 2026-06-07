@@ -57,7 +57,7 @@ export default function LoadingPage() {
         noindex={true}
       />
 
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 font-mono">
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col items-center justify-center px-6 font-mono">
         <div className="max-w-sm w-full text-center">
 
           {/* Fibonacci flower */}

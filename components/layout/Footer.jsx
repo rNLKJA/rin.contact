@@ -79,7 +79,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2.5">
-              <div className="rounded-full bg-white flex items-center justify-center flex-shrink-0"
+              <div className="rounded-full bg-white dark:bg-[#0A0A0A] flex items-center justify-center flex-shrink-0"
                    style={{ width: 32, height: 32 }}>
                 <Image
                   src="/logo.svg"

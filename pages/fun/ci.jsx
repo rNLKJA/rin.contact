@@ -41,7 +41,7 @@ export default function CIPage() {
         noindex={true}
       />
 
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
           <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/fun/ci</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Confidence Interval Generator</h1>
@@ -53,7 +53,7 @@ export default function CIPage() {
             <select
               value={mood}
               onChange={(e) => setMood(e.target.value)}
-              className="border border-[#E0E0E0] px-4 py-3 text-sm font-mono bg-white focus:outline-none focus:border-black w-full"
+              className="border border-[#E0E0E0] px-4 py-3 text-sm font-mono bg-white dark:bg-[#1A1A1A] dark:text-white focus:outline-none focus:border-black w-full"
             >
               {MOODS.map((m) => (
                 <option key={m} value={m}>{m}</option>

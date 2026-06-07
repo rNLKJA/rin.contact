@@ -20,7 +20,7 @@ export default function BlankPage() {
         noindex={true}
       />
 
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6">
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col items-center justify-center px-6">
         <p className="text-[9px] text-[#CCCCCC] font-mono tracking-widest uppercase">
           Sometimes the best design is nothing.
         </p>

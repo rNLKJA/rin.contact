@@ -113,7 +113,7 @@ export default function ArtPage() {
         ogImage={{ title: "art", subtitle: "Generative art by Rin Huang — a Fibonacci phyllotaxis spir…", section: "fun" }}
       />
 
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
 
         {/* Canvas — fills available space */}
         <div className="flex-1 relative" style={{ minHeight: "70vh" }}>
