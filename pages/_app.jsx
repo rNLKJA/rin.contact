@@ -319,8 +319,6 @@ function MyApp({ Component, pageProps }) {
       </I18nProvider>
     </ThemeProvider>
   );
-    </ThemeProvider>
-  );
 }
 
 export default MyApp;

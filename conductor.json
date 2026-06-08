@@ -1,7 +1,8 @@
 {
   "scripts": {
     "setup": "npm install",
-    "run": "npx next dev -p ${CONDUCTOR_PORT:-3000}",
+    "run": "npx next dev --webpack -p ${CONDUCTOR_PORT:-3000}",
+    "build": "next build --webpack",
     "archive": "rm -rf .next node_modules"
   },
   "runScriptMode": "concurrent"
