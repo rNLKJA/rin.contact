@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { Analytics } from "@vercel/analytics/react";
 import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { bitcount, dmSans, playfair } from "@/lib/fonts";
 
 import "../public/styles/globals.css";
+
+const Analytics = dynamic(() => import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })), { ssr: false });
 
 const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
 const BootOverlay = dynamic(() => import("@/components/ui/BootOverlay"), { ssr: false });
@@ -204,11 +205,15 @@ function SecretWordTrigger() {
 }
 
 function MyApp({ Component, pageProps }) {
-  // ── Register service worker for PWA / offline caching ──────────────────────
+  // ── Register service worker + capture install prompt ───────────────────────
   useEffect(() => {
     if (typeof window !== "undefined" && "serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js").catch(() => {});
     }
+    // Capture beforeinstallprompt so we can show a custom install button
+    const handler = (e) => { e.preventDefault(); window.__deferredPrompt = e; };
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
 
   useEffect(() => {
@@ -285,6 +290,17 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}>
+        {/* Skip-to-content link — WCAG 2.4.1: first focusable element */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999]
+                     focus:px-4 focus:py-2 focus:bg-white dark:focus:bg-[#1A1A1A]
+                     focus:text-black dark:focus:text-white focus:border focus:border-black
+                     dark:focus:border-white focus:text-xs focus:tracking-widest focus:uppercase
+                     focus:outline-none transition-none"
+        >
+          Skip to content
+        </a>
         <BootOverlay />
         <CustomCursor />
         <CopyUrlToast />
@@ -292,7 +308,7 @@ function MyApp({ Component, pageProps }) {
         <CopyEmailConfetti />
         <SecretWordTrigger />
         <Header />
-        <main className="flex-1">
+        <main className="flex-1" id="main-content">
           <Component {...pageProps} />
         </main>
         <Footer />
