@@ -123,6 +123,7 @@ export default function BlogPost({ post }) {
                      prose-p:text-[#3D3D3D] dark:prose-p:text-[#AAAAAA]
                      prose-p:mb-5
                      leading-relaxed"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 

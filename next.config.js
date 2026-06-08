@@ -88,7 +88,7 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self'",
@@ -97,8 +97,6 @@ const nextConfig = {
               "base-uri 'self'",
               "form-action 'self'",
               "frame-ancestors 'none'",
-              "require-trusted-types-for 'script'",
-              "trusted-types default nextjs nextjs#bundler",
             ].join("; "),
           },
           { key: "Referrer-Policy",          value: "strict-origin-when-cross-origin" },
