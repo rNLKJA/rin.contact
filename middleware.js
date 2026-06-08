@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 /**
  * CLI detection — rewrite root requests from terminal clients to /api/curl.
+ * Also silences .well-known probes from Chrome DevTools.
  *
  * All real browsers include "Mozilla/" in their User-Agent string.
  * curl, wget, HTTPie, and other CLI tools never do — so this single
@@ -21,6 +22,11 @@ function isCliClient(userAgent = "") {
 export function middleware(request) {
   const { pathname } = request.nextUrl;
   const ua = request.headers.get("user-agent") ?? "";
+
+  // Silently swallow .well-known probes (Chrome DevTools, etc.)
+  if (pathname.startsWith("/.well-known/")) {
+    return new Response(null, { status: 204 });
+  }
 
   if (pathname === "/" && isCliClient(ua)) {
     return NextResponse.rewrite(new URL("/api/curl", request.url));

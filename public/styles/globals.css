@@ -148,6 +148,103 @@ h1 {
   border-radius: 50% 40% 30% 60% / 60% 30% 70% 40%;
 }
 
+/* ─── GFM table styling for blog prose — Nothing-minimal ──────────── */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  margin: 1.5em 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+.prose thead th {
+  border-bottom: 1.5px solid var(--black);
+  padding: 0.65em 0.9em;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--subtle);
+  white-space: nowrap;
+}
+.prose tbody td {
+  border-bottom: 1px solid var(--divider);
+  padding: 0.65em 0.9em;
+  color: var(--mid);
+  vertical-align: top;
+  font-variant-numeric: tabular-nums;
+}
+.prose tbody tr:last-child td {
+  border-bottom-color: var(--black);
+}
+.prose tbody tr:hover td {
+  background: var(--surface);
+}
+.prose td:first-child {
+  font-weight: 500;
+  color: var(--black);
+}
+/* dark mode overrides */
+.dark .prose thead th {
+  border-bottom-color: var(--black);
+}
+.dark .prose tbody td {
+  color: var(--subtle);
+}
+.dark .prose tbody tr:last-child td {
+  border-bottom-color: var(--black);
+}
+.dark .prose td:first-child {
+  color: var(--black);
+}
+
+/* ─── List styling for blog prose — airy, muted markers ──────────── */
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+  margin: 1.25em 0;
+}
+.prose li {
+  margin-bottom: 0.45em;
+  padding-left: 0.25em;
+}
+.prose li:last-child {
+  margin-bottom: 0;
+}
+.prose li::marker {
+  color: var(--subtle);
+}
+.dark .prose li::marker {
+  color: #9A9A9A;
+}
+/* Nested lists — tighter spacing */
+.prose ul ul,
+.prose ol ol,
+.prose ul ol,
+.prose ol ul {
+  margin: 0.25em 0;
+}
+
+/* ─── Mermaid diagram styling ─────────────────────────────────────── */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  /* internal SVG padding so labels / nodes don't sit on the edge */
+  padding: 1.25rem 0.75rem;
+}
+/* Give flowchart and graph diagrams more horizontal space */
+.mermaid svg[aria-roledescription="flowchart"] {
+  padding: 1.5rem 1rem;
+}
+
 /* ─── Reduced motion ─────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
