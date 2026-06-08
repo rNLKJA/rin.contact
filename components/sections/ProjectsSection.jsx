@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useI18n } from "@/contexts/I18nContext";
 import { useInView } from "@/hooks/useInView";
 
 const PROJECTS = [
@@ -326,6 +327,7 @@ function CountUp({ target, duration = 900, started }) {
 }
 
 function ProjectDetail({ project }) {
+  const { t } = useI18n();
   return (
     <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white dark:bg-[#0A0A0A]">
       <div className="md:col-span-2 space-y-4">
@@ -334,7 +336,7 @@ function ProjectDetail({ project }) {
             {project.title}
             {project.current && (
               <span className="border border-[#FF3C3C] px-3 py-0.5 text-[10px] tracking-widest uppercase text-[#FF3C3C] rounded-full">
-                Active
+                {t("projects.active")}
               </span>
             )}
           </h3>
@@ -347,7 +349,7 @@ function ProjectDetail({ project }) {
         </div>
         <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
         <div className="mt-3 p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
-          <span className="inline-block mb-2 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">Impact</span>
+          <span className="inline-block mb-2 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">{t("projects.impact")}</span>
           <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
             {project.impact}
           </p>
@@ -361,7 +363,7 @@ function ProjectDetail({ project }) {
             className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
                        text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
           >
-            {project.linkText || (project.link?.includes("github.com") ? "View on GitHub ↗" : "Visit site ↗")}
+            {project.linkText || (project.link?.includes("github.com") ? `${t("projects.viewOnGithub")} ↗` : `${t("projects.viewOnGithub")} ↗`)}
           </a>
         )}
         {/* Share buttons */}
@@ -376,7 +378,7 @@ function ProjectDetail({ project }) {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
-            Share
+            {t("projects.share")}
           </a>
           <a
             href={`https://x.com/intent/tweet?text=${encodeURIComponent(`Check out "${project.title}" — ${project.summary.split(".")[0]}.`)}&url=${encodeURIComponent("https://rin.contact/projects")}`}
@@ -388,13 +390,13 @@ function ProjectDetail({ project }) {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
-            Post
+            {t("projects.post")}
           </a>
         </div>
       </div>
       <div className="space-y-5">
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">Stack</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">{t("projects.stack")}</p>
           <div className="flex flex-wrap gap-1.5">
             {project.stack.map((t) => (
               <span
@@ -408,11 +410,11 @@ function ProjectDetail({ project }) {
           </div>
         </div>
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">Status</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">{t("projects.status")}</p>
           <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">{project.status}</p>
         </div>
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">Domain</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">{t("projects.domain")}</p>
           <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">
             {Array.isArray(project.domain) ? project.domain.join(" · ") : project.domain}
           </p>
@@ -423,6 +425,7 @@ function ProjectDetail({ project }) {
 }
 
 export default function ProjectsSection() {
+  const { t } = useI18n();
   const [ref, inView] = useInView();
   const [activeFilter, setActiveFilter] = useState("All");
   const [openId, setOpenId] = useState(null);
@@ -468,9 +471,9 @@ export default function ProjectsSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">03 — Work</p>
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">{t("projects.sectionLabel")}</p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
-          <CountUp target={PROJECTS.length} started={countStarted} /> Selected Projects
+          <CountUp target={PROJECTS.length} started={countStarted} /> {t("projects.heading")}
         </h2>
         {/* Wisr-style wavy accent */}
         <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
@@ -478,9 +481,7 @@ export default function ProjectsSection() {
                 stroke="#E0E0E0" className="dark:stroke-[#3D3D3D]" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
         </svg>
         <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
-          Projects spanning government intelligence, climate science, biomedical
-          research, mobile apps, and web development — each one a chance to build
-          something that genuinely mattered.
+          {t("projects.headingDesc")}
         </p>
 
         {/* Filter pills */}
@@ -516,7 +517,7 @@ export default function ProjectsSection() {
                     style={{ backgroundColor: isActive ? "#fff" : dc.color }}
                   />
                 )}
-                {d}
+                {d === "All" ? t("projects.allProjects") : d}
               </button>
             );
           })}
@@ -533,9 +534,9 @@ export default function ProjectsSection() {
               type="text"
               value={search}
               onChange={(e) => { setSearch(e.target.value); setOpenId(null); }}
-              placeholder="Search projects..."
+              placeholder={t("projects.searchPlaceholder")}
               className="flex-1 px-3 py-2.5 text-sm bg-transparent outline-none placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A]"
-              aria-label="Search projects"
+              aria-label={t("projects.searchPlaceholder")}
             />
             {search && (
               <button
@@ -696,7 +697,7 @@ export default function ProjectsSection() {
                       <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">{project.org} · {project.period}</p>
                       <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
                       <div className="p-3 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
-                        <span className="inline-block mb-1.5 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">Impact</span>
+                        <span className="inline-block mb-1.5 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">{t("projects.impact")}</span>
                         <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">{project.impact}</p>
                       </div>
                       <div className="flex flex-wrap gap-1.5">
@@ -708,7 +709,7 @@ export default function ProjectsSection() {
                         <a href={project.link} target="_blank" rel="noreferrer"
                            aria-label={project.linkLabel || `View ${project.title} on GitHub`}
                            className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200">
-                          {project.linkText || (project.link?.includes("github.com") ? "View on GitHub ↗" : "Visit site ↗")}
+                          {project.linkText || (project.link?.includes("github.com") ? `${t("projects.viewOnGithub")} ↗` : `${t("projects.viewOnGithub")} ↗`)}
                         </a>
                       )}
                       <div className="flex gap-2 mt-3">

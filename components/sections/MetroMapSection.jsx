@@ -9,6 +9,7 @@
  */
 
 import React, { useState } from "react";
+import { useI18n } from "@/contexts/I18nContext";
 
 // ── Layout constants ──────────────────────────────────────────────────────────
 const VW          = 900;
@@ -117,6 +118,7 @@ const NOW_X       = toX(2026.19);  // March 10, 2026
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function MetroMapSection() {
+  const { t } = useI18n();
   const [hovered, setHovered] = useState(null);
   const active = STATIONS.find((s) => s.id === hovered);
 
@@ -126,11 +128,9 @@ export default function MetroMapSection() {
       {/* Section header */}
       <div className="mb-8">
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">◈ — Career Map</p>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">Three lines.</h2>
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">{t("metroMap.heading")}</h2>
         <p className="text-sm font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
-          Government · Research · Engineering. Seven stations across four years.
-          One convergence point where all three lines ran simultaneously.
-          Hover any station for the full record.
+          {t("metroMap.description")}
         </p>
       </div>
 

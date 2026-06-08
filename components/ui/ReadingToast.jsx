@@ -4,8 +4,10 @@
  */
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
+import { useI18n } from "@/contexts/I18nContext";
 
 export default function ReadingToast({ threshold = 0.65 }) {
+  const { t } = useI18n();
   const [shown,     setShown]     = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [visible,   setVisible]   = useState(false);
@@ -41,13 +43,13 @@ export default function ReadingToast({ threshold = 0.65 }) {
     >
       <button
         onClick={dismiss}
-        aria-label="Dismiss"
+        aria-label={t("readingToast.dismiss")}
         className="absolute top-2 right-2 text-[#CCCCCC] hover:text-black transition-colors text-xs leading-none"
       >
         ✕
       </button>
       <p className="text-xs text-[#3D3D3D] leading-relaxed pr-3">
-        You&apos;ve read this far — why not say hello?
+        {t("readingToast.message")}
       </p>
       <Link
         href="/#contact"

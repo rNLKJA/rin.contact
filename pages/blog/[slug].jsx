@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 
 const NewsletterSignup = dynamic(
@@ -29,15 +31,18 @@ function MermaidRenderer() {
 }
 
 export default function BlogPost({ post }) {
+  const { t, locale = "en-AU" } = useI18n();
+  const isZh = locale === "zh-Hans";
+
   if (!post) {
     return (
       <div className="max-w-[700px] mx-auto px-6 md:px-12 py-24">
-        <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">Post not found.</p>
+        <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">{t("blog.postNotFound")}</p>
         <Link
           href="/blog"
           className="text-sm text-[#FF3C3C] hover:underline mt-4 inline-block"
         >
-          ← Back to blog
+          ← {t("blog.backToBlog")}
         </Link>
       </div>
     );
@@ -59,6 +64,7 @@ export default function BlogPost({ post }) {
         path={`/blog/${post.slug}`}
         ogTitle={post.title}
         ogDescription={post.description}
+        locale={locale}
       />
 
       <Head>
@@ -108,7 +114,7 @@ export default function BlogPost({ post }) {
           href="/blog"
           className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
         >
-          ← Back to blog
+          ← {t("blog.backToBlog")}
         </Link>
 
         {/* Post header */}
@@ -166,7 +172,7 @@ export default function BlogPost({ post }) {
             href="/blog"
             className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
           >
-            ← Back to all posts
+            ← {t("blog.backToAllPosts")}
           </Link>
         </div>
       </article>

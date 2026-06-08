@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useI18n } from "@/contexts/I18nContext";
 
 // ─── Section components (aligned with DesignPhilosophyModal) ───────────────────
 const Section = ({ label, children }) => (
@@ -47,6 +48,7 @@ const FrameworkItem = ({ name, source, desc }) => (
 );
 
 export default function StrategicPage() {
+  const { t } = useI18n();
   return (
     <>
       <Head>
@@ -71,9 +73,9 @@ export default function StrategicPage() {
 
           {/* Header */}
           <div className="mb-14">
-            <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/strategic</p>
+            <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">{t("strategic.sectionLabel")}</p>
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-              Strategic Data Science
+              {t("strategic.heading")}
             </h1>
             <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
               It&apos;s not only about building models. It&apos;s not only about building dashboards.

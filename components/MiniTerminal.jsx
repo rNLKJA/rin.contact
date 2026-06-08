@@ -10,6 +10,7 @@
 import React, {
   useState, useEffect, useRef, useCallback,
 } from "react";
+import { useI18n } from "@/contexts/I18nContext";
 
 // ── Colour helpers ────────────────────────────────────────────────────────────
 const CLS = {
@@ -326,6 +327,7 @@ function resolve(raw, inputHistory) {
 
 // ── Main component ─────────────────────────────────────────────────────────────
 export default function MiniTerminal({ onClose }) {
+  const { t } = useI18n();
   const [lines, setLines]         = useState(BANNER);
   const [input, setInput]         = useState("");
   const [histIdx, setHistIdx]     = useState(-1);
@@ -401,14 +403,14 @@ export default function MiniTerminal({ onClose }) {
                   transition-all duration-150"
       onClick={() => inputRef.current?.focus()}
       role="dialog"
-      aria-label="Interactive terminal"
+      aria-label={t("miniTerminal.ariaLabel")}
       aria-modal="true"
     >
       {/* Title bar */}
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#2A2A2A] bg-[#111111] flex-shrink-0">
         <div className="flex items-center gap-2.5">
           {/* Traffic lights */}
-          <span className="w-3 h-3 rounded-full bg-[#FF5F57] hover:opacity-80 cursor-pointer" onClick={onClose} title="Close" aria-label="Close terminal" />
+          <span className="w-3 h-3 rounded-full bg-[#FF5F57] hover:opacity-80 cursor-pointer" onClick={onClose} title={t("miniTerminal.closeTitle")} aria-label={t("miniTerminal.closeLabel")} />
           <span className="w-3 h-3 rounded-full bg-[#2A2A2A]" />
           <span className="w-3 h-3 rounded-full bg-[#2A2A2A]" />
         </div>
@@ -438,12 +440,12 @@ export default function MiniTerminal({ onClose }) {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={onKeyDown}
           className="flex-1 bg-transparent font-mono text-xs text-[#D4D4D4] outline-none caret-[#FF3C3C] placeholder:text-[#3D3D3D]"
-          placeholder="type a command…"
+          placeholder={t("miniTerminal.inputPlaceholder")}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck={false}
-          aria-label="Terminal input"
+          aria-label={t("miniTerminal.inputLabel")}
         />
       </div>
     </div>

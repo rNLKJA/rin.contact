@@ -1,21 +1,22 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useI18n } from "@/contexts/I18nContext";
 
 const TimelineSection   = dynamic(() => import("@/components/sections/TimelineSection"),   { loading: () => <div className="min-h-[480px]" /> });
 const MetroMapSection   = dynamic(() => import("@/components/sections/MetroMapSection"),   { loading: () => <div className="min-h-[360px]" /> });
 
 function PageHeader() {
+  const { t } = useI18n();
   return (
     <div className="py-20 border-b border-[#F0F0F0] dark:border-[#1E1E1E]">
       <Link href="/" className="inline-block text-[10px] tracking-widest uppercase text-[#AAAAAA] hover:text-black dark:hover:text-white transition-colors mb-6">
-        ← Back
+        ← {t("about.back")}
       </Link>
-      <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">◈ — Career</p>
-      <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">Journey.</h1>
+      <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">{t("career.sectionLabel")}</p>
+      <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">{t("career.heading")}</h1>
       <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
-        Four years across Government, Research, and Engineering.
-        Seven roles. One co-founded startup. Timeline and metro map below.
+        {t("career.description")}
       </p>
     </div>
   );

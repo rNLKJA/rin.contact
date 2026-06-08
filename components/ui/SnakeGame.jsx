@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useI18n } from "@/contexts/I18nContext";
 
 const COLS = 20;
 const ROWS = 14;
@@ -20,6 +21,7 @@ function rndFood(snake) {
 const LS_KEY = "rin404_snake_best";
 
 export default function SnakeGame() {
+  const { t } = useI18n();
   const canvasRef = useRef(null);
   const stateRef  = useRef(null);
   const tickRef   = useRef(null);
@@ -110,7 +112,7 @@ export default function SnakeGame() {
     ctx.fillStyle = "#2A2A2A";
     ctx.font = "10px 'Courier New'";
     ctx.textAlign = "center";
-    ctx.fillText("press SPACE or tap Start", W / 2, H / 2);
+    ctx.fillText(t("snakeGame.startPrompt"), W / 2, H / 2);
   }, []);
 
   // Keyboard controls
@@ -147,10 +149,10 @@ export default function SnakeGame() {
     <div className="mt-8">
       <div className="flex items-center justify-between mb-2">
         <p className="font-mono text-[10px] tracking-widest uppercase text-[#555]">
-          snake — while you wait
+          {t("snakeGame.title")}
         </p>
         <div className="flex gap-4 font-mono text-[10px] text-[#3A3A3A]">
-          <span>score: <span className="text-[#888]">{score}</span></span>
+          <span>{t("snakeGame.score")}: <span className="text-[#888]">{score}</span></span>
           <span>session: <span className="text-[#888]">{best}</span></span>
           {allTime > 0 && (
             <span>all-time: <span className="text-[#FF3C3C]">{allTime}</span></span>
@@ -168,13 +170,13 @@ export default function SnakeGame() {
 
       {status === "dead" && (
         <p className="font-mono text-[10px] text-[#FF3C3C] mt-1.5">
-          self-collision detected · score: {score} · SPACE to retry
+          {t("snakeGame.gameOver")} · {t("snakeGame.score")}: {score} · SPACE to retry
         </p>
       )}
 
       <div className="mt-3 flex items-center gap-3 flex-wrap">
         <button onClick={start} className={btn}>
-          {status === "idle" ? "▶ Start" : "↺ Restart"}
+          {status === "idle" ? `▶ ${t("snakeGame.start")}` : `↺ ${t("snakeGame.restart")}`}
         </button>
         <div className="flex items-center gap-1 md:hidden">
           <button onClick={() => mobileDir("LEFT")}  className={btn}>←</button>
@@ -185,7 +187,7 @@ export default function SnakeGame() {
           <button onClick={() => mobileDir("RIGHT")} className={btn}>→</button>
         </div>
         <p className="hidden md:block font-mono text-[9px] text-[#2A2A2A]">
-          arrow keys / WASD · SPACE to start
+          {t("snakeGame.controls")}
         </p>
       </div>
     </div>

@@ -5,8 +5,10 @@
 import React from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useI18n } from "@/contexts/I18nContext";
 
 export default function ThemeToggle({ className = "", size = "desktop" }) {
+  const { t } = useI18n();
   const { resolved, toggle } = useTheme();
   const isDark = resolved === "dark";
 
@@ -16,7 +18,7 @@ export default function ThemeToggle({ className = "", size = "desktop" }) {
     <button
       type="button"
       onClick={toggle}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={t(isDark ? "themeToggle.switchToLight" : "themeToggle.switchToDark")}
       className={`inline-flex items-center justify-center w-10 h-10 md:w-9 md:h-9
                    border border-[#E0E0E0] dark:border-[#3D3D3D]
                    text-[#595959] dark:text-[#AAAAAA]

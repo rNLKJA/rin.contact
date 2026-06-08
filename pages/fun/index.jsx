@@ -1,5 +1,7 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 import Link from "next/link";
 
 const ITEMS = [
@@ -47,13 +49,15 @@ const ITEMS = [
 ];
 
 export default function FunIndexPage() {
+  const { t, locale = "en-AU" } = useI18n();
+  const isZh = locale === "zh-Hans";
   return (
     <>
       <Head>
         <title>Fun — rin.contact</title>
         <meta name="description" content="Easter eggs and hidden routes. Coffee, matrix rain, haiku, and more." />
         <link rel="canonical" href="https://rin.contact/fun" />
-      
+
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://rin.contact/api/og?title=Fun&subtitle=40%2B%20easter%20eggs%2C%20games%2C%20and%20interactive%20experiences%20on%20rin&section=fun" />
         <meta property="og:image:width" content="1200" />
@@ -69,17 +73,17 @@ export default function FunIndexPage() {
         description="Easter eggs and hidden routes. Coffee, matrix rain, haiku, and more."
         path="/fun"
         ogImage={{ title: "Fun & Easter Eggs", subtitle: "Hidden routes, data haikus, and more", section: "fun" }}
+        locale={locale}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
           <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/fun</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-            Easter eggs & hidden routes.
+            {t("fun.heading")}
           </h1>
           <p className="text-sm text-[#7A7A7A] leading-relaxed mb-14">
-            Things I hid because the internet should have a little surprise now and then.
-            No spoilers — click through and find out.
+            {t("fun.description")}
           </p>
 
           <div className="space-y-0 divide-y divide-[#E0E0E0]">
@@ -102,7 +106,7 @@ export default function FunIndexPage() {
               href="/"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
             >
-              ← Home
+              ← {t("nav.home")}
             </Link>
           </div>
         </div>

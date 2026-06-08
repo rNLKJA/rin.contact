@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
+import { useI18n } from "@/contexts/I18nContext";
 import { isSAPOLPeriod } from "@/lib/employment-period";
 
 const CAREER_RAW = [
@@ -297,6 +298,7 @@ const EDUCATION = [
 ];
 
 function TimelineItem({ item, index }) {
+  const { t } = useI18n();
   const [ref, inView] = useInView();
   const [expanded, setExpanded] = useState(false);
 
@@ -351,7 +353,7 @@ function TimelineItem({ item, index }) {
             )}
             {item.current && (
               <span className="border border-[#FF3C3C] px-2 py-0.5 text-xs tracking-wider uppercase text-[#FF3C3C]">
-                Current
+                {t("timeline.badgeCurrent")}
               </span>
             )}
             {item.future && (
@@ -380,7 +382,7 @@ function TimelineItem({ item, index }) {
                            transition-colors duration-200 flex items-center gap-1 mb-3"
                 aria-expanded={expanded}
               >
-                {expanded ? "— Less" : "+ Details"}
+                {expanded ? t("timeline.detailsLess") : t("timeline.detailsMore")}
               </button>
 
               {expanded && (
@@ -417,6 +419,7 @@ function TimelineItem({ item, index }) {
 }
 
 export default function TimelineSection() {
+  const { t } = useI18n();
   const [ref, inView] = useInView();
   const [tab, setTab] = useState("career");
   const timelineRef     = useRef(null);
@@ -489,7 +492,7 @@ export default function TimelineSection() {
   const items = tab === "career" ? CAREER : tab === "education" ? EDUCATION : VOLUNTEER;
 
   return (
-    <section id="timeline" className="py-24 relative" aria-label="Career timeline">
+    <section id="timeline" className="py-24 relative" aria-label={t("timeline.sectionLabel")}>
       {/* Section header */}
       <div
         ref={ref}
@@ -501,7 +504,7 @@ export default function TimelineSection() {
           02 — Journey
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
-          Career Path
+          {t("timeline.heading")}
         </h2>
         <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
           A path built on curiosity across government intelligence, biomedical
@@ -511,17 +514,17 @@ export default function TimelineSection() {
 
         {/* Tab switcher */}
         <div className="flex gap-0 mt-8 border border-[#E0E0E0] dark:border-[#3D3D3D] w-fit">
-          {["career", "education", "volunteer"].map((t) => (
+          {["career", "education", "volunteer"].map((tabKey) => (
             <button
-              key={t}
-              onClick={() => setTab(t)}
+              key={tabKey}
+              onClick={() => setTab(tabKey)}
               className={`px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
-                tab === t
+                tab === tabKey
                   ? "bg-[#FF3C3C] text-white border-[#FF3C3C]"
                   : "bg-white dark:bg-[#0A0A0A] text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-[#FF3C3C]"
               }`}
             >
-              {t}
+              {t(tabKey === "career" ? "timeline.tabCareer" : tabKey === "education" ? "timeline.tabEducation" : "timeline.tabVolunteer")}
             </button>
           ))}
         </div>

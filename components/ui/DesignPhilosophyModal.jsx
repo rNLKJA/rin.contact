@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
+import { useI18n } from "@/contexts/I18nContext";
 
 const PALETTE = [
   { name: "White",         hex: "#FFFFFF", border: true  },
@@ -62,6 +63,7 @@ const PRINCIPLES = [
 ];
 
 function Modal({ onClose }) {
+  const { t } = useI18n();
   useEffect(() => {
     const onKey = (e) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", onKey);
@@ -77,7 +79,7 @@ function Modal({ onClose }) {
       className="fixed inset-0 z-[10000] flex items-end md:items-center justify-center"
       role="dialog"
       aria-modal="true"
-      aria-label="Design Philosophy"
+      aria-label={t("designPhilosophy.modalTitle")}
     >
       {/* Backdrop */}
       <div
@@ -96,7 +98,7 @@ function Modal({ onClose }) {
         <div className="sticky top-0 bg-white dark:bg-[#1A1A1A] border-b border-[#E0E0E0] dark:border-[#3D3D3D] px-6 py-4 flex items-center justify-between z-10">
           <div>
             <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-0.5">Design System</p>
-            <h2 className="text-base font-semibold tracking-tight">Design Philosophy</h2>
+            <h2 className="text-base font-semibold tracking-tight">{t("designPhilosophy.modalTitle")}</h2>
           </div>
           <button
             onClick={onClose}

@@ -217,5 +217,154 @@
       { "label": "教育与成长" },
       { "label": "个人特质" }
     ]
+  },
+  "timeline": {
+    "sectionLabel": "02 — 职业历程",
+    "heading": "职业路径",
+    "tabCareer": "职业经历",
+    "tabEducation": "教育背景",
+    "tabVolunteer": "志愿服务",
+    "detailsMore": "+ 详情",
+    "detailsLess": "— 收起",
+    "badgeCurrent": "当前",
+    "legendTitle": "",
+    "legendActive": "进行中",
+    "legendConcurrent": "并行"
+  },
+  "projects": {
+    "sectionLabel": "03 — 项目",
+    "heading": "精选项目",
+    "headingDesc": "17个已上线项目，覆盖数据工程、云基础设施、移动端与Web平台。",
+    "searchPlaceholder": "搜索项目...",
+    "allProjects": "全部",
+    "impact": "影响",
+    "stack": "技术栈",
+    "status": "状态",
+    "domain": "领域",
+    "active": "进行中",
+    "share": "分享",
+    "post": "发布",
+    "viewOnGithub": "在 GitHub 上查看"
+  },
+  "metroMap": {
+    "heading": "三条线路。",
+    "description": "政府、科研、工程——七年历程，数个站点，一段职业。",
+    "govt": "政府",
+    "research": "科研",
+    "engineer": "工程",
+    "hoverHint": "悬停站点查看详情"
+  },
+  "intelligence": {
+    "sectionLabel": "V — 情报分析",
+    "heading": "情报报告",
+    "tabSignal": "信号 vs 噪声",
+    "tabGrowth": "复合增长",
+    "tabFirstPrinciples": "第一性原理"
+  },
+  "bootOverlay": {
+    "line1": "正在启动 rin.contact...",
+    "line2": "正在加载模块...",
+    "line3": "正在挂载布局...",
+    "line4": "就绪。",
+    "prompt": "按任意键继续...（或等待）"
+  },
+  "themeToggle": {
+    "switchToLight": "切换到浅色模式",
+    "switchToDark": "切换到深色模式"
+  },
+  "readingToast": {
+    "message": "已经看到这里了——不打个招呼吗？",
+    "dismiss": "关闭"
+  },
+  "snakeGame": {
+    "title": "贪吃蛇 —— 等待时玩一把",
+    "score": "得分",
+    "startPrompt": "按空格键或点击开始",
+    "start": "开始",
+    "restart": "重新开始",
+    "gameOver": "检测到自碰撞",
+    "controls": "方向键 / WASD · 空格开始"
+  },
+  "designPhilosophy": {
+    "modalTitle": "设计理念",
+    "subtitle": "Nothing OS · Wisr · rin.contact"
+  },
+  "sectionProgress": {
+    "label": "页面导航",
+    "profile": "简介",
+    "journey": "历程",
+    "work": "工作",
+    "expertise": "专长",
+    "faq": "问答",
+    "contact": "联系"
+  },
+  "newsletter": {
+    "heading": "订阅通讯",
+    "title": "获取新文章通知",
+    "description": "不定期分享数据科学、分析工程和持续成长的心得。无垃圾邮件，随时退订。",
+    "emailPlaceholder": "your@email.com",
+    "subscribe": "订阅",
+    "sending": "发送中…",
+    "success": "订阅成功！",
+    "error": "出了点问题，请稍后再试。"
+  },
+  "blog": {
+    "sectionLabel": "博客",
+    "heading": "思考与写作",
+    "description": "关于编码、产品构建和数据分析的思考。",
+    "noPosts": "暂无文章。请稍后再来。",
+    "backToBlog": "返回博客",
+    "backToAllPosts": "返回全部文章",
+    "postNotFound": "文章未找到。"
+  },
+  "lab": {
+    "sectionLabel": "◆ — 实验室",
+    "heading": "游乐场。",
+    "description": "职业情报报告、数据集自画像与复合增长曲线分析。"
+  },
+  "career": {
+    "sectionLabel": "◆ — 职业经历",
+    "heading": "历程。",
+    "description": "三条专业线。七个站点。一个汇聚点。"
+  },
+  "projectsPage": {
+    "sectionLabel": "◆ — 项目",
+    "heading": "作品。",
+    "description": "数据工程、云基础设施、移动端与Web平台。"
+  },
+  "strategic": {
+    "sectionLabel": "◆ — 框架",
+    "heading": "战略数据科学",
+    "subheading": "问题优先，而非模型优先。"
+  },
+  "errorPage": {
+    "title": "错误 — Rin Huang",
+    "heading": "错误",
+    "message": "页面未找到",
+    "description": "出了点问题。如果问题持续存在，请联系 huang@rin.contact。",
+    "returnHome": "返回首页"
+  },
+  "tools": {
+    "sectionLabel": "◆ — 工具",
+    "heading": "实用工具。",
+    "description": "电子名片，支持 .vcf 下载。",
+    "viewCard": "电子名片 + .vcf 下载"
+  },
+  "fun": {
+    "sectionLabel": "◆ — 彩蛋",
+    "heading": "彩蛋与隐藏路线。",
+    "description": "数据科学笑话、命令行彩蛋、生成艺术与探索的兔子洞。"
+  },
+  "info": {
+    "sectionLabel": "◆ — 信息",
+    "heading": "站点信息与元数据。",
+    "description": "版本说明、更新日志、无障碍声明、路线图与站点地图。"
+  },
+  "miniTerminal": {
+    "ariaLabel": "交互式终端",
+    "inputPlaceholder": "输入命令...",
+    "inputLabel": "终端输入",
+    "closeTitle": "关闭",
+    "closeLabel": "关闭终端"
   }
 }

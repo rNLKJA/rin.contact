@@ -15,6 +15,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import ConfettiBurst from "@/components/ui/ConfettiBurst";
+import { useI18n } from "@/contexts/I18nContext";
 
 // ─── SVG helpers ──────────────────────────────────────────────────────────────
 // Panel A viewBox "0 0 520 310", plot area x∈[70,470] y∈[20,280] (400×260)
@@ -983,12 +984,13 @@ function AiDeclaration() {
 // MAIN SECTION
 // ═══════════════════════════════════════════════════════════════════════════════
 const TABS = [
-  { id: "signal",   label: "Signal vs Noise"  },
-  { id: "compound", label: "Compound Growth"   },
-  { id: "first",    label: "First Principles"  },
+  { id: "signal",   labelKey: "intelligence.tabSignal"          },
+  { id: "compound", labelKey: "intelligence.tabGrowth"          },
+  { id: "first",    labelKey: "intelligence.tabFirstPrinciples" },
 ];
 
 export default function IntelligenceSection() {
+  const { t } = useI18n();
   const [ref, inView] = useInView();
   const [tab, setTab]  = useState("signal");
 
@@ -1002,8 +1004,8 @@ export default function IntelligenceSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">◈ — Intelligence Report</p>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">Analyse Me.</h2>
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">{t("intelligence.sectionLabel")}</p>
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">{t("intelligence.heading")}</h2>
         <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
           <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
             stroke="#E0E0E0" strokeWidth="1.5" fill="none" strokeLinecap="round" />
@@ -1017,18 +1019,18 @@ export default function IntelligenceSection() {
 
       {/* Tab navigation */}
       <div className="flex border-b border-[#E0E0E0] dark:border-[#3D3D3D] overflow-x-auto">
-        {TABS.map((t) => (
+        {TABS.map((tInfo) => (
           <button
-            key={t.id}
-            onClick={() => setTab(t.id)}
-            aria-selected={tab === t.id}
+            key={tInfo.id}
+            onClick={() => setTab(tInfo.id)}
+            aria-selected={tab === tInfo.id}
             className={`px-5 py-3 text-xs tracking-widest uppercase flex-shrink-0 transition-colors duration-150 border-b-2 -mb-px ${
-              tab === t.id
+              tab === tInfo.id
                 ? "border-[#FF3C3C] text-black dark:text-white"
                 : "border-transparent text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
             }`}
           >
-            {t.label}
+            {t(tInfo.labelKey)}
           </button>
         ))}
       </div>

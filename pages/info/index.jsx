@@ -1,5 +1,7 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 import Link from "next/link";
 
 const ITEMS = [
@@ -17,13 +19,15 @@ const ITEMS = [
 ];
 
 export default function InfoIndexPage() {
+  const { t, locale = "en-AU" } = useI18n();
+  const isZh = locale === "zh-Hans";
   return (
     <>
       <Head>
         <title>Info — rin.contact</title>
         <meta name="description" content="Site info — now, uses, roadmap, accessibility, colophon." />
         <link rel="canonical" href="https://rin.contact/info" />
-      
+
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://rin.contact/api/og?title=Site%20Info&subtitle=Colophon%2C%20changelog%2C%20roadmap%2C%20accessibility%2C%20and%20site%20documentation%20for%20rin&section=info" />
         <meta property="og:image:width" content="1200" />
@@ -39,17 +43,17 @@ export default function InfoIndexPage() {
         description="Site info — now, uses, roadmap, accessibility, colophon."
         path="/info"
         ogImage={{ title: "Info & Colophon", subtitle: "Site map, changelog, and tech stack", section: "info" }}
+        locale={locale}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
           <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/info</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-            Site info & meta.
+            {t("info.heading")}
           </h1>
           <p className="text-sm text-[#7A7A7A] leading-relaxed mb-14">
-            What I'm up to, what I use, where this site is going,
-            and how it's built. The boring-but-useful stuff.
+            {t("info.description")}
           </p>
 
           <div className="space-y-0 divide-y divide-[#E0E0E0] dark:divide-[#3D3D3D]">
@@ -72,7 +76,7 @@ export default function InfoIndexPage() {
               href="/"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
-              ← Home
+              ← {t("nav.home")}
             </Link>
           </div>
         </div>

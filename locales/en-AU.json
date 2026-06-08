@@ -217,5 +217,154 @@
       { "label": "Education & Growth" },
       { "label": "The Person" }
     ]
+  },
+  "timeline": {
+    "sectionLabel": "02 — Journey",
+    "heading": "Career Path",
+    "tabCareer": "career",
+    "tabEducation": "education",
+    "tabVolunteer": "volunteer",
+    "detailsMore": "+ Details",
+    "detailsLess": "— Less",
+    "badgeCurrent": "Current",
+    "legendTitle": "",
+    "legendActive": "Active",
+    "legendConcurrent": "Concurrent"
+  },
+  "projects": {
+    "sectionLabel": "03 — Work",
+    "heading": "Selected Projects",
+    "headingDesc": "Seventeen shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
+    "searchPlaceholder": "Search projects...",
+    "allProjects": "All",
+    "impact": "Impact",
+    "stack": "Stack",
+    "status": "Status",
+    "domain": "Domain",
+    "active": "Active",
+    "share": "Share",
+    "post": "Post",
+    "viewOnGithub": "View on GitHub"
+  },
+  "metroMap": {
+    "heading": "Three lines.",
+    "description": "Government, Research, Engineering — seven years, several stations, one career.",
+    "govt": "GOVT",
+    "research": "RESEARCH",
+    "engineer": "ENGINEER",
+    "hoverHint": "Hover a station to read its record."
+  },
+  "intelligence": {
+    "sectionLabel": "V — Intelligence",
+    "heading": "Intelligence Report",
+    "tabSignal": "Signal vs Noise",
+    "tabGrowth": "Compound Growth",
+    "tabFirstPrinciples": "First Principles"
+  },
+  "bootOverlay": {
+    "line1": "Booting rin.contact...",
+    "line2": "Loading modules...",
+    "line3": "Mounting layout...",
+    "line4": "Ready.",
+    "prompt": "Press any key to continue... (or just wait)"
+  },
+  "themeToggle": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "readingToast": {
+    "message": "You've read this far — why not say hello?",
+    "dismiss": "Dismiss"
+  },
+  "snakeGame": {
+    "title": "snake — while you wait",
+    "score": "Score",
+    "startPrompt": "press SPACE or tap Start",
+    "start": "Start",
+    "restart": "Restart",
+    "gameOver": "self-collision detected",
+    "controls": "arrow keys / WASD . SPACE to start"
+  },
+  "designPhilosophy": {
+    "modalTitle": "Design Philosophy",
+    "subtitle": "Nothing OS · Wisr · rin.contact"
+  },
+  "sectionProgress": {
+    "label": "Page sections",
+    "profile": "Profile",
+    "journey": "Journey",
+    "work": "Work",
+    "expertise": "Expertise",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "newsletter": {
+    "heading": "Newsletter",
+    "title": "Get notified about new posts",
+    "description": "Occasional updates on data science, analytics engineering, and building things that compound. No spam — unsubscribe anytime.",
+    "emailPlaceholder": "your@email.com",
+    "subscribe": "Subscribe",
+    "sending": "Sending…",
+    "success": "You're subscribed!",
+    "error": "Something went wrong. Try again later."
+  },
+  "blog": {
+    "sectionLabel": "Blog",
+    "heading": "Thoughts & Writing",
+    "description": "Lessons from shipping code, building products, and thinking about data.",
+    "noPosts": "No posts yet. Check back soon.",
+    "backToBlog": "Back to blog",
+    "backToAllPosts": "Back to all posts",
+    "postNotFound": "Post not found."
+  },
+  "lab": {
+    "sectionLabel": "◆ — Lab",
+    "heading": "Playground.",
+    "description": "Career intelligence reports, a dataset self-portrait, and the compound growth curve."
+  },
+  "career": {
+    "sectionLabel": "◆ — Career",
+    "heading": "Journey.",
+    "description": "Three domain lines. Seven stations. One convergence point."
+  },
+  "projectsPage": {
+    "sectionLabel": "◆ — Projects",
+    "heading": "Work.",
+    "description": "Data engineering, cloud infrastructure, mobile, and web platforms."
+  },
+  "strategic": {
+    "sectionLabel": "◆ — Framework",
+    "heading": "Strategic Data Science",
+    "subheading": "Problem-first, not model-first."
+  },
+  "errorPage": {
+    "title": "Error — Rin Huang",
+    "heading": "Error",
+    "message": "Page not found",
+    "description": "Something went wrong. If the problem persists, please contact me at huang@rin.contact.",
+    "returnHome": "Return home"
+  },
+  "tools": {
+    "sectionLabel": "◆ — Tools",
+    "heading": "Handy tools.",
+    "description": "Digital business card with .vcf download.",
+    "viewCard": "digital business card + .vcf download"
+  },
+  "fun": {
+    "sectionLabel": "◆ — Easter eggs",
+    "heading": "Easter eggs & hidden routes.",
+    "description": "Data science jokes, CLI tricks, generative art, and rabbit holes."
+  },
+  "info": {
+    "sectionLabel": "◆ — Info",
+    "heading": "Site info & meta.",
+    "description": "Colophon, changelog, accessibility, roadmap, and site map."
+  },
+  "miniTerminal": {
+    "ariaLabel": "Interactive terminal",
+    "inputPlaceholder": "type a command…",
+    "inputLabel": "Terminal input",
+    "closeTitle": "Close",
+    "closeLabel": "Close terminal"
   }
 }

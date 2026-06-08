@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiArrowRight, FiCheck, FiAlertCircle } from "react-icons/fi";
+import { useI18n } from "@/contexts/I18nContext";
 
 /**
  * NewsletterSignup — Inline email signup for blog posts.
@@ -7,6 +8,7 @@ import { FiArrowRight, FiCheck, FiAlertCircle } from "react-icons/fi";
  * Hides automatically when no newsletter provider is configured.
  */
 export default function NewsletterSignup() {
+  const { t } = useI18n();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [message, setMessage] = useState("");
@@ -27,7 +29,7 @@ export default function NewsletterSignup() {
       if (data.success) setEmail("");
     } catch {
       setStatus("error");
-      setMessage("Something went wrong. Try again later.");
+      setMessage(t("newsletter.error"));
     }
   };
 
@@ -38,20 +40,19 @@ export default function NewsletterSignup() {
   return (
     <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-8 mt-12">
       <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-2">
-        Newsletter
+        {t("newsletter.heading")}
       </p>
       <h3 className="text-lg font-semibold tracking-tight mb-2 text-black dark:text-white">
-        Get notified about new posts
+        {t("newsletter.title")}
       </h3>
       <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A] mb-6 leading-relaxed">
-        Occasional updates on data science, analytics engineering, and
-        building things that compound. No spam — unsubscribe anytime.
+        {t("newsletter.description")}
       </p>
 
       {status === "success" ? (
         <div className="flex items-center gap-3 text-sm text-[#22C55E]">
           <FiCheck size={18} />
-          <span>{message || "You're subscribed!"}</span>
+          <span>{message || t("newsletter.success")}</span>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -61,7 +62,7 @@ export default function NewsletterSignup() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
+            placeholder={t("newsletter.emailPlaceholder")}
             disabled={status === "loading"}
             className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-2.5 text-sm
                        bg-white dark:bg-[#1A1A1A] text-black dark:text-white
@@ -78,10 +79,10 @@ export default function NewsletterSignup() {
                        transition-colors duration-200 disabled:opacity-50"
           >
             {status === "loading" ? (
-              "Sending…"
+              t("newsletter.sending")
             ) : (
               <>
-                Subscribe <FiArrowRight size={14} />
+                {t("newsletter.subscribe")} <FiArrowRight size={14} />
               </>
             )}
           </button>
@@ -91,7 +92,7 @@ export default function NewsletterSignup() {
       {status === "error" && (
         <p className="flex items-center gap-2 text-xs text-[#FF3C3C] mt-3">
           <FiAlertCircle size={14} />
-          {message || "Something went wrong."}
+          {message || t("newsletter.error")}
         </p>
       )}
     </div>

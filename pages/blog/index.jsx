@@ -1,7 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 import PostCard from "@/components/blog/PostCard";
 import { getAllPosts } from "@/lib/posts";
 
@@ -11,6 +13,8 @@ const NewsletterSignup = dynamic(
 );
 
 export default function BlogIndex({ posts }) {
+  const { t, locale = "en-AU" } = useI18n();
+  const isZh = locale === "zh-Hans";
   return (
     <>
       <SeoHead
@@ -19,6 +23,7 @@ export default function BlogIndex({ posts }) {
         path="/blog"
         ogTitle="Blog — Rin Huang"
         ogDescription="Data science, analytics, and building things that compound."
+        locale={locale}
       />
 
       <Head>
@@ -34,10 +39,10 @@ export default function BlogIndex({ posts }) {
         {/* Header */}
         <div className="mb-16">
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
-            ◈ — Blog
+            {t("blog.sectionLabel")}
           </p>
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">
-            Thoughts &amp; Writing
+            {t("blog.heading")}
           </h1>
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
             <path
@@ -49,8 +54,7 @@ export default function BlogIndex({ posts }) {
             />
           </svg>
           <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed">
-            Data science, intelligence frameworks, analytics engineering, and
-            the occasional philosophy on building things that compound.
+            {t("blog.description")}
           </p>
         </div>
 
@@ -58,7 +62,7 @@ export default function BlogIndex({ posts }) {
         {posts.length === 0 ? (
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-12 text-center">
             <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">
-              No posts yet. Check back soon.
+              {t("blog.noPosts")}
             </p>
           </div>
         ) : (

@@ -4,22 +4,24 @@
  * Reduced from 2.2s for better LCP/TTI. FibonacciFlower skipped on mobile.
  */
 import { useState, useEffect } from "react";
+import { useI18n } from "@/contexts/I18nContext";
 import FibonacciFlower from "./FibonacciFlower";
-
-const BOOT_LINES = [
-  { t: 0, text: "[ 0.0s] Booting rin.contact..." },
-  { t: 120, text: "[ 0.1s] Loading modules..." },
-  { t: 280, text: "[ 0.3s] Mounting layout..." },
-  { t: 480, text: "[ 0.5s] Ready." },
-];
 
 const LS_KEY = "rin_boot_seen";
 
 export default function BootOverlay() {
+  const { t } = useI18n();
   const [visible, setVisible] = useState(false);
   const [lines, setLines] = useState([]);
   const [done, setDone] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  const BOOT_LINES = [
+    { delay: 0, text: `[ 0.0s] ${t("bootOverlay.line1")}` },
+    { delay: 120, text: `[ 0.1s] ${t("bootOverlay.line2")}` },
+    { delay: 280, text: `[ 0.3s] ${t("bootOverlay.line3")}` },
+    { delay: 480, text: `[ 0.5s] ${t("bootOverlay.line4")}` },
+  ];
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -28,8 +30,8 @@ export default function BootOverlay() {
 
     setIsMobile(window.matchMedia("(max-width: 767px)").matches);
     setVisible(true);
-    const timers = BOOT_LINES.map(({ t, text }) =>
-      setTimeout(() => setLines((prev) => [...prev, text]), t)
+    const timers = BOOT_LINES.map(({ delay, text }) =>
+      setTimeout(() => setLines((prev) => [...prev, text]), delay)
     );
 
     const doneTimer = setTimeout(() => {
@@ -77,7 +79,7 @@ export default function BootOverlay() {
             className="text-[10px] text-[#555] mt-4"
             style={{ animation: "fade-in 0.3s ease-out both" }}
           >
-            Press any key to continue... (or just wait)
+            {t("bootOverlay.prompt")}
           </p>
         )}
       </div>

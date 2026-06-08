@@ -1,15 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
-
-const SECTIONS = [
-  { id: "hero",     label: "Profile" },
-  { id: "timeline", label: "Journey" },
-  { id: "projects", label: "Work" },
-  { id: "skills",   label: "Expertise" },
-  { id: "faq",      label: "FAQ" },
-  { id: "contact",  label: "Contact" },
-];
+import { useI18n } from "@/contexts/I18nContext";
 
 export default function SectionProgress() {
+  const { t } = useI18n();
+
+  const SECTIONS = [
+    { id: "hero",     key: "sectionProgress.profile" },
+    { id: "timeline", key: "sectionProgress.journey" },
+    { id: "projects", key: "sectionProgress.work" },
+    { id: "skills",   key: "sectionProgress.expertise" },
+    { id: "faq",      key: "sectionProgress.faq" },
+    { id: "contact",  key: "sectionProgress.contact" },
+  ];
+
   const [active, setActive] = useState("hero");
   const navRef = useRef(null);
   const visibleRef = useRef(false);
@@ -62,17 +65,18 @@ export default function SectionProgress() {
   return (
     <nav
       ref={navRef}
-      aria-label="Page sections"
+      aria-label={t("sectionProgress.label")}
       className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-end gap-3
                   transition-all duration-300 opacity-0 pointer-events-none"
     >
-      {SECTIONS.map(({ id, label }) => {
+      {SECTIONS.map(({ id, key }) => {
+        const label = t(key);
         const isActive = active === id;
         return (
           <a
             key={id}
             href={`#${id}`}
-            aria-label={`Go to ${label} section`}
+            aria-label={label}
             title={label}
             className="group flex items-center gap-2"
           >
