@@ -68,6 +68,36 @@ export default function BlogPost({ post }) {
           title="Rin Huang — Blog RSS Feed"
           href="/blog/feed.xml"
         />
+        {/* BlogPosting structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: post.title,
+              description: post.description || "",
+              datePublished: post.date || undefined,
+              author: {
+                "@type": "Person",
+                name: "Rin Huang",
+                url: "https://rin.contact",
+                sameAs: "https://www.linkedin.com/in/sunchuangyuhuang/",
+              },
+              publisher: {
+                "@type": "Person",
+                name: "Rin Huang",
+                url: "https://rin.contact",
+              },
+              url: `https://rin.contact/blog/${post.slug}`,
+              mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": `https://rin.contact/blog/${post.slug}`,
+              },
+              ...(post.tags?.length > 0 && { keywords: post.tags.join(", ") }),
+            }),
+          }}
+        />
       </Head>
 
       <MermaidRenderer />

@@ -336,7 +336,7 @@ export default function Home() {
           </div>
 
           {/* ══ STATUS + SECTION NAV CARDS — white ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] border-t border-[#F5F5F5] dark:border-[#1E1E1E]">
+          <div className="bg-white dark:bg-[#0A0A0A] border-t border-[#F5F5F5] dark:border-[#1E1E1E] content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12 pt-10">
               <StatusBadge />
             </div>

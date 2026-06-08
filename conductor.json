@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "setup": "npm install",
+    "run": "npx next dev -p ${CONDUCTOR_PORT:-3000}",
+    "archive": "rm -rf .next node_modules"
+  },
+  "runScriptMode": "concurrent"
+}

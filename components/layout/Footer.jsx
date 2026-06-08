@@ -86,7 +86,6 @@ const Footer = () => {
                   alt="rNLKJA logo"
                   width={24}
                   height={24}
-                  quality={100}
                 />
               </div>
               <span className="font-semibold text-sm text-white tracking-tight">rNLKJA</span>
