@@ -1,9 +1,12 @@
-import Head from "next/head";
 import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 import pkg from "../../package.json";
 
 const CHANGES = [
+  { version: "5.22.1", date: "2026-06", changes: "Blog: 6 posts with Mermaid diagrams, RSS feed at /blog/feed.xml, newsletter signup component. Service worker: self-destructing on activate for cache hygiene." },
+  { version: "5.22.0", date: "2026-06", changes: "Blog infrastructure: markdown pipeline (gray-matter + remark), PostCard, blog listing + individual post pages." },
+  { version: "5.21.0", date: "2026-05", changes: "Dark mode on 50+ pages (IntelligenceSection, DatasetCard, ContactSection, all section landing pages, strategic.jsx)." },
+  { version: "5.20.0", date: "2026-05", changes: "Performance: dead CSS removal, BootOverlay reduction (800ms), CustomCursor optimisation (6→3 dots), Web Vitals reporting. Marketing: certifications grid on /about, og:image + Twitter cards on 15 remaining indexable pages, LinkedIn + X share buttons on project details." },
   { version: "5.19.0", date: "2026-03", changes: "Creative pages: pronouns, timezone, name, float404, glitch, correlation, outlier, normalise, debug, tarot, dice, blank, eta, silence, rejections, mood, typing. Info: site-map, manifest, changelog, thank-you, references" },
   { version: "5.18.9", date: "2026-03", changes: "20 data science profile pages (/ds)" },
   { version: "5.18.8", date: "2026-03", changes: "Dynamic colophon version, sudo hint to /fun" },
@@ -14,26 +17,11 @@ const CHANGES = [
 export default function ChangelogPage() {
   return (
     <>
-      <Head>
-        <title>Changelog — rin.contact</title>
-        <meta name="description" content="Site changelog." />
-        <link rel="canonical" href="https://rin.contact/info/changelog" />
-      
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=Changelog&subtitle=Version%20history%20and%20release%20notes%20for%20rin&section=info" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Changelog" />
-        <meta name="twitter:description" content="Version history and release notes for rin." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=Changelog&subtitle=Version%20history%20and%20release%20notes%20for%20rin&section=info" />
-      </Head>
-
       <SeoHead
         title="Changelog — rin.contact"
-        description="Site changelog."
+        description="Version history and release notes for rin.contact"
         path="/info/changelog"
-        ogImage={{ title: "Changelog", subtitle: "Site changelog.", section: "info" }}
+        ogImage={{ title: "Changelog", subtitle: "Version history and release notes for rin.contact", section: "info" }}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">

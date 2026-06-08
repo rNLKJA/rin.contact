@@ -5,6 +5,7 @@ const nextConfig = {
   trailingSlash: true,
 
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       { protocol: "https", hostname: "upload.wikimedia.org" },
       { protocol: "https", hostname: "yt3.googleusercontent.com" },
