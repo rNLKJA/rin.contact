@@ -4,6 +4,7 @@
  * Renders client-side only (clock + matchMedia + fetch).
  */
 import { useState, useEffect } from "react";
+import { useI18n } from "@/contexts/I18nContext";
 
 const ADL_TZ = "Australia/Adelaide";
 
@@ -62,10 +63,10 @@ function useAdelaideWeather() {
   return weather;
 }
 
-const STATUSES = [
-  { dot: "green",  label: "SAPOL ASO7",  sub: "Live" },
-  { dot: "red",    label: "Mapiva",      sub: "Building" },
-  { dot: "white",  label: "Open to collab" },
+const STATUS_KEYS = [
+  { dot: "green",  labelKey: "statusBadge.sapol",  subKey: "statusBadge.live" },
+  { dot: "red",    labelKey: "statusBadge.mapiva", subKey: "statusBadge.building" },
+  { dot: "white",  labelKey: "statusBadge.openToCollab" },
 ];
 
 // Set NEXT_PUBLIC_AVAILABLE_FOR in .env.local to a comma-separated list
@@ -74,6 +75,7 @@ const STATUSES = [
 const AVAILABLE_PILL = process.env.NEXT_PUBLIC_AVAILABLE_FOR || null;
 
 export default function StatusBadge() {
+  const { t } = useI18n();
   const time    = useClock();
   const weather = useAdelaideWeather();
 
@@ -81,10 +83,10 @@ export default function StatusBadge() {
     <div
       className="inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 border border-[#E8E8E8]
                  px-4 py-2 font-mono text-[10px] tracking-wide text-[#595959]"
-      aria-label="Current status"
+      aria-label={t("statusBadge.label")}
     >
-      {STATUSES.map(({ dot, label, sub }) => (
-        <span key={label} className="flex items-center gap-1.5">
+      {STATUS_KEYS.map(({ dot, labelKey, subKey }) => (
+        <span key={labelKey} className="flex items-center gap-1.5">
           <span
             className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
               dot === "green" ? "bg-[#22C55E]" :
@@ -93,8 +95,8 @@ export default function StatusBadge() {
             }`}
             aria-hidden="true"
           />
-          {label}
-          {sub && <span className="text-[#AAAAAA]">· {sub}</span>}
+          {t(labelKey)}
+          {subKey && <span className="text-[#AAAAAA]">· {t(subKey)}</span>}
         </span>
       ))}
       {AVAILABLE_PILL && (
@@ -102,14 +104,14 @@ export default function StatusBadge() {
           <span className="text-[#DDDDDD]" aria-hidden="true">·</span>
           <span className="flex items-center gap-1.5 text-[#FF3C3C]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-blink" aria-hidden="true" />
-            Available for: {AVAILABLE_PILL}
+            {t("statusBadge.availableFor")} {AVAILABLE_PILL}
           </span>
         </>
       )}
       {time && (
         <>
           <span className="text-[#DDDDDD]" aria-hidden="true">·</span>
-          <span className="text-[#AAAAAA]">ADL {time}</span>
+          <span className="text-[#AAAAAA]">{t("statusBadge.adl")} {time}</span>
         </>
       )}
       {weather && (

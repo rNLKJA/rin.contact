@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useInView } from "@/hooks/useInView";
+import { useI18n } from "@/contexts/I18nContext";
 
 const DOMAINS = [
   {
@@ -244,11 +245,12 @@ function DomainCard({ domain, index }) {
 }
 
 export default function SkillsSection() {
+  const { t } = useI18n();
   const [ref, inView] = useInView();
   const [certRef, certInView] = useInView();
 
   return (
-    <section id="skills" className="py-24" aria-label="Skills and expertise">
+    <section id="skills" className="py-24" aria-label={t("skills.sectionLabel")}>
       {/* Header */}
       <div
         ref={ref}
@@ -257,10 +259,10 @@ export default function SkillsSection() {
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
-          04 — Expertise
+          {t("skills.sectionLabel")}
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
-          Generalist. Specialist.
+          {t("skills.heading")}
         </h2>
         {/* Wisr-style wavy accent */}
         <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">

@@ -4,71 +4,30 @@
  */
 import Link from "next/link";
 import MagneticWrapper from "@/components/ui/MagneticWrapper";
+import { useI18n } from "@/contexts/I18nContext";
 
-const CARDS = [
-  {
-    num: "01",
-    title: "Strategic",
-    href: "/strategic",
-    desc: "Strategic thinking + data science — problem-first, not model-first. How understanding the question and applying analytics strategically creates meaningful impact.",
-    tags: ["Problem framing", "Government", "Policy"],
-    stat: "Problem-first",
-    accent: "#FF3C3C",
-  },
-  {
-    num: "02",
-    title: "Career",
-    href: "/career",
-    desc: "Three domain lines. Seven stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
-    tags: ["Government", "Research", "Engineering"],
-    stat: "4 years · 7 stations",
-    accent: "#686868",
-  },
-  {
-    num: "03",
-    title: "Projects",
-    href: "/projects",
-    desc: "Seventeen shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
-    tags: ["Python", "Next.js", "AWS", "React Native"],
-    stat: "17 shipped",
-    accent: "#686868",
-  },
-  {
-    num: "04",
-    title: "Lab",
-    href: "/lab",
-    desc: "The data playground. Career intelligence reports, dataset self-portrait, compound growth analysis.",
-    tags: ["Intelligence", "Data Science", "Visualisation"],
-    stat: "Interactive",
-    accent: "#AAAAAA",
-  },
-  {
-    num: "05",
-    title: "About",
-    href: "/about",
-    desc: "Skills across seven technical domains, 23 professional credentials, and answers to the questions people actually ask.",
-    tags: ["23 certs", "7 domains", "FAQ"],
-    stat: "6 sectors",
-    accent: "#3D3D3D",
-  },
-  {
-    num: "06",
-    title: "Resume",
-    href: "/resume",
-    desc: "Interactive CLI-style CV. Type commands, explore career data. Ping, open, ls — the terminal experience.",
-    tags: ["CLI", "Interactive", "Terminal"],
-    stat: "Type to explore",
-    accent: "#7A7A7A",
-  },
+const CARD_STRUCTURE = [
+  { href: "/strategic", accent: "#FF3C3C" },
+  { href: "/career",    accent: "#686868" },
+  { href: "/projects",  accent: "#686868" },
+  { href: "/lab",       accent: "#AAAAAA" },
+  { href: "/about",     accent: "#3D3D3D" },
+  { href: "/resume",    accent: "#7A7A7A" },
 ];
 
 export default function SectionNavCards() {
+  const { t } = useI18n();
+  const cards = t("sectionNav.cards");
+  const cardData = Array.isArray(cards)
+    ? cards.map((c, i) => ({ ...c, ...CARD_STRUCTURE[i] }))
+    : [];
+
   return (
-    <section className="py-20" aria-label="Navigate to sections">
-      <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-10">◈ — Explore</p>
+    <section className="py-20" aria-label={t("sectionNav.label")}>
+      <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-10">{t("sectionNav.label")}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#E0E0E0]">
-        {CARDS.map((card) => (
+        {cardData.map((card) => (
           <MagneticWrapper key={card.title} strength={6}>
             <Link
               href={card.href}

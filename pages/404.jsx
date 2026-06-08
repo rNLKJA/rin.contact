@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 
 // Canvas + browser APIs — must never run on the server
 const SnakeGame = dynamic(() => import("@/components/ui/SnakeGame"), {
@@ -16,19 +17,20 @@ const SnakeGame = dynamic(() => import("@/components/ui/SnakeGame"), {
   ),
 });
 
-const SUGGESTIONS = [
-  { href: "/",         label: "Home"         },
-  { href: "/career",   label: "Career"       },
-  { href: "/projects", label: "Projects"     },
-  { href: "/lab",      label: "Lab"          },
-  { href: "/blog",     label: "Blog"         },
-  { href: "/about",    label: "About"        },
-  { href: "/resume",   label: "CLI Resume"   },
-  { href: "/hire-me",  label: "Hire Me"      },
-  { href: "/tools/card",     label: "Business Card"},
+const SUGGESTION_KEYS = [
+  { href: "/",          key: "nav.home"     },
+  { href: "/career",    key: "nav.career"   },
+  { href: "/projects",  key: "nav.projects" },
+  { href: "/lab",       key: "nav.lab"      },
+  { href: "/blog",      key: "nav.blog"     },
+  { href: "/about",     key: "nav.about"    },
+  { href: "/resume",    key: "nav.resume"   },
+  { href: "/hire-me",   key: "nav.hireMe"   },
+  { href: "/tools/card", key: "nav.businessCard"},
 ];
 
 export default function Custom404() {
+  const { t } = useI18n();
   const { asPath } = useRouter();
   // asPath differs between server ("/404/") and client (the real missing URL).
   // Only render it after mount so server and client initial HTML always match.
@@ -53,40 +55,40 @@ export default function Custom404() {
 
         {/* Error header */}
         <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-4">
-          404 · page not found
+          {t("notFound.title")}
         </p>
 
         {/* Traceback card */}
         <div className="bg-[#0C0C0C] border border-[#1E1E1E] p-5 mb-6 text-xs leading-loose">
-          <p className="text-[#555]">Traceback (most recent call last):</p>
+          <p className="text-[#555]">{t("notFound.traceback")}</p>
           <p className="text-[#555] ml-4">
-            File <span className="text-[#888]">&quot;rin.contact&quot;</span>,
-            line 1, in <span className="text-[#888]">navigate()</span>
+            {t("notFound.file")} <span className="text-[#888]">&quot;rin.contact&quot;</span>,
+            {t("notFound.line")} 1, {t("notFound.in")} <span className="text-[#888]">{t("notFound.navigate")}</span>
           </p>
           <p className="text-[#444] mt-2">
-            <span className="text-[#686868]">KeyError: </span>
+            <span className="text-[#686868]">{t("notFound.keyError")}</span>
             <span className="text-[#FF6B6B]">&apos;{path ?? "…"}&apos;</span>
-            <span className="text-[#444]"> does not exist in this namespace</span>
+            <span className="text-[#444]"> {t("notFound.doesNotExist")}</span>
           </p>
           <p className="text-[#555] mt-3">
-            <span className="text-[#888]">Suggestion: </span>
-            try one of the routes below, play a game, or return home
+            <span className="text-[#888]">{t("notFound.suggestion")}</span>
+            {t("notFound.tryRoutes")}
           </p>
         </div>
 
         {/* Suggestions */}
         <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-3">
-          Available routes
+          {t("notFound.availableRoutes")}
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6">
-          {SUGGESTIONS.map(({ href, label }) => (
+          {SUGGESTION_KEYS.map(({ href, key }) => (
             <Link
               key={href}
               href={href}
               className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-2 text-xs text-[#595959] dark:text-[#AAAAAA]
                          hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-150"
             >
-              → {label}
+              → {t(key)}
             </Link>
           ))}
         </div>
@@ -97,7 +99,7 @@ export default function Custom404() {
             className="inline-block border border-black px-6 py-2.5 text-xs tracking-widest uppercase
                        hover:bg-black hover:text-white transition-colors duration-200"
           >
-            ← Home
+            {t("notFound.home")}
           </Link>
           <a
             href={`mailto:huang@rin.contact?subject=${encodeURIComponent(
@@ -108,7 +110,7 @@ export default function Custom404() {
             className="inline-block border border-[#3D3D3D] px-6 py-2.5 text-xs tracking-widest uppercase
                        text-[#555] hover:border-[#555] hover:text-[#888] transition-colors duration-200"
           >
-            Report a bug
+            {t("notFound.reportBug")}
           </a>
         </div>
 

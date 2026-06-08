@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useInView } from "@/hooks/useInView";
 import { FiPlus, FiChevronDown } from "react-icons/fi";
+import { useI18n } from "@/contexts/I18nContext";
 
 /* ── Categorised FAQ data ────────────────────────────────────────────────── */
 
@@ -224,10 +225,11 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
 /* ── Section ─────────────────────────────────────────────────────────────── */
 
 export default function FAQSection() {
+  const { t } = useI18n();
   const [ref, inView] = useInView();
 
   return (
-    <section id="faq" aria-label="Frequently asked questions" className="py-24">
+    <section id="faq" aria-label={t("faq.ariaLabel")} className="py-24">
       <div
         ref={ref}
         className={`transition-all duration-600 ${
@@ -237,10 +239,10 @@ export default function FAQSection() {
         {/* Header */}
         <div className="mb-12">
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
-            06 — FAQ
+            {t("faq.sectionLabel")}
           </p>
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
-            Common Questions
+            FAQ
           </h2>
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
             <path

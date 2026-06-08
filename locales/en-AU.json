@@ -7,6 +7,7 @@
     "thereIsMore": "there's more if you look"
   },
   "nav": {
+    "home": "Home",
     "career": "Career",
     "projects": "Projects",
     "lab": "Lab",
@@ -144,5 +145,77 @@
   "resume": {
     "contextHeader": "Interactive CLI Resume — Type 'help' to see available commands",
     "hintBar": "↑↓ history  ·  Enter run  ·  help  ·  clear  ·  exit"
+  },
+  "statusBadge": {
+    "label": "Current status",
+    "sapol": "SAPOL ASO7",
+    "mapiva": "Mapiva",
+    "openToCollab": "Open to collab",
+    "live": "Live",
+    "building": "Building",
+    "availableFor": "Available for:",
+    "adl": "ADL"
+  },
+  "sectionNav": {
+    "label": "◈ — Explore",
+    "cards": [
+      {
+        "num": "01", "title": "Strategic", "desc": "Strategic thinking + data science — problem-first, not model-first. How understanding the question and applying analytics strategically creates meaningful impact.",
+        "tags": ["Problem framing", "Government", "Policy"], "stat": "Problem-first"
+      },
+      {
+        "num": "02", "title": "Career", "desc": "Three domain lines. Seven stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
+        "tags": ["Government", "Research", "Engineering"], "stat": "4 years · 7 stations"
+      },
+      {
+        "num": "03", "title": "Projects", "desc": "Seventeen shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
+        "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "17 shipped"
+      },
+      {
+        "num": "04", "title": "Lab", "desc": "The data playground. Career intelligence reports, dataset self-portrait, compound growth analysis.",
+        "tags": ["Intelligence", "Data Science", "Visualisation"], "stat": "Interactive"
+      },
+      {
+        "num": "05", "title": "About", "desc": "Skills across seven technical domains, 23 professional credentials, and answers to the questions people actually ask.",
+        "tags": ["23 certs", "7 domains", "FAQ"], "stat": "6 sectors"
+      },
+      {
+        "num": "06", "title": "Resume", "desc": "Interactive CLI-style CV. Type commands, explore career data. Ping, open, ls — the terminal experience.",
+        "tags": ["CLI", "Interactive", "Terminal"], "stat": "Type to explore"
+      }
+    ]
+  },
+  "notFound": {
+    "title": "404 · page not found",
+    "traceback": "Traceback (most recent call last):",
+    "file": "File",
+    "line": "line",
+    "in": "in",
+    "navigate": "navigate()",
+    "keyError": "KeyError:",
+    "doesNotExist": "does not exist in this namespace",
+    "suggestion": "Suggestion:",
+    "tryRoutes": "try one of the routes below, play a game, or return home",
+    "availableRoutes": "Available routes",
+    "loadingGame": "loading game...",
+    "home": "Home",
+    "reportBug": "Report a bug",
+    "subject": "404 at {path} — but it's not a bug, the page just doesn't exist",
+    "body": "I tried to visit: {path}\n\n(No action needed — just letting you know. Or maybe I'm confused. Either way.)"
+  },
+  "skills": {
+    "sectionLabel": "04 — Expertise",
+    "heading": "Generalist. Specialist."
+  },
+  "faq": {
+    "sectionLabel": "06 — FAQ",
+    "ariaLabel": "Frequently asked questions",
+    "categories": [
+      { "label": "The Role" },
+      { "label": "Technical Approach" },
+      { "label": "Career Journey" },
+      { "label": "Education & Growth" },
+      { "label": "The Person" }
+    ]
   }
 }

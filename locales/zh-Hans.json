@@ -7,6 +7,7 @@
     "thereIsMore": "更多的内容等你发现"
   },
   "nav": {
+    "home": "首页",
     "career": "职业经历",
     "projects": "项目",
     "lab": "实验室",
@@ -144,5 +145,77 @@
   "resume": {
     "contextHeader": "交互式命令行简历 — 输入 help 查看命令列表",
     "hintBar": "浏览历史  ·  Enter 执行  ·  help 帮助  ·  clear 清屏  ·  exit 返回"
+  },
+  "statusBadge": {
+    "label": "当前状态",
+    "sapol": "南澳警察局 ASO7",
+    "mapiva": "Mapiva",
+    "openToCollab": "开放合作",
+    "live": "进行中",
+    "building": "开发中",
+    "availableFor": "开放机会：",
+    "adl": "阿德莱德"
+  },
+  "sectionNav": {
+    "label": "◈ — 探索",
+    "cards": [
+      {
+        "num": "01", "title": "战略能力", "desc": "战略思维与数据科学的结合——问题优先，而非模型优先。理解问题本质并运用分析技术，创造有意义的决策影响。",
+        "tags": ["问题框架", "政府", "政策"], "stat": "问题优先"
+      },
+      {
+        "num": "02", "title": "职业经历", "desc": "三条专业线。七个站点。一个汇聚点——政府、科研与工程在此并行交汇。",
+        "tags": ["政府", "科研", "工程"], "stat": "4年 · 7个站点"
+      },
+      {
+        "num": "03", "title": "项目", "desc": "17个已上线项目，覆盖数据工程、云基础设施、移动端与Web平台。",
+        "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "17个已交付"
+      },
+      {
+        "num": "04", "title": "实验室", "desc": "数据游乐场。职业情报报告、数据集自画像、复合增长分析。",
+        "tags": ["情报", "数据科学", "可视化"], "stat": "交互式"
+      },
+      {
+        "num": "05", "title": "关于我", "desc": "横跨七个技术领域的技能，23项专业认证，以及大家真正关心问题的诚实回答。",
+        "tags": ["23项认证", "7个领域", "问答"], "stat": "6个行业"
+      },
+      {
+        "num": "06", "title": "简历", "desc": "交互式命令行简历。输入命令，探索职业数据。Ping、open、ls——终端体验。",
+        "tags": ["命令行", "交互", "终端"], "stat": "输入探索"
+      }
+    ]
+  },
+  "notFound": {
+    "title": "404 · 页面未找到",
+    "traceback": "回溯（最近一次调用）：",
+    "file": "文件",
+    "line": "第",
+    "in": "位于",
+    "navigate": "navigate()",
+    "keyError": "键错误：",
+    "doesNotExist": "在此命名空间中不存在",
+    "suggestion": "建议：",
+    "tryRoutes": "试试以下页面，玩个游戏，或者返回首页",
+    "availableRoutes": "可用页面",
+    "loadingGame": "游戏加载中...",
+    "home": "首页",
+    "reportBug": "报告问题",
+    "subject": "404 错误：{path} — 这不是个 bug，这个页面确实不存在",
+    "body": "我尝试访问了：{path}\n\n（无需操作 — 只是告知您。或者可能是我搞错了。）"
+  },
+  "skills": {
+    "sectionLabel": "04 — 技能专长",
+    "heading": "通才·专才"
+  },
+  "faq": {
+    "sectionLabel": "06 — 常见问题",
+    "ariaLabel": "常见问题",
+    "categories": [
+      { "label": "岗位职责" },
+      { "label": "技术方法" },
+      { "label": "职业历程" },
+      { "label": "教育与成长" },
+      { "label": "个人特质" }
+    ]
   }
 }
