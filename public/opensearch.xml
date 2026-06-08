@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  OpenSearch Description Document — rin.contact
+  Spec: http://a9.com/-/spec/opensearch/1.1/
+  Author: Sunchuangyu (Rin) Huang 黄孙创宇 <huang@rin.contact>
+-->
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+
+  <!-- ── Identity ─────────────────────────────────────────────────────────── -->
+  <ShortName>Rin Huang</ShortName>
+  <LongName>Rin Huang — Senior Data Analyst &amp; Research Software Engineer</LongName>
+  <Description>
+    Search Rin Huang's portfolio. Explore career history, projects, skills,
+    certifications, and contact details for Sunchuangyu (Rin) Huang 黄孙创宇 —
+    Senior Data Analyst at South Australia Police, Research Software Engineer at
+    WEHI &amp; CSIRO, and Full-Stack Developer based in Adelaide, Australia.
+  </Description>
+
+  <!-- ── Search endpoint ───────────────────────────────────────────────────── -->
+  <Url type="text/html" template="https://rin.contact/?s={searchTerms}" />
+
+  <!-- ── Icons ─────────────────────────────────────────────────────────────── -->
+  <Image height="16"  width="16"  type="image/x-icon">https://rin.contact/favicon.ico</Image>
+  <Image height="32"  width="32"  type="image/png">https://rin.contact/favicon-32x32.png</Image>
+  <Image height="192" width="192" type="image/png">https://rin.contact/android-chrome-192x192.png</Image>
+  <Image height="512" width="512" type="image/png">https://rin.contact/android-chrome-512x512.png</Image>
+
+  <!-- ── Example queries ───────────────────────────────────────────────────── -->
+  <Query role="example" searchTerms="Rin Huang" />
+  <Query role="example" searchTerms="Sunchuangyu Huang" />
+  <Query role="example" searchTerms="Huang Sunchuangyu" />
+  <Query role="example" searchTerms="黄孙创宇" />
+  <Query role="example" searchTerms="黄孙 Rin" />
+  <Query role="example" searchTerms="HUANGSUNCHUANGYU" />
+  <Query role="example" searchTerms="HUANG SUNCHUANGYU" />
+  <Query role="example" searchTerms="data analyst Adelaide" />
+  <Query role="example" searchTerms="SAPOL data analyst" />
+  <Query role="example" searchTerms="WEHI research software engineer" />
+  <Query role="example" searchTerms="CSIRO data science" />
+
+  <!-- ── Encoding ───────────────────────────────────────────────────────────── -->
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+
+  <!-- ── Language ─────────────────────────────────────────────────────────── -->
+  <Language>en-AU</Language>
+  <Language>zh-Hans</Language>
+
+  <!-- ── Metadata ──────────────────────────────────────────────────────────── -->
+  <Contact>huang@rin.contact</Contact>
+  <Developer>Sunchuangyu (Rin) Huang</Developer>
+  <Attribution>Portfolio of Sunchuangyu (Rin) Huang — rin.contact</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+  <Tags>
+    Rin Huang Sunchuangyu Huang Sunchuangyu 黄孙创宇 黄孙 Rin
+    HUANGSUNCHUANGYU HUANG SUNCHUANGYU HUANG SUN CHUANG YU
+    data science analytics machine learning
+    software engineering government intelligence SAPOL WEHI CSIRO
+    Adelaide Melbourne Australia Python React Next.js
+  </Tags>
+
+</OpenSearchDescription>

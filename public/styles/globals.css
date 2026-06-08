@@ -2,226 +2,223 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
-
-* {
-  min-height: 0;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  user-select: none;
+/* ─── Nothing Design System Tokens ─────────────────────────────── */
+:root {
+  --white:          #FFFFFF;
+  --black:          #000000;
+  --dark:           #1A1A1A;
+  --mid:            #3D3D3D;
+  --subtle:         #7A7A7A;
+  --divider:        #E0E0E0;
+  --surface:        #F5F5F5;
+  --accent:         #FF3C3C;
+  --marquee-fade:   #F5F5F5;
 }
 
-body {
-  font-family: "Sarabun", monospace; /* Updated font-family */
-  font-size: 1rem;
+/* Dark theme — Nothing OS: white on black */
+.dark,
+[data-theme="dark"] {
+  --white:          #0A0A0A;
+  --black:          #FFFFFF;
+  --dark:           #1A1A1A;
+  --mid:            #7A7A7A;
+  --subtle:         #AAAAAA;
+  --divider:        #3D3D3D;
+  --surface:        #141414;
+  --marquee-fade:   #141414;
+}
 
-  margin: 0 auto; /* Center content horizontally */
-  padding: 0; /* Add some padding on the sides */
-  max-width: 100%; /* Ensure it doesn't exceed the viewport width */
-  scroll-behavior: smooth; /* Smooth scrolling */
-
-  background-color: #fff; /* Soft background color */
-  color: #333; /* Primary text color */
-  line-height: 1.5; /* Improved readability */
+/* ─── Reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+  min-width: 0;
 }
 
 html {
-  scroll-behavior: smooth; /* Smooth scrolling */
+  scroll-behavior: smooth;
 }
 
-/* Soft box shadows and rounded corners for cards and buttons */
-.card,
-.button {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  background-color: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 12px;
+/* ─── Wisr editorial serif — all section headings ───────────────── */
+h2, h3 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
-::-webkit-scrollbar-track {
-  background: #fff;
+/* ─── DM Sans UI overrides — nav, labels, buttons ───────────────── */
+nav, button, input, textarea, label, select {
+  font-family: "DM Sans", system-ui, sans-serif;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #fff;
-  border-radius: 10px;
+/* ─── Typography Scale ───────────────────────────────────────────── */
+/* h1 brand name only — pixel display (Bitcount) */
+h1 {
+  font-family: "Bitcount Prop Double", monospace;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #fff;
+/* ─── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--white); }
+::-webkit-scrollbar-thumb { background: var(--divider); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--mid); }
+
+/* ─── Focus rings ────────────────────────────────────────────────── */
+/* Suppress the default outline on mouse/touch interactions.          */
+/* :focus-visible only fires for keyboard navigation, preserving      */
+/* accessibility for tab/arrow-key users.                             */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 2px;
 }
 
-.link-hover:hover {
-  /* font-weight: bold; */
-  color: #ff6f61; /* or any color you want for highlighting */
-  cursor: pointer; /* changes the cursor to indicate it's clickable */
+/* Dark theme scrollbar */
+.dark ::-webkit-scrollbar-track,
+[data-theme="dark"] ::-webkit-scrollbar-track { background: var(--white); }
+.dark ::-webkit-scrollbar-thumb,
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: var(--divider); }
+.dark ::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: var(--mid); }
+
+/* ─── Scroll-reveal animation primitives ────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slide-right {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.link-hover-unclicable:hover {
-  font-weight: bold;
-  color: #121f22; /* or any color you want for highlighting */
-}
+.animate-fade-up   { animation: fade-up   600ms ease-in-out both; }
+.animate-fade-in   { animation: fade-in   600ms ease-in-out both; }
+.animate-slide-right { animation: slide-right 500ms ease-in-out both; }
+.animate-blink     { animation: blink 1.2s ease-in-out infinite; contain: layout; will-change: opacity; }
 
-.toolbox-hover:hover {
-  font-weight: bold;
-  color: grey;
-  cursor: pointer;
-}
+/* Stagger delay helpers */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
 
-.text-hover:hover {
-  /* font-weight: bold; */
-  color: #3b3434;
-  cursor: pointer;
-}
-
-.myContainer {
-  width: 1100px;
-  background-color: #fff /* default color */;
-}
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 215 20.2% 65.1%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
-
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
-
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 216 34% 17%;
-
-    --radius: 0.5rem;
+/* ─── LCP: skip hero animations on mobile so h1/role/bio paint immediately ── */
+@media (max-width: 767px) {
+  #hero h1,
+  #hero .hero-role,
+  #hero #hero-bio,
+  #hero .hero-ctas {
+    animation: none !important;
+    animation-delay: 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+/* ─── Art-morph replaced with static border-radius (non-composited animation caused CLS) ── */
+.animate-art-morph {
+  border-radius: 50% 40% 30% 60% / 60% 30% 70% 40%;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
   }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
 }
 
-.cursor-left {
-  cursor: w-resize; /* or your custom left arrow cursor */
-}
-
-.cursor-right {
-  cursor: e-resize; /* or your custom right arrow cursor */
-}
-
-.main {
-  width: 100vw;
-  min-height: 100vh;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  padding: 120px 24px 160px 24px;
-  pointer-events: none;
-}
-
-.main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+/* ─── Timeline vertical bar ──────────────────────────────────────── */
+.timeline-line {
   position: absolute;
-  content: "";
-  z-index: 2;
-  width: 100%;
-  height: 100%;
+  left: 0;
   top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--divider);
 }
 
-.main:after {
-  content: "";
-  background-image: url("/assets/images/grid.svg");
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  opacity: 0.4;
-  filter: invert(1);
+/* ─── Marquee ────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 80s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+.dot-matrix {
+  background-image: radial-gradient(circle, var(--divider) 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 
-.gradient {
-  height: fit-content;
-  z-index: 3;
-  width: 100%;
-  max-width: 640px;
-  background-image: radial-gradient(
-      at 27% 37%,
-      hsla(215, 98%, 61%, 1) 0px,
-      transparent 0%
-    ),
-    radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
-    radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
-    radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%),
-    radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
-    radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  filter: blur(100px) saturate(150%);
-  top: 80px;
-  opacity: 0.15;
+/* ─── Background shape animations ───────────────────────────────── */
+@keyframes art-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+@keyframes art-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes art-breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.09); }
+}
+.animate-art-float   { animation: art-float   10s ease-in-out infinite; will-change: transform; }
+.animate-art-spin    { animation: art-spin    30s linear      infinite; will-change: transform; }
+.animate-art-breathe { animation: art-breathe  8s ease-in-out infinite; will-change: transform; }
+
+/* ─── Dot-burst click particles ─────────────────────────────────────────── */
+@keyframes dot-burst {
+  0%   { transform: rotate(var(--deg)) translateX(0)            scale(1.2); opacity: 1; }
+  60%  { opacity: 0.7; }
+  100% { transform: rotate(var(--deg)) translateX(var(--dist))  scale(0);   opacity: 0; }
+}
+
+/* ─── Konami / terminal glitch overlay ──────────────────────────────────── */
+@keyframes glitch-shake {
+  0%,100% { transform: translate(0); }
+  20%     { transform: translate(-3px, 1px); }
+  40%     { transform: translate(3px, -1px); }
+  60%     { transform: translate(-2px, 2px); }
+  80%     { transform: translate(2px, -2px); }
+}
+.animate-glitch-shake { animation: glitch-shake 0.4s ease-in-out; }
+
+/* ─── Below-fold section optimisation ──────────────────────────────────── */
+/* Skips layout/paint until near viewport — reduces main-thread Style & Layout work */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }

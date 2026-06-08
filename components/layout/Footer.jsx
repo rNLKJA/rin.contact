@@ -1,214 +1,196 @@
-import React, { useState, useEffect } from "react";
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import { FiGithub } from "react-icons/fi";
-import { Link } from "@nextui-org/link";
+import React from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { Fade } from "react-awesome-reveal";
-import NavigationIcon from "@mui/icons-material/Navigation";
-import Button from "@mui/material/Button";
-import { CiCoffeeBean, CiCalendar } from "react-icons/ci";
-import { SiVirginmedia } from "react-icons/si";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FiGithub, FiMail } from "react-icons/fi";
+import DesignPhilosophyModal from "@/components/ui/DesignPhilosophyModal";
+
+const NAV_COLS = [
+  {
+    heading: "Navigate",
+    links: [
+      { href: "/strategic", label: "Strategic" },
+      { href: "/career",   label: "Career"   },
+      { href: "/projects", label: "Projects" },
+      { href: "/lab",      label: "Lab"      },
+      { href: "/about",    label: "About"    },
+      { href: "/resume",   label: "Resume"   },
+      { href: "/#contact", label: "Contact"  },
+    ],
+  },
+  {
+    heading: "Pages",
+    links: [
+      { href: "/hire-me", label: "Hire Me",       cta: true },
+      { href: "/tools/card",    label: "Business Card"            },
+      { href: "/blog",     label: "Blog"                     },
+      { href: "/info/api",     label: "API"                      },
+      { href: "/resume",  label: "CLI Resume"               },
+      { href: "https://www.linkedin.com/in/sunchuangyuhuang/", label: "LinkedIn",  external: true },
+      { href: "https://github.com/rNLKJA",                     label: "GitHub",    external: true },
+      { href: "https://www.instagram.com/chuangyu_hscy/",      label: "Instagram", external: true },
+      { href: "mailto:huang@rin.contact",                      label: "Email"                     },
+    ],
+  },
+];
+
+const SOCIAL_ICONS = [
+  { href: "https://www.linkedin.com/in/sunchuangyuhuang/", label: "LinkedIn",  Icon: FaLinkedin  },
+  { href: "https://github.com/rNLKJA",                     label: "GitHub",    Icon: FiGithub    },
+  { href: "https://www.instagram.com/chuangyu_hscy/",      label: "Instagram", Icon: FaInstagram },
+  { href: "mailto:huang@rin.contact",                      label: "Email",     Icon: FiMail      },
+];
 
 const Footer = () => {
   const year = new Date().getFullYear();
-  const [isHovered, setIsHovered] = useState(false);
-  const [showScrollButton, setShowScrollButton] = useState(false);
-
-  const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setShowScrollButton(true);
-    } else {
-      setShowScrollButton(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
-
-  const handleCoffeeCalendlyClick = (e) => {
-    e.preventDefault();
-
-    window.Calendly.initPopupWidget({
-      url: "https://calendly.com/huangsunchuangyu/coffee-chat",
-    });
-  };
-
-  const handleBusinessCalendlyClick = (e) => {
-    e.preventDefault();
-    window.Calendly.initPopupWidget({
-      url: "https://calendly.com/huangsunchuangyu/coffee-chat",
-    });
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   return (
-    <footer className="py-10 ">
-      <div className="grid md:grid-cols-4 grid-cols-1 gap-10 items-center text-center ">
-        <div className="md:col-span-2">
-          <div className="inline-block">
-            <Image
-              src="/logo.svg"
-              alt="Logo"
-              width={150}
-              height={150}
-              quality={100}
-              layout="fixed"
-            />
+    <footer className="bg-[#1A1A1A] dark:bg-[#0A0A0A] relative overflow-hidden" role="contentinfo">
+
+      {/* Wisr-style wavy top divider */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 1440 32"
+        preserveAspectRatio="none"
+        className="w-full pointer-events-none select-none"
+        style={{ marginBottom: "-1px" }}
+      >
+        <path
+          d="M0,16 C180,4 360,28 540,16 C720,4 900,28 1080,16 C1260,4 1380,24 1440,16 L1440,32 L0,32 Z"
+          className="fill-[#1A1A1A] dark:fill-[#0A0A0A]"
+        />
+      </svg>
+
+      {/* Ghost word — Wisr editorial texture */}
+      <span
+        aria-hidden="true"
+        className="absolute right-0 bottom-4 text-[10rem] md:text-[14rem] font-bold leading-none
+                   select-none pointer-events-none tracking-tighter text-white opacity-[0.025]"
+        style={{ fontFamily: 'var(--font-bitcount), monospace' }}
+      >
+        RIN
+      </span>
+
+      <div className="max-w-[1100px] mx-auto px-6 md:px-12 pt-14 pb-10 relative z-10">
+
+        {/* ── Top row — brand + nav columns ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+
+          {/* Brand */}
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-2.5">
+              <div className="rounded-full bg-white dark:bg-[#0A0A0A] flex items-center justify-center flex-shrink-0"
+                   style={{ width: 32, height: 32 }}>
+                <Image
+                  src="/logo.svg"
+                  alt="rNLKJA logo"
+                  width={24}
+                  height={24}
+                  quality={100}
+                />
+              </div>
+              <span className="font-semibold text-sm text-white tracking-tight">rNLKJA</span>
+            </div>
+            <p className="text-xs text-[#AAAAAA] leading-relaxed max-w-[220px]">
+              Senior Data Analyst · Research Software Engineer · Adelaide, Australia.
+            </p>
+            {/* Wisr wavy micro accent */}
+            <svg width="60" height="7" viewBox="0 0 60 7" aria-hidden="true">
+              <path d="M0,3.5 C7.5,0.5 15,6.5 22.5,3.5 C30,0.5 37.5,6.5 45,3.5 C52.5,0.5 60,6.5 60,3.5"
+                    stroke="#3D3D3D" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+            </svg>
           </div>
 
-          <br />
+          {/* Nav columns */}
+          {NAV_COLS.map(({ heading, links }) => (
+            <div key={heading}>
+              <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">{heading}</p>
+              <ul className="space-y-2.5">
+                {links.map(({ href, label, external, cta }) => (
+                  <li key={label}>
+                    {external ? (
+                      <a
+                        href={href} target="_blank" rel="noreferrer"
+                        className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200 flex items-center gap-1.5 group"
+                      >
+                        {label}
+                        <span className="text-[#555555] group-hover:text-white transition-colors duration-200 text-[10px]">↗</span>
+                      </a>
+                    ) : href.startsWith("/") ? (
+                      <Link
+                        href={href}
+                        className={`text-xs transition-colors duration-200 ${
+                          cta
+                            ? "text-[#FF3C3C] hover:text-white font-medium"
+                            : "text-[#AAAAAA] hover:text-white"
+                        }`}
+                      >
+                        {label}{cta && " →"}
+                      </Link>
+                    ) : (
+                      <a
+                        href={href}
+                        className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200"
+                      >
+                        {label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Subtle easter egg hint on the "Pages" column */}
+              {heading === "Pages" && (
+                <p className="text-[9px] text-[#333333] mt-5 leading-relaxed font-mono">
+                  · · ·{" "}
+                  <span title="Try /fun/secret">there&apos;s more if you look</span>
+                </p>
+              )}
+            </div>
+          ))}
         </div>
 
-        <div className="text-left flex flex-col h-full gap-2">
-          <p className="font-bold text-lg text-pretty">Schedule </p>
-          <div className="flex flex-start space-x-4 items-center p-1">
-            <CiCoffeeBean className="text-xl" />
-            <p
-              onClick={handleCoffeeCalendlyClick}
-              className="text-sm link-hover"
-            >
-              Coffee Chat?
+        {/* ── Divider ── */}
+        <div className="border-t border-[#282828] mb-6" />
+
+        {/* ── Bottom row — social pills + copyright ── */}
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+
+          {/* Social pill chips */}
+          <div className="flex flex-wrap gap-2">
+            {SOCIAL_ICONS.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={label !== "Email" ? "_blank" : undefined}
+                rel="noreferrer"
+                aria-label={label}
+                className="inline-flex items-center gap-1.5 border border-[#333333] px-3.5 py-1.5 rounded-full
+                           text-[10px] tracking-widest uppercase text-[#AAAAAA]
+                           hover:border-white hover:text-white transition-all duration-200"
+              >
+                <Icon size={11} aria-hidden="true" />
+                {label}
+              </a>
+            ))}
+          </div>
+
+          {/* Design system + copyright */}
+          <div className="flex flex-wrap items-center gap-4">
+            <DesignPhilosophyModal />
+            <p className="text-[11px] text-[#AAAAAA] tracking-wide">
+              © 2020–{year}{" "}
+              <Link href="/" className="text-white underline underline-offset-2 decoration-[#555555] hover:text-[#FF3C3C] hover:decoration-[#FF3C3C] transition-colors duration-200">
+                rNLKJA
+              </Link>
+              . All rights reserved.
             </p>
           </div>
-          <div className="flex space-x-4 items-center p-1">
-            <CiCalendar className="text-xl" />
-            <p
-              onClick={handleBusinessCalendlyClick}
-              className="text-sm link-hover"
-            >
-              Business Talk?
-            </p>
-          </div>
         </div>
 
-        <div className="text-left flex flex-col h-full gap-2">
-          <p className="font-bold text-lg">Follow me</p>
-
-          <div className="flex flex-col tablet:flex-wrap justify-center">
-            <FooterIconLink
-              IconComponent={SiVirginmedia}
-              href="https://www.xiaohongshu.com/user/profile/5ddb3cf2000000000100bcab"
-              content="Xiaohongshu"
-              styleClasses="p-3 text-2xl text-lg "
-            />
-            <FooterIconLink
-              href="https://www.instagram.com/chuangyu_hscy/"
-              IconComponent={FaInstagram}
-              content="Instagram"
-              styleClasses="p-3 text-2xl text-lg "
-            />
-            <FooterIconLink
-              href="https://www.linkedin.com/in/sunchuangyuhuang/"
-              IconComponent={FaLinkedin}
-              content="LinkedIn"
-              styleClasses="p-3 text-2xl text-lg "
-            />
-            <FooterIconLink
-              href="https://github.com/rNLKJA"
-              IconComponent={FiGithub}
-              content="GitHub"
-              styleClasses="p-3 text-2xl text-lg "
-            />
-          </div>
-        </div>
       </div>
-      <br />
-      <p className="text-wrap text-pretty">
-        Fueling the future with purr-cision and cutting-edge data science
-        technology, I enthusiastically craft a trail of endless pawssibilities,
-        unleashing extraordinary potential with each innovative leap.
-      </p>
-
-      <hr className="my-4" />
-
-      <div className="flex flex-col items-center justify-center md:flex-col lg:flex-row lg:justify-between">
-        <p>
-          © 2020-{year}{" "}
-          <Link className="link-hover mx-2" href="/">
-            rNLKJA
-          </Link>
-          . All rights reserved.
-        </p>
-        <div className="flex space-x-4 justify-center ">
-          <FooterLink href="/privacy-policy">Privacy Policy</FooterLink>
-
-          <FooterLink href="/terms-of-service">Terms of Services</FooterLink>
-        </div>
-      </div>
-
-      {typeof window !== "undefined" &&
-        window.innerWidth > 1100 &&
-        showScrollButton && (
-          <Button
-            className="flex flex-start"
-            style={{
-              position: "fixed",
-              bottom: "150px",
-              right: "20px",
-              backgroundColor: isHovered ? "black" : "white",
-              color: isHovered ? "white" : "black",
-              transition: "all 0.5s ease",
-              borderRadius: "20px",
-              padding: "10px 20px",
-              width: isHovered ? "100px" : "60px",
-
-              justifyContent: "center",
-              alignItems: "center",
-              overflow: "hidden",
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onClick={scrollToTop}
-          >
-            {" "}
-            <Fade duration={1000} direction="right">
-              <NavigationIcon />
-              {isHovered && <p style={{ marginLeft: "10px" }}>Top</p>}{" "}
-            </Fade>
-          </Button>
-        )}
     </footer>
   );
 };
 
 export default Footer;
-
-function FooterLink({ href, children }) {
-  return (
-    <Link className="link-hover" href={href}>
-      {children}
-    </Link>
-  );
-}
-
-function FooterIconLink({ href, IconComponent, content }) {
-  return (
-    <div className="flex space-x-4 items-center p-1">
-      <IconComponent className="text-xl" />
-      <a
-        className="link-hover text-sm link-hover"
-        href={href}
-        alt={content}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {content}
-      </a>
-    </div>
-  );
-}

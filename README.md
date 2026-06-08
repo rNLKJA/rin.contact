@@ -27,8 +27,7 @@ The site is built using the following technologies:
 - **Next.js**: A React framework offering features like server-side rendering and static site generation, enhancing SEO and performance.
 - **React**: A JavaScript library for building user interfaces with reusable components.
 - **TailwindCSS**: A utility-first CSS framework for creating custom designs without leaving your HTML.
-- **Additional Libraries**: `react-icons`, `bootstrap`, `mui`, `react-awesome-reveal`, etc., which provide ready-to-use components and animations.
-- **Database**: use MongoDB free tier to store data. Data base is hosted on MongoDB Atlas Sydney server.
+- **Additional Libraries**: `react-icons`, `gray-matter`, `remark` + `remark-html` (blog pipeline), `mermaid` (diagrams), `@emailjs/browser` (contact form), `@vercel/og` (OG image generation), `@vercel/analytics`, `clsx`, `tailwind-merge`.
 
 ## Documentation
 
@@ -58,30 +57,77 @@ To get the project up and running on your local machine, follow these steps:
 
 ```text
 rin.contact/
-├── app/             # App configuration (e.g., next.config.js, tailwind.config.js)
-├── components/      # Reusable UI components (e.g., Navbar, Footer)
-├── pages/           # Page components (e.g., index.js, about.js)
-├── public/          # Static files like images and favicon
-└── styles/          # Global and individual stylesheets
+├── components/      # Reusable UI components (blog/, layout/, sections/, seo/, ui/)
+├── contexts/        # React context providers (ThemeContext)
+├── hooks/           # Custom React hooks
+├── lib/             # Utility libraries (posts.js, newsletter.js, fonts.js)
+├── pages/           # Pages Router (api/, blog/, ds/, fun/, info/, tools/, plus root pages)
+├── posts/           # Blog markdown files
+├── public/          # Static assets (images, fonts, styles)
+└── scripts/         # Build/utility scripts
 ```
 
-The project structure is pretty simple, the `app` folder contains the configuration of the app, e.g. `next.config.js`, `tailwind.config.js`, etc. The `components` folder contains all the components used in the website, e.g. `Navbar`, `Footer`, `HeroSection`, etc. The `pages` folder contains all the pages, e.g. `index.js`, `about.js`, etc. The `public` folder contains all the static files, e.g. `favicon.ico`, `heroSection.png`, etc. The `styles` folder contains all the stylesheets, e.g. `global.css`, `index.css`, etc.
-
-To add a new page, simply create a new file in `pages` folder, e.g. `contact.js`, the new page will be automatically generated and access via `http://localhost:3000/contact`. To add a new component, simply create a new file in `components` folder, e.g. `Contact.js`, then you can import it in any page you want.
+The project uses Next.js Pages Router (not App Router). Configuration files (`next.config.js`, `tailwind.config.js`, etc.) live at the project root. Global styles are at `public/styles/globals.css`. New pages are automatically routed — create a file in `pages/` and it's accessible at the corresponding path.
 
 ## Deployment
 
-The site is deployed via GitHub Pages with automated deployment through GitHub Actions. If you encounter a 404 error or other deployment issues, consider the following:
+The site is deployed on **Vercel**. Push to the `v5` branch triggers automatic deployment via the [Vercel Git integration](https://vercel.com/docs/deployments/git).
 
-- **404 Error**: Ensure the `next.config.js` is correctly configured, especially if next export has been deprecated.
-- **Initial Setup**: If problems persist, initializing a fresh `Next.js` app with the recommended structure might help.
-- **GitHub Pages Configuration**: Ensure your repository settings correctly point to the build output folder.
+- **Production**: [rin.contact](https://rin.contact)
+- **Preview**: Auto-generated per-branch preview URLs on each push
+- **Config**: See `vercel.json` for build settings and deployment rules
+
+## Project Tracking
+
+Tracked in [Linear](https://linear.app/rnlkja/team/RNL/projects/rincontact). **25 issues** across 2 sprints.
+
+### Sprint 1 — Dark Mode (full site coverage)
+
+| Phase | Status |
+|-------|--------|
+| HeroSection + index.jsx decorative elements | ✅ Done |
+| FAQSection | ✅ Done |
+| TimelineSection | ✅ Done |
+| SkillsSection + marquee gradient | ✅ Done |
+| MetroMapSection SVG colors | ⚪ Planned |
+| ProjectsSection + DOMAIN_COLORS | ✅ Done |
+| IntelligenceSection + DatasetCard + ContactSection | ✅ Done |
+| Pattern A content pages (ds/\* + info/\*, 33 files) | ✅ Done |
+| Section landing pages + standalone pages | ✅ Done |
+| Polish + verification pass | ✅ Done |
+
+### Sprint 2 — SEO, Marketing & Performance
+
+#### SEO
+| Issue | Priority |
+|-------|----------|
+| Generate sitemap.xml for ~80 pages | ✅ Done |
+| Add og:image + Twitter cards to all indexable pages | ✅ Done |
+| Add breadcrumb + Article structured data to sub-pages | 🟡 High |
+| Fix theme-color meta for dark mode | 🟢 Medium |
+
+#### Marketing
+| Issue | Priority |
+|-------|----------|
+| Add testimonials + client logos section | 🔴 Critical |
+| Add Calendly + auto-reply to contact flow | 🔴 Critical |
+| Display certifications + project impact metrics | ✅ Done |
+| Add share buttons to project details | ✅ Done |
+| Blog + RSS + newsletter content pipeline | ✅ Done |
+| PWA service worker for install prompt | 🟢 Medium |
+
+#### Performance
+| Issue | Priority |
+|-------|----------|
+| Reduce BootOverlay + optimize CustomCursor | ✅ Done |
+| Move /api/rin.json to static file + ISR homepage + AVIF | ✅ Done |
+| Logo.svg compression + next/legacy→next/image + WOFF2 | 🟡 High |
+| Lazy-load MiniTerminal + Web Vitals reporting | ✅ Done |
+| Clean up dead CSS + optimize animation strategy | ✅ Done |
 
 ## Future Plan
 
-- **Hosting**: Migrate to Vercel for improved performance and developer experience.
 - **TypeScript**: Convert .jsx files to .tsx for enhanced code quality and maintainability.
-- **Database Integration**: Incorporate a database like MongoDB for dynamic content and use `Next.js` API routes for server-side operations.
 - **AI Gallery**: Create a gallery featuring AI-generated images, with prompts and details about the creation process.
 - **\_\_tests\_\_**: Add unit tests for components and pages using `Jest` and `React Testing Library`.
 - ...

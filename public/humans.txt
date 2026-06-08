@@ -1,0 +1,22 @@
+/* TEAM */
+Name: Sunchuangyu (Rin) Huang
+Legal name: Sunchuangyu Huang / 黄孙创宇
+Role: Designer & Developer
+Email: huang@rin.contact
+LinkedIn: https://linkedin.com/in/sunchuangyuhuang
+GitHub: https://github.com/rNLKJA
+Location: Adelaide & Melbourne, Australia
+
+/* SITE */
+Last update: 2026-03-09
+Language: English (en-AU)
+Doctype: HTML5
+Standards: HTML5, CSS3, ARIA, Schema.org
+Components: Next.js, React, Tailwind CSS
+Hosted: Vercel
+Domain: rin.contact
+
+/* THANKS */
+Nothing OS — design language & aesthetic inspiration
+WEHI, CSIRO, South Australia Police — professional context
+University of Melbourne — academic foundation
