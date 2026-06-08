@@ -121,6 +121,7 @@ export default function BlogPost({ post }) {
                      prose-blockquote:border-l-[#FF3C3C] prose-blockquote:text-[#7A7A7A] dark:prose-blockquote:text-[#9A9A9A]
                      prose-li:text-[#3D3D3D] dark:prose-li:text-[#AAAAAA]
                      prose-p:text-[#3D3D3D] dark:prose-p:text-[#AAAAAA]
+                     prose-p:mb-5
                      leading-relaxed"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
