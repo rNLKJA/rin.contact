@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 
 // ── Background art helpers (Nothing OS + Wisr design language) ───────────────
@@ -134,6 +135,8 @@ const SectionNavCards  = dynamic(() => import("@/components/sections/SectionNavC
 const ContactSection   = dynamic(() => import("@/components/sections/ContactSection"),      { loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" /> });
 
 export default function Home() {
+  const { locale = "en-AU" } = useRouter();
+  const isZh = locale === "zh-Hans";
   const [termOpen,  setTermOpen]  = useState(false);
   const [glitchOn,  setGlitchOn]  = useState(false);
   const [konamiConfetti, setKonamiConfetti] = useState(null);
@@ -195,14 +198,17 @@ export default function Home() {
         <link rel="preload" href="/logo.svg" as="image" fetchpriority="high" />
 
         {/* ── Primary meta ── */}
-        <title>Rin Huang (黄孙创宇) — Official Portfolio | Senior Data Analyst</title>
+        <title>{isZh ? "Rin Huang (黄孙创宇) — 个人主页 | 高级数据分析师" : "Rin Huang (黄孙创宇) — Official Portfolio | Senior Data Analyst"}</title>
         <meta
           name="description"
-          content="Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI &amp; CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+          content={isZh
+            ? "Rin Huang（黄孙创宇）的官方网站 — 南澳大利亚警察局高级数据分析师，曾任WEHI研究软件工程师、CSIRO数据科学顾问。完整的职业经历、项目成果和联系方式。"
+            : "Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI &amp; CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+          }
         />
         <meta
           name="keywords"
-          content="Rin Huang, Sunchuangyu Huang, Huang Sunchuangyu, 黄孙创宇, 黄孙 Rin, HUANG SUNCHUANGYU, HUANGSUNCHUANGYU, HUANG SUN CHUANG YU, Huang Sun Chuang Yu, Senior Data Analyst, Data Science, Research Software Engineer, Full-Stack Developer, Adelaide, South Australia Police, SAPOL, WEHI, CSIRO, Python, Machine Learning, Statistical Analysis, Government Analytics, Strategic Intelligence"
+          content="Rin Huang, Sunchuangyu Huang, Huang Sunchuangyu, 黄孙创宇, 黄孙 Rin, HUANG SUNCHUANGYU, Senior Data Analyst, Data Science, 高级数据分析师, 数据分析, 数据科学, 软件工程师, 澳大利亚, Research Software Engineer, Full-Stack Developer, Adelaide, South Australia Police, SAPOL, WEHI, CSIRO, Python, Machine Learning, Strategic Intelligence"
         />
 
         {/* ── Geo (local SEO) ── */}
@@ -282,26 +288,27 @@ export default function Home() {
       </Head>
 
       <SeoHead
-        title="Rin Huang (黄孙创宇) — Official Portfolio | Senior Data Analyst"
-        description="Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI &amp; CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+        title={isZh ? "Rin Huang (黄孙创宇) — 个人主页 | 高级数据分析师" : "Rin Huang (黄孙创宇) — Official Portfolio | Senior Data Analyst"}
+        description={isZh ? "Rin Huang（黄孙创宇）的官方网站 — 南澳大利亚警察局高级数据分析师。职业经历、项目成果、23项专业认证。亦被称为 Huang Sunchuangyu、HUANGSUNCHUANGYU。" : "Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI &amp; CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."}
         path="/"
-        ogImage={{ title: "Rin Huang", subtitle: "Senior Data Analyst @ SAPOL", section: "home" }}
+        ogImage={{ title: "Rin Huang", subtitle: isZh ? "高级数据分析师 @ SAPOL" : "Senior Data Analyst @ SAPOL", section: "home" }}
         ogType="profile"
-        ogTitle="Rin Huang (黄孙创宇 · Huang Sunchuangyu) — Senior Data Analyst · Research Software Engineer"
-        ogDescription="Official personal portfolio of Rin Huang (黄孙创宇) — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Career history, projects, skills, and contact."
+        ogTitle={isZh ? "Rin Huang (黄孙创宇) — 高级数据分析师 · 研究软件工程师" : "Rin Huang (黄孙创宇 · Huang Sunchuangyu) — Senior Data Analyst · Research Software Engineer"}
+        ogDescription={isZh ? "Rin Huang（黄孙创宇）的个人主页 — 南澳大利亚警察局高级数据分析师，WEHI研究软件工程师，CSIRO数据科学顾问。职业经历、项目成果、技能与联系方式。" : "Official personal portfolio of Rin Huang (黄孙创宇) — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Career history, projects, skills, and contact."}
+        locale={locale}
         extraMeta={[
           { name: "twitter:site", content: "@rNLKJA" },
           { name: "twitter:creator", content: "@rNLKJA" },
           { name: "twitter:domain", content: "rin.contact" },
-          { name: "twitter:label1", content: "Role" },
-          { name: "twitter:data1", content: "Senior Data Analyst &middot; Adelaide, SA" },
-          { name: "twitter:label2", content: "Specialisation" },
-          { name: "twitter:data2", content: "Data Science &middot; Strategic Intelligence" },
+          { name: "twitter:label1", content: isZh ? "职位" : "Role" },
+          { name: "twitter:data1", content: isZh ? "高级数据分析师 · 阿德莱德" : "Senior Data Analyst &middot; Adelaide, SA" },
+          { name: "twitter:label2", content: isZh ? "专长" : "Specialisation" },
+          { name: "twitter:data2", content: isZh ? "数据科学 · 战略情报" : "Data Science &middot; Strategic Intelligence" },
           { property: "profile:first_name", content: "Sunchuangyu" },
           { property: "profile:last_name", content: "Huang" },
           { property: "profile:username", content: "rNLKJA" },
           { property: "og:updated_time", content: "2026-03-10T00:00:00+10:30" },
-          { property: "og:locale:alternate", content: "zh_CN" },
+          { property: "og:locale:alternate", content: isZh ? "en_AU" : "zh_CN" },
         ]}
       />
 

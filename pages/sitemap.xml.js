@@ -33,6 +33,14 @@ const CORE = [
   { path: "/blog",           priority: 0.8, freq: "weekly"  },
 ];
 
+// ── zh-Hans pages (Tier 1 translations) ───────────────────────────────────────
+const ZH_PAGES = [
+  { path: "/",        priority: 1.0, freq: "weekly" },
+  { path: "/about",   priority: 0.8, freq: "monthly" },
+  { path: "/resume",  priority: 0.7, freq: "monthly" },
+  { path: "/hire-me", priority: 0.7, freq: "monthly" },
+];
+
 // ── Section index pages ───────────────────────────────────────────────────────
 const INDEXES = [
   { path: "/ds",             priority: 0.6, freq: "monthly" },
@@ -99,7 +107,7 @@ async function generateSitemap() {
     // Homepage with hreflang + image sitemap
     urlXml({ path: "/", priority: 1.0, freq: "weekly" }, today, [
       `    <xhtml:link rel="alternate" hreflang="en-AU"     href="${BASE_URL}/"/>`,
-      `    <xhtml:link rel="alternate" hreflang="zh-Hans"   href="${BASE_URL}/"/>`,
+      `    <xhtml:link rel="alternate" hreflang="zh-Hans"   href="${BASE_URL}/zh-Hans/"/>`,
       `    <xhtml:link rel="alternate" hreflang="x-default"  href="${BASE_URL}/"/>`,
       imageExtra,
     ].join("\n")),
@@ -111,6 +119,14 @@ async function generateSitemap() {
     ...INFO.map(p => urlXml(p, today)),
     // Blog posts
     ...blogPostUrls,
+    // zh-Hans pages
+    ...ZH_PAGES.map(({ path, priority, freq }) =>
+      urlXml({ path: `/zh-Hans${path}`, priority, freq }, today, [
+        `    <xhtml:link rel="alternate" hreflang="en-AU"   href="${BASE_URL}${path === "/" ? "/" : path}/"/>`,
+        `    <xhtml:link rel="alternate" hreflang="zh-Hans" href="${BASE_URL}/zh-Hans${path === "/" ? "/" : path}/"/>`,
+        `    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}${path === "/" ? "/" : path}/"/>`,
+      ].join("\n"))
+    ),
   ].join("\n");
 
   return [

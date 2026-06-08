@@ -6,6 +6,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/router";
+import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 
 // ── Command output library ────────────────────────────────────────────────────
 
@@ -229,6 +231,8 @@ const INTERNAL_ROUTES = ["/hire-me", "/tools/card", "/career", "/projects", "/la
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function ResumePage() {
   const router = useRouter();
+  const { t, locale = "en-AU" } = useI18n();
+  const isZh = locale === "zh-Hans";
   const [lines, setLines] = useState(WELCOME);
   const [input, setInput]  = useState("");
   const [cmdHist, setCmdHist] = useState([]);
@@ -408,22 +412,22 @@ export default function ResumePage() {
 
   return (
     <>
-      <Head>
-        <title>Resume CLI — Rin Huang · rin.contact</title>
-        <meta name="description" content="Interactive CLI resume for Rin Huang. Type commands to explore career, skills, projects, and education." />
-        <link rel="canonical" href="https://rin.contact/resume" />
-        <meta property="og:title" content="Resume — Sunchuangyu (Rin) Huang" />
-        <meta property="og:description" content="Interactive CLI resume. Type commands to explore career, skills, projects, and education." />
-        <meta property="og:url" content="https://rin.contact/resume" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=Interactive%20Resume&subtitle=Type%20commands%20to%20explore%20career%20%26%20projects&section=resume" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Resume — Sunchuangyu (Rin) Huang" />
-        <meta name="twitter:description" content="Interactive CLI resume. Type commands to explore." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=Interactive%20Resume&subtitle=Type%20commands%20to%20explore%20career%20%26%20projects&section=resume" />
-      </Head>
+      <SeoHead
+        title={isZh ? "命令行简历 — Rin Huang · rin.contact" : "Resume CLI — Rin Huang · rin.contact"}
+        description={isZh ? "Rin Huang（黄孙创宇）的交互式命令行简历。输入命令探索职业经历、技能、项目和学历。" : "Interactive CLI resume for Rin Huang. Type commands to explore career, skills, projects, and education."}
+        path="/resume"
+        ogImage={{ title: isZh ? "交互式简历" : "Interactive Resume", subtitle: isZh ? "输入命令探索职业与项目" : "Type commands to explore career & projects", section: "resume" }}
+        locale={locale}
+      />
+
+      {/* Locale context header */}
+      {isZh && (
+        <div className="bg-[#0C0C0C] border-b border-[#181818] px-6 py-3">
+          <p className="text-[10px] font-mono text-[#555] tracking-widest uppercase">
+            {t("resume.contextHeader")}
+          </p>
+        </div>
+      )}
 
       {/* Terminal container */}
       <div
@@ -482,10 +486,18 @@ export default function ResumePage() {
             </>
           ) : (
             <>
-              <span>↑↓ history</span>
-              <span>Enter run</span>
-              <span>help — list commands</span>
-              <span>exit — go home</span>
+              {isZh ? (
+                <>
+                  <span>↑↓ {t("resume.hintBar")}</span>
+                </>
+              ) : (
+                <>
+                  <span>↑↓ history</span>
+                  <span>Enter run</span>
+                  <span>help — list commands</span>
+                  <span>exit — go home</span>
+                </>
+              )}
             </>
           )}
         </div>

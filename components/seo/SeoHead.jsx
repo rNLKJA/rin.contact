@@ -18,7 +18,6 @@ import Head from "next/head";
 
 const BASE_URL = "https://rin.contact";
 const SITE_NAME = "Rin Huang";
-const LOCALE = "en_AU";
 
 /** Strip " — rin.contact" suffix from a title to get the bare OG title. */
 function extractOgTitle(title) {
@@ -36,8 +35,11 @@ export default function SeoHead({
   ogImageAlt,
   noindex = false,
   extraMeta = [],
+  locale = "en-AU",
 }) {
-  const url = `${BASE_URL}${path}`;
+  const localePrefix = locale === "zh-Hans" ? "/zh-Hans" : "";
+  const url = `${BASE_URL}${localePrefix}${path}`;
+  const ogLocale = locale === "zh-Hans" ? "zh_CN" : "en_AU";
   const resolvedOgTitle = ogTitle ?? extractOgTitle(title);
   const resolvedOgDesc = ogDescription ?? description;
   const resolvedOgImageAlt = ogImageAlt ?? resolvedOgTitle;
@@ -64,7 +66,7 @@ export default function SeoHead({
       {/* Open Graph */}
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content={LOCALE} />
+      <meta property="og:locale" content={ogLocale} />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={resolvedOgTitle} />
       <meta property="og:description" content={resolvedOgDesc} />

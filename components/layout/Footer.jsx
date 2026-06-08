@@ -3,46 +3,48 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FiGithub, FiMail } from "react-icons/fi";
+import { useI18n } from "@/contexts/I18nContext";
 import DesignPhilosophyModal from "@/components/ui/DesignPhilosophyModal";
 
 const NAV_COLS = [
   {
-    heading: "Navigate",
+    headingKey: "footer.navigate",
     links: [
-      { href: "/strategic", label: "Strategic" },
-      { href: "/career",   label: "Career"   },
-      { href: "/projects", label: "Projects" },
-      { href: "/lab",      label: "Lab"      },
-      { href: "/about",    label: "About"    },
-      { href: "/resume",   label: "Resume"   },
-      { href: "/#contact", label: "Contact"  },
+      { href: "/strategic", key: "nav.strategic" },
+      { href: "/career",    key: "nav.career"    },
+      { href: "/projects",  key: "nav.projects"  },
+      { href: "/lab",       key: "nav.lab"       },
+      { href: "/about",     key: "nav.about"     },
+      { href: "/resume",    key: "nav.resume"    },
+      { href: "/#contact",  key: "nav.contact"   },
     ],
   },
   {
-    heading: "Pages",
+    headingKey: "footer.pages",
     links: [
-      { href: "/hire-me", label: "Hire Me",       cta: true },
-      { href: "/tools/card",    label: "Business Card"            },
-      { href: "/blog",     label: "Blog"                     },
-      { href: "/info/api",     label: "API"                      },
-      { href: "/resume",  label: "CLI Resume"               },
-      { href: "https://www.linkedin.com/in/sunchuangyuhuang/", label: "LinkedIn",  external: true },
-      { href: "https://github.com/rNLKJA",                     label: "GitHub",    external: true },
-      { href: "https://www.instagram.com/chuangyu_hscy/",      label: "Instagram", external: true },
-      { href: "mailto:huang@rin.contact",                      label: "Email"                     },
+      { href: "/hire-me", key: "nav.hireMe", cta: true },
+      { href: "/tools/card",       key: "nav.businessCard" },
+      { href: "/blog",             key: "nav.blog"          },
+      { href: "/info/api",         key: "nav.api"           },
+      { href: "/resume",           key: "nav.cliResume"     },
+      { href: "https://www.linkedin.com/in/sunchuangyuhuang/", key: "nav.linkedin",  external: true },
+      { href: "https://github.com/rNLKJA",                     key: "nav.github",    external: true },
+      { href: "https://www.instagram.com/chuangyu_hscy/",      key: "nav.instagram", external: true },
+      { href: "mailto:huang@rin.contact",                      key: "nav.email"                     },
     ],
   },
 ];
 
 const SOCIAL_ICONS = [
-  { href: "https://www.linkedin.com/in/sunchuangyuhuang/", label: "LinkedIn",  Icon: FaLinkedin  },
-  { href: "https://github.com/rNLKJA",                     label: "GitHub",    Icon: FiGithub    },
-  { href: "https://www.instagram.com/chuangyu_hscy/",      label: "Instagram", Icon: FaInstagram },
-  { href: "mailto:huang@rin.contact",                      label: "Email",     Icon: FiMail      },
+  { href: "https://www.linkedin.com/in/sunchuangyuhuang/", key: "nav.linkedin",  Icon: FaLinkedin  },
+  { href: "https://github.com/rNLKJA",                     key: "nav.github",    Icon: FiGithub    },
+  { href: "https://www.instagram.com/chuangyu_hscy/",      key: "nav.instagram", Icon: FaInstagram },
+  { href: "mailto:huang@rin.contact",                      key: "nav.email",     Icon: FiMail      },
 ];
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const { t } = useI18n();
 
   return (
     <footer className="bg-[#1A1A1A] dark:bg-[#0A0A0A] relative overflow-hidden" role="contentinfo">
@@ -91,7 +93,7 @@ const Footer = () => {
               <span className="font-semibold text-sm text-white tracking-tight">rNLKJA</span>
             </div>
             <p className="text-xs text-[#AAAAAA] leading-relaxed max-w-[220px]">
-              Senior Data Analyst · Research Software Engineer · Adelaide, Australia.
+              {t("common.siteDescription")}
             </p>
             {/* Wisr wavy micro accent */}
             <svg width="60" height="7" viewBox="0 0 60 7" aria-hidden="true">
@@ -101,18 +103,18 @@ const Footer = () => {
           </div>
 
           {/* Nav columns */}
-          {NAV_COLS.map(({ heading, links }) => (
-            <div key={heading}>
-              <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">{heading}</p>
+          {NAV_COLS.map(({ headingKey, links }) => (
+            <div key={headingKey}>
+              <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">{t(headingKey)}</p>
               <ul className="space-y-2.5">
-                {links.map(({ href, label, external, cta }) => (
-                  <li key={label}>
+                {links.map(({ href, key, external, cta }) => (
+                  <li key={key}>
                     {external ? (
                       <a
                         href={href} target="_blank" rel="noreferrer"
                         className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200 flex items-center gap-1.5 group"
                       >
-                        {label}
+                        {t(key)}
                         <span className="text-[#555555] group-hover:text-white transition-colors duration-200 text-[10px]">↗</span>
                       </a>
                     ) : href.startsWith("/") ? (
@@ -124,14 +126,14 @@ const Footer = () => {
                             : "text-[#AAAAAA] hover:text-white"
                         }`}
                       >
-                        {label}{cta && " →"}
+                        {t(key)}{cta && " →"}
                       </Link>
                     ) : (
                       <a
                         href={href}
                         className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200"
                       >
-                        {label}
+                        {t(key)}
                       </a>
                     )}
                   </li>
@@ -139,10 +141,10 @@ const Footer = () => {
               </ul>
 
               {/* Subtle easter egg hint on the "Pages" column */}
-              {heading === "Pages" && (
+              {headingKey === "footer.pages" && (
                 <p className="text-[9px] text-[#333333] mt-5 leading-relaxed font-mono">
                   · · ·{" "}
-                  <span title="Try /fun/secret">there&apos;s more if you look</span>
+                  <span title="Try /fun/secret">{t("common.thereIsMore")}</span>
                 </p>
               )}
             </div>
@@ -157,19 +159,19 @@ const Footer = () => {
 
           {/* Social pill chips */}
           <div className="flex flex-wrap gap-2">
-            {SOCIAL_ICONS.map(({ href, label, Icon }) => (
+            {SOCIAL_ICONS.map(({ href, key, Icon }) => (
               <a
-                key={label}
+                key={key}
                 href={href}
-                target={label !== "Email" ? "_blank" : undefined}
+                target={key !== "nav.email" ? "_blank" : undefined}
                 rel="noreferrer"
-                aria-label={label}
+                aria-label={t(key)}
                 className="inline-flex items-center gap-1.5 border border-[#333333] px-3.5 py-1.5 rounded-full
                            text-[10px] tracking-widest uppercase text-[#AAAAAA]
                            hover:border-white hover:text-white transition-all duration-200"
               >
                 <Icon size={11} aria-hidden="true" />
-                {label}
+                {t(key)}
               </a>
             ))}
           </div>

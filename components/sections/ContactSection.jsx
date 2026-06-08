@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { FaLinkedin } from "react-icons/fa";
 import { FiGithub, FiMail, FiPhone, FiMapPin, FiX, FiCheckCircle, FiAlertCircle, FiCoffee, FiCalendar } from "react-icons/fi";
 import { useInView } from "@/hooks/useInView";
+import { useI18n } from "@/contexts/I18nContext";
 
 // ─── EmailJS config ───────────────────────────────────────────────
 const EMAILJS_SERVICE_ID  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID  || "service_5uxfc9r";
@@ -63,6 +64,7 @@ function Toast({ type, message, onClose }) {
 }
 
 export default function ContactSection() {
+  const { t } = useI18n();
   const [ref, inView] = useInView();
   const [formRef, formInView] = useInView();
   const [form,   setForm]   = useState({ name: "", email: "", message: "" });
@@ -172,10 +174,10 @@ export default function ContactSection() {
           }`}
         >
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
-            07 — Contact
+            {t("contact.sectionLabel")}
           </p>
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">
-            Get in Touch
+            {t("contact.heading")}
           </h2>
           {/* Wisr-style wavy accent */}
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
@@ -183,9 +185,7 @@ export default function ContactSection() {
                   className="stroke-[#E0E0E0] dark:stroke-[#3D3D3D]" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
           </svg>
           <p className="text-base text-[#3D3D3D] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
-            Whether it is a data challenge, a research collaboration, a project
-            idea, or just a coffee — I would genuinely love to hear from you.
-            I am always open to conversations that push things forward.
+            {t("contact.description")}
           </p>
         </div>
 
@@ -283,7 +283,7 @@ export default function ContactSection() {
             {/* Schedule a call — Calendly */}
             {process.env.NEXT_PUBLIC_CALENDLY_URL && (
               <div className="flex flex-col gap-3">
-                <p className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Schedule</p>
+                <p className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.schedule")}</p>
                 <a
                   href={process.env.NEXT_PUBLIC_CALENDLY_URL}
                   target="_blank"
@@ -291,10 +291,10 @@ export default function ContactSection() {
                   className="inline-flex items-center gap-2.5 self-start border border-[#FF3C3C] px-5 py-2.5
                              rounded-full text-xs text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white
                              transition-colors duration-200"
-                  aria-label="Schedule a call with Rin via Calendly"
+                  aria-label={t("contact.schedule")}
                 >
                   <FiCalendar size={13} aria-hidden="true" />
-                  Schedule a call
+                  {t("contact.schedule")}
                 </a>
               </div>
             )}
@@ -303,7 +303,7 @@ export default function ContactSection() {
 
             {/* Buy Me a Coffee */}
             <div className="flex flex-col gap-3">
-              <p className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Support</p>
+              <p className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.support")}</p>
               <a
                 href="https://www.buymeacoffee.com/rNLKJA"
                 target="_blank"
@@ -311,10 +311,10 @@ export default function ContactSection() {
                 className="inline-flex items-center gap-2.5 self-start border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-2.5
                            rounded-full text-xs text-[#7A7A7A] dark:text-[#9A9A9A] hover:border-[#F5C542] hover:text-[#F5C542]
                            transition-colors duration-200"
-                aria-label="Buy Rin a coffee on buymeacoffee.com"
+                aria-label={t("contact.buyMeCoffee")}
               >
                 <FiCoffee size={13} aria-hidden="true" />
-                Buy me a coffee
+                {t("contact.buyMeCoffee")}
               </a>
             </div>
 
@@ -323,10 +323,10 @@ export default function ContactSection() {
           {/* Right — contact form */}
           <form onSubmit={handleSubmit} noValidate aria-label="Contact form" className="flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Name</label>
+              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.form.name")}</label>
               <input
                 id="name" name="name" type="text" required autoComplete="name"
-                value={form.name} onChange={handleChange} placeholder="Your name"
+                value={form.name} onChange={handleChange} placeholder={t("contact.form.namePlaceholder")}
                 className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 text-sm bg-white dark:bg-[#252525] text-black dark:text-white
                            placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
@@ -334,10 +334,10 @@ export default function ContactSection() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Email</label>
+              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.form.email")}</label>
               <input
                 id="email" name="email" type="email" required autoComplete="email"
-                value={form.email} onChange={handleChange} placeholder="your@email.com"
+                value={form.email} onChange={handleChange} placeholder={t("contact.form.emailPlaceholder")}
                 className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 text-sm bg-white dark:bg-[#252525] text-black dark:text-white
                            placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
@@ -345,10 +345,10 @@ export default function ContactSection() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">Message</label>
+              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.form.message")}</label>
               <textarea
                 id="message" name="message" required rows={6}
-                value={form.message} onChange={handleChange} placeholder="Leave your message here..."
+                value={form.message} onChange={handleChange} placeholder={t("contact.form.messagePlaceholder")}
                 className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 text-sm bg-white dark:bg-[#252525] text-black dark:text-white resize-none
                            placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-2xl"
@@ -367,12 +367,10 @@ export default function ContactSection() {
               aria-live="polite"
             >
               {status === "sending"
-                ? "Sending..."
+                ? t("contact.form.sending")
                 : status === "sent"
-                ? "Message Sent ✓"
-                : status === "error"
-                ? "Try Again"
-                : "Send Message"}
+                ? t("contact.form.sent")
+                : t("contact.form.send")}
             </button>
           </form>
         </div>

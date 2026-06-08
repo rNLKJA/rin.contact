@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { I18nProvider } from "@/contexts/I18nContext";
 import { bitcount, dmSans, playfair } from "@/lib/fonts";
 
 import "../public/styles/globals.css";
@@ -289,31 +290,35 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider>
-      <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}>
-        {/* Skip-to-content link — WCAG 2.4.1: first focusable element */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999]
-                     focus:px-4 focus:py-2 focus:bg-white dark:focus:bg-[#1A1A1A]
-                     focus:text-black dark:focus:text-white focus:border focus:border-black
-                     dark:focus:border-white focus:text-xs focus:tracking-widest focus:uppercase
-                     focus:outline-none transition-none"
-        >
-          Skip to content
-        </a>
-        <BootOverlay />
-        <CustomCursor />
-        <CopyUrlToast />
-        <IdleToast />
-        <CopyEmailConfetti />
-        <SecretWordTrigger />
-        <Header />
-        <main className="flex-1" id="main-content">
-          <Component {...pageProps} />
-        </main>
-        <Footer />
-        <Analytics debug={false} />
-      </div>
+      <I18nProvider>
+        <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}>
+          {/* Skip-to-content link — WCAG 2.4.1: first focusable element */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999]
+                       focus:px-4 focus:py-2 focus:bg-white dark:focus:bg-[#1A1A1A]
+                       focus:text-black dark:focus:text-white focus:border focus:border-black
+                       dark:focus:border-white focus:text-xs focus:tracking-widest focus:uppercase
+                       focus:outline-none transition-none"
+          >
+            Skip to content
+          </a>
+          <BootOverlay />
+          <CustomCursor />
+          <CopyUrlToast />
+          <IdleToast />
+          <CopyEmailConfetti />
+          <SecretWordTrigger />
+          <Header />
+          <main className="flex-1" id="main-content">
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+          <Analytics debug={false} />
+        </div>
+      </I18nProvider>
+    </ThemeProvider>
+  );
     </ThemeProvider>
   );
 }

@@ -2,6 +2,8 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import LocaleSwitcher from "@/components/ui/LocaleSwitcher";
+import { useI18n } from "@/contexts/I18nContext";
 
 // ── Logo with double-click glitch easter egg ──────────────────────────────────
 const GLITCH_ALTS = ["rNLKJA", "r̷N̸L̵K̶J̷A̸", "404", "Rin?", "¯\\_(ツ)_/¯", "rNLKJA"];
@@ -59,24 +61,25 @@ function LogoWithGlitch() {
 
 
 const NAV_LINKS = [
-  { href: "/career",   label: "Career"    },
-  { href: "/projects", label: "Projects"  },
-  { href: "/lab",      label: "Lab"       },
-  { href: "/blog",     label: "Blog"      },
-  { href: "/about",    label: "About"     },
-  { href: "/resume",   label: "Resume"    },
-  { href: "/#contact", label: "Contact"   },
+  { href: "/career",   key: "nav.career"   },
+  { href: "/projects", key: "nav.projects" },
+  { href: "/lab",      key: "nav.lab"      },
+  { href: "/blog",     key: "nav.blog"     },
+  { href: "/about",    key: "nav.about"    },
+  { href: "/resume",   key: "nav.resume"   },
+  { href: "/#contact", key: "nav.contact"  },
 ];
 
 // Standalone page links — rendered as distinct CTA buttons, not inline nav items
 const PAGE_LINKS = [
-  { href: "/tools/card",     label: "Card",    title: "Download business card (.vcf)" },
-  { href: "/hire-me",  label: "Hire Me", title: "Hiring info and contact pitch", cta: true },
+  { href: "/tools/card", key: "nav.card",    titleKey: "nav.businessCard" },
+  { href: "/hire-me",  key: "nav.hireMe", titleKey: "nav.hireMe", cta: true },
 ];
 
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useI18n();
   // Direct DOM refs — scroll state never goes through React, so no re-renders on scroll
   const headerRef   = useRef(null);
   const progressRef = useRef(null);
@@ -153,36 +156,39 @@ export default function Header() {
           className="hidden md:flex flex-row items-center gap-1 text-[11px] tracking-widest uppercase"
           aria-label="Primary navigation"
         >
-          {NAV_LINKS.map(({ href, label }) => (
+          {NAV_LINKS.map(({ href, key }) => (
             <Link
-              key={label}
+              key={key}
               href={href}
               className="px-3 py-1.5 rounded-full text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]
                          transition-all duration-200"
             >
-              {label}
+              {t(key)}
             </Link>
           ))}
 
           {/* Thin separator */}
           <span className="h-3.5 w-px bg-[#E0E0E0] dark:bg-[#3D3D3D] mx-1.5" aria-hidden="true" />
 
+          {/* Locale switcher */}
+          <LocaleSwitcher />
+
           {/* Theme toggle — desktop */}
           <ThemeToggle className="ml-1" />
 
           {/* Page links — card + hire-me */}
-          {PAGE_LINKS.map(({ href, label, title, cta }) => (
+          {PAGE_LINKS.map(({ href, key, titleKey, cta }) => (
             <Link
-              key={label}
+              key={key}
               href={href}
-              title={title}
+              title={t(titleKey)}
               className={
                 cta
                   ? "px-3.5 py-1.5 border border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white transition-all duration-200"
                   : "px-3 py-1.5 rounded-full text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-all duration-200"
               }
             >
-              {label}
+              {t(key)}
             </Link>
           ))}
         </nav>
@@ -218,9 +224,9 @@ export default function Header() {
 
         {/* Nav links — editorial numbered style */}
         <nav className="flex-1 flex flex-col justify-center px-8 gap-0" aria-label="Mobile navigation">
-          {NAV_LINKS.map(({ href, label }, i) => (
+          {NAV_LINKS.map(({ href, key }, i) => (
             <Link
-              key={label}
+              key={key}
               href={href}
               onClick={() => setMenuOpen(false)}
               className="flex items-baseline gap-4 py-5 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group
@@ -229,16 +235,16 @@ export default function Header() {
               <span className="text-[10px] tracking-widest tabular-nums text-[#C8C8C8] flex-shrink-0 w-5 group-hover:text-[#FF3C3C] transition-colors duration-200">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="text-2xl font-semibold tracking-tight">{label}</span>
+              <span className="text-2xl font-semibold tracking-tight">{t(key)}</span>
               <span className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm">↗</span>
             </Link>
           ))}
 
           {/* Page links — separated by a subtle label */}
-          <p className="text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">Pages</p>
-          {PAGE_LINKS.map(({ href, label, cta }) => (
+          <p className="text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">{t("nav.pages")}</p>
+          {PAGE_LINKS.map(({ href, key, cta }) => (
             <Link
-              key={label}
+              key={key}
               href={href}
               onClick={() => setMenuOpen(false)}
               className={`flex items-center gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
@@ -248,7 +254,7 @@ export default function Header() {
               }`}
             >
               <span className="text-[10px] tracking-widest text-[#E0E0E0] flex-shrink-0 w-5">→</span>
-              <span className="text-xl font-semibold tracking-tight">{label}</span>
+              <span className="text-xl font-semibold tracking-tight">{t(key)}</span>
               <span className="ml-auto text-[#E0E0E0] group-hover:text-current transition-colors duration-200 text-sm">↗</span>
             </Link>
           ))}
@@ -256,7 +262,10 @@ export default function Header() {
 
         {/* Bottom bar — theme toggle + social pill chips */}
         <div className="px-8 py-6 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex items-center justify-between gap-4">
-          <ThemeToggle size="mobile" />
+          <div className="flex items-center gap-2">
+            <ThemeToggle size="mobile" />
+            <LocaleSwitcher />
+          </div>
           <div className="flex items-center gap-2">
             {[
               { label: "LinkedIn", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },

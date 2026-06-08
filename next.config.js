@@ -4,6 +4,11 @@ const path = require("path");
 const nextConfig = {
   trailingSlash: true,
 
+  i18n: {
+    locales: ["en-AU", "zh-Hans"],
+    defaultLocale: "en-AU",
+  },
+
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

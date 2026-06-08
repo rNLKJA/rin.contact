@@ -1,0 +1,148 @@
+{
+  "common": {
+    "siteName": "Rin Huang",
+    "skipToContent": "跳转到主内容",
+    "siteDescription": "高级数据分析师 · 研究软件工程师 · 澳大利亚阿德莱德",
+    "copyright": "保留所有权利",
+    "thereIsMore": "更多的内容等你发现"
+  },
+  "nav": {
+    "career": "职业经历",
+    "projects": "项目",
+    "lab": "实验室",
+    "blog": "博客",
+    "about": "关于我",
+    "resume": "简历",
+    "contact": "联系",
+    "pages": "页面",
+    "card": "名片",
+    "hireMe": "招聘意向",
+    "businessCard": "电子名片",
+    "cliResume": "命令行简历",
+    "api": "API",
+    "linkedin": "领英",
+    "github": "GitHub",
+    "instagram": "Instagram",
+    "email": "邮箱",
+    "strategic": "战略能力",
+    "fullProfile": "完整主页"
+  },
+  "locale": {
+    "current": "EN",
+    "switchTo": "中文"
+  },
+  "hero": {
+    "greeting": {
+      "early": "早起的人，我懂的。",
+      "morning": "早上好。",
+      "lunch": "午餐吃了吗？",
+      "afternoon": "下午好。",
+      "evening": "晚上好。",
+      "late": "还在熬夜工作？",
+      "night": "这么晚了，希望你一切安好。"
+    },
+    "statusPill": "高级数据分析师 (ASO7) · 南澳大利亚阿德莱德",
+    "sectionLabel": "01 — 个人简介",
+    "srName": " — 黄孙创宇 · Huang Sunchuangyu · HUANGSUNCHUANGYU · Rin Huang · Sunchuangyu Huang",
+    "subtitle": "黄孙创宇 (Sunchuangyu Huang)",
+    "pronouns": "阿德莱德 & 墨尔本",
+    "bio": "从CSIRO的气候风险建模到南澳政府的内阁仪表盘，从WEHI的基因组学流程到墨尔本大学的心理健康移动应用——我一直在数据、战略和工程交汇的领域工作。通才的天性，专才的素养。",
+    "ctaCareer": "职业路径",
+    "ctaContact": "联系我"
+  },
+  "heroRoles": [
+    "高级数据分析师 @ 南澳警察局",
+    "研究软件工程师 @ WEHI",
+    "数据科学顾问 @ CSIRO & CSL",
+    "联合创始人兼技术负责人 @ Mapiva",
+    "情报协调官 @ 南澳律政部",
+    "全栈工程师 @ 墨尔本大学",
+    "持续改进专员 @ 人生",
+    "战略思考专员 @ 人生"
+  ],
+  "heroStats": [
+    { "value": 6, "label": "行业角色", "sub": "横跨政府、科研与创业" },
+    { "value": 17, "label": "项目", "sub": "已交付上线" },
+    { "value": 2, "label": "学位", "sub": "墨尔本大学" },
+    { "value": 23, "label": "证书", "sub": "云计算 · 数据分析 · 敏捷管理" }
+  ],
+  "heroTags": [
+    "战略思维", "持续改进", "数据科学",
+    "统计情报", "政府数据分析", "Web 开发",
+    "移动端开发", "研究工程", "云与基础设施",
+    "UI/UX 设计", "项目管理"
+  ],
+  "contact": {
+    "sectionLabel": "07 — 联系我",
+    "heading": "保持联系",
+    "description": "无论您有数据分析难题、研究合作意向、项目创意，还是只想聊聊——我都很期待收到您的消息。我一直对能够推动进步的对谈持开放态度。",
+    "schedule": "预约通话",
+    "scheduleDesc": "预约30分钟通话。无推销，无压力。",
+    "support": "支持",
+    "buyMeCoffee": "请我喝杯咖啡",
+    "form": {
+      "name": "姓名",
+      "namePlaceholder": "您的姓名",
+      "email": "邮箱",
+      "emailPlaceholder": "your@email.com",
+      "message": "留言",
+      "messagePlaceholder": "想说什么？",
+      "send": "发送消息",
+      "sending": "发送中…",
+      "sent": "已发送！"
+    },
+    "toast": {
+      "successTitle": "消息已发送",
+      "successMessage": "消息已发送！我会尽快回复您。",
+      "errorTitle": "出错了",
+      "errorMessage": "请直接发送邮件至 huang@rin.contact",
+      "dismiss": "关闭通知"
+    }
+  },
+  "footer": {
+    "navigate": "导航",
+    "pages": "页面",
+    "brandName": "rNLKJA"
+  },
+  "about": {
+    "back": "返回",
+    "sectionLabel": "◈ — 关于我",
+    "heading": "技能专长",
+    "description": "七个技术领域。二十三项专业认证。还有一系列大家真正关心的问题，诚实地回答。"
+  },
+  "hireMe": {
+    "sectionLabel": "◈ — 招聘意向",
+    "heading": "想找我合作？",
+    "subheading": "好眼光。这是我的真实介绍。",
+    "whatIBring": "我的优势",
+    "openTo": "开放机会",
+    "ctaEmail": "联系我 →",
+    "ctaSchedule": "预约通话 ↗",
+    "ctaFullProfile": "← 完整主页",
+    "ctaBusinessCard": "电子名片",
+    "strengths": [
+      { "label": "跨领域适应力", "note": "政府 · 科研 · 生物技术 · 气候 · 医疗科技 · 创业" },
+      { "label": "战略 + 技术双轨", "note": "既能做ASO7情报框架，也能写Python数据管道——两者兼具" },
+      { "label": "沟通桥梁", "note": "把复杂分析转化为部长简报和利益相关方的决策依据" },
+      { "label": "复合成长型人才", "note": "自2020年职业成长指数年均复合增长率32.7%——每个新领域都加深了所有既有知识" },
+      { "label": "双语能力", "note": "中文（母语）· 英语（专业水平）· NAATI CPCB1认证" }
+    ],
+    "openToList": [
+      "数据与情报职位",
+      "研究合作",
+      "咨询项目",
+      "数据战略顾问",
+      "演讲 / 指导",
+      "有意义的挑战"
+    ],
+    "stats": [
+      { "v": "ASO7", "l": "当前职级" },
+      { "v": "4年+", "l": "行业经验" },
+      { "v": "6个", "l": "行业领域" }
+    ]
+  },
+  "resume": {
+    "contextHeader": "交互式命令行简历 — 输入 help 查看命令列表",
+    "hintBar": "浏览历史  ·  Enter 执行  ·  help 帮助  ·  clear 清屏  ·  exit 返回"
+  }
+}

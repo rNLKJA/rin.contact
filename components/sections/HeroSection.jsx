@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
+import { useI18n } from "@/contexts/I18nContext";
 
 // Inline SVGs — avoids react-icons bundle on critical hero path
 const LinkedInIcon = () => (
@@ -12,30 +13,16 @@ const GitHubIcon = () => (
   </svg>
 );
 
-const ROLES = [
-  "Senior Data Analyst @ SAPOL",
-  "Research Software Engineer @ WEHI",
-  "Data Science Consultant @ CSIRO & CSL",
-  "Co-Founder & Dev Lead @ Mapiva",
-  "Intelligence & Coordination Officer @ AGD",
-  "Full-Stack Engineer @ Unimelb",
-  "Continuous Improvement Specialist @ Life",
-  "Strategic Thinking Specialist @ Life",
-];
-
-const STATS = [
-  { value: 6,  label: "Roles",    sub: "across gov, research & startup" },
-  { value: 17, label: "Projects", sub: "shipped to production" },
-  { value: 2,  label: "Degrees",  sub: "University of Melbourne" },
-  { value: 23, label: "Certs",    sub: "cloud · analytics · agile" },
-];
-
-const TAGS = [
-  "Strategic Thinking", "Continuous Improvement", "Data Science",
-  "Statistical Intelligence", "Government Analytics", "Web Development",
-  "Mobile Development", "Research Engineering", "Cloud & Infrastructure",
-  "UI/UX Design", "Project Management",
-];
+// Greeting period keys mapped to translation keys
+const GREETING_KEYS = {
+  early:    "hero.greeting.early",
+  morning:  "hero.greeting.morning",
+  lunch:    "hero.greeting.lunch",
+  afternoon:"hero.greeting.afternoon",
+  evening:  "hero.greeting.evening",
+  late:     "hero.greeting.late",
+  night:    "hero.greeting.night",
+};
 
 // ─── Typewriter ──────────────────────────────────────────────────────────────
 function useTypewriter(words, speed = 80, pause = 1800) {
@@ -158,25 +145,29 @@ function useDotBurst() {
   return { spawn, bursts };
 }
 
-// ─── Time-of-day greeting ─────────────────────────────────────────────────────
+// ─── Time-of-day greeting — returns translation key ───────────────────────────
 function useTimeGreeting() {
   const [greeting, setGreeting] = useState("");
   useEffect(() => {
     const h = new Date().getHours();
-    if      (h >= 5  && h < 9)  setGreeting("Early bird, I see.");
-    else if (h >= 9  && h < 12) setGreeting("Good morning.");
-    else if (h >= 12 && h < 14) setGreeting("Hope you've had lunch.");
-    else if (h >= 14 && h < 17) setGreeting("Good afternoon.");
-    else if (h >= 17 && h < 20) setGreeting("Good evening.");
-    else if (h >= 20 && h < 23) setGreeting("Burning the midnight oil?");
-    else                         setGreeting("It's late. Hope you're well.");
+    if      (h >= 5  && h < 9)  setGreeting(GREETING_KEYS.early);
+    else if (h >= 9  && h < 12) setGreeting(GREETING_KEYS.morning);
+    else if (h >= 12 && h < 14) setGreeting(GREETING_KEYS.lunch);
+    else if (h >= 14 && h < 17) setGreeting(GREETING_KEYS.afternoon);
+    else if (h >= 17 && h < 20) setGreeting(GREETING_KEYS.evening);
+    else if (h >= 20 && h < 23) setGreeting(GREETING_KEYS.late);
+    else                         setGreeting(GREETING_KEYS.night);
   }, []);
   return greeting;
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export default function HeroSection() {
-  const role = useTypewriter(ROLES);
+  const { t } = useI18n();
+  const roles = t("heroRoles");
+  const stats = t("heroStats");
+  const tags = t("heroTags");
+  const role = useTypewriter(Array.isArray(roles) ? roles : []);
   const greeting = useTimeGreeting();
   const [statsStarted, setStatsStarted] = useState(false);
   const statsRef = useRef(null);
@@ -244,17 +235,17 @@ export default function HeroSection() {
               style={{ animation: "fade-in 0.8s ease-out both" }}
               aria-label={greeting}
             >
-              {greeting}
+              {t(greeting)}
             </p>
           )}
 
           {/* Status pill */}
           <div className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase rounded-full text-[#1A1A1A] dark:text-white">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 md:animate-blink" aria-hidden="true" />
-            ASO7 Senior Data Analyst · Adelaide, SA
+            {t("hero.statusPill")}
           </div>
 
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] mb-4">01 — Profile</p>
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] mb-4">{t("hero.sectionLabel")}</p>
 
           {/* Name — pinned to Bitcount display font; no animation on mobile for LCP */}
           <h1
@@ -262,11 +253,7 @@ export default function HeroSection() {
             itemProp="name"
           >
             Rin Huang
-            <span className="sr-only">
-              {/* All canonical name forms — indexed by crawlers, read by screen readers */}
-              {" "}— Sunchuangyu Huang · Huang Sunchuangyu · 黄孙创宇 · 黄孙 Rin ·
-              HUANG SUNCHUANGYU · HUANGSUNCHUANGYU · HUANG SUN CHUANG YU
-            </span>
+            <span className="sr-only">{t("hero.srName")}</span>
           </h1>
           {/* Wisr-style wavy underline accent */}
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
@@ -278,13 +265,13 @@ export default function HeroSection() {
           <div className="flex flex-wrap items-center gap-3 mb-8 md:animate-fade-up md:delay-100">
             <div className="flex flex-col">
               <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]" itemProp="alternateName">
-                Sunchuangyu Huang
+                {t("hero.subtitle")}
               </span>
               <span className="text-sm tracking-wide text-black dark:text-white md:text-[#7A7A7A] dark:md:text-[#AAAAAA]" lang="zh-Hans" itemProp="alternateName">
                 黄孙创宇
               </span>
               <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]">
-                He/Him · Adelaide &amp; Melbourne
+                {t("hero.pronouns")}
               </span>
             </div>
             <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]">|</span>
@@ -312,21 +299,18 @@ export default function HeroSection() {
 
           {/* Bio — LCP element: no animation on mobile so it paints immediately */}
           <p id="hero-bio" className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-10 md:animate-fade-up md:delay-300">
-            From climate risk modelling at CSIRO to ministerial dashboards for the
-            SA Government, from genomics pipelines at WEHI to a mental health mobile
-            app at UniMelb — I work at the edges of disciplines where data, strategy,
-            and engineering intersect. Generalist by nature, specialist by discipline.
+            {t("hero.bio")}
           </p>
 
           {/* CTAs — hero-ctas for LCP; magnetic on desktop; no animation on mobile for LCP */}
           <div className="hero-ctas flex flex-wrap items-center gap-3 md:animate-fade-up md:delay-400">
-            <MagneticButton href="#timeline" primary>Career Path</MagneticButton>
-            <MagneticButton href="#contact">Get in Touch</MagneticButton>
+            <MagneticButton href="#timeline" primary>{t("hero.ctaCareer")}</MagneticButton>
+            <MagneticButton href="#contact">{t("hero.ctaContact")}</MagneticButton>
           </div>
 
           {/* Tags — visible on mobile for LCP; staggered fade on desktop only */}
           <div className="flex flex-wrap gap-2 mt-10">
-            {TAGS.map((tag, i) => (
+            {tags.map((tag, i) => (
               <span
                 key={tag}
                 className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wider uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]
@@ -344,7 +328,7 @@ export default function HeroSection() {
         <div ref={statsRef}>
           {/* Desktop 2×2 grid */}
           <div className="hidden md:grid grid-cols-2 gap-px animate-fade-up delay-300">
-            {STATS.map(({ value, label, sub }, i) => (
+            {stats.map(({ value, label, sub }, i) => (
               <div
                 key={label}
                 className="bg-white dark:bg-[#0A0A0A] px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300 text-black dark:text-white"
@@ -365,7 +349,7 @@ export default function HeroSection() {
 
           {/* Mobile — flat strip */}
           <div className="flex flex-wrap gap-8 md:hidden text-black dark:text-white">
-            {STATS.map(({ value, label }, i) => (
+            {stats.map(({ value, label }, i) => (
               <div key={label} className="flex flex-col items-start">
                 <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight text-black dark:text-white">
                   <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
