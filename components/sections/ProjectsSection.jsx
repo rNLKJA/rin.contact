@@ -4,6 +4,40 @@ import { useInView } from "@/hooks/useInView";
 
 const PROJECTS = [
   {
+    id: "signal",
+    title: "Signal",
+    subtitle: "Governed LLM Data Product",
+    org: "Personal · Open Source",
+    period: "Jun 2026 – Present",
+    tag: "Data Engineering",
+    domain: ["AI / ML", "Open Source"],
+    status: "Live",
+    stack: ["Python", "FastAPI", "LLM", "Modal", "Pydantic v2", "Docker", "GitHub Actions", "CKAN / data.gov.au", "EU AI Act", "APS"],
+    summary:
+      "A governed data product that puts an LLM analyst layer over live South Australian crime data. Every answer is computed from real aggregates and logged as an auditable decision, with APS-aligned governance fields and EU AI Act risk framing. Deployed to Modal with a persisted audit trail.",
+    impact: "Live API · auditable decision log · APS + EU AI Act governance · 57 tests, CI green",
+    link: "https://github.com/rNLKJA/signal",
+    linkLabel: "View Signal repository on GitHub",
+    current: true,
+  },
+  {
+    id: "ranking-radar",
+    title: "Ranking Radar",
+    subtitle: "University Rankings Visualisation & Open Dataset",
+    org: "Personal · Open Source",
+    period: "Jun 2026",
+    tag: "Data Visualisation",
+    domain: ["Open Source", "Research"],
+    status: "Live",
+    stack: ["React", "TypeScript", "Vite", "Tailwind", "shadcn/ui", "D3.js", "Node.js", "Data Pipeline", "FAIR Data", "Vercel"],
+    summary:
+      "Brings four ranking systems (QS, Times Higher Education, and two U.S. News rankings) together for 3,790 universities across 40 years. A no-hard-coding pipeline pulls each ranking live and recovers QS history from archived edition IDs, published as an open, FAIR-licensed dataset.",
+    impact: "3,790 universities · 4 ranking systems · live-sourced FAIR open dataset",
+    link: "https://qs-usnews-ranking-viz.vercel.app",
+    linkText: "Visit live demo ↗",
+    linkLabel: "Open Ranking Radar live demo",
+  },
+  {
     id: "mapiva",
     title: "Mapiva",
     subtitle: "Social Connection Mobile App",

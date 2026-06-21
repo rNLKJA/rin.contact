@@ -63,7 +63,7 @@
   ],
   "heroStats": [
     { "value": 6, "label": "行业角色", "sub": "横跨政府、科研与创业" },
-    { "value": 17, "label": "项目", "sub": "已交付上线" },
+    { "value": 20, "label": "项目", "sub": "已交付上线" },
     { "value": 2, "label": "学位", "sub": "墨尔本大学" },
     { "value": 23, "label": "证书", "sub": "云计算 · 数据分析 · 敏捷管理" }
   ],

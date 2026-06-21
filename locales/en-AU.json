@@ -63,7 +63,7 @@
   ],
   "heroStats": [
     { "value": 6, "label": "Roles", "sub": "across gov, research & startup" },
-    { "value": 17, "label": "Projects", "sub": "shipped to production" },
+    { "value": 20, "label": "Projects", "sub": "shipped to production" },
     { "value": 2, "label": "Degrees", "sub": "University of Melbourne" },
     { "value": 23, "label": "Certs", "sub": "cloud · analytics · agile" }
   ],
@@ -168,8 +168,8 @@
         "tags": ["Government", "Research", "Engineering"], "stat": "4 years · 7 stations"
       },
       {
-        "num": "03", "title": "Projects", "desc": "Seventeen shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
-        "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "17 shipped"
+        "num": "03", "title": "Projects", "desc": "Twenty shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
+        "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "20 shipped"
       },
       {
         "num": "04", "title": "Lab", "desc": "The data playground. Career intelligence reports, dataset self-portrait, compound growth analysis.",
@@ -234,7 +234,7 @@
   "projects": {
     "sectionLabel": "03 — Work",
     "heading": "Selected Projects",
-    "headingDesc": "Seventeen shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
+    "headingDesc": "Twenty shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
     "searchPlaceholder": "Search projects...",
     "allProjects": "All",
     "impact": "Impact",

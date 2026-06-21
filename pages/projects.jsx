@@ -29,15 +29,15 @@ export default function ProjectsPage() {
         <meta name="description" content="Rin Huang's shipped projects — data engineering, Python automation, React Native mobile apps, Next.js web apps, cloud infrastructure, and open-source work." />
         <link rel="canonical" href="https://rin.contact/projects" />
         <meta property="og:title" content="Projects — Sunchuangyu (Rin) Huang" />
-        <meta property="og:description" content="17 projects shipped to production. Data engineering, cloud infrastructure, mobile apps, open-source." />
+        <meta property="og:description" content="20 projects shipped to production. Data engineering, cloud infrastructure, mobile apps, open-source." />
         <meta property="og:url" content="https://rin.contact/projects" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=17%20Projects&subtitle=Data%20engineering%2C%20cloud%2C%20mobile%20%26%20open-source&section=projects" />
+        <meta property="og:image" content="https://rin.contact/api/og?title=20%20Projects&subtitle=Data%20engineering%2C%20cloud%2C%20mobile%20%26%20open-source&section=projects" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Projects — Sunchuangyu (Rin) Huang" />
-        <meta name="twitter:description" content="17 projects shipped. Data engineering, cloud, mobile, open-source." />
+        <meta name="twitter:description" content="20 projects shipped. Data engineering, cloud, mobile, open-source." />
         <meta name="twitter:image" content="https://rin.contact/api/og?title=17%20Projects&subtitle=Data%20engineering%2C%20cloud%2C%20mobile%20%26%20open-source&section=projects" />
       </Head>
 
