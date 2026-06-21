@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
 import { useInView } from "@/hooks/useInView";
 
@@ -6,18 +7,22 @@ const PROJECTS = [
   {
     id: "signal",
     title: "Signal",
-    subtitle: "Governed LLM Data Product",
+    subtitle: "Governance Layer for AI-Assisted Government Data",
     org: "Personal · Open Source",
     period: "Jun 2026 – Present",
-    tag: "Data Engineering",
+    tag: "AI Governance",
     domain: ["AI / ML", "Open Source"],
-    status: "Live",
-    stack: ["Python", "FastAPI", "LLM", "Modal", "Pydantic v2", "Docker", "GitHub Actions", "CKAN / data.gov.au", "EU AI Act", "APS"],
+    status: "Live · v1.14",
+    stack: ["Python", "FastAPI", "LLM", "Modal", "Pydantic v2", "NumPy", "SciPy", "Docker", "GitHub Actions", "EU AI Act", "DTA v2.0"],
     summary:
-      "A governed data product that puts an LLM analyst layer over live South Australian crime data. Every answer is computed from real aggregates and logged as an auditable decision, with APS-aligned governance fields and EU AI Act risk framing. Deployed to Modal with a persisted audit trail.",
-    impact: "Live API · auditable decision log · APS + EU AI Act governance · 57 tests, CI green",
+      "A governed data product that puts AI governance on the request path — tamper-evident hash-chained audit logs, auto-generated DTA and EU AI Act compliance artefacts, and faithfulness-checked LLM narratives. The live reference implementation analyses South Australian and NYC crime statistics with Mann-Kendall trend tests, Sen-slope forecasting, and z-score anomaly review.",
+    impact: "Live deployment · 128 tests · Tamper-evident audit + DTA v2.0 governance set · Open-core product",
     link: "https://github.com/rNLKJA/signal",
     linkLabel: "View Signal repository on GitHub",
+    demo: "https://rnlkja--signal-api-api.modal.run",
+    demoLabel: "Open the live Signal dashboard",
+    caseStudy: "/projects/signal",
+    featured: true,
     current: true,
   },
   {
@@ -36,6 +41,21 @@ const PROJECTS = [
     link: "https://qs-usnews-ranking-viz.vercel.app",
     linkText: "Visit live demo ↗",
     linkLabel: "Open Ranking Radar live demo",
+  },
+  {
+    id: "sapol-epsb",
+    title: "SAPOL EPSB Analytics",
+    subtitle: "Integrity & Disciplinary Intelligence",
+    org: "South Australia Police — Ethical & Professional Standards",
+    period: "Mar 2026 – Present",
+    tag: "Analytics",
+    domain: "Government",
+    status: "In production",
+    stack: ["IAPro", "Blue Team", "Business Objects", "SQL", "Python", "Statistical Modelling", "ETL", "Data Modelling", "Power BI"],
+    summary:
+      "As ASO7 Senior Data Analyst in SAPOL's Ethical & Professional Standards Branch, leads the high-level analysis behind complaint resolution, governance and disciplinary processes — building IAPro reporting templates and dashboards, and maintaining SAPOL's core data as the authoritative single source for strategic, corporate and Parliamentary reporting.",
+    impact: "Senior officer level · Authoritative single source of truth · Parliamentary & executive reporting",
+    current: true,
   },
   {
     id: "mapiva",
@@ -121,8 +141,7 @@ const PROJECTS = [
     period: "Jul 2024 – Dec 2024",
     tag: "Analytics",
     domain: "Government",
-    status: "In production",
-    current: true,
+    status: "Completed",
     stack: ["Power BI", "Python", "SQL", "ArcGIS", "Time series", "Jupyter Notebook", "Research Software Engineering", "Power Query","IAPro"],
     summary:
       "Contributed to operational intelligence and crime analytics as an Intelligence and Coordination Officer. Built dashboards and analytical products supporting frontline policing, resource allocation, and command-level decision-making across South Australia.",
@@ -388,17 +407,43 @@ function ProjectDetail({ project }) {
             {project.impact}
           </p>
         </div>
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={project.linkLabel || `View ${project.title} on GitHub`}
-            className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
-                       text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
-          >
-            {project.linkText || (project.link?.includes("github.com") ? `${t("projects.viewOnGithub")} ↗` : `${t("projects.viewOnGithub")} ↗`)}
-          </a>
+        {(project.link || project.demo || project.caseStudy) && (
+          <div className="flex flex-wrap gap-2">
+            {project.caseStudy && (
+              <Link
+                href={project.caseStudy}
+                aria-label={`Read the ${project.title} case study`}
+                className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] px-4 py-1.5 text-xs tracking-widest uppercase
+                           text-white dark:text-[#0A0A0A] rounded-full hover:bg-black dark:hover:bg-white transition-colors duration-200"
+              >
+                Read case study →
+              </Link>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={project.demoLabel || `Open the live ${project.title} demo`}
+                className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase
+                           text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200"
+              >
+                Live demo ↗
+              </a>
+            )}
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={project.linkLabel || `View ${project.title} on GitHub`}
+                className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
+                           text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+              >
+                {project.linkText || (project.link?.includes("github.com") ? `${t("projects.viewOnGithub")} ↗` : `${t("projects.viewOnGithub")} ↗`)}
+              </a>
+            )}
+          </div>
         )}
         {/* Share buttons */}
         <div className="flex flex-wrap gap-2 mt-3">
@@ -458,6 +503,100 @@ function ProjectDetail({ project }) {
   );
 }
 
+function FeaturedSpotlight({ project }) {
+  if (!project) return null;
+  const primaryDomain = Array.isArray(project.domain) ? project.domain[0] : project.domain;
+  const dc = DOMAIN_COLORS[primaryDomain];
+  return (
+    <div className="mb-12 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
+      <div className="px-6 md:px-8 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
+        <span className="text-[10px] tracking-widest uppercase text-[#FF3C3C] flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse" aria-hidden="true" />
+          Featured — Flagship
+        </span>
+        <span className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] truncate">{project.status}</span>
+      </div>
+      <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="md:col-span-2 space-y-4">
+          <div>
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight mb-1">{project.title}</h3>
+            <p className="text-sm text-[#595959] dark:text-[#AAAAAA]">{project.subtitle}</p>
+          </div>
+          <div className="flex flex-wrap gap-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
+            <span>{project.org}</span>
+            <span>·</span>
+            <span>{project.period}</span>
+          </div>
+          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
+          <div className="p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
+            <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">{project.impact}</p>
+          </div>
+          {(project.link || project.demo || project.caseStudy) && (
+            <div className="flex flex-wrap gap-2 pt-1">
+              {project.caseStudy && (
+                <Link
+                  href={project.caseStudy}
+                  aria-label={`Read the ${project.title} case study`}
+                  className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] px-4 py-1.5 text-xs tracking-widest uppercase
+                             text-white dark:text-[#0A0A0A] rounded-full hover:bg-black dark:hover:bg-white transition-colors duration-200"
+                >
+                  Read case study →
+                </Link>
+              )}
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={project.demoLabel || `Open the live ${project.title} demo`}
+                  className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase
+                             text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200"
+                >
+                  Live demo ↗
+                </a>
+              )}
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={project.linkLabel || `View ${project.title} on GitHub`}
+                  className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
+                             text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+                >
+                  {project.linkText || "View on GitHub ↗"}
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+        <div className="space-y-5">
+          <div>
+            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">Stack</p>
+            <div className="flex flex-wrap gap-1.5">
+              {project.stack.map((s) => (
+                <span
+                  key={s}
+                  className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full
+                             cursor-default hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">Domain</p>
+            <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]" style={dc ? { color: dc.color } : undefined}>
+              {Array.isArray(project.domain) ? project.domain.join(" · ") : project.domain}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ProjectsSection() {
   const { t } = useI18n();
   const [ref, inView] = useInView();
@@ -479,14 +618,19 @@ export default function ProjectsSection() {
   const domainStr = (p) =>
     Array.isArray(p.domain) ? p.domain.join(" ").toLowerCase() : p.domain.toLowerCase();
 
+  const featured = PROJECTS.find((p) => p.featured) ?? null;
+  // The featured project leads in the spotlight above; keep it out of the
+  // default list to avoid a duplicate. When searching, show everything.
+  const showSpotlight = isAllView && search === "";
+
   const filtered = isAllView
-    ? PROJECTS.filter(
-        (p) =>
-          search === "" ||
-          p.title.toLowerCase().includes(search.toLowerCase()) ||
-          p.subtitle.toLowerCase().includes(search.toLowerCase()) ||
-          p.tag.toLowerCase().includes(search.toLowerCase()) ||
-          domainStr(p).includes(search.toLowerCase())
+    ? PROJECTS.filter((p) =>
+        search === ""
+          ? !p.featured
+          : p.title.toLowerCase().includes(search.toLowerCase()) ||
+            p.subtitle.toLowerCase().includes(search.toLowerCase()) ||
+            p.tag.toLowerCase().includes(search.toLowerCase()) ||
+            domainStr(p).includes(search.toLowerCase())
       )
     : PROJECTS.filter((p) => domainMatch(p, activeFilter));
 
@@ -557,6 +701,9 @@ export default function ProjectsSection() {
           })}
         </div>
       </div>
+
+      {/* ── Featured flagship spotlight ── */}
+      {showSpotlight && <FeaturedSpotlight project={featured} />}
 
       {/* ── ALL view: searchable list ── */}
       {isAllView && (
@@ -647,7 +794,9 @@ export default function ProjectsSection() {
               );
             })}
           </div>
-          <p className="mt-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{filtered.length} project{filtered.length !== 1 ? "s" : ""}</p>
+          {(() => { const shown = filtered.length + (showSpotlight ? 1 : 0); return (
+          <p className="mt-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{shown} project{shown !== 1 ? "s" : ""}</p>
+          ); })()}
         </div>
       )}
 
@@ -739,12 +888,30 @@ export default function ProjectsSection() {
                           <span key={t} className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200">{t}</span>
                         ))}
                       </div>
-                      {project.link && (
-                        <a href={project.link} target="_blank" rel="noreferrer"
-                           aria-label={project.linkLabel || `View ${project.title} on GitHub`}
-                           className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200">
-                          {project.linkText || (project.link?.includes("github.com") ? `${t("projects.viewOnGithub")} ↗` : `${t("projects.viewOnGithub")} ↗`)}
-                        </a>
+                      {(project.link || project.demo || project.caseStudy) && (
+                        <div className="flex flex-wrap gap-2">
+                          {project.caseStudy && (
+                            <Link href={project.caseStudy}
+                               aria-label={`Read the ${project.title} case study`}
+                               className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] px-4 py-1.5 text-xs tracking-widest uppercase text-white dark:text-[#0A0A0A] rounded-full hover:bg-black dark:hover:bg-white transition-colors duration-200">
+                              Read case study →
+                            </Link>
+                          )}
+                          {project.demo && (
+                            <a href={project.demo} target="_blank" rel="noreferrer"
+                               aria-label={project.demoLabel || `Open the live ${project.title} demo`}
+                               className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200">
+                              Live demo ↗
+                            </a>
+                          )}
+                          {project.link && (
+                            <a href={project.link} target="_blank" rel="noreferrer"
+                               aria-label={project.linkLabel || `View ${project.title} on GitHub`}
+                               className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200">
+                              {project.linkText || (project.link?.includes("github.com") ? `${t("projects.viewOnGithub")} ↗` : `${t("projects.viewOnGithub")} ↗`)}
+                            </a>
+                          )}
+                        </div>
                       )}
                       <div className="flex gap-2 mt-3">
                         <a

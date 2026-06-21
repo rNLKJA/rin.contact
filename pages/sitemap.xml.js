@@ -25,6 +25,7 @@ const CORE = [
   { path: "/career",         priority: 0.9, freq: "monthly" },
   { path: "/strategic",      priority: 0.9, freq: "monthly" },
   { path: "/projects",       priority: 0.9, freq: "monthly" },
+  { path: "/projects/signal", priority: 0.8, freq: "monthly" },
   { path: "/about",          priority: 0.8, freq: "monthly" },
   { path: "/lab",            priority: 0.8, freq: "monthly" },
   { path: "/resume",         priority: 0.7, freq: "monthly" },

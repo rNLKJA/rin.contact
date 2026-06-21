@@ -63,7 +63,7 @@
   ],
   "heroStats": [
     { "value": 6, "label": "行业角色", "sub": "横跨政府、科研与创业" },
-    { "value": 20, "label": "项目", "sub": "已交付上线" },
+    { "value": 21, "label": "项目", "sub": "已交付上线" },
     { "value": 2, "label": "学位", "sub": "墨尔本大学" },
     { "value": 23, "label": "证书", "sub": "云计算 · 数据分析 · 敏捷管理" }
   ],
@@ -168,7 +168,7 @@
         "tags": ["政府", "科研", "工程"], "stat": "4年 · 7个站点"
       },
       {
-        "num": "03", "title": "项目", "desc": "17个已上线项目，覆盖数据工程、云基础设施、移动端与Web平台。",
+        "num": "03", "title": "项目", "desc": "已上线项目，覆盖数据工程、云基础设施、移动端与Web平台。",
         "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "17个已交付"
       },
       {
@@ -234,7 +234,7 @@
   "projects": {
     "sectionLabel": "03 — 项目",
     "heading": "精选项目",
-    "headingDesc": "17个已上线项目，覆盖数据工程、云基础设施、移动端与Web平台。",
+    "headingDesc": "已上线项目，覆盖数据工程、云基础设施、移动端与Web平台。",
     "searchPlaceholder": "搜索项目...",
     "allProjects": "全部",
     "impact": "影响",
