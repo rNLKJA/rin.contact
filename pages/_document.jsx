@@ -551,6 +551,17 @@ class MyDocument extends Document {
               __html: `(function(){var s=localStorage.getItem("rin_theme");var t=s==="light"||s==="dark"?s:"light";document.documentElement.classList.toggle("dark",t==="dark");document.documentElement.setAttribute("data-theme",t);var m=document.querySelector("meta[name=theme-color]");if(m)m.setAttribute("content",t==="dark"?"#0A0A0A":"#ffffff");})();`,
             }}
           />
+
+          {/* ── Boot cover (no-flash: paints a solid screen before the intro
+                 animation mounts, so the page never flashes underneath it).
+                 Gated to once-per-session; safety timeout never traps the page;
+                 BootOverlay lifts the cover when the animation finishes. ── */}
+          <style dangerouslySetInnerHTML={{ __html: `html.boot-cover::before{content:"";position:fixed;inset:0;z-index:99998;background:var(--boot-cover-bg,#0A0A0A);pointer-events:none}` }} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){try{if(sessionStorage.getItem("rin_boot_seen"))return;var e=document.documentElement;var d=e.classList.contains("dark");e.style.setProperty("--boot-cover-bg",d?"#0A0A0A":"#FFFFFF");e.classList.add("boot-cover");setTimeout(function(){e.classList.remove("boot-cover");},2600);}catch(_){}})();`,
+            }}
+          />
           <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
           <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
           <meta name="msapplication-TileColor" content="#ffffff" />

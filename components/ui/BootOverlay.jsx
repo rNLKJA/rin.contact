@@ -33,6 +33,14 @@ export default function BootOverlay() {
     setTimeout(() => setVisible(false), 460);
   }, []);
 
+  // Lift the pre-paint cover (set by the inline script in _document) once the
+  // animation finishes, so the page is revealed in sync with the boot fade-out.
+  useEffect(() => {
+    if (done && typeof document !== "undefined") {
+      document.documentElement.classList.remove("boot-cover");
+    }
+  }, [done]);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(LS_KEY)) return;
