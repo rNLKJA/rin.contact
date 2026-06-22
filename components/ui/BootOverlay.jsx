@@ -64,9 +64,11 @@ export default function BootOverlay() {
 
     const timers = [];
     if (prefersReduced) {
+      // Same ~2.3s duration as the full motion path, just calm visuals (the
+      // CSS reduced-motion rules drop the flicker / scanline / weight morph).
       setStep(STEP_AT.length - 1);
-      timers.push(setTimeout(() => setDone(true), 600));
-      timers.push(setTimeout(() => setVisible(false), 1000));
+      timers.push(setTimeout(() => setDone(true), DONE_AT));
+      timers.push(setTimeout(() => setVisible(false), HIDE_AT));
     } else {
       STEP_AT.forEach((delay, i) => {
         if (i === 0) return;
