@@ -132,6 +132,7 @@ const SectionProgress  = dynamic(() => import("@/components/layout/SectionProgre
 const StatusBadge      = dynamic(() => import("@/components/ui/StatusBadge"),               { ssr: false });
 const ReadingToast     = dynamic(() => import("@/components/ui/ReadingToast"),              { ssr: false });
 const SectionNavCards  = dynamic(() => import("@/components/sections/SectionNavCards"),     { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
+const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"), { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
 const ContactSection   = dynamic(() => import("@/components/sections/ContactSection"),      { loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" /> });
 
 export default function Home() {
@@ -349,6 +350,13 @@ export default function Home() {
             </div>
             <div className="max-w-[1100px] mx-auto px-6 md:px-12">
               <SectionNavCards />
+            </div>
+          </div>
+
+          {/* ══ TESTIMONIALS — social proof ══ */}
+          <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <TestimonialsSection />
             </div>
           </div>
 
