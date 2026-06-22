@@ -8,12 +8,14 @@
  *
  * Caches are versioned so old ones get cleaned on activation.
  */
-const CACHE = "rin-v1";
-const SHELL_CACHE = "rin-shell-v1";
-const PAGE_CACHE = "rin-pages-v1";
+const CACHE = "rin-v2";
+const SHELL_CACHE = "rin-shell-v2";
+const PAGE_CACHE = "rin-pages-v2";
 
+// NOTE: "/" is intentionally NOT in this cache-first list. The homepage changes
+// often, so it is served network-first (see fetch handler). Precaching it
+// cache-first meant returning visitors got a stale shell and never saw new work.
 const SHELL_URLS = [
-  "/",
   "/site.webmanifest",
   "/logo.svg",
   "/favicon.ico",
