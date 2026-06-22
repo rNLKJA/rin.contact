@@ -132,6 +132,7 @@ const SectionProgress  = dynamic(() => import("@/components/layout/SectionProgre
 const StatusBadge      = dynamic(() => import("@/components/ui/StatusBadge"),               { ssr: false });
 const ReadingToast     = dynamic(() => import("@/components/ui/ReadingToast"),              { ssr: false });
 const FeaturedWork     = dynamic(() => import("@/components/sections/FeaturedWork"),         { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
+const MarqueeBand      = dynamic(() => import("@/components/sections/MarqueeBand"),          { loading: () => <div className="min-h-[80px]" aria-hidden="true" /> });
 const SectionNavCards  = dynamic(() => import("@/components/sections/SectionNavCards"),     { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
 const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"), { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
 const ContactSection   = dynamic(() => import("@/components/sections/ContactSection"),      { loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" /> });
@@ -350,6 +351,9 @@ export default function Home() {
               <FeaturedWork />
             </div>
           </div>
+
+          {/* ══ MARQUEE — kinetic domains band (full-bleed) ══ */}
+          <MarqueeBand />
 
           {/* ══ STATUS + SECTION NAV CARDS — white ══ */}
           <div className="bg-white dark:bg-[#0A0A0A] border-t border-[#F5F5F5] dark:border-[#1E1E1E] content-visibility-auto">
