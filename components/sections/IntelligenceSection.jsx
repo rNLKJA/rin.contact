@@ -16,6 +16,19 @@ import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import ConfettiBurst from "@/components/ui/ConfettiBurst";
 import { useI18n } from "@/contexts/I18nContext";
+import { useTheme } from "@/contexts/ThemeContext";
+
+// Chart data carries light-mode colours. These muted darks vanish on the dark
+// canvas, so lighten only those in dark mode (accents like red/amber pass through).
+const MUTED_DARK = {
+  "#1A1A1A": "#8A8A8A",
+  "#3D3D3D": "#5E5E5E",
+  "#555555": "#9A9A9A",
+  "#686868": "#9A9A9A",
+};
+function tone(color, isDark) {
+  return isDark ? MUTED_DARK[color] || color : color;
+}
 
 // ─── SVG helpers ──────────────────────────────────────────────────────────────
 // Panel A viewBox "0 0 520 310", plot area x∈[70,470] y∈[20,280] (400×260)
@@ -324,6 +337,8 @@ function SeniorityBands() {
 }
 
 function BubblePanel() {
+  const { resolved } = useTheme();
+  const isDark = resolved === "dark";
   const [step, setStep]       = useState(0);
   const [hovered, setHovered] = useState(null);
   const [confettiTrigger, setConfettiTrigger] = useState(null);
@@ -450,8 +465,8 @@ function BubblePanel() {
             >
               <circle
                 cx={toX(b.exp)} cy={toY(b.sen)} r={b.r}
-                fill={b.color} fillOpacity={0.6}
-                stroke={b.borderColor} strokeWidth={1} strokeDasharray="3,3"
+                fill={tone(b.color, isDark)} fillOpacity={0.6}
+                stroke={tone(b.borderColor, isDark)} strokeWidth={1} strokeDasharray="3,3"
               />
               {b.labelLines.map((line, i) => (
                 <text
@@ -481,9 +496,9 @@ function BubblePanel() {
                 <circle
                   cx={cx} cy={cy}
                   r={isHov ? b.r + 4 : b.r}
-                  fill={step >= 1 ? b.color : "#999"}
+                  fill={step >= 1 ? tone(b.color, isDark) : "#999"}
                   fillOpacity={step >= 1 ? 0.8 : 1}
-                  stroke={step >= 1 ? b.color : "#AAA"}
+                  stroke={step >= 1 ? tone(b.color, isDark) : "#AAA"}
                   strokeWidth={step >= 1 ? 1.5 : 1}
                   style={{
                     transition: [
@@ -497,7 +512,7 @@ function BubblePanel() {
                 {step >= 1 && (
                   <text
                     x={cx} y={cy - b.r - 5}
-                    textAnchor="middle" fontSize={9} fill={b.color} fontFamily="monospace"
+                    textAnchor="middle" fontSize={9} fill={tone(b.color, isDark)} fontFamily="monospace"
                     style={{ animation: "fadeUp 0.35s ease 0.8s both" }}
                   >
                     {b.label}
@@ -539,7 +554,7 @@ function BubblePanel() {
         ].map((l) => (
           <span key={l.label} className="flex items-center gap-1.5">
             <span className="inline-block w-2.5 h-2.5 rounded-full flex-shrink-0"
-              style={{ backgroundColor: l.color }} />
+              style={{ backgroundColor: tone(l.color, isDark) }} />
             {l.label}
           </span>
         ))}
@@ -894,6 +909,8 @@ function FPLeaf({ leaf }) {
 }
 
 function FPBranch({ branch }) {
+  const { resolved } = useTheme();
+  const isDark = resolved === "dark";
   const [open, setOpen] = useState(false);
   return (
     <div>
@@ -902,7 +919,7 @@ function FPBranch({ branch }) {
         className="flex items-start gap-3 text-left w-full group py-2"
       >
         <span className="flex-shrink-0 mt-1.5 w-[3px] h-5 rounded-full"
-          style={{ backgroundColor: branch.color }} />
+          style={{ backgroundColor: tone(branch.color, isDark) }} />
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium text-black dark:text-white group-hover:text-[#555] dark:group-hover:text-[#DDDDDD] transition-colors flex items-center gap-2">
             {branch.label}
