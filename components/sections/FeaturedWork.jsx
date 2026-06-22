@@ -23,7 +23,7 @@ export default function FeaturedWork() {
   const [ref, inView] = useInView({ threshold: 0.15 });
 
   return (
-    <section className="py-20 md:py-24" aria-label="Featured work" ref={ref}>
+    <section id="featured" className="scroll-mt-24 py-20 md:py-24" aria-label="Featured work" ref={ref}>
       <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-8 font-mono flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse" aria-hidden="true" />
         Featured — Flagship
