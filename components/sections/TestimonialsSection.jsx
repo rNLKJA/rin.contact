@@ -95,11 +95,11 @@ export default function TestimonialsSection() {
         </div>
 
         {/* quote card */}
-        <div className="relative min-h-[200px] md:min-h-[160px]">
+        <div className="grid">
           {TESTIMONIALS.map((t, i) => (
             <blockquote
               key={i}
-              className={`absolute inset-0 transition-all duration-700 ${
+              className={`[grid-area:1/1] transition-all duration-700 ${
                 i === current
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-4 pointer-events-none"

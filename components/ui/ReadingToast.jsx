@@ -12,25 +12,28 @@ export default function ReadingToast({ threshold = 0.65 }) {
   const [dismissed, setDismissed] = useState(false);
   const [visible,   setVisible]   = useState(false);
 
+  const dismissNow = useCallback(() => {
+    setVisible(false);
+    setTimeout(() => setDismissed(true), 250);
+  }, []);
+
   const onScroll = useCallback(() => {
-    if (shown || dismissed) return;
-    const max  = document.documentElement.scrollHeight - window.innerHeight;
-    const pct  = max > 0 ? window.scrollY / max : 0;
-    if (pct >= threshold) {
+    if (dismissed) return;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? window.scrollY / max : 0;
+    if (!shown && pct >= threshold) {
       setShown(true);
       setVisible(true);
     }
-  }, [shown, dismissed, threshold]);
+    // Once the contact/footer is reached the nudge is redundant and would
+    // overlap the footer — retire it.
+    if (shown && pct >= 0.93) dismissNow();
+  }, [shown, dismissed, threshold, dismissNow]);
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [onScroll]);
-
-  const dismiss = useCallback(() => {
-    setVisible(false);
-    setTimeout(() => setDismissed(true), 250);
-  }, []);
 
   if (dismissed || !shown) return null;
 
@@ -42,20 +45,20 @@ export default function ReadingToast({ threshold = 0.65 }) {
                   transition-all duration-250 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
     >
       <button
-        onClick={dismiss}
+        onClick={dismissNow}
         aria-label={t("readingToast.dismiss")}
-        className="absolute top-2 right-2 text-[#CCCCCC] hover:text-black transition-colors text-xs leading-none"
+        className="absolute top-2 right-2 text-[#CCCCCC] hover:text-black dark:hover:text-white transition-colors text-xs leading-none"
       >
         ✕
       </button>
-      <p className="text-xs text-[#3D3D3D] leading-relaxed pr-3">
+      <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed pr-3">
         {t("readingToast.message")}
       </p>
       <Link
         href="/#contact"
-        onClick={dismiss}
-        className="inline-block mt-2.5 text-[10px] tracking-widest uppercase border-b border-black text-black
-                   hover:text-[#FF3C3C] hover:border-[#FF3C3C] transition-colors"
+        onClick={dismissNow}
+        className="inline-block mt-2.5 text-[10px] tracking-widest uppercase border-b border-black dark:border-white text-black dark:text-white
+                   hover:text-[#FF3C3C] hover:border-[#FF3C3C] dark:hover:text-[#FF3C3C] dark:hover:border-[#FF3C3C] transition-colors"
       >
         Get in touch →
       </Link>
