@@ -86,15 +86,17 @@ export default function HeroDotCanvas() {
           const dy = d.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < INFLUENCE) {
-            const f = 1 - dist / INFLUENCE; // 0..1, eased
-            const e = f * f;
+            const f = 1 - dist / INFLUENCE; // 0..1
+            const e = f * f;                // centred ramp (size + push)
+            const c = Math.sqrt(f);         // wide ramp (colour + alpha) so dots
+                                            // read as a red glow, not dark specks
             scale = 1 + e * (MAX_SCALE - 1);
-            glow = e;
+            glow = c;
             const nd = dist || 1;
             const push = e * MAX_PUSH;
             ox = (dx / nd) * push;
             oy = (dy / nd) * push;
-            alpha = baseAlpha + e * (1 - baseAlpha);
+            alpha = baseAlpha + c * (1 - baseAlpha);
           }
         }
 

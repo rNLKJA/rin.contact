@@ -14,10 +14,12 @@ import { useI18n } from "@/contexts/I18nContext";
 
 const LS_KEY = "rin_boot_seen";
 
-// Timeline (ms)
-const STEP_AT = [0, 230, 470, 740]; // status line reveal times
-const DONE_AT = 1150;               // sequence settles → fade
-const HIDE_AT = DONE_AT + 460;      // unmount
+// Timeline (ms). ~1.85s of visible animation + a ~0.46s fade ≈ 2.3s total —
+// longer and more deliberate than a flash, but safely under the ~2.5s point
+// where an intro starts to read as "frozen". (UX research: 1.5–2.5s sweet spot.)
+const STEP_AT = [0, 380, 780, 1220]; // status line reveal times
+const DONE_AT = 1850;                // sequence settles → fade
+const HIDE_AT = DONE_AT + 460;       // unmount
 
 export default function BootOverlay() {
   const { t } = useI18n();
@@ -45,6 +47,11 @@ export default function BootOverlay() {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(LS_KEY)) return;
     sessionStorage.setItem(LS_KEY, "1");
+
+    // The pre-paint cover (in _document) has a safety timer that lifts it if the
+    // boot never loads. Now that the boot HAS mounted, cancel it so the cover
+    // stays put until the animation finishes — even when hydration is slow.
+    if (window.__bootCoverTimer) { clearTimeout(window.__bootCoverTimer); window.__bootCoverTimer = null; }
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setReduced(prefersReduced);

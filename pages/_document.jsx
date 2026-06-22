@@ -559,7 +559,7 @@ class MyDocument extends Document {
           <style dangerouslySetInnerHTML={{ __html: `html.boot-cover::before{content:"";position:fixed;inset:0;z-index:99998;background:var(--boot-cover-bg,#0A0A0A);pointer-events:none}` }} />
           <script
             dangerouslySetInnerHTML={{
-              __html: `(function(){try{if(sessionStorage.getItem("rin_boot_seen"))return;var e=document.documentElement;var d=e.classList.contains("dark");e.style.setProperty("--boot-cover-bg",d?"#0A0A0A":"#FFFFFF");e.classList.add("boot-cover");setTimeout(function(){e.classList.remove("boot-cover");},2600);}catch(_){}})();`,
+              __html: `(function(){try{if(sessionStorage.getItem("rin_boot_seen"))return;var e=document.documentElement;var d=e.classList.contains("dark");e.style.setProperty("--boot-cover-bg",d?"#0A0A0A":"#FFFFFF");e.classList.add("boot-cover");window.__bootCoverTimer=setTimeout(function(){e.classList.remove("boot-cover");},8000);}catch(_){}})();`,
             }}
           />
           <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />

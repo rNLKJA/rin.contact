@@ -308,7 +308,7 @@ export default function HeroSection() {
 
           {/* CTAs — hero-ctas for LCP; magnetic on desktop; no animation on mobile for LCP */}
           <div className="hero-ctas flex flex-wrap items-center gap-3 md:animate-fade-up md:delay-400">
-            <MagneticButton href="#timeline" primary>{t("hero.ctaCareer")}</MagneticButton>
+            <MagneticButton href="/career" primary>{t("hero.ctaCareer")}</MagneticButton>
             <MagneticButton href="#contact">{t("hero.ctaContact")}</MagneticButton>
           </div>
 
