@@ -169,7 +169,7 @@
       },
       {
         "num": "03", "title": "项目", "desc": "已上线项目，覆盖数据工程、云基础设施、移动端与Web平台。",
-        "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "17个已交付"
+        "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "21个已交付"
       },
       {
         "num": "04", "title": "实验室", "desc": "数据游乐场。职业情报报告、数据集自画像、复合增长分析。",

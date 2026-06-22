@@ -169,7 +169,7 @@
       },
       {
         "num": "03", "title": "Projects", "desc": "Shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
-        "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "20 shipped"
+        "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "21 shipped"
       },
       {
         "num": "04", "title": "Lab", "desc": "The data playground. Career intelligence reports, dataset self-portrait, compound growth analysis.",
