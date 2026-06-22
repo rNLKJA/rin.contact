@@ -25,7 +25,7 @@ The goal is simple: to be the canonical, first-result reference for Rin Huang �
 
 ## Highlights
 
-- **Distinctive design system** — a Nothing-OS-inspired dot-matrix aesthetic with a custom variable display font (Bitcount Prop Double), an interactive cursor-spotlight hero, and a dot-matrix boot sequence on first load.
+- **Distinctive design system** — a Nothing-OS-inspired dot-matrix aesthetic with a custom variable display font (Bitcount Prop Double), a cursor-reactive dot-matrix hero (dots grow, glow, and scatter under the pointer), editorial navigation cards, and a dot-matrix boot sequence on first load.
 - **Full dark mode** — every page and component is theme-aware, with a no-flash theme script and synchronized browser-chrome colours.
 - **Internationalisation** — first-class English (`en-AU`) and Simplified Chinese (`zh-Hans`) with locale-aware routing, metadata, and `hreflang`.
 - **SEO-first** — comprehensive JSON-LD structured data (Person, WebSite, ProfilePage, ItemList, credentials), per-page Open Graph + Twitter cards, dynamic OG-image generation, a generated sitemap, and IndexNow integration.

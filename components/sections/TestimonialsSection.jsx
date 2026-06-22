@@ -95,7 +95,15 @@ export default function TestimonialsSection() {
         </div>
 
         {/* quote card */}
-        <div className="grid">
+        <div className="relative">
+          {/* giant ghosted quotation mark — editorial flourish */}
+          <span
+            aria-hidden="true"
+            className="font-editorial pointer-events-none absolute -top-24 -left-2 md:-left-10 leading-none select-none text-[160px] md:text-[230px] text-[#F2F2F2] dark:text-[#181818]"
+          >
+            &ldquo;
+          </span>
+          <div className="grid relative z-10">
           {TESTIMONIALS.map((t, i) => (
             <blockquote
               key={i}
@@ -127,11 +135,21 @@ export default function TestimonialsSection() {
               </footer>
             </blockquote>
           ))}
+          </div>
         </div>
+
+        {/* editorial counter */}
+        {total > 1 && (
+          <div className="flex items-center gap-2 mt-10 font-mono text-[11px] tracking-[0.3em]">
+            <span className="text-[#FF3C3C]">{String(current + 1).padStart(2, "0")}</span>
+            <span className="text-[#D0D0D0] dark:text-[#3D3D3D]">/</span>
+            <span className="text-[#9A9A9A]">{String(total).padStart(2, "0")}</span>
+          </div>
+        )}
 
         {/* dots + prev/next */}
         {total > 1 && (
-          <div className="flex items-center justify-center gap-4 mt-12">
+          <div className="flex items-center justify-center gap-4 mt-6">
             {/* prev */}
             <button
               onClick={() =>
