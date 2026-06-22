@@ -131,6 +131,7 @@ function GlitchOverlay({ onDone }) {
 const SectionProgress  = dynamic(() => import("@/components/layout/SectionProgress"),      { ssr: false });
 const StatusBadge      = dynamic(() => import("@/components/ui/StatusBadge"),               { ssr: false });
 const ReadingToast     = dynamic(() => import("@/components/ui/ReadingToast"),              { ssr: false });
+const FeaturedWork     = dynamic(() => import("@/components/sections/FeaturedWork"),         { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
 const SectionNavCards  = dynamic(() => import("@/components/sections/SectionNavCards"),     { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
 const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"), { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
 const ContactSection   = dynamic(() => import("@/components/sections/ContactSection"),      { loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" /> });
@@ -340,6 +341,13 @@ export default function Home() {
               <ArtBlob     className="border-[#E8E8E8] dark:border-[#2A2A2A]"                         style={{ width:"420px",  height:"380px",  top:"30%",   left:"-100px", animationDelay:"3s" }} />
               <WaveArc className="top-[38%] h-20 dark:[&>path]:stroke-[#3D3D3D]" stroke="#EBEBEB" />
               <div className="dot-matrix absolute left-0 bottom-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08]" />
+            </div>
+          </div>
+
+          {/* ══ FEATURED WORK — flagship spotlight ══ */}
+          <div className="bg-white dark:bg-[#0A0A0A] border-t border-[#F5F5F5] dark:border-[#1E1E1E] content-visibility-auto">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <FeaturedWork />
             </div>
           </div>
 
