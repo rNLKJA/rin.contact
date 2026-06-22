@@ -4,6 +4,7 @@ import { useI18n } from "@/contexts/I18nContext";
 
 const HeroDotCanvas = dynamic(() => import("@/components/ui/HeroDotCanvas"), { ssr: false });
 const ScrollCue = dynamic(() => import("@/components/ui/ScrollCue"), { ssr: false });
+const HeroInteractHint = dynamic(() => import("@/components/ui/HeroInteractHint"), { ssr: false });
 
 // Inline SVGs — avoids react-icons bundle on critical hero path
 const LinkedInIcon = () => (
@@ -368,6 +369,7 @@ export default function HeroSection() {
       </div>
 
       <ScrollCue />
+      <HeroInteractHint />
 
       {/* Blob keyframe + name hover charge */}
       <style>{`
