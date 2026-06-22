@@ -6,6 +6,7 @@ import Link from "next/link";
 import MagneticWrapper from "@/components/ui/MagneticWrapper";
 import { useI18n } from "@/contexts/I18nContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useInView } from "@/hooks/useInView";
 
 const CARD_STRUCTURE = [
   { href: "/strategic", accent: "#FF3C3C", darkAccent: "#FF5C5C" },
@@ -20,22 +21,31 @@ export default function SectionNavCards() {
   const { t } = useI18n();
   const { resolved } = useTheme();
   const isDark = resolved === "dark";
+  const [ref, inView] = useInView({ threshold: 0.12 });
   const cards = t("sectionNav.cards");
   const cardData = Array.isArray(cards)
     ? cards.map((c, i) => ({ ...c, ...CARD_STRUCTURE[i], accent: isDark ? CARD_STRUCTURE[i].darkAccent : CARD_STRUCTURE[i].accent }))
     : [];
 
   return (
-    <section className="py-20" aria-label={t("sectionNav.label")}>
+    <section className="py-20" aria-label={t("sectionNav.label")} ref={ref}>
       <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-10">{t("sectionNav.label")}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#E0E0E0] dark:bg-[#262626]">
-        {cardData.map((card) => (
+        {cardData.map((card, i) => (
           <MagneticWrapper key={card.title} strength={6}>
             <Link
               href={card.href}
               className="group block bg-white dark:bg-[#141414] p-8 h-full hover:bg-[#FAFAFA] dark:hover:bg-[#1A1A1A] transition-colors duration-200"
             >
+              <div
+                style={{
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "none" : "translateY(18px)",
+                  transition: "opacity 0.6s cubic-bezier(0.2,0.7,0.2,1), transform 0.6s cubic-bezier(0.2,0.7,0.2,1)",
+                  transitionDelay: `${i * 80}ms`,
+                }}
+              >
               {/* Header row */}
               <div className="flex items-start justify-between mb-6">
                 <span className="text-[10px] font-mono tracking-widest text-[#CCCCCC]">
@@ -85,6 +95,7 @@ export default function SectionNavCards() {
               >
                 {card.stat}
               </p>
+              </div>
             </Link>
           </MagneticWrapper>
         ))}
