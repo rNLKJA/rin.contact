@@ -36,9 +36,34 @@ export default function SectionNavCards() {
           <MagneticWrapper key={card.title} strength={6}>
             <Link
               href={card.href}
-              className="group block bg-white dark:bg-[#141414] p-8 h-full hover:bg-[#FAFAFA] dark:hover:bg-[#1A1A1A] transition-colors duration-200"
+              className="group relative block overflow-hidden bg-white dark:bg-[#141414] p-8 h-full hover:bg-[#FAFAFA] dark:hover:bg-[#1A1A1A] transition-colors duration-300"
             >
+              {/* red dot-matrix wash — blooms from the corner on hover */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  backgroundImage: "radial-gradient(rgba(255,60,60,0.22) 1px, transparent 1.6px)",
+                  backgroundSize: "18px 18px",
+                  WebkitMaskImage: "radial-gradient(125% 110% at 100% 100%, #000 0%, transparent 68%)",
+                  maskImage: "radial-gradient(125% 110% at 100% 100%, #000 0%, transparent 68%)",
+                }}
+              />
+              {/* giant ghosted index number (Bitcount dot-matrix glyphs) */}
+              <span
+                aria-hidden="true"
+                className="font-display pointer-events-none absolute right-3 -bottom-7 leading-none select-none text-[120px] text-[#F1F1F1] dark:text-[#272727] group-hover:text-[#F8DEDE] dark:group-hover:text-[#3A1C1C] transition-colors duration-500"
+              >
+                {card.num}
+              </span>
+              {/* red accent — draws across the foot on hover */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute left-0 bottom-0 h-[2px] w-full bg-[#FF3C3C] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
+              />
+
               <div
+                className="relative z-10"
                 style={{
                   opacity: inView ? 1 : 0,
                   transform: inView ? "none" : "translateY(18px)",
