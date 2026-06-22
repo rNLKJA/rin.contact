@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { useI18n } from "@/contexts/I18nContext";
 
-const HeroDotField = dynamic(() => import("@/components/ui/HeroDotField"), { ssr: false });
+const HeroDotCanvas = dynamic(() => import("@/components/ui/HeroDotCanvas"), { ssr: false });
 
 // Inline SVGs — avoids react-icons bundle on critical hero path
 const LinkedInIcon = () => (
@@ -223,8 +223,8 @@ export default function HeroSection() {
       {/* Decorative elements — hidden on mobile for faster LCP */}
       <div aria-hidden="true" className="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full"
         style={{ background: "radial-gradient(circle, rgba(255,60,60,0.05) 0%, transparent 70%)", animation: "blob-drift 18s ease-in-out infinite alternate" }} />
-      {/* Interactive dot-matrix backdrop — red dots glow under the cursor */}
-      <HeroDotField />
+      {/* Interactive dot-matrix backdrop — dots grow, glow red, and scatter under the cursor */}
+      <HeroDotCanvas />
 
       {/* ── Two-column grid ── */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
