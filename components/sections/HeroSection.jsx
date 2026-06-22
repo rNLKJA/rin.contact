@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
+import dynamic from "next/dynamic";
 import { useI18n } from "@/contexts/I18nContext";
+
+const HeroDotField = dynamic(() => import("@/components/ui/HeroDotField"), { ssr: false });
 
 // Inline SVGs — avoids react-icons bundle on critical hero path
 const LinkedInIcon = () => (
@@ -220,10 +223,11 @@ export default function HeroSection() {
       {/* Decorative elements — hidden on mobile for faster LCP */}
       <div aria-hidden="true" className="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full"
         style={{ background: "radial-gradient(circle, rgba(255,60,60,0.05) 0%, transparent 70%)", animation: "blob-drift 18s ease-in-out infinite alternate" }} />
-      <div className="hidden md:block dot-matrix pointer-events-none absolute top-0 right-0 w-64 h-64 opacity-10" aria-hidden="true" />
+      {/* Interactive dot-matrix backdrop — red dots glow under the cursor */}
+      <HeroDotField />
 
       {/* ── Two-column grid ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
         {/* LEFT — identity + copy */}
         <div>
@@ -249,7 +253,7 @@ export default function HeroSection() {
 
           {/* Name — pinned to Bitcount display font; no animation on mobile for LCP */}
           <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 md:animate-fade-up text-black dark:text-white"
+            className="hero-name font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight mb-2 md:animate-fade-up text-black dark:text-white"
             itemProp="name"
           >
             Rin Huang
@@ -362,11 +366,18 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Blob keyframe */}
+      {/* Blob keyframe + name hover charge */}
       <style>{`
         @keyframes blob-drift {
           from { transform: translate(0, 0) scale(1); }
           to   { transform: translate(-40px, 30px) scale(1.12); }
+        }
+        .hero-name {
+          font-variation-settings: "wght" 600;
+          transition: font-variation-settings 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+        @media (hover: hover) {
+          .hero-name:hover { font-variation-settings: "wght" 820; }
         }
       `}</style>
     </section>
