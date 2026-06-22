@@ -116,8 +116,8 @@ function MagneticButton({ href, primary, children }) {
   const primaryClasses =
     "inline-block border px-4 py-2 text-xs font-bold tracking-widest uppercase rounded-none min-h-[44px] flex items-center justify-center transition-colors duration-200 " +
     (primary
-      ? "border-black text-black bg-transparent hover:bg-black hover:text-white focus-visible:outline-2 focus-visible:outline-black md:border-[#B71C1C] md:text-[#B71C1C] md:hover:bg-[#B71C1C] md:hover:text-white md:focus-visible:outline-[#B71C1C]"
-      : "border-0 border-b-2 border-[#3D3D3D] text-[#3D3D3D] hover:border-[#B71C1C] hover:text-[#B71C1C] focus-visible:outline-2 focus-visible:outline-[#3D3D3D]");
+      ? "border-black text-black bg-transparent hover:bg-black hover:text-white focus-visible:outline-2 focus-visible:outline-black md:border-[#B71C1C] md:text-[#B71C1C] md:hover:bg-[#B71C1C] md:hover:text-white md:focus-visible:outline-[#B71C1C] dark:border-[#FF5C5C] dark:text-[#FF5C5C] dark:hover:bg-[#FF5C5C] dark:hover:text-black md:dark:border-[#FF5C5C] md:dark:text-[#FF5C5C] md:dark:hover:bg-[#FF5C5C] md:dark:hover:text-black"
+      : "border-0 border-b-2 border-[#3D3D3D] text-[#3D3D3D] hover:border-[#B71C1C] hover:text-[#B71C1C] focus-visible:outline-2 focus-visible:outline-[#3D3D3D] dark:border-[#9A9A9A] dark:text-[#9A9A9A] dark:hover:border-[#FF5C5C] dark:hover:text-[#FF5C5C]");
 
   return (
     <a
