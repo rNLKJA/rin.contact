@@ -32,7 +32,7 @@ export default function CoffeePage() {
 `}</pre>
 
           <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-4">
-            ☕ — you found it
+            caffeine detected — you found it
           </p>
 
           <h1 className="text-2xl font-semibold text-white mb-4 tracking-tight">

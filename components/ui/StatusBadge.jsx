@@ -25,21 +25,17 @@ function useClock() {
   return time;
 }
 
-// wttr.in weather codes → minimal emoji
-const WEATHER_ICON = {
-  113: "☀️", 116: "⛅", 119: "☁️", 122: "☁️",
-  143: "🌫️", 176: "🌦️", 179: "🌨️", 182: "🌧️",
-  185: "🌧️", 200: "⛈️", 227: "❄️", 230: "❄️",
-  248: "🌫️", 260: "🌫️", 263: "🌦️", 266: "🌦️",
-  281: "🌧️", 284: "🌧️", 293: "🌦️", 296: "🌦️",
-  299: "🌧️", 302: "🌧️", 305: "🌧️", 308: "🌧️",
-  311: "🌧️", 314: "🌧️", 317: "🌨️", 320: "🌨️",
-  323: "🌨️", 326: "🌨️", 329: "❄️", 332: "❄️",
-  335: "❄️", 338: "❄️", 350: "🌧️", 353: "🌦️",
-  356: "🌧️", 359: "🌧️", 362: "🌨️", 365: "🌨️",
-  368: "🌨️", 371: "❄️", 374: "🌨️", 377: "🌨️",
-  386: "⛈️", 389: "⛈️", 392: "⛈️", 395: "❄️",
-};
+// wttr.in weather codes -> a short, monochrome condition word (no emoji, on-brand)
+function weatherWord(code) {
+  if (code === 113) return "Clear";
+  if (code === 116) return "Part cloud";
+  if (code === 119 || code === 122) return "Cloudy";
+  if ([143, 248, 260].includes(code)) return "Fog";
+  if ([200, 386, 389, 392, 395].includes(code)) return "Storm";
+  if ([179, 227, 230, 320, 323, 326, 329, 332, 335, 338, 362, 365, 368, 371, 374, 377].includes(code)) return "Snow";
+  if ([182, 185, 281, 284, 311, 314, 317, 350].includes(code)) return "Sleet";
+  return "Rain"; // remaining drizzle / rain / shower codes
+}
 
 function useAdelaideWeather() {
   const [weather, setWeather] = useState(null);
@@ -51,11 +47,11 @@ function useAdelaideWeather() {
         if (cancelled) return;
         const current = data?.current_condition?.[0];
         if (!current) return;
-        const tempC   = current.temp_C;
-        const code    = parseInt(current.weatherCode, 10);
-        const icon    = WEATHER_ICON[code] ?? "🌡️";
-        const desc    = current.weatherDesc?.[0]?.value ?? "";
-        setWeather({ tempC, icon, desc });
+        const tempC = current.temp_C;
+        const code  = parseInt(current.weatherCode, 10);
+        const word  = weatherWord(code);
+        const desc  = current.weatherDesc?.[0]?.value ?? word;
+        setWeather({ tempC, word, desc });
       })
       .catch(() => { /* silently fail — weather is a bonus */ });
     return () => { cancelled = true; };
@@ -81,8 +77,8 @@ export default function StatusBadge() {
 
   return (
     <div
-      className="inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 border border-[#E8E8E8]
-                 px-4 py-2 font-mono text-[10px] tracking-wide text-[#595959]"
+      className="inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A]
+                 px-4 py-2 font-mono text-[10px] tracking-wide text-[#595959] dark:text-[#9A9A9A]"
       aria-label={t("statusBadge.label")}
     >
       {STATUS_KEYS.map(({ dot, labelKey, subKey }) => (
@@ -101,7 +97,7 @@ export default function StatusBadge() {
       ))}
       {AVAILABLE_PILL && (
         <>
-          <span className="text-[#DDDDDD]" aria-hidden="true">·</span>
+          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">·</span>
           <span className="flex items-center gap-1.5 text-[#FF3C3C]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-blink" aria-hidden="true" />
             {t("statusBadge.availableFor")} {AVAILABLE_PILL}
@@ -110,15 +106,15 @@ export default function StatusBadge() {
       )}
       {time && (
         <>
-          <span className="text-[#DDDDDD]" aria-hidden="true">·</span>
+          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">·</span>
           <span className="text-[#AAAAAA]">{t("statusBadge.adl")} {time}</span>
         </>
       )}
       {weather && (
         <>
-          <span className="text-[#DDDDDD]" aria-hidden="true">·</span>
+          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">·</span>
           <span className="text-[#AAAAAA]" title={weather.desc}>
-            {weather.icon} {weather.tempC}°C
+            {weather.tempC}°C {weather.word}
           </span>
         </>
       )}

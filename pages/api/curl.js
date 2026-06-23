@@ -189,7 +189,7 @@ const lines = [
   `  ${G}map    ${X}  ${W}https://rin.contact/#career-map${X} ${S}→ career as a metro map${X}`,
   `  ${G}ping   ${X}  ${W}curl rin.contact/api/ping${X}   ${S}→ pong${X}`,
   `  ${G}hire   ${X}  ${W}https://rin.contact/hire-me${X} ${S}→ the honest pitch${X}`,
-  `  ${G}secret ${X}  ${W}https://rin.contact/fun/secret${X}  ${S}→ 👀${X}`,
+  `  ${G}secret ${X}  ${W}https://rin.contact/fun/secret${X}  ${S}→ take a look${X}`,
   "",
   // Morse code hint — the answer is hidden on the homepage
   `  ${DIM}.... . .-.. .-.. ---${X}`,
