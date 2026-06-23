@@ -57,14 +57,27 @@ export default function BlogPost({ post, nextPost }) {
       })
     : null;
 
+  // Per-post Open Graph card: until now blog posts shared with no image at all,
+  // which kills engagement on LinkedIn/X. Build the branded card from the post's
+  // own title + description, and reuse the same URL for the BlogPosting image so
+  // the post is eligible for image-rich search results and Google Discover.
+  const ogImage = {
+    title: post.title,
+    subtitle: post.description || "Notes by Rin Huang",
+    section: "blog",
+  };
+  const ogImageUrl = `https://rin.contact/api/og?${new URLSearchParams(ogImage).toString()}`;
+
   return (
     <>
       <SeoHead
         title={`${post.title} — Rin Huang . rin.contact`}
         description={post.description || "Blog post by Rin Huang"}
         path={`/blog/${post.slug}`}
+        ogType="article"
         ogTitle={post.title}
         ogDescription={post.description}
+        ogImage={ogImage}
         locale={locale}
       />
 
@@ -84,7 +97,10 @@ export default function BlogPost({ post, nextPost }) {
               "@type": "BlogPosting",
               headline: post.title,
               description: post.description || "",
+              image: ogImageUrl,
               datePublished: post.date || undefined,
+              dateModified: post.date || undefined,
+              inLanguage: locale === "zh-Hans" ? "zh-Hans" : "en-AU",
               author: {
                 "@type": "Person",
                 name: "Rin Huang",
