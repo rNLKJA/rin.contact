@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src=".github/banner.svg" alt="rin.contact — portfolio and playground" width="100%">
+
 # rin.contact
 
 **The personal portfolio of Sunchuangyu (Rin) Huang** — Senior Data Analyst, Research Software Engineer, and Full-Stack Developer based in Adelaide, Australia.
