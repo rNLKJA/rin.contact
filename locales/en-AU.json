@@ -430,6 +430,8 @@
     "noPosts": "No posts yet. Check back soon.",
     "backToBlog": "Back to blog",
     "backToAllPosts": "Back to all posts",
+    "minRead": "min read",
+    "readNext": "Read next",
     "postNotFound": "Post not found."
   },
   "lab": {

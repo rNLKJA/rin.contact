@@ -4,8 +4,9 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
+import PostCard from "@/components/blog/PostCard";
 import { useI18n } from "@/contexts/I18nContext";
-import { getPostBySlug, getPostSlugs } from "@/lib/posts";
+import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
 
 const NewsletterSignup = dynamic(
   () => import("@/components/blog/NewsletterSignup"),
@@ -30,7 +31,7 @@ function MermaidRenderer() {
   return null;
 }
 
-export default function BlogPost({ post }) {
+export default function BlogPost({ post, nextPost }) {
   const { t, locale = "en-AU" } = useI18n();
   const isZh = locale === "zh-Hans";
 
@@ -119,6 +120,10 @@ export default function BlogPost({ post }) {
 
         {/* Post header */}
         <header className="mb-10">
+          <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
+            <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
+            {t("blog.sectionLabel")}
+          </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-black dark:text-white">
             {post.title}
           </h1>
@@ -130,6 +135,12 @@ export default function BlogPost({ post }) {
               >
                 {formattedDate}
               </time>
+            )}
+            {post.readingTime && (
+              <span className="flex items-center gap-3 text-[#B0B0B0] dark:text-[#7A7A7A] font-mono">
+                <span className="w-1 h-1 rounded-full bg-[#CCCCCC] dark:bg-[#3D3D3D]" aria-hidden="true" />
+                {post.readingTime} {t("blog.minRead")}
+              </span>
             )}
             {post.tags?.length > 0 && (
               <div className="flex flex-wrap gap-1.5">
@@ -163,6 +174,17 @@ export default function BlogPost({ post }) {
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 
+        {/* Read next — keeps the reader in the work instead of dead-ending */}
+        {nextPost && (
+          <div className="mt-14 pt-8 border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
+            <p className="flex items-center gap-2.5 text-[10px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
+              <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
+              {t("blog.readNext")}
+            </p>
+            <PostCard {...nextPost} />
+          </div>
+        )}
+
         {/* Newsletter signup */}
         <NewsletterSignup />
 
@@ -188,5 +210,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getPostBySlug(params.slug);
-  return { props: { post } };
+  // Pick the next post to read — wrap around so the last post still offers one.
+  const all = await getAllPosts();
+  const idx = all.findIndex((p) => p.slug === params.slug);
+  const nextPost = all.length > 1 && idx !== -1 ? all[(idx + 1) % all.length] : null;
+  return { props: { post, nextPost } };
 }
