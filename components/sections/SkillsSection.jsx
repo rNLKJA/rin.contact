@@ -1,6 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import { useI18n } from "@/contexts/I18nContext";
+
+function CountUp({ target, started, duration = 900 }) {
+  const [n, setN] = useState(0);
+  const raf = useRef(null);
+  useEffect(() => {
+    if (!started) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setN(target);
+      return;
+    }
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setN(Math.round(eased * target));
+      if (p < 1) raf.current = requestAnimationFrame(tick);
+    };
+    raf.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf.current);
+  }, [started, target, duration]);
+  return <>{n}</>;
+}
 
 const DOMAINS = [
   {
@@ -258,18 +280,36 @@ export default function SkillsSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
+        <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-6">
+          <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
           {t("skills.sectionLabel")}
         </p>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
-          {t("skills.heading")}
-        </h2>
-        {/* Wisr-style wavy accent */}
-        <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
-          <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-                stroke="#E0E0E0" className="dark:stroke-[#3D3D3D]" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-        </svg>
-        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed">
+
+        {/* oversized count anchors the breadth; the seven domain cards below are the detail */}
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-x-10 gap-y-4 md:items-end">
+          <div className="flex items-end gap-2.5">
+            <span
+              className="font-display leading-[0.8] text-[84px] md:text-[120px] text-black dark:text-white tabular-nums"
+              aria-hidden="true"
+            >
+              <CountUp target={DOMAINS.length} started={inView} />
+            </span>
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#7A7A7A] dark:text-[#9A9A9A] mb-3 md:mb-4" aria-hidden="true">
+              Domains
+            </span>
+          </div>
+          <div className="md:pb-3">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">
+              {t("skills.heading")}
+            </h2>
+            <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
+              Seven technical domains, run in deliberate parallel.
+            </p>
+          </div>
+        </div>
+        <span className="sr-only">Seven technical domains.</span>
+
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed mt-7">
           I have found that the most interesting problems sit at the edges of
           disciplines. My work has taken me from flow cytometry pipelines at WEHI
           to ministerial dashboards at CBS to mobile health apps at UniMelb —
