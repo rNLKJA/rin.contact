@@ -21,6 +21,8 @@ const WELCOME = [
   '  Logged in as: guest@rin.contact',
   '  Session: ' + new Date().toLocaleDateString("en-AU", { timeZone: "Australia/Adelaide" }),
   "",
+  "  Prefer a document?  Type  open /cv  for a printable CV.",
+  "",
 ];
 
 const HELP_TEXT = [
@@ -36,6 +38,7 @@ const HELP_TEXT = [
   "  cat certs.txt       professional certifications",
   "  ping rin.contact    heartbeat check",
   "  type                typing speed test",
+  "  open /cv            document CV (save as PDF)",
   "  open /hire-me       hiring pitch & contact",
   "  open /tools/card    digital business card",
   "  open /career        career timeline & metro map",
@@ -226,7 +229,7 @@ const COMMANDS = {
   "ping rin.contact":    () => PING_TEXT,
 };
 
-const INTERNAL_ROUTES = ["/hire-me", "/tools/card", "/career", "/projects", "/lab", "/about", "/fun/secret"];
+const INTERNAL_ROUTES = ["/cv", "/hire-me", "/tools/card", "/career", "/projects", "/lab", "/about", "/fun/secret"];
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function ResumePage() {
