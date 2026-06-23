@@ -1,28 +1,13 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import PageHero from "@/components/layout/PageHero";
 import { useI18n } from "@/contexts/I18nContext";
 
 const DatasetCard        = dynamic(() => import("@/components/sections/DatasetCard"),        { loading: () => <div className="min-h-[320px]" /> });
 const IntelligenceSection = dynamic(() => import("@/components/sections/IntelligenceSection"), { loading: () => <div className="min-h-[480px]" /> });
 
-function PageHeader() {
-  const { t } = useI18n();
-  return (
-    <div className="py-20 border-b border-[#F0F0F0] dark:border-[#1E1E1E]">
-      <Link href="/" className="inline-block text-[10px] tracking-widest uppercase text-[#AAAAAA] hover:text-black dark:hover:text-white transition-colors mb-6">
-        ← {t("about.back")}
-      </Link>
-      <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">{t("lab.sectionLabel")}</p>
-      <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">{t("lab.heading")}</h1>
-      <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
-        {t("lab.description")}
-      </p>
-    </div>
-  );
-}
-
 export default function LabPage() {
+  const { t } = useI18n();
   return (
     <>
       <Head>
@@ -43,7 +28,12 @@ export default function LabPage() {
       </Head>
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-        <PageHeader />
+        <PageHero
+          label={t("lab.sectionLabel")}
+          heading={t("lab.heading")}
+          description={t("lab.description")}
+          backLabel={t("about.back")}
+        />
       </div>
 
       <div className="bg-white dark:bg-[#0A0A0A] relative overflow-hidden">

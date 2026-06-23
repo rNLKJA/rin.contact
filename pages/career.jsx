@@ -1,28 +1,13 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import PageHero from "@/components/layout/PageHero";
 import { useI18n } from "@/contexts/I18nContext";
 
 const TimelineSection   = dynamic(() => import("@/components/sections/TimelineSection"),   { loading: () => <div className="min-h-[480px]" /> });
 const MetroMapSection   = dynamic(() => import("@/components/sections/MetroMapSection"),   { loading: () => <div className="min-h-[360px]" /> });
 
-function PageHeader() {
-  const { t } = useI18n();
-  return (
-    <div className="py-20 border-b border-[#F0F0F0] dark:border-[#1E1E1E]">
-      <Link href="/" className="inline-block text-[10px] tracking-widest uppercase text-[#AAAAAA] hover:text-black dark:hover:text-white transition-colors mb-6">
-        ← {t("about.back")}
-      </Link>
-      <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">{t("career.sectionLabel")}</p>
-      <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">{t("career.heading")}</h1>
-      <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
-        {t("career.description")}
-      </p>
-    </div>
-  );
-}
-
 export default function CareerPage() {
+  const { t } = useI18n();
   return (
     <>
       <Head>
@@ -43,7 +28,12 @@ export default function CareerPage() {
       </Head>
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-        <PageHeader />
+        <PageHero
+          label={t("career.sectionLabel")}
+          heading={t("career.heading")}
+          description={t("career.description")}
+          backLabel={t("about.back")}
+        />
       </div>
 
       {/* Timeline */}
