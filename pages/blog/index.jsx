@@ -38,7 +38,8 @@ export default function BlogIndex({ posts }) {
       <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-24">
         {/* Header */}
         <div className="mb-16">
-          <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
+          <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-4">
+            <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
             {t("blog.sectionLabel")}
           </p>
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">

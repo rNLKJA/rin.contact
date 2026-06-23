@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import { useI18n } from "@/contexts/I18nContext";
 
-export default function PostCard({ slug, title, date, tags, description }) {
+export default function PostCard({ slug, title, date, tags, description, readingTime }) {
+  const { t } = useI18n();
   const formattedDate = date
     ? new Date(date).toLocaleDateString("en-AU", {
         year: "numeric",
@@ -43,6 +45,12 @@ export default function PostCard({ slug, title, date, tags, description }) {
             >
               {formattedDate}
             </time>
+          )}
+          {readingTime && (
+            <span className="flex items-center gap-2 text-[10px] tracking-widest uppercase text-[#B0B0B0] dark:text-[#7A7A7A] font-mono">
+              <span className="w-1 h-1 rounded-full bg-[#CCCCCC] dark:bg-[#3D3D3D]" aria-hidden="true" />
+              {readingTime} {t("blog.minRead")}
+            </span>
           )}
           {tags?.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
