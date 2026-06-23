@@ -62,17 +62,55 @@
     "Strategic Thinking Specialist @ Life"
   ],
   "heroStats": [
-    { "value": 6, "label": "Roles", "sub": "across gov, research & startup" },
-    { "value": 21, "label": "Projects", "sub": "shipped to production" },
-    { "value": 2, "label": "Degrees", "sub": "University of Melbourne" },
-    { "value": 23, "label": "Certs", "sub": "cloud · analytics · agile" }
+    {
+      "value": 6,
+      "label": "Roles",
+      "sub": "across gov, research & startup"
+    },
+    {
+      "value": 21,
+      "label": "Projects",
+      "sub": "shipped to production"
+    },
+    {
+      "value": 2,
+      "label": "Degrees",
+      "sub": "University of Melbourne"
+    },
+    {
+      "value": 23,
+      "label": "Certs",
+      "sub": "cloud · analytics · agile"
+    }
   ],
   "heroTags": [
-    "Strategic Thinking", "Continuous Improvement", "Data Science",
-    "Statistical Intelligence", "Government Analytics", "Web Development",
-    "Mobile Development", "Research Engineering", "Cloud & Infrastructure",
-    "UI/UX Design", "Project Management"
+    "Strategic Thinking",
+    "Continuous Improvement",
+    "Data Science",
+    "Statistical Intelligence",
+    "Government Analytics",
+    "Web Development",
+    "Mobile Development",
+    "Research Engineering",
+    "Cloud & Infrastructure",
+    "UI/UX Design",
+    "Project Management"
   ],
+  "positioning": {
+    "eyebrow": "Operating Principle",
+    "lines": [
+      "Complex Problems.",
+      "Clear Solutions.",
+      "Actionable Results.",
+      "Engineering Intelligence That Protects."
+    ],
+    "gloss": "Problem-first, not model-first. I start from the decision that needs making and the minimum data to make it well, then reach for the right tool, across government, research, and engineering.",
+    "domains": [
+      "Government",
+      "Research",
+      "Engineering"
+    ]
+  },
   "contact": {
     "sectionLabel": "07 — Contact",
     "heading": "Get in Touch",
@@ -122,11 +160,26 @@
     "ctaFullProfile": "← Full Profile",
     "ctaBusinessCard": "Business Card",
     "strengths": [
-      { "label": "Cross-sector fluency", "note": "Government · Research · Biotech · Climate · Health-tech · Startup" },
-      { "label": "Strategic + technical", "note": "ASO7 intelligence frameworks AND Python pipelines — not one or the other" },
-      { "label": "Communication layer", "note": "Translates complex analysis into ministerial briefings and stakeholder decisions" },
-      { "label": "Compound learner", "note": "32.7% CAGR on career growth index since 2020 — each context deepens all prior knowledge" },
-      { "label": "Bilingual", "note": "Mandarin (native) · English (professional) · NAATI CPCB1 credentialled" }
+      {
+        "label": "Cross-sector fluency",
+        "note": "Government · Research · Biotech · Climate · Health-tech · Startup"
+      },
+      {
+        "label": "Strategic + technical",
+        "note": "ASO7 intelligence frameworks AND Python pipelines — not one or the other"
+      },
+      {
+        "label": "Communication layer",
+        "note": "Translates complex analysis into ministerial briefings and stakeholder decisions"
+      },
+      {
+        "label": "Compound learner",
+        "note": "32.7% CAGR on career growth index since 2020 — each context deepens all prior knowledge"
+      },
+      {
+        "label": "Bilingual",
+        "note": "Mandarin (native) · English (professional) · NAATI CPCB1 credentialled"
+      }
     ],
     "openToList": [
       "Data & intelligence roles",
@@ -137,9 +190,18 @@
       "Meaningful problems"
     ],
     "stats": [
-      { "v": "ASO7", "l": "Current Level" },
-      { "v": "4 yrs", "l": "Industry Exp." },
-      { "v": "6", "l": "Sectors Worked" }
+      {
+        "v": "ASO7",
+        "l": "Current Level"
+      },
+      {
+        "v": "4 yrs",
+        "l": "Industry Exp."
+      },
+      {
+        "v": "6",
+        "l": "Sectors Worked"
+      }
     ]
   },
   "resume": {
@@ -160,28 +222,71 @@
     "label": "◈ — Explore",
     "cards": [
       {
-        "num": "01", "title": "Strategic", "desc": "Strategic thinking + data science — problem-first, not model-first. How understanding the question and applying analytics strategically creates meaningful impact.",
-        "tags": ["Problem framing", "Government", "Policy"], "stat": "Problem-first"
+        "num": "01",
+        "title": "Strategic",
+        "desc": "Strategic thinking + data science — problem-first, not model-first. How understanding the question and applying analytics strategically creates meaningful impact.",
+        "tags": [
+          "Problem framing",
+          "Government",
+          "Policy"
+        ],
+        "stat": "Problem-first"
       },
       {
-        "num": "02", "title": "Career", "desc": "Three domain lines. Seven stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
-        "tags": ["Government", "Research", "Engineering"], "stat": "4 years · 7 stations"
+        "num": "02",
+        "title": "Career",
+        "desc": "Three domain lines. Seven stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
+        "tags": [
+          "Government",
+          "Research",
+          "Engineering"
+        ],
+        "stat": "4 years · 7 stations"
       },
       {
-        "num": "03", "title": "Projects", "desc": "Shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
-        "tags": ["Python", "Next.js", "AWS", "React Native"], "stat": "21 shipped"
+        "num": "03",
+        "title": "Projects",
+        "desc": "Shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
+        "tags": [
+          "Python",
+          "Next.js",
+          "AWS",
+          "React Native"
+        ],
+        "stat": "21 shipped"
       },
       {
-        "num": "04", "title": "Lab", "desc": "The data playground. Career intelligence reports, dataset self-portrait, compound growth analysis.",
-        "tags": ["Intelligence", "Data Science", "Visualisation"], "stat": "Interactive"
+        "num": "04",
+        "title": "Lab",
+        "desc": "The data playground. Career intelligence reports, dataset self-portrait, compound growth analysis.",
+        "tags": [
+          "Intelligence",
+          "Data Science",
+          "Visualisation"
+        ],
+        "stat": "Interactive"
       },
       {
-        "num": "05", "title": "About", "desc": "Skills across seven technical domains, 23 professional credentials, and answers to the questions people actually ask.",
-        "tags": ["23 certs", "7 domains", "FAQ"], "stat": "6 sectors"
+        "num": "05",
+        "title": "About",
+        "desc": "Skills across seven technical domains, 23 professional credentials, and answers to the questions people actually ask.",
+        "tags": [
+          "23 certs",
+          "7 domains",
+          "FAQ"
+        ],
+        "stat": "6 sectors"
       },
       {
-        "num": "06", "title": "Resume", "desc": "Interactive CLI-style CV. Type commands, explore career data. Ping, open, ls — the terminal experience.",
-        "tags": ["CLI", "Interactive", "Terminal"], "stat": "Type to explore"
+        "num": "06",
+        "title": "Resume",
+        "desc": "Interactive CLI-style CV. Type commands, explore career data. Ping, open, ls — the terminal experience.",
+        "tags": [
+          "CLI",
+          "Interactive",
+          "Terminal"
+        ],
+        "stat": "Type to explore"
       }
     ]
   },
@@ -211,11 +316,21 @@
     "sectionLabel": "06 — FAQ",
     "ariaLabel": "Frequently asked questions",
     "categories": [
-      { "label": "The Role" },
-      { "label": "Technical Approach" },
-      { "label": "Career Journey" },
-      { "label": "Education & Growth" },
-      { "label": "The Person" }
+      {
+        "label": "The Role"
+      },
+      {
+        "label": "Technical Approach"
+      },
+      {
+        "label": "Career Journey"
+      },
+      {
+        "label": "Education & Growth"
+      },
+      {
+        "label": "The Person"
+      }
     ]
   },
   "timeline": {

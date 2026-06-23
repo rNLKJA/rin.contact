@@ -132,6 +132,7 @@ function GlitchOverlay({ onDone }) {
 const SectionProgress  = dynamic(() => import("@/components/layout/SectionProgress"),      { ssr: false });
 const StatusBadge      = dynamic(() => import("@/components/ui/StatusBadge"),               { ssr: false });
 const ReadingToast     = dynamic(() => import("@/components/ui/ReadingToast"),              { ssr: false });
+const PositioningStatement = dynamic(() => import("@/components/sections/PositioningStatement"), { loading: () => <div className="min-h-[260px]" aria-hidden="true" /> });
 const FeaturedWork     = dynamic(() => import("@/components/sections/FeaturedWork"),         { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
 const MarqueeBand      = dynamic(() => import("@/components/sections/MarqueeBand"),          { loading: () => <div className="min-h-[80px]" aria-hidden="true" /> });
 const SectionNavCards  = dynamic(() => import("@/components/sections/SectionNavCards"),     { loading: () => <div className="min-h-[320px]" aria-hidden="true" /> });
@@ -346,7 +347,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ══ DIVIDER — hero to featured ══ */}
+          {/* ══ POSITIONING — thesis band (identity -> thesis -> proof) ══ */}
+          <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
+            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+              <PositioningStatement />
+            </div>
+          </div>
+
+          {/* ══ DIVIDER — positioning to featured ══ */}
           <div className="bg-white dark:bg-[#0A0A0A]">
             <SectionDivider />
           </div>
