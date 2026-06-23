@@ -172,47 +172,28 @@ export default function TestimonialsSection() {
           </div>
         )}
 
-        {/* dots + prev/next */}
+        {/* named endorser selectors — make the breadth of social proof legible at
+            a glance (four credible names across gov, research, and academia),
+            and double as direct, keyboard-accessible carousel navigation. */}
         {total > 1 && (
-          <div className="flex items-center justify-center gap-4 mt-6">
-            {/* prev */}
-            <button
-              onClick={() =>
-                select(current === 0 ? total - 1 : current - 1)
-              }
-              aria-label="Previous testimonial"
-              className="w-8 h-8 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors"
-            >
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M10 4 L6 8 L10 12" stroke="currentColor" strokeWidth="1.5" fill="none" />
-              </svg>
-            </button>
-
-            {/* dots */}
-            {TESTIMONIALS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => select(i)}
-                aria-label={`Testimonial ${i + 1}`}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  i === current
-                    ? "bg-[#FF3C3C] w-5"
-                    : "bg-[#E0E0E0] dark:bg-[#3D3D3D] hover:bg-[#AAAAAA]"
-                }`}
-              />
+          <ul className="flex flex-wrap gap-x-6 gap-y-2.5 mt-7">
+            {TESTIMONIALS.map((t, i) => (
+              <li key={i}>
+                <button
+                  onClick={() => select(i)}
+                  aria-label={`Show testimonial from ${t.name}`}
+                  aria-pressed={i === current}
+                  className={`text-xs tracking-wide pb-1 border-b-2 transition-colors duration-200 ${
+                    i === current
+                      ? "border-[#FF3C3C] text-[#CC0000] dark:text-[#FF5C5C]"
+                      : "border-transparent text-[#5C5C5C] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
+                  }`}
+                >
+                  {t.name}
+                </button>
+              </li>
             ))}
-
-            {/* next */}
-            <button
-              onClick={() => select((current + 1) % total)}
-              aria-label="Next testimonial"
-              className="w-8 h-8 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors"
-            >
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M6 4 L10 8 L6 12" stroke="currentColor" strokeWidth="1.5" fill="none" />
-              </svg>
-            </button>
-          </div>
+          </ul>
         )}
       </div>
     </section>
