@@ -22,7 +22,7 @@ import { useI18n } from "@/contexts/I18nContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useInView } from "@/hooks/useInView";
 
-const HREFS = ["/strategic", "/career", "/projects", "/lab", "/about", "/resume"];
+const HREFS = ["/blog", "/career", "/projects", "/lab", "/about", "/resume"];
 
 // Constellation point positions, as fractions of the field. `r` = label sits to
 // the left of its marker (right-edge points), so text never runs off-canvas.

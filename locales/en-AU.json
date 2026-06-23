@@ -231,18 +231,18 @@
   "sectionNav": {
     "label": "◈ — Explore",
     "heading": "Go deeper.",
-    "intro": "Strategy, career, projects, and the lab. Different ways into the same story.",
+    "intro": "Writing, career, projects, and the lab. Different ways into the same story.",
     "cards": [
       {
         "num": "01",
-        "title": "Strategic",
-        "desc": "Strategic thinking + data science — problem-first, not model-first. How understanding the question and applying analytics strategically creates meaningful impact.",
+        "title": "Writing",
+        "desc": "Essays on data, decisions, and the craft of analytics. Strategic intelligence, working without a playbook, and the quiet reality of public-sector data engineering.",
         "tags": [
-          "Problem framing",
-          "Government",
-          "Policy"
+          "Essays",
+          "Data Science",
+          "Decisions"
         ],
-        "stat": "Problem-first"
+        "stat": "Long-form"
       },
       {
         "num": "02",
