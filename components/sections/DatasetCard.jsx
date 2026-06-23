@@ -5,7 +5,7 @@
  * and df.describe() — a tongue-in-cheek data scientist self-portrait.
  */
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const LINE = "─".repeat(64);
 
@@ -37,6 +37,22 @@ const TABS = ["info", "describe"];
 
 export default function DatasetCard() {
   const [tab, setTab] = useState("info");
+  // Stream the output rows in like a live REPL: reset on mount and on every tab
+  // switch, then reveal on the next frames so the staggered transition replays.
+  // Rows are visible by default (fail-safe: SSR / no-JS / reduced-motion all show the
+  // data). On a TAB SWITCH we briefly hide then reveal so the staggered "print"
+  // transition replays — the interactive payoff, never required to see the content.
+  const [shown, setShown] = useState(true);
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    setShown(false);
+    const id = setTimeout(() => setShown(true), 30);
+    return () => clearTimeout(id);
+  }, [tab]);
 
   return (
     <section className="py-20" aria-label="Profile in data terms">
@@ -44,7 +60,7 @@ export default function DatasetCard() {
       {/* Header */}
       <div className="flex flex-wrap items-center gap-4 mb-6">
         <div>
-          <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-1">◈ — If I were a dataset</p>
+          <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-1 font-mono">◈ — If I were a dataset</p>
           <p className="text-[10px] text-[#AAAAAA] dark:text-[#9A9A9A] font-mono">
             What does a data scientist look like as data?
           </p>
@@ -102,7 +118,15 @@ export default function DatasetCard() {
               <p className="text-[#DDD] dark:text-[#252525] mb-2">{LINE}</p>
 
               {INFO_ROWS.map((r, i) => (
-                <div key={r.col} className="flex gap-4 group hover:bg-[#E8E8E8] dark:hover:bg-[#111] transition-colors px-1 -mx-1">
+                <div
+                  key={r.col}
+                  className="flex gap-4 group hover:bg-[#E8E8E8] dark:hover:bg-[#111] px-1 -mx-1"
+                  style={{
+                    opacity: shown ? 1 : 0,
+                    transform: shown ? "none" : "translateY(3px)",
+                    transition: `opacity 0.3s ease ${i * 30}ms, transform 0.3s ease ${i * 30}ms, background-color 0.15s`,
+                  }}
+                >
                   <span className="w-5 flex-shrink-0 text-[#AAA] dark:text-[#2E2E2E] select-none">{i}</span>
                   <span className="w-36 flex-shrink-0 text-[#888] dark:text-[#686868]">{r.col}</span>
                   <span className="w-14 flex-shrink-0 text-[#888] dark:text-[#494949]">{r.dtype}</span>
@@ -136,8 +160,16 @@ export default function DatasetCard() {
               </div>
               <p className="text-[#DDD] dark:text-[#252525] mb-2">{LINE}</p>
 
-              {DESCRIBE_ROWS.map((r) => (
-                <div key={r.metric} className="flex gap-4 group hover:bg-[#E8E8E8] dark:hover:bg-[#111] transition-colors px-1 -mx-1">
+              {DESCRIBE_ROWS.map((r, i) => (
+                <div
+                  key={r.metric}
+                  className="flex gap-4 group hover:bg-[#E8E8E8] dark:hover:bg-[#111] px-1 -mx-1"
+                  style={{
+                    opacity: shown ? 1 : 0,
+                    transform: shown ? "none" : "translateY(3px)",
+                    transition: `opacity 0.3s ease ${i * 36}ms, transform 0.3s ease ${i * 36}ms, background-color 0.15s`,
+                  }}
+                >
                   <span className="w-40 flex-shrink-0 text-[#888] dark:text-[#686868]">{r.metric}</span>
                   <span className="w-14 flex-shrink-0 text-[#FF3C3C]">{r.val}</span>
                   <span className="text-[#777] dark:text-[#444] group-hover:text-[#999] dark:group-hover:text-[#666] transition-colors">
