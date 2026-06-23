@@ -5,7 +5,7 @@ import { useI18n } from "@/contexts/I18nContext";
 
 /* ── Categorised FAQ data ────────────────────────────────────────────────── */
 
-const CATEGORIES = [
+export const CATEGORIES = [
   {
     id: "role",
     label: "The Role",

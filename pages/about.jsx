@@ -1,21 +1,49 @@
+import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 import PageHero from "@/components/layout/PageHero";
 import { useI18n } from "@/contexts/I18nContext";
+import { CATEGORIES } from "@/components/sections/FAQSection";
 
 const SkillsSection           = dynamic(() => import("@/components/sections/SkillsSection"),           { loading: () => <div className="min-h-[480px]" /> });
 const CertificationsSection  = dynamic(() => import("@/components/sections/CertificationsSection"), { loading: () => <div className="min-h-[320px]" /> });
 const FAQSection              = dynamic(() => import("@/components/sections/FAQSection"),              { loading: () => <div className="min-h-[320px]" /> });
 const TestimonialsSection     = dynamic(() => import("@/components/sections/TestimonialsSection"),    { loading: () => <div className="min-h-[200px]" /> });
 
-export default function AboutPage() {
+// FAQPage structured data is generated from the same FAQSection data at build time,
+// so the schema can never drift from the rendered Q&A. getStaticProps-only imports are
+// stripped from the client bundle by Next. The /about page renders 17 expert Q&A that
+// were previously invisible to search engines as structured data.
+export function getStaticProps() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: CATEGORIES.flatMap((c) => c.items).map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: { "@type": "Answer", text: it.a },
+    })),
+  };
+  return { props: { faqJsonLd } };
+}
+
+export default function AboutPage({ faqJsonLd }) {
   const { locale = "en-AU" } = useRouter();
   const isZh = locale === "zh-Hans";
   const { t } = useI18n();
 
   return (
     <>
+      {faqJsonLd && (
+        <Head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          />
+        </Head>
+      )}
+
       <SeoHead
         title={isZh ? "关于我 — Rin Huang · rin.contact" : "About — Rin Huang · rin.contact"}
         description={isZh ? "Rin Huang（黄孙创宇）的技能专长、七个技术领域、23项专业认证和常见问题解答。" : "Rin Huang's skills, technical domains, 23 professional certifications, and FAQ."}
