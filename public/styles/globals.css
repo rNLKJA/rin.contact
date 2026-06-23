@@ -274,6 +274,13 @@ h1 {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+/* Counter-scrolling row (slightly desynced duration so the two rows drift) */
+.animate-marquee-reverse {
+  animation: marquee 92s linear infinite reverse;
+}
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
 .dot-matrix {
   background-image: radial-gradient(circle, var(--divider) 1px, transparent 1px);
   background-size: 16px 16px;
