@@ -84,6 +84,7 @@ function GhostLabel({ children, className = "" }) {
 
 // Hero is above the fold — load immediately
 import HeroSection from "@/components/sections/HeroSection";
+import SectionDivider from "@/components/ui/SectionDivider";
 const MiniTerminal = dynamic(() => import("@/components/MiniTerminal"), { ssr: false });
 import ConfettiBurst from "@/components/ui/ConfettiBurst";
 
@@ -345,8 +346,13 @@ export default function Home() {
             </div>
           </div>
 
+          {/* ══ DIVIDER — hero to featured ══ */}
+          <div className="bg-white dark:bg-[#0A0A0A]">
+            <SectionDivider />
+          </div>
+
           {/* ══ FEATURED WORK — flagship spotlight ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] border-t border-[#F5F5F5] dark:border-[#1E1E1E] content-visibility-auto">
+          <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12">
               <FeaturedWork />
             </div>
@@ -363,6 +369,11 @@ export default function Home() {
             <div className="max-w-[1100px] mx-auto px-6 md:px-12">
               <SectionNavCards />
             </div>
+          </div>
+
+          {/* ══ DIVIDER — explore to testimonials ══ */}
+          <div className="bg-white dark:bg-[#0A0A0A]">
+            <SectionDivider />
           </div>
 
           {/* ══ TESTIMONIALS — social proof ══ */}
