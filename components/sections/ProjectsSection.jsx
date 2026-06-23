@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { useInView } from "@/hooks/useInView";
 
 const PROJECTS = [
@@ -599,6 +600,12 @@ function FeaturedSpotlight({ project }) {
 
 export default function ProjectsSection() {
   const { t } = useI18n();
+  const { resolved } = useTheme();
+  const isDark = resolved === "dark";
+  // Idle filter-pill colours are applied via inline JS (mouse handlers), so they
+  // must be theme-aware here — Tailwind dark: variants do not reach inline styles.
+  const idleBorder = isDark ? "#3D3D3D" : "#E0E0E0";
+  const idleText = isDark ? "#9A9A9A" : "#595959";
   const [ref, inView] = useInView();
   const [activeFilter, setActiveFilter] = useState("All");
   const [openId, setOpenId] = useState(null);
@@ -670,7 +677,7 @@ export default function ProjectsSection() {
             const activeStyle = dc
               ? { borderColor: dc.color, backgroundColor: dc.color, color: "#fff" }
               : { borderColor: "#FF3C3C", backgroundColor: "#FF3C3C", color: "#fff" };
-            const idleStyle = { borderColor: "#E0E0E0", color: "#595959" };
+            const idleStyle = { borderColor: idleBorder, color: idleText };
             return (
               <button
                 key={d}
@@ -684,8 +691,8 @@ export default function ProjectsSection() {
                 }}
                 onMouseLeave={(e) => {
                   if (isActive) return;
-                  e.currentTarget.style.borderColor = "#E0E0E0";
-                  e.currentTarget.style.color = "#595959";
+                  e.currentTarget.style.borderColor = idleBorder;
+                  e.currentTarget.style.color = idleText;
                 }}
                 aria-pressed={isActive}
               >
