@@ -21,7 +21,7 @@ const IDLE_MSGS = [
   "The model is still training.",
   "Coffee break?",
   "Waiting for input...",
-  "⏳ idle detected",
+  "Idle detected.",
   "Take your time. I'll be here.",
 ];
 

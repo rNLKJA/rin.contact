@@ -59,7 +59,7 @@ The agent reads the rules, connects to Gmail via MCP, and executes the triage. R
 
 ## A note on inbox safety
 
-⚠️ Before you try anything like this: please limit what your AI agent can access if your inbox holds confidential information. This skill reads sender, subject, and snippets only — not attachment contents — and never deletes mail. Even so, treat inbox automation like any other tool that touches sensitive data.
+Before you try anything like this: please limit what your AI agent can access if your inbox holds confidential information. This skill reads sender, subject, and snippets only — not attachment contents — and never deletes mail. Even so, treat inbox automation like any other tool that touches sensitive data.
 
 ## What I learned building this
 
