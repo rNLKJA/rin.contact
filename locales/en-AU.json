@@ -220,6 +220,8 @@
   },
   "sectionNav": {
     "label": "◈ — Explore",
+    "heading": "Go deeper.",
+    "intro": "Strategy, career, projects, and the lab. Different ways into the same story.",
     "cards": [
       {
         "num": "01",

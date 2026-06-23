@@ -29,7 +29,16 @@ export default function SectionNavCards() {
 
   return (
     <section className="py-20" aria-label={t("sectionNav.label")} ref={ref}>
-      <p className="text-xs tracking-widest uppercase text-[#7A7A7A] mb-10">{t("sectionNav.label")}</p>
+      {/* elevated header — matches the Certifications / Testimonials register */}
+      <div
+        className={`mb-12 transition-all duration-600 ${
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4 font-mono">{t("sectionNav.label")}</p>
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">{t("sectionNav.heading")}</h2>
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed mt-3">{t("sectionNav.intro")}</p>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#E0E0E0] dark:bg-[#262626]">
         {cardData.map((card, i) => (
