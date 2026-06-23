@@ -115,6 +115,14 @@
     "sectionLabel": "07 — Contact",
     "heading": "Get in Touch",
     "description": "Whether it is a data challenge, a research collaboration, a project idea, or just a coffee — I would genuinely love to hear from you. I am always open to conversations that push things forward.",
+    "engage": {
+      "label": "Ways to work together",
+      "items": [
+        { "n": "01", "domain": "Government", "title": "Strategic intelligence analytics", "desc": "Turning complex operational data into decision-ready intelligence for executive and ministerial use." },
+        { "n": "02", "domain": "Research", "title": "Research data engineering", "desc": "Reproducible pipelines and scientific software, from genomics at WEHI to climate-risk modelling at CSIRO." },
+        { "n": "03", "domain": "Engineering", "title": "Product and full-stack build", "desc": "Shipping real applications end to end, from the data layer to the interface, like Signal and Mapiva." }
+      ]
+    },
     "schedule": "Schedule a call",
     "scheduleDesc": "Book a 30-minute call. No pitch. No pressure.",
     "support": "Support",

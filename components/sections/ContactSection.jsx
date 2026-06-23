@@ -63,6 +63,75 @@ function Toast({ type, message, onClose }) {
   );
 }
 
+// ─── Engagement band — "Ways to work together" ───────────────────────────────
+// Always-dark surface: pin light-on-dark values, NO `dark:` variants (inverse-
+// contrast rule). Maps the Positioning triad (Government · Research · Engineering)
+// to concrete, hireable offers, grounded in the career facts already on the site.
+function EngagementBand() {
+  const { t } = useI18n();
+  const [ref, inView] = useInView();
+  const label = t("contact.engage.label");
+  const items = t("contact.engage.items");
+  const safeItems = Array.isArray(items) ? items : [];
+  if (!safeItems.length) return null;
+
+  return (
+    <div
+      ref={ref}
+      className={`mb-16 transition-all duration-700 relative z-10 ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      }`}
+    >
+      <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#9A9A9A] mb-7">
+        <span className="block w-1.5 h-1.5 bg-[#FF3C3C]" aria-hidden="true" />
+        {label}
+      </p>
+
+      <ul className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#2A2A2A] border border-[#2A2A2A]">
+        {safeItems.map((item, i) => (
+          <li
+            key={item.n || i}
+            className="engage-card group relative bg-[#1A1A1A] px-7 py-8 overflow-hidden
+                       transition-all duration-500"
+            style={{ transitionDelay: inView ? `${i * 90}ms` : "0ms" }}
+          >
+            {/* Ghost index — drifts up + ignites red on hover */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-3 right-3 leading-none select-none
+                         text-[5.5rem] text-[#202020] transition-all duration-500
+                         group-hover:text-[rgba(255,60,60,0.16)] group-hover:-translate-y-1"
+              style={{ fontFamily: "var(--font-bitcount), monospace" }}
+            >
+              {item.n}
+            </span>
+
+            <div className="relative z-10">
+              <p className="flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#7A7A7A] mb-4">
+                <span className="block w-1 h-1 rotate-45 bg-[#FF3C3C]" aria-hidden="true" />
+                {item.domain}
+              </p>
+              <h3 className="text-lg font-medium text-white leading-snug mb-2.5">
+                {item.title}
+              </h3>
+              <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">
+                {item.desc}
+              </p>
+            </div>
+
+            {/* HUD accent line — draws across the foot on hover */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-7 right-7 bottom-5 h-px origin-left scale-x-0
+                         bg-[#FF3C3C] transition-transform duration-500 group-hover:scale-x-100"
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function ContactSection() {
   const { t } = useI18n();
   const [ref, inView] = useInView();
@@ -189,6 +258,9 @@ export default function ContactSection() {
             {t("contact.description")}
           </p>
         </div>
+
+        {/* Ways to work together — concrete, hireable offers before the form */}
+        <EngagementBand />
 
         <div
           ref={formRef}
