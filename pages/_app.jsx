@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { I18nProvider } from "@/contexts/I18nContext";
@@ -291,6 +292,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <I18nProvider>
+        {/* Global viewport — every page gets initial-scale + viewport-fit=cover
+            (edge-to-edge on notched devices), not just Next's minimal default. */}
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        </Head>
         <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}>
           {/* Skip-to-content link — WCAG 2.4.1: first focusable element */}
           <a

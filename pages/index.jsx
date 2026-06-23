@@ -197,7 +197,7 @@ export default function Home() {
       )}
 
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        {/* viewport is set globally in _app.jsx */}
 
         {/* ── LCP: preload above-the-fold assets ── */}
         <link rel="preload" href="/logo.svg" as="image" fetchpriority="high" />
