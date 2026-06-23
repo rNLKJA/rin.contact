@@ -31,17 +31,20 @@ function TiltFlipCard() {
   const perspRef = useRef(null);
   const tiltRef = useRef(null);
   const sheenRef = useRef(null);
-  const reducedRef = useRef(false);
+  const noTiltRef = useRef(false);
   const [flipped, setFlipped] = useState(false);
 
   useEffect(() => {
-    reducedRef.current =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (typeof window === "undefined") return;
+    // Disable the cursor tilt under reduced-motion or on touch/coarse pointers
+    // (the flip still works via tap). pointermove on touch fires during scroll.
+    noTiltRef.current =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   }, []);
 
   const onMove = useCallback((e) => {
-    if (reducedRef.current) return;
+    if (noTiltRef.current) return;
     const wrap = perspRef.current;
     const tilt = tiltRef.current;
     if (!wrap || !tilt) return;

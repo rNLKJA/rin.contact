@@ -24,17 +24,19 @@ export default function FeaturedWork() {
   const [ref, inView] = useInView({ threshold: 0.15 });
   const cardRef = useRef(null);
   const sheenRef = useRef(null);
-  const reducedRef = useRef(false);
+  const noTiltRef = useRef(false);
 
   useEffect(() => {
-    reducedRef.current =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (typeof window === "undefined") return;
+    // No cursor tilt under reduced-motion, or on touch/coarse pointers.
+    noTiltRef.current =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   }, []);
 
   // Subtle 3D tilt + red cursor sheen — premium feel on the flagship card.
   const onMove = useCallback((e) => {
-    if (reducedRef.current) return;
+    if (noTiltRef.current) return;
     const card = cardRef.current;
     if (!card) return;
     const r = card.getBoundingClientRect();

@@ -23,16 +23,19 @@ function TiltCard({ card, index, inView }) {
   const perspRef = useRef(null);
   const cardRef = useRef(null);
   const ghostRef = useRef(null);
-  const reducedRef = useRef(false);
+  const noTiltRef = useRef(false);
 
   useEffect(() => {
-    reducedRef.current =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (typeof window === "undefined") return;
+    // No cursor tilt under reduced-motion, or on touch/coarse pointers (where
+    // pointermove fires during scroll and there is no cursor to track).
+    noTiltRef.current =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   }, []);
 
   const onMove = useCallback((e) => {
-    if (reducedRef.current) return;
+    if (noTiltRef.current) return;
     const wrap = perspRef.current;
     const cardEl = cardRef.current;
     if (!wrap || !cardEl) return;
