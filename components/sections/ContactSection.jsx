@@ -173,18 +173,19 @@ export default function ContactSection() {
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
+          <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
+            <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
             {t("contact.sectionLabel")}
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">
+          <h2 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4 text-white">
             {t("contact.heading")}
           </h2>
-          {/* Wisr-style wavy accent */}
-          <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
-            <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-                  className="stroke-[#E0E0E0] dark:stroke-[#3D3D3D]" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+          {/* brand wavy accent — red, echoing the hero underline */}
+          <svg width="132" height="10" viewBox="0 0 132 10" aria-hidden="true" className="mb-6">
+            <path d="M0,5 C16,1 33,9 49,5 C66,1 82,9 99,5 C115,1 132,9 132,5"
+                  stroke="#FF3C3C" strokeOpacity="0.55" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
           </svg>
-          <p className="text-base text-[#3D3D3D] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
+          <p className="text-base md:text-lg text-[#AAAAAA] max-w-xl leading-relaxed font-light">
             {t("contact.description")}
           </p>
         </div>
@@ -209,29 +210,29 @@ export default function ContactSection() {
               <meta itemProp="url"           content="https://rin.contact/" />
 
               <div className="flex items-center gap-3">
-                <FiMail size={16} className="text-[#B0B0B0] dark:text-[#7A7A7A]" aria-hidden="true" />
+                <FiMail size={16} className="text-[#7A7A7A]" aria-hidden="true" />
                 <a
                   href="mailto:huang@rin.contact"
                   itemProp="email"
-                  className="text-sm text-[#595959] hover:text-black dark:text-[#C0C0C0] dark:hover:text-white transition-colors duration-200"
+                  className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200"
                 >
                   huang@rin.contact
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <FiPhone size={16} className="text-[#B0B0B0] dark:text-[#7A7A7A]" aria-hidden="true" />
+                <FiPhone size={16} className="text-[#7A7A7A]" aria-hidden="true" />
                 <a
                   href="tel:+61450270703"
                   itemProp="telephone"
-                  className="text-sm text-[#595959] hover:text-black dark:text-[#C0C0C0] dark:hover:text-white transition-colors duration-200"
+                  className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200"
                 >
                   +61 450 270 703
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <FiMapPin size={16} className="text-[#B0B0B0] dark:text-[#7A7A7A]" aria-hidden="true" />
+                <FiMapPin size={16} className="text-[#7A7A7A]" aria-hidden="true" />
                 {/* Visible display text */}
-                <span className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">Adelaide &amp; Melbourne, Australia</span>
+                <span className="text-sm text-[#9A9A9A]">Adelaide &amp; Melbourne, Australia</span>
                 {/* Hidden microdata — all locations associated with Rin Huang */}
                 <span className="sr-only">
                   <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
@@ -261,7 +262,7 @@ export default function ContactSection() {
               </div>
             </address>
 
-            <hr className="border-[#E0E0E0] dark:border-[#3D3D3D]" />
+            <hr className="border-[#3D3D3D]" />
 
             <div className="flex flex-wrap gap-2">
               {SOCIALS.map(({ label, href, icon: Icon, handle }) => (
@@ -270,8 +271,8 @@ export default function ContactSection() {
                   href={href}
                   target={label !== "Email" ? "_blank" : undefined}
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-2 rounded-full
-                             text-xs text-[#7A7A7A] dark:text-[#9A9A9A] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200"
+                  className="inline-flex items-center gap-2 border border-[#3D3D3D] px-4 py-2 rounded-full
+                             text-xs text-[#9A9A9A] hover:border-white hover:text-white transition-colors duration-200"
                   aria-label={`${label}: ${handle}`}
                 >
                   <Icon size={13} aria-hidden="true" />
@@ -283,7 +284,7 @@ export default function ContactSection() {
             {/* Schedule a call — Calendly */}
             {process.env.NEXT_PUBLIC_CALENDLY_URL && (
               <div className="flex flex-col gap-3">
-                <p className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.schedule")}</p>
+                <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.schedule")}</p>
                 <a
                   href={process.env.NEXT_PUBLIC_CALENDLY_URL}
                   target="_blank"
@@ -299,17 +300,17 @@ export default function ContactSection() {
               </div>
             )}
 
-            <hr className="border-[#E0E0E0] dark:border-[#3D3D3D]" />
+            <hr className="border-[#3D3D3D]" />
 
             {/* Buy Me a Coffee */}
             <div className="flex flex-col gap-3">
-              <p className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.support")}</p>
+              <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.support")}</p>
               <a
                 href="https://www.buymeacoffee.com/rNLKJA"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2.5 self-start border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-2.5
-                           rounded-full text-xs text-[#7A7A7A] dark:text-[#9A9A9A] hover:border-[#F5C542] hover:text-[#F5C542]
+                className="inline-flex items-center gap-2.5 self-start border border-[#3D3D3D] px-5 py-2.5
+                           rounded-full text-xs text-[#9A9A9A] hover:border-[#F5C542] hover:text-[#F5C542]
                            transition-colors duration-200"
                 aria-label={t("contact.buyMeCoffee")}
               >
@@ -323,34 +324,34 @@ export default function ContactSection() {
           {/* Right — contact form */}
           <form onSubmit={handleSubmit} noValidate aria-label="Contact form" className="flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.form.name")}</label>
+              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.form.name")}</label>
               <input
                 id="name" name="name" type="text" required autoComplete="name"
                 value={form.name} onChange={handleChange} placeholder={t("contact.form.namePlaceholder")}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 text-sm bg-white dark:bg-[#252525] text-black dark:text-white
-                           placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
+                className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
+                           placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.form.email")}</label>
+              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.form.email")}</label>
               <input
                 id="email" name="email" type="email" required autoComplete="email"
                 value={form.email} onChange={handleChange} placeholder={t("contact.form.emailPlaceholder")}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 text-sm bg-white dark:bg-[#252525] text-black dark:text-white
-                           placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
+                className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
+                           placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#AAAAAA]">{t("contact.form.message")}</label>
+              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.form.message")}</label>
               <textarea
                 id="message" name="message" required rows={6}
                 value={form.message} onChange={handleChange} placeholder={t("contact.form.messagePlaceholder")}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-5 py-3 text-sm bg-white dark:bg-[#252525] text-black dark:text-white resize-none
-                           placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
+                className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white resize-none
+                           placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-2xl"
               />
             </div>
