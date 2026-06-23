@@ -444,7 +444,9 @@
     "backToAllPosts": "Back to all posts",
     "minRead": "min read",
     "readNext": "Read next",
-    "postNotFound": "Post not found."
+    "postNotFound": "Post not found.",
+    "allTopics": "All",
+    "filterLabel": "Filter by topic"
   },
   "lab": {
     "sectionLabel": "◆ — Lab",

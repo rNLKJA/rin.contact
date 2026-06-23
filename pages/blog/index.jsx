@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
 import PostCard from "@/components/blog/PostCard";
@@ -14,7 +13,20 @@ const NewsletterSignup = dynamic(
 
 export default function BlogIndex({ posts }) {
   const { t, locale = "en-AU" } = useI18n();
-  const isZh = locale === "zh-Hans";
+  // Topic filter — a progressive enhancement. Default (null) shows everything, so
+  // no-JS and SSR always render the full list. Only tags on >=2 posts become filter
+  // chips; one-off tags are noise as filters.
+  const [activeTag, setActiveTag] = useState(null);
+  const topTags = useMemo(() => {
+    const counts = {};
+    posts.forEach((p) => (p.tags || []).forEach((tag) => { counts[tag] = (counts[tag] || 0) + 1; }));
+    return Object.entries(counts)
+      .filter(([, n]) => n >= 2)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([tag]) => tag);
+  }, [posts]);
+  const filtered = activeTag ? posts.filter((p) => (p.tags || []).includes(activeTag)) : posts;
+
   return (
     <>
       <SeoHead
@@ -59,6 +71,43 @@ export default function BlogIndex({ posts }) {
           </p>
         </div>
 
+        {/* Topic filter */}
+        {topTags.length > 1 && (
+          <div
+            className="flex flex-wrap items-center gap-2 mb-10"
+            role="group"
+            aria-label={t("blog.filterLabel")}
+          >
+            <button
+              type="button"
+              onClick={() => setActiveTag(null)}
+              aria-pressed={activeTag === null}
+              className={`text-[10px] tracking-widest uppercase px-3 py-1 border transition-colors duration-200 ${
+                activeTag === null
+                  ? "border-[#FF3C3C] bg-[#FF3C3C] text-white"
+                  : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#5C5C5C] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
+              }`}
+            >
+              {t("blog.allTopics")}
+            </button>
+            {topTags.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={() => setActiveTag(tag)}
+                aria-pressed={activeTag === tag}
+                className={`text-[10px] tracking-widest uppercase px-3 py-1 border transition-colors duration-200 ${
+                  activeTag === tag
+                    ? "border-[#FF3C3C] bg-[#FF3C3C] text-white"
+                    : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#5C5C5C] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
+                }`}
+              >
+                {tag.replace(/-/g, " ")}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Posts */}
         {posts.length === 0 ? (
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-12 text-center">
@@ -68,7 +117,7 @@ export default function BlogIndex({ posts }) {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {posts.map((post) => (
+            {filtered.map((post) => (
               <PostCard key={post.slug} {...post} />
             ))}
           </div>

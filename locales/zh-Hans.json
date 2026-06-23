@@ -444,7 +444,9 @@
     "backToAllPosts": "返回全部文章",
     "minRead": "分钟阅读",
     "readNext": "下一篇",
-    "postNotFound": "文章未找到。"
+    "postNotFound": "文章未找到。",
+    "allTopics": "全部",
+    "filterLabel": "按主题筛选"
   },
   "lab": {
     "sectionLabel": "◆ — 实验室",
