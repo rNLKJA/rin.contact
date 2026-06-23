@@ -1025,7 +1025,7 @@ export default function IntelligenceSection() {
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">{t("intelligence.heading")}</h2>
         <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-5">
           <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-            stroke="#E0E0E0" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+            stroke="#E0E0E0" className="dark:stroke-[#3D3D3D]" strokeWidth="1.5" fill="none" strokeLinecap="round" />
         </svg>
         <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed">
           Three interactive lenses on the same dataset — my career. Each one tells a different part

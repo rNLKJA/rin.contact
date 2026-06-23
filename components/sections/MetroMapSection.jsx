@@ -280,9 +280,9 @@ export default function MetroMapSection() {
       {/* Info panel */}
       <div
         className={`mt-4 border-l-2 pl-4 transition-all duration-200 ${
-          active ? "opacity-100" : "opacity-30 pointer-events-none"
+          active ? "opacity-100" : "opacity-30 pointer-events-none border-[#E0E0E0] dark:border-[#3D3D3D]"
         }`}
-        style={{ borderColor: active ? LINES.find((l) => l.id === active?.line)?.color : "#E0E0E0" }}
+        style={active ? { borderColor: LINES.find((l) => l.id === active?.line)?.color } : undefined}
         aria-live="polite"
       >
         {active ? (
