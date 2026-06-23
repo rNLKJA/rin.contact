@@ -4,6 +4,7 @@
  * work up front, with case-study / live-demo / source CTAs. Nothing-OS styling,
  * dot-matrix accent, theme-aware.
  */
+import { useCallback, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 
@@ -21,6 +22,35 @@ const STACK = ["Python", "FastAPI", "LLM", "NumPy", "SciPy", "Modal", "Docker", 
 
 export default function FeaturedWork() {
   const [ref, inView] = useInView({ threshold: 0.15 });
+  const cardRef = useRef(null);
+  const sheenRef = useRef(null);
+  const reducedRef = useRef(false);
+
+  useEffect(() => {
+    reducedRef.current =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
+
+  // Subtle 3D tilt + red cursor sheen — premium feel on the flagship card.
+  const onMove = useCallback((e) => {
+    if (reducedRef.current) return;
+    const card = cardRef.current;
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    card.style.transform = `rotateX(${(0.5 - py) * 6}deg) rotateY(${(px - 0.5) * 6}deg)`;
+    if (sheenRef.current) {
+      sheenRef.current.style.background = `radial-gradient(620px circle at ${px * 100}% ${py * 100}%, rgba(255,60,60,0.07), transparent 46%)`;
+      sheenRef.current.style.opacity = "1";
+    }
+  }, []);
+
+  const onLeave = useCallback(() => {
+    if (cardRef.current) cardRef.current.style.transform = "rotateX(0deg) rotateY(0deg)";
+    if (sheenRef.current) sheenRef.current.style.opacity = "0";
+  }, []);
 
   return (
     <section id="featured" className="scroll-mt-24 py-20 md:py-24" aria-label="Featured work" ref={ref}>
@@ -29,10 +59,20 @@ export default function FeaturedWork() {
         Featured — Flagship
       </p>
 
+      {/* perspective wrapper holds the scroll reveal; the inner card tilts */}
       <div
-        className={`border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-lg overflow-hidden bg-white dark:bg-[#0A0A0A]
-                    transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        onPointerMove={onMove}
+        onPointerLeave={onLeave}
+        className={`transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        style={{ perspective: "1500px" }}
       >
+      <div
+        ref={cardRef}
+        className="relative border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-lg overflow-hidden bg-white dark:bg-[#0A0A0A]"
+        style={{ transition: "transform 0.25s ease-out", willChange: "transform" }}
+      >
+        {/* cursor sheen — subtle red glow, never blocks clicks */}
+        <span ref={sheenRef} aria-hidden="true" className="pointer-events-none absolute inset-0 z-20" style={{ opacity: 0, transition: "opacity 0.3s ease" }} />
         {/* header bar */}
         <div className="px-6 md:px-8 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
           <span className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] truncate">
@@ -119,6 +159,7 @@ export default function FeaturedWork() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
