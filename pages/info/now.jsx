@@ -2,7 +2,7 @@ import Head from "next/head";
 import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
 
-const UPDATED = "10 March 2026";
+const UPDATED = "23 June 2026";
 
 const Section = ({ label, children }) => (
   <div className="mb-10">
@@ -77,8 +77,8 @@ export default function NowPage() {
         {/* Building */}
         <Section label="Building">
           <Item
-            text="Mapiva — a location-intelligence platform for smarter city planning"
-            sub="Co-founder & Dev Lead · early stage, moving fast"
+            text="Mapiva — a mobile social discovery app that helps people discover and connect"
+            sub="Co-founder & Dev Lead · iOS + Android · targeting v1 Jan 2027"
           />
           <Item
             text="Internal analytics dashboards for SAPOL Professional & Ethical Standards Branch"
