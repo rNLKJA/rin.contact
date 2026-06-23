@@ -83,7 +83,7 @@ const LS_TEXT = [
   "  -rw-r--r--  experience.json    7 roles  since 2022",
   "  -rw-r--r--  education.txt      2 degrees  University of Melbourne",
   "  -rw-r--r--  skills.txt         7+ technical domains",
-  "  -rw-r--r--  projects.txt       17 shipped to production",
+  "  -rw-r--r--  projects.txt       21 shipped to production",
   "  -rw-r--r--  certs.txt          23 professional certifications",
   "  drwxr-xr-x  contact/           → rin.contact/#contact",
   "",
@@ -170,7 +170,7 @@ const SKILLS_TEXT = [
 
 const PROJECTS_TEXT = [
   "",
-  "  PROJECTS.TXT  (17 shipped to production)",
+  "  PROJECTS.TXT  (21 shipped to production)",
   "  ─────────────────────────────────────────────────",
   "",
   "  ● Mapiva            social connection app · React Native · Aug 2025",
@@ -180,7 +180,7 @@ const PROJECTS_TEXT = [
   "  ● ENSO risk model   climate & food-security · CSIRO",
   "  ● HPLC automation   bioprocess data pipeline · CSL",
   "  ● rin.contact       this site · Next.js · Vercel",
-  "  · · ·  + 10 more  →  rin.contact/projects",
+  "  · · ·  + 14 more  →  rin.contact/projects",
   "",
 ];
 

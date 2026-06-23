@@ -200,7 +200,7 @@ const NEOFETCH = [
   D("  Location   Adelaide, SA, Australia"),
   D("  Uptime     2020 → present  (6+ years)"),
   D("  CPU        Generalist × Specialist"),
-  D("  Memory     23+ certs · 2 degrees · 17 projects"),
+  D("  Memory     23+ certs · 2 degrees · 20+ projects"),
   BR(),
   L("red",   "  ████"),
   BR(),

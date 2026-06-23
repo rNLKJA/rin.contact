@@ -4,7 +4,7 @@ import { useI18n } from "@/contexts/I18nContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useInView } from "@/hooks/useInView";
 
-const PROJECTS = [
+export const PROJECTS = [
   {
     id: "signal",
     title: "Signal",

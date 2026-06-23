@@ -48,7 +48,7 @@ export default function ModelCardPage() {
             </div>
             <div className="mb-6">
               <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-3">Performance</p>
-              <Row label="Projects shipped" value="17" />
+              <Row label="Projects shipped" value="21" />
               <Row label="Certifications" value="23" />
               <Row label="Uptime" value="~26 years (with coffee)" />
             </div>

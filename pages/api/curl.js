@@ -155,7 +155,7 @@ const lines = [
   H("BY THE NUMBERS"),
   "",
   statBar( 6, "roles",          "across gov, research & startup"),
-  statBar(17, "projects",       "shipped to production"),
+  statBar(21, "projects",       "shipped to production"),
   statBar( 2, "degrees",        "University of Melbourne"),
   statBar(23, "certifications", "cloud · analytics · agile · language"),
   "",
