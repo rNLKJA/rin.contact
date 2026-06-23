@@ -4,7 +4,7 @@ import { useInView } from "@/hooks/useInView";
 import { useI18n } from "@/contexts/I18nContext";
 import { isSAPOLPeriod } from "@/lib/employment-period";
 
-const CAREER_RAW = [
+export const CAREER_RAW = [
   {
     year: "2026",
     org: "South Australia Police",
@@ -224,7 +224,7 @@ const VOLUNTEER = [
   },
 ];
 
-const EDUCATION = [
+export const EDUCATION = [
   {
     year: "2023–2024",
     org: "University of Melbourne",

@@ -23,6 +23,7 @@ const NAV_COLS = [
     headingKey: "footer.pages",
     links: [
       { href: "/hire-me", key: "nav.hireMe", cta: true },
+      { href: "/cv",               key: "nav.cv"            },
       { href: "/tools/card",       key: "nav.businessCard" },
       { href: "/blog",             key: "nav.blog"          },
       { href: "/info/api",         key: "nav.api"           },

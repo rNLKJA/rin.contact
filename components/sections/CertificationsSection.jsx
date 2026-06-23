@@ -3,7 +3,7 @@ import { useInView } from "@/hooks/useInView";
 
 /* ── Certifications data (subset of the 23 in JSON-LD — most impactful) ────── */
 
-const CERTS = [
+export const CERTS = [
   { name: "Azure Data Fundamentals", issuer: "Microsoft", year: "2024" },
   { name: "Azure AI Fundamentals", issuer: "Microsoft", year: "2024" },
   { name: "Azure Fundamentals", issuer: "Microsoft", year: "2024" },
