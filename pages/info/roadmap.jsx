@@ -39,6 +39,11 @@ const DONE = [
   { title: "30+ hidden routes and easter eggs", status: "done", joke: "At this point we've lost count." },
   { title: "Nothing OS + Wisr design system", status: "done", note: "Stark. Minimal. Monochromatic." },
   { title: "SEO for 6+ name variants", status: "done", note: "Sunchuangyu, 黄孙创宇, HUANGSUNCHUANGYU, etc." },
+  { title: "Blog / writing section", status: "done", note: "Live with reading time and Read-next. Eight posts and counting." },
+  { title: "RSS feed", status: "done", note: "/blog/feed.xml — subscribe in any reader." },
+  { title: "i18n — Mandarin version", status: "done", note: "Full zh-Hans site. 黄孙创宇 has his page." },
+  { title: "PWA / offline support", status: "done", note: "Service worker, web manifest, installable." },
+  { title: "Dark mode", status: "done", note: "Nothing OS is dark by nature; the toggle makes it a choice." },
 ];
 
 const WIP = [
@@ -48,11 +53,8 @@ const WIP = [
 ];
 
 const PLANNED = [
-  { title: "Blog / writing section", status: "planned", note: "Data science notes. Lessons learned." },
-  { title: "RSS feed", status: "planned", note: "For when the blog exists." },
-  { title: "Dark mode toggle", status: "done", joke: "Nothing OS already is dark. Now the code is too." },
-  { title: "i18n — Mandarin version", status: "planned", note: "黄孙创宇 deserves a zh-Hans site." },
-  { title: "PWA / offline support", status: "planned", note: "Service worker. Install prompt. Maybe." },
+  { title: "More project case studies", status: "planned", note: "Signal has one. The rest deserve the same depth." },
+  { title: "Newsletter automation", status: "planned", note: "The signup exists; the sending pipeline is next." },
   { title: "API versioning", status: "planned", joke: "v1 is forever. v2 when we break everything." },
 ];
 
@@ -98,7 +100,7 @@ export default function RoadmapPage() {
           </h1>
           <p className="text-sm text-[#7A7A7A] leading-relaxed">
             A mix of shipped features, work in progress, and items that may or may not be jokes.
-            Last updated March 2026.
+            Last updated June 2026.
           </p>
         </div>
 
