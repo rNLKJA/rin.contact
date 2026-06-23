@@ -109,7 +109,7 @@ export default function UsesPage() {
 
         {/* Web Dev */}
         <Section label="Web Development">
-          <Row name="Next.js 14" href="https://nextjs.org" desc="Framework of choice for web. Pages Router, server components, fantastic DX." badge="this site" />
+          <Row name="Next.js 16" href="https://nextjs.org" desc="Framework of choice for web. Pages Router on React 19 — fast, file-based, fantastic DX." badge="this site" />
           <Row name="Tailwind CSS" href="https://tailwindcss.com" desc="Utility-first styling. Initially sceptical. Now converted." />
           <Row name="Vercel" href="https://vercel.com" desc="Deploy → done. Preview URLs on every push. The best CI/CD experience I've used." />
           <Row name="Figma" href="https://figma.com" desc="Design and prototyping. Also for communicating with designers who don't speak code." />
@@ -126,7 +126,7 @@ export default function UsesPage() {
         {/* Footer */}
         <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <p className="text-[11px] text-[#AAAAAA] font-mono">
-            Last updated March 2026.
+            Last updated June 2026.
           </p>
           <Link href="/"
             className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">

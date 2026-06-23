@@ -70,7 +70,7 @@ export default function ColophonPage() {
 
         {/* Framework */}
         <Section label="Framework & Runtime">
-          <Row name="framework"   value="Next.js 14"           href="https://nextjs.org"            note="Pages Router — SSG + SSR + CSR mix" />
+          <Row name="framework"   value="Next.js 16"           href="https://nextjs.org"            note="Pages Router — SSG + SSR + CSR mix" />
           <Row name="runtime"     value="Node.js"              href="https://nodejs.org"            note="via Vercel serverless functions" />
           <Row name="language"    value="TypeScript / JSX"     href="https://typescriptlang.org"    note="strict mode where it matters" />
           <Row name="pkg manager" value="npm"                                                       note="nothing fancy" />

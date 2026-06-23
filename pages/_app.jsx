@@ -247,7 +247,7 @@ function MyApp({ Component, pageProps }) {
       console.log(
         "%cHello, developer. You opened the console.\n\n" +
         "%cSince you're here, you're probably the kind of person Rin would enjoy working with.\n\n" +
-        "%cStack:    %cNext.js 14 · Tailwind CSS · EmailJS · Vercel\n" +
+        "%cStack:    %cNext.js 16 · Tailwind CSS · EmailJS · Vercel\n" +
         "%cDesign:   %cNothing OS aesthetic — stark, minimal, monochromatic\n" +
         "%cAuthor:   %cRin Huang  ·  rin.contact\n\n" +
         "%cHidden routes:\n" +

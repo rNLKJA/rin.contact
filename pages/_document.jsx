@@ -645,7 +645,7 @@ class MyDocument extends Document {
           │   Since you're reading this, you're probably the kind of person     │
           │   Rin would enjoy working with.                                     │
           │                                                                      │
-          │   Stack: Next.js 14 · Tailwind CSS · EmailJS · Vercel              │
+          │   Stack: Next.js 16 · Tailwind CSS · EmailJS · Vercel              │
           │   Design: Nothing OS aesthetic — stark, minimal, monochromatic      │
           │   Every decision is intentional.                                    │
           │                                                                      │
