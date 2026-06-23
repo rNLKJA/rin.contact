@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import LocaleSwitcher from "@/components/ui/LocaleSwitcher";
@@ -80,6 +81,15 @@ const PAGE_LINKS = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useI18n();
+  const { pathname } = useRouter();
+
+  // "You are here" wayfinding. Matches exact route or any sub-route (e.g.
+  // /projects/signal lights /projects). Skips hash links and the home anchor.
+  const isActive = (href) => {
+    if (!href || !href.startsWith("/") || href.includes("#")) return false;
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(href + "/");
+  };
   // Direct DOM refs — scroll state never goes through React, so no re-renders on scroll
   const headerRef   = useRef(null);
   const progressRef = useRef(null);
@@ -156,16 +166,26 @@ export default function Header() {
           className="hidden md:flex flex-row items-center gap-1 text-[11px] tracking-widest uppercase"
           aria-label="Primary navigation"
         >
-          {NAV_LINKS.map(({ href, key }) => (
-            <Link
-              key={key}
-              href={href}
-              className="px-3 py-1.5 rounded-full text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]
-                         transition-all duration-200"
-            >
-              {t(key)}
-            </Link>
-          ))}
+          {NAV_LINKS.map(({ href, key }) => {
+            const active = isActive(href);
+            return (
+              <Link
+                key={key}
+                href={href}
+                aria-current={active ? "page" : undefined}
+                className={`relative px-3 py-1.5 rounded-full transition-all duration-200 ${
+                  active
+                    ? "text-[#FF3C3C]"
+                    : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
+                }`}
+              >
+                {t(key)}
+                {active && (
+                  <span aria-hidden="true" className="absolute left-1/2 -translate-x-1/2 bottom-[2px] w-[3px] h-[3px] bg-[#FF3C3C]" />
+                )}
+              </Link>
+            );
+          })}
 
           {/* Thin separator */}
           <span className="h-3.5 w-px bg-[#E0E0E0] dark:bg-[#3D3D3D] mx-1.5" aria-hidden="true" />
@@ -177,20 +197,33 @@ export default function Header() {
           <ThemeToggle className="ml-1" />
 
           {/* Page links — card + hire-me */}
-          {PAGE_LINKS.map(({ href, key, titleKey, cta }) => (
-            <Link
-              key={key}
-              href={href}
-              title={t(titleKey)}
-              className={
-                cta
-                  ? "px-3.5 py-1.5 border border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white transition-all duration-200"
-                  : "px-3 py-1.5 rounded-full text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-all duration-200"
-              }
-            >
-              {t(key)}
-            </Link>
-          ))}
+          {PAGE_LINKS.map(({ href, key, titleKey, cta }) => {
+            const active = isActive(href);
+            return (
+              <Link
+                key={key}
+                href={href}
+                title={t(titleKey)}
+                aria-current={active ? "page" : undefined}
+                className={
+                  cta
+                    ? `px-3.5 py-1.5 border border-[#FF3C3C] transition-all duration-200 ${
+                        active ? "bg-[#FF3C3C] text-white" : "text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
+                      }`
+                    : `relative px-3 py-1.5 rounded-full transition-all duration-200 ${
+                        active
+                          ? "text-[#FF3C3C]"
+                          : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
+                      }`
+                }
+              >
+                {t(key)}
+                {!cta && active && (
+                  <span aria-hidden="true" className="absolute left-1/2 -translate-x-1/2 bottom-[2px] w-[3px] h-[3px] bg-[#FF3C3C]" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* ── Mobile burger ── */}
@@ -224,40 +257,57 @@ export default function Header() {
 
         {/* Nav links — editorial numbered style */}
         <nav className="flex-1 flex flex-col justify-center px-8 gap-0" aria-label="Mobile navigation">
-          {NAV_LINKS.map(({ href, key }, i) => (
-            <Link
-              key={key}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-              className="flex items-baseline gap-4 py-5 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group
-                         text-black dark:text-white hover:text-[#FF3C3C] transition-colors duration-200"
-            >
-              <span className="text-[10px] tracking-widest tabular-nums text-[#C8C8C8] flex-shrink-0 w-5 group-hover:text-[#FF3C3C] transition-colors duration-200">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="text-2xl font-semibold tracking-tight">{t(key)}</span>
-              <span className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm">↗</span>
-            </Link>
-          ))}
+          {NAV_LINKS.map(({ href, key }, i) => {
+            const active = isActive(href);
+            return (
+              <Link
+                key={key}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                aria-current={active ? "page" : undefined}
+                className={`flex items-baseline gap-4 py-5 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
+                  active ? "text-[#FF3C3C]" : "text-black dark:text-white hover:text-[#FF3C3C]"
+                }`}
+              >
+                <span className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
+                  active ? "text-[#FF3C3C]" : "text-[#C8C8C8] group-hover:text-[#FF3C3C]"
+                }`}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-2xl font-semibold tracking-tight">{t(key)}</span>
+                {active
+                  ? <span aria-hidden="true" className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C] self-center" />
+                  : <span aria-hidden="true" className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm">↗</span>
+                }
+              </Link>
+            );
+          })}
 
           {/* Page links — separated by a subtle label */}
           <p className="text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">{t("nav.pages")}</p>
-          {PAGE_LINKS.map(({ href, key, cta }) => (
-            <Link
-              key={key}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-              className={`flex items-center gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
-                cta
-                  ? "text-[#FF3C3C] hover:text-[#CC2020]"
-                  : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white"
-              }`}
-            >
-              <span className="text-[10px] tracking-widest text-[#E0E0E0] flex-shrink-0 w-5">→</span>
-              <span className="text-xl font-semibold tracking-tight">{t(key)}</span>
-              <span className="ml-auto text-[#E0E0E0] group-hover:text-current transition-colors duration-200 text-sm">↗</span>
-            </Link>
-          ))}
+          {PAGE_LINKS.map(({ href, key, cta }) => {
+            const active = isActive(href);
+            return (
+              <Link
+                key={key}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                aria-current={active ? "page" : undefined}
+                className={`flex items-center gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
+                  cta
+                    ? (active ? "text-[#CC2020]" : "text-[#FF3C3C] hover:text-[#CC2020]")
+                    : (active ? "text-[#FF3C3C]" : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white")
+                }`}
+              >
+                <span className={`text-[10px] tracking-widest flex-shrink-0 w-5 ${active ? "text-[#FF3C3C]" : "text-[#E0E0E0]"}`}>→</span>
+                <span className="text-xl font-semibold tracking-tight">{t(key)}</span>
+                {active
+                  ? <span aria-hidden="true" className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C]" />
+                  : <span aria-hidden="true" className="ml-auto text-[#E0E0E0] group-hover:text-current transition-colors duration-200 text-sm">↗</span>
+                }
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Bottom bar — theme toggle + social pill chips */}
