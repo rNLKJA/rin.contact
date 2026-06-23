@@ -181,10 +181,10 @@ export default function StrategicPage() {
           {/* What I bring */}
           <Section label="What I bring">
             <ul className="space-y-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
-              <li className="flex gap-2"><span className="text-black font-medium w-28 flex-shrink-0">Strategic framing</span>Question the problem before building. Prioritise high-impact work.</li>
-              <li className="flex gap-2"><span className="text-black font-medium w-28 flex-shrink-0">Technical execution</span>Python, R, SQL, statistical modelling, ML — when the problem warrants it.</li>
-              <li className="flex gap-2"><span className="text-black font-medium w-28 flex-shrink-0">Translation</span>Bridge between business leaders and data. Storytelling that drives decisions.</li>
-              <li className="flex gap-2"><span className="text-black font-medium w-28 flex-shrink-0">Implementation focus</span>End-to-end pipeline thinking. Deployment, monitoring, feedback loops.</li>
+              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-28 flex-shrink-0">Strategic framing</span>Question the problem before building. Prioritise high-impact work.</li>
+              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-28 flex-shrink-0">Technical execution</span>Python, R, SQL, statistical modelling, ML — when the problem warrants it.</li>
+              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-28 flex-shrink-0">Translation</span>Bridge between business leaders and data. Storytelling that drives decisions.</li>
+              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-28 flex-shrink-0">Implementation focus</span>End-to-end pipeline thinking. Deployment, monitoring, feedback loops.</li>
             </ul>
           </Section>
 

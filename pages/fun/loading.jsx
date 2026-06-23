@@ -61,7 +61,7 @@ export default function LoadingPage() {
         <div className="max-w-sm w-full text-center">
 
           {/* Fibonacci flower */}
-          <div className="mb-10 flex justify-center text-black">
+          <div className="mb-10 flex justify-center text-black dark:text-white">
             <FibonacciFlower size={100} animate />
           </div>
 
