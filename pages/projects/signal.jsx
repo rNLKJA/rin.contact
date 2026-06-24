@@ -295,8 +295,23 @@ export default function SignalCaseStudy() {
           </p>
         </Section>
 
+        {/* Further reading — connect the build to the thinking behind it */}
+        <div className="mt-14">
+          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-3">Further reading</p>
+          <Link
+            href="/blog/put-governance-on-the-request-path/"
+            className="group inline-flex items-baseline gap-2 text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE] hover:text-[#FF3C3C] transition-colors duration-200"
+          >
+            Put AI Governance on the Request Path, Not in a Document
+            <span aria-hidden="true" className="text-[#FF3C3C] transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+          </Link>
+          <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] mt-1">
+            The design philosophy behind Signal&apos;s governance, in essay form.
+          </p>
+        </div>
+
         {/* Footer CTA */}
-        <div className="mt-16 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D] flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D] flex flex-wrap items-center justify-between gap-4">
           <p className="text-sm text-[#7A7A7A] dark:text-[#AAAAAA]">Signal is open source and live.</p>
           <div className="flex flex-wrap gap-2">
             <a

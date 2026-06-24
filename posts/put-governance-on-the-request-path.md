@@ -47,3 +47,7 @@ It would be, if it were bolted on afterwards. The reason it is not is that the e
 The shift I keep coming back to is from governance as a gate to governance as a property. A gate is a checkpoint you pass once: a sign-off, a filed document, a box ticked at the start. A property is something true of the system continuously, the way a building is load-bearing the whole time it stands and not only on the day it was inspected.
 
 AI in public decision-making needs the second kind. Not a folder that proves the system was responsible on the day it launched, but a system that produces the proof of its own responsibility every time it is used. Put the governance on the request path, and the evidence is always there, because it was never kept somewhere else.
+
+---
+
+*The product described here is Signal, an open-source reference implementation that applies this approach to public crime statistics. See the [case study](/projects/signal) for the build, or the [code on GitHub](https://github.com/rNLKJA/signal).*
