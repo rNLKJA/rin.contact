@@ -1,6 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useI18n } from "@/contexts/I18nContext";
+
+// Turn a domain label into a clean URL slug ("AI / ML" -> "ai-ml"), so a
+// filtered Projects view can be shared as /projects?category=ai-ml.
+const slugifyDomain = (d) =>
+  d.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 import { useTheme } from "@/contexts/ThemeContext";
 import { useInView } from "@/hooks/useInView";
 
@@ -606,6 +612,7 @@ export default function ProjectsSection() {
   // must be theme-aware here — Tailwind dark: variants do not reach inline styles.
   const idleBorder = isDark ? "#3D3D3D" : "#E0E0E0";
   const idleText = isDark ? "#9A9A9A" : "#595959";
+  const router = useRouter();
   const [ref, inView] = useInView();
   const [activeFilter, setActiveFilter] = useState("All");
   const [openId, setOpenId] = useState(null);
@@ -616,6 +623,32 @@ export default function ProjectsSection() {
   useEffect(() => {
     if (inView) setCountStarted(true);
   }, [inView]);
+
+  // ── Shareable filter via the URL ──────────────────────────────────────────
+  // Read ?category= on load and on back/forward, so a filtered view is a
+  // shareable link (e.g. send a government recruiter /projects?category=government).
+  useEffect(() => {
+    if (!router.isReady) return;
+    const slug = router.query.category;
+    if (typeof slug !== "string") return;
+    const match = DOMAINS.find((d) => slugifyDomain(d) === slug.toLowerCase());
+    if (match) setActiveFilter(match);
+  }, [router.isReady, router.query.category]);
+
+  // Apply a filter AND reflect it in the URL (shallow, no scroll) so the user can
+  // copy the link to whatever they have filtered to. "All" clears the param. The
+  // URL write lives here (on the user action) rather than in an effect watching
+  // activeFilter, so it cannot race the read effect above on first load.
+  const selectFilter = (d) => {
+    setActiveFilter(d);
+    setOpenId(null);
+    setSearch("");
+    if (!router.isReady) return;
+    const slug = d === "All" ? undefined : slugifyDomain(d);
+    const query = { ...router.query };
+    if (slug) query.category = slug; else delete query.category;
+    router.replace({ pathname: router.pathname, query }, undefined, { shallow: true, scroll: false });
+  };
 
   const isAllView = activeFilter === "All";
 
@@ -681,7 +714,7 @@ export default function ProjectsSection() {
             return (
               <button
                 key={d}
-                onClick={() => { setActiveFilter(d); setOpenId(null); setSearch(""); }}
+                onClick={() => selectFilter(d)}
                 className="border px-4 py-1.5 text-xs tracking-widest uppercase transition-all duration-200 flex items-center gap-1 rounded-full"
                 style={isActive ? activeStyle : idleStyle}
                 onMouseEnter={(e) => {
