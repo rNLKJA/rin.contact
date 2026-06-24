@@ -614,6 +614,39 @@
       "通知 IndexNow（Bing、Yandex）站点已更新。供部署管线使用。"
     ]
   },
+  "infoSiteMap": {
+    "metaTitle": "站点地图 — rin.contact",
+    "metaDescription": "人类可读的站点地图。",
+    "ogSubtitle": "人类可读的站点地图。",
+    "heading": "站点地图",
+    "intro": "每一个页面。人类可读。不是 XML。",
+    "sections": {
+      "main": {
+        "heading": "主要",
+        "labels": ["首页", "战略数据科学", "职业经历", "项目", "实验室", "关于我", "简历", "个人简历（CV）", "招聘意向"]
+      },
+      "blog": {
+        "heading": "博客",
+        "labels": ["博客"]
+      },
+      "tools": {
+        "heading": "工具",
+        "labels": ["工具", "电子名片"]
+      },
+      "info": {
+        "heading": "信息",
+        "labels": ["信息", "API", "近况", "工具清单", "路线图", "无障碍", "版本说明", "站点地图", "宣言", "更新日志", "致谢", "推荐人"]
+      },
+      "fun": {
+        "heading": "趣味",
+        "labels": ["趣味", "咖啡", "吐槽", "秘密", "保险库", "矩阵", "相关性", "P 值神谕", "森林", "代词", "时区", "名字", "塔罗", "骰子", "打字", "心情"]
+      },
+      "dataScience": {
+        "heading": "数据科学",
+        "labels": ["DS", "模型卡", "特征重要性"]
+      }
+    }
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",

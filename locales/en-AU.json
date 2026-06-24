@@ -614,6 +614,39 @@
       "Notifies IndexNow (Bing, Yandex) that the site has updated. For deployment pipelines."
     ]
   },
+  "infoSiteMap": {
+    "metaTitle": "Site Map — rin.contact",
+    "metaDescription": "Human-readable site map.",
+    "ogSubtitle": "Human-readable site map.",
+    "heading": "Site Map",
+    "intro": "Every page. Human-readable. Not XML.",
+    "sections": {
+      "main": {
+        "heading": "Main",
+        "labels": ["Home", "Strategic Data Science", "Career", "Projects", "Lab", "About", "Resume", "Curriculum Vitae", "Hire Me"]
+      },
+      "blog": {
+        "heading": "Blog",
+        "labels": ["Blog"]
+      },
+      "tools": {
+        "heading": "Tools",
+        "labels": ["Tools", "Business Card"]
+      },
+      "info": {
+        "heading": "Info",
+        "labels": ["Info", "API", "Now", "Uses", "Roadmap", "Accessibility", "Colophon", "Site Map", "Manifest", "Changelog", "Thank You", "References"]
+      },
+      "fun": {
+        "heading": "Fun",
+        "labels": ["Fun", "Coffee", "Roast", "Secret", "Vault", "Matrix", "Correlation", "P-Value Oracle", "Forest", "Pronouns", "Timezone", "Name", "Tarot", "Dice", "Typing", "Mood"]
+      },
+      "dataScience": {
+        "heading": "Data Science",
+        "labels": ["DS", "Model Card", "Feature Importance"]
+      }
+    }
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",
