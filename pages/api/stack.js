@@ -1,3 +1,10 @@
+import pkg from "../../package.json";
+
+// Derive versions from package.json so this endpoint never drifts from reality
+// (it previously reported a stale site version and "Next.js 14").
+const SITE_VERSION = pkg.version;
+const NEXT_MAJOR = (pkg.dependencies?.next || "").match(/\d+/)?.[0] || "16";
+
 export default function handler(req, res) {
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.setHeader("Cache-Control", "public, max-age=86400");
@@ -6,13 +13,13 @@ export default function handler(req, res) {
   res.status(200).json({
     meta: {
       site:    "rin.contact",
-      version: "5.16.0",
+      version: SITE_VERSION,
       author:  "Sunchuangyu (Rin) Huang",
       note:    "Every decision is intentional.",
     },
     framework: {
       name:    "Next.js",
-      version: "14",
+      version: NEXT_MAJOR,
       router:  "Pages Router",
       rendering: ["SSG", "SSR", "CSR"],
     },
