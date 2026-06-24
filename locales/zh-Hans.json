@@ -647,6 +647,14 @@
       }
     }
   },
+  "infoReferences": {
+    "metaTitle": "推荐人 — rin.contact",
+    "metaDescription": "愿意为 Rin 美言几句的人。",
+    "ogSubtitle": "愿意为 Rin 美言几句的人。",
+    "heading": "推荐人",
+    "intro": "愿意为 Rin 美言几句的人。可应要求提供。",
+    "body": "前任经理、同事与合作者。我可以帮你牵线 — 只管开口。也可提供领英推荐信。"
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",
