@@ -149,7 +149,7 @@ export default function TestimonialsSection() {
           <div className="flex items-center gap-2 mt-10 font-mono text-[11px] tracking-[0.3em]">
             <span className="text-[#FF3C3C]">{String(current + 1).padStart(2, "0")}</span>
             <span className="text-[#D0D0D0] dark:text-[#3D3D3D]">/</span>
-            <span className="text-[#9A9A9A]">{String(total).padStart(2, "0")}</span>
+            <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">{String(total).padStart(2, "0")}</span>
             {!reduced && (
               <button
                 onClick={() => setAutoPlay((p) => !p)}

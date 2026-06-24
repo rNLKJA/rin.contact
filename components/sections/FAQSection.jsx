@@ -187,7 +187,7 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
           <span className="font-editorial text-base md:text-lg font-semibold text-[#1A1A1A] dark:text-white leading-tight block">
             {cat.label}
           </span>
-          <span className="text-[11px] text-[#9A9A9A] leading-none mt-0.5 block">
+          <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] leading-none mt-0.5 block">
             {cat.description}
           </span>
         </div>
