@@ -1,5 +1,6 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
@@ -26,6 +27,29 @@ export default function BlogIndex({ posts }) {
       .map(([tag]) => tag);
   }, [posts]);
   const filtered = activeTag ? posts.filter((p) => (p.tags || []).includes(activeTag)) : posts;
+
+  // ── Shareable topic filter via the URL ────────────────────────────────────
+  // Read ?tag= on load and on back/forward, so a filtered view is a shareable
+  // link (e.g. send a government recruiter /blog?tag=government). Only honour a
+  // tag that actually exists as a filter chip.
+  const router = useRouter();
+  useEffect(() => {
+    if (!router.isReady) return;
+    const tag = router.query.tag;
+    if (typeof tag === "string" && topTags.includes(tag)) setActiveTag(tag);
+    else if (tag == null) setActiveTag(null);
+  }, [router.isReady, router.query.tag, topTags]);
+
+  // Apply a filter AND reflect it in the URL (shallow, no scroll). The URL write
+  // lives in the click handler, not an effect watching activeTag, so it cannot
+  // race the read effect above on first load. null clears the param.
+  const selectTag = (tag) => {
+    setActiveTag(tag);
+    if (!router.isReady) return;
+    const query = { ...router.query };
+    if (tag) query.tag = tag; else delete query.tag;
+    router.replace({ pathname: router.pathname, query }, undefined, { shallow: true, scroll: false });
+  };
 
   return (
     <>
@@ -80,7 +104,7 @@ export default function BlogIndex({ posts }) {
           >
             <button
               type="button"
-              onClick={() => setActiveTag(null)}
+              onClick={() => selectTag(null)}
               aria-pressed={activeTag === null}
               className={`text-[10px] tracking-widest uppercase px-3 py-1 border transition-colors duration-200 ${
                 activeTag === null
@@ -94,7 +118,7 @@ export default function BlogIndex({ posts }) {
               <button
                 key={tag}
                 type="button"
-                onClick={() => setActiveTag(tag)}
+                onClick={() => selectTag(tag)}
                 aria-pressed={activeTag === tag}
                 className={`text-[10px] tracking-widest uppercase px-3 py-1 border transition-colors duration-200 ${
                   activeTag === tag
