@@ -305,6 +305,62 @@
       { "text": "Adding more dependencies when vanilla JS will do", "sub": "" }
     ]
   },
+  "infoUses": {
+    "metaTitle": "Uses — Rin Huang · rin.contact",
+    "metaDescription": "Tools, hardware, and software Rin Huang uses daily for data science, development, and design.",
+    "ogSubtitle": "Tools, hardware, and software Rin Huang uses daily for data...",
+    "heading": "What I use.",
+    "introPrefix": "Hardware, software, tools, and setups I rely on daily. Inspired by ",
+    "introSuffix": ".",
+    "footerNote": "Last updated June 2026.",
+    "sections": {
+      "hardware": "Hardware",
+      "editorTerminal": "Editor & Terminal",
+      "languages": "Languages",
+      "dataMl": "Data & ML Stack",
+      "webDev": "Web Development",
+      "productivity": "Productivity"
+    },
+    "rows": {
+      "hardware": [
+        { "desc": "Primary machine. The M4 chip handles PyTorch training, Docker containers, and 47 browser tabs simultaneously.", "badge": "daily driver" },
+        { "desc": "One wide monitor. No more alt-tabbing between terminals and notebooks.", "badge": "" },
+        { "desc": "Tactile switches. The clickety-clack is 40% of the productivity.", "badge": "" },
+        { "desc": "Active noise cancellation — the second-best productivity tool after good coffee.", "badge": "" }
+      ],
+      "editorTerminal": [
+        { "desc": "VS Code with AI superpowers. This entire website was built in it.", "badge": "you're in it" },
+        { "desc": "With zsh and Oh My Zsh. Theme: minimal. Plugins: git, z, syntax highlighting.", "badge": "" },
+        { "desc": "Terminal multiplexer. Keeps sessions alive when I inevitably close the wrong window.", "badge": "" }
+      ],
+      "languages": [
+        { "desc": "Primary language. NumPy, Pandas, scikit-learn, PyTorch, FastAPI — the whole ecosystem.", "badge": "primary" },
+        { "desc": "For anything web-facing. Types save future-me from past-me.", "badge": "" },
+        { "desc": "PostgreSQL day-to-day. BigQuery for large-scale. Still the most underrated skill in data science.", "badge": "" },
+        { "desc": "For statistical analysis and publication-quality visualisations. ggplot2 is genuinely beautiful.", "badge": "" },
+        { "desc": "Automating everything that shouldn't need automating but somehow does.", "badge": "" }
+      ],
+      "dataMl": [
+        { "desc": "Deep learning framework of choice. Dynamic graphs, Pythonic, excellent ecosystem.", "badge": "" },
+        { "desc": "Still the gold standard for classical ML. Pipelines are underused.", "badge": "" },
+        { "desc": "SQL transformation layer. Version-controlled data models — finally.", "badge": "" },
+        { "desc": "For exploration and sharing analysis. VS Code notebooks for production.", "badge": "" },
+        { "desc": "Dashboards for non-technical stakeholders. Sometimes the right tool is the accessible one.", "badge": "" }
+      ],
+      "webDev": [
+        { "desc": "Framework of choice for web. Pages Router on React 19 — fast, file-based, fantastic DX.", "badge": "this site" },
+        { "desc": "Utility-first styling. Initially sceptical. Now converted.", "badge": "" },
+        { "desc": "Deploy → done. Preview URLs on every push. The best CI/CD experience I've used.", "badge": "" },
+        { "desc": "Design and prototyping. Also for communicating with designers who don't speak code.", "badge": "" }
+      ],
+      "productivity": [
+        { "desc": "Project notes, research logs, and second brain. Imperfect but flexible.", "badge": "" },
+        { "desc": "Issue tracking for Mapiva. Fast, minimal, opinionated — very Nothing OS.", "badge": "" },
+        { "desc": "Password manager. Non-negotiable.", "badge": "" },
+        { "desc": "Window management on macOS. Free. Simple. Indispensable.", "badge": "" }
+      ]
+    }
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",

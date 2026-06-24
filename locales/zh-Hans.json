@@ -305,6 +305,62 @@
       { "text": "在原生 JS 就够用时还添加更多依赖", "sub": "" }
     ]
   },
+  "infoUses": {
+    "metaTitle": "工具 — Rin Huang · rin.contact",
+    "metaDescription": "Rin Huang 日常用于数据科学、开发与设计的工具、硬件与软件。",
+    "ogSubtitle": "Rin Huang 日常使用的工具、硬件与软件……",
+    "heading": "我用什么。",
+    "introPrefix": "我每天依赖的硬件、软件、工具与配置。灵感来自 ",
+    "introSuffix": "。",
+    "footerNote": "最近更新于 2026 年 6 月。",
+    "sections": {
+      "hardware": "硬件",
+      "editorTerminal": "编辑器与终端",
+      "languages": "编程语言",
+      "dataMl": "数据与机器学习",
+      "webDev": "Web 开发",
+      "productivity": "效率工具"
+    },
+    "rows": {
+      "hardware": [
+        { "desc": "主力机器。M4 芯片可以同时应付 PyTorch 训练、Docker 容器，以及 47 个浏览器标签页。", "badge": "日常主力" },
+        { "desc": "一块宽屏显示器。不用再在终端和笔记本之间来回切换。", "badge": "" },
+        { "desc": "机械轴。那一阵阵的敲击声贡献了 40% 的生产力。", "badge": "" },
+        { "desc": "主动降噪 — 仅次于一杯好咖啡的第二好用的生产力工具。", "badge": "" }
+      ],
+      "editorTerminal": [
+        { "desc": "拥有 AI 超能力的 VS Code。整个网站都是用它构建的。", "badge": "你正在用它" },
+        { "desc": "搭配 zsh 与 Oh My Zsh。主题：极简。插件：git、z、语法高亮。", "badge": "" },
+        { "desc": "终端复用器。当我不可避免地关错窗口时，它能让会话保持存活。", "badge": "" }
+      ],
+      "languages": [
+        { "desc": "主力语言。NumPy、Pandas、scikit-learn、PyTorch、FastAPI — 整个生态。", "badge": "主力" },
+        { "desc": "用于一切面向 Web 的东西。类型让未来的我免受过去的我之苦。", "badge": "" },
+        { "desc": "日常用 PostgreSQL，大规模场景用 BigQuery。仍是数据科学中最被低估的技能。", "badge": "" },
+        { "desc": "用于统计分析与出版级可视化。ggplot2 是真的漂亮。", "badge": "" },
+        { "desc": "把一切本不该需要自动化、却莫名其妙需要自动化的事都自动化。", "badge": "" }
+      ],
+      "dataMl": [
+        { "desc": "首选的深度学习框架。动态图、Pythonic、生态出色。", "badge": "" },
+        { "desc": "依然是经典机器学习的黄金标准。Pipeline 被严重低估了。", "badge": "" },
+        { "desc": "SQL 转换层。终于有了受版本控制的数据模型。", "badge": "" },
+        { "desc": "用于探索与分享分析。生产环境用 VS Code notebooks。", "badge": "" },
+        { "desc": "面向非技术干系人的仪表板。有时候，正确的工具就是那个人人都能用的。", "badge": "" }
+      ],
+      "webDev": [
+        { "desc": "Web 的首选框架。基于 React 19 的 Pages Router — 快速、基于文件、开发体验极佳。", "badge": "本站" },
+        { "desc": "实用优先的样式方案。一开始持怀疑态度，如今已被收服。", "badge": "" },
+        { "desc": "部署 → 完成。每次 push 都有预览 URL。我用过最好的 CI/CD 体验。", "badge": "" },
+        { "desc": "设计与原型。也用于和不写代码的设计师沟通。", "badge": "" }
+      ],
+      "productivity": [
+        { "desc": "项目笔记、研究日志与第二大脑。不完美，但灵活。", "badge": "" },
+        { "desc": "Mapiva 的问题跟踪。快速、极简、有主见 — 很有 Nothing OS 的味道。", "badge": "" },
+        { "desc": "密码管理器。没有商量余地。", "badge": "" },
+        { "desc": "macOS 上的窗口管理。免费、简单、不可或缺。", "badge": "" }
+      ]
+    }
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",
