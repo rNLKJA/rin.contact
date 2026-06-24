@@ -28,8 +28,14 @@ export function middleware(request) {
     return new Response(null, { status: 204 });
   }
 
-  if (pathname === "/" && isCliClient(ua)) {
-    return NextResponse.rewrite(new URL("/api/curl", request.url));
+  // Terminal clients hitting the homepage get the ANSI profile. With i18n on,
+  // the homepage can resolve at a locale-prefixed root, and with trailingSlash
+  // on the rewrite target must end in a slash (a bare /api/curl 308-redirects),
+  // so match every root form and rewrite to /api/curl/.
+  const isRoot = pathname === "/" || pathname === "/en-AU" || pathname === "/en-AU/" ||
+                 pathname === "/zh-Hans" || pathname === "/zh-Hans/";
+  if (isRoot && isCliClient(ua)) {
+    return NextResponse.rewrite(new URL("/api/curl/", request.url));
   }
 
   return NextResponse.next();
