@@ -579,6 +579,24 @@
       "先上线，再改进。版本号在不断增长。"
     ]
   },
+  "infoChangelog": {
+    "metaTitle": "更新日志 — rin.contact",
+    "metaDescription": "rin.contact 的版本历史与发布说明",
+    "ogSubtitle": "rin.contact 的版本历史与发布说明",
+    "heading": "更新日志",
+    "intro": "更新了什么。版本 {version}，仍在继续。",
+    "entries": [
+      "博客：6 篇文章，含 Mermaid 图表、位于 /blog/feed.xml 的 RSS 订阅、邮件订阅组件。Service worker：激活时自我销毁以保持缓存整洁。",
+      "博客基础设施：markdown 管线（gray-matter + remark）、PostCard、博客列表与单篇文章页面。",
+      "为 50+ 个页面添加深色模式（IntelligenceSection、DatasetCard、ContactSection、所有板块着陆页、strategic.jsx）。",
+      "性能：移除无用 CSS、缩短 BootOverlay（800ms）、优化 CustomCursor（6→3 个圆点）、Web Vitals 上报。营销：/about 上的认证网格、为剩余 15 个可索引页面添加 og:image + Twitter 卡片、项目详情页的 LinkedIn + X 分享按钮。",
+      "创意页面：pronouns、timezone、name、float404、glitch、correlation、outlier、normalise、debug、tarot、dice、blank、eta、silence、rejections、mood、typing。信息页：site-map、manifest、changelog、thank-you、references",
+      "20 个数据科学主题页面（/ds）",
+      "动态的 colophon 版本号、指向 /fun 的 sudo 提示",
+      "fun/、info/、tools/ 的索引页",
+      "将页面整理进 fun/、info/、tools/ 子目录"
+    ]
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",

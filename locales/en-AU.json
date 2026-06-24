@@ -579,6 +579,24 @@
       "Ship it, then improve it. Version numbers and counting."
     ]
   },
+  "infoChangelog": {
+    "metaTitle": "Changelog — rin.contact",
+    "metaDescription": "Version history and release notes for rin.contact",
+    "ogSubtitle": "Version history and release notes for rin.contact",
+    "heading": "Changelog",
+    "intro": "What changed. Version {version} and counting.",
+    "entries": [
+      "Blog: 6 posts with Mermaid diagrams, RSS feed at /blog/feed.xml, newsletter signup component. Service worker: self-destructing on activate for cache hygiene.",
+      "Blog infrastructure: markdown pipeline (gray-matter + remark), PostCard, blog listing + individual post pages.",
+      "Dark mode on 50+ pages (IntelligenceSection, DatasetCard, ContactSection, all section landing pages, strategic.jsx).",
+      "Performance: dead CSS removal, BootOverlay reduction (800ms), CustomCursor optimisation (6→3 dots), Web Vitals reporting. Marketing: certifications grid on /about, og:image + Twitter cards on 15 remaining indexable pages, LinkedIn + X share buttons on project details.",
+      "Creative pages: pronouns, timezone, name, float404, glitch, correlation, outlier, normalise, debug, tarot, dice, blank, eta, silence, rejections, mood, typing. Info: site-map, manifest, changelog, thank-you, references",
+      "20 data science profile pages (/ds)",
+      "Dynamic colophon version, sudo hint to /fun",
+      "Index pages for fun/, info/, tools/",
+      "Pages organised into fun/, info/, tools/ subfolders"
+    ]
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",
