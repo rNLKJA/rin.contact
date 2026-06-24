@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 
 /**
  * KnowledgeLayout — shared shell for the /knowledge section.
@@ -49,6 +50,7 @@ export default function KnowledgeLayout({
   next,
   children,
 }) {
+  const { t, locale = "en-AU" } = useI18n();
   const path = `/knowledge/${slug}`;
   const url = `https://rin.contact${path}`;
 
@@ -60,7 +62,7 @@ export default function KnowledgeLayout({
     url,
     learningResourceType: "Concept explainer",
     educationalLevel: level || "Tertiary",
-    inLanguage: "en-AU",
+    inLanguage: locale,
     isPartOf: {
       "@type": "Collection",
       name: "Knowledge — rin.contact",
@@ -102,7 +104,7 @@ export default function KnowledgeLayout({
             href="/knowledge"
             className="inline-flex items-center gap-1 font-mono text-[11px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
           >
-            ← Knowledge
+            ← {t("knowledgeLayout.back")}
           </Link>
 
           <header className="mb-12">
@@ -120,7 +122,7 @@ export default function KnowledgeLayout({
             )}
 
             <dl className="mt-9 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 border-t border-[#E0E0E0] dark:border-[#2A2A2A] pt-7">
-              <MetaItem label="Studied">
+              <MetaItem label={t("knowledgeLayout.meta.studied")}>
                 {course}
                 {courseCode && (
                   <span className="block font-mono text-[11px] text-[#9A9A9A] dark:text-[#6E6E6E]">
@@ -128,9 +130,9 @@ export default function KnowledgeLayout({
                   </span>
                 )}
               </MetaItem>
-              <MetaItem label="When">{learned}</MetaItem>
-              <MetaItem label="Applied in">{applied}</MetaItem>
-              <MetaItem label="Read / Refreshed">
+              <MetaItem label={t("knowledgeLayout.meta.when")}>{learned}</MetaItem>
+              <MetaItem label={t("knowledgeLayout.meta.appliedIn")}>{applied}</MetaItem>
+              <MetaItem label={t("knowledgeLayout.meta.readRefreshed")}>
                 {readingTime}
                 {updated && (
                   <span className="block font-mono text-[11px] text-[#9A9A9A] dark:text-[#6E6E6E]">
@@ -143,11 +145,11 @@ export default function KnowledgeLayout({
 
           {sections.length > 0 && (
             <nav
-              aria-label="On this page"
+              aria-label={t("knowledgeLayout.onThisPage")}
               className="mb-14 border border-[#E0E0E0] dark:border-[#2A2A2A] p-6"
             >
               <p className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#6E6E6E] mb-4">
-                On this page
+                {t("knowledgeLayout.onThisPage")}
               </p>
               <ol className="space-y-2.5">
                 {sections.map((s, i) => (
@@ -196,7 +198,7 @@ export default function KnowledgeLayout({
                     className="group border border-[#E0E0E0] dark:border-[#2A2A2A] p-5 hover:border-black dark:hover:border-white transition-colors"
                   >
                     <span className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#6E6E6E]">
-                      ← Previous
+                      ← {t("knowledgeLayout.previous")}
                     </span>
                     <span className="block mt-1.5 text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#FF3C3C] transition-colors">
                       {prev.label}
@@ -211,7 +213,7 @@ export default function KnowledgeLayout({
                     className="group border border-[#E0E0E0] dark:border-[#2A2A2A] p-5 hover:border-black dark:hover:border-white transition-colors sm:text-right"
                   >
                     <span className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#6E6E6E]">
-                      Next →
+                      {t("knowledgeLayout.next")} →
                     </span>
                     <span className="block mt-1.5 text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#FF3C3C] transition-colors">
                       {next.label}
@@ -225,13 +227,13 @@ export default function KnowledgeLayout({
                 href="/knowledge"
                 className="font-mono text-[11px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
               >
-                All topics
+                {t("knowledgeLayout.allTopics")}
               </Link>
               <Link
                 href="/"
                 className="font-mono text-[11px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
               >
-                Home
+                {t("nav.home")}
               </Link>
             </div>
           </footer>
@@ -261,15 +263,16 @@ export function KSection({ id, eyebrow, title, children }) {
 }
 
 const CALLOUT_STYLES = {
-  note: { bar: "#FF3C3C", label: "Note" },
-  refresher: { bar: "#FF3C3C", label: "Refresh in 60 seconds" },
-  applied: { bar: "#1A1A1A", label: "Where I used it" },
-  intuition: { bar: "#7A7A7A", label: "Intuition" },
-  pitfall: { bar: "#FF3C3C", label: "Common pitfall" },
+  note: { bar: "#FF3C3C" },
+  refresher: { bar: "#FF3C3C" },
+  applied: { bar: "#1A1A1A" },
+  intuition: { bar: "#7A7A7A" },
+  pitfall: { bar: "#FF3C3C" },
 };
 
-/** Bordered callout block. `type` picks the default label + accent. */
+/** Bordered callout block. `type` picks the default (localised) label + accent. */
 export function Callout({ type = "note", label, children }) {
+  const { t } = useI18n();
   const style = CALLOUT_STYLES[type] || CALLOUT_STYLES.note;
   return (
     <aside
@@ -280,7 +283,7 @@ export function Callout({ type = "note", label, children }) {
         className="font-mono text-[10px] tracking-widest uppercase mb-2"
         style={{ color: style.bar === "#7A7A7A" ? "#7A7A7A" : "#FF3C3C" }}
       >
-        {label || style.label}
+        {label || t(`knowledgeLayout.callouts.${CALLOUT_STYLES[type] ? type : "note"}`)}
       </p>
       <div className="text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty] space-y-3">
         {children}

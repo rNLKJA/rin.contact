@@ -704,6 +704,26 @@
       }
     }
   },
+  "knowledgeLayout": {
+    "back": "Knowledge",
+    "onThisPage": "On this page",
+    "previous": "Previous",
+    "next": "Next",
+    "allTopics": "All topics",
+    "meta": {
+      "studied": "Studied",
+      "when": "When",
+      "appliedIn": "Applied in",
+      "readRefreshed": "Read / Refreshed"
+    },
+    "callouts": {
+      "note": "Note",
+      "refresher": "Refresh in 60 seconds",
+      "applied": "Where I used it",
+      "intuition": "Intuition",
+      "pitfall": "Common pitfall"
+    }
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",

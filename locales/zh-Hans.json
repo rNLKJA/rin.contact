@@ -704,6 +704,26 @@
       }
     }
   },
+  "knowledgeLayout": {
+    "back": "知识",
+    "onThisPage": "本页内容",
+    "previous": "上一篇",
+    "next": "下一篇",
+    "allTopics": "全部主题",
+    "meta": {
+      "studied": "学于",
+      "when": "时间",
+      "appliedIn": "应用于",
+      "readRefreshed": "阅读 / 复习"
+    },
+    "callouts": {
+      "note": "注",
+      "refresher": "60 秒回顾",
+      "applied": "我在哪用到它",
+      "intuition": "直觉",
+      "pitfall": "常见陷阱"
+    }
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",
