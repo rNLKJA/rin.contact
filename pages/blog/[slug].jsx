@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 import PostCard from "@/components/blog/PostCard";
 import ShareButtons from "@/components/blog/ShareButtons";
+import ReadingProgress from "@/components/blog/ReadingProgress";
 import { useI18n } from "@/contexts/I18nContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
@@ -143,6 +144,7 @@ export default function BlogPost({ post, nextPost }) {
       </Head>
 
       <MermaidRenderer />
+      <ReadingProgress />
 
       <article className="max-w-[700px] mx-auto px-6 md:px-12 py-24">
         {/* Back link */}
