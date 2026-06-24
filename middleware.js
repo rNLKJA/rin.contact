@@ -42,5 +42,7 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  // The "/((?!...).*)" pattern does NOT match the bare root "/", so the curl
+  // rewrite never ran for `curl rin.contact`. List "/" explicitly as well.
+  matcher: ["/", "/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
