@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
+import ReadingProgress from "@/components/blog/ReadingProgress";
 
 // ─── Section components (aligned with DesignPhilosophyModal) ───────────────────
 const Section = ({ label, children }) => (
@@ -51,6 +52,7 @@ export default function StrategicPage() {
   const { t } = useI18n();
   return (
     <>
+      <ReadingProgress />
       <Head>
         <title>Strategic Data Science — Rin Huang · rin.contact</title>
         <meta name="description" content="How strategic thinking + data science creates meaningful impact — problem-first, not model-first. Government, policy, business." />
