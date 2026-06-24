@@ -18,9 +18,10 @@ const SOCIALS = [
 ];
 
 function Toast({ type, message, onClose }) {
+  const { t } = useI18n();
   useEffect(() => {
-    const t = setTimeout(onClose, 5000);
-    return () => clearTimeout(t);
+    const timer = setTimeout(onClose, 5000);
+    return () => clearTimeout(timer);
   }, [onClose]);
 
   const isSuccess = type === "success";
@@ -39,14 +40,14 @@ function Toast({ type, message, onClose }) {
       }
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-white">
-          {isSuccess ? "Message sent" : "Something went wrong"}
+          {isSuccess ? t("contact.toast.successTitle") : t("contact.toast.errorTitle")}
         </p>
         <p className="text-xs text-[#9A9A9A] mt-0.5">{message}</p>
       </div>
       <button
         onClick={onClose}
         className="flex-shrink-0 text-[#9A9A9A] hover:text-white transition-colors duration-200 mt-0.5"
-        aria-label="Dismiss notification"
+        aria-label={t("contact.toast.dismiss")}
       >
         <FiX size={16} />
       </button>
@@ -210,10 +211,10 @@ export default function ContactSection() {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload, EMAILJS_PUBLIC_KEY);
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
-      showToast("success", "Message sent! I will get back to you as soon as possible.");
+      showToast("success", t("contact.toast.successMessage"));
     } catch {
       setStatus("error");
-      showToast("error", "Please try emailing huang@rin.contact directly.");
+      showToast("error", t("contact.toast.errorMessage"));
     }
   };
 
