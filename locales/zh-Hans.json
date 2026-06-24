@@ -361,6 +361,94 @@
       ]
     }
   },
+  "infoColophon": {
+    "metaTitle": "版本说明 — rin.contact",
+    "metaDescription": "rin.contact 是如何构建的 — 工具、字体、库与设计决策。",
+    "ogSubtitle": "rin.contact 是如何构建的 — 工具、字体、库……",
+    "heading": "这个网站是怎么做的。",
+    "intro": "rin.contact 背后的每一个决定 — 框架、字体、部署、设计理念，以及彩蛋。版本说明本是印刷者的附注，这是我的。",
+    "footer": "由 Rin Huang 设计与构建 · v{version}",
+    "sections": {
+      "framework": "框架与运行时",
+      "styling": "样式",
+      "typography": "排版",
+      "deployment": "部署与基础设施",
+      "services": "第三方服务",
+      "performance": "性能决策",
+      "easterEggs": "隐藏路由与彩蛋",
+      "philosophy": "设计理念"
+    },
+    "rows": {
+      "framework": [
+        { "name": "框架", "value": "Next.js 16", "note": "Pages Router — SSG + SSR + CSR 混合" },
+        { "name": "运行时", "value": "Node.js", "note": "通过 Vercel 无服务器函数" },
+        { "name": "语言", "value": "TypeScript / JSX", "note": "在关键处启用严格模式" },
+        { "name": "包管理器", "value": "npm", "note": "没什么花哨的" }
+      ],
+      "styling": [
+        { "name": "工具类 CSS", "value": "Tailwind CSS", "note": "v3 — 移动优先，生产环境裁剪" },
+        { "name": "理念", "value": "Nothing OS 美学", "note": "硬朗、极简、单色 — 扁平、无阴影" },
+        { "name": "配色", "value": "#FFFFFF · #000000 · #FF3C3C", "note": "白 · 黑 · 圆点红 — 克制使用" },
+        { "name": "圆角", "value": "无或全圆", "note": "绝不取中间值" },
+        { "name": "动效", "value": "CSS keyframes", "note": "150–300ms ease-in-out — 不弹跳、不回弹" }
+      ],
+      "typography": [
+        { "name": "标题字体", "value": "Bitcount Prop Double", "note": "字重 300–600 · 仅用于标题" },
+        { "name": "正文字体", "value": "DM Sans", "note": "字重 300–500 · 阅读舒适" },
+        { "name": "点缀字体", "value": "Playfair Display", "note": "仅用于编辑式点缀" },
+        { "name": "等宽字体", "value": "Courier New", "note": "系统后备 · 终端与标签" },
+        { "name": "加载器", "value": "next/font", "note": "零布局偏移，自托管" }
+      ],
+      "deployment": [
+        { "name": "托管", "value": "Vercel", "note": "边缘网络 · 每次 push 都有预览部署" },
+        { "name": "域名", "value": "rin.contact", "note": "通过 Namecheap 注册" },
+        { "name": "CDN", "value": "Vercel Edge Network", "note": "全球、自动" },
+        { "name": "CI/CD", "value": "GitHub + Vercel CLI", "note": "git push → 构建 → 别名" },
+        { "name": "分析", "value": "无", "note": "隐私优先 — 无追踪像素" }
+      ],
+      "services": [
+        { "name": "邮件", "value": "EmailJS", "note": "联系表单 → 收件箱，无需后端" },
+        { "name": "二维码", "value": "api.qrserver.com", "note": "为 /card 实时生成二维码" },
+        { "name": "字体", "value": "Google Fonts", "note": "通过 next/font 加载 — 不被追踪" }
+      ],
+      "performance": [
+        { "name": "图片", "value": "next/image", "note": "懒加载、WebP 转换、响应式尺寸" },
+        { "name": "代码分割", "value": "动态导入", "note": "首屏以下的区块按需加载" },
+        { "name": "LCP 目标", "value": "4G 下 < 1.5s", "note": "首屏渲染无任何阻塞资源" },
+        { "name": "重点", "value": "无布局偏移", "note": "font display:swap + 明确的图片尺寸" }
+      ],
+      "easterEggs": [
+        { "name": "/resume", "value": "交互式命令行", "note": "输入命令，探索职业数据" },
+        { "name": "/fun/matrix", "value": "数据科学之雨", "note": "∑ ∇ λ σ 等等" },
+        { "name": "/fun/art", "value": "生成式螺旋", "note": "斐波那契叶序" },
+        { "name": "/fun/haiku", "value": "俳句集", "note": "5–7–5 数据科学荒诞主义" },
+        { "name": "/fun/coffee", "value": "你懂的", "note": "" },
+        { "name": "/fun/roast", "value": "诚实的反馈", "note": "数据科学吐槽" },
+        { "name": "/fun/spin", "value": "Rin 在做什么？", "note": "转动转盘" },
+        { "name": "/fun/secret", "value": "摩斯密码揭秘", "note": "" },
+        { "name": "/tools/card", "value": "可拖拽名片", "note": "试着甩一甩" },
+        { "name": "/ds", "value": "以数据科学呈现的 Rin", "note": "模型卡、SHAP、混淆矩阵" },
+        { "name": "/info/site-map", "value": "人类可读站点地图", "note": "每一页，而非 XML" },
+        { "name": "/info/changelog", "value": "更新了什么", "note": "" },
+        { "name": "↑↑↓↓←→←→BA", "value": "科乐美秘籍", "note": "在主页上试试" },
+        { "name": "DevTools", "value": "控制台彩蛋", "note": "打开浏览器控制台" },
+        { "name": "curl", "value": "终端视图", "note": "curl rin.contact" },
+        { "name": "/api/rin.json", "value": "个人资料 API", "note": "" },
+        { "name": "/api/fortune", "value": "随机箴言", "note": "" },
+        { "name": "/api/roast", "value": "诚实的反馈", "note": "" },
+        { "name": "/api/now", "value": "当前状态", "note": "" },
+        { "name": "/api/stack", "value": "本站技术栈", "note": "" }
+      ],
+      "philosophy": [
+        { "name": "原则 1", "value": "每个决定都是有意为之", "note": "如果它配不上自己的位置，就不会上线" },
+        { "name": "原则 2", "value": "留白也是设计的一部分", "note": "密度 ≠ 质量" },
+        { "name": "原则 3", "value": "始终移动优先", "note": "375px 是唯一的真理基准" },
+        { "name": "原则 4", "value": "无渐变，无投影", "note": "扁平单色 — Nothing 之道" },
+        { "name": "原则 5", "value": "无障碍并非可选项", "note": "AA 对比度、焦点环、描述性替代文本" },
+        { "name": "原则 6", "value": "先上线，再改进", "note": "v{version}，仍在继续" }
+      ]
+    }
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",

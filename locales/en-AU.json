@@ -361,6 +361,94 @@
       ]
     }
   },
+  "infoColophon": {
+    "metaTitle": "Colophon — rin.contact",
+    "metaDescription": "How rin.contact is built — tools, fonts, libraries, and design decisions.",
+    "ogSubtitle": "How rin.contact is built — tools, fonts, libraries, and d...",
+    "heading": "How this site is made.",
+    "intro": "Every decision behind rin.contact — framework, fonts, deployment, design philosophy, and the easter eggs. A colophon is a printer's note. This is mine.",
+    "footer": "Designed & built by Rin Huang · v{version}",
+    "sections": {
+      "framework": "Framework & Runtime",
+      "styling": "Styling",
+      "typography": "Typography",
+      "deployment": "Deployment & Infrastructure",
+      "services": "Third-party Services",
+      "performance": "Performance Decisions",
+      "easterEggs": "Hidden Routes & Easter Eggs",
+      "philosophy": "Design Philosophy"
+    },
+    "rows": {
+      "framework": [
+        { "name": "framework", "value": "Next.js 16", "note": "Pages Router — SSG + SSR + CSR mix" },
+        { "name": "runtime", "value": "Node.js", "note": "via Vercel serverless functions" },
+        { "name": "language", "value": "TypeScript / JSX", "note": "strict mode where it matters" },
+        { "name": "pkg manager", "value": "npm", "note": "nothing fancy" }
+      ],
+      "styling": [
+        { "name": "utility css", "value": "Tailwind CSS", "note": "v3 — mobile-first, purged in production" },
+        { "name": "philosophy", "value": "Nothing OS aesthetic", "note": "stark, minimal, monochromatic — flat, no shadows" },
+        { "name": "palette", "value": "#FFFFFF · #000000 · #FF3C3C", "note": "white · black · dot red — used sparingly" },
+        { "name": "radius", "value": "none or rounded-full", "note": "never anything in between" },
+        { "name": "animations", "value": "CSS keyframes", "note": "150–300ms ease-in-out — no bounce, no spring" }
+      ],
+      "typography": [
+        { "name": "display", "value": "Bitcount Prop Double", "note": "weight 300–600 · headlines only" },
+        { "name": "body", "value": "DM Sans", "note": "weight 300–500 · reading comfort" },
+        { "name": "accent", "value": "Playfair Display", "note": "editorial moments only" },
+        { "name": "mono", "value": "Courier New", "note": "system fallback · terminals & labels" },
+        { "name": "loader", "value": "next/font", "note": "zero layout shift, self-hosted" }
+      ],
+      "deployment": [
+        { "name": "host", "value": "Vercel", "note": "edge network · preview deploys on every push" },
+        { "name": "domain", "value": "rin.contact", "note": "registered via Namecheap" },
+        { "name": "cdn", "value": "Vercel Edge Network", "note": "global, automatic" },
+        { "name": "ci/cd", "value": "GitHub + Vercel CLI", "note": "git push → build → alias" },
+        { "name": "analytics", "value": "none", "note": "privacy first — no tracking pixels" }
+      ],
+      "services": [
+        { "name": "email", "value": "EmailJS", "note": "contact form → inbox, no backend required" },
+        { "name": "qr codes", "value": "api.qrserver.com", "note": "on-the-fly QR generation for /card" },
+        { "name": "fonts", "value": "Google Fonts", "note": "loaded via next/font — not tracked" }
+      ],
+      "performance": [
+        { "name": "images", "value": "next/image", "note": "lazy loading, WebP conversion, responsive sizes" },
+        { "name": "code split", "value": "dynamic imports", "note": "below-fold sections load only when needed" },
+        { "name": "lcp target", "value": "< 1.5s on 4G", "note": "hero renders without any blocking resources" },
+        { "name": "focus", "value": "no layout shift", "note": "font display:swap + explicit image dimensions" }
+      ],
+      "easterEggs": [
+        { "name": "/resume", "value": "interactive CLI", "note": "type commands, explore career data" },
+        { "name": "/fun/matrix", "value": "data science rain", "note": "∑ ∇ λ σ and friends" },
+        { "name": "/fun/art", "value": "generative spiral", "note": "Fibonacci phyllotaxis" },
+        { "name": "/fun/haiku", "value": "haiku collection", "note": "5–7–5 data science absurdism" },
+        { "name": "/fun/coffee", "value": "you know why", "note": "" },
+        { "name": "/fun/roast", "value": "honest feedback", "note": "data science roasts" },
+        { "name": "/fun/spin", "value": "what is Rin doing?", "note": "spin the wheel" },
+        { "name": "/fun/secret", "value": "morse code reveal", "note": "" },
+        { "name": "/tools/card", "value": "draggable card", "note": "try throwing it" },
+        { "name": "/ds", "value": "Rin as data science", "note": "model cards, SHAP, confusion matrices" },
+        { "name": "/info/site-map", "value": "human sitemap", "note": "every page, not XML" },
+        { "name": "/info/changelog", "value": "what changed", "note": "" },
+        { "name": "↑↑↓↓←→←→BA", "value": "Konami code", "note": "try it on the homepage" },
+        { "name": "DevTools", "value": "console easter egg", "note": "open your browser console" },
+        { "name": "curl", "value": "terminal view", "note": "curl rin.contact" },
+        { "name": "/api/rin.json", "value": "profile API", "note": "" },
+        { "name": "/api/fortune", "value": "random wisdom", "note": "" },
+        { "name": "/api/roast", "value": "honest feedback", "note": "" },
+        { "name": "/api/now", "value": "current status", "note": "" },
+        { "name": "/api/stack", "value": "this site's stack", "note": "" }
+      ],
+      "philosophy": [
+        { "name": "principle 1", "value": "Every decision is intentional", "note": "if it doesn't earn its place, it doesn't ship" },
+        { "name": "principle 2", "value": "Empty space is part of the design", "note": "density ≠ quality" },
+        { "name": "principle 3", "value": "Mobile-first, always", "note": "375px is the source of truth" },
+        { "name": "principle 4", "value": "No gradients, no drop-shadows", "note": "flat monochrome — the Nothing way" },
+        { "name": "principle 5", "value": "Accessibility is not optional", "note": "AA contrast, focus rings, descriptive alt text" },
+        { "name": "principle 6", "value": "Ship it, then improve it", "note": "v{version} and counting" }
+      ]
+    }
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",

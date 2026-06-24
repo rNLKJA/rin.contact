@@ -1,7 +1,29 @@
 import Head from "next/head";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 import Link from "next/link";
 import pkg from "../../package.json";
+
+// Row labels, values, and notes are localised via infoColophon.rows.<key>
+// (index-aligned). Only the hrefs live here — the single source for each link.
+const SECTIONS = [
+  { key: "framework",   hrefs: ["https://nextjs.org", "https://nodejs.org", "https://typescriptlang.org", null] },
+  { key: "styling",     hrefs: ["https://tailwindcss.com", null, null, null, null] },
+  { key: "typography",  hrefs: [
+      "https://fonts.google.com/specimen/Bitcount+Prop+Double",
+      "https://fonts.google.com/specimen/DM+Sans",
+      "https://fonts.google.com/specimen/Playfair+Display",
+      null, null] },
+  { key: "deployment",  hrefs: ["https://vercel.com", null, null, null, null] },
+  { key: "services",    hrefs: ["https://emailjs.com", "https://api.qrserver.com", "https://fonts.google.com"] },
+  { key: "performance", hrefs: [null, null, null, null] },
+  { key: "easterEggs",  hrefs: [
+      "/resume", "/fun/matrix", "/fun/art", "/fun/haiku", "/fun/coffee",
+      "/fun/roast", "/fun/spin", "/fun/secret", "/tools/card", "/ds",
+      "/info/site-map", "/info/changelog", null, null, null,
+      "/api/rin.json", "/api/fortune", "/api/roast", "/api/now", "/api/stack"] },
+  { key: "philosophy",  hrefs: [null, null, null, null, null, null] },
+];
 
 const Section = ({ label, children }) => (
   <div className="mb-10">
@@ -30,13 +52,16 @@ const Row = ({ name, value, href, note }) => (
 );
 
 export default function ColophonPage() {
+  const { t, locale = "en-AU" } = useI18n();
+  const withVersion = (s) => (s || "").replace("{version}", pkg.version);
+
   return (
     <>
       <Head>
-        <title>Colophon — rin.contact</title>
-        <meta name="description" content="How rin.contact is built — tools, fonts, libraries, and design decisions." />
+        <title>{t("infoColophon.metaTitle")}</title>
+        <meta name="description" content={t("infoColophon.metaDescription")} />
         <link rel="canonical" href="https://rin.contact/colophon" />
-      
+
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://rin.contact/api/og?title=Colophon&subtitle=How%20this%20site%20was%20built&section=info" />
         <meta property="og:image:width" content="1200" />
@@ -48,10 +73,11 @@ export default function ColophonPage() {
       </Head>
 
       <SeoHead
-        title="Colophon — rin.contact"
-        description="How rin.contact is built — tools, fonts, libraries, and design decisions."
+        title={t("infoColophon.metaTitle")}
+        description={t("infoColophon.metaDescription")}
         path="/info/colophon"
-        ogImage={{ title: "Colophon", subtitle: "How rin.contact is built — tools, fonts, libraries, and d...", section: "info" }}
+        ogImage={{ title: "Colophon", subtitle: t("infoColophon.ogSubtitle"), section: "info" }}
+        locale={locale}
       />
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
@@ -60,107 +86,39 @@ export default function ColophonPage() {
         <div className="mb-14">
           <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">/colophon</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-            How this site is made.
+            {t("infoColophon.heading")}
           </h1>
           <p className="text-sm text-[#7A7A7A] leading-relaxed">
-            Every decision behind rin.contact — framework, fonts, deployment, design philosophy,
-            and the easter eggs. A colophon is a printer&apos;s note. This is mine.
+            {t("infoColophon.intro")}
           </p>
         </div>
 
-        {/* Framework */}
-        <Section label="Framework & Runtime">
-          <Row name="framework"   value="Next.js 16"           href="https://nextjs.org"            note="Pages Router — SSG + SSR + CSR mix" />
-          <Row name="runtime"     value="Node.js"              href="https://nodejs.org"            note="via Vercel serverless functions" />
-          <Row name="language"    value="TypeScript / JSX"     href="https://typescriptlang.org"    note="strict mode where it matters" />
-          <Row name="pkg manager" value="npm"                                                       note="nothing fancy" />
-        </Section>
-
-        {/* Styling */}
-        <Section label="Styling">
-          <Row name="utility css" value="Tailwind CSS"         href="https://tailwindcss.com"       note="v3 — mobile-first, purged in production" />
-          <Row name="philosophy"  value="Nothing OS aesthetic"                                      note="stark, minimal, monochromatic — flat, no shadows" />
-          <Row name="palette"     value="#FFFFFF · #000000 · #FF3C3C"                               note="white · black · dot red — used sparingly" />
-          <Row name="radius"      value="none or rounded-full"                                      note="never anything in between" />
-          <Row name="animations"  value="CSS keyframes"                                             note="150–300ms ease-in-out — no bounce, no spring" />
-        </Section>
-
-        {/* Typography */}
-        <Section label="Typography">
-          <Row name="display"     value="Bitcount Prop Double" href="https://fonts.google.com/specimen/Bitcount+Prop+Double" note="weight 300–600 · headlines only" />
-          <Row name="body"        value="DM Sans"              href="https://fonts.google.com/specimen/DM+Sans"              note="weight 300–500 · reading comfort" />
-          <Row name="accent"      value="Playfair Display"     href="https://fonts.google.com/specimen/Playfair+Display"     note="editorial moments only" />
-          <Row name="mono"        value="Courier New"                                               note="system fallback · terminals & labels" />
-          <Row name="loader"      value="next/font"                                                 note="zero layout shift, self-hosted" />
-        </Section>
-
-        {/* Deployment */}
-        <Section label="Deployment & Infrastructure">
-          <Row name="host"        value="Vercel"               href="https://vercel.com"            note="edge network · preview deploys on every push" />
-          <Row name="domain"      value="rin.contact"                                               note="registered via Namecheap" />
-          <Row name="cdn"         value="Vercel Edge Network"                                       note="global, automatic" />
-          <Row name="ci/cd"       value="GitHub + Vercel CLI"                                       note="git push → build → alias" />
-          <Row name="analytics"   value="none"                                                      note="privacy first — no tracking pixels" />
-        </Section>
-
-        {/* Services */}
-        <Section label="Third-party Services">
-          <Row name="email"       value="EmailJS"              href="https://emailjs.com"           note="contact form → inbox, no backend required" />
-          <Row name="qr codes"    value="api.qrserver.com"     href="https://api.qrserver.com"      note="on-the-fly QR generation for /card" />
-          <Row name="fonts"       value="Google Fonts"         href="https://fonts.google.com"      note="loaded via next/font — not tracked" />
-        </Section>
-
-        {/* Performance */}
-        <Section label="Performance Decisions">
-          <Row name="images"      value="next/image"                                                note="lazy loading, WebP conversion, responsive sizes" />
-          <Row name="code split"  value="dynamic imports"                                           note="below-fold sections load only when needed" />
-          <Row name="lcp target"  value="< 1.5s on 4G"                                             note="hero renders without any blocking resources" />
-          <Row name="focus"       value="no layout shift"                                           note="font display:swap + explicit image dimensions" />
-        </Section>
-
-        {/* Easter eggs */}
-        <Section label="Hidden Routes & Easter Eggs">
-          <Row name="/resume"     value="interactive CLI"      href="/resume"       note="type commands, explore career data" />
-          <Row name="/fun/matrix" value="data science rain"    href="/fun/matrix"   note="∑ ∇ λ σ and friends" />
-          <Row name="/fun/art"    value="generative spiral"    href="/fun/art"      note="Fibonacci phyllotaxis" />
-          <Row name="/fun/haiku"  value="haiku collection"     href="/fun/haiku"    note="5–7–5 data science absurdism" />
-          <Row name="/fun/coffee" value="you know why"         href="/fun/coffee"   note="" />
-          <Row name="/fun/roast"  value="honest feedback"      href="/fun/roast"    note="data science roasts" />
-          <Row name="/fun/spin"   value="what is Rin doing?"   href="/fun/spin"     note="spin the wheel" />
-          <Row name="/fun/secret" value="morse code reveal"    href="/fun/secret"   note="" />
-          <Row name="/tools/card" value="draggable card"       href="/tools/card"   note="try throwing it" />
-          <Row name="/ds"        value="Rin as data science"   href="/ds"           note="model cards, SHAP, confusion matrices" />
-          <Row name="/info/site-map" value="human sitemap"     href="/info/site-map" note="every page, not XML" />
-          <Row name="/info/changelog" value="what changed"     href="/info/changelog" note="" />
-          <Row name="↑↑↓↓←→←→BA" value="Konami code"                               note="try it on the homepage" />
-          <Row name="DevTools"    value="console easter egg"                        note="open your browser console" />
-          <Row name="curl"        value="terminal view"                             note="curl rin.contact" />
-          <Row name="/api/rin.json" value="profile API"        href="/api/rin.json" note="" />
-          <Row name="/api/fortune"  value="random wisdom"      href="/api/fortune"  note="" />
-          <Row name="/api/roast"    value="honest feedback"    href="/api/roast"    note="" />
-          <Row name="/api/now"      value="current status"     href="/api/now"      note="" />
-          <Row name="/api/stack"    value="this site's stack"  href="/api/stack"    note="" />
-        </Section>
-
-        {/* Philosophy */}
-        <Section label="Design Philosophy">
-          <Row name="principle 1" value="Every decision is intentional"            note="if it doesn't earn its place, it doesn't ship" />
-          <Row name="principle 2" value="Empty space is part of the design"        note="density ≠ quality" />
-          <Row name="principle 3" value="Mobile-first, always"                     note="375px is the source of truth" />
-          <Row name="principle 4" value="No gradients, no drop-shadows"            note="flat monochrome — the Nothing way" />
-          <Row name="principle 5" value="Accessibility is not optional"            note="AA contrast, focus rings, descriptive alt text" />
-          <Row name="principle 6" value="Ship it, then improve it"                 note={`v${pkg.version} and counting`} />
-        </Section>
+        {SECTIONS.map((section) => {
+          const rows = t(`infoColophon.rows.${section.key}`);
+          return (
+            <Section key={section.key} label={t(`infoColophon.sections.${section.key}`)}>
+              {section.hrefs.map((href, i) => (
+                <Row
+                  key={i}
+                  name={rows[i]?.name}
+                  value={withVersion(rows[i]?.value)}
+                  href={href || undefined}
+                  note={withVersion(rows[i]?.note) || undefined}
+                />
+              ))}
+            </Section>
+          );
+        })}
 
         {/* Footer */}
         <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
-            Designed & built by Rin Huang · v{pkg.version}
+            {withVersion(t("infoColophon.footer"))}
           </p>
           <div className="flex gap-4">
             <Link href="/"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
-              ← Home
+              ← {t("nav.home")}
             </Link>
             <a href="/api/stack" target="_blank" rel="noreferrer"
                className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
