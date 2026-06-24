@@ -442,15 +442,26 @@ export default function ResumePage() {
           <span className="w-2.5 h-2.5 rounded-full bg-[#FF3C3C] opacity-60" aria-hidden="true" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#222]" aria-hidden="true" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#222]" aria-hidden="true" />
-          <span className="ml-3 text-[10px] font-mono text-[#3A3A3A]">
+          <span className="ml-3 text-[10px] font-mono text-[#3A3A3A] truncate min-w-0">
             guest@rin.contact — zsh — /resume
           </span>
-          <Link
-            href="/"
-            className="ml-auto text-[10px] font-mono text-[#444] hover:text-[#888] transition-colors"
-          >
-            ← home
-          </Link>
+          {/* Always-visible escape to the clean, printable CV — a recruiter who
+              lands on the terminal and does not know to type `open /cv` still has
+              a one-click path to the actual document. */}
+          <div className="ml-auto flex items-center gap-3 flex-shrink-0 pl-3">
+            <Link
+              href="/cv"
+              className="text-[10px] font-mono tracking-wide text-[#B0B0B0] hover:text-white border border-[#2A2A2A] hover:border-[#FF3C3C] rounded px-2 py-0.5 transition-colors"
+            >
+              {t("nav.cv")} <span aria-hidden="true">↗</span>
+            </Link>
+            <Link
+              href="/"
+              className="text-[10px] font-mono text-[#444] hover:text-[#888] transition-colors"
+            >
+              ← home
+            </Link>
+          </div>
         </div>
 
         {/* Output area — ref used for direct scrollTop, never scrollIntoView */}
