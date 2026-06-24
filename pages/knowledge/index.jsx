@@ -16,8 +16,8 @@ const TIERS = [
     blurb: "The maths, statistics, data and systems base — Bachelor of Science.",
     topics: [
       { href: "/knowledge/linear-algebra", label: "Linear Algebra", note: "Vectors, matrices, eigenvectors, the SVD", status: "live" },
-      { label: "Probability", note: "Random variables, distributions, Bayes' rule", status: "soon" },
-      { label: "Statistics", note: "Estimation, inference, hypothesis tests", status: "planned" },
+      { href: "/knowledge/probability", label: "Probability", note: "Random variables, distributions, Bayes' rule", status: "live" },
+      { label: "Statistics", note: "Estimation, inference, hypothesis tests", status: "soon" },
       { label: "Calculus & Optimisation", note: "Gradients, gradient descent", status: "planned" },
       { label: "Linear Statistical Models", note: "OLS, inference, diagnostics", status: "planned" },
       { label: "Database Systems", note: "Relational model, SQL, indexing", status: "planned" },
