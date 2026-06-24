@@ -92,7 +92,7 @@ export default function StatusBadge() {
             aria-hidden="true"
           />
           {t(labelKey)}
-          {subKey && <span className="text-[#AAAAAA]">· {t(subKey)}</span>}
+          {subKey && <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">· {t(subKey)}</span>}
         </span>
       ))}
       {AVAILABLE_PILL && (
@@ -107,13 +107,13 @@ export default function StatusBadge() {
       {time && (
         <>
           <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">·</span>
-          <span className="text-[#AAAAAA]">{t("statusBadge.adl")} {time}</span>
+          <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">{t("statusBadge.adl")} {time}</span>
         </>
       )}
       {weather && (
         <>
           <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">·</span>
-          <span className="text-[#AAAAAA]" title={weather.desc}>
+          <span className="text-[#6E6E6E] dark:text-[#9A9A9A]" title={weather.desc}>
             {weather.tempC}°C {weather.word}
           </span>
         </>
