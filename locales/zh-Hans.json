@@ -503,6 +503,67 @@
       ]
     }
   },
+  "infoAccessibility": {
+    "metaTitle": "无障碍 — Rin Huang · rin.contact",
+    "metaDescription": "rin.contact 如何处理无障碍 — 对比度、焦点、屏幕阅读器、动效与键盘导航。",
+    "ogSubtitle": "rin.contact 如何处理无障碍 — 对比度、焦点……",
+    "heading": "rin.contact 的无障碍设计",
+    "intro": "本站致力于让每个人都能使用。以下是我们已做到的，以及仍在改进的。",
+    "footerNote": "最近更新于 2026 年 3 月",
+    "feedback": {
+      "title": "反馈",
+      "prefix": "如果你遇到任何障碍，请联系我。",
+      "suffix": " — 我非常重视无障碍，会尽力修复问题。"
+    },
+    "sections": {
+      "colourContrast": {
+        "title": "色彩与对比度",
+        "items": [
+          { "label": "对比度", "detail": "文本符合 WCAG 2.1 AA（正文 4.5:1，大号文本 3:1）。白底黑字、浅灰底深灰字 — 使用 WebAIM 对比度检查器测试。" },
+          { "label": "不依赖色彩", "detail": "信息从不仅靠色彩传达。所有交互状态都辅以图标、标签和文字。" },
+          { "label": "Nothing OS 配色", "detail": "单色设计减少对色彩感知的依赖。强调红（#FF3C3C）仅在重点处克制使用。" }
+        ]
+      },
+      "keyboard": {
+        "title": "键盘导航",
+        "items": [
+          { "label": "焦点指示", "detail": "所有交互元素都有可见的 :focus-visible 轮廓（2px 纯黑）。鼠标/触摸焦点被抑制以避免杂乱；键盘焦点始终显示。" },
+          { "label": "Tab 顺序", "detail": "逻辑化的 Tab 顺序与视觉布局一致。在结构受益处（如长页面）提供跳转链接。" },
+          { "label": "Escape 与 Enter", "detail": "模态框与浮层可用 Escape 关闭。按钮与链接用 Enter/Space 激活。" }
+        ]
+      },
+      "screenReaders": {
+        "title": "屏幕阅读器与语义",
+        "items": [
+          { "label": "语义化 HTML", "detail": "在适当处使用标题（h1–h6）、地标（main、nav、section）与 ARIA 角色。表单标签与输入框关联。" },
+          { "label": "替代文本", "detail": "图片带有描述性 alt 属性。装饰性图片使用 aria-hidden 或空 alt。" },
+          { "label": "实时区域", "detail": "动态内容（提示、表单状态）使用 aria-live 播报，不打断阅读流。" }
+        ]
+      },
+      "motion": {
+        "title": "动效与动画",
+        "items": [
+          { "label": "prefers-reduced-motion", "detail": "尊重用户的系统偏好。在已实现处，当设置 prefers-reduced-motion: reduce 时，动画会被禁用或简化。" },
+          { "label": "动画时长", "detail": "过渡控制在 150–300ms。没有自动播放的视频，也没有无法暂停的无限循环。" }
+        ]
+      },
+      "forms": {
+        "title": "表单与交互",
+        "items": [
+          { "label": "联系表单", "detail": "标签、错误信息与成功反馈。必填字段已标注。提交前校验。" },
+          { "label": "触摸目标", "detail": "在可能处，按钮与链接为触摸设备保持至少 44×44px 的尺寸。" }
+        ]
+      },
+      "limitations": {
+        "title": "已知局限",
+        "items": [
+          { "label": "彩蛋", "detail": "部分隐藏功能（科乐美秘籍、暗号）可被发现但不会被播报。它们不会阻碍核心任务。" },
+          { "label": "Canvas 内容", "detail": "贪吃蛇、矩阵雨与生成式艺术使用 canvas — 本身不具无障碍性。在可行处提供文字替代或描述。" },
+          { "label": "第三方", "detail": "外部嵌入（如二维码、wttr.in）遵循其自身的无障碍标准。我们无法控制它们。" }
+        ]
+      }
+    }
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",

@@ -503,6 +503,67 @@
       ]
     }
   },
+  "infoAccessibility": {
+    "metaTitle": "Accessibility — Rin Huang · rin.contact",
+    "metaDescription": "How rin.contact handles accessibility — contrast, focus, screen readers, motion, and keyboard navigation.",
+    "ogSubtitle": "How rin.contact handles accessibility — contrast, focus...",
+    "heading": "Accessibility at rin.contact",
+    "intro": "This site aims to be usable by everyone. Here's what we do — and what we're still improving.",
+    "footerNote": "Last updated March 2026",
+    "feedback": {
+      "title": "Feedback",
+      "prefix": "If you encounter a barrier, please reach out. ",
+      "suffix": " — I take accessibility seriously and will do my best to fix issues."
+    },
+    "sections": {
+      "colourContrast": {
+        "title": "Colour & contrast",
+        "items": [
+          { "label": "Contrast ratios", "detail": "Text meets WCAG 2.1 AA (4.5:1 for body, 3:1 for large text). Black on white, dark grey on light grey — tested with WebAIM Contrast Checker." },
+          { "label": "Colour independence", "detail": "Information is never conveyed by colour alone. Icons, labels, and text accompany all interactive states." },
+          { "label": "Nothing OS palette", "detail": "Monochromatic design reduces reliance on colour perception. Accent red (#FF3C3C) used sparingly for emphasis." }
+        ]
+      },
+      "keyboard": {
+        "title": "Keyboard navigation",
+        "items": [
+          { "label": "Focus indicators", "detail": "All interactive elements have a visible :focus-visible outline (2px solid black). Mouse/tap focus is suppressed to avoid clutter; keyboard focus is always shown." },
+          { "label": "Tab order", "detail": "Logical tab sequence follows visual layout. Skip links available where structure benefits (e.g. long pages)." },
+          { "label": "Escape & Enter", "detail": "Modals and overlays can be closed with Escape. Buttons and links activate with Enter/Space." }
+        ]
+      },
+      "screenReaders": {
+        "title": "Screen readers & semantics",
+        "items": [
+          { "label": "Semantic HTML", "detail": "Headings (h1–h6), landmarks (main, nav, section), and ARIA roles used where appropriate. Form labels associated with inputs." },
+          { "label": "Alt text", "detail": "Images have descriptive alt attributes. Decorative images use aria-hidden or empty alt." },
+          { "label": "Live regions", "detail": "Dynamic content (toasts, form status) uses aria-live for announcements without disrupting reading flow." }
+        ]
+      },
+      "motion": {
+        "title": "Motion & animation",
+        "items": [
+          { "label": "prefers-reduced-motion", "detail": "Respecting the user's system preference. Where implemented, animations are disabled or simplified when prefers-reduced-motion: reduce is set." },
+          { "label": "Animation duration", "detail": "Transitions kept to 150–300ms. No auto-playing videos or infinite loops that can't be paused." }
+        ]
+      },
+      "forms": {
+        "title": "Forms & interaction",
+        "items": [
+          { "label": "Contact form", "detail": "Labels, error messages, and success feedback. Required fields marked. Validation before submit." },
+          { "label": "Touch targets", "detail": "Buttons and links sized to at least 44×44px where possible for touch devices." }
+        ]
+      },
+      "limitations": {
+        "title": "Known limitations",
+        "items": [
+          { "label": "Easter eggs", "detail": "Some hidden features (Konami code, secret word) are discoverable but not announced. They don't block core tasks." },
+          { "label": "Canvas content", "detail": "Snake game, Matrix rain, and generative art use canvas — not natively accessible. Text alternatives or descriptions provided where feasible." },
+          { "label": "Third-party", "detail": "External embeds (e.g. QR codes, wttr.in) follow their own accessibility. We can't control them." }
+        ]
+      }
+    }
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",
