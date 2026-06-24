@@ -58,6 +58,7 @@ const KNOWLEDGE = [
   { path: "/knowledge/linear-algebra", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/probability", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/statistics", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/calculus-optimisation", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────

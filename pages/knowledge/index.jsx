@@ -18,7 +18,7 @@ const TIERS = [
       { href: "/knowledge/linear-algebra", label: "Linear Algebra", note: "Vectors, matrices, eigenvectors, the SVD", status: "live" },
       { href: "/knowledge/probability", label: "Probability", note: "Random variables, distributions, Bayes' rule", status: "live" },
       { href: "/knowledge/statistics", label: "Statistics", note: "Estimation, inference, hypothesis tests", status: "live" },
-      { label: "Calculus & Optimisation", note: "Gradients, gradient descent", status: "soon" },
+      { href: "/knowledge/calculus-optimisation", label: "Calculus & Optimisation", note: "Gradients, gradient descent, backprop", status: "live" },
       { label: "Linear Statistical Models", note: "OLS, inference, diagnostics", status: "planned" },
       { label: "Database Systems", note: "Relational model, SQL, indexing", status: "planned" },
       { label: "Artificial Intelligence", note: "Search, logic, planning", status: "planned" },
@@ -30,7 +30,7 @@ const TIERS = [
     blurb: "Built on the foundation — Master of Data Science.",
     topics: [
       { href: "/knowledge/natural-language-processing", label: "Natural Language Processing", note: "Tokens, TF-IDF, embeddings, transformers", status: "live" },
-      { label: "Statistical Machine Learning", note: "Bias-variance, regularisation, generalisation", status: "planned" },
+      { label: "Statistical Machine Learning", note: "Bias-variance, regularisation, generalisation", status: "soon" },
       { label: "Bayesian Statistics", note: "Priors, posteriors, MCMC", status: "planned" },
       { label: "Multivariate Statistics", note: "PCA, factor analysis, clustering", status: "planned" },
       { label: "Cluster & Cloud Computing", note: "MPI, Spark, HPC at scale", status: "planned" },
