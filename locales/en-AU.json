@@ -499,7 +499,20 @@
   "info": {
     "sectionLabel": "◆ — Info",
     "heading": "Site info & meta.",
-    "description": "Colophon, changelog, accessibility, roadmap, and site map."
+    "description": "Colophon, changelog, accessibility, roadmap, and site map.",
+    "items": {
+      "now": "what I'm doing right now",
+      "uses": "tools, apps, setup",
+      "roadmap": "where this site is headed",
+      "accessibility": "how this site is accessible",
+      "colophon": "how this site is built",
+      "api": "available API endpoints",
+      "site-map": "human-readable sitemap",
+      "manifest": "what I believe",
+      "changelog": "what changed",
+      "thank-you": "thanks for reaching out",
+      "references": "people who might say nice things"
+    }
   },
   "miniTerminal": {
     "ariaLabel": "Interactive terminal",

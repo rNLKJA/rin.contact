@@ -499,7 +499,20 @@
   "info": {
     "sectionLabel": "◆ — 信息",
     "heading": "站点信息与元数据。",
-    "description": "版本说明、更新日志、无障碍声明、路线图与站点地图。"
+    "description": "版本说明、更新日志、无障碍声明、路线图与站点地图。",
+    "items": {
+      "now": "我现在在做什么",
+      "uses": "工具、应用与配置",
+      "roadmap": "这个网站的发展方向",
+      "accessibility": "本站的无障碍设计",
+      "colophon": "本站是如何搭建的",
+      "api": "可用的 API 接口",
+      "site-map": "人类可读的站点地图",
+      "manifest": "我的信念",
+      "changelog": "更新了什么",
+      "thank-you": "感谢你的联系",
+      "references": "愿意为我美言几句的人"
+    }
   },
   "miniTerminal": {
     "ariaLabel": "交互式终端",

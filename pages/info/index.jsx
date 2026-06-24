@@ -5,17 +5,17 @@ import { useI18n } from "@/contexts/I18nContext";
 import Link from "next/link";
 
 const ITEMS = [
-  { href: "/info/now",          label: "now",          note: "what I'm doing right now" },
-  { href: "/info/uses",         label: "uses",         note: "tools, apps, setup" },
-  { href: "/info/roadmap",      label: "roadmap",      note: "where this site is headed" },
-  { href: "/info/accessibility", label: "accessibility", note: "how this site is accessible" },
-  { href: "/info/colophon",     label: "colophon",      note: "how this site is built" },
-  { href: "/info/api",          label: "api",          note: "available API endpoints" },
-  { href: "/info/site-map",     label: "site-map",     note: "human-readable sitemap" },
-  { href: "/info/manifest",     label: "manifest",     note: "what I believe" },
-  { href: "/info/changelog",    label: "changelog",    note: "what changed" },
-  { href: "/info/thank-you",    label: "thank-you",    note: "thanks for reaching out" },
-  { href: "/info/references",   label: "references",   note: "people who might say nice things" },
+  { href: "/info/now",          label: "now" },
+  { href: "/info/uses",         label: "uses" },
+  { href: "/info/roadmap",      label: "roadmap" },
+  { href: "/info/accessibility", label: "accessibility" },
+  { href: "/info/colophon",     label: "colophon" },
+  { href: "/info/api",          label: "api" },
+  { href: "/info/site-map",     label: "site-map" },
+  { href: "/info/manifest",     label: "manifest" },
+  { href: "/info/changelog",    label: "changelog" },
+  { href: "/info/thank-you",    label: "thank-you" },
+  { href: "/info/references",   label: "references" },
 ];
 
 export default function InfoIndexPage() {
@@ -57,7 +57,7 @@ export default function InfoIndexPage() {
           </p>
 
           <div className="space-y-0 divide-y divide-[#E0E0E0] dark:divide-[#3D3D3D]">
-            {ITEMS.map(({ href, label, note }) => (
+            {ITEMS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
@@ -66,7 +66,7 @@ export default function InfoIndexPage() {
                 <span className="font-mono text-sm text-[#1A1A1A] dark:text-white group-hover:text-black dark:hover:text-white group-hover:border-black dark:hover:border-white transition-colors">
                   /info/{label}
                 </span>
-                <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">{note}</span>
+                <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">{t(`info.items.${label}`)}</span>
               </Link>
             ))}
           </div>
