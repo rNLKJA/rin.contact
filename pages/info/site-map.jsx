@@ -11,6 +11,7 @@ const SECTIONS = [
     { href: "/lab", label: "Lab" },
     { href: "/about", label: "About" },
     { href: "/resume", label: "Resume" },
+    { href: "/cv", label: "Curriculum Vitae" },
     { href: "/hire-me", label: "Hire Me" },
   ]},
   { heading: "Blog", links: [
