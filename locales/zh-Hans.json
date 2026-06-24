@@ -449,6 +449,60 @@
       ]
     }
   },
+  "infoRoadmap": {
+    "metaTitle": "路线图 — Rin Huang · rin.contact",
+    "metaDescription": "rin.contact 的过去与未来功能 — 已上线、进行中，以及荒诞的。",
+    "ogSubtitle": "rin.contact 的过去与未来功能 — 已上线、进行中……",
+    "heading": "我们走过的路，以及要去的地方。",
+    "intro": "已上线功能、进行中的工作，以及一些可能是、也可能不是玩笑的条目。最近更新于 2026 年 6 月。",
+    "footerNote": "路线图是活的文档。这一份还有点搞笑。",
+    "sections": {
+      "done": "已上线",
+      "wip": "进行中",
+      "planned": "计划中",
+      "backlog": "待办（存疑）"
+    },
+    "statusLabels": {
+      "done": "已完成",
+      "wip": "进行中",
+      "planned": "计划中",
+      "backlog": "待定"
+    },
+    "lists": {
+      "done": [
+        { "title": "带贪吃蛇游戏的自定义 404", "note": "等待时玩两把。排行榜会保存。" },
+        { "title": "命令行风格的交互式简历", "note": "输入命令，探索职业数据。" },
+        { "title": "数据科学符号的矩阵雨", "note": "∑ ∇ λ σ — 你懂那感觉。" },
+        { "title": "复制邮箱 → 撒花特效", "note": "选中 huang@rin.contact，Ctrl+C，尽情享受。" },
+        { "title": "状态徽章里的阿德莱德实时天气", "note": "wttr.in。无需 API key。免费。" },
+        { "title": "30+ 个隐藏路由与彩蛋", "note": "到这地步我们已经数不清了。" },
+        { "title": "Nothing OS + Wisr 设计系统", "note": "硬朗。极简。单色。" },
+        { "title": "针对 6+ 个名字变体的 SEO", "note": "Sunchuangyu、黄孙创宇、HUANGSUNCHUANGYU 等。" },
+        { "title": "博客 / 写作板块", "note": "已上线，含阅读时长与「下一篇」推荐。八篇且仍在增加。" },
+        { "title": "RSS 订阅", "note": "/blog/feed.xml — 用任意阅读器订阅。" },
+        { "title": "国际化 — 中文版", "note": "完整的简体中文站点。黄孙创宇有了自己的页面。" },
+        { "title": "PWA / 离线支持", "note": "Service worker、web manifest，可安装。" },
+        { "title": "深色模式", "note": "Nothing OS 天生深色；这个开关让它成为一种选择。" }
+      ],
+      "wip": [
+        { "title": "更多彩蛋", "note": "这个清单永无止境。" },
+        { "title": "无障碍审计", "note": "WCAG 2.1 AA。持续改进。" },
+        { "title": "性能调优", "note": "LCP < 1.5s。动态导入。字体优化。" }
+      ],
+      "planned": [
+        { "title": "更多项目案例研究", "note": "Signal 有了一个。其余的也值得同样的深度。" },
+        { "title": "邮件订阅自动化", "note": "订阅入口已有；发送管线是下一步。" },
+        { "title": "API 版本管理", "note": "v1 永存。等我们把一切搞坏时再上 v2。" }
+      ],
+      "backlog": [
+        { "title": "用星座替换天气", "note": "射手座：你的模型今天会过拟合。" },
+        { "title": "区块链集成", "note": "不。" },
+        { "title": "404 页面的 NFT", "note": "绝对不行。" },
+        { "title": "只会说「雇佣 Rin」的 AI 聊天机器人", "note": "很诱人。但太直白了。" },
+        { "title": "无限滚动", "note": "我们有分页。我们有子页面。够用了。" }
+      ]
+    }
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",

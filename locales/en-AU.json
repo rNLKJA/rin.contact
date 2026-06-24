@@ -449,6 +449,60 @@
       ]
     }
   },
+  "infoRoadmap": {
+    "metaTitle": "Roadmap — Rin Huang · rin.contact",
+    "metaDescription": "Past and future features for rin.contact — shipped, in progress, and absurd.",
+    "ogSubtitle": "Past and future features for rin.contact — shipped, in progress...",
+    "heading": "Where we've been. Where we're going.",
+    "intro": "A mix of shipped features, work in progress, and items that may or may not be jokes. Last updated June 2026.",
+    "footerNote": "Roadmaps are living documents. This one is also a bit silly.",
+    "sections": {
+      "done": "Shipped",
+      "wip": "In progress",
+      "planned": "Planned",
+      "backlog": "Backlog (questionable)"
+    },
+    "statusLabels": {
+      "done": "done",
+      "wip": "wip",
+      "planned": "planned",
+      "backlog": "backlog"
+    },
+    "lists": {
+      "done": [
+        { "title": "Custom 404 with Snake game", "note": "Play while you wait. Leaderboard persists." },
+        { "title": "CLI-style interactive resume", "note": "Type commands. Explore career data." },
+        { "title": "Matrix rain with data science symbols", "note": "∑ ∇ λ σ — you know the vibe." },
+        { "title": "Copy email → confetti burst", "note": "Select huang@rin.contact, Ctrl+C. Enjoy." },
+        { "title": "Adelaide live weather in status badge", "note": "wttr.in. No API key. Free." },
+        { "title": "30+ hidden routes and easter eggs", "note": "At this point we've lost count." },
+        { "title": "Nothing OS + Wisr design system", "note": "Stark. Minimal. Monochromatic." },
+        { "title": "SEO for 6+ name variants", "note": "Sunchuangyu, 黄孙创宇, HUANGSUNCHUANGYU, etc." },
+        { "title": "Blog / writing section", "note": "Live with reading time and Read-next. Eight posts and counting." },
+        { "title": "RSS feed", "note": "/blog/feed.xml — subscribe in any reader." },
+        { "title": "i18n — Mandarin version", "note": "Full zh-Hans site. 黄孙创宇 has his page." },
+        { "title": "PWA / offline support", "note": "Service worker, web manifest, installable." },
+        { "title": "Dark mode", "note": "Nothing OS is dark by nature; the toggle makes it a choice." }
+      ],
+      "wip": [
+        { "title": "More easter eggs", "note": "The list never ends." },
+        { "title": "Accessibility audit", "note": "WCAG 2.1 AA. Continuous improvement." },
+        { "title": "Performance tuning", "note": "LCP < 1.5s. Dynamic imports. Font optimisation." }
+      ],
+      "planned": [
+        { "title": "More project case studies", "note": "Signal has one. The rest deserve the same depth." },
+        { "title": "Newsletter automation", "note": "The signup exists; the sending pipeline is next." },
+        { "title": "API versioning", "note": "v1 is forever. v2 when we break everything." }
+      ],
+      "backlog": [
+        { "title": "Replace weather with astrology", "note": "Sagittarius: your model will overfit today." },
+        { "title": "Blockchain integration", "note": "No." },
+        { "title": "NFT of the 404 page", "note": "Absolutely not." },
+        { "title": "AI chatbot that only says 'hire Rin'", "note": "Tempting. Too on-the-nose." },
+        { "title": "Infinite scroll", "note": "We have pagination. We have subpages. We're good." }
+      ]
+    }
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",
