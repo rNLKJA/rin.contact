@@ -13,10 +13,10 @@ export default function CareerPage() {
       <Head>
         <title>Career — Rin Huang · rin.contact</title>
         <meta name="description" content="Rin Huang's full career timeline — ASO7 at SAPOL, research at WEHI & CSIRO, co-founder of Mapiva. Interactive career metro map across Government, Research, and Engineering." />
-        <link rel="canonical" href="https://rin.contact/career" />
+        <link rel="canonical" href="https://rin.contact/career/" />
         <meta property="og:title" content="Career — Sunchuangyu (Rin) Huang" />
         <meta property="og:description" content="Four years across Government, Research, and Engineering. Seven roles. One startup. ASO7 @ SAPOL, WEHI, CSIRO, Mapiva." />
-        <meta property="og:url" content="https://rin.contact/career" />
+        <meta property="og:url" content="https://rin.contact/career/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://rin.contact/api/og?title=Career%20Journey&subtitle=7%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career" />
         <meta property="og:image:width" content="1200" />

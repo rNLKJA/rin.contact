@@ -93,7 +93,7 @@ export default function BlogPost({ post, nextPost }) {
       <SeoHead
         title={`${post.title} — Rin Huang . rin.contact`}
         description={post.description || "Blog post by Rin Huang"}
-        path={`/blog/${post.slug}`}
+        path={`/blog/${post.slug}/`}
         ogType="article"
         ogTitle={post.title}
         ogDescription={post.description}
@@ -132,10 +132,10 @@ export default function BlogPost({ post, nextPost }) {
                 name: "Rin Huang",
                 url: "https://rin.contact",
               },
-              url: `https://rin.contact/blog/${post.slug}`,
+              url: `https://rin.contact/blog/${post.slug}/`,
               mainEntityOfPage: {
                 "@type": "WebPage",
-                "@id": `https://rin.contact/blog/${post.slug}`,
+                "@id": `https://rin.contact/blog/${post.slug}/`,
               },
               ...(post.tags?.length > 0 && { keywords: post.tags.join(", ") }),
             }),
@@ -212,7 +212,7 @@ export default function BlogPost({ post, nextPost }) {
         />
 
         {/* Share — turn a reader who liked the post into reach for the writing */}
-        <ShareButtons url={`https://rin.contact/blog/${post.slug}`} title={post.title} />
+        <ShareButtons url={`https://rin.contact/blog/${post.slug}/`} title={post.title} />
 
         {/* Read next — keeps the reader in the work instead of dead-ending */}
         {nextPost && (

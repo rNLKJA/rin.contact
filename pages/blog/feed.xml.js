@@ -15,7 +15,7 @@ function esc(str) {
 
 function generateRssXml(posts) {
   const siteUrl = "https://rin.contact";
-  const blogUrl = `${siteUrl}/blog`;
+  const blogUrl = `${siteUrl}/blog/`;
   const lastBuild = posts.length > 0 ? new Date(posts[0].date).toUTCString() : new Date().toUTCString();
 
   const items = posts
@@ -23,8 +23,8 @@ function generateRssXml(posts) {
       (p) => `
     <item>
       <title>${esc(p.title)}</title>
-      <link>${siteUrl}/blog/${esc(p.slug)}</link>
-      <guid isPermaLink="true">${siteUrl}/blog/${esc(p.slug)}</guid>
+      <link>${siteUrl}/blog/${esc(p.slug)}/</link>
+      <guid isPermaLink="true">${siteUrl}/blog/${esc(p.slug)}/</guid>
       <description>${esc(p.description)}</description>
       <pubDate>${new Date(p.date).toUTCString()}</pubDate>
     </item>`
@@ -34,7 +34,7 @@ function generateRssXml(posts) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <atom:link href="${blogUrl}/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="${siteUrl}/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <title>Rin Huang — Blog</title>
     <link>${blogUrl}</link>
     <description>Thoughts on data science, intelligence frameworks, analytics engineering, and building things that compound.</description>

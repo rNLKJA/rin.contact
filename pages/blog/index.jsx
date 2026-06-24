@@ -32,7 +32,7 @@ export default function BlogIndex({ posts }) {
       <SeoHead
         title="Blog — Rin Huang . rin.contact"
         description="Thoughts on data science, intelligence frameworks, government analytics, and building things that compound."
-        path="/blog"
+        path="/blog/"
         ogTitle="Blog — Rin Huang"
         ogDescription="Data science, analytics, and building things that compound."
         locale={locale}

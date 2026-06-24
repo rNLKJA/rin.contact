@@ -88,10 +88,17 @@ function imageXml(img) {
   ].join("\n");
 }
 
+// The site is trailingSlash:true, so the canonical URL for every page ends with
+// a "/". Emit that form here so crawlers index the real URL instead of following
+// a 308 redirect from the slash-less variant.
+function withTrailingSlash(path) {
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
 function urlXml({ path, priority, freq }, today, extra = "") {
   return [
     "  <url>",
-    `    <loc>${BASE_URL}${path}</loc>`,
+    `    <loc>${BASE_URL}${withTrailingSlash(path)}</loc>`,
     `    <lastmod>${today}</lastmod>`,
     `    <changefreq>${freq}</changefreq>`,
     `    <priority>${priority}</priority>`,

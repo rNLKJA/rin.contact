@@ -21,10 +21,10 @@ export default function ProjectsPage({ count = 0 }) {
       <Head>
         <title>Projects — Rin Huang · rin.contact</title>
         <meta name="description" content="Rin Huang's shipped projects — data engineering, Python automation, React Native mobile apps, Next.js web apps, cloud infrastructure, and open-source work." />
-        <link rel="canonical" href="https://rin.contact/projects" />
+        <link rel="canonical" href="https://rin.contact/projects/" />
         <meta property="og:title" content="Projects — Sunchuangyu (Rin) Huang" />
         <meta property="og:description" content={`${count} projects shipped to production. Data engineering, cloud infrastructure, mobile apps, open-source.`} />
-        <meta property="og:url" content="https://rin.contact/projects" />
+        <meta property="og:url" content="https://rin.contact/projects/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="1200" />

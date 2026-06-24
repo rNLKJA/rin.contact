@@ -38,7 +38,12 @@ export default function SeoHead({
   locale = "en-AU",
 }) {
   const localePrefix = locale === "zh-Hans" ? "/zh-Hans" : "";
-  const url = `${BASE_URL}${localePrefix}${path}`;
+  // The site is trailingSlash:true, so the canonical (and og:url) MUST end with "/".
+  // Pages pass slash-less paths like "/about"; normalise here so every page emits the
+  // real URL Google serves instead of a slash-less variant that only 308-redirects.
+  const rawPath = `${localePrefix}${path}` || "/";
+  const canonicalPath = rawPath.endsWith("/") ? rawPath : `${rawPath}/`;
+  const url = `${BASE_URL}${canonicalPath}`;
   const ogLocale = locale === "zh-Hans" ? "zh_CN" : "en_AU";
   const resolvedOgTitle = ogTitle ?? extractOgTitle(title);
   const resolvedOgDesc = ogDescription ?? description;

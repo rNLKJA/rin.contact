@@ -523,7 +523,6 @@ class MyDocument extends Document {
   render() {
     const { locale = "en-AU" } = this.props;
     const baseUrl = "https://rin.contact";
-    const canonicalUrl = locale === "zh-Hans" ? `${baseUrl}/zh-Hans` : baseUrl;
     return (
       <Html lang={locale} suppressHydrationWarning>
         <Head>
@@ -595,8 +594,7 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
-          {/* ── Canonical & hreflang — locale-aware ── */}
-          <link rel="canonical" href={canonicalUrl} />
+          {/* ── hreflang — locale-aware (canonical is per-page via SeoHead / page Head) ── */}
           <link rel="alternate" hrefLang="en-AU" href={baseUrl} />
           <link rel="alternate" hrefLang="zh-Hans" href={`${baseUrl}/zh-Hans`} />
           <link rel="alternate" hrefLang="x-default" href={baseUrl} />
