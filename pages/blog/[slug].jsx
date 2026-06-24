@@ -7,6 +7,7 @@ import SeoHead from "@/components/seo/SeoHead";
 import PostCard from "@/components/blog/PostCard";
 import ShareButtons from "@/components/blog/ShareButtons";
 import ReadingProgress from "@/components/blog/ReadingProgress";
+import AuthorBio from "@/components/blog/AuthorBio";
 import { useI18n } from "@/contexts/I18nContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
@@ -213,6 +214,10 @@ export default function BlogPost({ post, relatedPosts = [] }) {
 
         {/* Share — turn a reader who liked the post into reach for the writing */}
         <ShareButtons url={`https://rin.contact/blog/${post.slug}/`} title={post.title} />
+
+        {/* Author card — a reader who finished the essay is a warm lead; show
+            who wrote it and a direct path to work with him */}
+        <AuthorBio />
 
         {/* Read next — topically related posts keep the reader in the work
             (surfaces the clusters) instead of dead-ending */}
