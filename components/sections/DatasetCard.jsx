@@ -61,7 +61,7 @@ export default function DatasetCard() {
       <div className="flex flex-wrap items-center gap-4 mb-6">
         <div>
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-1 font-mono">◈ — If I were a dataset</p>
-          <p className="text-[10px] text-[#AAAAAA] dark:text-[#9A9A9A] font-mono">
+          <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
             What does a data scientist look like as data?
           </p>
         </div>

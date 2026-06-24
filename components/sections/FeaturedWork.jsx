@@ -140,7 +140,7 @@ export default function FeaturedWork() {
             <div className="grid grid-cols-2 gap-px border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
               {STATS.map(({ k, v }) => (
                 <div key={k} className="bg-white dark:bg-[#0A0A0A] px-4 py-3.5">
-                  <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] dark:text-[#7A7A7A] mb-1">{k}</p>
+                  <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-1">{k}</p>
                   <p className="text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">{v}</p>
                 </div>
               ))}

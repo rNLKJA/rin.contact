@@ -75,7 +75,7 @@ export default function HeroInteractHint() {
           return <span key={i} className="hint-dot" style={{ "--ring": ring }} />;
         })}
       </span>
-      <span className="text-[10px] tracking-[0.25em] uppercase text-[#9A9A9A] dark:text-[#7A7A7A]">
+      <span className="text-[10px] tracking-[0.25em] uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
         Move your cursor
         <span className="text-[#FF3C3C]"> — the field reacts</span>
       </span>

@@ -298,12 +298,12 @@ export default function MetroMapSection() {
             )}
           </>
         ) : (
-          <p className="text-xs text-[#AAAAAA] dark:text-[#666666] italic">Hover a station to read its record.</p>
+          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] italic">Hover a station to read its record.</p>
         )}
       </div>
 
       {/* Legend */}
-      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] text-[#AAAAAA] dark:text-[#666666] font-mono">
+      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
         {LINES.map((ln) => (
           <span key={ln.id} className="flex items-center gap-1.5">
             <span className="inline-block w-5 h-0.5" style={{ backgroundColor: ln.color }} />

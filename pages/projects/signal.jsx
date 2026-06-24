@@ -94,7 +94,7 @@ export default function SignalCaseStudy() {
         {/* Header */}
         <Link
           href="/projects"
-          className="inline-block text-[10px] tracking-widest uppercase text-[#AAAAAA] dark:text-[#7A7A7A] hover:text-black dark:hover:text-white transition-colors mb-8"
+          className="inline-block text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors mb-8"
         >
           ← Back to projects
         </Link>
@@ -132,7 +132,7 @@ export default function SignalCaseStudy() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mb-6 border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
           {GLANCE.map(({ k, v }) => (
             <div key={k} className="bg-white dark:bg-[#0A0A0A] px-4 py-4">
-              <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] dark:text-[#7A7A7A] mb-1">{k}</p>
+              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-1">{k}</p>
               <p className="text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">{v}</p>
             </div>
           ))}

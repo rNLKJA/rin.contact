@@ -41,7 +41,7 @@ export default function PositioningStatement() {
             {eyebrow}
           </span>
           <span className="hidden md:block flex-1 h-px bg-[#E5E5E5] dark:bg-[#262626]" aria-hidden="true" />
-          <span className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#9A9A9A] dark:text-[#7A7A7A]">
+          <span className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
             {safeDomains.map((d, i) => (
               <span key={d} className="flex items-center gap-2">
                 {i > 0 && <span className="text-[#FF3C3C]" aria-hidden="true">·</span>}

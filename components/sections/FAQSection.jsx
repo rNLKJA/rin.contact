@@ -193,7 +193,7 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
         </div>
 
         {/* Question count pill */}
-        <span className="flex-shrink-0 text-[10px] tracking-widest text-[#AAAAAA] dark:text-[#666666] border border-[#EBEBEB] dark:border-[#3D3D3D] px-2.5 py-0.5 rounded-full select-none hidden md:block">
+        <span className="flex-shrink-0 text-[10px] tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A] border border-[#EBEBEB] dark:border-[#3D3D3D] px-2.5 py-0.5 rounded-full select-none hidden md:block">
           {cat.items.length} {cat.items.length === 1 ? "question" : "questions"}
         </span>
 
