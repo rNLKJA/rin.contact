@@ -104,7 +104,7 @@ export default function StatisticalMachineLearningKnowledgePage() {
           loss on <em>new</em> data drawn from the real world:
         </p>
         <Formula label="Risk equals the expected value over the data distribution of the loss between the model's prediction f of x and the true label y.">
-          R(f) = E₍ₓ,ᵧ₎ [ L( f(x), y ) ]
+          {String.raw`R(f) = \mathbb{E}_{(x, y)}\!\left[\, L(f(x), y) \,\right]`}
         </Formula>
         <p>
           But you can't see the whole world — only your sample. So you minimise the{" "}
@@ -176,7 +176,7 @@ export default function StatisticalMachineLearningKnowledgePage() {
           model's expected error decomposes into three parts:
         </p>
         <Formula label="Expected error equals bias squared plus variance plus irreducible noise.">
-          Error = Bias² + Variance + Irreducible noise
+          {String.raw`\text{Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible noise}`}
         </Formula>
         <ul>
           <li>
@@ -233,7 +233,7 @@ export default function StatisticalMachineLearningKnowledgePage() {
           the data against staying simple:
         </p>
         <Formula label="The regularised objective equals the loss on the data plus lambda times a penalty on the size of the parameters.">
-          minimise:  L(data) + λ · penalty(θ)
+          {String.raw`\min_{\theta}\ \ L(\text{data}) + \lambda \cdot \text{penalty}(\theta)`}
         </Formula>
         <p>
           The strength <code>λ</code> is a dial from "fit hard" to "stay simple". Two

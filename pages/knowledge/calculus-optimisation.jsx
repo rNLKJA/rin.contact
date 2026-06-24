@@ -83,7 +83,7 @@ export default function CalculusOptimisationKnowledgePage() {
           "rise over run" as the run shrinks to nothing:
         </p>
         <Formula label="The derivative f-prime of x equals the limit as h goes to zero of the quantity f of x plus h minus f of x, all divided by h.">
-          f′(x) = limₕ→₀ [ f(x + h) − f(x) ] / h
+          {String.raw`f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}`}
         </Formula>
         <p>
           The intuition matters more than the limit: zoom in on any smooth curve far
@@ -104,7 +104,7 @@ export default function CalculusOptimisationKnowledgePage() {
           variable and hold the rest still:
         </p>
         <Formula label="The gradient of f, written nabla f, is the vector of partial derivatives of f with respect to x-1, x-2, up to x-n.">
-          ∇f = [ ∂f/∂x₁, ∂f/∂x₂, …, ∂f/∂xₙ ]
+          {String.raw`\nabla f = \left[\, \frac{\partial f}{\partial x_1},\ \frac{\partial f}{\partial x_2},\ \dots,\ \frac{\partial f}{\partial x_n} \,\right]`}
         </Formula>
         <p>
           The gradient has a beautiful geometric meaning: it points in the direction
@@ -198,7 +198,7 @@ export default function CalculusOptimisationKnowledgePage() {
           you stop moving. As an update rule for the parameters <code>θ</code>:
         </p>
         <Formula label="Theta-new equals theta-old minus eta times the gradient of the loss with respect to theta.">
-          θ ← θ − η · ∇L(θ)
+          {String.raw`\theta \leftarrow \theta - \eta\,\nabla L(\theta)`}
         </Formula>
         <p>
           The loss <code>L</code> is how wrong the model is, <code>∇L</code> is the
@@ -260,7 +260,7 @@ export default function CalculusOptimisationKnowledgePage() {
           rule for differentiating nested functions:
         </p>
         <Formula label="If y is a function of u and u is a function of x, then dy by dx equals dy by du times du by dx.">
-          dy/dx = (dy/du) · (du/dx)
+          {String.raw`\frac{dy}{dx} = \frac{dy}{du}\cdot\frac{du}{dx}`}
         </Formula>
         <p>
           It says the sensitivity of an output to a distant input is the{" "}

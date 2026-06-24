@@ -91,7 +91,7 @@ export default function StatisticsKnowledgePage() {
           square root of the sample size:
         </p>
         <Formula label="The standard error of the mean equals sigma divided by the square root of n.">
-          SE(x̄) = σ / √n
+          {String.raw`\operatorname{SE}(\bar{x}) = \frac{\sigma}{\sqrt{n}}`}
         </Formula>
         <p>
           That <code>√n</code> is one of the most important facts in applied stats:
@@ -157,7 +157,7 @@ export default function StatisticsKnowledgePage() {
           built from the standard error:
         </p>
         <Formula label="A 95 percent confidence interval for the mean equals x-bar plus or minus 1.96 times the standard error.">
-          x̄ ± 1.96 · SE(x̄)   (95% CI)
+          {String.raw`\bar{x} \pm 1.96 \cdot \operatorname{SE}(\bar{x}) \quad (\text{95\% CI})`}
         </Formula>
         <p>
           The <code>1.96</code> comes straight from the normal curve — 95% of a

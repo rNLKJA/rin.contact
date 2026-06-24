@@ -114,7 +114,7 @@ export default function LinearAlgebraKnowledgePage() {
           much they point the same way.
         </p>
         <Formula label="The dot product of a and b equals the sum over i of a-i times b-i, which also equals the norm of a times the norm of b times the cosine of the angle between them.">
-          a · b = Σᵢ aᵢbᵢ = ‖a‖ ‖b‖ cos θ
+          {String.raw`\mathbf{a} \cdot \mathbf{b} = \sum_{i} a_i b_i = \|\mathbf{a}\|\,\|\mathbf{b}\|\cos\theta`}
         </Formula>
         <p>
           From it you get two essentials. The <Term>norm</Term> (length) of a vector
@@ -123,7 +123,7 @@ export default function LinearAlgebraKnowledgePage() {
           <Term>cosine similarity</Term>:
         </p>
         <Formula label="Cosine similarity equals a dot b divided by the norm of a times the norm of b.">
-          cos θ = (a · b) / (‖a‖ ‖b‖)
+          {String.raw`\cos\theta = \frac{\mathbf{a}\cdot\mathbf{b}}{\|\mathbf{a}\|\,\|\mathbf{b}\|}`}
         </Formula>
         <p>
           This is the same cosine similarity that compares word embeddings: meaning
@@ -181,7 +181,7 @@ export default function LinearAlgebraKnowledgePage() {
           you where <em>everything</em> lands:
         </p>
         <Formula label="A matrix with columns 2, 0 and 0, 3 sends the vector x, y to the vector 2x, 3y — stretching x by two and y by three.">
-          [ 2 0 ; 0 3 ] · [ x ; y ] = [ 2x ; 3y ]
+          {String.raw`\begin{bmatrix} 2 & 0 \\ 0 & 3 \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 2x \\ 3y \end{bmatrix}`}
         </Formula>
         <p>
           That matrix stretches the x-direction by 2 and the y-direction by 3.
@@ -265,7 +265,7 @@ export default function LinearAlgebraKnowledgePage() {
           <Term>eigenvalue</Term>:
         </p>
         <Formula label="A times v equals lambda times v, where v is an eigenvector and lambda is its eigenvalue.">
-          A v = λ v
+          {String.raw`A\mathbf{v} = \lambda\mathbf{v}`}
         </Formula>
         <p>
           Read it as: applying the transformation <code>A</code> to{" "}
@@ -290,7 +290,7 @@ export default function LinearAlgebraKnowledgePage() {
           or not — can be broken into three simple pieces:
         </p>
         <Formula label="A equals U times Sigma times V transpose.">
-          A = U Σ Vᵀ
+          {String.raw`A = U\,\Sigma\,V^{\top}`}
         </Formula>
         <p>
           Every linear map, however tangled it looks, is really just{" "}

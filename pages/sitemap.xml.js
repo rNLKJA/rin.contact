@@ -62,6 +62,7 @@ const KNOWLEDGE = [
   { path: "/knowledge/statistical-machine-learning", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/linear-statistical-models", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/database-systems", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/bayesian-statistics", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────

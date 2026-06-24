@@ -114,7 +114,7 @@ export default function ProbabilityKnowledgePage() {
           you know B has happened:
         </p>
         <Formula label="The probability of A given B equals the probability of A and B both occurring, divided by the probability of B.">
-          P(A | B) = P(A ∩ B) / P(B)
+          {String.raw`P(A \mid B) = \frac{P(A \cap B)}{P(B)}`}
         </Formula>
         <p>
           You're rescaling the world to the slice where B is true, then asking how
@@ -138,7 +138,7 @@ export default function ProbabilityKnowledgePage() {
           <code>P(hypothesis | evidence)</code>, which is what you actually want:
         </p>
         <Formula label="The probability of H given E equals the probability of E given H, times the probability of H, divided by the probability of E.">
-          P(H | E) = P(E | H) · P(H) / P(E)
+          {String.raw`P(H \mid E) = \frac{P(E \mid H)\,P(H)}{P(E)}`}
         </Formula>
         <p>
           Read it as belief-updating: <code>P(H)</code> is your <Term>prior</Term>{" "}
@@ -279,7 +279,7 @@ export default function ProbabilityKnowledgePage() {
           weighted by its probability:
         </p>
         <Formula label="The expectation of X equals the sum over x of x times the probability that X equals x.">
-          E[X] = Σ x · P(X = x)
+          {String.raw`\mathbb{E}[X] = \sum_{x} x\,P(X = x)`}
         </Formula>
         <p>
           The <Term>variance</Term> measures spread — the average squared distance
@@ -288,7 +288,7 @@ export default function ProbabilityKnowledgePage() {
           you usually quote:
         </p>
         <Formula label="The variance of X equals the expectation of the squared difference between X and its mean mu.">
-          Var(X) = E[(X − μ)²]
+          {String.raw`\operatorname{Var}(X) = \mathbb{E}\!\left[(X - \mu)^2\right]`}
         </Formula>
         <p>
           Mean tells you where the distribution sits; variance tells you how much you

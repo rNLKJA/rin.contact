@@ -7,6 +7,7 @@ import { I18nProvider } from "@/contexts/I18nContext";
 import { bitcount, dmSans, playfair } from "@/lib/fonts";
 
 import "../public/styles/globals.css";
+import "katex/dist/katex.min.css";
 
 const Analytics = dynamic(() => import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })), { ssr: false });
 

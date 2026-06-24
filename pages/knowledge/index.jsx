@@ -23,8 +23,8 @@ const TIERS = [
   { key: "advanced", topics: [
     { href: "/knowledge/natural-language-processing", status: "live" },
     { href: "/knowledge/statistical-machine-learning", status: "live" },
+    { href: "/knowledge/bayesian-statistics", status: "live" },
     { status: "soon" },
-    { status: "planned" },
     { status: "planned" },
   ]},
   { key: "taught", topics: [

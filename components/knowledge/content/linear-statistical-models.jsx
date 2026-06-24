@@ -74,7 +74,7 @@ function EnBody() {
           random error. In matrix form — stacking all observations — it's compact:
         </p>
         <Formula label="y equals X beta plus epsilon.">
-          y = Xβ + ε
+          {String.raw`\mathbf{y} = X\boldsymbol{\beta} + \boldsymbol{\varepsilon}`}
         </Formula>
         <p>
           Here <code>y</code> is the vector of outcomes, <code>X</code> is the{" "}
@@ -97,7 +97,7 @@ function EnBody() {
           maths clean; setting the derivative to zero gives a closed-form answer:
         </p>
         <Formula label="Beta-hat equals the inverse of X-transpose-X, times X-transpose y.">
-          β̂ = (XᵀX)⁻¹ Xᵀy
+          {String.raw`\hat{\boldsymbol{\beta}} = (X^{\top}X)^{-1} X^{\top}\mathbf{y}`}
         </Formula>
         <p>
           This is one of the few models in all of statistics with an exact,
@@ -211,7 +211,7 @@ function EnBody() {
           <code>y</code> the model explains:
         </p>
         <Formula label="R-squared equals one minus the sum of squared residuals divided by the total sum of squares.">
-          R² = 1 − (SS_residual / SS_total)
+          {String.raw`R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}}`}
         </Formula>
         <p>
           R² of 0 means the model does no better than predicting the mean; 1 means a
@@ -341,7 +341,7 @@ function ZhBody() {
           ——它非常紧凑：
         </p>
         <Formula label="y 等于 X 乘 β 加 ε。">
-          y = Xβ + ε
+          {String.raw`\mathbf{y} = X\boldsymbol{\beta} + \boldsymbol{\varepsilon}`}
         </Formula>
         <p>
           这里 <code>y</code> 是结果向量，<code>X</code> 是<Term>设计矩阵</Term>
@@ -360,7 +360,7 @@ function ZhBody() {
           便得到一个闭式解：
         </p>
         <Formula label="β-hat 等于 X 转置 X 的逆，乘以 X 转置 y。">
-          β̂ = (XᵀX)⁻¹ Xᵀy
+          {String.raw`\hat{\boldsymbol{\beta}} = (X^{\top}X)^{-1} X^{\top}\mathbf{y}`}
         </Formula>
         <p>
           这是整个统计学中少数几个拥有精确、一次到位解的模型之一——无需
@@ -455,7 +455,7 @@ function ZhBody() {
           对于整体拟合优度，<Term>R²</Term> 报告模型所解释的 <code>y</code> 方差占比：
         </p>
         <Formula label="R 平方等于 1 减去残差平方和除以总平方和。">
-          R² = 1 − (SS_residual / SS_total)
+          {String.raw`R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}}`}
         </Formula>
         <p>
           R² 为 0 意味着模型不比直接预测均值更好；为 1 意味着完美拟合。但要小心：每当你添加

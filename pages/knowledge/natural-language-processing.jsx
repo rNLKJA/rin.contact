@@ -216,7 +216,7 @@ export default function NlpKnowledgePage() {
           document distinctive.
         </p>
         <Formula label="TF-IDF of term t in document d equals term frequency of t in d, times the logarithm of the total number of documents N divided by the number of documents containing t.">
-          tf-idf(t, d) = tf(t, d) · log( N / df(t) )
+          {String.raw`\text{tf-idf}(t, d) = \text{tf}(t, d)\cdot\log\!\left(\frac{N}{\text{df}(t)}\right)`}
         </Formula>
         <p>
           Here <code>tf(t, d)</code> is how often term <code>t</code> appears in
@@ -255,7 +255,7 @@ export default function NlpKnowledgePage() {
           result is that meaning becomes arithmetic:
         </p>
         <Formula label="The vector for king minus the vector for man plus the vector for woman is approximately equal to the vector for queen.">
-          vec("king") − vec("man") + vec("woman") ≈ vec("queen")
+          {String.raw`\text{vec}(\text{king}) - \text{vec}(\text{man}) + \text{vec}(\text{woman}) \approx \text{vec}(\text{queen})`}
         </Formula>
         <p>
           The gender relationship is encoded as a consistent direction in the
@@ -328,7 +328,7 @@ export default function NlpKnowledgePage() {
           query matches each key:
         </p>
         <Formula label="Attention of Q, K, V equals softmax of Q times K transpose divided by the square root of d-k, all multiplied by V.">
-          Attention(Q, K, V) = softmax( Q·Kᵀ / √dₖ ) · V
+          {String.raw`\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{Q K^{\top}}{\sqrt{d_k}}\right) V`}
         </Formula>
         <p>
           The <code>Q·Kᵀ</code> term scores every word against every other word;
@@ -406,7 +406,7 @@ export default function NlpKnowledgePage() {
           their harmonic mean, the <Term>F1 score</Term>:
         </p>
         <Formula label="F1 equals two times precision times recall, divided by precision plus recall.">
-          F1 = 2 · (precision · recall) / (precision + recall)
+          {String.raw`F_1 = \frac{2 \cdot \text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}`}
         </Formula>
         <p>
           For <Term>language modelling</Term>, <Term>perplexity</Term> measures how

@@ -65,6 +65,7 @@ const NAV_LINKS = [
   { href: "/career",   key: "nav.career"   },
   { href: "/projects", key: "nav.projects" },
   { href: "/lab",      key: "nav.lab"      },
+  { href: "/knowledge", key: "nav.knowledge" },
   { href: "/blog",     key: "nav.blog"     },
   { href: "/about",    key: "nav.about"    },
   { href: "/resume",   key: "nav.resume"   },
