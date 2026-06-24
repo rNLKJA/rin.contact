@@ -51,7 +51,7 @@ function MermaidRenderer() {
   return null;
 }
 
-export default function BlogPost({ post, nextPost }) {
+export default function BlogPost({ post, relatedPosts = [] }) {
   const { t, locale = "en-AU" } = useI18n();
   const isZh = locale === "zh-Hans";
 
@@ -214,14 +214,19 @@ export default function BlogPost({ post, nextPost }) {
         {/* Share — turn a reader who liked the post into reach for the writing */}
         <ShareButtons url={`https://rin.contact/blog/${post.slug}/`} title={post.title} />
 
-        {/* Read next — keeps the reader in the work instead of dead-ending */}
-        {nextPost && (
+        {/* Read next — topically related posts keep the reader in the work
+            (surfaces the clusters) instead of dead-ending */}
+        {relatedPosts.length > 0 && (
           <div className="mt-14 pt-8 border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
             <p className="flex items-center gap-2.5 text-[10px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
               <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
               {t("blog.readNext")}
             </p>
-            <PostCard {...nextPost} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {relatedPosts.map((p) => (
+                <PostCard key={p.slug} {...p} />
+              ))}
+            </div>
           </div>
         )}
 
@@ -250,9 +255,20 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getPostBySlug(params.slug);
-  // Pick the next post to read — wrap around so the last post still offers one.
   const all = await getAllPosts();
-  const idx = all.findIndex((p) => p.slug === params.slug);
-  const nextPost = all.length > 1 && idx !== -1 ? all[(idx + 1) % all.length] : null;
-  return { props: { post, nextPost } };
+
+  // Surface topically related posts rather than just the chronologically-next
+  // one: score every other post by how many tags it shares with this one, then
+  // break ties by recency. This steers readers along the clusters (e.g. the
+  // statistical-honesty posts, or the Signal pieces). Falls back to the most
+  // recent posts when there is no tag overlap, so there are always suggestions.
+  const tagSet = new Set(post?.tags || []);
+  const relatedPosts = all
+    .filter((p) => p.slug !== params.slug)
+    .map((p) => ({ p, shared: (p.tags || []).filter((tag) => tagSet.has(tag)).length }))
+    .sort((a, b) => b.shared - a.shared || new Date(b.p.date) - new Date(a.p.date))
+    .slice(0, 2)
+    .map((s) => s.p);
+
+  return { props: { post, relatedPosts } };
 }
