@@ -205,7 +205,7 @@ function DomainCard({ domain, index }) {
           <h3 className="text-base font-semibold">{domain.label}</h3>
         </div>
         <span
-          className="text-[#B0B0B0] dark:text-[#7A7A7A] text-sm flex-shrink-0 transition-transform duration-200 group-hover:text-black dark:group-hover:text-white z-10"
+          className="text-[#6E6E6E] dark:text-[#9A9A9A] text-sm flex-shrink-0 transition-transform duration-200 group-hover:text-black dark:group-hover:text-white z-10"
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
           aria-hidden="true"
         >
@@ -374,12 +374,12 @@ export default function SkillsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
           {CERT_GROUPS.map((g) => (
             <div key={g.group} className="border-t border-[#E0E0E0] dark:border-[#3D3D3D] py-5">
-              <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] dark:text-[#7A7A7A] mb-3">{g.group}</p>
+              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-3">{g.group}</p>
               <ul className="space-y-2.5">
                 {g.items.map((c) => (
                   <li key={c.label} className="flex items-start justify-between gap-4 group">
                     <span className="text-sm text-[#1A1A1A] dark:text-white leading-snug">{c.label}</span>
-                    <span className="text-xs text-[#B0B0B0] dark:text-[#7A7A7A] whitespace-nowrap flex-shrink-0 mt-0.5">{c.issuer}</span>
+                    <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] whitespace-nowrap flex-shrink-0 mt-0.5">{c.issuer}</span>
                   </li>
                 ))}
               </ul>

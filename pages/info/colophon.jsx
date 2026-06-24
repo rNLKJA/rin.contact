@@ -58,7 +58,7 @@ export default function ColophonPage() {
 
         {/* Header */}
         <div className="mb-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/colophon</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">/colophon</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
             How this site is made.
           </h1>

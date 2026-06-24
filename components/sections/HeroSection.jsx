@@ -237,7 +237,7 @@ export default function HeroSection() {
           {/* Time-of-day greeting — client-side only, fades in */}
           {greeting && (
             <p
-              className="text-[11px] tracking-widest uppercase text-[#B0B0B0] dark:text-[#7A7A7A] mb-5 font-mono"
+              className="text-[11px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-5 font-mono"
               style={{ animation: "fade-in 0.8s ease-out both" }}
               aria-label={greeting}
             >
@@ -283,12 +283,12 @@ export default function HeroSection() {
             <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]">|</span>
             <a href="https://www.linkedin.com/in/sunchuangyuhuang/" target="_blank" rel="noreferrer"
               aria-label="LinkedIn profile"
-              className="text-[#B0B0B0] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0">
+              className="text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0">
               <LinkedInIcon />
             </a>
             <a href="https://github.com/rNLKJA" target="_blank" rel="noreferrer"
               aria-label="GitHub profile"
-              className="text-[#B0B0B0] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0">
+              className="text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0">
               <GitHubIcon />
             </a>
           </div>
@@ -346,7 +346,7 @@ export default function HeroSection() {
                 <span className="text-sm font-medium tracking-wide uppercase text-black dark:text-white group-hover:text-white transition-colors duration-300">
                   {label}
                 </span>
-                <span className="text-xs text-[#B0B0B0] dark:text-[#7A7A7A] font-light group-hover:text-white/70 transition-colors duration-300">
+                <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] font-light group-hover:text-white/70 transition-colors duration-300">
                   {sub}
                 </span>
               </div>

@@ -94,7 +94,7 @@ export default function RoadmapPage() {
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
 
         <div className="mb-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/info/roadmap</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">/info/roadmap</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
             Where we&apos;ve been. Where we&apos;re going.
           </h1>

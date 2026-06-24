@@ -197,7 +197,7 @@ export default function DatasetCard() {
         </div>
       </div>
 
-      <p className="text-[10px] text-[#B0B0B0] dark:text-[#7A7A7A] mt-2 font-mono leading-relaxed">
+      <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-2 font-mono leading-relaxed">
         For reference only · self-assessed metrics calibrated against role deliverables ·
         generated with the assistance of an AI tool (Claude · Anthropic)
       </p>

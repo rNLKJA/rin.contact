@@ -165,13 +165,13 @@ export default function BlogPost({ post, nextPost }) {
             {formattedDate && (
               <time
                 dateTime={post.date}
-                className="text-[#B0B0B0] dark:text-[#7A7A7A] font-mono"
+                className="text-[#6E6E6E] dark:text-[#9A9A9A] font-mono"
               >
                 {formattedDate}
               </time>
             )}
             {post.readingTime && (
-              <span className="flex items-center gap-3 text-[#B0B0B0] dark:text-[#7A7A7A] font-mono">
+              <span className="flex items-center gap-3 text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
                 <span className="w-1 h-1 rounded-full bg-[#CCCCCC] dark:bg-[#3D3D3D]" aria-hidden="true" />
                 {post.readingTime} {t("blog.minRead")}
               </span>

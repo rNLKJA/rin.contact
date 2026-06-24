@@ -80,7 +80,7 @@ export default function ApiPage() {
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/info/api</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">/info/api</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">API</h1>
           <p className="text-sm text-[#7A7A7A] mb-14">
             Public endpoints for integrations, monitoring, and fun.

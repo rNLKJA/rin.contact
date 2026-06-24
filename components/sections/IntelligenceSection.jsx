@@ -1061,7 +1061,7 @@ export default function IntelligenceSection() {
 
       {/* Disclaimer */}
       <div className="mt-4 border-t border-[#E0E0E0] dark:border-[#3D3D3D] pt-4">
-        <p className="text-[10px] text-[#B0B0B0] dark:text-[#7A7A7A] leading-relaxed max-w-4xl">
+        <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed max-w-4xl">
           <span className="text-[#7A7A7A] dark:text-[#9A9A9A] font-medium">For reference only.</span>{" "}
           Career seniority scores and domain depth values are self-assessed approximations calibrated
           against real role deliverables. Industry benchmarks are derived from publicly available sources:

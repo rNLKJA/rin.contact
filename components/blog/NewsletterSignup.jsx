@@ -66,7 +66,7 @@ export default function NewsletterSignup() {
             disabled={status === "loading"}
             className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-2.5 text-sm
                        bg-white dark:bg-[#1A1A1A] text-black dark:text-white
-                       placeholder:text-[#B0B0B0] dark:placeholder:text-[#9A9A9A]
+                       placeholder:text-[#767676] dark:placeholder:text-[#9A9A9A]
                        focus:outline-none focus:border-black dark:focus:border-white
                        transition-colors duration-200 disabled:opacity-50"
           />

@@ -63,7 +63,7 @@ export default function UsesPage() {
 
         {/* Header */}
         <div className="mb-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#B0B0B0] font-mono mb-4">/info/uses</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">/info/uses</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">What I use.</h1>
           <p className="text-sm text-[#7A7A7A] leading-relaxed">
             Hardware, software, tools, and setups I rely on daily. Inspired by{" "}
