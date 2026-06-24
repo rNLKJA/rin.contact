@@ -1,3 +1,4 @@
+import Link from "next/link";
 import KnowledgeLayout, {
   KSection,
   Callout,
@@ -46,7 +47,7 @@ export default function StatisticsKnowledgePage() {
         precise about how uncertain those conclusions are.
       </p>
       <p>
-        This page builds on <a href="/knowledge/probability">probability</a> — which
+        This page builds on <Link href="/knowledge/probability">probability</Link> — which
         gave us distributions and the Central Limit Theorem — and turns it around.
         Probability asks "given this coin is fair, what will I see?" Statistics asks
         the harder, more useful question: "given what I saw, is this coin fair?"
@@ -294,7 +295,7 @@ export default function StatisticsKnowledgePage() {
         <p>
           The <Term>Bayesian</Term> alternative treats the unknown parameter as
           itself having a probability distribution. You start with a <em>prior</em>,
-          apply <a href="/knowledge/probability">Bayes' rule</a> with the data's
+          apply <Link href="/knowledge/probability">Bayes' rule</Link> with the data's
           likelihood, and get a <em>posterior</em> — a full distribution of belief.
           Its <Term>credible interval</Term> means the intuitive thing people wrongly
           want a confidence interval to mean: "95% probability the parameter is in

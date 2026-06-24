@@ -1,3 +1,4 @@
+import Link from "next/link";
 import KnowledgeLayout, {
   KSection,
   Callout,
@@ -46,7 +47,7 @@ export default function ProbabilityKnowledgePage() {
         am."
       </p>
       <p>
-        If <a href="/knowledge/linear-algebra">linear algebra</a> is the grammar of
+        If <Link href="/knowledge/linear-algebra">linear algebra</Link> is the grammar of
         data's <em>shape</em>, probability is the grammar of its{" "}
         <em>uncertainty</em>. This page builds from the three axioms up to the two
         theorems that make statistics possible — and spends real time on Bayes'

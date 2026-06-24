@@ -1,3 +1,4 @@
+import Link from "next/link";
 import KnowledgeLayout, {
   KSection,
   Callout,
@@ -46,10 +47,10 @@ export default function StatisticalMachineLearningKnowledgePage() {
       </p>
       <p>
         This is the advanced page that pulls the whole foundation together. It runs
-        on <a href="/knowledge/linear-algebra">linear algebra</a> (the data and the
-        models are vectors and matrices), <a href="/knowledge/probability">probability
-        and statistics</a> (every prediction is uncertain, every model is estimated),
-        and <a href="/knowledge/calculus-optimisation">calculus</a> (training is
+        on <Link href="/knowledge/linear-algebra">linear algebra</Link> (the data and the
+        models are vectors and matrices), <Link href="/knowledge/probability">probability
+        and statistics</Link> (every prediction is uncertain, every model is estimated),
+        and <Link href="/knowledge/calculus-optimisation">calculus</Link> (training is
         minimising a loss). Here we assemble them into the thing that learns.
       </p>
 
@@ -94,8 +95,8 @@ export default function StatisticalMachineLearningKnowledgePage() {
           </li>
           <li>
             An <Term>optimiser</Term> — the search for the function in that space with
-            the lowest total loss, usually by <a href="/knowledge/calculus-optimisation">gradient
-            descent</a>.
+            the lowest total loss, usually by <Link href="/knowledge/calculus-optimisation">gradient
+            descent</Link>.
           </li>
         </ul>
         <p>
@@ -269,7 +270,7 @@ export default function StatisticalMachineLearningKnowledgePage() {
           This squeezes a reliable performance estimate out of limited data, and it's
           how you choose hyperparameters without contaminating the final test set —
           which stays in a vault, touched once, at the very end. The discipline here is
-          the same one from the <a href="/knowledge/statistics">statistics page</a>:
+          the same one from the <Link href="/knowledge/statistics">statistics page</Link>:
           never let information leak from test into training.
         </p>
       </KSection>
@@ -320,8 +321,8 @@ export default function StatisticalMachineLearningKnowledgePage() {
       <KSection id="evaluation" eyebrow="08" title="Evaluating honestly">
         <p>
           A single accuracy number lies, especially with imbalanced classes — the
-          lesson from the <a href="/knowledge/statistics">statistics</a> and{" "}
-          <a href="/knowledge/natural-language-processing">NLP</a> pages carries
+          lesson from the <Link href="/knowledge/statistics">statistics</Link> and{" "}
+          <Link href="/knowledge/natural-language-processing">NLP</Link> pages carries
           straight over. Use <Term>precision, recall and F1</Term> for classification;
           inspect the <Term>confusion matrix</Term> to see <em>which</em> errors you
           make; use a <Term>ROC curve / AUC</Term> to judge across thresholds; and for
@@ -347,8 +348,8 @@ export default function StatisticalMachineLearningKnowledgePage() {
             add regularisation.
           </p>
           <p>
-            In the <a href="/knowledge/natural-language-processing">Climate
-            Fact-Checker</a>, that's exactly the call I made: a TF-IDF baseline to earn
+            In the <Link href="/knowledge/natural-language-processing">Climate
+            Fact-Checker</Link>, that's exactly the call I made: a TF-IDF baseline to earn
             the right to the Transformer, then judge both on data they'd never seen. The
             framework is the same whether the model is a logistic regression or a deep
             net.

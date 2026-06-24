@@ -1,3 +1,4 @@
+import Link from "next/link";
 import KnowledgeLayout, {
   KSection,
   Callout,
@@ -47,8 +48,8 @@ export default function CalculusOptimisationKnowledgePage() {
       </p>
       <p>
         This page completes the core maths foundation alongside{" "}
-        <a href="/knowledge/linear-algebra">linear algebra</a> (the shape of data) and{" "}
-        <a href="/knowledge/probability">probability and statistics</a> (its
+        <Link href="/knowledge/linear-algebra">linear algebra</Link> (the shape of data) and{" "}
+        <Link href="/knowledge/probability">probability and statistics</Link> (its
         uncertainty). Calculus is the third leg: the maths of change and of finding
         the best answer.
       </p>
