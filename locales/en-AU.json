@@ -597,6 +597,23 @@
       "Pages organised into fun/, info/, tools/ subfolders"
     ]
   },
+  "infoApi": {
+    "metaTitle": "API — rin.contact",
+    "metaDescription": "Available API endpoints for rin.contact — ping, profile, now, fortune, roast, stack.",
+    "ogSubtitle": "Available API endpoints for rin.contact — ping, profile, now...",
+    "heading": "API",
+    "intro": "Public endpoints for integrations, monitoring, and fun. All responses are JSON unless noted. No authentication required.",
+    "descriptions": [
+      "Heartbeat endpoint. Returns pong and site status. Terminal clients get a richer plain-text response.",
+      "ANSI terminal profile when invoked via curl (middleware rewrite). Career timeline, skill bars, and live status.",
+      "Structured profile JSON — name, location, skills, experience. For integrations and recruiters.",
+      "Current status — what I'm building, learning, reading, and not doing. Inspired by nownownow.com.",
+      "Random wisdom quote — data science, engineering, and life. JSON with text and author.",
+      "Data science roasts — light-hearted feedback on common ML/DS sins. Random each request.",
+      "Site stack info — framework, styling, typography, deployment, and easter egg hints.",
+      "Notifies IndexNow (Bing, Yandex) that the site has updated. For deployment pipelines."
+    ]
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",

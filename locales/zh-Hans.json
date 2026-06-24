@@ -597,6 +597,23 @@
       "将页面整理进 fun/、info/、tools/ 子目录"
     ]
   },
+  "infoApi": {
+    "metaTitle": "API — rin.contact",
+    "metaDescription": "rin.contact 的可用 API 接口 — ping、profile、now、fortune、roast、stack。",
+    "ogSubtitle": "rin.contact 的可用 API 接口 — ping、profile、now……",
+    "heading": "API",
+    "intro": "用于集成、监控和娱乐的公开接口。除非另有说明，所有响应均为 JSON。无需鉴权。",
+    "descriptions": [
+      "心跳接口。返回 pong 和站点状态。终端客户端会得到更丰富的纯文本响应。",
+      "通过 curl 调用时返回 ANSI 终端简介（中间件重写）。职业时间线、技能条与实时状态。",
+      "结构化的个人资料 JSON — 姓名、所在地、技能、经历。供集成与招聘方使用。",
+      "当前状态 — 我在做、在学、在读，以及刻意不做的事。灵感来自 nownownow.com。",
+      "随机箴言 — 数据科学、工程与人生。JSON 含文本与作者。",
+      "数据科学吐槽 — 对常见 ML/DS 陋习的轻松调侃。每次请求随机。",
+      "站点技术栈信息 — 框架、样式、排版、部署，以及彩蛋提示。",
+      "通知 IndexNow（Bing、Yandex）站点已更新。供部署管线使用。"
+    ]
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",
