@@ -156,7 +156,14 @@
     "back": "Back",
     "sectionLabel": "◈ — About",
     "heading": "Skills.",
-    "description": "Seven technical domains. Twenty-three professional credentials. And a set of questions people actually ask, answered honestly."
+    "description": "Seven technical domains. Twenty-three professional credentials. And a set of questions people actually ask, answered honestly.",
+    "intro": {
+      "eyebrow": "Profile",
+      "heading": "A problem-first analyst who works across the edges.",
+      "body1": "I am a data analyst and data scientist based in Adelaide, currently working at ASO7 level with the South Australia Police. Over the past four years my work has moved across climate risk modelling at CSIRO, ministerial dashboards for the South Australian Government, genomics pipelines at WEHI, and a mental health app at the University of Melbourne. Generalist by nature, specialist by discipline.",
+      "body2": "The thread through all of it is the same. I start from the decision that needs making and the smallest amount of data needed to make it well, then reach for the right tool rather than the fashionable one. Problem first, not model first. That habit is what lets the same person be useful in a research lab, a government intelligence team, and an engineering project.",
+      "domainsLabel": "Where I work"
+    }
   },
   "hireMe": {
     "sectionLabel": "◈ — hire rin",

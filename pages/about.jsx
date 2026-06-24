@@ -6,6 +6,8 @@ import PageHero from "@/components/layout/PageHero";
 import { useI18n } from "@/contexts/I18nContext";
 import { CATEGORIES } from "@/components/sections/FAQSection";
 
+import AboutIntro from "@/components/sections/AboutIntro";
+
 const SkillsSection           = dynamic(() => import("@/components/sections/SkillsSection"),           { loading: () => <div className="min-h-[480px]" /> });
 const CertificationsSection  = dynamic(() => import("@/components/sections/CertificationsSection"), { loading: () => <div className="min-h-[320px]" /> });
 const FAQSection              = dynamic(() => import("@/components/sections/FAQSection"),              { loading: () => <div className="min-h-[320px]" /> });
@@ -59,6 +61,7 @@ export default function AboutPage({ faqJsonLd }) {
           description={t("about.description")}
           backLabel={t("about.back")}
         />
+        <AboutIntro />
       </div>
 
       <div className="bg-[#F5F5F5] dark:bg-[#141414] relative overflow-hidden">
@@ -79,7 +82,7 @@ export default function AboutPage({ faqJsonLd }) {
         </div>
       </div>
 
-      <div className="bg-[#F5F5F5] dark:bg-[#141414] relative overflow-hidden">
+      <div className="bg-white dark:bg-[#0A0A0A] relative overflow-hidden">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <TestimonialsSection />
         </div>
