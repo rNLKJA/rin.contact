@@ -662,6 +662,48 @@
     "heading": "谢谢你。",
     "body": "谢谢你的联系。谢谢你的引荐。谢谢你请我喝咖啡的提议。谢谢你抽出时间。我真心感激。"
   },
+  "knowledgeIndex": {
+    "metaTitle": "知识 — rin.contact",
+    "metaDescription": "对 Rin Huang 在墨尔本大学学习并教授的数据科学的详尽讲解 —— 从基础到进阶，写下来是为了保持敏锐，也证明学习是真实的。",
+    "ogSubtitle": "对我学过、并仍在学的内容的详尽讲解",
+    "heading": "我学过的，以及仍在学的。",
+    "intro": "对我在墨尔本大学学习的数据科学 —— 以及我教过的主题 —— 的详尽、第一性原理式讲解。从零写下每一篇，是我保持基本功扎实的方式。先打基础，再进阶；一次构建一个主题。",
+    "liveCounter": "{total} 个中 {live} 个已上线",
+    "statusLabels": { "live": "已上线", "soon": "下一个", "planned": "计划中" },
+    "tiers": {
+      "foundation": {
+        "label": "基础",
+        "blurb": "数学、统计、数据与系统的基础 —— 理学学士。",
+        "topics": [
+          { "label": "线性代数", "note": "向量、矩阵、特征向量与 SVD" },
+          { "label": "概率论", "note": "随机变量、分布与贝叶斯法则" },
+          { "label": "统计学", "note": "估计、推断与假设检验" },
+          { "label": "微积分与最优化", "note": "梯度、梯度下降与反向传播" },
+          { "label": "线性统计模型", "note": "OLS、推断与诊断" },
+          { "label": "数据库系统", "note": "关系模型、SQL 与索引" },
+          { "label": "人工智能", "note": "搜索、逻辑与规划" }
+        ]
+      },
+      "advanced": {
+        "label": "进阶",
+        "blurb": "建立在基础之上 —— 数据科学硕士。",
+        "topics": [
+          { "label": "自然语言处理", "note": "词元、TF-IDF、嵌入与 Transformer" },
+          { "label": "统计机器学习", "note": "偏差-方差、正则化与泛化" },
+          { "label": "贝叶斯统计", "note": "先验、后验与 MCMC" },
+          { "label": "多元统计", "note": "PCA、因子分析与聚类" },
+          { "label": "集群与云计算", "note": "MPI、Spark 与大规模 HPC" }
+        ]
+      },
+      "taught": {
+        "label": "教学",
+        "blurb": "我教过或指导过的主题 —— 从讲台另一侧写下。",
+        "topics": [
+          { "label": "数据科学辅导主题", "note": "墨尔本大学朋辈辅导，2024" }
+        ]
+      }
+    }
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",
