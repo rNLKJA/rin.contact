@@ -564,6 +564,21 @@
       }
     }
   },
+  "infoManifest": {
+    "metaTitle": "Manifest — rin.contact",
+    "metaDescription": "What I believe about data, work, and building things.",
+    "ogSubtitle": "What I believe about data, work, and building things.",
+    "heading": "Manifest",
+    "intro": "What I believe about data, work, and building things.",
+    "principles": [
+      "Every decision is intentional. If it doesn't earn its place, it doesn't ship.",
+      "Empty space is part of the design. Density ≠ quality.",
+      "Mobile-first, always. 375px is the source of truth.",
+      "No gradients, no drop-shadows. Flat monochrome.",
+      "Accessibility is not optional. AA contrast, focus rings, descriptive alt text.",
+      "Ship it, then improve it. Version numbers and counting."
+    ]
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",
