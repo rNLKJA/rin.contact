@@ -1,3 +1,4 @@
+import Link from "next/link";
 import KnowledgeLayout, {
   KSection,
   Callout,
@@ -41,7 +42,7 @@ export default function LinearAlgebraKnowledgePage() {
         Almost everything in data science is, underneath, linear algebra. A
         dataset is a matrix. A row is a vector. Training a linear model solves a
         system of equations. The word embeddings from the{" "}
-        <a href="/knowledge/natural-language-processing">NLP page</a> are vectors
+        <Link href="/knowledge/natural-language-processing">NLP page</Link> are vectors
         whose <em>angles</em> encode meaning. PCA, recommendation engines, the
         attention mechanism in a Transformer — all of it is built from a small set
         of operations on vectors and matrices.
@@ -361,8 +362,8 @@ export default function LinearAlgebraKnowledgePage() {
             matrix. When I fit a <strong>linear or logistic regression</strong>, the
             solver is solving <code>Ax = b</code> in disguise, and{" "}
             <strong>collinear features</strong> failing to converge is a
-            rank-deficiency problem. When the <a href="/knowledge/natural-language-processing">Climate
-            Fact-Checker</a> ranked evidence by <strong>cosine similarity</strong>,
+            rank-deficiency problem. When the <Link href="/knowledge/natural-language-processing">Climate
+            Fact-Checker</Link> ranked evidence by <strong>cosine similarity</strong>,
             that's the dot-product geometry from section 03.
           </p>
           <p>
