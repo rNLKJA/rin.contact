@@ -16,8 +16,8 @@ const TIERS = [
     { href: "/knowledge/probability", status: "live" },
     { href: "/knowledge/statistics", status: "live" },
     { href: "/knowledge/calculus-optimisation", status: "live" },
+    { href: "/knowledge/linear-statistical-models", status: "live" },
     { status: "soon" },
-    { status: "planned" },
     { status: "planned" },
   ]},
   { key: "advanced", topics: [
