@@ -7,6 +7,7 @@ import { useI18n } from "@/contexts/I18nContext";
 import { CATEGORIES } from "@/components/sections/FAQSection";
 
 import AboutIntro from "@/components/sections/AboutIntro";
+import ReadingProgress from "@/components/blog/ReadingProgress";
 
 const SkillsSection           = dynamic(() => import("@/components/sections/SkillsSection"),           { loading: () => <div className="min-h-[480px]" /> });
 const CertificationsSection  = dynamic(() => import("@/components/sections/CertificationsSection"), { loading: () => <div className="min-h-[320px]" /> });
@@ -37,6 +38,7 @@ export default function AboutPage({ faqJsonLd }) {
 
   return (
     <>
+      <ReadingProgress />
       {faqJsonLd && (
         <Head>
           <script

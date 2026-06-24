@@ -1,6 +1,7 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import PageHero from "@/components/layout/PageHero";
+import ReadingProgress from "@/components/blog/ReadingProgress";
 import { useI18n } from "@/contexts/I18nContext";
 
 const TimelineSection   = dynamic(() => import("@/components/sections/TimelineSection"),   { loading: () => <div className="min-h-[480px]" /> });
@@ -10,6 +11,7 @@ export default function CareerPage() {
   const { t } = useI18n();
   return (
     <>
+      <ReadingProgress />
       <Head>
         <title>Career — Rin Huang · rin.contact</title>
         <meta name="description" content="Rin Huang's full career timeline — ASO7 at SAPOL, research at WEHI & CSIRO, co-founder of Mapiva. Interactive career metro map across Government, Research, and Engineering." />
