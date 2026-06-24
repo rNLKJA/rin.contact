@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { KSection, Callout, Formula, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
 
 /**
@@ -47,9 +48,9 @@ function EnBody() {
         Regression is the most-used tool in applied data work — not because it's the
         most powerful, but because it's interpretable, fast, well-understood, and a
         genuinely strong baseline. And it's the perfect meeting point of the
-        foundation: the <a href="/knowledge/linear-algebra">linear algebra</a> of
-        projection, the <a href="/knowledge/probability">probability</a> of the error
-        term, and the <a href="/knowledge/statistics">statistics</a> of inference.
+        foundation: the <Link href="/knowledge/linear-algebra">linear algebra</Link> of
+        projection, the <Link href="/knowledge/probability">probability</Link> of the error
+        term, and the <Link href="/knowledge/statistics">statistics</Link> of inference.
       </p>
       <p>
         The danger with regression is that it's <em>so</em> easy to run that people
@@ -101,8 +102,8 @@ function EnBody() {
         </Formula>
         <p>
           This is one of the few models in all of statistics with an exact,
-          one-shot solution — no <a href="/knowledge/calculus-optimisation">gradient
-          descent</a> required (though you can use it, and must for huge data). Notice
+          one-shot solution — no <Link href="/knowledge/calculus-optimisation">gradient
+          descent</Link> required (though you can use it, and must for huge data). Notice
           the <code>(XᵀX)⁻¹</code>: if two features are perfectly correlated,{" "}
           <code>XᵀX</code> is not invertible — the same <Term>rank</Term> problem from
           the linear algebra page, surfacing here as multicollinearity.
@@ -117,7 +118,7 @@ function EnBody() {
       <KSection id="geometry" eyebrow="04" title="The geometry of OLS">
         <p>
           The formula hides a beautiful geometric truth that ties straight back to{" "}
-          <a href="/knowledge/linear-algebra">linear algebra</a>. Think of the outcome{" "}
+          <Link href="/knowledge/linear-algebra">linear algebra</Link>. Think of the outcome{" "}
           <code>y</code> as a single point in a high-dimensional space. All the
           outcomes the model <em>can</em> produce — every <code>Xβ</code> — form a flat
           subspace (the <Term>column space</Term> of <code>X</code>). Usually{" "}
@@ -200,7 +201,7 @@ function EnBody() {
       <KSection id="inference" eyebrow="07" title="Inference and fit">
         <p>
           Because the coefficients are estimated from a sample, they're uncertain —
-          and the <a href="/knowledge/statistics">statistics page</a> tools apply
+          and the <Link href="/knowledge/statistics">statistics page</Link> tools apply
           directly. Each <code>β̂ⱼ</code> comes with a <Term>standard error</Term>; a{" "}
           <Term>t-test</Term> asks whether it's distinguishable from zero (its
           p-value), and a <Term>confidence interval</Term> gives its plausible range.
@@ -218,7 +219,7 @@ function EnBody() {
           perfect fit. But beware: R² only ever rises as you add features, even useless
           ones, so for model comparison you use <Term>adjusted R²</Term> (which
           penalises extra terms) — the same overfitting caution from the{" "}
-          <a href="/knowledge/statistical-machine-learning">machine learning page</a>.
+          <Link href="/knowledge/statistical-machine-learning">machine learning page</Link>.
         </p>
       </KSection>
 
@@ -243,7 +244,7 @@ function EnBody() {
           </li>
           <li>
             <Term>Regularised regression</Term> — Ridge and Lasso add the penalty from
-            the <a href="/knowledge/statistical-machine-learning">ML page</a> to tame
+            the <Link href="/knowledge/statistical-machine-learning">ML page</Link> to tame
             variance and handle correlated features.
           </li>
         </ul>
@@ -316,9 +317,9 @@ function ZhBody() {
       <p>
         如果只能保留一个统计模型，那应该是线性模型。回归是应用数据工作中使用最广的工具
         ——不是因为它最强大，而是因为它可解释、快速、被充分理解，而且是一个真正强大的基线。
-        它也是各项基础的完美交汇点：投影的<a href="/knowledge/linear-algebra">线性代数</a>、
-        误差项的<a href="/knowledge/probability">概率论</a>，以及推断的
-        <a href="/knowledge/statistics">统计学</a>。
+        它也是各项基础的完美交汇点：投影的<Link href="/knowledge/linear-algebra">线性代数</Link>、
+        误差项的<Link href="/knowledge/probability">概率论</Link>，以及推断的
+        <Link href="/knowledge/statistics">统计学</Link>。
       </p>
       <p>
         回归的危险在于它<em>太</em>容易上手，以至于人们跳过了对它的理解。本页就是解药：
@@ -364,7 +365,7 @@ function ZhBody() {
         </Formula>
         <p>
           这是整个统计学中少数几个拥有精确、一次到位解的模型之一——无需
-          <a href="/knowledge/calculus-optimisation">梯度下降</a>（虽然你也可以用，
+          <Link href="/knowledge/calculus-optimisation">梯度下降</Link>（虽然你也可以用，
           而且对超大数据必须用）。注意 <code>(XᵀX)⁻¹</code>：如果两个特征完全相关，
           <code>XᵀX</code> 就不可逆——这正是线性代数页中的<Term>秩</Term>问题，
           在这里以多重共线性的形式浮现。
@@ -379,7 +380,7 @@ function ZhBody() {
       <KSection id="geometry" eyebrow="04" title="OLS 的几何">
         <p>
           这个公式藏着一个优美的几何事实，直接呼应
-          <a href="/knowledge/linear-algebra">线性代数</a>。把结果 <code>y</code> 想成
+          <Link href="/knowledge/linear-algebra">线性代数</Link>。把结果 <code>y</code> 想成
           高维空间中的一个点。模型<em>能</em>产生的所有结果——每一个 <code>Xβ</code>
           ——构成一个平坦的子空间（<code>X</code> 的<Term>列空间</Term>）。通常{" "}
           <code>y</code> 并不落在该子空间内；不存在完美拟合。
@@ -446,7 +447,7 @@ function ZhBody() {
       <KSection id="inference" eyebrow="07" title="推断与拟合优度">
         <p>
           由于系数是从样本估计出来的，它们带有不确定性——
-          <a href="/knowledge/statistics">统计学页</a>的工具在此直接适用。每个{" "}
+          <Link href="/knowledge/statistics">统计学页</Link>的工具在此直接适用。每个{" "}
           <code>β̂ⱼ</code> 都附带一个<Term>标准误</Term>；<Term>t 检验</Term>判断它是否能
           与零区分开（即其 p 值），<Term>置信区间</Term>给出它的合理范围。一个看起来很大、
           但标准误也巨大的系数，并不是真正的信号。
@@ -460,7 +461,7 @@ function ZhBody() {
         <p>
           R² 为 0 意味着模型不比直接预测均值更好；为 1 意味着完美拟合。但要小心：每当你添加
           特征——哪怕是无用的——R² 只会上升，所以做模型比较时要用<Term>调整后 R²</Term>
-          （它会惩罚多余的项）——与<a href="/knowledge/statistical-machine-learning">机器学习页</a>
+          （它会惩罚多余的项）——与<Link href="/knowledge/statistical-machine-learning">机器学习页</Link>
           中相同的过拟合警示。
         </p>
       </KSection>
@@ -483,7 +484,7 @@ function ZhBody() {
           </li>
           <li>
             <Term>正则化回归</Term>——岭回归与 Lasso 加入
-            <a href="/knowledge/statistical-machine-learning">机器学习页</a>中的惩罚项，
+            <Link href="/knowledge/statistical-machine-learning">机器学习页</Link>中的惩罚项，
             以抑制方差并处理相关特征。
           </li>
         </ul>
