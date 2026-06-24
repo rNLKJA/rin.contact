@@ -18,14 +18,16 @@ const SnakeGame = dynamic(() => import("@/components/ui/SnakeGame"), {
 });
 
 const SUGGESTION_KEYS = [
-  { href: "/",          key: "nav.home"     },
-  { href: "/career",    key: "nav.career"   },
-  { href: "/projects",  key: "nav.projects" },
-  { href: "/lab",       key: "nav.lab"      },
-  { href: "/blog",      key: "nav.blog"     },
-  { href: "/about",     key: "nav.about"    },
-  { href: "/resume",    key: "nav.resume"   },
-  { href: "/hire-me",   key: "nav.hireMe"   },
+  { href: "/",          key: "nav.home"      },
+  { href: "/career",    key: "nav.career"    },
+  { href: "/projects",  key: "nav.projects"  },
+  { href: "/lab",       key: "nav.lab"       },
+  { href: "/knowledge", key: "nav.knowledge" },
+  { href: "/blog",      key: "nav.blog"      },
+  { href: "/strategic", key: "nav.strategic" },
+  { href: "/about",     key: "nav.about"     },
+  { href: "/resume",    key: "nav.resume"    },
+  { href: "/hire-me",   key: "nav.hireMe"    },
   { href: "/tools/card", key: "nav.businessCard"},
 ];
 
