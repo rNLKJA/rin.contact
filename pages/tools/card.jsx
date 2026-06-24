@@ -10,7 +10,7 @@ FN:Sunchuangyu Huang (Rin)
 NICKNAME:Rin
 TITLE:ASO7 Senior Data Analyst
 ORG:South Australia Police
-EMAIL;TYPE=WORK,INTERNET:info@rin.contact
+EMAIL;TYPE=WORK,INTERNET:huang@rin.contact
 URL:https://rin.contact
 X-SOCIALPROFILE;type=github:https://github.com/rNLKJA
 X-SOCIALPROFILE;type=linkedin:https://www.linkedin.com/in/sunchuangyuhuang
