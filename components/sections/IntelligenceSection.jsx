@@ -462,6 +462,7 @@ function BubblePanel() {
               }}
               onMouseEnter={() => setHovered(b.id)}
               onMouseLeave={() => setHovered(null)}
+              onClick={() => setHovered(hovered === b.id ? null : b.id)}
             >
               <circle
                 cx={toX(b.exp)} cy={toY(b.sen)} r={b.r}
@@ -491,6 +492,7 @@ function BubblePanel() {
                 key={b.id}
                 onMouseEnter={() => setHovered(b.id)}
                 onMouseLeave={() => setHovered(null)}
+                onClick={() => setHovered(isHov ? null : b.id)}
                 style={{ cursor: "pointer" }}
               >
                 <circle
@@ -777,6 +779,7 @@ function GrowthPanel() {
                 }}
                 onMouseEnter={() => setHovered(d.year)}
                 onMouseLeave={() => setHovered(null)}
+                onClick={() => setHovered(isHov ? null : d.year)}
               />
             );
           })}
