@@ -50,8 +50,8 @@ export default function NewsletterSignup() {
       </p>
 
       {status === "success" ? (
-        <div className="flex items-center gap-3 text-sm text-[#22C55E]">
-          <FiCheck size={18} />
+        <div className="flex items-center gap-3 text-sm text-[#22C55E]" role="status" aria-live="polite">
+          <FiCheck size={18} aria-hidden="true" />
           <span>{message || t("newsletter.success")}</span>
         </div>
       ) : (
@@ -64,6 +64,8 @@ export default function NewsletterSignup() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t("newsletter.emailPlaceholder")}
             disabled={status === "loading"}
+            aria-invalid={status === "error"}
+            aria-describedby={status === "error" ? "newsletter-msg" : undefined}
             className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-2.5 text-sm
                        bg-white dark:bg-[#1A1A1A] text-black dark:text-white
                        placeholder:text-[#767676] dark:placeholder:text-[#9A9A9A]
@@ -90,8 +92,8 @@ export default function NewsletterSignup() {
       )}
 
       {status === "error" && (
-        <p className="flex items-center gap-2 text-xs text-[#FF3C3C] mt-3">
-          <FiAlertCircle size={14} />
+        <p id="newsletter-msg" role="alert" className="flex items-center gap-2 text-xs text-[#FF3C3C] mt-3">
+          <FiAlertCircle size={14} aria-hidden="true" />
           {message || t("newsletter.error")}
         </p>
       )}
