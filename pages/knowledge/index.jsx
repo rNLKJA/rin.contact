@@ -17,8 +17,8 @@ const TIERS = [
     topics: [
       { href: "/knowledge/linear-algebra", label: "Linear Algebra", note: "Vectors, matrices, eigenvectors, the SVD", status: "live" },
       { href: "/knowledge/probability", label: "Probability", note: "Random variables, distributions, Bayes' rule", status: "live" },
-      { label: "Statistics", note: "Estimation, inference, hypothesis tests", status: "soon" },
-      { label: "Calculus & Optimisation", note: "Gradients, gradient descent", status: "planned" },
+      { href: "/knowledge/statistics", label: "Statistics", note: "Estimation, inference, hypothesis tests", status: "live" },
+      { label: "Calculus & Optimisation", note: "Gradients, gradient descent", status: "soon" },
       { label: "Linear Statistical Models", note: "OLS, inference, diagnostics", status: "planned" },
       { label: "Database Systems", note: "Relational model, SQL, indexing", status: "planned" },
       { label: "Artificial Intelligence", note: "Search, logic, planning", status: "planned" },
