@@ -655,6 +655,13 @@
     "intro": "愿意为 Rin 美言几句的人。可应要求提供。",
     "body": "前任经理、同事与合作者。我可以帮你牵线 — 只管开口。也可提供领英推荐信。"
   },
+  "infoThankYou": {
+    "metaTitle": "致谢 — rin.contact",
+    "metaDescription": "感谢你的联系。",
+    "ogSubtitle": "感谢你的联系。",
+    "heading": "谢谢你。",
+    "body": "谢谢你的联系。谢谢你的引荐。谢谢你请我喝咖啡的提议。谢谢你抽出时间。我真心感激。"
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",

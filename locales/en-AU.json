@@ -655,6 +655,13 @@
     "intro": "People who might say nice things about Rin. Available on request.",
     "body": "Former managers, colleagues, and collaborators. I can put you in touch — just ask. LinkedIn recommendations are also available."
   },
+  "infoThankYou": {
+    "metaTitle": "Thank You — rin.contact",
+    "metaDescription": "Thanks for reaching out.",
+    "ogSubtitle": "Thanks for reaching out.",
+    "heading": "Thank you.",
+    "body": "For reaching out. For the referral. For the coffee offer. For taking the time. I genuinely appreciate it."
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",
