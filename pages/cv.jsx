@@ -61,7 +61,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
         ogImage={{ title: "Curriculum Vitae", subtitle: "Sunchuangyu (Rin) Huang — Senior Data Analyst", section: "cv" }}
       />
 
-      <div className="bg-white dark:bg-[#0A0A0A] min-h-screen">
+      <div className="bg-white dark:bg-[#0A0A0A] min-h-screen cv-print-root">
         <div className="max-w-[820px] mx-auto px-6 md:px-12 py-14 md:py-20">
 
           {/* Action bar — hidden when printing */}
@@ -83,7 +83,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
 
           {/* Header */}
           <header className="mb-10 pb-8 border-b border-[#E5E5E5] dark:border-[#262626]">
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-3 font-mono">Curriculum Vitae</p>
+            <p className="cv-accent text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-3 font-mono">Curriculum Vitae</p>
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white mb-1">
               Sunchuangyu (Rin) Huang
             </h1>
@@ -134,7 +134,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
                     <ul className="space-y-1">
                       {x.bullets.map((b, j) => (
                         <li key={j} className="flex gap-2 text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
-                          <span className="text-[#FF3C3C] flex-shrink-0 mt-0.5" aria-hidden="true">·</span>
+                          <span className="cv-accent text-[#FF3C3C] flex-shrink-0 mt-0.5" aria-hidden="true">·</span>
                           {b}
                         </li>
                       ))}
@@ -178,7 +178,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
               {certGroups.map((g) => (
                 <div key={g.issuer} className="break-inside-avoid">
                   <p className="text-xs font-semibold text-black dark:text-white">
-                    {g.issuer} <span className="text-[#FF3C3C] font-normal">({g.count})</span>
+                    {g.issuer} <span className="cv-accent text-[#FF3C3C] font-normal">({g.count})</span>
                   </p>
                   <p className="text-[12px] text-[#5C5C5C] dark:text-[#9A9A9A] leading-relaxed">{g.names.join(", ")}</p>
                 </div>
@@ -196,7 +196,30 @@ export default function CvPage({ experience, education, certGroups, certTotal })
 
       <style>{`
         @media print {
+          /* Hide on-screen-only chrome (action bar, footer note). */
           .cv-noprint { display: none !important; }
+
+          /* A recruiter may hit "Save as PDF" while browsing in dark mode. Force a
+             clean black-on-white document regardless of the on-screen theme, so the
+             CV is always readable and ink-efficient. The brand accent is preserved
+             on the elements tagged .cv-accent. */
+          html, body { background: #ffffff !important; }
+          .cv-print-root { background: #ffffff !important; }
+          .cv-print-root *:not(.cv-accent) {
+            color: #1a1a1a !important;
+            background-color: transparent !important;
+            border-color: #d8d8d8 !important;
+          }
+          .cv-print-root .cv-accent { color: #ff3c3c !important; }
+
+          /* Keep the accent and rules in the saved PDF rather than letting the
+             browser strip colours. */
+          .cv-print-root, .cv-print-root * {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
+
+          @page { margin: 14mm; }
         }
       `}</style>
     </>
@@ -206,7 +229,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
 function Section({ title, children }) {
   return (
     <section className="mb-9">
-      <h2 className="text-[11px] tracking-[0.25em] uppercase text-[#FF3C3C] mb-4 pb-2 border-b border-[#F0F0F0] dark:border-[#1E1E1E]">
+      <h2 className="cv-accent text-[11px] tracking-[0.25em] uppercase text-[#FF3C3C] mb-4 pb-2 border-b border-[#F0F0F0] dark:border-[#1E1E1E]">
         {title}
       </h2>
       {children}
