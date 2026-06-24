@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 import { CAREER_RAW, EDUCATION } from "@/components/sections/TimelineSection";
 import { CERTS } from "@/components/sections/CertificationsSection";
 
@@ -33,21 +34,21 @@ export function getStaticProps() {
   return { props: { experience, education, certGroups, certTotal: CERTS.length } };
 }
 
-const SKILLS = [
-  { group: "Data & analytics", items: "Python, R, SQL, statistical modelling, machine learning, time series, GIS" },
-  { group: "Intelligence & reporting", items: "Strategic intelligence, risk-based frameworks, Power BI, Tableau, parliamentary and executive reporting" },
-  { group: "Engineering", items: "Next.js, React, React Native, Node.js, AWS, CI/CD, data pipelines" },
-];
+// Skill groups — labels and item lists localised via cvPage.skills.<key>.
+const SKILL_KEYS = ["dataAnalytics", "intelligence", "engineering"];
 
+// Contact rows — labels localised via cvPage.contact.<key>; values are stable
+// identifiers that read the same in every language.
 const CONTACT = [
-  { label: "Email", value: "huang@rin.contact", href: "mailto:huang@rin.contact" },
-  { label: "Site", value: "rin.contact", href: "https://rin.contact" },
-  { label: "LinkedIn", value: "in/sunchuangyuhuang", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },
-  { label: "GitHub", value: "rNLKJA", href: "https://github.com/rNLKJA" },
-  { label: "Location", value: "Adelaide & Melbourne, Australia", href: null },
+  { key: "email", value: "huang@rin.contact", href: "mailto:huang@rin.contact" },
+  { key: "site", value: "rin.contact", href: "https://rin.contact" },
+  { key: "linkedin", value: "in/sunchuangyuhuang", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },
+  { key: "github", value: "rNLKJA", href: "https://github.com/rNLKJA" },
+  { key: "location", value: null, href: null },
 ];
 
 export default function CvPage({ experience, education, certGroups, certTotal }) {
+  const { t, locale = "en-AU" } = useI18n();
   const print = useCallback(() => {
     if (typeof window !== "undefined") window.print();
   }, []);
@@ -55,10 +56,11 @@ export default function CvPage({ experience, education, certGroups, certTotal })
   return (
     <>
       <SeoHead
-        title="Curriculum Vitae — Rin Huang · rin.contact"
-        description="The full curriculum vitae of Sunchuangyu (Rin) Huang — Senior Data Analyst at South Australia Police. Experience, education, certifications and skills, ready to read or save as PDF."
+        title={t("cvPage.metaTitle")}
+        description={t("cvPage.metaDescription")}
         path="/cv"
-        ogImage={{ title: "Curriculum Vitae", subtitle: "Sunchuangyu (Rin) Huang — Senior Data Analyst", section: "cv" }}
+        ogImage={{ title: t("cvPage.ogTitle"), subtitle: t("cvPage.ogSubtitle"), section: "cv" }}
+        locale={locale}
       />
 
       <div className="bg-white dark:bg-[#0A0A0A] min-h-screen cv-print-root">
@@ -70,53 +72,52 @@ export default function CvPage({ experience, education, certGroups, certTotal })
               href="/resume"
               className="text-[10px] tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white transition-colors"
             >
-              ← Interactive resume
+              ← {t("cvPage.backToResume")}
             </Link>
             <button
               onClick={print}
               className="inline-flex items-center gap-2 border border-[#FF3C3C] px-5 py-2 text-[11px] tracking-widest uppercase
                          text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white transition-colors duration-200"
             >
-              Save as PDF
+              {t("cvPage.savePdf")}
             </button>
           </div>
 
           {/* Header */}
           <header className="mb-10 pb-8 border-b border-[#E5E5E5] dark:border-[#262626]">
-            <p className="cv-accent text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-3 font-mono">Curriculum Vitae</p>
+            <p className="cv-accent text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-3 font-mono">{t("cvPage.eyebrow")}</p>
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white mb-1">
               Sunchuangyu (Rin) Huang
             </h1>
             <p className="text-base text-[#3D3D3D] dark:text-[#AAAAAA] mb-5">
-              Senior Data Analyst <span className="text-[#BBBBBB] dark:text-[#555]">·</span> Strategic Intelligence <span className="text-[#BBBBBB] dark:text-[#555]">·</span> Research Software Engineer
+              {t("cvPage.tagline")}
             </p>
             <ul className="flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-[#5C5C5C] dark:text-[#9A9A9A]">
-              {CONTACT.map((c) => (
-                <li key={c.label}>
-                  <span className="text-[#6E6E6E] dark:text-[#9A9A9A] mr-1.5">{c.label}</span>
-                  {c.href ? (
-                    <a href={c.href} className="hover:text-[#FF3C3C] transition-colors">{c.value}</a>
-                  ) : (
-                    <span>{c.value}</span>
-                  )}
-                </li>
-              ))}
+              {CONTACT.map((c) => {
+                const value = c.value ?? t("cvPage.locationValue");
+                return (
+                  <li key={c.key}>
+                    <span className="text-[#6E6E6E] dark:text-[#9A9A9A] mr-1.5">{t(`cvPage.contact.${c.key}`)}</span>
+                    {c.href ? (
+                      <a href={c.href} className="hover:text-[#FF3C3C] transition-colors">{value}</a>
+                    ) : (
+                      <span>{value}</span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </header>
 
           {/* Summary */}
-          <Section title="Profile">
+          <Section title={t("cvPage.sections.profile")}>
             <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
-              Senior Data Analyst working where data, strategy, and engineering meet. I translate complex data into
-              decision-ready intelligence across government, research, and engineering, from climate-risk modelling at
-              CSIRO and genomics pipelines at WEHI to ministerial reporting in the South Australian government.
-              Problem-first, not model-first: I start from the decision that needs making and the minimum data to make
-              it well. Generalist by nature, specialist by discipline.
+              {t("cvPage.profileBody")}
             </p>
           </Section>
 
           {/* Experience */}
-          <Section title="Experience">
+          <Section title={t("cvPage.sections.experience")}>
             <div className="space-y-7">
               {experience.map((x, i) => (
                 <article key={i} className="break-inside-avoid">
@@ -146,7 +147,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
           </Section>
 
           {/* Education */}
-          <Section title="Education">
+          <Section title={t("cvPage.sections.education")}>
             <div className="space-y-3">
               {education.map((e, i) => (
                 <div key={i} className="flex flex-wrap items-baseline justify-between gap-x-4 break-inside-avoid">
@@ -161,19 +162,19 @@ export default function CvPage({ experience, education, certGroups, certTotal })
           </Section>
 
           {/* Skills */}
-          <Section title="Skills">
+          <Section title={t("cvPage.sections.skills")}>
             <dl className="space-y-2">
-              {SKILLS.map((s) => (
-                <div key={s.group} className="flex flex-col sm:flex-row sm:gap-4 break-inside-avoid">
-                  <dt className="text-xs font-semibold text-black dark:text-white sm:w-48 flex-shrink-0">{s.group}</dt>
-                  <dd className="text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{s.items}</dd>
+              {SKILL_KEYS.map((key) => (
+                <div key={key} className="flex flex-col sm:flex-row sm:gap-4 break-inside-avoid">
+                  <dt className="text-xs font-semibold text-black dark:text-white sm:w-48 flex-shrink-0">{t(`cvPage.skills.${key}.group`)}</dt>
+                  <dd className="text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{t(`cvPage.skills.${key}.items`)}</dd>
                 </div>
               ))}
             </dl>
           </Section>
 
           {/* Certifications */}
-          <Section title={`Certifications (${certTotal})`}>
+          <Section title={`${t("cvPage.sections.certifications")} (${certTotal})`}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
               {certGroups.map((g) => (
                 <div key={g.issuer} className="break-inside-avoid">
@@ -188,7 +189,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
 
           {/* Foot */}
           <p className="cv-noprint mt-12 pt-6 border-t border-[#E5E5E5] dark:border-[#262626] text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]">
-            Generated from rin.contact. For the interactive version, references, and project case studies, visit{" "}
+            {t("cvPage.footPrefix")}{" "}
             <Link href="/" className="text-[#FF3C3C] hover:underline">rin.contact</Link>.
           </p>
         </div>

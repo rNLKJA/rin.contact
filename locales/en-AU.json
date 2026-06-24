@@ -225,6 +225,86 @@
     "contextHeader": "Interactive CLI Resume — Type 'help' to see available commands",
     "hintBar": "↑↓ history  ·  Enter run  ·  help  ·  clear  ·  exit"
   },
+  "cvPage": {
+    "metaTitle": "Curriculum Vitae — Rin Huang · rin.contact",
+    "metaDescription": "The full curriculum vitae of Sunchuangyu (Rin) Huang — Senior Data Analyst at South Australia Police. Experience, education, certifications and skills, ready to read or save as PDF.",
+    "ogTitle": "Curriculum Vitae",
+    "ogSubtitle": "Sunchuangyu (Rin) Huang — Senior Data Analyst",
+    "backToResume": "Interactive resume",
+    "savePdf": "Save as PDF",
+    "eyebrow": "Curriculum Vitae",
+    "tagline": "Senior Data Analyst · Strategic Intelligence · Research Software Engineer",
+    "contact": {
+      "email": "Email",
+      "site": "Site",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "location": "Location"
+    },
+    "locationValue": "Adelaide & Melbourne, Australia",
+    "sections": {
+      "profile": "Profile",
+      "experience": "Experience",
+      "education": "Education",
+      "skills": "Skills",
+      "certifications": "Certifications"
+    },
+    "profileBody": "Senior Data Analyst working where data, strategy, and engineering meet. I translate complex data into decision-ready intelligence across government, research, and engineering, from climate-risk modelling at CSIRO and genomics pipelines at WEHI to ministerial reporting in the South Australian government. Problem-first, not model-first: I start from the decision that needs making and the minimum data to make it well. Generalist by nature, specialist by discipline.",
+    "skills": {
+      "dataAnalytics": {
+        "group": "Data & analytics",
+        "items": "Python, R, SQL, statistical modelling, machine learning, time series, GIS"
+      },
+      "intelligence": {
+        "group": "Intelligence & reporting",
+        "items": "Strategic intelligence, risk-based frameworks, Power BI, Tableau, parliamentary and executive reporting"
+      },
+      "engineering": {
+        "group": "Engineering",
+        "items": "Next.js, React, React Native, Node.js, AWS, CI/CD, data pipelines"
+      }
+    },
+    "footPrefix": "Generated from rin.contact. For the interactive version, references, and project case studies, visit"
+  },
+  "infoNow": {
+    "metaTitle": "Now — Rin Huang · rin.contact",
+    "metaDescription": "What Rin Huang is working on, reading, and thinking about right now.",
+    "ogSubtitle": "What Rin Huang is working on, reading, and thinking about...",
+    "updated": "updated",
+    "updatedDate": "23 June 2026",
+    "heading": "What I'm doing now.",
+    "introPrefix": "A snapshot. Last updated from Adelaide, SA — ACST (UTC+9:30). Inspired by ",
+    "introSuffix": ".",
+    "sections": {
+      "building": "Building",
+      "learning": "Learning",
+      "reading": "Reading",
+      "listening": "Listening",
+      "notDoing": "Actively not doing"
+    },
+    "readingBadge": "reading",
+    "footerNote": "This page updates manually — no bots, no automation.",
+    "building": [
+      { "text": "Mapiva — a mobile social discovery app that helps people discover and connect", "sub": "Co-founder & Dev Lead · iOS + Android · targeting v1 Jan 2027" },
+      { "text": "Internal analytics dashboards for SAPOL Professional & Ethical Standards Branch", "sub": "ASO7 Senior Data Analyst · government-grade, high-stakes" },
+      { "text": "This website, apparently. New hidden routes every sprint.", "sub": "rin.contact · Next.js · because a static CV felt boring" }
+    ],
+    "learning": [
+      { "text": "Causal inference methods for observational data", "sub": "DoWhy, double-ML, instrumental variables — the fun stuff" },
+      { "text": "Rust — slowly, patiently, with great humility", "sub": "The borrow checker and I are in a relationship. It's complicated." },
+      { "text": "How to explain model uncertainty to non-technical stakeholders", "sub": "Turns out 'confidence interval' needs a better PR team" }
+    ],
+    "listening": [
+      { "text": "Lo-fi hip hop while writing SQL", "sub": "" },
+      { "text": "Lex Fridman Podcast", "sub": "long-form tech, philosophy, AI" },
+      { "text": "Practical AI", "sub": "applied ML without the hype" }
+    ],
+    "notDoing": [
+      { "text": "Accepting meetings that could have been an email", "sub": "" },
+      { "text": "Writing models without first understanding the business problem", "sub": "" },
+      { "text": "Adding more dependencies when vanilla JS will do", "sub": "" }
+    ]
+  },
   "statusBadge": {
     "label": "Current status",
     "sapol": "SAPOL ASO7",

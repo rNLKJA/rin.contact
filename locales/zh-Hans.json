@@ -225,6 +225,47 @@
     "contextHeader": "交互式命令行简历 — 输入 help 查看命令列表",
     "hintBar": "浏览历史  ·  Enter 执行  ·  help 帮助  ·  clear 清屏  ·  exit 返回"
   },
+  "cvPage": {
+    "metaTitle": "简历 — Rin Huang · rin.contact",
+    "metaDescription": "Sunchuangyu（Rin）Huang 的完整简历 — 南澳大利亚警察局高级数据分析师。工作经历、教育背景、专业认证与技能，可在线阅读或保存为 PDF。",
+    "ogTitle": "简历",
+    "ogSubtitle": "Sunchuangyu (Rin) Huang — 高级数据分析师",
+    "backToResume": "交互式简历",
+    "savePdf": "保存为 PDF",
+    "eyebrow": "简历",
+    "tagline": "高级数据分析师 · 战略情报 · 研究软件工程师",
+    "contact": {
+      "email": "邮箱",
+      "site": "网站",
+      "linkedin": "领英",
+      "github": "GitHub",
+      "location": "所在地"
+    },
+    "locationValue": "澳大利亚 阿德莱德与墨尔本",
+    "sections": {
+      "profile": "简介",
+      "experience": "工作经历",
+      "education": "教育背景",
+      "skills": "技能",
+      "certifications": "专业认证"
+    },
+    "profileBody": "高级数据分析师，工作于数据、战略与工程的交汇处。我将复杂数据转化为可用于决策的情报，涵盖政府、研究与工程领域——从 CSIRO 的气候风险建模、WEHI 的基因组学管道，到南澳州政府的部长级报告。问题优先，而非模型优先：我从需要做出的决策出发，用最少的数据把它做好。天性是通才，训练成专才。",
+    "skills": {
+      "dataAnalytics": {
+        "group": "数据与分析",
+        "items": "Python、R、SQL、统计建模、机器学习、时间序列、GIS"
+      },
+      "intelligence": {
+        "group": "情报与报告",
+        "items": "战略情报、基于风险的框架、Power BI、Tableau、议会与高管报告"
+      },
+      "engineering": {
+        "group": "工程",
+        "items": "Next.js、React、React Native、Node.js、AWS、CI/CD、数据管道"
+      }
+    },
+    "footPrefix": "由 rin.contact 生成。如需交互版本、推荐人与项目案例，请访问"
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",
