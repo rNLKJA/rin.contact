@@ -45,10 +45,16 @@ const ZH_PAGES = [
 
 // ── Section index pages ───────────────────────────────────────────────────────
 const INDEXES = [
+  { path: "/knowledge",      priority: 0.7, freq: "weekly" },
   { path: "/ds",             priority: 0.6, freq: "monthly" },
   { path: "/info",           priority: 0.5, freq: "monthly" },
   { path: "/tools",          priority: 0.5, freq: "monthly" },
   { path: "/fun",            priority: 0.4, freq: "monthly" },
+];
+
+// ── Knowledge topic pages (thorough, indexable explainers) ────────────────────
+const KNOWLEDGE = [
+  { path: "/knowledge/natural-language-processing", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
@@ -119,6 +125,8 @@ async function generateSitemap() {
     ...INDEXES.map(p => urlXml(p, today)),
     // Info sub-pages
     ...INFO.map(p => urlXml(p, today)),
+    // Knowledge topic pages
+    ...KNOWLEDGE.map(p => urlXml(p, today)),
     // Blog posts
     ...blogPostUrls,
     // zh-Hans pages
