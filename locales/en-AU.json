@@ -446,7 +446,10 @@
     "readNext": "Read next",
     "postNotFound": "Post not found.",
     "allTopics": "All",
-    "filterLabel": "Filter by topic"
+    "filterLabel": "Filter by topic",
+    "shareLabel": "Share this",
+    "copyLink": "Copy link",
+    "copied": "Copied"
   },
   "lab": {
     "sectionLabel": "◆ — Lab",

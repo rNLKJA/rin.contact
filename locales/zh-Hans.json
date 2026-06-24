@@ -446,7 +446,10 @@
     "readNext": "下一篇",
     "postNotFound": "文章未找到。",
     "allTopics": "全部",
-    "filterLabel": "按主题筛选"
+    "filterLabel": "按主题筛选",
+    "shareLabel": "分享",
+    "copyLink": "复制链接",
+    "copied": "已复制"
   },
   "lab": {
     "sectionLabel": "◆ — 实验室",

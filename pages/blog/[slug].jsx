@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 import PostCard from "@/components/blog/PostCard";
+import ShareButtons from "@/components/blog/ShareButtons";
 import { useI18n } from "@/contexts/I18nContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
@@ -207,6 +208,9 @@ export default function BlogPost({ post, nextPost }) {
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
+
+        {/* Share — turn a reader who liked the post into reach for the writing */}
+        <ShareButtons url={`https://rin.contact/blog/${post.slug}`} title={post.title} />
 
         {/* Read next — keeps the reader in the work instead of dead-ending */}
         {nextPost && (
