@@ -24,7 +24,7 @@ const Row = ({ name, value, href, note }) => (
       ) : (
         <span className="text-xs text-[#1A1A1A] dark:text-white">{value}</span>
       )}
-      {note && <p className="text-[11px] text-[#AAAAAA] mt-0.5">{note}</p>}
+      {note && <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">{note}</p>}
     </div>
   </div>
 );
@@ -154,7 +154,7 @@ export default function ColophonPage() {
 
         {/* Footer */}
         <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-          <p className="text-[11px] text-[#AAAAAA] font-mono">
+          <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
             Designed & built by Rin Huang · v{pkg.version}
           </p>
           <div className="flex gap-4">

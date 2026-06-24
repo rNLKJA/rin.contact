@@ -103,7 +103,7 @@ export default function SiteMapPage() {
                       <Link href={href} className="text-sm text-[#1A1A1A] dark:text-white hover:text-[#FF3C3C] border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] transition-colors">
                         {href}
                       </Link>
-                      <span className="text-[#AAAAAA] text-xs ml-2">— {label}</span>
+                      <span className="text-[#6E6E6E] dark:text-[#9A9A9A] text-xs ml-2">— {label}</span>
                     </li>
                   ))}
                 </ul>

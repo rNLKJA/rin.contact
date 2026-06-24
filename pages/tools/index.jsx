@@ -59,7 +59,7 @@ export default function ToolsIndexPage() {
                 <span className="font-mono text-sm text-[#1A1A1A] group-hover:text-black transition-colors">
                   /tools/{label}
                 </span>
-                <span className="text-[11px] text-[#AAAAAA] flex-shrink-0">{note}</span>
+                <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">{note}</span>
               </Link>
             ))}
           </div>

@@ -13,7 +13,7 @@ ORG:South Australia Police
 EMAIL;TYPE=WORK,INTERNET:info@rin.contact
 URL:https://rin.contact
 X-SOCIALPROFILE;type=github:https://github.com/rNLKJA
-X-SOCIALPROFILE;type=linkedin:https://www.linkedin.com/in/huangsunchuangyu
+X-SOCIALPROFILE;type=linkedin:https://www.linkedin.com/in/sunchuangyuhuang
 NOTE:Data Scientist · Government Intelligence Analyst · Co-founder of Mapiva. Bilingual: English / Mandarin. Adelaide\\, SA\\, Australia.
 END:VCARD`;
 
@@ -182,7 +182,7 @@ function TiltFlipCard() {
         </div>
       </div>
 
-      <p className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-mono text-[#AAAAAA] whitespace-nowrap pointer-events-none">
+      <p className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A] whitespace-nowrap pointer-events-none">
         tap to flip · hover to tilt
       </p>
     </div>
@@ -237,7 +237,7 @@ export default function CardPage() {
             <a href="mailto:huang@rin.contact" className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center">
               Email
             </a>
-            <a href="https://www.linkedin.com/in/huangsunchuangyu" target="_blank" rel="noopener noreferrer" className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center">
+            <a href="https://www.linkedin.com/in/sunchuangyuhuang" target="_blank" rel="noopener noreferrer" className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center">
               LinkedIn
             </a>
             <a href="https://github.com/rNLKJA" target="_blank" rel="noopener noreferrer" className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center">
@@ -249,7 +249,7 @@ export default function CardPage() {
           </Link>
         </div>
 
-        <p className="mt-8 text-[10px] text-[#AAAAAA] dark:text-[#7A7A7A] font-mono text-center">
+        <p className="mt-8 text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono text-center">
           rin.contact/tools/card · Adelaide SA · UTC+9:30
         </p>
       </div>

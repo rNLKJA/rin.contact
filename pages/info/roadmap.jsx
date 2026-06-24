@@ -19,7 +19,7 @@ const Section = ({ label, items }) => (
               status === "done"   ? "border border-[#22C55E] text-[#22C55E]" :
               status === "wip"   ? "border border-[#FF3C3C] text-[#FF3C3C]" :
               status === "planned" ? "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A]" :
-              "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#AAAAAA]"
+              "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6E6E6E] dark:text-[#9A9A9A]"
             }`}
           >
             {status}
@@ -110,7 +110,7 @@ export default function RoadmapPage() {
         <Section label="Backlog (questionable)" items={BACKLOG} />
 
         <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex justify-between items-center">
-          <p className="text-[11px] text-[#AAAAAA] font-mono">
+          <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
             Roadmaps are living documents. This one is also a bit silly.
           </p>
           <Link

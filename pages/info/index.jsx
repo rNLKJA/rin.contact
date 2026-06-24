@@ -66,7 +66,7 @@ export default function InfoIndexPage() {
                 <span className="font-mono text-sm text-[#1A1A1A] dark:text-white group-hover:text-black dark:hover:text-white group-hover:border-black dark:hover:border-white transition-colors">
                   /info/{label}
                 </span>
-                <span className="text-[11px] text-[#AAAAAA] flex-shrink-0">{note}</span>
+                <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">{note}</span>
               </Link>
             ))}
           </div>

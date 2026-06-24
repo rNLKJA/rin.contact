@@ -99,7 +99,7 @@ export default function ApiPage() {
                   </code>
                   <code className="text-sm font-mono text-[#1A1A1A] dark:text-white">{path}</code>
                 </div>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] mb-4">{description}</p>
+                <p className="text-sm text-[#3D3D3D] dark:text-[#6E6E6E] dark:text-[#9A9A9A] mb-4">{description}</p>
                 <pre className="text-[11px] font-mono text-[#7A7A7A] bg-[#F5F5F5] dark:bg-[#141414] p-3 overflow-x-auto border border-[#E0E0E0] dark:border-[#3D3D3D]">
                   {example}
                 </pre>

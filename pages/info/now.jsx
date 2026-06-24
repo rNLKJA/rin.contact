@@ -129,7 +129,7 @@ export default function NowPage() {
 
         {/* Footer */}
         <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-          <p className="text-[11px] text-[#AAAAAA] font-mono">
+          <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
             This page updates manually — no bots, no automation.
           </p>
           <div className="flex gap-4">
