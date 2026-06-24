@@ -27,4 +27,4 @@ jobs:
       - name: Notify Vercel
         uses: vercel/repository-dispatch/actions/status@v1
         with:
-          name: Vercel - rin-contact: lint
+          name: "Vercel - rin-contact: lint"
