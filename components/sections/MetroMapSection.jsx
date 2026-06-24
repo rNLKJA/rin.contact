@@ -232,8 +232,12 @@ export default function MetroMapSection() {
               return (
                 <g
                   key={s.id}
+                  role="button"
                   onMouseEnter={() => setHovered(s.id)}
                   onMouseLeave={() => setHovered(null)}
+                  // Tap to reveal the record on touch devices, where hover never
+                  // fires — without this, mobile users cannot read any station.
+                  onClick={() => setHovered(s.id)}
                   style={{ cursor: "pointer" }}
                   tabIndex={0}
                   onFocus={() => setHovered(s.id)}
@@ -298,7 +302,7 @@ export default function MetroMapSection() {
             )}
           </>
         ) : (
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] italic">Hover a station to read its record.</p>
+          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] italic">Tap or hover a station to read its record.</p>
         )}
       </div>
 
