@@ -165,7 +165,9 @@ const Footer = () => {
                 key={key}
                 href={href}
                 target={key !== "nav.email" ? "_blank" : undefined}
-                rel="noreferrer"
+                // rel="me" marks these as Rin's own profiles, reinforcing the Person-schema
+                // sameAs identity signal (helps search consolidate the profiles under rin.contact).
+                rel={key === "nav.email" ? "noreferrer" : "me noreferrer"}
                 aria-label={t(key)}
                 className="inline-flex items-center gap-1.5 border border-[#333333] px-3.5 py-1.5 rounded-full
                            text-[10px] tracking-widest uppercase text-[#AAAAAA]
