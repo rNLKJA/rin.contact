@@ -93,7 +93,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
             <ul className="flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-[#5C5C5C] dark:text-[#9A9A9A]">
               {CONTACT.map((c) => (
                 <li key={c.label}>
-                  <span className="text-[#9A9A9A] dark:text-[#666] mr-1.5">{c.label}</span>
+                  <span className="text-[#6E6E6E] dark:text-[#9A9A9A] mr-1.5">{c.label}</span>
                   {c.href ? (
                     <a href={c.href} className="hover:text-[#FF3C3C] transition-colors">{c.value}</a>
                   ) : (
@@ -187,7 +187,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
           </Section>
 
           {/* Foot */}
-          <p className="cv-noprint mt-12 pt-6 border-t border-[#E5E5E5] dark:border-[#262626] text-[11px] text-[#9A9A9A]">
+          <p className="cv-noprint mt-12 pt-6 border-t border-[#E5E5E5] dark:border-[#262626] text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]">
             Generated from rin.contact. For the interactive version, references, and project case studies, visit{" "}
             <Link href="/" className="text-[#FF3C3C] hover:underline">rin.contact</Link>.
           </p>
