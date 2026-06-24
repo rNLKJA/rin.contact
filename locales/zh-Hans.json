@@ -266,6 +266,45 @@
     },
     "footPrefix": "由 rin.contact 生成。如需交互版本、推荐人与项目案例，请访问"
   },
+  "infoNow": {
+    "metaTitle": "近况 — Rin Huang · rin.contact",
+    "metaDescription": "Rin Huang 当前正在做什么、在读什么、在思考什么。",
+    "ogSubtitle": "Rin Huang 当前在做、在读、在想的事……",
+    "updated": "更新于",
+    "updatedDate": "2026年6月23日",
+    "heading": "我现在在做什么。",
+    "introPrefix": "一份快照。最近更新于南澳阿德莱德 — ACST（UTC+9:30）。灵感来自 ",
+    "introSuffix": "。",
+    "sections": {
+      "building": "在做",
+      "learning": "在学",
+      "reading": "在读",
+      "listening": "在听",
+      "notDoing": "刻意不做"
+    },
+    "readingBadge": "在读",
+    "footerNote": "本页面手动更新 — 没有机器人，没有自动化。",
+    "building": [
+      { "text": "Mapiva — 一款帮助人们发现彼此并建立联系的移动社交发现应用", "sub": "联合创始人兼开发负责人 · iOS + Android · 目标 2027 年 1 月发布 v1" },
+      { "text": "为南澳警察局职业与道德标准处构建内部分析仪表板", "sub": "ASO7 高级数据分析师 · 政府级、高风险" },
+      { "text": "显然还有这个网站。每个冲刺都会上线新的隐藏页面。", "sub": "rin.contact · Next.js · 因为静态简历太无聊了" }
+    ],
+    "learning": [
+      { "text": "观测数据的因果推断方法", "sub": "DoWhy、双重机器学习、工具变量 — 有趣的部分" },
+      { "text": "Rust — 缓慢、耐心、满怀谦卑地学", "sub": "我和借用检查器在谈恋爱。关系很复杂。" },
+      { "text": "如何向非技术干系人解释模型的不确定性", "sub": "看来「置信区间」需要一个更好的公关团队" }
+    ],
+    "listening": [
+      { "text": "写 SQL 时听 Lo-fi 嘻哈", "sub": "" },
+      { "text": "Lex Fridman Podcast", "sub": "长篇的科技、哲学与 AI 对谈" },
+      { "text": "Practical AI", "sub": "不浮夸的应用机器学习" }
+    ],
+    "notDoing": [
+      { "text": "接受那些本可以用邮件解决的会议", "sub": "" },
+      { "text": "在没搞懂业务问题之前就开始建模", "sub": "" },
+      { "text": "在原生 JS 就够用时还添加更多依赖", "sub": "" }
+    ]
+  },
   "statusBadge": {
     "label": "当前状态",
     "sapol": "南澳警察局 ASO7",

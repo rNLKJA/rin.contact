@@ -1,8 +1,14 @@
 import Head from "next/head";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 import Link from "next/link";
 
-const UPDATED = "23 June 2026";
+// Book titles and authors are proper nouns — identical in every language.
+const BOOKS = [
+  { title: "Thinking, Fast and Slow", author: "Daniel Kahneman" },
+  { title: "The Signal and the Noise", author: "Nate Silver" },
+  { title: "Staff Engineer", author: "Will Larson" },
+];
 
 const Section = ({ label, children }) => (
   <div className="mb-10">
@@ -21,39 +27,42 @@ const Item = ({ text, sub }) => (
   </div>
 );
 
-const BookCard = ({ title, author }) => (
+const BookCard = ({ title, author, badge }) => (
   <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-3 mb-2 flex items-center justify-between group hover:border-black dark:hover:border-white transition-colors duration-150">
     <div>
       <p className="text-xs font-medium text-[#1A1A1A] dark:text-white">{title}</p>
       <p className="text-[11px] text-[#7A7A7A] mt-0.5">{author}</p>
     </div>
-    <span className="text-[10px] font-mono text-[#CCCCCC] group-hover:text-[#7A7A7A] transition-colors">reading</span>
+    <span className="text-[10px] font-mono text-[#CCCCCC] group-hover:text-[#7A7A7A] transition-colors">{badge}</span>
   </div>
 );
 
 export default function NowPage() {
+  const { t, locale = "en-AU" } = useI18n();
+
   return (
     <>
       <Head>
-        <title>Now — Rin Huang · rin.contact</title>
-        <meta name="description" content="What Rin Huang is working on, reading, and thinking about right now." />
+        <title>{t("infoNow.metaTitle")}</title>
+        <meta name="description" content={t("infoNow.metaDescription")} />
         <link rel="canonical" href="https://rin.contact/info/now" />
-      
+
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://rin.contact/api/og?title=Now&subtitle=What%20Rin%20Huang%20is%20doing%20now&section=info" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Now" />
-        <meta name="twitter:description" content="What Rin Huang is doing now." />
+        <meta name="twitter:description" content={t("infoNow.metaDescription")} />
         <meta name="twitter:image" content="https://rin.contact/api/og?title=Now&subtitle=What%20Rin%20Huang%20is%20doing%20now&section=info" />
       </Head>
 
       <SeoHead
-        title="Now — Rin Huang · rin.contact"
-        description="What Rin Huang is working on, reading, and thinking about right now."
+        title={t("infoNow.metaTitle")}
+        description={t("infoNow.metaDescription")}
         path="/info/now"
-        ogImage={{ title: "Now", subtitle: "What Rin Huang is working on, reading, and thinking about...", section: "info" }}
+        ogImage={{ title: "Now", subtitle: t("infoNow.ogSubtitle"), section: "info" }}
+        locale={locale}
       />
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
@@ -61,81 +70,50 @@ export default function NowPage() {
         {/* Header */}
         <div className="mb-14">
           <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">
-            /info/now — updated {UPDATED}
+            /info/now — {t("infoNow.updated")} {t("infoNow.updatedDate")}
           </p>
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">What I&apos;m doing now.</h1>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">{t("infoNow.heading")}</h1>
           <p className="text-sm text-[#7A7A7A] leading-relaxed">
-            A snapshot. Last updated from Adelaide, SA — ACST (UTC+9:30).
-            Inspired by{" "}
+            {t("infoNow.introPrefix")}
             <a href="https://nownownow.com" target="_blank" rel="noreferrer"
                className="border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
               nownownow.com
-            </a>.
+            </a>{t("infoNow.introSuffix")}
           </p>
         </div>
 
-        {/* Building */}
-        <Section label="Building">
-          <Item
-            text="Mapiva — a mobile social discovery app that helps people discover and connect"
-            sub="Co-founder & Dev Lead · iOS + Android · targeting v1 Jan 2027"
-          />
-          <Item
-            text="Internal analytics dashboards for SAPOL Professional & Ethical Standards Branch"
-            sub="ASO7 Senior Data Analyst · government-grade, high-stakes"
-          />
-          <Item
-            text="This website, apparently. New hidden routes every sprint."
-            sub="rin.contact · Next.js · because a static CV felt boring"
-          />
-        </Section>
-
-        {/* Learning */}
-        <Section label="Learning">
-          <Item
-            text="Causal inference methods for observational data"
-            sub="DoWhy, double-ML, instrumental variables — the fun stuff"
-          />
-          <Item
-            text="Rust — slowly, patiently, with great humility"
-            sub="The borrow checker and I are in a relationship. It's complicated."
-          />
-          <Item
-            text="How to explain model uncertainty to non-technical stakeholders"
-            sub="Turns out 'confidence interval' needs a better PR team"
-          />
-        </Section>
+        {["building", "learning"].map((key) => (
+          <Section key={key} label={t(`infoNow.sections.${key}`)}>
+            {t(`infoNow.${key}`).map((it, i) => (
+              <Item key={i} text={it.text} sub={it.sub || undefined} />
+            ))}
+          </Section>
+        ))}
 
         {/* Reading */}
-        <Section label="Reading">
-          <BookCard title="Thinking, Fast and Slow"     author="Daniel Kahneman" />
-          <BookCard title="The Signal and the Noise"     author="Nate Silver"     />
-          <BookCard title="Staff Engineer"               author="Will Larson"     />
+        <Section label={t("infoNow.sections.reading")}>
+          {BOOKS.map((b) => (
+            <BookCard key={b.title} title={b.title} author={b.author} badge={t("infoNow.readingBadge")} />
+          ))}
         </Section>
 
-        {/* Listening */}
-        <Section label="Listening">
-          <Item text="Lo-fi hip hop while writing SQL" />
-          <Item text="Lex Fridman Podcast" sub="long-form tech, philosophy, AI" />
-          <Item text="Practical AI" sub="applied ML without the hype" />
-        </Section>
-
-        {/* Not doing */}
-        <Section label="Actively not doing">
-          <Item text="Accepting meetings that could have been an email" />
-          <Item text="Writing models without first understanding the business problem" />
-          <Item text="Adding more dependencies when vanilla JS will do" />
-        </Section>
+        {["listening", "notDoing"].map((key) => (
+          <Section key={key} label={t(`infoNow.sections.${key}`)}>
+            {t(`infoNow.${key}`).map((it, i) => (
+              <Item key={i} text={it.text} sub={it.sub || undefined} />
+            ))}
+          </Section>
+        ))}
 
         {/* Footer */}
         <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
-            This page updates manually — no bots, no automation.
+            {t("infoNow.footerNote")}
           </p>
           <div className="flex gap-4">
             <Link href="/"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
-              ← Home
+              ← {t("nav.home")}
             </Link>
             <a href="https://rin.contact/api/now" target="_blank" rel="noreferrer"
                className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
