@@ -77,6 +77,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/science-communication", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/business-intelligence-dashboards", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/geospatial-analysis", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/data-science-mentoring", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/intelligence-analysis", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/data-governance", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────

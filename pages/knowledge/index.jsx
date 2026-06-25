@@ -39,9 +39,11 @@ const TIERS = [
   { key: "practice", topics: [
     { href: "/knowledge/business-intelligence-dashboards", status: "live" },
     { href: "/knowledge/geospatial-analysis", status: "live" },
+    { href: "/knowledge/intelligence-analysis", status: "live" },
+    { href: "/knowledge/data-governance", status: "live" },
   ]},
   { key: "taught", topics: [
-    { status: "planned" },
+    { href: "/knowledge/data-science-mentoring", status: "live" },
   ]},
 ];
 

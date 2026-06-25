@@ -711,7 +711,9 @@
         "blurb": "What I do now — applied to current government-analyst work.",
         "topics": [
           { "label": "Business Intelligence & Dashboards", "note": "Power BI, star schema, one question per page" },
-          { "label": "Geospatial Analysis & GIS", "note": "Spatial joins, choropleths, rates, the MAUP" }
+          { "label": "Geospatial Analysis & GIS", "note": "Spatial joins, choropleths, rates, the MAUP" },
+          { "label": "Intelligence Analysis & OSINT", "note": "The intelligence cycle, ACH, source grading, bias" },
+          { "label": "Data Governance, Privacy & Ethics", "note": "FAIR, privacy, access, fairness, lineage" }
         ]
       },
       "taught": {
