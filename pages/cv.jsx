@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import BackToTop from "@/components/ui/BackToTop";
 import { useI18n } from "@/contexts/I18nContext";
 import { CAREER_RAW, EDUCATION } from "@/components/sections/TimelineSection";
 import { CERTS } from "@/components/sections/CertificationsSection";
@@ -63,6 +64,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
         locale={locale}
       />
 
+      <BackToTop />
       <div className="bg-white dark:bg-[#0A0A0A] min-h-screen cv-print-root">
         <div className="max-w-[820px] mx-auto px-6 md:px-12 py-14 md:py-20">
 

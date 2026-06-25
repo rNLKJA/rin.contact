@@ -8,6 +8,7 @@ import { CATEGORIES } from "@/components/sections/FAQSection";
 
 import AboutIntro from "@/components/sections/AboutIntro";
 import ReadingProgress from "@/components/blog/ReadingProgress";
+import BackToTop from "@/components/ui/BackToTop";
 
 const SkillsSection           = dynamic(() => import("@/components/sections/SkillsSection"),           { loading: () => <div className="min-h-[480px]" /> });
 const CertificationsSection  = dynamic(() => import("@/components/sections/CertificationsSection"), { loading: () => <div className="min-h-[320px]" /> });
@@ -39,6 +40,7 @@ export default function AboutPage({ faqJsonLd }) {
   return (
     <>
       <ReadingProgress />
+      <BackToTop />
       {faqJsonLd && (
         <Head>
           <script

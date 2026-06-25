@@ -7,6 +7,7 @@ import SeoHead from "@/components/seo/SeoHead";
 import PostCard from "@/components/blog/PostCard";
 import ShareButtons from "@/components/blog/ShareButtons";
 import ReadingProgress from "@/components/blog/ReadingProgress";
+import BackToTop from "@/components/ui/BackToTop";
 import AuthorBio from "@/components/blog/AuthorBio";
 import { useI18n } from "@/contexts/I18nContext";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -146,6 +147,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
 
       <MermaidRenderer />
       <ReadingProgress />
+      <BackToTop />
 
       <article className="max-w-[700px] mx-auto px-6 md:px-12 py-24">
         {/* Back link */}
