@@ -374,6 +374,21 @@ h1 {
   user-select: none;
 }
 
+/* On phones a horizontal linear flow wraps to one step per row, which would
+   leave the "→" connectors pointing sideways between vertically stacked steps.
+   Stack it as a clean column and rotate the arrows to point down, matching the
+   decision/stepper flows. Desktop keeps the intended horizontal chips. */
+@media (max-width: 640px) {
+  .flow--linear .flow-track {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .flow--linear .flow-arrow {
+    transform: rotate(90deg);
+    margin-left: 0.6rem;
+  }
+}
+
 /* ── Stepper layout: vertical rail ──────────────────────────────────────── */
 .flow--stepper .flow-rail {
   display: flex;
