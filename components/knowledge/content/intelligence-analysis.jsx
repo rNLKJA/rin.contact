@@ -28,16 +28,45 @@ function CycleFigure({ caption, ariaLabel, labels }) {
       >
         {CYCLE_POS.map((n, i) => {
           const next = CYCLE_POS[(i + 1) % CYCLE_POS.length];
-          return <line key={"l" + i} x1={n.x} y1={n.y} x2={next.x} y2={next.y} stroke="#FF3C3C" strokeWidth="1" opacity="0.3" />;
+          return (
+            <line
+              key={"l" + i}
+              x1={n.x}
+              y1={n.y}
+              x2={next.x}
+              y2={next.y}
+              stroke="#FF3C3C"
+              strokeWidth="1"
+              opacity="0.3"
+            />
+          );
         })}
         {CYCLE_POS.map((n, i) => {
           const accent = i === 0 || i === 3;
           return (
             <g key={i}>
-              <rect x={n.x - 48} y={n.y - 13} width="96" height="26" rx="13"
-                fill={accent ? "#FF3C3C" : "none"} fillOpacity={accent ? 0.12 : 0}
-                stroke="#FF3C3C" strokeWidth={accent ? 1.4 : 1} opacity={accent ? 1 : 0.65} />
-              <text x={n.x} y={n.y + 4} textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{labels[i]}</text>
+              <rect
+                x={n.x - 48}
+                y={n.y - 13}
+                width="96"
+                height="26"
+                rx="13"
+                fill={accent ? "#FF3C3C" : "none"}
+                fillOpacity={accent ? 0.12 : 0}
+                stroke="#FF3C3C"
+                strokeWidth={accent ? 1.4 : 1}
+                opacity={accent ? 1 : 0.65}
+              />
+              <text
+                x={n.x}
+                y={n.y + 4}
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill="currentColor"
+              >
+                {labels[i]}
+              </text>
             </g>
           );
         })}
@@ -51,32 +80,33 @@ function EnBody() {
   return (
     <>
       <p>
-        <Term>Intelligence analysis</Term> is what data work becomes when a real decision hangs on it
-        and the picture is never complete. It's the discipline of turning fragmentary, sometimes
-        contradictory information into an <em>assessment</em> a decision-maker can act on — and being
-        honest about how confident that assessment deserves to be. The maths and models from the rest
-        of this section are tools it uses; the discipline itself is about judgement under uncertainty.
+        <Term>Intelligence analysis</Term> is what data work becomes when a real decision hangs on
+        it and the picture is never complete. It's the discipline of turning fragmentary, sometimes
+        contradictory information into an <em>assessment</em> a decision-maker can act on — and
+        being honest about how confident that assessment deserves to be. The maths and models from
+        the rest of this section are tools it uses; the discipline itself is about judgement under
+        uncertainty.
       </p>
       <p>
         It's the heart of my current work in government, and it has its own tradecraft — a body of
-        method built precisely because the hardest adversary an analyst faces isn't the subject of the
-        analysis, but the predictable ways their own mind gets things wrong. This page is that
+        method built precisely because the hardest adversary an analyst faces isn't the subject of
+        the analysis, but the predictable ways their own mind gets things wrong. This page is that
         tradecraft, made plain.
       </p>
 
       <KSection id="what" eyebrow="01" title="Data with a decision attached">
         <p>
           The defining feature of intelligence is its purpose: it exists to{" "}
-          <strong>inform a specific decision</strong>, for a specific person, who will act on it. That
-          distinguishes it from analysis done out of curiosity. An intelligence product isn't judged
-          on how clever it is, but on whether it helped someone make a better call with imperfect
-          information — under time pressure, with consequences.
+          <strong>inform a specific decision</strong>, for a specific person, who will act on it.
+          That distinguishes it from analysis done out of curiosity. An intelligence product isn't
+          judged on how clever it is, but on whether it helped someone make a better call with
+          imperfect information — under time pressure, with consequences.
         </p>
         <p>
           So intelligence is fundamentally about <em>assessment under uncertainty</em>. You will
-          almost never have all the facts; the job is to make the best-supported judgement you can from
-          what you have, state how much weight it can bear, and hand it over in time to be useful.
-          Certainty is not on offer; calibrated judgement is.
+          almost never have all the facts; the job is to make the best-supported judgement you can
+          from what you have, state how much weight it can bear, and hand it over in time to be
+          useful. Certainty is not on offer; calibrated judgement is.
         </p>
       </KSection>
 
@@ -90,21 +120,25 @@ function EnBody() {
             <Term>Direction</Term> — what does the decision-maker actually need to know? The
             requirement that drives everything.
           </li>
-          <li><Term>Collection</Term> — gather the relevant information from available sources.</li>
-          <li><Term>Processing</Term> — turn raw material into usable, organised form.</li>
+          <li>
+            <Term>Collection</Term> — gather the relevant information from available sources.
+          </li>
+          <li>
+            <Term>Processing</Term> — turn raw material into usable, organised form.
+          </li>
           <li>
             <Term>Analysis</Term> — the core: assess what it means, weigh the hypotheses, form a
             judgement.
           </li>
           <li>
-            <Term>Dissemination</Term> — deliver the assessment to the decision-maker, clearly and in
-            time.
+            <Term>Dissemination</Term> — deliver the assessment to the decision-maker, clearly and
+            in time.
           </li>
         </ul>
         <p>
-          Like the <Link href="/knowledge/applied-data-science">data-science lifecycle</Link>, it's a
-          loop, not a line — dissemination raises new questions that feed back into direction. And the
-          same lesson applies: the analysis is only as good as the question at the top, and only
+          Like the <Link href="/knowledge/applied-data-science">data-science lifecycle</Link>, it's
+          a loop, not a line — dissemination raises new questions that feed back into direction. And
+          the same lesson applies: the analysis is only as good as the question at the top, and only
           matters if it reaches the decision-maker in a form they can use.
         </p>
 
@@ -117,35 +151,38 @@ function EnBody() {
 
       <KSection id="vsdata" eyebrow="03" title="Intelligence vs data analysis">
         <p>
-          Intelligence and data analysis overlap, but the emphasis differs in a way worth naming. Data
-          analysis often asks <em>what does the data show?</em> Intelligence insists on the next step:{" "}
-          <em>what does it mean for the decision, and so what should we do?</em> The{" "}
-          <Link href="/knowledge/science-communication">"so what"</Link> isn't optional polish — it's
-          the product.
+          Intelligence and data analysis overlap, but the emphasis differs in a way worth naming.
+          Data analysis often asks <em>what does the data show?</em> Intelligence insists on the
+          next step: <em>what does it mean for the decision, and so what should we do?</em> The{" "}
+          <Link href="/knowledge/science-communication">"so what"</Link> isn't optional polish —
+          it's the product.
         </p>
         <p>
           Intelligence also routinely reasons from <em>incomplete and unreliable</em> information,
-          where a clean dataset is a luxury you don't get. So it leans less on a single number and more
-          on weighing competing explanations, grading how much each source can be trusted, and being
-          explicit about the gaps. The quantitative toolkit from the rest of this section absolutely
-          helps — but the core skill is structured reasoning under doubt.
+          where a clean dataset is a luxury you don't get. So it leans less on a single number and
+          more on weighing competing explanations, grading how much each source can be trusted, and
+          being explicit about the gaps. The quantitative toolkit from the rest of this section
+          absolutely helps — but the core skill is structured reasoning under doubt.
         </p>
       </KSection>
 
       <KSection id="bias" eyebrow="04" title="The enemy is your own mind">
         <p>
           The central insight of modern intelligence tradecraft is humbling: the biggest threat to a
-          sound assessment is not bad data — it's the analyst's own <Term>cognitive bias</Term>. Human
-          minds take shortcuts that served us on the savannah and betray us on hard problems:
+          sound assessment is not bad data — it's the analyst's own <Term>cognitive bias</Term>.
+          Human minds take shortcuts that served us on the savannah and betray us on hard problems:
         </p>
         <ul>
           <li>
-            <Term>Confirmation bias</Term> — seeing the evidence that fits the theory you already hold
-            and discounting the rest.
+            <Term>Confirmation bias</Term> — seeing the evidence that fits the theory you already
+            hold and discounting the rest.
           </li>
-          <li><Term>Anchoring</Term> — over-weighting the first piece of information you got.</li>
           <li>
-            <Term>Premature closure</Term> — settling on an answer too early and stopping the search.
+            <Term>Anchoring</Term> — over-weighting the first piece of information you got.
+          </li>
+          <li>
+            <Term>Premature closure</Term> — settling on an answer too early and stopping the
+            search.
           </li>
         </ul>
         <p>
@@ -158,74 +195,76 @@ function EnBody() {
       <KSection id="sats" eyebrow="05" title="Structured analytic techniques">
         <p>
           <Term>Structured Analytic Techniques</Term> (SATs) are formal methods that externalise
-          reasoning — get it out of your head and onto paper where its flaws show. They make analysis
-          more rigorous, more transparent, and more defensible. The most important is the workhorse of
-          the craft:
+          reasoning — get it out of your head and onto paper where its flaws show. They make
+          analysis more rigorous, more transparent, and more defensible. The most important is the
+          workhorse of the craft:
         </p>
         <Callout type="intuition">
           <p>
             <strong>Analysis of Competing Hypotheses (ACH).</strong> Instead of building a case for
             your favourite explanation, you list <em>all</em> the plausible hypotheses up front, lay
-            every piece of evidence against each in a matrix, and — crucially — look for evidence that
-            would <em>disprove</em> each one. The winner isn't the hypothesis with the most support;
-            it's the one with the least evidence <em>against</em> it. ACH directly attacks confirmation
-            bias by forcing you to try to kill your own theory, the same falsification instinct as a
-            good <Link href="/knowledge/statistics">hypothesis test</Link>.
+            every piece of evidence against each in a matrix, and — crucially — look for evidence
+            that would <em>disprove</em> each one. The winner isn't the hypothesis with the most
+            support; it's the one with the least evidence <em>against</em> it. ACH directly attacks
+            confirmation bias by forcing you to try to kill your own theory, the same falsification
+            instinct as a good <Link href="/knowledge/statistics">hypothesis test</Link>.
           </p>
         </Callout>
         <p>
-          Two more that earn their keep daily: a <Term>Key Assumptions Check</Term> — write down every
-          assumption your judgement rests on and ask what happens if each is wrong — and rigorously{" "}
-          <Term>separating the reporting from your interpretation</Term>: keeping "here's what the
-          source said" distinct from "here's what I think it means", so a reader can see exactly where
-          the facts end and your judgement begins.
+          Two more that earn their keep daily: a <Term>Key Assumptions Check</Term> — write down
+          every assumption your judgement rests on and ask what happens if each is wrong — and
+          rigorously <Term>separating the reporting from your interpretation</Term>: keeping "here's
+          what the source said" distinct from "here's what I think it means", so a reader can see
+          exactly where the facts end and your judgement begins.
         </p>
       </KSection>
 
       <KSection id="osint" eyebrow="06" title="OSINT and source grading">
         <p>
-          <Term>Open-Source Intelligence</Term> (OSINT) is intelligence drawn from publicly available
-          information — news, public records, social media, company filings, imagery. It's vast and
-          powerful, and it's exactly where the discipline matters most, because open sources are often
-          contradictory, incomplete, and sometimes deliberately deceptive.
+          <Term>Open-Source Intelligence</Term> (OSINT) is intelligence drawn from publicly
+          available information — news, public records, social media, company filings, imagery. It's
+          vast and powerful, and it's exactly where the discipline matters most, because open
+          sources are often contradictory, incomplete, and sometimes deliberately deceptive.
         </p>
         <p>
           So you never take a source at face value — you <Term>grade</Term> it on two separate axes:
-          how <em>reliable</em> is the source (its track record and access), and how <em>credible</em>{" "}
-          is this particular piece of information (does it fit what else is known, is it corroborated)?
-          A reliable source can still pass on a dubious claim, and an unreliable one can occasionally
-          be right — keeping the two judgements apart is the discipline. Corroborate across independent
-          sources, trace claims to their origin, and stay alert to the <Term>verification</Term>{" "}
-          problem that the same false story echoing across ten sites is still one claim, not ten.
+          how <em>reliable</em> is the source (its track record and access), and how{" "}
+          <em>credible</em> is this particular piece of information (does it fit what else is known,
+          is it corroborated)? A reliable source can still pass on a dubious claim, and an
+          unreliable one can occasionally be right — keeping the two judgements apart is the
+          discipline. Corroborate across independent sources, trace claims to their origin, and stay
+          alert to the <Term>verification</Term> problem that the same false story echoing across
+          ten sites is still one claim, not ten.
         </p>
       </KSection>
 
       <KSection id="language" eyebrow="07" title="The language of confidence">
         <p>
           Because intelligence trades in uncertainty, <em>how</em> you express confidence is part of
-          the product. Vague words betray the reader: "likely" might mean 55% to one person and 90% to
-          another. Good practice uses a consistent set of <Term>probability yardsticks</Term> — a
-          defined ladder from "remote" through "even chance" to "almost certain" — and separates that
-          estimative likelihood from your <em>confidence</em> in the underlying evidence (a
+          the product. Vague words betray the reader: "likely" might mean 55% to one person and 90%
+          to another. Good practice uses a consistent set of <Term>probability yardsticks</Term> — a
+          defined ladder from "remote" through "even chance" to "almost certain" — and separates
+          that estimative likelihood from your <em>confidence</em> in the underlying evidence (a
           high-likelihood judgement built on thin sourcing is a different thing from one built on
           strong sourcing).
         </p>
         <p>
-          This is the <Link href="/knowledge/statistics">statistics</Link> lesson of being honest about
-          uncertainty, turned into disciplined language. Calibrated wording — neither falsely precise
-          nor uselessly hedged — is what lets a decision-maker weigh the assessment correctly.
+          This is the <Link href="/knowledge/statistics">statistics</Link> lesson of being honest
+          about uncertainty, turned into disciplined language. Calibrated wording — neither falsely
+          precise nor uselessly hedged — is what lets a decision-maker weigh the assessment
+          correctly.
         </p>
       </KSection>
 
       <KSection id="ethics" eyebrow="08" title="Probity and the law">
         <p>
-          Intelligence work, especially in government and policing, runs inside hard ethical and legal
-          limits. Collection must be <Term>lawful and proportionate</Term>; handling must respect{" "}
-          <Link href="/knowledge/data-governance">privacy and governance</Link>; and the analyst
-          carries a duty of <Term>probity</Term> — being honest, impartial, and rigorous, precisely
-          because the assessments can affect people's lives and liberty. The discipline isn't only
-          about being <em>right</em>; it's about being right in a way that's defensible, traceable, and
-          fair.
+          Intelligence work, especially in government and policing, runs inside hard ethical and
+          legal limits. Collection must be <Term>lawful and proportionate</Term>; handling must
+          respect <Link href="/knowledge/data-governance">privacy and governance</Link>; and the
+          analyst carries a duty of <Term>probity</Term> — being honest, impartial, and rigorous,
+          precisely because the assessments can affect people's lives and liberty. The discipline
+          isn't only about being <em>right</em>; it's about being right in a way that's defensible,
+          traceable, and fair.
         </p>
       </KSection>
 
@@ -233,19 +272,21 @@ function EnBody() {
         <Callout type="applied" label="The core of the current role">
           <p>
             This is the centre of what I do now. As a senior analyst in a government
-            professional-standards setting, the work is exactly this: turn incomplete information into
-            a defensible assessment for a decision-maker, under real constraints. The discipline on
-            this page is the daily practice — <strong>guarding against my own bias</strong> with
-            structured techniques like <strong>ACH</strong>, <strong>grading sources</strong> rather
-            than trusting them, keeping <strong>reporting separate from interpretation</strong>, and
-            being <strong>calibrated and lawful</strong> about what I can actually conclude.
+            professional-standards setting, the work is exactly this: turn incomplete information
+            into a defensible assessment for a decision-maker, under real constraints. The
+            discipline on this page is the daily practice —{" "}
+            <strong>guarding against my own bias</strong> with structured techniques like{" "}
+            <strong>ACH</strong>, <strong>grading sources</strong> rather than trusting them,
+            keeping <strong>reporting separate from interpretation</strong>, and being{" "}
+            <strong>calibrated and lawful</strong> about what I can actually conclude.
           </p>
           <p>
             It's where the rest of the section comes together in service of a decision: the{" "}
             <Link href="/knowledge/statistics">statistics</Link> for honest uncertainty, the{" "}
             <Link href="/knowledge/geospatial-analysis">spatial analysis</Link> for the "where", the{" "}
-            <Link href="/knowledge/science-communication">communication</Link> for the hand-off — all
-            pointed at the same target: a sound, defensible judgement that helps someone decide well.
+            <Link href="/knowledge/science-communication">communication</Link> for the hand-off —
+            all pointed at the same target: a sound, defensible judgement that helps someone decide
+            well.
           </p>
         </Callout>
       </KSection>
@@ -258,8 +299,8 @@ function EnBody() {
               Judged on usefulness, not cleverness.
             </li>
             <li>
-              The <strong>intelligence cycle</strong> (direction → collection → processing → analysis →
-              dissemination) is a loop tied to the decision-maker's need.
+              The <strong>intelligence cycle</strong> (direction → collection → processing →
+              analysis → dissemination) is a loop tied to the decision-maker's need.
             </li>
             <li>
               The real enemy is your own <strong>cognitive bias</strong> (confirmation, anchoring,
@@ -309,10 +350,10 @@ function ZhBody() {
 
       <KSection id="what" eyebrow="01" title="附着着一个决策的数据">
         <p>
-          情报的决定性特征是它的目的：它的存在是为了<strong>给一个具体的决策、给一个会据以行动的
-          具体的人提供信息</strong>。这使它区别于出于好奇而做的分析。一份情报产品被评判的，不是它
-          有多聪明，而是它有没有帮某人在不完美的信息下——在时间压力之下、带着后果——做出更好的
-          决断。
+          情报的决定性特征是它的目的：它的存在是为了
+          <strong>给一个具体的决策、给一个会据以行动的 具体的人提供信息</strong>
+          。这使它区别于出于好奇而做的分析。一份情报产品被评判的，不是它
+          有多聪明，而是它有没有帮某人在不完美的信息下——在时间压力之下、带着后果——做出更好的 决断。
         </p>
         <p>
           所以情报从根本上关乎<em>不确定性下的评估</em>。你几乎永远不会拥有全部事实；这份工作是从你
@@ -327,11 +368,21 @@ function ZhBody() {
           那个决策：
         </p>
         <ul>
-          <li><Term>方向</Term>——决策者究竟需要知道什么？驱动一切的需求。</li>
-          <li><Term>采集</Term>——从可用的来源收集相关信息。</li>
-          <li><Term>处理</Term>——把原始材料变成可用、有组织的形式。</li>
-          <li><Term>分析</Term>——核心：评估它意味着什么、权衡各种假设、形成一个判断。</li>
-          <li><Term>分发</Term>——把评估清晰、及时地交付给决策者。</li>
+          <li>
+            <Term>方向</Term>——决策者究竟需要知道什么？驱动一切的需求。
+          </li>
+          <li>
+            <Term>采集</Term>——从可用的来源收集相关信息。
+          </li>
+          <li>
+            <Term>处理</Term>——把原始材料变成可用、有组织的形式。
+          </li>
+          <li>
+            <Term>分析</Term>——核心：评估它意味着什么、权衡各种假设、形成一个判断。
+          </li>
+          <li>
+            <Term>分发</Term>——把评估清晰、及时地交付给决策者。
+          </li>
         </ul>
         <p>
           和<Link href="/knowledge/applied-data-science">数据科学生命周期</Link>一样，它是一个循环，
@@ -354,7 +405,8 @@ function ZhBody() {
           产品本身。
         </p>
         <p>
-          情报也常常从<em>不完整、不可靠</em>的信息出发推理，那里一个干净的数据集是你得不到的奢侈品。
+          情报也常常从<em>不完整、不可靠</em>
+          的信息出发推理，那里一个干净的数据集是你得不到的奢侈品。
           所以它较少依赖单一的数字，而更多依赖权衡相互竞争的解释、为每个来源能被信任多少分级，并对
           缺口直言不讳。本板块其余部分的定量工具箱当然有帮助——但核心技能是疑云之下的结构化推理。
         </p>
@@ -366,9 +418,15 @@ function ZhBody() {
           <Term>认知偏差</Term>。人的头脑会走捷径，那些捷径在草原上帮过我们，却在难题上背叛我们：
         </p>
         <ul>
-          <li><Term>确认偏差</Term>——只看到契合你既有理论的证据，而对其余打折扣。</li>
-          <li><Term>锚定</Term>——对你最先拿到的那条信息赋予过高的权重。</li>
-          <li><Term>过早收口</Term>——太早就定下一个答案、停止了搜寻。</li>
+          <li>
+            <Term>确认偏差</Term>——只看到契合你既有理论的证据，而对其余打折扣。
+          </li>
+          <li>
+            <Term>锚定</Term>——对你最先拿到的那条信息赋予过高的权重。
+          </li>
+          <li>
+            <Term>过早收口</Term>——太早就定下一个答案、停止了搜寻。
+          </li>
         </ul>
         <p>
           你无法靠更努力来关掉它们——意志力修不好一个线路问题。管用的是<em>方法</em>：迫使你去考虑
@@ -384,11 +442,13 @@ function ZhBody() {
         </p>
         <Callout type="intuition">
           <p>
-            <strong>竞争性假设分析（ACH）。</strong>你不去为你最钟意的解释构建论据，而是把<em>所有
-            </em>合理的假设在一开始就列出来，在一个矩阵里把每一条证据对照每一个假设摆开，并且——关键
-            在于——去寻找能<em>证伪</em>每一个假设的证据。胜出的不是支撑最多的那个假设；而是<em>反对
-            </em>它的证据最少的那个。ACH 通过逼你去尝试杀死你自己的理论，直接攻击确认偏差——与一个
-            好的<Link href="/knowledge/statistics">假设检验</Link>相同的证伪本能。
+            <strong>竞争性假设分析（ACH）。</strong>你不去为你最钟意的解释构建论据，而是把
+            <em>所有</em>
+            合理的假设在一开始就列出来，在一个矩阵里把每一条证据对照每一个假设摆开，并且——关键
+            在于——去寻找能<em>证伪</em>每一个假设的证据。胜出的不是支撑最多的那个假设；而是
+            <em>反对</em>它的证据最少的那个。ACH
+            通过逼你去尝试杀死你自己的理论，直接攻击确认偏差——与一个 好的
+            <Link href="/knowledge/statistics">假设检验</Link>相同的证伪本能。
           </p>
         </Callout>
         <p>
@@ -410,7 +470,8 @@ function ZhBody() {
           <em>可靠</em>（它的过往记录与获取渠道），以及这一条特定的信息有多<em>可信</em>（它是否契合
           其他已知之事、是否得到佐证）？一个可靠的来源仍可能传递一个可疑的说法，而一个不可靠的来源
           偶尔也会是对的——把这两种判断分开，才是这门纪律。跨独立来源相互佐证，把说法追溯到其源头，
-          并对<Term>核实</Term>问题保持警觉：同一个假故事在十个网站上回响，仍然是一条说法，而非十条。
+          并对<Term>核实</Term>
+          问题保持警觉：同一个假故事在十个网站上回响，仍然是一条说法，而非十条。
         </p>
       </KSection>
 
@@ -431,9 +492,10 @@ function ZhBody() {
 
       <KSection id="ethics" eyebrow="08" title="廉正与法律">
         <p>
-          情报工作，尤其在政府与警务中，运行在刚性的伦理与法律界限之内。采集必须<Term>合法且相称
-          </Term>；处理必须尊重<Link href="/knowledge/data-governance">隐私与治理</Link>；而分析师
-          肩负一份<Term>廉正</Term>的义务——诚实、公正、严谨，恰恰因为这些评估能影响到人的生命与
+          情报工作，尤其在政府与警务中，运行在刚性的伦理与法律界限之内。采集必须
+          <Term>合法且相称</Term>；处理必须尊重
+          <Link href="/knowledge/data-governance">隐私与治理</Link>；而分析师 肩负一份
+          <Term>廉正</Term>的义务——诚实、公正、严谨，恰恰因为这些评估能影响到人的生命与
           自由。这门纪律不只关乎<em>正确</em>；而关乎以一种可辩护、可追溯、公平的方式正确。
         </p>
       </KSection>
@@ -443,14 +505,16 @@ function ZhBody() {
           <p>
             这是我如今所做之事的中心。作为政府职业操守领域的一名高级分析师，工作正是这个：在真实的
             约束下，把不完整的信息变成一份可辩护、给决策者的评估。这一页上的纪律就是日常的实践——用
-            <strong>ACH</strong> 这样的结构化技术<strong>防范我自己的偏差</strong>、<strong>为来源
-            分级</strong>而非信任它们、把<strong>报告与解释分开</strong>，并对我究竟能下什么结论
+            <strong>ACH</strong> 这样的结构化技术<strong>防范我自己的偏差</strong>、
+            <strong>为来源 分级</strong>而非信任它们、把<strong>报告与解释分开</strong>
+            ，并对我究竟能下什么结论
             <strong>保持校准与合法</strong>。
           </p>
           <p>
-            这是本板块其余部分汇聚起来、服务于一个决策之处：<Link href="/knowledge/statistics">统计
-            </Link>用于诚实的不确定性、<Link href="/knowledge/geospatial-analysis">空间分析</Link>用于
-            「在哪里」、<Link href="/knowledge/science-communication">沟通</Link>用于交接——全都瞄准
+            这是本板块其余部分汇聚起来、服务于一个决策之处：
+            <Link href="/knowledge/statistics">统计</Link>用于诚实的不确定性、
+            <Link href="/knowledge/geospatial-analysis">空间分析</Link>用于 「在哪里」、
+            <Link href="/knowledge/science-communication">沟通</Link>用于交接——全都瞄准
             同一个目标：一个可靠、可辩护、帮某人决断得好的判断。
           </p>
         </Callout>
@@ -468,19 +532,20 @@ function ZhBody() {
               循环。
             </li>
             <li>
-              真正的敌人是你自己的<strong>认知偏差</strong>（确认、锚定、过早收口）——方法胜过意志力。
+              真正的敌人是你自己的<strong>认知偏差</strong>
+              （确认、锚定、过早收口）——方法胜过意志力。
             </li>
             <li>
-              <strong>结构化分析技术</strong>：<strong>ACH</strong>（列出所有假设、寻找证伪的证据）、
-              关键假设检查，以及把报告与解释分开。
+              <strong>结构化分析技术</strong>：<strong>ACH</strong>
+              （列出所有假设、寻找证伪的证据）、 关键假设检查，以及把报告与解释分开。
             </li>
             <li>
               <strong>OSINT</strong>：把<strong>来源可靠性</strong>与<strong>信息可信度</strong>分开
               分级；相互佐证；一个被回响的故事仍只是一条说法。
             </li>
             <li>
-              使用校准过的<strong>置信度语言</strong>（概率标尺），并以<strong>合法、相称、廉正
-              </strong>的方式工作。
+              使用校准过的<strong>置信度语言</strong>（概率标尺），并以
+              <strong>合法、相称、廉正</strong>的方式工作。
             </li>
           </ul>
         </Callout>
