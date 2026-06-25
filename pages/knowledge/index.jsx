@@ -21,6 +21,7 @@ const TIERS = [
     { href: "/knowledge/artificial-intelligence", status: "live" },
     { href: "/knowledge/web-information-technology", status: "live" },
     { href: "/knowledge/operations-research", status: "live" },
+    { href: "/knowledge/elements-of-data-processing", status: "live" },
   ]},
   { key: "advanced", topics: [
     { href: "/knowledge/natural-language-processing", status: "live" },
