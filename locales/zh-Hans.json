@@ -868,7 +868,9 @@
           { "label": "生存分析", "note": "删失、Kaplan-Meier 与 Cox 风险比" },
           { "label": "信息检索与搜索", "note": "倒排索引、BM25、稠密与混合检索" },
           { "label": "大语言模型", "note": "下一词元预测、RLHF、幻觉与 RAG" },
-          { "label": "主题建模", "note": "LDA、无标签主题发现与主题数选择" }
+          { "label": "主题建模", "note": "LDA、无标签主题发现与主题数选择" },
+          { "label": "AI 智能体与工具调用", "note": "推理-行动循环、工具、规划与验证" },
+          { "label": "空间统计", "note": "空间自相关、Moran's I、热点与克里金" }
         ]
       },
       "practice": {
@@ -886,7 +888,8 @@
           { "label": "可解释 AI 与可解释性", "note": "SHAP、LIME、玻璃箱模型与可辩护决策" },
           { "label": "机器学习的公平性与偏见", "note": "代理变量、公平性指标与不可能定理" },
           { "label": "差分隐私", "note": "重识别、epsilon、校准噪声与可用性" },
-          { "label": "知识图谱", "note": "三元组、本体、实体消解与 GraphRAG" }
+          { "label": "知识图谱", "note": "三元组、本体、实体消解与 GraphRAG" },
+          { "label": "流式与实时分析", "note": "窗口、事件时间、水位线与 Kafka/Flink" }
         ]
       },
       "taught": {

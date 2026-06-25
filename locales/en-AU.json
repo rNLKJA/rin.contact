@@ -1088,6 +1088,14 @@
           {
             "label": "Topic Modelling",
             "note": "LDA, themes without labels, choosing topics"
+          },
+          {
+            "label": "AI Agents & Tool Use",
+            "note": "The reason-act loop, tools, planning, verification"
+          },
+          {
+            "label": "Spatial Statistics",
+            "note": "Autocorrelation, Moran's I, hotspots, kriging"
           }
         ]
       },
@@ -1142,6 +1150,10 @@
           {
             "label": "Knowledge Graphs",
             "note": "Triples, ontologies, entity resolution, GraphRAG"
+          },
+          {
+            "label": "Streaming & Real-Time Analytics",
+            "note": "Windowing, event time, watermarks, Kafka/Flink"
           }
         ]
       },
