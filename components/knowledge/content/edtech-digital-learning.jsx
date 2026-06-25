@@ -17,14 +17,62 @@ function FluencyFigure({ caption, ariaLabel, yLabel, xLabel, rereadLabel, retrie
         role="img"
         aria-label={ariaLabel}
       >
-        <line x1="40" y1="20" x2="40" y2="150" stroke="currentColor" strokeWidth="1" opacity="0.4" />
-        <line x1="40" y1="150" x2="410" y2="150" stroke="currentColor" strokeWidth="1" opacity="0.4" />
-        <text x="20" y="90" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7" transform="rotate(-90 20 90)">{yLabel}</text>
-        <text x="225" y="172" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{xLabel}</text>
-        <path d="M40 40 Q140 70 250 120 T410 145" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.45" strokeDasharray="5 4" />
-        <text x="250" y="112" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.6">{rereadLabel}</text>
+        <line
+          x1="40"
+          y1="20"
+          x2="40"
+          y2="150"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.4"
+        />
+        <line
+          x1="40"
+          y1="150"
+          x2="410"
+          y2="150"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.4"
+        />
+        <text
+          x="20"
+          y="90"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+          transform="rotate(-90 20 90)"
+        >
+          {yLabel}
+        </text>
+        <text
+          x="225"
+          y="172"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {xLabel}
+        </text>
+        <path
+          d="M40 40 Q140 70 250 120 T410 145"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          opacity="0.45"
+          strokeDasharray="5 4"
+        />
+        <text x="250" y="112" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.6">
+          {rereadLabel}
+        </text>
         <path d="M40 55 Q160 62 280 72 T410 88" fill="none" stroke="#FF3C3C" strokeWidth="2.5" />
-        <text x="250" y="68" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{retrievalLabel}</text>
+        <text x="250" y="68" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {retrievalLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -35,12 +83,12 @@ function EnBody() {
   return (
     <>
       <p>
-        When I mentored peers in data science and worked on EdTech, the lesson that stuck wasn't about
-        any one topic — it was that{" "}
+        When I mentored peers in data science and worked on EdTech, the lesson that stuck wasn't
+        about any one topic — it was that{" "}
         <strong>how you present material decides how much of it survives</strong>. You can explain
         something perfectly and have none of it stick, or explain it roughly in a way that lasts for
-        years. The difference is not charisma; it's a set of findings from cognitive science about how
-        human memory actually works, and they're surprisingly counter-intuitive.
+        years. The difference is not charisma; it's a set of findings from cognitive science about
+        how human memory actually works, and they're surprisingly counter-intuitive.
       </p>
       <p>
         This page is that science, made practical: the handful of principles that reliably move
@@ -51,9 +99,9 @@ function EnBody() {
       <KSection id="why" eyebrow="01" title="Teaching as a system">
         <p>
           The instinct when teaching is to make everything as smooth and easy as possible — clear
-          slides, worked examples, nothing confusing. That instinct is half right and half disastrous.
-          Some friction <em>helps</em> learning and some <em>hurts</em> it, and the whole art is
-          telling them apart. The science sorts cleanly into two buckets:
+          slides, worked examples, nothing confusing. That instinct is half right and half
+          disastrous. Some friction <em>helps</em> learning and some <em>hurts</em> it, and the
+          whole art is telling them apart. The science sorts cleanly into two buckets:
         </p>
         <ul>
           <li>
@@ -61,8 +109,8 @@ function EnBody() {
             once, split attention. This is <Term>cognitive load</Term>.
           </li>
           <li>
-            <strong>Keep the friction that builds memory</strong> — effortful recall, spacing, mixing
-            topics. These are <Term>desirable difficulties</Term>.
+            <strong>Keep the friction that builds memory</strong> — effortful recall, spacing,
+            mixing topics. These are <Term>desirable difficulties</Term>.
           </li>
         </ul>
         <p>Everything below is one or the other.</p>
@@ -76,8 +124,8 @@ function EnBody() {
         </p>
         <ul>
           <li>
-            <Term>Intrinsic</Term> — the inherent difficulty of the material (gradient descent is just
-            harder than a bar chart). You can't remove it, but you can <em>sequence</em> it.
+            <Term>Intrinsic</Term> — the inherent difficulty of the material (gradient descent is
+            just harder than a bar chart). You can't remove it, but you can <em>sequence</em> it.
           </li>
           <li>
             <Term>Extraneous</Term> — load from <em>how</em> it's presented: a cluttered slide, a
@@ -85,19 +133,20 @@ function EnBody() {
             waste, and cutting it is the single biggest lever a teacher has.
           </li>
           <li>
-            <Term>Germane</Term> — the good load: the effort of actually building understanding. This
-            is what you want learners spending their scarce capacity on.
+            <Term>Germane</Term> — the good load: the effort of actually building understanding.
+            This is what you want learners spending their scarce capacity on.
           </li>
         </ul>
         <p>The practical moves fall straight out of this:</p>
         <ul>
           <li>
-            <strong>Chunk.</strong> Break material into small pieces and build up. Don't show the whole
-            architecture at once; reveal it a layer at a time.
+            <strong>Chunk.</strong> Break material into small pieces and build up. Don't show the
+            whole architecture at once; reveal it a layer at a time.
           </li>
           <li>
-            <strong>Worked examples first.</strong> For novices, a fully worked solution teaches more
-            than struggling with a blank problem — it shows the path before asking them to walk it.
+            <strong>Worked examples first.</strong> For novices, a fully worked solution teaches
+            more than struggling with a blank problem — it shows the path before asking them to walk
+            it.
           </li>
           <li>
             <strong>Kill split attention.</strong> Put the label on the diagram, not in a legend
@@ -110,16 +159,16 @@ function EnBody() {
         <p>
           <Term>Dual coding theory</Term> says we process verbal and visual information through two
           separate channels, so a clear diagram paired with a clear explanation gives the brain two
-          complementary routes to the same idea — and roughly doubles the working-memory budget instead
-          of overloading one channel. It's why every page in this section pairs an SVG with prose
-          rather than relying on either alone.
+          complementary routes to the same idea — and roughly doubles the working-memory budget
+          instead of overloading one channel. It's why every page in this section pairs an SVG with
+          prose rather than relying on either alone.
         </p>
         <Callout type="pitfall">
           <p>
             The catch — and it's the same split-attention trap — is that words and pictures have to{" "}
-            <strong>reinforce</strong> each other, not compete. A decorative image, or text that just
-            repeats a diagram word-for-word, adds extraneous load instead of removing it. Two channels
-            help only when each carries part of the message.
+            <strong>reinforce</strong> each other, not compete. A decorative image, or text that
+            just repeats a diagram word-for-word, adds extraneous load instead of removing it. Two
+            channels help only when each carries part of the message.
           </p>
         </Callout>
       </KSection>
@@ -132,9 +181,9 @@ function EnBody() {
             lasting.
           </strong>{" "}
           Re-reading notes feels productive — it's smooth, familiar, you recognise everything — but
-          recognition isn't memory, and that fluency is an illusion. The techniques that actually build
-          durable knowledge feel like more effort precisely because they <em>are</em>, and that effort
-          is the mechanism.
+          recognition isn't memory, and that fluency is an illusion. The techniques that actually
+          build durable knowledge feel like more effort precisely because they <em>are</em>, and
+          that effort is the mechanism.
         </p>
         <FluencyFigure
           caption="The fluency illusion. Re-reading feels easy and productive but fades fast; effortful methods (recall, spacing) feel harder in the moment yet retain far more over time. Felt ease and real learning point in opposite directions."
@@ -152,14 +201,14 @@ function EnBody() {
           <li>
             <Term>Retrieval practice (the testing effect)</Term> — the act of <em>pulling</em>{" "}
             information out of memory strengthens it far more than putting it in again. A low-stakes
-            quiz, a flashcard, or just closing the book and writing what you remember beats re-reading
-            by a wide margin. Every "refresh in 60 seconds" box in this section is a deliberate
-            retrieval cue, not a summary.
+            quiz, a flashcard, or just closing the book and writing what you remember beats
+            re-reading by a wide margin. Every "refresh in 60 seconds" box in this section is a
+            deliberate retrieval cue, not a summary.
           </li>
           <li>
-            <Term>Spacing (distributed practice)</Term> — the same study time spread across days beats
-            one cram session. Each time you let memory fade a little and then retrieve it, it comes
-            back stronger; this is the basis of the spacing curve.
+            <Term>Spacing (distributed practice)</Term> — the same study time spread across days
+            beats one cram session. Each time you let memory fade a little and then retrieve it, it
+            comes back stronger; this is the basis of the spacing curve.
           </li>
         </ul>
         <p>
@@ -171,8 +220,8 @@ function EnBody() {
           <p>
             The mechanism behind both: <strong>a little forgetting is the point.</strong> Retrieving
             something that's started to fade is the effortful act that re-encodes it more durably.
-            Smooth, never-forgotten re-reading skips the very step that builds the memory — which is why
-            it feels good and works badly.
+            Smooth, never-forgotten re-reading skips the very step that builds the memory — which is
+            why it feels good and works badly.
           </p>
         </Callout>
       </KSection>
@@ -182,18 +231,18 @@ function EnBody() {
           The instinct is to drill one skill to mastery (all gradient-descent problems, then all
           regularisation problems) — <Term>blocked</Term> practice. <Term>Interleaving</Term> mixes
           them instead, and reliably wins for anything where you later have to <em>choose</em> the
-          right method. Blocked practice lets you run on autopilot — you already know every problem on
-          this page is the same type. Mixed practice forces you to first ask{" "}
-          <em>"what kind of problem is this?"</em>, which is exactly the discrimination skill real work
-          demands. It feels worse and scores lower in practice, then transfers far better — a desirable
-          difficulty through and through.
+          right method. Blocked practice lets you run on autopilot — you already know every problem
+          on this page is the same type. Mixed practice forces you to first ask{" "}
+          <em>"what kind of problem is this?"</em>, which is exactly the discrimination skill real
+          work demands. It feels worse and scores lower in practice, then transfers far better — a
+          desirable difficulty through and through.
         </p>
       </KSection>
 
       <KSection id="adaptive" eyebrow="07" title="What EdTech actually adds">
         <p>
-          Technology doesn't replace these principles — at its best it <em>operationalises</em> them at
-          a scale a human teacher can't:
+          Technology doesn't replace these principles — at its best it <em>operationalises</em> them
+          at a scale a human teacher can't:
         </p>
         <ul>
           <li>
@@ -202,8 +251,8 @@ function EnBody() {
           </li>
           <li>
             <strong>Adaptive learning</strong> adjusts difficulty to keep each learner in the
-            productive zone — not so easy it's idle, not so hard it overloads — personalising intrinsic
-            load.
+            productive zone — not so easy it's idle, not so hard it overloads — personalising
+            intrinsic load.
           </li>
           <li>
             <strong>Immediate feedback</strong> closes the loop fast, so a misconception is caught
@@ -212,16 +261,16 @@ function EnBody() {
           <li>
             <strong>Learning analytics</strong> — the{" "}
             <Link href="/knowledge/business-intelligence-dashboards">dashboards</Link> and{" "}
-            <Link href="/knowledge/applied-data-science">data</Link> behind the platform — show where a
-            cohort is struggling so teaching can adapt.
+            <Link href="/knowledge/applied-data-science">data</Link> behind the platform — show
+            where a cohort is struggling so teaching can adapt.
           </li>
         </ul>
         <Callout type="pitfall">
           <p>
-            The trap in EdTech is mistaking <strong>engagement for learning</strong>. Points, streaks
-            and slick video keep people clicking, but clicking isn't recall. The technology only earns
-            its keep when it's in service of effortful retrieval and good spacing — a beautifully
-            engaging app that never makes anyone <em>think hard</em> teaches nothing.
+            The trap in EdTech is mistaking <strong>engagement for learning</strong>. Points,
+            streaks and slick video keep people clicking, but clicking isn't recall. The technology
+            only earns its keep when it's in service of effortful retrieval and good spacing — a
+            beautifully engaging app that never makes anyone <em>think hard</em> teaches nothing.
           </p>
         </Callout>
       </KSection>
@@ -229,19 +278,21 @@ function EnBody() {
       <KSection id="applied" eyebrow="08" title="How I taught it">
         <Callout type="applied" label="Peer mentoring & EdTech">
           <p>
-            Mentoring peers through data science was where this stopped being theory. The students who
-            struggled weren't short on ability — they were re-reading notes and feeling fluent, then
-            freezing on a problem they'd never had to <em>pull</em> from memory. The fix was always the
-            same shape:{" "}
-            <strong>fewer worked examples passively watched, more retrieval under mild difficulty</strong>{" "}
-            — close the notes, rebuild the derivation, mix the problem types so they had to choose the
-            method.
+            Mentoring peers through data science was where this stopped being theory. The students
+            who struggled weren't short on ability — they were re-reading notes and feeling fluent,
+            then freezing on a problem they'd never had to <em>pull</em> from memory. The fix was
+            always the same shape:{" "}
+            <strong>
+              fewer worked examples passively watched, more retrieval under mild difficulty
+            </strong>{" "}
+            — close the notes, rebuild the derivation, mix the problem types so they had to choose
+            the method.
           </p>
           <p>
-            It's also why this whole <Link href="/knowledge">knowledge section</Link> is built the way
-            it is: each page chunks material, pairs an SVG with prose (<em>dual coding</em>), and ends
-            with a deliberate <em>retrieval</em> box rather than a summary. Teaching the content taught
-            me the format — and the format is the part that lasts.
+            It's also why this whole <Link href="/knowledge">knowledge section</Link> is built the
+            way it is: each page chunks material, pairs an SVG with prose (<em>dual coding</em>),
+            and ends with a deliberate <em>retrieval</em> box rather than a summary. Teaching the
+            content taught me the format — and the format is the part that lasts.
           </p>
         </Callout>
       </KSection>
@@ -260,29 +311,30 @@ function EnBody() {
               <strong>worked examples</strong>.
             </li>
             <li>
-              <strong>Dual coding</strong>: pair a clear picture with clear words — two channels — but
-              they must reinforce, not repeat.
+              <strong>Dual coding</strong>: pair a clear picture with clear words — two channels —
+              but they must reinforce, not repeat.
             </li>
             <li>
-              <strong>Desirable difficulties</strong>: re-reading feels productive and <em>fails</em>{" "}
-              (fluency illusion). Harder-feeling methods last longer.
+              <strong>Desirable difficulties</strong>: re-reading feels productive and{" "}
+              <em>fails</em> (fluency illusion). Harder-feeling methods last longer.
             </li>
             <li>
               The big two: <strong>retrieval practice</strong> (recall &gt; re-read) and{" "}
-              <strong>spacing</strong> (spread &gt; cram) — together, <strong>spaced retrieval</strong>.
-              Plus <strong>interleaving</strong> (mix problems to learn to choose the method). A little
-              forgetting is the point.
+              <strong>spacing</strong> (spread &gt; cram) — together,{" "}
+              <strong>spaced retrieval</strong>. Plus <strong>interleaving</strong> (mix problems to
+              learn to choose the method). A little forgetting is the point.
             </li>
             <li>
               EdTech earns its keep by <strong>automating spacing/retrieval</strong>, adapting
-              difficulty, and giving fast feedback — not by chasing engagement. Engagement ≠ learning.
+              difficulty, and giving fast feedback — not by chasing engagement. Engagement ≠
+              learning.
             </li>
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          Principles reflect established learning-science research (cognitive load — Sweller; desirable
-          difficulties — Bjork; the testing and spacing effects) alongside hands-on peer-mentoring and
-          EdTech work.
+          Principles reflect established learning-science research (cognitive load — Sweller;
+          desirable difficulties — Bjork; the testing and spacing effects) alongside hands-on
+          peer-mentoring and EdTech work.
         </p>
       </KSection>
     </>
@@ -294,8 +346,9 @@ function ZhBody() {
   return (
     <>
       <p>
-        当我带教同伴学数据科学、并做教育科技时，留下来的教训不关乎任何单一主题——而是<strong>你如何
-        呈现材料，决定了其中有多少能存活下来</strong>。你可以把一样东西讲得完美，却一点都没留住；也
+        当我带教同伴学数据科学、并做教育科技时，留下来的教训不关乎任何单一主题——而是
+        <strong>你如何 呈现材料，决定了其中有多少能存活下来</strong>
+        。你可以把一样东西讲得完美，却一点都没留住；也
         可以讲得粗糙，却让它持续多年。差别不在魅力；而在一组来自认知科学、关于人的记忆究竟如何运作的
         发现，而它们出人意料地反直觉。
       </p>
@@ -316,8 +369,8 @@ function ZhBody() {
             <Term>认知负荷</Term>。
           </li>
           <li>
-            <strong>保留构建记忆的摩擦</strong>——费力的回忆、间隔、混合主题。这些是<Term>合意难度
-            </Term>。
+            <strong>保留构建记忆的摩擦</strong>——费力的回忆、间隔、混合主题。这些是
+            <Term>合意难度</Term>。
           </li>
         </ul>
         <p>下面的一切，非此即彼。</p>
@@ -375,8 +428,9 @@ function ZhBody() {
 
       <KSection id="desirable" eyebrow="04" title="合意难度：为什么轻松会失败">
         <p>
-          这是整个领域中最反直觉的发现，来自 Robert Bjork：<strong>让学习感觉更难、更慢的条件，往往
-          让它更牢、更持久。</strong>重读笔记感觉很有成效——它顺滑、熟悉，你认得一切——但认得不是
+          这是整个领域中最反直觉的发现，来自 Robert Bjork：
+          <strong>让学习感觉更难、更慢的条件，往往 让它更牢、更持久。</strong>
+          重读笔记感觉很有成效——它顺滑、熟悉，你认得一切——但认得不是
           记忆，而那种流畅是一种错觉。真正构建持久知识的技巧感觉更费力，恰恰因为它们<em>确实</em>更
           费力，而那份努力正是其机制。
         </p>
@@ -409,7 +463,8 @@ function ZhBody() {
         </p>
         <Callout type="intuition">
           <p>
-            两者背后的机制：<strong>一点点遗忘正是要点。</strong>把一样已经开始消退的东西提取出来，是
+            两者背后的机制：<strong>一点点遗忘正是要点。</strong>
+            把一样已经开始消退的东西提取出来，是
             那个把它更持久地重新编码的费力动作。顺滑、从不遗忘的重读，跳过了恰恰构建记忆的那一步——
             这就是为什么它感觉好、却效果差。
           </p>
@@ -421,7 +476,8 @@ function ZhBody() {
           本能是把一项技能反复操练到精通（所有梯度下降的题，然后所有正则化的题）——<Term>分块</Term>
           练习。<Term>交错练习</Term>则把它们混起来，并且对任何「之后你得<em>选</em>对方法」的情形都
           可靠地胜出。分块练习让你能自动驾驶——你已经知道这一页上每道题都是同一类型。混合练习迫使你
-          先问<em>「这是哪一类题？」</em>，而那正是真实工作所要求的辨别技能。它感觉更糟、在练习时分数
+          先问<em>「这是哪一类题？」</em>
+          ，而那正是真实工作所要求的辨别技能。它感觉更糟、在练习时分数
           更低，之后却迁移得好得多——一个彻头彻尾的合意难度。
         </p>
       </KSection>
@@ -461,12 +517,13 @@ function ZhBody() {
           <p>
             带同伴走过数据科学，正是这一切不再是理论之处。挣扎的学生并不缺能力——他们在重读笔记、
             感觉流畅，然后在一道从未需要从记忆里<em>拉</em>出来的题前僵住。修法总是同一种形状：
-            <strong>少一些被动观看的做好的例题，多一些轻度难度下的提取</strong>——合上笔记、重建推导、
-            把题型混起来，好让他们不得不选方法。
+            <strong>少一些被动观看的做好的例题，多一些轻度难度下的提取</strong>
+            ——合上笔记、重建推导、 把题型混起来，好让他们不得不选方法。
           </p>
           <p>
-            这也是为什么整个<Link href="/knowledge">知识板块</Link>建成这个样子：每一页都把材料分块、
-            把一张 SVG 与文字配对（<em>双重编码</em>），并以一个刻意的提取框、而非一份摘要收尾。讲授
+            这也是为什么整个<Link href="/knowledge">知识板块</Link>
+            建成这个样子：每一页都把材料分块、 把一张 SVG 与文字配对（<em>双重编码</em>
+            ），并以一个刻意的提取框、而非一份摘要收尾。讲授
             内容教会了我这个格式——而格式才是持续下去的那部分。
           </p>
         </Callout>
@@ -480,7 +537,8 @@ function ZhBody() {
               负荷）、<strong>保留有用的摩擦</strong>（合意难度）。
             </li>
             <li>
-              <strong>认知负荷</strong>：工作记忆很小。砍掉<em>外在</em>负荷（杂乱、注意力分散、术语）；
+              <strong>认知负荷</strong>：工作记忆很小。砍掉<em>外在</em>
+              负荷（杂乱、注意力分散、术语）；
               <strong>分块</strong>；用<strong>做好的例题</strong>带新手。
             </li>
             <li>

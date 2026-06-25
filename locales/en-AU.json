@@ -995,6 +995,10 @@
           {
             "label": "Data Visualisation & Perception",
             "note": "Encoding accuracy, pre-attentive cues, honest charts"
+          },
+          {
+            "label": "Feature Engineering & Data Preparation",
+            "note": "Cleaning, scaling, encoding, and avoiding leakage"
           }
         ]
       },
@@ -1070,6 +1074,14 @@
           {
             "label": "Anomaly Detection",
             "note": "Outliers, isolation forest, alert-fatigue trade-off"
+          },
+          {
+            "label": "Network & Graph Analysis",
+            "note": "Centrality, brokers, communities, link analysis"
+          },
+          {
+            "label": "Reproducibility & Analytical Pipelines",
+            "note": "Version control, environments, RAP, lineage"
           }
         ]
       },

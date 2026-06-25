@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/causal-inference.
@@ -30,25 +37,99 @@ function DagFigure({ caption, ariaLabel, confounderLabel, colliderLabel }) {
         role="img"
         aria-label={ariaLabel}
       >
-        <text x="110" y="22" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.7">{confounderLabel}</text>
+        <text
+          x="110"
+          y="22"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {confounderLabel}
+        </text>
         <circle cx="110" cy="50" r="14" fill="none" stroke="#FF3C3C" strokeWidth="1.5" />
-        <text x="110" y="54" textAnchor="middle" fontSize="11" fill="currentColor">Z</text>
+        <text x="110" y="54" textAnchor="middle" fontSize="11" fill="currentColor">
+          Z
+        </text>
         <circle cx="60" cy="120" r="14" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <text x="60" y="124" textAnchor="middle" fontSize="11" fill="currentColor">X</text>
+        <text x="60" y="124" textAnchor="middle" fontSize="11" fill="currentColor">
+          X
+        </text>
         <circle cx="160" cy="120" r="14" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <text x="160" y="124" textAnchor="middle" fontSize="11" fill="currentColor">Y</text>
-        <line x1="100" y1="62" x2="68" y2="107" stroke="currentColor" strokeWidth="1.3" markerEnd="url(#ah)" />
-        <line x1="120" y1="62" x2="152" y2="107" stroke="currentColor" strokeWidth="1.3" markerEnd="url(#ah)" />
-        <line x1="74" y1="120" x2="146" y2="120" stroke="currentColor" strokeWidth="1.3" strokeDasharray="3 3" opacity="0.5" markerEnd="url(#ah)" />
-        <text x="330" y="22" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.7">{colliderLabel}</text>
+        <text x="160" y="124" textAnchor="middle" fontSize="11" fill="currentColor">
+          Y
+        </text>
+        <line
+          x1="100"
+          y1="62"
+          x2="68"
+          y2="107"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          markerEnd="url(#ah)"
+        />
+        <line
+          x1="120"
+          y1="62"
+          x2="152"
+          y2="107"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          markerEnd="url(#ah)"
+        />
+        <line
+          x1="74"
+          y1="120"
+          x2="146"
+          y2="120"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          strokeDasharray="3 3"
+          opacity="0.5"
+          markerEnd="url(#ah)"
+        />
+        <text
+          x="330"
+          y="22"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {colliderLabel}
+        </text>
         <circle cx="280" cy="50" r="14" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <text x="280" y="54" textAnchor="middle" fontSize="11" fill="currentColor">X</text>
+        <text x="280" y="54" textAnchor="middle" fontSize="11" fill="currentColor">
+          X
+        </text>
         <circle cx="380" cy="50" r="14" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <text x="380" y="54" textAnchor="middle" fontSize="11" fill="currentColor">Y</text>
+        <text x="380" y="54" textAnchor="middle" fontSize="11" fill="currentColor">
+          Y
+        </text>
         <circle cx="330" cy="120" r="14" fill="none" stroke="#FF3C3C" strokeWidth="1.5" />
-        <text x="330" y="124" textAnchor="middle" fontSize="11" fill="currentColor">C</text>
-        <line x1="288" y1="62" x2="322" y2="107" stroke="currentColor" strokeWidth="1.3" markerEnd="url(#ah)" />
-        <line x1="372" y1="62" x2="338" y2="107" stroke="currentColor" strokeWidth="1.3" markerEnd="url(#ah)" />
+        <text x="330" y="124" textAnchor="middle" fontSize="11" fill="currentColor">
+          C
+        </text>
+        <line
+          x1="288"
+          y1="62"
+          x2="322"
+          y2="107"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          markerEnd="url(#ah)"
+        />
+        <line
+          x1="372"
+          y1="62"
+          x2="338"
+          y2="107"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          markerEnd="url(#ah)"
+        />
         <defs>
           <marker id="ah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
             <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
@@ -65,17 +146,17 @@ function EnBody() {
     <>
       <p>
         Almost every decision worth making is a causal one. <em>Will</em> this policy reduce harm?{" "}
-        <em>Did</em> that change improve the outcome? <em>Would</em> the result have been different if
-        we'd acted? Yet the data we have is overwhelmingly <strong>correlational</strong> — it tells us
-        what went together, not what caused what. <Term>Causal inference</Term> is the discipline of
-        bridging that gap: getting from "these two things move together" to "this one made that one
-        happen", and being honest about how much confidence the bridge can bear.
+        <em>Did</em> that change improve the outcome? <em>Would</em> the result have been different
+        if we'd acted? Yet the data we have is overwhelmingly <strong>correlational</strong> — it
+        tells us what went together, not what caused what. <Term>Causal inference</Term> is the
+        discipline of bridging that gap: getting from "these two things move together" to "this one
+        made that one happen", and being honest about how much confidence the bridge can bear.
       </p>
       <p>
         It's the question I care about most in government-analyst work, because the alternative —
-        mistaking a coincidence for an effect — leads to acting on things that don't work and crediting
-        interventions for changes they didn't cause. This page is the toolkit, from the gold-standard
-        experiment to the methods you reach for when you can't run one.
+        mistaking a coincidence for an effect — leads to acting on things that don't work and
+        crediting interventions for changes they didn't cause. This page is the toolkit, from the
+        gold-standard experiment to the methods you reach for when you can't run one.
       </p>
 
       <KSection id="why" eyebrow="01" title="Correlation isn't enough">
@@ -85,27 +166,35 @@ function EnBody() {
           together, there are several possibilities, and only one is the one you want:
         </p>
         <ul>
-          <li><TeX>{TEX.X}</TeX> causes <TeX>{TEX.Y}</TeX> (what you hope).</li>
-          <li><TeX>{TEX.Y}</TeX> causes <TeX>{TEX.X}</TeX> (reverse causation).</li>
           <li>
-            Some third thing <TeX>{TEX.Z}</TeX> causes <em>both</em> (a <Term>confounder</Term> — the
-            classic "ice-cream sales and drownings both rise with temperature").
+            <TeX>{TEX.X}</TeX> causes <TeX>{TEX.Y}</TeX> (what you hope).
+          </li>
+          <li>
+            <TeX>{TEX.Y}</TeX> causes <TeX>{TEX.X}</TeX> (reverse causation).
+          </li>
+          <li>
+            Some third thing <TeX>{TEX.Z}</TeX> causes <em>both</em> (a <Term>confounder</Term> —
+            the classic "ice-cream sales and drownings both rise with temperature").
           </li>
           <li>It's coincidence (especially with small samples or many comparisons).</li>
         </ul>
         <p>
-          The whole field is machinery for ruling out the second, third, and fourth so you're left with
-          the first. The cleanest way to do that is to <em>intervene</em> — and that's where experiments
-          come in.
+          The whole field is machinery for ruling out the second, third, and fourth so you're left
+          with the first. The cleanest way to do that is to <em>intervene</em> — and that's where
+          experiments come in.
         </p>
       </KSection>
 
-      <KSection id="counterfactual" eyebrow="02" title="The counterfactual: what would have happened">
+      <KSection
+        id="counterfactual"
+        eyebrow="02"
+        title="The counterfactual: what would have happened"
+      >
         <p>
           The modern way to define a causal effect is the <Term>potential outcomes</Term> framework.
-          For a unit (a person, a region, a case), imagine two parallel worlds: one where it receives
-          the treatment, with outcome <TeX>{TEX.Y1}</TeX>, and one where it doesn't, with outcome{" "}
-          <TeX>{TEX.Y0}</TeX>. The causal effect for that unit is the difference:
+          For a unit (a person, a region, a case), imagine two parallel worlds: one where it
+          receives the treatment, with outcome <TeX>{TEX.Y1}</TeX>, and one where it doesn't, with
+          outcome <TeX>{TEX.Y0}</TeX>. The causal effect for that unit is the difference:
         </p>
         <Formula label="The individual treatment effect is Y(1) minus Y(0), the difference between the outcome with treatment and the outcome without.">
           {TEX.ite}
@@ -113,17 +202,17 @@ function EnBody() {
         <p>
           Here's the catch, and it has a grand name: the{" "}
           <Term>fundamental problem of causal inference</Term>. For any single unit you only ever
-          observe <em>one</em> of those two worlds — the person either got the treatment or didn't. The
-          other outcome, the <Term>counterfactual</Term>, is forever missing. You can never measure an
-          individual effect directly.
+          observe <em>one</em> of those two worlds — the person either got the treatment or didn't.
+          The other outcome, the <Term>counterfactual</Term>, is forever missing. You can never
+          measure an individual effect directly.
         </p>
         <Callout type="intuition">
           <p>
             The escape hatch is to stop chasing individuals and estimate an <em>average</em>. If you
             have a treated group and a comparable untreated group, the difference in their average
-            outcomes estimates the <Term>average treatment effect</Term> (ATE), <TeX>{TEX.ateExp}</TeX>.
-            Everything hinges on that word <strong>comparable</strong>: the two groups must differ in
-            nothing but the treatment. Achieving that is the entire game.
+            outcomes estimates the <Term>average treatment effect</Term> (ATE),{" "}
+            <TeX>{TEX.ateExp}</TeX>. Everything hinges on that word <strong>comparable</strong>: the
+            two groups must differ in nothing but the treatment. Achieving that is the entire game.
           </p>
         </Callout>
       </KSection>
@@ -131,55 +220,55 @@ function EnBody() {
       <KSection id="rct" eyebrow="03" title="The gold standard: randomise">
         <p>
           How do you make two groups comparable in <em>everything</em> — including things you didn't
-          measure or never thought of? You can't match them by hand on infinite variables. But there is
-          one almost magical trick: <strong>assign the treatment at random</strong>. This is the{" "}
+          measure or never thought of? You can't match them by hand on infinite variables. But there
+          is one almost magical trick: <strong>assign the treatment at random</strong>. This is the{" "}
           <Term>randomised controlled trial</Term> (RCT).
         </p>
         <p>
           Randomisation works because, with enough units, it makes the treatment and control groups{" "}
           <em>statistically identical on average</em> — same age mix, same prior behaviour, same
-          everything, measured or not. Any confounder is balanced across both groups by chance, so the
-          only systematic difference left is the treatment itself. That's why the simple difference in
-          group averages becomes a credible causal estimate:
+          everything, measured or not. Any confounder is balanced across both groups by chance, so
+          the only systematic difference left is the treatment itself. That's why the simple
+          difference in group averages becomes a credible causal estimate:
         </p>
         <Formula label="The estimated average treatment effect is the mean outcome of the treated group minus the mean outcome of the control group.">
           {TEX.ate}
         </Formula>
         <p>
           Randomisation is the only method that handles <em>unknown</em> confounders for free. Every
-          observational method below is, in essence, an attempt to approximate what randomisation gives
-          you automatically.
+          observational method below is, in essence, an attempt to approximate what randomisation
+          gives you automatically.
         </p>
       </KSection>
 
       <KSection id="abtest" eyebrow="04" title="A/B testing: the RCT in the wild">
         <p>
           An <Term>A/B test</Term> is just an RCT run on a product or process: split users at random
-          into A (control) and B (treatment), show each group a different version, and compare a chosen
-          metric. It's the workhorse of evidence-based decisions — and getting it right is more subtle
-          than "ship it and check":
+          into A (control) and B (treatment), show each group a different version, and compare a
+          chosen metric. It's the workhorse of evidence-based decisions — and getting it right is
+          more subtle than "ship it and check":
         </p>
         <ul>
           <li>
-            <strong>Power and sample size first.</strong> Decide before you start how big an effect you
-            care about and how many units you need to detect it (the{" "}
-            <Link href="/knowledge/statistics">statistical power</Link> calculation). Underpowered tests
-            fail to find real effects and waste the experiment.
+            <strong>Power and sample size first.</strong> Decide before you start how big an effect
+            you care about and how many units you need to detect it (the{" "}
+            <Link href="/knowledge/statistics">statistical power</Link> calculation). Underpowered
+            tests fail to find real effects and waste the experiment.
           </li>
           <li>
-            <strong>Don't peek.</strong> Repeatedly checking results and stopping the moment they look
-            significant inflates false positives badly — every peek is another roll of the dice. Fix the
-            sample size (or use a proper sequential-testing method) and wait.
+            <strong>Don't peek.</strong> Repeatedly checking results and stopping the moment they
+            look significant inflates false positives badly — every peek is another roll of the
+            dice. Fix the sample size (or use a proper sequential-testing method) and wait.
           </li>
           <li>
-            <strong>One change, one metric.</strong> Define the primary metric up front. Testing twenty
-            metrics and celebrating whichever turns significant is just{" "}
+            <strong>One change, one metric.</strong> Define the primary metric up front. Testing
+            twenty metrics and celebrating whichever turns significant is just{" "}
             <Link href="/knowledge/statistics">multiple comparisons</Link> in disguise.
           </li>
           <li>
             <strong>Check the randomisation held.</strong> Sanity-check that the groups really are
-            balanced on known covariates, and watch for leakage (users in both arms, network spillover
-            between them).
+            balanced on known covariates, and watch for leakage (users in both arms, network
+            spillover between them).
           </li>
         </ul>
       </KSection>
@@ -187,9 +276,9 @@ function EnBody() {
       <KSection id="confounders" eyebrow="05" title="Confounders, colliders & DAGs">
         <p>
           When you <em>can't</em> randomise, you have to reason explicitly about which variables to
-          adjust for — and the surprise is that adjusting for the wrong one makes things <em>worse</em>.
-          A <Term>causal diagram</Term> (a DAG — directed acyclic graph) draws each variable as a node
-          and each causal arrow between them, making the structure visible.
+          adjust for — and the surprise is that adjusting for the wrong one makes things{" "}
+          <em>worse</em>. A <Term>causal diagram</Term> (a DAG — directed acyclic graph) draws each
+          variable as a node and each causal arrow between them, making the structure visible.
         </p>
         <DagFigure
           caption="A confounder (Z) sits upstream of both treatment and outcome and creates a spurious association — you must adjust for it. A collider (C) sits downstream of both; adjusting for it opens a fake association that wasn't there. Same-looking variables, opposite advice."
@@ -199,48 +288,49 @@ function EnBody() {
         />
         <p>
           A <Term>confounder</Term> is a common cause of both treatment and outcome — leave it
-          unadjusted and it fakes an effect; adjusting for it removes the bias. A <Term>collider</Term>{" "}
-          is a common <em>effect</em> of both — and adjusting for it <em>creates</em> a spurious
-          association that wasn't there. They look similar and demand opposite handling, which is
-          exactly why drawing the diagram first beats blindly "controlling for everything".
+          unadjusted and it fakes an effect; adjusting for it removes the bias. A{" "}
+          <Term>collider</Term> is a common <em>effect</em> of both — and adjusting for it{" "}
+          <em>creates</em> a spurious association that wasn't there. They look similar and demand
+          opposite handling, which is exactly why drawing the diagram first beats blindly
+          "controlling for everything".
         </p>
       </KSection>
 
       <KSection id="observational" eyebrow="06" title="When you can't randomise">
         <p>
           Often randomising is impossible or unethical — you can't randomly assign a policy, a major
-          life event, or who gets investigated. Quasi-experimental methods exploit natural variation to
-          mimic an experiment. The main ones, weakest assumptions to strongest:
+          life event, or who gets investigated. Quasi-experimental methods exploit natural variation
+          to mimic an experiment. The main ones, weakest assumptions to strongest:
         </p>
         <ul>
           <li>
-            <Term>Matching / regression adjustment</Term> — build a comparison group that looks like the
-            treated group on observed variables (propensity-score matching is the common flavour). Only
-            as good as the confounders you measured.
+            <Term>Matching / regression adjustment</Term> — build a comparison group that looks like
+            the treated group on observed variables (propensity-score matching is the common
+            flavour). Only as good as the confounders you measured.
           </li>
           <li>
-            <Term>Difference-in-differences</Term> — compare the <em>change</em> over time in a treated
-            group against the change in an untreated group. If both groups would have moved in parallel
-            without the treatment, the extra movement is the effect. Cancels out anything fixed about
-            each group.
+            <Term>Difference-in-differences</Term> — compare the <em>change</em> over time in a
+            treated group against the change in an untreated group. If both groups would have moved
+            in parallel without the treatment, the extra movement is the effect. Cancels out
+            anything fixed about each group.
           </li>
           <li>
-            <Term>Instrumental variables</Term> — find a variable that nudges treatment but affects the
-            outcome <em>only</em> through it, and use it to isolate causal variation.
+            <Term>Instrumental variables</Term> — find a variable that nudges treatment but affects
+            the outcome <em>only</em> through it, and use it to isolate causal variation.
           </li>
           <li>
             <Term>Regression discontinuity</Term> — when treatment switches at a sharp threshold (a
-            cutoff score, an age limit), units just either side are near-identical, so comparing them
-            approximates a local experiment.
+            cutoff score, an age limit), units just either side are near-identical, so comparing
+            them approximates a local experiment.
           </li>
         </ul>
         <Callout type="note">
           <p>
             These sit on a spectrum of <strong>internal validity</strong>: a clean RCT is strongest,
             then regression discontinuity and difference-in-differences, then matching, then plain
-            regression on observational data. None of them rescues a study from an unmeasured confounder
-            the way randomisation does — they trade the experiment's guarantee for an assumption you have
-            to argue for honestly.
+            regression on observational data. None of them rescues a study from an unmeasured
+            confounder the way randomisation does — they trade the experiment's guarantee for an
+            assumption you have to argue for honestly.
           </p>
         </Callout>
       </KSection>
@@ -249,14 +339,14 @@ function EnBody() {
         <p>Even careful analysts get fooled. The recurring traps:</p>
         <ul>
           <li>
-            <Term>Simpson's paradox</Term> — a trend that appears in every subgroup can <em>reverse</em>{" "}
-            when the groups are combined (or vice versa). Aggregation can flip the sign of an effect, so
-            always ask whether a lurking variable is splitting the data.
+            <Term>Simpson's paradox</Term> — a trend that appears in every subgroup can{" "}
+            <em>reverse</em> when the groups are combined (or vice versa). Aggregation can flip the
+            sign of an effect, so always ask whether a lurking variable is splitting the data.
           </li>
           <li>
-            <Term>Selection bias</Term> — when who ends up in your data is related to the outcome (only
-            successful cases get recorded, only certain people respond). The sample no longer represents
-            the population, and effects get manufactured.
+            <Term>Selection bias</Term> — when who ends up in your data is related to the outcome
+            (only successful cases get recorded, only certain people respond). The sample no longer
+            represents the population, and effects get manufactured.
           </li>
           <li>
             <Term>Regression to the mean</Term> — extreme values tend to be followed by less extreme
@@ -281,17 +371,17 @@ function EnBody() {
               changed anyway?
             </strong>{" "}
             You rarely get to randomise a policy, so the craft is reaching honestly for the right
-            quasi-experimental tool — a <strong>difference-in-differences</strong> against a comparable
-            area, a <strong>regression discontinuity</strong> at an eligibility cutoff — and being clear
-            about the assumption it rests on, rather than letting a before-after correlation masquerade
-            as proof.
+            quasi-experimental tool — a <strong>difference-in-differences</strong> against a
+            comparable area, a <strong>regression discontinuity</strong> at an eligibility cutoff —
+            and being clear about the assumption it rests on, rather than letting a before-after
+            correlation masquerade as proof.
           </p>
           <p>
             It also keeps me honest about the traps: a drop after an intervention might be{" "}
             <strong>regression to the mean</strong>, a subgroup pattern might be{" "}
             <strong>Simpson's paradox</strong>, and a confident effect might vanish once the{" "}
-            <strong>confounder</strong> is drawn into the picture. Getting this right is the difference
-            between advice that holds up and advice that just sounds data-driven.
+            <strong>confounder</strong> is drawn into the picture. Getting this right is the
+            difference between advice that holds up and advice that just sounds data-driven.
           </p>
         </Callout>
       </KSection>
@@ -311,17 +401,19 @@ function EnBody() {
             </li>
             <li>
               <strong>Randomisation</strong> (RCT / A/B test) is the gold standard — it balances{" "}
-              <em>unknown</em> confounders for free. A/B tips: power up front, <strong>don't peek</strong>,
-              one primary metric, check balance.
+              <em>unknown</em> confounders for free. A/B tips: power up front,{" "}
+              <strong>don't peek</strong>, one primary metric, check balance.
             </li>
             <li>
-              Draw a <strong>DAG</strong>: adjust for <strong>confounders</strong> (common causes), never
-              for <strong>colliders</strong> (common effects — adjusting fakes an association).
+              Draw a <strong>DAG</strong>: adjust for <strong>confounders</strong> (common causes),
+              never for <strong>colliders</strong> (common effects — adjusting fakes an
+              association).
             </li>
             <li>
               Can't randomise?{" "}
               <strong>
-                Matching, difference-in-differences, instrumental variables, regression discontinuity
+                Matching, difference-in-differences, instrumental variables, regression
+                discontinuity
               </strong>{" "}
               — weaker, assumption-dependent approximations of an experiment.
             </li>
@@ -332,9 +424,9 @@ function EnBody() {
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          The internal-validity spectrum (RCT → RDD/DiD → matching) and A/B pitfalls (peeking, power,
-          multiple metrics) reflect current causal-inference and experimentation references alongside
-          coursework.
+          The internal-validity spectrum (RCT → RDD/DiD → matching) and A/B pitfalls (peeking,
+          power, multiple metrics) reflect current causal-inference and experimentation references
+          alongside coursework.
         </p>
       </KSection>
     </>
@@ -364,8 +456,12 @@ function ZhBody() {
           <TeX>{TEX.X}</TeX> 与 <TeX>{TEX.Y}</TeX>，一起变动时，有好几种可能，而只有一种是你想要的：
         </p>
         <ul>
-          <li><TeX>{TEX.X}</TeX> 导致 <TeX>{TEX.Y}</TeX>（你所希望的）。</li>
-          <li><TeX>{TEX.Y}</TeX> 导致 <TeX>{TEX.X}</TeX>（反向因果）。</li>
+          <li>
+            <TeX>{TEX.X}</TeX> 导致 <TeX>{TEX.Y}</TeX>（你所希望的）。
+          </li>
+          <li>
+            <TeX>{TEX.Y}</TeX> 导致 <TeX>{TEX.X}</TeX>（反向因果）。
+          </li>
           <li>
             某个第三者 <TeX>{TEX.Z}</TeX> 导致<em>两者</em>（一个<Term>混杂因子</Term>——经典的「冰
             淇淋销量与溺水都随气温上升」）。
@@ -394,9 +490,10 @@ function ZhBody() {
         </p>
         <Callout type="intuition">
           <p>
-            逃生口是不再追逐个体，而去估计一个<em>平均</em>。如果你有一个处理组和一个可比的未处理组，
-            它们平均结果之差，便估计了<Term>平均处理效应</Term>（ATE），<TeX>{TEX.ateExp}</TeX>。一切
-            都系于<strong>可比</strong>这个词：两组除了处理之外，必须没有任何不同。做到这点，就是全部
+            逃生口是不再追逐个体，而去估计一个<em>平均</em>
+            。如果你有一个处理组和一个可比的未处理组， 它们平均结果之差，便估计了
+            <Term>平均处理效应</Term>（ATE），<TeX>{TEX.ateExp}</TeX>。一切 都系于
+            <strong>可比</strong>这个词：两组除了处理之外，必须没有任何不同。做到这点，就是全部
             的游戏。
           </p>
         </Callout>
@@ -409,8 +506,9 @@ function ZhBody() {
           <Term>随机对照试验</Term>（RCT）。
         </p>
         <p>
-          随机化之所以有效，是因为在足够多的单元下，它让处理组与对照组在平均意义上<em>统计上完全相同
-          </em>——同样的年龄构成、同样的既往行为、同样的一切，无论是否被测量。任何混杂因子都因偶然而
+          随机化之所以有效，是因为在足够多的单元下，它让处理组与对照组在平均意义上
+          <em>统计上完全相同</em>
+          ——同样的年龄构成、同样的既往行为、同样的一切，无论是否被测量。任何混杂因子都因偶然而
           在两组间被平衡，所以剩下的唯一系统性差异，就是处理本身。这就是为什么简单的组均值之差，会
           成为一个可信的因果估计：
         </p>
@@ -431,20 +529,24 @@ function ZhBody() {
         </p>
         <ul>
           <li>
-            <strong>先算功效与样本量。</strong>在开始之前就决定你在意多大的效应、以及需要多少单元才能
-            检测到它（<Link href="/knowledge/statistics">统计功效</Link>的计算）。功效不足的测试找不到
+            <strong>先算功效与样本量。</strong>
+            在开始之前就决定你在意多大的效应、以及需要多少单元才能 检测到它（
+            <Link href="/knowledge/statistics">统计功效</Link>的计算）。功效不足的测试找不到
             真实的效应，白白浪费了实验。
           </li>
           <li>
-            <strong>不要偷看。</strong>反复查看结果、一看起来显著就停手，会严重抬高假阳性——每一次偷看
+            <strong>不要偷看。</strong>
+            反复查看结果、一看起来显著就停手，会严重抬高假阳性——每一次偷看
             都是又掷一次骰子。固定样本量（或使用一种正规的序贯检验方法），然后等待。
           </li>
           <li>
-            <strong>一个改变，一个指标。</strong>事先定义主指标。测二十个指标、再为碰巧显著的那个庆祝，
-            不过是<Link href="/knowledge/statistics">多重比较</Link>的伪装。
+            <strong>一个改变，一个指标。</strong>
+            事先定义主指标。测二十个指标、再为碰巧显著的那个庆祝， 不过是
+            <Link href="/knowledge/statistics">多重比较</Link>的伪装。
           </li>
           <li>
-            <strong>检查随机化是否成立。</strong>合理性检查各组在已知协变量上是否真的平衡，并留意泄漏
+            <strong>检查随机化是否成立。</strong>
+            合理性检查各组在已知协变量上是否真的平衡，并留意泄漏
             （用户同时在两臂中、它们之间的网络溢出）。
           </li>
         </ul>
@@ -464,8 +566,9 @@ function ZhBody() {
         />
         <p>
           一个<Term>混杂因子</Term>是处理与结果两者的共同<em>原因</em>——不调整它，它就伪造一个效应；
-          调整它则消除偏倚。一个<Term>对撞因子</Term>是两者的共同<em>结果</em>——而调整它会<em>制造
-          </em>一个本不存在的虚假关联。它们看起来相似，却要求相反的处理，这正是为什么先画图胜过盲目地
+          调整它则消除偏倚。一个<Term>对撞因子</Term>是两者的共同<em>结果</em>——而调整它会
+          <em>制造</em>
+          一个本不存在的虚假关联。它们看起来相似，却要求相反的处理，这正是为什么先画图胜过盲目地
           「把一切都控制住」。
         </p>
       </KSection>
@@ -528,14 +631,16 @@ function ZhBody() {
       <KSection id="applied" eyebrow="08" title="它在我工作中的体现">
         <Callout type="applied" label="干预拨动了指针吗？">
           <p>
-            在政府分析师工作中，因果问题才是要紧的那个：<strong>一项政策、项目或干预，真的改变了
-            结果吗——还是它本来也会改变？</strong>你很少能随机化一项政策，所以功夫在于诚实地求助于
-            对的准实验工具——对照一个可比地区的<strong>双重差分</strong>、在一个资格界限处的
+            在政府分析师工作中，因果问题才是要紧的那个：
+            <strong>一项政策、项目或干预，真的改变了 结果吗——还是它本来也会改变？</strong>
+            你很少能随机化一项政策，所以功夫在于诚实地求助于 对的准实验工具——对照一个可比地区的
+            <strong>双重差分</strong>、在一个资格界限处的
             <strong>断点回归</strong>——并把它所依赖的假设讲清楚，而非让一个前后对比的相关冒充证据。
           </p>
           <p>
-            它也让我对那些陷阱保持诚实：一次干预之后的下降可能是<strong>均值回归</strong>，一个子群的
-            模式可能是<strong>辛普森悖论</strong>，而一个自信的效应可能在<strong>混杂因子</strong>被
+            它也让我对那些陷阱保持诚实：一次干预之后的下降可能是<strong>均值回归</strong>
+            ，一个子群的 模式可能是<strong>辛普森悖论</strong>，而一个自信的效应可能在
+            <strong>混杂因子</strong>被
             画进图里之后就消失。把这件事做对，正是「站得住脚的建议」与「只是听起来数据驱动的建议」
             之间的区别。
           </p>
@@ -550,12 +655,13 @@ function ZhBody() {
               反向因果、混杂与巧合。
             </li>
             <li>
-              一个效应是 <TeX>{TEX.effShort}</TeX>——但你每个单元只能看到一个世界（<strong>根本问题
-              </strong>）。所以从一个可比的处理 vs 对照组估计一个<strong>平均</strong>。
+              一个效应是 <TeX>{TEX.effShort}</TeX>——但你每个单元只能看到一个世界（
+              <strong>根本问题</strong>）。所以从一个可比的处理 vs 对照组估计一个
+              <strong>平均</strong>。
             </li>
             <li>
-              <strong>随机化</strong>（RCT / A/B 测试）是黄金标准——它免费平衡<em>未知</em>的混杂因子。
-              A/B 贴士：先算功效、<strong>不要偷看</strong>、一个主指标、检查平衡。
+              <strong>随机化</strong>（RCT / A/B 测试）是黄金标准——它免费平衡<em>未知</em>
+              的混杂因子。 A/B 贴士：先算功效、<strong>不要偷看</strong>、一个主指标、检查平衡。
             </li>
             <li>
               画一张 <strong>DAG</strong>：对<strong>混杂因子</strong>（共同原因）做调整，绝不对

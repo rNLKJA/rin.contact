@@ -126,6 +126,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/causal-inference", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/data-visualisation", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/deep-learning", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/network-graph-analysis", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/feature-engineering", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/reproducibility", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
