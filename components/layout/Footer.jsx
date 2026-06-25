@@ -188,7 +188,7 @@ const Footer = () => {
               <Link href="/" className="text-white underline underline-offset-2 decoration-[#555555] hover:text-[#FF3C3C] hover:decoration-[#FF3C3C] transition-colors duration-200">
                 rNLKJA
               </Link>
-              . All rights reserved.
+              {" · "}{t("common.copyright")}
             </p>
           </div>
         </div>
