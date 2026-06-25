@@ -423,6 +423,13 @@ export default function ResumePage() {
         locale={locale}
       />
 
+      {/* Visually-hidden page heading. The terminal UI has no visible heading by
+          design, but the page still needs an h1 for screen-reader navigation and
+          SEO — without it this page had no headings at all. */}
+      <h1 className="sr-only">
+        {isZh ? "交互式命令行简历 — 黄孙创宇 (Rin Huang)" : "Interactive CLI Resume — Sunchuangyu (Rin) Huang"}
+      </h1>
+
       {/* Locale context header */}
       {isZh && (
         <div className="bg-[#0C0C0C] border-b border-[#181818] px-6 py-3">

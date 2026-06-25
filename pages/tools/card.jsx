@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import SeoHead from "@/components/seo/SeoHead";
@@ -204,11 +203,6 @@ export default function CardPage() {
 
   return (
     <>
-      <Head>
-        <title>{t("cardPage.metaTitle")}</title>
-        <meta name="description" content={t("cardPage.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/tools/card" />
-      </Head>
       <SeoHead
         title={t("cardPage.metaTitle")}
         description={t("cardPage.metaDescription")}
@@ -220,6 +214,10 @@ export default function CardPage() {
         }}
         locale={locale}
       />
+
+      {/* Visually-hidden page heading for screen-reader navigation and SEO; the
+          card UI shows no visible heading by design. */}
+      <h1 className="sr-only">{t("cardPage.ogTitle")} — {t("common.siteName")}</h1>
 
       <div className="min-h-screen bg-[#F5F5F5] dark:bg-[#0A0A0A] flex flex-col items-center justify-center px-6 py-20">
 
