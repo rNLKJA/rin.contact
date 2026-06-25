@@ -1220,6 +1220,76 @@
       "b2": "• Location: Melbourne → Adelaide",
       "b3": "• Domain: Added government, research, startup",
       "action": "Recommended action: Retrain. Visit /career for updated data."
+    },
+    "modelCard": {
+      "metaTitle": "Model Card — rin.contact",
+      "metaDescription": "Rin Huang as an ML model — architecture, training data, limitations.",
+      "ogTitle": "Model Card",
+      "ogSubtitle": "Rin Huang as an ML model — architecture, training data",
+      "heading": "Model Card: Rin Huang",
+      "subtitle": "A model card describes a trained ML model. This one describes a human.",
+      "secModelDetails": "Model details",
+      "secPerformance": "Performance",
+      "secKnownBiases": "Known biases",
+      "secLimitations": "Limitations",
+      "details": [
+        { "label": "Model type", "value": "GeneralistClassifier (human)" },
+        { "label": "Architecture", "value": "Master of Data Science, BSc, 7 roles, 1 startup" },
+        { "label": "Training date", "value": "2018–present (continuous)" },
+        { "label": "Framework", "value": "University of Melbourne, CSIRO, WEHI, SAPOL" }
+      ],
+      "performance": [
+        { "label": "Projects shipped", "value": "21" },
+        { "label": "Certifications", "value": "23" },
+        { "label": "Uptime", "value": "~26 years (with coffee)" }
+      ],
+      "biases": [
+        { "label": "Overfits on", "value": "Python, pandas, SQL" },
+        { "label": "Underfits on", "value": "Rust (borrow checker still winning)" }
+      ],
+      "limitations": [
+        { "label": "Degrades after", "value": "2am (debugging at midnight)" },
+        { "label": "Recommended use", "value": "Government, research, startups, analytics" }
+      ]
+    },
+    "featureImportance": {
+      "metaTitle": "Feature Importance — rin.contact",
+      "metaDescription": "SHAP-style feature importance for Rin Huang.",
+      "ogTitle": "Feature Importance",
+      "ogSubtitle": "SHAP-style feature importance for Rin Huang.",
+      "heading": "Feature Importance",
+      "subtitle": "What contributes most to \"being Rin\"? SHAP values (simplified).",
+      "footnote": "* Not actual SHAP. Feature importance is approximate. Coffee is not a real feature.",
+      "names": ["Coffee", "Python", "Spreadsheets", "SQL", "Government", "Research", "Mentorship", "React", "Rust"]
+    },
+    "confusionMatrix": {
+      "metaTitle": "Confusion Matrix — rin.contact",
+      "metaDescription": "What people think vs what Rin actually does.",
+      "ogTitle": "Confusion Matrix",
+      "ogSubtitle": "What people think vs what Rin actually does.",
+      "heading": "Confusion Matrix",
+      "subtitle": "Predicted (what people think) vs Actual (what Rin does). Precision: questionable.",
+      "thPredicted": "Predicted",
+      "thActual": "Actual",
+      "thMatch": "Match",
+      "footer": "Precision: 0.5 · Recall: 0.5 · F1: 0.5 · Interpretation: everyone is confused",
+      "rows": [
+        { "who": "Recruiter thinks", "reality": "Analyses spreadsheets" },
+        { "who": "Mum thinks", "reality": "Fixes computers" },
+        { "who": "Friend thinks", "reality": "Makes charts" },
+        { "who": "Rin actually does", "reality": "Analyses spreadsheets" }
+      ]
+    },
+    "ensemble": {
+      "metaTitle": "Ensemble — rin.contact",
+      "metaDescription": "Rin Huang as an ensemble model.",
+      "ogTitle": "Ensemble",
+      "ogSubtitle": "Rin Huang as an ensemble model.",
+      "heading": "Ensemble Model",
+      "subtitle": "Rin is an ensemble of multiple weak learners. Averaging reduces variance.",
+      "types": ["Analyst", "Engineer", "Researcher", "Mentor", "Coffee consumer"],
+      "finalLabel": "Final prediction:",
+      "finalNote": "Weighted average of all components. No single model dominates."
     }
   }
 }

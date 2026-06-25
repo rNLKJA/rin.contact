@@ -1220,6 +1220,76 @@
       "b2": "• 地点：墨尔本 → 阿德莱德",
       "b3": "• 领域：新增政府、研究、创业",
       "action": "建议操作：重训。访问 /career 获取更新数据。"
+    },
+    "modelCard": {
+      "metaTitle": "模型卡 — rin.contact",
+      "metaDescription": "把 Rin Huang 当作一个 ML 模型——架构、训练数据、局限性。",
+      "ogTitle": "模型卡",
+      "ogSubtitle": "把 Rin Huang 当作一个 ML 模型——架构、训练数据",
+      "heading": "模型卡：Rin Huang",
+      "subtitle": "模型卡描述一个训练好的 ML 模型。这一张描述一个人。",
+      "secModelDetails": "模型详情",
+      "secPerformance": "性能",
+      "secKnownBiases": "已知偏差",
+      "secLimitations": "局限性",
+      "details": [
+        { "label": "模型类型", "value": "GeneralistClassifier（人类）" },
+        { "label": "架构", "value": "数据科学硕士、理学学士、7 个角色、1 家创业公司" },
+        { "label": "训练日期", "value": "2018–至今（持续）" },
+        { "label": "框架", "value": "University of Melbourne、CSIRO、WEHI、SAPOL" }
+      ],
+      "performance": [
+        { "label": "已交付项目", "value": "21" },
+        { "label": "认证", "value": "23" },
+        { "label": "正常运行时间", "value": "约 26 年（靠咖啡）" }
+      ],
+      "biases": [
+        { "label": "过拟合于", "value": "Python、pandas、SQL" },
+        { "label": "欠拟合于", "value": "Rust（借用检查器仍占上风）" }
+      ],
+      "limitations": [
+        { "label": "之后性能下降", "value": "凌晨 2 点（午夜调试）" },
+        { "label": "推荐用途", "value": "政府、研究、创业、分析" }
+      ]
+    },
+    "featureImportance": {
+      "metaTitle": "特征重要性 — rin.contact",
+      "metaDescription": "Rin Huang 的 SHAP 式特征重要性。",
+      "ogTitle": "特征重要性",
+      "ogSubtitle": "Rin Huang 的 SHAP 式特征重要性。",
+      "heading": "特征重要性",
+      "subtitle": "什么对「成为 Rin」贡献最大？SHAP 值（简化版）。",
+      "footnote": "* 并非真正的 SHAP。特征重要性为近似值。咖啡不是一个真实特征。",
+      "names": ["咖啡", "Python", "电子表格", "SQL", "政府", "研究", "指导", "React", "Rust"]
+    },
+    "confusionMatrix": {
+      "metaTitle": "混淆矩阵 — rin.contact",
+      "metaDescription": "人们以为的 vs Rin 实际做的。",
+      "ogTitle": "混淆矩阵",
+      "ogSubtitle": "人们以为的 vs Rin 实际做的。",
+      "heading": "混淆矩阵",
+      "subtitle": "预测（人们以为的）vs 实际（Rin 做的）。精确率：存疑。",
+      "thPredicted": "预测",
+      "thActual": "实际",
+      "thMatch": "匹配",
+      "footer": "精确率：0.5 · 召回率：0.5 · F1：0.5 · 解读：所有人都很困惑",
+      "rows": [
+        { "who": "招聘者以为", "reality": "分析电子表格" },
+        { "who": "妈妈以为", "reality": "修电脑" },
+        { "who": "朋友以为", "reality": "做图表" },
+        { "who": "Rin 实际做", "reality": "分析电子表格" }
+      ]
+    },
+    "ensemble": {
+      "metaTitle": "集成 — rin.contact",
+      "metaDescription": "把 Rin Huang 当作一个集成模型。",
+      "ogTitle": "集成",
+      "ogSubtitle": "把 Rin Huang 当作一个集成模型。",
+      "heading": "集成模型",
+      "subtitle": "Rin 是多个弱学习器的集成。取平均能降低方差。",
+      "types": ["分析师", "工程师", "研究员", "导师", "咖啡消费者"],
+      "finalLabel": "最终预测：",
+      "finalNote": "所有组件的加权平均。没有单一模型占据主导。"
     }
   }
 }
