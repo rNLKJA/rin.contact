@@ -141,6 +141,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/differential-privacy", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/survival-analysis", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/information-retrieval", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/large-language-models", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/topic-modelling", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/knowledge-graphs", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────

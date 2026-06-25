@@ -1080,6 +1080,14 @@
           {
             "label": "Information Retrieval & Search",
             "note": "Inverted index, BM25, dense & hybrid retrieval"
+          },
+          {
+            "label": "Large Language Models",
+            "note": "Next-token prediction, RLHF, hallucination, RAG"
+          },
+          {
+            "label": "Topic Modelling",
+            "note": "LDA, themes without labels, choosing topics"
           }
         ]
       },
@@ -1130,6 +1138,10 @@
           {
             "label": "Differential Privacy",
             "note": "Re-identification, epsilon, calibrated noise, utility"
+          },
+          {
+            "label": "Knowledge Graphs",
+            "note": "Triples, ontologies, entity resolution, GraphRAG"
           }
         ]
       },

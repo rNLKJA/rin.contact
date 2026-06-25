@@ -10,10 +10,19 @@ import { KSection, Callout, Figure, Term } from "@/components/knowledge/Knowledg
  */
 
 const GLOBAL_PTS = [
-  [60, 55], [90, 45], [120, 65], [75, 80], [110, 95], [140, 78], [95, 110], [130, 105],
+  [60, 55],
+  [90, 45],
+  [120, 65],
+  [75, 80],
+  [110, 95],
+  [140, 78],
+  [95, 110],
+  [130, 105],
 ];
 const LOCAL_PTS = [
-  [300, 70], [360, 60], [330, 100],
+  [300, 70],
+  [360, 60],
+  [330, 100],
 ];
 
 function GlobalLocalFigure({ caption, ariaLabel, globalLabel, localLabel, whyLabel }) {
@@ -26,19 +35,65 @@ function GlobalLocalFigure({ caption, ariaLabel, globalLabel, localLabel, whyLab
         aria-label={ariaLabel}
       >
         {/* global */}
-        <text x="105" y="22" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.7">{globalLabel}</text>
+        <text
+          x="105"
+          y="22"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {globalLabel}
+        </text>
         {GLOBAL_PTS.map(([x, y], i) => (
           <circle key={i} cx={x} cy={y} r="4" fill="currentColor" opacity="0.45" />
         ))}
-        <rect x="44" y="36" width="120" height="86" rx="4" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.4" />
+        <rect
+          x="44"
+          y="36"
+          width="120"
+          height="86"
+          rx="4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.4"
+        />
         {/* local */}
-        <text x="330" y="22" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="#FF3C3C">{localLabel}</text>
+        <text
+          x="330"
+          y="22"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {localLabel}
+        </text>
         {LOCAL_PTS.map(([x, y], i) => (
           <circle key={`l${i}`} cx={x} cy={y} r="4" fill="currentColor" opacity="0.25" />
         ))}
         <circle cx="335" cy="78" r="9" fill="#FF3C3C" />
-        <circle cx="335" cy="78" r="20" fill="none" stroke="#FF3C3C" strokeWidth="1.2" strokeDasharray="3 3" />
-        <text x="335" y="120" textAnchor="middle" fontSize="8.5" fontFamily="monospace" fill="#FF3C3C">{whyLabel}</text>
+        <circle
+          cx="335"
+          cy="78"
+          r="20"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+          strokeDasharray="3 3"
+        />
+        <text
+          x="335"
+          y="120"
+          textAnchor="middle"
+          fontSize="8.5"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {whyLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -312,9 +367,11 @@ function ZhBody() {
     <>
       <p>
         最准确的模型——<Link href="/knowledge/ensemble-methods">提升的集成</Link>与
-        <Link href="/knowledge/deep-learning">深度网络</Link>——也是最不透明的。它们给出一个答案，却不
+        <Link href="/knowledge/deep-learning">深度网络</Link>
+        ——也是最不透明的。它们给出一个答案，却不
         附带理由。在赌注低时这没问题，而在输出影响到一个人的生活的那一刻——一笔贷款、一项福利、一场
-        调查、一个风险分数——就成了一个严重的问题。<Term>可解释 AI</Term>（XAI）是这样一门学科：从一个
+        调查、一个风险分数——就成了一个严重的问题。<Term>可解释 AI</Term>
+        （XAI）是这样一门学科：从一个
         黑箱里撬出一个人能理解的理由——并且，同样重要地，知道那个理由何时是真实的、何时是一个令人安慰的
         虚构。
       </p>
@@ -331,11 +388,13 @@ function ZhBody() {
             <strong>信任</strong>——人们（理所应当地）不会照一个他们不理解的推荐去行动。
           </li>
           <li>
-            <strong>调试</strong>——一个解释会揭示出一个模型何时是因为错误的原因而对（那个著名的案例：
+            <strong>调试</strong>
+            ——一个解释会揭示出一个模型何时是因为错误的原因而对（那个著名的案例：
             一个分类器检测的是雪、而非那只动物）。
           </li>
           <li>
-            <strong>问责</strong>——当一个决定影响到某人时，他们应得一个理由，而法律也越来越同意这一点
+            <strong>问责</strong>
+            ——当一个决定影响到某人时，他们应得一个理由，而法律也越来越同意这一点
             （一项「解释权」）。
           </li>
           <li>
@@ -348,20 +407,21 @@ function ZhBody() {
       <KSection id="tradeoff" eyebrow="02" title="准确度-可解释性权衡">
         <p>
           这个领域核心那个令人不适的张力：作为通则，一个模型越强大，它就越不可解释。一个
-          <Link href="/knowledge/linear-statistical-models">线性回归</Link>确切地告诉你每个特征如何推动
-          预测；一个 500 棵树的梯度提升模型则准确得多、也不透明得多。你往往没法同时拥有最高的准确度和
-          完全的透明。
+          <Link href="/knowledge/linear-statistical-models">线性回归</Link>
+          确切地告诉你每个特征如何推动 预测；一个 500
+          棵树的梯度提升模型则准确得多、也不透明得多。你往往没法同时拥有最高的准确度和 完全的透明。
         </p>
         <p>
-          有两种宽泛的应对，而对的那个取决于赌注。要么从一开始就用一个<strong>本质可解释</strong>的模型
-          （为透明接受一些准确度代价），要么用那个黑箱、之后再施加<strong>事后解释</strong>工具去解读它。
-          赌注越高、问责的要求越强，第一个选项就越值回它的票价。
+          有两种宽泛的应对，而对的那个取决于赌注。要么从一开始就用一个<strong>本质可解释</strong>
+          的模型 （为透明接受一些准确度代价），要么用那个黑箱、之后再施加<strong>事后解释</strong>
+          工具去解读它。 赌注越高、问责的要求越强，第一个选项就越值回它的票价。
         </p>
       </KSection>
 
       <KSection id="intrinsic" eyebrow="03" title="玻璃箱模型">
         <p>
-          通往一个解释最简单的路，是用一个本身<em>就是</em>那个解释的模型。这些<Term>本质可解释的</Term>
+          通往一个解释最简单的路，是用一个本身<em>就是</em>那个解释的模型。这些
+          <Term>本质可解释的</Term>
           （「玻璃箱」）模型，把它们的推理穿在表面上：
         </p>
         <ul>
@@ -377,7 +437,8 @@ function ZhBody() {
         </ul>
         <p>
           有一个强有力的论点——由 Cynthia Rudin 这样的研究者有力地提出——认为对于高赌注的决定，你应当
-          <strong>偏向一个本身就可解释的模型</strong>，而根本不要去拿一个黑箱加一个事后解释，因为那个
+          <strong>偏向一个本身就可解释的模型</strong>
+          ，而根本不要去拿一个黑箱加一个事后解释，因为那个
           解释也许并不忠实地反映模型实际做了什么。有时候，黑箱那一点点准确度的增益，不值得损失货真价实的
           透明。
         </p>
@@ -401,47 +462,54 @@ function ZhBody() {
           </li>
         </ul>
         <p>
-          这个区分要紧，因为一个被某决定影响的人想要一个<em>局部</em>解释（「为什么<em>我的</em>申请被
-          拒了？」），而一个审计员或开发者想要那个<em>全局</em>的图景。不同的工具服务于各自。
+          这个区分要紧，因为一个被某决定影响的人想要一个<em>局部</em>解释（「为什么<em>我的</em>
+          申请被 拒了？」），而一个审计员或开发者想要那个<em>全局</em>的图景。不同的工具服务于各自。
         </p>
       </KSection>
 
       <KSection id="importance" eyebrow="05" title="特征重要性——及其陷阱">
         <p>
-          最常见的全局解释是<Term>特征重要性</Term>：一个关于模型最依赖哪些输入的排名。它是一个有用的
-          初看——但它带着尖锐的陷阱。在<strong>相关的特征</strong>下，重要性可能在它们之间被任意地分摊
-          或错误归因，于是一个真正重要的因子看起来很弱（或反过来）。而且重要性告诉你一个特征<em>要紧
-          </em>，却不告诉你它往<em>哪个方向</em>推、或<em>对谁</em>。把一个原始的重要性排名当作一个起始
-          假设，而非一个结论。
+          最常见的全局解释是<Term>特征重要性</Term>
+          ：一个关于模型最依赖哪些输入的排名。它是一个有用的 初看——但它带着尖锐的陷阱。在
+          <strong>相关的特征</strong>下，重要性可能在它们之间被任意地分摊
+          或错误归因，于是一个真正重要的因子看起来很弱（或反过来）。而且重要性告诉你一个特征
+          <em>要紧</em>，却不告诉你它往<em>哪个方向</em>推、或<em>对谁</em>
+          。把一个原始的重要性排名当作一个起始 假设，而非一个结论。
         </p>
       </KSection>
 
       <KSection id="limeshap" eyebrow="06" title="LIME 与 SHAP：解释单个预测">
-        <p>解释任何黑箱的<em>局部</em>的两个主导工具：</p>
+        <p>
+          解释任何黑箱的<em>局部</em>的两个主导工具：
+        </p>
         <ul>
           <li>
             <Term>LIME</Term>（局部可解释、模型无关的解释）——为了解释一个预测，它用那个个案周围的小
-            变动去探测模型，并拟合一个简单的、可解释的模型（一个局部的线性近似），去<em>就在那里</em>
+            变动去探测模型，并拟合一个简单的、可解释的模型（一个局部的线性近似），去
+            <em>就在那里</em>
             模仿那个黑箱。直观，但解释可能不稳定——重跑一遍，你可能得到一个略有不同的说法。
           </li>
           <li>
-            <Term>SHAP</Term>（Shapley 加性解释）——当前的标准。它从合作博弈论借来 <Term>Shapley 值
-            </Term>，把一个预测的「功劳」公平地分给各个特征：把每个特征当作一名玩家，它计算每一个在
-            所有可能的组合上的平均贡献。结果有理论根基且一致，并且——很巧妙地——既给出<em>局部</em>归因
-            （为什么是这个个案），又通过聚合给出一个<em>全局</em>视图。
+            <Term>SHAP</Term>（Shapley 加性解释）——当前的标准。它从合作博弈论借来{" "}
+            <Term>Shapley 值</Term>
+            ，把一个预测的「功劳」公平地分给各个特征：把每个特征当作一名玩家，它计算每一个在
+            所有可能的组合上的平均贡献。结果有理论根基且一致，并且——很巧妙地——既给出<em>局部</em>
+            归因 （为什么是这个个案），又通过聚合给出一个<em>全局</em>视图。
           </li>
         </ul>
         <p>
-          两者都是<strong>模型无关的</strong>——它们把模型当作一个黑箱、从外面解释它，所以它们对从随机
-          森林到神经网络的任何东西都管用。SHAP 的一致性保证让它成了认真工作的默认选择，尽管它在计算上
-          更沉重。
+          两者都是<strong>模型无关的</strong>
+          ——它们把模型当作一个黑箱、从外面解释它，所以它们对从随机
+          森林到神经网络的任何东西都管用。SHAP
+          的一致性保证让它成了认真工作的默认选择，尽管它在计算上 更沉重。
         </p>
       </KSection>
 
       <KSection id="counterfactual" eyebrow="07" title="反事实解释">
         <p>
           对一个人而言，最<em>有用</em>的解释往往不是一串特征权重，而是对「什么本该不一样？」的一个
-          回答。一个<Term>反事实解释</Term>会说：「你的贷款被拒了；要是你的收入再高 5,000 美元，它本会
+          回答。一个<Term>反事实解释</Term>会说：「你的贷款被拒了；要是你的收入再高 5,000
+          美元，它本会
           被批准。」它可操作、直观，并且绕开了暴露模型内部的需要——你只需展示那个让决定翻转的、最接近的
           输入版本。对接收这个解释的那个人来说，那常常是真正帮得上忙的解释。
         </p>
@@ -449,14 +517,16 @@ function ZhBody() {
 
       <KSection id="limits" eyebrow="08" title="当解释误导时">
         <p>
-          整个领域里最重要的告诫：<strong>一个解释本身就是一个模型，而它可能是错的。</strong>事后方法是
-          对黑箱所做之事的近似——而非真品——而那道缝隙制造出真实的危险：
+          整个领域里最重要的告诫：<strong>一个解释本身就是一个模型，而它可能是错的。</strong>
+          事后方法是 对黑箱所做之事的近似——而非真品——而那道缝隙制造出真实的危险：
         </p>
         <Callout type="pitfall">
           <p>
             解释可能<strong>不稳定</strong>（LIME 在重跑时给出不同的说法）、<strong>不忠实</strong>
-            （一个看起来合理、却不符合模型真实推理的解释），并且——最阴险地——是<strong>虚假信心</strong>
-            的来源。一张干净的 SHAP 图让一个模型<em>感觉</em>可信、被理解了，而如果那个解释是近似的、
+            （一个看起来合理、却不符合模型真实推理的解释），并且——最阴险地——是
+            <strong>虚假信心</strong>
+            的来源。一张干净的 SHAP 图让一个模型<em>感觉</em>
+            可信、被理解了，而如果那个解释是近似的、
             模型其实有缺陷，这就很危险。甚至有研究在对抗性地愚弄解释方法，把一个有偏的模型藏在一个看
             起来无辜的解释后面。一个解释是要去盘问的证据，而非可以靠着歇息的保证。
           </p>
@@ -468,16 +538,18 @@ function ZhBody() {
           <p>
             在政府的环境里，这往往是究竟该用哪个模型的决定性因素。当一个输出为一个关于人的决定提供依据
             时，我必须能够<strong>向一个非技术的利益相关者为它辩护</strong>、并为它背书——所以
-            <strong>准确度-可解释性权衡</strong>不是学术问题：一个准确度略低的<strong>玻璃箱</strong>
+            <strong>准确度-可解释性权衡</strong>不是学术问题：一个准确度略低的
+            <strong>玻璃箱</strong>
             模型，可能恰恰因为它可辩护而是对的选择，而一个<strong>局部</strong>解释（SHAP，或一个反
             事实）正是让我能回答「为什么是这个个案？」的东西。
           </p>
           <p>
             它也是一件<strong>审计</strong>工具——解释正是我用来检查一个模型有没有悄悄依赖一个它不该
             依赖的代理变量的方式，而这是通往<Link href="/knowledge/fairness-bias">公平</Link>问题的
-            门口。而我把<strong>「解释可能误导」</strong>这个告诫贴身揣着：一张整洁的 SHAP 图是要去盘问
-            的证据，而非模型可靠的证明。它直接连到
-            <Link href="/knowledge/ensemble-methods">「何时不该去拿黑箱」</Link>的判断、以及贯穿本板块的
+            门口。而我把<strong>「解释可能误导」</strong>这个告诫贴身揣着：一张整洁的 SHAP
+            图是要去盘问 的证据，而非模型可靠的证明。它直接连到
+            <Link href="/knowledge/ensemble-methods">「何时不该去拿黑箱」</Link>
+            的判断、以及贯穿本板块的
             <Link href="/knowledge/data-governance">问责</Link>。
           </p>
         </Callout>
@@ -491,7 +563,8 @@ function ZhBody() {
               解释不了的决定，就是一个你辩护不了的。
             </li>
             <li>
-              <strong>准确度-可解释性权衡</strong>：强大的模型不透明。要么用一个<strong>玻璃箱</strong>
+              <strong>准确度-可解释性权衡</strong>：强大的模型不透明。要么用一个
+              <strong>玻璃箱</strong>
               模型（线性、单棵树、规则），要么施加<strong>事后</strong>解释。
             </li>
             <li>
@@ -506,14 +579,15 @@ function ZhBody() {
               <strong>反事实</strong>（「要是 X 不一样……」）对一个人来说常常是最可操作的解释。
             </li>
             <li>
-              那个大告诫：<strong>解释可能误导</strong>——不稳定、不忠实、虚假信心。要去盘问的证据，而非
-              一个保证。
+              那个大告诫：<strong>解释可能误导</strong>
+              ——不稳定、不忠实、虚假信心。要去盘问的证据，而非 一个保证。
             </li>
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          全局/局部的区分、SHAP 对 LIME 的比较，以及「解释可能误导」的告诫（还有偏向可解释模型的论点），
-          反映了当前的 XAI 参考文献以及亲身的工作。
+          全局/局部的区分、SHAP 对 LIME
+          的比较，以及「解释可能误导」的告诫（还有偏向可解释模型的论点）， 反映了当前的 XAI
+          参考文献以及亲身的工作。
         </p>
       </KSection>
     </>

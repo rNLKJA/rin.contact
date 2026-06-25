@@ -53,6 +53,8 @@ const TIERS = [
       { href: "/knowledge/recommender-systems", status: "live" },
       { href: "/knowledge/survival-analysis", status: "live" },
       { href: "/knowledge/information-retrieval", status: "live" },
+      { href: "/knowledge/large-language-models", status: "live" },
+      { href: "/knowledge/topic-modelling", status: "live" },
     ],
   },
   {
@@ -69,6 +71,7 @@ const TIERS = [
       { href: "/knowledge/explainable-ai", status: "live" },
       { href: "/knowledge/fairness-bias", status: "live" },
       { href: "/knowledge/differential-privacy", status: "live" },
+      { href: "/knowledge/knowledge-graphs", status: "live" },
     ],
   },
   {

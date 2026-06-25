@@ -18,25 +18,99 @@ function ProxyTrapFigure({ caption, ariaLabel, removedLabel, proxyLabels, modelL
         aria-label={ariaLabel}
       >
         {/* removed protected attribute */}
-        <rect x="20" y="20" width="120" height="26" rx="3" fill="none" stroke="#FF3C3C" strokeWidth="1.2" strokeDasharray="4 3" />
-        <text x="80" y="37" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{removedLabel}</text>
+        <rect
+          x="20"
+          y="20"
+          width="120"
+          height="26"
+          rx="3"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+          strokeDasharray="4 3"
+        />
+        <text x="80" y="37" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {removedLabel}
+        </text>
         {/* proxies */}
         {proxyLabels.map((t, i) => {
           const y = 64 + i * 20;
           return (
             <g key={i}>
-              <rect x="20" y={y} width="120" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="1" />
-              <text x="80" y={y + 11} textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor">{t}</text>
-              <line x1="140" y1={y + 8} x2="280" y2="78" stroke="currentColor" strokeWidth="0.8" opacity="0.5" />
+              <rect
+                x="20"
+                y={y}
+                width="120"
+                height="16"
+                rx="2"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+              <text
+                x="80"
+                y={y + 11}
+                textAnchor="middle"
+                fontSize="8"
+                fontFamily="monospace"
+                fill="currentColor"
+              >
+                {t}
+              </text>
+              <line
+                x1="140"
+                y1={y + 8}
+                x2="280"
+                y2="78"
+                stroke="currentColor"
+                strokeWidth="0.8"
+                opacity="0.5"
+              />
             </g>
           );
         })}
         {/* dashed link from removed attribute to proxies */}
-        <line x1="80" y1="46" x2="80" y2="64" stroke="#FF3C3C" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.6" />
+        <line
+          x1="80"
+          y1="46"
+          x2="80"
+          y2="64"
+          stroke="#FF3C3C"
+          strokeWidth="0.8"
+          strokeDasharray="2 2"
+          opacity="0.6"
+        />
         {/* model */}
-        <rect x="280" y="62" width="90" height="30" rx="4" fill="none" stroke="currentColor" strokeWidth="1.4" />
-        <text x="325" y="81" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill="currentColor">{modelLabel}</text>
-        <text x="325" y="112" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="#FF3C3C">{flowLabel}</text>
+        <rect
+          x="280"
+          y="62"
+          width="90"
+          height="30"
+          rx="4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+        />
+        <text
+          x="325"
+          y="81"
+          textAnchor="middle"
+          fontSize="9.5"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {modelLabel}
+        </text>
+        <text
+          x="325"
+          y="112"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {flowLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -286,21 +360,25 @@ function ZhBody() {
       <p>
         一个机器学习模型从数据中学习模式——而如果那些数据反映的是一个不公平的世界，模型就学会那份不
         公平、并把它复制出来，更快、更便宜，还裹着一层数学客观性的外衣，让它更难被质疑。
-        <Term>算法偏差</Term>不是一个假设：风险评估工具、招聘筛选、放贷模型，全都被证明会系统性地区别
-        对待一群群的人。<Term>机器学习中的公平</Term>是检测并减少那个的技术学科——而它真的很难，原因让
-        大多数人吃惊：<strong>「公平」有好几个精确的定义，而你没法同时满足它们全部。</strong>
+        <Term>算法偏差</Term>
+        不是一个假设：风险评估工具、招聘筛选、放贷模型，全都被证明会系统性地区别 对待一群群的人。
+        <Term>机器学习中的公平</Term>是检测并减少那个的技术学科——而它真的很难，原因让 大多数人吃惊：
+        <strong>「公平」有好几个精确的定义，而你没法同时满足它们全部。</strong>
       </p>
       <p>
-        这一页紧挨着<Link href="/knowledge/data-governance">数据治理</Link>页——那一页是政策与伦理；这
+        这一页紧挨着<Link href="/knowledge/data-governance">数据治理</Link>
+        页——那一页是政策与伦理；这
         一页是机械：偏差如何进入、如何测量公平、核心那个数学上的不可能，以及你可以在哪里干预。它在任何
         模型辅助的决定影响到人之处都要紧，而在政府的环境里，这差不多就是重点所在。
       </p>
 
       <KSection id="why" eyebrow="01" title="有后果的偏差">
         <p>
-          这里的「偏差」一词，不是指建模页里那种<Link href="/knowledge/statistical-machine-learning">
-          偏差-方差</Link>——它指的是<em>对一群人的系统性不公平</em>，通常是由一个<Term>受保护属性</Term>
-          （种族、性别、年龄、残障）所界定的一群。危险很具体：一个模型<strong>一致地、大规模地</strong>
+          这里的「偏差」一词，不是指建模页里那种
+          <Link href="/knowledge/statistical-machine-learning">偏差-方差</Link>——它指的是
+          <em>对一群人的系统性不公平</em>，通常是由一个<Term>受保护属性</Term>
+          （种族、性别、年龄、残障）所界定的一群。危险很具体：一个模型
+          <strong>一致地、大规模地</strong>
           把它学到的偏差施加出去，施加给每一个人、瞬间完成，却看起来中立。一个有偏的人类决策者影响他
           遇到的人；一个有偏的模型可以影响数百万人，并且难争辩得多，因为「算法这么说的」带着虚假的
           权威。
@@ -319,20 +397,22 @@ function ZhBody() {
             <Link href="/knowledge/sampling-survey-methodology">覆盖</Link>问题）。
           </li>
           <li>
-            <Term>测量偏差</Term>——标签本身就是一个有缺陷的代理。「再次被捕」与「犯了罪」不是一回事，
+            <Term>测量偏差</Term>
+            ——标签本身就是一个有缺陷的代理。「再次被捕」与「犯了罪」不是一回事，
             但一个在逮捕数据上训练的模型，学到的是警务模式，而非犯罪。
           </li>
         </ul>
         <p>
-          贯穿其中的主线：模型是有偏数据的一面准确的镜子。<strong>垃圾进，偏差出</strong>——而模型接着
-          把它放大、并使之根深蒂固。
+          贯穿其中的主线：模型是有偏数据的一面准确的镜子。<strong>垃圾进，偏差出</strong>
+          ——而模型接着 把它放大、并使之根深蒂固。
         </p>
       </KSection>
 
       <KSection id="proxy" eyebrow="03" title="代理陷阱：你没法只是删掉那个变量">
         <p>
           那个直觉性的第一个修法——「干脆别把种族或性别给模型」——<strong>行不通</strong>，而弄懂为
-          什么，是这一页上单一最重要的想法。受保护属性几乎总是通过<Term>代理变量</Term>，冗余地编码在
+          什么，是这一页上单一最重要的想法。受保护属性几乎总是通过<Term>代理变量</Term>
+          ，冗余地编码在
           <em>其他</em>特征里。
         </p>
         <ProxyTrapFigure
@@ -345,7 +425,8 @@ function ZhBody() {
         />
         <p>
           邮编与种族相关；名字透露性别；你上过的学校、你的消费模式、你的措辞——它们中任何一个，都能让
-          一个模型<em>重建</em>出那个它从未被给过的受保护属性，并从后门进行歧视。这就是为什么公平没法
+          一个模型<em>重建</em>
+          出那个它从未被给过的受保护属性，并从后门进行歧视。这就是为什么公平没法
           靠视而不见来达成；你必须主动地<em>测量</em>各群体之间的结果、并干预，这意味着这份分析绝非
           简单。
         </p>
@@ -355,12 +436,12 @@ function ZhBody() {
         <p>要修好公平，你必须先定义它——而有好几个合理的、彼此竞争的定义。主要的群体公平准则：</p>
         <ul>
           <li>
-            <Term>人口平价</Term>——每个群体以相同的<em>比率</em>得到正面结果（各群体间相等的批准率），
-            无关其他任何东西。
+            <Term>人口平价</Term>——每个群体以相同的<em>比率</em>
+            得到正面结果（各群体间相等的批准率）， 无关其他任何东西。
           </li>
           <li>
-            <Term>机会均等</Term>——在那些真正<em>应当</em>得到正面结果的人当中，每个群体以相同的比率被
-            捕获（相等的真阳性率）。
+            <Term>机会均等</Term>——在那些真正<em>应当</em>
+            得到正面结果的人当中，每个群体以相同的比率被 捕获（相等的真阳性率）。
           </li>
           <li>
             <Term>均等几率</Term>——更严格：各群体间相等的真阳性<em>和</em>假阳性率。
@@ -373,15 +454,17 @@ function ZhBody() {
 
       <KSection id="impossible" eyebrow="05" title="不可能性结果">
         <p>
-          这是这个领域核心那个深刻而发人深省的事实：<strong>当各群体有不同的基础率时，你无法同时满足
-          所有的公平准则。</strong>这是一个数学上的不可能（由 Chouldechova、以及 Kleinberg 及同事们
+          这是这个领域核心那个深刻而发人深省的事实：
+          <strong>当各群体有不同的基础率时，你无法同时满足 所有的公平准则。</strong>
+          这是一个数学上的不可能（由 Chouldechova、以及 Kleinberg 及同事们
           形式化），而非一个工程上的缺口——校准、相等的假阳性率、相等的假阴性率，无法同时成立，除非
           基础率完全相同、或模型完美。
         </p>
         <Callout type="intuition">
           <p>
-            那个著名的案例是 <Term>COMPAS</Term>，一个美国的刑事风险工具。ProPublica 指出它给黑人被告
-            更高的假阳性率，称它不公平；供应商指出它在各群体间被同等地<em>校准</em>，称它公平。
+            那个著名的案例是 <Term>COMPAS</Term>，一个美国的刑事风险工具。ProPublica
+            指出它给黑人被告 更高的假阳性率，称它不公平；供应商指出它在各群体间被同等地<em>校准</em>
+            ，称它公平。
             <strong>两者在数学上都是对的</strong>——他们只是选了不同的公平准则，而不可能性结果说，当
             基础率不同时你没法两者兼得。教训令人不适，却让人豁然开朗：不存在单一的、客观的「公平」。
             公平是一个关于要把哪一种错误拉平的<em>选择</em>，而那个选择是一个价值判断，必须被公开地
@@ -394,7 +477,8 @@ function ZhBody() {
         <p>一旦你选定了一个公平定义、并测量了那个差距，缓解可以在流水线的三个阶段行动：</p>
         <ul>
           <li>
-            <Term>预处理</Term>——在训练之前修数据：给代表不足的群体重新加权、重新采样，或变换特征，以
+            <Term>预处理</Term>
+            ——在训练之前修数据：给代表不足的群体重新加权、重新采样，或变换特征，以
             在源头减少那个差距。
           </li>
           <li>
@@ -407,7 +491,8 @@ function ZhBody() {
         </ul>
         <p>
           没有一个是银弹，而每一个都拿一些准确度、或一个公平观念，去换另一个——这就是为什么公平工作与
-          <Link href="/knowledge/explainable-ai">解释</Link>（你必须看见模型在做什么）、以及一个有记录
+          <Link href="/knowledge/explainable-ai">解释</Link>
+          （你必须看见模型在做什么）、以及一个有记录
           的、可辩护的关于「你接受了哪个权衡、为什么」的决定，密不可分。
         </p>
       </KSection>
@@ -417,12 +502,14 @@ function ZhBody() {
           <p>
             任何为关于人的决定提供依据的模型，都担着这份责任，而在政府里它很尖锐：一个对某一群人系统性
             地更差的模型辅助判断，不只是一个技术缺陷，而是一次公平与问责的失败。这给我的最有价值的东西，
-            是知道那个<strong>代理陷阱</strong>——丢掉一个敏感属性并不让一个模型变公平，因为它会从邮编
+            是知道那个<strong>代理陷阱</strong>
+            ——丢掉一个敏感属性并不让一个模型变公平，因为它会从邮编
             和其余的一切重建出它——所以公平必须被跨群体地<em>测量</em>，而非假定。
           </p>
           <p>
-            而<strong>不可能性结果</strong>诚实地重构了整场对话：不存在一个客观上「公平」的模型，所以
-            真正的工作是选择<em>哪一个</em>公平准则适合这个语境、把那个权衡大声说出来、并能为它辩护——
+            而<strong>不可能性结果</strong>
+            诚实地重构了整场对话：不存在一个客观上「公平」的模型，所以 真正的工作是选择
+            <em>哪一个</em>公平准则适合这个语境、把那个权衡大声说出来、并能为它辩护——
             正是那种不该被藏在一个算法里面的价值判断。它直接连到
             <Link href="/knowledge/explainable-ai">可解释性</Link>（你审计不了你看不见的公平）、
             <Link href="/knowledge/feature-engineering">特征工程</Link>（代理变量住的地方），以及
@@ -446,7 +533,8 @@ function ZhBody() {
               <strong>跨群体的测量</strong>，而非视而不见。
             </li>
             <li>
-              公平指标：<strong>人口平价</strong>（相等比率）、<strong>机会均等</strong>（相等 TPR）、
+              公平指标：<strong>人口平价</strong>（相等比率）、<strong>机会均等</strong>（相等
+              TPR）、
               <strong>均等几率</strong>（相等 TPR + FPR）——而它们彼此竞争。
             </li>
             <li>
@@ -460,8 +548,8 @@ function ZhBody() {
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          代理/冗余编码陷阱、群体公平指标、不可能性结果，以及 COMPAS 案例，反映了当前机器学习公平性的
-          参考文献以及亲身的工作。
+          代理/冗余编码陷阱、群体公平指标、不可能性结果，以及 COMPAS
+          案例，反映了当前机器学习公平性的 参考文献以及亲身的工作。
         </p>
       </KSection>
     </>
