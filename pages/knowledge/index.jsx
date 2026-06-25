@@ -22,6 +22,7 @@ const TIERS = [
     { href: "/knowledge/web-information-technology", status: "live" },
     { href: "/knowledge/operations-research", status: "live" },
     { href: "/knowledge/elements-of-data-processing", status: "live" },
+    { href: "/knowledge/applied-data-science", status: "live" },
   ]},
   { key: "advanced", topics: [
     { href: "/knowledge/natural-language-processing", status: "live" },

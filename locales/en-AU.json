@@ -686,7 +686,8 @@
           { "label": "Artificial Intelligence", "note": "Search, logic, planning" },
           { "label": "Web Information Technology", "note": "HTTP, HTML/CSS/JS, REST APIs, the request cycle" },
           { "label": "Operations Research", "note": "Linear programming, feasible regions, the simplex method" },
-          { "label": "Elements of Data Processing", "note": "The pipeline, tidy data, cleaning, reshaping, joins" }
+          { "label": "Elements of Data Processing", "note": "The pipeline, tidy data, cleaning, reshaping, joins" },
+          { "label": "Applied Data Science", "note": "The project lifecycle, CRISP-DM, problem-first" }
         ]
       },
       "advanced": {

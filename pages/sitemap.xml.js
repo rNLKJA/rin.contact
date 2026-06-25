@@ -71,6 +71,7 @@ const KNOWLEDGE = [
   { path: "/knowledge/cluster-cloud-computing", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/elements-of-data-processing", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/statistical-modelling", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/applied-data-science", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
