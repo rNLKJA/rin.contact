@@ -135,6 +135,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/ensemble-methods", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/model-evaluation", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/mlops-monitoring", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/explainable-ai", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/fairness-bias", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/recommender-systems", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────

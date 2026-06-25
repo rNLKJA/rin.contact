@@ -50,6 +50,7 @@ const TIERS = [
       { href: "/knowledge/deep-learning", status: "live" },
       { href: "/knowledge/reinforcement-learning", status: "live" },
       { href: "/knowledge/ensemble-methods", status: "live" },
+      { href: "/knowledge/recommender-systems", status: "live" },
     ],
   },
   {
@@ -63,6 +64,8 @@ const TIERS = [
       { href: "/knowledge/network-graph-analysis", status: "live" },
       { href: "/knowledge/reproducibility", status: "live" },
       { href: "/knowledge/mlops-monitoring", status: "live" },
+      { href: "/knowledge/explainable-ai", status: "live" },
+      { href: "/knowledge/fairness-bias", status: "live" },
     ],
   },
   {

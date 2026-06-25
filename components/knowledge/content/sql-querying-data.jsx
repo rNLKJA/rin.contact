@@ -31,15 +31,55 @@ function SqlOrderFigure({ caption, ariaLabel }) {
           const hot = t === "SELECT";
           return (
             <g key={i}>
-              <rect x={x} y="30" width="62" height="26" rx="3" fill="none" stroke={hot ? "#FF3C3C" : "currentColor"} strokeWidth={hot ? "1.6" : "1.2"} />
-              <text x={x + 31} y="47" textAnchor="middle" fontSize="8.5" fontFamily="monospace" fill={hot ? "#FF3C3C" : "currentColor"}>{t}</text>
-              <text x={x + 31} y="22" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.5">{i + 1}</text>
-              {i < 5 && <line x1={x + 62} y1="43" x2={x + 76} y2="43" stroke="currentColor" strokeWidth="1.1" markerEnd="url(#sah)" />}
+              <rect
+                x={x}
+                y="30"
+                width="62"
+                height="26"
+                rx="3"
+                fill="none"
+                stroke={hot ? "#FF3C3C" : "currentColor"}
+                strokeWidth={hot ? "1.6" : "1.2"}
+              />
+              <text
+                x={x + 31}
+                y="47"
+                textAnchor="middle"
+                fontSize="8.5"
+                fontFamily="monospace"
+                fill={hot ? "#FF3C3C" : "currentColor"}
+              >
+                {t}
+              </text>
+              <text
+                x={x + 31}
+                y="22"
+                textAnchor="middle"
+                fontSize="8"
+                fontFamily="monospace"
+                fill="currentColor"
+                opacity="0.5"
+              >
+                {i + 1}
+              </text>
+              {i < 5 && (
+                <line
+                  x1={x + 62}
+                  y1="43"
+                  x2={x + 76}
+                  y2="43"
+                  stroke="currentColor"
+                  strokeWidth="1.1"
+                  markerEnd="url(#sah)"
+                />
+              )}
             </g>
           );
         })}
         <defs>
-          <marker id="sah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
+          <marker id="sah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -315,27 +355,31 @@ function ZhBody() {
     <>
       <p>
         大多数数据分析都始于一个看似简单的问题：我该如何从数据库里恰好取出我需要的那些行？这个答案，
-        五十年来且还在继续，是 <Term>SQL</Term>——结构化查询语言。它活得比无数更时髦的工具都长，因为它
+        五十年来且还在继续，是 <Term>SQL</Term>
+        ——结构化查询语言。它活得比无数更时髦的工具都长，因为它
         在某件根本性的事情上做对了；而对一名分析师而言，它是所有技能里用得最多的：在你建模、可视化、
         或报告任何东西之前，你都得先<em>查询</em>它。
       </p>
       <p>
         这一页是干活的分析师的 SQL——不是一份语法参考，而是把一个与语言搏斗的人、和一个对它流利的人
         区分开来的那少数几个想法：一个查询<em>实际上</em>如何执行、连接到底做什么、窗口函数这一现代
-        超能力，以及那个至少会逮到每个人一次的陷阱（NULL）。它是<Link href="/knowledge/database-systems">数据库系统</Link>
+        超能力，以及那个至少会逮到每个人一次的陷阱（NULL）。它是
+        <Link href="/knowledge/database-systems">数据库系统</Link>
         页的实用伴侣——那一页是理论，这一页是技能。
       </p>
 
       <KSection id="why" eyebrow="01" title="为什么 SQL 历久不衰">
         <p>
           SQL 的长寿来自一个设计选择：它是<Term>声明式的</Term>。你描述你<em>想要什么</em>，而非
-          <em>如何</em>得到它。你不写遍历行的循环，也不指定该用哪个索引——你陈述你想要的结果，而数据库的
-          <Link href="/knowledge/advanced-database-systems">查询优化器</Link>会找出产生它的最高效方式。
+          <em>如何</em>
+          得到它。你不写遍历行的循环，也不指定该用哪个索引——你陈述你想要的结果，而数据库的
+          <Link href="/knowledge/advanced-database-systems">查询优化器</Link>
+          会找出产生它的最高效方式。
         </p>
         <p>
           那是一种深刻的关注点分离。你的查询保持为一个清晰的意图陈述，而引擎处理那些杂乱的机制；同样的
-          查询，在数据从数千行长到数十亿行时仍然能用。这也是为什么 SQL 读起来几乎像英语——一个长处，它
-          藏起了初学者会弄错的那一件事，也就是下一节。
+          查询，在数据从数千行长到数十亿行时仍然能用。这也是为什么 SQL
+          读起来几乎像英语——一个长处，它 藏起了初学者会弄错的那一件事，也就是下一节。
         </p>
       </KSection>
 
@@ -375,19 +419,21 @@ function ZhBody() {
           ariaLabel="从左到右的执行顺序：FROM、WHERE、GROUP BY、HAVING、SELECT、ORDER BY。"
         />
         <p>
-          这个顺序不是冷知识——它<em>解释</em>了那些否则显得任意的规则。为什么你不能在 <code>WHERE</code>{" "}
-          里用一个 <code>SELECT</code> 别名？因为 WHERE 在 SELECT 存在之前就运行了。为什么{" "}
-          <code>WHERE</code> 过滤行、而 <code>HAVING</code> 过滤组？因为 WHERE 在分组之前运行、HAVING 在
-          之后。为什么一个窗口函数不能放进 <code>WHERE</code>？同样的原因——它在 SELECT 处才被计算，
-          太晚了，没法据以过滤（把它包进一个 <Term>CTE</Term> 里，在外面过滤）。把这个顺序内化，一打
-          「坑」就变得显而易见。
+          这个顺序不是冷知识——它<em>解释</em>了那些否则显得任意的规则。为什么你不能在{" "}
+          <code>WHERE</code> 里用一个 <code>SELECT</code> 别名？因为 WHERE 在 SELECT
+          存在之前就运行了。为什么 <code>WHERE</code> 过滤行、而 <code>HAVING</code> 过滤组？因为
+          WHERE 在分组之前运行、HAVING 在 之后。为什么一个窗口函数不能放进 <code>WHERE</code>
+          ？同样的原因——它在 SELECT 处才被计算， 太晚了，没法据以过滤（把它包进一个 <Term>
+            CTE
+          </Term>{" "}
+          里，在外面过滤）。把这个顺序内化，一打 「坑」就变得显而易见。
         </p>
       </KSection>
 
       <KSection id="joins" eyebrow="04" title="连接：合并表">
         <p>
-          数据住在分开的表里（顾客在这边，订单在那边），而<Term>连接</Term>按一个共享的键，把它们重新
-          缝合起来。你需要的四种：
+          数据住在分开的表里（顾客在这边，订单在那边），而<Term>连接</Term>
+          按一个共享的键，把它们重新 缝合起来。你需要的四种：
         </p>
         <ul>
           <li>
@@ -406,8 +452,9 @@ function ZhBody() {
         </ul>
         <Callout type="pitfall">
           <p>
-            经典的灾难是<Term>扇出</Term>（或称连接爆炸）：如果你连接到的那一侧上键不唯一，左侧的每一行
-            就会匹配<em>好几</em>个右侧行，你的行数便悄悄翻倍——而你之后算的任何 <code>SUM</code> 现在都
+            经典的灾难是<Term>扇出</Term>
+            （或称连接爆炸）：如果你连接到的那一侧上键不唯一，左侧的每一行 就会匹配<em>好几</em>
+            个右侧行，你的行数便悄悄翻倍——而你之后算的任何 <code>SUM</code> 现在都
             被夸大了，往往没有一个错误来警告你。在连接之前，永远要知道每张表的<strong>粒度</strong>
             （一行对应什么？），并在之后对行数做一次合理性检查。一次意外扇出造成的翻倍总和，是分析中最
             常见的静悄悄的 bug 之一。
@@ -419,14 +466,15 @@ function ZhBody() {
         <p>
           <Term>窗口函数</Term>是把 SQL 从一门检索语言变成一门分析语言的那个特性。一个普通的聚合（
           <code>GROUP BY</code>）把行折叠成一个汇总行。一个窗口函数则跨一组相关的行进行计算，
-          <em>同时保留每一行</em>——于是你可以把一个累计总和、一个排名、或者「与上个月相比」就放在每一
-          条记录的旁边。
+          <em>同时保留每一行</em>
+          ——于是你可以把一个累计总和、一个排名、或者「与上个月相比」就放在每一 条记录的旁边。
         </p>
         <Code>{WINDOW_QUERY}</Code>
         <p>
-          <code>OVER (...)</code> 子句定义了要在其上计算的那个行的「窗口」——<code>PARTITION BY</code>{" "}
-          切成若干组，<code>ORDER BY</code> 在组内排序。累计总和、组内排名、环比变化、移动平均、「每类别
-          前 N 名」——所有那些过去需要别扭的自连接的问题，都变成干净的一行。它们在 <code>SELECT</code>{" "}
+          <code>OVER (...)</code> 子句定义了要在其上计算的那个行的「窗口」——
+          <code>PARTITION BY</code> 切成若干组，<code>ORDER BY</code>{" "}
+          在组内排序。累计总和、组内排名、环比变化、移动平均、「每类别 前 N
+          名」——所有那些过去需要别扭的自连接的问题，都变成干净的一行。它们在 <code>SELECT</code>{" "}
           这一步才被计算，而这正是为什么你不能直接据以过滤（又回到了执行顺序）。
         </p>
       </KSection>
@@ -434,31 +482,35 @@ function ZhBody() {
       <KSection id="ctes" eyebrow="06" title="CTE：可读的、分层的逻辑">
         <p>
           真实的问题需要好几步，而写它们的错误方式，是一座要从里往外读的嵌套子查询的金字塔。一个
-          <Term>公用表表达式</Term>（<code>WITH</code> 子句）给每一步命名，好让查询像一份食谱那样从上
-          读到下：
+          <Term>公用表表达式</Term>（<code>WITH</code>{" "}
+          子句）给每一步命名，好让查询像一份食谱那样从上 读到下：
         </p>
         <Code>{CTE_QUERY}</Code>
         <p>
-          每个 CTE 都是一个有名字的、可复用的构件。查询于是变成一连串清晰的阶段，而非一团乱麻——更容易
-          读、调试、并交给别人。对一名查询必须能被<Link href="/knowledge/reproducibility">别人理解并
-          重跑</Link>的分析师来说，这种可读性不是奢侈品。
+          每个 CTE
+          都是一个有名字的、可复用的构件。查询于是变成一连串清晰的阶段，而非一团乱麻——更容易
+          读、调试、并交给别人。对一名查询必须能被
+          <Link href="/knowledge/reproducibility">别人理解并 重跑</Link>
+          的分析师来说，这种可读性不是奢侈品。
         </p>
       </KSection>
 
       <KSection id="nulls" eyebrow="07" title="NULL 陷阱">
         <p>
-          那个最终会逮到每个人的 bug：在 SQL 里，<Term>NULL</Term> 不是指零或空——它是指<em>未知</em>。
-          而因为「未知」会感染任何比较，SQL 运行在<Term>三值逻辑</Term>之上：TRUE、FALSE，以及 UNKNOWN。
+          那个最终会逮到每个人的 bug：在 SQL 里，<Term>NULL</Term> 不是指零或空——它是指<em>未知</em>
+          。 而因为「未知」会感染任何比较，SQL 运行在<Term>三值逻辑</Term>之上：TRUE、FALSE，以及
+          UNKNOWN。
         </p>
         <Callout type="pitfall">
           <p>
-            后果咬得很疼。<code>NULL = NULL</code> 并<strong>不是</strong> TRUE——它是 UNKNOWN，因为两个
-            未知可能是任何东西。所以 <code>WHERE x = NULL</code> 什么也匹配不到；你必须写{" "}
-            <code>WHERE x IS NULL</code>。更糟的是，<code>WHERE status != 'closed'</code> 会悄悄
+            后果咬得很疼。<code>NULL = NULL</code> 并<strong>不是</strong> TRUE——它是
+            UNKNOWN，因为两个 未知可能是任何东西。所以 <code>WHERE x = NULL</code>{" "}
+            什么也匹配不到；你必须写 <code>WHERE x IS NULL</code>。更糟的是，
+            <code>WHERE status != 'closed'</code> 会悄悄
             <em>丢掉</em> status 为 NULL 的行（那个比较是 UNKNOWN，而非 TRUE），于是你不带任何错误地
-            丢失了你本想保留的记录。而且聚合会跳过 NULL——<code>AVG</code> 会忽略它们，而不是把它们当作
-            零。每当一列可能为 NULL，就显式地处理它（<code>IS NULL</code>、<code>COALESCE</code>），否则
-            它会悄悄改变你的答案。
+            丢失了你本想保留的记录。而且聚合会跳过 NULL——<code>AVG</code>{" "}
+            会忽略它们，而不是把它们当作 零。每当一列可能为 NULL，就显式地处理它（
+            <code>IS NULL</code>、<code>COALESCE</code>），否则 它会悄悄改变你的答案。
           </p>
         </Callout>
       </KSection>
@@ -467,15 +519,17 @@ function ZhBody() {
         <Callout type="applied" label="每一次分析的起点">
           <p>
             SQL 是我在几乎任何任务里第一个伸手去拿的工具——数据住在数据库里，而取出对的行，是任何分析
-            之前的第零步。这里的流利每天都有回报：知道<strong>执行顺序</strong>意味着我写的查询第一次
-            就能跑通，<strong>窗口函数</strong>把「累计总和」或「组内排名」变成一行而非一种变通办法，而{" "}
-            <strong>CTE</strong> 让一个复杂的提取保持得足够可读，从而能被检查和复用。
+            之前的第零步。这里的流利每天都有回报：知道<strong>执行顺序</strong>
+            意味着我写的查询第一次 就能跑通，<strong>窗口函数</strong>
+            把「累计总和」或「组内排名」变成一行而非一种变通办法，而 <strong>CTE</strong>{" "}
+            让一个复杂的提取保持得足够可读，从而能被检查和复用。
           </p>
           <p>
-            而那些陷阱，恰恰是那些静悄悄产出错误数字的——一次<strong>连接扇出</strong>把总和翻倍、一次{" "}
-            <strong>NULL</strong> 比较悄悄丢掉我本想保留的行。逮住它们，正是一个<em>看起来</em>对的查询、
-            和一个<em>确实</em>对的查询之间的差别。它与<Link href="/knowledge/feature-engineering">数据
-            准备</Link>（查询正是准备开始之处）以及<Link href="/knowledge/reproducibility">可复现性</Link>
+            而那些陷阱，恰恰是那些静悄悄产出错误数字的——一次<strong>连接扇出</strong>
+            把总和翻倍、一次 <strong>NULL</strong> 比较悄悄丢掉我本想保留的行。逮住它们，正是一个
+            <em>看起来</em>对的查询、 和一个<em>确实</em>对的查询之间的差别。它与
+            <Link href="/knowledge/feature-engineering">数据 准备</Link>（查询正是准备开始之处）以及
+            <Link href="/knowledge/reproducibility">可复现性</Link>
             （一个保存好的、受版本控制的查询是一个可重跑的步骤）相配。
           </p>
         </Callout>
@@ -489,19 +543,21 @@ function ZhBody() {
               每一次分析背后的技能。
             </li>
             <li>
-              核心动词：<code>SELECT / FROM / WHERE / GROUP BY / HAVING / ORDER BY</code>。WHERE 过滤行，
-              HAVING 过滤组。
+              核心动词：<code>SELECT / FROM / WHERE / GROUP BY / HAVING / ORDER BY</code>。WHERE
+              过滤行， HAVING 过滤组。
             </li>
             <li>
-              它按 <strong>FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY</strong> 运行，而非从上
-              到下——这解释了每一个「我为什么不能……」的坑（别名、WHERE 里的窗口函数）。
+              它按 <strong>FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY</strong>{" "}
+              运行，而非从上 到下——这解释了每一个「我为什么不能……」的坑（别名、WHERE
+              里的窗口函数）。
             </li>
             <li>
-              <strong>连接</strong>合并表；LEFT JOIN 是主力。当心<strong>扇出</strong>——一个不唯一的键
-              会让行翻倍、悄悄夸大总和。要知道粒度。
+              <strong>连接</strong>合并表；LEFT JOIN 是主力。当心<strong>扇出</strong>
+              ——一个不唯一的键 会让行翻倍、悄悄夸大总和。要知道粒度。
             </li>
             <li>
-              <strong>窗口函数</strong>（<code>OVER</code>）跨行计算却保留每一行——累计总和、排名、lag。
+              <strong>窗口函数</strong>（<code>OVER</code>
+              ）跨行计算却保留每一行——累计总和、排名、lag。
               <strong>CTE</strong>（<code>WITH</code>）让多步逻辑变得可读。
             </li>
             <li>
@@ -511,8 +567,8 @@ function ZhBody() {
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          逻辑执行顺序的取景、窗口函数的位置，以及 NULL 三值逻辑的告诫，反映了当前的 SQL 参考文献以及
-          课程。
+          逻辑执行顺序的取景、窗口函数的位置，以及 NULL 三值逻辑的告诫，反映了当前的 SQL
+          参考文献以及 课程。
         </p>
       </KSection>
     </>
