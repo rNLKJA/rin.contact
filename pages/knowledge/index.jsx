@@ -32,6 +32,7 @@ const TIERS = [
     { href: "/knowledge/clustering", status: "live" },
     { href: "/knowledge/cluster-cloud-computing", status: "live" },
     { href: "/knowledge/statistical-modelling", status: "live" },
+    { href: "/knowledge/computational-statistics", status: "live" },
   ]},
   { key: "taught", topics: [
     { status: "planned" },

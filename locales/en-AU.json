@@ -700,7 +700,8 @@
           { "label": "PCA & Dimensionality Reduction", "note": "Covariance, eigenvectors, variance explained" },
           { "label": "Clustering", "note": "k-means, hierarchical, choosing k" },
           { "label": "Cluster & Cloud Computing", "note": "MPI, Spark, HPC at scale" },
-          { "label": "Statistical Modelling", "note": "GLMs, logistic & Poisson, link functions, AIC" }
+          { "label": "Statistical Modelling", "note": "GLMs, logistic & Poisson, link functions, AIC" },
+          { "label": "Computational Statistics", "note": "Monte Carlo, the bootstrap, permutation tests, EM" }
         ]
       },
       "taught": {
