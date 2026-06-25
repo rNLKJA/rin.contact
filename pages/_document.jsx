@@ -593,6 +593,9 @@ class MyDocument extends Document {
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          {/* Web app manifest — the file existed but was never linked, so the
+              site was not installable and the manifest icons/name went unused. */}
+          <link rel="manifest" href="/site.webmanifest" />
 
           {/* ── hreflang — locale-aware (canonical is per-page via SeoHead / page Head) ── */}
           <link rel="alternate" hrefLang="en-AU" href={baseUrl} />
