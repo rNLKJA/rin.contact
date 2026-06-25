@@ -1129,5 +1129,21 @@
         "d": "2026 年 12 月起强制；Signal 现在就生成它，每个用例一份。谁受影响、有哪些风险、有哪些保障、公平性方面的考量、残余风险——引用实时的忠实度评分与人工复核率，而非套话。"
       }
     ]
+  },
+  "cardPage": {
+    "metaTitle": "名片 — Rin Huang · rin.contact",
+    "metaDescription": "Sunchuangyu（Rin）Huang 的数字名片——高级数据分析师，南澳阿德莱德。下载联系人名片（VCF）。",
+    "ogTitle": "数字名片",
+    "ogSubtitle": "rin.contact 数字名片",
+    "ariaFront": "名片正面显示详细信息。激活以翻面并显示二维码。",
+    "ariaBack": "名片显示二维码一面。激活以翻回详细信息。",
+    "qrAlt": "链接到 rin.contact 的二维码",
+    "scanToConnect": "扫码连接",
+    "pointCamera": "把相机对准这里。",
+    "oneTap": "完整的个人资料、项目与联系方式，一触即达。",
+    "tapHint": "轻点翻面 · 悬停倾斜",
+    "download": "下载 .vcf 联系人名片",
+    "email": "邮箱",
+    "fullProfile": "完整资料"
   }
 }

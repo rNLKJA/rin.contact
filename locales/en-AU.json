@@ -1129,5 +1129,21 @@
         "d": "Mandatory by December 2026; Signal generates it now, one per use case. Who is affected, the risks, the safeguards, the fairness considerations, the residual risk — citing the live faithfulness score and human-review rate, not boilerplate."
       }
     ]
+  },
+  "cardPage": {
+    "metaTitle": "Card — Rin Huang · rin.contact",
+    "metaDescription": "Digital business card for Sunchuangyu (Rin) Huang — Senior Data Analyst, Adelaide SA. Download contact card (VCF).",
+    "ogTitle": "Digital Business Card",
+    "ogSubtitle": "rin.contact digital business card",
+    "ariaFront": "Business card showing the details. Activate to flip and reveal the QR code.",
+    "ariaBack": "Business card showing the QR side. Activate to flip back to the details.",
+    "qrAlt": "QR code linking to rin.contact",
+    "scanToConnect": "Scan to connect",
+    "pointCamera": "Point your camera here.",
+    "oneTap": "The full profile, projects, and contact, on one tap.",
+    "tapHint": "tap to flip · hover to tilt",
+    "download": "Download .vcf contact card",
+    "email": "Email",
+    "fullProfile": "Full Profile"
   }
 }

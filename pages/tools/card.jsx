@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 
 const VCARD = `BEGIN:VCARD
 VERSION:3.0
@@ -28,6 +29,7 @@ const DOT_TEXTURE = {
 
 // ── 3D tilt + flip card ───────────────────────────────────────────────────────
 function TiltFlipCard() {
+  const { t } = useI18n();
   const perspRef = useRef(null);
   const tiltRef = useRef(null);
   const sheenRef = useRef(null);
@@ -94,11 +96,7 @@ function TiltFlipCard() {
             role="button"
             tabIndex={0}
             aria-pressed={flipped}
-            aria-label={
-              flipped
-                ? "Business card showing the QR side. Activate to flip back to the details."
-                : "Business card showing the details. Activate to flip and reveal the QR code."
-            }
+            aria-label={flipped ? t("cardPage.ariaBack") : t("cardPage.ariaFront")}
             onClick={flip}
             onKeyDown={onKey}
             className="flipper cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF3C3C]"
@@ -168,12 +166,12 @@ function TiltFlipCard() {
               <div className="relative h-full flex items-center gap-5 p-6" style={{ zIndex: 1 }}>
                 <div className="bg-white p-2 flex-shrink-0" style={{ borderRadius: 4 }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={QR_SRC} alt="QR code linking to rin.contact" width={104} height={104} draggable="false" style={{ display: "block" }} />
+                  <img src={QR_SRC} alt={t("cardPage.qrAlt")} width={104} height={104} draggable="false" style={{ display: "block" }} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#FF3C3C] mb-2">Scan to connect</p>
-                  <p className="text-sm font-semibold text-white leading-snug">Point your camera here.</p>
-                  <p className="text-[11px] text-[#9A9A9A] mt-1.5 leading-relaxed">The full profile, projects, and contact, on one tap.</p>
+                  <p className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#FF3C3C] mb-2">{t("cardPage.scanToConnect")}</p>
+                  <p className="text-sm font-semibold text-white leading-snug">{t("cardPage.pointCamera")}</p>
+                  <p className="text-[11px] text-[#9A9A9A] mt-1.5 leading-relaxed">{t("cardPage.oneTap")}</p>
                   <p className="text-[10px] text-[#7A7A7A] mt-3 font-mono">rin.contact</p>
                 </div>
               </div>
@@ -183,7 +181,7 @@ function TiltFlipCard() {
       </div>
 
       <p className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A] whitespace-nowrap pointer-events-none">
-        tap to flip · hover to tilt
+        {t("cardPage.tapHint")}
       </p>
     </div>
   );
@@ -191,6 +189,7 @@ function TiltFlipCard() {
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 export default function CardPage() {
+  const { t, locale = "en-AU" } = useI18n();
   const download = useCallback(() => {
     const blob = new Blob([VCARD], { type: "text/vcard;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -206,19 +205,20 @@ export default function CardPage() {
   return (
     <>
       <Head>
-        <title>Card — Rin Huang · rin.contact</title>
-        <meta name="description" content="Digital business card for Sunchuangyu (Rin) Huang — Senior Data Analyst, Adelaide SA. Download contact card (VCF)." />
+        <title>{t("cardPage.metaTitle")}</title>
+        <meta name="description" content={t("cardPage.metaDescription")} />
         <link rel="canonical" href="https://rin.contact/tools/card" />
       </Head>
       <SeoHead
-        title="Card — Rin Huang · rin.contact"
-        description="Digital business card for Sunchuangyu (Rin) Huang — Senior Data Analyst, Adelaide SA. Download contact card (VCF)."
+        title={t("cardPage.metaTitle")}
+        description={t("cardPage.metaDescription")}
         path="/tools/card"
         ogImage={{
-          title: "Digital Business Card",
-          subtitle: "rin.contact digital business card",
+          title: t("cardPage.ogTitle"),
+          subtitle: t("cardPage.ogSubtitle"),
           section: "tools",
         }}
+        locale={locale}
       />
 
       <div className="min-h-screen bg-[#F5F5F5] dark:bg-[#0A0A0A] flex flex-col items-center justify-center px-6 py-20">
@@ -231,11 +231,11 @@ export default function CardPage() {
             onClick={download}
             className="w-full border border-black dark:border-white bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 text-xs tracking-widest uppercase hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-colors duration-200 font-mono"
           >
-            Download .vcf contact card
+            {t("cardPage.download")}
           </button>
           <div className="flex gap-3">
             <a href="mailto:huang@rin.contact" className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center">
-              Email
+              {t("cardPage.email")}
             </a>
             <a href="https://www.linkedin.com/in/sunchuangyuhuang" target="_blank" rel="noopener noreferrer" className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center">
               LinkedIn
@@ -245,7 +245,7 @@ export default function CardPage() {
             </a>
           </div>
           <Link href="/" className="block border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A] dark:text-[#9A9A9A] px-6 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center">
-            Full Profile
+            {t("cardPage.fullProfile")}
           </Link>
         </div>
 
