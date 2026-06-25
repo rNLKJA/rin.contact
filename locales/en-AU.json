@@ -692,7 +692,8 @@
           { "label": "Natural Language Processing", "note": "Tokens, TF-IDF, embeddings, transformers" },
           { "label": "Statistical Machine Learning", "note": "Bias-variance, regularisation, generalisation" },
           { "label": "Bayesian Statistics", "note": "Priors, posteriors, MCMC" },
-          { "label": "Multivariate Statistics", "note": "PCA, factor analysis, clustering" },
+          { "label": "PCA & Dimensionality Reduction", "note": "Covariance, eigenvectors, variance explained" },
+          { "label": "Clustering", "note": "k-means, hierarchical, choosing k" },
           { "label": "Cluster & Cloud Computing", "note": "MPI, Spark, HPC at scale" }
         ]
       },

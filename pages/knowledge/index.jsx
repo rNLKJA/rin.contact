@@ -24,6 +24,7 @@ const TIERS = [
     { href: "/knowledge/natural-language-processing", status: "live" },
     { href: "/knowledge/statistical-machine-learning", status: "live" },
     { href: "/knowledge/bayesian-statistics", status: "live" },
+    { href: "/knowledge/pca-dimensionality-reduction", status: "live" },
     { status: "soon" },
     { status: "planned" },
   ]},

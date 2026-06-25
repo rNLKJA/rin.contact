@@ -692,7 +692,8 @@
           { "label": "自然语言处理", "note": "词元、TF-IDF、嵌入与 Transformer" },
           { "label": "统计机器学习", "note": "偏差-方差、正则化与泛化" },
           { "label": "贝叶斯统计", "note": "先验、后验与 MCMC" },
-          { "label": "多元统计", "note": "PCA、因子分析与聚类" },
+          { "label": "主成分分析与降维", "note": "协方差、特征向量与解释方差" },
+          { "label": "聚类", "note": "k-均值、层次聚类与选择 k" },
           { "label": "集群与云计算", "note": "MPI、Spark 与大规模 HPC" }
         ]
       },

@@ -64,6 +64,7 @@ const KNOWLEDGE = [
   { path: "/knowledge/database-systems", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/bayesian-statistics", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/artificial-intelligence", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/pca-dimensionality-reduction", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
