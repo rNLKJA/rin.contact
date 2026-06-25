@@ -203,6 +203,14 @@ h1 {
   color: var(--black);
 }
 
+/* ─── Inline code sizing ──────────────────────────────────────────────
+   The body is 16px (prose-base). Inline code, sitting within that text, reads
+   undersized at the block-code size, so scale it to ~0.875em (the conventional
+   ratio). Block code (pre > code) is untouched and keeps its compact size. */
+.prose :not(pre) > code {
+  font-size: 0.875em;
+}
+
 /* ─── List styling for blog prose — airy, muted markers ──────────── */
 .prose ul,
 .prose ol {
