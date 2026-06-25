@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/information-retrieval.
@@ -27,26 +34,156 @@ function SparseDenseFigure({
         role="img"
         aria-label={ariaLabel}
       >
-        <rect x="180" y="12" width="80" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="1.3" />
-        <text x="220" y="28" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill="currentColor">{queryLabel}</text>
+        <rect
+          x="180"
+          y="12"
+          width="80"
+          height="24"
+          rx="3"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.3"
+        />
+        <text
+          x="220"
+          y="28"
+          textAnchor="middle"
+          fontSize="9.5"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {queryLabel}
+        </text>
         {/* sparse */}
-        <rect x="40" y="62" width="130" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="1.2" />
-        <text x="105" y="78" textAnchor="middle" fontSize="8.5" fontFamily="monospace" fill="currentColor">{sparseLabel}</text>
-        <text x="105" y="100" textAnchor="middle" fontSize="7.5" fontFamily="monospace" fill="currentColor" opacity="0.6">{sparseSub}</text>
-        <line x1="195" y1="36" x2="130" y2="62" stroke="currentColor" strokeWidth="1.1" markerEnd="url(#irah)" />
+        <rect
+          x="40"
+          y="62"
+          width="130"
+          height="24"
+          rx="3"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.2"
+        />
+        <text
+          x="105"
+          y="78"
+          textAnchor="middle"
+          fontSize="8.5"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {sparseLabel}
+        </text>
+        <text
+          x="105"
+          y="100"
+          textAnchor="middle"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {sparseSub}
+        </text>
+        <line
+          x1="195"
+          y1="36"
+          x2="130"
+          y2="62"
+          stroke="currentColor"
+          strokeWidth="1.1"
+          markerEnd="url(#irah)"
+        />
         {/* dense */}
-        <rect x="270" y="62" width="130" height="24" rx="3" fill="none" stroke="#FF3C3C" strokeWidth="1.3" />
-        <text x="335" y="78" textAnchor="middle" fontSize="8.5" fontFamily="monospace" fill="#FF3C3C">{denseLabel}</text>
-        <text x="335" y="100" textAnchor="middle" fontSize="7.5" fontFamily="monospace" fill="currentColor" opacity="0.6">{denseSub}</text>
-        <line x1="245" y1="36" x2="310" y2="62" stroke="#FF3C3C" strokeWidth="1.1" markerEnd="url(#irahr)" />
+        <rect
+          x="270"
+          y="62"
+          width="130"
+          height="24"
+          rx="3"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+        />
+        <text
+          x="335"
+          y="78"
+          textAnchor="middle"
+          fontSize="8.5"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {denseLabel}
+        </text>
+        <text
+          x="335"
+          y="100"
+          textAnchor="middle"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {denseSub}
+        </text>
+        <line
+          x1="245"
+          y1="36"
+          x2="310"
+          y2="62"
+          stroke="#FF3C3C"
+          strokeWidth="1.1"
+          markerEnd="url(#irahr)"
+        />
         {/* hybrid */}
-        <rect x="170" y="116" width="100" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="1.4" />
-        <text x="220" y="132" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{hybridLabel}</text>
-        <line x1="105" y1="86" x2="185" y2="116" stroke="currentColor" strokeWidth="1" opacity="0.6" markerEnd="url(#irah)" />
-        <line x1="335" y1="86" x2="255" y2="116" stroke="#FF3C3C" strokeWidth="1" opacity="0.6" markerEnd="url(#irahr)" />
+        <rect
+          x="170"
+          y="116"
+          width="100"
+          height="24"
+          rx="3"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+        />
+        <text
+          x="220"
+          y="132"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {hybridLabel}
+        </text>
+        <line
+          x1="105"
+          y1="86"
+          x2="185"
+          y2="116"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.6"
+          markerEnd="url(#irah)"
+        />
+        <line
+          x1="335"
+          y1="86"
+          x2="255"
+          y2="116"
+          stroke="#FF3C3C"
+          strokeWidth="1"
+          opacity="0.6"
+          markerEnd="url(#irahr)"
+        />
         <defs>
-          <marker id="irah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
-          <marker id="irahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" /></marker>
+          <marker id="irah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
+          <marker id="irahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -293,16 +430,18 @@ function ZhBody() {
       </p>
       <p>
         这一页是那片干活的地景：搜索如何被做快、经典排序如何运作（以及至今仍静悄悄驱动着大多数搜索框的
-        BM25 函数）、你如何测量结果好不好，以及转向语义搜索——它弥合了经典方法永远够不到的那道鸿沟。它
+        BM25
+        函数）、你如何测量结果好不好，以及转向语义搜索——它弥合了经典方法永远够不到的那道鸿沟。它
         建立在 <Link href="/knowledge/natural-language-processing">NLP</Link> 页之上，并连到
         <Link href="/knowledge/recommender-systems">推荐系统</Link>——两者都是排序问题。
       </p>
 
       <KSection id="problem" eyebrow="01" title="大海捞针">
         <p>
-          IR 问题：给定一个<Term>查询</Term>和一个庞大的文档<Term>语料库</Term>，返回那些<em>按与该
-          查询的相关性排序</em>的文档。有两样东西让它变难。第一，<strong>规模</strong>——你没法为每个
-          查询读每一份文档，所以你需要一个能快速找出候选的结构。第二，<strong>相关性</strong>——「相关」
+          IR 问题：给定一个<Term>查询</Term>和一个庞大的文档<Term>语料库</Term>，返回那些
+          <em>按与该 查询的相关性排序</em>的文档。有两样东西让它变难。第一，<strong>规模</strong>
+          ——你没法为每个 查询读每一份文档，所以你需要一个能快速找出候选的结构。第二，
+          <strong>相关性</strong>——「相关」
           是模糊而属于人的，把几个查询词变成一个好的排序，正是全部的艺术。这个领域分两个阶段对付它们：
           一个快速的结构来取回候选，然后一个排序函数来给它们排序。
         </p>
@@ -357,8 +496,8 @@ function ZhBody() {
         <ul>
           <li>
             <Term>词频饱和</Term>——一个出现 100 次的词，并不比出现一次相关 100 倍。
-            <TeX>{String.raw`k_1`}</TeX> 项让贡献<em>饱和</em>，于是额外的重复添加得越来越少。（朴素的
-            TF-IDF 会永远线性增长。）
+            <TeX>{String.raw`k_1`}</TeX> 项让贡献<em>饱和</em>
+            ，于是额外的重复添加得越来越少。（朴素的 TF-IDF 会永远线性增长。）
           </li>
           <li>
             <Term>长度归一化</Term>——长文档自然含有更多的词，这会不公平地抬高它们的分数。
@@ -373,19 +512,21 @@ function ZhBody() {
 
       <KSection id="metrics" eyebrow="05" title="测量相关性">
         <p>
-          你怎么知道你的排序好不好？IR 有它自己的<Link href="/knowledge/model-evaluation">评估</Link>
+          你怎么知道你的排序好不好？IR 有它自己的
+          <Link href="/knowledge/model-evaluation">评估</Link>
           指标，而相比分类的关键转变在于<strong>顺序要紧</strong>——一个排在第 1 位的相关结果，远比
           同样的结果排在第 50 位值钱得多。除了在前 k 个上朴素的
-          <Link href="/knowledge/statistics">精确率与召回率</Link>，主力是 <Term>MAP</Term>（平均精度
-          均值）与 <Term>NDCG</Term>（归一化折损累积增益），它们奖励把<em>最</em>相关的结果放<em>最
-          </em>高——这与<Link href="/knowledge/recommender-systems">推荐系统</Link>里的排序质量想法相同，
-          因为两者本质上都是「把列表排好」的问题。
+          <Link href="/knowledge/statistics">精确率与召回率</Link>，主力是 <Term>MAP</Term>
+          （平均精度 均值）与 <Term>NDCG</Term>（归一化折损累积增益），它们奖励把<em>最</em>
+          相关的结果放<em>最</em>高——这与<Link href="/knowledge/recommender-systems">推荐系统</Link>
+          里的排序质量想法相同， 因为两者本质上都是「把列表排好」的问题。
         </p>
       </KSection>
 
       <KSection id="gap" eyebrow="06" title="词汇鸿沟">
         <p>
-          尽管有种种长处，经典的关键词搜索（BM25 也包括在内）有一个根本的盲点：它匹配<em>词</em>，而非
+          尽管有种种长处，经典的关键词搜索（BM25 也包括在内）有一个根本的盲点：它匹配<em>词</em>
+          ，而非
           <em>含义</em>。搜「car（汽车）」，而一份只说「automobile（机动车）」的文档得分为零——没有
           共享的词项、没有匹配，尽管含义完全相同。这道<Term>词汇鸿沟</Term>（词汇失配）是词法方法的
           天花板：同义词、改述、相关的概念，对一个只数精确词重叠的系统来说都是看不见的。弥合它需要理解
@@ -395,7 +536,8 @@ function ZhBody() {
 
       <KSection id="dense" eyebrow="07" title="语义搜索：稠密检索">
         <p>
-          现代的答案是<Term>稠密检索</Term>。它不用稀疏的词数向量，而是把查询和每一份文档编码成稠密的
+          现代的答案是<Term>稠密检索</Term>
+          。它不用稀疏的词数向量，而是把查询和每一份文档编码成稠密的
           <Link href="/knowledge/natural-language-processing">嵌入</Link>——捕获<em>含义</em>的向量，
           于是「car」与「automobile」落得很近。检索于是变成在那个语义空间里，找出离查询向量最近的那些
           文档向量，这一跃就越过了词汇鸿沟：它在概念上匹配，而非关键词。
@@ -411,11 +553,13 @@ function ZhBody() {
           hybridLabel="混合（融合）"
         />
         <p>
-          稠密检索需要<Term>近似最近邻</Term>搜索（像 HNSW 这样的算法、像 FAISS 这样的库）才能在数百万
-          个向量中快速找出相近的，而它比 BM25 更沉重、在精确词项（名字、代码、罕见行话）上也更不精确。
-          所以现代的最佳实践是<Term>混合搜索</Term>：稀疏<em>和</em>稠密都跑、融合排序，可选地在最靠前的
-          结果上再加一个神经<Term>重排器</Term>。这个「先检索再排序」的流水线，正是 <strong>RAG 里的 R
-          </strong>——那个把一个<Link href="/knowledge/deep-learning">大语言模型</Link>锚定在真实文档、
+          稠密检索需要<Term>近似最近邻</Term>搜索（像 HNSW 这样的算法、像 FAISS
+          这样的库）才能在数百万 个向量中快速找出相近的，而它比 BM25
+          更沉重、在精确词项（名字、代码、罕见行话）上也更不精确。 所以现代的最佳实践是
+          <Term>混合搜索</Term>：稀疏<em>和</em>稠密都跑、融合排序，可选地在最靠前的
+          结果上再加一个神经<Term>重排器</Term>。这个「先检索再排序」的流水线，正是{" "}
+          <strong>RAG 里的 R</strong>——那个把一个
+          <Link href="/knowledge/deep-learning">大语言模型</Link>锚定在真实文档、
           而非它的记忆里的检索步骤，这就是为什么有数十年历史的 IR，忽然来到了现代 AI 的中心。
         </p>
       </KSection>
@@ -424,15 +568,17 @@ function ZhBody() {
         <Callout type="applied" label="把草垛搜索好">
           <p>
             许多情报与分析工作，都始于 IR 所解决的那同一个问题：在一个非常大的集合里找出相关的文档。
-            知道搜索实际上如何排序，改变了我使用它的方式——理解 <strong>BM25</strong>（它匹配精确词项、
-            奖励罕见而有辨识度的词）解释了一个查询为什么成功或失败，而知道<strong>词汇鸿沟</strong>解释
+            知道搜索实际上如何排序，改变了我使用它的方式——理解 <strong>BM25</strong>
+            （它匹配精确词项、 奖励罕见而有辨识度的词）解释了一个查询为什么成功或失败，而知道
+            <strong>词汇鸿沟</strong>解释
             了一个关键词搜索为什么会漏掉一份用了同义词的文档，而那恰恰是会丢失重要材料的盲点。
           </p>
           <p>
-            它也越来越实用：<strong>语义/稠密检索</strong>与<strong>混合搜索</strong>，是你找到关键词
-            搜索找不到的、概念上相关的材料的方式，而<strong>先检索再排序</strong>的流水线，是正进入
-            工具箱的 <Link href="/knowledge/deep-learning">LLM</Link> 驱动工具（RAG）底下的引擎。它直接
-            连到 <Link href="/knowledge/natural-language-processing">NLP</Link>（那些嵌入）、
+            它也越来越实用：<strong>语义/稠密检索</strong>与<strong>混合搜索</strong>
+            ，是你找到关键词 搜索找不到的、概念上相关的材料的方式，而<strong>先检索再排序</strong>
+            的流水线，是正进入 工具箱的 <Link href="/knowledge/deep-learning">LLM</Link>{" "}
+            驱动工具（RAG）底下的引擎。它直接 连到{" "}
+            <Link href="/knowledge/natural-language-processing">NLP</Link>（那些嵌入）、
             <Link href="/knowledge/recommender-systems">推荐系统</Link>（排序），以及
             <Link href="/knowledge/intelligence-analysis">OSINT</Link>（搜索开源的草垛）。
           </p>
@@ -450,9 +596,9 @@ function ZhBody() {
               <strong>倒排索引</strong>（「词 → 文档」）让搜索变快——查出查询词，只给候选打分。
             </li>
             <li>
-              <strong>TF-IDF</strong> 给词项加权（在文档里频繁 × 在语料里罕见）。<strong>BM25</strong> 用
-              <strong>词频饱和</strong>（重复越发不重要）+ <strong>长度归一化</strong>改进它——仍是一个
-              难缠的基线。
+              <strong>TF-IDF</strong> 给词项加权（在文档里频繁 × 在语料里罕见）。
+              <strong>BM25</strong> 用<strong>词频饱和</strong>（重复越发不重要）+{" "}
+              <strong>长度归一化</strong>改进它——仍是一个 难缠的基线。
             </li>
             <li>
               用排序指标评估——<strong>顺序要紧</strong>：MAP、NDCG（与推荐系统相同）。
