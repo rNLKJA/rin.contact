@@ -47,7 +47,7 @@ const TESTIMONIALS = [
 
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);   // user's explicit play/pause intent
+  const [autoPlay, setAutoPlay] = useState(true); // user's explicit play/pause intent
   const [interacting, setInteracting] = useState(false); // transient pause on hover/focus
   const [reduced, setReduced] = useState(false);
   const [ref, inView] = useInView({ threshold: 0.2 });
@@ -95,9 +95,7 @@ export default function TestimonialsSection() {
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black dark:text-white">
             Trusted by.
           </h2>
-          <p className="text-sm text-[#7A7A7A] mt-2">
-            What people say about working with Rin.
-          </p>
+          <p className="text-sm text-[#7A7A7A] mt-2">What people say about working with Rin.</p>
         </div>
 
         {/* quote card */}
@@ -110,37 +108,42 @@ export default function TestimonialsSection() {
             &ldquo;
           </span>
           <div className="grid relative z-10">
-          {TESTIMONIALS.map((t, i) => (
-            <blockquote
-              key={i}
-              className={`[grid-area:1/1] transition-all duration-700 ${
-                i === current
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4 pointer-events-none"
-              }`}
-            >
-              <p className="text-lg md:text-xl leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <footer className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#F5F5F5] dark:bg-[#1A1A1A] flex items-center justify-center text-[10px] font-mono text-[#7A7A7A]">
-                  {t.name.charAt(0)}
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-black dark:text-white">
-                    {t.linkedIn ? (
-                      <a href={t.linkedIn} target="_blank" rel="noreferrer" className="hover:text-[#FF3C3C] transition-colors">
-                        {t.name}
-                      </a>
-                    ) : (
-                      t.name
-                    )}
-                  </p>
-                  <p className="text-xs text-[#7A7A7A]">{t.title}</p>
-                </div>
-              </footer>
-            </blockquote>
-          ))}
+            {TESTIMONIALS.map((t, i) => (
+              <blockquote
+                key={i}
+                className={`[grid-area:1/1] transition-all duration-700 ${
+                  i === current
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4 pointer-events-none"
+                }`}
+              >
+                <p className="text-lg md:text-xl leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] mb-6">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <footer className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#F5F5F5] dark:bg-[#1A1A1A] flex items-center justify-center text-[10px] font-mono text-[#7A7A7A]">
+                    {t.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-black dark:text-white">
+                      {t.linkedIn ? (
+                        <a
+                          href={t.linkedIn}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="hover:text-[#FF3C3C] transition-colors"
+                        >
+                          {t.name}
+                        </a>
+                      ) : (
+                        t.name
+                      )}
+                    </p>
+                    <p className="text-xs text-[#7A7A7A]">{t.title}</p>
+                  </div>
+                </footer>
+              </blockquote>
+            ))}
           </div>
         </div>
 
@@ -149,7 +152,9 @@ export default function TestimonialsSection() {
           <div className="flex items-center gap-2 mt-10 font-mono text-[11px] tracking-[0.3em]">
             <span className="text-[#FF3C3C]">{String(current + 1).padStart(2, "0")}</span>
             <span className="text-[#D0D0D0] dark:text-[#3D3D3D]">/</span>
-            <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">{String(total).padStart(2, "0")}</span>
+            <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">
+              {String(total).padStart(2, "0")}
+            </span>
             {!reduced && (
               <button
                 onClick={() => setAutoPlay((p) => !p)}
@@ -158,12 +163,24 @@ export default function TestimonialsSection() {
                 className="ml-3 w-6 h-6 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors"
               >
                 {autoPlay ? (
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
                     <rect x="1.5" y="1" width="2.5" height="8" />
                     <rect x="6" y="1" width="2.5" height="8" />
                   </svg>
                 ) : (
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
                     <path d="M2 1 L9 5 L2 9 Z" />
                   </svg>
                 )}

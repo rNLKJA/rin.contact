@@ -9,28 +9,30 @@ export default function handler(req, res) {
 
   if (isTerminal) {
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
-    return res.status(200).send(
-      [
-        "",
-        "  pong.",
-        "",
-        "  rin.contact is alive.",
-        "  Latency measured. Handshake established.",
-        "  Status: all systems nominal.",
-        "",
-        "  ─────────────────────────────────────────",
-        "  UPTIME    continuous since 2022",
-        "  LOCATION  Adelaide, SA  ·  UTC+9:30",
-        "  OPERATOR  Sunchuangyu (Rin) Huang",
-        "  ─────────────────────────────────────────",
-        "",
-        "  Try also:",
-        "    curl rin.contact           → full profile",
-        "    open https://rin.contact/tools/card    → business card",
-        "    open https://rin.contact/fun/secret  → take a look",
-        "",
-      ].join("\n")
-    );
+    return res
+      .status(200)
+      .send(
+        [
+          "",
+          "  pong.",
+          "",
+          "  rin.contact is alive.",
+          "  Latency measured. Handshake established.",
+          "  Status: all systems nominal.",
+          "",
+          "  ─────────────────────────────────────────",
+          "  UPTIME    continuous since 2022",
+          "  LOCATION  Adelaide, SA  ·  UTC+9:30",
+          "  OPERATOR  Sunchuangyu (Rin) Huang",
+          "  ─────────────────────────────────────────",
+          "",
+          "  Try also:",
+          "    curl rin.contact           → full profile",
+          "    open https://rin.contact/tools/card    → business card",
+          "    open https://rin.contact/fun/secret  → take a look",
+          "",
+        ].join("\n")
+      );
   }
 
   res.setHeader("Content-Type", "application/json");

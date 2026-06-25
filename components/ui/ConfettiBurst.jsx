@@ -6,13 +6,7 @@ import { useEffect, useState, useRef } from "react";
 
 const ANGLES = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
 
-export default function ConfettiBurst({
-  trigger,
-  x,
-  y,
-  size = "default",
-  color = "#FF3C3C",
-}) {
+export default function ConfettiBurst({ trigger, x, y, size = "default", color = "#FF3C3C" }) {
   const [burst, setBurst] = useState(null);
   const prevRef = useRef(null);
 

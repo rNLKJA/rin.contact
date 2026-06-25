@@ -7,19 +7,17 @@
  * Clear:  Ctrl+L  or  clear
  * Exit:   exit | q
  */
-import React, {
-  useState, useEffect, useRef, useCallback,
-} from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useI18n } from "@/contexts/I18nContext";
 
 // ── Colour helpers ────────────────────────────────────────────────────────────
 const CLS = {
-  normal:  "text-[#B0B0B0]",
-  white:   "text-white font-medium",
-  red:     "text-[#FF3C3C]",
-  dim:     "text-[#585858]",
-  green:   "text-[#4ADE80]",
-  error:   "text-[#FF6B6B]",
+  normal: "text-[#B0B0B0]",
+  white: "text-white font-medium",
+  red: "text-[#FF3C3C]",
+  dim: "text-[#585858]",
+  green: "text-[#4ADE80]",
+  error: "text-[#FF6B6B]",
 };
 
 function Line({ c = "normal", t }) {
@@ -202,17 +200,13 @@ const NEOFETCH = [
   D("  CPU        Generalist × Specialist"),
   D("  Memory     23+ certs · 2 degrees · 20+ projects"),
   BR(),
-  L("red",   "  ████"),
+  L("red", "  ████"),
   BR(),
 ];
 
 // Easter eggs
 const EASTER_EGGS = {
-  "sudo rm -rf /": [
-    E("Permission denied."),
-    D("(Nice try.)"),
-    BR(),
-  ],
+  "sudo rm -rf /": [E("Permission denied."), D("(Nice try.)"), BR()],
   "cat .hidden": [
     D("Decrypting .hidden..."),
     BR(),
@@ -237,7 +231,7 @@ const EASTER_EGGS = {
     R("-rw-------  rin  contact  .hidden       (try: cat .hidden)"),
     BR(),
   ],
-  "pwd":    [D("/home/rin/contact"), BR()],
+  pwd: [D("/home/rin/contact"), BR()],
   "uname -a": [D("RinOS rin.contact v5.10.1 Next.js #1 SMP Vercel x86_64"), BR()],
   "ping rin.contact": [
     D("PING rin.contact — 56 data bytes"),
@@ -246,17 +240,17 @@ const EASTER_EGGS = {
     D("2 packets transmitted, 2 received, 0% packet loss"),
     BR(),
   ],
-  "vim": [
+  vim: [
     E("VIM — there's no escape from here either."),
     D("(Press :q! if you dare — it won't work.)"),
     BR(),
   ],
-  "emacs": [
-    D("\"Emacs is a great operating system, lacking only a decent editor.\""),
+  emacs: [
+    D('"Emacs is a great operating system, lacking only a decent editor."'),
     D("— A fellow Vim user, probably"),
     BR(),
   ],
-  "python": [
+  python: [
     G("Python 3.12.0 (main, Oct 2023)"),
     D("[Clang 15.0.0] on darwin"),
     G(">>> print('Hello from rin.contact')"),
@@ -264,19 +258,15 @@ const EASTER_EGGS = {
     D(">>> # Use Ctrl+D to exit"),
     BR(),
   ],
-  "fortune": [
+  fortune: [
     BR(),
     W('  "Messy data is a sign of interesting reality."'),
     BR(),
     D("  — Data Analyst Proverbs, vol. III"),
     BR(),
   ],
-  "42": [
-    W("The answer to life, the universe, and everything."),
-    D("(You already knew that.)"),
-    BR(),
-  ],
-  "date": [],  // dynamic, handled separately
+  42: [W("The answer to life, the universe, and everything."), D("(You already knew that.)"), BR()],
+  date: [], // dynamic, handled separately
 };
 
 // ── Command resolver ──────────────────────────────────────────────────────────
@@ -288,38 +278,45 @@ function resolve(raw, inputHistory) {
   if (EASTER_EGGS[cmd]) return EASTER_EGGS[cmd];
 
   switch (first) {
-    case "help": return HELP;
-    case "whoami": return WHOAMI;
-    case "ls": return cmd === "ls" ? LS : (EASTER_EGGS[cmd] ?? [E(`Unknown flag for ls.`), BR()]);
-    case "skills": return SKILLS;
-    case "projects": return PROJECTS;
-    case "contact": return CONTACT;
-    case "curl": return CURL_OUTPUT;
-    case "neofetch": return NEOFETCH;
-    case "history": return inputHistory.length === 0
-      ? [D("No history yet."), BR()]
-      : [
-          R("▸  HISTORY"),
-          BR(),
-          ...inputHistory.map((h, i) => D(`  ${String(i + 1).padStart(3, " ")}  ${h}`)),
-          BR(),
-        ];
+    case "help":
+      return HELP;
+    case "whoami":
+      return WHOAMI;
+    case "ls":
+      return cmd === "ls" ? LS : (EASTER_EGGS[cmd] ?? [E(`Unknown flag for ls.`), BR()]);
+    case "skills":
+      return SKILLS;
+    case "projects":
+      return PROJECTS;
+    case "contact":
+      return CONTACT;
+    case "curl":
+      return CURL_OUTPUT;
+    case "neofetch":
+      return NEOFETCH;
+    case "history":
+      return inputHistory.length === 0
+        ? [D("No history yet."), BR()]
+        : [
+            R("▸  HISTORY"),
+            BR(),
+            ...inputHistory.map((h, i) => D(`  ${String(i + 1).padStart(3, " ")}  ${h}`)),
+            BR(),
+          ];
     case "cd": {
       const target = raw.trim().split(" ")[1];
       if (!target) return [E("Usage: cd #section"), BR()];
-      return [
-        G(`Navigating to ${target}…`),
-        BR(),
-        L("__navigate__", target),
-      ];
+      return [G(`Navigating to ${target}…`), BR(), L("__navigate__", target)];
     }
-    case "clear": return [L("__clear__", "")];
+    case "clear":
+      return [L("__clear__", "")];
     case "exit":
-    case "q":   return [L("__exit__", "")];
+    case "q":
+      return [L("__exit__", "")];
     default:
       return [
         E(`Command not found: ${raw.trim()}`),
-        D("  Type \"help\" for available commands."),
+        D('  Type "help" for available commands.'),
         BR(),
       ];
   }
@@ -328,14 +325,14 @@ function resolve(raw, inputHistory) {
 // ── Main component ─────────────────────────────────────────────────────────────
 export default function MiniTerminal({ onClose }) {
   const { t } = useI18n();
-  const [lines, setLines]         = useState(BANNER);
-  const [input, setInput]         = useState("");
-  const [histIdx, setHistIdx]     = useState(-1);
+  const [lines, setLines] = useState(BANNER);
+  const [input, setInput] = useState("");
+  const [histIdx, setHistIdx] = useState(-1);
   const [inputHist, setInputHist] = useState([]);
 
-  const bottomRef  = useRef(null);
-  const inputRef   = useRef(null);
-  const scrollRef  = useRef(null);
+  const bottomRef = useRef(null);
+  const inputRef = useRef(null);
+  const scrollRef = useRef(null);
 
   // Auto-scroll to bottom on new output
   useEffect(() => {
@@ -357,11 +354,17 @@ export default function MiniTerminal({ onClose }) {
     setInput("");
 
     const cmdLine = L("dim", `$ ${raw}`);
-    const output  = resolve(raw, newHist);
+    const output = resolve(raw, newHist);
 
     // Handle special meta-lines
-    if (output.some((l) => l.c === "__clear__")) { setLines([]); return; }
-    if (output.some((l) => l.c === "__exit__"))  { onClose?.(); return; }
+    if (output.some((l) => l.c === "__clear__")) {
+      setLines([]);
+      return;
+    }
+    if (output.some((l) => l.c === "__exit__")) {
+      onClose?.();
+      return;
+    }
     if (output.some((l) => l.c === "__navigate__")) {
       const target = output.find((l) => l.c === "__navigate__")?.t;
       if (target) {
@@ -375,26 +378,29 @@ export default function MiniTerminal({ onClose }) {
     setLines((prev) => [...prev, cmdLine, ...output]);
   }, [input, inputHist, onClose]);
 
-  const onKeyDown = useCallback((e) => {
-    if (e.key === "Enter") {
-      submit();
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      const next = Math.min(histIdx + 1, inputHist.length - 1);
-      setHistIdx(next);
-      if (inputHist[next] !== undefined) setInput(inputHist[next]);
-    } else if (e.key === "ArrowDown") {
-      e.preventDefault();
-      const next = Math.max(histIdx - 1, -1);
-      setHistIdx(next);
-      setInput(next === -1 ? "" : inputHist[next]);
-    } else if (e.key === "l" && e.ctrlKey) {
-      e.preventDefault();
-      setLines([]);
-    } else if (e.key === "Escape") {
-      onClose?.();
-    }
-  }, [submit, histIdx, inputHist, onClose]);
+  const onKeyDown = useCallback(
+    (e) => {
+      if (e.key === "Enter") {
+        submit();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        const next = Math.min(histIdx + 1, inputHist.length - 1);
+        setHistIdx(next);
+        if (inputHist[next] !== undefined) setInput(inputHist[next]);
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        const next = Math.max(histIdx - 1, -1);
+        setHistIdx(next);
+        setInput(next === -1 ? "" : inputHist[next]);
+      } else if (e.key === "l" && e.ctrlKey) {
+        e.preventDefault();
+        setLines([]);
+      } else if (e.key === "Escape") {
+        onClose?.();
+      }
+    },
+    [submit, histIdx, inputHist, onClose]
+  );
 
   return (
     <div
@@ -410,11 +416,16 @@ export default function MiniTerminal({ onClose }) {
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#2A2A2A] bg-[#111111] flex-shrink-0">
         <div className="flex items-center gap-2.5">
           {/* Traffic lights */}
-          <span className="w-3 h-3 rounded-full bg-[#FF5F57] hover:opacity-80 cursor-pointer" onClick={onClose} title={t("miniTerminal.closeTitle")} aria-label={t("miniTerminal.closeLabel")} />
+          <span
+            className="w-3 h-3 rounded-full bg-[#FF5F57] hover:opacity-80 cursor-pointer"
+            onClick={onClose}
+            title={t("miniTerminal.closeTitle")}
+            aria-label={t("miniTerminal.closeLabel")}
+          />
           <span className="w-3 h-3 rounded-full bg-[#2A2A2A]" />
           <span className="w-3 h-3 rounded-full bg-[#2A2A2A]" />
         </div>
-        <span className="font-mono text-xs text-[#585858] tracking-wider">rin@contact  —  bash</span>
+        <span className="font-mono text-xs text-[#585858] tracking-wider">rin@contact — bash</span>
         <span className="w-[60px]" />
       </div>
 

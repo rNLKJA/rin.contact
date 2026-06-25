@@ -43,7 +43,6 @@ export default function RoastPage() {
 
       <div className="min-h-screen bg-black flex flex-col items-center justify-center px-6 font-mono">
         <div className="max-w-lg w-full">
-
           <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-6">
             Honest feedback engine
           </p>
@@ -58,16 +57,10 @@ export default function RoastPage() {
                 <p className="text-[10px] text-[#7A7A7A] uppercase tracking-widest mb-2">
                   Sin detected
                 </p>
-                <p className="text-white text-sm font-mono mb-4">
-                  {data.sin}
-                </p>
-                <p className="text-[#AAAAAA] text-sm leading-relaxed">
-                  {data.roast}
-                </p>
+                <p className="text-white text-sm font-mono mb-4">{data.sin}</p>
+                <p className="text-[#AAAAAA] text-sm leading-relaxed">{data.roast}</p>
               </div>
-              <p className="text-[10px] text-[#555] mb-8">
-                Severity: {data.severity}
-              </p>
+              <p className="text-[10px] text-[#555] mb-8">Severity: {data.severity}</p>
             </>
           ) : null}
 

@@ -74,14 +74,34 @@ export default function HeroDotField() {
         }
         .hero-dotfield-base {
           background-image: radial-gradient(var(--dot) 1.3px, transparent 1.8px);
-          -webkit-mask-image: radial-gradient(circle at 60% 40%, #000 0%, rgba(0, 0, 0, 0.55) 55%, transparent 85%);
-          mask-image: radial-gradient(circle at 60% 40%, #000 0%, rgba(0, 0, 0, 0.55) 55%, transparent 85%);
+          -webkit-mask-image: radial-gradient(
+            circle at 60% 40%,
+            #000 0%,
+            rgba(0, 0, 0, 0.55) 55%,
+            transparent 85%
+          );
+          mask-image: radial-gradient(
+            circle at 60% 40%,
+            #000 0%,
+            rgba(0, 0, 0, 0.55) 55%,
+            transparent 85%
+          );
         }
         .hero-dotfield-glow {
           background-color: rgba(255, 60, 60, 0.05);
           background-image: radial-gradient(#ff3c3c 1.7px, transparent 2.2px);
-          -webkit-mask-image: radial-gradient(230px circle at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.55) 42%, transparent 72%);
-          mask-image: radial-gradient(230px circle at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.55) 42%, transparent 72%);
+          -webkit-mask-image: radial-gradient(
+            230px circle at var(--mx) var(--my),
+            #000 0%,
+            rgba(0, 0, 0, 0.55) 42%,
+            transparent 72%
+          );
+          mask-image: radial-gradient(
+            230px circle at var(--mx) var(--my),
+            #000 0%,
+            rgba(0, 0, 0, 0.55) 42%,
+            transparent 72%
+          );
           opacity: var(--active);
           transition: opacity 0.45s ease;
         }

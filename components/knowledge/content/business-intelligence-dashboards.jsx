@@ -24,14 +24,70 @@ function StarSchemaFigure({ caption, ariaLabel, factLabel, factSub, dims }) {
         role="img"
         aria-label={ariaLabel}
       >
-        <rect x="170" y="72" width="100" height="40" rx="2" fill="#FF3C3C" fillOpacity="0.12" stroke="#FF3C3C" strokeWidth="1.5" />
-        <text x="220" y="89" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">{factLabel}</text>
-        <text x="220" y="103" textAnchor="middle" fontSize="7" fontFamily="monospace" fill="currentColor" opacity="0.7">{factSub}</text>
+        <rect
+          x="170"
+          y="72"
+          width="100"
+          height="40"
+          rx="2"
+          fill="#FF3C3C"
+          fillOpacity="0.12"
+          stroke="#FF3C3C"
+          strokeWidth="1.5"
+        />
+        <text
+          x="220"
+          y="89"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {factLabel}
+        </text>
+        <text
+          x="220"
+          y="103"
+          textAnchor="middle"
+          fontSize="7"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {factSub}
+        </text>
         {DIM_POS.map((d, i) => (
           <g key={i}>
-            <line x1="220" y1="92" x2={d.x + 40} y2={d.y + 16} stroke="currentColor" strokeWidth="1" opacity="0.5" />
-            <rect x={d.x} y={d.y} width="80" height="32" rx="2" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.7" />
-            <text x={d.x + 40} y={d.y + 20} textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{dims[i]}</text>
+            <line
+              x1="220"
+              y1="92"
+              x2={d.x + 40}
+              y2={d.y + 16}
+              stroke="currentColor"
+              strokeWidth="1"
+              opacity="0.5"
+            />
+            <rect
+              x={d.x}
+              y={d.y}
+              width="80"
+              height="32"
+              rx="2"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              opacity="0.7"
+            />
+            <text
+              x={d.x + 40}
+              y={d.y + 20}
+              textAnchor="middle"
+              fontSize="9"
+              fontFamily="monospace"
+              fill="currentColor"
+            >
+              {dims[i]}
+            </text>
           </g>
         ))}
       </svg>
@@ -44,36 +100,34 @@ function EnBody() {
   return (
     <>
       <p>
-        <Term>Business intelligence</Term> (BI) is the layer that turns raw data into
-        something a non-analyst can explore and act on — the reports, dashboards, and
-        metrics that put answers in front of decision-makers without them writing a line of{" "}
-        <Link href="/knowledge/database-systems">SQL</Link>. Tools like Power BI, Tableau,
-        and Looker are how most organisations actually consume their data, which makes
-        dashboard craft one of the highest-leverage skills a working analyst has.
+        <Term>Business intelligence</Term> (BI) is the layer that turns raw data into something a
+        non-analyst can explore and act on — the reports, dashboards, and metrics that put answers
+        in front of decision-makers without them writing a line of{" "}
+        <Link href="/knowledge/database-systems">SQL</Link>. Tools like Power BI, Tableau, and
+        Looker are how most organisations actually consume their data, which makes dashboard craft
+        one of the highest-leverage skills a working analyst has.
       </p>
       <p>
-        It looks easy and is deceptively hard: anyone can drag a few charts onto a canvas,
-        but a dashboard people <em>trust and use</em> takes a sound data model underneath
-        and real design discipline on top. This is the page I draw on most days — here's
-        what separates a dashboard that drives decisions from one that gets ignored.
+        It looks easy and is deceptively hard: anyone can drag a few charts onto a canvas, but a
+        dashboard people <em>trust and use</em> takes a sound data model underneath and real design
+        discipline on top. This is the page I draw on most days — here's what separates a dashboard
+        that drives decisions from one that gets ignored.
       </p>
 
       <KSection id="what" eyebrow="01" title="What BI actually is">
         <p>
-          BI sits between the database and the decision-maker. Its job is{" "}
-          <Term>self-service</Term>: let a manager, an executive, or a minister's office
-          answer their own questions — "how are we tracking this quarter?", "where are the
-          hotspots?" — interactively, without an analyst in the loop for every query. A{" "}
-          <Term>report</Term> is a detailed, often multi-page view of the data; a{" "}
-          <Term>dashboard</Term> is a single screen of the most important indicators at a
-          glance.
+          BI sits between the database and the decision-maker. Its job is <Term>self-service</Term>:
+          let a manager, an executive, or a minister's office answer their own questions — "how are
+          we tracking this quarter?", "where are the hotspots?" — interactively, without an analyst
+          in the loop for every query. A <Term>report</Term> is a detailed, often multi-page view of
+          the data; a <Term>dashboard</Term> is a single screen of the most important indicators at
+          a glance.
         </p>
         <p>
-          The distinction that matters: BI is mostly about <em>analytical</em> reading of
-          data — the OLAP side of the{" "}
-          <Link href="/knowledge/database-systems">database page</Link> — not transactional
-          updates. You're summarising history to inform a decision, which shapes both the
-          data model and the design.
+          The distinction that matters: BI is mostly about <em>analytical</em> reading of data — the
+          OLAP side of the <Link href="/knowledge/database-systems">database page</Link> — not
+          transactional updates. You're summarising history to inform a decision, which shapes both
+          the data model and the design.
         </p>
       </KSection>
 
@@ -81,18 +135,17 @@ function EnBody() {
         <p>
           The most important part of a good dashboard is invisible: the <Term>data model</Term>.
           Beginners point a tool at a giant flat spreadsheet and wonder why it's slow and the
-          numbers don't add up. Professionals build a <Term>star schema</Term> — the standard
-          BI model — first.
+          numbers don't add up. Professionals build a <Term>star schema</Term> — the standard BI
+          model — first.
         </p>
         <p>
-          A star schema splits data into <Term>fact tables</Term> (the events you measure —
-          sales, cases, incidents, one row each) surrounded by <Term>dimension tables</Term>{" "}
-          (the context you slice by — date, location, category, person). They connect by keys,
-          exactly like the <Link href="/knowledge/database-systems">relational joins</Link>{" "}
-          from the database page. This structure is what makes a dashboard both fast and
-          correct: filters propagate cleanly from dimensions to facts, and the same measure
-          stays consistent across every chart. Get the model right and the visuals are easy;
-          get it wrong and no amount of design saves you.
+          A star schema splits data into <Term>fact tables</Term> (the events you measure — sales,
+          cases, incidents, one row each) surrounded by <Term>dimension tables</Term> (the context
+          you slice by — date, location, category, person). They connect by keys, exactly like the{" "}
+          <Link href="/knowledge/database-systems">relational joins</Link> from the database page.
+          This structure is what makes a dashboard both fast and correct: filters propagate cleanly
+          from dimensions to facts, and the same measure stays consistent across every chart. Get
+          the model right and the visuals are easy; get it wrong and no amount of design saves you.
         </p>
 
         <StarSchemaFigure
@@ -106,50 +159,49 @@ function EnBody() {
 
       <KSection id="measures" eyebrow="03" title="Measures and metrics">
         <p>
-          On top of the model sit <Term>measures</Term> — the calculations that turn raw rows
-          into the numbers people care about: a total, an average, a year-on-year change, a
-          rate per capita. In Power BI these are written in a formula language (DAX); the key
-          idea is that a measure is <em>dynamic</em> — it recalculates for whatever the user
-          has filtered to, so "total cases" instantly becomes "total cases for this district,
-          this month" as they click.
+          On top of the model sit <Term>measures</Term> — the calculations that turn raw rows into
+          the numbers people care about: a total, an average, a year-on-year change, a rate per
+          capita. In Power BI these are written in a formula language (DAX); the key idea is that a
+          measure is <em>dynamic</em> — it recalculates for whatever the user has filtered to, so
+          "total cases" instantly becomes "total cases for this district, this month" as they click.
         </p>
         <p>
-          The discipline is to define each metric <strong>once</strong>, centrally, and reuse
-          it everywhere — so "open cases" means the same thing on every page and in every
-          conversation. Inconsistent or ad-hoc metrics are how two dashboards end up
-          disagreeing and trust collapses. A small, well-defined set of trusted measures is
-          worth more than a sprawl of one-off calculations.
+          The discipline is to define each metric <strong>once</strong>, centrally, and reuse it
+          everywhere — so "open cases" means the same thing on every page and in every conversation.
+          Inconsistent or ad-hoc metrics are how two dashboards end up disagreeing and trust
+          collapses. A small, well-defined set of trusted measures is worth more than a sprawl of
+          one-off calculations.
         </p>
       </KSection>
 
       <KSection id="onequestion" eyebrow="04" title="One question per page">
         <p>
           The most important design rule, and the one most often broken:{" "}
-          <strong>each page should answer a single question</strong>. "How is the branch
-          performing this quarter?" or "Where are open cases concentrated?" — one focused
-          question per screen. Cramming several questions onto one page dilutes the message,
-          overwhelms the reader, and slows the page down.
+          <strong>each page should answer a single question</strong>. "How is the branch performing
+          this quarter?" or "Where are open cases concentrated?" — one focused question per screen.
+          Cramming several questions onto one page dilutes the message, overwhelms the reader, and
+          slows the page down.
         </p>
         <p>
-          This forces the healthy discipline of knowing what each view is <em>for</em>. If you
-          can't say the one question a page answers, it's not finished — it's a pile of charts.
-          Multiple questions become multiple pages, navigable but distinct.
+          This forces the healthy discipline of knowing what each view is <em>for</em>. If you can't
+          say the one question a page answers, it's not finished — it's a pile of charts. Multiple
+          questions become multiple pages, navigable but distinct.
         </p>
       </KSection>
 
       <KSection id="hierarchy" eyebrow="05" title="Visual hierarchy">
         <p>
-          People read a dashboard the way they read a page: <strong>top to bottom, left to
-          right</strong>. So the layout should put the most important thing — the headline
-          KPIs, the answer to the page's question — in the <Term>top-left</Term>, where the eye
-          lands first, and let detail flow down and right. A clear visual hierarchy guides
-          attention without the reader having to hunt.
+          People read a dashboard the way they read a page:{" "}
+          <strong>top to bottom, left to right</strong>. So the layout should put the most important
+          thing — the headline KPIs, the answer to the page's question — in the{" "}
+          <Term>top-left</Term>, where the eye lands first, and let detail flow down and right. A
+          clear visual hierarchy guides attention without the reader having to hunt.
         </p>
         <p>
-          The undervalued tool here is <Term>white space</Term>. Empty space isn't wasted —
-          it's what separates groups, reduces clutter, and directs the eye to what matters. A
-          clean, well-spaced dashboard with consistent fonts, colours, and alignment reads as
-          trustworthy; a cramped, mismatched one reads as amateur, whatever the numbers say.
+          The undervalued tool here is <Term>white space</Term>. Empty space isn't wasted — it's
+          what separates groups, reduces clutter, and directs the eye to what matters. A clean,
+          well-spaced dashboard with consistent fonts, colours, and alignment reads as trustworthy;
+          a cramped, mismatched one reads as amateur, whatever the numbers say.
         </p>
       </KSection>
 
@@ -161,71 +213,69 @@ function EnBody() {
         </p>
         <ul>
           <li>
-            <Term>Cap the visuals per page</Term> — roughly <strong>8–12</strong>. Past ~15,
-            load times become noticeably sluggish, especially on older devices.
+            <Term>Cap the visuals per page</Term> — roughly <strong>8–12</strong>. Past ~15, load
+            times become noticeably sluggish, especially on older devices.
           </li>
           <li>
             <Term>Filter at the source</Term> — pull only the data you need; high-cardinality
             columns and huge unfiltered tables are the usual culprits behind slow pages.
           </li>
           <li>
-            <Term>Keep assets light</Term> — large background images (over ~2 MB) and heavy
-            custom visuals drag the whole report down.
+            <Term>Keep assets light</Term> — large background images (over ~2 MB) and heavy custom
+            visuals drag the whole report down.
           </li>
         </ul>
         <p>
-          Most of this traces back to the{" "}
-          <Link href="/knowledge/database-systems">data model</Link>: a tidy star schema with
-          the right granularity is the single biggest lever on speed.
+          Most of this traces back to the <Link href="/knowledge/database-systems">data model</Link>
+          : a tidy star schema with the right granularity is the single biggest lever on speed.
         </p>
       </KSection>
 
       <KSection id="audience" eyebrow="07" title="Design for the audience">
         <p>
           The most common dashboard mistake isn't technical — it's psychological:{" "}
-          <strong>you design for yourself, not your audience</strong>. As the analyst you want
-          to show everything you found; the executive wants the few KPIs that bear on their
-          decision. The fix is the same as on the{" "}
-          <Link href="/knowledge/science-communication">communication page</Link> — start from
-          who's reading and what they decide, then ruthlessly cut everything that doesn't serve
-          that. Pick the handful of KPIs aligned to the audience's goals, and send the rest to
-          a detail page they can drill into if they want.
+          <strong>you design for yourself, not your audience</strong>. As the analyst you want to
+          show everything you found; the executive wants the few KPIs that bear on their decision.
+          The fix is the same as on the{" "}
+          <Link href="/knowledge/science-communication">communication page</Link> — start from who's
+          reading and what they decide, then ruthlessly cut everything that doesn't serve that. Pick
+          the handful of KPIs aligned to the audience's goals, and send the rest to a detail page
+          they can drill into if they want.
         </p>
       </KSection>
 
       <KSection id="mobile" eyebrow="08" title="Mobile and accessibility">
         <p>
-          Decision-makers read on phones, so a dashboard often needs a <Term>mobile layout</Term>{" "}
-          — and that's not the desktop view shrunk. Design the phone version deliberately: 3–5
-          key metrics, stacked vertically for thumb-scrolling, with touch targets big enough to
-          tap (around 44 pixels). Power BI lets you build this mobile layout alongside the
-          desktop one.
+          Decision-makers read on phones, so a dashboard often needs a <Term>mobile layout</Term> —
+          and that's not the desktop view shrunk. Design the phone version deliberately: 3–5 key
+          metrics, stacked vertically for thumb-scrolling, with touch targets big enough to tap
+          (around 44 pixels). Power BI lets you build this mobile layout alongside the desktop one.
         </p>
         <p>
-          <Term>Accessibility</Term> belongs here too — sufficient colour contrast, not relying
-          on colour alone to carry meaning, sensible labels. In government work it's frequently
-          a requirement, not a nicety, and it's simply good design: a dashboard everyone can
-          read is a dashboard that does its job.
+          <Term>Accessibility</Term> belongs here too — sufficient colour contrast, not relying on
+          colour alone to carry meaning, sensible labels. In government work it's frequently a
+          requirement, not a nicety, and it's simply good design: a dashboard everyone can read is a
+          dashboard that does its job.
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="09" title="Where it shows up in my work">
         <Callout type="applied" label="A daily tool, not a side skill">
           <p>
-            This is hands-on, current work for me. I've <strong>built intelligence and
-            reporting dashboards in Power BI</strong> in government — integrating multiple data
-            sources into a single trusted view, and putting it in front of executives and a
-            minister's office. The lessons on this page are the ones that actually decide
-            whether those dashboards get used: a clean <strong>star-schema</strong> model so
-            the numbers are fast and consistent, <strong>one question per page</strong>, KPIs in
-            the top-left, and a hard edit down to what the audience actually needs.
+            This is hands-on, current work for me. I've{" "}
+            <strong>built intelligence and reporting dashboards in Power BI</strong> in government —
+            integrating multiple data sources into a single trusted view, and putting it in front of
+            executives and a minister's office. The lessons on this page are the ones that actually
+            decide whether those dashboards get used: a clean <strong>star-schema</strong> model so
+            the numbers are fast and consistent, <strong>one question per page</strong>, KPIs in the
+            top-left, and a hard edit down to what the audience actually needs.
           </p>
           <p>
             It sits right at the join of the rest of this section —{" "}
             <Link href="/knowledge/database-systems">databases</Link> underneath,{" "}
-            <Link href="/knowledge/science-communication">communication</Link> on top — and it's
-            a large part of how analysis becomes a decision in my day job rather than a file
-            nobody opens.
+            <Link href="/knowledge/science-communication">communication</Link> on top — and it's a
+            large part of how analysis becomes a decision in my day job rather than a file nobody
+            opens.
           </p>
         </Callout>
       </KSection>
@@ -255,8 +305,8 @@ function EnBody() {
               their decision, detail behind a drill-through.
             </li>
             <li>
-              Build a deliberate <strong>mobile layout</strong> (3–5 metrics, stacked, 44px
-              targets) and mind <strong>accessibility</strong> (contrast, not colour alone).
+              Build a deliberate <strong>mobile layout</strong> (3–5 metrics, stacked, 44px targets)
+              and mind <strong>accessibility</strong> (contrast, not colour alone).
             </li>
           </ul>
         </Callout>
@@ -275,13 +325,14 @@ function ZhBody() {
     <>
       <p>
         <Term>商业智能</Term>（BI）是把原始数据变成「非分析师也能探索并据以行动之物」的那一层——
-        那些把答案摆到决策者面前、而无需他们写一行 <Link href="/knowledge/database-systems">SQL</Link>{" "}
-        的报告、仪表板与指标。像 Power BI、Tableau、Looker 这样的工具，是大多数组织真正消费其
+        那些把答案摆到决策者面前、而无需他们写一行{" "}
+        <Link href="/knowledge/database-systems">SQL</Link> 的报告、仪表板与指标。像 Power
+        BI、Tableau、Looker 这样的工具，是大多数组织真正消费其
         数据的方式，这让仪表板手艺成为一名在职分析师所拥有的最高杠杆技能之一。
       </p>
       <p>
-        它看起来容易，实则难得出人意料：谁都能把几张图表拖到画布上，但一个让人们<em>信任并使用
-        </em>的仪表板，底下需要一个稳健的数据模型，上面需要真正的设计纪律。这是我几乎每天都要
+        它看起来容易，实则难得出人意料：谁都能把几张图表拖到画布上，但一个让人们<em>信任并使用</em>
+        的仪表板，底下需要一个稳健的数据模型，上面需要真正的设计纪律。这是我几乎每天都要
         倚靠的一页——下面就是「推动决策的仪表板」与「被无视的仪表板」之间的分野。
       </p>
 
@@ -293,17 +344,17 @@ function ZhBody() {
           <Term>仪表板</Term>是一屏之内、一眼可见的最重要指标。
         </p>
         <p>
-          要紧的区别是：BI 大多关乎对数据的<em>分析式</em>读取——<Link href="/knowledge/database-systems">数据库
-          页</Link>的 OLAP 一侧——而非事务性的更新。你是在概括历史以为一个决策提供信息，这同时
-          塑造了数据模型与设计。
+          要紧的区别是：BI 大多关乎对数据的<em>分析式</em>读取——
+          <Link href="/knowledge/database-systems">数据库 页</Link>的 OLAP
+          一侧——而非事务性的更新。你是在概括历史以为一个决策提供信息，这同时 塑造了数据模型与设计。
         </p>
       </KSection>
 
       <KSection id="model" eyebrow="02" title="底下的数据模型">
         <p>
           一个好仪表板最重要的部分是看不见的：<Term>数据模型</Term>。新手把工具对准一张巨大的
-          扁平电子表格，再纳闷它为什么慢、数字为什么对不上。专业人士先建一个<Term>星型架构
-          </Term>——标准的 BI 模型。
+          扁平电子表格，再纳闷它为什么慢、数字为什么对不上。专业人士先建一个<Term>星型架构</Term>
+          ——标准的 BI 模型。
         </p>
         <p>
           星型架构把数据拆成<Term>事实表</Term>（你所度量的事件——销售、案件、事故，各占一行）
@@ -388,9 +439,9 @@ function ZhBody() {
 
       <KSection id="audience" eyebrow="07" title="为受众而设计">
         <p>
-          最常见的仪表板错误不是技术性的——而是心理性的：<strong>你为自己、而非为受众而设计
-          </strong>。作为分析师，你想展示你发现的一切；而高管想要的是与他们的决策相关的那几个
-          KPI。修法与<Link href="/knowledge/science-communication">沟通页</Link>上一样——从「谁在
+          最常见的仪表板错误不是技术性的——而是心理性的：<strong>你为自己、而非为受众而设计</strong>
+          。作为分析师，你想展示你发现的一切；而高管想要的是与他们的决策相关的那几个 KPI。修法与
+          <Link href="/knowledge/science-communication">沟通页</Link>上一样——从「谁在
           读、他们决定什么」出发，再无情地砍掉一切无助于此的东西。挑出与受众目标对齐的那一小撮
           KPI，把其余的送进一个详情页，让他们想钻取时再钻取。
         </p>
@@ -412,15 +463,16 @@ function ZhBody() {
       <KSection id="applied" eyebrow="09" title="它在我工作中的体现">
         <Callout type="applied" label="一件日常工具，而非旁支技能">
           <p>
-            这对我是亲力亲为、正在进行的工作。我在政府里<strong>用 Power BI 构建过情报与报告
-            仪表板</strong>——把多个数据源整合进一个可信赖的单一视图，并把它摆到高管与一个部长
+            这对我是亲力亲为、正在进行的工作。我在政府里
+            <strong>用 Power BI 构建过情报与报告 仪表板</strong>
+            ——把多个数据源整合进一个可信赖的单一视图，并把它摆到高管与一个部长
             办公室面前。这一页上的教训，正是真正决定那些仪表板会不会被用起来的：一个干净的
             <strong>星型架构</strong>模型，让数字又快又一致；<strong>一页一问</strong>；KPI 放在
             左上角；以及狠狠地删减到受众真正需要的程度。
           </p>
           <p>
-            它恰好坐在本板块其余部分的接合处——<Link href="/knowledge/database-systems">数据库
-            </Link>在下、<Link href="/knowledge/science-communication">沟通</Link>在上——而它很大
+            它恰好坐在本板块其余部分的接合处——<Link href="/knowledge/database-systems">数据库</Link>
+            在下、<Link href="/knowledge/science-communication">沟通</Link>在上——而它很大
             程度上正是在我的日常工作里，分析如何成为一个决策、而非一个没人打开的文件的方式。
           </p>
         </Callout>

@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/clustering.
@@ -17,7 +24,17 @@ const TEX = {
   silShort: String.raw`s=\frac{b-a}{\max(a,b)}`,
 };
 
-function LloydFigure({ caption, ariaLabel, init, assign, assignSub, update, updateSub, repeat, done }) {
+function LloydFigure({
+  caption,
+  ariaLabel,
+  init,
+  assign,
+  assignSub,
+  update,
+  updateSub,
+  repeat,
+  done,
+}) {
   return (
     <Figure caption={caption}>
       <svg
@@ -26,23 +43,148 @@ function LloydFigure({ caption, ariaLabel, init, assign, assignSub, update, upda
         role="img"
         aria-label={ariaLabel}
       >
-        <rect x="14" y="60" width="86" height="38" rx="2" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.7" />
-        <text x="57" y="83" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{init}</text>
-        <rect x="150" y="60" width="86" height="38" rx="2" fill="#FF3C3C" fillOpacity="0.1" stroke="#FF3C3C" strokeWidth="1.4" />
-        <text x="193" y="79" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">{assign}</text>
-        <text x="193" y="91" textAnchor="middle" fontSize="7" fontFamily="monospace" fill="currentColor" opacity="0.7">{assignSub}</text>
-        <rect x="290" y="60" width="86" height="38" rx="2" fill="#FF3C3C" fillOpacity="0.1" stroke="#FF3C3C" strokeWidth="1.4" />
-        <text x="333" y="79" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">{update}</text>
-        <text x="333" y="91" textAnchor="middle" fontSize="7" fontFamily="monospace" fill="currentColor" opacity="0.7">{updateSub}</text>
-        <line x1="100" y1="79" x2="148" y2="79" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#cl-ah)" />
-        <line x1="236" y1="73" x2="288" y2="73" stroke="#FF3C3C" strokeWidth="1.4" markerEnd="url(#cl-ah2)" />
-        <path d="M290 90 C 250 120, 233 120, 236 100" fill="none" stroke="#FF3C3C" strokeWidth="1.2" strokeDasharray="4 3" markerEnd="url(#cl-ah2)" />
-        <text x="263" y="135" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">{repeat}</text>
-        <text x="408" y="83" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{done}</text>
-        <line x1="376" y1="79" x2="398" y2="79" stroke="currentColor" strokeWidth="1" opacity="0.5" markerEnd="url(#cl-ah)" />
+        <rect
+          x="14"
+          y="60"
+          width="86"
+          height="38"
+          rx="2"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.7"
+        />
+        <text
+          x="57"
+          y="83"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {init}
+        </text>
+        <rect
+          x="150"
+          y="60"
+          width="86"
+          height="38"
+          rx="2"
+          fill="#FF3C3C"
+          fillOpacity="0.1"
+          stroke="#FF3C3C"
+          strokeWidth="1.4"
+        />
+        <text
+          x="193"
+          y="79"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {assign}
+        </text>
+        <text
+          x="193"
+          y="91"
+          textAnchor="middle"
+          fontSize="7"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {assignSub}
+        </text>
+        <rect
+          x="290"
+          y="60"
+          width="86"
+          height="38"
+          rx="2"
+          fill="#FF3C3C"
+          fillOpacity="0.1"
+          stroke="#FF3C3C"
+          strokeWidth="1.4"
+        />
+        <text
+          x="333"
+          y="79"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {update}
+        </text>
+        <text
+          x="333"
+          y="91"
+          textAnchor="middle"
+          fontSize="7"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {updateSub}
+        </text>
+        <line
+          x1="100"
+          y1="79"
+          x2="148"
+          y2="79"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#cl-ah)"
+        />
+        <line
+          x1="236"
+          y1="73"
+          x2="288"
+          y2="73"
+          stroke="#FF3C3C"
+          strokeWidth="1.4"
+          markerEnd="url(#cl-ah2)"
+        />
+        <path
+          d="M290 90 C 250 120, 233 120, 236 100"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+          strokeDasharray="4 3"
+          markerEnd="url(#cl-ah2)"
+        />
+        <text
+          x="263"
+          y="135"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {repeat}
+        </text>
+        <text x="408" y="83" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">
+          {done}
+        </text>
+        <line
+          x1="376"
+          y1="79"
+          x2="398"
+          y2="79"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.5"
+          markerEnd="url(#cl-ah)"
+        />
         <defs>
-          <marker id="cl-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="currentColor" /></marker>
-          <marker id="cl-ah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" /></marker>
+          <marker id="cl-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="currentColor" />
+          </marker>
+          <marker id="cl-ah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -70,10 +212,37 @@ function DendrogramFigure({ caption, ariaLabel, cutLabel }) {
         <line x1="125" y1="70" x2="125" y2="40" stroke="currentColor" strokeWidth="1.2" />
         <line x1="290" y1="95" x2="290" y2="40" stroke="currentColor" strokeWidth="1.2" />
         <line x1="125" y1="40" x2="290" y2="40" stroke="currentColor" strokeWidth="1.2" />
-        <line x1="30" y1="55" x2="410" y2="55" stroke="#FF3C3C" strokeWidth="1" strokeDasharray="5 3" />
-        <text x="360" y="51" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{cutLabel}</text>
-        {[["a", 50], ["b", 110], ["c", 170], ["d", 250], ["e", 330]].map(([t, x]) => (
-          <text key={t} x={x} y={152} textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{t}</text>
+        <line
+          x1="30"
+          y1="55"
+          x2="410"
+          y2="55"
+          stroke="#FF3C3C"
+          strokeWidth="1"
+          strokeDasharray="5 3"
+        />
+        <text x="360" y="51" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {cutLabel}
+        </text>
+        {[
+          ["a", 50],
+          ["b", 110],
+          ["c", 170],
+          ["d", 250],
+          ["e", 330],
+        ].map(([t, x]) => (
+          <text
+            key={t}
+            x={x}
+            y={152}
+            textAnchor="middle"
+            fontSize="9"
+            fontFamily="monospace"
+            fill="currentColor"
+            opacity="0.7"
+          >
+            {t}
+          </text>
         ))}
       </svg>
     </Figure>
@@ -86,76 +255,69 @@ function EnBody() {
     <>
       <p>
         Most machine learning is supervised — you have labelled examples to learn from.{" "}
-        <Term>Clustering</Term> is the opposite: there are no labels, no correct answer,
-        just data, and the task is to discover the natural groupings hidden inside it.
-        Which customers behave alike? Which documents are about the same thing? Which
-        regions share a pattern? Clustering answers those without anyone ever defining
-        the groups in advance.
+        <Term>Clustering</Term> is the opposite: there are no labels, no correct answer, just data,
+        and the task is to discover the natural groupings hidden inside it. Which customers behave
+        alike? Which documents are about the same thing? Which regions share a pattern? Clustering
+        answers those without anyone ever defining the groups in advance.
       </p>
       <p>
-        It's the headline example of <Term>unsupervised learning</Term>, and it pairs
-        directly with the <Link href="/knowledge/pca-dimensionality-reduction">PCA
-        page</Link>: reduce dimensions first, then cluster in the cleaner low-D space.
-        This page builds the two workhorses — k-means and hierarchical — from first
-        principles, and is honest about when each one lies to you.
+        It's the headline example of <Term>unsupervised learning</Term>, and it pairs directly with
+        the <Link href="/knowledge/pca-dimensionality-reduction">PCA page</Link>: reduce dimensions
+        first, then cluster in the cleaner low-D space. This page builds the two workhorses —
+        k-means and hierarchical — from first principles, and is honest about when each one lies to
+        you.
       </p>
 
       <KSection id="what" eyebrow="01" title="Finding groups without labels">
         <p>
-          A <Term>cluster</Term> is a set of points that are more similar to each other
-          than to points outside it. That's the whole goal: maximise similarity within a
-          group and difference between groups. Because there's no ground truth,
-          clustering is genuinely exploratory — you're forming hypotheses about
-          structure, not predicting a known target.
+          A <Term>cluster</Term> is a set of points that are more similar to each other than to
+          points outside it. That's the whole goal: maximise similarity within a group and
+          difference between groups. Because there's no ground truth, clustering is genuinely
+          exploratory — you're forming hypotheses about structure, not predicting a known target.
         </p>
         <p>
-          That freedom is also the catch. There's no single correct clustering of a
-          dataset — the "right" answer depends on what you mean by similar, how many
-          groups you ask for, and which algorithm's assumptions match your data's shape.
-          So the craft is less about running the algorithm and more about choosing those
-          things well, then sanity-checking the result.
+          That freedom is also the catch. There's no single correct clustering of a dataset — the
+          "right" answer depends on what you mean by similar, how many groups you ask for, and which
+          algorithm's assumptions match your data's shape. So the craft is less about running the
+          algorithm and more about choosing those things well, then sanity-checking the result.
         </p>
       </KSection>
 
       <KSection id="distance" eyebrow="02" title="Distance and similarity">
         <p>
-          Everything in clustering rests on a notion of how far apart two points are.
-          The default is <Term>Euclidean distance</Term> — ordinary straight-line
-          distance:
+          Everything in clustering rests on a notion of how far apart two points are. The default is{" "}
+          <Term>Euclidean distance</Term> — ordinary straight-line distance:
         </p>
         <Formula label="The Euclidean distance between points x and y is the square root of the sum over each dimension i of the squared difference between x-i and y-i.">
           {TEX.euclid}
         </Formula>
         <p>
-          But it isn't always the right one. <Term>Cosine similarity</Term> (the angle
-          between vectors) is better when direction matters more than magnitude — the
-          same measure that compares text embeddings on the{" "}
-          <Link href="/knowledge/natural-language-processing">NLP page</Link>. And
-          there's a trap carried straight over from PCA: in high dimensions, distances{" "}
-          <em>concentrate</em> — every pair of points ends up roughly equidistant, and
-          "nearest" stops meaning anything.
+          But it isn't always the right one. <Term>Cosine similarity</Term> (the angle between
+          vectors) is better when direction matters more than magnitude — the same measure that
+          compares text embeddings on the{" "}
+          <Link href="/knowledge/natural-language-processing">NLP page</Link>. And there's a trap
+          carried straight over from PCA: in high dimensions, distances <em>concentrate</em> — every
+          pair of points ends up roughly equidistant, and "nearest" stops meaning anything.
         </p>
         <Callout type="pitfall">
           <p>
             Two preprocessing steps decide whether clustering works at all.{" "}
-            <strong>Standardise your features</strong> — distance is dominated by
-            whichever feature has the largest scale, so a salary column in dollars will
-            drown out an age column unless you normalise. And on wide data,{" "}
-            <strong>reduce dimensions first</strong> (PCA) so distances stay meaningful.
-            Clustering raw, unscaled, high-dimensional data is the most common way to get
-            garbage groups.
+            <strong>Standardise your features</strong> — distance is dominated by whichever feature
+            has the largest scale, so a salary column in dollars will drown out an age column unless
+            you normalise. And on wide data, <strong>reduce dimensions first</strong> (PCA) so
+            distances stay meaningful. Clustering raw, unscaled, high-dimensional data is the most
+            common way to get garbage groups.
           </p>
         </Callout>
       </KSection>
 
       <KSection id="kmeans" eyebrow="03" title="k-means">
         <p>
-          <Term>k-means</Term> is the most-used clustering algorithm, and its appeal is
-          simplicity. You tell it how many clusters you want (<TeX>{String.raw`k`}</TeX>),
-          and it finds <TeX>{String.raw`k`}</TeX> centre points (<Term>centroids</Term>)
-          and assigns every point to its nearest one. Formally it minimises the total
-          squared distance from points to their cluster's centroid — the{" "}
-          <Term>within-cluster sum of squares</Term> (also called inertia):
+          <Term>k-means</Term> is the most-used clustering algorithm, and its appeal is simplicity.
+          You tell it how many clusters you want (<TeX>{String.raw`k`}</TeX>), and it finds{" "}
+          <TeX>{String.raw`k`}</TeX> centre points (<Term>centroids</Term>) and assigns every point
+          to its nearest one. Formally it minimises the total squared distance from points to their
+          cluster's centroid — the <Term>within-cluster sum of squares</Term> (also called inertia):
         </p>
         <Formula
           label="The k-means objective J is the sum over the k clusters, of the sum over each point x in that cluster, of the squared distance from x to the cluster's centroid mu."
@@ -165,25 +327,23 @@ function EnBody() {
         </Formula>
         <p>
           You can't minimise that directly, but a beautifully simple loop —{" "}
-          <Term>Lloyd's algorithm</Term> — does it by alternating two steps until nothing
-          moves:
+          <Term>Lloyd's algorithm</Term> — does it by alternating two steps until nothing moves:
         </p>
         <ol>
           <li>
             <Term>Assign</Term> — put each point in the cluster of its nearest centroid.
           </li>
           <li>
-            <Term>Update</Term> — move each centroid to the mean of the points now
-            assigned to it: <TeX>{TEX.centroid}</TeX>.
+            <Term>Update</Term> — move each centroid to the mean of the points now assigned to it:{" "}
+            <TeX>{TEX.centroid}</TeX>.
           </li>
         </ol>
         <p>
-          Each round can only lower <TeX>{String.raw`J`}</TeX>, so it always converges.
-          The catch: it converges to a <em>local</em> minimum that depends on the random
-          starting centroids, so in practice you run it several times (the{" "}
-          <Term>k-means++</Term> initialisation spreads the starts out) and keep the
-          best. It's fast and scales well — which is why, despite its flaws, it's
-          everywhere.
+          Each round can only lower <TeX>{String.raw`J`}</TeX>, so it always converges. The catch:
+          it converges to a <em>local</em> minimum that depends on the random starting centroids, so
+          in practice you run it several times (the <Term>k-means++</Term> initialisation spreads
+          the starts out) and keep the best. It's fast and scales well — which is why, despite its
+          flaws, it's everywhere.
         </p>
 
         <LloydFigure
@@ -201,65 +361,62 @@ function EnBody() {
 
       <KSection id="choosingk" eyebrow="04" title="Choosing k">
         <p>
-          k-means makes you pick the number of clusters up front, which feels like
-          cheating — if you knew the groups, you wouldn't need to cluster. Two standard
-          tools help you choose:
+          k-means makes you pick the number of clusters up front, which feels like cheating — if you
+          knew the groups, you wouldn't need to cluster. Two standard tools help you choose:
         </p>
         <ul>
           <li>
-            <Term>The elbow method</Term> — run k-means for a range of{" "}
-            <TeX>{String.raw`k`}</TeX>, plot the inertia <TeX>{String.raw`J`}</TeX>{" "}
-            against <TeX>{String.raw`k`}</TeX>. It always falls (more clusters fit
-            tighter), but the rate of improvement bends sharply at a point — the "elbow"
-            — beyond which extra clusters barely help. The same elbow logic as the PCA
-            scree plot.
+            <Term>The elbow method</Term> — run k-means for a range of <TeX>{String.raw`k`}</TeX>,
+            plot the inertia <TeX>{String.raw`J`}</TeX> against <TeX>{String.raw`k`}</TeX>. It
+            always falls (more clusters fit tighter), but the rate of improvement bends sharply at a
+            point — the "elbow" — beyond which extra clusters barely help. The same elbow logic as
+            the PCA scree plot.
           </li>
           <li>
-            <Term>The silhouette score</Term> — measures how well each point sits in its
-            cluster versus the next-nearest one; you pick the{" "}
-            <TeX>{String.raw`k`}</TeX> that maximises the average. More principled than
-            the elbow, and it doubles as a quality check (see below).
+            <Term>The silhouette score</Term> — measures how well each point sits in its cluster
+            versus the next-nearest one; you pick the <TeX>{String.raw`k`}</TeX> that maximises the
+            average. More principled than the elbow, and it doubles as a quality check (see below).
           </li>
         </ul>
       </KSection>
 
       <KSection id="limits" eyebrow="05" title="Where k-means fails">
         <p>
-          k-means quietly assumes your clusters are <Term>round, similarly sized, and
-          equally dense</Term> — because it carves space into straight-edged regions
-          around centroids. When that assumption is wrong, it confidently returns the
-          wrong answer:
+          k-means quietly assumes your clusters are{" "}
+          <Term>round, similarly sized, and equally dense</Term> — because it carves space into
+          straight-edged regions around centroids. When that assumption is wrong, it confidently
+          returns the wrong answer:
         </p>
         <ul>
           <li>
-            <Term>Non-spherical shapes</Term> — two crescent moons or concentric rings
-            get sliced straight through, because k-means can only draw round blobs.
+            <Term>Non-spherical shapes</Term> — two crescent moons or concentric rings get sliced
+            straight through, because k-means can only draw round blobs.
           </li>
           <li>
-            <Term>Unequal sizes or densities</Term> — a big sparse cluster gets eaten by
-            a small dense one nearby.
+            <Term>Unequal sizes or densities</Term> — a big sparse cluster gets eaten by a small
+            dense one nearby.
           </li>
           <li>
-            <Term>Outliers</Term> — because it uses means, a few extreme points drag
-            centroids away from the real centre.
+            <Term>Outliers</Term> — because it uses means, a few extreme points drag centroids away
+            from the real centre.
           </li>
           <li>
-            <Term>You must pre-specify k</Term> — and it will always find exactly that
-            many clusters, even if the data has none.
+            <Term>You must pre-specify k</Term> — and it will always find exactly that many
+            clusters, even if the data has none.
           </li>
         </ul>
         <p>
-          Each failure points to a different tool — which is why you need more than one
-          clustering method in your kit.
+          Each failure points to a different tool — which is why you need more than one clustering
+          method in your kit.
         </p>
       </KSection>
 
       <KSection id="hierarchical" eyebrow="06" title="Hierarchical clustering">
         <p>
-          <Term>Hierarchical clustering</Term> takes a completely different angle: it
-          builds a whole tree of clusters instead of a single flat grouping, and you
-          don't have to choose <TeX>{String.raw`k`}</TeX> in advance. The common{" "}
-          <Term>agglomerative</Term> (bottom-up) version is intuitive:
+          <Term>Hierarchical clustering</Term> takes a completely different angle: it builds a whole
+          tree of clusters instead of a single flat grouping, and you don't have to choose{" "}
+          <TeX>{String.raw`k`}</TeX> in advance. The common <Term>agglomerative</Term> (bottom-up)
+          version is intuitive:
         </p>
         <ol>
           <li>Start with every point as its own cluster.</li>
@@ -267,12 +424,11 @@ function EnBody() {
           <li>Continue until everything is one cluster.</li>
         </ol>
         <p>
-          What "closest" means between <em>clusters</em> (not points) is the{" "}
-          <Term>linkage</Term> choice — single (nearest pair), complete (farthest pair),
-          or average — and it strongly shapes the result. The output is a{" "}
-          <Term>dendrogram</Term>: a tree showing every merge and the distance at which
-          it happened. You "cut" the tree at a height to get whatever number of clusters
-          you want, reading the structure off afterwards rather than committing to it
+          What "closest" means between <em>clusters</em> (not points) is the <Term>linkage</Term>{" "}
+          choice — single (nearest pair), complete (farthest pair), or average — and it strongly
+          shapes the result. The output is a <Term>dendrogram</Term>: a tree showing every merge and
+          the distance at which it happened. You "cut" the tree at a height to get whatever number
+          of clusters you want, reading the structure off afterwards rather than committing to it
           first.
         </p>
 
@@ -285,37 +441,36 @@ function EnBody() {
 
       <KSection id="density" eyebrow="07" title="Density-based clustering">
         <p>
-          A third family fixes k-means' shape problem directly. <Term>DBSCAN</Term>{" "}
-          defines clusters as <em>dense regions separated by sparse ones</em>: a cluster
-          grows by chaining together points that each have enough neighbours within a
-          small radius. Because it follows density rather than distance-to-a-centre, it
-          can trace clusters of any shape — those crescent moons k-means mangles — and it
-          does two things k-means can't: <strong>it finds the number of clusters
-          itself</strong>, and it labels low-density points as <Term>noise</Term> rather
-          than forcing every point into a group. The trade-off is that it struggles when
-          clusters have very different densities, and it has its own parameters to tune.
+          A third family fixes k-means' shape problem directly. <Term>DBSCAN</Term> defines clusters
+          as <em>dense regions separated by sparse ones</em>: a cluster grows by chaining together
+          points that each have enough neighbours within a small radius. Because it follows density
+          rather than distance-to-a-centre, it can trace clusters of any shape — those crescent
+          moons k-means mangles — and it does two things k-means can't:{" "}
+          <strong>it finds the number of clusters itself</strong>, and it labels low-density points
+          as <Term>noise</Term> rather than forcing every point into a group. The trade-off is that
+          it struggles when clusters have very different densities, and it has its own parameters to
+          tune.
         </p>
       </KSection>
 
       <KSection id="evaluate" eyebrow="08" title="Evaluating clusters">
         <p>
-          With no labels, how do you know if a clustering is any good? You measure
-          whether points sit comfortably in their assigned group. The{" "}
-          <Term>silhouette score</Term> does this per point: let{" "}
-          <TeX>{String.raw`a`}</TeX> be its average distance to others in its own cluster
-          and <TeX>{String.raw`b`}</TeX> its average distance to the nearest{" "}
-          <em>other</em> cluster. Then
+          With no labels, how do you know if a clustering is any good? You measure whether points
+          sit comfortably in their assigned group. The <Term>silhouette score</Term> does this per
+          point: let <TeX>{String.raw`a`}</TeX> be its average distance to others in its own cluster
+          and <TeX>{String.raw`b`}</TeX> its average distance to the nearest <em>other</em> cluster.
+          Then
         </p>
         <Formula label="The silhouette of a point equals b minus a, divided by the maximum of a and b, ranging from minus one to plus one.">
           {TEX.silhouette}
         </Formula>
         <p>
-          A value near <strong>+1</strong> means the point is snug in its cluster and far
-          from others (good); near <strong>0</strong> means it's on a boundary; and{" "}
-          <strong>negative</strong> means it's probably in the wrong cluster. Average it
-          across all points and you have a single, label-free quality number — useful
-          both for judging a clustering and for choosing <TeX>{String.raw`k`}</TeX>. But
-          no metric replaces the real test: do the clusters mean something you can act on?
+          A value near <strong>+1</strong> means the point is snug in its cluster and far from
+          others (good); near <strong>0</strong> means it's on a boundary; and{" "}
+          <strong>negative</strong> means it's probably in the wrong cluster. Average it across all
+          points and you have a single, label-free quality number — useful both for judging a
+          clustering and for choosing <TeX>{String.raw`k`}</TeX>. But no metric replaces the real
+          test: do the clusters mean something you can act on?
         </p>
       </KSection>
 
@@ -323,21 +478,20 @@ function EnBody() {
         <Callout type="applied" label="The map you draw before you know the territory">
           <p>
             Clustering is how I find structure in data nobody has organised yet. For{" "}
-            <strong>segmentation</strong> — grouping people, regions, or behaviours into
-            cohorts that warrant different treatment — it's the natural first move, and in
-            intelligence work those cohorts often <em>are</em> the finding. As{" "}
-            <strong>EDA</strong> it earns its keep early: run it on a fresh dataset and
-            the clusters, and especially the <strong>outliers</strong> DBSCAN flags as
-            noise, point straight at what's worth a closer look.
+            <strong>segmentation</strong> — grouping people, regions, or behaviours into cohorts
+            that warrant different treatment — it's the natural first move, and in intelligence work
+            those cohorts often <em>are</em> the finding. As <strong>EDA</strong> it earns its keep
+            early: run it on a fresh dataset and the clusters, and especially the{" "}
+            <strong>outliers</strong> DBSCAN flags as noise, point straight at what's worth a closer
+            look.
           </p>
           <p>
             The discipline the page describes is the part that matters in practice:{" "}
             <strong>scale and reduce first</strong> (the{" "}
-            <Link href="/knowledge/pca-dimensionality-reduction">PCA</Link> pairing),
-            never trust a single <TeX>{String.raw`k`}</TeX> or a single algorithm, and
-            always ask whether a statistically tidy cluster is a <em>real</em>, actionable
-            group — because clustering will always return <em>something</em>, whether or
-            not it means anything.
+            <Link href="/knowledge/pca-dimensionality-reduction">PCA</Link> pairing), never trust a
+            single <TeX>{String.raw`k`}</TeX> or a single algorithm, and always ask whether a
+            statistically tidy cluster is a <em>real</em>, actionable group — because clustering
+            will always return <em>something</em>, whether or not it means anything.
           </p>
         </Callout>
       </KSection>
@@ -346,34 +500,30 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              Clustering = <strong>unsupervised</strong> grouping: maximise similarity
-              within groups, difference between them. No ground truth, so it's
-              exploratory.
+              Clustering = <strong>unsupervised</strong> grouping: maximise similarity within
+              groups, difference between them. No ground truth, so it's exploratory.
             </li>
             <li>
               Everything rests on <strong>distance</strong> (Euclidean / cosine).{" "}
-              <strong>Standardise and reduce dimensions first</strong> or distances
-              mislead.
+              <strong>Standardise and reduce dimensions first</strong> or distances mislead.
             </li>
             <li>
-              <strong>k-means</strong> minimises within-cluster sum of squares via
-              assign→update (Lloyd's); fast, but you pick <TeX>{String.raw`k`}</TeX>, it
-              finds local optima, and it assumes round, equal clusters.
+              <strong>k-means</strong> minimises within-cluster sum of squares via assign→update
+              (Lloyd's); fast, but you pick <TeX>{String.raw`k`}</TeX>, it finds local optima, and
+              it assumes round, equal clusters.
             </li>
             <li>
               Choose <TeX>{String.raw`k`}</TeX> with the <strong>elbow</strong> or{" "}
-              <strong>silhouette</strong>. k-means fails on non-spherical / unequal /
-              outlier-heavy data.
+              <strong>silhouette</strong>. k-means fails on non-spherical / unequal / outlier-heavy
+              data.
             </li>
             <li>
-              <strong>Hierarchical</strong> builds a dendrogram (no k upfront; cut to
-              taste); <strong>DBSCAN</strong> follows density (any shape, finds k itself,
-              labels noise).
+              <strong>Hierarchical</strong> builds a dendrogram (no k upfront; cut to taste);{" "}
+              <strong>DBSCAN</strong> follows density (any shape, finds k itself, labels noise).
             </li>
             <li>
-              Evaluate label-free with the <strong>silhouette</strong>{" "}
-              <TeX>{TEX.silShort}</TeX> — but the real test is whether the clusters are
-              actionable.
+              Evaluate label-free with the <strong>silhouette</strong> <TeX>{TEX.silShort}</TeX> —
+              but the real test is whether the clusters are actionable.
             </li>
           </ul>
         </Callout>
@@ -389,8 +539,7 @@ function ZhBody() {
       <p>
         大多数机器学习是有监督的——你有带标签的样本可供学习。<Term>聚类</Term>则相反：没有
         标签，没有正确答案，只有数据，任务是发现藏在其中的自然分组。哪些客户行为相似？哪些
-        文档讲的是同一件事？哪些地区共享某种模式？聚类回答这些问题，而无需任何人事先定义这些
-        分组。
+        文档讲的是同一件事？哪些地区共享某种模式？聚类回答这些问题，而无需任何人事先定义这些 分组。
       </p>
       <p>
         它是<Term>无监督学习</Term>的招牌例子，并与{" "}
@@ -438,9 +587,9 @@ function ZhBody() {
 
       <KSection id="kmeans" eyebrow="03" title="k-means">
         <p>
-          <Term>k-means</Term> 是最常用的聚类算法，它的吸引力在于简单。你告诉它你想要多少个簇
-          （<TeX>{String.raw`k`}</TeX>），它便找出 <TeX>{String.raw`k`}</TeX> 个中心点
-          （<Term>质心</Term>），并把每个点分配给离它最近的那个。形式上，它最小化各点到其簇质心
+          <Term>k-means</Term> 是最常用的聚类算法，它的吸引力在于简单。你告诉它你想要多少个簇 （
+          <TeX>{String.raw`k`}</TeX>），它便找出 <TeX>{String.raw`k`}</TeX> 个中心点 （
+          <Term>质心</Term>），并把每个点分配给离它最近的那个。形式上，它最小化各点到其簇质心
           的总平方距离——即<Term>簇内平方和</Term>（也叫惯性）：
         </p>
         <Formula
@@ -458,14 +607,14 @@ function ZhBody() {
             <Term>分配</Term>——把每个点放进离它最近的质心所属的簇。
           </li>
           <li>
-            <Term>更新</Term>——把每个质心移到现在分给它的那些点的均值处：{" "}
-            <TeX>{TEX.centroid}</TeX>。
+            <Term>更新</Term>——把每个质心移到现在分给它的那些点的均值处： <TeX>{TEX.centroid}</TeX>
+            。
           </li>
         </ol>
         <p>
           每一轮只会降低 <TeX>{String.raw`J`}</TeX>，所以它总会收敛。难处在于：它收敛到的是一个
-          <em>局部</em>最小值，取决于随机的初始质心，所以实践中你会跑好几次（<Term>k-means++
-          </Term> 初始化让起点彼此分散），保留最好的那个。它快且可扩展——这就是为什么尽管有
+          <em>局部</em>最小值，取决于随机的初始质心，所以实践中你会跑好几次（<Term>k-means++</Term>{" "}
+          初始化让起点彼此分散），保留最好的那个。它快且可扩展——这就是为什么尽管有
           缺陷，它无处不在。
         </p>
 
@@ -508,8 +657,7 @@ function ZhBody() {
         </p>
         <ul>
           <li>
-            <Term>非球形的形状</Term>——两弯新月或同心圆环会被笔直地切开，因为 k-means 只会画
-            圆团。
+            <Term>非球形的形状</Term>——两弯新月或同心圆环会被笔直地切开，因为 k-means 只会画 圆团。
           </li>
           <li>
             <Term>不等的大小或密度</Term>——一个大而稀疏的簇会被附近一个小而密集的簇吞掉。
@@ -521,9 +669,7 @@ function ZhBody() {
             <Term>你必须事先指定 k</Term>——而它总会找出恰好那么多个簇，哪怕数据里一个都没有。
           </li>
         </ul>
-        <p>
-          每一种失效都指向一个不同的工具——这就是为什么你的工具箱里需要不止一种聚类方法。
-        </p>
+        <p>每一种失效都指向一个不同的工具——这就是为什么你的工具箱里需要不止一种聚类方法。</p>
       </KSection>
 
       <KSection id="hierarchical" eyebrow="06" title="层次聚类">
@@ -539,8 +685,8 @@ function ZhBody() {
         </ol>
         <p>
           「最近」在<em>簇</em>之间（而非点之间）是什么意思，取决于<Term>连接方式</Term>的选择
-          ——单连接（最近的一对）、全连接（最远的一对）或平均连接——它会强烈地塑造结果。输出是
-          一张<Term>树状图</Term>：一棵展示每一次合并及其发生距离的树。你在某个高度「切」这棵
+          ——单连接（最近的一对）、全连接（最远的一对）或平均连接——它会强烈地塑造结果。输出是 一张
+          <Term>树状图</Term>：一棵展示每一次合并及其发生距离的树。你在某个高度「切」这棵
           树，得到你想要的任意簇数——事后再读出结构，而非事先就定死。
         </p>
 
@@ -553,8 +699,9 @@ function ZhBody() {
 
       <KSection id="density" eyebrow="07" title="基于密度的聚类">
         <p>
-          第三个家族直接修好了 k-means 的形状问题。<Term>DBSCAN</Term> 把簇定义为<em>由稀疏区域
-          隔开的稠密区域</em>：一个簇靠着把那些各自在小半径内有足够多邻居的点串联起来而生长。
+          第三个家族直接修好了 k-means 的形状问题。<Term>DBSCAN</Term> 把簇定义为
+          <em>由稀疏区域 隔开的稠密区域</em>
+          ：一个簇靠着把那些各自在小半径内有足够多邻居的点串联起来而生长。
           因为它跟随的是密度而非到中心的距离，它能描出任意形状的簇——那些 k-means 弄坏的新月——
           并且它做到了 k-means 做不到的两件事：<strong>它自己找出簇的数量</strong>，并且把低
           密度的点标记为<Term>噪声</Term>，而不是把每个点都硬塞进某个组。代价是：当簇的密度差异
@@ -592,8 +739,8 @@ function ZhBody() {
           <p>
             本页所述的纪律，正是实践中要紧的部分：<strong>先缩放再降维</strong>（与{" "}
             <Link href="/knowledge/pca-dimensionality-reduction">PCA</Link> 成对），永远不要相信
-            单一的 <TeX>{String.raw`k`}</TeX> 或单一的算法，并且总要问一个统计上整洁的簇是否是
-            一个<em>真实的</em>、可据以行动的组——因为聚类总会返回<em>某个东西</em>，不管它是否
+            单一的 <TeX>{String.raw`k`}</TeX> 或单一的算法，并且总要问一个统计上整洁的簇是否是 一个
+            <em>真实的</em>、可据以行动的组——因为聚类总会返回<em>某个东西</em>，不管它是否
             意味着什么。
           </p>
         </Callout>
@@ -607,8 +754,8 @@ function ZhBody() {
               所以它是探索性的。
             </li>
             <li>
-              一切都建立在<strong>距离</strong>（欧氏 / 余弦）之上。<strong>先标准化并降维
-              </strong>，否则距离会误导。
+              一切都建立在<strong>距离</strong>（欧氏 / 余弦）之上。<strong>先标准化并降维</strong>
+              ，否则距离会误导。
             </li>
             <li>
               <strong>k-means</strong> 通过分配→更新（Lloyd 算法）最小化簇内平方和；快，但你要挑{" "}
@@ -658,7 +805,10 @@ const META = {
       { id: "applied", label: "Where it shows up in my work" },
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
-    prev: { href: "/knowledge/pca-dimensionality-reduction", label: "PCA & Dimensionality Reduction" },
+    prev: {
+      href: "/knowledge/pca-dimensionality-reduction",
+      label: "PCA & Dimensionality Reduction",
+    },
     next: { href: "/knowledge", label: "Back to all topics" },
   },
   "zh-Hans": {

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function VoidPage() {
-  const [blink, setBlink]     = useState(true);
+  const [blink, setBlink] = useState(true);
   const [clicked, setClicked] = useState(0);
 
   useEffect(() => {

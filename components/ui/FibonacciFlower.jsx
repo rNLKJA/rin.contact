@@ -15,13 +15,7 @@ export default function FibonacciFlower({ size = 80, className = "", animate = t
   const points = Array.from({ length: N }, (_, i) => getPoint(i));
 
   return (
-    <svg
-      viewBox="0 0 100 100"
-      width={size}
-      height={size}
-      className={className}
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 100 100" width={size} height={size} className={className} aria-hidden="true">
       {points.map((p, i) => (
         <circle
           key={i}
@@ -44,8 +38,13 @@ export default function FibonacciFlower({ size = 80, className = "", animate = t
           opacity: 0.9;
         }
         @keyframes fib-pulse {
-          0%, 100% { opacity: 0.4; }
-          50% { opacity: 1; }
+          0%,
+          100% {
+            opacity: 0.4;
+          }
+          50% {
+            opacity: 1;
+          }
         }
       `}</style>
     </svg>

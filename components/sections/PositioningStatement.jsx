@@ -40,11 +40,18 @@ export default function PositioningStatement() {
           <span className="text-[11px] tracking-[0.3em] uppercase text-[#6B6B6B] dark:text-[#9A9A9A] whitespace-nowrap">
             {eyebrow}
           </span>
-          <span className="hidden md:block flex-1 h-px bg-[#E5E5E5] dark:bg-[#262626]" aria-hidden="true" />
+          <span
+            className="hidden md:block flex-1 h-px bg-[#E5E5E5] dark:bg-[#262626]"
+            aria-hidden="true"
+          />
           <span className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
             {safeDomains.map((d, i) => (
               <span key={d} className="flex items-center gap-2">
-                {i > 0 && <span className="text-[#FF3C3C]" aria-hidden="true">·</span>}
+                {i > 0 && (
+                  <span className="text-[#FF3C3C]" aria-hidden="true">
+                    ·
+                  </span>
+                )}
                 {d}
               </span>
             ))}
@@ -90,7 +97,9 @@ export default function PositioningStatement() {
         .in .gloss {
           opacity: 1;
           transform: translateY(0);
-          transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+          transition:
+            opacity 0.6s ease,
+            transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
           transition-delay: calc(var(--i) * 110ms);
         }
         .hud-tick {

@@ -40,3 +40,6 @@ next-env.d.ts
 
 .cursor/
 docs/
+# tooling / skill bundles (not source — exclude from prettier/format checks)
+.agents/
+.claude/

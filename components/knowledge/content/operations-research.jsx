@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/operations-research.
@@ -30,14 +37,58 @@ function FeasibleRegionFigure({ caption, ariaLabel, optimum, objective, feasible
         role="img"
         aria-label={ariaLabel}
       >
-        <line x1="50" y1="175" x2="410" y2="175" stroke="currentColor" strokeWidth="0.9" opacity="0.5" />
-        <line x1="50" y1="175" x2="50" y2="20" stroke="currentColor" strokeWidth="0.9" opacity="0.5" />
-        <polygon points="50,175 50,80 150,55 290,120 290,175" fill="#FF3C3C" fillOpacity="0.1" stroke="#FF3C3C" strokeWidth="1.3" />
+        <line
+          x1="50"
+          y1="175"
+          x2="410"
+          y2="175"
+          stroke="currentColor"
+          strokeWidth="0.9"
+          opacity="0.5"
+        />
+        <line
+          x1="50"
+          y1="175"
+          x2="50"
+          y2="20"
+          stroke="currentColor"
+          strokeWidth="0.9"
+          opacity="0.5"
+        />
+        <polygon
+          points="50,175 50,80 150,55 290,120 290,175"
+          fill="#FF3C3C"
+          fillOpacity="0.1"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+        />
         <circle cx="150" cy="55" r="5" fill="#FF3C3C" />
-        <text x="158" y="48" fontSize="10" fontFamily="monospace" fill="#FF3C3C">{optimum}</text>
-        <line x1="95" y1="20" x2="230" y2="120" stroke="currentColor" strokeWidth="1.2" strokeDasharray="5 3" opacity="0.8" />
-        <text x="232" y="124" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.75">{objective}</text>
-        <text x="250" y="170" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.6">{feasible}</text>
+        <text x="158" y="48" fontSize="10" fontFamily="monospace" fill="#FF3C3C">
+          {optimum}
+        </text>
+        <line
+          x1="95"
+          y1="20"
+          x2="230"
+          y2="120"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          strokeDasharray="5 3"
+          opacity="0.8"
+        />
+        <text
+          x="232"
+          y="124"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.75"
+        >
+          {objective}
+        </text>
+        <text x="250" y="170" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.6">
+          {feasible}
+        </text>
       </svg>
     </Figure>
   );
@@ -48,73 +99,68 @@ function EnBody() {
   return (
     <>
       <p>
-        Most of data science predicts what <em>will</em> happen.{" "}
-        <Term>Operations Research</Term> (OR) answers a different, more actionable
-        question: given limited resources and hard constraints, what should we{" "}
-        <em>do</em>? How do you allocate a budget, schedule staff, route deliveries, or
-        mix products to get the best possible outcome? OR is the discipline of turning
-        those decisions into maths and solving them optimally.
+        Most of data science predicts what <em>will</em> happen. <Term>Operations Research</Term>{" "}
+        (OR) answers a different, more actionable question: given limited resources and hard
+        constraints, what should we <em>do</em>? How do you allocate a budget, schedule staff, route
+        deliveries, or mix products to get the best possible outcome? OR is the discipline of
+        turning those decisions into maths and solving them optimally.
       </p>
       <p>
         It's the applied, decision-facing cousin of{" "}
-        <Link href="/knowledge/calculus-optimisation">calculus &amp; optimisation</Link>:
-        same goal of finding a best point, but now the action space is constrained by
-        real-world limits, and the answer is a plan you can execute. This page builds the
-        core engine — linear programming — from formulation to solution.
+        <Link href="/knowledge/calculus-optimisation">calculus &amp; optimisation</Link>: same goal
+        of finding a best point, but now the action space is constrained by real-world limits, and
+        the answer is a plan you can execute. This page builds the core engine — linear programming
+        — from formulation to solution.
       </p>
 
       <KSection id="what" eyebrow="01" title="The science of better decisions">
         <p>
-          OR grew out of the Second World War, where mathematicians were asked to make the
-          best use of scarce resources — convoy routing, radar placement, supply logistics
-          — and it became the backbone of modern logistics, scheduling, and planning. The
-          unifying idea is simple to state: <Term>maximise (or minimise) an objective,
-          subject to constraints</Term>. Maximise profit subject to a budget; minimise
-          cost subject to meeting demand; minimise delivery time subject to vehicle
-          capacity.
+          OR grew out of the Second World War, where mathematicians were asked to make the best use
+          of scarce resources — convoy routing, radar placement, supply logistics — and it became
+          the backbone of modern logistics, scheduling, and planning. The unifying idea is simple to
+          state: <Term>maximise (or minimise) an objective, subject to constraints</Term>. Maximise
+          profit subject to a budget; minimise cost subject to meeting demand; minimise delivery
+          time subject to vehicle capacity.
         </p>
         <p>
-          What makes it powerful is that an astonishing range of real problems fit that
-          one mould. Learn to recognise the shape — an objective you want to push as far
-          as possible, hemmed in by rules you can't break — and you can hand the problem to
-          a solver that returns the provably best answer.
+          What makes it powerful is that an astonishing range of real problems fit that one mould.
+          Learn to recognise the shape — an objective you want to push as far as possible, hemmed in
+          by rules you can't break — and you can hand the problem to a solver that returns the
+          provably best answer.
         </p>
       </KSection>
 
       <KSection id="formulate" eyebrow="02" title="Formulating a problem">
         <p>
-          The real skill in OR isn't solving — solvers do that — it's{" "}
-          <Term>formulation</Term>: translating a messy real situation into three precise
-          pieces.
+          The real skill in OR isn't solving — solvers do that — it's <Term>formulation</Term>:
+          translating a messy real situation into three precise pieces.
         </p>
         <ul>
           <li>
-            <Term>Decision variables</Term> — the quantities you control and are solving
-            for (how many of product A to make, whether to open warehouse B).
+            <Term>Decision variables</Term> — the quantities you control and are solving for (how
+            many of product A to make, whether to open warehouse B).
           </li>
           <li>
-            <Term>Objective function</Term> — the single number you want to maximise or
-            minimise, written in terms of the variables (total profit, total cost).
+            <Term>Objective function</Term> — the single number you want to maximise or minimise,
+            written in terms of the variables (total profit, total cost).
           </li>
           <li>
-            <Term>Constraints</Term> — the rules the solution must obey, also in terms of
-            the variables (labour hours available, budget, demand to meet,
-            non-negativity).
+            <Term>Constraints</Term> — the rules the solution must obey, also in terms of the
+            variables (labour hours available, budget, demand to meet, non-negativity).
           </li>
         </ul>
         <p>
-          Get those three right and the problem is fully specified. Most of the value an OR
-          analyst adds is here — choosing the right variables and capturing the real
-          constraints honestly, because a beautifully solved <em>wrong</em> formulation is
-          worse than useless.
+          Get those three right and the problem is fully specified. Most of the value an OR analyst
+          adds is here — choosing the right variables and capturing the real constraints honestly,
+          because a beautifully solved <em>wrong</em> formulation is worse than useless.
         </p>
       </KSection>
 
       <KSection id="lp" eyebrow="03" title="Linear programming">
         <p>
-          When the objective and all the constraints are <em>linear</em> in the decision
-          variables, you have a <Term>linear program</Term> (LP) — the most important and
-          most solvable class in OR. Its standard form is compact:
+          When the objective and all the constraints are <em>linear</em> in the decision variables,
+          you have a <Term>linear program</Term> (LP) — the most important and most solvable class
+          in OR. Its standard form is compact:
         </p>
         <Formula
           label="Maximise c transpose x, subject to A x less than or equal to b, and x greater than or equal to zero."
@@ -123,30 +169,28 @@ function EnBody() {
           {TEX.lp}
         </Formula>
         <p>
-          Read it plainly: choose the quantities <TeX>{TEX.x}</TeX> to make the weighted
-          total <TeX>{TEX.cx}</TeX> as large as possible, while every constraint{" "}
-          <TeX>{TEX.axb}</TeX> holds and nothing goes negative. A factory deciding how many
-          of two products to build — each earning a known profit, each consuming limited
-          labour and materials — is exactly this, and it's the example to keep in your head
-          for the geometry next.
+          Read it plainly: choose the quantities <TeX>{TEX.x}</TeX> to make the weighted total{" "}
+          <TeX>{TEX.cx}</TeX> as large as possible, while every constraint <TeX>{TEX.axb}</TeX>{" "}
+          holds and nothing goes negative. A factory deciding how many of two products to build —
+          each earning a known profit, each consuming limited labour and materials — is exactly
+          this, and it's the example to keep in your head for the geometry next.
         </p>
       </KSection>
 
       <KSection id="geometry" eyebrow="04" title="The geometry of LP">
         <p>
-          LP has a beautiful visual meaning. Each constraint is a straight line that cuts
-          the plane into allowed and disallowed halves. Stack them and the points
-          satisfying <em>all</em> constraints form a <Term>feasible region</Term> — a
-          convex polygon (a polytope in higher dimensions). Every point inside is a legal
-          plan; the objective is a direction you're pushing toward.
+          LP has a beautiful visual meaning. Each constraint is a straight line that cuts the plane
+          into allowed and disallowed halves. Stack them and the points satisfying <em>all</em>{" "}
+          constraints form a <Term>feasible region</Term> — a convex polygon (a polytope in higher
+          dimensions). Every point inside is a legal plan; the objective is a direction you're
+          pushing toward.
         </p>
         <p>
           The key theorem makes solving tractable:{" "}
           <Term>the optimum always sits at a corner (vertex) of the feasible region</Term>.
-          Intuitively, you slide the objective line as far as it will go in the improving
-          direction, and the last point it touches before leaving the region is a corner.
-          So instead of searching infinitely many interior points, you only ever need to
-          check the vertices.
+          Intuitively, you slide the objective line as far as it will go in the improving direction,
+          and the last point it touches before leaving the region is a corner. So instead of
+          searching infinitely many interior points, you only ever need to check the vertices.
         </p>
 
         <FeasibleRegionFigure
@@ -161,76 +205,73 @@ function EnBody() {
       <KSection id="simplex" eyebrow="05" title="The simplex idea">
         <p>
           If the optimum is always at a corner, the algorithm writes itself. The{" "}
-          <Term>simplex method</Term> — Dantzig's 1947 breakthrough, still a workhorse —
-          starts at one vertex of the feasible region and walks along the edges to adjacent
-          vertices, always moving to one that improves the objective, until no neighbouring
-          corner is better. That last vertex is the global optimum.
+          <Term>simplex method</Term> — Dantzig's 1947 breakthrough, still a workhorse — starts at
+          one vertex of the feasible region and walks along the edges to adjacent vertices, always
+          moving to one that improves the objective, until no neighbouring corner is better. That
+          last vertex is the global optimum.
         </p>
         <p>
-          It works because the feasible region is <Term>convex</Term> — so a corner with no
-          better neighbour is guaranteed to be the best overall, with no risk of the
-          local-minimum traps that haunt the non-convex problems on the{" "}
-          <Link href="/knowledge/statistical-machine-learning">machine learning</Link>{" "}
-          side. In the worst case simplex can be slow, but in practice it's remarkably
-          fast, and it solves LPs with thousands of variables routinely.
+          It works because the feasible region is <Term>convex</Term> — so a corner with no better
+          neighbour is guaranteed to be the best overall, with no risk of the local-minimum traps
+          that haunt the non-convex problems on the{" "}
+          <Link href="/knowledge/statistical-machine-learning">machine learning</Link> side. In the
+          worst case simplex can be slow, but in practice it's remarkably fast, and it solves LPs
+          with thousands of variables routinely.
         </p>
       </KSection>
 
       <KSection id="duality" eyebrow="06" title="Duality and shadow prices">
         <p>
-          Every linear program has a hidden twin. <Term>Duality</Term> says that for any LP
-          (the "primal"), there's a partner problem (the "dual") whose optimal value is
-          exactly the same — and the dual's solution carries priceless management
-          information: the <Term>shadow price</Term> of each constraint.
+          Every linear program has a hidden twin. <Term>Duality</Term> says that for any LP (the
+          "primal"), there's a partner problem (the "dual") whose optimal value is exactly the same
+          — and the dual's solution carries priceless management information: the{" "}
+          <Term>shadow price</Term> of each constraint.
         </p>
         <p>
-          A shadow price answers "how much would the objective improve if I relaxed this
-          constraint by one unit?" — how much more profit one extra hour of labour, or one
-          more dollar of budget, would actually buy. That turns an LP from a one-off answer
-          into a decision tool: it tells you <em>which</em> constraint is the real
-          bottleneck and what it's worth to loosen it. In practice the shadow prices are
-          often more valuable than the solution itself.
+          A shadow price answers "how much would the objective improve if I relaxed this constraint
+          by one unit?" — how much more profit one extra hour of labour, or one more dollar of
+          budget, would actually buy. That turns an LP from a one-off answer into a decision tool:
+          it tells you <em>which</em> constraint is the real bottleneck and what it's worth to
+          loosen it. In practice the shadow prices are often more valuable than the solution itself.
         </p>
       </KSection>
 
       <KSection id="integer" eyebrow="07" title="When variables must be whole">
         <p>
-          LP quietly assumes you can make 3.7 of something. Often you can't — you build 3
-          or 4 factories, you assign a worker to a shift or you don't, a route is used or it
-          isn't. Forcing variables to be whole numbers gives an <Term>integer program</Term>{" "}
-          (IP), and it's dramatically harder: you can't just round the LP answer (rounding
-          can violate constraints or miss the true optimum), and the problem becomes{" "}
-          <Term>NP-hard</Term> in general.
+          LP quietly assumes you can make 3.7 of something. Often you can't — you build 3 or 4
+          factories, you assign a worker to a shift or you don't, a route is used or it isn't.
+          Forcing variables to be whole numbers gives an <Term>integer program</Term> (IP), and it's
+          dramatically harder: you can't just round the LP answer (rounding can violate constraints
+          or miss the true optimum), and the problem becomes <Term>NP-hard</Term> in general.
         </p>
         <p>
-          Solvers tackle it with clever search — <Term>branch and bound</Term>{" "}
-          systematically splits the problem into cases and uses the (easy) LP relaxation as
-          a bound to prune branches that can't beat the best solution found so far. The
-          yes/no version, where variables are 0 or 1, captures a huge class of real
-          decisions (assignment, scheduling, facility location), which is why integer
-          programming is everywhere in logistics despite its cost.
+          Solvers tackle it with clever search — <Term>branch and bound</Term> systematically splits
+          the problem into cases and uses the (easy) LP relaxation as a bound to prune branches that
+          can't beat the best solution found so far. The yes/no version, where variables are 0 or 1,
+          captures a huge class of real decisions (assignment, scheduling, facility location), which
+          is why integer programming is everywhere in logistics despite its cost.
         </p>
       </KSection>
 
       <KSection id="beyond" eyebrow="08" title="Beyond linear programming">
         <p>
-          LP is the foundation, but OR is a whole toolkit. A few standout members, all
-          framed as "optimise subject to constraints":
+          LP is the foundation, but OR is a whole toolkit. A few standout members, all framed as
+          "optimise subject to constraints":
         </p>
         <ul>
           <li>
-            <Term>Network flow</Term> — model the problem as a graph and push flow through
-            it: shortest paths, maximum flow, and minimum-cost transport. Many have
-            especially fast specialised algorithms.
+            <Term>Network flow</Term> — model the problem as a graph and push flow through it:
+            shortest paths, maximum flow, and minimum-cost transport. Many have especially fast
+            specialised algorithms.
           </li>
           <li>
-            <Term>Assignment &amp; matching</Term> — pair workers to tasks, or students to
-            projects, at minimum cost. (The same shape as the constraint-satisfaction
-            problems on the <Link href="/knowledge/artificial-intelligence">AI page</Link>.)
+            <Term>Assignment &amp; matching</Term> — pair workers to tasks, or students to projects,
+            at minimum cost. (The same shape as the constraint-satisfaction problems on the{" "}
+            <Link href="/knowledge/artificial-intelligence">AI page</Link>.)
           </li>
           <li>
-            <Term>Scheduling</Term> — sequence jobs over time and machines to minimise delay
-            or cost — classic, and classically hard.
+            <Term>Scheduling</Term> — sequence jobs over time and machines to minimise delay or cost
+            — classic, and classically hard.
           </li>
         </ul>
       </KSection>
@@ -240,20 +281,19 @@ function EnBody() {
           <p>
             OR is the part of the toolkit that moves from describing the world to{" "}
             <strong>changing it</strong>. Whenever the real question is{" "}
-            <strong>allocation under constraints</strong> — how to deploy a limited team, a
-            fixed budget, or scarce capacity to do the most good — that's an optimisation
-            problem, not a prediction problem, and reaching for a model instead of an LP is
-            a category error. The <strong>shadow-price</strong> thinking is the most useful
-            habit it builds: in government work, knowing <em>which</em> constraint is the
-            binding bottleneck, and what relaxing it is worth, is exactly the kind of
-            insight a decision-maker can act on.
+            <strong>allocation under constraints</strong> — how to deploy a limited team, a fixed
+            budget, or scarce capacity to do the most good — that's an optimisation problem, not a
+            prediction problem, and reaching for a model instead of an LP is a category error. The{" "}
+            <strong>shadow-price</strong> thinking is the most useful habit it builds: in government
+            work, knowing <em>which</em> constraint is the binding bottleneck, and what relaxing it
+            is worth, is exactly the kind of insight a decision-maker can act on.
           </p>
           <p>
-            It also completes the optimisation story across these pages: calculus finds the
-            best point on an open surface,{" "}
-            <Link href="/knowledge/calculus-optimisation">gradient descent</Link> walks to
-            it, and OR does it under hard constraints — three angles on the same fundamental
-            question of "what's best?"
+            It also completes the optimisation story across these pages: calculus finds the best
+            point on an open surface,{" "}
+            <Link href="/knowledge/calculus-optimisation">gradient descent</Link> walks to it, and
+            OR does it under hard constraints — three angles on the same fundamental question of
+            "what's best?"
           </p>
         </Callout>
       </KSection>
@@ -262,29 +302,28 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              OR answers "what should we <strong>do</strong>?" — maximise/minimise an
-              objective <strong>subject to constraints</strong>. Decisions, not predictions.
+              OR answers "what should we <strong>do</strong>?" — maximise/minimise an objective{" "}
+              <strong>subject to constraints</strong>. Decisions, not predictions.
             </li>
             <li>
-              <strong>Formulate</strong> = decision variables + objective + constraints. The
-              hard, valuable part is getting these right.
+              <strong>Formulate</strong> = decision variables + objective + constraints. The hard,
+              valuable part is getting these right.
             </li>
             <li>
               A <strong>linear program</strong> (linear objective &amp; constraints):{" "}
               <TeX>{TEX.maxShort}</TeX> s.t. <TeX>{TEX.constrShort}</TeX>.
             </li>
             <li>
-              Constraints bound a convex <strong>feasible region</strong>; the optimum is
-              always at a <strong>vertex</strong>. <strong>Simplex</strong> walks the
-              corners to find it.
+              Constraints bound a convex <strong>feasible region</strong>; the optimum is always at
+              a <strong>vertex</strong>. <strong>Simplex</strong> walks the corners to find it.
             </li>
             <li>
-              <strong>Duality</strong> gives <strong>shadow prices</strong> — the value of
-              relaxing each constraint (find the real bottleneck).
+              <strong>Duality</strong> gives <strong>shadow prices</strong> — the value of relaxing
+              each constraint (find the real bottleneck).
             </li>
             <li>
-              <strong>Integer programs</strong> (whole-number decisions) are NP-hard →
-              branch &amp; bound. Plus network flow, assignment, scheduling.
+              <strong>Integer programs</strong> (whole-number decisions) are NP-hard → branch &amp;
+              bound. Plus network flow, assignment, scheduling.
             </li>
           </ul>
         </Callout>
@@ -330,12 +369,10 @@ function ZhBody() {
         </p>
         <ul>
           <li>
-            <Term>决策变量</Term>——你所控制、正在求解的那些量（产品 A 造多少个，是否开设
-            仓库 B）。
+            <Term>决策变量</Term>——你所控制、正在求解的那些量（产品 A 造多少个，是否开设 仓库 B）。
           </li>
           <li>
-            <Term>目标函数</Term>——你想最大化或最小化的那个单一数字，用变量写出（总利润、
-            总成本）。
+            <Term>目标函数</Term>——你想最大化或最小化的那个单一数字，用变量写出（总利润、 总成本）。
           </li>
           <li>
             <Term>约束</Term>——解必须遵守的规则，同样用变量表示（可用工时、预算、要满足的
@@ -397,8 +434,9 @@ function ZhBody() {
         </p>
         <p>
           它之所以有效，是因为可行域是<Term>凸</Term>的——所以一个没有更好邻居的角，保证是
-          整体最优的，不会有那些缠扰<Link href="/knowledge/statistical-machine-learning">机器
-          学习</Link>一侧非凸问题的局部最小值陷阱。最坏情况下单纯形可能很慢，但实践中它快得
+          整体最优的，不会有那些缠扰
+          <Link href="/knowledge/statistical-machine-learning">机器 学习</Link>
+          一侧非凸问题的局部最小值陷阱。最坏情况下单纯形可能很慢，但实践中它快得
           惊人，常规地求解带数千个变量的线性规划。
         </p>
       </KSection>
@@ -411,9 +449,8 @@ function ZhBody() {
         </p>
         <p>
           影子价格回答「如果我把这个约束放松一个单位，目标会改善多少？」——多一个工时、或多
-          一块钱预算，实际能买来多少额外利润。这把线性规划从一次性的答案变成一件决策工具：它
-          告诉你<em>哪个</em>约束才是真正的瓶颈、放松它值多少。实践中，影子价格往往比解本身
-          更有价值。
+          一块钱预算，实际能买来多少额外利润。这把线性规划从一次性的答案变成一件决策工具：它 告诉你
+          <em>哪个</em>约束才是真正的瓶颈、放松它值多少。实践中，影子价格往往比解本身 更有价值。
         </p>
       </KSection>
 
@@ -426,16 +463,15 @@ function ZhBody() {
         </p>
         <p>
           求解器用巧妙的搜索来对付它——<Term>分支定界</Term>系统地把问题拆成一个个情形，并用
-          （容易的）线性规划松弛作为界，剪掉那些不可能胜过迄今最优解的分支。那种是/否的版本，
-          变量取 0 或 1，囊括了一大类现实决策（指派、排程、设施选址），这正是为什么尽管代价
+          （容易的）线性规划松弛作为界，剪掉那些不可能胜过迄今最优解的分支。那种是/否的版本， 变量取
+          0 或 1，囊括了一大类现实决策（指派、排程、设施选址），这正是为什么尽管代价
           高昂，整数规划在物流中无处不在。
         </p>
       </KSection>
 
       <KSection id="beyond" eyebrow="08" title="线性规划之外">
         <p>
-          线性规划是地基，但运筹学是一整套工具箱。几个出众的成员，全都框定为「在约束之下
-          优化」：
+          线性规划是地基，但运筹学是一整套工具箱。几个出众的成员，全都框定为「在约束之下 优化」：
         </p>
         <ul>
           <li>
@@ -444,12 +480,10 @@ function ZhBody() {
           </li>
           <li>
             <Term>指派与匹配</Term>——以最小成本把工人配给任务、或把学生配给项目。（与{" "}
-            <Link href="/knowledge/artificial-intelligence">AI 页</Link>上的约束满足问题
-            同形。）
+            <Link href="/knowledge/artificial-intelligence">AI 页</Link>上的约束满足问题 同形。）
           </li>
           <li>
-            <Term>排程</Term>——把作业在时间与机器上排序，以最小化延迟或成本——经典，也经典
-            地难。
+            <Term>排程</Term>——把作业在时间与机器上排序，以最小化延迟或成本——经典，也经典 地难。
           </li>
         </ul>
       </KSection>
@@ -495,8 +529,7 @@ function ZhBody() {
               真正的瓶颈）。
             </li>
             <li>
-              <strong>整数规划</strong>（整数决策）是 NP 难 → 分支定界。再加上网络流、指派、
-              排程。
+              <strong>整数规划</strong>（整数决策）是 NP 难 → 分支定界。再加上网络流、指派、 排程。
             </li>
           </ul>
         </Callout>

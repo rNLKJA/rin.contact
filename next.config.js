@@ -36,8 +36,8 @@ const nextConfig = {
       config.plugins.push(
         new NormalModuleReplacementPlugin(
           /next[\\/]dist[\\/]build[\\/]polyfills[\\/]polyfill-module/,
-          path.resolve(__dirname, "lib/noop.js"),
-        ),
+          path.resolve(__dirname, "lib/noop.js")
+        )
       );
     }
 
@@ -88,8 +88,8 @@ const nextConfig = {
         // Security headers — always applied
         source: "/(.*)",
         headers: [
-          { key: "X-Content-Type-Options",  value: "nosniff" },
-          { key: "X-Frame-Options",          value: "SAMEORIGIN" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
           {
             key: "Content-Security-Policy",
             value: [
@@ -105,22 +105,20 @@ const nextConfig = {
               "frame-ancestors 'none'",
             ].join("; "),
           },
-          { key: "Referrer-Policy",          value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy",       value: "camera=(), microphone=(), geolocation=()" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           {
-            key:   "Strict-Transport-Security",
+            key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
           },
           // Replaces deprecated X-XSS-Protection — blocks cross-origin object/embed injection
-          { key: "Cross-Origin-Opener-Policy",   value: "same-origin-allow-popups" },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
           { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
         ],
       },
       {
         source: "/sw\.js",
-        headers: [
-          { key: "Cache-Control", value: "no-cache" },
-        ],
+        headers: [{ key: "Cache-Control", value: "no-cache" }],
       },
 
       // ── Cache headers — production builds only ──────────────────────────
@@ -129,23 +127,17 @@ const nextConfig = {
             {
               // Next.js content-hashed chunks — safe to cache forever
               source: "/_next/static/(.*)",
-              headers: [
-                { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-              ],
+              headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
             },
             {
               // Images, fonts, icons
               source: "/(.*)\\.(ico|png|jpg|jpeg|svg|webp|woff2|woff|ttf|otf)",
-              headers: [
-                { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-              ],
+              headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
             },
             {
               // Sitemap & robots — always fresh for crawlers
               source: "/(sitemap\\.xml|robots\\.txt)",
-              headers: [
-                { key: "Cache-Control", value: "public, max-age=86400, s-maxage=86400" },
-              ],
+              headers: [{ key: "Cache-Control", value: "public, max-age=86400, s-maxage=86400" }],
             },
           ]
         : []),

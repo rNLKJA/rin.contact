@@ -5,7 +5,7 @@ tags: ["meta", "data-science", "philosophy"]
 description: "Starting a blog. A reflection on why knowledge compounds, how first-principles thinking keeps it growing, and what you can expect to find here."
 ---
 
-I have been putting this off for a while. Not because I had nothing to say — but because writing publicly asks a question I usually reserve for code reviews: *does this actually hold up?*
+I have been putting this off for a while. Not because I had nothing to say — but because writing publicly asks a question I usually reserve for code reviews: _does this actually hold up?_
 
 A blog is a forcing function. It compresses vague thoughts into structured arguments. It surfaces gaps in reasoning. And — if done right — it becomes a compounding asset, much like the continuous improvement framework I write about on the homepage.
 

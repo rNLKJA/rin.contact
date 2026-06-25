@@ -14,11 +14,13 @@ Here's what each world taught me — and what didn't transfer.
 Academia is a structured environment. Resources are abundant. Learning happens in a controlled setting where the cost of failure is low and the feedback loop is deliberately slow.
 
 What academia gave me:
+
 - A solid foundation of knowledge and skills
 - The ability to self-direct learning across multiple domains
 - Comfort with ambiguity in problem statements (even if the solutions were theoretical)
 
 What it didn't prepare me for:
+
 - Technology constraints you can't choose or upgrade
 - Resource limitations that aren't hypothetical
 - The speed at which real organisations make decisions
@@ -30,11 +32,13 @@ Internships gave me a glimpse into industry — a chance to step outside the cla
 The thing about internships is they're structured to be safe. You get sandboxed projects, defined scope, and a mentor whose job includes making sure you succeed. This is valuable, but it's not the same as carrying real accountability.
 
 What internships gave me:
+
 - Exposure to real tools and workflows
 - Practice communicating with non-academic stakeholders
 - Evidence that I could operate outside a classroom
 
 What they didn't give me:
+
 - The weight of a project where failure had real consequences
 - The experience of navigating office politics and resource constraints
 - The rhythm of sustained delivery over months, not weeks
@@ -76,4 +80,4 @@ This is the thread connecting academia, internships, and industry. The environme
 
 ---
 
-*Adapted from a LinkedIn post (February 2025) that received 3,735 impressions. Written after one month at Consumer and Business Services, SA. Originally written by Rin Huang; edited and expanded with Claude Opus (Anthropic) for the rin.contact blog.*
+_Adapted from a LinkedIn post (February 2025) that received 3,735 impressions. Written after one month at Consumer and Business Services, SA. Originally written by Rin Huang; edited and expanded with Claude Opus (Anthropic) for the rin.contact blog._

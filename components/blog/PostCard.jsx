@@ -48,7 +48,10 @@ export default function PostCard({ slug, title, date, tags, description, reading
           )}
           {readingTime && (
             <span className="flex items-center gap-2 text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
-              <span className="w-1 h-1 rounded-full bg-[#CCCCCC] dark:bg-[#3D3D3D]" aria-hidden="true" />
+              <span
+                className="w-1 h-1 rounded-full bg-[#CCCCCC] dark:bg-[#3D3D3D]"
+                aria-hidden="true"
+              />
               {readingTime} {t("blog.minRead")}
             </span>
           )}

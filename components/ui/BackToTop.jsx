@@ -47,13 +47,25 @@ export default function BackToTop() {
       onClick={toTop}
       aria-label={t("common.backToTop")}
       title={t("common.backToTop")}
-      style={{ opacity: 0, transform: "translateY(8px)", pointerEvents: "none", transition: "opacity 0.25s ease, transform 0.25s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease" }}
+      style={{
+        opacity: 0,
+        transform: "translateY(8px)",
+        pointerEvents: "none",
+        transition:
+          "opacity 0.25s ease, transform 0.25s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease",
+      }}
       className="fixed bottom-6 right-6 z-40 hidden md:flex print:!hidden items-center justify-center w-10 h-10 rounded-full
                  border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#1A1A1A]
                  text-[#595959] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#FF3C3C] shadow-sm"
     >
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-        <path d="M7 11.5V2.5M7 2.5L3 6.5M7 2.5L11 6.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M7 11.5V2.5M7 2.5L3 6.5M7 2.5L11 6.5"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     </button>
   );

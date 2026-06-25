@@ -5,12 +5,12 @@ export default function SectionProgress() {
   const { t } = useI18n();
 
   const SECTIONS = [
-    { id: "hero",     key: "sectionProgress.profile" },
+    { id: "hero", key: "sectionProgress.profile" },
     { id: "timeline", key: "sectionProgress.journey" },
     { id: "projects", key: "sectionProgress.work" },
-    { id: "skills",   key: "sectionProgress.expertise" },
-    { id: "faq",      key: "sectionProgress.faq" },
-    { id: "contact",  key: "sectionProgress.contact" },
+    { id: "skills", key: "sectionProgress.expertise" },
+    { id: "faq", key: "sectionProgress.faq" },
+    { id: "contact", key: "sectionProgress.contact" },
   ];
 
   const [active, setActive] = useState("hero");
@@ -46,17 +46,18 @@ export default function SectionProgress() {
           if (entry.isIntersecting) setActive(entry.target.id);
         }
       },
-      { rootMargin: "0px 0px -60% 0px", threshold: 0 },
+      { rootMargin: "0px 0px -60% 0px", threshold: 0 }
     );
 
     const setup = () => {
-      const targets = SECTIONS
-        .map(({ id }) => document.getElementById(id))
-        .filter(Boolean);
+      const targets = SECTIONS.map(({ id }) => document.getElementById(id)).filter(Boolean);
       targets.forEach((el) => observer.observe(el));
     };
 
-    const idle = typeof requestIdleCallback !== "undefined" ? requestIdleCallback : (cb) => setTimeout(cb, 100);
+    const idle =
+      typeof requestIdleCallback !== "undefined"
+        ? requestIdleCallback
+        : (cb) => setTimeout(cb, 100);
     idle(setup, { timeout: 500 });
 
     return () => observer.disconnect();
@@ -92,9 +93,10 @@ export default function SectionProgress() {
             {/* Dot */}
             <span
               className={`block rounded-full flex-shrink-0 transition-all duration-200
-                          ${isActive
-                            ? "w-2.5 h-2.5 bg-[#FF3C3C]"
-                            : "w-1.5 h-1.5 bg-[#C0C0C0] group-hover:bg-[#7A7A7A]"
+                          ${
+                            isActive
+                              ? "w-2.5 h-2.5 bg-[#FF3C3C]"
+                              : "w-1.5 h-1.5 bg-[#C0C0C0] group-hover:bg-[#7A7A7A]"
                           }`}
             />
           </a>

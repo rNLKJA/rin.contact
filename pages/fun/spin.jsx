@@ -65,7 +65,8 @@ export default function SpinPage() {
             style={{
               transform: `rotate(${rotation}deg)`,
               background: `conic-gradient(${ACTIVITIES.map(
-                (_, i) => `#${i % 2 ? "1A1A1A" : "2A2A2A"} ${(i * 360) / ACTIVITIES.length}deg #${i % 2 ? "2A2A2A" : "1A1A1A"} ${((i + 1) * 360) / ACTIVITIES.length}deg`
+                (_, i) =>
+                  `#${i % 2 ? "1A1A1A" : "2A2A2A"} ${(i * 360) / ACTIVITIES.length}deg #${i % 2 ? "2A2A2A" : "1A1A1A"} ${((i + 1) * 360) / ACTIVITIES.length}deg`
               ).join(", ")})`,
             }}
           />

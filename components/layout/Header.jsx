@@ -11,27 +11,30 @@ const GLITCH_ALTS = ["rNLKJA", "r̷N̸L̵K̶J̷A̸", "404", "Rin?", "¯\\_(ツ)_
 
 function LogoWithGlitch() {
   const [glitching, setGlitching] = useState(false);
-  const [label, setLabel]         = useState("rNLKJA");
-  const phaseRef                  = useRef(0);
+  const [label, setLabel] = useState("rNLKJA");
+  const phaseRef = useRef(0);
 
-  const onDoubleClick = useCallback((e) => {
-    e.preventDefault();
-    if (glitching) return;
-    setGlitching(true);
-    phaseRef.current = 0;
+  const onDoubleClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (glitching) return;
+      setGlitching(true);
+      phaseRef.current = 0;
 
-    const next = () => {
-      phaseRef.current++;
-      if (phaseRef.current < GLITCH_ALTS.length) {
-        setLabel(GLITCH_ALTS[phaseRef.current]);
-        setTimeout(next, phaseRef.current === GLITCH_ALTS.length - 1 ? 400 : 120);
-      } else {
-        setLabel("rNLKJA");
-        setGlitching(false);
-      }
-    };
-    setTimeout(next, 80);
-  }, [glitching]);
+      const next = () => {
+        phaseRef.current++;
+        if (phaseRef.current < GLITCH_ALTS.length) {
+          setLabel(GLITCH_ALTS[phaseRef.current]);
+          setTimeout(next, phaseRef.current === GLITCH_ALTS.length - 1 ? 400 : 120);
+        } else {
+          setLabel("rNLKJA");
+          setGlitching(false);
+        }
+      };
+      setTimeout(next, 80);
+    },
+    [glitching]
+  );
 
   return (
     <Link
@@ -43,7 +46,10 @@ function LogoWithGlitch() {
       <div
         className="flex items-center justify-center bg-white flex-shrink-0"
         style={{
-          borderRadius: "22%", overflow: "hidden", width: 32, height: 32,
+          borderRadius: "22%",
+          overflow: "hidden",
+          width: 32,
+          height: 32,
           filter: glitching ? "invert(1)" : "none",
           transition: "filter 0.08s",
         }}
@@ -60,24 +66,22 @@ function LogoWithGlitch() {
   );
 }
 
-
 const NAV_LINKS = [
-  { href: "/career",   key: "nav.career"   },
+  { href: "/career", key: "nav.career" },
   { href: "/projects", key: "nav.projects" },
-  { href: "/lab",      key: "nav.lab"      },
+  { href: "/lab", key: "nav.lab" },
   { href: "/knowledge", key: "nav.knowledge" },
-  { href: "/blog",     key: "nav.blog"     },
-  { href: "/about",    key: "nav.about"    },
-  { href: "/resume",   key: "nav.resume"   },
-  { href: "/#contact", key: "nav.contact"  },
+  { href: "/blog", key: "nav.blog" },
+  { href: "/about", key: "nav.about" },
+  { href: "/resume", key: "nav.resume" },
+  { href: "/#contact", key: "nav.contact" },
 ];
 
 // Standalone page links — rendered as distinct CTA buttons, not inline nav items
 const PAGE_LINKS = [
-  { href: "/tools/card", key: "nav.card",    titleKey: "nav.businessCard" },
-  { href: "/hire-me",  key: "nav.hireMe", titleKey: "nav.hireMe", cta: true },
+  { href: "/tools/card", key: "nav.card", titleKey: "nav.businessCard" },
+  { href: "/hire-me", key: "nav.hireMe", titleKey: "nav.hireMe", cta: true },
 ];
-
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -92,14 +96,14 @@ export default function Header() {
     return pathname === href || pathname.startsWith(href + "/");
   };
   // Direct DOM refs — scroll state never goes through React, so no re-renders on scroll
-  const headerRef   = useRef(null);
+  const headerRef = useRef(null);
   const progressRef = useRef(null);
   const scrolledRef = useRef(false); // guards against redundant border toggles
   const maxScrollRef = useRef(0);
 
   const onScroll = useCallback(() => {
     const scrollTop = window.scrollY;
-    const max       = maxScrollRef.current;
+    const max = maxScrollRef.current;
 
     // Progress bar — direct style write, zero React involvement
     if (progressRef.current) {
@@ -111,9 +115,7 @@ export default function Header() {
     if (isScrolled !== scrolledRef.current) {
       scrolledRef.current = isScrolled;
       if (headerRef.current) {
-        headerRef.current.style.borderBottom = isScrolled
-          ? "1px solid var(--divider)"
-          : "";
+        headerRef.current.style.borderBottom = isScrolled ? "1px solid var(--divider)" : "";
       }
     }
   }, []);
@@ -133,7 +135,8 @@ export default function Header() {
     };
 
     // Defer initial layout read to idle — keeps it off the critical path
-    const idle = typeof requestIdleCallback !== "undefined" ? requestIdleCallback : (cb) => setTimeout(cb, 1);
+    const idle =
+      typeof requestIdleCallback !== "undefined" ? requestIdleCallback : (cb) => setTimeout(cb, 1);
     idle(() => updateMax(), { timeout: 100 });
 
     const ro = new ResizeObserver(updateMax);
@@ -182,7 +185,10 @@ export default function Header() {
               >
                 {t(key)}
                 {active && (
-                  <span aria-hidden="true" className="absolute left-1/2 -translate-x-1/2 bottom-[2px] w-[3px] h-[3px] bg-[#FF3C3C]" />
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-1/2 -translate-x-1/2 bottom-[2px] w-[3px] h-[3px] bg-[#FF3C3C]"
+                  />
                 )}
               </Link>
             );
@@ -209,7 +215,9 @@ export default function Header() {
                 className={
                   cta
                     ? `px-3.5 py-1.5 border border-[#FF3C3C] transition-all duration-200 ${
-                        active ? "bg-[#FF3C3C] text-white" : "text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
+                        active
+                          ? "bg-[#FF3C3C] text-white"
+                          : "text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
                       }`
                     : `relative px-3 py-1.5 rounded-full transition-all duration-200 ${
                         active
@@ -220,7 +228,10 @@ export default function Header() {
               >
                 {t(key)}
                 {!cta && active && (
-                  <span aria-hidden="true" className="absolute left-1/2 -translate-x-1/2 bottom-[2px] w-[3px] h-[3px] bg-[#FF3C3C]" />
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-1/2 -translate-x-1/2 bottom-[2px] w-[3px] h-[3px] bg-[#FF3C3C]"
+                  />
                 )}
               </Link>
             );
@@ -235,9 +246,15 @@ export default function Header() {
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >
-          <span className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""} bg-black dark:bg-white`} />
-          <span className={`block w-5 h-px bg-black dark:bg-white transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""} bg-black dark:bg-white`} />
+          <span
+            className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""} bg-black dark:bg-white`}
+          />
+          <span
+            className={`block w-5 h-px bg-black dark:bg-white transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`}
+          />
+          <span
+            className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""} bg-black dark:bg-white`}
+          />
         </button>
       </div>
 
@@ -253,11 +270,16 @@ export default function Header() {
       >
         {/* Top bar — brand only (close button stays in header, top-right) */}
         <div className="flex items-center px-6 py-4 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
-          <span className="font-semibold text-sm tracking-tight text-black dark:text-white">rNLKJA</span>
+          <span className="font-semibold text-sm tracking-tight text-black dark:text-white">
+            rNLKJA
+          </span>
         </div>
 
         {/* Nav links — editorial numbered style */}
-        <nav className="flex-1 flex flex-col justify-center px-8 gap-0" aria-label="Mobile navigation">
+        <nav
+          className="flex-1 flex flex-col justify-center px-8 gap-0"
+          aria-label="Mobile navigation"
+        >
           {NAV_LINKS.map(({ href, key }, i) => {
             const active = isActive(href);
             return (
@@ -270,22 +292,35 @@ export default function Header() {
                   active ? "text-[#FF3C3C]" : "text-black dark:text-white hover:text-[#FF3C3C]"
                 }`}
               >
-                <span className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
-                  active ? "text-[#FF3C3C]" : "text-[#C8C8C8] group-hover:text-[#FF3C3C]"
-                }`}>
+                <span
+                  className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
+                    active ? "text-[#FF3C3C]" : "text-[#C8C8C8] group-hover:text-[#FF3C3C]"
+                  }`}
+                >
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="text-2xl font-semibold tracking-tight">{t(key)}</span>
-                {active
-                  ? <span aria-hidden="true" className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C] self-center" />
-                  : <span aria-hidden="true" className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm">↗</span>
-                }
+                {active ? (
+                  <span
+                    aria-hidden="true"
+                    className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C] self-center"
+                  />
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm"
+                  >
+                    ↗
+                  </span>
+                )}
               </Link>
             );
           })}
 
           {/* Page links — separated by a subtle label */}
-          <p className="text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">{t("nav.pages")}</p>
+          <p className="text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">
+            {t("nav.pages")}
+          </p>
           {PAGE_LINKS.map(({ href, key, cta }) => {
             const active = isActive(href);
             return (
@@ -296,16 +331,30 @@ export default function Header() {
                 aria-current={active ? "page" : undefined}
                 className={`flex items-center gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                   cta
-                    ? (active ? "text-[#CC2020]" : "text-[#FF3C3C] hover:text-[#CC2020]")
-                    : (active ? "text-[#FF3C3C]" : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white")
+                    ? active
+                      ? "text-[#CC2020]"
+                      : "text-[#FF3C3C] hover:text-[#CC2020]"
+                    : active
+                      ? "text-[#FF3C3C]"
+                      : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white"
                 }`}
               >
-                <span className={`text-[10px] tracking-widest flex-shrink-0 w-5 ${active ? "text-[#FF3C3C]" : "text-[#E0E0E0]"}`}>→</span>
+                <span
+                  className={`text-[10px] tracking-widest flex-shrink-0 w-5 ${active ? "text-[#FF3C3C]" : "text-[#E0E0E0]"}`}
+                >
+                  →
+                </span>
                 <span className="text-xl font-semibold tracking-tight">{t(key)}</span>
-                {active
-                  ? <span aria-hidden="true" className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C]" />
-                  : <span aria-hidden="true" className="ml-auto text-[#E0E0E0] group-hover:text-current transition-colors duration-200 text-sm">↗</span>
-                }
+                {active ? (
+                  <span aria-hidden="true" className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C]" />
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className="ml-auto text-[#E0E0E0] group-hover:text-current transition-colors duration-200 text-sm"
+                  >
+                    ↗
+                  </span>
+                )}
               </Link>
             );
           })}
@@ -320,7 +369,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
             {[
               { label: "LinkedIn", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },
-              { label: "GitHub",   href: "https://github.com/rNLKJA"                     },
+              { label: "GitHub", href: "https://github.com/rNLKJA" },
             ].map(({ label, href }) => (
               <a
                 key={label}

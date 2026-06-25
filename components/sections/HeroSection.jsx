@@ -20,13 +20,13 @@ const GitHubIcon = () => (
 
 // Greeting period keys mapped to translation keys
 const GREETING_KEYS = {
-  early:    "hero.greeting.early",
-  morning:  "hero.greeting.morning",
-  lunch:    "hero.greeting.lunch",
-  afternoon:"hero.greeting.afternoon",
-  evening:  "hero.greeting.evening",
-  late:     "hero.greeting.late",
-  night:    "hero.greeting.night",
+  early: "hero.greeting.early",
+  morning: "hero.greeting.morning",
+  lunch: "hero.greeting.lunch",
+  afternoon: "hero.greeting.afternoon",
+  evening: "hero.greeting.evening",
+  late: "hero.greeting.late",
+  night: "hero.greeting.night",
 };
 
 // ─── Typewriter ──────────────────────────────────────────────────────────────
@@ -80,9 +80,9 @@ function CountUp({ target, duration = 1200, started }) {
 // ─── Magnetic button ─────────────────────────────────────────────────────────
 // Desktop: accent red; mobile: black outline (Nothing primary style) for AA contrast
 function MagneticButton({ href, primary, children }) {
-  const btnRef   = useRef(null);
-  const rectRef  = useRef(null);
-  const rafRef   = useRef(null);
+  const btnRef = useRef(null);
+  const rectRef = useRef(null);
+  const rafRef = useRef(null);
 
   // Defer getBCR to rAF — avoids forced reflow when layout may be invalid.
   const handleEnter = useCallback(() => {
@@ -95,11 +95,11 @@ function MagneticButton({ href, primary, children }) {
   }, []);
 
   const handleMove = useCallback((e) => {
-    const el   = btnRef.current;
+    const el = btnRef.current;
     const rect = rectRef.current;
     if (!el || !rect) return;
-    const cx = rect.left + rect.width  / 2;
-    const cy = rect.top  + rect.height / 2;
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
     const dx = (e.clientX - cx) * 0.28;
     const dy = (e.clientY - cy) * 0.28;
     el.style.transform = `translate(${dx}px, ${dy}px)`;
@@ -112,7 +112,12 @@ function MagneticButton({ href, primary, children }) {
     rectRef.current = null;
   }, []);
 
-  useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
+  useEffect(
+    () => () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    },
+    []
+  );
 
   // Primary (Career Path): mobile = black outline (Nothing style, AA contrast); desktop = darker red accent
   const primaryClasses =
@@ -155,13 +160,13 @@ function useTimeGreeting() {
   const [greeting, setGreeting] = useState("");
   useEffect(() => {
     const h = new Date().getHours();
-    if      (h >= 5  && h < 9)  setGreeting(GREETING_KEYS.early);
-    else if (h >= 9  && h < 12) setGreeting(GREETING_KEYS.morning);
+    if (h >= 5 && h < 9) setGreeting(GREETING_KEYS.early);
+    else if (h >= 9 && h < 12) setGreeting(GREETING_KEYS.morning);
     else if (h >= 12 && h < 14) setGreeting(GREETING_KEYS.lunch);
     else if (h >= 14 && h < 17) setGreeting(GREETING_KEYS.afternoon);
     else if (h >= 17 && h < 20) setGreeting(GREETING_KEYS.evening);
     else if (h >= 20 && h < 23) setGreeting(GREETING_KEYS.late);
-    else                         setGreeting(GREETING_KEYS.night);
+    else setGreeting(GREETING_KEYS.night);
   }, []);
   return greeting;
 }
@@ -182,7 +187,12 @@ export default function HeroSection() {
     const el = statsRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setStatsStarted(true); observer.disconnect(); } },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsStarted(true);
+          observer.disconnect();
+        }
+      },
       { threshold: 0.2 }
     );
     observer.observe(el);
@@ -223,17 +233,21 @@ export default function HeroSection() {
         </span>
       ))}
       {/* Decorative elements — hidden on mobile for faster LCP */}
-      <div aria-hidden="true" className="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(255,60,60,0.05) 0%, transparent 70%)", animation: "blob-drift 18s ease-in-out infinite alternate" }} />
+      <div
+        aria-hidden="true"
+        className="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, rgba(255,60,60,0.05) 0%, transparent 70%)",
+          animation: "blob-drift 18s ease-in-out infinite alternate",
+        }}
+      />
       {/* Interactive dot-matrix backdrop — dots grow, glow red, and scatter under the cursor */}
       <HeroDotCanvas />
 
       {/* ── Two-column grid ── */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-
         {/* LEFT — identity + copy */}
         <div>
-
           {/* Time-of-day greeting — client-side only, fades in */}
           {greeting && (
             <p
@@ -247,11 +261,16 @@ export default function HeroSection() {
 
           {/* Status pill */}
           <div className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 mb-8 text-xs tracking-widest uppercase rounded-full text-[#1A1A1A] dark:text-white">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 md:animate-blink" aria-hidden="true" />
+            <span
+              className="w-1.5 h-1.5 rounded-full bg-green-500 md:animate-blink"
+              aria-hidden="true"
+            />
             {t("hero.statusPill")}
           </div>
 
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] mb-4">{t("hero.sectionLabel")}</p>
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] mb-4">
+            {t("hero.sectionLabel")}
+          </p>
 
           {/* Name — pinned to Bitcount display font; no animation on mobile for LCP */}
           <h1
@@ -263,32 +282,55 @@ export default function HeroSection() {
           </h1>
           {/* Wisr-style wavy underline accent */}
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
-            <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-                  stroke="#FF3C3C" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeOpacity="0.5"/>
+            <path
+              d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
+              stroke="#FF3C3C"
+              strokeWidth="1.5"
+              fill="none"
+              strokeLinecap="round"
+              strokeOpacity="0.5"
+            />
           </svg>
 
           {/* Subtitle + socials — black on mobile for AA contrast; no animation on mobile for LCP */}
           <div className="flex flex-wrap items-center gap-3 mb-8 md:animate-fade-up md:delay-100">
             <div className="flex flex-col">
-              <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]" itemProp="alternateName">
+              <span
+                className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]"
+                itemProp="alternateName"
+              >
                 {t("hero.subtitle")}
               </span>
-              <span className="text-sm tracking-wide text-black dark:text-white md:text-[#7A7A7A] dark:md:text-[#AAAAAA]" lang="zh-Hans" itemProp="alternateName">
+              <span
+                className="text-sm tracking-wide text-black dark:text-white md:text-[#7A7A7A] dark:md:text-[#AAAAAA]"
+                lang="zh-Hans"
+                itemProp="alternateName"
+              >
                 黄孙创宇
               </span>
               <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]">
                 {t("hero.pronouns")}
               </span>
             </div>
-            <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]">|</span>
-            <a href="https://www.linkedin.com/in/sunchuangyuhuang/" target="_blank" rel="noreferrer"
+            <span className="text-sm tracking-widest uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]">
+              |
+            </span>
+            <a
+              href="https://www.linkedin.com/in/sunchuangyuhuang/"
+              target="_blank"
+              rel="noreferrer"
               aria-label="LinkedIn profile"
-              className="text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0">
+              className="text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
+            >
               <LinkedInIcon />
             </a>
-            <a href="https://github.com/rNLKJA" target="_blank" rel="noreferrer"
+            <a
+              href="https://github.com/rNLKJA"
+              target="_blank"
+              rel="noreferrer"
               aria-label="GitHub profile"
-              className="text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0">
+              className="text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
+            >
               <GitHubIcon />
             </a>
           </div>
@@ -300,17 +342,28 @@ export default function HeroSection() {
             aria-label={role ? `Current role: ${role}` : undefined}
             className="hero-role text-xl md:text-2xl font-light text-[#3D3D3D] dark:text-[#AAAAAA] mb-8 h-8 md:animate-fade-up md:delay-200"
           >
-            {role}<span className="md:animate-blink ml-0.5 inline-block w-[0.5em] text-center" aria-hidden="true">_</span>
+            {role}
+            <span
+              className="md:animate-blink ml-0.5 inline-block w-[0.5em] text-center"
+              aria-hidden="true"
+            >
+              _
+            </span>
           </div>
 
           {/* Bio — LCP element: no animation on mobile so it paints immediately */}
-          <p id="hero-bio" className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-10 md:animate-fade-up md:delay-300">
+          <p
+            id="hero-bio"
+            className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-10 md:animate-fade-up md:delay-300"
+          >
             {t("hero.bio")}
           </p>
 
           {/* CTAs — hero-ctas for LCP; magnetic on desktop; no animation on mobile for LCP */}
           <div className="hero-ctas flex flex-wrap items-center gap-3 md:animate-fade-up md:delay-400">
-            <MagneticButton href="/career" primary>{t("hero.ctaCareer")}</MagneticButton>
+            <MagneticButton href="/career" primary>
+              {t("hero.ctaCareer")}
+            </MagneticButton>
             <MagneticButton href="#contact">{t("hero.ctaContact")}</MagneticButton>
           </div>
 
@@ -341,7 +394,9 @@ export default function HeroSection() {
               >
                 <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight text-black dark:text-white group-hover:text-white transition-colors duration-300">
                   <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
-                  <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-300">+</span>
+                  <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-300">
+                    +
+                  </span>
                 </span>
                 <span className="text-sm font-medium tracking-wide uppercase text-black dark:text-white group-hover:text-white transition-colors duration-300">
                   {label}
@@ -361,7 +416,9 @@ export default function HeroSection() {
                   <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
                   <span className="text-[#FF3C3C]">+</span>
                 </span>
-                <span className="text-[10px] tracking-widest uppercase text-black dark:text-white mt-1">{label}</span>
+                <span className="text-[10px] tracking-widest uppercase text-black dark:text-white mt-1">
+                  {label}
+                </span>
               </div>
             ))}
           </div>

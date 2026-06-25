@@ -26,24 +26,71 @@ function OverfitFigure({ caption, ariaLabel, panelLabels }) {
         {[0, 1, 2].map((panel) => {
           const ox = panel * 150 + 15;
           const pts = [
-            [12, 95], [30, 78], [48, 88], [66, 60], [84, 66], [102, 40], [120, 52],
+            [12, 95],
+            [30, 78],
+            [48, 88],
+            [66, 60],
+            [84, 66],
+            [102, 40],
+            [120, 52],
           ];
           return (
             <g key={panel}>
-              <rect x={ox} y="12" width="120" height="116" fill="none" stroke="currentColor" strokeWidth="0.7" opacity="0.25" />
+              <rect
+                x={ox}
+                y="12"
+                width="120"
+                height="116"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="0.7"
+                opacity="0.25"
+              />
               {pts.map(([px, py], i) => (
-                <circle key={i} cx={ox + px * 0.9 + 4} cy={py} r="2.4" fill="currentColor" opacity="0.55" />
+                <circle
+                  key={i}
+                  cx={ox + px * 0.9 + 4}
+                  cy={py}
+                  r="2.4"
+                  fill="currentColor"
+                  opacity="0.55"
+                />
               ))}
               {panel === 0 && (
-                <line x1={ox + 8} y1="90" x2={ox + 112} y2="52" stroke="#FF3C3C" strokeWidth="1.8" />
+                <line
+                  x1={ox + 8}
+                  y1="90"
+                  x2={ox + 112}
+                  y2="52"
+                  stroke="#FF3C3C"
+                  strokeWidth="1.8"
+                />
               )}
               {panel === 1 && (
-                <path d={`M${ox + 8} 96 Q ${ox + 60} 88 ${ox + 112} 46`} fill="none" stroke="#FF3C3C" strokeWidth="1.8" />
+                <path
+                  d={`M${ox + 8} 96 Q ${ox + 60} 88 ${ox + 112} 46`}
+                  fill="none"
+                  stroke="#FF3C3C"
+                  strokeWidth="1.8"
+                />
               )}
               {panel === 2 && (
-                <path d={`M${ox + 8} 92 L ${ox + 24} 80 L ${ox + 41} 90 L ${ox + 58} 58 L ${ox + 75} 68 L ${ox + 92} 40 L ${ox + 112} 52`} fill="none" stroke="#FF3C3C" strokeWidth="1.6" />
+                <path
+                  d={`M${ox + 8} 92 L ${ox + 24} 80 L ${ox + 41} 90 L ${ox + 58} 58 L ${ox + 75} 68 L ${ox + 92} 40 L ${ox + 112} 52`}
+                  fill="none"
+                  stroke="#FF3C3C"
+                  strokeWidth="1.6"
+                />
               )}
-              <text x={ox + 60} y="124" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">
+              <text
+                x={ox + 60}
+                y="124"
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill="currentColor"
+                opacity="0.7"
+              >
                 {panelLabels[panel]}
               </text>
             </g>
@@ -54,7 +101,16 @@ function OverfitFigure({ caption, ariaLabel, panelLabels }) {
   );
 }
 
-function BiasVarFigure({ caption, ariaLabel, xAxis, trainLabel, testLabel, sweetSpot, underfitLabel, overfitLabel }) {
+function BiasVarFigure({
+  caption,
+  ariaLabel,
+  xAxis,
+  trainLabel,
+  testLabel,
+  sweetSpot,
+  underfitLabel,
+  overfitLabel,
+}) {
   return (
     <Figure caption={caption}>
       <svg
@@ -63,18 +119,80 @@ function BiasVarFigure({ caption, ariaLabel, xAxis, trainLabel, testLabel, sweet
         role="img"
         aria-label={ariaLabel}
       >
-        <line x1="30" y1="135" x2="420" y2="135" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
-        <line x1="30" y1="20" x2="30" y2="135" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
-        <text x="225" y="153" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.7">{xAxis}</text>
-        <path d="M35 40 C 130 95, 230 120, 415 128" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.7" />
-        <text x="360" y="120" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.7">{trainLabel}</text>
-        <path d="M35 55 C 120 110, 160 105, 220 100 C 300 93, 340 70, 415 35" fill="none" stroke="#FF3C3C" strokeWidth="1.8" />
-        <text x="365" y="45" fontSize="10" fontFamily="monospace" fill="#FF3C3C">{testLabel}</text>
+        <line
+          x1="30"
+          y1="135"
+          x2="420"
+          y2="135"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
+        <line
+          x1="30"
+          y1="20"
+          x2="30"
+          y2="135"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
+        <text
+          x="225"
+          y="153"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {xAxis}
+        </text>
+        <path
+          d="M35 40 C 130 95, 230 120, 415 128"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          opacity="0.7"
+        />
+        <text
+          x="360"
+          y="120"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {trainLabel}
+        </text>
+        <path
+          d="M35 55 C 120 110, 160 105, 220 100 C 300 93, 340 70, 415 35"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.8"
+        />
+        <text x="365" y="45" fontSize="10" fontFamily="monospace" fill="#FF3C3C">
+          {testLabel}
+        </text>
         <circle cx="210" cy="101" r="4" fill="none" stroke="#FF3C3C" strokeWidth="1.4" />
-        <line x1="210" y1="101" x2="210" y2="135" stroke="#FF3C3C" strokeWidth="0.8" strokeDasharray="3 3" />
-        <text x="210" y="92" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{sweetSpot}</text>
-        <text x="95" y="128" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">{underfitLabel}</text>
-        <text x="350" y="128" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">{overfitLabel}</text>
+        <line
+          x1="210"
+          y1="101"
+          x2="210"
+          y2="135"
+          stroke="#FF3C3C"
+          strokeWidth="0.8"
+          strokeDasharray="3 3"
+        />
+        <text x="210" y="92" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {sweetSpot}
+        </text>
+        <text x="95" y="128" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">
+          {underfitLabel}
+        </text>
+        <text x="350" y="128" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">
+          {overfitLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -85,97 +203,92 @@ function EnBody() {
   return (
     <>
       <p>
-        <Term>Machine learning</Term> is what you do when the rules are too complex
-        to write by hand. Instead of programming the answer, you show a model many
-        examples and let it infer the pattern — then you hope it works on examples it
-        has never seen. That last clause is the entire discipline: not fitting the
-        data you have, but <em>generalising</em> to the data you don't.
+        <Term>Machine learning</Term> is what you do when the rules are too complex to write by
+        hand. Instead of programming the answer, you show a model many examples and let it infer the
+        pattern — then you hope it works on examples it has never seen. That last clause is the
+        entire discipline: not fitting the data you have, but <em>generalising</em> to the data you
+        don't.
       </p>
       <p>
-        This is the advanced page that pulls the whole foundation together. It runs
-        on <Link href="/knowledge/linear-algebra">linear algebra</Link> (the data and the
-        models are vectors and matrices), <Link href="/knowledge/probability">probability
-        and statistics</Link> (every prediction is uncertain, every model is estimated),
-        and <Link href="/knowledge/calculus-optimisation">calculus</Link> (training is
-        minimising a loss). Here we assemble them into the thing that learns.
+        This is the advanced page that pulls the whole foundation together. It runs on{" "}
+        <Link href="/knowledge/linear-algebra">linear algebra</Link> (the data and the models are
+        vectors and matrices), <Link href="/knowledge/probability">probability and statistics</Link>{" "}
+        (every prediction is uncertain, every model is estimated), and{" "}
+        <Link href="/knowledge/calculus-optimisation">calculus</Link> (training is minimising a
+        loss). Here we assemble them into the thing that learns.
       </p>
 
       <KSection id="what" eyebrow="01" title="What 'learning' means">
         <p>
-          Learning here has a precise meaning: improving at a task as you see more
-          data, measured by some performance metric. The field splits by what the
-          data looks like:
+          Learning here has a precise meaning: improving at a task as you see more data, measured by
+          some performance metric. The field splits by what the data looks like:
         </p>
         <ul>
           <li>
-            <Term>Supervised learning</Term> — you have labelled examples (input →
-            correct answer) and learn to predict the label. <Term>Classification</Term>{" "}
-            predicts a category (spam / not-spam); <Term>regression</Term> predicts a
-            number (house price). The bulk of applied ML.
+            <Term>Supervised learning</Term> — you have labelled examples (input → correct answer)
+            and learn to predict the label. <Term>Classification</Term> predicts a category (spam /
+            not-spam); <Term>regression</Term> predicts a number (house price). The bulk of applied
+            ML.
           </li>
           <li>
             <Term>Unsupervised learning</Term> — no labels, just structure to find:{" "}
-            <Term>clustering</Term> groups similar points, dimensionality reduction
-            (like PCA) compresses them.
+            <Term>clustering</Term> groups similar points, dimensionality reduction (like PCA)
+            compresses them.
           </li>
           <li>
-            <Term>Reinforcement learning</Term> — an agent learns by acting and
-            receiving rewards. Different enough to leave for its own page.
+            <Term>Reinforcement learning</Term> — an agent learns by acting and receiving rewards.
+            Different enough to leave for its own page.
           </li>
         </ul>
       </KSection>
 
       <KSection id="problem" eyebrow="02" title="The learning problem">
-        <p>
-          Stripped to its skeleton, supervised learning is three choices:
-        </p>
+        <p>Stripped to its skeleton, supervised learning is three choices:</p>
         <ul>
           <li>
-            A <Term>hypothesis space</Term> — the family of functions you'll consider
-            (all straight lines, all trees of depth 5, all neural nets of a given
-            shape). This is your model choice.
+            A <Term>hypothesis space</Term> — the family of functions you'll consider (all straight
+            lines, all trees of depth 5, all neural nets of a given shape). This is your model
+            choice.
           </li>
           <li>
-            A <Term>loss function</Term> — how wrong a single prediction is (squared
-            error for regression, cross-entropy for classification).
+            A <Term>loss function</Term> — how wrong a single prediction is (squared error for
+            regression, cross-entropy for classification).
           </li>
           <li>
-            An <Term>optimiser</Term> — the search for the function in that space with
-            the lowest total loss, usually by <Link href="/knowledge/calculus-optimisation">gradient
-            descent</Link>.
+            An <Term>optimiser</Term> — the search for the function in that space with the lowest
+            total loss, usually by{" "}
+            <Link href="/knowledge/calculus-optimisation">gradient descent</Link>.
           </li>
         </ul>
         <p>
-          What you actually want to minimise is the <Term>risk</Term> — the expected
-          loss on <em>new</em> data drawn from the real world:
+          What you actually want to minimise is the <Term>risk</Term> — the expected loss on{" "}
+          <em>new</em> data drawn from the real world:
         </p>
         <Formula label="Risk equals the expected value over the data distribution of the loss between the model's prediction f of x and the true label y.">
           {TEX.risk}
         </Formula>
         <p>
           But you can't see the whole world — only your sample. So you minimise the{" "}
-          <Term>empirical risk</Term>, the average loss on your training set, and pray
-          it tracks the true risk. The entire art is in making that prayer come true.
+          <Term>empirical risk</Term>, the average loss on your training set, and pray it tracks the
+          true risk. The entire art is in making that prayer come true.
         </p>
       </KSection>
 
       <KSection id="generalisation" eyebrow="03" title="Generalisation, not memorisation">
         <p>
-          A model that aces the training data has proven nothing — it might have just
-          memorised it. The only test that matters is performance on data it has never
-          seen. So the first rule of ML is to <Term>hold out a test set</Term> and
-          never let the model learn from it. Two failure modes bracket the goal:
+          A model that aces the training data has proven nothing — it might have just memorised it.
+          The only test that matters is performance on data it has never seen. So the first rule of
+          ML is to <Term>hold out a test set</Term> and never let the model learn from it. Two
+          failure modes bracket the goal:
         </p>
         <ul>
           <li>
-            <Term>Underfitting</Term> — the model is too simple to capture the
-            pattern. High error on both training and test data. (A straight line
-            through a curve.)
+            <Term>Underfitting</Term> — the model is too simple to capture the pattern. High error
+            on both training and test data. (A straight line through a curve.)
           </li>
           <li>
-            <Term>Overfitting</Term> — the model is so flexible it has fit the noise as
-            well as the signal. Low training error, high test error. It memorised
-            instead of learning.
+            <Term>Overfitting</Term> — the model is so flexible it has fit the noise as well as the
+            signal. Low training error, high test error. It memorised instead of learning.
           </li>
         </ul>
 
@@ -188,31 +301,30 @@ function EnBody() {
 
       <KSection id="tradeoff" eyebrow="04" title="The bias–variance tradeoff">
         <p>
-          Those two failures are the two ends of the most important idea in ML. A
-          model's expected error decomposes into three parts:
+          Those two failures are the two ends of the most important idea in ML. A model's expected
+          error decomposes into three parts:
         </p>
         <Formula label="Expected error equals bias squared plus variance plus irreducible noise.">
           {TEX.error}
         </Formula>
         <ul>
           <li>
-            <Term>Bias</Term> — error from wrong assumptions; the model is too simple
-            to represent the truth. High bias = underfitting.
+            <Term>Bias</Term> — error from wrong assumptions; the model is too simple to represent
+            the truth. High bias = underfitting.
           </li>
           <li>
-            <Term>Variance</Term> — error from sensitivity to the particular training
-            sample; the model changes wildly if you reshuffle the data. High variance =
-            overfitting.
+            <Term>Variance</Term> — error from sensitivity to the particular training sample; the
+            model changes wildly if you reshuffle the data. High variance = overfitting.
           </li>
           <li>
-            <Term>Irreducible noise</Term> — the randomness in the world itself. No
-            model can beat it; pretending otherwise is overfitting.
+            <Term>Irreducible noise</Term> — the randomness in the world itself. No model can beat
+            it; pretending otherwise is overfitting.
           </li>
         </ul>
         <p>
-          The tension is fundamental: making a model more flexible lowers bias but
-          raises variance, and vice versa. You can't drive both to zero — you tune for
-          the sweet spot where their <em>sum</em> is smallest.
+          The tension is fundamental: making a model more flexible lowers bias but raises variance,
+          and vice versa. You can't drive both to zero — you tune for the sweet spot where their{" "}
+          <em>sum</em> is smallest.
         </p>
 
         <BiasVarFigure
@@ -229,132 +341,125 @@ function EnBody() {
 
       <KSection id="regularisation" eyebrow="05" title="Regularisation">
         <p>
-          <Term>Regularisation</Term> is the main lever for controlling that tradeoff:
-          deliberately constrain the model so it can't contort itself to fit noise. You
-          add a penalty on complexity to the loss, so training has to balance fitting
-          the data against staying simple:
+          <Term>Regularisation</Term> is the main lever for controlling that tradeoff: deliberately
+          constrain the model so it can't contort itself to fit noise. You add a penalty on
+          complexity to the loss, so training has to balance fitting the data against staying
+          simple:
         </p>
         <Formula label="The regularised objective equals the loss on the data plus lambda times a penalty on the size of the parameters.">
           {TEX.reg}
         </Formula>
         <p>
-          The strength <code>λ</code> is a dial from "fit hard" to "stay simple". Two
-          classic penalties on the weights:
+          The strength <code>λ</code> is a dial from "fit hard" to "stay simple". Two classic
+          penalties on the weights:
         </p>
         <ul>
           <li>
-            <Term>L2 (Ridge)</Term> — penalises the squared size of the weights,
-            shrinking them all smoothly toward zero. Tames variance without dropping
-            features.
+            <Term>L2 (Ridge)</Term> — penalises the squared size of the weights, shrinking them all
+            smoothly toward zero. Tames variance without dropping features.
           </li>
           <li>
-            <Term>L1 (Lasso)</Term> — penalises the absolute size, which drives some
-            weights <em>exactly</em> to zero — doing automatic feature selection. Handy
-            when you suspect most features are useless.
+            <Term>L1 (Lasso)</Term> — penalises the absolute size, which drives some weights{" "}
+            <em>exactly</em> to zero — doing automatic feature selection. Handy when you suspect
+            most features are useless.
           </li>
         </ul>
         <p>
-          It's the formal version of Occam's razor: among models that fit the data,
-          prefer the simplest, because simple models generalise.
+          It's the formal version of Occam's razor: among models that fit the data, prefer the
+          simplest, because simple models generalise.
         </p>
       </KSection>
 
       <KSection id="validation" eyebrow="06" title="Cross-validation">
         <p>
-          You need an honest estimate of test performance to tune choices like{" "}
-          <code>λ</code> — but every peek at the test set burns it. The fix is{" "}
-          <Term>cross-validation</Term>: split the training data into <code>k</code>{" "}
-          folds, train on <code>k−1</code> and validate on the one held out, then
-          rotate so each fold is the validation set once. Average the <code>k</code>{" "}
+          You need an honest estimate of test performance to tune choices like <code>λ</code> — but
+          every peek at the test set burns it. The fix is <Term>cross-validation</Term>: split the
+          training data into <code>k</code> folds, train on <code>k−1</code> and validate on the one
+          held out, then rotate so each fold is the validation set once. Average the <code>k</code>{" "}
           scores.
         </p>
         <p>
-          This squeezes a reliable performance estimate out of limited data, and it's
-          how you choose hyperparameters without contaminating the final test set —
-          which stays in a vault, touched once, at the very end. The discipline here is
-          the same one from the <Link href="/knowledge/statistics">statistics page</Link>:
-          never let information leak from test into training.
+          This squeezes a reliable performance estimate out of limited data, and it's how you choose
+          hyperparameters without contaminating the final test set — which stays in a vault, touched
+          once, at the very end. The discipline here is the same one from the{" "}
+          <Link href="/knowledge/statistics">statistics page</Link>: never let information leak from
+          test into training.
         </p>
       </KSection>
 
       <KSection id="families" eyebrow="07" title="The model families">
-        <p>
-          A practical toolkit, from interpretable to powerful:
-        </p>
+        <p>A practical toolkit, from interpretable to powerful:</p>
         <ul>
           <li>
-            <Term>Linear / logistic regression</Term> — weighted sums of features.
-            Fast, interpretable, a convex loss, and a genuinely strong baseline. Start
-            here.
+            <Term>Linear / logistic regression</Term> — weighted sums of features. Fast,
+            interpretable, a convex loss, and a genuinely strong baseline. Start here.
           </li>
           <li>
-            <Term>Decision trees</Term> — nested yes/no splits. Readable, but a single
-            tree overfits.
+            <Term>Decision trees</Term> — nested yes/no splits. Readable, but a single tree
+            overfits.
           </li>
           <li>
             <Term>Ensembles</Term> — combine many weak models into a strong one.{" "}
-            <Term>Random forests</Term> average many de-correlated trees (reducing
-            variance); <Term>gradient boosting</Term> (XGBoost, LightGBM) builds trees
-            that fix each other's errors and wins a large share of tabular problems.
+            <Term>Random forests</Term> average many de-correlated trees (reducing variance);{" "}
+            <Term>gradient boosting</Term> (XGBoost, LightGBM) builds trees that fix each other's
+            errors and wins a large share of tabular problems.
           </li>
           <li>
-            <Term>Support Vector Machines</Term> — find the widest-margin boundary, and
-            via the <Term>kernel trick</Term> draw non-linear boundaries cheaply.
+            <Term>Support Vector Machines</Term> — find the widest-margin boundary, and via the{" "}
+            <Term>kernel trick</Term> draw non-linear boundaries cheaply.
           </li>
           <li>
-            <Term>k-Nearest Neighbours</Term> — predict from the closest training
-            points. No training, but slow and weak in high dimensions.
+            <Term>k-Nearest Neighbours</Term> — predict from the closest training points. No
+            training, but slow and weak in high dimensions.
           </li>
           <li>
-            <Term>Neural networks</Term> — stacked non-linear layers; unbeatable on
-            images, text, and audio, at the cost of data, compute, and interpretability.
+            <Term>Neural networks</Term> — stacked non-linear layers; unbeatable on images, text,
+            and audio, at the cost of data, compute, and interpretability.
           </li>
         </ul>
         <Callout type="intuition">
           <p>
-            There is no universally best algorithm — the "no free lunch" theorem. Which
-            family wins depends on the data, so the practical workflow is: a simple
-            baseline first, then a gradient-boosted ensemble for tabular data or a
-            neural net for perceptual data, always compared honestly on held-out data.
+            There is no universally best algorithm — the "no free lunch" theorem. Which family wins
+            depends on the data, so the practical workflow is: a simple baseline first, then a
+            gradient-boosted ensemble for tabular data or a neural net for perceptual data, always
+            compared honestly on held-out data.
           </p>
         </Callout>
       </KSection>
 
       <KSection id="evaluation" eyebrow="08" title="Evaluating honestly">
         <p>
-          A single accuracy number lies, especially with imbalanced classes — the
-          lesson from the <Link href="/knowledge/statistics">statistics</Link> and{" "}
-          <Link href="/knowledge/natural-language-processing">NLP</Link> pages carries
-          straight over. Use <Term>precision, recall and F1</Term> for classification;
-          inspect the <Term>confusion matrix</Term> to see <em>which</em> errors you
-          make; use a <Term>ROC curve / AUC</Term> to judge across thresholds; and for
-          regression report <Term>RMSE</Term> or <Term>R²</Term>.
+          A single accuracy number lies, especially with imbalanced classes — the lesson from the{" "}
+          <Link href="/knowledge/statistics">statistics</Link> and{" "}
+          <Link href="/knowledge/natural-language-processing">NLP</Link> pages carries straight
+          over. Use <Term>precision, recall and F1</Term> for classification; inspect the{" "}
+          <Term>confusion matrix</Term> to see <em>which</em> errors you make; use a{" "}
+          <Term>ROC curve / AUC</Term> to judge across thresholds; and for regression report{" "}
+          <Term>RMSE</Term> or <Term>R²</Term>.
         </p>
         <p>
-          Above all, evaluate on data the model has never touched, match the metric to
-          the real-world cost of each error, and remember the bias–variance lesson: the
-          model with the best <em>training</em> score is rarely the one you want.
+          Above all, evaluate on data the model has never touched, match the metric to the
+          real-world cost of each error, and remember the bias–variance lesson: the model with the
+          best <em>training</em> score is rarely the one you want.
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="09" title="Where it shows up in my work">
         <Callout type="applied" label="The discipline of generalising">
           <p>
-            Statistical machine learning is the through-line of most of my modelling
-            work — and the instinct it builds is conservative in the right way. I reach
-            for a <strong>simple, interpretable baseline first</strong> (it's faster, it
-            sanity-checks the data, and it sets the bar a fancier model has to clear),
-            and I trust <strong>held-out performance</strong>, not training scores. The{" "}
-            <strong>bias–variance</strong> lens is how I diagnose a struggling model —
-            "is it too simple, or is it memorising?" decides whether I add features or
-            add regularisation.
+            Statistical machine learning is the through-line of most of my modelling work — and the
+            instinct it builds is conservative in the right way. I reach for a{" "}
+            <strong>simple, interpretable baseline first</strong> (it's faster, it sanity-checks the
+            data, and it sets the bar a fancier model has to clear), and I trust{" "}
+            <strong>held-out performance</strong>, not training scores. The{" "}
+            <strong>bias–variance</strong> lens is how I diagnose a struggling model — "is it too
+            simple, or is it memorising?" decides whether I add features or add regularisation.
           </p>
           <p>
-            In the <Link href="/knowledge/natural-language-processing">Climate
-            Fact-Checker</Link>, that's exactly the call I made: a TF-IDF baseline to earn
-            the right to the Transformer, then judge both on data they'd never seen. The
-            framework is the same whether the model is a logistic regression or a deep
-            net.
+            In the <Link href="/knowledge/natural-language-processing">Climate Fact-Checker</Link>,
+            that's exactly the call I made: a TF-IDF baseline to earn the right to the Transformer,
+            then judge both on data they'd never seen. The framework is the same whether the model
+            is a logistic regression or a deep net.
           </p>
         </Callout>
       </KSection>
@@ -363,26 +468,29 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              ML learns patterns from examples to <strong>generalise</strong> to unseen
-              data — that, not fitting the training set, is the whole goal.
+              ML learns patterns from examples to <strong>generalise</strong> to unseen data — that,
+              not fitting the training set, is the whole goal.
             </li>
             <li>
-              The learning problem = hypothesis space + loss + optimiser; you minimise
-              empirical risk hoping it tracks true <strong>risk</strong>.
+              The learning problem = hypothesis space + loss + optimiser; you minimise empirical
+              risk hoping it tracks true <strong>risk</strong>.
             </li>
             <li>
-              <strong>Underfit</strong> (too simple, high bias) vs <strong>overfit</strong>{" "}
-              (too flexible, high variance). Error = Bias² + Variance + noise — tune for
-              the minimum of their sum.
+              <strong>Underfit</strong> (too simple, high bias) vs <strong>overfit</strong> (too
+              flexible, high variance). Error = Bias² + Variance + noise — tune for the minimum of
+              their sum.
             </li>
             <li>
-              <strong>Regularisation</strong> (L2 shrinks, L1 selects) penalises
-              complexity; <strong>cross-validation</strong> estimates performance and
-              tunes hyperparameters without touching the test set.
+              <strong>Regularisation</strong> (L2 shrinks, L1 selects) penalises complexity;{" "}
+              <strong>cross-validation</strong> estimates performance and tunes hyperparameters
+              without touching the test set.
             </li>
             <li>
-              Know the families: <strong>linear → trees → ensembles (boosting wins
-              tabular) → SVM → kNN → neural nets</strong>. No free lunch; baseline first.
+              Know the families:{" "}
+              <strong>
+                linear → trees → ensembles (boosting wins tabular) → SVM → kNN → neural nets
+              </strong>
+              . No free lunch; baseline first.
             </li>
             <li>
               <strong>Evaluate honestly</strong> on held-out data with the right metric
@@ -428,8 +536,7 @@ function ZhBody() {
             点分组，降维（如 PCA）把它们压缩。
           </li>
           <li>
-            <Term>强化学习</Term>——智能体通过行动并获得奖励来学习。它足够不同，留给它自己
-            的页面。
+            <Term>强化学习</Term>——智能体通过行动并获得奖励来学习。它足够不同，留给它自己 的页面。
           </li>
         </ul>
       </KSection>
@@ -450,8 +557,7 @@ function ZhBody() {
           </li>
         </ul>
         <p>
-          你真正想要最小化的是<Term>风险</Term>——在来自真实世界的<em>新</em>数据上的
-          期望损失：
+          你真正想要最小化的是<Term>风险</Term>——在来自真实世界的<em>新</em>数据上的 期望损失：
         </p>
         <Formula label="风险等于在数据分布上、模型预测 f(x) 与真实标签 y 之间损失的期望。">
           {TEX.risk}
@@ -465,8 +571,8 @@ function ZhBody() {
       <KSection id="generalisation" eyebrow="03" title="泛化，而非记忆">
         <p>
           一个在训练数据上拿满分的模型什么也没证明——它可能只是把它背了下来。唯一重要的
-          检验是它在从未见过的数据上的表现。所以机器学习的第一条规则是<Term>留出一个
-          测试集</Term>，绝不让模型从中学习。两种失败模式界定了目标的两端：
+          检验是它在从未见过的数据上的表现。所以机器学习的第一条规则是<Term>留出一个 测试集</Term>
+          ，绝不让模型从中学习。两种失败模式界定了目标的两端：
         </p>
         <ul>
           <li>
@@ -487,12 +593,8 @@ function ZhBody() {
       </KSection>
 
       <KSection id="tradeoff" eyebrow="04" title="偏差—方差权衡">
-        <p>
-          这两种失败是机器学习中最重要思想的两端。一个模型的期望误差可分解为三部分：
-        </p>
-        <Formula label="期望误差等于偏差的平方加方差加不可约噪声。">
-          {TEX.error}
-        </Formula>
+        <p>这两种失败是机器学习中最重要思想的两端。一个模型的期望误差可分解为三部分：</p>
+        <Formula label="期望误差等于偏差的平方加方差加不可约噪声。">{TEX.error}</Formula>
         <ul>
           <li>
             <Term>偏差</Term>——来自错误假设的误差；模型太简单，无法表示真相。高偏差 = 欠拟合。
@@ -525,15 +627,11 @@ function ZhBody() {
       <KSection id="regularisation" eyebrow="05" title="正则化">
         <p>
           <Term>正则化</Term>是控制这一权衡的主要杠杆：刻意约束模型，使它无法为拟合噪声而
-          扭曲自己。你在损失上加一个对复杂度的惩罚，于是训练必须在拟合数据与保持简单之间
-          权衡：
+          扭曲自己。你在损失上加一个对复杂度的惩罚，于是训练必须在拟合数据与保持简单之间 权衡：
         </p>
-        <Formula label="正则化目标等于数据上的损失加上 λ 乘以对参数大小的惩罚。">
-          {TEX.reg}
-        </Formula>
+        <Formula label="正则化目标等于数据上的损失加上 λ 乘以对参数大小的惩罚。">{TEX.reg}</Formula>
         <p>
-          强度 <code>λ</code> 是一个从「使劲拟合」到「保持简单」的旋钮。对权重的两种经典
-          惩罚：
+          强度 <code>λ</code> 是一个从「使劲拟合」到「保持简单」的旋钮。对权重的两种经典 惩罚：
         </p>
         <ul>
           <li>
@@ -554,15 +652,14 @@ function ZhBody() {
       <KSection id="validation" eyebrow="06" title="交叉验证">
         <p>
           你需要对测试性能的诚实估计来调整像 <code>λ</code> 这样的选择——但每次偷看测试集
-          都会烧掉它。解决办法是<Term>交叉验证</Term>：把训练数据分成 <code>k</code> 折，
-          在 <code>k−1</code> 折上训练、在留出的那一折上验证，然后轮换，使每一折都当一次
-          验证集。把这 <code>k</code> 个分数取平均。
+          都会烧掉它。解决办法是<Term>交叉验证</Term>：把训练数据分成 <code>k</code> 折， 在{" "}
+          <code>k−1</code> 折上训练、在留出的那一折上验证，然后轮换，使每一折都当一次 验证集。把这{" "}
+          <code>k</code> 个分数取平均。
         </p>
         <p>
           这从有限的数据中挤出一个可靠的性能估计，也是你在不污染最终测试集的情况下选择
           超参数的方式——那个测试集锁在保险库里，只在最后碰一次。这里的纪律与
-          <Link href="/knowledge/statistics">统计学页</Link>中的相同：绝不让信息从测试泄漏到
-          训练。
+          <Link href="/knowledge/statistics">统计学页</Link>中的相同：绝不让信息从测试泄漏到 训练。
         </p>
       </KSection>
 
@@ -604,11 +701,12 @@ function ZhBody() {
 
       <KSection id="evaluation" eyebrow="08" title="诚实地评估">
         <p>
-          单一的准确率数字会骗人，尤其在类别不平衡时——<Link href="/knowledge/statistics">
-          统计学</Link>和 <Link href="/knowledge/natural-language-processing">NLP</Link> 页中的
-          教训在此直接适用。分类用<Term>精确率、召回率与 F1</Term>；检查<Term>混淆矩阵
-          </Term>看你犯了<em>哪些</em>错误；用 <Term>ROC 曲线 / AUC</Term> 跨阈值评判；回归则
-          报告 <Term>RMSE</Term> 或 <Term>R²</Term>。
+          单一的准确率数字会骗人，尤其在类别不平衡时——
+          <Link href="/knowledge/statistics">统计学</Link>和{" "}
+          <Link href="/knowledge/natural-language-processing">NLP</Link> 页中的
+          教训在此直接适用。分类用<Term>精确率、召回率与 F1</Term>；检查<Term>混淆矩阵</Term>
+          看你犯了<em>哪些</em>错误；用 <Term>ROC 曲线 / AUC</Term> 跨阈值评判；回归则 报告{" "}
+          <Term>RMSE</Term> 或 <Term>R²</Term>。
         </p>
         <p>
           最重要的是，在模型从未碰过的数据上评估，让指标匹配每种错误在现实世界中的代价，
@@ -619,10 +717,10 @@ function ZhBody() {
       <KSection id="applied" eyebrow="09" title="它在我工作中的体现">
         <Callout type="applied" label="泛化的纪律">
           <p>
-            统计机器学习是我大部分建模工作的主线——它培养的直觉以正确的方式保守。我会先取
-            一个<strong>简单、可解释的基线</strong>（它更快、能对数据做合理性检查、并为更
-            花哨的模型设定必须越过的门槛），并且我信任<strong>留出表现</strong>，而非训练
-            分数。<strong>偏差—方差</strong>这一视角是我诊断一个表现不佳模型的方式——「它是
+            统计机器学习是我大部分建模工作的主线——它培养的直觉以正确的方式保守。我会先取 一个
+            <strong>简单、可解释的基线</strong>（它更快、能对数据做合理性检查、并为更
+            花哨的模型设定必须越过的门槛），并且我信任<strong>留出表现</strong>，而非训练 分数。
+            <strong>偏差—方差</strong>这一视角是我诊断一个表现不佳模型的方式——「它是
             太简单，还是在记忆？」决定了我是加特征还是加正则化。
           </p>
           <p>
@@ -653,12 +751,13 @@ function ZhBody() {
               在不碰测试集的情况下估计性能并调超参数。
             </li>
             <li>
-              认识这些模型族：<strong>线性 → 树 → 集成（提升赢得表格） → SVM → kNN →
-              神经网络</strong>。没有免费午餐；先做基线。
+              认识这些模型族：
+              <strong>线性 → 树 → 集成（提升赢得表格） → SVM → kNN → 神经网络</strong>
+              。没有免费午餐；先做基线。
             </li>
             <li>
-              用正确的指标（精确率/召回率/F1、AUC、RMSE）在留出数据上<strong>诚实评估
-              </strong>——绝不只看训练准确率。
+              用正确的指标（精确率/召回率/F1、AUC、RMSE）在留出数据上<strong>诚实评估</strong>
+              ——绝不只看训练准确率。
             </li>
           </ul>
         </Callout>

@@ -22,14 +22,68 @@ function SamplingFigure({ caption, ariaLabel, trueMeanLabel, smallNLabel, largeN
         role="img"
         aria-label={ariaLabel}
       >
-        <line x1="20" y1="150" x2="420" y2="150" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
-        <line x1="220" y1="30" x2="220" y2="150" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" />
-        <path d="M40 150 C 150 150, 150 110, 220 110 C 290 110, 290 150, 400 150" fill="none" stroke="currentColor" strokeWidth="1.3" opacity="0.5" />
-        <path d="M90 150 C 175 150, 180 75, 220 75 C 260 75, 265 150, 350 150" fill="none" stroke="currentColor" strokeWidth="1.4" opacity="0.75" />
-        <path d="M150 150 C 205 150, 205 35, 220 35 C 235 35, 235 150, 290 150" fill="none" stroke="#FF3C3C" strokeWidth="1.8" />
-        <text x="220" y="165" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">{trueMeanLabel}</text>
-        <text x="300" y="120" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.6">{smallNLabel}</text>
-        <text x="240" y="48" fontSize="10" fontFamily="monospace" fill="#FF3C3C">{largeNLabel}</text>
+        <line
+          x1="20"
+          y1="150"
+          x2="420"
+          y2="150"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
+        <line
+          x1="220"
+          y1="30"
+          x2="220"
+          y2="150"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeDasharray="3 3"
+          opacity="0.5"
+        />
+        <path
+          d="M40 150 C 150 150, 150 110, 220 110 C 290 110, 290 150, 400 150"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          opacity="0.5"
+        />
+        <path
+          d="M90 150 C 175 150, 180 75, 220 75 C 260 75, 265 150, 350 150"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          opacity="0.75"
+        />
+        <path
+          d="M150 150 C 205 150, 205 35, 220 35 C 235 35, 235 150, 290 150"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.8"
+        />
+        <text
+          x="220"
+          y="165"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {trueMeanLabel}
+        </text>
+        <text
+          x="300"
+          y="120"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {smallNLabel}
+        </text>
+        <text x="240" y="48" fontSize="10" fontFamily="monospace" fill="#FF3C3C">
+          {largeNLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -44,15 +98,52 @@ function ErrorsFigure({ caption, ariaLabel, thresholdLabel }) {
         role="img"
         aria-label={ariaLabel}
       >
-        <line x1="20" y1="135" x2="420" y2="135" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
-        <path d="M30 135 C 110 135, 110 45, 170 45 C 230 45, 230 135, 310 135" fill="none" stroke="currentColor" strokeWidth="1.4" opacity="0.8" />
-        <text x="150" y="38" fontSize="11" fontFamily="monospace" fill="currentColor">H₀</text>
-        <path d="M150 135 C 230 135, 230 55, 290 55 C 350 55, 350 135, 430 135" fill="none" stroke="#FF3C3C" strokeWidth="1.4" />
-        <text x="300" y="48" fontSize="11" fontFamily="monospace" fill="#FF3C3C">H₁</text>
-        <line x1="240" y1="30" x2="240" y2="135" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 3" />
-        <text x="244" y="28" fontSize="10" fontFamily="monospace" fill="currentColor">{thresholdLabel}</text>
-        <text x="255" y="128" fontSize="11" fontFamily="monospace" fill="currentColor">α</text>
-        <text x="205" y="128" fontSize="11" fontFamily="monospace" fill="#FF3C3C">β</text>
+        <line
+          x1="20"
+          y1="135"
+          x2="420"
+          y2="135"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
+        <path
+          d="M30 135 C 110 135, 110 45, 170 45 C 230 45, 230 135, 310 135"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          opacity="0.8"
+        />
+        <text x="150" y="38" fontSize="11" fontFamily="monospace" fill="currentColor">
+          H₀
+        </text>
+        <path
+          d="M150 135 C 230 135, 230 55, 290 55 C 350 55, 350 135, 430 135"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.4"
+        />
+        <text x="300" y="48" fontSize="11" fontFamily="monospace" fill="#FF3C3C">
+          H₁
+        </text>
+        <line
+          x1="240"
+          y1="30"
+          x2="240"
+          y2="135"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          strokeDasharray="4 3"
+        />
+        <text x="244" y="28" fontSize="10" fontFamily="monospace" fill="currentColor">
+          {thresholdLabel}
+        </text>
+        <text x="255" y="128" fontSize="11" fontFamily="monospace" fill="currentColor">
+          α
+        </text>
+        <text x="205" y="128" fontSize="11" fontFamily="monospace" fill="#FF3C3C">
+          β
+        </text>
       </svg>
     </Figure>
   );
@@ -63,65 +154,63 @@ function EnBody() {
   return (
     <>
       <p>
-        You never get to see the whole population. You get a sample — 1,000
-        customers out of millions, last month's tickets, the people who answered the
-        survey — and you have to say something trustworthy about the whole from that
-        sliver. <Term>Statistical inference</Term> is the discipline of doing that
-        honestly: drawing conclusions about a population from a sample, and being
-        precise about how uncertain those conclusions are.
+        You never get to see the whole population. You get a sample — 1,000 customers out of
+        millions, last month's tickets, the people who answered the survey — and you have to say
+        something trustworthy about the whole from that sliver. <Term>Statistical inference</Term>{" "}
+        is the discipline of doing that honestly: drawing conclusions about a population from a
+        sample, and being precise about how uncertain those conclusions are.
       </p>
       <p>
-        This page builds on <Link href="/knowledge/probability">probability</Link> — which
-        gave us distributions and the Central Limit Theorem — and turns it around.
-        Probability asks "given this coin is fair, what will I see?" Statistics asks
-        the harder, more useful question: "given what I saw, is this coin fair?"
+        This page builds on <Link href="/knowledge/probability">probability</Link> — which gave us
+        distributions and the Central Limit Theorem — and turns it around. Probability asks "given
+        this coin is fair, what will I see?" Statistics asks the harder, more useful question:
+        "given what I saw, is this coin fair?"
       </p>
 
       <KSection id="inverse" eyebrow="01" title="The inverse problem">
         <p>
-          The cleanest way to hold the two fields apart: probability reasons from
-          model to data, statistics reasons from data to model.
+          The cleanest way to hold the two fields apart: probability reasons from model to data,
+          statistics reasons from data to model.
         </p>
         <ul>
           <li>
-            <Term>Probability (forward).</Term> Known model → predict the data.
-            "A fair die: P(two sixes in a row) = 1/36."
+            <Term>Probability (forward).</Term> Known model → predict the data. "A fair die: P(two
+            sixes in a row) = 1/36."
           </li>
           <li>
-            <Term>Statistics (inverse).</Term> Observed data → infer the model. "I
-            rolled twenty sixes in a row — is this die fair?"
+            <Term>Statistics (inverse).</Term> Observed data → infer the model. "I rolled twenty
+            sixes in a row — is this die fair?"
           </li>
         </ul>
         <p>
-          The inverse direction is harder because many models could have produced
-          the same data, and randomness means even a fair process throws up strange
-          samples. So inference is never about certainty — it's about quantifying how
-          much the data should move your conclusion, and how much doubt remains.
+          The inverse direction is harder because many models could have produced the same data, and
+          randomness means even a fair process throws up strange samples. So inference is never
+          about certainty — it's about quantifying how much the data should move your conclusion,
+          and how much doubt remains.
         </p>
       </KSection>
 
       <KSection id="sampling" eyebrow="02" title="Samples and the standard error">
         <p>
-          A <Term>statistic</Term> is any number computed from a sample — the sample
-          mean <code>x̄</code>, a proportion, a correlation. The key realisation that
-          unlocks all of inference: <em>a statistic is itself random</em>. Draw a
-          different sample and you'd get a slightly different mean. The distribution
-          of a statistic across all possible samples is its{" "}
-          <Term>sampling distribution</Term>.
+          A <Term>statistic</Term> is any number computed from a sample — the sample mean{" "}
+          <code>x̄</code>, a proportion, a correlation. The key realisation that unlocks all of
+          inference: <em>a statistic is itself random</em>. Draw a different sample and you'd get a
+          slightly different mean. The distribution of a statistic across all possible samples is
+          its <Term>sampling distribution</Term>.
         </p>
         <p>
-          Its spread — how much your estimate jumps around from sample to sample — is
-          the <Term>standard error</Term>. For a sample mean it shrinks with the
-          square root of the sample size:
+          Its spread — how much your estimate jumps around from sample to sample — is the{" "}
+          <Term>standard error</Term>. For a sample mean it shrinks with the square root of the
+          sample size:
         </p>
         <Formula label="The standard error of the mean equals sigma divided by the square root of n.">
           {TEX.se}
         </Formula>
         <p>
-          That <code>√n</code> is one of the most important facts in applied stats:
-          to halve your uncertainty you need <em>four times</em> the data, not twice.
-          It's why early samples improve an estimate fast and later ones barely move
-          it — and why "just collect more data" has sharply diminishing returns.
+          That <code>√n</code> is one of the most important facts in applied stats: to halve your
+          uncertainty you need <em>four times</em> the data, not twice. It's why early samples
+          improve an estimate fast and later ones barely move it — and why "just collect more data"
+          has sharply diminishing returns.
         </p>
 
         <SamplingFigure
@@ -135,54 +224,50 @@ function EnBody() {
 
       <KSection id="estimation" eyebrow="03" title="Point estimation">
         <p>
-          A <Term>point estimate</Term> is a single best guess at an unknown
-          population value (a <Term>parameter</Term>) — the sample mean estimating the
-          population mean. We judge estimators by two properties:
+          A <Term>point estimate</Term> is a single best guess at an unknown population value (a{" "}
+          <Term>parameter</Term>) — the sample mean estimating the population mean. We judge
+          estimators by two properties:
         </p>
         <ul>
           <li>
-            <Term>Unbiased</Term> — right on average. Across many samples the
-            estimates centre on the true value rather than systematically over- or
-            under-shooting.
+            <Term>Unbiased</Term> — right on average. Across many samples the estimates centre on
+            the true value rather than systematically over- or under-shooting.
           </li>
           <li>
-            <Term>Consistent</Term> — it converges to the truth as the sample grows
-            (the Law of Large Numbers at work).
+            <Term>Consistent</Term> — it converges to the truth as the sample grows (the Law of
+            Large Numbers at work).
           </li>
         </ul>
         <p>
           The workhorse method for building good estimators is{" "}
-          <Term>Maximum Likelihood Estimation</Term> (MLE): pick the parameter values
-          that make the observed data most probable. "Given I saw this data, which
-          model was most likely to have generated it?" MLE is the engine inside
-          logistic regression, most of classical modelling, and — not coincidentally —
-          a lot of machine learning, where the loss function is often just a negative
-          log-likelihood in disguise.
+          <Term>Maximum Likelihood Estimation</Term> (MLE): pick the parameter values that make the
+          observed data most probable. "Given I saw this data, which model was most likely to have
+          generated it?" MLE is the engine inside logistic regression, most of classical modelling,
+          and — not coincidentally — a lot of machine learning, where the loss function is often
+          just a negative log-likelihood in disguise.
         </p>
       </KSection>
 
       <KSection id="intervals" eyebrow="04" title="Confidence intervals">
         <p>
-          A point estimate alone is overconfident — it hides how much the answer
-          could have wobbled. A <Term>confidence interval</Term> attaches a range,
-          built from the standard error:
+          A point estimate alone is overconfident — it hides how much the answer could have wobbled.
+          A <Term>confidence interval</Term> attaches a range, built from the standard error:
         </p>
         <Formula label="A 95 percent confidence interval for the mean equals x-bar plus or minus 1.96 times the standard error.">
           {TEX.ci}
         </Formula>
         <p>
-          The <code>1.96</code> comes straight from the normal curve — 95% of a
-          bell's mass lies within 1.96 standard deviations of centre. But the{" "}
-          <em>interpretation</em> is the most misunderstood idea in statistics:
+          The <code>1.96</code> comes straight from the normal curve — 95% of a bell's mass lies
+          within 1.96 standard deviations of centre. But the <em>interpretation</em> is the most
+          misunderstood idea in statistics:
         </p>
         <Callout type="pitfall">
           <p>
-            A 95% confidence interval does <strong>not</strong> mean "there's a 95%
-            chance the true value is in this range." The true value is fixed; it's
-            either in or out. What's random is the interval. The correct reading: "if
-            I repeated this sampling many times, 95% of the intervals I'd construct
-            would contain the true value." It's a statement about the <em>procedure</em>,
-            not about this one interval. (If you genuinely want "95% chance the
+            A 95% confidence interval does <strong>not</strong> mean "there's a 95% chance the true
+            value is in this range." The true value is fixed; it's either in or out. What's random
+            is the interval. The correct reading: "if I repeated this sampling many times, 95% of
+            the intervals I'd construct would contain the true value." It's a statement about the{" "}
+            <em>procedure</em>, not about this one interval. (If you genuinely want "95% chance the
             parameter is in here", that's a Bayesian credible interval — see below.)
           </p>
         </Callout>
@@ -190,68 +275,69 @@ function EnBody() {
 
       <KSection id="testing" eyebrow="05" title="Hypothesis testing">
         <p>
-          Hypothesis testing is a formal way to ask "is this effect real, or could it
-          just be noise?" The structure is deliberately conservative, like a courtroom
-          that presumes innocence:
+          Hypothesis testing is a formal way to ask "is this effect real, or could it just be
+          noise?" The structure is deliberately conservative, like a courtroom that presumes
+          innocence:
         </p>
         <ol>
           <li>
-            State a <Term>null hypothesis</Term> <code>H₀</code> — the boring default,
-            "no effect", "the coin is fair", "the new design changed nothing".
+            State a <Term>null hypothesis</Term> <code>H₀</code> — the boring default, "no effect",
+            "the coin is fair", "the new design changed nothing".
           </li>
           <li>
             State an <Term>alternative</Term> <code>H₁</code> — "there is an effect".
           </li>
           <li>
-            Compute a <Term>test statistic</Term> measuring how far the data sit from
-            what <code>H₀</code> predicts.
+            Compute a <Term>test statistic</Term> measuring how far the data sit from what{" "}
+            <code>H₀</code> predicts.
           </li>
           <li>
-            Compute the <Term>p-value</Term> and compare it to a threshold{" "}
-            <code>α</code> (usually 0.05).
+            Compute the <Term>p-value</Term> and compare it to a threshold <code>α</code> (usually
+            0.05).
           </li>
         </ol>
         <p>
-          The <Term>p-value</Term> is the single most abused number in science, so be
-          exact about it: <em>it is the probability of seeing data at least this
-          extreme if the null hypothesis were true.</em> A small p-value means the
-          data would be surprising under "no effect", so you reject <code>H₀</code>.
+          The <Term>p-value</Term> is the single most abused number in science, so be exact about
+          it:{" "}
+          <em>
+            it is the probability of seeing data at least this extreme if the null hypothesis were
+            true.
+          </em>{" "}
+          A small p-value means the data would be surprising under "no effect", so you reject{" "}
+          <code>H₀</code>.
         </p>
         <Callout type="pitfall">
           <p>
-            What a p-value is <strong>not</strong>: it is not the probability that the
-            null is true, and not the probability your result was a fluke. p = 0.04
-            does not mean "96% chance the effect is real". And statistical
-            significance is not practical importance — with a big enough sample, a
-            trivial, useless effect can be highly "significant". Always ask about the{" "}
-            <em>effect size</em>, not just the p-value.
+            What a p-value is <strong>not</strong>: it is not the probability that the null is true,
+            and not the probability your result was a fluke. p = 0.04 does not mean "96% chance the
+            effect is real". And statistical significance is not practical importance — with a big
+            enough sample, a trivial, useless effect can be highly "significant". Always ask about
+            the <em>effect size</em>, not just the p-value.
           </p>
         </Callout>
       </KSection>
 
       <KSection id="errors" eyebrow="06" title="Type I, Type II, and power">
         <p>
-          Because inference works from limited data, you will sometimes be wrong in
-          two distinct ways:
+          Because inference works from limited data, you will sometimes be wrong in two distinct
+          ways:
         </p>
         <ul>
           <li>
-            <Term>Type I error</Term> (false positive) — rejecting a true null. You
-            declared an effect that isn't there. Its rate is <code>α</code>, the
-            threshold you chose.
+            <Term>Type I error</Term> (false positive) — rejecting a true null. You declared an
+            effect that isn't there. Its rate is <code>α</code>, the threshold you chose.
           </li>
           <li>
-            <Term>Type II error</Term> (false negative) — failing to reject a false
-            null. There was a real effect and you missed it. Its rate is{" "}
-            <code>β</code>.
+            <Term>Type II error</Term> (false negative) — failing to reject a false null. There was
+            a real effect and you missed it. Its rate is <code>β</code>.
           </li>
         </ul>
         <p>
-          A test's <Term>power</Term> is <code>1 − β</code>: the chance of catching an
-          effect that's genuinely there. The tension is permanent — tighten{" "}
-          <code>α</code> to avoid false alarms and you raise <code>β</code>, missing
-          more real effects. The main lever that improves both is sample size, which
-          is exactly what a <Term>power analysis</Term> computes before you run a study.
+          A test's <Term>power</Term> is <code>1 − β</code>: the chance of catching an effect that's
+          genuinely there. The tension is permanent — tighten <code>α</code> to avoid false alarms
+          and you raise <code>β</code>, missing more real effects. The main lever that improves both
+          is sample size, which is exactly what a <Term>power analysis</Term> computes before you
+          run a study.
         </p>
 
         <ErrorsFigure
@@ -263,62 +349,56 @@ function EnBody() {
 
       <KSection id="phacking" eyebrow="07" title="The multiple-comparisons trap">
         <p>
-          If you test one hypothesis at <code>α = 0.05</code>, there's a 5% chance of
-          a false positive. Test <em>twenty</em> independent hypotheses and the chance
-          that at least one lights up by pure luck is about{" "}
-          <strong>64%</strong>. Run enough tests and you're almost guaranteed a
-          "significant" result that means nothing.
+          If you test one hypothesis at <code>α = 0.05</code>, there's a 5% chance of a false
+          positive. Test <em>twenty</em> independent hypotheses and the chance that at least one
+          lights up by pure luck is about <strong>64%</strong>. Run enough tests and you're almost
+          guaranteed a "significant" result that means nothing.
         </p>
         <p>
-          This is <Term>p-hacking</Term> (or data dredging): slicing the data many
-          ways, trying many variables, and reporting only the comparison that crossed
-          0.05. It's usually not fraud — it's the natural result of looking hard and
-          stopping at the first win. The defences are real: decide your hypotheses{" "}
-          <em>before</em> looking, correct the threshold when you run many tests (e.g.
-          Bonferroni: divide <code>α</code> by the number of tests), and hold out data
-          to confirm a finding you discovered.
+          This is <Term>p-hacking</Term> (or data dredging): slicing the data many ways, trying many
+          variables, and reporting only the comparison that crossed 0.05. It's usually not fraud —
+          it's the natural result of looking hard and stopping at the first win. The defences are
+          real: decide your hypotheses <em>before</em> looking, correct the threshold when you run
+          many tests (e.g. Bonferroni: divide <code>α</code> by the number of tests), and hold out
+          data to confirm a finding you discovered.
         </p>
       </KSection>
 
       <KSection id="schools" eyebrow="08" title="Frequentist vs Bayesian">
         <p>
           Everything above is the <Term>frequentist</Term> tradition: parameters are
-          fixed-but-unknown, probability is long-run frequency, and you reason about
-          the procedure (p-values, confidence intervals). It's the default in most
-          fields and most A/B testing.
+          fixed-but-unknown, probability is long-run frequency, and you reason about the procedure
+          (p-values, confidence intervals). It's the default in most fields and most A/B testing.
         </p>
         <p>
-          The <Term>Bayesian</Term> alternative treats the unknown parameter as
-          itself having a probability distribution. You start with a <em>prior</em>,
-          apply <Link href="/knowledge/probability">Bayes' rule</Link> with the data's
-          likelihood, and get a <em>posterior</em> — a full distribution of belief.
-          Its <Term>credible interval</Term> means the intuitive thing people wrongly
-          want a confidence interval to mean: "95% probability the parameter is in
-          here." Bayesian methods shine with small data, prior knowledge worth
-          encoding, or when you need to act on a probability directly. Neither school
-          is "right" — they answer slightly different questions, and a good analyst
-          uses both.
+          The <Term>Bayesian</Term> alternative treats the unknown parameter as itself having a
+          probability distribution. You start with a <em>prior</em>, apply{" "}
+          <Link href="/knowledge/probability">Bayes' rule</Link> with the data's likelihood, and get
+          a <em>posterior</em> — a full distribution of belief. Its <Term>credible interval</Term>{" "}
+          means the intuitive thing people wrongly want a confidence interval to mean: "95%
+          probability the parameter is in here." Bayesian methods shine with small data, prior
+          knowledge worth encoding, or when you need to act on a probability directly. Neither
+          school is "right" — they answer slightly different questions, and a good analyst uses
+          both.
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="09" title="Where it shows up in my work">
         <Callout type="applied" label="The discipline of honest conclusions">
           <p>
-            Inference is the difference between "the numbers went up" and "the numbers
-            went up by more than noise would explain". Reading an <strong>A/B
-            test</strong> is hypothesis testing end to end — null of "no difference",
-            a test statistic, a p-value, and the discipline to report the effect size
-            and confidence interval, not just whether it cleared 0.05. In
-            intelligence and government reporting, the <strong>multiple-comparisons
-            trap</strong> is a constant risk — slice any rich dataset enough ways and
-            something looks alarming — so pre-committing to questions and quoting
+            Inference is the difference between "the numbers went up" and "the numbers went up by
+            more than noise would explain". Reading an <strong>A/B test</strong> is hypothesis
+            testing end to end — null of "no difference", a test statistic, a p-value, and the
+            discipline to report the effect size and confidence interval, not just whether it
+            cleared 0.05. In intelligence and government reporting, the{" "}
+            <strong>multiple-comparisons trap</strong> is a constant risk — slice any rich dataset
+            enough ways and something looks alarming — so pre-committing to questions and quoting
             uncertainty is what keeps a brief trustworthy.
           </p>
           <p>
-            The habit this builds is the one that matters most downstream: state the
-            estimate <em>with</em> its uncertainty, distinguish significant from
-            important, and be honest about how many things you tried before you found
-            the one worth reporting.
+            The habit this builds is the one that matters most downstream: state the estimate{" "}
+            <em>with</em> its uncertainty, distinguish significant from important, and be honest
+            about how many things you tried before you found the one worth reporting.
           </p>
         </Callout>
       </KSection>
@@ -327,33 +407,33 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              Statistics is the <strong>inverse</strong> of probability: from sample
-              data, infer the population — with quantified uncertainty.
+              Statistics is the <strong>inverse</strong> of probability: from sample data, infer the
+              population — with quantified uncertainty.
             </li>
             <li>
               A statistic is random; its spread is the <strong>standard error</strong>{" "}
               <code>σ/√n</code>. Halving uncertainty needs <strong>4×</strong> the data.
             </li>
             <li>
-              <strong>Estimators</strong> should be unbiased &amp; consistent;{" "}
-              <strong>MLE</strong> picks parameters that make the data most likely.
+              <strong>Estimators</strong> should be unbiased &amp; consistent; <strong>MLE</strong>{" "}
+              picks parameters that make the data most likely.
             </li>
             <li>
-              A <strong>95% CI</strong> is about the procedure, not this interval —
-              "95% of such intervals would contain the truth".
+              A <strong>95% CI</strong> is about the procedure, not this interval — "95% of such
+              intervals would contain the truth".
             </li>
             <li>
-              <strong>p-value</strong> = P(data this extreme | H₀ true). It is{" "}
-              <em>not</em> the chance the null is true, and significance ≠ importance.
+              <strong>p-value</strong> = P(data this extreme | H₀ true). It is <em>not</em> the
+              chance the null is true, and significance ≠ importance.
             </li>
             <li>
-              <strong>Type I</strong> (false positive, α) vs <strong>Type II</strong>{" "}
-              (false negative, β); <strong>power = 1 − β</strong>. Watch{" "}
+              <strong>Type I</strong> (false positive, α) vs <strong>Type II</strong> (false
+              negative, β); <strong>power = 1 − β</strong>. Watch{" "}
               <strong>multiple comparisons</strong> — many tests manufacture false wins.
             </li>
             <li>
-              <strong>Frequentist</strong> (procedures, p-values) vs{" "}
-              <strong>Bayesian</strong> (prior → posterior, credible intervals) — use both.
+              <strong>Frequentist</strong> (procedures, p-values) vs <strong>Bayesian</strong>{" "}
+              (prior → posterior, credible intervals) — use both.
             </li>
           </ul>
         </Callout>
@@ -379,17 +459,14 @@ function ZhBody() {
       </p>
 
       <KSection id="inverse" eyebrow="01" title="逆问题">
-        <p>
-          区分这两个领域最干净的方式：概率从模型推向数据，统计从数据推向模型。
-        </p>
+        <p>区分这两个领域最干净的方式：概率从模型推向数据，统计从数据推向模型。</p>
         <ul>
           <li>
-            <Term>概率（正向）。</Term>已知模型 → 预测数据。「一枚均匀的骰子：
-            P(连续两个六) = 1/36。」
+            <Term>概率（正向）。</Term>已知模型 → 预测数据。「一枚均匀的骰子： P(连续两个六) =
+            1/36。」
           </li>
           <li>
-            <Term>统计（逆向）。</Term>观测数据 → 推断模型。「我连续掷出二十个六——
-            这骰子均匀吗？」
+            <Term>统计（逆向）。</Term>观测数据 → 推断模型。「我连续掷出二十个六—— 这骰子均匀吗？」
           </li>
         </ul>
         <p>
@@ -403,16 +480,14 @@ function ZhBody() {
         <p>
           <Term>统计量</Term>是任何由样本计算出的数字——样本均值 <code>x̄</code>、一个
           比例、一个相关系数。解锁全部推断的关键认识是：<em>统计量本身是随机的</em>。
-          换一个样本，你得到的均值就会略有不同。某个统计量在所有可能样本上的分布，就是
-          它的<Term>抽样分布</Term>。
+          换一个样本，你得到的均值就会略有不同。某个统计量在所有可能样本上的分布，就是 它的
+          <Term>抽样分布</Term>。
         </p>
         <p>
           它的离散程度——你的估计在不同样本间跳动多少——就是<Term>标准误</Term>。对于
           样本均值，它随样本量的平方根而缩小：
         </p>
-        <Formula label="均值的标准误等于 σ 除以 n 的平方根。">
-          {TEX.se}
-        </Formula>
+        <Formula label="均值的标准误等于 σ 除以 n 的平方根。">{TEX.se}</Formula>
         <p>
           这个 <code>√n</code> 是应用统计中最重要的事实之一：要把不确定性减半，你需要
           <em>四倍</em>的数据，而不是两倍。这正是为什么早期样本能快速改善估计、而后期样本
@@ -455,9 +530,7 @@ function ZhBody() {
           单凭一个点估计过于自信——它隐藏了答案本可能有多大的摆动。<Term>置信区间</Term>
           附上一个区间，由标准误构建：
         </p>
-        <Formula label="均值的 95% 置信区间等于 x̄ 加减 1.96 倍标准误。">
-          {TEX.ci}
-        </Formula>
+        <Formula label="均值的 95% 置信区间等于 x̄ 加减 1.96 倍标准误。">{TEX.ci}</Formula>
         <p>
           这个 <code>1.96</code> 直接来自正态曲线——钟形 95% 的质量落在中心两侧 1.96 个
           标准差之内。但它的<em>解释</em>是统计学中被误解最深的概念：
@@ -466,8 +539,8 @@ function ZhBody() {
           <p>
             95% 置信区间<strong>并不</strong>意味着「真实值有 95% 的概率落在这个区间里」。
             真实值是固定的；它要么在里面、要么在外面。随机的是区间本身。正确的读法是：
-            「如果我把这次抽样重复许多次，我所构造的区间中有 95% 会包含真实值。」这是
-            关于<em>方法</em>的陈述，而非关于这一个具体区间。（如果你真的想要「参数有 95%
+            「如果我把这次抽样重复许多次，我所构造的区间中有 95% 会包含真实值。」这是 关于
+            <em>方法</em>的陈述，而非关于这一个具体区间。（如果你真的想要「参数有 95%
             概率落在这里」，那是贝叶斯可信区间——见下文。）
           </p>
         </Callout>
@@ -494,14 +567,14 @@ function ZhBody() {
           </li>
         </ol>
         <p>
-          <Term>p 值</Term>是科学中被滥用得最厉害的一个数字，所以要对它精确：<em>它是在
-          原假设为真的前提下，看到至少这么极端的数据的概率。</em>较小的 p 值意味着这些
+          <Term>p 值</Term>是科学中被滥用得最厉害的一个数字，所以要对它精确：
+          <em>它是在 原假设为真的前提下，看到至少这么极端的数据的概率。</em>较小的 p 值意味着这些
           数据在「没有效应」下会令人惊讶，于是你拒绝 <code>H₀</code>。
         </p>
         <Callout type="pitfall">
           <p>
-            p 值<strong>不是</strong>什么：它不是原假设为真的概率，也不是你的结果纯属
-            偶然的概率。p = 0.04 并不意味着「效应有 96% 的概率是真的」。而且统计显著性
+            p 值<strong>不是</strong>什么：它不是原假设为真的概率，也不是你的结果纯属 偶然的概率。p
+            = 0.04 并不意味着「效应有 96% 的概率是真的」。而且统计显著性
             不等于实际重要性——只要样本足够大，一个微不足道、毫无用处的效应也能高度
             「显著」。永远要问<em>效应量</em>，而不只是 p 值。
           </p>
@@ -509,9 +582,7 @@ function ZhBody() {
       </KSection>
 
       <KSection id="errors" eyebrow="06" title="第一类、第二类错误与功效">
-        <p>
-          由于推断基于有限的数据，你有时会以两种不同的方式犯错：
-        </p>
+        <p>由于推断基于有限的数据，你有时会以两种不同的方式犯错：</p>
         <ul>
           <li>
             <Term>第一类错误</Term>（假阳性）——拒绝了一个为真的原假设。你宣称了一个
@@ -538,8 +609,8 @@ function ZhBody() {
 
       <KSection id="phacking" eyebrow="07" title="多重比较陷阱">
         <p>
-          如果你在 <code>α = 0.05</code> 下检验一个假设，假阳性的概率是 5%。检验<em>二十
-          </em>个独立假设，至少有一个纯靠运气亮起来的概率约为 <strong>64%</strong>。做
+          如果你在 <code>α = 0.05</code> 下检验一个假设，假阳性的概率是 5%。检验<em>二十</em>
+          个独立假设，至少有一个纯靠运气亮起来的概率约为 <strong>64%</strong>。做
           足够多的检验，你几乎必然会得到一个毫无意义的「显著」结果。
         </p>
         <p>
@@ -554,34 +625,31 @@ function ZhBody() {
       <KSection id="schools" eyebrow="08" title="频率派 vs 贝叶斯">
         <p>
           以上的一切都属于<Term>频率派</Term>传统：参数是固定但未知的，概率是长期频率，
-          而你针对方法本身进行推理（p 值、置信区间）。它是大多数领域和大多数 A/B 测试中的
-          默认范式。
+          而你针对方法本身进行推理（p 值、置信区间）。它是大多数领域和大多数 A/B 测试中的 默认范式。
         </p>
         <p>
           <Term>贝叶斯</Term>这一替代范式，则把未知参数本身视为拥有一个概率分布。你从一个
-          <em>先验</em>出发，用数据的似然套用<Link href="/knowledge/probability">贝叶斯
-          法则</Link>，得到一个<em>后验</em>——一整套信念的分布。它的<Term>可信区间</Term>
+          <em>先验</em>出发，用数据的似然套用<Link href="/knowledge/probability">贝叶斯 法则</Link>
+          ，得到一个<em>后验</em>——一整套信念的分布。它的<Term>可信区间</Term>
           恰好意味着人们错误地希望置信区间所表达的那个直觉：「参数有 95% 的概率落在这里。」
           贝叶斯方法在小数据、值得编码的先验知识、或当你需要直接依据某个概率行动时大放
-          异彩。两个学派都不是「对的」——它们回答的是略有不同的问题，而一个好的分析师
-          两者都用。
+          异彩。两个学派都不是「对的」——它们回答的是略有不同的问题，而一个好的分析师 两者都用。
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="09" title="它在我工作中的体现">
         <Callout type="applied" label="诚实下结论的纪律">
           <p>
-            推断是「数字上升了」与「数字上升的幅度超过了噪声所能解释的范围」之间的区别。
-            读懂一次 <strong>A/B 测试</strong>，从头到尾就是假设检验——原假设是「没有
+            推断是「数字上升了」与「数字上升的幅度超过了噪声所能解释的范围」之间的区别。 读懂一次{" "}
+            <strong>A/B 测试</strong>，从头到尾就是假设检验——原假设是「没有
             差异」、一个检验统计量、一个 p 值，以及报告<strong>效应量</strong>和置信区间、
-            而不只是它有没有越过 0.05 的纪律。在情报与政府报告中，<strong>多重比较陷阱
-            </strong>是一种持续的风险——把任何丰富的数据集切得够多，总会有东西看起来
+            而不只是它有没有越过 0.05 的纪律。在情报与政府报告中，<strong>多重比较陷阱</strong>
+            是一种持续的风险——把任何丰富的数据集切得够多，总会有东西看起来
             触目惊心——所以预先锁定问题、并标注不确定性，才是让一份简报保持可信的关键。
           </p>
           <p>
             它培养的习惯，正是下游最重要的那个：把估计<em>连同</em>它的不确定性一起陈述、
-            区分「显著」与「重要」，并诚实地交代你在找到那个值得报告的结果之前，尝试过
-            多少种东西。
+            区分「显著」与「重要」，并诚实地交代你在找到那个值得报告的结果之前，尝试过 多少种东西。
           </p>
         </Callout>
       </KSection>
@@ -601,8 +669,8 @@ function ZhBody() {
               可能出现的参数。
             </li>
             <li>
-              <strong>95% 置信区间</strong>是关于方法的，而非这一个区间——「这样的区间中
-              有 95% 会包含真值」。
+              <strong>95% 置信区间</strong>是关于方法的，而非这一个区间——「这样的区间中 有 95%
+              会包含真值」。
             </li>
             <li>
               <strong>p 值</strong> = P(数据这么极端 | H₀ 为真)。它<em>不是</em>原假设

@@ -71,10 +71,10 @@ This was a group effort with **Xuan Wang** and **Wei Zhao**, both talented engin
 
 Looking back from mid-2026, what strikes me is how much the landscape has shifted. The constraint that made this project hard — no pretrained models — is now almost unimaginable in production NLP. Today, I'd reach for a Claude or GPT-4 with a retrieval-augmented generation pipeline and have a prototype running in an afternoon.
 
-But I'm glad I built it the hard way first. Understanding why attention mechanisms work, what a Transformer actually computes, and where the bottlenecks live in a two-stage retrieval-classification pipeline — these are insights that don't expire when the next model ships. They're the difference between someone who can *use* an AI system and someone who can *build* one.
+But I'm glad I built it the hard way first. Understanding why attention mechanisms work, what a Transformer actually computes, and where the bottlenecks live in a two-stage retrieval-classification pipeline — these are insights that don't expire when the next model ships. They're the difference between someone who can _use_ an AI system and someone who can _build_ one.
 
 The full project report, including our final Codalab results, is in the repository's PDF. If you're interested in NLP fact-checking, climate misinformation analysis, or just want to see what a from-scratch Transformer looks like — it's all there, open-source under MIT.
 
 ---
 
-*Project completed for COMP90042 (Natural Language Processing), University of Melbourne, Semester 1 2024. Team: Xuan Wang, Wei Zhao, Sunchuangyu Huang. Repository available at [github.com/rNLKJA/Automated-Fact-Checking-System-for-Climate-Change-Claims](https://github.com/rNLKJA/Automated-Fact-Checking-System-for-Climate-Change-Claims).*
+_Project completed for COMP90042 (Natural Language Processing), University of Melbourne, Semester 1 2024. Team: Xuan Wang, Wei Zhao, Sunchuangyu Huang. Repository available at [github.com/rNLKJA/Automated-Fact-Checking-System-for-Climate-Change-Claims](https://github.com/rNLKJA/Automated-Fact-Checking-System-for-Climate-Change-Claims)._

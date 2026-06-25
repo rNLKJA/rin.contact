@@ -4,32 +4,34 @@
 
 /* ─── Nothing Design System Tokens ─────────────────────────────── */
 :root {
-  --white:          #FFFFFF;
-  --black:          #000000;
-  --dark:           #1A1A1A;
-  --mid:            #3D3D3D;
-  --subtle:         #7A7A7A;
-  --divider:        #E0E0E0;
-  --surface:        #F5F5F5;
-  --accent:         #FF3C3C;
-  --marquee-fade:   #F5F5F5;
+  --white: #ffffff;
+  --black: #000000;
+  --dark: #1a1a1a;
+  --mid: #3d3d3d;
+  --subtle: #7a7a7a;
+  --divider: #e0e0e0;
+  --surface: #f5f5f5;
+  --accent: #ff3c3c;
+  --marquee-fade: #f5f5f5;
 }
 
 /* Dark theme — Nothing OS: white on black */
 .dark,
 [data-theme="dark"] {
-  --white:          #0A0A0A;
-  --black:          #FFFFFF;
-  --dark:           #1A1A1A;
-  --mid:            #7A7A7A;
-  --subtle:         #AAAAAA;
-  --divider:        #3D3D3D;
-  --surface:        #141414;
-  --marquee-fade:   #141414;
+  --white: #0a0a0a;
+  --black: #ffffff;
+  --dark: #1a1a1a;
+  --mid: #7a7a7a;
+  --subtle: #aaaaaa;
+  --divider: #3d3d3d;
+  --surface: #141414;
+  --marquee-fade: #141414;
 }
 
 /* ─── Reset ─────────────────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -50,19 +52,29 @@ body {
   color: var(--black);
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.01em;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
 
 /* ─── Wisr editorial serif — all section headings ───────────────── */
-h2, h3 {
+h2,
+h3 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
   letter-spacing: -0.025em;
   line-height: 1.15;
-  font-feature-settings: "liga" 1, "kern" 1;
+  font-feature-settings:
+    "liga" 1,
+    "kern" 1;
 }
 
 /* ─── DM Sans UI overrides — nav, labels, buttons ───────────────── */
-nav, button, input, textarea, label, select {
+nav,
+button,
+input,
+textarea,
+label,
+select {
   font-family: "DM Sans", system-ui, sans-serif;
 }
 
@@ -72,14 +84,23 @@ h1 {
   font-family: "Bitcount Prop Double", monospace;
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.0;
+  line-height: 1;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--white); }
-::-webkit-scrollbar-thumb { background: var(--divider); border-radius: 0; }
-::-webkit-scrollbar-thumb:hover { background: var(--mid); }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--divider);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mid);
+}
 
 /* ─── Focus rings ────────────────────────────────────────────────── */
 /* Suppress the default outline on mouse/touch interactions.          */
@@ -100,40 +121,85 @@ h1 {
 
 /* Dark theme scrollbar */
 .dark ::-webkit-scrollbar-track,
-[data-theme="dark"] ::-webkit-scrollbar-track { background: var(--white); }
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--white);
+}
 .dark ::-webkit-scrollbar-thumb,
-[data-theme="dark"] ::-webkit-scrollbar-thumb { background: var(--divider); }
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--divider);
+}
 .dark ::-webkit-scrollbar-thumb:hover,
-[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: var(--mid); }
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--mid);
+}
 
 /* ─── Scroll-reveal animation primitives ────────────────────────── */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes slide-right {
-  from { opacity: 0; transform: translateX(-20px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
-.animate-fade-up   { animation: fade-up   600ms ease-in-out both; }
-.animate-fade-in   { animation: fade-in   600ms ease-in-out both; }
-.animate-slide-right { animation: slide-right 500ms ease-in-out both; }
-.animate-blink     { animation: blink 1.2s ease-in-out infinite; contain: layout; will-change: opacity; }
+.animate-fade-up {
+  animation: fade-up 600ms ease-in-out both;
+}
+.animate-fade-in {
+  animation: fade-in 600ms ease-in-out both;
+}
+.animate-slide-right {
+  animation: slide-right 500ms ease-in-out both;
+}
+.animate-blink {
+  animation: blink 1.2s ease-in-out infinite;
+  contain: layout;
+  will-change: opacity;
+}
 
 /* Stagger delay helpers */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
 
 /* ─── LCP: skip hero animations on mobile so h1/role/bio paint immediately ── */
 @media (max-width: 767px) {
@@ -228,7 +294,7 @@ h1 {
   color: var(--subtle);
 }
 .dark .prose li::marker {
-  color: #9A9A9A;
+  color: #9a9a9a;
 }
 /* Nested lists — tighter spacing */
 .prose ul ul,
@@ -240,7 +306,9 @@ h1 {
 
 /* ─── Reduced motion ─────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     transition: none !important;
     animation: none !important;
   }
@@ -258,8 +326,12 @@ h1 {
 
 /* ─── Marquee ────────────────────────────────────────────────────── */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 .animate-marquee {
   animation: marquee 80s linear infinite;
@@ -281,37 +353,81 @@ h1 {
 
 /* ─── Background shape animations ───────────────────────────────── */
 @keyframes art-float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-18px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
 }
 @keyframes art-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 @keyframes art-breathe {
-  0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.09); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.09);
+  }
 }
-.animate-art-float   { animation: art-float   10s ease-in-out infinite; will-change: transform; }
-.animate-art-spin    { animation: art-spin    30s linear      infinite; will-change: transform; }
-.animate-art-breathe { animation: art-breathe  8s ease-in-out infinite; will-change: transform; }
+.animate-art-float {
+  animation: art-float 10s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-art-spin {
+  animation: art-spin 30s linear infinite;
+  will-change: transform;
+}
+.animate-art-breathe {
+  animation: art-breathe 8s ease-in-out infinite;
+  will-change: transform;
+}
 
 /* ─── Dot-burst click particles ─────────────────────────────────────────── */
 @keyframes dot-burst {
-  0%   { transform: rotate(var(--deg)) translateX(0)            scale(1.2); opacity: 1; }
-  60%  { opacity: 0.7; }
-  100% { transform: rotate(var(--deg)) translateX(var(--dist))  scale(0);   opacity: 0; }
+  0% {
+    transform: rotate(var(--deg)) translateX(0) scale(1.2);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: rotate(var(--deg)) translateX(var(--dist)) scale(0);
+    opacity: 0;
+  }
 }
 
 /* ─── Konami / terminal glitch overlay ──────────────────────────────────── */
 @keyframes glitch-shake {
-  0%,100% { transform: translate(0); }
-  20%     { transform: translate(-3px, 1px); }
-  40%     { transform: translate(3px, -1px); }
-  60%     { transform: translate(-2px, 2px); }
-  80%     { transform: translate(2px, -2px); }
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-3px, 1px);
+  }
+  40% {
+    transform: translate(3px, -1px);
+  }
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
 }
-.animate-glitch-shake { animation: glitch-shake 0.4s ease-in-out; }
+.animate-glitch-shake {
+  animation: glitch-shake 0.4s ease-in-out;
+}
 
 /* ─── Below-fold section optimisation ──────────────────────────────────── */
 /* Skips layout/paint until near viewport — reduces main-thread Style & Layout work */
@@ -330,10 +446,14 @@ h1 {
   margin: 2.25rem 0;
   font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
-.flow *, .flowbars * { margin: 0; }
+.flow *,
+.flowbars * {
+  margin: 0;
+}
 
 /* Shared node look */
-.flow-node, .flow-row > .flow-cell {
+.flow-node,
+.flow-row > .flow-cell {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -358,7 +478,9 @@ h1 {
   font-size: 0.72rem;
   font-weight: 600;
 }
-.flow-label { font-weight: 500; }
+.flow-label {
+  font-weight: 500;
+}
 
 /* ── Linear layout: horizontal wrapping chips ───────────────────────────── */
 .flow--linear .flow-track {
@@ -401,7 +523,9 @@ h1 {
   padding-left: 1.6rem;
   padding-bottom: 1.1rem;
 }
-.flow-row:last-child { padding-bottom: 0; }
+.flow-row:last-child {
+  padding-bottom: 0;
+}
 /* connector rail */
 .flow-row::before {
   content: "";
@@ -412,7 +536,9 @@ h1 {
   width: 1px;
   background: var(--flow-line);
 }
-.flow-row:last-child::before { display: none; }
+.flow-row:last-child::before {
+  display: none;
+}
 /* node dot on the rail */
 .flow-row::after {
   content: "";
@@ -431,7 +557,9 @@ h1 {
   transform: rotate(45deg);
   top: 0.78rem;
 }
-.flow-row > .flow-cell { display: inline-flex; }
+.flow-row > .flow-cell {
+  display: inline-flex;
+}
 .flow-row--decision > .flow-cell,
 .flow-row--split > .flow-cell,
 .flow-row--join > .flow-cell {
@@ -473,8 +601,12 @@ h1 {
   color: var(--subtle);
   background: var(--white);
 }
-.flow-branch-arrow { color: var(--accent); }
-.flow-branch-out { font-weight: 500; }
+.flow-branch-arrow {
+  color: var(--accent);
+}
+.flow-branch-out {
+  font-weight: 500;
+}
 
 /* loop-back marker */
 .flow-loop {
@@ -512,7 +644,11 @@ h1 {
   font-size: 0.82rem;
   color: var(--black);
 }
-.flowbar-val { font-family: monospace; color: var(--subtle); font-size: 0.78rem; }
+.flowbar-val {
+  font-family: monospace;
+  color: var(--subtle);
+  font-size: 0.78rem;
+}
 .flowbar-track {
   height: 0.55rem;
   background: var(--surface);
@@ -526,5 +662,9 @@ h1 {
   background: var(--accent);
   border-radius: 999px;
 }
-.flowbar:nth-child(n+2) .flowbar-fill { opacity: 0.55; }
-.flowbar:nth-child(n+3) .flowbar-fill { opacity: 0.3; }
+.flowbar:nth-child(n + 2) .flowbar-fill {
+  opacity: 0.55;
+}
+.flowbar:nth-child(n + 3) .flowbar-fill {
+  opacity: 0.3;
+}

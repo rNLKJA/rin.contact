@@ -4,8 +4,8 @@ import { useI18n } from "@/contexts/I18nContext";
 const COLS = 20;
 const ROWS = 14;
 const CELL = 16;
-const W    = COLS * CELL;
-const H    = ROWS * CELL;
+const W = COLS * CELL;
+const H = ROWS * CELL;
 const TICK = 140;
 
 const DIR = { UP: [0, -1], DOWN: [0, 1], LEFT: [-1, 0], RIGHT: [1, 0] };
@@ -23,11 +23,11 @@ const LS_KEY = "rin404_snake_best";
 export default function SnakeGame() {
   const { t } = useI18n();
   const canvasRef = useRef(null);
-  const stateRef  = useRef(null);
-  const tickRef   = useRef(null);
-  const [status,  setStatus]  = useState("idle");
-  const [score,   setScore]   = useState(0);
-  const [best,    setBest]    = useState(0);
+  const stateRef = useRef(null);
+  const tickRef = useRef(null);
+  const [status, setStatus] = useState("idle");
+  const [score, setScore] = useState(0);
+  const [best, setBest] = useState(0);
   const [allTime, setAllTime] = useState(0);
 
   // Load all-time best from localStorage on mount
@@ -35,11 +35,17 @@ export default function SnakeGame() {
     try {
       const saved = parseInt(localStorage.getItem(LS_KEY) || "0", 10);
       setAllTime(isNaN(saved) ? 0 : saved);
-    } catch { /* localStorage unavailable */ }
+    } catch {
+      /* localStorage unavailable */
+    }
   }, []);
 
   const initState = useCallback(() => {
-    const snake = [[10, 7], [9, 7], [8, 7]];
+    const snake = [
+      [10, 7],
+      [9, 7],
+      [8, 7],
+    ];
     return { snake, dir: DIR.RIGHT, next: DIR.RIGHT, food: rndFood(snake), score: 0 };
   }, []);
 
@@ -55,7 +61,13 @@ export default function SnakeGame() {
         ctx.fillRect(x * CELL + CELL / 2 - 1, y * CELL + CELL / 2 - 1, 2, 2);
     ctx.fillStyle = "#FF3C3C";
     ctx.beginPath();
-    ctx.arc(st.food[0] * CELL + CELL / 2, st.food[1] * CELL + CELL / 2, CELL / 2 - 2, 0, Math.PI * 2);
+    ctx.arc(
+      st.food[0] * CELL + CELL / 2,
+      st.food[1] * CELL + CELL / 2,
+      CELL / 2 - 2,
+      0,
+      Math.PI * 2
+    );
     ctx.fill();
     st.snake.forEach(([x, y], i) => {
       const alpha = i === 0 ? 1 : 0.4 + 0.5 * (1 - i / st.snake.length);
@@ -78,7 +90,11 @@ export default function SnakeGame() {
       // Persist all-time best to localStorage
       setAllTime((prev) => {
         const next = Math.max(prev, st.score);
-        try { localStorage.setItem(LS_KEY, String(next)); } catch { /* ignore */ }
+        try {
+          localStorage.setItem(LS_KEY, String(next));
+        } catch {
+          /* ignore */
+        }
         return next;
       });
       clearInterval(tickRef.current);
@@ -88,7 +104,11 @@ export default function SnakeGame() {
     const newSnake = [[nx, ny], ...st.snake];
     if (!ate) newSnake.pop();
     st.snake = newSnake;
-    if (ate) { st.score++; st.food = rndFood(newSnake); setScore(st.score); }
+    if (ate) {
+      st.score++;
+      st.food = rndFood(newSnake);
+      setScore(st.score);
+    }
     draw(st);
   }, [draw]);
 
@@ -119,31 +139,42 @@ export default function SnakeGame() {
   useEffect(() => {
     const onKey = (e) => {
       const s = stateRef.current;
-      if (e.code === "Space") { e.preventDefault(); if (status !== "playing") start(); return; }
+      if (e.code === "Space") {
+        e.preventDefault();
+        if (status !== "playing") start();
+        return;
+      }
       if (!s || status !== "playing") return;
-      if (e.key === "ArrowUp"    && s.dir !== DIR.DOWN)  s.next = DIR.UP;
-      if (e.key === "ArrowDown"  && s.dir !== DIR.UP)    s.next = DIR.DOWN;
-      if (e.key === "ArrowLeft"  && s.dir !== DIR.RIGHT) s.next = DIR.LEFT;
-      if (e.key === "ArrowRight" && s.dir !== DIR.LEFT)  s.next = DIR.RIGHT;
-      if ((e.key === "w" || e.key === "W") && s.dir !== DIR.DOWN)  s.next = DIR.UP;
-      if ((e.key === "s" || e.key === "S") && s.dir !== DIR.UP)    s.next = DIR.DOWN;
+      if (e.key === "ArrowUp" && s.dir !== DIR.DOWN) s.next = DIR.UP;
+      if (e.key === "ArrowDown" && s.dir !== DIR.UP) s.next = DIR.DOWN;
+      if (e.key === "ArrowLeft" && s.dir !== DIR.RIGHT) s.next = DIR.LEFT;
+      if (e.key === "ArrowRight" && s.dir !== DIR.LEFT) s.next = DIR.RIGHT;
+      if ((e.key === "w" || e.key === "W") && s.dir !== DIR.DOWN) s.next = DIR.UP;
+      if ((e.key === "s" || e.key === "S") && s.dir !== DIR.UP) s.next = DIR.DOWN;
       if ((e.key === "a" || e.key === "A") && s.dir !== DIR.RIGHT) s.next = DIR.LEFT;
-      if ((e.key === "d" || e.key === "D") && s.dir !== DIR.LEFT)  s.next = DIR.RIGHT;
+      if ((e.key === "d" || e.key === "D") && s.dir !== DIR.LEFT) s.next = DIR.RIGHT;
     };
     window.addEventListener("keydown", onKey);
-    return () => { window.removeEventListener("keydown", onKey); clearInterval(tickRef.current); };
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      clearInterval(tickRef.current);
+    };
   }, [status, start]);
 
-  const mobileDir = useCallback((d) => {
-    const s = stateRef.current;
-    if (!s || status !== "playing") return;
-    if (d === "UP"    && s.dir !== DIR.DOWN)  s.next = DIR.UP;
-    if (d === "DOWN"  && s.dir !== DIR.UP)    s.next = DIR.DOWN;
-    if (d === "LEFT"  && s.dir !== DIR.RIGHT) s.next = DIR.LEFT;
-    if (d === "RIGHT" && s.dir !== DIR.LEFT)  s.next = DIR.RIGHT;
-  }, [status]);
+  const mobileDir = useCallback(
+    (d) => {
+      const s = stateRef.current;
+      if (!s || status !== "playing") return;
+      if (d === "UP" && s.dir !== DIR.DOWN) s.next = DIR.UP;
+      if (d === "DOWN" && s.dir !== DIR.UP) s.next = DIR.DOWN;
+      if (d === "LEFT" && s.dir !== DIR.RIGHT) s.next = DIR.LEFT;
+      if (d === "RIGHT" && s.dir !== DIR.LEFT) s.next = DIR.RIGHT;
+    },
+    [status]
+  );
 
-  const btn = "border border-[#2A2A2A] text-[#555] font-mono text-xs px-3 py-2 hover:border-[#555] hover:text-[#888] transition-colors select-none touch-manipulation";
+  const btn =
+    "border border-[#2A2A2A] text-[#555] font-mono text-xs px-3 py-2 hover:border-[#555] hover:text-[#888] transition-colors select-none touch-manipulation";
 
   return (
     <div className="mt-8">
@@ -152,10 +183,16 @@ export default function SnakeGame() {
           {t("snakeGame.title")}
         </p>
         <div className="flex gap-4 font-mono text-[10px] text-[#3A3A3A]">
-          <span>{t("snakeGame.score")}: <span className="text-[#888]">{score}</span></span>
-          <span>session: <span className="text-[#888]">{best}</span></span>
+          <span>
+            {t("snakeGame.score")}: <span className="text-[#888]">{score}</span>
+          </span>
+          <span>
+            session: <span className="text-[#888]">{best}</span>
+          </span>
           {allTime > 0 && (
-            <span>all-time: <span className="text-[#FF3C3C]">{allTime}</span></span>
+            <span>
+              all-time: <span className="text-[#FF3C3C]">{allTime}</span>
+            </span>
           )}
         </div>
       </div>
@@ -179,12 +216,20 @@ export default function SnakeGame() {
           {status === "idle" ? `▶ ${t("snakeGame.start")}` : `↺ ${t("snakeGame.restart")}`}
         </button>
         <div className="flex items-center gap-1 md:hidden">
-          <button onClick={() => mobileDir("LEFT")}  className={btn}>←</button>
+          <button onClick={() => mobileDir("LEFT")} className={btn}>
+            ←
+          </button>
           <div className="flex flex-col gap-1">
-            <button onClick={() => mobileDir("UP")}   className={btn}>↑</button>
-            <button onClick={() => mobileDir("DOWN")}  className={btn}>↓</button>
+            <button onClick={() => mobileDir("UP")} className={btn}>
+              ↑
+            </button>
+            <button onClick={() => mobileDir("DOWN")} className={btn}>
+              ↓
+            </button>
           </div>
-          <button onClick={() => mobileDir("RIGHT")} className={btn}>→</button>
+          <button onClick={() => mobileDir("RIGHT")} className={btn}>
+            →
+          </button>
         </div>
         <p className="hidden md:block font-mono text-[9px] text-[#2A2A2A]">
           {t("snakeGame.controls")}

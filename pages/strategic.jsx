@@ -8,7 +8,9 @@ import BackToTop from "@/components/ui/BackToTop";
 const Section = ({ label, children }) => (
   <section className="mb-10">
     <div className="flex items-center gap-3 mb-4">
-      <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA]">{label}</span>
+      <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA]">
+        {label}
+      </span>
       <div className="flex-1 h-px bg-[#E0E0E0] dark:bg-[#3D3D3D]" />
     </div>
     {children}
@@ -17,7 +19,9 @@ const Section = ({ label, children }) => (
 
 const Principle = ({ num, title, body }) => (
   <div className="flex gap-4 mb-5">
-    <span className="text-[10px] text-[#595959] dark:text-[#AAAAAA] tabular-nums w-6 flex-shrink-0 mt-0.5">{num}</span>
+    <span className="text-[10px] text-[#595959] dark:text-[#AAAAAA] tabular-nums w-6 flex-shrink-0 mt-0.5">
+      {num}
+    </span>
     <div>
       <p className="text-xs font-semibold tracking-wide text-black dark:text-white mb-1">{title}</p>
       <p className="text-xs text-[#595959] dark:text-[#AAAAAA] leading-relaxed">{body}</p>
@@ -31,7 +35,9 @@ const ImpactItem = ({ domain, examples }) => (
       ○
     </div>
     <div>
-      <p className="text-xs font-semibold tracking-wide text-black dark:text-white mb-1">{domain}</p>
+      <p className="text-xs font-semibold tracking-wide text-black dark:text-white mb-1">
+        {domain}
+      </p>
       <p className="text-xs text-[#595959] dark:text-[#AAAAAA] leading-relaxed">{examples}</p>
     </div>
   </div>
@@ -42,9 +48,7 @@ const FrameworkItem = ({ name, source, desc }) => (
     <span className="text-xs text-[#7A7A7A] font-mono w-40 flex-shrink-0">{name}</span>
     <div className="flex-1">
       <p className="text-xs text-[#1A1A1A] dark:text-white">{desc}</p>
-      {source && (
-        <p className="text-[11px] text-[#AAAAAA] mt-0.5">{source}</p>
-      )}
+      {source && <p className="text-[11px] text-[#AAAAAA] mt-0.5">{source}</p>}
     </div>
   </div>
 );
@@ -57,34 +61,51 @@ export default function StrategicPage() {
       <BackToTop />
       <Head>
         <title>Strategic Data Science — Rin Huang · rin.contact</title>
-        <meta name="description" content="How strategic thinking + data science creates meaningful impact — problem-first, not model-first. Government, policy, business." />
+        <meta
+          name="description"
+          content="How strategic thinking + data science creates meaningful impact — problem-first, not model-first. Government, policy, business."
+        />
         <link rel="canonical" href="https://rin.contact/strategic/" />
         <meta property="og:title" content="Strategic Data Science — Sunchuangyu (Rin) Huang" />
-        <meta property="og:description" content="How strategic thinking + data science creates meaningful impact. Frameworks, mental models, and real-world impacts." />
+        <meta
+          property="og:description"
+          content="How strategic thinking + data science creates meaningful impact. Frameworks, mental models, and real-world impacts."
+        />
         <meta property="og:url" content="https://rin.contact/strategic/" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="https://rin.contact/api/og/?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic" />
+        <meta
+          property="og:image"
+          content="https://rin.contact/api/og/?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Strategic Data Science — Sunchuangyu (Rin) Huang" />
-        <meta name="twitter:description" content="Problem-first, not model-first. Frameworks + real-world impact." />
-        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic" />
+        <meta
+          name="twitter:description"
+          content="Problem-first, not model-first. Frameworks + real-world impact."
+        />
+        <meta
+          name="twitter:image"
+          content="https://rin.contact/api/og/?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic"
+        />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-
           {/* Header */}
           <div className="mb-14">
-            <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">{t("strategic.sectionLabel")}</p>
+            <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">
+              {t("strategic.sectionLabel")}
+            </p>
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
               {t("strategic.heading")}
             </h1>
             <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
-              It&apos;s not only about building models. It&apos;s not only about building dashboards.
-              It&apos;s about understanding the problem, framing the right question, and applying data
-              science strategically to resolve meaningful problems — starting from the high level.
+              It&apos;s not only about building models. It&apos;s not only about building
+              dashboards. It&apos;s about understanding the problem, framing the right question, and
+              applying data science strategically to resolve meaningful problems — starting from the
+              high level.
             </p>
           </div>
 
@@ -105,15 +126,15 @@ export default function StrategicPage() {
           {/* Problem-first approach */}
           <Section label="The problem-first approach">
             <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-5">
-              &quot;If I had an hour to solve a problem and my life depended on the solution, I would
-              spend the first 55 minutes determining the proper question to ask.&quot; — Einstein (attributed).
-              The same applies to data science.
+              &quot;If I had an hour to solve a problem and my life depended on the solution, I
+              would spend the first 55 minutes determining the proper question to ask.&quot; —
+              Einstein (attributed). The same applies to data science.
             </p>
             <div className="space-y-0">
               <Principle
                 num="01"
                 title="Understand before building"
-                body="Define the right question before touching data or models. A poorly framed problem leads to misallocated resources and solutions that don&apos;t address the real need."
+                body="Define the right question before touching data or models. A poorly framed problem leads to misallocated resources and solutions that don't address the real need."
               />
               <Principle
                 num="02"
@@ -123,7 +144,7 @@ export default function StrategicPage() {
               <Principle
                 num="03"
                 title="Translate and report"
-                body="Convey technical insights into actionable recommendations. Report uncertainty honestly. Make outputs usable for decision-makers who aren&apos;t data scientists."
+                body="Convey technical insights into actionable recommendations. Report uncertainty honestly. Make outputs usable for decision-makers who aren't data scientists."
               />
               <Principle
                 num="04"
@@ -185,10 +206,30 @@ export default function StrategicPage() {
           {/* What I bring */}
           <Section label="What I bring">
             <ul className="space-y-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
-              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-28 flex-shrink-0">Strategic framing</span>Question the problem before building. Prioritise high-impact work.</li>
-              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-28 flex-shrink-0">Technical execution</span>Python, R, SQL, statistical modelling, ML — when the problem warrants it.</li>
-              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-28 flex-shrink-0">Translation</span>Bridge between business leaders and data. Storytelling that drives decisions.</li>
-              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-28 flex-shrink-0">Implementation focus</span>End-to-end pipeline thinking. Deployment, monitoring, feedback loops.</li>
+              <li className="flex gap-2">
+                <span className="text-black dark:text-white font-medium w-28 flex-shrink-0">
+                  Strategic framing
+                </span>
+                Question the problem before building. Prioritise high-impact work.
+              </li>
+              <li className="flex gap-2">
+                <span className="text-black dark:text-white font-medium w-28 flex-shrink-0">
+                  Technical execution
+                </span>
+                Python, R, SQL, statistical modelling, ML — when the problem warrants it.
+              </li>
+              <li className="flex gap-2">
+                <span className="text-black dark:text-white font-medium w-28 flex-shrink-0">
+                  Translation
+                </span>
+                Bridge between business leaders and data. Storytelling that drives decisions.
+              </li>
+              <li className="flex gap-2">
+                <span className="text-black dark:text-white font-medium w-28 flex-shrink-0">
+                  Implementation focus
+                </span>
+                End-to-end pipeline thinking. Deployment, monitoring, feedback loops.
+              </li>
             </ul>
           </Section>
 
@@ -205,11 +246,13 @@ export default function StrategicPage() {
 
           {/* AI declaration */}
           <section className="mt-14 pt-10 border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
-            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">Transparency</p>
+            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">
+              Transparency
+            </p>
             <p className="text-xs text-[#7A7A7A] leading-relaxed">
-              This page&apos;s content was generated with assistance from an AI assistant. The structure,
-              frameworks, and references are research-based; the articulation reflects Rin&apos;s approach
-              to strategic data science. Human review and editing applied.
+              This page&apos;s content was generated with assistance from an AI assistant. The
+              structure, frameworks, and references are research-based; the articulation reflects
+              Rin&apos;s approach to strategic data science. Human review and editing applied.
             </p>
           </section>
 
@@ -221,14 +264,19 @@ export default function StrategicPage() {
             >
               Hire me for strategic data challenges →
             </Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
+            <Link
+              href="/"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+            >
               ← Home
             </Link>
-            <Link href="/career" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors">
+            <Link
+              href="/career"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+            >
               Career
             </Link>
           </div>
-
         </div>
       </div>
     </>

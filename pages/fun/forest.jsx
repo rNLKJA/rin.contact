@@ -24,21 +24,33 @@ export default function ForestPage() {
         title="Model Escalation — rin.contact"
         description="Tell me more about random forest."
         path="/fun/forest"
-        ogImage={{ title: "Model Escalation", subtitle: "Tell me more about random forest.", section: "fun" }}
+        ogImage={{
+          title: "Model Escalation",
+          subtitle: "Tell me more about random forest.",
+          section: "fun",
+        }}
         noindex={true}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/fun/forest</p>
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Model Escalation</h1>
+          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">
+            /fun/forest
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
+            Model Escalation
+          </h1>
           <p className="text-sm text-[#7A7A7A] mb-14">
-            The path from &quot;let&apos;s try a simple model&quot; to &quot;just use a linear regression&quot;.
+            The path from &quot;let&apos;s try a simple model&quot; to &quot;just use a linear
+            regression&quot;.
           </p>
 
           <div className="space-y-0 divide-y divide-[#E0E0E0]">
             {STEPS.map(({ label, note }, i) => (
-              <div key={label} className="py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div
+                key={label}
+                className="py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+              >
                 <span className="font-mono text-sm text-[#1A1A1A]">
                   {i + 1}. {label}
                 </span>
@@ -48,8 +60,18 @@ export default function ForestPage() {
           </div>
 
           <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/fun" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /fun</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+            <Link
+              href="/fun"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
+              ← /fun
+            </Link>
+            <Link
+              href="/"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
+              Home
+            </Link>
           </div>
         </div>
       </div>

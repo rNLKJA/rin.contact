@@ -25,15 +25,19 @@ const MESSAGES = [
 ];
 
 export default function LoadingPage() {
-  const [elapsed, setElapsed]   = useState(0);
-  const [msgIdx, setMsgIdx]     = useState(0);
-  const [dots, setDots]         = useState(".");
+  const [elapsed, setElapsed] = useState(0);
+  const [msgIdx, setMsgIdx] = useState(0);
+  const [dots, setDots] = useState(".");
 
   useEffect(() => {
     const tick = setInterval(() => setElapsed((s) => s + 1), 1000);
     const msgT = setInterval(() => setMsgIdx((i) => (i + 1) % MESSAGES.length), 3200);
-    const dotT = setInterval(() => setDots((d) => d.length >= 3 ? "." : d + "."), 500);
-    return () => { clearInterval(tick); clearInterval(msgT); clearInterval(dotT); };
+    const dotT = setInterval(() => setDots((d) => (d.length >= 3 ? "." : d + ".")), 500);
+    return () => {
+      clearInterval(tick);
+      clearInterval(msgT);
+      clearInterval(dotT);
+    };
   }, []);
 
   const h = String(Math.floor(elapsed / 3600)).padStart(2, "0");
@@ -59,7 +63,6 @@ export default function LoadingPage() {
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col items-center justify-center px-6 font-mono">
         <div className="max-w-sm w-full text-center">
-
           {/* Fibonacci flower */}
           <div className="mb-10 flex justify-center text-black dark:text-white">
             <FibonacciFlower size={100} animate />
@@ -81,12 +84,15 @@ export default function LoadingPage() {
 
           <div className="flex justify-between text-[10px] text-[#CCCCCC] mb-10">
             <span>{pct}%</span>
-            <span>{h}:{m}:{s}</span>
+            <span>
+              {h}:{m}:{s}
+            </span>
           </div>
 
           {/* Footer note */}
           <p className="text-[11px] text-[#AAAAAA] leading-relaxed mb-6">
-            Some things take time.<br />
+            Some things take time.
+            <br />
             The model is still training.
           </p>
 
@@ -98,7 +104,6 @@ export default function LoadingPage() {
           </Link>
         </div>
       </div>
-
     </>
   );
 }

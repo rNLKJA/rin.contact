@@ -49,7 +49,9 @@ export default function SeoHead({
   const resolvedOgDesc = ogDescription ?? description;
   const resolvedOgImageAlt = ogImageAlt ?? resolvedOgTitle;
 
-  const robotsContent = noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
+  const robotsContent = noindex
+    ? "noindex, nofollow"
+    : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
 
   let ogImageUrl = null;
   if (ogImage) {

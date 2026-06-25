@@ -12,7 +12,13 @@ import Link from "next/link";
  * helpers; the global prefers-reduced-motion guard disables those animations, so
  * the content renders fully visible for reduced-motion users.
  */
-export default function PageHero({ label, heading, description, backLabel = "Home", backHref = "/" }) {
+export default function PageHero({
+  label,
+  heading,
+  description,
+  backLabel = "Home",
+  backHref = "/",
+}) {
   return (
     <header className="relative py-20 border-b border-[#F0F0F0] dark:border-[#1E1E1E] overflow-hidden">
       {/* depth — faint dot-matrix panel bleeding off the right edge */}

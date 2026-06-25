@@ -5,17 +5,17 @@ import { useI18n } from "@/contexts/I18nContext";
 import Link from "next/link";
 
 const ITEMS = [
-  { href: "/info/now",          label: "now" },
-  { href: "/info/uses",         label: "uses" },
-  { href: "/info/roadmap",      label: "roadmap" },
+  { href: "/info/now", label: "now" },
+  { href: "/info/uses", label: "uses" },
+  { href: "/info/roadmap", label: "roadmap" },
   { href: "/info/accessibility", label: "accessibility" },
-  { href: "/info/colophon",     label: "colophon" },
-  { href: "/info/api",          label: "api" },
-  { href: "/info/site-map",     label: "site-map" },
-  { href: "/info/manifest",     label: "manifest" },
-  { href: "/info/changelog",    label: "changelog" },
-  { href: "/info/thank-you",    label: "thank-you" },
-  { href: "/info/references",   label: "references" },
+  { href: "/info/colophon", label: "colophon" },
+  { href: "/info/api", label: "api" },
+  { href: "/info/site-map", label: "site-map" },
+  { href: "/info/manifest", label: "manifest" },
+  { href: "/info/changelog", label: "changelog" },
+  { href: "/info/thank-you", label: "thank-you" },
+  { href: "/info/references", label: "references" },
 ];
 
 export default function InfoIndexPage() {
@@ -25,36 +25,52 @@ export default function InfoIndexPage() {
     <>
       <Head>
         <title>Info — rin.contact</title>
-        <meta name="description" content="Site info — now, uses, roadmap, accessibility, colophon." />
+        <meta
+          name="description"
+          content="Site info — now, uses, roadmap, accessibility, colophon."
+        />
         <link rel="canonical" href="https://rin.contact/info" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og/?title=Site%20Info&subtitle=Colophon%2C%20changelog%2C%20roadmap%2C%20accessibility%2C%20and%20site%20documentation%20for%20rin&section=info" />
+        <meta
+          property="og:image"
+          content="https://rin.contact/api/og/?title=Site%20Info&subtitle=Colophon%2C%20changelog%2C%20roadmap%2C%20accessibility%2C%20and%20site%20documentation%20for%20rin&section=info"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Site Info" />
-        <meta name="twitter:description" content="Colophon, changelog, roadmap, accessibility, and site documentation for rin." />
-        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Site%20Info&subtitle=Colophon%2C%20changelog%2C%20roadmap%2C%20accessibility%2C%20and%20site%20documentation%20for%20rin&section=info" />
+        <meta
+          name="twitter:description"
+          content="Colophon, changelog, roadmap, accessibility, and site documentation for rin."
+        />
+        <meta
+          name="twitter:image"
+          content="https://rin.contact/api/og/?title=Site%20Info&subtitle=Colophon%2C%20changelog%2C%20roadmap%2C%20accessibility%2C%20and%20site%20documentation%20for%20rin&section=info"
+        />
       </Head>
 
       <SeoHead
         title="Info — rin.contact"
         description="Site info — now, uses, roadmap, accessibility, colophon."
         path="/info"
-        ogImage={{ title: "Info & Colophon", subtitle: "Site map, changelog, and tech stack", section: "info" }}
+        ogImage={{
+          title: "Info & Colophon",
+          subtitle: "Site map, changelog, and tech stack",
+          section: "info",
+        }}
         locale={locale}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">/info</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">
+            /info
+          </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
             {t("info.heading")}
           </h1>
-          <p className="text-sm text-[#7A7A7A] leading-relaxed mb-14">
-            {t("info.description")}
-          </p>
+          <p className="text-sm text-[#7A7A7A] leading-relaxed mb-14">{t("info.description")}</p>
 
           <div className="space-y-0 divide-y divide-[#E0E0E0] dark:divide-[#3D3D3D]">
             {ITEMS.map(({ href, label }) => (
@@ -66,7 +82,9 @@ export default function InfoIndexPage() {
                 <span className="font-mono text-sm text-[#1A1A1A] dark:text-white group-hover:text-black dark:hover:text-white group-hover:border-black dark:hover:border-white transition-colors">
                   /info/{label}
                 </span>
-                <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">{t(`info.items.${label}`)}</span>
+                <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">
+                  {t(`info.items.${label}`)}
+                </span>
               </Link>
             ))}
           </div>

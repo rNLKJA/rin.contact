@@ -241,13 +241,12 @@ export default function FAQSection() {
           <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
             {t("faq.sectionLabel")}
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
-            FAQ
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">FAQ</h2>
           <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
             <path
               d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-              stroke="#E0E0E0" className="dark:stroke-[#3D3D3D]"
+              stroke="#E0E0E0"
+              className="dark:stroke-[#3D3D3D]"
               strokeWidth="1.5"
               fill="none"
               strokeLinecap="round"
@@ -261,12 +260,7 @@ export default function FAQSection() {
         {/* Category accordions — first one open by default */}
         <div>
           {CATEGORIES.map((cat, i) => (
-            <CategoryBlock
-              key={cat.id}
-              cat={cat}
-              catIndex={i}
-              defaultOpen={i === 0}
-            />
+            <CategoryBlock key={cat.id} cat={cat} catIndex={i} defaultOpen={i === 0} />
           ))}
         </div>
       </div>

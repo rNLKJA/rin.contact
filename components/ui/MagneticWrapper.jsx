@@ -24,8 +24,8 @@ export default function MagneticWrapper({
       const el = ref.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      const dx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;   // -1 → 1
-      const dy = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;  // -1 → 1
+      const dx = ((e.clientX - rect.left) / rect.width - 0.5) * 2; // -1 → 1
+      const dy = ((e.clientY - rect.top) / rect.height - 0.5) * 2; // -1 → 1
       setTilt({
         transform: `perspective(700px) rotateY(${dx * strength * 0.5}deg) rotateX(${-dy * strength * 0.5}deg) translateZ(6px)`,
         transition: "transform 0.08s ease-out",

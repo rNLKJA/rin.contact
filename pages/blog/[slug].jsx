@@ -11,10 +11,9 @@ import AuthorBio from "@/components/blog/AuthorBio";
 import { useI18n } from "@/contexts/I18nContext";
 import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
 
-const NewsletterSignup = dynamic(
-  () => import("@/components/blog/NewsletterSignup"),
-  { ssr: false }
-);
+const NewsletterSignup = dynamic(() => import("@/components/blog/NewsletterSignup"), {
+  ssr: false,
+});
 
 export default function BlogPost({ post, relatedPosts = [] }) {
   const { t, locale = "en-AU" } = useI18n();
@@ -24,10 +23,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
     return (
       <div className="max-w-[700px] mx-auto px-6 md:px-12 py-24">
         <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">{t("blog.postNotFound")}</p>
-        <Link
-          href="/blog"
-          className="text-sm text-[#FF3C3C] hover:underline mt-4 inline-block"
-        >
+        <Link href="/blog" className="text-sm text-[#FF3C3C] hover:underline mt-4 inline-block">
           ← {t("blog.backToBlog")}
         </Link>
       </div>
@@ -131,16 +127,16 @@ export default function BlogPost({ post, relatedPosts = [] }) {
           </h1>
           <div className="flex flex-wrap items-center gap-3 text-xs">
             {formattedDate && (
-              <time
-                dateTime={post.date}
-                className="text-[#6E6E6E] dark:text-[#9A9A9A] font-mono"
-              >
+              <time dateTime={post.date} className="text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
                 {formattedDate}
               </time>
             )}
             {post.readingTime && (
               <span className="flex items-center gap-3 text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
-                <span className="w-1 h-1 rounded-full bg-[#CCCCCC] dark:bg-[#3D3D3D]" aria-hidden="true" />
+                <span
+                  className="w-1 h-1 rounded-full bg-[#CCCCCC] dark:bg-[#3D3D3D]"
+                  aria-hidden="true"
+                />
                 {post.readingTime} {t("blog.minRead")}
               </span>
             )}

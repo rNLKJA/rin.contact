@@ -13,19 +13,20 @@
  */
 
 // ── ANSI palette ──────────────────────────────────────────────────────────────
-const X   = "\x1b[0m";
-const W   = "\x1b[97m";
+const X = "\x1b[0m";
+const W = "\x1b[97m";
 const RED = "\x1b[38;2;255;60;60m";
-const G   = "\x1b[38;2;175;175;175m";
-const M   = "\x1b[38;2;120;120;120m";
-const S   = "\x1b[38;2;88;88;88m";
-const D   = "\x1b[38;2;65;65;65m";
+const G = "\x1b[38;2;175;175;175m";
+const M = "\x1b[38;2;120;120;120m";
+const S = "\x1b[38;2;88;88;88m";
+const D = "\x1b[38;2;65;65;65m";
 const DIM = "\x1b[38;2;38;38;38m";
 
 // ── Structural ────────────────────────────────────────────────────────────────
-const DOTS = D + "· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·" + X;
+const DOTS =
+  D + "· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·" + X;
 const RULE = D + "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─" + X;
-const H    = (t) => `  ${RED}▸${X}  ${W}${t}${X}`;
+const H = (t) => `  ${RED}▸${X}  ${W}${t}${X}`;
 
 // ── Timeline entry ────────────────────────────────────────────────────────────
 //  Visual format:
@@ -35,14 +36,12 @@ const H    = (t) => `  ${RED}▸${X}  ${W}${t}${X}`;
 //          │                                  ← omitted for last entry
 //
 function tEntry(year, active, title, org, team, period, loc, isLast = false) {
-  const PIPE  = `${D}│${X}`;
+  const PIPE = `${D}│${X}`;
   const HDASH = `${D}─${X}`;
-  const dot   = active ? `${RED}●${X}` : `${S}○${X}`;
+  const dot = active ? `${RED}●${X}` : `${S}○${X}`;
   // year column is always 6 visible chars ("  2026" or "      ")
-  const ycol  = year
-    ? (active ? `  ${RED}${year}${X}` : `  ${S}${year}${X}`)
-    : "      ";
-  const cont = `        ${PIPE}    `;   // 8 spaces + │ + 4 spaces
+  const ycol = year ? (active ? `  ${RED}${year}${X}` : `  ${S}${year}${X}`) : "      ";
+  const cont = `        ${PIPE}    `; // 8 spaces + │ + 4 spaces
 
   const rows = [
     `${ycol}  ${HDASH}${dot}${HDASH}  ${W}${title}${X}    ${G}${org}${X}`,
@@ -56,15 +55,15 @@ function tEntry(year, active, title, org, team, period, loc, isLast = false) {
 // ── Skill bar — ████████░░ rated depth ───────────────────────────────────────
 function skillBar(label, filled, level) {
   const BAR_W = 22;
-  const lbl   = label.padEnd(15);
-  const bar   = `${RED}${"█".repeat(filled)}${DIM}${"░".repeat(BAR_W - filled)}${X}`;
+  const lbl = label.padEnd(15);
+  const bar = `${RED}${"█".repeat(filled)}${DIM}${"░".repeat(BAR_W - filled)}${X}`;
   return `  ${M}${lbl}${X}  ${bar}  ${S}${level}${X}`;
 }
 
 // ── Stat bar — proportional █ chart ──────────────────────────────────────────
 function statBar(n, label, desc) {
   const MAX = 23;
-  const w   = Math.max(1, Math.round((n / MAX) * 20));
+  const w = Math.max(1, Math.round((n / MAX) * 20));
   const num = String(n).padStart(2);
   const lbl = label.padEnd(14);
   return `  ${RED}${num}${X}  ${RED}${"█".repeat(w)}${X}  ${G}${lbl}${X}  ${M}${desc}${X}`;
@@ -93,41 +92,66 @@ const lines = [
   // Career
   H("CAREER TIMELINE"),
   "",
-  tEntry("2026", true,
+  tEntry(
+    "2026",
+    true,
     "Senior Data Analyst",
     "South Australia Police",
     "ASO7  ·  Professional & Ethical Standards",
-    "2026 → present", "Adelaide, SA"),
+    "2026 → present",
+    "Adelaide, SA"
+  ),
 
-  tEntry("2025", false,
+  tEntry(
+    "2025",
+    false,
     "Intelligence & Coordination Officer",
     "Attorney-General's Dept SA",
     "ASO4  ·  Prevention  ·  Compliance & Enforcement",
-    "2025 – 2026", "Adelaide, SA"),
+    "2025 – 2026",
+    "Adelaide, SA"
+  ),
 
-  tEntry("2024", false,
+  tEntry(
+    "2024",
+    false,
     "Research Assistant — MoodQ",
     "University of Melbourne",
     "RA.1  ·  Psychiatry Department",
-    "2024 – 2026", "Parkville, VIC"),
+    "2024 – 2026",
+    "Parkville, VIC"
+  ),
 
-  tEntry(null, false,
+  tEntry(
+    null,
+    false,
     "Software Engineer Intern",
     "WEHI",
     "Bioinformatics",
-    "2024", "Parkville, VIC"),
+    "2024",
+    "Parkville, VIC"
+  ),
 
-  tEntry("2023", false,
+  tEntry(
+    "2023",
+    false,
     "Data Science Consultant",
     "CSIRO",
     "Climate & Earth Systems",
-    "2023", "Melbourne, VIC"),
+    "2023",
+    "Melbourne, VIC"
+  ),
 
-  tEntry("2022", false,
+  tEntry(
+    "2022",
+    false,
     "Data Analyst  ·  Agile Leader",
     "CSL Behring",
     "Research & Development",
-    "2022", "Melbourne, VIC", true),
+    "2022",
+    "Melbourne, VIC",
+    true
+  ),
 
   "",
   RULE,
@@ -137,16 +161,16 @@ const lines = [
   H("SKILLS"),
   `  ${S}rated by professional depth${X}`,
   "",
-  skillBar("Python",              20, "expert"),
-  skillBar("SQL",                 20, "expert"),
-  skillBar("Next.js",             20, "expert"),
-  skillBar("Strategic Thinking",  20, "expert"),
-  skillBar("Cont. Learning",      20, "expert"),
-  skillBar("R",                   17, "advanced"),
-  skillBar("Power BI",            17, "advanced"),
-  skillBar("React Native",        17, "advanced"),
-  skillBar("GIS / ArcGIS",        15, "proficient"),
-  skillBar("AWS",                 14, "proficient"),
+  skillBar("Python", 20, "expert"),
+  skillBar("SQL", 20, "expert"),
+  skillBar("Next.js", 20, "expert"),
+  skillBar("Strategic Thinking", 20, "expert"),
+  skillBar("Cont. Learning", 20, "expert"),
+  skillBar("R", 17, "advanced"),
+  skillBar("Power BI", 17, "advanced"),
+  skillBar("React Native", 17, "advanced"),
+  skillBar("GIS / ArcGIS", 15, "proficient"),
+  skillBar("AWS", 14, "proficient"),
   "",
   RULE,
   "",
@@ -154,9 +178,9 @@ const lines = [
   // Stats
   H("BY THE NUMBERS"),
   "",
-  statBar( 6, "roles",          "across gov, research & startup"),
-  statBar(21, "projects",       "shipped to production"),
-  statBar( 2, "degrees",        "University of Melbourne"),
+  statBar(6, "roles", "across gov, research & startup"),
+  statBar(21, "projects", "shipped to production"),
+  statBar(2, "degrees", "University of Melbourne"),
   statBar(23, "certifications", "cloud · analytics · agile · language"),
   "",
   RULE,

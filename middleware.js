@@ -14,8 +14,18 @@ import { NextResponse } from "next/server";
 function isCliClient(userAgent = "") {
   if (!userAgent) return false;
   if (userAgent.toLowerCase().includes("mozilla/")) return false;
-  const CLI = ["curl/", "wget/", "httpie/", "python-httpx", "python-requests",
-               "go-http-client", "libwww", "lwp-trivial", "axios/", "node-fetch"];
+  const CLI = [
+    "curl/",
+    "wget/",
+    "httpie/",
+    "python-httpx",
+    "python-requests",
+    "go-http-client",
+    "libwww",
+    "lwp-trivial",
+    "axios/",
+    "node-fetch",
+  ];
   return CLI.some((token) => userAgent.toLowerCase().includes(token));
 }
 
@@ -32,8 +42,12 @@ export function middleware(request) {
   // the homepage can resolve at a locale-prefixed root, and with trailingSlash
   // on the rewrite target must end in a slash (a bare /api/curl 308-redirects),
   // so match every root form and rewrite to /api/curl/.
-  const isRoot = pathname === "/" || pathname === "/en-AU" || pathname === "/en-AU/" ||
-                 pathname === "/zh-Hans" || pathname === "/zh-Hans/";
+  const isRoot =
+    pathname === "/" ||
+    pathname === "/en-AU" ||
+    pathname === "/en-AU/" ||
+    pathname === "/zh-Hans" ||
+    pathname === "/zh-Hans/";
   if (isRoot && isCliClient(ua)) {
     return NextResponse.rewrite(new URL("/api/curl/", request.url));
   }

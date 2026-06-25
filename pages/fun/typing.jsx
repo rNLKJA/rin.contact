@@ -25,9 +25,8 @@ export default function TypingPage() {
     if (input === quote) setDone(true);
   }, [input, quote, start]);
 
-  const wpm = start && done
-    ? Math.round((quote.split(" ").length / ((Date.now() - start) / 60000)))
-    : null;
+  const wpm =
+    start && done ? Math.round(quote.split(" ").length / ((Date.now() - start) / 60000)) : null;
 
   return (
     <>
@@ -42,13 +41,19 @@ export default function TypingPage() {
         title="Typing — rin.contact"
         description="Typing speed test with data science quotes."
         path="/fun/typing"
-        ogImage={{ title: "Typing", subtitle: "Typing speed test with data science quotes.", section: "fun" }}
+        ogImage={{
+          title: "Typing",
+          subtitle: "Typing speed test with data science quotes.",
+          section: "fun",
+        }}
         noindex={true}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/fun/typing</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">
+            /fun/typing
+          </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Typing Test</h1>
           <p className="text-sm text-[#7A7A7A] mb-10">
             Type the quote below. Data science edition.
@@ -74,8 +79,18 @@ export default function TypingPage() {
           )}
 
           <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/fun" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /fun</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+            <Link
+              href="/fun"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
+              ← /fun
+            </Link>
+            <Link
+              href="/"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
+              Home
+            </Link>
           </div>
         </div>
       </div>

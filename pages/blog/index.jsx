@@ -7,10 +7,9 @@ import { useI18n } from "@/contexts/I18nContext";
 import PostCard from "@/components/blog/PostCard";
 import { getAllPosts } from "@/lib/posts";
 
-const NewsletterSignup = dynamic(
-  () => import("@/components/blog/NewsletterSignup"),
-  { ssr: false }
-);
+const NewsletterSignup = dynamic(() => import("@/components/blog/NewsletterSignup"), {
+  ssr: false,
+});
 
 export default function BlogIndex({ posts }) {
   const { t, locale = "en-AU" } = useI18n();
@@ -21,7 +20,11 @@ export default function BlogIndex({ posts }) {
   const [query, setQuery] = useState("");
   const topTags = useMemo(() => {
     const counts = {};
-    posts.forEach((p) => (p.tags || []).forEach((tag) => { counts[tag] = (counts[tag] || 0) + 1; }));
+    posts.forEach((p) =>
+      (p.tags || []).forEach((tag) => {
+        counts[tag] = (counts[tag] || 0) + 1;
+      })
+    );
     return Object.entries(counts)
       .filter(([, n]) => n >= 2)
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
@@ -58,11 +61,22 @@ export default function BlogIndex({ posts }) {
   const writeUrl = (next) => {
     if (!router.isReady) return;
     const nextQuery = { ...router.query, ...next };
-    Object.keys(next).forEach((k) => { if (!next[k]) delete nextQuery[k]; });
-    router.replace({ pathname: router.pathname, query: nextQuery }, undefined, { shallow: true, scroll: false });
+    Object.keys(next).forEach((k) => {
+      if (!next[k]) delete nextQuery[k];
+    });
+    router.replace({ pathname: router.pathname, query: nextQuery }, undefined, {
+      shallow: true,
+      scroll: false,
+    });
   };
-  const selectTag = (tag) => { setActiveTag(tag); writeUrl({ tag }); };
-  const onSearch = (value) => { setQuery(value); writeUrl({ q: value }); };
+  const selectTag = (tag) => {
+    setActiveTag(tag);
+    writeUrl({ tag });
+  };
+  const onSearch = (value) => {
+    setQuery(value);
+    writeUrl({ q: value });
+  };
 
   return (
     <>
@@ -111,11 +125,20 @@ export default function BlogIndex({ posts }) {
         {/* Search */}
         <div className="relative max-w-md mb-6">
           <svg
-            width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            aria-hidden="true"
             className="absolute left-3 top-1/2 -translate-y-1/2 text-[#9A9A9A] pointer-events-none"
           >
             <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" strokeWidth="1.4" />
-            <path d="M10.5 10.5L14 14" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            <path
+              d="M10.5 10.5L14 14"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+            />
           </svg>
           <input
             type="search"
@@ -169,16 +192,15 @@ export default function BlogIndex({ posts }) {
             announces the new count to screen readers as the query changes. */}
         {(q || activeTag) && filtered.length > 0 && (
           <p className="text-[11px] tracking-wide text-[#9A9A9A] mb-6" aria-live="polite">
-            <span className="text-[#FF3C3C]">{filtered.length}</span> / {posts.length} {t("blog.postsLabel")}
+            <span className="text-[#FF3C3C]">{filtered.length}</span> / {posts.length}{" "}
+            {t("blog.postsLabel")}
           </p>
         )}
 
         {/* Posts */}
         {posts.length === 0 ? (
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-12 text-center">
-            <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">
-              {t("blog.noPosts")}
-            </p>
+            <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">{t("blog.noPosts")}</p>
           </div>
         ) : filtered.length === 0 ? (
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-12 text-center">

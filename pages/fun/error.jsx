@@ -22,7 +22,6 @@ export default function ErrorPage() {
 
       <div className="min-h-screen bg-[#0C0C0C] flex items-center justify-center px-6 font-mono">
         <div className="max-w-xl w-full">
-
           <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-5">
             500 · internal server error
           </p>
@@ -48,12 +47,25 @@ export default function ErrorPage() {
 
           {/* "Logs" */}
           <div className="border border-[#1A1A1A] px-4 py-3 text-[10px] text-[#2E2E2E] space-y-0.5 mb-8">
-            <p><span className="text-[#333]">INFO</span>  rin.contact booted in 1.1s</p>
-            <p><span className="text-[#333]">INFO</span>  coffee level: critical</p>
-            <p><span className="text-[#FF3C3C]">WARN</span>  neural net diverged — retrying</p>
-            <p><span className="text-[#FF3C3C]">WARN</span>  sleep() not found in /usr/bin</p>
-            <p><span className="text-[#FF3C3C] font-bold">ERROR</span> process rin.brain [PID 26] exited with code: coffee</p>
-            <p><span className="text-[#555]">INFO</span>  restarting in 3s...</p>
+            <p>
+              <span className="text-[#333]">INFO</span> rin.contact booted in 1.1s
+            </p>
+            <p>
+              <span className="text-[#333]">INFO</span> coffee level: critical
+            </p>
+            <p>
+              <span className="text-[#FF3C3C]">WARN</span> neural net diverged — retrying
+            </p>
+            <p>
+              <span className="text-[#FF3C3C]">WARN</span> sleep() not found in /usr/bin
+            </p>
+            <p>
+              <span className="text-[#FF3C3C] font-bold">ERROR</span> process rin.brain [PID 26]
+              exited with code: coffee
+            </p>
+            <p>
+              <span className="text-[#555]">INFO</span> restarting in 3s...
+            </p>
             <p className="text-[#222] mt-1">timestamp: {TIMESTAMP}</p>
           </div>
 

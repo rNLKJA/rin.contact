@@ -30,20 +30,59 @@ function CrispFigure({ caption, ariaLabel, labels, iterateLabel }) {
       >
         {CRISP_POS.map((n, i) => {
           const next = CRISP_POS[(i + 1) % CRISP_POS.length];
-          return <line key={`l${i}`} x1={n.x} y1={n.y} x2={next.x} y2={next.y} stroke="#FF3C3C" strokeWidth="1" opacity="0.35" />;
+          return (
+            <line
+              key={`l${i}`}
+              x1={n.x}
+              y1={n.y}
+              x2={next.x}
+              y2={next.y}
+              stroke="#FF3C3C"
+              strokeWidth="1"
+              opacity="0.35"
+            />
+          );
         })}
         {CRISP_POS.map((n, i) => {
           const accent = i === 3 || i === 4;
           return (
             <g key={`n${i}`}>
-              <rect x={n.x - 40} y={n.y - 13} width="80" height="26" rx="13"
-                fill={accent ? "#FF3C3C" : "none"} fillOpacity={accent ? 0.12 : 0}
-                stroke="#FF3C3C" strokeWidth={accent ? 1.4 : 1} opacity={accent ? 1 : 0.7} />
-              <text x={n.x} y={n.y + 4} textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">{labels[i]}</text>
+              <rect
+                x={n.x - 40}
+                y={n.y - 13}
+                width="80"
+                height="26"
+                rx="13"
+                fill={accent ? "#FF3C3C" : "none"}
+                fillOpacity={accent ? 0.12 : 0}
+                stroke="#FF3C3C"
+                strokeWidth={accent ? 1.4 : 1}
+                opacity={accent ? 1 : 0.7}
+              />
+              <text
+                x={n.x}
+                y={n.y + 4}
+                textAnchor="middle"
+                fontSize="10"
+                fontFamily="monospace"
+                fill="currentColor"
+              >
+                {labels[i]}
+              </text>
             </g>
           );
         })}
-        <text x="220" y="108" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.5">{iterateLabel}</text>
+        <text
+          x="220"
+          y="108"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.5"
+        >
+          {iterateLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -58,44 +97,43 @@ function EnBody() {
         <Link href="/knowledge/linear-algebra">the maths</Link>,{" "}
         <Link href="/knowledge/statistics">the statistics</Link>,{" "}
         <Link href="/knowledge/statistical-machine-learning">the models</Link>,{" "}
-        <Link href="/knowledge/database-systems">the systems</Link>. <Term>Applied data
-        science</Term> is the page about how those tools fit together into an actual
-        project: the messy, end-to-end journey from a half-formed business question to a
-        decision someone makes because of your work. The tools are necessary; knowing how
-        to run the project around them is what makes a data scientist effective.
+        <Link href="/knowledge/database-systems">the systems</Link>.{" "}
+        <Term>Applied data science</Term> is the page about how those tools fit together into an
+        actual project: the messy, end-to-end journey from a half-formed business question to a
+        decision someone makes because of your work. The tools are necessary; knowing how to run the
+        project around them is what makes a data scientist effective.
       </p>
       <p>
         The single most important idea here — and the one that's genuinely mine — is{" "}
-        <strong>problem-first, not model-first</strong>. Start from the decision that needs
-        making and the smallest amount of data to make it well, then reach for the right
-        tool rather than the fashionable one. This page is the synthesis of everything else,
-        organised around that principle.
+        <strong>problem-first, not model-first</strong>. Start from the decision that needs making
+        and the smallest amount of data to make it well, then reach for the right tool rather than
+        the fashionable one. This page is the synthesis of everything else, organised around that
+        principle.
       </p>
 
       <KSection id="what" eyebrow="01" title="Decisions, not models">
         <p>
           It's easy to think data science is about building models. It isn't — it's about{" "}
-          <em>improving decisions</em> with data, and a model is just one possible means to
-          that end. A great many problems are solved with a clear chart, a well-framed
-          metric, or a simple query, no model in sight. Mistaking the tool (modelling) for
-          the goal (a better decision) is the most common and most expensive error in the
-          field.
+          <em>improving decisions</em> with data, and a model is just one possible means to that
+          end. A great many problems are solved with a clear chart, a well-framed metric, or a
+          simple query, no model in sight. Mistaking the tool (modelling) for the goal (a better
+          decision) is the most common and most expensive error in the field.
         </p>
         <p>
-          So applied data science is judged by impact, not sophistication. A simple analysis
-          that changes what someone does beats an elegant model that sits unused. That
-          reframing — from "what can I build?" to "what decision can I improve, and what's
-          the least I need to do it?" — is the whole mindset.
+          So applied data science is judged by impact, not sophistication. A simple analysis that
+          changes what someone does beats an elegant model that sits unused. That reframing — from
+          "what can I build?" to "what decision can I improve, and what's the least I need to do
+          it?" — is the whole mindset.
         </p>
       </KSection>
 
       <KSection id="lifecycle" eyebrow="02" title="The project lifecycle">
         <p>
-          Real projects follow a recognisable arc, captured by frameworks like{" "}
-          <Term>CRISP-DM</Term> (Cross-Industry Standard Process for Data Mining). Its six
-          phases are a useful map — as long as you remember the most important thing about
-          them: <strong>it's a loop, not a line</strong>. You constantly circle back as what
-          you learn in one phase reshapes an earlier one.
+          Real projects follow a recognisable arc, captured by frameworks like <Term>CRISP-DM</Term>{" "}
+          (Cross-Industry Standard Process for Data Mining). Its six phases are a useful map — as
+          long as you remember the most important thing about them:{" "}
+          <strong>it's a loop, not a line</strong>. You constantly circle back as what you learn in
+          one phase reshapes an earlier one.
         </p>
 
         <CrispFigure
@@ -108,114 +146,109 @@ function EnBody() {
 
       <KSection id="question" eyebrow="03" title="Framing the right question">
         <p>
-          The first phase decides whether the project succeeds, and it has nothing to do
-          with code. <Term>Business understanding</Term> means translating a vague ask ("can
-          we use AI here?") into a precise, answerable question tied to a decision: what
-          choice will change based on the answer, what would "good" look like, and what's the
-          simplest result that would be useful?
+          The first phase decides whether the project succeeds, and it has nothing to do with code.{" "}
+          <Term>Business understanding</Term> means translating a vague ask ("can we use AI here?")
+          into a precise, answerable question tied to a decision: what choice will change based on
+          the answer, what would "good" look like, and what's the simplest result that would be
+          useful?
         </p>
         <p>
-          This is where most projects quietly fail — not in the modelling, but in solving the
-          wrong problem precisely. A brilliant answer to the wrong question is worth nothing,
-          so the discipline is to push back, clarify, and reframe <em>before</em> touching
-          the data. Get this right and the rest is execution; get it wrong and no amount of
-          technical skill saves you.
+          This is where most projects quietly fail — not in the modelling, but in solving the wrong
+          problem precisely. A brilliant answer to the wrong question is worth nothing, so the
+          discipline is to push back, clarify, and reframe <em>before</em> touching the data. Get
+          this right and the rest is execution; get it wrong and no amount of technical skill saves
+          you.
         </p>
       </KSection>
 
       <KSection id="datamodel" eyebrow="04" title="Data and modelling">
         <p>
-          The middle of the project is the craft the other pages cover — and applied data
-          science is mostly about doing them in the right order and not skipping the
-          unglamorous parts:
+          The middle of the project is the craft the other pages cover — and applied data science is
+          mostly about doing them in the right order and not skipping the unglamorous parts:
         </p>
         <ul>
           <li>
-            <Term>Understand &amp; prepare the data</Term> — explore it, then clean and shape
-            it. This is the{" "}
-            <Link href="/knowledge/elements-of-data-processing">data processing</Link> work,
-            and it's still the bulk of the effort; the data usually lives in a{" "}
+            <Term>Understand &amp; prepare the data</Term> — explore it, then clean and shape it.
+            This is the <Link href="/knowledge/elements-of-data-processing">data processing</Link>{" "}
+            work, and it's still the bulk of the effort; the data usually lives in a{" "}
             <Link href="/knowledge/database-systems">database</Link> you query with SQL.
           </li>
           <li>
-            <Term>Model</Term> — pick the simplest method that fits the question, whether
-            that's a <Link href="/knowledge/linear-statistical-models">regression</Link>, a{" "}
-            <Link href="/knowledge/statistical-machine-learning">machine-learning model</Link>,
-            or just a well-chosen statistic. Start with a baseline.
+            <Term>Model</Term> — pick the simplest method that fits the question, whether that's a{" "}
+            <Link href="/knowledge/linear-statistical-models">regression</Link>, a{" "}
+            <Link href="/knowledge/statistical-machine-learning">machine-learning model</Link>, or
+            just a well-chosen statistic. Start with a baseline.
           </li>
           <li>
             <Term>Evaluate</Term> — honestly, on held-out data, with a metric that matches the
             real-world cost of being wrong (the lesson from the{" "}
-            <Link href="/knowledge/statistics">statistics</Link> and ML pages). And evaluate
-            against the <em>decision</em>, not just the leaderboard.
+            <Link href="/knowledge/statistics">statistics</Link> and ML pages). And evaluate against
+            the <em>decision</em>, not just the leaderboard.
           </li>
         </ul>
         <p>
-          The applied skill isn't knowing every algorithm — it's choosing the least complex
-          one that answers the question, and resisting the pull to over-engineer.
+          The applied skill isn't knowing every algorithm — it's choosing the least complex one that
+          answers the question, and resisting the pull to over-engineer.
         </p>
       </KSection>
 
       <KSection id="deploy" eyebrow="05" title="Deployment and monitoring">
         <p>
-          A result that never leaves your laptop changes nothing. <Term>Deployment</Term> is
-          putting the work where it makes a difference — a{" "}
-          <Link href="/knowledge/web-information-technology">dashboard</Link> a stakeholder
-          uses, a report in a decision meeting, a model wired into a system. This is often
-          the hardest, least-taught part, and where data science meets real engineering.
+          A result that never leaves your laptop changes nothing. <Term>Deployment</Term> is putting
+          the work where it makes a difference — a{" "}
+          <Link href="/knowledge/web-information-technology">dashboard</Link> a stakeholder uses, a
+          report in a decision meeting, a model wired into a system. This is often the hardest,
+          least-taught part, and where data science meets real engineering.
         </p>
         <p>
-          And deployment isn't the end, because <strong>a model is a product, not a
-          deliverable</strong>. The world changes, so the data feeding the model{" "}
-          <em>drifts</em> away from what it was trained on, and performance silently decays.
-          So you <Term>monitor</Term> it in production and <Term>retrain</Term> when it slips
-          — the data-drift lesson from the ML side. The job continues long after the first
-          version ships.
+          And deployment isn't the end, because{" "}
+          <strong>a model is a product, not a deliverable</strong>. The world changes, so the data
+          feeding the model <em>drifts</em> away from what it was trained on, and performance
+          silently decays. So you <Term>monitor</Term> it in production and <Term>retrain</Term>{" "}
+          when it slips — the data-drift lesson from the ML side. The job continues long after the
+          first version ships.
         </p>
       </KSection>
 
       <KSection id="communicate" eyebrow="06" title="Communicating the result">
         <p>
-          The most under-valued skill in the whole pipeline: a correct analysis nobody
-          understands or trusts has zero impact. <Term>Communication</Term> — translating
-          technical findings into a clear story a decision-maker can act on — is what converts
-          good analysis into a good decision. It's important enough to have its own page
-          (Science Communication), but it belongs in the lifecycle too: you should be
-          thinking about how you'll explain the result from the very first phase, because it
-          shapes what's worth doing.
+          The most under-valued skill in the whole pipeline: a correct analysis nobody understands
+          or trusts has zero impact. <Term>Communication</Term> — translating technical findings
+          into a clear story a decision-maker can act on — is what converts good analysis into a
+          good decision. It's important enough to have its own page (Science Communication), but it
+          belongs in the lifecycle too: you should be thinking about how you'll explain the result
+          from the very first phase, because it shapes what's worth doing.
         </p>
       </KSection>
 
       <KSection id="ethics" eyebrow="07" title="Ethics and reproducibility">
         <p>
           Working with data carries responsibility, and two threads run through every phase.{" "}
-          <Term>Reproducibility</Term> means the whole path from raw data to result is code
-          anyone can re-run to get the same answer — the standard from the{" "}
-          <Link href="/knowledge/elements-of-data-processing">data processing</Link> page,
-          and what makes work auditable and trustworthy. <Term>Ethics</Term> means taking
-          seriously the bias, privacy, fairness, and consequences of what you build — a model
-          trained on biased data entrenches that bias, and in government and health work the
-          stakes are real people. These aren't a final checklist; they're constraints you
-          carry from the first question to the last deployment.
+          <Term>Reproducibility</Term> means the whole path from raw data to result is code anyone
+          can re-run to get the same answer — the standard from the{" "}
+          <Link href="/knowledge/elements-of-data-processing">data processing</Link> page, and what
+          makes work auditable and trustworthy. <Term>Ethics</Term> means taking seriously the bias,
+          privacy, fairness, and consequences of what you build — a model trained on biased data
+          entrenches that bias, and in government and health work the stakes are real people. These
+          aren't a final checklist; they're constraints you carry from the first question to the
+          last deployment.
         </p>
       </KSection>
 
       <KSection id="philosophy" eyebrow="08" title="Problem-first">
         <p>
           Tie it all together and you get a philosophy, not just a process.{" "}
-          <strong>Problem-first, not model-first</strong>: begin with the decision, find the
-          minimum data and the simplest method to make it well, and value impact over
-          sophistication. It's what lets the same person be useful in a research lab, a
-          government intelligence team, and an engineering project — because the framework is
-          constant even as the tools change.
+          <strong>Problem-first, not model-first</strong>: begin with the decision, find the minimum
+          data and the simplest method to make it well, and value impact over sophistication. It's
+          what lets the same person be useful in a research lab, a government intelligence team, and
+          an engineering project — because the framework is constant even as the tools change.
         </p>
         <Callout type="intuition">
           <p>
-            The whole section maps onto this one page: the maths and stats are the{" "}
-            <em>methods</em>, the systems pages are <em>where it runs</em>, the ML and
-            modelling pages are <em>the modelling phase</em> — and applied data science is
-            the loop that strings them into a project aimed at a real decision. Every tool
-            here is in service of that.
+            The whole section maps onto this one page: the maths and stats are the <em>methods</em>,
+            the systems pages are <em>where it runs</em>, the ML and modelling pages are{" "}
+            <em>the modelling phase</em> — and applied data science is the loop that strings them
+            into a project aimed at a real decision. Every tool here is in service of that.
           </p>
         </Callout>
       </KSection>
@@ -223,21 +256,23 @@ function EnBody() {
       <KSection id="applied" eyebrow="09" title="Where it shows up in my work">
         <Callout type="applied" label="The thread through every role">
           <p>
-            This is the closest thing I have to a personal operating principle, and it's the
-            same in every role I've held — <strong>start from the decision that needs making
-            and the minimum data to make it well</strong>, then reach for the right tool, not
-            the fashionable one. It's why I can move between a research lab, a government
-            intelligence team, and a startup: the maths and models change, but the
-            problem-first lifecycle doesn't.
+            This is the closest thing I have to a personal operating principle, and it's the same in
+            every role I've held —{" "}
+            <strong>
+              start from the decision that needs making and the minimum data to make it well
+            </strong>
+            , then reach for the right tool, not the fashionable one. It's why I can move between a
+            research lab, a government intelligence team, and a startup: the maths and models
+            change, but the problem-first lifecycle doesn't.
           </p>
           <p>
             In practice it shows up as restraint and as follow-through — pushing back to{" "}
-            <strong>frame the real question</strong> before building anything, reaching for
-            the <strong>simplest method</strong> that answers it, evaluating against the{" "}
-            <strong>decision</strong> rather than a metric, and treating the result as
-            something that has to be <strong>communicated, deployed, and maintained</strong>{" "}
-            to matter. Generalist by nature, specialist by discipline — this page is what
-            that actually means day to day.
+            <strong>frame the real question</strong> before building anything, reaching for the{" "}
+            <strong>simplest method</strong> that answers it, evaluating against the{" "}
+            <strong>decision</strong> rather than a metric, and treating the result as something
+            that has to be <strong>communicated, deployed, and maintained</strong> to matter.
+            Generalist by nature, specialist by discipline — this page is what that actually means
+            day to day.
           </p>
         </Callout>
       </KSection>
@@ -251,21 +286,21 @@ function EnBody() {
               sophistication.
             </li>
             <li>
-              The <strong>lifecycle</strong> (CRISP-DM): understand the problem → the data →
-              prepare → model → evaluate → deploy. It's a <strong>loop, not a line</strong>.
+              The <strong>lifecycle</strong> (CRISP-DM): understand the problem → the data → prepare
+              → model → evaluate → deploy. It's a <strong>loop, not a line</strong>.
             </li>
             <li>
-              <strong>Framing the right question</strong> is where projects succeed or fail —
-              a brilliant answer to the wrong question is worthless.
+              <strong>Framing the right question</strong> is where projects succeed or fail — a
+              brilliant answer to the wrong question is worthless.
             </li>
             <li>
-              Data prep is most of the work; pick the <strong>simplest model</strong> that
-              fits; <strong>evaluate honestly</strong> against the decision.
+              Data prep is most of the work; pick the <strong>simplest model</strong> that fits;{" "}
+              <strong>evaluate honestly</strong> against the decision.
             </li>
             <li>
-              <strong>Deploy</strong> (or it changes nothing) and <strong>monitor</strong> —
-              a model is a product that drifts and needs retraining.{" "}
-              <strong>Communicate</strong> or it has no impact.
+              <strong>Deploy</strong> (or it changes nothing) and <strong>monitor</strong> — a model
+              is a product that drifts and needs retraining. <strong>Communicate</strong> or it has
+              no impact.
             </li>
             <li>
               Carry <strong>reproducibility and ethics</strong> throughout. The throughline:{" "}
@@ -292,8 +327,8 @@ function ZhBody() {
         起来，才是让一名数据科学家有效的东西。
       </p>
       <p>
-        这里最重要的单一想法——也是真正属于我自己的那个——是<strong>问题优先，而非模型优先
-        </strong>。从需要做出的决策、以及做好它所需的最少数据出发，再去拿对的工具，而不是
+        这里最重要的单一想法——也是真正属于我自己的那个——是<strong>问题优先，而非模型优先</strong>
+        。从需要做出的决策、以及做好它所需的最少数据出发，再去拿对的工具，而不是
         时髦的工具。这一页是其余一切的综合，围绕那条原则来组织。
       </p>
 
@@ -314,8 +349,8 @@ function ZhBody() {
       <KSection id="lifecycle" eyebrow="02" title="项目生命周期">
         <p>
           真实的项目遵循一条可辨认的弧线，被诸如 <Term>CRISP-DM</Term>（跨行业数据挖掘标准
-          流程）这样的框架所刻画。它的六个阶段是一张有用的地图——只要你记住关于它们最重要的
-          一点：<strong>它是一个循环，而非一条直线</strong>。你会不断地绕回去，因为你在一个
+          流程）这样的框架所刻画。它的六个阶段是一张有用的地图——只要你记住关于它们最重要的 一点：
+          <strong>它是一个循环，而非一条直线</strong>。你会不断地绕回去，因为你在一个
           阶段里学到的东西，会重塑更早的某个阶段。
         </p>
 
@@ -359,8 +394,8 @@ function ZhBody() {
             仅仅一个选得好的统计量。先从一个基线开始。
           </li>
           <li>
-            <Term>评估</Term>——诚实地、在留出的数据上、用一个与「出错的现实代价」相匹配的指标
-            （来自<Link href="/knowledge/statistics">统计</Link>页与 ML 页的教训）。并且要对照
+            <Term>评估</Term>——诚实地、在留出的数据上、用一个与「出错的现实代价」相匹配的指标 （来自
+            <Link href="/knowledge/statistics">统计</Link>页与 ML 页的教训）。并且要对照
             <em>决策</em>来评估，而不只是排行榜。
           </li>
         </ul>
@@ -409,15 +444,16 @@ function ZhBody() {
 
       <KSection id="philosophy" eyebrow="08" title="问题优先">
         <p>
-          把这一切串起来，你得到的是一种哲学，而不只是一道流程。<strong>问题优先，而非模型
-          优先</strong>：从决策出发，找出做好它所需的最少数据与最简单的方法，并看重影响胜于
+          把这一切串起来，你得到的是一种哲学，而不只是一道流程。
+          <strong>问题优先，而非模型 优先</strong>
+          ：从决策出发，找出做好它所需的最少数据与最简单的方法，并看重影响胜于
           精巧。正是它让同一个人能在科研实验室、政府情报团队和工程项目里都派上用场——因为即便
           工具在变，框架始终不变。
         </p>
         <Callout type="intuition">
           <p>
-            整个板块都映射到这一页上：数学与统计是<em>方法</em>，系统页是<em>它在哪里运行</em>，
-            ML 与建模页是<em>建模阶段</em>——而应用数据科学是把它们串成一个、瞄准一个真实决策的
+            整个板块都映射到这一页上：数学与统计是<em>方法</em>，系统页是<em>它在哪里运行</em>， ML
+            与建模页是<em>建模阶段</em>——而应用数据科学是把它们串成一个、瞄准一个真实决策的
             项目的那个循环。这里的每一件工具，都服务于那一点。
           </p>
         </Callout>
@@ -426,15 +462,17 @@ function ZhBody() {
       <KSection id="applied" eyebrow="09" title="它在我工作中的体现">
         <Callout type="applied" label="贯穿每一个角色的那条线">
           <p>
-            这是我最接近于个人工作准则的东西，在我担任过的每一个角色里都是一样的——<strong>从
-            需要做出的决策、以及做好它所需的最少数据出发</strong>，再去拿对的工具，而非时髦的
+            这是我最接近于个人工作准则的东西，在我担任过的每一个角色里都是一样的——
+            <strong>从 需要做出的决策、以及做好它所需的最少数据出发</strong>
+            ，再去拿对的工具，而非时髦的
             那个。这就是为什么我能在科研实验室、政府情报团队与一家创业公司之间穿梭：数学与模型
             在变，但问题优先的生命周期不变。
           </p>
           <p>
-            在实践中，它表现为克制，也表现为善始善终——在构建任何东西之前先回推以<strong>框定
-            真正的问题</strong>，去拿能回答它的<strong>最简单的方法</strong>，对照<strong>决策
-            </strong>而非一个指标来评估，并把结果当作一件必须被<strong>传达、部署、维护</strong>
+            在实践中，它表现为克制，也表现为善始善终——在构建任何东西之前先回推以
+            <strong>框定 真正的问题</strong>，去拿能回答它的<strong>最简单的方法</strong>，对照
+            <strong>决策</strong>而非一个指标来评估，并把结果当作一件必须被
+            <strong>传达、部署、维护</strong>
             才能产生意义的东西。天性是通才，训练成专才——这一页就是那句话在日常中究竟意味着什么。
           </p>
         </Callout>
@@ -455,16 +493,16 @@ function ZhBody() {
               <strong>框定正确的问题</strong>是项目成败所系——对错误问题的一个绝妙答案毫无价值。
             </li>
             <li>
-              数据准备是大部分工作；挑选贴合的<strong>最简单模型</strong>；对照决策<strong>诚实
-              地评估</strong>。
+              数据准备是大部分工作；挑选贴合的<strong>最简单模型</strong>；对照决策
+              <strong>诚实 地评估</strong>。
             </li>
             <li>
               <strong>部署</strong>（否则什么都改变不了）并<strong>监控</strong>——模型是一个会
               漂移、需要重训的产品。<strong>传达</strong>，否则它毫无影响。
             </li>
             <li>
-              全程背负<strong>可复现性与伦理</strong>。那条贯穿线：<strong>问题优先，而非模型
-              优先</strong>。
+              全程背负<strong>可复现性与伦理</strong>。那条贯穿线：
+              <strong>问题优先，而非模型 优先</strong>。
             </li>
           </ul>
         </Callout>

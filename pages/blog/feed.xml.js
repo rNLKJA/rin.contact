@@ -31,12 +31,15 @@ function cdata(html) {
 
 function generateRssXml(posts) {
   const blogUrl = `${SITE_URL}/blog/`;
-  const lastBuild = posts.length > 0 ? new Date(posts[0].date).toUTCString() : new Date().toUTCString();
+  const lastBuild =
+    posts.length > 0 ? new Date(posts[0].date).toUTCString() : new Date().toUTCString();
 
   const items = posts
     .map((p) => {
       const url = `${SITE_URL}/blog/${esc(p.slug)}/`;
-      const categories = (p.tags || []).map((t) => `\n      <category>${esc(t)}</category>`).join("");
+      const categories = (p.tags || [])
+        .map((t) => `\n      <category>${esc(t)}</category>`)
+        .join("");
       const content = p.contentHtml
         ? `\n      <content:encoded>${cdata(absolutise(p.contentHtml))}</content:encoded>`
         : "";

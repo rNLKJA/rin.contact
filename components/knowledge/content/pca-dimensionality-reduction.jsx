@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/pca-dimensionality-reduction.
@@ -26,19 +33,55 @@ function PcaCloudFigure({ caption, ariaLabel }) {
         aria-label={ariaLabel}
       >
         {[
-          [120, 150], [150, 138], [165, 120], [185, 132], [200, 110],
-          [215, 122], [235, 100], [250, 112], [270, 92], [290, 100],
-          [180, 118], [225, 108], [205, 128], [255, 96], [160, 132],
+          [120, 150],
+          [150, 138],
+          [165, 120],
+          [185, 132],
+          [200, 110],
+          [215, 122],
+          [235, 100],
+          [250, 112],
+          [270, 92],
+          [290, 100],
+          [180, 118],
+          [225, 108],
+          [205, 128],
+          [255, 96],
+          [160, 132],
         ].map(([x, y], i) => (
           <circle key={i} cx={x} cy={y} r="3" fill="currentColor" opacity="0.5" />
         ))}
-        <line x1="120" y1="152" x2="300" y2="92" stroke="#FF3C3C" strokeWidth="2" markerEnd="url(#pca-ah)" />
-        <text x="306" y="90" fontSize="11" fontFamily="monospace" fill="#FF3C3C">PC1</text>
-        <line x1="210" y1="122" x2="240" y2="158" stroke="currentColor" strokeWidth="1.6" markerEnd="url(#pca-ah2)" />
-        <text x="244" y="172" fontSize="11" fontFamily="monospace" fill="currentColor">PC2</text>
+        <line
+          x1="120"
+          y1="152"
+          x2="300"
+          y2="92"
+          stroke="#FF3C3C"
+          strokeWidth="2"
+          markerEnd="url(#pca-ah)"
+        />
+        <text x="306" y="90" fontSize="11" fontFamily="monospace" fill="#FF3C3C">
+          PC1
+        </text>
+        <line
+          x1="210"
+          y1="122"
+          x2="240"
+          y2="158"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          markerEnd="url(#pca-ah2)"
+        />
+        <text x="244" y="172" fontSize="11" fontFamily="monospace" fill="currentColor">
+          PC2
+        </text>
         <defs>
-          <marker id="pca-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" /></marker>
-          <marker id="pca-ah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="currentColor" /></marker>
+          <marker id="pca-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" />
+          </marker>
+          <marker id="pca-ah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="currentColor" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -54,16 +97,68 @@ function ScreeFigure({ caption, ariaLabel, elbowLabel, axisLabel }) {
         role="img"
         aria-label={ariaLabel}
       >
-        <line x1="40" y1="140" x2="420" y2="140" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
-        <line x1="40" y1="20" x2="40" y2="140" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
+        <line
+          x1="40"
+          y1="140"
+          x2="420"
+          y2="140"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
+        <line
+          x1="40"
+          y1="20"
+          x2="40"
+          y2="140"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
         {[
-          [60, 95], [105, 62], [150, 40], [195, 22], [240, 15], [285, 11], [330, 9], [375, 7],
+          [60, 95],
+          [105, 62],
+          [150, 40],
+          [195, 22],
+          [240, 15],
+          [285, 11],
+          [330, 9],
+          [375, 7],
         ].map(([x, h], i) => (
-          <rect key={i} x={x} y={140 - h} width="30" height={h} fill={i < 3 ? "#FF3C3C" : "currentColor"} fillOpacity={i < 3 ? "0.7" : "0.35"} />
+          <rect
+            key={i}
+            x={x}
+            y={140 - h}
+            width="30"
+            height={h}
+            fill={i < 3 ? "#FF3C3C" : "currentColor"}
+            fillOpacity={i < 3 ? "0.7" : "0.35"}
+          />
         ))}
-        <line x1="208" y1="30" x2="208" y2="140" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
-        <text x="212" y="34" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{elbowLabel}</text>
-        <text x="225" y="158" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{axisLabel}</text>
+        <line
+          x1="208"
+          y1="30"
+          x2="208"
+          y2="140"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeDasharray="3 3"
+          opacity="0.6"
+        />
+        <text x="212" y="34" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {elbowLabel}
+        </text>
+        <text
+          x="225"
+          y="158"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {axisLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -74,71 +169,68 @@ function EnBody() {
   return (
     <>
       <p>
-        Real datasets are wide — hundreds or thousands of columns — but most of those
-        columns are correlated, redundant, or noise. <Term>Dimensionality
-        reduction</Term> compresses that width down to a handful of directions that
-        capture what actually varies, and <Term>Principal Component Analysis</Term>{" "}
-        (PCA) is the classic, linear way to do it. It's where the{" "}
-        <Link href="/knowledge/linear-algebra">linear algebra</Link> of eigenvectors
-        and the <Link href="/knowledge/statistics">statistics</Link> of variance meet
-        and become genuinely useful.
+        Real datasets are wide — hundreds or thousands of columns — but most of those columns are
+        correlated, redundant, or noise. <Term>Dimensionality reduction</Term> compresses that width
+        down to a handful of directions that capture what actually varies, and{" "}
+        <Term>Principal Component Analysis</Term> (PCA) is the classic, linear way to do it. It's
+        where the <Link href="/knowledge/linear-algebra">linear algebra</Link> of eigenvectors and
+        the <Link href="/knowledge/statistics">statistics</Link> of variance meet and become
+        genuinely useful.
       </p>
       <p>
-        The payoff is everywhere: faster models, plots you can actually see,
-        de-noised data, and a cure for the correlated-feature problems that break{" "}
-        <Link href="/knowledge/linear-statistical-models">regression</Link>. This page
-        builds PCA from the ground up — why high dimensions hurt, what "principal
-        component" really means, and exactly how the maths finds them.
+        The payoff is everywhere: faster models, plots you can actually see, de-noised data, and a
+        cure for the correlated-feature problems that break{" "}
+        <Link href="/knowledge/linear-statistical-models">regression</Link>. This page builds PCA
+        from the ground up — why high dimensions hurt, what "principal component" really means, and
+        exactly how the maths finds them.
       </p>
 
       <KSection id="curse" eyebrow="01" title="The curse of dimensionality">
         <p>
-          High-dimensional space is deeply unintuitive, and it works against you in
-          ways that have a name: the <Term>curse of dimensionality</Term>. As you add
-          features, the volume of the space grows exponentially, so your data points
-          become hopelessly sparse — everything is far from everything else, and the
-          notion of "nearby" that powers clustering and nearest-neighbours quietly
-          breaks down.
+          High-dimensional space is deeply unintuitive, and it works against you in ways that have a
+          name: the <Term>curse of dimensionality</Term>. As you add features, the volume of the
+          space grows exponentially, so your data points become hopelessly sparse — everything is
+          far from everything else, and the notion of "nearby" that powers clustering and
+          nearest-neighbours quietly breaks down.
         </p>
         <p>Concretely, more dimensions mean:</p>
         <ul>
           <li>
-            <Term>Sparsity</Term> — you'd need exponentially more data to densely
-            cover the space, so models have little to learn from.
+            <Term>Sparsity</Term> — you'd need exponentially more data to densely cover the space,
+            so models have little to learn from.
           </li>
           <li>
-            <Term>Distance concentration</Term> — in high dimensions, the nearest and
-            farthest points end up almost equidistant, so similarity becomes
-            meaningless.
+            <Term>Distance concentration</Term> — in high dimensions, the nearest and farthest
+            points end up almost equidistant, so similarity becomes meaningless.
           </li>
           <li>
-            <Term>Overfitting and cost</Term> — more features give a model more ways
-            to fit noise, and everything runs slower.
+            <Term>Overfitting and cost</Term> — more features give a model more ways to fit noise,
+            and everything runs slower.
           </li>
         </ul>
         <p>
-          The saving grace is that real data rarely fills its space. Pixels in a face
-          photo, answers on a survey, sensor readings — they're heavily correlated, so
-          the data actually clusters on a much lower-dimensional surface inside the
-          high-dimensional box. PCA's job is to find that surface.
+          The saving grace is that real data rarely fills its space. Pixels in a face photo, answers
+          on a survey, sensor readings — they're heavily correlated, so the data actually clusters
+          on a much lower-dimensional surface inside the high-dimensional box. PCA's job is to find
+          that surface.
         </p>
       </KSection>
 
       <KSection id="idea" eyebrow="02" title="The core idea: variance is signal">
         <p>
-          PCA rests on one assumption: <Term>the directions in which the data varies
-          most are the most informative</Term>. A feature that's the same for every
-          point tells you nothing; a feature that spreads points far apart carries
-          information that distinguishes them. So PCA looks for new axes — ordered by
-          how much the data varies along them — and keeps only the top few.
+          PCA rests on one assumption:{" "}
+          <Term>the directions in which the data varies most are the most informative</Term>. A
+          feature that's the same for every point tells you nothing; a feature that spreads points
+          far apart carries information that distinguishes them. So PCA looks for new axes — ordered
+          by how much the data varies along them — and keeps only the top few.
         </p>
         <p>
-          These new axes, the <Term>principal components</Term>, have two defining
-          properties: each one points along the direction of maximum remaining
-          variance, and they're all <Term>orthogonal</Term> (mutually perpendicular,
-          hence uncorrelated). The first captures the most spread, the second the most
-          of what's left, and so on. Keep the first two or three and you've kept the
-          bulk of the structure in a form you can plot and compute with cheaply.
+          These new axes, the <Term>principal components</Term>, have two defining properties: each
+          one points along the direction of maximum remaining variance, and they're all{" "}
+          <Term>orthogonal</Term> (mutually perpendicular, hence uncorrelated). The first captures
+          the most spread, the second the most of what's left, and so on. Keep the first two or
+          three and you've kept the bulk of the structure in a form you can plot and compute with
+          cheaply.
         </p>
 
         <PcaCloudFigure
@@ -149,11 +241,10 @@ function EnBody() {
 
       <KSection id="covariance" eyebrow="03" title="Variance and the covariance matrix">
         <p>
-          To find directions of maximum variance you first need to measure how the
-          features vary together. Start by <Term>centring</Term> the data — subtract
-          each feature's mean so the cloud sits at the origin. Then the{" "}
-          <Term>covariance matrix</Term> summarises all the pairwise relationships: for
-          a centred data matrix <TeX>{String.raw`X`}</TeX> with{" "}
+          To find directions of maximum variance you first need to measure how the features vary
+          together. Start by <Term>centring</Term> the data — subtract each feature's mean so the
+          cloud sits at the origin. Then the <Term>covariance matrix</Term> summarises all the
+          pairwise relationships: for a centred data matrix <TeX>{String.raw`X`}</TeX> with{" "}
           <TeX>{String.raw`n`}</TeX> rows,
         </p>
         <Formula
@@ -163,81 +254,75 @@ function EnBody() {
           {TEX.cov}
         </Formula>
         <p>
-          Each diagonal entry <TeX>{String.raw`C_{ii}`}</TeX> is the variance of
-          feature <TeX>{String.raw`i`}</TeX>; each off-diagonal{" "}
-          <TeX>{String.raw`C_{ij}`}</TeX> is the covariance between features{" "}
-          <TeX>{String.raw`i`}</TeX> and <TeX>{String.raw`j`}</TeX> — positive if they
-          rise together, negative if one rises as the other falls. This one matrix
-          encodes the entire shape of the data cloud, and the principal directions are
-          hiding inside it.
+          Each diagonal entry <TeX>{String.raw`C_{ii}`}</TeX> is the variance of feature{" "}
+          <TeX>{String.raw`i`}</TeX>; each off-diagonal <TeX>{String.raw`C_{ij}`}</TeX> is the
+          covariance between features <TeX>{String.raw`i`}</TeX> and <TeX>{String.raw`j`}</TeX> —
+          positive if they rise together, negative if one rises as the other falls. This one matrix
+          encodes the entire shape of the data cloud, and the principal directions are hiding inside
+          it.
         </p>
         <Callout type="pitfall">
           <p>
-            <strong>Scale matters — standardise first.</strong> PCA chases variance, so
-            a feature measured in large units (salary in dollars) will dwarf one in
-            small units (years of experience) purely by accident of scale. Unless the
-            units are genuinely comparable, divide each feature by its standard
-            deviation first (use the correlation matrix, not raw covariance) — otherwise
-            PCA just finds your biggest-numbered column.
+            <strong>Scale matters — standardise first.</strong> PCA chases variance, so a feature
+            measured in large units (salary in dollars) will dwarf one in small units (years of
+            experience) purely by accident of scale. Unless the units are genuinely comparable,
+            divide each feature by its standard deviation first (use the correlation matrix, not raw
+            covariance) — otherwise PCA just finds your biggest-numbered column.
           </p>
         </Callout>
       </KSection>
 
       <KSection id="components" eyebrow="04" title="Principal components">
         <p>
-          Here's the elegant result that makes PCA work: the principal components are
-          exactly the <Link href="/knowledge/linear-algebra">eigenvectors</Link> of
-          the covariance matrix, and each one's <Term>eigenvalue</Term> is the variance
-          captured along it.
+          Here's the elegant result that makes PCA work: the principal components are exactly the{" "}
+          <Link href="/knowledge/linear-algebra">eigenvectors</Link> of the covariance matrix, and
+          each one's <Term>eigenvalue</Term> is the variance captured along it.
         </p>
         <Formula label="C times v equals lambda times v: the eigenvectors v of the covariance matrix C are the principal components, and the eigenvalue lambda is the variance along that component.">
           {TEX.eigen}
         </Formula>
         <p>
-          Sort the eigenvectors by their eigenvalues, largest first, and you have your
-          new axes in order of importance: <TeX>{String.raw`\mathbf{v}_1`}</TeX> (the
-          first principal component) is the direction of greatest variance,{" "}
-          <TeX>{String.raw`\mathbf{v}_2`}</TeX> the next, and so on — each
-          automatically orthogonal to the rest because a symmetric matrix's
-          eigenvectors always are. Maximising variance over the data <em>is</em>{" "}
-          solving this eigenvalue problem; that's the whole theorem in one line.
+          Sort the eigenvectors by their eigenvalues, largest first, and you have your new axes in
+          order of importance: <TeX>{String.raw`\mathbf{v}_1`}</TeX> (the first principal component)
+          is the direction of greatest variance, <TeX>{String.raw`\mathbf{v}_2`}</TeX> the next, and
+          so on — each automatically orthogonal to the rest because a symmetric matrix's
+          eigenvectors always are. Maximising variance over the data <em>is</em> solving this
+          eigenvalue problem; that's the whole theorem in one line.
         </p>
       </KSection>
 
       <KSection id="svd" eyebrow="05" title="The SVD route">
         <p>
           In practice you rarely form the covariance matrix at all — you run the{" "}
-          <Link href="/knowledge/linear-algebra">Singular Value Decomposition</Link> on
-          the centred data directly, because it's more numerically stable:
+          <Link href="/knowledge/linear-algebra">Singular Value Decomposition</Link> on the centred
+          data directly, because it's more numerically stable:
         </p>
         <Formula label="X equals U Sigma V transpose; the columns of V are the principal components, and the singular values in Sigma are the square roots of the eigenvalues, so they encode the variance.">
           {TEX.svd}
         </Formula>
         <p>
-          The columns of <TeX>{String.raw`V`}</TeX> are precisely the principal
-          components, and the squared singular values in{" "}
-          <TeX>{String.raw`\Sigma`}</TeX> are proportional to the eigenvalues — so the
-          SVD hands you the components and their variances in one stable step. This is
-          the same "rotate–stretch–rotate" decomposition from the linear algebra page;
-          PCA is one of its most important applications.
+          The columns of <TeX>{String.raw`V`}</TeX> are precisely the principal components, and the
+          squared singular values in <TeX>{String.raw`\Sigma`}</TeX> are proportional to the
+          eigenvalues — so the SVD hands you the components and their variances in one stable step.
+          This is the same "rotate–stretch–rotate" decomposition from the linear algebra page; PCA
+          is one of its most important applications.
         </p>
       </KSection>
 
       <KSection id="howmany" eyebrow="06" title="How many components to keep">
         <p>
           Reduction means choosing where to cut. The standard tool is the{" "}
-          <Term>proportion of variance explained</Term>: each component's eigenvalue as
-          a share of the total tells you how much information it carries.
+          <Term>proportion of variance explained</Term>: each component's eigenvalue as a share of
+          the total tells you how much information it carries.
         </p>
         <Formula label="The proportion of variance explained by component i equals lambda i divided by the sum of all the eigenvalues.">
           {TEX.explained}
         </Formula>
         <p>
-          Plot the eigenvalues in descending order and you get a <Term>scree plot</Term>:
-          it usually drops steeply then flattens, and the "elbow" marks where extra
-          components stop earning their keep. A common rule is to keep enough components
-          to retain 90–95% of the total variance — often a startlingly small number,
-          because real data is so correlated.
+          Plot the eigenvalues in descending order and you get a <Term>scree plot</Term>: it usually
+          drops steeply then flattens, and the "elbow" marks where extra components stop earning
+          their keep. A common rule is to keep enough components to retain 90–95% of the total
+          variance — often a startlingly small number, because real data is so correlated.
         </p>
 
         <ScreeFigure
@@ -250,48 +335,45 @@ function EnBody() {
 
       <KSection id="project" eyebrow="07" title="Projecting and reconstructing">
         <p>
-          Once you've chosen the top <TeX>{String.raw`k`}</TeX> components, stack them
-          as columns of a matrix <TeX>{String.raw`W`}</TeX> and{" "}
-          <Term>project</Term> your data onto them — a simple matrix multiply that
-          turns each <TeX>{String.raw`d`}</TeX>-dimensional row into{" "}
+          Once you've chosen the top <TeX>{String.raw`k`}</TeX> components, stack them as columns of
+          a matrix <TeX>{String.raw`W`}</TeX> and <Term>project</Term> your data onto them — a
+          simple matrix multiply that turns each <TeX>{String.raw`d`}</TeX>-dimensional row into{" "}
           <TeX>{String.raw`k`}</TeX> numbers:
         </p>
         <Formula label="Z equals X times W: the reduced data Z is the original centred data X projected onto the top k principal components in W.">
           {TEX.project}
         </Formula>
         <p>
-          <TeX>{String.raw`Z`}</TeX> is your compressed dataset — same rows, far fewer
-          columns, each new column an uncorrelated principal-component score. You can
-          also run it backwards, <TeX>{String.raw`\hat{X} = Z\,W^{\top}`}</TeX>, to{" "}
-          <Term>reconstruct</Term> an approximation of the original data from the few
-          components you kept. The gap between <TeX>{String.raw`X`}</TeX> and{" "}
-          <TeX>{String.raw`\hat{X}`}</TeX> is exactly the variance you discarded — which
-          is why, for image or data compression, keeping the top components stores
-          almost the whole picture in a fraction of the numbers.
+          <TeX>{String.raw`Z`}</TeX> is your compressed dataset — same rows, far fewer columns, each
+          new column an uncorrelated principal-component score. You can also run it backwards,{" "}
+          <TeX>{String.raw`\hat{X} = Z\,W^{\top}`}</TeX>, to <Term>reconstruct</Term> an
+          approximation of the original data from the few components you kept. The gap between{" "}
+          <TeX>{String.raw`X`}</TeX> and <TeX>{String.raw`\hat{X}`}</TeX> is exactly the variance
+          you discarded — which is why, for image or data compression, keeping the top components
+          stores almost the whole picture in a fraction of the numbers.
         </p>
       </KSection>
 
       <KSection id="limits" eyebrow="08" title="What PCA can't do">
         <p>
-          PCA is powerful but it has real blind spots, and knowing them is what stops
-          you misusing it:
+          PCA is powerful but it has real blind spots, and knowing them is what stops you misusing
+          it:
         </p>
         <ul>
           <li>
-            <Term>It's linear.</Term> PCA only finds flat (linear) structure. Data
-            curled onto a curved manifold (a spiral, an S-curve) defeats it — that's
-            when you reach for non-linear methods like t-SNE, UMAP, or kernel PCA.
+            <Term>It's linear.</Term> PCA only finds flat (linear) structure. Data curled onto a
+            curved manifold (a spiral, an S-curve) defeats it — that's when you reach for non-linear
+            methods like t-SNE, UMAP, or kernel PCA.
           </li>
           <li>
-            <Term>Components aren't interpretable.</Term> A principal component is a
-            blend of all original features, so "PC1" rarely maps to a meaningful
-            real-world quantity. You trade interpretability for compactness.
+            <Term>Components aren't interpretable.</Term> A principal component is a blend of all
+            original features, so "PC1" rarely maps to a meaningful real-world quantity. You trade
+            interpretability for compactness.
           </li>
           <li>
-            <Term>Variance isn't always relevance.</Term> PCA assumes the
-            high-variance directions matter most, but for a <em>classification</em>{" "}
-            task the signal separating classes can live in a low-variance direction
-            PCA throws away. (That's what LDA is for.)
+            <Term>Variance isn't always relevance.</Term> PCA assumes the high-variance directions
+            matter most, but for a <em>classification</em> task the signal separating classes can
+            live in a low-variance direction PCA throws away. (That's what LDA is for.)
           </li>
           <li>
             <Term>It's scale-sensitive</Term> — the standardisation caveat from above.
@@ -303,20 +385,20 @@ function EnBody() {
         <Callout type="applied" label="The pragmatic first move on wide data">
           <p>
             PCA is one of the first things I reach for when a dataset is wide. As a{" "}
-            <strong>pre-processing step before clustering</strong> it's invaluable —
-            reduce to a few components first and the distance-based methods on the{" "}
-            <Link href="/knowledge/statistical-machine-learning">ML</Link> side actually
-            work again, because you've escaped the curse of dimensionality. It's also
-            my go-to for <strong>EDA</strong>: projecting a 50-column table down to two
-            principal components and plotting it often reveals the clusters, outliers,
-            and structure that no single feature would show.
+            <strong>pre-processing step before clustering</strong> it's invaluable — reduce to a few
+            components first and the distance-based methods on the{" "}
+            <Link href="/knowledge/statistical-machine-learning">ML</Link> side actually work again,
+            because you've escaped the curse of dimensionality. It's also my go-to for{" "}
+            <strong>EDA</strong>: projecting a 50-column table down to two principal components and
+            plotting it often reveals the clusters, outliers, and structure that no single feature
+            would show.
           </p>
           <p>
-            And it's the clean fix for <strong>multicollinearity</strong> — when
-            features are so correlated they break a regression, PCA's orthogonal
-            components sidestep the problem entirely. It's the most direct payoff of the{" "}
-            <Link href="/knowledge/linear-algebra">eigenvector and SVD</Link> machinery
-            from the foundation.
+            And it's the clean fix for <strong>multicollinearity</strong> — when features are so
+            correlated they break a regression, PCA's orthogonal components sidestep the problem
+            entirely. It's the most direct payoff of the{" "}
+            <Link href="/knowledge/linear-algebra">eigenvector and SVD</Link> machinery from the
+            foundation.
           </p>
         </Callout>
       </KSection>
@@ -325,32 +407,31 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              High dimensions hurt (the <strong>curse of dimensionality</strong>:
-              sparsity, distance concentration), but real data lives on a
-              lower-dimensional surface. PCA finds it.
+              High dimensions hurt (the <strong>curse of dimensionality</strong>: sparsity, distance
+              concentration), but real data lives on a lower-dimensional surface. PCA finds it.
             </li>
             <li>
-              Core assumption: <strong>high-variance directions = signal</strong>.
-              Principal components are orthogonal axes ordered by variance.
+              Core assumption: <strong>high-variance directions = signal</strong>. Principal
+              components are orthogonal axes ordered by variance.
             </li>
             <li>
               They're the <strong>eigenvectors of the covariance matrix</strong>{" "}
               <TeX>{String.raw`C = \tfrac{1}{n-1}X^{\top}X`}</TeX> (or the columns of{" "}
-              <TeX>{String.raw`V`}</TeX> from the <strong>SVD</strong>); eigenvalues =
-              variance captured. <strong>Standardise first.</strong>
+              <TeX>{String.raw`V`}</TeX> from the <strong>SVD</strong>); eigenvalues = variance
+              captured. <strong>Standardise first.</strong>
             </li>
             <li>
-              Choose <TeX>{String.raw`k`}</TeX> via <strong>variance explained</strong>{" "}
-              / the scree-plot elbow (keep ~90–95%).
+              Choose <TeX>{String.raw`k`}</TeX> via <strong>variance explained</strong> / the
+              scree-plot elbow (keep ~90–95%).
             </li>
             <li>
               <strong>Project</strong> <TeX>{String.raw`Z = XW`}</TeX> to compress;{" "}
-              <TeX>{String.raw`\hat{X} = ZW^{\top}`}</TeX> to reconstruct. Discarded
-              variance = reconstruction error.
+              <TeX>{String.raw`\hat{X} = ZW^{\top}`}</TeX> to reconstruct. Discarded variance =
+              reconstruction error.
             </li>
             <li>
-              Limits: <strong>linear only</strong>, components aren't interpretable,
-              and high variance ≠ task relevance.
+              Limits: <strong>linear only</strong>, components aren't interpretable, and high
+              variance ≠ task relevance.
             </li>
           </ul>
         </Callout>
@@ -365,8 +446,8 @@ function ZhBody() {
     <>
       <p>
         真实的数据集很宽——成百上千列——但其中大多数列都是相关的、冗余的，或是噪声。
-        <Term>降维</Term>把这种宽度压缩成少数几个捕捉真正变化的方向，而<Term>主成分分析
-        </Term>（PCA）就是经典的、线性的做法。它正是特征向量的
+        <Term>降维</Term>把这种宽度压缩成少数几个捕捉真正变化的方向，而<Term>主成分分析</Term>
+        （PCA）就是经典的、线性的做法。它正是特征向量的
         <Link href="/knowledge/linear-algebra">线性代数</Link>与方差的
         <Link href="/knowledge/statistics">统计学</Link>相遇并变得真正有用之处。
       </p>
@@ -386,12 +467,10 @@ function ZhBody() {
         <p>具体而言，更多维度意味着：</p>
         <ul>
           <li>
-            <Term>稀疏性</Term>——你需要指数级更多的数据才能稠密地覆盖空间，所以模型几乎
-            无从学习。
+            <Term>稀疏性</Term>——你需要指数级更多的数据才能稠密地覆盖空间，所以模型几乎 无从学习。
           </li>
           <li>
-            <Term>距离集中</Term>——在高维中，最近和最远的点最终几乎等距，于是相似性变得
-            毫无意义。
+            <Term>距离集中</Term>——在高维中，最近和最远的点最终几乎等距，于是相似性变得 毫无意义。
           </li>
           <li>
             <Term>过拟合与开销</Term>——更多特征给模型更多拟合噪声的途径，而且一切都变慢。
@@ -399,16 +478,16 @@ function ZhBody() {
         </ul>
         <p>
           可取之处在于，真实数据很少填满它的空间。一张人脸照片中的像素、一份问卷上的答案、
-          传感器读数——它们高度相关，所以数据实际上聚集在高维盒子内部一个低得多维的曲面上。
-          PCA 的工作就是找到那个曲面。
+          传感器读数——它们高度相关，所以数据实际上聚集在高维盒子内部一个低得多维的曲面上。 PCA
+          的工作就是找到那个曲面。
         </p>
       </KSection>
 
       <KSection id="idea" eyebrow="02" title="核心思想：方差即信号">
         <p>
           PCA 建立在一个假设之上：<Term>数据变化最大的方向，信息量也最大</Term>。一个对每个
-          点都相同的特征什么也没告诉你；一个把点拉得很开的特征则承载着区分它们的信息。所以
-          PCA 寻找新的坐标轴——按数据沿它们变化多少来排序——只保留最靠前的几个。
+          点都相同的特征什么也没告诉你；一个把点拉得很开的特征则承载着区分它们的信息。所以 PCA
+          寻找新的坐标轴——按数据沿它们变化多少来排序——只保留最靠前的几个。
         </p>
         <p>
           这些新的坐标轴，即<Term>主成分</Term>，有两个定义性属性：每一个都指向剩余方差最大
@@ -426,9 +505,9 @@ function ZhBody() {
       <KSection id="covariance" eyebrow="03" title="方差与协方差矩阵">
         <p>
           要找到方差最大的方向，你首先需要衡量各特征是如何一起变化的。先把数据
-          <Term>中心化</Term>——减去每个特征的均值，让点云坐落在原点。然后<Term>协方差矩阵
-          </Term>概括了所有成对的关系：对于一个有 <TeX>{String.raw`n`}</TeX> 行的中心化数据
-          矩阵 <TeX>{String.raw`X`}</TeX>，
+          <Term>中心化</Term>——减去每个特征的均值，让点云坐落在原点。然后<Term>协方差矩阵</Term>
+          概括了所有成对的关系：对于一个有 <TeX>{String.raw`n`}</TeX> 行的中心化数据 矩阵{" "}
+          <TeX>{String.raw`X`}</TeX>，
         </p>
         <Formula
           label="协方差矩阵 C 等于 1 除以 n 减 1，乘以 X 的转置乘 X，其中 X 是中心化数据。"
@@ -438,10 +517,9 @@ function ZhBody() {
         </Formula>
         <p>
           每个对角元 <TeX>{String.raw`C_{ii}`}</TeX> 是特征 <TeX>{String.raw`i`}</TeX> 的
-          方差；每个非对角元 <TeX>{String.raw`C_{ij}`}</TeX> 是特征{" "}
-          <TeX>{String.raw`i`}</TeX> 与 <TeX>{String.raw`j`}</TeX> 之间的协方差——若它们
-          同涨为正，若一涨一跌为负。这一个矩阵编码了数据点云的整个形状，而主方向就藏在
-          它里面。
+          方差；每个非对角元 <TeX>{String.raw`C_{ij}`}</TeX> 是特征 <TeX>{String.raw`i`}</TeX> 与{" "}
+          <TeX>{String.raw`j`}</TeX> 之间的协方差——若它们
+          同涨为正，若一涨一跌为负。这一个矩阵编码了数据点云的整个形状，而主方向就藏在 它里面。
         </p>
         <Callout type="pitfall">
           <p>
@@ -496,8 +574,8 @@ function ZhBody() {
         </Formula>
         <p>
           把特征值按降序画出来，你就得到一张<Term>碎石图</Term>：它通常先陡降然后变平，而
-          「拐点」标出额外成分不再值回票价的位置。一个常见规则是保留足够的成分以留住总方差
-          的 90–95%——这个数字往往小得惊人，因为真实数据太相关了。
+          「拐点」标出额外成分不再值回票价的位置。一个常见规则是保留足够的成分以留住总方差 的
+          90–95%——这个数字往往小得惊人，因为真实数据太相关了。
         </p>
 
         <ScreeFigure
@@ -512,8 +590,8 @@ function ZhBody() {
         <p>
           一旦你选定了前 <TeX>{String.raw`k`}</TeX> 个成分，把它们作为列堆成一个矩阵{" "}
           <TeX>{String.raw`W`}</TeX>，并把你的数据<Term>投影</Term>到它们上——一次简单的
-          矩阵相乘，把每一个 <TeX>{String.raw`d`}</TeX> 维的行变成 <TeX>{String.raw`k`}</TeX>
-          {" "}个数字：
+          矩阵相乘，把每一个 <TeX>{String.raw`d`}</TeX> 维的行变成 <TeX>{String.raw`k`}</TeX>{" "}
+          个数字：
         </p>
         <Formula label="Z 等于 X 乘 W：降维后的数据 Z 是原始中心化数据 X 投影到 W 中前 k 个主成分上的结果。">
           {TEX.project}
@@ -529,14 +607,11 @@ function ZhBody() {
       </KSection>
 
       <KSection id="limits" eyebrow="08" title="PCA 做不到什么">
-        <p>
-          PCA 很强大，但它有实实在在的盲区，懂得它们才能阻止你误用它：
-        </p>
+        <p>PCA 很强大，但它有实实在在的盲区，懂得它们才能阻止你误用它：</p>
         <ul>
           <li>
             <Term>它是线性的。</Term>PCA 只能找到平直（线性）的结构。卷曲在弯曲流形上的数据
-            （一条螺旋、一条 S 曲线）会让它失效——这时你就要转向 t-SNE、UMAP 或核 PCA 等
-            非线性方法。
+            （一条螺旋、一条 S 曲线）会让它失效——这时你就要转向 t-SNE、UMAP 或核 PCA 等 非线性方法。
           </li>
           <li>
             <Term>成分不可解释。</Term>一个主成分是所有原始特征的混合，所以「PC1」很少对应
@@ -544,8 +619,8 @@ function ZhBody() {
           </li>
           <li>
             <Term>方差不总等于相关性。</Term>PCA 假设高方差的方向最重要，但对于一个
-            <em>分类</em>任务，区分各类的信号可能恰好住在 PCA 丢弃的某个低方差方向里。
-            （那正是 LDA 的用武之地。）
+            <em>分类</em>任务，区分各类的信号可能恰好住在 PCA 丢弃的某个低方差方向里。 （那正是 LDA
+            的用武之地。）
           </li>
           <li>
             <Term>它对尺度敏感</Term>——即上文那条标准化的注意事项。
@@ -556,16 +631,16 @@ function ZhBody() {
       <KSection id="applied" eyebrow="09" title="它在我工作中的体现">
         <Callout type="applied" label="对宽数据务实的第一步">
           <p>
-            当一个数据集很宽时，PCA 是我最先会拿来用的东西之一。作为<strong>聚类前的预处理
-            步骤</strong>它价值连城——先降到几个成分，
+            当一个数据集很宽时，PCA 是我最先会拿来用的东西之一。作为
+            <strong>聚类前的预处理 步骤</strong>它价值连城——先降到几个成分，
             <Link href="/knowledge/statistical-machine-learning">机器学习</Link>那边基于距离的
             方法就又能用了，因为你逃出了维度灾难。它也是我做 <strong>探索性分析</strong> 的
             首选：把一张 50 列的表降到两个主成分再画出来，常常会显现出任何单个特征都看不出
             的簇、离群点和结构。
           </p>
           <p>
-            而且它是对<strong>多重共线性</strong>的干净修复——当特征相关到拖垮一个回归时，
-            PCA 的正交成分完全绕开了这个问题。它是基础部分中
+            而且它是对<strong>多重共线性</strong>的干净修复——当特征相关到拖垮一个回归时， PCA
+            的正交成分完全绕开了这个问题。它是基础部分中
             <Link href="/knowledge/linear-algebra">特征向量与 SVD</Link>那套机器最直接的回报。
           </p>
         </Callout>
@@ -583,8 +658,8 @@ function ZhBody() {
             </li>
             <li>
               它们是<strong>协方差矩阵的特征向量</strong>{" "}
-              <TeX>{String.raw`C = \tfrac{1}{n-1}X^{\top}X`}</TeX>（或来自 <strong>SVD</strong>
-              {" "}的 <TeX>{String.raw`V`}</TeX> 的各列）；特征值 = 捕捉到的方差。
+              <TeX>{String.raw`C = \tfrac{1}{n-1}X^{\top}X`}</TeX>（或来自 <strong>SVD</strong> 的{" "}
+              <TeX>{String.raw`V`}</TeX> 的各列）；特征值 = 捕捉到的方差。
               <strong>先标准化。</strong>
             </li>
             <li>

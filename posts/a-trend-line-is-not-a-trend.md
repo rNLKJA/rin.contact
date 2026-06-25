@@ -48,4 +48,4 @@ In the tools I build now, every trend carries that test with it. The line is the
 
 ---
 
-*This is the trend-testing approach behind Signal, which applies it to public crime statistics. See the [case study](/projects/signal) for how it fits together.*
+_This is the trend-testing approach behind Signal, which applies it to public crime statistics. See the [case study](/projects/signal) for how it fits together._

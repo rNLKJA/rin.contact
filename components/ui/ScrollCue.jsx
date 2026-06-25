@@ -36,13 +36,27 @@ export default function ScrollCue() {
           animation: scroll-cue 1.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
         @keyframes scroll-cue {
-          0% { transform: translate(-50%, -3px); opacity: 0; }
-          25% { opacity: 1; }
-          75% { opacity: 1; }
-          100% { transform: translate(-50%, 38px); opacity: 0; }
+          0% {
+            transform: translate(-50%, -3px);
+            opacity: 0;
+          }
+          25% {
+            opacity: 1;
+          }
+          75% {
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, 38px);
+            opacity: 0;
+          }
         }
         @media (prefers-reduced-motion: reduce) {
-          .scroll-cue-dot { animation: none; transform: translate(-50%, 17px); opacity: 1; }
+          .scroll-cue-dot {
+            animation: none;
+            transform: translate(-50%, 17px);
+            opacity: 1;
+          }
         }
       `}</style>
     </a>

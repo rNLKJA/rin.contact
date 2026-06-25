@@ -17,7 +17,14 @@ const TEX = {
   chain: String.raw`\frac{dy}{dx} = \frac{dy}{du}\cdot\frac{du}{dx}`,
 };
 
-function ConvexityFigure({ caption, ariaLabel, convexLabel, nonConvexLabel, localLabel, globalLabel }) {
+function ConvexityFigure({
+  caption,
+  ariaLabel,
+  convexLabel,
+  nonConvexLabel,
+  localLabel,
+  globalLabel,
+}) {
   return (
     <Figure caption={caption}>
       <svg
@@ -26,16 +33,66 @@ function ConvexityFigure({ caption, ariaLabel, convexLabel, nonConvexLabel, loca
         role="img"
         aria-label={ariaLabel}
       >
-        <line x1="20" y1="135" x2="420" y2="135" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
+        <line
+          x1="20"
+          y1="135"
+          x2="420"
+          y2="135"
+          stroke="currentColor"
+          strokeWidth="0.6"
+          opacity="0.3"
+        />
         <path d="M30 40 C 90 150, 130 150, 190 40" fill="none" stroke="#FF3C3C" strokeWidth="1.8" />
         <circle cx="110" cy="123" r="3.5" fill="#FF3C3C" />
-        <text x="110" y="30" textAnchor="middle" fontSize="11" fontFamily="monospace" fill="currentColor">{convexLabel}</text>
-        <path d="M250 55 C 280 120, 295 118, 315 90 C 332 66, 350 150, 380 150 C 400 150, 405 80, 415 60" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <text
+          x="110"
+          y="30"
+          textAnchor="middle"
+          fontSize="11"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {convexLabel}
+        </text>
+        <path
+          d="M250 55 C 280 120, 295 118, 315 90 C 332 66, 350 150, 380 150 C 400 150, 405 80, 415 60"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+        />
         <circle cx="305" cy="100" r="3" fill="currentColor" opacity="0.6" />
         <circle cx="378" cy="143" r="3.5" fill="#FF3C3C" />
-        <text x="305" y="86" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.7">{localLabel}</text>
-        <text x="378" y="125" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="#FF3C3C">{globalLabel}</text>
-        <text x="335" y="30" textAnchor="middle" fontSize="11" fontFamily="monospace" fill="currentColor">{nonConvexLabel}</text>
+        <text
+          x="305"
+          y="86"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {localLabel}
+        </text>
+        <text
+          x="378"
+          y="125"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {globalLabel}
+        </text>
+        <text
+          x="335"
+          y="30"
+          textAnchor="middle"
+          fontSize="11"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {nonConvexLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -50,20 +107,47 @@ function DescentFigure({ caption, ariaLabel, minimumLabel }) {
         role="img"
         aria-label={ariaLabel}
       >
-        <path d="M30 30 C 120 175, 180 175, 270 30" fill="none" stroke="currentColor" strokeWidth="1.6" opacity="0.8" />
+        <path
+          d="M30 30 C 120 175, 180 175, 270 30"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          opacity="0.8"
+        />
         {[
-          { x: 55, y: 70 }, { x: 80, y: 110 }, { x: 108, y: 135 },
-          { x: 135, y: 147 }, { x: 150, y: 150 },
+          { x: 55, y: 70 },
+          { x: 80, y: 110 },
+          { x: 108, y: 135 },
+          { x: 135, y: 147 },
+          { x: 150, y: 150 },
         ].map((p, i) => (
           <g key={i}>
             <circle cx={p.x} cy={p.y} r="3.5" fill="#FF3C3C" />
             {i > 0 && (
-              <text x={p.x - 2} y={p.y - 8} fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.5">{i}</text>
+              <text
+                x={p.x - 2}
+                y={p.y - 8}
+                fontSize="9"
+                fontFamily="monospace"
+                fill="currentColor"
+                opacity="0.5"
+              >
+                {i}
+              </text>
             )}
           </g>
         ))}
         <circle cx="150" cy="150" r="4.5" fill="none" stroke="#FF3C3C" strokeWidth="1.3" />
-        <text x="150" y="172" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{minimumLabel}</text>
+        <text
+          x="150"
+          y="172"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {minimumLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -74,123 +158,117 @@ function EnBody() {
   return (
     <>
       <p>
-        Here's the secret that demystifies machine learning: training a model is an
-        optimisation problem. You define a <Term>loss</Term> — a single number for
-        how wrong the model is — and then you search for the settings that make it as
-        small as possible. <Term>Calculus</Term> is the tool that makes that search
-        possible, because the derivative tells you, from any point, which direction
-        reduces the loss.
+        Here's the secret that demystifies machine learning: training a model is an optimisation
+        problem. You define a <Term>loss</Term> — a single number for how wrong the model is — and
+        then you search for the settings that make it as small as possible. <Term>Calculus</Term> is
+        the tool that makes that search possible, because the derivative tells you, from any point,
+        which direction reduces the loss.
       </p>
       <p>
         This page completes the core maths foundation alongside{" "}
         <Link href="/knowledge/linear-algebra">linear algebra</Link> (the shape of data) and{" "}
-        <Link href="/knowledge/probability">probability and statistics</Link> (its
-        uncertainty). Calculus is the third leg: the maths of change and of finding
-        the best answer.
+        <Link href="/knowledge/probability">probability and statistics</Link> (its uncertainty).
+        Calculus is the third leg: the maths of change and of finding the best answer.
       </p>
 
       <KSection id="two" eyebrow="01" title="Two questions, one toolkit">
         <p>Calculus answers two questions that turn out to be deeply linked:</p>
         <ul>
           <li>
-            <Term>How fast is something changing?</Term> — the realm of the{" "}
-            <em>derivative</em>. The slope of a curve, the speed of a process, the
-            sensitivity of an output to an input.
+            <Term>How fast is something changing?</Term> — the realm of the <em>derivative</em>. The
+            slope of a curve, the speed of a process, the sensitivity of an output to an input.
           </li>
           <li>
             <Term>Where is the best (highest or lowest) point?</Term> — the realm of{" "}
-            <em>optimisation</em>. The peak of a profit curve, the bottom of a loss
-            surface.
+            <em>optimisation</em>. The peak of a profit curve, the bottom of a loss surface.
           </li>
         </ul>
         <p>
-          They're linked because the best point is exactly where the rate of change
-          hits zero — at the very top of a hill or bottom of a valley, the slope is
-          momentarily flat. So if you can compute slopes, you can find optima. That
-          single bridge is the whole reason calculus runs machine learning.
+          They're linked because the best point is exactly where the rate of change hits zero — at
+          the very top of a hill or bottom of a valley, the slope is momentarily flat. So if you can
+          compute slopes, you can find optima. That single bridge is the whole reason calculus runs
+          machine learning.
         </p>
       </KSection>
 
       <KSection id="derivative" eyebrow="02" title="The derivative">
         <p>
-          The <Term>derivative</Term> of a function measures its instantaneous rate
-          of change — the slope of the curve at a point. Formally it's the limit of
-          "rise over run" as the run shrinks to nothing:
+          The <Term>derivative</Term> of a function measures its instantaneous rate of change — the
+          slope of the curve at a point. Formally it's the limit of "rise over run" as the run
+          shrinks to nothing:
         </p>
         <Formula label="The derivative f-prime of x equals the limit as h goes to zero of the quantity f of x plus h minus f of x, all divided by h.">
           {TEX.deriv}
         </Formula>
         <p>
-          The intuition matters more than the limit: zoom in on any smooth curve far
-          enough and it looks like a straight line — the derivative is that line's
-          slope. A positive derivative means the function is rising; negative means
-          falling; <strong>zero means flat</strong>, which is the signal you're at a
-          peak, a valley, or a plateau. That last fact is the one optimisation hangs
-          everything on.
+          The intuition matters more than the limit: zoom in on any smooth curve far enough and it
+          looks like a straight line — the derivative is that line's slope. A positive derivative
+          means the function is rising; negative means falling; <strong>zero means flat</strong>,
+          which is the signal you're at a peak, a valley, or a plateau. That last fact is the one
+          optimisation hangs everything on.
         </p>
       </KSection>
 
       <KSection id="gradient" eyebrow="03" title="The gradient">
         <p>
-          Real models don't have one knob; they have thousands or billions. When a
-          function has many inputs, the derivative generalises to the{" "}
-          <Term>gradient</Term> — the vector of <Term>partial derivatives</Term>, one
-          per input, each measuring how the output changes as you nudge that one
-          variable and hold the rest still:
+          Real models don't have one knob; they have thousands or billions. When a function has many
+          inputs, the derivative generalises to the <Term>gradient</Term> — the vector of{" "}
+          <Term>partial derivatives</Term>, one per input, each measuring how the output changes as
+          you nudge that one variable and hold the rest still:
         </p>
         <Formula label="The gradient of f, written nabla f, is the vector of partial derivatives of f with respect to x-1, x-2, up to x-n.">
           {TEX.grad}
         </Formula>
         <p>
-          The gradient has a beautiful geometric meaning: it points in the direction
-          of <Term>steepest ascent</Term> — the way you'd walk to climb the surface
-          fastest — and its length says how steep that climb is. To go <em>down</em>{" "}
-          as fast as possible, you simply walk in the opposite direction,{" "}
-          <code>−∇f</code>. Hold onto that: it is the entire idea behind training.
+          The gradient has a beautiful geometric meaning: it points in the direction of{" "}
+          <Term>steepest ascent</Term> — the way you'd walk to climb the surface fastest — and its
+          length says how steep that climb is. To go <em>down</em> as fast as possible, you simply
+          walk in the opposite direction, <code>−∇f</code>. Hold onto that: it is the entire idea
+          behind training.
         </p>
         <Callout type="intuition">
           <p>
-            Picture standing on a foggy hillside, wanting to reach the valley floor.
-            You can't see far, but you can feel the slope under your feet. The
-            gradient is that felt slope — the steepest direction — and the smart move
-            is to step the opposite way, downhill. Repeat, and you descend even
-            without a map.
+            Picture standing on a foggy hillside, wanting to reach the valley floor. You can't see
+            far, but you can feel the slope under your feet. The gradient is that felt slope — the
+            steepest direction — and the smart move is to step the opposite way, downhill. Repeat,
+            and you descend even without a map.
           </p>
         </Callout>
       </KSection>
 
       <KSection id="optima" eyebrow="04" title="Finding the best answer">
         <p>
-          Because the slope is flat at a peak or trough, optimisation begins by
-          looking for points where the gradient is zero — the{" "}
-          <Term>stationary points</Term>. Setting <code>∇f = 0</code> and solving
-          gives the candidates. To tell which kind each one is, you check the{" "}
-          <Term>second derivative</Term> (the curvature):
+          Because the slope is flat at a peak or trough, optimisation begins by looking for points
+          where the gradient is zero — the <Term>stationary points</Term>. Setting{" "}
+          <code>∇f = 0</code> and solving gives the candidates. To tell which kind each one is, you
+          check the <Term>second derivative</Term> (the curvature):
         </p>
         <ul>
-          <li>Curving up (positive) → a <Term>minimum</Term> — a valley.</li>
-          <li>Curving down (negative) → a <Term>maximum</Term> — a peak.</li>
           <li>
-            A mix across dimensions → a <Term>saddle point</Term> — up one way, down
-            another, like a mountain pass.
+            Curving up (positive) → a <Term>minimum</Term> — a valley.
+          </li>
+          <li>
+            Curving down (negative) → a <Term>maximum</Term> — a peak.
+          </li>
+          <li>
+            A mix across dimensions → a <Term>saddle point</Term> — up one way, down another, like a
+            mountain pass.
           </li>
         </ul>
         <p>
-          For simple functions you can solve <code>∇f = 0</code> by hand. For the
-          tangled loss surfaces of real models you can't — there's no closed-form
-          answer — so you need an algorithm that <em>walks</em> to the minimum
-          instead. That algorithm is gradient descent.
+          For simple functions you can solve <code>∇f = 0</code> by hand. For the tangled loss
+          surfaces of real models you can't — there's no closed-form answer — so you need an
+          algorithm that <em>walks</em> to the minimum instead. That algorithm is gradient descent.
         </p>
       </KSection>
 
       <KSection id="convex" eyebrow="05" title="Convexity">
         <p>
           The single property that decides whether optimisation is easy or hard is{" "}
-          <Term>convexity</Term>. A convex function is bowl-shaped: it has exactly one
-          bottom, and any local minimum is automatically the global one. A
-          non-convex function is a mountain range of bumps — many valleys, only one
-          of them deepest — and an algorithm can get stuck in a shallow one,
-          mistaking a <Term>local minimum</Term> for the best answer.
+          <Term>convexity</Term>. A convex function is bowl-shaped: it has exactly one bottom, and
+          any local minimum is automatically the global one. A non-convex function is a mountain
+          range of bumps — many valleys, only one of them deepest — and an algorithm can get stuck
+          in a shallow one, mistaking a <Term>local minimum</Term> for the best answer.
         </p>
 
         <ConvexityFigure
@@ -203,46 +281,43 @@ function EnBody() {
         />
 
         <p>
-          Classic methods like linear and logistic regression have convex losses, so
-          they're guaranteed to find the best fit. Neural networks are wildly
-          non-convex — which is why training them is part art, and why tricks like
-          good initialisation, momentum, and randomness matter so much. Remarkably,
-          in very high dimensions the local minima tend to be nearly as good as the
-          global one, which is a big part of why deep learning works at all.
+          Classic methods like linear and logistic regression have convex losses, so they're
+          guaranteed to find the best fit. Neural networks are wildly non-convex — which is why
+          training them is part art, and why tricks like good initialisation, momentum, and
+          randomness matter so much. Remarkably, in very high dimensions the local minima tend to be
+          nearly as good as the global one, which is a big part of why deep learning works at all.
         </p>
       </KSection>
 
       <KSection id="descent" eyebrow="06" title="Gradient descent">
         <p>
-          <Term>Gradient descent</Term> is the workhorse algorithm of modern machine
-          learning, and it's almost embarrassingly simple: from wherever you are,
-          compute the downhill direction and take a small step that way. Repeat until
-          you stop moving. As an update rule for the parameters <code>θ</code>:
+          <Term>Gradient descent</Term> is the workhorse algorithm of modern machine learning, and
+          it's almost embarrassingly simple: from wherever you are, compute the downhill direction
+          and take a small step that way. Repeat until you stop moving. As an update rule for the
+          parameters <code>θ</code>:
         </p>
         <Formula label="Theta-new equals theta-old minus eta times the gradient of the loss with respect to theta.">
           {TEX.gd}
         </Formula>
         <p>
-          The loss <code>L</code> is how wrong the model is, <code>∇L</code> is the
-          uphill direction (so we subtract it to go down), and <code>η</code> (eta) is
-          the <Term>learning rate</Term> — the step size, and the single most
-          important knob to tune:
+          The loss <code>L</code> is how wrong the model is, <code>∇L</code> is the uphill direction
+          (so we subtract it to go down), and <code>η</code> (eta) is the <Term>learning rate</Term>{" "}
+          — the step size, and the single most important knob to tune:
         </p>
         <ul>
           <li>
             <Term>Too small</Term> and training crawls, taking forever to converge.
           </li>
           <li>
-            <Term>Too large</Term> and you overshoot the valley, bouncing across it or
-            diverging entirely.
+            <Term>Too large</Term> and you overshoot the valley, bouncing across it or diverging
+            entirely.
           </li>
         </ul>
         <p>
-          In practice you rarely use the whole dataset for each step — you estimate
-          the gradient from a small random <Term>batch</Term>, which is faster and
-          adds helpful noise that can bounce you out of bad local minima. That's{" "}
-          <Term>stochastic gradient descent</Term>, and variants of it (Adam, RMSProp)
-          train essentially every neural network in use today.
+          In practice you rarely use the whole dataset for each step — you estimate the gradient
+          from a small random <Term>batch</Term>, which is faster and adds helpful noise that can
+          bounce you out of bad local minima. That's <Term>stochastic gradient descent</Term>, and
+          variants of it (Adam, RMSProp) train essentially every neural network in use today.
         </p>
 
         <DescentFigure
@@ -254,29 +329,26 @@ function EnBody() {
 
       <KSection id="chain" eyebrow="07" title="The chain rule and backprop">
         <p>
-          To run gradient descent on a deep model you need the gradient of the loss
-          with respect to <em>every</em> parameter, even those buried many layers
-          deep. The tool that delivers it is the <Term>chain rule</Term> — calculus's
-          rule for differentiating nested functions:
+          To run gradient descent on a deep model you need the gradient of the loss with respect to{" "}
+          <em>every</em> parameter, even those buried many layers deep. The tool that delivers it is
+          the <Term>chain rule</Term> — calculus's rule for differentiating nested functions:
         </p>
         <Formula label="If y is a function of u and u is a function of x, then dy by dx equals dy by du times du by dx.">
           {TEX.chain}
         </Formula>
         <p>
-          It says the sensitivity of an output to a distant input is the{" "}
-          <em>product</em> of the sensitivities along the chain between them. A neural
-          network is exactly such a chain — each layer a function feeding the next —
-          so the chain rule lets you compute how a weight in layer one affects the
-          final loss, by multiplying the local derivatives along the path.
+          It says the sensitivity of an output to a distant input is the <em>product</em> of the
+          sensitivities along the chain between them. A neural network is exactly such a chain —
+          each layer a function feeding the next — so the chain rule lets you compute how a weight
+          in layer one affects the final loss, by multiplying the local derivatives along the path.
         </p>
         <Callout type="applied" label="That's backpropagation">
           <p>
-            <Term>Backpropagation</Term> is just the chain rule applied efficiently,
-            in reverse. A forward pass runs the input through the network to get the
-            loss; the backward pass walks from the loss back to the inputs, reusing
-            shared sub-calculations to get every parameter's gradient in one sweep.
-            Then gradient descent takes a step, and you repeat. Strip away the
-            framework magic and "training a neural network" is precisely this:{" "}
+            <Term>Backpropagation</Term> is just the chain rule applied efficiently, in reverse. A
+            forward pass runs the input through the network to get the loss; the backward pass walks
+            from the loss back to the inputs, reusing shared sub-calculations to get every
+            parameter's gradient in one sweep. Then gradient descent takes a step, and you repeat.
+            Strip away the framework magic and "training a neural network" is precisely this:{" "}
             <em>chain rule to get the gradient, descend, repeat</em>.
           </p>
         </Callout>
@@ -284,37 +356,34 @@ function EnBody() {
 
       <KSection id="constrained" eyebrow="08" title="Constrained optimisation">
         <p>
-          Often you can't optimise freely — there are constraints. Maximise a
-          portfolio's return <em>subject to</em> a risk budget; minimise cost{" "}
-          <em>subject to</em> meeting demand. The classic tool is the method of{" "}
-          <Term>Lagrange multipliers</Term>, which folds each constraint into the
-          objective with a new variable that prices how much the constraint "costs" at
-          the optimum.
+          Often you can't optimise freely — there are constraints. Maximise a portfolio's return{" "}
+          <em>subject to</em> a risk budget; minimise cost <em>subject to</em> meeting demand. The
+          classic tool is the method of <Term>Lagrange multipliers</Term>, which folds each
+          constraint into the objective with a new variable that prices how much the constraint
+          "costs" at the optimum.
         </p>
         <p>
-          This is the bridge to <Term>operations research</Term> — linear programming,
-          resource allocation, scheduling — where the whole problem is "find the best
-          decision within hard limits". The same gradient thinking applies, now
-          walking the boundary of what's allowed rather than the open surface.
+          This is the bridge to <Term>operations research</Term> — linear programming, resource
+          allocation, scheduling — where the whole problem is "find the best decision within hard
+          limits". The same gradient thinking applies, now walking the boundary of what's allowed
+          rather than the open surface.
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="09" title="Where it shows up in my work">
         <Callout type="applied" label="The engine I rarely name">
           <p>
-            Every time I <strong>train or fit a model</strong> — a regression, a
-            gradient-boosted tree, a neural net — gradient descent is doing the work
-            underneath, and the <strong>learning rate</strong> is the knob I reach for
-            first when training won't converge. Knowing that "the loss exploded"
-            usually means "the step size is too big", or that a model "got stuck"
-            points at a <strong>local minimum</strong>, turns black-box training into
-            something I can actually reason about and fix.
+            Every time I <strong>train or fit a model</strong> — a regression, a gradient-boosted
+            tree, a neural net — gradient descent is doing the work underneath, and the{" "}
+            <strong>learning rate</strong> is the knob I reach for first when training won't
+            converge. Knowing that "the loss exploded" usually means "the step size is too big", or
+            that a model "got stuck" points at a <strong>local minimum</strong>, turns black-box
+            training into something I can actually reason about and fix.
           </p>
           <p>
-            The same logic scales up to <strong>operations-research</strong> framing in
-            government work — allocating limited resources to do the most good under
-            hard constraints is constrained optimisation, whether or not anyone writes
-            a Lagrangian on the whiteboard.
+            The same logic scales up to <strong>operations-research</strong> framing in government
+            work — allocating limited resources to do the most good under hard constraints is
+            constrained optimisation, whether or not anyone writes a Lagrangian on the whiteboard.
           </p>
         </Callout>
       </KSection>
@@ -323,35 +392,33 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              Calculus answers "how fast is it changing?" (derivative) and "where's
-              the best point?" (optimisation) — linked because the best point has{" "}
-              <strong>zero slope</strong>.
+              Calculus answers "how fast is it changing?" (derivative) and "where's the best point?"
+              (optimisation) — linked because the best point has <strong>zero slope</strong>.
             </li>
             <li>
-              The <strong>gradient</strong> <code>∇f</code> is the vector of partials;
-              it points uphill (steepest ascent), so <code>−∇f</code> points downhill.
+              The <strong>gradient</strong> <code>∇f</code> is the vector of partials; it points
+              uphill (steepest ascent), so <code>−∇f</code> points downhill.
             </li>
             <li>
-              Optima sit where <code>∇f = 0</code>; curvature (second derivative) says
-              min, max, or saddle.
+              Optima sit where <code>∇f = 0</code>; curvature (second derivative) says min, max, or
+              saddle.
             </li>
             <li>
-              <strong>Convex</strong> = one bowl, descent always wins.{" "}
-              <strong>Non-convex</strong> (neural nets) = many valleys, can get stuck.
+              <strong>Convex</strong> = one bowl, descent always wins. <strong>Non-convex</strong>{" "}
+              (neural nets) = many valleys, can get stuck.
             </li>
             <li>
               <strong>Gradient descent:</strong> <code>θ ← θ − η∇L</code>. The{" "}
-              <strong>learning rate η</strong> is the key knob — too small crawls, too
-              big diverges. SGD uses random batches.
+              <strong>learning rate η</strong> is the key knob — too small crawls, too big diverges.
+              SGD uses random batches.
             </li>
             <li>
-              <strong>Backprop</strong> = the chain rule in reverse, computing every
-              parameter's gradient in one backward sweep. Training = chain rule →
-              descend → repeat.
+              <strong>Backprop</strong> = the chain rule in reverse, computing every parameter's
+              gradient in one backward sweep. Training = chain rule → descend → repeat.
             </li>
             <li>
-              <strong>Constrained optimisation</strong> (Lagrange) handles hard limits
-              — the bridge to operations research.
+              <strong>Constrained optimisation</strong> (Lagrange) handles hard limits — the bridge
+              to operations research.
             </li>
           </ul>
         </Callout>
@@ -390,8 +457,7 @@ function ZhBody() {
         </ul>
         <p>
           它们相关，是因为最优点恰好出现在变化率为零之处——在山顶或谷底，斜率会在那一刻
-          变平。所以只要你能计算斜率，就能找到最优解。正是这一座桥，让微积分驱动了整个
-          机器学习。
+          变平。所以只要你能计算斜率，就能找到最优解。正是这一座桥，让微积分驱动了整个 机器学习。
         </p>
       </KSection>
 
@@ -405,15 +471,15 @@ function ZhBody() {
         </Formula>
         <p>
           直觉比极限更重要：把任意光滑曲线放大到足够程度，它看起来就是一条直线——导数就是
-          这条直线的斜率。正导数意味着函数在上升；负的意味着在下降；<strong>零意味着平坦
-          </strong>，这正是你处于峰、谷或平台的信号。最后这个事实，正是最优化所依赖的全部。
+          这条直线的斜率。正导数意味着函数在上升；负的意味着在下降；<strong>零意味着平坦</strong>
+          ，这正是你处于峰、谷或平台的信号。最后这个事实，正是最优化所依赖的全部。
         </p>
       </KSection>
 
       <KSection id="gradient" eyebrow="03" title="梯度">
         <p>
-          真实模型不止一个旋钮；它们有成千上万、甚至数十亿个。当一个函数有许多输入时，
-          导数推广为<Term>梯度</Term>——由<Term>偏导数</Term>组成的向量，每个输入一个，
+          真实模型不止一个旋钮；它们有成千上万、甚至数十亿个。当一个函数有许多输入时， 导数推广为
+          <Term>梯度</Term>——由<Term>偏导数</Term>组成的向量，每个输入一个，
           各自衡量当你微调某一个变量、保持其余不变时输出如何变化：
         </p>
         <Formula label="f 的梯度，记作 ∇f，是 f 对 x₁、x₂ 直到 xₙ 的偏导数所组成的向量。">
@@ -440,11 +506,14 @@ function ZhBody() {
           <Term>二阶导数</Term>（曲率）：
         </p>
         <ul>
-          <li>向上弯（正）→ <Term>极小值</Term>——一个谷。</li>
-          <li>向下弯（负）→ <Term>极大值</Term>——一个峰。</li>
           <li>
-            在不同维度上有正有负 → <Term>鞍点</Term>——一个方向向上、另一个方向向下，
-            就像山口。
+            向上弯（正）→ <Term>极小值</Term>——一个谷。
+          </li>
+          <li>
+            向下弯（负）→ <Term>极大值</Term>——一个峰。
+          </li>
+          <li>
+            在不同维度上有正有负 → <Term>鞍点</Term>——一个方向向上、另一个方向向下， 就像山口。
           </li>
         </ul>
         <p>
@@ -482,16 +551,13 @@ function ZhBody() {
       <KSection id="descent" eyebrow="06" title="梯度下降">
         <p>
           <Term>梯度下降</Term>是现代机器学习的主力算法，而且简单得几乎令人难为情：从你
-          所在之处，计算下坡方向，朝那个方向迈一小步。重复，直到不再移动。作为参数{" "}
-          <code>θ</code> 的更新规则：
+          所在之处，计算下坡方向，朝那个方向迈一小步。重复，直到不再移动。作为参数 <code>θ</code>{" "}
+          的更新规则：
         </p>
-        <Formula label="θ 新值等于 θ 旧值减去 η 乘以损失对 θ 的梯度。">
-          {TEX.gd}
-        </Formula>
+        <Formula label="θ 新值等于 θ 旧值减去 η 乘以损失对 θ 的梯度。">{TEX.gd}</Formula>
         <p>
-          损失 <code>L</code> 是模型有多错，<code>∇L</code> 是上坡方向（所以我们减去它以
-          向下），而 <code>η</code>（eta）是<Term>学习率</Term>——步长，也是最重要的一个
-          待调旋钮：
+          损失 <code>L</code> 是模型有多错，<code>∇L</code> 是上坡方向（所以我们减去它以 向下），而{" "}
+          <code>η</code>（eta）是<Term>学习率</Term>——步长，也是最重要的一个 待调旋钮：
         </p>
         <ul>
           <li>
@@ -518,8 +584,7 @@ function ZhBody() {
       <KSection id="chain" eyebrow="07" title="链式法则与反向传播">
         <p>
           要在深层模型上运行梯度下降，你需要损失对<em>每一个</em>参数的梯度，哪怕是埋在
-          许多层深处的参数。提供它的工具就是<Term>链式法则</Term>——微积分用于对嵌套函数
-          求导的法则：
+          许多层深处的参数。提供它的工具就是<Term>链式法则</Term>——微积分用于对嵌套函数 求导的法则：
         </p>
         <Formula label="若 y 是 u 的函数，u 是 x 的函数，则 dy/dx 等于 dy/du 乘以 du/dx。">
           {TEX.chain}
@@ -527,8 +592,7 @@ function ZhBody() {
         <p>
           它说的是：输出对一个遥远输入的敏感度，等于两者之间整条链上各段敏感度的
           <em>乘积</em>。神经网络恰好就是这样一条链——每一层都是一个函数，喂给下一层——
-          所以链式法则让你通过把路径上各处的局部导数相乘，算出第一层中的某个权重如何影响
-          最终损失。
+          所以链式法则让你通过把路径上各处的局部导数相乘，算出第一层中的某个权重如何影响 最终损失。
         </p>
         <Callout type="applied" label="这就是反向传播">
           <p>
@@ -542,10 +606,9 @@ function ZhBody() {
 
       <KSection id="constrained" eyebrow="08" title="约束优化">
         <p>
-          你往往无法自由地优化——存在约束。在风险预算<em>之下</em>最大化投资组合的收益；
-          在满足需求<em>之下</em>最小化成本。经典工具是<Term>拉格朗日乘子</Term>法，它用
-          一个新变量把每个约束折叠进目标函数，而这个变量为约束在最优点处「值多少代价」
-          定价。
+          你往往无法自由地优化——存在约束。在风险预算<em>之下</em>最大化投资组合的收益； 在满足需求
+          <em>之下</em>最小化成本。经典工具是<Term>拉格朗日乘子</Term>法，它用
+          一个新变量把每个约束折叠进目标函数，而这个变量为约束在最优点处「值多少代价」 定价。
         </p>
         <p>
           这是通往<Term>运筹学</Term>的桥梁——线性规划、资源分配、排程——整个问题就是
@@ -564,8 +627,7 @@ function ZhBody() {
           </p>
           <p>
             同样的逻辑在政府工作中可上升为<strong>运筹学</strong>的框架——在硬性约束下分配
-            有限资源以发挥最大效益，本质就是约束优化，无论是否真有人在白板上写下拉格朗日
-            函数。
+            有限资源以发挥最大效益，本质就是约束优化，无论是否真有人在白板上写下拉格朗日 函数。
           </p>
         </Callout>
       </KSection>
@@ -589,12 +651,13 @@ function ZhBody() {
               多个谷，可能卡住。
             </li>
             <li>
-              <strong>梯度下降：</strong><code>θ ← θ − η∇L</code>。<strong>学习率 η</strong>
-              {" "}是关键旋钮——太小爬行，太大发散。SGD 使用随机批次。
+              <strong>梯度下降：</strong>
+              <code>θ ← θ − η∇L</code>。<strong>学习率 η</strong>{" "}
+              是关键旋钮——太小爬行，太大发散。SGD 使用随机批次。
             </li>
             <li>
-              <strong>反向传播</strong> = 反向应用链式法则，一次反向遍历算出每个参数的梯度。
-              训练 = 链式法则 → 下降 → 重复。
+              <strong>反向传播</strong> = 反向应用链式法则，一次反向遍历算出每个参数的梯度。 训练 =
+              链式法则 → 下降 → 重复。
             </li>
             <li>
               <strong>约束优化</strong>（拉格朗日）处理硬性限制——通往运筹学的桥梁。

@@ -5,11 +5,11 @@ export default function handler(req, res) {
 
   res.status(200).json({
     meta: {
-      updated:    "2026-06-23",
-      timezone:   "ACST (UTC+9:30)",
-      location:   "Adelaide, SA, Australia",
-      note:       "Manually curated. Inspired by nownownow.com",
-      source:     "https://rin.contact/info/now",
+      updated: "2026-06-23",
+      timezone: "ACST (UTC+9:30)",
+      location: "Adelaide, SA, Australia",
+      note: "Manually curated. Inspired by nownownow.com",
+      source: "https://rin.contact/info/now",
     },
     status: "open_to_opportunities",
     building: [
@@ -23,9 +23,9 @@ export default function handler(req, res) {
       "How to explain model uncertainty to non-technical stakeholders",
     ],
     reading: [
-      { title: "Thinking, Fast and Slow",     author: "Daniel Kahneman" },
-      { title: "The Signal and the Noise",     author: "Nate Silver"     },
-      { title: "Staff Engineer",               author: "Will Larson"     },
+      { title: "Thinking, Fast and Slow", author: "Daniel Kahneman" },
+      { title: "The Signal and the Noise", author: "Nate Silver" },
+      { title: "Staff Engineer", author: "Will Larson" },
     ],
     listening: [
       "Lo-fi hip hop while writing SQL",

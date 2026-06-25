@@ -20,9 +20,11 @@ export default function CoffeePage() {
 
       <div className="min-h-screen bg-black flex items-center justify-center px-6">
         <div className="max-w-md w-full text-center font-mono">
-
           {/* ASCII coffee */}
-          <pre className="text-[#686868] text-xs leading-tight mb-10 select-none" aria-hidden="true">{`
+          <pre
+            className="text-[#686868] text-xs leading-tight mb-10 select-none"
+            aria-hidden="true"
+          >{`
      ( (
       ) )
    ._______.
@@ -40,10 +42,9 @@ export default function CoffeePage() {
           </h1>
 
           <p className="text-sm text-[#686868] leading-relaxed mb-8">
-            Honestly? I run on coffee, Python scripts, and the quiet satisfaction
-            of a well-structured query. If you wanted to buy me one —
-            that's genuinely kind. Reach out instead; a good conversation
-            is worth more than caffeine anyway.
+            Honestly? I run on coffee, Python scripts, and the quiet satisfaction of a
+            well-structured query. If you wanted to buy me one — that's genuinely kind. Reach out
+            instead; a good conversation is worth more than caffeine anyway.
           </p>
 
           <div className="space-y-3">
@@ -61,9 +62,7 @@ export default function CoffeePage() {
             </Link>
           </div>
 
-          <p className="text-[10px] text-[#333] mt-10">
-            rin.contact · Adelaide, SA · UTC+9:30
-          </p>
+          <p className="text-[10px] text-[#333] mt-10">rin.contact · Adelaide, SA · UTC+9:30</p>
         </div>
       </div>
     </>

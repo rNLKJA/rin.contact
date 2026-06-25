@@ -49,4 +49,4 @@ AI in public decision-making needs the second kind. Not a folder that proves the
 
 ---
 
-*The product described here is Signal, an open-source reference implementation that applies this approach to public crime statistics. See the [case study](/projects/signal) for the build, or the [code on GitHub](https://github.com/rNLKJA/signal).*
+_The product described here is Signal, an open-source reference implementation that applies this approach to public crime statistics. See the [case study](/projects/signal) for the build, or the [code on GitHub](https://github.com/rNLKJA/signal)._

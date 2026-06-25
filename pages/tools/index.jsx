@@ -19,13 +19,22 @@ export default function ToolsIndexPage() {
         <link rel="canonical" href="https://rin.contact/tools" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og/?title=Tools&subtitle=Free%20utilities%20from%20Rin%20Huang%20including%20digital%20business%20card%20and%20QR%20code&section=tools" />
+        <meta
+          property="og:image"
+          content="https://rin.contact/api/og/?title=Tools&subtitle=Free%20utilities%20from%20Rin%20Huang%20including%20digital%20business%20card%20and%20QR%20code&section=tools"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tools" />
-        <meta name="twitter:description" content="Free utilities from Rin Huang including digital business card and QR code." />
-        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Tools&subtitle=Free%20utilities%20from%20Rin%20Huang%20including%20digital%20business%20card%20and%20QR%20code&section=tools" />
+        <meta
+          name="twitter:description"
+          content="Free utilities from Rin Huang including digital business card and QR code."
+        />
+        <meta
+          name="twitter:image"
+          content="https://rin.contact/api/og/?title=Tools&subtitle=Free%20utilities%20from%20Rin%20Huang%20including%20digital%20business%20card%20and%20QR%20code&section=tools"
+        />
       </Head>
       <SeoHead
         title="Tools — rin.contact"
@@ -41,13 +50,13 @@ export default function ToolsIndexPage() {
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">/tools</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">
+            /tools
+          </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
             {t("tools.heading")}
           </h1>
-          <p className="text-sm text-[#7A7A7A] leading-relaxed mb-14">
-            {t("tools.description")}
-          </p>
+          <p className="text-sm text-[#7A7A7A] leading-relaxed mb-14">{t("tools.description")}</p>
 
           <div className="space-y-0 divide-y divide-[#E0E0E0]">
             {ITEMS.map(({ href, label, note }) => (
@@ -59,7 +68,9 @@ export default function ToolsIndexPage() {
                 <span className="font-mono text-sm text-[#1A1A1A] group-hover:text-black transition-colors">
                   /tools/{label}
                 </span>
-                <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">{note}</span>
+                <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">
+                  {note}
+                </span>
               </Link>
             ))}
           </div>

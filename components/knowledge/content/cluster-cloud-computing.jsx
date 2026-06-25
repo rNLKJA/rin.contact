@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/cluster-cloud-computing.
@@ -35,16 +42,68 @@ function MapReduceFigure({ caption, ariaLabel, labels, hintParallel, hintPerKey 
           const accent = i === 1 || i === 3;
           return (
             <g key={i}>
-              <rect x={x} y={62} width={74} height={34} rx={2} fill={accent ? "#FF3C3C" : "none"} fillOpacity={accent ? 0.1 : 0} stroke={accent ? "#FF3C3C" : "currentColor"} strokeWidth={accent ? 1.4 : 1} opacity={accent ? 1 : 0.6} />
-              <text x={x + 37} y={83} textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">{label}</text>
-              {i < 4 && <line x1={x + 74} y1={79} x2={x + 90} y2={79} stroke="#FF3C3C" strokeWidth={1.3} markerEnd="url(#cc-ah)" />}
+              <rect
+                x={x}
+                y={62}
+                width={74}
+                height={34}
+                rx={2}
+                fill={accent ? "#FF3C3C" : "none"}
+                fillOpacity={accent ? 0.1 : 0}
+                stroke={accent ? "#FF3C3C" : "currentColor"}
+                strokeWidth={accent ? 1.4 : 1}
+                opacity={accent ? 1 : 0.6}
+              />
+              <text
+                x={x + 37}
+                y={83}
+                textAnchor="middle"
+                fontSize="10"
+                fontFamily="monospace"
+                fill="currentColor"
+              >
+                {label}
+              </text>
+              {i < 4 && (
+                <line
+                  x1={x + 74}
+                  y1={79}
+                  x2={x + 90}
+                  y2={79}
+                  stroke="#FF3C3C"
+                  strokeWidth={1.3}
+                  markerEnd="url(#cc-ah)"
+                />
+              )}
             </g>
           );
         })}
-        <text x="115" y="120" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.55">{hintParallel}</text>
-        <text x="295" y="120" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.55">{hintPerKey}</text>
+        <text
+          x="115"
+          y="120"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.55"
+        >
+          {hintParallel}
+        </text>
+        <text
+          x="295"
+          y="120"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.55"
+        >
+          {hintPerKey}
+        </text>
         <defs>
-          <marker id="cc-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" /></marker>
+          <marker id="cc-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -56,58 +115,55 @@ function EnBody() {
   return (
     <>
       <p>
-        For a long time, computers got faster every year and you could just wait for the
-        hardware to catch up to your data. That free lunch ended — single processors
-        stopped getting dramatically faster — and datasets kept growing. The answer is{" "}
-        <Term>distributed computing</Term>: instead of one bigger machine, use{" "}
-        <em>many</em> machines working together. Simple to say, genuinely hard to do well.
+        For a long time, computers got faster every year and you could just wait for the hardware to
+        catch up to your data. That free lunch ended — single processors stopped getting
+        dramatically faster — and datasets kept growing. The answer is{" "}
+        <Term>distributed computing</Term>: instead of one bigger machine, use <em>many</em>{" "}
+        machines working together. Simple to say, genuinely hard to do well.
       </p>
       <p>
         This is the engineering that lets analysis run at real-world scale — the{" "}
         <Link href="/knowledge/database-systems">database</Link> and{" "}
-        <Link href="/knowledge/statistical-machine-learning">ML</Link> work on these pages
-        all hit it eventually. I learned it on Melbourne's SPARTAN supercomputer and
-        Spark; here's the whole picture, including the catch that no amount of hardware can
-        buy your way past.
+        <Link href="/knowledge/statistical-machine-learning">ML</Link> work on these pages all hit
+        it eventually. I learned it on Melbourne's SPARTAN supercomputer and Spark; here's the whole
+        picture, including the catch that no amount of hardware can buy your way past.
       </p>
 
       <KSection id="wall" eyebrow="01" title="The scaling wall">
         <p>There are two ways to get more computing power, and the difference matters:</p>
         <ul>
           <li>
-            <Term>Scaling up</Term> (vertical) — buy a bigger machine: more RAM, more
-            cores, faster disks. Simple, but there's a hard ceiling and the price climbs
-            steeply.
+            <Term>Scaling up</Term> (vertical) — buy a bigger machine: more RAM, more cores, faster
+            disks. Simple, but there's a hard ceiling and the price climbs steeply.
           </li>
           <li>
-            <Term>Scaling out</Term> (horizontal) — add more <em>ordinary</em> machines and
-            split the work across them. Near-limitless and cheap per unit, but now your
-            program has to be written to run in pieces across a network.
+            <Term>Scaling out</Term> (horizontal) — add more <em>ordinary</em> machines and split
+            the work across them. Near-limitless and cheap per unit, but now your program has to be
+            written to run in pieces across a network.
           </li>
         </ul>
         <p>
-          Big data lives in the scaling-out world. The moment a dataset won't fit in one
-          machine's memory — or one machine would take a week to process it — you need a{" "}
-          <Term>cluster</Term>: a group of networked computers (<Term>nodes</Term>)
-          coordinated to act as one. That shift solves the size problem and creates three
-          new ones — splitting the work, coordinating the pieces, and surviving the
-          failures that become inevitable once you have hundreds of machines.
+          Big data lives in the scaling-out world. The moment a dataset won't fit in one machine's
+          memory — or one machine would take a week to process it — you need a <Term>cluster</Term>:
+          a group of networked computers (<Term>nodes</Term>) coordinated to act as one. That shift
+          solves the size problem and creates three new ones — splitting the work, coordinating the
+          pieces, and surviving the failures that become inevitable once you have hundreds of
+          machines.
         </p>
       </KSection>
 
       <KSection id="parallelism" eyebrow="02" title="Parallelism and Amdahl's law">
         <p>
-          Running work in parallel comes in two flavours: <Term>data parallelism</Term>{" "}
-          (split the data, run the same operation on each chunk — the dominant pattern in
-          analytics) and <Term>task parallelism</Term> (different machines do different
-          jobs at once). Either way, you hit a fundamental limit that every distributed
-          engineer must respect.
+          Running work in parallel comes in two flavours: <Term>data parallelism</Term> (split the
+          data, run the same operation on each chunk — the dominant pattern in analytics) and{" "}
+          <Term>task parallelism</Term> (different machines do different jobs at once). Either way,
+          you hit a fundamental limit that every distributed engineer must respect.
         </p>
         <p>
-          <Term>Amdahl's law</Term> says your speed-up is capped by the part of the work
-          that <em>can't</em> be parallelised. If a fraction <TeX>{TEX.p}</TeX> of a job is
-          parallelisable and you throw <TeX>{TEX.N}</TeX> processors at it, the best
-          speed-up you can get is:
+          <Term>Amdahl's law</Term> says your speed-up is capped by the part of the work that{" "}
+          <em>can't</em> be parallelised. If a fraction <TeX>{TEX.p}</TeX> of a job is
+          parallelisable and you throw <TeX>{TEX.N}</TeX> processors at it, the best speed-up you
+          can get is:
         </p>
         <Formula
           label="Speed-up equals one divided by, the serial fraction one minus p, plus the parallel fraction p divided by N."
@@ -116,63 +172,60 @@ function EnBody() {
           {TEX.amdahl}
         </Formula>
         <p>
-          The lesson is sobering: if 10% of your job is inherently serial (
-          <TeX>{TEX.p09}</TeX>), then even with <em>infinite</em> processors you can never
-          go more than <strong>10×</strong> faster — because as <TeX>{TEX.ninf}</TeX>, the
-          speed-up approaches <TeX>{TEX.limit}</TeX>. More machines have sharply
-          diminishing returns, and the serial bottleneck, not the hardware, is what you
-          must attack. It's why "just add more nodes" so often disappoints.
+          The lesson is sobering: if 10% of your job is inherently serial (<TeX>{TEX.p09}</TeX>),
+          then even with <em>infinite</em> processors you can never go more than{" "}
+          <strong>10×</strong> faster — because as <TeX>{TEX.ninf}</TeX>, the speed-up approaches{" "}
+          <TeX>{TEX.limit}</TeX>. More machines have sharply diminishing returns, and the serial
+          bottleneck, not the hardware, is what you must attack. It's why "just add more nodes" so
+          often disappoints.
         </p>
       </KSection>
 
       <KSection id="hpc" eyebrow="03" title="Clusters, HPC, and MPI">
         <p>
           <Term>High-Performance Computing</Term> (HPC) is the classic cluster world: a
-          supercomputer is really a few thousand nodes wired together with a very fast
-          network, shared by many researchers. You don't run things interactively — you
-          submit a <Term>job</Term> to a <Term>scheduler</Term> (like Slurm), which queues
-          it and allocates nodes when they're free. Melbourne's <Term>SPARTAN</Term> is
-          exactly this.
+          supercomputer is really a few thousand nodes wired together with a very fast network,
+          shared by many researchers. You don't run things interactively — you submit a{" "}
+          <Term>job</Term> to a <Term>scheduler</Term> (like Slurm), which queues it and allocates
+          nodes when they're free. Melbourne's <Term>SPARTAN</Term> is exactly this.
         </p>
         <p>
-          To make many nodes cooperate on one computation, the traditional tool is{" "}
-          <Term>MPI</Term> (Message Passing Interface). Because the nodes don't share
-          memory, they coordinate by explicitly <em>sending messages</em> to each other —
-          "here's my piece of the result, combine it with yours." It's powerful and fast
-          but low-level: you manage the communication by hand, which is precise but
-          error-prone. The big-data frameworks that followed exist largely to hide this
-          complexity.
+          To make many nodes cooperate on one computation, the traditional tool is <Term>MPI</Term>{" "}
+          (Message Passing Interface). Because the nodes don't share memory, they coordinate by
+          explicitly <em>sending messages</em> to each other — "here's my piece of the result,
+          combine it with yours." It's powerful and fast but low-level: you manage the communication
+          by hand, which is precise but error-prone. The big-data frameworks that followed exist
+          largely to hide this complexity.
         </p>
       </KSection>
 
       <KSection id="mapreduce" eyebrow="04" title="MapReduce">
         <p>
-          <Term>MapReduce</Term>, popularised by Google, was the breakthrough that made
-          distributed data processing accessible. Its insight: express your computation as
-          just two functions, and let the framework handle all the hard distributed
-          plumbing — splitting data, scheduling, moving results, and recovering from
-          failures.
+          <Term>MapReduce</Term>, popularised by Google, was the breakthrough that made distributed
+          data processing accessible. Its insight: express your computation as just two functions,
+          and let the framework handle all the hard distributed plumbing — splitting data,
+          scheduling, moving results, and recovering from failures.
         </p>
         <ul>
           <li>
-            <Term>Map</Term> — applied to each chunk of data in parallel across the
-            cluster, emitting key-value pairs (e.g. for word count, emit{" "}
-            <code>(word, 1)</code> for every word).
+            <Term>Map</Term> — applied to each chunk of data in parallel across the cluster,
+            emitting key-value pairs (e.g. for word count, emit <code>(word, 1)</code> for every
+            word).
           </li>
           <li>
-            <Term>Shuffle</Term> — the framework groups all values by key and moves them so
-            each key's data lands on one node.
+            <Term>Shuffle</Term> — the framework groups all values by key and moves them so each
+            key's data lands on one node.
           </li>
           <li>
-            <Term>Reduce</Term> — combines the values for each key into the final result
-            (sum the 1s → the count per word).
+            <Term>Reduce</Term> — combines the values for each key into the final result (sum the 1s
+            → the count per word).
           </li>
         </ul>
         <p>
-          You write two simple functions; the framework turns them into a fault-tolerant
-          job across a thousand machines. The cost is rigidity — many problems are awkward
-          to force into map-then-reduce, and chaining steps means writing slow intermediate
-          results to disk each time. That last weakness is exactly what Spark fixed.
+          You write two simple functions; the framework turns them into a fault-tolerant job across
+          a thousand machines. The cost is rigidity — many problems are awkward to force into
+          map-then-reduce, and chaining steps means writing slow intermediate results to disk each
+          time. That last weakness is exactly what Spark fixed.
         </p>
 
         <MapReduceFigure
@@ -187,82 +240,77 @@ function EnBody() {
       <KSection id="spark" eyebrow="05" title="Spark">
         <p>
           <Term>Apache Spark</Term> is the modern successor, and its key advance is{" "}
-          <Term>in-memory</Term> computing. Where MapReduce wrote intermediate results to
-          disk between every step, Spark keeps data in the cluster's RAM across steps —
-          making multi-stage jobs (and especially iterative ones like machine learning)
-          dramatically faster, often by 10–100×.
+          <Term>in-memory</Term> computing. Where MapReduce wrote intermediate results to disk
+          between every step, Spark keeps data in the cluster's RAM across steps — making
+          multi-stage jobs (and especially iterative ones like machine learning) dramatically
+          faster, often by 10–100×.
         </p>
         <p>Two ideas make it work:</p>
         <ul>
           <li>
-            <Term>RDDs / DataFrames</Term> — a distributed collection spread across the
-            cluster that you manipulate as if it were a single object, while Spark runs the
-            operations in parallel underneath.
+            <Term>RDDs / DataFrames</Term> — a distributed collection spread across the cluster that
+            you manipulate as if it were a single object, while Spark runs the operations in
+            parallel underneath.
           </li>
           <li>
-            <Term>Lazy evaluation</Term> — Spark doesn't run your transformations as you
-            write them; it builds a plan (a graph of operations) and only executes when you
-            ask for a result, letting it optimise the whole pipeline and recompute lost
-            pieces after a failure.
+            <Term>Lazy evaluation</Term> — Spark doesn't run your transformations as you write them;
+            it builds a plan (a graph of operations) and only executes when you ask for a result,
+            letting it optimise the whole pipeline and recompute lost pieces after a failure.
           </li>
         </ul>
         <p>
-          The result is a tool that feels like writing ordinary data code (Spark even
-          speaks SQL and a pandas-like API) but runs across a cluster — which is why it's
-          the default for large-scale analytics today.
+          The result is a tool that feels like writing ordinary data code (Spark even speaks SQL and
+          a pandas-like API) but runs across a cluster — which is why it's the default for
+          large-scale analytics today.
         </p>
       </KSection>
 
       <KSection id="cloud" eyebrow="06" title="The cloud">
         <p>
-          A cluster used to mean buying and racking your own machines. The{" "}
-          <Term>cloud</Term> changed the economics: rent computing from AWS, Azure, or
-          Google on demand and pay only for what you use. Its defining feature is{" "}
-          <Term>elasticity</Term> — spin up 100 machines for an hour to crunch a job, then
-          shut them down — turning a huge capital purchase into a small operating cost.
-          Providers sell it at three levels of abstraction:
+          A cluster used to mean buying and racking your own machines. The <Term>cloud</Term>{" "}
+          changed the economics: rent computing from AWS, Azure, or Google on demand and pay only
+          for what you use. Its defining feature is <Term>elasticity</Term> — spin up 100 machines
+          for an hour to crunch a job, then shut them down — turning a huge capital purchase into a
+          small operating cost. Providers sell it at three levels of abstraction:
         </p>
         <ul>
           <li>
-            <Term>IaaS</Term> (Infrastructure) — raw virtual machines and storage; you
-            manage the rest. Maximum control.
+            <Term>IaaS</Term> (Infrastructure) — raw virtual machines and storage; you manage the
+            rest. Maximum control.
           </li>
           <li>
-            <Term>PaaS</Term> (Platform) — a managed environment to run your code; the
-            provider handles the servers and scaling.
+            <Term>PaaS</Term> (Platform) — a managed environment to run your code; the provider
+            handles the servers and scaling.
           </li>
           <li>
-            <Term>SaaS</Term> (Software) — finished applications you just use (Gmail, this
-            site's analytics).
+            <Term>SaaS</Term> (Software) — finished applications you just use (Gmail, this site's
+            analytics).
           </li>
         </ul>
         <p>
-          For data work, the cloud's managed services are the real draw: a Spark cluster, a
-          data warehouse, or a model-training rig that you rent for an afternoon instead of
-          owning. The trade-offs are ongoing cost, vendor lock-in, and putting your data on
-          someone else's infrastructure — which is a live concern for the government and
-          health data I work with.
+          For data work, the cloud's managed services are the real draw: a Spark cluster, a data
+          warehouse, or a model-training rig that you rent for an afternoon instead of owning. The
+          trade-offs are ongoing cost, vendor lock-in, and putting your data on someone else's
+          infrastructure — which is a live concern for the government and health data I work with.
         </p>
       </KSection>
 
       <KSection id="storage" eyebrow="07" title="Storage and the CAP trade-off">
         <p>
-          Data too big for one machine can't sit on one disk either, so it's spread across
-          the cluster with a <Term>distributed file system</Term> (HDFS) or{" "}
-          <Term>object storage</Term> (S3) — and replicated, so a dead drive doesn't lose
-          anything. But distributing data forces a deep trade-off, captured by the{" "}
-          <Term>CAP theorem</Term>: when the network between nodes fails (a{" "}
-          <Term>partition</Term>, which <em>will</em> happen), a system can guarantee{" "}
-          <Term>consistency</Term> (everyone sees the same data) or{" "}
-          <Term>availability</Term> (every request still gets an answer) — but not both.
+          Data too big for one machine can't sit on one disk either, so it's spread across the
+          cluster with a <Term>distributed file system</Term> (HDFS) or <Term>object storage</Term>{" "}
+          (S3) — and replicated, so a dead drive doesn't lose anything. But distributing data forces
+          a deep trade-off, captured by the <Term>CAP theorem</Term>: when the network between nodes
+          fails (a <Term>partition</Term>, which <em>will</em> happen), a system can guarantee{" "}
+          <Term>consistency</Term> (everyone sees the same data) or <Term>availability</Term> (every
+          request still gets an answer) — but not both.
         </p>
         <p>
-          So distributed databases pick a side: a bank's ledger favours consistency (better
-          to refuse than to show a wrong balance); a social feed favours availability (a
-          slightly stale post beats an error). There's no free lunch — and recognising
-          which guarantee a system chose tells you exactly how it will behave when something
-          breaks. It's the distributed echo of the{" "}
-          <Link href="/knowledge/database-systems">ACID</Link> guarantees from the
+          So distributed databases pick a side: a bank's ledger favours consistency (better to
+          refuse than to show a wrong balance); a social feed favours availability (a slightly stale
+          post beats an error). There's no free lunch — and recognising which guarantee a system
+          chose tells you exactly how it will behave when something breaks. It's the distributed
+          echo of the <Link href="/knowledge/database-systems">ACID</Link> guarantees from the
           single-machine database page.
         </p>
       </KSection>
@@ -270,39 +318,37 @@ function EnBody() {
       <KSection id="choosing" eyebrow="08" title="Choosing the right tool">
         <p>
           The most important skill here is also the most under-rated: knowing when you{" "}
-          <em>don't</em> need any of this. Distribution adds enormous complexity — network
-          failures, coordination overhead, harder debugging, Amdahl's ceiling — so the
-          right default is to push a single machine first. Modern servers have hundreds of
-          gigabytes of RAM; a great deal of "big data" fits comfortably on one, and runs
-          faster there than on a cluster whose coordination overhead eats the gains.
+          <em>don't</em> need any of this. Distribution adds enormous complexity — network failures,
+          coordination overhead, harder debugging, Amdahl's ceiling — so the right default is to
+          push a single machine first. Modern servers have hundreds of gigabytes of RAM; a great
+          deal of "big data" fits comfortably on one, and runs faster there than on a cluster whose
+          coordination overhead eats the gains.
         </p>
         <p>
-          Reach for a cluster only when the data genuinely won't fit or the job genuinely
-          won't finish in time — and then prefer a managed framework (Spark on a cloud
-          service) over hand-rolled MPI unless you truly need the low-level control. The
-          rule of thumb: the simplest thing that fits the problem, scaled up before scaled
-          out.
+          Reach for a cluster only when the data genuinely won't fit or the job genuinely won't
+          finish in time — and then prefer a managed framework (Spark on a cloud service) over
+          hand-rolled MPI unless you truly need the low-level control. The rule of thumb: the
+          simplest thing that fits the problem, scaled up before scaled out.
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="09" title="Where it shows up in my work">
         <Callout type="applied" label="Scale, and the discipline to avoid it">
           <p>
-            I learned this hands-on — running parallel jobs on Melbourne's{" "}
-            <strong>SPARTAN</strong> HPC cluster and processing large social-media datasets
-            with <strong>Spark</strong> on the cloud — and the most valuable takeaway is the
-            restraint. <strong>Amdahl's law</strong> and coordination overhead mean
-            distribution isn't free, so I reach for it only when a single machine genuinely
-            can't cope, and lean on <strong>managed cloud</strong> services rather than
-            standing up infrastructure by hand.
+            I learned this hands-on — running parallel jobs on Melbourne's <strong>SPARTAN</strong>{" "}
+            HPC cluster and processing large social-media datasets with <strong>Spark</strong> on
+            the cloud — and the most valuable takeaway is the restraint.{" "}
+            <strong>Amdahl's law</strong> and coordination overhead mean distribution isn't free, so
+            I reach for it only when a single machine genuinely can't cope, and lean on{" "}
+            <strong>managed cloud</strong> services rather than standing up infrastructure by hand.
           </p>
           <p>
             It's also the layer that lets the rest of the toolkit operate at real scale: the{" "}
             <Link href="/knowledge/statistical-machine-learning">models</Link> and{" "}
-            <Link href="/knowledge/natural-language-processing">NLP</Link> pipelines I build
-            only matter if they can run over the full dataset — and in government and health
-            work, the <strong>CAP</strong> and data-sovereignty trade-offs of <em>where</em>{" "}
-            that compute happens are a first-order decision, not an afterthought.
+            <Link href="/knowledge/natural-language-processing">NLP</Link> pipelines I build only
+            matter if they can run over the full dataset — and in government and health work, the{" "}
+            <strong>CAP</strong> and data-sovereignty trade-offs of <em>where</em> that compute
+            happens are a first-order decision, not an afterthought.
           </p>
         </Callout>
       </KSection>
@@ -311,30 +357,30 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              When data outgrows one machine, <strong>scale out</strong> (many ordinary
-              nodes) rather than up — a <strong>cluster</strong>. It solves size but adds
-              splitting, coordination, and failure.
+              When data outgrows one machine, <strong>scale out</strong> (many ordinary nodes)
+              rather than up — a <strong>cluster</strong>. It solves size but adds splitting,
+              coordination, and failure.
             </li>
             <li>
-              <strong>Amdahl's law</strong> <TeX>{TEX.amdahlShort}</TeX>: the serial
-              fraction caps your speed-up — more nodes have diminishing returns.
+              <strong>Amdahl's law</strong> <TeX>{TEX.amdahlShort}</TeX>: the serial fraction caps
+              your speed-up — more nodes have diminishing returns.
             </li>
             <li>
-              <strong>HPC + MPI</strong>: nodes coordinate by explicit message passing
-              (low-level, fast). <strong>MapReduce</strong>: write map + reduce, the
-              framework distributes it (rigid, disk-heavy).
+              <strong>HPC + MPI</strong>: nodes coordinate by explicit message passing (low-level,
+              fast). <strong>MapReduce</strong>: write map + reduce, the framework distributes it
+              (rigid, disk-heavy).
             </li>
             <li>
-              <strong>Spark</strong>: in-memory, RDDs/DataFrames + lazy evaluation — 10–100×
-              faster for multi-step/iterative jobs. The modern default.
+              <strong>Spark</strong>: in-memory, RDDs/DataFrames + lazy evaluation — 10–100× faster
+              for multi-step/iterative jobs. The modern default.
             </li>
             <li>
-              The <strong>cloud</strong> rents elastic compute (IaaS/PaaS/SaaS); managed
-              services are the draw, with cost/lock-in/sovereignty trade-offs.
+              The <strong>cloud</strong> rents elastic compute (IaaS/PaaS/SaaS); managed services
+              are the draw, with cost/lock-in/sovereignty trade-offs.
             </li>
             <li>
-              Distributed storage replicates data; the <strong>CAP theorem</strong> forces a
-              choice between consistency and availability under a network partition.{" "}
+              Distributed storage replicates data; the <strong>CAP theorem</strong> forces a choice
+              between consistency and availability under a network partition.{" "}
               <strong>Scale up before out</strong> — distribution isn't free.
             </li>
           </ul>
@@ -410,8 +456,8 @@ function ZhBody() {
         <p>
           <Term>高性能计算</Term>（HPC）是经典的集群世界：一台超级计算机其实是几千个节点用一张
           极快的网络连在一起，由许多研究者共享。你不是交互式地运行——你把一个<Term>作业</Term>
-          提交给一个<Term>调度器</Term>（如 Slurm），它把作业排队，并在节点空闲时分配它们。墨尔本
-          的 <Term>SPARTAN</Term> 正是如此。
+          提交给一个<Term>调度器</Term>（如 Slurm），它把作业排队，并在节点空闲时分配它们。墨尔本 的{" "}
+          <Term>SPARTAN</Term> 正是如此。
         </p>
         <p>
           要让许多节点在一次计算上协作，传统的工具是 <Term>MPI</Term>（消息传递接口）。因为节点
@@ -437,8 +483,7 @@ function ZhBody() {
             节点上。
           </li>
           <li>
-            <Term>Reduce</Term>——把每个键的那些值合并成最终结果（把那些 1 相加 → 每个词的
-            计数）。
+            <Term>Reduce</Term>——把每个键的那些值合并成最终结果（把那些 1 相加 → 每个词的 计数）。
           </li>
         </ul>
         <p>
@@ -481,8 +526,8 @@ function ZhBody() {
 
       <KSection id="cloud" eyebrow="06" title="云">
         <p>
-          集群过去意味着购买并上架你自己的机器。<Term>云</Term>改变了经济账：按需从 AWS、Azure
-          或 Google 租用算力，只为你用到的付费。它的标志性特征是<Term>弹性</Term>——拉起 100 台
+          集群过去意味着购买并上架你自己的机器。<Term>云</Term>改变了经济账：按需从 AWS、Azure 或
+          Google 租用算力，只为你用到的付费。它的标志性特征是<Term>弹性</Term>——拉起 100 台
           机器跑一个小时来啃一个作业，再把它们关掉——把一笔巨大的资本支出变成一小笔运营成本。
           供应商以三个抽象层级出售它：
         </p>
@@ -506,8 +551,8 @@ function ZhBody() {
 
       <KSection id="storage" eyebrow="07" title="存储与 CAP 权衡">
         <p>
-          大到一台机器装不下的数据，也无法待在一块磁盘上，所以它用一个<Term>分布式文件系统
-          </Term>（HDFS）或<Term>对象存储</Term>（S3）铺散到集群上——并被复制，使一块坏掉的硬盘
+          大到一台机器装不下的数据，也无法待在一块磁盘上，所以它用一个<Term>分布式文件系统</Term>
+          （HDFS）或<Term>对象存储</Term>（S3）铺散到集群上——并被复制，使一块坏掉的硬盘
           不会丢失任何东西。但分发数据强加了一个深刻的权衡，由 <Term>CAP 定理</Term>所刻画：当
           节点之间的网络失效时（一次<Term>分区</Term>，它<em>必然</em>会发生），一个系统能保证
           <Term>一致性</Term>（人人看到相同的数据）或<Term>可用性</Term>（每个请求仍得到一个

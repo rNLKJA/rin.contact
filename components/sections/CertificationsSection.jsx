@@ -43,7 +43,10 @@ const groupOf = (issuer) => {
 // Provider breakdown, most-certified first; drives both the chips and the grid order.
 const BREAKDOWN = (() => {
   const counts = {};
-  CERTS.forEach((c) => { const g = groupOf(c.issuer); counts[g] = (counts[g] || 0) + 1; });
+  CERTS.forEach((c) => {
+    const g = groupOf(c.issuer);
+    counts[g] = (counts[g] || 0) + 1;
+  });
   return Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 })();
 const ORDER = BREAKDOWN.map(([g]) => g);
@@ -97,8 +100,8 @@ export default function CertificationsSection() {
                 Credentials.
               </h2>
               <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
-                {CERTS.length} professional certifications across cloud, data, AI, and agile delivery —
-                kept current and verifiable.
+                {CERTS.length} professional certifications across cloud, data, AI, and agile
+                delivery — kept current and verifiable.
               </p>
             </div>
           </div>
@@ -123,13 +126,14 @@ export default function CertificationsSection() {
             <div
               key={cert.name}
               className={`flex items-center gap-3 border border-[#E8E8E8] dark:border-[#2A2A2A] px-4 py-3 transition-all duration-500 ${
-                inView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
+                inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
               style={{ transitionDelay: `${i * 40}ms` }}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" aria-hidden="true" />
+              <span
+                className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0"
+                aria-hidden="true"
+              />
               <div className="min-w-0">
                 <p className="text-sm text-black dark:text-white truncate">{cert.name}</p>
                 <p className="text-[11px] text-[#7A7A7A]">

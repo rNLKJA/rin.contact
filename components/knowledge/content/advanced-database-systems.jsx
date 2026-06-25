@@ -23,17 +23,57 @@ function OptimiserFigure({ caption, ariaLabel, labels, hint }) {
           const accent = i === 3;
           return (
             <g key={i}>
-              <rect x={x} y={48} width={72} height={32} rx={2}
-                fill={accent ? "#FF3C3C" : "none"} fillOpacity={accent ? 0.12 : 0}
-                stroke={accent ? "#FF3C3C" : "currentColor"} strokeWidth={accent ? 1.4 : 1} opacity={accent ? 1 : 0.65} />
-              <text x={x + 36} y={68} textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{label}</text>
-              {i < 4 && <line x1={x + 72} y1={64} x2={x + 88} y2={64} stroke="#FF3C3C" strokeWidth={1.3} markerEnd="url(#ad-ah)" />}
+              <rect
+                x={x}
+                y={48}
+                width={72}
+                height={32}
+                rx={2}
+                fill={accent ? "#FF3C3C" : "none"}
+                fillOpacity={accent ? 0.12 : 0}
+                stroke={accent ? "#FF3C3C" : "currentColor"}
+                strokeWidth={accent ? 1.4 : 1}
+                opacity={accent ? 1 : 0.65}
+              />
+              <text
+                x={x + 36}
+                y={68}
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill="currentColor"
+              >
+                {label}
+              </text>
+              {i < 4 && (
+                <line
+                  x1={x + 72}
+                  y1={64}
+                  x2={x + 88}
+                  y2={64}
+                  stroke="#FF3C3C"
+                  strokeWidth={1.3}
+                  markerEnd="url(#ad-ah)"
+                />
+              )}
             </g>
           );
         })}
-        <text x="270" y="98" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.55">{hint}</text>
+        <text
+          x="270"
+          y="98"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.55"
+        >
+          {hint}
+        </text>
         <defs>
-          <marker id="ad-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" /></marker>
+          <marker id="ad-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -46,47 +86,46 @@ function EnBody() {
     <>
       <p>
         The <Link href="/knowledge/database-systems">database systems page</Link> covered the
-        relational model, SQL, and why databases beat files. This is the sequel: what's
-        actually going on <em>inside</em> the engine. How does it turn your SQL into a fast
-        plan? How do thousands of simultaneous users not trample each other? How does it
-        survive a crash, or split across a hundred machines? These are the questions that
-        separate "I can write a query" from "I understand the system I'm betting my data on."
+        relational model, SQL, and why databases beat files. This is the sequel: what's actually
+        going on <em>inside</em> the engine. How does it turn your SQL into a fast plan? How do
+        thousands of simultaneous users not trample each other? How does it survive a crash, or
+        split across a hundred machines? These are the questions that separate "I can write a query"
+        from "I understand the system I'm betting my data on."
       </p>
       <p>
         It builds on the foundation page and ties to{" "}
-        <Link href="/knowledge/cluster-cloud-computing">cluster &amp; cloud computing</Link>{" "}
-        once we go distributed. The recurring theme: every powerful feature is a{" "}
-        <em>trade-off</em>, and knowing which one a system made tells you how it behaves when
-        things get hard.
+        <Link href="/knowledge/cluster-cloud-computing">cluster &amp; cloud computing</Link> once we
+        go distributed. The recurring theme: every powerful feature is a <em>trade-off</em>, and
+        knowing which one a system made tells you how it behaves when things get hard.
       </p>
 
       <KSection id="hood" eyebrow="01" title="Under the hood">
         <p>
-          When you run a SQL query, you say <em>what</em> you want, never <em>how</em> to get
-          it — that declarative gap is the whole point. Behind the scenes the database turns
-          that request into an executable plan and runs it as efficiently as it can. The
-          components that make this work — the optimiser, the transaction manager, the storage
-          engine — are what we unpack here. Understanding them is what lets you diagnose a slow
-          query or a mysterious deadlock instead of guessing.
+          When you run a SQL query, you say <em>what</em> you want, never <em>how</em> to get it —
+          that declarative gap is the whole point. Behind the scenes the database turns that request
+          into an executable plan and runs it as efficiently as it can. The components that make
+          this work — the optimiser, the transaction manager, the storage engine — are what we
+          unpack here. Understanding them is what lets you diagnose a slow query or a mysterious
+          deadlock instead of guessing.
         </p>
       </KSection>
 
       <KSection id="optimiser" eyebrow="02" title="Query optimisation">
         <p>
           The same query can be executed many ways — which table to read first, which{" "}
-          <Link href="/knowledge/database-systems">index</Link> to use, which join algorithm —
-          and they can differ in speed by <em>orders of magnitude</em>. The{" "}
-          <Term>query optimiser</Term> is the brain that chooses, and it's one of the most
-          sophisticated pieces of software in any database.
+          <Link href="/knowledge/database-systems">index</Link> to use, which join algorithm — and
+          they can differ in speed by <em>orders of magnitude</em>. The <Term>query optimiser</Term>{" "}
+          is the brain that chooses, and it's one of the most sophisticated pieces of software in
+          any database.
         </p>
         <p>
           It works in stages: parse the SQL, generate candidate <Term>execution plans</Term>,
-          estimate the <Term>cost</Term> of each using statistics about the data (how many
-          rows, how values are distributed), and pick the cheapest. This is{" "}
-          <Term>cost-based optimisation</Term> — the optimiser is effectively predicting which
-          plan will touch the fewest rows and do the least I/O. It's why keeping table
-          statistics up to date matters, and why the same query can suddenly turn slow when the
-          optimiser's estimates drift from reality.
+          estimate the <Term>cost</Term> of each using statistics about the data (how many rows, how
+          values are distributed), and pick the cheapest. This is{" "}
+          <Term>cost-based optimisation</Term> — the optimiser is effectively predicting which plan
+          will touch the fewest rows and do the least I/O. It's why keeping table statistics up to
+          date matters, and why the same query can suddenly turn slow when the optimiser's estimates
+          drift from reality.
         </p>
 
         <OptimiserFigure
@@ -103,77 +142,79 @@ function EnBody() {
           <Term>transactions</Term> and the <Term>ACID</Term> guarantees. The hard part is
           delivering them when thousands of transactions run <em>at once</em> — that's{" "}
           <Term>concurrency control</Term>, and it's where databases earn their keep. Run
-          transactions naively in parallel and they corrupt each other (one reads a value
-          another is half-way through changing); run them strictly one-at-a-time and the system
-          grinds to a halt. The job is to allow as much parallelism as possible while
-          preserving the <em>illusion</em> that each transaction ran alone.
+          transactions naively in parallel and they corrupt each other (one reads a value another is
+          half-way through changing); run them strictly one-at-a-time and the system grinds to a
+          halt. The job is to allow as much parallelism as possible while preserving the{" "}
+          <em>illusion</em> that each transaction ran alone.
         </p>
-        <p>Databases offer this on a dial of <Term>isolation levels</Term>, and there are two broad strategies to enforce it:</p>
+        <p>
+          Databases offer this on a dial of <Term>isolation levels</Term>, and there are two broad
+          strategies to enforce it:
+        </p>
         <ul>
           <li>
             <Term>Locking</Term> — a transaction locks the data it touches so others must wait.
-            Safe, but contention-prone, and it can produce <Term>deadlocks</Term> (two
-            transactions each waiting on a lock the other holds), which the database detects and
-            breaks by aborting one.
+            Safe, but contention-prone, and it can produce <Term>deadlocks</Term> (two transactions
+            each waiting on a lock the other holds), which the database detects and breaks by
+            aborting one.
           </li>
           <li>
             <Term>MVCC</Term> (Multi-Version Concurrency Control) — instead of locking, keep
             multiple <em>versions</em> of each row, so readers see a consistent snapshot while
             writers create new versions. Readers never block writers and vice-versa. It's how
-            Postgres and most modern databases get high concurrency, and it's the better default
-            for read-heavy analytical work.
+            Postgres and most modern databases get high concurrency, and it's the better default for
+            read-heavy analytical work.
           </li>
         </ul>
         <Callout type="intuition">
           <p>
-            The isolation dial is a direct speed-vs-safety trade-off. The strictest level
-            (<em>serializable</em>) behaves exactly as if transactions ran one by one — no
-            anomalies, but slower. Looser levels run faster by permitting subtle read anomalies.
-            Choosing the level is choosing how much correctness you'll trade for throughput — a
-            real decision, not a default to ignore.
+            The isolation dial is a direct speed-vs-safety trade-off. The strictest level (
+            <em>serializable</em>) behaves exactly as if transactions ran one by one — no anomalies,
+            but slower. Looser levels run faster by permitting subtle read anomalies. Choosing the
+            level is choosing how much correctness you'll trade for throughput — a real decision,
+            not a default to ignore.
           </p>
         </Callout>
       </KSection>
 
       <KSection id="storage" eyebrow="04" title="Storage internals">
         <p>
-          How data physically sits on disk decides performance, and there are two dominant
-          designs:
+          How data physically sits on disk decides performance, and there are two dominant designs:
         </p>
         <ul>
           <li>
-            <Term>B-trees</Term> — the classic structure behind most relational indexes (from
-            the foundation page). Balanced for fast reads and good for read-heavy,
-            update-in-place workloads. The default for decades.
+            <Term>B-trees</Term> — the classic structure behind most relational indexes (from the
+            foundation page). Balanced for fast reads and good for read-heavy, update-in-place
+            workloads. The default for decades.
           </li>
           <li>
-            <Term>LSM-trees</Term> (Log-Structured Merge trees) — batch writes in memory and
-            flush them sequentially to disk, merging in the background. They make <em>writes</em>{" "}
+            <Term>LSM-trees</Term> (Log-Structured Merge trees) — batch writes in memory and flush
+            them sequentially to disk, merging in the background. They make <em>writes</em>{" "}
             extremely fast, which is why write-heavy systems like Cassandra and many NoSQL stores
             use them — at some cost to read speed.
           </li>
         </ul>
         <p>
           Underneath both sits the feature that makes <Term>durability</Term> real: the{" "}
-          <Term>write-ahead log</Term> (WAL). Before changing the actual data, the database
-          records the change in an append-only log. If it crashes mid-operation, it replays the
-          log on restart to recover to a consistent state — nothing committed is ever lost. It's
-          the unglamorous mechanism behind the "D" in ACID.
+          <Term>write-ahead log</Term> (WAL). Before changing the actual data, the database records
+          the change in an append-only log. If it crashes mid-operation, it replays the log on
+          restart to recover to a consistent state — nothing committed is ever lost. It's the
+          unglamorous mechanism behind the "D" in ACID.
         </p>
       </KSection>
 
       <KSection id="distributed" eyebrow="05" title="Going distributed">
         <p>
-          When data or traffic outgrows one machine, the database must spread across many — and
-          the same scaling reality from the{" "}
-          <Link href="/knowledge/cluster-cloud-computing">cluster &amp; cloud page</Link>{" "}
-          applies. Two techniques:
+          When data or traffic outgrows one machine, the database must spread across many — and the
+          same scaling reality from the{" "}
+          <Link href="/knowledge/cluster-cloud-computing">cluster &amp; cloud page</Link> applies.
+          Two techniques:
         </p>
         <ul>
           <li>
-            <Term>Partitioning / sharding</Term> — split the data across nodes (users A–M here,
-            N–Z there) so each holds a slice. This scales capacity and write throughput, but
-            cross-shard queries get harder.
+            <Term>Partitioning / sharding</Term> — split the data across nodes (users A–M here, N–Z
+            there) so each holds a slice. This scales capacity and write throughput, but cross-shard
+            queries get harder.
           </li>
           <li>
             <Term>Replication</Term> — keep copies of the same data on several nodes, for fault
@@ -186,10 +227,10 @@ function EnBody() {
       <KSection id="consistency" eyebrow="06" title="Consistency models">
         <p>
           The instant you replicate data, you confront the <Term>CAP theorem</Term> (from the
-          cluster &amp; cloud page): when the network between nodes fails, you must choose
-          between <Term>consistency</Term> (every read sees the latest write) and{" "}
-          <Term>availability</Term> (every request still gets an answer). You can't have both
-          during a partition. This forces a choice of <Term>consistency model</Term>:
+          cluster &amp; cloud page): when the network between nodes fails, you must choose between{" "}
+          <Term>consistency</Term> (every read sees the latest write) and <Term>availability</Term>{" "}
+          (every request still gets an answer). You can't have both during a partition. This forces
+          a choice of <Term>consistency model</Term>:
         </p>
         <ul>
           <li>
@@ -199,47 +240,59 @@ function EnBody() {
           </li>
           <li>
             <Term>Eventual consistency</Term> — reads might briefly return stale data, but all
-            copies <em>converge</em> given time. Fast and highly available — the right call for
-            a social feed or a like count, where a moment of staleness is harmless.
+            copies <em>converge</em> given time. Fast and highly available — the right call for a
+            social feed or a like count, where a moment of staleness is harmless.
           </li>
         </ul>
         <p>
-          Neither is "correct"; each suits different needs. Recognising which model a system
-          chose tells you exactly how it will behave when a node or network fails — and that's
-          the question that matters in production.
+          Neither is "correct"; each suits different needs. Recognising which model a system chose
+          tells you exactly how it will behave when a node or network fails — and that's the
+          question that matters in production.
         </p>
       </KSection>
 
       <KSection id="nosql" eyebrow="07" title="The NoSQL families">
         <p>
-          To get that scale and flexibility, <Term>NoSQL</Term> databases relax the rigid
-          relational model. They're not one thing but a family, each shaped for a kind of data:
+          To get that scale and flexibility, <Term>NoSQL</Term> databases relax the rigid relational
+          model. They're not one thing but a family, each shaped for a kind of data:
         </p>
         <ul>
-          <li><Term>Document</Term> (MongoDB) — store flexible JSON-like documents; great when the schema varies.</li>
-          <li><Term>Key-value</Term> (Redis) — a giant fast dictionary; ideal for caching and sessions.</li>
-          <li><Term>Wide-column</Term> (Cassandra) — huge tables spread across many nodes, write-optimised.</li>
-          <li><Term>Graph</Term> (Neo4j) — model entities and relationships directly; built for connected data like networks.</li>
+          <li>
+            <Term>Document</Term> (MongoDB) — store flexible JSON-like documents; great when the
+            schema varies.
+          </li>
+          <li>
+            <Term>Key-value</Term> (Redis) — a giant fast dictionary; ideal for caching and
+            sessions.
+          </li>
+          <li>
+            <Term>Wide-column</Term> (Cassandra) — huge tables spread across many nodes,
+            write-optimised.
+          </li>
+          <li>
+            <Term>Graph</Term> (Neo4j) — model entities and relationships directly; built for
+            connected data like networks.
+          </li>
         </ul>
         <p>
           The trade-off is the recurring one: most NoSQL stores drop some of the relational
-          guarantees (rich joins, strict schemas, full ACID) in exchange for scale, flexibility,
-          or speed on a particular shape of data. They complement the relational database rather
-          than replace it — you pick the store that fits the job.
+          guarantees (rich joins, strict schemas, full ACID) in exchange for scale, flexibility, or
+          speed on a particular shape of data. They complement the relational database rather than
+          replace it — you pick the store that fits the job.
         </p>
       </KSection>
 
       <KSection id="analytical" eyebrow="08" title="Analytical databases">
         <p>
-          A final, important split — the <Term>OLTP vs OLAP</Term> distinction from the
-          foundation page, taken to its hardware conclusion. Transactional databases store data{" "}
+          A final, important split — the <Term>OLTP vs OLAP</Term> distinction from the foundation
+          page, taken to its hardware conclusion. Transactional databases store data{" "}
           <Term>row by row</Term> (fast to read or write a whole record). Analytical databases —
-          data warehouses like BigQuery, Snowflake, Redshift — store it <Term>column by column</Term>.{" "}
-          <Term>Columnar storage</Term> is transformational for analytics: a query that sums one
-          column reads <em>only</em> that column off disk, not every row, and similar values
-          packed together compress beautifully. It's why the same "big query over history" runs
-          in seconds on a warehouse and minutes on a transactional database — and why serious
-          analytics lives in a separate, columnar store.
+          data warehouses like BigQuery, Snowflake, Redshift — store it{" "}
+          <Term>column by column</Term>. <Term>Columnar storage</Term> is transformational for
+          analytics: a query that sums one column reads <em>only</em> that column off disk, not
+          every row, and similar values packed together compress beautifully. It's why the same "big
+          query over history" runs in seconds on a warehouse and minutes on a transactional database
+          — and why serious analytics lives in a separate, columnar store.
         </p>
       </KSection>
 
@@ -247,18 +300,18 @@ function EnBody() {
         <Callout type="applied" label="Knowing the engine, not just the query">
           <p>
             Understanding the internals is what turns "the query is slow" from a mystery into a
-            diagnosis. Knowing the <strong>optimiser</strong> is cost-based is why I keep
-            statistics fresh and write queries that let it use an index; knowing the{" "}
+            diagnosis. Knowing the <strong>optimiser</strong> is cost-based is why I keep statistics
+            fresh and write queries that let it use an index; knowing the{" "}
             <strong>OLTP/OLAP and columnar</strong> split is why I model a <strong>Power BI</strong>{" "}
             data layer for fast aggregate reads instead of hammering a transactional source. On
-            large government datasets, the <strong>partitioning and consistency</strong>{" "}
-            trade-offs aren't academic — they decide whether a report is both correct and fast.
+            large government datasets, the <strong>partitioning and consistency</strong> trade-offs
+            aren't academic — they decide whether a report is both correct and fast.
           </p>
           <p>
             The throughline of the whole page is judgement: every advanced feature — isolation
             level, storage engine, consistency model, NoSQL choice — is a{" "}
-            <strong>deliberate trade-off</strong>, and the skill is matching it to what the data
-            and the decision actually need.
+            <strong>deliberate trade-off</strong>, and the skill is matching it to what the data and
+            the decision actually need.
           </p>
         </Callout>
       </KSection>
@@ -267,8 +320,8 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              The <strong>query optimiser</strong> turns declarative SQL into the cheapest
-              execution plan using data statistics (cost-based) — keep stats fresh.
+              The <strong>query optimiser</strong> turns declarative SQL into the cheapest execution
+              plan using data statistics (cost-based) — keep stats fresh.
             </li>
             <li>
               <strong>Concurrency control</strong> preserves the illusion each transaction ran
@@ -281,17 +334,17 @@ function EnBody() {
               (write-optimised); the <strong>write-ahead log</strong> delivers durability.
             </li>
             <li>
-              Scale out with <strong>partitioning/sharding</strong> and{" "}
-              <strong>replication</strong> — which forces the <strong>CAP</strong> choice:{" "}
-              <strong>strong</strong> vs <strong>eventual</strong> consistency.
+              Scale out with <strong>partitioning/sharding</strong> and <strong>replication</strong>{" "}
+              — which forces the <strong>CAP</strong> choice: <strong>strong</strong> vs{" "}
+              <strong>eventual</strong> consistency.
             </li>
             <li>
               <strong>NoSQL</strong> families (document/key-value/wide-column/graph) drop some
               relational guarantees for scale/flexibility — complements, not replaces.
             </li>
             <li>
-              <strong>Analytical/columnar</strong> stores (warehouses) read only the columns a
-              query needs — seconds vs minutes for big aggregates. Every feature is a{" "}
+              <strong>Analytical/columnar</strong> stores (warehouses) read only the columns a query
+              needs — seconds vs minutes for big aggregates. Every feature is a{" "}
               <strong>trade-off</strong>.
             </li>
           </ul>
@@ -336,8 +389,9 @@ function ZhBody() {
         </p>
         <p>
           它分阶段工作：解析 SQL，生成候选的<Term>执行计划</Term>，用关于数据的统计（有多少行、
-          值如何分布）估计每个计划的<Term>成本</Term>，再挑出最便宜的。这就是<Term>基于成本的
-          优化</Term>——优化器实际上是在预测哪个计划会触及最少的行、做最少的 I/O。这就是为什么让
+          值如何分布）估计每个计划的<Term>成本</Term>，再挑出最便宜的。这就是
+          <Term>基于成本的 优化</Term>——优化器实际上是在预测哪个计划会触及最少的行、做最少的
+          I/O。这就是为什么让
           表统计保持最新很要紧，也是为什么当优化器的估计与现实发生偏离时，同一个查询会突然变慢。
         </p>
 
@@ -357,7 +411,9 @@ function ZhBody() {
           （一个读到另一个正改到一半的值）；让它们严格地一次只跑一个，系统就慢到停摆。这份工作是：
           在尽可能多地允许并行的同时，保住「每个事务都像是独自运行」的<em>错觉</em>。
         </p>
-        <p>数据库以一个<Term>隔离级别</Term>的旋钮来提供这点，而有两大类策略来强制实现它：</p>
+        <p>
+          数据库以一个<Term>隔离级别</Term>的旋钮来提供这点，而有两大类策略来强制实现它：
+        </p>
         <ul>
           <li>
             <Term>加锁</Term>——一个事务锁住它触及的数据，于是其他事务必须等待。安全，但容易产生
@@ -374,8 +430,7 @@ function ZhBody() {
           <p>
             隔离旋钮是一个直接的「速度 vs 安全」权衡。最严格的级别（<em>可串行化</em>）的表现恰如
             事务一个接一个地运行——没有异常，但更慢。更宽松的级别通过允许细微的读异常来跑得更快。
-            选择级别，就是选择你愿意用多少正确性去换吞吐——一个真实的决策，而非一个可被忽略的
-            默认。
+            选择级别，就是选择你愿意用多少正确性去换吞吐——一个真实的决策，而非一个可被忽略的 默认。
           </p>
         </Callout>
       </KSection>
@@ -423,8 +478,8 @@ function ZhBody() {
         <p>
           你一复制数据，就撞上 <Term>CAP 定理</Term>（来自集群与云页）：当节点之间的网络失效时，
           你必须在<Term>一致性</Term>（每次读取都看到最新的写入）与<Term>可用性</Term>（每个请求
-          仍得到一个答复）之间选择。在分区期间你无法二者兼得。这迫使你选一个<Term>一致性模型
-          </Term>：
+          仍得到一个答复）之间选择。在分区期间你无法二者兼得。这迫使你选一个<Term>一致性模型</Term>
+          ：
         </p>
         <ul>
           <li>
@@ -449,14 +504,22 @@ function ZhBody() {
           东西，而是一个家族，各自为某一类数据而塑形：
         </p>
         <ul>
-          <li><Term>文档型</Term>（MongoDB）——存储灵活的类 JSON 文档；当模式多变时很好用。</li>
-          <li><Term>键值型</Term>（Redis）——一本巨大而快速的字典；非常适合缓存与会话。</li>
-          <li><Term>宽列型</Term>（Cassandra）——铺散在许多节点上的巨表，为写而优化。</li>
-          <li><Term>图型</Term>（Neo4j）——直接对实体与关系建模；为网络这样的关联数据而生。</li>
+          <li>
+            <Term>文档型</Term>（MongoDB）——存储灵活的类 JSON 文档；当模式多变时很好用。
+          </li>
+          <li>
+            <Term>键值型</Term>（Redis）——一本巨大而快速的字典；非常适合缓存与会话。
+          </li>
+          <li>
+            <Term>宽列型</Term>（Cassandra）——铺散在许多节点上的巨表，为写而优化。
+          </li>
+          <li>
+            <Term>图型</Term>（Neo4j）——直接对实体与关系建模；为网络这样的关联数据而生。
+          </li>
         </ul>
         <p>
-          权衡还是那个反复出现的：大多数 NoSQL 存储放弃一些关系保证（丰富的连接、严格的模式、
-          完整的 ACID），以换取在某一特定数据形状上的规模、灵活性或速度。它们是对关系数据库的
+          权衡还是那个反复出现的：大多数 NoSQL 存储放弃一些关系保证（丰富的连接、严格的模式、 完整的
+          ACID），以换取在某一特定数据形状上的规模、灵活性或速度。它们是对关系数据库的
           补充，而非取代——你挑选适合任务的那个存储。
         </p>
       </KSection>
@@ -465,8 +528,9 @@ function ZhBody() {
         <p>
           最后一个重要的分野——来自基础页的 <Term>OLTP vs OLAP</Term> 之分，被推到它在硬件上的
           结论。事务型数据库<Term>逐行</Term>存储数据（读或写一整条记录很快）。分析型数据库——像
-          BigQuery、Snowflake、Redshift 这样的数据仓库——<Term>逐列</Term>存储它。<Term>列式存储
-          </Term>对分析是变革性的：一个对某一列求和的查询，只从磁盘读<em>那一列</em>，而非每一行，
+          BigQuery、Snowflake、Redshift 这样的数据仓库——<Term>逐列</Term>存储它。
+          <Term>列式存储</Term>对分析是变革性的：一个对某一列求和的查询，只从磁盘读<em>那一列</em>
+          ，而非每一行，
           而打包在一起的相似值压缩得极好。这就是为什么同一个「在历史上的大查询」在仓库上几秒跑完、
           在事务型数据库上要几分钟——也是为什么严肃的分析住在一个独立的、列式的存储里。
         </p>
@@ -497,7 +561,8 @@ function ZhBody() {
             </li>
             <li>
               <strong>并发控制</strong>保住「每个事务独自运行」的错觉：<strong>加锁</strong>（会
-              死锁）vs <strong>MVCC</strong>（版本化快照，读者不阻塞写者）。<strong>隔离级别</strong>
+              死锁）vs <strong>MVCC</strong>（版本化快照，读者不阻塞写者）。
+              <strong>隔离级别</strong>
               用安全换速度。
             </li>
             <li>
@@ -505,8 +570,8 @@ function ZhBody() {
               <strong>预写日志</strong>兑现持久性。
             </li>
             <li>
-              用<strong>分区/分片</strong>与<strong>复制</strong>横向扩展——这迫使 <strong>CAP</strong>
-              {" "}抉择：<strong>强</strong> vs <strong>最终</strong>一致性。
+              用<strong>分区/分片</strong>与<strong>复制</strong>横向扩展——这迫使{" "}
+              <strong>CAP</strong> 抉择：<strong>强</strong> vs <strong>最终</strong>一致性。
             </li>
             <li>
               <strong>NoSQL</strong> 家族（文档/键值/宽列/图）为规模/灵活性放弃一些关系保证——是

@@ -10,14 +10,11 @@
  * Docs: https://www.indexnow.org/documentation
  */
 
-const INDEXNOW_KEY     = "d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9";
-const INDEXNOW_HOST    = "rin.contact";
+const INDEXNOW_KEY = "d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9";
+const INDEXNOW_HOST = "rin.contact";
 const INDEXNOW_KEY_URL = `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`;
 
-const URLS = [
-  `https://${INDEXNOW_HOST}/`,
-  `https://${INDEXNOW_HOST}/sitemap.xml`,
-];
+const URLS = [`https://${INDEXNOW_HOST}/`, `https://${INDEXNOW_HOST}/sitemap.xml`];
 
 // Bing's IndexNow endpoint (also notifies Yandex and other IndexNow members)
 const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
@@ -32,10 +29,10 @@ export default async function handler(req, res) {
       method: "POST",
       headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify({
-        host:        INDEXNOW_HOST,
-        key:         INDEXNOW_KEY,
+        host: INDEXNOW_HOST,
+        key: INDEXNOW_KEY,
         keyLocation: INDEXNOW_KEY_URL,
-        urlList:     URLS,
+        urlList: URLS,
       }),
     });
 
@@ -44,9 +41,9 @@ export default async function handler(req, res) {
     // 200 = OK, 202 = Accepted (queued), both mean success
     if (status === 200 || status === 202) {
       return res.status(200).json({
-        ok:     true,
+        ok: true,
         status,
-        urls:   URLS,
+        urls: URLS,
         engine: "Bing / IndexNow network",
       });
     }

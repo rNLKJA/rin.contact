@@ -28,7 +28,7 @@ const HREFS = ["/blog", "/career", "/projects", "/lab", "/about", "/resume"];
 // the left of its marker (right-edge points), so text never runs off-canvas.
 const POS = [
   { fx: 0.17, fy: 0.24 },
-  { fx: 0.50, fy: 0.17 },
+  { fx: 0.5, fy: 0.17 },
   { fx: 0.83, fy: 0.27, r: true },
   { fx: 0.81, fy: 0.56, r: true },
   { fx: 0.46, fy: 0.62 },
@@ -76,7 +76,14 @@ function Arrow({ size = 16, color }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true" style={{ flex: "none" }}>
       <line x1="5" y1="19" x2="18" y2="6" stroke={color} strokeWidth="2" strokeLinecap="round" />
-      <polyline points="9,6 18,6 18,15" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <polyline
+        points="9,6 18,6 18,15"
+        fill="none"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -86,18 +93,35 @@ function CropMarks({ color }) {
   const c = `1px solid ${color}`;
   return (
     <>
-      <span aria-hidden="true" style={{ ...base, top: 10, left: 10, borderTop: c, borderLeft: c }} />
-      <span aria-hidden="true" style={{ ...base, top: 10, right: 10, borderTop: c, borderRight: c }} />
-      <span aria-hidden="true" style={{ ...base, bottom: 10, left: 10, borderBottom: c, borderLeft: c }} />
-      <span aria-hidden="true" style={{ ...base, bottom: 10, right: 10, borderBottom: c, borderRight: c }} />
+      <span
+        aria-hidden="true"
+        style={{ ...base, top: 10, left: 10, borderTop: c, borderLeft: c }}
+      />
+      <span
+        aria-hidden="true"
+        style={{ ...base, top: 10, right: 10, borderTop: c, borderRight: c }}
+      />
+      <span
+        aria-hidden="true"
+        style={{ ...base, bottom: 10, left: 10, borderBottom: c, borderLeft: c }}
+      />
+      <span
+        aria-hidden="true"
+        style={{ ...base, bottom: 10, right: 10, borderBottom: c, borderRight: c }}
+      />
     </>
   );
 }
 
 function Swatch({ pal }) {
   return (
-    <span aria-hidden="true" className="pointer-events-none absolute bottom-3 right-6 flex items-center gap-1.5">
-      <span className="font-mono text-[9px] tracking-widest" style={{ color: pal.muted }}>RISO</span>
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute bottom-3 right-6 flex items-center gap-1.5"
+    >
+      <span className="font-mono text-[9px] tracking-widest" style={{ color: pal.muted }}>
+        RISO
+      </span>
       <span style={{ width: 7, height: 7, background: pal.redHex }} />
       <span style={{ width: 7, height: 7, background: `rgb(${pal.ink})` }} />
     </span>
@@ -119,7 +143,14 @@ function Constellation({ cards, pal, isDark }) {
     const cv = canvasRef.current;
     if (!wrap || !cv) return;
     const ctx = cv.getContext("2d");
-    let raf, W, H, dpr, dots = [], t0 = null, last = 0, trail = [];
+    let raf,
+      W,
+      H,
+      dpr,
+      dots = [],
+      t0 = null,
+      last = 0,
+      trail = [];
     let running = true;
 
     function build() {
@@ -140,7 +171,10 @@ function Constellation({ cards, pal, isDark }) {
 
     function frame(ts) {
       if (!running) return;
-      if (t0 === null) { t0 = ts; last = ts; }
+      if (t0 === null) {
+        t0 = ts;
+        last = ts;
+      }
       const el = ts - t0;
       const dt = Math.min(50, ts - last);
       last = ts;
@@ -150,7 +184,8 @@ function Constellation({ cards, pal, isDark }) {
       const seg = [];
       let per = 0;
       for (let k = 1; k < SEQ.length; k++) {
-        const a = P[SEQ[k - 1]], b = P[SEQ[k]];
+        const a = P[SEQ[k - 1]],
+          b = P[SEQ[k]];
         const L = Math.hypot(b.x - a.x, b.y - a.y);
         seg.push({ a, b, L, s: per });
         per += L;
@@ -175,7 +210,8 @@ function Constellation({ cards, pal, isDark }) {
 
       // halftone dot field — develops in, blooms red near the cursor (the brush)
       const BR = 130;
-      const mx = mouseRef.current.x, my = mouseRef.current.y;
+      const mx = mouseRef.current.x,
+        my = mouseRef.current.y;
       for (let i = 0; i < dots.length; i++) {
         const d = dots[i];
         const dev = Math.max(0, Math.min(1, (el - d.delay) / 1300));
@@ -201,11 +237,17 @@ function Constellation({ cards, pal, isDark }) {
       const trav = (el * 0.05) % per;
       let cur = seg[seg.length - 1];
       for (let k = 0; k < seg.length; k++)
-        if (trav >= seg[k].s && trav < seg[k].s + seg[k].L) { cur = seg[k]; break; }
+        if (trav >= seg[k].s && trav < seg[k].s + seg[k].L) {
+          cur = seg[k];
+          break;
+        }
       const f = (trav - cur.s) / cur.L;
       const wx = cur.a.x + (cur.b.x - cur.a.x) * f;
       const wy = cur.a.y + (cur.b.y - cur.a.y) * f;
-      if (dprog >= 1) { trail.push([wx, wy]); if (trail.length > 22) trail.shift(); }
+      if (dprog >= 1) {
+        trail.push([wx, wy]);
+        if (trail.length > 22) trail.shift();
+      }
       for (let i = 0; i < trail.length; i++) {
         const aN = i / trail.length;
         ctx.fillStyle = `rgba(${pal.red},${aN * 0.25})`;
@@ -227,14 +269,21 @@ function Constellation({ cards, pal, isDark }) {
       // panel/ghost follow the wandering dot unless a point is hovered
       let want = hoverRef.current;
       if (want < 0) {
-        let best = 0, bd = 1e9;
+        let best = 0,
+          bd = 1e9;
         for (let j = 0; j < P.length; j++) {
           const q = Math.hypot(P[j].x - wx, P[j].y - wy);
-          if (q < bd) { bd = q; best = j; }
+          if (q < bd) {
+            bd = q;
+            best = j;
+          }
         }
         want = best;
       }
-      if (want !== lastSetRef.current) { lastSetRef.current = want; setActive(want); }
+      if (want !== lastSetRef.current) {
+        lastSetRef.current = want;
+        setActive(want);
+      }
 
       raf = requestAnimationFrame(frame);
     }
@@ -267,15 +316,32 @@ function Constellation({ cards, pal, isDark }) {
       style={{ background: pal.paper, border: `1px solid rgba(${pal.ink},0.10)` }}
     >
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-0 opacity-50 rounded-xl" style={{ backgroundImage: GRAIN }} aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-50 rounded-xl"
+        style={{ backgroundImage: GRAIN }}
+        aria-hidden="true"
+      />
       <CropMarks color={`rgba(${pal.ink},0.4)`} />
       <Swatch pal={pal} />
 
       {/* ghost dot-matrix numeral behind the active point */}
-      <div key={`g${active}`} className="pointer-events-none absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 select-none" aria-hidden="true" style={{ animation: "rinoFade .5s ease both" }}>
-        <span className="font-display leading-none" style={{ fontSize: 200, color: pal.ghostInk, position: "relative" }}>
+      <div
+        key={`g${active}`}
+        className="pointer-events-none absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 select-none"
+        aria-hidden="true"
+        style={{ animation: "rinoFade .5s ease both" }}
+      >
+        <span
+          className="font-display leading-none"
+          style={{ fontSize: 200, color: pal.ghostInk, position: "relative" }}
+        >
           {ac.num}
-          <span className="font-display absolute left-[3px] top-[2px] leading-none" style={{ fontSize: 200, color: pal.ghostRed }}>{ac.num}</span>
+          <span
+            className="font-display absolute left-[3px] top-[2px] leading-none"
+            style={{ fontSize: 200, color: pal.ghostRed }}
+          >
+            {ac.num}
+          </span>
         </span>
       </div>
 
@@ -288,12 +354,29 @@ function Constellation({ cards, pal, isDark }) {
             key={card.title}
             href={HREFS[i]}
             aria-label={`${card.title} — ${card.desc}`}
-            onMouseEnter={() => { hoverRef.current = i; lastSetRef.current = i; setActive(i); }}
-            onMouseLeave={() => { hoverRef.current = -1; }}
-            onFocus={() => { hoverRef.current = i; lastSetRef.current = i; setActive(i); }}
-            onBlur={() => { hoverRef.current = -1; }}
+            onMouseEnter={() => {
+              hoverRef.current = i;
+              lastSetRef.current = i;
+              setActive(i);
+            }}
+            onMouseLeave={() => {
+              hoverRef.current = -1;
+            }}
+            onFocus={() => {
+              hoverRef.current = i;
+              lastSetRef.current = i;
+              setActive(i);
+            }}
+            onBlur={() => {
+              hoverRef.current = -1;
+            }}
             className="group absolute z-10 flex items-center gap-2.5 rounded-md p-2 -translate-x-1/2 -translate-y-1/2 outline-none focus-visible:ring-2"
-            style={{ left: `${p.fx * 100}%`, top: `${p.fy * 100}%`, flexDirection: p.r ? "row-reverse" : "row", textAlign: p.r ? "right" : "left" }}
+            style={{
+              left: `${p.fx * 100}%`,
+              top: `${p.fy * 100}%`,
+              flexDirection: p.r ? "row-reverse" : "row",
+              textAlign: p.r ? "right" : "left",
+            }}
           >
             <span
               aria-hidden="true"
@@ -307,28 +390,67 @@ function Constellation({ cards, pal, isDark }) {
               }}
             />
             <span>
-              <span className="block font-mono text-[10px] tracking-widest" style={{ color: pal.muted }}>{card.num}</span>
-              <span className="flex items-center gap-1.5 font-editorial text-[19px] font-medium" style={{ color: pal.title, flexDirection: p.r ? "row-reverse" : "row" }}>
+              <span
+                className="block font-mono text-[10px] tracking-widest"
+                style={{ color: pal.muted }}
+              >
+                {card.num}
+              </span>
+              <span
+                className="flex items-center gap-1.5 font-editorial text-[19px] font-medium"
+                style={{ color: pal.title, flexDirection: p.r ? "row-reverse" : "row" }}
+              >
                 {card.title}
                 <span className="transition-opacity duration-200" style={{ opacity: on ? 1 : 0 }}>
                   <Arrow size={16} color={pal.redHex} />
                 </span>
               </span>
-              <span className="block font-mono text-[10px] uppercase tracking-widest" style={{ color: pal.redHex, opacity: 0.85 }}>{card.stat}</span>
+              <span
+                className="block font-mono text-[10px] uppercase tracking-widest"
+                style={{ color: pal.redHex, opacity: 0.85 }}
+              >
+                {card.stat}
+              </span>
             </span>
           </Link>
         );
       })}
 
       {/* margin reading panel */}
-      <div className="absolute bottom-[7%] left-[4%] z-10 w-[52%] max-w-[440px] pl-4" style={{ borderLeft: `2px solid ${pal.redHex}` }}>
+      <div
+        className="absolute bottom-[7%] left-[4%] z-10 w-[52%] max-w-[440px] pl-4"
+        style={{ borderLeft: `2px solid ${pal.redHex}` }}
+      >
         <div key={active} style={{ animation: "rinoFade .4s ease both" }}>
-          <div className="mb-1 font-mono text-[10px] tracking-[0.2em]" style={{ color: pal.redHex }}>{ac.num} · {String(ac.stat).toUpperCase()}</div>
-          <div className="mb-1.5 font-editorial text-[22px] font-medium" style={{ color: pal.title }}>{ac.title}</div>
-          <p className="mb-2.5 text-[13px] leading-relaxed font-light" style={{ color: pal.desc }}>{ac.desc}</p>
+          <div
+            className="mb-1 font-mono text-[10px] tracking-[0.2em]"
+            style={{ color: pal.redHex }}
+          >
+            {ac.num} · {String(ac.stat).toUpperCase()}
+          </div>
+          <div
+            className="mb-1.5 font-editorial text-[22px] font-medium"
+            style={{ color: pal.title }}
+          >
+            {ac.title}
+          </div>
+          <p className="mb-2.5 text-[13px] leading-relaxed font-light" style={{ color: pal.desc }}>
+            {ac.desc}
+          </p>
           <div className="flex flex-wrap gap-1.5">
             {ac.tags.map((tg) => (
-              <span key={tg} className="font-mono text-[10px] tracking-wide" style={{ color: pal.chipText, border: `1px solid ${pal.chipBorder}`, padding: "3px 8px", borderRadius: 3 }}>{tg}</span>
+              <span
+                key={tg}
+                className="font-mono text-[10px] tracking-wide"
+                style={{
+                  color: pal.chipText,
+                  border: `1px solid ${pal.chipBorder}`,
+                  padding: "3px 8px",
+                  borderRadius: 3,
+                }}
+              >
+                {tg}
+              </span>
             ))}
           </div>
         </div>
@@ -351,7 +473,10 @@ function LogCard({ card, index, href, pal, reduced }) {
     >
       {/* rail gutter — dotted line + node, stacks into one continuous rail */}
       <span aria-hidden="true" className="relative flex-none" style={{ width: 38 }}>
-        <span className="absolute top-0 bottom-0" style={{ left: 18, borderLeft: `1px dotted rgba(${pal.line},0.35)` }} />
+        <span
+          className="absolute top-0 bottom-0"
+          style={{ left: 18, borderLeft: `1px dotted rgba(${pal.line},0.35)` }}
+        />
         <span
           className="absolute transition-all duration-300"
           style={{
@@ -375,16 +500,46 @@ function LogCard({ card, index, href, pal, reduced }) {
           transitionDelay: reduced ? "0ms" : `${index * 80}ms`,
         }}
       >
-        <span aria-hidden="true" className="font-display pointer-events-none absolute right-0 -top-3 leading-none select-none" style={{ fontSize: 78, color: pal.ghostInk }}>{card.num}</span>
-        <span className="relative block font-mono text-[10px] tracking-[0.15em]" style={{ color: pal.redHex }}>{card.num} · {String(card.stat).toUpperCase()}</span>
-        <span className="relative my-1 flex items-center gap-1.5 font-editorial text-[23px] font-medium" style={{ color: pal.title }}>
+        <span
+          aria-hidden="true"
+          className="font-display pointer-events-none absolute right-0 -top-3 leading-none select-none"
+          style={{ fontSize: 78, color: pal.ghostInk }}
+        >
+          {card.num}
+        </span>
+        <span
+          className="relative block font-mono text-[10px] tracking-[0.15em]"
+          style={{ color: pal.redHex }}
+        >
+          {card.num} · {String(card.stat).toUpperCase()}
+        </span>
+        <span
+          className="relative my-1 flex items-center gap-1.5 font-editorial text-[23px] font-medium"
+          style={{ color: pal.title }}
+        >
           {card.title}
           <Arrow size={16} color={pal.redHex} />
         </span>
-        <span className="relative mb-2.5 block text-[13px] leading-relaxed font-light" style={{ color: pal.desc }}>{card.desc}</span>
+        <span
+          className="relative mb-2.5 block text-[13px] leading-relaxed font-light"
+          style={{ color: pal.desc }}
+        >
+          {card.desc}
+        </span>
         <span className="relative flex flex-wrap gap-1.5">
           {card.tags.map((tg) => (
-            <span key={tg} className="font-mono text-[10px] tracking-wide" style={{ color: pal.chipText, border: `1px solid ${pal.chipBorder}`, padding: "3px 7px", borderRadius: 3 }}>{tg}</span>
+            <span
+              key={tg}
+              className="font-mono text-[10px] tracking-wide"
+              style={{
+                color: pal.chipText,
+                border: `1px solid ${pal.chipBorder}`,
+                padding: "3px 7px",
+                borderRadius: 3,
+              }}
+            >
+              {tg}
+            </span>
           ))}
         </span>
       </span>
@@ -394,16 +549,35 @@ function LogCard({ card, index, href, pal, reduced }) {
 
 function VerticalLog({ cards, pal, reduced }) {
   return (
-    <div className="relative overflow-hidden rounded-xl px-5 pt-6 pb-3" style={{ background: pal.paper, border: `1px solid rgba(${pal.ink},0.10)` }}>
-      <div className="pointer-events-none absolute inset-0 opacity-50 rounded-xl" style={{ backgroundImage: GRAIN }} aria-hidden="true" />
+    <div
+      className="relative overflow-hidden rounded-xl px-5 pt-6 pb-3"
+      style={{ background: pal.paper, border: `1px solid rgba(${pal.ink},0.10)` }}
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-50 rounded-xl"
+        style={{ backgroundImage: GRAIN }}
+        aria-hidden="true"
+      />
       <CropMarks color={`rgba(${pal.ink},0.4)`} />
       <div className="relative">
         {cards.map((card, i) => (
-          <LogCard key={card.title} card={card} index={i} href={HREFS[i]} pal={pal} reduced={reduced} />
+          <LogCard
+            key={card.title}
+            card={card}
+            index={i}
+            href={HREFS[i]}
+            pal={pal}
+            reduced={reduced}
+          />
         ))}
       </div>
-      <div className="relative mt-1 flex items-center justify-between border-t pt-3" style={{ borderColor: `rgba(${pal.ink},0.18)` }}>
-        <span className="font-mono text-[10px] tracking-widest" style={{ color: pal.muted }}>◆ rin.contact</span>
+      <div
+        className="relative mt-1 flex items-center justify-between border-t pt-3"
+        style={{ borderColor: `rgba(${pal.ink},0.18)` }}
+      >
+        <span className="font-mono text-[10px] tracking-widest" style={{ color: pal.muted }}>
+          ◆ rin.contact
+        </span>
         <span aria-hidden="true" className="flex gap-1">
           <span style={{ width: 8, height: 8, background: pal.redHex }} />
           <span style={{ width: 8, height: 8, background: `rgb(${pal.ink})` }} />
@@ -449,12 +623,25 @@ export default function SectionNavCards() {
 
   return (
     <section className="py-20" aria-label={t("sectionNav.label")} ref={ref}>
-      <style dangerouslySetInnerHTML={{ __html: "@keyframes rinoFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}" }} />
+      <style
+        dangerouslySetInnerHTML={{
+          __html:
+            "@keyframes rinoFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}",
+        }}
+      />
 
-      <div className={`mb-12 transition-all duration-600 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4 font-mono">{t("sectionNav.label")}</p>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">{t("sectionNav.heading")}</h2>
-        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed mt-3">{t("sectionNav.intro")}</p>
+      <div
+        className={`mb-12 transition-all duration-600 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+      >
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4 font-mono">
+          {t("sectionNav.label")}
+        </p>
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">
+          {t("sectionNav.heading")}
+        </h2>
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed mt-3">
+          {t("sectionNav.intro")}
+        </p>
       </div>
 
       {mode === "constellation" ? (

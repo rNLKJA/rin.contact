@@ -65,8 +65,16 @@ const DOMAINS = [
     description:
       "Statistical modelling, time series analysis, regression, clustering, GIS mapping, Power BI dashboards, and regulatory intelligence built for government and research contexts.",
     skills: [
-      "Python", "R", "SQL", "Power BI", "Time Series", "Regression",
-      "Clustering", "GIS / ArcGIS", "Multivariate Statistics", "Tableau",
+      "Python",
+      "R",
+      "SQL",
+      "Power BI",
+      "Time Series",
+      "Regression",
+      "Clustering",
+      "GIS / ArcGIS",
+      "Multivariate Statistics",
+      "Tableau",
     ],
   },
   {
@@ -75,8 +83,16 @@ const DOMAINS = [
     description:
       "Full-stack web applications from frontend to backend, with a strong leaning toward minimal, performant React and Next.js architectures.",
     skills: [
-      "Next.js", "React", "Node.js", "REST API", "Tailwind CSS",
-      "MongoDB", "AWS", "Netlify", "Git", "UI/UX Design",
+      "Next.js",
+      "React",
+      "Node.js",
+      "REST API",
+      "Tailwind CSS",
+      "MongoDB",
+      "AWS",
+      "Netlify",
+      "Git",
+      "UI/UX Design",
     ],
   },
   {
@@ -85,8 +101,14 @@ const DOMAINS = [
     description:
       "Cross-platform mobile applications built with Expo and React Native, with production-grade infrastructure on AWS and CI/CD pipelines.",
     skills: [
-      "Expo", "React Native", "AWS RDS", "AWS LightSail",
-      "CI/CD", "GDPR compliance", "iOS", "Android",
+      "Expo",
+      "React Native",
+      "AWS RDS",
+      "AWS LightSail",
+      "CI/CD",
+      "GDPR compliance",
+      "iOS",
+      "Android",
     ],
   },
   {
@@ -95,8 +117,11 @@ const DOMAINS = [
     description:
       "Cloud and HPC-based bioinformatics pipelines, test infrastructure for reproducibility, and open-source contributions in genomics and medical research.",
     skills: [
-      "Cloud HPC", "Bioinformatics pipelines", "celseq2",
-      "Flow cytometry automation", "Reproducibility frameworks",
+      "Cloud HPC",
+      "Bioinformatics pipelines",
+      "celseq2",
+      "Flow cytometry automation",
+      "Reproducibility frameworks",
     ],
   },
   {
@@ -105,8 +130,11 @@ const DOMAINS = [
     description:
       "Cloud infrastructure management across AWS and Azure, with practical experience deploying scalable, cost-optimised services for research and community applications.",
     skills: [
-      "AWS (RDS, LightSail, EC2)", "Azure Web Services",
-      "CI/CD", "Docker", "Infrastructure cost optimisation",
+      "AWS (RDS, LightSail, EC2)",
+      "Azure Web Services",
+      "CI/CD",
+      "Docker",
+      "Infrastructure cost optimisation",
     ],
   },
 ];
@@ -115,7 +143,10 @@ const CERT_GROUPS = [
   {
     group: "Professional Assessment",
     items: [
-      { label: "VETASSESS — Statistician (ANZSCO 224113)", issuer: "Australian Skills Assessment · Feb 2026" },
+      {
+        label: "VETASSESS — Statistician (ANZSCO 224113)",
+        issuer: "Australian Skills Assessment · Feb 2026",
+      },
       { label: "IELTS General Training — Band 8", issuer: "IELTS Official · Feb 2026" },
       { label: "Credentialed Community Language — Mandarin", issuer: "NAATI · Dec 2025" },
     ],
@@ -151,9 +182,15 @@ const CERT_GROUPS = [
   {
     group: "Agile & Engineering",
     items: [
-      { label: "Atlassian Agile Project Management Professional Certificate", issuer: "Atlassian · Apr 2024" },
+      {
+        label: "Atlassian Agile Project Management Professional Certificate",
+        issuer: "Atlassian · Apr 2024",
+      },
       { label: "Agile with Atlassian Jira", issuer: "Atlassian · Nov 2021" },
-      { label: "Career Essentials in GitHub Professional Certificate", issuer: "GitHub · Jan 2024" },
+      {
+        label: "Career Essentials in GitHub Professional Certificate",
+        issuer: "GitHub · Jan 2024",
+      },
     ],
   },
   {
@@ -163,7 +200,10 @@ const CERT_GROUPS = [
       { label: "Melbourne Plus: People Leadership", issuer: "University of Melbourne · Oct 2024" },
       { label: "ANU CBE Analytics Plus Program Mentor", issuer: "Practera · Jul 2024" },
       { label: "Working with Children Check", issuer: "Victorian Government · Jul 2024" },
-      { label: "Mental Health First Aid — Tertiary Students", issuer: "MHFA International · Nov 2019" },
+      {
+        label: "Mental Health First Aid — Tertiary Students",
+        issuer: "MHFA International · Nov 2019",
+      },
       { label: "Inbound Marketing", issuer: "HubSpot Academy · Dec 2023" },
     ],
   },
@@ -294,7 +334,10 @@ export default function SkillsSection() {
             >
               <CountUp target={DOMAINS.length} started={inView} />
             </span>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[#7A7A7A] dark:text-[#9A9A9A] mb-3 md:mb-4" aria-hidden="true">
+            <span
+              className="text-[10px] tracking-[0.3em] uppercase text-[#7A7A7A] dark:text-[#9A9A9A] mb-3 md:mb-4"
+              aria-hidden="true"
+            >
               Domains
             </span>
           </div>
@@ -310,30 +353,33 @@ export default function SkillsSection() {
         <span className="sr-only">Seven technical domains.</span>
 
         <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed mt-7">
-          I have found that the most interesting problems sit at the edges of
-          disciplines. My work has taken me from flow cytometry pipelines at WEHI
-          to ministerial dashboards at CBS to mobile health apps at UniMelb —
-          each domain adding a new lens to how I approach data, systems, and
-          people. The thread connecting it all is a belief that rigorous thinking
-          and continuous improvement compound over time.
+          I have found that the most interesting problems sit at the edges of disciplines. My work
+          has taken me from flow cytometry pipelines at WEHI to ministerial dashboards at CBS to
+          mobile health apps at UniMelb — each domain adding a new lens to how I approach data,
+          systems, and people. The thread connecting it all is a belief that rigorous thinking and
+          continuous improvement compound over time.
         </p>
       </div>
-
       {/* ── Marquee tape ── infinite scrolling skill strip ── */}
       <div
         className="relative mt-10 mb-2 overflow-hidden border-y border-[#E0E0E0] dark:border-[#3D3D3D] py-4 select-none"
         aria-hidden="true"
       >
         {/* Fade masks on edges */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10"
-          style={{ background: "linear-gradient(to right, var(--marquee-fade, #F5F5F5) 40%, transparent)" }} />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10"
-          style={{ background: "linear-gradient(to left, var(--marquee-fade, #F5F5F5) 40%, transparent)" }} />
-
         <div
-          className="flex animate-marquee"
-          style={{ width: "max-content", gap: "2.5rem" }}
-        >
+          className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10"
+          style={{
+            background: "linear-gradient(to right, var(--marquee-fade, #F5F5F5) 40%, transparent)",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10"
+          style={{
+            background: "linear-gradient(to left, var(--marquee-fade, #F5F5F5) 40%, transparent)",
+          }}
+        />
+
+        <div className="flex animate-marquee" style={{ width: "max-content", gap: "2.5rem" }}>
           {/* Two full copies for seamless loop */}
           {[0, 1].map((copy) =>
             DOMAINS.flatMap((d) =>
@@ -353,13 +399,13 @@ export default function SkillsSection() {
           )}
         </div>
       </div>
-
       {/* Domain grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
         {DOMAINS.map((d, i) => (
           <DomainCard key={d.label} domain={d} index={i} />
         ))}
-      </div>      {/* Certifications */}
+      </div>{" "}
+      {/* Certifications */}
       <div
         ref={certRef}
         className={`mt-16 transition-all duration-600 ${
@@ -374,12 +420,18 @@ export default function SkillsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
           {CERT_GROUPS.map((g) => (
             <div key={g.group} className="border-t border-[#E0E0E0] dark:border-[#3D3D3D] py-5">
-              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-3">{g.group}</p>
+              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-3">
+                {g.group}
+              </p>
               <ul className="space-y-2.5">
                 {g.items.map((c) => (
                   <li key={c.label} className="flex items-start justify-between gap-4 group">
-                    <span className="text-sm text-[#1A1A1A] dark:text-white leading-snug">{c.label}</span>
-                    <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] whitespace-nowrap flex-shrink-0 mt-0.5">{c.issuer}</span>
+                    <span className="text-sm text-[#1A1A1A] dark:text-white leading-snug">
+                      {c.label}
+                    </span>
+                    <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] whitespace-nowrap flex-shrink-0 mt-0.5">
+                      {c.issuer}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -387,19 +439,20 @@ export default function SkillsSection() {
           ))}
         </div>
       </div>
-
       {/* Languages */}
       <div
         className={`mt-16 transition-all duration-600 ${
           certInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">
-          Languages
-        </p>
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">Languages</p>
         <div className="flex flex-wrap gap-3">
           {[
-            { lang: "English", level: "Full Professional", detail: "IELTS General Training · Band 8" },
+            {
+              lang: "English",
+              level: "Full Professional",
+              detail: "IELTS General Training · Band 8",
+            },
             { lang: "Mandarin Chinese", level: "Native / Bilingual", detail: null },
           ].map((l) => (
             <div

@@ -12,109 +12,137 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useI18n } from "@/contexts/I18nContext";
 
 // ── Layout constants ──────────────────────────────────────────────────────────
-const VW          = 900;
-const VH          = 300;
-const MARGIN_L    = 108;   // room for line-name labels
-const MARGIN_R    = 12;
-const MARGIN_T    = 28;    // year labels
-const PLOT_W      = VW - MARGIN_L - MARGIN_R;   // 780 px
-const YEAR_START  = 2022;
-const YEAR_END    = 2027;
-const SCALE       = PLOT_W / (YEAR_END - YEAR_START);   // 156 px / yr
+const VW = 900;
+const VH = 300;
+const MARGIN_L = 108; // room for line-name labels
+const MARGIN_R = 12;
+const MARGIN_T = 28; // year labels
+const PLOT_W = VW - MARGIN_L - MARGIN_R; // 780 px
+const YEAR_START = 2022;
+const YEAR_END = 2027;
+const SCALE = PLOT_W / (YEAR_END - YEAR_START); // 156 px / yr
 
 const toX = (yr) => MARGIN_L + (yr - YEAR_START) * SCALE;
 
 // ── Domain lines ──────────────────────────────────────────────────────────────
 const LINES = [
-  { id: "gov",      label: "GOVT",     y: 78,  color: "#FF3C3C" },
+  { id: "gov", label: "GOVT", y: 78, color: "#FF3C3C" },
   { id: "research", label: "RESEARCH", y: 162, color: "#AAAAAA" },
-  { id: "eng",      label: "ENGINEER", y: 246, color: "#686868" },
+  { id: "eng", label: "ENGINEER", y: 246, color: "#686868" },
 ];
 
 // ── Active rail segments (solid portions of each line) ────────────────────────
 const RAILS = [
   // Government
-  { line: "gov",      x1: toX(2025.0),  x2: toX(2026.2)  },   // CBS
-  { line: "gov",      x1: toX(2026.2),  x2: toX(2027) + 8 },  // SAPOL → ongoing
+  { line: "gov", x1: toX(2025.0), x2: toX(2026.2) }, // CBS
+  { line: "gov", x1: toX(2026.2), x2: toX(2027) + 8 }, // SAPOL → ongoing
   // Research
-  { line: "research", x1: toX(2023.1),  x2: toX(2023.92) },   // CSIRO
-  { line: "research", x1: toX(2024.1),  x2: toX(2024.5)  },   // WEHI
-  { line: "research", x1: toX(2024.6),  x2: toX(2026.1)  },   // MoodQ
+  { line: "research", x1: toX(2023.1), x2: toX(2023.92) }, // CSIRO
+  { line: "research", x1: toX(2024.1), x2: toX(2024.5) }, // WEHI
+  { line: "research", x1: toX(2024.6), x2: toX(2026.1) }, // MoodQ
   // Engineering
-  { line: "eng",      x1: toX(2022.1),  x2: toX(2022.5)  },   // CSL
-  { line: "eng",      x1: toX(2025.6),  x2: toX(2027) + 8 },  // Mapiva → ongoing
+  { line: "eng", x1: toX(2022.1), x2: toX(2022.5) }, // CSL
+  { line: "eng", x1: toX(2025.6), x2: toX(2027) + 8 }, // Mapiva → ongoing
 ];
 
 // ── Stations ──────────────────────────────────────────────────────────────────
 const STATIONS = [
   {
     id: "csl",
-    line: "eng", x: toX(2022.3), y: 246,
-    label: "CSL",        labelAbove: true,
+    line: "eng",
+    x: toX(2022.3),
+    y: 246,
+    label: "CSL",
+    labelAbove: true,
     period: "Feb – Jun 2022",
     role: "Data Analyst · Agile Lead",
-    detail: "First industry role. HPLC automation, T-SNE / DBSCAN / UMAP for bioprocess analysis. Worked across data engineering and team coordination.",
+    detail:
+      "First industry role. HPLC automation, T-SNE / DBSCAN / UMAP for bioprocess analysis. Worked across data engineering and team coordination.",
     current: false,
   },
   {
     id: "csiro",
-    line: "research", x: toX(2023.5), y: 162,
-    label: "CSIRO",      labelAbove: false,
+    line: "research",
+    x: toX(2023.5),
+    y: 162,
+    label: "CSIRO",
+    labelAbove: false,
     period: "Feb – Nov 2023",
     role: "Data Science Consultant",
-    detail: "Climate and food-security risk modelling. Autoregressive time-series analysis, ENSO / rainfall correlations. Australia's national science agency.",
+    detail:
+      "Climate and food-security risk modelling. Autoregressive time-series analysis, ENSO / rainfall correlations. Australia's national science agency.",
     current: false,
   },
   {
     id: "wehi",
-    line: "research", x: toX(2024.3), y: 162,
-    label: "WEHI",       labelAbove: true,
+    line: "research",
+    x: toX(2024.3),
+    y: 162,
+    label: "WEHI",
+    labelAbove: true,
     period: "Feb – Jul 2024",
     role: "Software Engineer Intern",
-    detail: "Bioinformatics at Walter & Eliza Hall Institute. Automated flow-cytometry cloud pipelines. Contributed to the open-source celseq2 library.",
+    detail:
+      "Bioinformatics at Walter & Eliza Hall Institute. Automated flow-cytometry cloud pipelines. Contributed to the open-source celseq2 library.",
     current: false,
   },
   {
     id: "moodq",
-    line: "research", x: toX(2025.3), y: 162,
-    label: "MoodQ",      labelAbove: false,
+    line: "research",
+    x: toX(2025.3),
+    y: 162,
+    label: "MoodQ",
+    labelAbove: false,
     period: "Aug 2024 – Feb 2026",
     role: "Research Assistant · UniMelb Psychiatry",
-    detail: "Full-stack Expo / React Native mobile app for mood-tracking research. GDPR-compliant. Reduced server costs ~$500/mo. Principal investigator: UniMelb.",
+    detail:
+      "Full-stack Expo / React Native mobile app for mood-tracking research. GDPR-compliant. Reduced server costs ~$500/mo. Principal investigator: UniMelb.",
     current: false,
   },
   {
     id: "cbs",
-    line: "gov", x: toX(2025.6), y: 78,
-    label: "CBS / AGD",  labelAbove: true,
+    line: "gov",
+    x: toX(2025.6),
+    y: 78,
+    label: "CBS / AGD",
+    labelAbove: true,
     period: "Jan 2025 – Mar 2026",
     role: "ASO4 Intelligence & Coordination Officer",
-    detail: "Built Consumer and Business Services' analytics capability from zero. GIS dashboards, ministerial reporting, cross-agency coordination. Attorney-General's Department SA.",
+    detail:
+      "Built Consumer and Business Services' analytics capability from zero. GIS dashboards, ministerial reporting, cross-agency coordination. Attorney-General's Department SA.",
     current: false,
   },
   {
     id: "mapiva",
-    line: "eng", x: toX(2026.15), y: 246,
-    label: "Mapiva",     labelAbove: true,
+    line: "eng",
+    x: toX(2026.15),
+    y: 246,
+    label: "Mapiva",
+    labelAbove: true,
     period: "Aug 2025 – present",
     role: "Co-founder · Dev Lead",
-    detail: "Social connection mobile app for young adults in Adelaide. Full product ownership — design, engineering, growth. MVP shipped Jan 2027.",
+    detail:
+      "Social connection mobile app for young adults in Adelaide. Full product ownership — design, engineering, growth. MVP shipped Jan 2027.",
     current: true,
   },
   {
     id: "sapol",
-    line: "gov", x: toX(2026.6), y: 78,
-    label: "SAPOL",      labelAbove: true,
+    line: "gov",
+    x: toX(2026.6),
+    y: 78,
+    label: "SAPOL",
+    labelAbove: true,
     period: "Mar 2026 – present",
     role: "ASO7 Senior Data Analyst",
-    detail: "Professional & Ethical Standards Branch, South Australia Police. First-principles intelligence analysis, Parliamentary reporting, strategic data products.",
+    detail:
+      "Professional & Ethical Standards Branch, South Australia Police. First-principles intelligence analysis, Parliamentary reporting, strategic data products.",
     current: true,
   },
 ];
 
 // ── Special markers ───────────────────────────────────────────────────────────
-const CONNECTOR_X = toX(2025.75);  // peak triple-concurrent period
-const NOW_X       = toX(2026.19);  // March 10, 2026
+const CONNECTOR_X = toX(2025.75); // peak triple-concurrent period
+const NOW_X = toX(2026.19); // March 10, 2026
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function MetroMapSection() {
@@ -154,11 +182,12 @@ export default function MetroMapSection() {
 
   return (
     <section id="career-map" className="py-20" aria-label="Career metro map">
-
       {/* Section header */}
       <div className="mb-8">
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">◈ — Career Map</p>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">{t("metroMap.heading")}</h2>
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
+          {t("metroMap.heading")}
+        </h2>
         <p className="text-sm font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
           {t("metroMap.description")}
         </p>
@@ -166,203 +195,271 @@ export default function MetroMapSection() {
 
       {/* Map (horizontally scrollable on small screens) */}
       <div className="relative">
-       <div ref={scrollRef} className="overflow-x-auto -mx-2 px-2">
-        <div style={{ minWidth: 580 }}>
-          <svg
-            viewBox={`0 0 ${VW} ${VH}`}
-            width="100%"
-            aria-label="Interactive career metro map, 2022 to present"
-            style={{ overflow: "visible" }}
-          >
-            {/* ── Year grid ────────────────────────────────────────────────── */}
-            {[2022, 2023, 2024, 2025, 2026, 2027].map((yr) => (
-              <g key={yr}>
-                <line
-                  x1={toX(yr)} y1={MARGIN_T + 4} x2={toX(yr)} y2={VH - 20}
-                  stroke="#F2F2F2" className="dark:stroke-[#1E1E1E]" strokeWidth={1}
-                />
-                <text
-                  x={toX(yr)} y={MARGIN_T - 4}
-                  textAnchor="middle" fontSize={10} fill="#C0C0C0" className="dark:fill-[#666666]"
-                  fontFamily="ui-monospace,monospace"
-                >
-                  {yr}
-                </text>
-              </g>
-            ))}
-
-            {/* ── Line name labels ─────────────────────────────────────────── */}
-            {LINES.map((ln) => (
-              <text
-                key={ln.id}
-                x={MARGIN_L - 8} y={ln.y + 4}
-                textAnchor="end" fontSize={8} fill={ln.color}
-                fontFamily="ui-monospace,monospace" letterSpacing={1.2}
-              >
-                {ln.label}
-              </text>
-            ))}
-
-            {/* ── Background (ghost) rails ──────────────────────────────────── */}
-            {LINES.map((ln) => (
-              <line
-                key={ln.id}
-                x1={MARGIN_L} y1={ln.y} x2={VW - MARGIN_R} y2={ln.y}
-                stroke={ln.color} strokeWidth={1} strokeOpacity={0.1}
-                strokeDasharray="4,7"
-              />
-            ))}
-
-            {/* ── Active rail segments ──────────────────────────────────────── */}
-            {RAILS.map((r, i) => {
-              const ln = LINES.find((l) => l.id === r.line);
-              return (
-                <line
-                  key={i}
-                  x1={r.x1} y1={ln.y} x2={r.x2} y2={ln.y}
-                  stroke={ln.color} strokeWidth={3.5} strokeLinecap="round"
-                />
-              );
-            })}
-
-            {/* ── Triple-convergence connector ──────────────────────────────── */}
-            <line
-              x1={CONNECTOR_X} y1={78} x2={CONNECTOR_X} y2={246}
-              stroke="#CCCCCC" className="dark:stroke-[#555555]" strokeWidth={1} strokeDasharray="3,4"
-            />
-            <text
-              x={CONNECTOR_X + 4} y={166}
-              fontSize={7.5} fill="#C0C0C0" className="dark:fill-[#666666]"
-              fontFamily="ui-monospace,monospace"
+        <div ref={scrollRef} className="overflow-x-auto -mx-2 px-2">
+          <div style={{ minWidth: 580 }}>
+            <svg
+              viewBox={`0 0 ${VW} ${VH}`}
+              width="100%"
+              aria-label="Interactive career metro map, 2022 to present"
+              style={{ overflow: "visible" }}
             >
-              3 concurrent
-            </text>
-
-            {/* ── NOW marker ───────────────────────────────────────────────── */}
-            <line
-              x1={NOW_X} y1={MARGIN_T - 2} x2={NOW_X} y2={VH - 18}
-              stroke="#FF3C3C" strokeWidth={1} strokeDasharray="3,4"
-              strokeOpacity={0.45}
-            />
-            <text
-              x={NOW_X + 3} y={MARGIN_T + 8}
-              fontSize={8} fill="#FF3C3C"
-              fontFamily="ui-monospace,monospace"
-            >
-              NOW
-            </text>
-
-            {/* ── Station dots ──────────────────────────────────────────────── */}
-            {STATIONS.map((s) => {
-              const ln   = LINES.find((l) => l.id === s.line);
-              const isHov = hovered === s.id;
-              const r     = isHov ? 7 : s.current ? 5.5 : 5;
-              const fill  = s.current ? ln.color : isHov ? ln.color : "#FFFFFF";
-              const sw    = s.current ? 0 : 2;
-
-              return (
-                <g
-                  key={s.id}
-                  role="button"
-                  onMouseEnter={() => setHovered(s.id)}
-                  onMouseLeave={() => setHovered(null)}
-                  // Tap to reveal the record on touch devices, where hover never
-                  // fires — without this, mobile users cannot read any station.
-                  onClick={() => setHovered(s.id)}
-                  style={{ cursor: "pointer" }}
-                  tabIndex={0}
-                  onFocus={() => setHovered(s.id)}
-                  onBlur={() => setHovered(null)}
-                  aria-label={`${s.label} — ${s.period}`}
-                >
-                  {/* Pulse ring for live stations */}
-                  {s.current && (
-                    <circle
-                      cx={s.x} cy={s.y} r={12}
-                      fill="none" stroke={ln.color} strokeWidth={1.5}
-                      style={{ animation: "metroPulse 2.2s ease-out infinite" }}
-                    />
-                  )}
-
-                  {/* Station circle */}
-                  <circle
-                    cx={s.x} cy={s.y} r={r}
-                    fill={fill}
-                    stroke={ln.color} strokeWidth={sw}
-                    style={{ transition: "r 0.12s ease, fill 0.12s ease" }}
+              {/* ── Year grid ────────────────────────────────────────────────── */}
+              {[2022, 2023, 2024, 2025, 2026, 2027].map((yr) => (
+                <g key={yr}>
+                  <line
+                    x1={toX(yr)}
+                    y1={MARGIN_T + 4}
+                    x2={toX(yr)}
+                    y2={VH - 20}
+                    stroke="#F2F2F2"
+                    className="dark:stroke-[#1E1E1E]"
+                    strokeWidth={1}
                   />
-
-                  {/* Station label */}
                   <text
-                    x={s.x}
-                    y={s.labelAbove ? s.y - 11 : s.y + 20}
-                    textAnchor="middle" fontSize={9}
-                    fill={isHov ? ln.color : "#3D3D3D"}
-                    className={isHov ? "" : "dark:fill-[#AAAAAA]"}
+                    x={toX(yr)}
+                    y={MARGIN_T - 4}
+                    textAnchor="middle"
+                    fontSize={10}
+                    fill="#C0C0C0"
+                    className="dark:fill-[#666666]"
                     fontFamily="ui-monospace,monospace"
-                    fontWeight={isHov ? "600" : "400"}
-                    style={{ transition: "fill 0.12s ease" }}
                   >
-                    {s.label}
+                    {yr}
                   </text>
                 </g>
-              );
-            })}
+              ))}
+
+              {/* ── Line name labels ─────────────────────────────────────────── */}
+              {LINES.map((ln) => (
+                <text
+                  key={ln.id}
+                  x={MARGIN_L - 8}
+                  y={ln.y + 4}
+                  textAnchor="end"
+                  fontSize={8}
+                  fill={ln.color}
+                  fontFamily="ui-monospace,monospace"
+                  letterSpacing={1.2}
+                >
+                  {ln.label}
+                </text>
+              ))}
+
+              {/* ── Background (ghost) rails ──────────────────────────────────── */}
+              {LINES.map((ln) => (
+                <line
+                  key={ln.id}
+                  x1={MARGIN_L}
+                  y1={ln.y}
+                  x2={VW - MARGIN_R}
+                  y2={ln.y}
+                  stroke={ln.color}
+                  strokeWidth={1}
+                  strokeOpacity={0.1}
+                  strokeDasharray="4,7"
+                />
+              ))}
+
+              {/* ── Active rail segments ──────────────────────────────────────── */}
+              {RAILS.map((r, i) => {
+                const ln = LINES.find((l) => l.id === r.line);
+                return (
+                  <line
+                    key={i}
+                    x1={r.x1}
+                    y1={ln.y}
+                    x2={r.x2}
+                    y2={ln.y}
+                    stroke={ln.color}
+                    strokeWidth={3.5}
+                    strokeLinecap="round"
+                  />
+                );
+              })}
+
+              {/* ── Triple-convergence connector ──────────────────────────────── */}
+              <line
+                x1={CONNECTOR_X}
+                y1={78}
+                x2={CONNECTOR_X}
+                y2={246}
+                stroke="#CCCCCC"
+                className="dark:stroke-[#555555]"
+                strokeWidth={1}
+                strokeDasharray="3,4"
+              />
+              <text
+                x={CONNECTOR_X + 4}
+                y={166}
+                fontSize={7.5}
+                fill="#C0C0C0"
+                className="dark:fill-[#666666]"
+                fontFamily="ui-monospace,monospace"
+              >
+                3 concurrent
+              </text>
+
+              {/* ── NOW marker ───────────────────────────────────────────────── */}
+              <line
+                x1={NOW_X}
+                y1={MARGIN_T - 2}
+                x2={NOW_X}
+                y2={VH - 18}
+                stroke="#FF3C3C"
+                strokeWidth={1}
+                strokeDasharray="3,4"
+                strokeOpacity={0.45}
+              />
+              <text
+                x={NOW_X + 3}
+                y={MARGIN_T + 8}
+                fontSize={8}
+                fill="#FF3C3C"
+                fontFamily="ui-monospace,monospace"
+              >
+                NOW
+              </text>
+
+              {/* ── Station dots ──────────────────────────────────────────────── */}
+              {STATIONS.map((s) => {
+                const ln = LINES.find((l) => l.id === s.line);
+                const isHov = hovered === s.id;
+                const r = isHov ? 7 : s.current ? 5.5 : 5;
+                const fill = s.current ? ln.color : isHov ? ln.color : "#FFFFFF";
+                const sw = s.current ? 0 : 2;
+
+                return (
+                  <g
+                    key={s.id}
+                    role="button"
+                    onMouseEnter={() => setHovered(s.id)}
+                    onMouseLeave={() => setHovered(null)}
+                    // Tap to reveal the record on touch devices, where hover never
+                    // fires — without this, mobile users cannot read any station.
+                    onClick={() => setHovered(s.id)}
+                    style={{ cursor: "pointer" }}
+                    tabIndex={0}
+                    onFocus={() => setHovered(s.id)}
+                    onBlur={() => setHovered(null)}
+                    aria-label={`${s.label} — ${s.period}`}
+                  >
+                    {/* Pulse ring for live stations */}
+                    {s.current && (
+                      <circle
+                        cx={s.x}
+                        cy={s.y}
+                        r={12}
+                        fill="none"
+                        stroke={ln.color}
+                        strokeWidth={1.5}
+                        style={{ animation: "metroPulse 2.2s ease-out infinite" }}
+                      />
+                    )}
+
+                    {/* Station circle */}
+                    <circle
+                      cx={s.x}
+                      cy={s.y}
+                      r={r}
+                      fill={fill}
+                      stroke={ln.color}
+                      strokeWidth={sw}
+                      style={{ transition: "r 0.12s ease, fill 0.12s ease" }}
+                    />
+
+                    {/* Station label */}
+                    <text
+                      x={s.x}
+                      y={s.labelAbove ? s.y - 11 : s.y + 20}
+                      textAnchor="middle"
+                      fontSize={9}
+                      fill={isHov ? ln.color : "#3D3D3D"}
+                      className={isHov ? "" : "dark:fill-[#AAAAAA]"}
+                      fontFamily="ui-monospace,monospace"
+                      fontWeight={isHov ? "600" : "400"}
+                      style={{ transition: "fill 0.12s ease" }}
+                    >
+                      {s.label}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+        </div>
+
+        {/* Left fade — appears once the reader has scrolled away from the start */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-300 ${
+            edges.scrollable && !edges.atStart ? "opacity-100" : "opacity-0"
+          }`}
+        />
+
+        {/* Right fade + nudging chevron — cues that recent roles are off-screen */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-300 ${
+            showRightCue ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <div
+          aria-hidden="true"
+          className={`metro-cue pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[#FF3C3C] transition-opacity duration-300 ${
+            showRightCue ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              d="M5 3.5L11 9L5 14.5"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </div>
-       </div>
 
-       {/* Left fade — appears once the reader has scrolled away from the start */}
-       <div
-         aria-hidden="true"
-         className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-300 ${
-           edges.scrollable && !edges.atStart ? "opacity-100" : "opacity-0"
-         }`}
-       />
-
-       {/* Right fade + nudging chevron — cues that recent roles are off-screen */}
-       <div
-         aria-hidden="true"
-         className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-300 ${
-           showRightCue ? "opacity-100" : "opacity-0"
-         }`}
-       />
-       <div
-         aria-hidden="true"
-         className={`metro-cue pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[#FF3C3C] transition-opacity duration-300 ${
-           showRightCue ? "opacity-100" : "opacity-0"
-         }`}
-       >
-         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-           <path d="M5 3.5L11 9L5 14.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-         </svg>
-       </div>
-
-       <style jsx>{`
-         @media (prefers-reduced-motion: no-preference) {
-           .metro-cue { animation: metroNudge 1.4s ease-in-out infinite; }
-         }
-         @keyframes metroNudge {
-           0%, 100% { transform: translate(0, -50%); }
-           50% { transform: translate(4px, -50%); }
-         }
-       `}</style>
+        <style jsx>{`
+          @media (prefers-reduced-motion: no-preference) {
+            .metro-cue {
+              animation: metroNudge 1.4s ease-in-out infinite;
+            }
+          }
+          @keyframes metroNudge {
+            0%,
+            100% {
+              transform: translate(0, -50%);
+            }
+            50% {
+              transform: translate(4px, -50%);
+            }
+          }
+        `}</style>
       </div>
 
       {/* Info panel */}
       <div
         className={`mt-4 border-l-2 pl-4 transition-all duration-200 ${
-          active ? "opacity-100" : "opacity-30 pointer-events-none border-[#E0E0E0] dark:border-[#3D3D3D]"
+          active
+            ? "opacity-100"
+            : "opacity-30 pointer-events-none border-[#E0E0E0] dark:border-[#3D3D3D]"
         }`}
-        style={active ? { borderColor: LINES.find((l) => l.id === active?.line)?.color } : undefined}
+        style={
+          active ? { borderColor: LINES.find((l) => l.id === active?.line)?.color } : undefined
+        }
         aria-live="polite"
       >
         {active ? (
           <>
-            <p className="text-[10px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] mb-0.5">{active.period}</p>
+            <p className="text-[10px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] mb-0.5">
+              {active.period}
+            </p>
             <p className="font-semibold text-sm mb-0.5">{active.label}</p>
             <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] mb-1">{active.role}</p>
-            <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] leading-relaxed max-w-xl">{active.detail}</p>
+            <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] leading-relaxed max-w-xl">
+              {active.detail}
+            </p>
             {active.current && (
               <span className="inline-block mt-1.5 text-[10px] tracking-widest uppercase text-[#FF3C3C]">
                 ● Live
@@ -370,7 +467,9 @@ export default function MetroMapSection() {
             )}
           </>
         ) : (
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] italic">Tap or hover a station to read its record.</p>
+          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] italic">
+            Tap or hover a station to read its record.
+          </p>
         )}
       </div>
 

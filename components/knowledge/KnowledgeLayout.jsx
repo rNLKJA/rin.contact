@@ -75,9 +75,7 @@ export default function KnowledgeLayout({
       url: "https://rin.contact",
     },
     ...(updated ? { dateModified: updated } : {}),
-    ...(course
-      ? { about: { "@type": "Thing", name: course, identifier: courseCode } }
-      : {}),
+    ...(course ? { about: { "@type": "Thing", name: course, identifier: courseCode } } : {}),
   };
 
   return (
@@ -277,10 +275,7 @@ export function Callout({ type = "note", label, children }) {
   const { t } = useI18n();
   const style = CALLOUT_STYLES[type] || CALLOUT_STYLES.note;
   return (
-    <aside
-      className="not-prose my-8 border-l-2 pl-5 py-1"
-      style={{ borderColor: style.bar }}
-    >
+    <aside className="not-prose my-8 border-l-2 pl-5 py-1" style={{ borderColor: style.bar }}>
       <p
         className="font-mono text-[10px] tracking-widest uppercase mb-2"
         style={{ color: style.bar === "#7A7A7A" ? "#7A7A7A" : "#FF3C3C" }}
@@ -333,13 +328,7 @@ export function TeX({ children, label }) {
     throwOnError: false,
     strict: false,
   });
-  return (
-    <span
-      role="math"
-      aria-label={label || tex}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
-  );
+  return <span role="math" aria-label={label || tex} dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
 /** Figure wrapper for inline SVG diagrams + caption. */
@@ -360,7 +349,5 @@ export function Figure({ children, caption }) {
 
 /** Inline key term — bold accent, for first use of a concept. */
 export function Term({ children }) {
-  return (
-    <strong className="text-black dark:text-white font-semibold">{children}</strong>
-  );
+  return <strong className="text-black dark:text-white font-semibold">{children}</strong>;
 }

@@ -17,12 +17,12 @@ async function getFonts() {
   if (fontCache) return fontCache;
 
   const [interRegular, interSemiBold] = await Promise.all([
-    fetch(
-      "https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.ttf"
-    ).then((r) => r.arrayBuffer()),
-    fetch(
-      "https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.ttf"
-    ).then((r) => r.arrayBuffer()),
+    fetch("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.ttf").then((r) =>
+      r.arrayBuffer()
+    ),
+    fetch("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.ttf").then((r) =>
+      r.arrayBuffer()
+    ),
   ]);
 
   fontCache = [
@@ -56,108 +56,149 @@ export default async function handler(req) {
   }
 
   const response = new ImageResponse(
-    (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        width: 1200,
+        height: 630,
+        padding: 80,
+        background: BG,
+        fontFamily: "Inter, system-ui, sans-serif",
+        position: "relative",
+      }}
+    >
+      {/* accent top bar */}
       <div
         style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 5,
+          background: RED,
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          width: 1200,
-          height: 630,
-          padding: 80,
-          background: BG,
-          fontFamily: "Inter, system-ui, sans-serif",
-          position: "relative",
         }}
+      />
+
+      {/* dot-matrix texture — bottom-right, faint */}
+      <svg
+        width={DOT_COLS * DOT_GAP}
+        height={DOT_ROWS * DOT_GAP}
+        style={{ position: "absolute", right: 64, bottom: 110, opacity: 0.12 }}
       >
-        {/* accent top bar */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 5, background: RED, display: "flex" }} />
+        {dots}
+      </svg>
 
-        {/* dot-matrix texture — bottom-right, faint */}
-        <svg
-          width={DOT_COLS * DOT_GAP}
-          height={DOT_ROWS * DOT_GAP}
-          style={{ position: "absolute", right: 64, bottom: 110, opacity: 0.12 }}
-        >
-          {dots}
-        </svg>
+      {/* HUD corner ticks */}
+      <div
+        style={{
+          position: "absolute",
+          top: 44,
+          right: 44,
+          width: 44,
+          height: 44,
+          borderTop: `3px solid ${RED}`,
+          borderRight: `3px solid ${RED}`,
+          display: "flex",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: 44,
+          left: 44,
+          width: 44,
+          height: 44,
+          borderBottom: `3px solid ${RED}`,
+          borderLeft: `3px solid ${RED}`,
+          display: "flex",
+        }}
+      />
 
-        {/* HUD corner ticks */}
-        <div style={{ position: "absolute", top: 44, right: 44, width: 44, height: 44, borderTop: `3px solid ${RED}`, borderRight: `3px solid ${RED}`, display: "flex" }} />
-        <div style={{ position: "absolute", bottom: 44, left: 44, width: 44, height: 44, borderBottom: `3px solid ${RED}`, borderLeft: `3px solid ${RED}`, display: "flex" }} />
-
-        {/* section label */}
-        {section && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: 26,
-            }}
-          >
-            <div style={{ width: 12, height: 12, background: RED, display: "flex", marginRight: 14 }} />
-            <p
-              style={{
-                fontSize: 20,
-                color: RED,
-                fontWeight: 400,
-                textTransform: "uppercase",
-                letterSpacing: "0.28em",
-                margin: 0,
-                fontFamily: "monospace",
-              }}
-            >
-              /{section}
-            </p>
-          </div>
-        )}
-
-        {/* title */}
-        <h1
-          style={{
-            fontSize: 72,
-            fontWeight: 600,
-            color: WHITE,
-            lineHeight: 1.05,
-            letterSpacing: "-0.02em",
-            margin: 0,
-            marginBottom: 18,
-            maxWidth: 980,
-          }}
-        >
-          {title}
-        </h1>
-
-        {/* subtitle */}
-        <p
-          style={{
-            fontSize: 30,
-            color: SUB2,
-            fontWeight: 400,
-            lineHeight: 1.35,
-            margin: 0,
-            maxWidth: 860,
-          }}
-        >
-          {subtitle}
-        </p>
-
-        {/* brand mark — red diamond + wordmark, bottom-right */}
+      {/* section label */}
+      {section && (
         <div
           style={{
-            position: "absolute",
-            bottom: 54,
-            right: 80,
             display: "flex",
             alignItems: "center",
+            marginBottom: 26,
           }}
         >
-          <div style={{ width: 11, height: 11, background: RED, transform: "rotate(45deg)", display: "flex", marginRight: 14 }} />
-          <p style={{ fontSize: 22, color: SUBTLE, fontWeight: 400, margin: 0 }}>rin.contact</p>
+          <div
+            style={{ width: 12, height: 12, background: RED, display: "flex", marginRight: 14 }}
+          />
+          <p
+            style={{
+              fontSize: 20,
+              color: RED,
+              fontWeight: 400,
+              textTransform: "uppercase",
+              letterSpacing: "0.28em",
+              margin: 0,
+              fontFamily: "monospace",
+            }}
+          >
+            /{section}
+          </p>
         </div>
+      )}
+
+      {/* title */}
+      <h1
+        style={{
+          fontSize: 72,
+          fontWeight: 600,
+          color: WHITE,
+          lineHeight: 1.05,
+          letterSpacing: "-0.02em",
+          margin: 0,
+          marginBottom: 18,
+          maxWidth: 980,
+        }}
+      >
+        {title}
+      </h1>
+
+      {/* subtitle */}
+      <p
+        style={{
+          fontSize: 30,
+          color: SUB2,
+          fontWeight: 400,
+          lineHeight: 1.35,
+          margin: 0,
+          maxWidth: 860,
+        }}
+      >
+        {subtitle}
+      </p>
+
+      {/* brand mark — red diamond + wordmark, bottom-right */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 54,
+          right: 80,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 11,
+            height: 11,
+            background: RED,
+            transform: "rotate(45deg)",
+            display: "flex",
+            marginRight: 14,
+          }}
+        />
+        <p style={{ fontSize: 22, color: SUBTLE, fontWeight: 400, margin: 0 }}>rin.contact</p>
       </div>
-    ),
+    </div>,
     {
       width: 1200,
       height: 630,
@@ -166,10 +207,7 @@ export default async function handler(req) {
   );
 
   // Cache OG images for 1 year — social crawlers request the same params repeatedly
-  response.headers.set(
-    "Cache-Control",
-    "public, max-age=31536000, immutable"
-  );
+  response.headers.set("Cache-Control", "public, max-age=31536000, immutable");
 
   return response;
 }

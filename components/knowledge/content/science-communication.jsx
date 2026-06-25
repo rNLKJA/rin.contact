@@ -12,52 +12,51 @@ function EnBody() {
   return (
     <>
       <p>
-        Every other page in this section makes you better at <em>finding</em> the answer.
-        This one is about the step that decides whether any of it mattered:{" "}
-        <em>getting the answer used</em>. A brilliant analysis that a decision-maker doesn't
-        understand, doesn't trust, or doesn't act on has exactly the same impact as no
-        analysis at all — zero. <Term>Communicating science at work</Term> is the skill that
-        converts good analysis into a good decision, and it's the capstone of everything else
-        here.
+        Every other page in this section makes you better at <em>finding</em> the answer. This one
+        is about the step that decides whether any of it mattered: <em>getting the answer used</em>.
+        A brilliant analysis that a decision-maker doesn't understand, doesn't trust, or doesn't act
+        on has exactly the same impact as no analysis at all — zero.{" "}
+        <Term>Communicating science at work</Term> is the skill that converts good analysis into a
+        good decision, and it's the capstone of everything else here.
       </p>
       <p>
-        It's also the part of the job I do most now: turning complex operational data into
-        something an executive or a minister can act on. The good news is that clear
-        communication isn't a gift — it's a craft with rules, and this page is those rules,
-        sharpened by what the industry's best communicators actually do.
+        It's also the part of the job I do most now: turning complex operational data into something
+        an executive or a minister can act on. The good news is that clear communication isn't a
+        gift — it's a craft with rules, and this page is those rules, sharpened by what the
+        industry's best communicators actually do.
       </p>
 
       <KSection id="why" eyebrow="01" title="The last mile">
         <p>
-          Data work has a "last mile" problem. You can do everything upstream perfectly —
-          clean the <Link href="/knowledge/elements-of-data-processing">data</Link>, fit the
-          right <Link href="/knowledge/statistical-machine-learning">model</Link>, evaluate it
-          honestly — and still fail completely at the final step of getting a busy,
-          non-technical person to understand and believe it enough to change what they do. That
-          last mile is where most analytical value leaks away.
+          Data work has a "last mile" problem. You can do everything upstream perfectly — clean the{" "}
+          <Link href="/knowledge/elements-of-data-processing">data</Link>, fit the right{" "}
+          <Link href="/knowledge/statistical-machine-learning">model</Link>, evaluate it honestly —
+          and still fail completely at the final step of getting a busy, non-technical person to
+          understand and believe it enough to change what they do. That last mile is where most
+          analytical value leaks away.
         </p>
         <p>
-          The mental shift is to treat communication not as a write-up you bolt on at the end,
-          but as part of the work itself — something you design for from the first question.
-          The goal of a data presentation is not to show what you did; it's to{" "}
+          The mental shift is to treat communication not as a write-up you bolt on at the end, but
+          as part of the work itself — something you design for from the first question. The goal of
+          a data presentation is not to show what you did; it's to{" "}
           <strong>change a decision</strong>. Hold that, and every choice below follows.
         </p>
       </KSection>
 
       <KSection id="audience" eyebrow="02" title="Start with the audience">
         <p>
-          The first rule is the one analysts break most: <strong>it's not about you or your
-          work — it's about them and their decision</strong>. Before a single slide, ask who is
-          in the room, what decision they're making, what they already know, and what they care
-          about. An executive, a fellow analyst, and a minister's office need three completely
-          different versions of the same finding.
+          The first rule is the one analysts break most:{" "}
+          <strong>it's not about you or your work — it's about them and their decision</strong>.
+          Before a single slide, ask who is in the room, what decision they're making, what they
+          already know, and what they care about. An executive, a fellow analyst, and a minister's
+          office need three completely different versions of the same finding.
         </p>
         <p>
-          For senior decision-makers specifically, the rule is <em>less, not more</em>. They
-          don't want every data point from your analysis — they want the three or four findings
-          that bear directly on the choice in front of them, with the implications spelled out.
-          The technical depth you're proud of belongs in a backup appendix or a linked
-          dashboard, available if they ask, invisible if they don't.
+          For senior decision-makers specifically, the rule is <em>less, not more</em>. They don't
+          want every data point from your analysis — they want the three or four findings that bear
+          directly on the choice in front of them, with the implications spelled out. The technical
+          depth you're proud of belongs in a backup appendix or a linked dashboard, available if
+          they ask, invisible if they don't.
         </p>
       </KSection>
 
@@ -65,26 +64,25 @@ function EnBody() {
         <p>
           Academic training teaches you to build up to a conclusion: method, then results, then
           finally the answer. In a workplace this is exactly backwards.{" "}
-          <strong>Lead with the recommendation, not the methodology.</strong> Decision-makers
-          need to know <em>what to do and why</em>, up front — they'll ask for the details if
-          they want them.
+          <strong>Lead with the recommendation, not the methodology.</strong> Decision-makers need
+          to know <em>what to do and why</em>, up front — they'll ask for the details if they want
+          them.
         </p>
         <Callout type="intuition">
           <p>
             This is the journalist's "inverted pyramid", and the consultant's BLUF —{" "}
             <strong>Bottom Line Up Front</strong>. Open with the conclusion and the recommended
-            action, then support it with the few findings that matter, then keep the methodology
-            in reserve. Make your first sentence the one a reader could repeat to their boss.
-            Burying the lede under a build-up is the single most common way analysts lose the
-            room.
+            action, then support it with the few findings that matter, then keep the methodology in
+            reserve. Make your first sentence the one a reader could repeat to their boss. Burying
+            the lede under a build-up is the single most common way analysts lose the room.
           </p>
         </Callout>
       </KSection>
 
       <KSection id="arc" eyebrow="04" title="The narrative arc">
         <p>
-          Humans are wired for stories, not spreadsheets — a narrative is remembered and acted
-          on where a table is forgotten. The most reliable structure for a data story is{" "}
+          Humans are wired for stories, not spreadsheets — a narrative is remembered and acted on
+          where a table is forgotten. The most reliable structure for a data story is{" "}
           <Term>situation → complication → resolution</Term>:
         </p>
         <ul>
@@ -93,8 +91,8 @@ function EnBody() {
             stand."
           </li>
           <li>
-            <Term>Complication</Term> — the tension: the problem, change, or risk the data
-            reveals. "But here's what's happening."
+            <Term>Complication</Term> — the tension: the problem, change, or risk the data reveals.
+            "But here's what's happening."
           </li>
           <li>
             <Term>Resolution</Term> — your recommendation: what to do about it. "So we should…"
@@ -102,8 +100,8 @@ function EnBody() {
         </ul>
         <p>
           This arc creates a small amount of tension and then resolves it, which is what holds
-          attention and motivates action. It turns a pile of charts into a story with a
-          beginning, middle, and end — and a point.
+          attention and motivates action. It turns a pile of charts into a story with a beginning,
+          middle, and end — and a point.
         </p>
       </KSection>
 
@@ -111,9 +109,9 @@ function EnBody() {
         <p>
           The most useful question to ask of every chart, number, and slide is brutally simple:{" "}
           <strong>so what?</strong> Every metric you show must connect to an implication. If you
-          report that response times rose 8%, the very next sentence has to say why that matters
-          and what should change because of it — otherwise you've handed the audience homework,
-          and they won't do it.
+          report that response times rose 8%, the very next sentence has to say why that matters and
+          what should change because of it — otherwise you've handed the audience homework, and they
+          won't do it.
         </p>
         <p>
           This is the difference between <em>reporting</em> and <em>communicating</em>. A report
@@ -126,18 +124,18 @@ function EnBody() {
       <KSection id="visuals" eyebrow="06" title="Visuals that decide">
         <p>
           A good chart shows an obvious pattern that needs no explanation; a bad one makes the
-          audience do work. The guiding principle is <strong>clarity over flair</strong>: pick
-          the visual for the decision being made, not for how impressive it looks.
+          audience do work. The guiding principle is <strong>clarity over flair</strong>: pick the
+          visual for the decision being made, not for how impressive it looks.
         </p>
         <ul>
           <li>
-            <Term>Eliminate clutter</Term> — strip out anything that isn't carrying meaning
-            (chart junk, redundant grid-lines, decorative 3-D).
+            <Term>Eliminate clutter</Term> — strip out anything that isn't carrying meaning (chart
+            junk, redundant grid-lines, decorative 3-D).
           </li>
           <li>
-            <Term>Direct attention</Term> — use colour, labels, and annotations sparingly, and
-            only to highlight the one thing you want them to see. If everything is emphasised,
-            nothing is.
+            <Term>Direct attention</Term> — use colour, labels, and annotations sparingly, and only
+            to highlight the one thing you want them to see. If everything is emphasised, nothing
+            is.
           </li>
           <li>
             <Term>Don't mislead</Term> — truncated axes, dual axes, and the wrong chart type can
@@ -145,8 +143,8 @@ function EnBody() {
           </li>
         </ul>
         <p>
-          One chart that makes the point cleanly beats a dashboard of twelve that bury it. The
-          full toolkit is the subject of the{" "}
+          One chart that makes the point cleanly beats a dashboard of twelve that bury it. The full
+          toolkit is the subject of the{" "}
           <Link href="/knowledge/business-intelligence-dashboards">dashboards page</Link>; the
           principle here is that a visual is an argument, and a cluttered argument fails.
         </p>
@@ -154,48 +152,48 @@ function EnBody() {
 
       <KSection id="trust" eyebrow="07" title="Earning trust">
         <p>
-          A finding is only as persuasive as it is credible, and credibility is fragile. Before
-          you present, the numbers have to be <em>right</em> — a single error someone in the
-          room can spot will sink the entire analysis, however sound the rest of it is. So
-          sanity-check everything, and reconcile your figures against whatever sources the
-          audience already trusts.
+          A finding is only as persuasive as it is credible, and credibility is fragile. Before you
+          present, the numbers have to be <em>right</em> — a single error someone in the room can
+          spot will sink the entire analysis, however sound the rest of it is. So sanity-check
+          everything, and reconcile your figures against whatever sources the audience already
+          trusts.
         </p>
         <p>
           Trust also comes from honesty about uncertainty. Stating the limitations and the
           confidence in your result — the discipline from the{" "}
-          <Link href="/knowledge/statistics">statistics page</Link> — builds credibility rather
-          than undermining it. Decision-makers are wary of analysts who sound too certain; being
-          straight about what you don't know is what makes them believe what you do.
+          <Link href="/knowledge/statistics">statistics page</Link> — builds credibility rather than
+          undermining it. Decision-makers are wary of analysts who sound too certain; being straight
+          about what you don't know is what makes them believe what you do.
         </p>
       </KSection>
 
       <KSection id="action" eyebrow="08" title="Driving to action">
         <p>
-          The presentation isn't the finish line — a decision is. The final discipline is to
-          make sure the conversation ends in <strong>execution, not just agreement</strong>.
-          That means closing with a clear, specific recommendation, and where you can, naming
-          what happens next: who does what, by when. A discussion everyone nods at and nobody
-          acts on was a failure of communication, not of analysis.
+          The presentation isn't the finish line — a decision is. The final discipline is to make
+          sure the conversation ends in <strong>execution, not just agreement</strong>. That means
+          closing with a clear, specific recommendation, and where you can, naming what happens
+          next: who does what, by when. A discussion everyone nods at and nobody acts on was a
+          failure of communication, not of analysis.
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="09" title="Where it shows up in my work">
         <Callout type="applied" label="The job, most days">
           <p>
-            This is the closest of all these pages to what I actually do now. As a senior
-            analyst in government, the work isn't finished when the analysis is — it's finished
-            when it's <strong>turned into something an executive or a minister's office can act
-            on</strong>. That means leading with the recommendation, cutting to the three
-            findings that bear on the decision, and answering "so what" for every one of them.
-            The technical rigour from the rest of this section is the <em>foundation</em>; this
-            page is how it reaches a decision.
+            This is the closest of all these pages to what I actually do now. As a senior analyst in
+            government, the work isn't finished when the analysis is — it's finished when it's{" "}
+            <strong>turned into something an executive or a minister's office can act on</strong>.
+            That means leading with the recommendation, cutting to the three findings that bear on
+            the decision, and answering "so what" for every one of them. The technical rigour from
+            the rest of this section is the <em>foundation</em>; this page is how it reaches a
+            decision.
           </p>
           <p>
-            It's also the throughline of my whole career — the reason "translates complex
-            analysis into briefings and decisions" shows up in every version of my CV. Being
-            able to do the maths <em>and</em> explain it to someone who can't is what makes an
-            analyst useful in a room full of people who decide things. Get this wrong and the
-            best analysis in the world stays on a laptop.
+            It's also the throughline of my whole career — the reason "translates complex analysis
+            into briefings and decisions" shows up in every version of my CV. Being able to do the
+            maths <em>and</em> explain it to someone who can't is what makes an analyst useful in a
+            room full of people who decide things. Get this wrong and the best analysis in the world
+            stays on a laptop.
           </p>
         </Callout>
       </KSection>
@@ -204,24 +202,24 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              A correct analysis nobody understands or trusts has <strong>zero impact</strong>.
-              The goal isn't to show your work — it's to change a decision.
+              A correct analysis nobody understands or trusts has <strong>zero impact</strong>. The
+              goal isn't to show your work — it's to change a decision.
             </li>
             <li>
               <strong>Start with the audience</strong>: their decision, not your method. For
               seniors, less not more — the 3-4 findings that matter.
             </li>
             <li>
-              <strong>Lead with the recommendation</strong> (BLUF) — conclusion and action
-              first, methodology in reserve.
+              <strong>Lead with the recommendation</strong> (BLUF) — conclusion and action first,
+              methodology in reserve.
             </li>
             <li>
               Structure as <strong>situation → complication → resolution</strong>. Answer{" "}
               <strong>"so what?"</strong> for every number — implication, not just fact.
             </li>
             <li>
-              Visuals: <strong>clarity over flair</strong> — strip clutter, direct attention,
-              don't mislead. One clean chart beats twelve.
+              Visuals: <strong>clarity over flair</strong> — strip clutter, direct attention, don't
+              mislead. One clean chart beats twelve.
             </li>
             <li>
               <strong>Earn trust</strong> (right numbers, honest about uncertainty) and{" "}
@@ -230,9 +228,8 @@ function EnBody() {
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          Practical guidance on this page draws on current industry writing about data
-          storytelling for decision-makers (ThoughtSpot, ClicData, and others), alongside the
-          UniMelb subject.
+          Practical guidance on this page draws on current industry writing about data storytelling
+          for decision-makers (ThoughtSpot, ClicData, and others), alongside the UniMelb subject.
         </p>
       </KSection>
     </>
@@ -244,8 +241,8 @@ function ZhBody() {
   return (
     <>
       <p>
-        本板块的每一页都让你更擅长<em>找到</em>答案。这一页讲的是决定这一切到底有没有意义的那
-        一步：<em>让答案被用起来</em>。一个决策者不理解、不信任、或不据以行动的绝妙分析，其影响
+        本板块的每一页都让你更擅长<em>找到</em>答案。这一页讲的是决定这一切到底有没有意义的那 一步：
+        <em>让答案被用起来</em>。一个决策者不理解、不信任、或不据以行动的绝妙分析，其影响
         与根本没做分析完全相同——为零。<Term>工作中的科学传播</Term>正是把好的分析转化为好的
         决策的技能，也是这里其余一切的收官之作。
       </p>
@@ -272,8 +269,9 @@ function ZhBody() {
 
       <KSection id="audience" eyebrow="02" title="从受众出发">
         <p>
-          第一条规则也是分析师最常打破的：<strong>这不关乎你或你的工作——而关乎他们与他们的
-          决策</strong>。在做出第一张幻灯片之前，先问：谁在房间里、他们在做什么决策、他们已经
+          第一条规则也是分析师最常打破的：
+          <strong>这不关乎你或你的工作——而关乎他们与他们的 决策</strong>
+          。在做出第一张幻灯片之前，先问：谁在房间里、他们在做什么决策、他们已经
           知道什么、他们在意什么。一位高管、一位同行分析师，和一个部长办公室，对同一个发现需要
           三个完全不同的版本。
         </p>
@@ -287,13 +285,13 @@ function ZhBody() {
       <KSection id="leadrec" eyebrow="03" title="以建议开场">
         <p>
           学术训练教你层层铺垫到一个结论：先方法、再结果、最后才是答案。在职场里这恰好是反的。
-          <strong>以建议开场，而非方法论。</strong>决策者需要在最前面就知道<em>该做什么、为
-          什么</em>——他们想要细节自会来问。
+          <strong>以建议开场，而非方法论。</strong>决策者需要在最前面就知道
+          <em>该做什么、为 什么</em>——他们想要细节自会来问。
         </p>
         <Callout type="intuition">
           <p>
-            这就是记者的「倒金字塔」，也是顾问的 BLUF——<strong>结论先行</strong>（Bottom Line
-            Up Front）。以结论与建议的行动开场，再用那几个要紧的发现来支撑，然后把方法论留作
+            这就是记者的「倒金字塔」，也是顾问的 BLUF——<strong>结论先行</strong>（Bottom Line Up
+            Front）。以结论与建议的行动开场，再用那几个要紧的发现来支撑，然后把方法论留作
             后备。让你的第一句话成为读者可以转述给他们老板的那一句。把要点埋在层层铺垫之下，是
             分析师失掉全场最常见的一种方式。
           </p>
@@ -324,8 +322,9 @@ function ZhBody() {
 
       <KSection id="sowhat" eyebrow="05" title="回答「那又如何」">
         <p>
-          对每一张图、每一个数字、每一页幻灯片该问的最有用的问题，简单得近乎残酷：<strong>那又
-          如何？</strong>你展示的每一个指标，都必须连到一个含义上。如果你报告说响应时间上升了
+          对每一张图、每一个数字、每一页幻灯片该问的最有用的问题，简单得近乎残酷：
+          <strong>那又 如何？</strong>
+          你展示的每一个指标，都必须连到一个含义上。如果你报告说响应时间上升了
           8%，紧接着的那一句就必须说出这为什么要紧、以及因此该改变什么——否则你就把作业丢给了
           受众，而他们不会去做。
         </p>
@@ -342,8 +341,7 @@ function ZhBody() {
         </p>
         <ul>
           <li>
-            <Term>消除杂乱</Term>——剥掉一切不承载意义的东西（图表垃圾、多余的网格线、装饰性的
-            3D）。
+            <Term>消除杂乱</Term>——剥掉一切不承载意义的东西（图表垃圾、多余的网格线、装饰性的 3D）。
           </li>
           <li>
             <Term>引导注意力</Term>——节制地使用颜色、标签与注释，且只用来突出你想让他们看到的
@@ -355,8 +353,8 @@ function ZhBody() {
           </li>
         </ul>
         <p>
-          一张干净利落地点明要点的图表，胜过一个把要点埋掉的、有十二个图的仪表板。完整的工具箱
-          是<Link href="/knowledge/business-intelligence-dashboards">仪表板页</Link>的主题；这里
+          一张干净利落地点明要点的图表，胜过一个把要点埋掉的、有十二个图的仪表板。完整的工具箱 是
+          <Link href="/knowledge/business-intelligence-dashboards">仪表板页</Link>的主题；这里
           的原则是：一张可视化是一个论证，而一个杂乱的论证会失败。
         </p>
       </KSection>
@@ -415,8 +413,8 @@ function ZhBody() {
               <strong>以建议开场</strong>（BLUF）——结论与行动先行，方法论留作后备。
             </li>
             <li>
-              结构为<strong>情境 → 冲突 → 化解</strong>。为每个数字回答<strong>「那又如何？」
-              </strong>——是含义，而非仅仅事实。
+              结构为<strong>情境 → 冲突 → 化解</strong>。为每个数字回答
+              <strong>「那又如何？」</strong>——是含义，而非仅仅事实。
             </li>
             <li>
               可视化：<strong>清晰胜于花哨</strong>——剥掉杂乱、引导注意力、不要误导。一张干净的
@@ -429,8 +427,8 @@ function ZhBody() {
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          本页上的实用指引，取材于当前业界关于「面向决策者的数据叙事」的文章（ThoughtSpot、
-          ClicData 等），以及墨尔本大学的这门课。
+          本页上的实用指引，取材于当前业界关于「面向决策者的数据叙事」的文章（ThoughtSpot、 ClicData
+          等），以及墨尔本大学的这门课。
         </p>
       </KSection>
     </>

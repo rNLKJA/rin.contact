@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function RickrollPage() {
   const [countdown, setCountdown] = useState(3);
-  const [gone, setGone]           = useState(false);
+  const [gone, setGone] = useState(false);
 
   useEffect(() => {
     if (countdown <= 0) {
@@ -43,8 +43,7 @@ export default function RickrollPage() {
             </h1>
 
             <p className="text-sm text-[#555] mb-10">
-              Redirecting in{" "}
-              <span className="text-[#FF3C3C] font-bold text-lg">{countdown}</span>
+              Redirecting in <span className="text-[#FF3C3C] font-bold text-lg">{countdown}</span>
               ...
             </p>
 
@@ -63,9 +62,7 @@ export default function RickrollPage() {
             </p>
           </>
         ) : (
-          <p className="text-[11px] tracking-widest uppercase text-[#555]">
-            redirecting...
-          </p>
+          <p className="text-[11px] tracking-widest uppercase text-[#555]">redirecting...</p>
         )}
       </div>
     </>

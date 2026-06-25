@@ -6,7 +6,10 @@ import { useI18n } from "@/contexts/I18nContext";
 // Turn a domain label into a clean URL slug ("AI / ML" -> "ai-ml"), so a
 // filtered Projects view can be shared as /projects?category=ai-ml.
 const slugifyDomain = (d) =>
-  d.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  d
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 import { useTheme } from "@/contexts/ThemeContext";
 import { useInView } from "@/hooks/useInView";
 
@@ -20,10 +23,23 @@ export const PROJECTS = [
     tag: "AI Governance",
     domain: ["AI / ML", "Open Source"],
     status: "Live · v1.14",
-    stack: ["Python", "FastAPI", "LLM", "Modal", "Pydantic v2", "NumPy", "SciPy", "Docker", "GitHub Actions", "EU AI Act", "DTA v2.0"],
+    stack: [
+      "Python",
+      "FastAPI",
+      "LLM",
+      "Modal",
+      "Pydantic v2",
+      "NumPy",
+      "SciPy",
+      "Docker",
+      "GitHub Actions",
+      "EU AI Act",
+      "DTA v2.0",
+    ],
     summary:
       "A governed data product that puts AI governance on the request path — tamper-evident hash-chained audit logs, auto-generated DTA and EU AI Act compliance artefacts, and faithfulness-checked LLM narratives. The live reference implementation analyses South Australian and NYC crime statistics with Mann-Kendall trend tests, Sen-slope forecasting, and z-score anomaly review.",
-    impact: "Live deployment · 128 tests · Tamper-evident audit + DTA v2.0 governance set · Open-core product",
+    impact:
+      "Live deployment · 128 tests · Tamper-evident audit + DTA v2.0 governance set · Open-core product",
     link: "https://github.com/rNLKJA/signal",
     linkLabel: "View Signal repository on GitHub",
     demo: "https://rnlkja--signal-api-api.modal.run",
@@ -41,7 +57,18 @@ export const PROJECTS = [
     tag: "Data Visualisation",
     domain: ["Open Source", "Research"],
     status: "Live",
-    stack: ["React", "TypeScript", "Vite", "Tailwind", "shadcn/ui", "D3.js", "Node.js", "Data Pipeline", "FAIR Data", "Vercel"],
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind",
+      "shadcn/ui",
+      "D3.js",
+      "Node.js",
+      "Data Pipeline",
+      "FAIR Data",
+      "Vercel",
+    ],
     summary:
       "Brings four ranking systems (QS, Times Higher Education, and two U.S. News rankings) together for 3,790 universities across 40 years. A no-hard-coding pipeline pulls each ranking live and recovers QS history from archived edition IDs, published as an open, FAIR-licensed dataset.",
     impact: "3,790 universities · 4 ranking systems · live-sourced FAIR open dataset",
@@ -58,10 +85,21 @@ export const PROJECTS = [
     tag: "Analytics",
     domain: "Government",
     status: "In production",
-    stack: ["IAPro", "Blue Team", "Business Objects", "SQL", "Python", "Statistical Modelling", "ETL", "Data Modelling", "Power BI"],
+    stack: [
+      "IAPro",
+      "Blue Team",
+      "Business Objects",
+      "SQL",
+      "Python",
+      "Statistical Modelling",
+      "ETL",
+      "Data Modelling",
+      "Power BI",
+    ],
     summary:
       "As ASO7 Senior Data Analyst in SAPOL's Ethical & Professional Standards Branch, leads the high-level analysis behind complaint resolution, governance and disciplinary processes — building IAPro reporting templates and dashboards, and maintaining SAPOL's core data as the authoritative single source for strategic, corporate and Parliamentary reporting.",
-    impact: "Senior officer level · Authoritative single source of truth · Parliamentary & executive reporting",
+    impact:
+      "Senior officer level · Authoritative single source of truth · Parliamentary & executive reporting",
     current: true,
   },
   {
@@ -73,7 +111,17 @@ export const PROJECTS = [
     tag: "Mobile Dev",
     domain: "Startup",
     status: "MVP Jan 2027",
-    stack: ["React Native", "Expo", "Product design", "GitHub Actions", "CI/CD", "PostgreSQL", "SQLite", "Django", "Rust"],
+    stack: [
+      "React Native",
+      "Expo",
+      "Product design",
+      "GitHub Actions",
+      "CI/CD",
+      "PostgreSQL",
+      "SQLite",
+      "Django",
+      "Rust",
+    ],
     summary:
       "Co-founded a mobile app to help people discover and connect with others. Full product ownership from architecture through implementation as Dev Lead.",
     impact: "Co-founder · Full product ownership · MVP ETA Jan 2027",
@@ -88,7 +136,16 @@ export const PROJECTS = [
     tag: "Data Engineering",
     domain: "Government",
     status: "Delivered",
-    stack: ["Python", "Mapbox API", "SEIFA", "ABS Remoteness", "GeoPandas", "Pandas", "Data Validation", "Faker"],
+    stack: [
+      "Python",
+      "Mapbox API",
+      "SEIFA",
+      "ABS Remoteness",
+      "GeoPandas",
+      "Pandas",
+      "Data Validation",
+      "Faker",
+    ],
     summary:
       "Built an internal tool to generate validated real South Australian addresses based on socio-economic status (SEIFA indices) and remoteness classifications — filling a gap no public API could address. All outputs verified via Mapbox API.",
     impact: "Validated address generation · SEIFA + remoteness filtering · Internal QA tool",
@@ -104,7 +161,16 @@ export const PROJECTS = [
     tag: "Data Engineering",
     domain: ["Research", "Open Source"],
     status: "Open source",
-    stack: ["Python", "Web scraping", "Multi-threading", "CSV pipeline", "BeautifulSoup", "Requests", "Pandas", "Rate limiting"],
+    stack: [
+      "Python",
+      "Web scraping",
+      "Multi-threading",
+      "CSV pipeline",
+      "BeautifulSoup",
+      "Requests",
+      "Pandas",
+      "Rate limiting",
+    ],
     summary:
       "Scraped the UC Santa Barbara American Presidency Project to collect ~180 presidential debate transcripts and ~25,000 campaign documents, with multi-threaded processing, rate limiting, and full metadata extraction.",
     impact: "~25,000 documents collected · Decades of US political communication data",
@@ -121,7 +187,18 @@ export const PROJECTS = [
     domain: "Government",
     status: "Completed",
     // current: true,
-    stack: ["Power BI", "Python", "GIS/ArcGIS", "Time series", "Regression", "SQL", "DAX", "Statistical Analysis", "DataSA", "ABS API"],
+    stack: [
+      "Power BI",
+      "Python",
+      "GIS/ArcGIS",
+      "Time series",
+      "Regression",
+      "SQL",
+      "DAX",
+      "Statistical Analysis",
+      "DataSA",
+      "ABS API",
+    ],
     summary:
       "Built the first intelligence analytics capability within the CBS Prevention Team — integrating ABS, SA Health, ACCC, and DataSA data into unified dashboards and GIS maps used by the Minister's Office.",
     impact: "Minister's Office reporting · SOPs institutionalised",
@@ -135,7 +212,17 @@ export const PROJECTS = [
     tag: "Mobile Dev",
     domain: "Research",
     status: "Handed to production team",
-    stack: ["Expo", "React Native", "AWS RDS", "LightSail", "Rust", "CI/CD", "PostgreSQL", "SQLite", "Django"],
+    stack: [
+      "Expo",
+      "React Native",
+      "AWS RDS",
+      "LightSail",
+      "Rust",
+      "CI/CD",
+      "PostgreSQL",
+      "SQLite",
+      "Django",
+    ],
     summary:
       "A clinician-facing and patient-facing mental health mobile app developed for the University of Melbourne's Psychiatry research group. Migrated from Uniapp to Expo React Native, reducing costs by ~$500/month and delivering a GDPR-compliant production application.",
     impact: "~$500/month cost saved · Production deployed · Cross-platform iOS + Android",
@@ -149,7 +236,17 @@ export const PROJECTS = [
     tag: "Analytics",
     domain: "Government",
     status: "Completed",
-    stack: ["Power BI", "Python", "SQL", "ArcGIS", "Time series", "Jupyter Notebook", "Research Software Engineering", "Power Query","IAPro"],
+    stack: [
+      "Power BI",
+      "Python",
+      "SQL",
+      "ArcGIS",
+      "Time series",
+      "Jupyter Notebook",
+      "Research Software Engineering",
+      "Power Query",
+      "IAPro",
+    ],
     summary:
       "Contributed to operational intelligence and crime analytics as an Intelligence and Coordination Officer. Built dashboards and analytical products supporting frontline policing, resource allocation, and command-level decision-making across South Australia.",
     impact: "Operational decision support · Crime pattern analytics · Cross-unit coordination",
@@ -163,7 +260,18 @@ export const PROJECTS = [
     tag: "Data Science",
     domain: ["Biotech", "Open Source"],
     status: "Open source contributor",
-    stack: ["Python", "Cloud HPC", "celseq2", "Git", "Shiny R", "Nextflow", "Bioinformatics", "Bash", "Linux", "Data Pipelines"],
+    stack: [
+      "Python",
+      "Cloud HPC",
+      "celseq2",
+      "Git",
+      "Shiny R",
+      "Nextflow",
+      "Bioinformatics",
+      "Bash",
+      "Linux",
+      "Data Pipelines",
+    ],
     summary:
       "Automated flow cytometry data analysis using cloud and HPC, developed test infrastructure for improved reproducibility, and contributed to the open-source celseq2 workflow toolkit.",
     impact: "Reduced manual processing · celseq2 open-source contribution",
@@ -177,7 +285,18 @@ export const PROJECTS = [
     tag: "NLP / ML",
     domain: "Climate Research",
     status: "Completed",
-    stack: ["Python", "TF-IDF", "Transformers", "NLP", "Virtual Environment", "BERT", "Hugging Face", "PyTorch", "spaCy", "Scikit-learn"],
+    stack: [
+      "Python",
+      "TF-IDF",
+      "Transformers",
+      "NLP",
+      "Virtual Environment",
+      "BERT",
+      "Hugging Face",
+      "PyTorch",
+      "spaCy",
+      "Scikit-learn",
+    ],
     summary:
       "Designed a two-stage automated fact-checking system for climate change claims — TF-IDF evidence retrieval followed by Transformer-based classification (SUPPORTS / REFUTES / NOT ENOUGH INFO / DISPUTED), outperforming LSTM baselines.",
     impact: "Transformer model outperformed LSTM · Scalable misinformation detection pipeline",
@@ -192,10 +311,20 @@ export const PROJECTS = [
     period: "Nov 2023 – Jun 2024",
     tag: "EdTech",
     domain: "Startup",
-    stack: ["Content Design", "EdTech", "Market Research", "LLMs", "Instructional Design", "Curriculum Development", "Notion", "Interactive Content"],
+    stack: [
+      "Content Design",
+      "EdTech",
+      "Market Research",
+      "LLMs",
+      "Instructional Design",
+      "Curriculum Development",
+      "Notion",
+      "Interactive Content",
+    ],
     summary:
       "Built and refined interactive digital educational content aimed at bridging the gap between education and professional success. Conducted market research on leveraging advanced technologies to improve course engagement and learner outcomes for students across Australia and beyond.",
-    impact: "80+ students supported · Improved course engagement through technology-driven content innovation",
+    impact:
+      "80+ students supported · Improved course engagement through technology-driven content innovation",
     link: "https://www.startwithhex.com/",
     linkLabel: "Visit HEX company homepage",
     linkText: "Visit HEX homepage ↗",
@@ -209,7 +338,16 @@ export const PROJECTS = [
     tag: "Research",
     domain: "AI / ML",
     status: "Completed",
-    stack: ["Database systems", "ML optimisation", "Query planning", "PostgreSQL", "B-tree Indexing", "Cost Models", "Query Optimisation", "Literature Review"],
+    stack: [
+      "Database systems",
+      "ML optimisation",
+      "Query planning",
+      "PostgreSQL",
+      "B-tree Indexing",
+      "Cost Models",
+      "Query Optimisation",
+      "Literature Review",
+    ],
     summary:
       "Research project exploring AI/ML techniques for autonomous database management — covering workload-driven optimisation and automatic index selection to reduce DBA overhead and improve query performance.",
     impact: "Literature review · Autonomous DB optimisation frameworks",
@@ -225,7 +363,19 @@ export const PROJECTS = [
     tag: "Cloud / Analytics",
     domain: "Cloud / HPC",
     status: "Completed",
-    stack: ["Python", "Twitter API", "Mastodon API", "CouchDB", "AWS", "SUDO", "Pandas", "Folium", "Matplotlib", "Spatial Analysis", "REST APIs"],
+    stack: [
+      "Python",
+      "Twitter API",
+      "Mastodon API",
+      "CouchDB",
+      "AWS",
+      "SUDO",
+      "Pandas",
+      "Folium",
+      "Matplotlib",
+      "Spatial Analysis",
+      "REST APIs",
+    ],
     summary:
       "Harvested and analysed Twitter and Mastodon data alongside ABS SUDO spatial data to produce a Social Sense Dashboard illuminating Australian sentiment, social trends, and regional behavioural patterns.",
     impact: "Cross-platform social analytics · Spatial + social data fusion",
@@ -257,7 +407,14 @@ export const PROJECTS = [
     tag: "Data Science",
     domain: "Climate Research",
     status: "Research published",
-    stack: ["Python", "AR time series", "Rolling window", "Statistical modelling", "Research Software Engineering", "Jupyter Notebook"],
+    stack: [
+      "Python",
+      "AR time series",
+      "Rolling window",
+      "Statistical modelling",
+      "Research Software Engineering",
+      "Jupyter Notebook",
+    ],
     summary:
       "Built AutoRegressive time series models with rolling window forecasting to quantify how El Niño-Southern Oscillation patterns amplify commodity price volatility and food security-induced conflict risk.",
     impact: "Climate → conflict risk insights · 10-month CSIRO research engagement",
@@ -271,7 +428,16 @@ export const PROJECTS = [
     tag: "AI / Algorithms",
     domain: "AI / ML",
     status: "Completed",
-    stack: ["Python", "A* pathfinding", "Heuristic search", "Game theory", "AI Agents", "Minimax", "Alpha-beta pruning", "Graph search"],
+    stack: [
+      "Python",
+      "A* pathfinding",
+      "Heuristic search",
+      "Game theory",
+      "AI Agents",
+      "Minimax",
+      "Alpha-beta pruning",
+      "Graph search",
+    ],
     summary:
       "Implemented AI agents for Cachex — a two-player connection game — covering heuristic A* search for the exploration phase and a competitive game agent using strategic anticipation and sabotage logic.",
     impact: "A* pathfinding · Competitive AI agent · Game theory application",
@@ -287,7 +453,16 @@ export const PROJECTS = [
     tag: "Data Science",
     domain: "Biotech",
     status: "Delivered",
-    stack: ["Python", "Scikit-learn", "T-SNE", "DBSCAN", "UMAP","Machine Learning","Research Software Engineering","Jupyter Notebook"],
+    stack: [
+      "Python",
+      "Scikit-learn",
+      "T-SNE",
+      "DBSCAN",
+      "UMAP",
+      "Machine Learning",
+      "Research Software Engineering",
+      "Jupyter Notebook",
+    ],
     summary:
       "Built a Python automation script to streamline HPLC experiment result processing, and applied unsupervised clustering methods to uncover hidden patterns in complex medical research datasets.",
     impact: "Reduced HPLC processing time · Improved data quality confidence",
@@ -301,7 +476,17 @@ export const PROJECTS = [
     tag: "Full Stack",
     domain: "Research",
     status: "Completed",
-    stack: ["Node.js", "React.js", "Express.js", "MongoDB", "HTML/CSS", "REST API", "JWT Auth", "Mongoose", "Agile"],
+    stack: [
+      "Node.js",
+      "React.js",
+      "Express.js",
+      "MongoDB",
+      "HTML/CSS",
+      "REST API",
+      "JWT Auth",
+      "Mongoose",
+      "Agile",
+    ],
     summary:
       "Collaborative full-stack CRM system built as the COMP30022 IT Project — managing customer interactions and data with a responsive React frontend, Express REST API, and MongoDB backend.",
     impact: "Full-stack delivery · Team project · Production-grade architecture",
@@ -317,7 +502,16 @@ export const PROJECTS = [
     tag: "Data Science",
     domain: "Research",
     status: "Completed",
-    stack: ["Python", "Apache Spark", "Machine Learning", "Clustering", "Pandas", "PySpark","Research Software Engineering","Jupyter Notebook"],
+    stack: [
+      "Python",
+      "Apache Spark",
+      "Machine Learning",
+      "Clustering",
+      "Pandas",
+      "PySpark",
+      "Research Software Engineering",
+      "Jupyter Notebook",
+    ],
     summary:
       "Analysed 2014–2017 New York City Yellow Taxi data using Apache Spark for big data processing, applying linear modelling to predict trip costs and clustering to identify traffic hotspots.",
     impact: "Big data Spark pipeline · Traffic hotspot clustering · Trip cost modelling",
@@ -331,7 +525,18 @@ export const PROJECTS = [
     tag: "Web Dev",
     domain: "Personal",
     status: "v5 in development",
-    stack: ["Next.js", "React", "Tailwind CSS", "Vercel", "JavaScript", "SEO", "Schema.org", "JSON-LD", "CSS Animations", "GitHub Actions"],
+    stack: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Vercel",
+      "JavaScript",
+      "SEO",
+      "Schema.org",
+      "JSON-LD",
+      "CSS Animations",
+      "GitHub Actions",
+    ],
     summary:
       "Five major iterations of a personal website — currently rebuilt in v5 with a Nothing OS-inspired minimal design language. A living record of technical and professional development since 2020.",
     impact: "5 major versions · rin.contact · Open source",
@@ -342,15 +547,15 @@ export const PROJECTS = [
 ];
 
 const DOMAIN_COLORS = {
-  "Government":      { color: "#2563EB", bg: "#EFF6FF" }, // blue-600  4.53:1 ✓
-  "Climate Research":{ color: "#0F766E", bg: "#F0FDFA" }, // teal-700  6.18:1 ✓
-  "Biotech":         { color: "#7C3AED", bg: "#F5F3FF" }, // violet-700 6.26:1 ✓
-  "Startup":         { color: "#C2410C", bg: "#FFF7ED" }, // orange-700 7.24:1 ✓
-  "Research":        { color: "#15803D", bg: "#F0FDF4" }, // green-700  7.55:1 ✓
-  "AI / ML":         { color: "#CC0000", bg: "#FFF1F1" }, // dark red   5.53:1 ✓
-  "Cloud / HPC":     { color: "#B45309", bg: "#FFFBEB" }, // amber-700  5.25:1 ✓
-  "Open Source":     { color: "#0E7490", bg: "#ECFEFF" }, // cyan-700   5.87:1 ✓
-  "Personal":        { color: "#595959", bg: "#F5F5F5" }, // neutral    5.05:1 ✓
+  Government: { color: "#2563EB", bg: "#EFF6FF" }, // blue-600  4.53:1 ✓
+  "Climate Research": { color: "#0F766E", bg: "#F0FDFA" }, // teal-700  6.18:1 ✓
+  Biotech: { color: "#7C3AED", bg: "#F5F3FF" }, // violet-700 6.26:1 ✓
+  Startup: { color: "#C2410C", bg: "#FFF7ED" }, // orange-700 7.24:1 ✓
+  Research: { color: "#15803D", bg: "#F0FDF4" }, // green-700  7.55:1 ✓
+  "AI / ML": { color: "#CC0000", bg: "#FFF1F1" }, // dark red   5.53:1 ✓
+  "Cloud / HPC": { color: "#B45309", bg: "#FFFBEB" }, // amber-700  5.25:1 ✓
+  "Open Source": { color: "#0E7490", bg: "#ECFEFF" }, // cyan-700   5.87:1 ✓
+  Personal: { color: "#595959", bg: "#F5F5F5" }, // neutral    5.05:1 ✓
 };
 
 const DOMAINS = [
@@ -400,16 +605,22 @@ function ProjectDetail({ project }) {
               </span>
             )}
           </h3>
-          <p className="text-xs text-[#595959] dark:text-[#AAAAAA] tracking-wide">{project.subtitle}</p>
+          <p className="text-xs text-[#595959] dark:text-[#AAAAAA] tracking-wide">
+            {project.subtitle}
+          </p>
         </div>
         <div className="flex flex-wrap gap-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
           <span>{project.org}</span>
           <span>·</span>
           <span>{project.period}</span>
         </div>
-        <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
+        <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+          {project.summary}
+        </p>
         <div className="mt-3 p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
-          <span className="inline-block mb-2 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">{t("projects.impact")}</span>
+          <span className="inline-block mb-2 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
+            {t("projects.impact")}
+          </span>
           <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
             {project.impact}
           </p>
@@ -447,7 +658,10 @@ function ProjectDetail({ project }) {
                 className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
                            text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
               >
-                {project.linkText || (project.link?.includes("github.com") ? `${t("projects.viewOnGithub")} ↗` : `${t("projects.viewOnGithub")} ↗`)}
+                {project.linkText ||
+                  (project.link?.includes("github.com")
+                    ? `${t("projects.viewOnGithub")} ↗`
+                    : `${t("projects.viewOnGithub")} ↗`)}
               </a>
             )}
           </div>
@@ -482,7 +696,9 @@ function ProjectDetail({ project }) {
       </div>
       <div className="space-y-5">
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">{t("projects.stack")}</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">
+            {t("projects.stack")}
+          </p>
           <div className="flex flex-wrap gap-1.5">
             {project.stack.map((t) => (
               <span
@@ -496,11 +712,15 @@ function ProjectDetail({ project }) {
           </div>
         </div>
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">{t("projects.status")}</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">
+            {t("projects.status")}
+          </p>
           <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">{project.status}</p>
         </div>
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">{t("projects.domain")}</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">
+            {t("projects.domain")}
+          </p>
           <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">
             {Array.isArray(project.domain) ? project.domain.join(" · ") : project.domain}
           </p>
@@ -518,15 +738,22 @@ function FeaturedSpotlight({ project }) {
     <div className="mb-12 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
       <div className="px-6 md:px-8 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
         <span className="text-[10px] tracking-widest uppercase text-[#FF3C3C] flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse" aria-hidden="true" />
+          <span
+            className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse"
+            aria-hidden="true"
+          />
           Featured — Flagship
         </span>
-        <span className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] truncate">{project.status}</span>
+        <span className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] truncate">
+          {project.status}
+        </span>
       </div>
       <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-2 space-y-4">
           <div>
-            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight mb-1">{project.title}</h3>
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight mb-1">
+              {project.title}
+            </h3>
             <p className="text-sm text-[#595959] dark:text-[#AAAAAA]">{project.subtitle}</p>
           </div>
           <div className="flex flex-wrap gap-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
@@ -534,9 +761,13 @@ function FeaturedSpotlight({ project }) {
             <span>·</span>
             <span>{project.period}</span>
           </div>
-          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
+          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+            {project.summary}
+          </p>
           <div className="p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
-            <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">{project.impact}</p>
+            <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
+              {project.impact}
+            </p>
           </div>
           {(project.link || project.demo || project.caseStudy) && (
             <div className="flex flex-wrap gap-2 pt-1">
@@ -579,7 +810,9 @@ function FeaturedSpotlight({ project }) {
         </div>
         <div className="space-y-5">
           <div>
-            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">Stack</p>
+            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">
+              Stack
+            </p>
             <div className="flex flex-wrap gap-1.5">
               {project.stack.map((s) => (
                 <span
@@ -593,8 +826,13 @@ function FeaturedSpotlight({ project }) {
             </div>
           </div>
           <div>
-            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">Domain</p>
-            <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]" style={dc ? { color: dc.color } : undefined}>
+            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">
+              Domain
+            </p>
+            <p
+              className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]"
+              style={dc ? { color: dc.color } : undefined}
+            >
               {Array.isArray(project.domain) ? project.domain.join(" · ") : project.domain}
             </p>
           </div>
@@ -646,8 +884,12 @@ export default function ProjectsSection() {
     if (!router.isReady) return;
     const slug = d === "All" ? undefined : slugifyDomain(d);
     const query = { ...router.query };
-    if (slug) query.category = slug; else delete query.category;
-    router.replace({ pathname: router.pathname, query }, undefined, { shallow: true, scroll: false });
+    if (slug) query.category = slug;
+    else delete query.category;
+    router.replace({ pathname: router.pathname, query }, undefined, {
+      shallow: true,
+      scroll: false,
+    });
   };
 
   const isAllView = activeFilter === "All";
@@ -689,14 +931,22 @@ export default function ProjectsSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">{t("projects.sectionLabel")}</p>
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
+          {t("projects.sectionLabel")}
+        </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
           <CountUp target={PROJECTS.length} started={countStarted} /> {t("projects.heading")}
         </h2>
         {/* Wisr-style wavy accent */}
         <svg width="120" height="10" viewBox="0 0 120 10" aria-hidden="true" className="mb-4">
-          <path d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
-                stroke="#E0E0E0" className="dark:stroke-[#3D3D3D]" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+          <path
+            d="M0,5 C15,1 30,9 45,5 C60,1 75,9 90,5 C105,1 120,9 120,5"
+            stroke="#E0E0E0"
+            className="dark:stroke-[#3D3D3D]"
+            strokeWidth="1.5"
+            fill="none"
+            strokeLinecap="round"
+          />
         </svg>
         <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
           {t("projects.headingDesc")}
@@ -719,8 +969,13 @@ export default function ProjectsSection() {
                 style={isActive ? activeStyle : idleStyle}
                 onMouseEnter={(e) => {
                   if (isActive) return;
-                  if (dc) { e.currentTarget.style.borderColor = dc.color; e.currentTarget.style.color = dc.color; }
-                  else { e.currentTarget.style.borderColor = "#FF3C3C"; e.currentTarget.style.color = "#FF3C3C"; }
+                  if (dc) {
+                    e.currentTarget.style.borderColor = dc.color;
+                    e.currentTarget.style.color = dc.color;
+                  } else {
+                    e.currentTarget.style.borderColor = "#FF3C3C";
+                    e.currentTarget.style.color = "#FF3C3C";
+                  }
                 }}
                 onMouseLeave={(e) => {
                   if (isActive) return;
@@ -754,7 +1009,10 @@ export default function ProjectsSection() {
             <input
               type="text"
               value={search}
-              onChange={(e) => { setSearch(e.target.value); setOpenId(null); }}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setOpenId(null);
+              }}
               placeholder={t("projects.searchPlaceholder")}
               className="flex-1 px-3 py-2.5 text-sm bg-transparent outline-none placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A]"
               aria-label={t("projects.searchPlaceholder")}
@@ -773,11 +1031,15 @@ export default function ProjectsSection() {
           {/* List */}
           <div className="border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
             {filtered.length === 0 && (
-              <p className="py-8 text-sm text-[#6B6B6B] dark:text-[#9A9A9A] text-center">No projects match &ldquo;{search}&rdquo;</p>
+              <p className="py-8 text-sm text-[#6B6B6B] dark:text-[#9A9A9A] text-center">
+                No projects match &ldquo;{search}&rdquo;
+              </p>
             )}
             {filtered.map((project, i) => {
               const isOpen = openId === project.id;
-              const primaryDomain = Array.isArray(project.domain) ? project.domain[0] : project.domain;
+              const primaryDomain = Array.isArray(project.domain)
+                ? project.domain[0]
+                : project.domain;
               const dc = DOMAIN_COLORS[primaryDomain];
               return (
                 <div
@@ -801,20 +1063,32 @@ export default function ProjectsSection() {
                     <span className="flex-1 min-w-0 grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-4 items-center">
                       <span className="text-sm font-medium flex items-center gap-2">
                         {project.title}
-                        {project.current && <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" />}
+                        {project.current && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" />
+                        )}
                       </span>
-                      <span className="text-xs text-[#595959] dark:text-[#AAAAAA] truncate hidden md:block">{project.subtitle}</span>
+                      <span className="text-xs text-[#595959] dark:text-[#AAAAAA] truncate hidden md:block">
+                        {project.subtitle}
+                      </span>
                       <span className="hidden md:flex items-center gap-3 justify-end">
                         <span
                           className="text-[10px] tracking-widest uppercase border px-2.5 py-0.5 rounded-full"
-                          style={dc ? { borderColor: dc.color, color: dc.color } : { borderColor: "#595959", color: "#595959" }}
+                          style={
+                            dc
+                              ? { borderColor: dc.color, color: dc.color }
+                              : { borderColor: "#595959", color: "#595959" }
+                          }
                         >
                           {project.tag}
                         </span>
-                        <span className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{project.period}</span>
+                        <span className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
+                          {project.period}
+                        </span>
                       </span>
                     </span>
-                    <span className={`text-[#6B6B6B] transition-transform duration-200 flex-shrink-0 text-sm ${isOpen ? "rotate-45 text-[#FF3C3C]" : "group-hover:text-[#FF3C3C]"}`}>
+                    <span
+                      className={`text-[#6B6B6B] transition-transform duration-200 flex-shrink-0 text-sm ${isOpen ? "rotate-45 text-[#FF3C3C]" : "group-hover:text-[#FF3C3C]"}`}
+                    >
                       +
                     </span>
                   </button>
@@ -834,9 +1108,14 @@ export default function ProjectsSection() {
               );
             })}
           </div>
-          {(() => { const shown = filtered.length + (showSpotlight ? 1 : 0); return (
-          <p className="mt-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{shown} project{shown !== 1 ? "s" : ""}</p>
-          ); })()}
+          {(() => {
+            const shown = filtered.length + (showSpotlight ? 1 : 0);
+            return (
+              <p className="mt-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
+                {shown} project{shown !== 1 ? "s" : ""}
+              </p>
+            );
+          })()}
         </div>
       )}
 
@@ -844,7 +1123,10 @@ export default function ProjectsSection() {
       {!isAllView && (
         <>
           <div className="hidden md:block w-full">
-            <div className="flex items-stretch overflow-x-auto gap-0 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" role="tablist">
+            <div
+              className="flex items-stretch overflow-x-auto gap-0 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              role="tablist"
+            >
               {filtered.map((project, i) => {
                 const isActive = openId === project.id;
                 return (
@@ -857,20 +1139,27 @@ export default function ProjectsSection() {
                       group relative flex-shrink-0 flex flex-col justify-center
                       px-4 py-3 min-w-[110px] max-w-[160px] text-left
                       border-t border-l border-r transition-colors duration-200
-                      ${isActive
-                        ? "bg-[#FF3C3C] text-white border-[#FF3C3C]"
-                        : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#AAAAAA] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
+                      ${
+                        isActive
+                          ? "bg-[#FF3C3C] text-white border-[#FF3C3C]"
+                          : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#AAAAAA] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
                       }
                     `}
                     style={{ borderRadius: "4px 4px 0 0" }}
                   >
-                    <span className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}`}>
+                    <span
+                      className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}`}
+                    >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="flex items-center gap-1.5 min-w-0">
-                      <span className="text-xs font-medium leading-tight truncate">{project.title}</span>
+                      <span className="text-xs font-medium leading-tight truncate">
+                        {project.title}
+                      </span>
                       {project.current && (
-                        <span className={`inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${isActive ? "bg-white opacity-50" : "bg-[#FF3C3C]"}`} />
+                        <span
+                          className={`inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${isActive ? "bg-white opacity-50" : "bg-[#FF3C3C]"}`}
+                        />
                       )}
                     </div>
                   </button>
@@ -879,7 +1168,10 @@ export default function ProjectsSection() {
             </div>
             <div
               className={`border transition-all duration-400 overflow-hidden ${activeProject ? "border-[#FF3C3C]" : "border-[#E0E0E0] dark:border-[#3D3D3D]"}`}
-              style={{ maxHeight: activeProject ? "600px" : "52px", transition: "max-height 0.4s ease, border-color 0.2s ease" }}
+              style={{
+                maxHeight: activeProject ? "600px" : "52px",
+                transition: "max-height 0.4s ease, border-color 0.2s ease",
+              }}
             >
               {!activeProject && (
                 <div className="px-6 py-4 flex items-center gap-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] tracking-wide select-none">
@@ -907,48 +1199,88 @@ export default function ProjectsSection() {
                     </span>
                     <span className="flex-1 min-w-0">
                       <span className="text-sm font-medium block truncate">{project.title}</span>
-                      <span className="text-xs text-[#595959] dark:text-[#AAAAAA]">{project.tag}</span>
+                      <span className="text-xs text-[#595959] dark:text-[#AAAAAA]">
+                        {project.tag}
+                      </span>
                     </span>
-                    {project.current && <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" />}
-                    <span className={`text-[#595959] dark:text-[#AAAAAA] transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-45" : ""}`}>+</span>
+                    {project.current && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" />
+                    )}
+                    <span
+                      className={`text-[#595959] dark:text-[#AAAAAA] transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-45" : ""}`}
+                    >
+                      +
+                    </span>
                   </button>
                   <div
                     className="overflow-hidden"
-                    style={{ maxHeight: isOpen ? "800px" : "0px", opacity: isOpen ? 1 : 0, transition: "max-height 0.4s ease, opacity 0.25s ease" }}
+                    style={{
+                      maxHeight: isOpen ? "800px" : "0px",
+                      opacity: isOpen ? 1 : 0,
+                      transition: "max-height 0.4s ease, opacity 0.25s ease",
+                    }}
                   >
                     <div className="pb-6 pl-9 space-y-4">
-                      <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">{project.org} · {project.period}</p>
-                      <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{project.summary}</p>
+                      <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">
+                        {project.org} · {project.period}
+                      </p>
+                      <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+                        {project.summary}
+                      </p>
                       <div className="p-3 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
-                        <span className="inline-block mb-1.5 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">{t("projects.impact")}</span>
-                        <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">{project.impact}</p>
+                        <span className="inline-block mb-1.5 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
+                          {t("projects.impact")}
+                        </span>
+                        <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
+                          {project.impact}
+                        </p>
                       </div>
                       <div className="flex flex-wrap gap-1.5">
                         {project.stack.map((t) => (
-                          <span key={t} className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200">{t}</span>
+                          <span
+                            key={t}
+                            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+                          >
+                            {t}
+                          </span>
                         ))}
                       </div>
                       {(project.link || project.demo || project.caseStudy) && (
                         <div className="flex flex-wrap gap-2">
                           {project.caseStudy && (
-                            <Link href={project.caseStudy}
-                               aria-label={`Read the ${project.title} case study`}
-                               className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] px-4 py-1.5 text-xs tracking-widest uppercase text-white dark:text-[#0A0A0A] rounded-full hover:bg-black dark:hover:bg-white transition-colors duration-200">
+                            <Link
+                              href={project.caseStudy}
+                              aria-label={`Read the ${project.title} case study`}
+                              className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] px-4 py-1.5 text-xs tracking-widest uppercase text-white dark:text-[#0A0A0A] rounded-full hover:bg-black dark:hover:bg-white transition-colors duration-200"
+                            >
                               Read case study →
                             </Link>
                           )}
                           {project.demo && (
-                            <a href={project.demo} target="_blank" rel="noreferrer"
-                               aria-label={project.demoLabel || `Open the live ${project.title} demo`}
-                               className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200">
+                            <a
+                              href={project.demo}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={
+                                project.demoLabel || `Open the live ${project.title} demo`
+                              }
+                              className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200"
+                            >
                               Live demo ↗
                             </a>
                           )}
                           {project.link && (
-                            <a href={project.link} target="_blank" rel="noreferrer"
-                               aria-label={project.linkLabel || `View ${project.title} on GitHub`}
-                               className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200">
-                              {project.linkText || (project.link?.includes("github.com") ? `${t("projects.viewOnGithub")} ↗` : `${t("projects.viewOnGithub")} ↗`)}
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={project.linkLabel || `View ${project.title} on GitHub`}
+                              className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+                            >
+                              {project.linkText ||
+                                (project.link?.includes("github.com")
+                                  ? `${t("projects.viewOnGithub")} ↗`
+                                  : `${t("projects.viewOnGithub")} ↗`)}
                             </a>
                           )}
                         </div>
@@ -956,19 +1288,25 @@ export default function ProjectsSection() {
                       <div className="flex gap-2 mt-3">
                         <a
                           href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://rin.contact/projects")}`}
-                          target="_blank" rel="noreferrer"
+                          target="_blank"
+                          rel="noreferrer"
                           className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-[#7A7A7A] hover:border-[#0A66C2] hover:text-[#0A66C2] transition-colors"
                           aria-label="Share on LinkedIn"
                         >
-                          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                          </svg>
                         </a>
                         <a
                           href={`https://x.com/intent/tweet?text=${encodeURIComponent(`Check out "${project.title}" — ${project.summary.split(".")[0]}.`)}&url=${encodeURIComponent("https://rin.contact/projects")}`}
-                          target="_blank" rel="noreferrer"
+                          target="_blank"
+                          rel="noreferrer"
                           className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-[#7A7A7A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
                           aria-label="Share on X"
                         >
-                          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                          </svg>
                         </a>
                       </div>
                     </div>

@@ -24,33 +24,10 @@
     "fun_fact": "I debug production on dark-mode at midnight and call it strategic thinking."
   },
   "skills": {
-    "languages": [
-      "Python",
-      "R",
-      "SQL",
-      "TypeScript",
-      "Bash"
-    ],
-    "frameworks": [
-      "Next.js",
-      "React",
-      "FastAPI",
-      "PyTorch",
-      "scikit-learn"
-    ],
-    "data": [
-      "dbt",
-      "Spark",
-      "Tableau",
-      "BigQuery",
-      "Pandas"
-    ],
-    "cloud": [
-      "AWS",
-      "GCP",
-      "Vercel",
-      "Docker"
-    ],
+    "languages": ["Python", "R", "SQL", "TypeScript", "Bash"],
+    "frameworks": ["Next.js", "React", "FastAPI", "PyTorch", "scikit-learn"],
+    "data": ["dbt", "Spark", "Tableau", "BigQuery", "Pandas"],
+    "cloud": ["AWS", "GCP", "Vercel", "Docker"],
     "domains": [
       "Data Science",
       "Strategic Analytics",
@@ -59,11 +36,7 @@
       "Full-Stack Development",
       "UI/UX Design"
     ],
-    "soft": [
-      "Strategic Thinking",
-      "Continuous Improvement",
-      "Cross-discipline Communication"
-    ],
+    "soft": ["Strategic Thinking", "Continuous Improvement", "Cross-discipline Communication"],
     "max_level": "still_loading"
   },
   "education": [

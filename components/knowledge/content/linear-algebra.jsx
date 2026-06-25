@@ -26,14 +26,51 @@ function ProjectionFigure({ caption, ariaLabel, projLabel }) {
         aria-label={ariaLabel}
       >
         <circle cx="50" cy="160" r="3" fill="#FF3C3C" />
-        <line x1="50" y1="160" x2="300" y2="160" stroke="currentColor" strokeWidth="1.5" markerEnd="url(#ah)" />
-        <text x="305" y="164" fontSize="13" fontFamily="monospace" fill="currentColor">b</text>
-        <line x1="50" y1="160" x2="210" y2="60" stroke="#FF3C3C" strokeWidth="1.8" markerEnd="url(#ahr)" />
-        <text x="214" y="56" fontSize="13" fontFamily="monospace" fill="#FF3C3C">a</text>
-        <line x1="210" y1="60" x2="210" y2="160" stroke="currentColor" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
+        <line
+          x1="50"
+          y1="160"
+          x2="300"
+          y2="160"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          markerEnd="url(#ah)"
+        />
+        <text x="305" y="164" fontSize="13" fontFamily="monospace" fill="currentColor">
+          b
+        </text>
+        <line
+          x1="50"
+          y1="160"
+          x2="210"
+          y2="60"
+          stroke="#FF3C3C"
+          strokeWidth="1.8"
+          markerEnd="url(#ahr)"
+        />
+        <text x="214" y="56" fontSize="13" fontFamily="monospace" fill="#FF3C3C">
+          a
+        </text>
+        <line
+          x1="210"
+          y1="60"
+          x2="210"
+          y2="160"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeDasharray="4 3"
+          opacity="0.6"
+        />
         <line x1="50" y1="160" x2="210" y2="160" stroke="#FF3C3C" strokeWidth="4" opacity="0.25" />
-        <path d="M210 148 L222 148 L222 160" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.6" />
-        <text x="120" y="178" fontSize="11" fontFamily="monospace" fill="#FF3C3C">{projLabel}</text>
+        <path
+          d="M210 148 L222 148 L222 160"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.6"
+        />
+        <text x="120" y="178" fontSize="11" fontFamily="monospace" fill="#FF3C3C">
+          {projLabel}
+        </text>
         <defs>
           <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
             <path d="M0 0 L6 3 L0 6 Z" fill="currentColor" />
@@ -56,18 +93,109 @@ function SvdFigure({ caption, ariaLabel, rotateLabel }) {
         role="img"
         aria-label={ariaLabel}
       >
-        <rect x="10" y="35" width="70" height="70" fill="#FF3C3C" opacity="0.12" stroke="#FF3C3C" strokeWidth="1.3" />
-        <text x="45" y="75" textAnchor="middle" fontSize="15" fontFamily="monospace" fill="currentColor">A</text>
-        <text x="115" y="75" textAnchor="middle" fontSize="15" fill="currentColor">=</text>
-        <rect x="140" y="35" width="70" height="70" fill="none" stroke="currentColor" strokeWidth="1.2" />
-        <text x="175" y="75" textAnchor="middle" fontSize="15" fontFamily="monospace" fill="currentColor">U</text>
-        <rect x="222" y="35" width="70" height="70" fill="none" stroke="currentColor" strokeWidth="1.2" />
+        <rect
+          x="10"
+          y="35"
+          width="70"
+          height="70"
+          fill="#FF3C3C"
+          opacity="0.12"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+        />
+        <text
+          x="45"
+          y="75"
+          textAnchor="middle"
+          fontSize="15"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          A
+        </text>
+        <text x="115" y="75" textAnchor="middle" fontSize="15" fill="currentColor">
+          =
+        </text>
+        <rect
+          x="140"
+          y="35"
+          width="70"
+          height="70"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.2"
+        />
+        <text
+          x="175"
+          y="75"
+          textAnchor="middle"
+          fontSize="15"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          U
+        </text>
+        <rect
+          x="222"
+          y="35"
+          width="70"
+          height="70"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.2"
+        />
         <line x1="230" y1="43" x2="284" y2="97" stroke="#FF3C3C" strokeWidth="2" />
-        <text x="257" y="125" textAnchor="middle" fontSize="13" fontFamily="monospace" fill="#FF3C3C">Σ</text>
-        <rect x="304" y="35" width="70" height="70" fill="none" stroke="currentColor" strokeWidth="1.2" />
-        <text x="339" y="75" textAnchor="middle" fontSize="14" fontFamily="monospace" fill="currentColor">Vᵀ</text>
-        <text x="200" y="125" textAnchor="middle" fontSize="11" fontFamily="monospace" fill="currentColor" opacity="0.7">{rotateLabel}</text>
-        <text x="392" y="125" textAnchor="middle" fontSize="11" fontFamily="monospace" fill="currentColor" opacity="0.7">{rotateLabel}</text>
+        <text
+          x="257"
+          y="125"
+          textAnchor="middle"
+          fontSize="13"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          Σ
+        </text>
+        <rect
+          x="304"
+          y="35"
+          width="70"
+          height="70"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.2"
+        />
+        <text
+          x="339"
+          y="75"
+          textAnchor="middle"
+          fontSize="14"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          Vᵀ
+        </text>
+        <text
+          x="200"
+          y="125"
+          textAnchor="middle"
+          fontSize="11"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {rotateLabel}
+        </text>
+        <text
+          x="392"
+          y="125"
+          textAnchor="middle"
+          fontSize="11"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {rotateLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -78,97 +206,89 @@ function EnBody() {
   return (
     <>
       <p>
-        Almost everything in data science is, underneath, linear algebra. A
-        dataset is a matrix. A row is a vector. Training a linear model solves a
-        system of equations. The word embeddings from the{" "}
-        <Link href="/knowledge/natural-language-processing">NLP page</Link> are vectors
-        whose <em>angles</em> encode meaning. PCA, recommendation engines, the
-        attention mechanism in a Transformer — all of it is built from a small set
-        of operations on vectors and matrices.
+        Almost everything in data science is, underneath, linear algebra. A dataset is a matrix. A
+        row is a vector. Training a linear model solves a system of equations. The word embeddings
+        from the <Link href="/knowledge/natural-language-processing">NLP page</Link> are vectors
+        whose <em>angles</em> encode meaning. PCA, recommendation engines, the attention mechanism
+        in a Transformer — all of it is built from a small set of operations on vectors and
+        matrices.
       </p>
       <p>
-        This is the foundation page I'd hand my past self before any machine
-        learning. The goal isn't to push symbols around; it's to build the{" "}
-        <em>geometric</em> intuition that makes the rest click — vectors as arrows,
-        matrices as transformations, and the few decompositions that quietly run
-        modern data science.
+        This is the foundation page I'd hand my past self before any machine learning. The goal
+        isn't to push symbols around; it's to build the <em>geometric</em> intuition that makes the
+        rest click — vectors as arrows, matrices as transformations, and the few decompositions that
+        quietly run modern data science.
       </p>
 
       <KSection id="why" eyebrow="01" title="Why it's the language of data">
         <p>
-          Organise any dataset into a table — rows are examples, columns are
-          features — and you have a <Term>matrix</Term>. One row (one customer, one
-          document, one image flattened out) is a <Term>vector</Term>: an ordered
-          list of numbers, equivalently a point or an arrow in space. A dataset of
-          1,000 examples with 20 features is a 1000×20 matrix; each example lives as
-          a point in 20-dimensional space.
+          Organise any dataset into a table — rows are examples, columns are features — and you have
+          a <Term>matrix</Term>. One row (one customer, one document, one image flattened out) is a{" "}
+          <Term>vector</Term>: an ordered list of numbers, equivalently a point or an arrow in
+          space. A dataset of 1,000 examples with 20 features is a 1000×20 matrix; each example
+          lives as a point in 20-dimensional space.
         </p>
         <p>
-          That reframing is the whole payoff. "Find similar customers" becomes
-          "find nearby points". "Reduce 20 features to 2" becomes "project onto a
-          plane". "Fit a linear model" becomes "solve a system". Linear algebra is
-          just the toolkit for measuring, moving, and simplifying points in space —
-          and data is points in space.
+          That reframing is the whole payoff. "Find similar customers" becomes "find nearby points".
+          "Reduce 20 features to 2" becomes "project onto a plane". "Fit a linear model" becomes
+          "solve a system". Linear algebra is just the toolkit for measuring, moving, and
+          simplifying points in space — and data is points in space.
         </p>
       </KSection>
 
       <KSection id="vectors" eyebrow="02" title="Vectors and vector spaces">
         <p>
-          A <Term>vector</Term> is an ordered list of numbers, written as a column.
-          Geometrically it's an arrow from the origin to a point. You can do two
-          things to vectors, and everything else is built from them:
+          A <Term>vector</Term> is an ordered list of numbers, written as a column. Geometrically
+          it's an arrow from the origin to a point. You can do two things to vectors, and everything
+          else is built from them:
         </p>
         <ul>
           <li>
             <Term>Add</Term> them — tip to tail (<code>[1,2] + [3,1] = [4,3]</code>).
           </li>
           <li>
-            <Term>Scale</Term> them by a number (a <em>scalar</em>) — stretch or
-            flip (<code>2·[1,2] = [2,4]</code>).
+            <Term>Scale</Term> them by a number (a <em>scalar</em>) — stretch or flip (
+            <code>2·[1,2] = [2,4]</code>).
           </li>
         </ul>
         <p>
           Combine those — scale several vectors and add the results — and you get a{" "}
-          <Term>linear combination</Term>. The set of all linear combinations of
-          some vectors is their <Term>span</Term>. A <Term>basis</Term> is a minimal
-          set of vectors whose span is the whole space; the number of them is the{" "}
-          <Term>dimension</Term>. The familiar 3D space has the basis{" "}
-          <code>x, y, z</code> — three independent directions, and every point is a
+          <Term>linear combination</Term>. The set of all linear combinations of some vectors is
+          their <Term>span</Term>. A <Term>basis</Term> is a minimal set of vectors whose span is
+          the whole space; the number of them is the <Term>dimension</Term>. The familiar 3D space
+          has the basis <code>x, y, z</code> — three independent directions, and every point is a
           unique combination of them.
         </p>
         <Callout type="intuition">
           <p>
-            "Linear" really means <em>flat</em>: lines stay lines, the origin stays
-            put, and the grid stays evenly spaced — no curving, no bending. That
-            single restriction is what makes the maths tractable, and it's why we
-            spend so much effort turning curved problems into linear ones.
+            "Linear" really means <em>flat</em>: lines stay lines, the origin stays put, and the
+            grid stays evenly spaced — no curving, no bending. That single restriction is what makes
+            the maths tractable, and it's why we spend so much effort turning curved problems into
+            linear ones.
           </p>
         </Callout>
       </KSection>
 
       <KSection id="dot" eyebrow="03" title="Dot product, norms, projection">
         <p>
-          The <Term>dot product</Term> multiplies two vectors element-wise and sums
-          the result — turning two vectors into a single number that measures how
-          much they point the same way.
+          The <Term>dot product</Term> multiplies two vectors element-wise and sums the result —
+          turning two vectors into a single number that measures how much they point the same way.
         </p>
         <Formula label="The dot product of a and b equals the sum over i of a-i times b-i, which also equals the norm of a times the norm of b times the cosine of the angle between them.">
           {TEX.dot}
         </Formula>
         <p>
-          From it you get two essentials. The <Term>norm</Term> (length) of a vector
-          is <code>‖a‖ = √(a · a)</code> — the Pythagorean distance. And rearranging
-          the formula gives the angle between two vectors, which is exactly{" "}
-          <Term>cosine similarity</Term>:
+          From it you get two essentials. The <Term>norm</Term> (length) of a vector is{" "}
+          <code>‖a‖ = √(a · a)</code> — the Pythagorean distance. And rearranging the formula gives
+          the angle between two vectors, which is exactly <Term>cosine similarity</Term>:
         </p>
         <Formula label="Cosine similarity equals a dot b divided by the norm of a times the norm of b.">
           {TEX.cos}
         </Formula>
         <p>
-          This is the same cosine similarity that compares word embeddings: meaning
-          becomes geometry, and "related" becomes "small angle". When the dot
-          product is zero the vectors are <Term>orthogonal</Term> — at right angles,
-          sharing nothing.
+          This is the same cosine similarity that compares word embeddings: meaning becomes
+          geometry, and "related" becomes "small angle". When the dot product is zero the vectors
+          are <Term>orthogonal</Term> — at right angles, sharing nothing.
         </p>
 
         <ProjectionFigure
@@ -180,59 +300,53 @@ function EnBody() {
 
       <KSection id="matrices" eyebrow="04" title="Matrices as linear maps">
         <p>
-          Here's the idea that unlocks everything: a <Term>matrix is a function</Term>
-          {" "}that transforms space. Multiplying a vector by a matrix moves it —
-          rotating, stretching, shearing, or projecting it — while keeping the grid
-          flat and the origin fixed.
+          Here's the idea that unlocks everything: a <Term>matrix is a function</Term> that
+          transforms space. Multiplying a vector by a matrix moves it — rotating, stretching,
+          shearing, or projecting it — while keeping the grid flat and the origin fixed.
         </p>
         <p>
-          The trick to reading a matrix: <em>its columns are where the basis vectors
-          land</em>. A 2×2 matrix's first column says where <code>[1,0]</code> goes
-          and its second column says where <code>[0,1]</code> goes. Because any
-          vector is a combination of the basis, knowing where the basis lands tells
-          you where <em>everything</em> lands:
+          The trick to reading a matrix: <em>its columns are where the basis vectors land</em>. A
+          2×2 matrix's first column says where <code>[1,0]</code> goes and its second column says
+          where <code>[0,1]</code> goes. Because any vector is a combination of the basis, knowing
+          where the basis lands tells you where <em>everything</em> lands:
         </p>
         <Formula label="A matrix with columns 2, 0 and 0, 3 sends the vector x, y to the vector 2x, 3y — stretching x by two and y by three.">
           {TEX.stretch}
         </Formula>
         <p>
-          That matrix stretches the x-direction by 2 and the y-direction by 3.
-          Swap in different numbers and you get rotation, reflection, or a shear —
-          the same single operation, "apply the linear map", every time.
+          That matrix stretches the x-direction by 2 and the y-direction by 3. Swap in different
+          numbers and you get rotation, reflection, or a shear — the same single operation, "apply
+          the linear map", every time.
         </p>
       </KSection>
 
       <KSection id="multiply" eyebrow="05" title="Matrix multiplication">
         <p>
-          Matrix multiplication looks like an arbitrary rule when you first meet it —
-          rows times columns, sum the products. It isn't arbitrary at all:{" "}
-          <Term>multiplying two matrices is composing their transformations</Term>.{" "}
-          <code>AB</code> means "do B, then do A" — the same as nesting functions{" "}
-          <code>f(g(x))</code>.
+          Matrix multiplication looks like an arbitrary rule when you first meet it — rows times
+          columns, sum the products. It isn't arbitrary at all:{" "}
+          <Term>multiplying two matrices is composing their transformations</Term>. <code>AB</code>{" "}
+          means "do B, then do A" — the same as nesting functions <code>f(g(x))</code>.
         </p>
-        <p>
-          That one insight explains the rest of the rules:
-        </p>
+        <p>That one insight explains the rest of the rules:</p>
         <ul>
           <li>
-            <Term>Dimensions must line up</Term> (the inner sizes match) because the
-            output of one transformation has to be a valid input to the next.
+            <Term>Dimensions must line up</Term> (the inner sizes match) because the output of one
+            transformation has to be a valid input to the next.
           </li>
           <li>
-            <Term>Order matters</Term> — <code>AB ≠ BA</code> in general — because
-            rotating then stretching is not the same as stretching then rotating.
+            <Term>Order matters</Term> — <code>AB ≠ BA</code> in general — because rotating then
+            stretching is not the same as stretching then rotating.
           </li>
           <li>
-            The <Term>identity matrix</Term> <code>I</code> (ones on the diagonal) is
-            the "do nothing" map; <code>AI = A</code>.
+            The <Term>identity matrix</Term> <code>I</code> (ones on the diagonal) is the "do
+            nothing" map; <code>AI = A</code>.
           </li>
         </ul>
         <Callout type="pitfall">
           <p>
-            The most common slip is treating matrices like ordinary numbers. They
-            don't commute (<code>AB ≠ BA</code>), most can't be "divided" (only{" "}
-            <em>invertible</em> ones have an inverse), and{" "}
-            <code>AB = 0</code> does <em>not</em> mean one of them is zero. When in
+            The most common slip is treating matrices like ordinary numbers. They don't commute (
+            <code>AB ≠ BA</code>), most can't be "divided" (only <em>invertible</em> ones have an
+            inverse), and <code>AB = 0</code> does <em>not</em> mean one of them is zero. When in
             doubt, go back to the picture: what is each matrix doing to space?
           </p>
         </Callout>
@@ -240,77 +354,71 @@ function EnBody() {
 
       <KSection id="systems" eyebrow="06" title="Systems, rank, invertibility">
         <p>
-          A system of linear equations is just <code>Ax = b</code>: given a
-          transformation <code>A</code> and a target <code>b</code>, find the input{" "}
-          <code>x</code> that lands on it. Solving the system is running the
-          transformation in reverse.
+          A system of linear equations is just <code>Ax = b</code>: given a transformation{" "}
+          <code>A</code> and a target <code>b</code>, find the input <code>x</code> that lands on
+          it. Solving the system is running the transformation in reverse.
         </p>
         <p>
-          Whether you <em>can</em> reverse it depends on the <Term>rank</Term> — the
-          number of genuinely independent directions in the matrix (the dimension of
-          its column span). If a matrix squashes space into a lower dimension — say a
-          3D map that flattens everything onto a plane — it has lost information and
-          can't be undone. Two key cases:
+          Whether you <em>can</em> reverse it depends on the <Term>rank</Term> — the number of
+          genuinely independent directions in the matrix (the dimension of its column span). If a
+          matrix squashes space into a lower dimension — say a 3D map that flattens everything onto
+          a plane — it has lost information and can't be undone. Two key cases:
         </p>
         <ul>
           <li>
             <Term>Full rank</Term> (independent columns): the map is reversible, an{" "}
-            <Term>inverse</Term> <code>A⁻¹</code> exists, and <code>Ax = b</code> has
-            exactly one solution, <code>x = A⁻¹b</code>.
+            <Term>inverse</Term> <code>A⁻¹</code> exists, and <code>Ax = b</code> has exactly one
+            solution, <code>x = A⁻¹b</code>.
           </li>
           <li>
-            <Term>Rank-deficient</Term> (some columns are redundant): the map
-            collapses dimensions, no inverse exists, and the system has either no
-            solution or infinitely many. In data terms, redundant columns mean{" "}
-            <Term>collinear features</Term> — a real and common headache in
-            regression.
+            <Term>Rank-deficient</Term> (some columns are redundant): the map collapses dimensions,
+            no inverse exists, and the system has either no solution or infinitely many. In data
+            terms, redundant columns mean <Term>collinear features</Term> — a real and common
+            headache in regression.
           </li>
         </ul>
       </KSection>
 
       <KSection id="eigen" eyebrow="07" title="Eigenvalues and eigenvectors">
         <p>
-          Most vectors get knocked off their line when you apply a matrix — they
-          change both length and direction. But for any given transformation, a few
-          special vectors keep pointing the same way and are merely scaled. Those are
-          the <Term>eigenvectors</Term>, and the scaling factor is the{" "}
-          <Term>eigenvalue</Term>:
+          Most vectors get knocked off their line when you apply a matrix — they change both length
+          and direction. But for any given transformation, a few special vectors keep pointing the
+          same way and are merely scaled. Those are the <Term>eigenvectors</Term>, and the scaling
+          factor is the <Term>eigenvalue</Term>:
         </p>
         <Formula label="A times v equals lambda times v, where v is an eigenvector and lambda is its eigenvalue.">
           {TEX.eigen}
         </Formula>
         <p>
-          Read it as: applying the transformation <code>A</code> to{" "}
-          <code>v</code> does the same thing as simply stretching <code>v</code> by
-          the number <code>λ</code>. Eigenvectors are the transformation's "natural
-          axes" — the directions it acts on most simply. An eigenvalue of 2 means
-          that direction is doubled; 1 means it's unchanged; a negative one means
-          it's flipped.
+          Read it as: applying the transformation <code>A</code> to <code>v</code> does the same
+          thing as simply stretching <code>v</code> by the number <code>λ</code>. Eigenvectors are
+          the transformation's "natural axes" — the directions it acts on most simply. An eigenvalue
+          of 2 means that direction is doubled; 1 means it's unchanged; a negative one means it's
+          flipped.
         </p>
         <p>
-          This matters for data because the <Term>covariance matrix</Term> of a
-          dataset has eigenvectors that point along the directions of greatest
-          variance — the axes the data actually spreads along. That's the engine of{" "}
-          <Term>PCA</Term>, and it's a short step from there to the SVD.
+          This matters for data because the <Term>covariance matrix</Term> of a dataset has
+          eigenvectors that point along the directions of greatest variance — the axes the data
+          actually spreads along. That's the engine of <Term>PCA</Term>, and it's a short step from
+          there to the SVD.
         </p>
       </KSection>
 
       <KSection id="svd" eyebrow="08" title="The SVD — the crown jewel">
         <p>
-          The <Term>Singular Value Decomposition</Term> is the result everything
-          else has been building toward. It says <em>any</em> matrix at all — square
-          or not — can be broken into three simple pieces:
+          The <Term>Singular Value Decomposition</Term> is the result everything else has been
+          building toward. It says <em>any</em> matrix at all — square or not — can be broken into
+          three simple pieces:
         </p>
-        <Formula label="A equals U times Sigma times V transpose.">
-          {TEX.svd}
-        </Formula>
+        <Formula label="A equals U times Sigma times V transpose.">{TEX.svd}</Formula>
         <p>
           Every linear map, however tangled it looks, is really just{" "}
-          <strong>a rotation (<code>Vᵀ</code>), a stretch along the axes
-          (<code>Σ</code>), and another rotation (<code>U</code>)</strong>. The
-          diagonal of <code>Σ</code> holds the <Term>singular values</Term> — how
-          much the map stretches along each direction, in descending order of
-          importance.
+          <strong>
+            a rotation (<code>Vᵀ</code>), a stretch along the axes (<code>Σ</code>), and another
+            rotation (<code>U</code>)
+          </strong>
+          . The diagonal of <code>Σ</code> holds the <Term>singular values</Term> — how much the map
+          stretches along each direction, in descending order of importance.
         </p>
 
         <SvdFigure
@@ -320,27 +428,26 @@ function EnBody() {
         />
 
         <p>
-          The reason the SVD is everywhere: <Term>keep only the largest few singular
-          values</Term> and you get the best possible low-rank approximation of the
-          matrix — the most information in the fewest numbers. That single idea
-          powers:
+          The reason the SVD is everywhere: <Term>keep only the largest few singular values</Term>{" "}
+          and you get the best possible low-rank approximation of the matrix — the most information
+          in the fewest numbers. That single idea powers:
         </p>
         <ul>
           <li>
-            <Term>PCA</Term> and dimensionality reduction — compress 100 correlated
-            features into the 5 directions that carry the signal.
+            <Term>PCA</Term> and dimensionality reduction — compress 100 correlated features into
+            the 5 directions that carry the signal.
           </li>
           <li>
-            <Term>Image and data compression</Term> — store a big matrix as a few
-            small ones with almost no visible loss.
+            <Term>Image and data compression</Term> — store a big matrix as a few small ones with
+            almost no visible loss.
           </li>
           <li>
-            <Term>Recommendation systems</Term> — factor a sparse user-by-item
-            ratings matrix into latent taste vectors.
+            <Term>Recommendation systems</Term> — factor a sparse user-by-item ratings matrix into
+            latent taste vectors.
           </li>
           <li>
-            <Term>Noise reduction and latent semantics</Term> — the small singular
-            values are usually noise; drop them and the structure remains.
+            <Term>Noise reduction and latent semantics</Term> — the small singular values are
+            usually noise; drop them and the structure remains.
           </li>
         </ul>
       </KSection>
@@ -348,22 +455,21 @@ function EnBody() {
       <KSection id="applied" eyebrow="09" title="Where it shows up in my work">
         <Callout type="applied" label="The base under everything">
           <p>
-            Linear algebra never shows up labelled "linear algebra" — it's the layer
-            below the tools. When I ran <strong>PCA</strong> on multivariate data to
-            cut dimensions before clustering, that's eigenvectors of the covariance
-            matrix. When I fit a <strong>linear or logistic regression</strong>, the
-            solver is solving <code>Ax = b</code> in disguise, and{" "}
-            <strong>collinear features</strong> failing to converge is a
-            rank-deficiency problem. When the <Link href="/knowledge/natural-language-processing">Climate
-            Fact-Checker</Link> ranked evidence by <strong>cosine similarity</strong>,
-            that's the dot-product geometry from section 03.
+            Linear algebra never shows up labelled "linear algebra" — it's the layer below the
+            tools. When I ran <strong>PCA</strong> on multivariate data to cut dimensions before
+            clustering, that's eigenvectors of the covariance matrix. When I fit a{" "}
+            <strong>linear or logistic regression</strong>, the solver is solving{" "}
+            <code>Ax = b</code> in disguise, and <strong>collinear features</strong> failing to
+            converge is a rank-deficiency problem. When the{" "}
+            <Link href="/knowledge/natural-language-processing">Climate Fact-Checker</Link> ranked
+            evidence by <strong>cosine similarity</strong>, that's the dot-product geometry from
+            section 03.
           </p>
           <p>
-            Knowing the algebra underneath is what lets me debug a model instead of
-            just rerunning it — recognising that "the regression blew up" usually
-            means "two of my columns are telling the same story", and that
-            "compress these features" and "find the main directions of variation" are
-            the same SVD question.
+            Knowing the algebra underneath is what lets me debug a model instead of just rerunning
+            it — recognising that "the regression blew up" usually means "two of my columns are
+            telling the same story", and that "compress these features" and "find the main
+            directions of variation" are the same SVD question.
           </p>
         </Callout>
       </KSection>
@@ -373,32 +479,29 @@ function EnBody() {
           <ul className="list-disc pl-5 space-y-2">
             <li>
               Data is <strong>vectors</strong> (points in space); a dataset is a{" "}
-              <strong>matrix</strong>. Linear algebra is how you measure and move
-              points.
+              <strong>matrix</strong>. Linear algebra is how you measure and move points.
             </li>
             <li>
-              <strong>Dot product</strong> <code>a·b = ‖a‖‖b‖cos θ</code> gives
-              length, angle, and <strong>cosine similarity</strong>. Zero = orthogonal.
+              <strong>Dot product</strong> <code>a·b = ‖a‖‖b‖cos θ</code> gives length, angle, and{" "}
+              <strong>cosine similarity</strong>. Zero = orthogonal.
             </li>
             <li>
-              A <strong>matrix is a transformation</strong>; its columns show where
-              the basis vectors land. <strong>Multiplication = composition</strong>{" "}
-              (AB = do B then A), so order matters.
+              A <strong>matrix is a transformation</strong>; its columns show where the basis
+              vectors land. <strong>Multiplication = composition</strong> (AB = do B then A), so
+              order matters.
             </li>
             <li>
-              <strong>Rank</strong> = independent directions. Full rank → invertible,
-              one solution to <code>Ax = b</code>. Rank-deficient → collinear
-              features, no clean inverse.
+              <strong>Rank</strong> = independent directions. Full rank → invertible, one solution
+              to <code>Ax = b</code>. Rank-deficient → collinear features, no clean inverse.
             </li>
             <li>
-              <strong>Eigenvectors</strong> (<code>Av = λv</code>) keep their
-              direction and only scale — the natural axes of a transformation, and the
-              basis of PCA.
+              <strong>Eigenvectors</strong> (<code>Av = λv</code>) keep their direction and only
+              scale — the natural axes of a transformation, and the basis of PCA.
             </li>
             <li>
               The <strong>SVD</strong> (<code>A = UΣVᵀ</code>) breaks any matrix into
-              rotate–stretch–rotate. Keep the top singular values → best low-rank
-              approximation → PCA, compression, recommenders, denoising.
+              rotate–stretch–rotate. Keep the top singular values → best low-rank approximation →
+              PCA, compression, recommenders, denoising.
             </li>
           </ul>
         </Callout>
@@ -413,9 +516,10 @@ function ZhBody() {
     <>
       <p>
         数据科学中几乎一切的底层，都是线性代数。一个数据集是一个矩阵。一行是一个向量。
-        训练一个线性模型就是解一个方程组。<Link href="/knowledge/natural-language-processing">
-        NLP 页</Link>中的词嵌入是一些向量，它们的<em>夹角</em>编码了含义。PCA、推荐引擎、
-        Transformer 中的注意力机制——这一切都构建于对向量和矩阵的一小组运算之上。
+        训练一个线性模型就是解一个方程组。
+        <Link href="/knowledge/natural-language-processing">NLP 页</Link>
+        中的词嵌入是一些向量，它们的<em>夹角</em>编码了含义。PCA、推荐引擎、 Transformer
+        中的注意力机制——这一切都构建于对向量和矩阵的一小组运算之上。
       </p>
       <p>
         这是我会在接触任何机器学习之前，递给过去的自己的那张基础页。目标不是摆弄符号；
@@ -427,12 +531,12 @@ function ZhBody() {
         <p>
           把任意数据集整理成一张表——行是样本，列是特征——你就有了一个<Term>矩阵</Term>。
           一行（一位客户、一份文档、一张被展平的图像）是一个<Term>向量</Term>：一个有序的
-          数字列表，等价地是空间中的一个点或一支箭头。一个有 1000 个样本、20 个特征的
-          数据集，是一个 1000×20 的矩阵；每个样本作为 20 维空间中的一个点而存在。
+          数字列表，等价地是空间中的一个点或一支箭头。一个有 1000 个样本、20 个特征的 数据集，是一个
+          1000×20 的矩阵；每个样本作为 20 维空间中的一个点而存在。
         </p>
         <p>
-          这种重新表述就是全部的收益。「找到相似的客户」变成「找到邻近的点」。「把 20 个
-          特征降到 2 个」变成「投影到一个平面上」。「拟合一个线性模型」变成「解一个方程组」。
+          这种重新表述就是全部的收益。「找到相似的客户」变成「找到邻近的点」。「把 20 个 特征降到 2
+          个」变成「投影到一个平面上」。「拟合一个线性模型」变成「解一个方程组」。
           线性代数不过是测量、移动并简化空间中点的工具箱——而数据就是空间中的点。
         </p>
       </KSection>
@@ -447,15 +551,15 @@ function ZhBody() {
             <Term>相加</Term>——首尾相接（<code>[1,2] + [3,1] = [4,3]</code>）。
           </li>
           <li>
-            <Term>缩放</Term>——乘以一个数（一个<em>标量</em>）——拉伸或翻转
-            （<code>2·[1,2] = [2,4]</code>）。
+            <Term>缩放</Term>——乘以一个数（一个<em>标量</em>）——拉伸或翻转 （
+            <code>2·[1,2] = [2,4]</code>）。
           </li>
         </ul>
         <p>
           把这两者结合——缩放若干向量再把结果相加——你就得到一个<Term>线性组合</Term>。
           某些向量的所有线性组合的集合，就是它们的<Term>张成空间</Term>。一组<Term>基</Term>
-          是张成空间为整个空间的极小向量集；它们的数量就是<Term>维数</Term>。我们熟悉的三维
-          空间以 <code>x, y, z</code> 为基——三个独立的方向，每个点都是它们的唯一组合。
+          是张成空间为整个空间的极小向量集；它们的数量就是<Term>维数</Term>。我们熟悉的三维 空间以{" "}
+          <code>x, y, z</code> 为基——三个独立的方向，每个点都是它们的唯一组合。
         </p>
         <Callout type="intuition">
           <p>
@@ -476,12 +580,9 @@ function ZhBody() {
         </Formula>
         <p>
           由它你得到两个要点。一个向量的<Term>范数</Term>（长度）是 <code>‖a‖ = √(a · a)</code>
-          ——勾股距离。而重新整理这个公式，就得到两个向量之间的夹角，这正是<Term>余弦相似度
-          </Term>：
+          ——勾股距离。而重新整理这个公式，就得到两个向量之间的夹角，这正是<Term>余弦相似度</Term>：
         </p>
-        <Formula label="余弦相似度等于 a 点乘 b 除以 a 的范数乘以 b 的范数。">
-          {TEX.cos}
-        </Formula>
+        <Formula label="余弦相似度等于 a 点乘 b 除以 a 的范数乘以 b 的范数。">{TEX.cos}</Formula>
         <p>
           这正是比较词嵌入时所用的同一个余弦相似度：含义变成几何，「相关」变成「小夹角」。
           当点积为零时，向量是<Term>正交</Term>的——成直角，毫无共同之处。
@@ -500,8 +601,8 @@ function ZhBody() {
           移动它——旋转、拉伸、错切或投影它——同时保持网格平直、原点不动。
         </p>
         <p>
-          读懂一个矩阵的诀窍：<em>它的各列就是基向量落脚的地方</em>。一个 2×2 矩阵的第一列
-          说明 <code>[1,0]</code> 去往何处，第二列说明 <code>[0,1]</code> 去往何处。因为任何
+          读懂一个矩阵的诀窍：<em>它的各列就是基向量落脚的地方</em>。一个 2×2 矩阵的第一列 说明{" "}
+          <code>[1,0]</code> 去往何处，第二列说明 <code>[0,1]</code> 去往何处。因为任何
           向量都是基的组合，知道基落在哪里，就知道<em>一切</em>落在哪里：
         </p>
         <Formula label="一个列为 2、0 和 0、3 的矩阵，把向量 x、y 送到向量 2x、3y——把 x 拉伸为两倍、把 y 拉伸为三倍。">
@@ -546,8 +647,7 @@ function ZhBody() {
       <KSection id="systems" eyebrow="06" title="方程组、秩与可逆性">
         <p>
           一个线性方程组就是 <code>Ax = b</code>：给定一个变换 <code>A</code> 和一个目标{" "}
-          <code>b</code>，找到落在它上面的输入 <code>x</code>。解这个方程组，就是把变换反向
-          运行。
+          <code>b</code>，找到落在它上面的输入 <code>x</code>。解这个方程组，就是把变换反向 运行。
         </p>
         <p>
           你<em>能否</em>把它反向，取决于<Term>秩</Term>——矩阵中真正独立的方向的数量
@@ -556,8 +656,8 @@ function ZhBody() {
         </p>
         <ul>
           <li>
-            <Term>满秩</Term>（列独立）：映射可逆，存在逆 <code>A⁻¹</code>，而{" "}
-            <code>Ax = b</code> 恰有一个解，<code>x = A⁻¹b</code>。
+            <Term>满秩</Term>（列独立）：映射可逆，存在逆 <code>A⁻¹</code>，而 <code>Ax = b</code>{" "}
+            恰有一个解，<code>x = A⁻¹b</code>。
           </li>
           <li>
             <Term>秩亏</Term>（某些列是冗余的）：映射坍缩了维度，不存在逆，方程组要么无解、
@@ -593,13 +693,14 @@ function ZhBody() {
           <Term>奇异值分解</Term>是其余一切都在为之铺垫的结果。它说<em>任何</em>矩阵——无论
           方阵与否——都可以被拆成三个简单的部分：
         </p>
-        <Formula label="A 等于 U 乘 Σ 乘 V 的转置。">
-          {TEX.svd}
-        </Formula>
+        <Formula label="A 等于 U 乘 Σ 乘 V 的转置。">{TEX.svd}</Formula>
         <p>
-          每一个线性映射，无论看起来多么纠缠，其实都只是<strong>一次旋转（<code>Vᵀ</code>）、
-          沿坐标轴的一次拉伸（<code>Σ</code>），以及另一次旋转（<code>U</code>）</strong>。
-          <code>Σ</code> 的对角线上是<Term>奇异值</Term>——映射沿每个方向拉伸了多少，按重要性
+          每一个线性映射，无论看起来多么纠缠，其实都只是
+          <strong>
+            一次旋转（<code>Vᵀ</code>）、 沿坐标轴的一次拉伸（<code>Σ</code>），以及另一次旋转（
+            <code>U</code>）
+          </strong>
+          。<code>Σ</code> 的对角线上是<Term>奇异值</Term>——映射沿每个方向拉伸了多少，按重要性
           降序排列。
         </p>
 
@@ -632,10 +733,10 @@ function ZhBody() {
       <KSection id="applied" eyebrow="09" title="它在我工作中的体现">
         <Callout type="applied" label="万物之下的基底">
           <p>
-            线性代数从不会以「线性代数」之名出现——它是工具之下的那一层。当我在聚类之前对
-            多元数据跑 <strong>PCA</strong> 来削减维度时，那就是协方差矩阵的特征向量。当我
-            拟合一个<strong>线性或逻辑回归</strong>时，求解器解的是伪装过的 <code>Ax = b</code>，
-            而<strong>共线特征</strong>无法收敛，则是一个秩亏问题。当
+            线性代数从不会以「线性代数」之名出现——它是工具之下的那一层。当我在聚类之前对 多元数据跑{" "}
+            <strong>PCA</strong> 来削减维度时，那就是协方差矩阵的特征向量。当我 拟合一个
+            <strong>线性或逻辑回归</strong>时，求解器解的是伪装过的 <code>Ax = b</code>， 而
+            <strong>共线特征</strong>无法收敛，则是一个秩亏问题。当
             <Link href="/knowledge/natural-language-processing">气候事实核查器</Link>按
             <strong>余弦相似度</strong>对证据排序时，那就是第 03 节里的点积几何。
           </p>
@@ -663,8 +764,8 @@ function ZhBody() {
               <strong>乘法 = 复合</strong>（AB = 先 B 后 A），所以顺序重要。
             </li>
             <li>
-              <strong>秩</strong> = 独立方向的数量。满秩 → 可逆，<code>Ax = b</code> 有唯一解。
-              秩亏 → 共线特征，没有干净的逆。
+              <strong>秩</strong> = 独立方向的数量。满秩 → 可逆，<code>Ax = b</code> 有唯一解。 秩亏
+              → 共线特征，没有干净的逆。
             </li>
             <li>
               <strong>特征向量</strong>（<code>Av = λv</code>）保持方向、只被缩放——变换的

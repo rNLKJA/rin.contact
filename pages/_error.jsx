@@ -34,9 +34,7 @@ export default function Error({ statusCode }) {
           {is404 ? t("errorPage.message") : t("errorPage.description")}
         </h1>
         <p className="text-sm text-[#7A7A7A] max-w-sm leading-relaxed">
-          {is404
-            ? "The page you are looking for does not exist or has been moved."
-            : ""}
+          {is404 ? "The page you are looking for does not exist or has been moved." : ""}
         </p>
         <Link
           href="/"

@@ -8,9 +8,9 @@ import { useI18n } from "@/contexts/I18nContext";
 
 export default function ReadingToast({ threshold = 0.65 }) {
   const { t } = useI18n();
-  const [shown,     setShown]     = useState(false);
+  const [shown, setShown] = useState(false);
   const [dismissed, setDismissed] = useState(false);
-  const [visible,   setVisible]   = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const dismissNow = useCallback(() => {
     setVisible(false);

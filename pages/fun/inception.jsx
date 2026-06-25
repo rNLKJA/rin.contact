@@ -41,7 +41,12 @@ export default function InceptionPage() {
             src="/"
             title="rin.contact inside rin.contact"
             className="w-full h-full border-0"
-            style={{ transform: "scale(0.85)", transformOrigin: "top left", width: "117.6%", height: "117.6%" }}
+            style={{
+              transform: "scale(0.85)",
+              transformOrigin: "top left",
+              width: "117.6%",
+              height: "117.6%",
+            }}
             sandbox="allow-scripts allow-same-origin"
           />
         </div>

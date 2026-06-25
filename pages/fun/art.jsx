@@ -8,27 +8,27 @@ import Link from "next/link";
 // Slowly morphs the golden angle ±ε to create organic drift.
 // Nothing OS palette: white bg, monochrome dots, occasional red accent.
 
-const PHI          = (1 + Math.sqrt(5)) / 2;
-const GOLDEN_ANGLE = Math.PI * 2 * (2 - PHI);   // ≈ 137.508°
-const N_DOTS       = 600;
-const DRIFT_SPEED  = 0.00008;
-const DRIFT_AMP    = 0.018;
+const PHI = (1 + Math.sqrt(5)) / 2;
+const GOLDEN_ANGLE = Math.PI * 2 * (2 - PHI); // ≈ 137.508°
+const N_DOTS = 600;
+const DRIFT_SPEED = 0.00008;
+const DRIFT_AMP = 0.018;
 
 function drawFrame(ctx, w, h, t) {
   ctx.clearRect(0, 0, w, h);
   ctx.fillStyle = "#FFFFFF";
   ctx.fillRect(0, 0, w, h);
 
-  const cx     = w / 2;
-  const cy     = h / 2;
-  const scale  = Math.min(w, h) * 0.44;
-  const angle  = GOLDEN_ANGLE + Math.sin(t * DRIFT_SPEED) * DRIFT_AMP;
+  const cx = w / 2;
+  const cy = h / 2;
+  const scale = Math.min(w, h) * 0.44;
+  const angle = GOLDEN_ANGLE + Math.sin(t * DRIFT_SPEED) * DRIFT_AMP;
 
   for (let i = 0; i < N_DOTS; i++) {
-    const r   = (Math.sqrt(i) / Math.sqrt(N_DOTS)) * scale;
-    const a   = i * angle;
-    const x   = cx + r * Math.cos(a);
-    const y   = cy + r * Math.sin(a);
+    const r = (Math.sqrt(i) / Math.sqrt(N_DOTS)) * scale;
+    const a = i * angle;
+    const x = cx + r * Math.cos(a);
+    const y = cy + r * Math.sin(a);
 
     // Progress 0–1 from centre to edge
     const prog = i / N_DOTS;
@@ -56,7 +56,7 @@ function drawFrame(ctx, w, h, t) {
 
 export default function ArtPage() {
   const canvasRef = useRef(null);
-  const frameRef  = useRef(null);
+  const frameRef = useRef(null);
   const [label, setLabel] = useState("phyllotaxis");
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function ArtPage() {
     let t = 0;
 
     function resize() {
-      canvas.width  = canvas.offsetWidth  * window.devicePixelRatio;
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
       canvas.height = canvas.offsetHeight * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     }
@@ -102,7 +102,10 @@ export default function ArtPage() {
     <>
       <Head>
         <title>art — rin.contact</title>
-        <meta name="description" content="Generative art by Rin Huang — a Fibonacci phyllotaxis spiral that slowly morphs." />
+        <meta
+          name="description"
+          content="Generative art by Rin Huang — a Fibonacci phyllotaxis spiral that slowly morphs."
+        />
         <link rel="canonical" href="https://rin.contact/fun/art" />
       </Head>
 
@@ -110,11 +113,14 @@ export default function ArtPage() {
         title="art — rin.contact"
         description="Generative art by Rin Huang — a Fibonacci phyllotaxis spiral that slowly morphs."
         path="/fun/art"
-        ogImage={{ title: "art", subtitle: "Generative art by Rin Huang — a Fibonacci phyllotaxis spir…", section: "fun" }}
+        ogImage={{
+          title: "art",
+          subtitle: "Generative art by Rin Huang — a Fibonacci phyllotaxis spir…",
+          section: "fun",
+        }}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
-
         {/* Canvas — fills available space */}
         <div className="flex-1 relative" style={{ minHeight: "70vh" }}>
           <canvas
@@ -146,17 +152,20 @@ export default function ArtPage() {
             </p>
           </div>
           <div className="flex gap-4 flex-shrink-0">
-            <Link href="/"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">
+            <Link
+              href="/"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
               ← Home
             </Link>
-            <Link href="/fun/matrix"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">
+            <Link
+              href="/fun/matrix"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
               /fun/matrix →
             </Link>
           </div>
         </div>
-
       </div>
     </>
   );

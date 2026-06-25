@@ -10,10 +10,18 @@ import AboutIntro from "@/components/sections/AboutIntro";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
 
-const SkillsSection           = dynamic(() => import("@/components/sections/SkillsSection"),           { loading: () => <div className="min-h-[480px]" /> });
-const CertificationsSection  = dynamic(() => import("@/components/sections/CertificationsSection"), { loading: () => <div className="min-h-[320px]" /> });
-const FAQSection              = dynamic(() => import("@/components/sections/FAQSection"),              { loading: () => <div className="min-h-[320px]" /> });
-const TestimonialsSection     = dynamic(() => import("@/components/sections/TestimonialsSection"),    { loading: () => <div className="min-h-[200px]" /> });
+const SkillsSection = dynamic(() => import("@/components/sections/SkillsSection"), {
+  loading: () => <div className="min-h-[480px]" />,
+});
+const CertificationsSection = dynamic(() => import("@/components/sections/CertificationsSection"), {
+  loading: () => <div className="min-h-[320px]" />,
+});
+const FAQSection = dynamic(() => import("@/components/sections/FAQSection"), {
+  loading: () => <div className="min-h-[320px]" />,
+});
+const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"), {
+  loading: () => <div className="min-h-[200px]" />,
+});
 
 // FAQPage structured data is generated from the same FAQSection data at build time,
 // so the schema can never drift from the rendered Q&A. getStaticProps-only imports are
@@ -52,9 +60,17 @@ export default function AboutPage({ faqJsonLd }) {
 
       <SeoHead
         title={isZh ? "关于我 — Rin Huang · rin.contact" : "About — Rin Huang · rin.contact"}
-        description={isZh ? "Rin Huang（黄孙创宇）的技能专长、七个技术领域、23项专业认证和常见问题解答。" : "Rin Huang's skills, technical domains, 23 professional certifications, and FAQ."}
+        description={
+          isZh
+            ? "Rin Huang（黄孙创宇）的技能专长、七个技术领域、23项专业认证和常见问题解答。"
+            : "Rin Huang's skills, technical domains, 23 professional certifications, and FAQ."
+        }
         path="/about"
-        ogImage={{ title: isZh ? "关于 Rin Huang" : "About Rin Huang", subtitle: isZh ? "技能 · 认证 · 问答" : "Skills, certifications & FAQ", section: "about" }}
+        ogImage={{
+          title: isZh ? "关于 Rin Huang" : "About Rin Huang",
+          subtitle: isZh ? "技能 · 认证 · 问答" : "Skills, certifications & FAQ",
+          section: "about",
+        }}
         locale={locale}
       />
 

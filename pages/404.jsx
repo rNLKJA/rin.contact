@@ -10,25 +10,27 @@ import { useI18n } from "@/contexts/I18nContext";
 const SnakeGame = dynamic(() => import("@/components/ui/SnakeGame"), {
   ssr: false,
   loading: () => (
-    <div className="mt-8 border border-[#1E1E1E] bg-[#0C0C0C] flex items-center justify-center font-mono text-[10px] text-[#2A2A2A]"
-         style={{ width: 320, height: 224 }}>
+    <div
+      className="mt-8 border border-[#1E1E1E] bg-[#0C0C0C] flex items-center justify-center font-mono text-[10px] text-[#2A2A2A]"
+      style={{ width: 320, height: 224 }}
+    >
       loading game...
     </div>
   ),
 });
 
 const SUGGESTION_KEYS = [
-  { href: "/",          key: "nav.home"      },
-  { href: "/career",    key: "nav.career"    },
-  { href: "/projects",  key: "nav.projects"  },
-  { href: "/lab",       key: "nav.lab"       },
+  { href: "/", key: "nav.home" },
+  { href: "/career", key: "nav.career" },
+  { href: "/projects", key: "nav.projects" },
+  { href: "/lab", key: "nav.lab" },
   { href: "/knowledge", key: "nav.knowledge" },
-  { href: "/blog",      key: "nav.blog"      },
+  { href: "/blog", key: "nav.blog" },
   { href: "/strategic", key: "nav.strategic" },
-  { href: "/about",     key: "nav.about"     },
-  { href: "/resume",    key: "nav.resume"    },
-  { href: "/hire-me",   key: "nav.hireMe"    },
-  { href: "/tools/card", key: "nav.businessCard"},
+  { href: "/about", key: "nav.about" },
+  { href: "/resume", key: "nav.resume" },
+  { href: "/hire-me", key: "nav.hireMe" },
+  { href: "/tools/card", key: "nav.businessCard" },
 ];
 
 export default function Custom404() {
@@ -37,7 +39,9 @@ export default function Custom404() {
   // asPath differs between server ("/404/") and client (the real missing URL).
   // Only render it after mount so server and client initial HTML always match.
   const [path, setPath] = useState(null);
-  useEffect(() => { setPath(asPath.split("?")[0]); }, [asPath]);
+  useEffect(() => {
+    setPath(asPath.split("?")[0]);
+  }, [asPath]);
 
   return (
     <>
@@ -54,7 +58,6 @@ export default function Custom404() {
       />
 
       <div className="max-w-[720px] mx-auto px-6 py-16 md:py-24 font-mono">
-
         {/* Error header */}
         <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-4">
           {t("notFound.title")}
@@ -65,7 +68,8 @@ export default function Custom404() {
           <p className="text-[#555]">{t("notFound.traceback")}</p>
           <p className="text-[#555] ml-4">
             {t("notFound.file")} <span className="text-[#888]">&quot;rin.contact&quot;</span>,
-            {t("notFound.line")} 1, {t("notFound.in")} <span className="text-[#888]">{t("notFound.navigate")}</span>
+            {t("notFound.line")} 1, {t("notFound.in")}{" "}
+            <span className="text-[#888]">{t("notFound.navigate")}</span>
           </p>
           <p className="text-[#444] mt-2">
             <span className="text-[#686868]">{t("notFound.keyError")}</span>
@@ -118,7 +122,6 @@ export default function Custom404() {
 
         {/* Snake game — client-only, no SSR */}
         <SnakeGame />
-
       </div>
     </>
   );

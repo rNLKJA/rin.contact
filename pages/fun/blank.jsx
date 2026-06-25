@@ -16,7 +16,11 @@ export default function BlankPage() {
         title="Blank — rin.contact"
         description="Sometimes the best design is nothing."
         path="/fun/blank"
-        ogImage={{ title: "Blank", subtitle: "Sometimes the best design is nothing.", section: "fun" }}
+        ogImage={{
+          title: "Blank",
+          subtitle: "Sometimes the best design is nothing.",
+          section: "fun",
+        }}
         noindex={true}
       />
 
@@ -24,7 +28,10 @@ export default function BlankPage() {
         <p className="text-[9px] text-[#CCCCCC] font-mono tracking-widest uppercase">
           Sometimes the best design is nothing.
         </p>
-        <Link href="/fun" className="mt-8 text-[10px] font-mono text-[#AAAAAA] hover:text-black transition-colors">
+        <Link
+          href="/fun"
+          className="mt-8 text-[10px] font-mono text-[#AAAAAA] hover:text-black transition-colors"
+        >
           ← /fun
         </Link>
       </div>

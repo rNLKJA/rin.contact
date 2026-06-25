@@ -47,22 +47,26 @@ export function ThemeProvider({ children }) {
     if (meta) meta.setAttribute("content", resolved === "dark" ? "#0A0A0A" : "#ffffff");
   }, [resolved]);
 
-  const setTheme = useCallback((theme) => {
-    const next = theme === "light" || theme === "dark" ? theme : (resolved === "light" ? "dark" : "light");
-    setStored(next);
-    try {
-      localStorage.setItem(LS_KEY, next);
-    } catch { /* ignore */ }
-  }, [resolved]);
+  const setTheme = useCallback(
+    (theme) => {
+      const next =
+        theme === "light" || theme === "dark" ? theme : resolved === "light" ? "dark" : "light";
+      setStored(next);
+      try {
+        localStorage.setItem(LS_KEY, next);
+      } catch {
+        /* ignore */
+      }
+    },
+    [resolved]
+  );
 
   const toggle = useCallback(() => {
     setTheme(resolved === "light" ? "dark" : "light");
   }, [resolved, setTheme]);
 
   return (
-    <ThemeContext.Provider value={{ resolved, setTheme, toggle }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={{ resolved, setTheme, toggle }}>{children}</ThemeContext.Provider>
   );
 }
 

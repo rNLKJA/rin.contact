@@ -1,18 +1,33 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import emailjs from "@emailjs/browser";
 import { FaLinkedin } from "react-icons/fa";
-import { FiGithub, FiMail, FiPhone, FiMapPin, FiX, FiCheckCircle, FiAlertCircle, FiCoffee, FiCalendar } from "react-icons/fi";
+import {
+  FiGithub,
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiX,
+  FiCheckCircle,
+  FiAlertCircle,
+  FiCoffee,
+  FiCalendar,
+} from "react-icons/fi";
 import { useInView } from "@/hooks/useInView";
 import { useI18n } from "@/contexts/I18nContext";
 
 // ─── EmailJS config ───────────────────────────────────────────────
-const EMAILJS_SERVICE_ID  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID  || "service_5uxfc9r";
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_5uxfc9r";
 const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_z0hm21b";
-const EMAILJS_PUBLIC_KEY  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY  || "U5kNC9fz_evJAiyOb";
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "U5kNC9fz_evJAiyOb";
 // ─────────────────────────────────────────────────────────────────
 
 const SOCIALS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/sunchuangyuhuang/", icon: FaLinkedin, handle: "LinkedIn" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/sunchuangyuhuang/",
+    icon: FaLinkedin,
+    handle: "LinkedIn",
+  },
   { label: "GitHub", href: "https://github.com/rNLKJA", icon: FiGithub, handle: "rNLKJA" },
   { label: "Email", href: "mailto:huang@rin.contact", icon: FiMail, handle: "huang@rin.contact" },
 ];
@@ -34,10 +49,11 @@ function Toast({ type, message, onClose }) {
       role="alert"
       aria-live="assertive"
     >
-      {isSuccess
-        ? <FiCheckCircle size={18} className="flex-shrink-0 mt-0.5 text-[#22C55E]" />
-        : <FiAlertCircle size={18} className="flex-shrink-0 mt-0.5 text-[#FF3C3C]" />
-      }
+      {isSuccess ? (
+        <FiCheckCircle size={18} className="flex-shrink-0 mt-0.5 text-[#22C55E]" />
+      ) : (
+        <FiAlertCircle size={18} className="flex-shrink-0 mt-0.5 text-[#FF3C3C]" />
+      )}
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-white">
           {isSuccess ? t("contact.toast.successTitle") : t("contact.toast.errorTitle")}
@@ -112,12 +128,8 @@ function EngagementBand() {
                 <span className="block w-1 h-1 rotate-45 bg-[#FF3C3C]" aria-hidden="true" />
                 {item.domain}
               </p>
-              <h3 className="text-lg font-medium text-white leading-snug mb-2.5">
-                {item.title}
-              </h3>
-              <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">
-                {item.desc}
-              </p>
+              <h3 className="text-lg font-medium text-white leading-snug mb-2.5">{item.title}</h3>
+              <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">{item.desc}</p>
             </div>
 
             {/* HUD accent line — draws across the foot on hover */}
@@ -137,17 +149,17 @@ export default function ContactSection() {
   const { t } = useI18n();
   const [ref, inView] = useInView();
   const [formRef, formInView] = useInView();
-  const [form,   setForm]   = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
-  const [toast,  setToast]  = useState(null);   // { type: "success" | "error", message }
+  const [toast, setToast] = useState(null); // { type: "success" | "error", message }
   // Honeypot — a field hidden from people. Bots that auto-fill every input trip it,
   // and we drop the submission without emailing. Uncontrolled (ref), so it never
   // enters the payload sent to EmailJS.
   const honeypotRef = useRef(null);
-  const sectionRef      = useRef(null);
-  const spotlightRef    = useRef(null); // direct DOM ref — no React state on mousemove
-  const sectionDocTop   = useRef(0);    // absolute document position — constant on scroll
-  const sectionDocLeft  = useRef(0);
+  const sectionRef = useRef(null);
+  const spotlightRef = useRef(null); // direct DOM ref — no React state on mousemove
+  const sectionDocTop = useRef(0); // absolute document position — constant on scroll
+  const sectionDocLeft = useRef(0);
 
   // Cache the section's absolute document position — only needs updating on resize.
   // Defer getBCR to rAF so layout reads never cause forced reflow.
@@ -158,7 +170,7 @@ export default function ContactSection() {
     const doMeasure = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
-      sectionDocTop.current  = rect.top  + window.scrollY;
+      sectionDocTop.current = rect.top + window.scrollY;
       sectionDocLeft.current = rect.left + window.scrollX;
     };
     const measure = () => {
@@ -181,7 +193,7 @@ export default function ContactSection() {
     // Compute viewport-relative position using only cached values + window.scrollY/X —
     // zero layout reads, zero React re-renders
     const relX = e.clientX - (sectionDocLeft.current - window.scrollX);
-    const relY = e.clientY - (sectionDocTop.current  - window.scrollY);
+    const relY = e.clientY - (sectionDocTop.current - window.scrollY);
     el.style.background = `radial-gradient(400px circle at ${relX}px ${relY}px, rgba(255,60,60,0.07) 0%, rgba(255,60,60,0.03) 40%, transparent 70%)`;
   }, []);
 
@@ -233,11 +245,12 @@ export default function ContactSection() {
   return (
     <>
       {/* Toast notification */}
-      {toast && (
-        <Toast type={toast.type} message={toast.message} onClose={closeToast} />
-      )}
+      {toast && <Toast type={toast.type} message={toast.message} onClose={closeToast} />}
 
-      <section id="contact" className="py-24 relative overflow-hidden" aria-label="Contact"
+      <section
+        id="contact"
+        className="py-24 relative overflow-hidden"
+        aria-label="Contact"
         ref={sectionRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -264,8 +277,14 @@ export default function ContactSection() {
           </h2>
           {/* brand wavy accent — red, echoing the hero underline */}
           <svg width="132" height="10" viewBox="0 0 132 10" aria-hidden="true" className="mb-6">
-            <path d="M0,5 C16,1 33,9 49,5 C66,1 82,9 99,5 C115,1 132,9 132,5"
-                  stroke="#FF3C3C" strokeOpacity="0.55" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+            <path
+              d="M0,5 C16,1 33,9 49,5 C66,1 82,9 99,5 C115,1 132,9 132,5"
+              stroke="#FF3C3C"
+              strokeOpacity="0.55"
+              strokeWidth="1.5"
+              fill="none"
+              strokeLinecap="round"
+            />
           </svg>
           <p className="text-base md:text-lg text-[#AAAAAA] max-w-xl leading-relaxed font-light">
             {t("contact.description")}
@@ -289,10 +308,10 @@ export default function ContactSection() {
               itemScope
               itemType="https://schema.org/Person"
             >
-              <meta itemProp="name"          content="Sunchuangyu (Rin) Huang" />
+              <meta itemProp="name" content="Sunchuangyu (Rin) Huang" />
               <meta itemProp="alternateName" content="Rin Huang" />
               <meta itemProp="alternateName" content="黄孙创宇" />
-              <meta itemProp="url"           content="https://rin.contact/" />
+              <meta itemProp="url" content="https://rin.contact/" />
 
               <div className="flex items-center gap-3">
                 <FiMail size={16} className="text-[#7A7A7A]" aria-hidden="true" />
@@ -337,8 +356,10 @@ export default function ContactSection() {
                   </span>
                   <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                     <span itemProp="addressLocality">Anshun</span>,{" "}
-                    <span itemProp="addressRegion" lang="zh-Hans">贵州 (Guizhou)</span>,{" "}
-                    <span itemProp="addressCountry">China</span>
+                    <span itemProp="addressRegion" lang="zh-Hans">
+                      贵州 (Guizhou)
+                    </span>
+                    , <span itemProp="addressCountry">China</span>
                   </span>
                   <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                     <span itemProp="addressCountry">China</span>
@@ -369,7 +390,9 @@ export default function ContactSection() {
             {/* Schedule a call — Calendly */}
             {process.env.NEXT_PUBLIC_CALENDLY_URL && (
               <div className="flex flex-col gap-3">
-                <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.schedule")}</p>
+                <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+                  {t("contact.schedule")}
+                </p>
                 <a
                   href={process.env.NEXT_PUBLIC_CALENDLY_URL}
                   target="_blank"
@@ -389,7 +412,9 @@ export default function ContactSection() {
 
             {/* Buy Me a Coffee */}
             <div className="flex flex-col gap-3">
-              <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.support")}</p>
+              <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+                {t("contact.support")}
+              </p>
               <a
                 href="https://www.buymeacoffee.com/rNLKJA"
                 target="_blank"
@@ -403,11 +428,15 @@ export default function ContactSection() {
                 {t("contact.buyMeCoffee")}
               </a>
             </div>
-
           </div>
 
           {/* Right — contact form */}
-          <form onSubmit={handleSubmit} noValidate aria-label="Contact form" className="flex flex-col gap-5">
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            aria-label="Contact form"
+            className="flex flex-col gap-5"
+          >
             {/* Honeypot — off-screen, hidden from assistive tech, skipped by Tab.
                 Real visitors never see or fill it; bots that fill everything do. */}
             <input
@@ -420,10 +449,18 @@ export default function ContactSection() {
               className="absolute left-[-9999px] top-0 h-px w-px opacity-0 pointer-events-none"
             />
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.form.name")}</label>
+              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+                {t("contact.form.name")}
+              </label>
               <input
-                id="name" name="name" type="text" required autoComplete="name"
-                value={form.name} onChange={handleChange} placeholder={t("contact.form.namePlaceholder")}
+                id="name"
+                name="name"
+                type="text"
+                required
+                autoComplete="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder={t("contact.form.namePlaceholder")}
                 className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
                            placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
@@ -431,10 +468,18 @@ export default function ContactSection() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.form.email")}</label>
+              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+                {t("contact.form.email")}
+              </label>
               <input
-                id="email" name="email" type="email" required autoComplete="email"
-                value={form.email} onChange={handleChange} placeholder={t("contact.form.emailPlaceholder")}
+                id="email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder={t("contact.form.emailPlaceholder")}
                 className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white
                            placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-full"
@@ -442,10 +487,17 @@ export default function ContactSection() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.form.message")}</label>
+              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+                {t("contact.form.message")}
+              </label>
               <textarea
-                id="message" name="message" required rows={6}
-                value={form.message} onChange={handleChange} placeholder={t("contact.form.messagePlaceholder")}
+                id="message"
+                name="message"
+                required
+                rows={6}
+                value={form.message}
+                onChange={handleChange}
+                placeholder={t("contact.form.messagePlaceholder")}
                 className="border border-[#3D3D3D] px-5 py-3 text-sm bg-[#252525] text-white resize-none
                            placeholder:text-[#9A9A9A] focus:outline-none focus:border-[#FF3C3C]
                            transition-colors duration-200 rounded-2xl"
@@ -457,17 +509,18 @@ export default function ContactSection() {
               disabled={status === "sending" || status === "sent"}
               className={`px-8 py-3 text-sm tracking-widest uppercase transition-colors duration-200
                          disabled:opacity-40 disabled:cursor-not-allowed border rounded-full
-                         ${status === "sent"
-                           ? "border-[#22C55E] text-[#22C55E] bg-transparent"
-                           : "border-[#FF3C3C] bg-[#FF3C3C] text-white hover:bg-transparent hover:text-[#FF3C3C]"
+                         ${
+                           status === "sent"
+                             ? "border-[#22C55E] text-[#22C55E] bg-transparent"
+                             : "border-[#FF3C3C] bg-[#FF3C3C] text-white hover:bg-transparent hover:text-[#FF3C3C]"
                          }`}
               aria-live="polite"
             >
               {status === "sending"
                 ? t("contact.form.sending")
                 : status === "sent"
-                ? t("contact.form.sent")
-                : t("contact.form.send")}
+                  ? t("contact.form.sent")
+                  : t("contact.form.send")}
             </button>
           </form>
         </div>

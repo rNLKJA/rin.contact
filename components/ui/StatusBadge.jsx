@@ -32,7 +32,10 @@ function weatherWord(code) {
   if (code === 119 || code === 122) return "Cloudy";
   if ([143, 248, 260].includes(code)) return "Fog";
   if ([200, 386, 389, 392, 395].includes(code)) return "Storm";
-  if ([179, 227, 230, 320, 323, 326, 329, 332, 335, 338, 362, 365, 368, 371, 374, 377].includes(code)) return "Snow";
+  if (
+    [179, 227, 230, 320, 323, 326, 329, 332, 335, 338, 362, 365, 368, 371, 374, 377].includes(code)
+  )
+    return "Snow";
   if ([182, 185, 281, 284, 311, 314, 317, 350].includes(code)) return "Sleet";
   return "Rain"; // remaining drizzle / rain / shower codes
 }
@@ -48,21 +51,25 @@ function useAdelaideWeather() {
         const current = data?.current_condition?.[0];
         if (!current) return;
         const tempC = current.temp_C;
-        const code  = parseInt(current.weatherCode, 10);
-        const word  = weatherWord(code);
-        const desc  = current.weatherDesc?.[0]?.value ?? word;
+        const code = parseInt(current.weatherCode, 10);
+        const word = weatherWord(code);
+        const desc = current.weatherDesc?.[0]?.value ?? word;
         setWeather({ tempC, word, desc });
       })
-      .catch(() => { /* silently fail — weather is a bonus */ });
-    return () => { cancelled = true; };
+      .catch(() => {
+        /* silently fail — weather is a bonus */
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
   return weather;
 }
 
 const STATUS_KEYS = [
-  { dot: "green",  labelKey: "statusBadge.sapol",  subKey: "statusBadge.live" },
-  { dot: "red",    labelKey: "statusBadge.mapiva", subKey: "statusBadge.building" },
-  { dot: "white",  labelKey: "statusBadge.openToCollab" },
+  { dot: "green", labelKey: "statusBadge.sapol", subKey: "statusBadge.live" },
+  { dot: "red", labelKey: "statusBadge.mapiva", subKey: "statusBadge.building" },
+  { dot: "white", labelKey: "statusBadge.openToCollab" },
 ];
 
 // Set NEXT_PUBLIC_AVAILABLE_FOR in .env.local to a comma-separated list
@@ -72,7 +79,7 @@ const AVAILABLE_PILL = process.env.NEXT_PUBLIC_AVAILABLE_FOR || null;
 
 export default function StatusBadge() {
   const { t } = useI18n();
-  const time    = useClock();
+  const time = useClock();
   const weather = useAdelaideWeather();
 
   return (
@@ -85,9 +92,11 @@ export default function StatusBadge() {
         <span key={labelKey} className="flex items-center gap-1.5">
           <span
             className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-              dot === "green" ? "bg-[#22C55E]" :
-              dot === "red"   ? "bg-[#FF3C3C]" :
-              "border border-[#AAAAAA]"
+              dot === "green"
+                ? "bg-[#22C55E]"
+                : dot === "red"
+                  ? "bg-[#FF3C3C]"
+                  : "border border-[#AAAAAA]"
             }`}
             aria-hidden="true"
           />
@@ -97,22 +106,33 @@ export default function StatusBadge() {
       ))}
       {AVAILABLE_PILL && (
         <>
-          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">·</span>
+          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
+            ·
+          </span>
           <span className="flex items-center gap-1.5 text-[#FF3C3C]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-blink" aria-hidden="true" />
+            <span
+              className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-blink"
+              aria-hidden="true"
+            />
             {t("statusBadge.availableFor")} {AVAILABLE_PILL}
           </span>
         </>
       )}
       {time && (
         <>
-          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">·</span>
-          <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">{t("statusBadge.adl")} {time}</span>
+          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
+            ·
+          </span>
+          <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">
+            {t("statusBadge.adl")} {time}
+          </span>
         </>
       )}
       {weather && (
         <>
-          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">·</span>
+          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
+            ·
+          </span>
           <span className="text-[#6E6E6E] dark:text-[#9A9A9A]" title={weather.desc}>
             {weather.tempC}°C {weather.word}
           </span>

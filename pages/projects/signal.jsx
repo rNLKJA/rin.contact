@@ -8,8 +8,17 @@ const REPO = "https://github.com/rNLKJA/signal";
 
 // Tech tags are proper nouns — single source, identical in every locale.
 const STACK = [
-  "Python", "FastAPI", "Pydantic v2", "NumPy", "SciPy",
-  "Modal", "Docker", "LLM", "EU AI Act", "DTA v2.0", "GitHub Actions",
+  "Python",
+  "FastAPI",
+  "Pydantic v2",
+  "NumPy",
+  "SciPy",
+  "Modal",
+  "Docker",
+  "LLM",
+  "EU AI Act",
+  "DTA v2.0",
+  "GitHub Actions",
 ];
 
 // JSON-LD is machine-readable structured data (schema.org) — kept in English.
@@ -31,8 +40,18 @@ const JSONLD = {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: "https://rin.contact/" },
-        { "@type": "ListItem", position: 2, name: "Projects", item: "https://rin.contact/projects/" },
-        { "@type": "ListItem", position: 3, name: "Signal", item: "https://rin.contact/projects/signal/" },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Projects",
+          item: "https://rin.contact/projects/",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Signal",
+          item: "https://rin.contact/projects/signal/",
+        },
       ],
     },
   ],
@@ -49,9 +68,13 @@ function renderText(text) {
 function Section({ title, paragraphs, children }) {
   return (
     <section className="mb-12">
-      <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-[#1A1A1A] dark:text-[#EEEEEE]">{title}</h2>
+      <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-[#1A1A1A] dark:text-[#EEEEEE]">
+        {title}
+      </h2>
       <div className="space-y-4 text-[15px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
-        {(paragraphs || []).map((p, i) => <p key={i}>{renderText(p)}</p>)}
+        {(paragraphs || []).map((p, i) => (
+          <p key={i}>{renderText(p)}</p>
+        ))}
         {children}
       </div>
     </section>
@@ -60,7 +83,10 @@ function Section({ title, paragraphs, children }) {
 
 export default function SignalCaseStudy() {
   const { t, locale = "en-AU" } = useI18n();
-  const S = (id) => ({ title: t(`signal.sections.${id}.title`), paragraphs: t(`signal.sections.${id}.body`) });
+  const S = (id) => ({
+    title: t(`signal.sections.${id}.title`),
+    paragraphs: t(`signal.sections.${id}.body`),
+  });
 
   return (
     <>
@@ -90,10 +116,15 @@ export default function SignalCaseStudy() {
         </Link>
 
         <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse" aria-hidden="true" />
+          <span
+            className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse"
+            aria-hidden="true"
+          />
           {t("signal.flagship")}
         </p>
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-[#EEEEEE]">Signal</h1>
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-[#EEEEEE]">
+          Signal
+        </h1>
         <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-6">
           {t("signal.tagline")}
         </p>
@@ -122,7 +153,9 @@ export default function SignalCaseStudy() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mb-6 border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
           {(t("signal.glance") || []).map(({ k, v }) => (
             <div key={k} className="bg-white dark:bg-[#0A0A0A] px-4 py-4">
-              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-1">{k}</p>
+              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-1">
+                {k}
+              </p>
               <p className="text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">{v}</p>
             </div>
           ))}
@@ -165,17 +198,22 @@ export default function SignalCaseStudy() {
 
         {/* Further reading — connect the build to the thinking behind it */}
         <div className="mt-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-3">{t("signal.furtherReading")}</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-3">
+            {t("signal.furtherReading")}
+          </p>
           <Link
             href="/blog/put-governance-on-the-request-path/"
             className="group inline-flex items-baseline gap-2 text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE] hover:text-[#FF3C3C] transition-colors duration-200"
           >
             {t("signal.essayTitle")}
-            <span aria-hidden="true" className="text-[#FF3C3C] transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+            <span
+              aria-hidden="true"
+              className="text-[#FF3C3C] transition-transform duration-200 group-hover:translate-x-0.5"
+            >
+              →
+            </span>
           </Link>
-          <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] mt-1">
-            {t("signal.essayDesc")}
-          </p>
+          <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] mt-1">{t("signal.essayDesc")}</p>
         </div>
 
         {/* Footer CTA */}

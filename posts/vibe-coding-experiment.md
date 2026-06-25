@@ -9,7 +9,7 @@ My mum runs a healthy food business. She needed a better CRM and order system �
 
 I set myself a rule: pure vibe code. No manual input. Everything through Cursor.
 
-What looked like a spreadsheet job turned out to be a full membership management cycle. I spent roughly 10 hours upfront *before writing a line of code*, working through the business logic and operational strategy. That planning turned out to be the most valuable part of the whole exercise.
+What looked like a spreadsheet job turned out to be a full membership management cycle. I spent roughly 10 hours upfront _before writing a line of code_, working through the business logic and operational strategy. That planning turned out to be the most valuable part of the whole exercise.
 
 ## The stack
 
@@ -49,7 +49,7 @@ I don't have a clean answer. And I suspect that's part of the point.
 
 ## What I actually learned
 
-**Strategic planning saves more than you think.** Ten hours of thinking before a single line of code saved me from multiple major restructures. The agent can write code faster than I can, but it can't *plan* better than I can. The architecture decisions — what data model, what API structure, what deployment strategy — are still purely human work.
+**Strategic planning saves more than you think.** Ten hours of thinking before a single line of code saved me from multiple major restructures. The agent can write code faster than I can, but it can't _plan_ better than I can. The architecture decisions — what data model, what API structure, what deployment strategy — are still purely human work.
 
 **Good project management matters more, not less, with agents.** Multiple agents need coordination. They need clear tasks, explicit acceptance criteria, and someone watching for scope creep. Linear's Cursor integration helped, but the project manager (me) was the bottleneck — and that felt right.
 
@@ -61,8 +61,8 @@ I don't have a clean answer. And I suspect that's part of the point.
 
 Pure vibe coding is possible. But be ready for a long detour along the way. We absolutely need to embrace AI and find our own way of leveraging it. The direction is clear. The pace? That's still up to us.
 
-For now, the question I'm sitting with isn't *"can AI build software?"* — it clearly can. The question is *"what happens to the person using it when it does?"*
+For now, the question I'm sitting with isn't _"can AI build software?"_ — it clearly can. The question is _"what happens to the person using it when it does?"_
 
 ---
 
-*Adapted from a LinkedIn post (May 2026). Project: CRM + order system for a food business, built with Cursor + Claude Opus 4.7. Originally written by Rin Huang; edited and expanded with Claude Opus (Anthropic) for the rin.contact blog.*
+_Adapted from a LinkedIn post (May 2026). Project: CRM + order system for a food business, built with Cursor + Claude Opus 4.7. Originally written by Rin Huang; edited and expanded with Claude Opus (Anthropic) for the rin.contact blog._

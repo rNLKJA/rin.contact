@@ -108,11 +108,7 @@
       "Engineering Intelligence That Protects."
     ],
     "gloss": "Problem-first, not model-first. I start from the decision that needs making and the minimum data to make it well, then reach for the right tool, across government, research, and engineering.",
-    "domains": [
-      "Government",
-      "Research",
-      "Engineering"
-    ]
+    "domains": ["Government", "Research", "Engineering"]
   },
   "contact": {
     "sectionLabel": "07 — Contact",
@@ -121,9 +117,24 @@
     "engage": {
       "label": "Ways to work together",
       "items": [
-        { "n": "01", "domain": "Government", "title": "Strategic intelligence analytics", "desc": "Turning complex operational data into decision-ready intelligence for executive and ministerial use." },
-        { "n": "02", "domain": "Research", "title": "Research data engineering", "desc": "Reproducible pipelines and scientific software, from genomics at WEHI to climate-risk modelling at CSIRO." },
-        { "n": "03", "domain": "Engineering", "title": "Product and full-stack build", "desc": "Shipping real applications end to end, from the data layer to the interface, like Signal and Mapiva." }
+        {
+          "n": "01",
+          "domain": "Government",
+          "title": "Strategic intelligence analytics",
+          "desc": "Turning complex operational data into decision-ready intelligence for executive and ministerial use."
+        },
+        {
+          "n": "02",
+          "domain": "Research",
+          "title": "Research data engineering",
+          "desc": "Reproducible pipelines and scientific software, from genomics at WEHI to climate-risk modelling at CSIRO."
+        },
+        {
+          "n": "03",
+          "domain": "Engineering",
+          "title": "Product and full-stack build",
+          "desc": "Shipping real applications end to end, from the data layer to the interface, like Signal and Mapiva."
+        }
       ]
     },
     "schedule": "Schedule a call",
@@ -287,14 +298,32 @@
     "readingBadge": "reading",
     "footerNote": "This page updates manually — no bots, no automation.",
     "building": [
-      { "text": "Mapiva — a mobile social discovery app that helps people discover and connect", "sub": "Co-founder & Dev Lead · iOS + Android · targeting v1 Jan 2027" },
-      { "text": "Internal analytics dashboards for SAPOL Professional & Ethical Standards Branch", "sub": "ASO7 Senior Data Analyst · government-grade, high-stakes" },
-      { "text": "This website, apparently. New hidden routes every sprint.", "sub": "rin.contact · Next.js · because a static CV felt boring" }
+      {
+        "text": "Mapiva — a mobile social discovery app that helps people discover and connect",
+        "sub": "Co-founder & Dev Lead · iOS + Android · targeting v1 Jan 2027"
+      },
+      {
+        "text": "Internal analytics dashboards for SAPOL Professional & Ethical Standards Branch",
+        "sub": "ASO7 Senior Data Analyst · government-grade, high-stakes"
+      },
+      {
+        "text": "This website, apparently. New hidden routes every sprint.",
+        "sub": "rin.contact · Next.js · because a static CV felt boring"
+      }
     ],
     "learning": [
-      { "text": "Causal inference methods for observational data", "sub": "DoWhy, double-ML, instrumental variables — the fun stuff" },
-      { "text": "Rust — slowly, patiently, with great humility", "sub": "The borrow checker and I are in a relationship. It's complicated." },
-      { "text": "How to explain model uncertainty to non-technical stakeholders", "sub": "Turns out 'confidence interval' needs a better PR team" }
+      {
+        "text": "Causal inference methods for observational data",
+        "sub": "DoWhy, double-ML, instrumental variables — the fun stuff"
+      },
+      {
+        "text": "Rust — slowly, patiently, with great humility",
+        "sub": "The borrow checker and I are in a relationship. It's complicated."
+      },
+      {
+        "text": "How to explain model uncertainty to non-technical stakeholders",
+        "sub": "Turns out 'confidence interval' needs a better PR team"
+      }
     ],
     "listening": [
       { "text": "Lo-fi hip hop while writing SQL", "sub": "" },
@@ -325,39 +354,99 @@
     },
     "rows": {
       "hardware": [
-        { "desc": "Primary machine. The M4 chip handles PyTorch training, Docker containers, and 47 browser tabs simultaneously.", "badge": "daily driver" },
-        { "desc": "One wide monitor. No more alt-tabbing between terminals and notebooks.", "badge": "" },
+        {
+          "desc": "Primary machine. The M4 chip handles PyTorch training, Docker containers, and 47 browser tabs simultaneously.",
+          "badge": "daily driver"
+        },
+        {
+          "desc": "One wide monitor. No more alt-tabbing between terminals and notebooks.",
+          "badge": ""
+        },
         { "desc": "Tactile switches. The clickety-clack is 40% of the productivity.", "badge": "" },
-        { "desc": "Active noise cancellation — the second-best productivity tool after good coffee.", "badge": "" }
+        {
+          "desc": "Active noise cancellation — the second-best productivity tool after good coffee.",
+          "badge": ""
+        }
       ],
       "editorTerminal": [
-        { "desc": "VS Code with AI superpowers. This entire website was built in it.", "badge": "you're in it" },
-        { "desc": "With zsh and Oh My Zsh. Theme: minimal. Plugins: git, z, syntax highlighting.", "badge": "" },
-        { "desc": "Terminal multiplexer. Keeps sessions alive when I inevitably close the wrong window.", "badge": "" }
+        {
+          "desc": "VS Code with AI superpowers. This entire website was built in it.",
+          "badge": "you're in it"
+        },
+        {
+          "desc": "With zsh and Oh My Zsh. Theme: minimal. Plugins: git, z, syntax highlighting.",
+          "badge": ""
+        },
+        {
+          "desc": "Terminal multiplexer. Keeps sessions alive when I inevitably close the wrong window.",
+          "badge": ""
+        }
       ],
       "languages": [
-        { "desc": "Primary language. NumPy, Pandas, scikit-learn, PyTorch, FastAPI — the whole ecosystem.", "badge": "primary" },
+        {
+          "desc": "Primary language. NumPy, Pandas, scikit-learn, PyTorch, FastAPI — the whole ecosystem.",
+          "badge": "primary"
+        },
         { "desc": "For anything web-facing. Types save future-me from past-me.", "badge": "" },
-        { "desc": "PostgreSQL day-to-day. BigQuery for large-scale. Still the most underrated skill in data science.", "badge": "" },
-        { "desc": "For statistical analysis and publication-quality visualisations. ggplot2 is genuinely beautiful.", "badge": "" },
-        { "desc": "Automating everything that shouldn't need automating but somehow does.", "badge": "" }
+        {
+          "desc": "PostgreSQL day-to-day. BigQuery for large-scale. Still the most underrated skill in data science.",
+          "badge": ""
+        },
+        {
+          "desc": "For statistical analysis and publication-quality visualisations. ggplot2 is genuinely beautiful.",
+          "badge": ""
+        },
+        {
+          "desc": "Automating everything that shouldn't need automating but somehow does.",
+          "badge": ""
+        }
       ],
       "dataMl": [
-        { "desc": "Deep learning framework of choice. Dynamic graphs, Pythonic, excellent ecosystem.", "badge": "" },
-        { "desc": "Still the gold standard for classical ML. Pipelines are underused.", "badge": "" },
-        { "desc": "SQL transformation layer. Version-controlled data models — finally.", "badge": "" },
-        { "desc": "For exploration and sharing analysis. VS Code notebooks for production.", "badge": "" },
-        { "desc": "Dashboards for non-technical stakeholders. Sometimes the right tool is the accessible one.", "badge": "" }
+        {
+          "desc": "Deep learning framework of choice. Dynamic graphs, Pythonic, excellent ecosystem.",
+          "badge": ""
+        },
+        {
+          "desc": "Still the gold standard for classical ML. Pipelines are underused.",
+          "badge": ""
+        },
+        {
+          "desc": "SQL transformation layer. Version-controlled data models — finally.",
+          "badge": ""
+        },
+        {
+          "desc": "For exploration and sharing analysis. VS Code notebooks for production.",
+          "badge": ""
+        },
+        {
+          "desc": "Dashboards for non-technical stakeholders. Sometimes the right tool is the accessible one.",
+          "badge": ""
+        }
       ],
       "webDev": [
-        { "desc": "Framework of choice for web. Pages Router on React 19 — fast, file-based, fantastic DX.", "badge": "this site" },
+        {
+          "desc": "Framework of choice for web. Pages Router on React 19 — fast, file-based, fantastic DX.",
+          "badge": "this site"
+        },
         { "desc": "Utility-first styling. Initially sceptical. Now converted.", "badge": "" },
-        { "desc": "Deploy → done. Preview URLs on every push. The best CI/CD experience I've used.", "badge": "" },
-        { "desc": "Design and prototyping. Also for communicating with designers who don't speak code.", "badge": "" }
+        {
+          "desc": "Deploy → done. Preview URLs on every push. The best CI/CD experience I've used.",
+          "badge": ""
+        },
+        {
+          "desc": "Design and prototyping. Also for communicating with designers who don't speak code.",
+          "badge": ""
+        }
       ],
       "productivity": [
-        { "desc": "Project notes, research logs, and second brain. Imperfect but flexible.", "badge": "" },
-        { "desc": "Issue tracking for Mapiva. Fast, minimal, opinionated — very Nothing OS.", "badge": "" },
+        {
+          "desc": "Project notes, research logs, and second brain. Imperfect but flexible.",
+          "badge": ""
+        },
+        {
+          "desc": "Issue tracking for Mapiva. Fast, minimal, opinionated — very Nothing OS.",
+          "badge": ""
+        },
         { "desc": "Password manager. Non-negotiable.", "badge": "" },
         { "desc": "Window management on macOS. Free. Simple. Indispensable.", "badge": "" }
       ]
@@ -382,54 +471,118 @@
     },
     "rows": {
       "framework": [
-        { "name": "framework", "value": "Next.js 16", "note": "Pages Router — SSG + SSR + CSR mix" },
+        {
+          "name": "framework",
+          "value": "Next.js 16",
+          "note": "Pages Router — SSG + SSR + CSR mix"
+        },
         { "name": "runtime", "value": "Node.js", "note": "via Vercel serverless functions" },
         { "name": "language", "value": "TypeScript / JSX", "note": "strict mode where it matters" },
         { "name": "pkg manager", "value": "npm", "note": "nothing fancy" }
       ],
       "styling": [
-        { "name": "utility css", "value": "Tailwind CSS", "note": "v3 — mobile-first, purged in production" },
-        { "name": "philosophy", "value": "Nothing OS aesthetic", "note": "stark, minimal, monochromatic — flat, no shadows" },
-        { "name": "palette", "value": "#FFFFFF · #000000 · #FF3C3C", "note": "white · black · dot red — used sparingly" },
+        {
+          "name": "utility css",
+          "value": "Tailwind CSS",
+          "note": "v3 — mobile-first, purged in production"
+        },
+        {
+          "name": "philosophy",
+          "value": "Nothing OS aesthetic",
+          "note": "stark, minimal, monochromatic — flat, no shadows"
+        },
+        {
+          "name": "palette",
+          "value": "#FFFFFF · #000000 · #FF3C3C",
+          "note": "white · black · dot red — used sparingly"
+        },
         { "name": "radius", "value": "none or rounded-full", "note": "never anything in between" },
-        { "name": "animations", "value": "CSS keyframes", "note": "150–300ms ease-in-out — no bounce, no spring" }
+        {
+          "name": "animations",
+          "value": "CSS keyframes",
+          "note": "150–300ms ease-in-out — no bounce, no spring"
+        }
       ],
       "typography": [
-        { "name": "display", "value": "Bitcount Prop Double", "note": "weight 300–600 · headlines only" },
+        {
+          "name": "display",
+          "value": "Bitcount Prop Double",
+          "note": "weight 300–600 · headlines only"
+        },
         { "name": "body", "value": "DM Sans", "note": "weight 300–500 · reading comfort" },
         { "name": "accent", "value": "Playfair Display", "note": "editorial moments only" },
         { "name": "mono", "value": "Courier New", "note": "system fallback · terminals & labels" },
         { "name": "loader", "value": "next/font", "note": "zero layout shift, self-hosted" }
       ],
       "deployment": [
-        { "name": "host", "value": "Vercel", "note": "edge network · preview deploys on every push" },
+        {
+          "name": "host",
+          "value": "Vercel",
+          "note": "edge network · preview deploys on every push"
+        },
         { "name": "domain", "value": "rin.contact", "note": "registered via Namecheap" },
         { "name": "cdn", "value": "Vercel Edge Network", "note": "global, automatic" },
         { "name": "ci/cd", "value": "GitHub + Vercel CLI", "note": "git push → build → alias" },
         { "name": "analytics", "value": "none", "note": "privacy first — no tracking pixels" }
       ],
       "services": [
-        { "name": "email", "value": "EmailJS", "note": "contact form → inbox, no backend required" },
-        { "name": "qr codes", "value": "api.qrserver.com", "note": "on-the-fly QR generation for /card" },
+        {
+          "name": "email",
+          "value": "EmailJS",
+          "note": "contact form → inbox, no backend required"
+        },
+        {
+          "name": "qr codes",
+          "value": "api.qrserver.com",
+          "note": "on-the-fly QR generation for /card"
+        },
         { "name": "fonts", "value": "Google Fonts", "note": "loaded via next/font — not tracked" }
       ],
       "performance": [
-        { "name": "images", "value": "next/image", "note": "lazy loading, WebP conversion, responsive sizes" },
-        { "name": "code split", "value": "dynamic imports", "note": "below-fold sections load only when needed" },
-        { "name": "lcp target", "value": "< 1.5s on 4G", "note": "hero renders without any blocking resources" },
-        { "name": "focus", "value": "no layout shift", "note": "font display:swap + explicit image dimensions" }
+        {
+          "name": "images",
+          "value": "next/image",
+          "note": "lazy loading, WebP conversion, responsive sizes"
+        },
+        {
+          "name": "code split",
+          "value": "dynamic imports",
+          "note": "below-fold sections load only when needed"
+        },
+        {
+          "name": "lcp target",
+          "value": "< 1.5s on 4G",
+          "note": "hero renders without any blocking resources"
+        },
+        {
+          "name": "focus",
+          "value": "no layout shift",
+          "note": "font display:swap + explicit image dimensions"
+        }
       ],
       "easterEggs": [
-        { "name": "/resume", "value": "interactive CLI", "note": "type commands, explore career data" },
+        {
+          "name": "/resume",
+          "value": "interactive CLI",
+          "note": "type commands, explore career data"
+        },
         { "name": "/fun/matrix", "value": "data science rain", "note": "∑ ∇ λ σ and friends" },
         { "name": "/fun/art", "value": "generative spiral", "note": "Fibonacci phyllotaxis" },
-        { "name": "/fun/haiku", "value": "haiku collection", "note": "5–7–5 data science absurdism" },
+        {
+          "name": "/fun/haiku",
+          "value": "haiku collection",
+          "note": "5–7–5 data science absurdism"
+        },
         { "name": "/fun/coffee", "value": "you know why", "note": "" },
         { "name": "/fun/roast", "value": "honest feedback", "note": "data science roasts" },
         { "name": "/fun/spin", "value": "what is Rin doing?", "note": "spin the wheel" },
         { "name": "/fun/secret", "value": "morse code reveal", "note": "" },
         { "name": "/tools/card", "value": "draggable card", "note": "try throwing it" },
-        { "name": "/ds", "value": "Rin as data science", "note": "model cards, SHAP, confusion matrices" },
+        {
+          "name": "/ds",
+          "value": "Rin as data science",
+          "note": "model cards, SHAP, confusion matrices"
+        },
         { "name": "/info/site-map", "value": "human sitemap", "note": "every page, not XML" },
         { "name": "/info/changelog", "value": "what changed", "note": "" },
         { "name": "↑↑↓↓←→←→BA", "value": "Konami code", "note": "try it on the homepage" },
@@ -442,12 +595,36 @@
         { "name": "/api/stack", "value": "this site's stack", "note": "" }
       ],
       "philosophy": [
-        { "name": "principle 1", "value": "Every decision is intentional", "note": "if it doesn't earn its place, it doesn't ship" },
-        { "name": "principle 2", "value": "Empty space is part of the design", "note": "density ≠ quality" },
-        { "name": "principle 3", "value": "Mobile-first, always", "note": "375px is the source of truth" },
-        { "name": "principle 4", "value": "No gradients, no drop-shadows", "note": "flat monochrome — the Nothing way" },
-        { "name": "principle 5", "value": "Accessibility is not optional", "note": "AA contrast, focus rings, descriptive alt text" },
-        { "name": "principle 6", "value": "Ship it, then improve it", "note": "v{version} and counting" }
+        {
+          "name": "principle 1",
+          "value": "Every decision is intentional",
+          "note": "if it doesn't earn its place, it doesn't ship"
+        },
+        {
+          "name": "principle 2",
+          "value": "Empty space is part of the design",
+          "note": "density ≠ quality"
+        },
+        {
+          "name": "principle 3",
+          "value": "Mobile-first, always",
+          "note": "375px is the source of truth"
+        },
+        {
+          "name": "principle 4",
+          "value": "No gradients, no drop-shadows",
+          "note": "flat monochrome — the Nothing way"
+        },
+        {
+          "name": "principle 5",
+          "value": "Accessibility is not optional",
+          "note": "AA contrast, focus rings, descriptive alt text"
+        },
+        {
+          "name": "principle 6",
+          "value": "Ship it, then improve it",
+          "note": "v{version} and counting"
+        }
       ]
     }
   },
@@ -472,19 +649,37 @@
     },
     "lists": {
       "done": [
-        { "title": "Custom 404 with Snake game", "note": "Play while you wait. Leaderboard persists." },
+        {
+          "title": "Custom 404 with Snake game",
+          "note": "Play while you wait. Leaderboard persists."
+        },
         { "title": "CLI-style interactive resume", "note": "Type commands. Explore career data." },
-        { "title": "Matrix rain with data science symbols", "note": "∑ ∇ λ σ — you know the vibe." },
-        { "title": "Copy email → confetti burst", "note": "Select huang@rin.contact, Ctrl+C. Enjoy." },
+        {
+          "title": "Matrix rain with data science symbols",
+          "note": "∑ ∇ λ σ — you know the vibe."
+        },
+        {
+          "title": "Copy email → confetti burst",
+          "note": "Select huang@rin.contact, Ctrl+C. Enjoy."
+        },
         { "title": "Adelaide live weather in status badge", "note": "wttr.in. No API key. Free." },
         { "title": "30+ hidden routes and easter eggs", "note": "At this point we've lost count." },
         { "title": "Nothing OS + Wisr design system", "note": "Stark. Minimal. Monochromatic." },
-        { "title": "SEO for 6+ name variants", "note": "Sunchuangyu, 黄孙创宇, HUANGSUNCHUANGYU, etc." },
-        { "title": "Blog / writing section", "note": "Live with reading time and Read-next. Eight posts and counting." },
+        {
+          "title": "SEO for 6+ name variants",
+          "note": "Sunchuangyu, 黄孙创宇, HUANGSUNCHUANGYU, etc."
+        },
+        {
+          "title": "Blog / writing section",
+          "note": "Live with reading time and Read-next. Eight posts and counting."
+        },
         { "title": "RSS feed", "note": "/blog/feed.xml — subscribe in any reader." },
         { "title": "i18n — Mandarin version", "note": "Full zh-Hans site. 黄孙创宇 has his page." },
         { "title": "PWA / offline support", "note": "Service worker, web manifest, installable." },
-        { "title": "Dark mode", "note": "Nothing OS is dark by nature; the toggle makes it a choice." }
+        {
+          "title": "Dark mode",
+          "note": "Nothing OS is dark by nature; the toggle makes it a choice."
+        }
       ],
       "wip": [
         { "title": "More easter eggs", "note": "The list never ends." },
@@ -492,12 +687,21 @@
         { "title": "Performance tuning", "note": "LCP < 1.5s. Dynamic imports. Font optimisation." }
       ],
       "planned": [
-        { "title": "More project case studies", "note": "Signal has one. The rest deserve the same depth." },
-        { "title": "Newsletter automation", "note": "The signup exists; the sending pipeline is next." },
+        {
+          "title": "More project case studies",
+          "note": "Signal has one. The rest deserve the same depth."
+        },
+        {
+          "title": "Newsletter automation",
+          "note": "The signup exists; the sending pipeline is next."
+        },
         { "title": "API versioning", "note": "v1 is forever. v2 when we break everything." }
       ],
       "backlog": [
-        { "title": "Replace weather with astrology", "note": "Sagittarius: your model will overfit today." },
+        {
+          "title": "Replace weather with astrology",
+          "note": "Sagittarius: your model will overfit today."
+        },
         { "title": "Blockchain integration", "note": "No." },
         { "title": "NFT of the 404 page", "note": "Absolutely not." },
         { "title": "AI chatbot that only says 'hire Rin'", "note": "Tempting. Too on-the-nose." },
@@ -521,47 +725,95 @@
       "colourContrast": {
         "title": "Colour & contrast",
         "items": [
-          { "label": "Contrast ratios", "detail": "Text meets WCAG 2.1 AA (4.5:1 for body, 3:1 for large text). Black on white, dark grey on light grey — tested with WebAIM Contrast Checker." },
-          { "label": "Colour independence", "detail": "Information is never conveyed by colour alone. Icons, labels, and text accompany all interactive states." },
-          { "label": "Nothing OS palette", "detail": "Monochromatic design reduces reliance on colour perception. Accent red (#FF3C3C) used sparingly for emphasis." }
+          {
+            "label": "Contrast ratios",
+            "detail": "Text meets WCAG 2.1 AA (4.5:1 for body, 3:1 for large text). Black on white, dark grey on light grey — tested with WebAIM Contrast Checker."
+          },
+          {
+            "label": "Colour independence",
+            "detail": "Information is never conveyed by colour alone. Icons, labels, and text accompany all interactive states."
+          },
+          {
+            "label": "Nothing OS palette",
+            "detail": "Monochromatic design reduces reliance on colour perception. Accent red (#FF3C3C) used sparingly for emphasis."
+          }
         ]
       },
       "keyboard": {
         "title": "Keyboard navigation",
         "items": [
-          { "label": "Focus indicators", "detail": "All interactive elements have a visible :focus-visible outline (2px solid black). Mouse/tap focus is suppressed to avoid clutter; keyboard focus is always shown." },
-          { "label": "Tab order", "detail": "Logical tab sequence follows visual layout. Skip links available where structure benefits (e.g. long pages)." },
-          { "label": "Escape & Enter", "detail": "Modals and overlays can be closed with Escape. Buttons and links activate with Enter/Space." }
+          {
+            "label": "Focus indicators",
+            "detail": "All interactive elements have a visible :focus-visible outline (2px solid black). Mouse/tap focus is suppressed to avoid clutter; keyboard focus is always shown."
+          },
+          {
+            "label": "Tab order",
+            "detail": "Logical tab sequence follows visual layout. Skip links available where structure benefits (e.g. long pages)."
+          },
+          {
+            "label": "Escape & Enter",
+            "detail": "Modals and overlays can be closed with Escape. Buttons and links activate with Enter/Space."
+          }
         ]
       },
       "screenReaders": {
         "title": "Screen readers & semantics",
         "items": [
-          { "label": "Semantic HTML", "detail": "Headings (h1–h6), landmarks (main, nav, section), and ARIA roles used where appropriate. Form labels associated with inputs." },
-          { "label": "Alt text", "detail": "Images have descriptive alt attributes. Decorative images use aria-hidden or empty alt." },
-          { "label": "Live regions", "detail": "Dynamic content (toasts, form status) uses aria-live for announcements without disrupting reading flow." }
+          {
+            "label": "Semantic HTML",
+            "detail": "Headings (h1–h6), landmarks (main, nav, section), and ARIA roles used where appropriate. Form labels associated with inputs."
+          },
+          {
+            "label": "Alt text",
+            "detail": "Images have descriptive alt attributes. Decorative images use aria-hidden or empty alt."
+          },
+          {
+            "label": "Live regions",
+            "detail": "Dynamic content (toasts, form status) uses aria-live for announcements without disrupting reading flow."
+          }
         ]
       },
       "motion": {
         "title": "Motion & animation",
         "items": [
-          { "label": "prefers-reduced-motion", "detail": "Respecting the user's system preference. Where implemented, animations are disabled or simplified when prefers-reduced-motion: reduce is set." },
-          { "label": "Animation duration", "detail": "Transitions kept to 150–300ms. No auto-playing videos or infinite loops that can't be paused." }
+          {
+            "label": "prefers-reduced-motion",
+            "detail": "Respecting the user's system preference. Where implemented, animations are disabled or simplified when prefers-reduced-motion: reduce is set."
+          },
+          {
+            "label": "Animation duration",
+            "detail": "Transitions kept to 150–300ms. No auto-playing videos or infinite loops that can't be paused."
+          }
         ]
       },
       "forms": {
         "title": "Forms & interaction",
         "items": [
-          { "label": "Contact form", "detail": "Labels, error messages, and success feedback. Required fields marked. Validation before submit." },
-          { "label": "Touch targets", "detail": "Buttons and links sized to at least 44×44px where possible for touch devices." }
+          {
+            "label": "Contact form",
+            "detail": "Labels, error messages, and success feedback. Required fields marked. Validation before submit."
+          },
+          {
+            "label": "Touch targets",
+            "detail": "Buttons and links sized to at least 44×44px where possible for touch devices."
+          }
         ]
       },
       "limitations": {
         "title": "Known limitations",
         "items": [
-          { "label": "Easter eggs", "detail": "Some hidden features (Konami code, secret word) are discoverable but not announced. They don't block core tasks." },
-          { "label": "Canvas content", "detail": "Snake game, Matrix rain, and generative art use canvas — not natively accessible. Text alternatives or descriptions provided where feasible." },
-          { "label": "Third-party", "detail": "External embeds (e.g. QR codes, wttr.in) follow their own accessibility. We can't control them." }
+          {
+            "label": "Easter eggs",
+            "detail": "Some hidden features (Konami code, secret word) are discoverable but not announced. They don't block core tasks."
+          },
+          {
+            "label": "Canvas content",
+            "detail": "Snake game, Matrix rain, and generative art use canvas — not natively accessible. Text alternatives or descriptions provided where feasible."
+          },
+          {
+            "label": "Third-party",
+            "detail": "External embeds (e.g. QR codes, wttr.in) follow their own accessibility. We can't control them."
+          }
         ]
       }
     }
@@ -625,7 +877,17 @@
     "sections": {
       "main": {
         "heading": "Main",
-        "labels": ["Home", "Strategic Data Science", "Career", "Projects", "Lab", "About", "Resume", "Curriculum Vitae", "Hire Me"]
+        "labels": [
+          "Home",
+          "Strategic Data Science",
+          "Career",
+          "Projects",
+          "Lab",
+          "About",
+          "Resume",
+          "Curriculum Vitae",
+          "Hire Me"
+        ]
       },
       "blog": {
         "heading": "Blog",
@@ -637,11 +899,41 @@
       },
       "info": {
         "heading": "Info",
-        "labels": ["Info", "API", "Now", "Uses", "Roadmap", "Accessibility", "Colophon", "Site Map", "Manifest", "Changelog", "Thank You", "References"]
+        "labels": [
+          "Info",
+          "API",
+          "Now",
+          "Uses",
+          "Roadmap",
+          "Accessibility",
+          "Colophon",
+          "Site Map",
+          "Manifest",
+          "Changelog",
+          "Thank You",
+          "References"
+        ]
       },
       "fun": {
         "heading": "Fun",
-        "labels": ["Fun", "Coffee", "Roast", "Secret", "Vault", "Matrix", "Correlation", "P-Value Oracle", "Forest", "Pronouns", "Timezone", "Name", "Tarot", "Dice", "Typing", "Mood"]
+        "labels": [
+          "Fun",
+          "Coffee",
+          "Roast",
+          "Secret",
+          "Vault",
+          "Matrix",
+          "Correlation",
+          "P-Value Oracle",
+          "Forest",
+          "Pronouns",
+          "Timezone",
+          "Name",
+          "Tarot",
+          "Dice",
+          "Typing",
+          "Mood"
+        ]
       },
       "dataScience": {
         "heading": "Data Science",
@@ -684,36 +976,81 @@
           { "label": "Linear Statistical Models", "note": "OLS, inference, diagnostics" },
           { "label": "Database Systems", "note": "Relational model, SQL, indexing" },
           { "label": "Artificial Intelligence", "note": "Search, logic, planning" },
-          { "label": "Web Information Technology", "note": "HTTP, HTML/CSS/JS, REST APIs, the request cycle" },
-          { "label": "Operations Research", "note": "Linear programming, feasible regions, the simplex method" },
-          { "label": "Elements of Data Processing", "note": "The pipeline, tidy data, cleaning, reshaping, joins" },
-          { "label": "Applied Data Science", "note": "The project lifecycle, CRISP-DM, problem-first" }
+          {
+            "label": "Web Information Technology",
+            "note": "HTTP, HTML/CSS/JS, REST APIs, the request cycle"
+          },
+          {
+            "label": "Operations Research",
+            "note": "Linear programming, feasible regions, the simplex method"
+          },
+          {
+            "label": "Elements of Data Processing",
+            "note": "The pipeline, tidy data, cleaning, reshaping, joins"
+          },
+          {
+            "label": "Applied Data Science",
+            "note": "The project lifecycle, CRISP-DM, problem-first"
+          }
         ]
       },
       "advanced": {
         "label": "Advanced",
         "blurb": "Built on the foundation — Master of Data Science.",
         "topics": [
-          { "label": "Natural Language Processing", "note": "Tokens, TF-IDF, embeddings, transformers" },
-          { "label": "Statistical Machine Learning", "note": "Bias-variance, regularisation, generalisation" },
+          {
+            "label": "Natural Language Processing",
+            "note": "Tokens, TF-IDF, embeddings, transformers"
+          },
+          {
+            "label": "Statistical Machine Learning",
+            "note": "Bias-variance, regularisation, generalisation"
+          },
           { "label": "Bayesian Statistics", "note": "Priors, posteriors, MCMC" },
-          { "label": "PCA & Dimensionality Reduction", "note": "Covariance, eigenvectors, variance explained" },
+          {
+            "label": "PCA & Dimensionality Reduction",
+            "note": "Covariance, eigenvectors, variance explained"
+          },
           { "label": "Clustering", "note": "k-means, hierarchical, choosing k" },
           { "label": "Cluster & Cloud Computing", "note": "MPI, Spark, HPC at scale" },
-          { "label": "Statistical Modelling", "note": "GLMs, logistic & Poisson, link functions, AIC" },
-          { "label": "Computational Statistics", "note": "Monte Carlo, the bootstrap, permutation tests, EM" },
-          { "label": "Advanced Database Systems", "note": "Query optimisation, MVCC, distribution, columnar" },
-          { "label": "Science Communication at Work", "note": "Briefing decisions: lead with the recommendation" }
+          {
+            "label": "Statistical Modelling",
+            "note": "GLMs, logistic & Poisson, link functions, AIC"
+          },
+          {
+            "label": "Computational Statistics",
+            "note": "Monte Carlo, the bootstrap, permutation tests, EM"
+          },
+          {
+            "label": "Advanced Database Systems",
+            "note": "Query optimisation, MVCC, distribution, columnar"
+          },
+          {
+            "label": "Science Communication at Work",
+            "note": "Briefing decisions: lead with the recommendation"
+          }
         ]
       },
       "practice": {
         "label": "In Practice",
         "blurb": "What I do now — applied to current government-analyst work.",
         "topics": [
-          { "label": "Business Intelligence & Dashboards", "note": "Power BI, star schema, one question per page" },
-          { "label": "Geospatial Analysis & GIS", "note": "Spatial joins, choropleths, rates, the MAUP" },
-          { "label": "Intelligence Analysis & OSINT", "note": "The intelligence cycle, ACH, source grading, bias" },
-          { "label": "Data Governance, Privacy & Ethics", "note": "FAIR, privacy, access, fairness, lineage" }
+          {
+            "label": "Business Intelligence & Dashboards",
+            "note": "Power BI, star schema, one question per page"
+          },
+          {
+            "label": "Geospatial Analysis & GIS",
+            "note": "Spatial joins, choropleths, rates, the MAUP"
+          },
+          {
+            "label": "Intelligence Analysis & OSINT",
+            "note": "The intelligence cycle, ACH, source grading, bias"
+          },
+          {
+            "label": "Data Governance, Privacy & Ethics",
+            "note": "FAIR, privacy, access, fairness, lineage"
+          }
         ]
       },
       "taught": {
@@ -764,67 +1101,42 @@
         "num": "01",
         "title": "Writing",
         "desc": "Essays on data, decisions, and the craft of analytics. Strategic intelligence, working without a playbook, and the quiet reality of public-sector data engineering.",
-        "tags": [
-          "Essays",
-          "Data Science",
-          "Decisions"
-        ],
+        "tags": ["Essays", "Data Science", "Decisions"],
         "stat": "Long-form"
       },
       {
         "num": "02",
         "title": "Career",
         "desc": "Three domain lines. Seven stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
-        "tags": [
-          "Government",
-          "Research",
-          "Engineering"
-        ],
+        "tags": ["Government", "Research", "Engineering"],
         "stat": "4 years · 7 stations"
       },
       {
         "num": "03",
         "title": "Projects",
         "desc": "Shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
-        "tags": [
-          "Python",
-          "Next.js",
-          "AWS",
-          "React Native"
-        ],
+        "tags": ["Python", "Next.js", "AWS", "React Native"],
         "stat": "21 shipped"
       },
       {
         "num": "04",
         "title": "Lab",
         "desc": "The data playground. Career intelligence reports, dataset self-portrait, compound growth analysis.",
-        "tags": [
-          "Intelligence",
-          "Data Science",
-          "Visualisation"
-        ],
+        "tags": ["Intelligence", "Data Science", "Visualisation"],
         "stat": "Interactive"
       },
       {
         "num": "05",
         "title": "About",
         "desc": "Skills across seven technical domains, 23 professional credentials, and answers to the questions people actually ask.",
-        "tags": [
-          "23 certs",
-          "7 domains",
-          "FAQ"
-        ],
+        "tags": ["23 certs", "7 domains", "FAQ"],
         "stat": "6 sectors"
       },
       {
         "num": "06",
         "title": "Resume",
         "desc": "Interactive CLI-style CV. Type commands, explore career data. Ping, open, ls — the terminal experience.",
-        "tags": [
-          "CLI",
-          "Interactive",
-          "Terminal"
-        ],
+        "tags": ["CLI", "Interactive", "Terminal"],
         "stat": "Type to explore"
       }
     ]
@@ -1272,7 +1584,17 @@
       "heading": "Feature Importance",
       "subtitle": "What contributes most to \"being Rin\"? SHAP values (simplified).",
       "footnote": "* Not actual SHAP. Feature importance is approximate. Coffee is not a real feature.",
-      "names": ["Coffee", "Python", "Spreadsheets", "SQL", "Government", "Research", "Mentorship", "React", "Rust"]
+      "names": [
+        "Coffee",
+        "Python",
+        "Spreadsheets",
+        "SQL",
+        "Government",
+        "Research",
+        "Mentorship",
+        "React",
+        "Rust"
+      ]
     },
     "confusionMatrix": {
       "metaTitle": "Confusion Matrix — rin.contact",

@@ -66,4 +66,4 @@ The repo is open-source at [github.com/rNLKJA/gmail-labeler](https://github.com/
 
 ---
 
-*Project built with Claude Opus (Anthropic) via Cursor. Open-source under MIT. Originally posted on LinkedIn (May 2026). Written by Rin Huang; edited and expanded with Claude Opus for the rin.contact blog.*
+_Project built with Claude Opus (Anthropic) via Cursor. Open-source under MIT. Originally posted on LinkedIn (May 2026). Written by Rin Huang; edited and expanded with Claude Opus for the rin.contact blog._

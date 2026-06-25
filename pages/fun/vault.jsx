@@ -13,7 +13,12 @@ const ACHIEVEMENTS = [
   { id: "roast", label: "Roast", path: "/fun/roast", hint: "Honest feedback" },
   { id: "coffee", label: "Coffee", path: "/fun/coffee", hint: "You know why" },
   { id: "matrix", label: "Matrix", path: "/fun/matrix", hint: "∑ ∇ λ σ" },
-  { id: "correlation", label: "Spurious correlations", path: "/fun/correlation", hint: "Generate another" },
+  {
+    id: "correlation",
+    label: "Spurious correlations",
+    path: "/fun/correlation",
+    hint: "Generate another",
+  },
   { id: "pvalue", label: "P-value oracle", path: "/fun/pvalue", hint: "Always p < 0.05" },
   { id: "vault", label: "Vault", path: "/fun/vault", hint: "You're here" },
   { id: "console", label: "Console", path: "global", hint: "Open DevTools" },
@@ -61,14 +66,22 @@ export default function VaultPage() {
         title="Vault — rin.contact"
         description="Achievement vault. Track your discoveries."
         path="/fun/vault"
-        ogImage={{ title: "Vault", subtitle: "Achievement vault. Track your discoveries.", section: "fun" }}
+        ogImage={{
+          title: "Vault",
+          subtitle: "Achievement vault. Track your discoveries.",
+          section: "fun",
+        }}
         noindex={true}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/fun/vault</p>
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Achievement Vault</h1>
+          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">
+            /fun/vault
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
+            Achievement Vault
+          </h1>
           <p className="text-sm text-[#7A7A7A] mb-4">
             Track the easter eggs you&apos;ve found. Click to mark as discovered.
           </p>
@@ -96,8 +109,18 @@ export default function VaultPage() {
           </div>
 
           <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/fun" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /fun</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+            <Link
+              href="/fun"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
+              ← /fun
+            </Link>
+            <Link
+              href="/"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
+              Home
+            </Link>
           </div>
         </div>
       </div>

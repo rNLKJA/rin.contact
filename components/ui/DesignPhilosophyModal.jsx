@@ -3,14 +3,14 @@ import { createPortal } from "react-dom";
 import { useI18n } from "@/contexts/I18nContext";
 
 const PALETTE = [
-  { name: "White",         hex: "#FFFFFF", border: true  },
-  { name: "Black",         hex: "#000000"                },
-  { name: "Dark",          hex: "#1A1A1A"                },
-  { name: "Mid",           hex: "#3D3D3D"                },
-  { name: "Subtle",        hex: "#7A7A7A"                },
-  { name: "Divider",       hex: "#E0E0E0", border: true  },
-  { name: "Surface",       hex: "#F5F5F5", border: true  },
-  { name: "Accent — dot",  hex: "#FF3C3C"                },
+  { name: "White", hex: "#FFFFFF", border: true },
+  { name: "Black", hex: "#000000" },
+  { name: "Dark", hex: "#1A1A1A" },
+  { name: "Mid", hex: "#3D3D3D" },
+  { name: "Subtle", hex: "#7A7A7A" },
+  { name: "Divider", hex: "#E0E0E0", border: true },
+  { name: "Surface", hex: "#F5F5F5", border: true },
+  { name: "Accent — dot", hex: "#FF3C3C" },
 ];
 
 const ELEMENTS = [
@@ -65,7 +65,9 @@ const PRINCIPLES = [
 function Modal({ onClose }) {
   const { t } = useI18n();
   useEffect(() => {
-    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
@@ -97,8 +99,12 @@ function Modal({ onClose }) {
         {/* Header */}
         <div className="sticky top-0 bg-white dark:bg-[#1A1A1A] border-b border-[#E0E0E0] dark:border-[#3D3D3D] px-6 py-4 flex items-center justify-between z-10">
           <div>
-            <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-0.5">Design System</p>
-            <h2 className="text-base font-semibold tracking-tight">{t("designPhilosophy.modalTitle")}</h2>
+            <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-0.5">
+              Design System
+            </p>
+            <h2 className="text-base font-semibold tracking-tight">
+              {t("designPhilosophy.modalTitle")}
+            </h2>
           </div>
           <button
             onClick={onClose}
@@ -112,43 +118,66 @@ function Modal({ onClose }) {
         </div>
 
         <div className="px-6 py-8 space-y-10">
-
           {/* Intro */}
           <section>
             <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
               This site is built at the intersection of two design languages —
               <strong className="font-medium text-black dark:text-white"> Nothing OS</strong> and{" "}
-              <strong className="font-medium text-black dark:text-white">Wisr</strong>. Both share an
-              unwavering commitment to restraint: monochromatic palettes, purposeful
-              whitespace, and motion that serves rather than distracts. The result is a
-              portfolio that feels precise, considered, and alive.
+              <strong className="font-medium text-black dark:text-white">Wisr</strong>. Both share
+              an unwavering commitment to restraint: monochromatic palettes, purposeful whitespace,
+              and motion that serves rather than distracts. The result is a portfolio that feels
+              precise, considered, and alive.
             </p>
           </section>
 
           {/* Nothing OS */}
           <section>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">Nothing OS</span>
+              <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">
+                Nothing OS
+              </span>
               <div className="flex-1 h-px bg-[#E0E0E0] dark:bg-[#3D3D3D]" />
             </div>
             <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-4">
-              Nothing's visual language is defined by stark contrast, squircle icon geometry,
-              and a single accent colour. Buttons are outlined, never filled.
-              Cards have sharp corners or none. The dot-matrix motif — a reference to
-              Nothing's physical device aesthetic — appears as subtle texture.
+              Nothing's visual language is defined by stark contrast, squircle icon geometry, and a
+              single accent colour. Buttons are outlined, never filled. Cards have sharp corners or
+              none. The dot-matrix motif — a reference to Nothing's physical device aesthetic —
+              appears as subtle texture.
             </p>
             <ul className="space-y-2 text-xs text-[#595959] dark:text-[#9A9A9A]">
-              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-20 flex-shrink-0">Typography</span>Bitcount Prop Double — weight 300–600, tracks wide at small sizes</li>
-              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-20 flex-shrink-0">Buttons</span>Outlined, full invert on hover — never rounded-xl, never filled colour</li>
-              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-20 flex-shrink-0">Icons</span>Squircle shape (border-radius 22%), black on white or white on black only</li>
-              <li className="flex gap-2"><span className="text-black dark:text-white font-medium w-20 flex-shrink-0">Base unit</span>4px grid — all spacing is a multiple of 4</li>
+              <li className="flex gap-2">
+                <span className="text-black dark:text-white font-medium w-20 flex-shrink-0">
+                  Typography
+                </span>
+                Bitcount Prop Double — weight 300–600, tracks wide at small sizes
+              </li>
+              <li className="flex gap-2">
+                <span className="text-black dark:text-white font-medium w-20 flex-shrink-0">
+                  Buttons
+                </span>
+                Outlined, full invert on hover — never rounded-xl, never filled colour
+              </li>
+              <li className="flex gap-2">
+                <span className="text-black dark:text-white font-medium w-20 flex-shrink-0">
+                  Icons
+                </span>
+                Squircle shape (border-radius 22%), black on white or white on black only
+              </li>
+              <li className="flex gap-2">
+                <span className="text-black dark:text-white font-medium w-20 flex-shrink-0">
+                  Base unit
+                </span>
+                4px grid — all spacing is a multiple of 4
+              </li>
             </ul>
           </section>
 
           {/* Colour palette */}
           <section>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">Colour Palette</span>
+              <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">
+                Colour Palette
+              </span>
               <div className="flex-1 h-px bg-[#E0E0E0] dark:bg-[#3D3D3D]" />
             </div>
             <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
@@ -162,7 +191,9 @@ function Modal({ onClose }) {
                     }}
                     title={hex}
                   />
-                  <p className="text-[9px] tracking-wide text-[#595959] dark:text-[#9A9A9A] leading-tight">{name}</p>
+                  <p className="text-[9px] tracking-wide text-[#595959] dark:text-[#9A9A9A] leading-tight">
+                    {name}
+                  </p>
                   <p className="text-[9px] font-mono text-[#595959] dark:text-[#9A9A9A]">{hex}</p>
                 </div>
               ))}
@@ -172,13 +203,15 @@ function Modal({ onClose }) {
           {/* Wisr — four elements */}
           <section>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">Wisr Elements</span>
+              <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">
+                Wisr Elements
+              </span>
               <div className="flex-1 h-px bg-[#E0E0E0] dark:bg-[#3D3D3D]" />
             </div>
             <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-5">
-              Wisr's brand uses a four-element compositional system to give each section
-              its own visual character while maintaining a unified whole. Water, Fire,
-              and Air each contribute specific shape types and motion qualities.
+              Wisr's brand uses a four-element compositional system to give each section its own
+              visual character while maintaining a unified whole. Water, Fire, and Air each
+              contribute specific shape types and motion qualities.
             </p>
             <div className="space-y-4">
               {ELEMENTS.map(({ icon, name, colour, desc }) => (
@@ -190,8 +223,15 @@ function Modal({ onClose }) {
                     {icon}
                   </div>
                   <div>
-                    <p className="text-xs font-semibold tracking-wide mb-1" style={{ color: colour }}>{name}</p>
-                    <p className="text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed">{desc}</p>
+                    <p
+                      className="text-xs font-semibold tracking-wide mb-1"
+                      style={{ color: colour }}
+                    >
+                      {name}
+                    </p>
+                    <p className="text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed">
+                      {desc}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -201,16 +241,24 @@ function Modal({ onClose }) {
           {/* Design principles */}
           <section>
             <div className="flex items-center gap-3 mb-5">
-              <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">Principles</span>
+              <span className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">
+                Principles
+              </span>
               <div className="flex-1 h-px bg-[#E0E0E0] dark:bg-[#3D3D3D]" />
             </div>
             <div className="space-y-5">
               {PRINCIPLES.map(({ num, title, body }) => (
                 <div key={num} className="flex gap-4">
-                  <span className="text-[10px] text-[#595959] dark:text-[#9A9A9A] tabular-nums w-6 flex-shrink-0 mt-0.5">{num}</span>
+                  <span className="text-[10px] text-[#595959] dark:text-[#9A9A9A] tabular-nums w-6 flex-shrink-0 mt-0.5">
+                    {num}
+                  </span>
                   <div>
-                    <p className="text-xs font-semibold tracking-wide text-black dark:text-white mb-1">{title}</p>
-                    <p className="text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed">{body}</p>
+                    <p className="text-xs font-semibold tracking-wide text-black dark:text-white mb-1">
+                      {title}
+                    </p>
+                    <p className="text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed">
+                      {body}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -220,10 +268,32 @@ function Modal({ onClose }) {
           {/* Footer credits */}
           <section className="border-t border-[#E0E0E0] pt-6 flex flex-wrap gap-4 items-center justify-between">
             <div className="text-xs text-[#595959] dark:text-[#9A9A9A] space-y-1">
-              <p>Inspired by <a href="https://nothing.tech" target="_blank" rel="noreferrer" className="text-[#595959] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 underline underline-offset-2">Nothing Technology</a></p>
-              <p>Inspired by <a href="https://wisr.com.au" target="_blank" rel="noreferrer" className="text-[#595959] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 underline underline-offset-2">Wisr</a></p>
+              <p>
+                Inspired by{" "}
+                <a
+                  href="https://nothing.tech"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#595959] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 underline underline-offset-2"
+                >
+                  Nothing Technology
+                </a>
+              </p>
+              <p>
+                Inspired by{" "}
+                <a
+                  href="https://wisr.com.au"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#595959] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 underline underline-offset-2"
+                >
+                  Wisr
+                </a>
+              </p>
             </div>
-            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">v5.5.0</p>
+            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">
+              v5.5.0
+            </p>
           </section>
         </div>
       </div>

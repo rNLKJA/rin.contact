@@ -18,8 +18,8 @@ const LS_KEY = "rin_boot_seen";
 // longer and more deliberate than a flash, but safely under the ~2.5s point
 // where an intro starts to read as "frozen". (UX research: 1.5–2.5s sweet spot.)
 const STEP_AT = [0, 380, 780, 1220]; // status line reveal times
-const DONE_AT = 1850;                // sequence settles → fade
-const HIDE_AT = DONE_AT + 460;       // unmount
+const DONE_AT = 1850; // sequence settles → fade
+const HIDE_AT = DONE_AT + 460; // unmount
 
 export default function BootOverlay() {
   const { t } = useI18n();
@@ -51,14 +51,21 @@ export default function BootOverlay() {
     // The pre-paint cover (in _document) has a safety timer that lifts it if the
     // boot never loads. Now that the boot HAS mounted, cancel it so the cover
     // stays put until the animation finishes — even when hydration is slow.
-    if (window.__bootCoverTimer) { clearTimeout(window.__bootCoverTimer); window.__bootCoverTimer = null; }
+    if (window.__bootCoverTimer) {
+      clearTimeout(window.__bootCoverTimer);
+      window.__bootCoverTimer = null;
+    }
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setReduced(prefersReduced);
     // Read the theme from the same source of truth as ThemeProvider (localStorage),
     // not the <html> class, which ThemeProvider may not have applied yet on mount.
     let storedTheme = null;
-    try { storedTheme = localStorage.getItem("rin_theme"); } catch { /* ignore */ }
+    try {
+      storedTheme = localStorage.getItem("rin_theme");
+    } catch {
+      /* ignore */
+    }
     setDark(storedTheme === "dark");
     setVisible(true);
 
@@ -147,7 +154,9 @@ export default function BootOverlay() {
           color: var(--fg);
           font-family: var(--font-dm-sans), system-ui, sans-serif;
           opacity: 1;
-          transition: opacity 0.45s ease, transform 0.45s ease;
+          transition:
+            opacity 0.45s ease,
+            transform 0.45s ease;
           will-change: opacity, transform;
         }
         .boot-root.is-done {
@@ -299,39 +308,88 @@ export default function BootOverlay() {
           }
         }
         @keyframes boot-word-flash {
-          0% { color: var(--fg); }
-          40% { color: var(--accent); }
-          100% { color: var(--fg); opacity: 0.92; }
+          0% {
+            color: var(--fg);
+          }
+          40% {
+            color: var(--accent);
+          }
+          100% {
+            color: var(--fg);
+            opacity: 0.92;
+          }
         }
         @keyframes boot-scan {
-          0% { transform: translateY(-120%); opacity: 0; }
-          12% { opacity: 1; }
-          88% { opacity: 1; }
-          100% { transform: translateY(840%); opacity: 0; }
+          0% {
+            transform: translateY(-120%);
+            opacity: 0;
+          }
+          12% {
+            opacity: 1;
+          }
+          88% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(840%);
+            opacity: 0;
+          }
         }
         @keyframes boot-fill {
-          0% { transform: scaleX(0); }
-          100% { transform: scaleX(1); }
+          0% {
+            transform: scaleX(0);
+          }
+          100% {
+            transform: scaleX(1);
+          }
         }
         @keyframes boot-grid-in {
-          from { opacity: 0; transform: scale(1.04); }
-          to { opacity: 1; transform: scale(1); }
+          from {
+            opacity: 0;
+            transform: scale(1.04);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
         @keyframes boot-grid-out {
-          from { opacity: 1; }
-          to { opacity: 0; transform: scale(1.06); }
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+            transform: scale(1.06);
+          }
         }
         @keyframes boot-soft-in {
-          from { opacity: 0; transform: translateY(4px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(4px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         @keyframes boot-led-pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.3; }
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.3;
+          }
         }
         @keyframes boot-caret {
-          0%, 50% { opacity: 1; }
-          50.01%, 100% { opacity: 0; }
+          0%,
+          50% {
+            opacity: 1;
+          }
+          50.01%,
+          100% {
+            opacity: 0;
+          }
         }
 
         /* Calm fallback — no flicker, sweep, or weight morph */
@@ -347,9 +405,18 @@ export default function BootOverlay() {
           animation: boot-fill 0.5s ease-out both;
         }
         @media (prefers-reduced-motion: reduce) {
-          .boot-word { animation: boot-soft-in 0.4s ease-out both; font-variation-settings: "wght" 700; }
-          .boot-scan, .boot-led { animation: none; }
-          .boot-caret { animation: none; opacity: 1; }
+          .boot-word {
+            animation: boot-soft-in 0.4s ease-out both;
+            font-variation-settings: "wght" 700;
+          }
+          .boot-scan,
+          .boot-led {
+            animation: none;
+          }
+          .boot-caret {
+            animation: none;
+            opacity: 1;
+          }
         }
       `}</style>
     </div>

@@ -37,15 +37,15 @@ The goal is simple: to be the canonical, first-result reference for Rin Huang �
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | [Next.js 16](https://nextjs.org) (Pages Router) |
-| UI | [React 19](https://react.dev) |
-| Styling | [Tailwind CSS 3](https://tailwindcss.com), custom CSS, styled-jsx |
-| Fonts | `next/font` — Bitcount Prop Double (display), DM Sans (body), Playfair Display (headings) |
-| Content | Markdown (`gray-matter`, `remark`), Mermaid diagrams |
+| Layer        | Technology                                                                                 |
+| ------------ | ------------------------------------------------------------------------------------------ |
+| Framework    | [Next.js 16](https://nextjs.org) (Pages Router)                                            |
+| UI           | [React 19](https://react.dev)                                                              |
+| Styling      | [Tailwind CSS 3](https://tailwindcss.com), custom CSS, styled-jsx                          |
+| Fonts        | `next/font` — Bitcount Prop Double (display), DM Sans (body), Playfair Display (headings)  |
+| Content      | Markdown (`gray-matter`, `remark`), Mermaid diagrams                                       |
 | Integrations | EmailJS (contact), `@vercel/og` (OG images), `@vercel/analytics`, `@vercel/speed-insights` |
-| Hosting | [Vercel](https://vercel.com) |
+| Hosting      | [Vercel](https://vercel.com)                                                               |
 
 ## Getting Started
 

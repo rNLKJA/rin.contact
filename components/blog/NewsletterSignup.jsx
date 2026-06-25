@@ -52,7 +52,11 @@ export default function NewsletterSignup() {
       </p>
 
       {status === "success" ? (
-        <div className="flex items-center gap-3 text-sm text-[#22C55E]" role="status" aria-live="polite">
+        <div
+          className="flex items-center gap-3 text-sm text-[#22C55E]"
+          role="status"
+          aria-live="polite"
+        >
           <FiCheck size={18} aria-hidden="true" />
           <span>{message || t("newsletter.success")}</span>
         </div>
@@ -94,7 +98,11 @@ export default function NewsletterSignup() {
       )}
 
       {status === "error" && (
-        <p id="newsletter-msg" role="alert" className="flex items-center gap-2 text-xs text-[#FF3C3C] mt-3">
+        <p
+          id="newsletter-msg"
+          role="alert"
+          className="flex items-center gap-2 text-xs text-[#FF3C3C] mt-3"
+        >
           <FiAlertCircle size={14} aria-hidden="true" />
           {message || t("newsletter.error")}
         </p>

@@ -11,37 +11,41 @@ const NAV_COLS = [
     headingKey: "footer.navigate",
     links: [
       { href: "/strategic", key: "nav.strategic" },
-      { href: "/career",    key: "nav.career"    },
-      { href: "/projects",  key: "nav.projects"  },
-      { href: "/lab",       key: "nav.lab"       },
-      { href: "/about",     key: "nav.about"     },
-      { href: "/resume",    key: "nav.resume"    },
-      { href: "/#contact",  key: "nav.contact"   },
+      { href: "/career", key: "nav.career" },
+      { href: "/projects", key: "nav.projects" },
+      { href: "/lab", key: "nav.lab" },
+      { href: "/about", key: "nav.about" },
+      { href: "/resume", key: "nav.resume" },
+      { href: "/#contact", key: "nav.contact" },
     ],
   },
   {
     headingKey: "footer.pages",
     links: [
       { href: "/hire-me", key: "nav.hireMe", cta: true },
-      { href: "/cv",               key: "nav.cv"            },
-      { href: "/tools/card",       key: "nav.businessCard" },
-      { href: "/blog",             key: "nav.blog"          },
-      { href: "/knowledge",        key: "nav.knowledge"     },
-      { href: "/info/api",         key: "nav.api"           },
-      { href: "/resume",           key: "nav.cliResume"     },
-      { href: "https://www.linkedin.com/in/sunchuangyuhuang/", key: "nav.linkedin",  external: true },
-      { href: "https://github.com/rNLKJA",                     key: "nav.github",    external: true },
-      { href: "https://www.instagram.com/chuangyu_hscy/",      key: "nav.instagram", external: true },
-      { href: "mailto:huang@rin.contact",                      key: "nav.email"                     },
+      { href: "/cv", key: "nav.cv" },
+      { href: "/tools/card", key: "nav.businessCard" },
+      { href: "/blog", key: "nav.blog" },
+      { href: "/knowledge", key: "nav.knowledge" },
+      { href: "/info/api", key: "nav.api" },
+      { href: "/resume", key: "nav.cliResume" },
+      {
+        href: "https://www.linkedin.com/in/sunchuangyuhuang/",
+        key: "nav.linkedin",
+        external: true,
+      },
+      { href: "https://github.com/rNLKJA", key: "nav.github", external: true },
+      { href: "https://www.instagram.com/chuangyu_hscy/", key: "nav.instagram", external: true },
+      { href: "mailto:huang@rin.contact", key: "nav.email" },
     ],
   },
 ];
 
 const SOCIAL_ICONS = [
-  { href: "https://www.linkedin.com/in/sunchuangyuhuang/", key: "nav.linkedin",  Icon: FaLinkedin  },
-  { href: "https://github.com/rNLKJA",                     key: "nav.github",    Icon: FiGithub    },
-  { href: "https://www.instagram.com/chuangyu_hscy/",      key: "nav.instagram", Icon: FaInstagram },
-  { href: "mailto:huang@rin.contact",                      key: "nav.email",     Icon: FiMail      },
+  { href: "https://www.linkedin.com/in/sunchuangyuhuang/", key: "nav.linkedin", Icon: FaLinkedin },
+  { href: "https://github.com/rNLKJA", key: "nav.github", Icon: FiGithub },
+  { href: "https://www.instagram.com/chuangyu_hscy/", key: "nav.instagram", Icon: FaInstagram },
+  { href: "mailto:huang@rin.contact", key: "nav.email", Icon: FiMail },
 ];
 
 const Footer = () => {
@@ -50,7 +54,6 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#1A1A1A] dark:bg-[#0A0A0A] relative overflow-hidden" role="contentinfo">
-
       {/* Wisr-style wavy top divider */}
       <svg
         aria-hidden="true"
@@ -70,27 +73,22 @@ const Footer = () => {
         aria-hidden="true"
         className="absolute right-0 bottom-4 text-[10rem] md:text-[14rem] font-bold leading-none
                    select-none pointer-events-none tracking-tighter text-white opacity-[0.025]"
-        style={{ fontFamily: 'var(--font-bitcount), monospace' }}
+        style={{ fontFamily: "var(--font-bitcount), monospace" }}
       >
         RIN
       </span>
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12 pt-14 pb-10 relative z-10">
-
         {/* ── Top row — brand + nav columns ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2.5">
-              <div className="rounded-full bg-white flex items-center justify-center flex-shrink-0"
-                   style={{ width: 32, height: 32 }}>
-                <Image
-                  src="/logo.svg"
-                  alt="rNLKJA logo"
-                  width={24}
-                  height={24}
-                />
+              <div
+                className="rounded-full bg-white flex items-center justify-center flex-shrink-0"
+                style={{ width: 32, height: 32 }}
+              >
+                <Image src="/logo.svg" alt="rNLKJA logo" width={24} height={24} />
               </div>
               <span className="font-semibold text-sm text-white tracking-tight">rNLKJA</span>
             </div>
@@ -99,25 +97,36 @@ const Footer = () => {
             </p>
             {/* Wisr wavy micro accent */}
             <svg width="60" height="7" viewBox="0 0 60 7" aria-hidden="true">
-              <path d="M0,3.5 C7.5,0.5 15,6.5 22.5,3.5 C30,0.5 37.5,6.5 45,3.5 C52.5,0.5 60,6.5 60,3.5"
-                    stroke="#3D3D3D" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+              <path
+                d="M0,3.5 C7.5,0.5 15,6.5 22.5,3.5 C30,0.5 37.5,6.5 45,3.5 C52.5,0.5 60,6.5 60,3.5"
+                stroke="#3D3D3D"
+                strokeWidth="1.5"
+                fill="none"
+                strokeLinecap="round"
+              />
             </svg>
           </div>
 
           {/* Nav columns */}
           {NAV_COLS.map(({ headingKey, links }) => (
             <div key={headingKey}>
-              <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">{t(headingKey)}</p>
+              <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">
+                {t(headingKey)}
+              </p>
               <ul className="space-y-2.5">
                 {links.map(({ href, key, external, cta }) => (
                   <li key={key}>
                     {external ? (
                       <a
-                        href={href} target="_blank" rel="noreferrer"
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
                         className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200 flex items-center gap-1.5 group"
                       >
                         {t(key)}
-                        <span className="text-[#555555] group-hover:text-white transition-colors duration-200 text-[10px]">↗</span>
+                        <span className="text-[#555555] group-hover:text-white transition-colors duration-200 text-[10px]">
+                          ↗
+                        </span>
                       </a>
                     ) : href.startsWith("/") ? (
                       <Link
@@ -128,7 +137,8 @@ const Footer = () => {
                             : "text-[#AAAAAA] hover:text-white"
                         }`}
                       >
-                        {t(key)}{cta && " →"}
+                        {t(key)}
+                        {cta && " →"}
                       </Link>
                     ) : (
                       <a
@@ -145,8 +155,7 @@ const Footer = () => {
               {/* Subtle easter egg hint on the "Pages" column */}
               {headingKey === "footer.pages" && (
                 <p className="text-[9px] text-[#333333] mt-5 leading-relaxed font-mono">
-                  · · ·{" "}
-                  <span title="Try /fun/secret">{t("common.thereIsMore")}</span>
+                  · · · <span title="Try /fun/secret">{t("common.thereIsMore")}</span>
                 </p>
               )}
             </div>
@@ -158,7 +167,6 @@ const Footer = () => {
 
         {/* ── Bottom row — social pills + copyright ── */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-
           {/* Social pill chips */}
           <div className="flex flex-wrap gap-2">
             {SOCIAL_ICONS.map(({ href, key, Icon }) => (
@@ -185,14 +193,17 @@ const Footer = () => {
             <DesignPhilosophyModal />
             <p className="text-[11px] text-[#AAAAAA] tracking-wide">
               © 2020–{year}{" "}
-              <Link href="/" className="text-white underline underline-offset-2 decoration-[#555555] hover:text-[#FF3C3C] hover:decoration-[#FF3C3C] transition-colors duration-200">
+              <Link
+                href="/"
+                className="text-white underline underline-offset-2 decoration-[#555555] hover:text-[#FF3C3C] hover:decoration-[#FF3C3C] transition-colors duration-200"
+              >
                 rNLKJA
               </Link>
-              {" · "}{t("common.copyright")}
+              {" · "}
+              {t("common.copyright")}
             </p>
           </div>
         </div>
-
       </div>
     </footer>
   );

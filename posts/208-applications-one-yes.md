@@ -11,13 +11,13 @@ Here's my job-hunting dataset, cleaned and annotated.
 
 ## The raw numbers
 
-| Metric | Value |
-|--------|-------|
-| Applications submitted | 208 |
-| Interview invitations | ~21 (9.91%) |
-| Tailored resume versions | 20+ |
-| Duration (serious hunt) | 3 months |
-| Offers | 1 |
+| Metric                   | Value       |
+| ------------------------ | ----------- |
+| Applications submitted   | 208         |
+| Interview invitations    | ~21 (9.91%) |
+| Tailored resume versions | 20+         |
+| Duration (serious hunt)  | 3 months    |
+| Offers                   | 1           |
 
 ```bars
 187 Rejected / Ghosted
@@ -41,7 +41,7 @@ A 90.87% rejection rate isn't a fun number to look at. But here's what it actual
 
 ## The paradox
 
-Here's the funny part. After each career coaching session, I got the same puzzled response: *"I saw your resume... why can't you find a job?"*
+Here's the funny part. After each career coaching session, I got the same puzzled response: _"I saw your resume... why can't you find a job?"_
 
 The experts couldn't explain it either. And that's the thing about job markets: even a great resume needs to align with the right opportunity, at the right time, with the right person reading it. There's randomness you can't control.
 
@@ -67,4 +67,4 @@ Three months later, I was an ASO7 at SAPOL. The data point of success only neede
 
 ---
 
-*Adapted from a LinkedIn post that received 5,840 impressions and 97 reactions. Data reflects August–November 2024 in Melbourne/Australia. Originally written by Rin Huang; edited and expanded with Claude Opus (Anthropic) for the rin.contact blog.*
+_Adapted from a LinkedIn post that received 5,840 impressions and 97 reactions. Data reflects August–November 2024 in Melbourne/Australia. Originally written by Rin Huang; edited and expanded with Claude Opus (Anthropic) for the rin.contact blog._

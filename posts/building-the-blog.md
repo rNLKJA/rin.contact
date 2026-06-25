@@ -5,7 +5,7 @@ tags: ["meta", "ai", "engineering", "philosophy"]
 description: "94 pages, 6 months of iteration, and one weekend where an AI agent built the blog, RSS feed, newsletter backend, and dark mode. A reflection on building with AI."
 ---
 
-A blog is one of those things every developer puts on their roadmap and then quietly ignores for two years. It sat on mine as *"Marketing: Consider blog + RSS + newsletter"* — priority 3, forever backlog.
+A blog is one of those things every developer puts on their roadmap and then quietly ignores for two years. It sat on mine as _"Marketing: Consider blog + RSS + newsletter"_ — priority 3, forever backlog.
 
 Then Claude shipped the entire thing in a weekend.
 
@@ -13,9 +13,9 @@ Then Claude shipped the entire thing in a weekend.
 
 rin.contact started as a single-page HTML resume and grew — through six months of late nights and between-meeting commits — into 94 pages of interactive data stories, CLI tools, Easter eggs, and a design system I actually enjoy looking at. Somewhere along the way it crossed the line from "portfolio" to "playground," and a blog became the obvious next piece.
 
-The problem wasn't the writing. The problem was everything else: Markdown compilation, frontmatter parsing, flow-diagram support, RSS generation, newsletter backend, navigation integration, SEO, dark mode, route design, and the fifty micro-decisions that separate a blog that works from a blog that you *plan* to build.
+The problem wasn't the writing. The problem was everything else: Markdown compilation, frontmatter parsing, flow-diagram support, RSS generation, newsletter backend, navigation integration, SEO, dark mode, route design, and the fifty micro-decisions that separate a blog that works from a blog that you _plan_ to build.
 
-So I ran an experiment. I gave Claude Opus — Anthropic's most capable reasoning model — the entire Linear backlog and said: *if a job is complete, mark it, commit, check the next task, and work on it.*
+So I ran an experiment. I gave Claude Opus — Anthropic's most capable reasoning model — the entire Linear backlog and said: _if a job is complete, mark it, commit, check the next task, and work on it._
 
 It executed like this:
 
@@ -53,7 +53,7 @@ Here's what I found interesting, and it's the reason I wanted to write this befo
 
 When I said "dark mode doesn't work as expected," it grep'd fifty `bg-white` wrappers missing `dark:` variants and batch-fixed them. When `cache.addAll()` threw in dev mode, it replaced the entire precache strategy with a self-destructing service worker. It didn't ask what that error meant — it already knew.
 
-This is the part people miss about AI-assisted development. The value isn't autocomplete. It's not even writing functions from scratch. It's the ability to say: *"there's an error in the console"* and have an agent grep 60 files, identify the root cause across the entire stack (SW bytecode caching in Chrome → `addAll` semantics → dev-mode transient SSR failures), apply a fix, verify the build, and commit — all in under three minutes.
+This is the part people miss about AI-assisted development. The value isn't autocomplete. It's not even writing functions from scratch. It's the ability to say: _"there's an error in the console"_ and have an agent grep 60 files, identify the root cause across the entire stack (SW bytecode caching in Chrome → `addAll` semantics → dev-mode transient SSR failures), apply a fix, verify the build, and commit — all in under three minutes.
 
 ## The role of this blog
 
@@ -74,4 +74,4 @@ Which is, I suppose, the most honest way to introduce a blog that was written pa
 
 ---
 
-*The blog infrastructure described in this post was built by Claude Opus 4.8 (Anthropic), directed by Rin Huang, over a single work session spanning 14 Linear tasks. The code is open-source at [github.com/rNLKJA/rin.contact](https://github.com/rNLKJA/rin.contact).*
+_The blog infrastructure described in this post was built by Claude Opus 4.8 (Anthropic), directed by Rin Huang, over a single work session spanning 14 Linear tasks. The code is open-source at [github.com/rNLKJA/rin.contact](https://github.com/rNLKJA/rin.contact)._

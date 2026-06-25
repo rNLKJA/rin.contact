@@ -12,12 +12,12 @@
  */
 import { useEffect, useRef } from "react";
 
-const GAP = 28;          // grid spacing (px)
-const BASE_R = 1.15;     // dot radius at rest
-const INFLUENCE = 175;   // cursor influence radius
-const MAX_SCALE = 3.6;   // peak dot growth near cursor
-const MAX_PUSH = 9;      // peak outward displacement
-const DECAY_MS = 1500;   // keep animating this long after the last move
+const GAP = 28; // grid spacing (px)
+const BASE_R = 1.15; // dot radius at rest
+const INFLUENCE = 175; // cursor influence radius
+const MAX_SCALE = 3.6; // peak dot growth near cursor
+const MAX_PUSH = 9; // peak outward displacement
+const DECAY_MS = 1500; // keep animating this long after the last move
 
 export default function HeroDotCanvas() {
   const canvasRef = useRef(null);
@@ -87,9 +87,9 @@ export default function HeroDotCanvas() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < INFLUENCE) {
             const f = 1 - dist / INFLUENCE; // 0..1
-            const e = f * f;                // centred ramp (size + push)
-            const c = Math.sqrt(f);         // wide ramp (colour + alpha) so dots
-                                            // read as a red glow, not dark specks
+            const e = f * f; // centred ramp (size + push)
+            const c = Math.sqrt(f); // wide ramp (colour + alpha) so dots
+            // read as a red glow, not dark specks
             scale = 1 + e * (MAX_SCALE - 1);
             glow = c;
             const nd = dist || 1;
@@ -147,12 +147,17 @@ export default function HeroDotCanvas() {
     let resizeRaf = null;
     const onResize = () => {
       if (resizeRaf) cancelAnimationFrame(resizeRaf);
-      resizeRaf = requestAnimationFrame(() => { build(); draw(); });
+      resizeRaf = requestAnimationFrame(() => {
+        build();
+        draw();
+      });
     };
     window.addEventListener("resize", onResize);
 
     // redraw the rest frame when the theme flips so colours stay in sync
-    const themeObs = new MutationObserver(() => { if (raf == null) draw(); });
+    const themeObs = new MutationObserver(() => {
+      if (raf == null) draw();
+    });
     themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
     return () => {

@@ -32,7 +32,11 @@ self.addEventListener("install", (event) => {
     caches.open(SHELL_CACHE).then((cache) =>
       Promise.allSettled(
         SHELL_URLS.map((url) =>
-          fetch(url).then((r) => { if (r.ok) cache.put(url, r); }).catch(() => {})
+          fetch(url)
+            .then((r) => {
+              if (r.ok) cache.put(url, r);
+            })
+            .catch(() => {})
         )
       )
     )
@@ -43,13 +47,16 @@ self.addEventListener("install", (event) => {
 // ─── Activate — remove stale caches ────────────────────────────────
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((k) => k !== CACHE && k !== SHELL_CACHE && k !== PAGE_CACHE)
-          .map((k) => caches.delete(k))
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys
+            .filter((k) => k !== CACHE && k !== SHELL_CACHE && k !== PAGE_CACHE)
+            .map((k) => caches.delete(k))
+        )
       )
-    ).then(() => self.clients.claim())
+      .then(() => self.clients.claim())
   );
 });
 

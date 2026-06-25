@@ -13,15 +13,21 @@
 import { useEffect, useState } from "react";
 
 const SEEN_KEY = "rin_hero_hint_seen";
-const REVEAL_MS = 1400;   // let the boot overlay clear first
-const GRACE_MS = 700;     // guarantee a brief moment on screen before move-dismiss
-const AUTO_MS = 7000;     // fall back to auto-dismiss if the cursor never moves
+const REVEAL_MS = 1400; // let the boot overlay clear first
+const GRACE_MS = 700; // guarantee a brief moment on screen before move-dismiss
+const AUTO_MS = 7000; // fall back to auto-dismiss if the cursor never moves
 
 // 3x3 grid; Chebyshev distance from centre drives the ripple delay (centre first).
 const DOTS = [
-  [0, 0], [1, 0], [2, 0],
-  [0, 1], [1, 1], [2, 1],
-  [0, 2], [1, 2], [2, 2],
+  [0, 0],
+  [1, 0],
+  [2, 0],
+  [0, 1],
+  [1, 1],
+  [2, 1],
+  [0, 2],
+  [1, 2],
+  [2, 2],
 ];
 
 export default function HeroInteractHint() {
@@ -45,7 +51,9 @@ export default function HeroInteractHint() {
     const dismiss = () => {
       if (dismissed) return;
       dismissed = true;
-      try { sessionStorage.setItem(SEEN_KEY, "1"); } catch {}
+      try {
+        sessionStorage.setItem(SEEN_KEY, "1");
+      } catch {}
       setShown(false);
     };
     const onMove = () => {
@@ -100,7 +108,8 @@ export default function HeroInteractHint() {
           background: #3d3d3d;
         }
         @keyframes hint-pulse {
-          0%, 100% {
+          0%,
+          100% {
             transform: scale(1);
             background: #c8c8c8;
           }

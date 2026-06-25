@@ -43,7 +43,11 @@ const SKILL_KEYS = ["dataAnalytics", "intelligence", "engineering"];
 const CONTACT = [
   { key: "email", value: "huang@rin.contact", href: "mailto:huang@rin.contact" },
   { key: "site", value: "rin.contact", href: "https://rin.contact" },
-  { key: "linkedin", value: "in/sunchuangyuhuang", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },
+  {
+    key: "linkedin",
+    value: "in/sunchuangyuhuang",
+    href: "https://www.linkedin.com/in/sunchuangyuhuang/",
+  },
   { key: "github", value: "rNLKJA", href: "https://github.com/rNLKJA" },
   { key: "location", value: null, href: null },
 ];
@@ -67,7 +71,6 @@ export default function CvPage({ experience, education, certGroups, certTotal })
       <BackToTop />
       <div className="bg-white dark:bg-[#0A0A0A] min-h-screen cv-print-root">
         <div className="max-w-[820px] mx-auto px-6 md:px-12 py-14 md:py-20">
-
           {/* Action bar — hidden when printing */}
           <div className="cv-noprint flex items-center justify-between gap-4 mb-12">
             <Link
@@ -87,7 +90,9 @@ export default function CvPage({ experience, education, certGroups, certTotal })
 
           {/* Header */}
           <header className="mb-10 pb-8 border-b border-[#E5E5E5] dark:border-[#262626]">
-            <p className="cv-accent text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-3 font-mono">{t("cvPage.eyebrow")}</p>
+            <p className="cv-accent text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-3 font-mono">
+              {t("cvPage.eyebrow")}
+            </p>
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white mb-1">
               Sunchuangyu (Rin) Huang
             </h1>
@@ -99,9 +104,13 @@ export default function CvPage({ experience, education, certGroups, certTotal })
                 const value = c.value ?? t("cvPage.locationValue");
                 return (
                   <li key={c.key}>
-                    <span className="text-[#6E6E6E] dark:text-[#9A9A9A] mr-1.5">{t(`cvPage.contact.${c.key}`)}</span>
+                    <span className="text-[#6E6E6E] dark:text-[#9A9A9A] mr-1.5">
+                      {t(`cvPage.contact.${c.key}`)}
+                    </span>
                     {c.href ? (
-                      <a href={c.href} className="hover:text-[#FF3C3C] transition-colors">{value}</a>
+                      <a href={c.href} className="hover:text-[#FF3C3C] transition-colors">
+                        {value}
+                      </a>
                     ) : (
                       <span>{value}</span>
                     )}
@@ -125,19 +134,34 @@ export default function CvPage({ experience, education, certGroups, certTotal })
                 <article key={i} className="break-inside-avoid">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
                     <h3 className="text-sm font-semibold text-black dark:text-white">{x.role}</h3>
-                    <span className="text-[11px] tabular-nums text-[#7A7A7A] dark:text-[#9A9A9A]">{x.period}</span>
+                    <span className="text-[11px] tabular-nums text-[#7A7A7A] dark:text-[#9A9A9A]">
+                      {x.period}
+                    </span>
                   </div>
                   <p className="text-xs text-[#5C5C5C] dark:text-[#9A9A9A] mb-1.5">
-                    {x.org}{x.location ? <span className="text-[#BBBBBB] dark:text-[#555]"> · {x.location}</span> : null}
+                    {x.org}
+                    {x.location ? (
+                      <span className="text-[#BBBBBB] dark:text-[#555]"> · {x.location}</span>
+                    ) : null}
                   </p>
                   {x.summary && (
-                    <p className="text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-1.5">{x.summary}</p>
+                    <p className="text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-1.5">
+                      {x.summary}
+                    </p>
                   )}
                   {x.bullets.length > 0 && (
                     <ul className="space-y-1">
                       {x.bullets.map((b, j) => (
-                        <li key={j} className="flex gap-2 text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
-                          <span className="cv-accent text-[#FF3C3C] flex-shrink-0 mt-0.5" aria-hidden="true">·</span>
+                        <li
+                          key={j}
+                          className="flex gap-2 text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed"
+                        >
+                          <span
+                            className="cv-accent text-[#FF3C3C] flex-shrink-0 mt-0.5"
+                            aria-hidden="true"
+                          >
+                            ·
+                          </span>
                           {b}
                         </li>
                       ))}
@@ -152,12 +176,19 @@ export default function CvPage({ experience, education, certGroups, certTotal })
           <Section title={t("cvPage.sections.education")}>
             <div className="space-y-3">
               {education.map((e, i) => (
-                <div key={i} className="flex flex-wrap items-baseline justify-between gap-x-4 break-inside-avoid">
+                <div
+                  key={i}
+                  className="flex flex-wrap items-baseline justify-between gap-x-4 break-inside-avoid"
+                >
                   <div>
-                    <h3 className="text-sm font-semibold text-black dark:text-white inline">{e.role}</h3>
+                    <h3 className="text-sm font-semibold text-black dark:text-white inline">
+                      {e.role}
+                    </h3>
                     <span className="text-xs text-[#5C5C5C] dark:text-[#9A9A9A]"> — {e.org}</span>
                   </div>
-                  <span className="text-[11px] tabular-nums text-[#7A7A7A] dark:text-[#9A9A9A]">{e.period}</span>
+                  <span className="text-[11px] tabular-nums text-[#7A7A7A] dark:text-[#9A9A9A]">
+                    {e.period}
+                  </span>
                 </div>
               ))}
             </div>
@@ -168,8 +199,12 @@ export default function CvPage({ experience, education, certGroups, certTotal })
             <dl className="space-y-2">
               {SKILL_KEYS.map((key) => (
                 <div key={key} className="flex flex-col sm:flex-row sm:gap-4 break-inside-avoid">
-                  <dt className="text-xs font-semibold text-black dark:text-white sm:w-48 flex-shrink-0">{t(`cvPage.skills.${key}.group`)}</dt>
-                  <dd className="text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">{t(`cvPage.skills.${key}.items`)}</dd>
+                  <dt className="text-xs font-semibold text-black dark:text-white sm:w-48 flex-shrink-0">
+                    {t(`cvPage.skills.${key}.group`)}
+                  </dt>
+                  <dd className="text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+                    {t(`cvPage.skills.${key}.items`)}
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -181,9 +216,12 @@ export default function CvPage({ experience, education, certGroups, certTotal })
               {certGroups.map((g) => (
                 <div key={g.issuer} className="break-inside-avoid">
                   <p className="text-xs font-semibold text-black dark:text-white">
-                    {g.issuer} <span className="cv-accent text-[#FF3C3C] font-normal">({g.count})</span>
+                    {g.issuer}{" "}
+                    <span className="cv-accent text-[#FF3C3C] font-normal">({g.count})</span>
                   </p>
-                  <p className="text-[12px] text-[#5C5C5C] dark:text-[#9A9A9A] leading-relaxed">{g.names.join(", ")}</p>
+                  <p className="text-[12px] text-[#5C5C5C] dark:text-[#9A9A9A] leading-relaxed">
+                    {g.names.join(", ")}
+                  </p>
                 </div>
               ))}
             </div>
@@ -192,7 +230,10 @@ export default function CvPage({ experience, education, certGroups, certTotal })
           {/* Foot */}
           <p className="cv-noprint mt-12 pt-6 border-t border-[#E5E5E5] dark:border-[#262626] text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]">
             {t("cvPage.footPrefix")}{" "}
-            <Link href="/" className="text-[#FF3C3C] hover:underline">rin.contact</Link>.
+            <Link href="/" className="text-[#FF3C3C] hover:underline">
+              rin.contact
+            </Link>
+            .
           </p>
         </div>
       </div>

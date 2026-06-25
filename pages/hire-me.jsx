@@ -13,18 +13,26 @@ export default function HireMePage() {
     <>
       <SeoHead
         title={isZh ? "招聘意向 — Rin Huang · rin.contact" : "Hire Rin — rin.contact"}
-        description={isZh ? "想招聘黄孙创宇（Rin Huang）？高级数据分析师 · 数据科学 · 政府情报 · 阿德莱德" : "Looking to hire Sunchuangyu (Rin) Huang? Senior Data Analyst · Data Scientist · Government Intelligence · Adelaide, SA"}
+        description={
+          isZh
+            ? "想招聘黄孙创宇（Rin Huang）？高级数据分析师 · 数据科学 · 政府情报 · 阿德莱德"
+            : "Looking to hire Sunchuangyu (Rin) Huang? Senior Data Analyst · Data Scientist · Government Intelligence · Adelaide, SA"
+        }
         path="/hire-me"
-        ogImage={{ title: isZh ? "招聘 Rin Huang" : "Hire Rin Huang", subtitle: isZh ? "高级数据分析师 | 开放机会中" : "Senior Data Analyst | Open to opportunities", section: "hire-me" }}
+        ogImage={{
+          title: isZh ? "招聘 Rin Huang" : "Hire Rin Huang",
+          subtitle: isZh
+            ? "高级数据分析师 | 开放机会中"
+            : "Senior Data Analyst | Open to opportunities",
+          section: "hire-me",
+        }}
         locale={locale}
       />
 
       <div className="min-h-screen bg-black text-white font-mono">
         <div className="max-w-2xl mx-auto px-5 md:px-6 py-16 md:py-20">
-
           {/* ── Terminal window ──────────────────────────────────────────── */}
           <div className="border border-[#262626] rounded-xl overflow-hidden bg-[#0A0A0A] shadow-2xl">
-
             {/* Title bar */}
             <div className="flex items-center gap-2.5 px-4 py-3 border-b border-[#1E1E1E] bg-[#0E0E0E]">
               <span className="flex items-center gap-1.5" aria-hidden="true">
@@ -37,19 +45,28 @@ export default function HireMePage() {
               </span>
               {/* Live availability — green status, echoing the hero status pill */}
               <span className="ml-auto flex items-center gap-1.5 text-[10px] tracking-widest uppercase text-[#4ADE80]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E] md:animate-blink" aria-hidden="true" />
+                <span
+                  className="w-1.5 h-1.5 rounded-full bg-[#22C55E] md:animate-blink"
+                  aria-hidden="true"
+                />
                 {t("hireMe.availability")}
               </span>
             </div>
 
             {/* Body */}
             <div className="px-5 md:px-7 py-7 md:py-9">
-
               {/* Command prompt that "runs" the dossier */}
               <p className="text-[13px] mb-7 text-[#C8C8C8]">
-                <span className="text-[#FF3C3C]" aria-hidden="true">$ </span>
+                <span className="text-[#FF3C3C]" aria-hidden="true">
+                  ${" "}
+                </span>
                 ./hire-rin <span className="text-[#9A9A9A]">--honest</span>
-                <span className="md:animate-blink ml-1 inline-block w-[0.5em] -mb-0.5 align-baseline" aria-hidden="true">▋</span>
+                <span
+                  className="md:animate-blink ml-1 inline-block w-[0.5em] -mb-0.5 align-baseline"
+                  aria-hidden="true"
+                >
+                  ▋
+                </span>
               </p>
 
               <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-4">
@@ -66,11 +83,17 @@ export default function HireMePage() {
               {/* What I bring */}
               <div className="mb-11">
                 <p className="text-[11px] tracking-widest uppercase text-[#8A8A8A] mb-5">
-                  <span className="text-[#FF3C3C]" aria-hidden="true"># </span>{t("hireMe.whatIBring")}
+                  <span className="text-[#FF3C3C]" aria-hidden="true">
+                    #{" "}
+                  </span>
+                  {t("hireMe.whatIBring")}
                 </p>
                 <div className="space-y-4">
                   {(Array.isArray(strengths) ? strengths : []).map((s) => (
-                    <div key={s.label} className="border-l-2 border-[#FF3C3C]/40 hover:border-[#FF3C3C] pl-4 transition-colors duration-200">
+                    <div
+                      key={s.label}
+                      className="border-l-2 border-[#FF3C3C]/40 hover:border-[#FF3C3C] pl-4 transition-colors duration-200"
+                    >
                       <p className="text-sm text-white">{s.label}</p>
                       <p className="text-xs text-[#9A9A9A] mt-1 leading-relaxed">{s.note}</p>
                     </div>
@@ -81,7 +104,10 @@ export default function HireMePage() {
               {/* Open to */}
               <div className="mb-11">
                 <p className="text-[11px] tracking-widest uppercase text-[#8A8A8A] mb-5">
-                  <span className="text-[#FF3C3C]" aria-hidden="true"># </span>{t("hireMe.openTo")}
+                  <span className="text-[#FF3C3C]" aria-hidden="true">
+                    #{" "}
+                  </span>
+                  {t("hireMe.openTo")}
                 </p>
                 <div className="grid grid-cols-2 gap-2.5">
                   {(Array.isArray(openToList) ? openToList : []).map((item) => (
@@ -89,7 +115,9 @@ export default function HireMePage() {
                       key={item}
                       className="flex items-center gap-2 border border-[#222222] hover:border-[#3D3D3D] px-3 py-2.5 text-xs text-[#C0C0C0] transition-colors duration-200"
                     >
-                      <span className="text-[#FF3C3C] flex-shrink-0" aria-hidden="true">▸</span>
+                      <span className="text-[#FF3C3C] flex-shrink-0" aria-hidden="true">
+                        ▸
+                      </span>
                       {item}
                     </div>
                   ))}
@@ -101,14 +129,19 @@ export default function HireMePage() {
                 {(Array.isArray(stats) ? stats : []).map((s) => (
                   <div key={s.l}>
                     <p className="text-2xl font-semibold text-[#FF3C3C] tabular-nums">{s.v}</p>
-                    <p className="text-[10px] text-[#9A9A9A] tracking-widest uppercase mt-1.5">{s.l}</p>
+                    <p className="text-[10px] text-[#9A9A9A] tracking-widest uppercase mt-1.5">
+                      {s.l}
+                    </p>
                   </div>
                 ))}
               </div>
 
               {/* CTA */}
               <p className="text-[11px] tracking-widest uppercase text-[#8A8A8A] mb-4">
-                <span className="text-[#FF3C3C]" aria-hidden="true">$ </span>connect
+                <span className="text-[#FF3C3C]" aria-hidden="true">
+                  ${" "}
+                </span>
+                connect
               </p>
               <div className="space-y-3">
                 <a

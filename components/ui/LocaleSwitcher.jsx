@@ -9,11 +9,9 @@ export default function LocaleSwitcher() {
 
   const switchLocale = (e) => {
     e.preventDefault();
-    router.push(
-      { pathname: router.pathname, query: router.query },
-      router.asPath,
-      { locale: nextLocale }
-    );
+    router.push({ pathname: router.pathname, query: router.query }, router.asPath, {
+      locale: nextLocale,
+    });
   };
 
   return (

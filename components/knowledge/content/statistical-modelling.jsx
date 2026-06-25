@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/statistical-modelling.
@@ -40,21 +47,143 @@ function GLMFigure({ caption, ariaLabel, featuresLabel, linearLabel, linkLabel, 
         role="img"
         aria-label={ariaLabel}
       >
-        <rect x="10" y="48" width="92" height="36" rx="2" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.7" />
-        <text x="56" y="70" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{featuresLabel}</text>
-        <rect x="140" y="44" width="96" height="44" rx="2" fill="#FF3C3C" fillOpacity="0.1" stroke="#FF3C3C" strokeWidth="1.4" />
-        <text x="188" y="62" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">{linearLabel}</text>
-        <text x="188" y="76" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.8">η = Xβ</text>
-        <rect x="274" y="48" width="74" height="36" rx="2" fill="#FF3C3C" fillOpacity="0.1" stroke="#FF3C3C" strokeWidth="1.4" />
-        <text x="311" y="70" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{linkLabel}</text>
-        <rect x="372" y="48" width="60" height="36" rx="2" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.7" />
-        <text x="402" y="66" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">E[y]</text>
-        <text x="402" y="78" textAnchor="middle" fontSize="7" fontFamily="monospace" fill="currentColor" opacity="0.7">{distLabel}</text>
-        <line x1="102" y1="66" x2="138" y2="66" stroke="#FF3C3C" strokeWidth="1.3" markerEnd="url(#sm-ah)" />
-        <line x1="236" y1="66" x2="272" y2="66" stroke="#FF3C3C" strokeWidth="1.3" markerEnd="url(#sm-ah)" />
-        <line x1="348" y1="66" x2="370" y2="66" stroke="#FF3C3C" strokeWidth="1.3" markerEnd="url(#sm-ah)" />
+        <rect
+          x="10"
+          y="48"
+          width="92"
+          height="36"
+          rx="2"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.7"
+        />
+        <text
+          x="56"
+          y="70"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {featuresLabel}
+        </text>
+        <rect
+          x="140"
+          y="44"
+          width="96"
+          height="44"
+          rx="2"
+          fill="#FF3C3C"
+          fillOpacity="0.1"
+          stroke="#FF3C3C"
+          strokeWidth="1.4"
+        />
+        <text
+          x="188"
+          y="62"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {linearLabel}
+        </text>
+        <text
+          x="188"
+          y="76"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.8"
+        >
+          η = Xβ
+        </text>
+        <rect
+          x="274"
+          y="48"
+          width="74"
+          height="36"
+          rx="2"
+          fill="#FF3C3C"
+          fillOpacity="0.1"
+          stroke="#FF3C3C"
+          strokeWidth="1.4"
+        />
+        <text
+          x="311"
+          y="70"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {linkLabel}
+        </text>
+        <rect
+          x="372"
+          y="48"
+          width="60"
+          height="36"
+          rx="2"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.7"
+        />
+        <text
+          x="402"
+          y="66"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          E[y]
+        </text>
+        <text
+          x="402"
+          y="78"
+          textAnchor="middle"
+          fontSize="7"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {distLabel}
+        </text>
+        <line
+          x1="102"
+          y1="66"
+          x2="138"
+          y2="66"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+          markerEnd="url(#sm-ah)"
+        />
+        <line
+          x1="236"
+          y1="66"
+          x2="272"
+          y2="66"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+          markerEnd="url(#sm-ah)"
+        />
+        <line
+          x1="348"
+          y1="66"
+          x2="370"
+          y2="66"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+          markerEnd="url(#sm-ah)"
+        />
         <defs>
-          <marker id="sm-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" /></marker>
+          <marker id="sm-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -66,58 +195,55 @@ function EnBody() {
   return (
     <>
       <p>
-        The <Link href="/knowledge/linear-statistical-models">linear regression page</Link>{" "}
-        built one powerful model — but it assumes the outcome is a continuous number with
-        normally distributed error. Real outcomes break that constantly: a yes/no decision,
-        a count of events, a rate. <Term>Statistical modelling</Term> is the framework that
-        keeps the interpretable, linear core of regression while extending it to all of
-        those — a single, unifying idea called the <Term>generalised linear model</Term>.
+        The <Link href="/knowledge/linear-statistical-models">linear regression page</Link> built
+        one powerful model — but it assumes the outcome is a continuous number with normally
+        distributed error. Real outcomes break that constantly: a yes/no decision, a count of
+        events, a rate. <Term>Statistical modelling</Term> is the framework that keeps the
+        interpretable, linear core of regression while extending it to all of those — a single,
+        unifying idea called the <Term>generalised linear model</Term>.
       </p>
       <p>
-        This is the statistician's answer to "model anything", and it's the deliberate
-        counterpoint to the{" "}
-        <Link href="/knowledge/statistical-machine-learning">machine learning</Link> view:
-        where ML optimises for prediction, statistical modelling prizes <em>understanding</em>{" "}
-        — coefficients you can interpret and inferences you can defend. Here's how one
-        elegant structure covers an enormous range of data.
+        This is the statistician's answer to "model anything", and it's the deliberate counterpoint
+        to the <Link href="/knowledge/statistical-machine-learning">machine learning</Link> view:
+        where ML optimises for prediction, statistical modelling prizes <em>understanding</em> —
+        coefficients you can interpret and inferences you can defend. Here's how one elegant
+        structure covers an enormous range of data.
       </p>
 
       <KSection id="beyond" eyebrow="01" title="Beyond the straight line">
         <p>
-          Ordinary linear regression makes two assumptions that often don't hold: that the
-          outcome can be any real number, and that its error is normal with constant
-          variance. Try to use it where they fail and it misbehaves — predict a probability
-          and it cheerfully returns 1.4 or −0.3; model a count and it can predict negative
-          events.
+          Ordinary linear regression makes two assumptions that often don't hold: that the outcome
+          can be any real number, and that its error is normal with constant variance. Try to use it
+          where they fail and it misbehaves — predict a probability and it cheerfully returns 1.4 or
+          −0.3; model a count and it can predict negative events.
         </p>
         <p>
-          The fix isn't a different model for every case — it's one framework that bends to
-          fit. The insight of the GLM is to keep the familiar linear combination of
-          predictors at the core, but connect it to the outcome through two flexible
-          pieces: a choice of <em>distribution</em> for the outcome, and a <em>link</em>{" "}
-          that translates between the linear predictor and that distribution's scale.
+          The fix isn't a different model for every case — it's one framework that bends to fit. The
+          insight of the GLM is to keep the familiar linear combination of predictors at the core,
+          but connect it to the outcome through two flexible pieces: a choice of{" "}
+          <em>distribution</em> for the outcome, and a <em>link</em> that translates between the
+          linear predictor and that distribution's scale.
         </p>
       </KSection>
 
       <KSection id="glm" eyebrow="02" title="The generalised linear model">
         <p>
-          A <Term>GLM</Term> is built from three components, and once you see them you can
-          construct a model for almost any outcome:
+          A <Term>GLM</Term> is built from three components, and once you see them you can construct
+          a model for almost any outcome:
         </p>
         <ul>
           <li>
-            <Term>Random component</Term> — the probability distribution of the outcome
-            (Normal for continuous, Binomial for yes/no, Poisson for counts). This is your
-            choice about what kind of data you have.
+            <Term>Random component</Term> — the probability distribution of the outcome (Normal for
+            continuous, Binomial for yes/no, Poisson for counts). This is your choice about what
+            kind of data you have.
           </li>
           <li>
-            <Term>Systematic component</Term> — the familiar linear predictor{" "}
-            <TeX>{TEX.eta}</TeX>, a weighted sum of the features. Unchanged from linear
-            regression.
+            <Term>Systematic component</Term> — the familiar linear predictor <TeX>{TEX.eta}</TeX>,
+            a weighted sum of the features. Unchanged from linear regression.
           </li>
           <li>
-            <Term>Link function</Term> — a function <TeX>{TEX.g}</TeX> connecting the mean
-            of the outcome to the linear predictor.
+            <Term>Link function</Term> — a function <TeX>{TEX.g}</TeX> connecting the mean of the
+            outcome to the linear predictor.
           </li>
         </ul>
         <Formula
@@ -127,13 +253,12 @@ function EnBody() {
           {TEX.glmLink}
         </Formula>
         <p>
-          The link is the clever part. Instead of modelling the mean directly (which might
-          be bounded, like a probability in <TeX>{TEX.unit01}</TeX>), you model a{" "}
-          <em>transformed</em> mean that can range freely over all real numbers — so the
-          linear predictor is never forced to produce an impossible value. Choose the
-          distribution and the link to match your outcome, and the same machinery fits it.
-          Ordinary linear regression is just the special case: Normal distribution,
-          identity link <TeX>{TEX.identity}</TeX>.
+          The link is the clever part. Instead of modelling the mean directly (which might be
+          bounded, like a probability in <TeX>{TEX.unit01}</TeX>), you model a <em>transformed</em>{" "}
+          mean that can range freely over all real numbers — so the linear predictor is never forced
+          to produce an impossible value. Choose the distribution and the link to match your
+          outcome, and the same machinery fits it. Ordinary linear regression is just the special
+          case: Normal distribution, identity link <TeX>{TEX.identity}</TeX>.
         </p>
 
         <GLMFigure
@@ -149,134 +274,128 @@ function EnBody() {
       <KSection id="logistic" eyebrow="03" title="Logistic regression">
         <p>
           The most-used GLM models a <Term>binary outcome</Term> — yes/no, click/no-click,
-          default/repay. The outcome is Binomial, and the natural link is the{" "}
-          <Term>logit</Term> (the log-odds), which stretches a probability in{" "}
-          <TeX>{TEX.unit01}</TeX> out onto the whole real line:
+          default/repay. The outcome is Binomial, and the natural link is the <Term>logit</Term>{" "}
+          (the log-odds), which stretches a probability in <TeX>{TEX.unit01}</TeX> out onto the
+          whole real line:
         </p>
         <Formula label="The log of p over one minus p equals X beta. The log-odds of the probability is modelled as a linear predictor.">
           {TEX.logit}
         </Formula>
         <p>
-          Run it backwards (the inverse link is the S-shaped <Term>logistic function</Term>)
-          and any linear predictor maps to a valid probability between 0 and 1 — no more
-          impossible predictions. The coefficients have a clean reading too: each{" "}
-          <TeX>{TEX.betaj}</TeX> is the change in <em>log-odds</em> per unit of{" "}
-          <TeX>{TEX.xj}</TeX>, and <TeX>{TEX.ebetaj}</TeX> is an <Term>odds ratio</Term> —
-          "this factor multiplies the odds by 1.5". It's the workhorse classifier of
-          statistics, and the bridge to the classification models on the{" "}
+          Run it backwards (the inverse link is the S-shaped <Term>logistic function</Term>) and any
+          linear predictor maps to a valid probability between 0 and 1 — no more impossible
+          predictions. The coefficients have a clean reading too: each <TeX>{TEX.betaj}</TeX> is the
+          change in <em>log-odds</em> per unit of <TeX>{TEX.xj}</TeX>, and <TeX>{TEX.ebetaj}</TeX>{" "}
+          is an <Term>odds ratio</Term> — "this factor multiplies the odds by 1.5". It's the
+          workhorse classifier of statistics, and the bridge to the classification models on the{" "}
           <Link href="/knowledge/statistical-machine-learning">ML page</Link>.
         </p>
       </KSection>
 
       <KSection id="poisson" eyebrow="04" title="Poisson regression">
         <p>
-          For <Term>count outcomes</Term> — number of support tickets, accidents per
-          intersection, visits per patient — the outcome is Poisson and the link is the{" "}
-          <Term>log</Term>:
+          For <Term>count outcomes</Term> — number of support tickets, accidents per intersection,
+          visits per patient — the outcome is Poisson and the link is the <Term>log</Term>:
         </p>
         <Formula label="The log of lambda equals X beta, where lambda is the expected count.">
           {TEX.poisson}
         </Formula>
         <p>
-          Modelling the log of the expected count keeps predictions positive (a count can
-          never be negative) and makes the coefficients multiplicative: <TeX>{TEX.ebetaj}</TeX>{" "}
-          is the factor by which the rate multiplies per unit of the predictor. Same
-          three-part recipe, different distribution and link — and that's the whole point of
-          the framework. (When counts are more variable than Poisson allows —{" "}
-          <Term>overdispersion</Term> — you reach for the negative-binomial cousin, but the
-          structure is identical.)
+          Modelling the log of the expected count keeps predictions positive (a count can never be
+          negative) and makes the coefficients multiplicative: <TeX>{TEX.ebetaj}</TeX> is the factor
+          by which the rate multiplies per unit of the predictor. Same three-part recipe, different
+          distribution and link — and that's the whole point of the framework. (When counts are more
+          variable than Poisson allows — <Term>overdispersion</Term> — you reach for the
+          negative-binomial cousin, but the structure is identical.)
         </p>
       </KSection>
 
       <KSection id="fitting" eyebrow="05" title="Fitting and likelihood">
         <p>
-          You can't fit a GLM with the tidy closed-form formula that ordinary least squares
-          enjoys. Instead you use <Term>maximum likelihood</Term> — the same principle from
-          the <Link href="/knowledge/statistics">statistics page</Link>: choose the
-          coefficients that make the observed data most probable under the model. There's no
-          algebraic solution, so it's found numerically by an iterative routine (iteratively
-          reweighted least squares), but conceptually it's simple — turn the dial on{" "}
-          <TeX>{TEX.beta}</TeX> until the data looks as likely as possible.
+          You can't fit a GLM with the tidy closed-form formula that ordinary least squares enjoys.
+          Instead you use <Term>maximum likelihood</Term> — the same principle from the{" "}
+          <Link href="/knowledge/statistics">statistics page</Link>: choose the coefficients that
+          make the observed data most probable under the model. There's no algebraic solution, so
+          it's found numerically by an iterative routine (iteratively reweighted least squares), but
+          conceptually it's simple — turn the dial on <TeX>{TEX.beta}</TeX> until the data looks as
+          likely as possible.
         </p>
         <p>
-          The payoff of the likelihood approach is that it comes with a full inferential
-          toolkit for free: standard errors, confidence intervals, and tests for each
-          coefficient, exactly as on the regression page — so a fitted GLM tells you not
-          just the effect sizes but how sure you can be of them.
+          The payoff of the likelihood approach is that it comes with a full inferential toolkit for
+          free: standard errors, confidence intervals, and tests for each coefficient, exactly as on
+          the regression page — so a fitted GLM tells you not just the effect sizes but how sure you
+          can be of them.
         </p>
       </KSection>
 
       <KSection id="selection" eyebrow="06" title="Model selection">
         <p>
-          With a framework this flexible, the danger is building a model that's too complex
-          — fitting the noise, the{" "}
-          <Link href="/knowledge/statistical-machine-learning">overfitting</Link> problem
-          again. You need a principled way to compare models that rewards fit but penalises
-          complexity. The standard tool is the <Term>Akaike Information Criterion</Term>:
+          With a framework this flexible, the danger is building a model that's too complex —
+          fitting the noise, the{" "}
+          <Link href="/knowledge/statistical-machine-learning">overfitting</Link> problem again. You
+          need a principled way to compare models that rewards fit but penalises complexity. The
+          standard tool is the <Term>Akaike Information Criterion</Term>:
         </p>
         <Formula label="A I C equals two k minus two times the log-likelihood, where k is the number of parameters.">
           {TEX.aic}
         </Formula>
         <p>
-          Here <TeX>{TEX.lnL}</TeX> measures how well the model fits (the maximised
-          log-likelihood) and <TeX>{TEX.k}</TeX> is the number of parameters — so AIC trades
-          goodness-of-fit against complexity, and <strong>lower is better</strong>. Adding a
-          useless predictor improves fit a little but costs <TeX>{TEX.two}</TeX> in the
-          penalty, so AIC only keeps it if it earns its place. The close relative{" "}
-          <Term>BIC</Term> penalises parameters more harshly (it scales the penalty by
-          sample size), favouring simpler models. Both are formal expressions of Occam's
-          razor — the same parsimony instinct as regularisation, in a different guise.
+          Here <TeX>{TEX.lnL}</TeX> measures how well the model fits (the maximised log-likelihood)
+          and <TeX>{TEX.k}</TeX> is the number of parameters — so AIC trades goodness-of-fit against
+          complexity, and <strong>lower is better</strong>. Adding a useless predictor improves fit
+          a little but costs <TeX>{TEX.two}</TeX> in the penalty, so AIC only keeps it if it earns
+          its place. The close relative <Term>BIC</Term> penalises parameters more harshly (it
+          scales the penalty by sample size), favouring simpler models. Both are formal expressions
+          of Occam's razor — the same parsimony instinct as regularisation, in a different guise.
         </p>
       </KSection>
 
       <KSection id="diagnostics" eyebrow="07" title="Diagnostics and fit">
         <p>
-          A fitted GLM still needs checking. The analogue of the residual sum of squares is
-          the <Term>deviance</Term> — a measure, built from the likelihood, of how far the
-          model's fit falls short of a perfect one; lower deviance is better fit, and
-          comparing deviances formally tests whether an added term helps. As on the
-          regression page, you also inspect <Term>residuals</Term> (specially defined for
-          GLMs) for leftover patterns the model missed, and watch for{" "}
-          <Term>influential points</Term> distorting the fit. The discipline is the same:
-          the model isn't done until you've looked at what it got wrong.
+          A fitted GLM still needs checking. The analogue of the residual sum of squares is the{" "}
+          <Term>deviance</Term> — a measure, built from the likelihood, of how far the model's fit
+          falls short of a perfect one; lower deviance is better fit, and comparing deviances
+          formally tests whether an added term helps. As on the regression page, you also inspect{" "}
+          <Term>residuals</Term> (specially defined for GLMs) for leftover patterns the model
+          missed, and watch for <Term>influential points</Term> distorting the fit. The discipline
+          is the same: the model isn't done until you've looked at what it got wrong.
         </p>
       </KSection>
 
       <KSection id="mixed" eyebrow="08" title="When data has structure">
         <p>
-          GLMs assume observations are independent — but often they're not. Repeated
-          measurements on the same patient, students within the same school, readings from
-          the same sensor: these are <em>grouped</em>, and ignoring that structure
-          understates your uncertainty. <Term>Mixed-effects</Term> (or hierarchical) models
-          extend the framework with <Term>random effects</Term> — group-level terms that let
-          each cluster have its own adjustment while still sharing overall structure. It's
-          how you honestly model nested, correlated data, and it connects directly to the{" "}
+          GLMs assume observations are independent — but often they're not. Repeated measurements on
+          the same patient, students within the same school, readings from the same sensor: these
+          are <em>grouped</em>, and ignoring that structure understates your uncertainty.{" "}
+          <Term>Mixed-effects</Term> (or hierarchical) models extend the framework with{" "}
+          <Term>random effects</Term> — group-level terms that let each cluster have its own
+          adjustment while still sharing overall structure. It's how you honestly model nested,
+          correlated data, and it connects directly to the{" "}
           <Link href="/knowledge/bayesian-statistics">Bayesian</Link> hierarchical view. The
-          unifying message: pick the distribution, link, and grouping that match how the
-          data was actually generated.
+          unifying message: pick the distribution, link, and grouping that match how the data was
+          actually generated.
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="09" title="Where it shows up in my work">
         <Callout type="applied" label="The interpretable workhorse for real outcomes">
           <p>
-            Real outcomes are rarely tidy continuous numbers, and GLMs are how I model the
-            ones that aren't. <strong>Logistic regression</strong> for a yes/no outcome —
-            will this case escalate, did this intervention work — is a constant, precisely
-            because its <strong>odds ratios</strong> are something I can put in front of a
-            decision-maker and explain. <strong>Poisson</strong> models for counts and
-            rates show up wherever the question is "how often". The framing that matters:
-            statistical modelling optimises for <strong>interpretation and inference</strong>,
-            not raw prediction — so when the goal is to <em>understand and defend</em> a
-            relationship rather than just forecast it, this is the right tool, and a
-            black-box <Link href="/knowledge/statistical-machine-learning">model</Link> is
-            the wrong one.
+            Real outcomes are rarely tidy continuous numbers, and GLMs are how I model the ones that
+            aren't. <strong>Logistic regression</strong> for a yes/no outcome — will this case
+            escalate, did this intervention work — is a constant, precisely because its{" "}
+            <strong>odds ratios</strong> are something I can put in front of a decision-maker and
+            explain. <strong>Poisson</strong> models for counts and rates show up wherever the
+            question is "how often". The framing that matters: statistical modelling optimises for{" "}
+            <strong>interpretation and inference</strong>, not raw prediction — so when the goal is
+            to <em>understand and defend</em> a relationship rather than just forecast it, this is
+            the right tool, and a black-box{" "}
+            <Link href="/knowledge/statistical-machine-learning">model</Link> is the wrong one.
           </p>
           <p>
             It also ties the statistics pages together: it generalises{" "}
-            <Link href="/knowledge/linear-statistical-models">linear regression</Link>, runs
-            on <Link href="/knowledge/statistics">maximum likelihood</Link>, and shares its
-            parsimony logic with both regularisation and the Bayesian view.
+            <Link href="/knowledge/linear-statistical-models">linear regression</Link>, runs on{" "}
+            <Link href="/knowledge/statistics">maximum likelihood</Link>, and shares its parsimony
+            logic with both regularisation and the Bayesian view.
           </p>
         </Callout>
       </KSection>
@@ -290,8 +409,7 @@ function EnBody() {
             </li>
             <li>
               Three parts: a <strong>distribution</strong> (random), the linear predictor{" "}
-              <TeX>{TEX.eta}</TeX> (systematic), and a <strong>link</strong>{" "}
-              <TeX>{TEX.gEy}</TeX>.
+              <TeX>{TEX.eta}</TeX> (systematic), and a <strong>link</strong> <TeX>{TEX.gEy}</TeX>.
             </li>
             <li>
               <strong>Logistic</strong>: Binomial + logit link <TeX>{TEX.logitShort}</TeX> →
@@ -299,17 +417,16 @@ function EnBody() {
               <TeX>{TEX.poissonShort}</TeX> → counts.
             </li>
             <li>
-              Fit by <strong>maximum likelihood</strong> (iterative); get standard errors
-              &amp; tests for free.
+              Fit by <strong>maximum likelihood</strong> (iterative); get standard errors &amp;
+              tests for free.
             </li>
             <li>
-              Compare models with <strong>AIC</strong> <TeX>{TEX.aicShort}</TeX> / BIC (fit
-              vs complexity, lower is better). Check <strong>deviance</strong> &amp;
-              residuals.
+              Compare models with <strong>AIC</strong> <TeX>{TEX.aicShort}</TeX> / BIC (fit vs
+              complexity, lower is better). Check <strong>deviance</strong> &amp; residuals.
             </li>
             <li>
-              Grouped/correlated data → <strong>mixed-effects</strong> (random effects).
-              Statistical modelling prizes <strong>interpretation over prediction</strong>.
+              Grouped/correlated data → <strong>mixed-effects</strong> (random effects). Statistical
+              modelling prizes <strong>interpretation over prediction</strong>.
             </li>
           </ul>
         </Callout>
@@ -351,8 +468,7 @@ function ZhBody() {
 
       <KSection id="glm" eyebrow="02" title="广义线性模型">
         <p>
-          一个 <Term>GLM</Term> 由三个分量构成，一旦你看清它们，就几乎能为任何结果构造一个
-          模型：
+          一个 <Term>GLM</Term> 由三个分量构成，一旦你看清它们，就几乎能为任何结果构造一个 模型：
         </p>
         <ul>
           <li>
@@ -401,11 +517,10 @@ function ZhBody() {
         </Formula>
         <p>
           反过来跑（其逆链接是 S 形的<Term>逻辑函数</Term>），任何线性预测都会映射到 0 与 1
-          之间的一个有效概率——不再有不可能的预测。系数也有干净的读法：每个 <TeX>{TEX.betaj}</TeX>{" "}
-          是 <TeX>{TEX.xj}</TeX> 每增加一个单位时<em>对数几率</em>的变化，而 <TeX>{TEX.ebetaj}</TeX>{" "}
-          是一个<Term>几率比</Term>——「这个因素把几率乘以 1.5」。它是统计学的主力分类器，也是
-          通往 <Link href="/knowledge/statistical-machine-learning">ML 页</Link>上分类模型的
-          桥梁。
+          之间的一个有效概率——不再有不可能的预测。系数也有干净的读法：每个 <TeX>{TEX.betaj}</TeX> 是{" "}
+          <TeX>{TEX.xj}</TeX> 每增加一个单位时<em>对数几率</em>的变化，而 <TeX>{TEX.ebetaj}</TeX>{" "}
+          是一个<Term>几率比</Term>——「这个因素把几率乘以 1.5」。它是统计学的主力分类器，也是 通往{" "}
+          <Link href="/knowledge/statistical-machine-learning">ML 页</Link>上分类模型的 桥梁。
         </p>
       </KSection>
 
@@ -414,9 +529,7 @@ function ZhBody() {
           对于<Term>计数结果</Term>——工单数量、每个路口的事故数、每位患者的就诊次数——结果是
           泊松的，链接是<Term>对数</Term>：
         </p>
-        <Formula label="λ 的对数等于 X β，其中 λ 是期望计数。">
-          {TEX.poisson}
-        </Formula>
+        <Formula label="λ 的对数等于 X β，其中 λ 是期望计数。">{TEX.poisson}</Formula>
         <p>
           对期望计数的对数建模，使预测保持为正（计数永不为负），并让系数变成可乘的：
           <TeX>{TEX.ebetaj}</TeX> 是预测变量每增加一个单位时比率相乘的因子。同样的三段式配方，
@@ -485,10 +598,10 @@ function ZhBody() {
           <p>
             真实的结果很少是整洁的连续数，而 GLM 正是我为那些并非如此的结果建模的方式。
             <strong>逻辑回归</strong>用于一个是/否的结果——这个案件会不会升级、这次干预是否
-            奏效——是常客，恰恰因为它的<strong>几率比</strong>是我能摆在决策者面前并加以解释的
-            东西。<strong>泊松</strong>模型用于计数与比率，凡是问题为「多久一次」之处都会出现。
-            要紧的取景是：统计建模为<strong>解释与推断</strong>而优化，而非纯粹的预测——所以当
-            目标是<em>理解并辩护</em>一种关系、而不只是预报它时，这就是对的工具，而一个黑箱
+            奏效——是常客，恰恰因为它的<strong>几率比</strong>是我能摆在决策者面前并加以解释的 东西。
+            <strong>泊松</strong>模型用于计数与比率，凡是问题为「多久一次」之处都会出现。
+            要紧的取景是：统计建模为<strong>解释与推断</strong>而优化，而非纯粹的预测——所以当 目标是
+            <em>理解并辩护</em>一种关系、而不只是预报它时，这就是对的工具，而一个黑箱
             <Link href="/knowledge/statistical-machine-learning">模型</Link>则是错的。
           </p>
           <p>

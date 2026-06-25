@@ -21,7 +21,8 @@ const PERSON_SCHEMA = {
   additionalName: "Rin",
   familyName: "Huang",
   url: "https://rin.contact",
-  image: "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
+  image:
+    "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
   email: "huang@rin.contact",
   gender: "Male",
   nationality: { "@type": "Country", name: "Australia" },
@@ -36,43 +37,70 @@ const PERSON_SCHEMA = {
       "@type": "Place",
       name: "Adelaide, South Australia, Australia",
       geo: { "@type": "GeoCoordinates", latitude: -34.9285, longitude: 138.6007 },
-      address: { "@type": "PostalAddress", addressLocality: "Adelaide", addressRegion: "SA", addressCountry: "AU" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Adelaide",
+        addressRegion: "SA",
+        addressCountry: "AU",
+      },
     },
     {
       "@type": "Place",
       name: "Melbourne, Victoria, Australia",
       geo: { "@type": "GeoCoordinates", latitude: -37.8136, longitude: 144.9631 },
-      address: { "@type": "PostalAddress", addressLocality: "Melbourne", addressRegion: "VIC", addressCountry: "AU" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Melbourne",
+        addressRegion: "VIC",
+        addressCountry: "AU",
+      },
     },
     {
       "@type": "Place",
       name: "Sydney, New South Wales, Australia",
       geo: { "@type": "GeoCoordinates", latitude: -33.8688, longitude: 151.2093 },
-      address: { "@type": "PostalAddress", addressLocality: "Sydney", addressRegion: "NSW", addressCountry: "AU" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Sydney",
+        addressRegion: "NSW",
+        addressCountry: "AU",
+      },
     },
     {
       "@type": "Place",
       name: "Anshun, Guizhou, China",
       geo: { "@type": "GeoCoordinates", latitude: 26.2457, longitude: 105.9468 },
-      address: { "@type": "PostalAddress", addressLocality: "Anshun", addressRegion: "Guizhou", addressCountry: "CN" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Anshun",
+        addressRegion: "Guizhou",
+        addressCountry: "CN",
+      },
     },
   ],
   workLocation: {
     "@type": "Place",
     name: "Adelaide, South Australia, Australia",
-    address: { "@type": "PostalAddress", addressLocality: "Adelaide", addressRegion: "SA", addressCountry: "AU" },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Adelaide",
+      addressRegion: "SA",
+      addressCountry: "AU",
+    },
   },
   jobTitle: "Senior Data Analyst",
   hasOccupation: {
     "@type": "Occupation",
     name: "Senior Data Analyst",
-    description: "Develops analytical models and statistical frameworks that translate complex policing data into decision-ready intelligence for government and public safety organisations.",
+    description:
+      "Develops analytical models and statistical frameworks that translate complex policing data into decision-ready intelligence for government and public safety organisations.",
     occupationLocation: { "@type": "City", name: "Adelaide" },
-    skills: "Python, R, SQL, Power BI, Statistical Modelling, Strategic Intelligence, GIS, Machine Learning",
+    skills:
+      "Python, R, SQL, Power BI, Statistical Modelling, Strategic Intelligence, GIS, Machine Learning",
   },
   knowsLanguage: [
-    { "@type": "Language", name: "English",           alternateName: "en" },
-    { "@type": "Language", name: "Mandarin Chinese",  alternateName: "zh" },
+    { "@type": "Language", name: "English", alternateName: "en" },
+    { "@type": "Language", name: "Mandarin Chinese", alternateName: "zh" },
   ],
   worksFor: {
     "@type": "Organization",
@@ -170,13 +198,11 @@ const PROFILE_PAGE_SCHEMA = {
     url: "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
     width: 1200,
     height: 630,
-    caption: "Rin Huang (黄孙创宇, Sunchuangyu Huang) — Senior Data Analyst & Research Software Engineer",
+    caption:
+      "Rin Huang (黄孙创宇, Sunchuangyu Huang) — Senior Data Analyst & Research Software Engineer",
   },
   // significantLinks tells Google that LinkedIn/GitHub are related pages, not competitors
-  significantLinks: [
-    "https://linkedin.com/in/sunchuangyuhuang",
-    "https://github.com/rNLKJA",
-  ],
+  significantLinks: ["https://linkedin.com/in/sunchuangyuhuang", "https://github.com/rNLKJA"],
   speakable: {
     "@type": "SpeakableSpecification",
     cssSelector: ["h1", "#hero-bio", ".hero-role", "h2"],
@@ -192,11 +218,13 @@ const PROJECTS_SCHEMA = {
   author: { "@id": "https://rin.contact/#person" },
   itemListElement: [
     {
-      "@type": "ListItem", position: 1,
+      "@type": "ListItem",
+      position: 1,
       item: {
         "@type": "SoftwareApplication",
         name: "Mapiva",
-        description: "Co-founded a mobile social connection app — full product ownership from architecture through implementation as Dev Lead.",
+        description:
+          "Co-founded a mobile social connection app — full product ownership from architecture through implementation as Dev Lead.",
         applicationCategory: "SocialNetworkingApplication",
         operatingSystem: "iOS, Android",
         author: { "@id": "https://rin.contact/#person" },
@@ -204,44 +232,52 @@ const PROJECTS_SCHEMA = {
       },
     },
     {
-      "@type": "ListItem", position: 2,
+      "@type": "ListItem",
+      position: 2,
       item: {
         "@type": "SoftwareSourceCode",
         name: "SA Address Generator",
-        description: "Internal tool to generate validated South Australian addresses based on SEIFA indices and remoteness classifications, verified via Mapbox API.",
+        description:
+          "Internal tool to generate validated South Australian addresses based on SEIFA indices and remoteness classifications, verified via Mapbox API.",
         codeRepository: "https://github.com/rNLKJA/SA-Mock-Address-Generator",
         programmingLanguage: "Python",
         author: { "@id": "https://rin.contact/#person" },
       },
     },
     {
-      "@type": "ListItem", position: 3,
+      "@type": "ListItem",
+      position: 3,
       item: {
         "@type": "SoftwareSourceCode",
         name: "US Political Data Collection System",
-        description: "Scraped ~180 presidential debate transcripts and ~25,000 campaign documents from the UC Santa Barbara American Presidency Project with multi-threaded processing.",
+        description:
+          "Scraped ~180 presidential debate transcripts and ~25,000 campaign documents from the UC Santa Barbara American Presidency Project with multi-threaded processing.",
         codeRepository: "https://github.com/rNLKJA/Political-Data-Collection-System",
         programmingLanguage: "Python",
         author: { "@id": "https://rin.contact/#person" },
       },
     },
     {
-      "@type": "ListItem", position: 4,
+      "@type": "ListItem",
+      position: 4,
       item: {
         "@type": "SoftwareApplication",
         name: "CBS Intelligence Analytics",
-        description: "First intelligence analytics capability within the CBS Prevention Team — integrating ABS, SA Health, ACCC, and DataSA data into unified dashboards and GIS maps used by the Minister's Office.",
+        description:
+          "First intelligence analytics capability within the CBS Prevention Team — integrating ABS, SA Health, ACCC, and DataSA data into unified dashboards and GIS maps used by the Minister's Office.",
         applicationCategory: "BusinessApplication",
         author: { "@id": "https://rin.contact/#person" },
         programmingLanguage: ["Python", "Power BI"],
       },
     },
     {
-      "@type": "ListItem", position: 5,
+      "@type": "ListItem",
+      position: 5,
       item: {
         "@type": "SoftwareApplication",
         name: "MoodQ",
-        description: "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Psychiatry research group. Migrated from Uniapp to Expo React Native, reducing hosting costs ~$500/month.",
+        description:
+          "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Psychiatry research group. Migrated from Uniapp to Expo React Native, reducing hosting costs ~$500/month.",
         applicationCategory: "HealthApplication",
         operatingSystem: "iOS, Android",
         author: { "@id": "https://rin.contact/#person" },
@@ -249,76 +285,90 @@ const PROJECTS_SCHEMA = {
       },
     },
     {
-      "@type": "ListItem", position: 6,
+      "@type": "ListItem",
+      position: 6,
       item: {
         "@type": "SoftwareApplication",
         name: "SAPOL Intelligence Dashboards",
-        description: "Operational intelligence and crime analytics dashboards supporting frontline policing, resource allocation, and command-level decision-making across South Australia.",
+        description:
+          "Operational intelligence and crime analytics dashboards supporting frontline policing, resource allocation, and command-level decision-making across South Australia.",
         applicationCategory: "BusinessApplication",
         author: { "@id": "https://rin.contact/#person" },
         programmingLanguage: ["Python", "Power BI", "SQL"],
       },
     },
     {
-      "@type": "ListItem", position: 7,
+      "@type": "ListItem",
+      position: 7,
       item: {
         "@type": "SoftwareSourceCode",
         name: "Flow Cytometry Analysis Pipeline",
-        description: "Automated flow cytometry data analysis using cloud and HPC, with test infrastructure for reproducibility and open-source contributions to celseq2.",
+        description:
+          "Automated flow cytometry data analysis using cloud and HPC, with test infrastructure for reproducibility and open-source contributions to celseq2.",
         programmingLanguage: "Python",
         author: { "@id": "https://rin.contact/#person" },
       },
     },
     {
-      "@type": "ListItem", position: 8,
+      "@type": "ListItem",
+      position: 8,
       item: {
         "@type": "SoftwareSourceCode",
         name: "Climate Fact-Checker",
-        description: "Two-stage automated fact-checking for climate change claims — TF-IDF evidence retrieval and Transformer-based classification, outperforming LSTM baselines.",
+        description:
+          "Two-stage automated fact-checking for climate change claims — TF-IDF evidence retrieval and Transformer-based classification, outperforming LSTM baselines.",
         codeRepository: "https://github.com/rNLKJA",
         programmingLanguage: "Python",
         author: { "@id": "https://rin.contact/#person" },
       },
     },
     {
-      "@type": "ListItem", position: 9,
+      "@type": "ListItem",
+      position: 9,
       item: {
         "@type": "SoftwareSourceCode",
         name: "Australia Social Media Analytics on the Cloud",
-        description: "Harvested and analysed Twitter and Mastodon data alongside ABS SUDO spatial data to produce a Social Sense Dashboard across Australian regions.",
+        description:
+          "Harvested and analysed Twitter and Mastodon data alongside ABS SUDO spatial data to produce a Social Sense Dashboard across Australian regions.",
         codeRepository: "https://github.com/rNLKJA/Australia-Social-Media-Analytics-on-the-Cloud",
         programmingLanguage: ["Python", "CouchDB"],
         author: { "@id": "https://rin.contact/#person" },
       },
     },
     {
-      "@type": "ListItem", position: 10,
+      "@type": "ListItem",
+      position: 10,
       item: {
         "@type": "SoftwareSourceCode",
         name: "Twitter HPC Analysis",
-        description: "Processed a large-scale Twitter dataset on SPARTAN HPC using MPI and Python, identifying tweet distribution across Australian cities.",
+        description:
+          "Processed a large-scale Twitter dataset on SPARTAN HPC using MPI and Python, identifying tweet distribution across Australian cities.",
         codeRepository: "https://github.com/rNLKJA/Twitter-Data-Analysis-with-HPC",
         programmingLanguage: "Python",
         author: { "@id": "https://rin.contact/#person" },
       },
     },
     {
-      "@type": "ListItem", position: 11,
+      "@type": "ListItem",
+      position: 11,
       item: {
         "@type": "SoftwareSourceCode",
         name: "Cachex AI Game Agent",
-        description: "AI agents for Cachex — a two-player connection game — using heuristic A* search and competitive game theory with strategic sabotage logic.",
+        description:
+          "AI agents for Cachex — a two-player connection game — using heuristic A* search and competitive game theory with strategic sabotage logic.",
         codeRepository: "https://github.com/rNLKJA/Cachex-AI",
         programmingLanguage: "Python",
         author: { "@id": "https://rin.contact/#person" },
       },
     },
     {
-      "@type": "ListItem", position: 12,
+      "@type": "ListItem",
+      position: 12,
       item: {
         "@type": "SoftwareSourceCode",
         name: "PCRM — Personal Customer Relationship Management",
-        description: "Full-stack CRM system with React frontend, Express REST API, and MongoDB backend, built as the COMP30022 IT Project at the University of Melbourne.",
+        description:
+          "Full-stack CRM system with React frontend, Express REST API, and MongoDB backend, built as the COMP30022 IT Project at the University of Melbourne.",
         codeRepository: "https://github.com/rNLKJA/Personal-Customer-Relation-Management-PCRM",
         programmingLanguage: ["Node.js", "React.js", "MongoDB"],
         author: { "@id": "https://rin.contact/#person" },
@@ -462,7 +512,11 @@ const CREDENTIALS_SCHEMA = {
       "@type": "EducationalOccupationalCredential",
       name: "Melbourne Plus: Innovation",
       credentialCategory: "microcredential",
-      recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Melbourne", url: "https://www.unimelb.edu.au" },
+      recognizedBy: {
+        "@type": "CollegeOrUniversity",
+        name: "University of Melbourne",
+        url: "https://www.unimelb.edu.au",
+      },
       dateCreated: "2024-05-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
@@ -470,7 +524,11 @@ const CREDENTIALS_SCHEMA = {
       "@type": "EducationalOccupationalCredential",
       name: "Melbourne Plus: People Leadership",
       credentialCategory: "microcredential",
-      recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Melbourne", url: "https://www.unimelb.edu.au" },
+      recognizedBy: {
+        "@type": "CollegeOrUniversity",
+        name: "University of Melbourne",
+        url: "https://www.unimelb.edu.au",
+      },
       dateCreated: "2024-10-01",
       holder: { "@id": "https://rin.contact/#person" },
     },
@@ -556,7 +614,11 @@ class MyDocument extends Document {
                  animation mounts, so the page never flashes underneath it).
                  Gated to once-per-session; safety timeout never traps the page;
                  BootOverlay lifts the cover when the animation finishes. ── */}
-          <style dangerouslySetInnerHTML={{ __html: `html.boot-cover::before{content:"";position:fixed;inset:0;z-index:99998;background:var(--boot-cover-bg,#0A0A0A);pointer-events:none}` }} />
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `html.boot-cover::before{content:"";position:fixed;inset:0;z-index:99998;background:var(--boot-cover-bg,#0A0A0A);pointer-events:none}`,
+            }}
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(){try{if(sessionStorage.getItem("rin_boot_seen"))return;var e=document.documentElement;var d=e.classList.contains("dark");e.style.setProperty("--boot-cover-bg",d?"#0A0A0A":"#FFFFFF");e.classList.add("boot-cover");window.__bootCoverTimer=setTimeout(function(){e.classList.remove("boot-cover");},8000);}catch(_){}})();`,
@@ -572,14 +634,20 @@ class MyDocument extends Document {
           <meta name="rating" content="general" />
 
           {/* ── Search engine verification ── */}
-          <meta name="google-site-verification" content="uQJ5D6LcYS7OR9_3FJ9XiOezDuy2XJz9uNMoyxXTWoM" />
+          <meta
+            name="google-site-verification"
+            content="uQJ5D6LcYS7OR9_3FJ9XiOezDuy2XJz9uNMoyxXTWoM"
+          />
           <meta name="msvalidate.01" content="1A11F7338CB1C8779DDBD51D691938EE" />
           <meta name="baidu-site-verification" content="codeva-AxSgaBAlpG" />
 
           {/* ── Bing / IndexNow ── */}
           {/* IndexNow lets Bing index page changes near-instantly — key verified via /d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9.txt */}
           <meta name="indexnow-key" content="d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9" />
-          <link rel="indexnow-key" href="https://rin.contact/d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9.txt" />
+          <link
+            rel="indexnow-key"
+            href="https://rin.contact/d4e8f2a1b7c3e9f5d2a8b1c6e7f0d3a9.txt"
+          />
 
           {/* ── Baidu mobile indexing ── */}
           {/* applicable-device tells Baidu Spider this page renders correctly on both desktop and mobile */}
@@ -587,7 +655,10 @@ class MyDocument extends Document {
           {/* mobile-agent tells Baiduspider-Mobile where the mobile URL is (same page — responsive) */}
           <meta name="mobile-agent" content="format=html5;url=https://rin.contact/" />
           {/* Chinese keywords — Baidu still uses the keywords meta for ranking signals */}
-          <meta name="keywords" content="黄孙创宇, 黄孙 Rin, 黄孙创宇简历, 黄孙创宇数据分析师, Sunchuangyu Huang, Huang Sunchuangyu, HUANGSUNCHUANGYU, 南澳大利亚警察, 数据分析, 数据科学, 软件工程师, 澳大利亚" />
+          <meta
+            name="keywords"
+            content="黄孙创宇, 黄孙 Rin, 黄孙创宇简历, 黄孙创宇数据分析师, Sunchuangyu Huang, Huang Sunchuangyu, HUANGSUNCHUANGYU, 南澳大利亚警察, 数据分析, 数据科学, 软件工程师, 澳大利亚"
+          />
 
           {/* ── Favicons & PWA ── */}
           <link rel="icon" href="/favicon.ico" />
@@ -631,12 +702,30 @@ class MyDocument extends Document {
           */}
 
           {/* ── JSON-LD structured data ── */}
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }} />
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }} />
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFILE_PAGE_SCHEMA) }} />
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_SCHEMA) }} />
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PROJECTS_SCHEMA) }} />
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CREDENTIALS_SCHEMA) }} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFILE_PAGE_SCHEMA) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_SCHEMA) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(PROJECTS_SCHEMA) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(CREDENTIALS_SCHEMA) }}
+          />
         </Head>
 
         {/*

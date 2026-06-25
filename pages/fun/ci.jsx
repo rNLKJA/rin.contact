@@ -6,8 +6,13 @@ import Link from "next/link";
 import { useState } from "react";
 
 const MOODS = [
-  "productivity", "confidence", "coffee tolerance", "meeting patience",
-  "debugging stamina", "documentation enthusiasm", "estimation accuracy",
+  "productivity",
+  "confidence",
+  "coffee tolerance",
+  "meeting patience",
+  "debugging stamina",
+  "documentation enthusiasm",
+  "estimation accuracy",
 ];
 
 export default function CIPage() {
@@ -20,7 +25,10 @@ export default function CIPage() {
     setResult({
       low,
       high,
-      note: mood === "estimation accuracy" ? "95% CI: [never, ∞]" : `95% CI for your ${mood}: [${low}, ${high}]`,
+      note:
+        mood === "estimation accuracy"
+          ? "95% CI: [never, ∞]"
+          : `95% CI for your ${mood}: [${low}, ${high}]`,
     });
   };
 
@@ -37,14 +45,22 @@ export default function CIPage() {
         title="Confidence Interval — rin.contact"
         description="Because no one likes uncertainty."
         path="/fun/ci"
-        ogImage={{ title: "Confidence Interval", subtitle: "Because no one likes uncertainty.", section: "fun" }}
+        ogImage={{
+          title: "Confidence Interval",
+          subtitle: "Because no one likes uncertainty.",
+          section: "fun",
+        }}
         noindex={true}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/fun/ci</p>
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Confidence Interval Generator</h1>
+          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">
+            /fun/ci
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
+            Confidence Interval Generator
+          </h1>
           <p className="text-sm text-[#7A7A7A] mb-10">
             Because no one likes uncertainty. 95% CI for when this project will ship: [never, ∞].
           </p>
@@ -56,7 +72,9 @@ export default function CIPage() {
               className="border border-[#E0E0E0] px-4 py-3 text-sm font-mono bg-white dark:bg-[#1A1A1A] dark:text-white focus:outline-none focus:border-black w-full"
             >
               {MOODS.map((m) => (
-                <option key={m} value={m}>{m}</option>
+                <option key={m} value={m}>
+                  {m}
+                </option>
               ))}
             </select>
             <button
@@ -74,8 +92,18 @@ export default function CIPage() {
           )}
 
           <div className="pt-10 border-t border-[#F0F0F0] flex flex-wrap gap-4 mt-10">
-            <Link href="/fun" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">← /fun</Link>
-            <Link href="/" className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors">Home</Link>
+            <Link
+              href="/fun"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
+              ← /fun
+            </Link>
+            <Link
+              href="/"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
+            >
+              Home
+            </Link>
           </div>
         </div>
       </div>

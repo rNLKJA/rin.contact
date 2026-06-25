@@ -41,16 +41,31 @@ export default function ShareButtons({ url, title }) {
         {t("blog.shareLabel")}
       </p>
       <div className="flex flex-wrap gap-2">
-        <a href={linkedIn} target="_blank" rel="noreferrer" className={pill} aria-label={`${t("blog.shareLabel")}: LinkedIn`}>
+        <a
+          href={linkedIn}
+          target="_blank"
+          rel="noreferrer"
+          className={pill}
+          aria-label={`${t("blog.shareLabel")}: LinkedIn`}
+        >
           <FaLinkedin size={12} aria-hidden="true" />
           LinkedIn
         </a>
-        <a href={x} target="_blank" rel="noreferrer" className={pill} aria-label={`${t("blog.shareLabel")}: X`}>
-          <FaXTwitter size={12} aria-hidden="true" />
-          X
+        <a
+          href={x}
+          target="_blank"
+          rel="noreferrer"
+          className={pill}
+          aria-label={`${t("blog.shareLabel")}: X`}
+        >
+          <FaXTwitter size={12} aria-hidden="true" />X
         </a>
         <button type="button" onClick={copy} className={pill} aria-label={t("blog.copyLink")}>
-          {copied ? <FiCheck size={12} aria-hidden="true" /> : <FiLink size={12} aria-hidden="true" />}
+          {copied ? (
+            <FiCheck size={12} aria-hidden="true" />
+          ) : (
+            <FiLink size={12} aria-hidden="true" />
+          )}
           {copied ? t("blog.copied") : t("blog.copyLink")}
         </button>
       </div>

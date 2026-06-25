@@ -15,10 +15,10 @@ const CHAR_ARRAY = Array.from(CHARS);
 
 // Nothing palette
 const COLOURS = {
-  head:    "#FF3C3C",   // bright red — leading char
-  bright:  "#CCCCCC",   // near-white
-  mid:     "#555555",   // mid grey
-  dim:     "#1F1F1F",   // barely visible
+  head: "#FF3C3C", // bright red — leading char
+  bright: "#CCCCCC", // near-white
+  mid: "#555555", // mid grey
+  dim: "#1F1F1F", // barely visible
 };
 
 // ── Main ─────────────────────────────────────────────────────────────────────
@@ -35,10 +35,10 @@ export default function MatrixPage() {
     let cols, drops, colTick;
 
     function init() {
-      canvas.width  = window.innerWidth;
+      canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      cols    = Math.floor(canvas.width / FONT_SIZE);
-      drops   = Array.from({ length: cols }, () => Math.floor(Math.random() * -40));
+      cols = Math.floor(canvas.width / FONT_SIZE);
+      drops = Array.from({ length: cols }, () => Math.floor(Math.random() * -40));
       colTick = Array.from({ length: cols }, () => Math.floor(Math.random() * 3) + 1);
     }
 
@@ -90,7 +90,9 @@ export default function MatrixPage() {
     // Reveal overlay after a short delay
     const revealTimer = setTimeout(() => setRevealed(true), 2200);
 
-    const onResize = () => { init(); };
+    const onResize = () => {
+      init();
+    };
     window.addEventListener("resize", onResize);
 
     return () => {
@@ -116,11 +118,7 @@ export default function MatrixPage() {
       />
 
       {/* Full-screen canvas */}
-      <canvas
-        ref={canvasRef}
-        className="fixed inset-0 w-full h-full bg-black"
-        aria-hidden="true"
-      />
+      <canvas ref={canvasRef} className="fixed inset-0 w-full h-full bg-black" aria-hidden="true" />
 
       {/* Overlay — fades in */}
       <div
@@ -146,8 +144,8 @@ export default function MatrixPage() {
           </h1>
 
           <p className="font-mono text-xs text-[#555555] leading-relaxed mb-10">
-            Every symbol you see is borrowed from the language of data science.<br />
-            ∑ σ λ ∇ ∫ — beneath every model, it all comes down to maths.
+            Every symbol you see is borrowed from the language of data science.
+            <br />∑ σ λ ∇ ∫ — beneath every model, it all comes down to maths.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

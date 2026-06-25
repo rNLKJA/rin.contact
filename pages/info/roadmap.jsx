@@ -11,16 +11,17 @@ const Section = ({ label, status, statusLabel, items }) => (
         <li key={title} className="py-4 flex items-start justify-between gap-6">
           <div>
             <p className="text-sm font-medium text-[#1A1A1A] dark:text-white">{title}</p>
-            {note && (
-              <p className="text-xs text-[#7A7A7A] mt-0.5 leading-relaxed">{note}</p>
-            )}
+            {note && <p className="text-xs text-[#7A7A7A] mt-0.5 leading-relaxed">{note}</p>}
           </div>
           <span
             className={`text-[10px] font-mono tracking-widest uppercase flex-shrink-0 px-2 py-0.5 ${
-              status === "done"   ? "border border-[#22C55E] text-[#22C55E]" :
-              status === "wip"   ? "border border-[#FF3C3C] text-[#FF3C3C]" :
-              status === "planned" ? "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A]" :
-              "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6E6E6E] dark:text-[#9A9A9A]"
+              status === "done"
+                ? "border border-[#22C55E] text-[#22C55E]"
+                : status === "wip"
+                  ? "border border-[#FF3C3C] text-[#FF3C3C]"
+                  : status === "planned"
+                    ? "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A]"
+                    : "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6E6E6E] dark:text-[#9A9A9A]"
             }`}
           >
             {statusLabel}
@@ -46,13 +47,19 @@ export default function RoadmapPage() {
         <link rel="canonical" href="https://rin.contact/info/roadmap" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og/?title=Roadmap&subtitle=What%20is%20coming%20next%20for%20rin&section=info" />
+        <meta
+          property="og:image"
+          content="https://rin.contact/api/og/?title=Roadmap&subtitle=What%20is%20coming%20next%20for%20rin&section=info"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Roadmap" />
         <meta name="twitter:description" content="What is coming next for rin." />
-        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Roadmap&subtitle=What%20is%20coming%20next%20for%20rin&section=info" />
+        <meta
+          name="twitter:image"
+          content="https://rin.contact/api/og/?title=Roadmap&subtitle=What%20is%20coming%20next%20for%20rin&section=info"
+        />
       </Head>
 
       <SeoHead
@@ -64,15 +71,14 @@ export default function RoadmapPage() {
       />
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
-
         <div className="mb-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">/info/roadmap</p>
+          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">
+            /info/roadmap
+          </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
             {t("infoRoadmap.heading")}
           </h1>
-          <p className="text-sm text-[#7A7A7A] leading-relaxed">
-            {t("infoRoadmap.intro")}
-          </p>
+          <p className="text-sm text-[#7A7A7A] leading-relaxed">{t("infoRoadmap.intro")}</p>
         </div>
 
         {LISTS.map((status) => (
@@ -97,7 +103,6 @@ export default function RoadmapPage() {
             ← {t("nav.home")}
           </Link>
         </div>
-
       </div>
     </>
   );

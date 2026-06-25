@@ -25,12 +25,22 @@ export const CAREER_RAW = [
       "Governing end-to-end analytics solutions across IAPro and connected systems with a continuous improvement mindset.",
       "Collaborating with EPSB leadership, the Intelligence and Probity Unit, enterprise architects, and cross-organisational working groups.",
     ],
-    tools: ["IAPro", "Python", "Statistical modelling", "Power BI", "GIS", "Data Visualisation", "Microsoft SQL Server", "Power Query"],
+    tools: [
+      "IAPro",
+      "Python",
+      "Statistical modelling",
+      "Power BI",
+      "GIS",
+      "Data Visualisation",
+      "Microsoft SQL Server",
+      "Power Query",
+    ],
   },
   {
     year: "2025",
     org: "Consumer and Business Services (CBS), Attorney-General's Department SA",
-    orgDesc: "SA government agency protecting consumers across tobacco, building work, and product safety.",
+    orgDesc:
+      "SA government agency protecting consumers across tobacco, building work, and product safety.",
     role: "ASO4 Intelligence & Coordination Officer",
     team: "Prevention Team — Compliance & Enforcement",
     period: "Jan 2025 – 20 Mar 2026",
@@ -47,12 +57,22 @@ export const CAREER_RAW = [
       "Built Power BI dashboards and GIS visualisations used directly by Senior Management and the Minister's Office.",
       "Supported investigations through metadata inspection and network mapping to strengthen evidentiary confidence.",
     ],
-    tools: ["Power BI", "Python", "GIS", "Time series", "Regression", "Microsoft SQL Server", "Scheduling", "Power Query"],
+    tools: [
+      "Power BI",
+      "Python",
+      "GIS",
+      "Time series",
+      "Regression",
+      "Microsoft SQL Server",
+      "Scheduling",
+      "Power Query",
+    ],
   },
   {
     year: "2025",
     org: "University of Melbourne — Psychiatry",
-    orgDesc: "World-class research university, Psychiatry dept pioneering digital mental health tools.",
+    orgDesc:
+      "World-class research university, Psychiatry dept pioneering digital mental health tools.",
     role: "RA.1 Research Assistant — MoodQ",
     team: "Psychiatry Department",
     period: "Aug 2024 – Feb 2026",
@@ -73,7 +93,8 @@ export const CAREER_RAW = [
   {
     year: "2024",
     org: "WEHI",
-    orgDesc: "One of the world's leading biomedical research institutes — genomics, immunology, and disease research.",
+    orgDesc:
+      "One of the world's leading biomedical research institutes — genomics, immunology, and disease research.",
     role: "Software Engineer Intern (Data Science)",
     team: "Bioinformatics",
     period: "Feb 2024 – Jul 2024",
@@ -92,7 +113,8 @@ export const CAREER_RAW = [
   {
     year: "2023",
     org: "CSIRO",
-    orgDesc: "Australia's national science agency — research at the frontier of climate, agriculture, and technology.",
+    orgDesc:
+      "Australia's national science agency — research at the frontier of climate, agriculture, and technology.",
     role: "Data Science Industrial Consultant",
     team: "Climate & Earth Systems",
     period: "Feb 2023 – Nov 2023",
@@ -106,12 +128,20 @@ export const CAREER_RAW = [
       "Delivered insights connecting climate change patterns to global food security risk.",
       "Bridged communication between University of Melbourne faculty and CSIRO research leadership.",
     ],
-    tools: ["Python", "AR time series", "Rolling window", "Statistical modelling", "Jupyter Notebook", "Research Software Engineering"],
+    tools: [
+      "Python",
+      "AR time series",
+      "Rolling window",
+      "Statistical modelling",
+      "Jupyter Notebook",
+      "Research Software Engineering",
+    ],
   },
   {
     year: "2022",
     org: "CSL (CSL Behring)",
-    orgDesc: "Global biotech leader headquartered in Melbourne — life-saving plasma-derived therapies.",
+    orgDesc:
+      "Global biotech leader headquartered in Melbourne — life-saving plasma-derived therapies.",
     role: "Data Analyst · Agile Leader",
     team: "Research & Development",
     period: "Feb 2022 – Jun 2022",
@@ -125,7 +155,15 @@ export const CAREER_RAW = [
       "Applied T-SNE, DBSCAN, and UMAP to identify hidden patterns in complex medical datasets.",
       "Led Agile ceremonies, supporting the team's delivery rhythm across the project lifecycle.",
     ],
-    tools: ["Python", "Scikit-learn", "T-SNE", "DBSCAN", "UMAP", "Jupyter Notebook", "Research Software Engineering"],
+    tools: [
+      "Python",
+      "Scikit-learn",
+      "T-SNE",
+      "DBSCAN",
+      "UMAP",
+      "Jupyter Notebook",
+      "Research Software Engineering",
+    ],
   },
 ];
 
@@ -137,7 +175,8 @@ const VOLUNTEER = [
   {
     year: "2025",
     org: "University of Melbourne",
-    orgDesc: "One of Australia's leading research universities — STEM industry outreach and student mentorship.",
+    orgDesc:
+      "One of Australia's leading research universities — STEM industry outreach and student mentorship.",
     role: "2025 STEM Industry Mentoring Program — Mentor",
     period: "Jul 2025 – Dec 2025",
     location: "Melbourne, VIC",
@@ -172,7 +211,8 @@ const VOLUNTEER = [
   {
     year: "2024",
     org: "University of Melbourne",
-    orgDesc: "Faculty of Engineering and Information Technology — annual flagship student project exhibition.",
+    orgDesc:
+      "Faculty of Engineering and Information Technology — annual flagship student project exhibition.",
     role: "2024 FEIT Endeavour Exhibition — Volunteer Staff",
     period: "Oct 2024",
     location: "Parkville, VIC",
@@ -190,7 +230,8 @@ const VOLUNTEER = [
   {
     year: "2024",
     org: "Practera",
-    orgDesc: "Experiential learning platform connecting students with real-world industry projects.",
+    orgDesc:
+      "Experiential learning platform connecting students with real-world industry projects.",
     role: "ANU CBE Analytics Plus Program — Mentor",
     period: "Jul 2024",
     location: "Remote",
@@ -228,7 +269,8 @@ export const EDUCATION = [
   {
     year: "2023–2024",
     org: "University of Melbourne",
-    orgDesc: "One of Australia's leading research universities, consistently ranked among the world's top 50.",
+    orgDesc:
+      "One of Australia's leading research universities, consistently ranked among the world's top 50.",
     role: "Master of Data Science",
     period: "Feb 2023 – Jul 2024",
     location: "Parkville, VIC",
@@ -247,7 +289,8 @@ export const EDUCATION = [
   {
     year: "2019–2022",
     org: "University of Melbourne",
-    orgDesc: "The same world-class institution — undergraduate programme built strong mathematical and computational foundations.",
+    orgDesc:
+      "The same world-class institution — undergraduate programme built strong mathematical and computational foundations.",
     role: "Bachelor of Science — Data Science",
     period: "Jun 2019 – Jul 2022",
     location: "Parkville, VIC",
@@ -267,7 +310,8 @@ export const EDUCATION = [
   {
     year: "2018–2019",
     org: "Trinity College, University of Melbourne",
-    orgDesc: "Residential college affiliated with the University of Melbourne, providing foundation studies for international students.",
+    orgDesc:
+      "Residential college affiliated with the University of Melbourne, providing foundation studies for international students.",
     role: "Foundation Studies Programme",
     period: "Mar 2018 – May 2019",
     location: "Parkville, VIC",
@@ -326,7 +370,9 @@ function TimelineItem({ item, index }) {
           <div className="flex-shrink-0 mt-0.5">
             <div
               className={`relative w-9 h-9 overflow-hidden flex items-center justify-center bg-white dark:bg-[#0A0A0A] ${
-                (item.noBorder || (item.org && item.org.includes("CSIRO"))) ? "" : "border border-[#E0E0E0] dark:border-[#3D3D3D]"
+                item.noBorder || (item.org && item.org.includes("CSIRO"))
+                  ? ""
+                  : "border border-[#E0E0E0] dark:border-[#3D3D3D]"
               }`}
               style={{ borderRadius: "22%" }}
             >
@@ -390,7 +436,9 @@ function TimelineItem({ item, index }) {
                   <ul className="space-y-1.5 mb-3">
                     {item.bullets.map((b, i) => (
                       <li key={i} className="flex gap-2 text-sm text-[#3D3D3D] dark:text-[#AAAAAA]">
-                        <span className="text-[#FF3C3C] flex-shrink-0 mt-0.5" aria-hidden="true">·</span>
+                        <span className="text-[#FF3C3C] flex-shrink-0 mt-0.5" aria-hidden="true">
+                          ·
+                        </span>
                         {b}
                       </li>
                     ))}
@@ -422,10 +470,10 @@ export default function TimelineSection() {
   const { t } = useI18n();
   const [ref, inView] = useInView();
   const [tab, setTab] = useState("career");
-  const timelineRef     = useRef(null);
-  const lineElRef       = useRef(null); // direct DOM ref — no React state on scroll
-  const sectionDocTop   = useRef(0);    // absolute document-top (doesn't change on scroll)
-  const sectionHeight   = useRef(0);    // cached height
+  const timelineRef = useRef(null);
+  const lineElRef = useRef(null); // direct DOM ref — no React state on scroll
+  const sectionDocTop = useRef(0); // absolute document-top (doesn't change on scroll)
+  const sectionHeight = useRef(0); // cached height
 
   useEffect(() => {
     const handler = (e) => setTab(e.detail.tab);
@@ -435,7 +483,7 @@ export default function TimelineSection() {
 
   // Animate the timeline line drawing down as user scrolls through it
   useEffect(() => {
-    const el     = timelineRef.current;
+    const el = timelineRef.current;
     const lineEl = lineElRef.current;
     if (!el || !lineEl) return;
 
@@ -446,7 +494,7 @@ export default function TimelineSection() {
       const rectTop = sectionDocTop.current - window.scrollY;
       const progress = Math.min(
         Math.max((windowH - rectTop) / (sectionHeight.current + windowH * 0.3), 0),
-        1,
+        1
       );
       lineEl.style.height = `${progress * 100}%`;
     };
@@ -483,7 +531,10 @@ export default function TimelineSection() {
     if (item.org === "South Australia Police") {
       return { ...item, current: sapolActive, future: !sapolActive };
     }
-    if (item.org?.includes("Attorney-General") || item.org?.includes("Consumer and Business Services")) {
+    if (
+      item.org?.includes("Attorney-General") ||
+      item.org?.includes("Consumer and Business Services")
+    ) {
       return { ...item, current: !sapolActive };
     }
     return item;
@@ -500,16 +551,14 @@ export default function TimelineSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
-          02 — Journey
-        </p>
+        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">02 — Journey</p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
           {t("timeline.heading")}
         </h2>
         <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
-          A path built on curiosity across government intelligence, biomedical
-          research, climate science, and software engineering — always looking
-          for where data can make a genuine difference.
+          A path built on curiosity across government intelligence, biomedical research, climate
+          science, and software engineering — always looking for where data can make a genuine
+          difference.
         </p>
 
         {/* Tab switcher */}
@@ -524,7 +573,13 @@ export default function TimelineSection() {
                   : "bg-white dark:bg-[#0A0A0A] text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-[#FF3C3C]"
               }`}
             >
-              {t(tabKey === "career" ? "timeline.tabCareer" : tabKey === "education" ? "timeline.tabEducation" : "timeline.tabVolunteer")}
+              {t(
+                tabKey === "career"
+                  ? "timeline.tabCareer"
+                  : tabKey === "education"
+                    ? "timeline.tabEducation"
+                    : "timeline.tabVolunteer"
+              )}
             </button>
           ))}
         </div>

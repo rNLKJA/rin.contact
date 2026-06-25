@@ -9,14 +9,17 @@ import { bitcount, dmSans, playfair } from "@/lib/fonts";
 import "../public/styles/globals.css";
 import "katex/dist/katex.min.css";
 
-const Analytics = dynamic(() => import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })), { ssr: false });
+const Analytics = dynamic(
+  () => import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),
+  { ssr: false }
+);
 
 const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
 const BootOverlay = dynamic(() => import("@/components/ui/BootOverlay"), { ssr: false });
 const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
 
 // ── Idle toast ────────────────────────────────────────────────────────────────
-const IDLE_MS   = 30_000;
+const IDLE_MS = 30_000;
 const IDLE_MSGS = [
   "Still there?",
   "The model is still training.",
@@ -28,9 +31,9 @@ const IDLE_MSGS = [
 
 function IdleToast() {
   const [visible, setVisible] = useState(false);
-  const [msg, setMsg]         = useState(IDLE_MSGS[0]);
-  const timerRef              = useRef(null);
-  const msgIdxRef             = useRef(0);
+  const [msg, setMsg] = useState(IDLE_MSGS[0]);
+  const timerRef = useRef(null);
+  const msgIdxRef = useRef(0);
 
   const reset = useCallback(() => {
     setVisible(false);
@@ -152,7 +155,12 @@ function SecretWordTrigger() {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) return;
+      if (
+        e.target.tagName === "INPUT" ||
+        e.target.tagName === "TEXTAREA" ||
+        e.target.isContentEditable
+      )
+        return;
       bufRef.current = (bufRef.current + e.key).slice(-5).toLowerCase();
       if (bufRef.current === "data") {
         bufRef.current = "";
@@ -214,7 +222,10 @@ function MyApp({ Component, pageProps }) {
       navigator.serviceWorker.register("/sw.js").catch(() => {});
     }
     // Capture beforeinstallprompt so we can show a custom install button
-    const handler = (e) => { e.preventDefault(); window.__deferredPrompt = e; };
+    const handler = (e) => {
+      e.preventDefault();
+      window.__deferredPrompt = e;
+    };
     window.addEventListener("beforeinstallprompt", handler);
     return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
@@ -229,53 +240,64 @@ function MyApp({ Component, pageProps }) {
 
       console.log(
         "%c\n" +
-        "%c  ██████╗ ██╗███╗   ██╗  \n" +
-        "%c  ██╔══██╗██║████╗  ██║  \n" +
-        "%c  ██████╔╝██║██╔██╗ ██║  \n" +
-        "%c  ██╔══██╗██║██║╚██╗██║  \n" +
-        "%c  ██║  ██║██║██║ ╚████║  \n" +
-        "%c  ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝  \n" +
-        "%c\n",
+          "%c  ██████╗ ██╗███╗   ██╗  \n" +
+          "%c  ██╔══██╗██║████╗  ██║  \n" +
+          "%c  ██████╔╝██║██╔██╗ ██║  \n" +
+          "%c  ██╔══██╗██║██║╚██╗██║  \n" +
+          "%c  ██║  ██║██║██║ ╚████║  \n" +
+          "%c  ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝  \n" +
+          "%c\n",
         s("#fff"),
-        s("#FF3C3C","font-weight:bold"),
-        s("#FF3C3C","font-weight:bold"),
-        s("#FF3C3C","font-weight:bold"),
-        s("#FF3C3C","font-weight:bold"),
-        s("#FF3C3C","font-weight:bold"),
-        s("#FF3C3C","font-weight:bold"),
-        s("#fff"),
+        s("#FF3C3C", "font-weight:bold"),
+        s("#FF3C3C", "font-weight:bold"),
+        s("#FF3C3C", "font-weight:bold"),
+        s("#FF3C3C", "font-weight:bold"),
+        s("#FF3C3C", "font-weight:bold"),
+        s("#FF3C3C", "font-weight:bold"),
+        s("#fff")
       );
 
       console.log(
         "%cHello, developer. You opened the console.\n\n" +
-        "%cSince you're here, you're probably the kind of person Rin would enjoy working with.\n\n" +
-        "%cStack:    %cNext.js 16 · Tailwind CSS · EmailJS · Vercel\n" +
-        "%cDesign:   %cNothing OS aesthetic — stark, minimal, monochromatic\n" +
-        "%cAuthor:   %cRin Huang  ·  rin.contact\n\n" +
-        "%cHidden routes:\n" +
-        "%c  /resume   →  interactive CLI\n" +
-        "%c  /fun/matrix   →  you'll know it when you see it\n" +
-        "%c  /fun/coffee   →  you know why\n" +
-        "%c  /fun/secret   →  morse code reveal\n" +
-        "%c  /fun/vault    →  achievement tracker\n" +
-        "%c  /tools/card   →  digital business card\n" +
-        "%c  /ds           →  Rin as data science\n" +
-        "%c  ↑↑↓↓←→←→BA  →  try it on the homepage\n" +
-        "%c  Type 'data' or 'iddqd'  →  anywhere (not in inputs)\n\n" +
-        "%cAPIs:\n" +
-        "%c  GET /api/rin.json   →  structured profile\n" +
-        "%c  GET /api/fortune    →  random wisdom\n\n" +
-        "%cWant to hire Rin?  →  rin.contact/hire-me\n",
+          "%cSince you're here, you're probably the kind of person Rin would enjoy working with.\n\n" +
+          "%cStack:    %cNext.js 16 · Tailwind CSS · EmailJS · Vercel\n" +
+          "%cDesign:   %cNothing OS aesthetic — stark, minimal, monochromatic\n" +
+          "%cAuthor:   %cRin Huang  ·  rin.contact\n\n" +
+          "%cHidden routes:\n" +
+          "%c  /resume   →  interactive CLI\n" +
+          "%c  /fun/matrix   →  you'll know it when you see it\n" +
+          "%c  /fun/coffee   →  you know why\n" +
+          "%c  /fun/secret   →  morse code reveal\n" +
+          "%c  /fun/vault    →  achievement tracker\n" +
+          "%c  /tools/card   →  digital business card\n" +
+          "%c  /ds           →  Rin as data science\n" +
+          "%c  ↑↑↓↓←→←→BA  →  try it on the homepage\n" +
+          "%c  Type 'data' or 'iddqd'  →  anywhere (not in inputs)\n\n" +
+          "%cAPIs:\n" +
+          "%c  GET /api/rin.json   →  structured profile\n" +
+          "%c  GET /api/fortune    →  random wisdom\n\n" +
+          "%cWant to hire Rin?  →  rin.contact/hire-me\n",
         s("#7A7A7A"),
         s("#CCCCCC"),
-        s("#7A7A7A"), s("#CCCCCC"),
-        s("#7A7A7A"), s("#CCCCCC"),
-        s("#7A7A7A"), s("#CCCCCC"),
         s("#7A7A7A"),
-        s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),s("#3D3D3D"),
+        s("#CCCCCC"),
         s("#7A7A7A"),
-        s("#3D3D3D"),s("#3D3D3D"),
-        s("#FF3C3C","font-weight:bold"),
+        s("#CCCCCC"),
+        s("#7A7A7A"),
+        s("#CCCCCC"),
+        s("#7A7A7A"),
+        s("#3D3D3D"),
+        s("#3D3D3D"),
+        s("#3D3D3D"),
+        s("#3D3D3D"),
+        s("#3D3D3D"),
+        s("#3D3D3D"),
+        s("#3D3D3D"),
+        s("#3D3D3D"),
+        s("#7A7A7A"),
+        s("#3D3D3D"),
+        s("#3D3D3D"),
+        s("#FF3C3C", "font-weight:bold")
       );
 
       const DS_JOKES = [
@@ -298,7 +320,9 @@ function MyApp({ Component, pageProps }) {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         </Head>
-        <div className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}>
+        <div
+          className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}
+        >
           {/* Skip-to-content link — WCAG 2.4.1: first focusable element */}
           <a
             href="#main-content"

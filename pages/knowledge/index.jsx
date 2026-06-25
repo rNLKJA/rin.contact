@@ -11,40 +11,47 @@ import { useI18n } from "@/contexts/I18nContext";
  * `status: "live"` items are published; everything else is on the way.
  */
 const TIERS = [
-  { key: "foundation", topics: [
-    { href: "/knowledge/linear-algebra", status: "live" },
-    { href: "/knowledge/probability", status: "live" },
-    { href: "/knowledge/statistics", status: "live" },
-    { href: "/knowledge/calculus-optimisation", status: "live" },
-    { href: "/knowledge/linear-statistical-models", status: "live" },
-    { href: "/knowledge/database-systems", status: "live" },
-    { href: "/knowledge/artificial-intelligence", status: "live" },
-    { href: "/knowledge/web-information-technology", status: "live" },
-    { href: "/knowledge/operations-research", status: "live" },
-    { href: "/knowledge/elements-of-data-processing", status: "live" },
-    { href: "/knowledge/applied-data-science", status: "live" },
-  ]},
-  { key: "advanced", topics: [
-    { href: "/knowledge/natural-language-processing", status: "live" },
-    { href: "/knowledge/statistical-machine-learning", status: "live" },
-    { href: "/knowledge/bayesian-statistics", status: "live" },
-    { href: "/knowledge/pca-dimensionality-reduction", status: "live" },
-    { href: "/knowledge/clustering", status: "live" },
-    { href: "/knowledge/cluster-cloud-computing", status: "live" },
-    { href: "/knowledge/statistical-modelling", status: "live" },
-    { href: "/knowledge/computational-statistics", status: "live" },
-    { href: "/knowledge/advanced-database-systems", status: "live" },
-    { href: "/knowledge/science-communication", status: "live" },
-  ]},
-  { key: "practice", topics: [
-    { href: "/knowledge/business-intelligence-dashboards", status: "live" },
-    { href: "/knowledge/geospatial-analysis", status: "live" },
-    { href: "/knowledge/intelligence-analysis", status: "live" },
-    { href: "/knowledge/data-governance", status: "live" },
-  ]},
-  { key: "taught", topics: [
-    { href: "/knowledge/data-science-mentoring", status: "live" },
-  ]},
+  {
+    key: "foundation",
+    topics: [
+      { href: "/knowledge/linear-algebra", status: "live" },
+      { href: "/knowledge/probability", status: "live" },
+      { href: "/knowledge/statistics", status: "live" },
+      { href: "/knowledge/calculus-optimisation", status: "live" },
+      { href: "/knowledge/linear-statistical-models", status: "live" },
+      { href: "/knowledge/database-systems", status: "live" },
+      { href: "/knowledge/artificial-intelligence", status: "live" },
+      { href: "/knowledge/web-information-technology", status: "live" },
+      { href: "/knowledge/operations-research", status: "live" },
+      { href: "/knowledge/elements-of-data-processing", status: "live" },
+      { href: "/knowledge/applied-data-science", status: "live" },
+    ],
+  },
+  {
+    key: "advanced",
+    topics: [
+      { href: "/knowledge/natural-language-processing", status: "live" },
+      { href: "/knowledge/statistical-machine-learning", status: "live" },
+      { href: "/knowledge/bayesian-statistics", status: "live" },
+      { href: "/knowledge/pca-dimensionality-reduction", status: "live" },
+      { href: "/knowledge/clustering", status: "live" },
+      { href: "/knowledge/cluster-cloud-computing", status: "live" },
+      { href: "/knowledge/statistical-modelling", status: "live" },
+      { href: "/knowledge/computational-statistics", status: "live" },
+      { href: "/knowledge/advanced-database-systems", status: "live" },
+      { href: "/knowledge/science-communication", status: "live" },
+    ],
+  },
+  {
+    key: "practice",
+    topics: [
+      { href: "/knowledge/business-intelligence-dashboards", status: "live" },
+      { href: "/knowledge/geospatial-analysis", status: "live" },
+      { href: "/knowledge/intelligence-analysis", status: "live" },
+      { href: "/knowledge/data-governance", status: "live" },
+    ],
+  },
+  { key: "taught", topics: [{ href: "/knowledge/data-science-mentoring", status: "live" }] },
 ];
 
 function Row({ href, status, label, note, statusLabel }) {
@@ -70,8 +77,8 @@ function Row({ href, status, label, note, statusLabel }) {
           isLive
             ? "text-[#FF3C3C] border-[#FF3C3C]"
             : status === "soon"
-            ? "text-[#7A7A7A] border-[#D0D0D0] dark:border-[#3D3D3D]"
-            : "text-[#BFBFBF] dark:text-[#555] border-[#ECECEC] dark:border-[#262626]"
+              ? "text-[#7A7A7A] border-[#D0D0D0] dark:border-[#3D3D3D]"
+              : "text-[#BFBFBF] dark:text-[#555] border-[#ECECEC] dark:border-[#262626]"
         }`}
       >
         {statusLabel}
@@ -124,7 +131,9 @@ export default function KnowledgeIndexPage() {
             {t("knowledgeIndex.intro")}
           </p>
           <p className="mt-3 font-mono text-[11px] text-[#9A9A9A] dark:text-[#6E6E6E]">
-            {t("knowledgeIndex.liveCounter").replace("{live}", liveCount).replace("{total}", totalCount)}
+            {t("knowledgeIndex.liveCounter")
+              .replace("{live}", liveCount)
+              .replace("{total}", totalCount)}
           </p>
 
           <div className="mt-14 space-y-14">
@@ -137,8 +146,7 @@ export default function KnowledgeIndexPage() {
                       {tierCopy.label}
                     </h2>
                     <span className="font-mono text-[10px] text-[#BFBFBF] dark:text-[#555]">
-                      {tier.topics.filter((tp) => tp.status === "live").length}/
-                      {tier.topics.length}
+                      {tier.topics.filter((tp) => tp.status === "live").length}/{tier.topics.length}
                     </span>
                   </div>
                   <p className="text-[12px] text-[#AAAAAA] dark:text-[#6E6E6E] mb-3 [text-wrap:pretty]">
