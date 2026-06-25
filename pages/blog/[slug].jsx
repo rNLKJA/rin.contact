@@ -199,7 +199,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
 
         {/* Post content */}
         <div
-          className="prose prose-sm max-w-none
+          className="prose prose-base max-w-none
                      prose-headings:text-black dark:prose-headings:text-white
                      prose-a:text-[#FF3C3C] prose-a:no-underline hover:prose-a:underline
                      prose-strong:text-black dark:prose-strong:text-white
