@@ -56,14 +56,3 @@ jobs:
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
-
-  # Report combined status back to Vercel once the gates pass.
-  notify-vercel:
-    name: Notify Vercel
-    needs: [lint, format, build]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    steps:
-      - uses: vercel/repository-dispatch/actions/status@v1
-        with:
-          name: "Vercel - rin-contact: CI"
