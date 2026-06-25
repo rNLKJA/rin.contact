@@ -25,21 +25,69 @@ function MentorLoopFigure({ caption, ariaLabel, labels, loopLabel }) {
           const accent = i === 2;
           return (
             <g key={i}>
-              <rect x={x} y={48} width={84} height={32} rx={2}
-                fill={accent ? "#FF3C3C" : "none"} fillOpacity={accent ? 0.12 : 0}
-                stroke={accent ? "#FF3C3C" : "currentColor"} strokeWidth={accent ? 1.4 : 1} opacity={accent ? 1 : 0.7} />
-              <text x={x + 42} y={68} textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{labels[i]}</text>
+              <rect
+                x={x}
+                y={48}
+                width={84}
+                height={32}
+                rx={2}
+                fill={accent ? "#FF3C3C" : "none"}
+                fillOpacity={accent ? 0.12 : 0}
+                stroke={accent ? "#FF3C3C" : "currentColor"}
+                strokeWidth={accent ? 1.4 : 1}
+                opacity={accent ? 1 : 0.7}
+              />
+              <text
+                x={x + 42}
+                y={68}
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill="currentColor"
+              >
+                {labels[i]}
+              </text>
               {i < LOOP_X.length - 1 && (
-                <line x1={x + 84} y1={64} x2={LOOP_X[i + 1]} y2={64} stroke="#FF3C3C" strokeWidth={1.2} markerEnd="url(#dm-ah)" />
+                <line
+                  x1={x + 84}
+                  y1={64}
+                  x2={LOOP_X[i + 1]}
+                  y2={64}
+                  stroke="#FF3C3C"
+                  strokeWidth={1.2}
+                  markerEnd="url(#dm-ah)"
+                />
               )}
             </g>
           );
         })}
-        <path d="M402 80 C 402 110, 72 110, 72 82" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" markerEnd="url(#dm-ah2)" />
-        <text x="220" y="124" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.55">{loopLabel}</text>
+        <path
+          d="M402 80 C 402 110, 72 110, 72 82"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeDasharray="4 3"
+          opacity="0.6"
+          markerEnd="url(#dm-ah2)"
+        />
+        <text
+          x="220"
+          y="124"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.55"
+        >
+          {loopLabel}
+        </text>
         <defs>
-          <marker id="dm-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" /></marker>
-          <marker id="dm-ah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="currentColor" /></marker>
+          <marker id="dm-ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#FF3C3C" />
+          </marker>
+          <marker id="dm-ah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="currentColor" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -51,11 +99,11 @@ function EnBody() {
   return (
     <>
       <p>
-        Every other page in this section is written from the seat of someone who{" "}
-        <em>learned</em> the topic. This one is written from the other seat — the one where you have
-        to make someone <em>else</em> understand it. I mentored data science students through the
-        University of Melbourne's peer-mentoring program and the ANU Analytics Plus program, and it
-        changed how I think about the whole field.
+        Every other page in this section is written from the seat of someone who <em>learned</em>{" "}
+        the topic. This one is written from the other seat — the one where you have to make someone{" "}
+        <em>else</em> understand it. I mentored data science students through the University of
+        Melbourne's peer-mentoring program and the ANU Analytics Plus program, and it changed how I
+        think about the whole field.
       </p>
       <p>
         The biggest surprise of teaching is how much it teaches <em>you</em>. You can't explain what
@@ -66,16 +114,16 @@ function EnBody() {
 
       <KSection id="why" eyebrow="01" title="From the other side of the desk">
         <p>
-          Mentoring data science is different from tutoring a single subject, because the field is so
-          broad and the learners arrive from everywhere — maths people scared of code, coders scared
-          of stats, domain experts new to both. The job isn't to download facts; it's to help someone
-          build a mental model they can extend on their own. A good mentor works themselves out of a
-          job.
+          Mentoring data science is different from tutoring a single subject, because the field is
+          so broad and the learners arrive from everywhere — maths people scared of code, coders
+          scared of stats, domain experts new to both. The job isn't to download facts; it's to help
+          someone build a mental model they can extend on their own. A good mentor works themselves
+          out of a job.
         </p>
         <p>
-          That reframes everything below. The goal of a session isn't to answer the question in front
-          of you — it's to leave the student a little more able to answer the <em>next</em> question
-          without you. Independence, not dependence, is the measure.
+          That reframes everything below. The goal of a session isn't to answer the question in
+          front of you — it's to leave the student a little more able to answer the <em>next</em>{" "}
+          question without you. Independence, not dependence, is the measure.
         </p>
       </KSection>
 
@@ -91,15 +139,15 @@ function EnBody() {
             is emotional before it's technical.
           </li>
           <li>
-            <Term>Tool-fixation</Term> — obsessing over which library or which model instead of asking
-            what question they're actually trying to answer. They want the <em>how</em> before the{" "}
-            <em>what</em>, which is backwards (the{" "}
+            <Term>Tool-fixation</Term> — obsessing over which library or which model instead of
+            asking what question they're actually trying to answer. They want the <em>how</em>{" "}
+            before the <em>what</em>, which is backwards (the{" "}
             <Link href="/knowledge/applied-data-science">problem-first</Link> lesson).
           </li>
           <li>
             <Term>Tutorial-following without understanding</Term> — they can run a notebook top to
-            bottom and feel productive, but change one thing and it falls apart, because they followed
-            steps rather than grasping <em>why</em> the steps work.
+            bottom and feel productive, but change one thing and it falls apart, because they
+            followed steps rather than grasping <em>why</em> the steps work.
           </li>
         </ul>
         <p>
@@ -136,9 +184,9 @@ function EnBody() {
         <Callout type="intuition">
           <p>
             The deepest tell of whether <em>you</em> understand something is whether you can explain
-            it to a beginner without jargon. Jargon is often a place where understanding is missing —
-            the word stands in for the idea. Stripping it out forces you to actually have the idea.
-            That's why this whole section is written the way it is.
+            it to a beginner without jargon. Jargon is often a place where understanding is missing
+            — the word stands in for the idea. Stripping it out forces you to actually have the
+            idea. That's why this whole section is written the way it is.
           </p>
         </Callout>
       </KSection>
@@ -151,8 +199,8 @@ function EnBody() {
             wish they were at. Going over their head loses them; going under bores them.
           </li>
           <li>
-            <Term>Productive struggle</Term> — don't hand over the answer. The learning happens in the
-            wrestling, so guide with questions and let them reach it. The help that feels most
+            <Term>Productive struggle</Term> — don't hand over the answer. The learning happens in
+            the wrestling, so guide with questions and let them reach it. The help that feels most
             generous (just telling them) teaches the least.
           </li>
           <li>
@@ -173,12 +221,12 @@ function EnBody() {
       <KSection id="messy" eyebrow="05" title="Real, messy data">
         <p>
           Textbooks teach with clean datasets; the world hands you mess. One of the most valuable
-          things a mentor can do is move a learner off tidy toy problems and onto <em>real</em>, messy
-          data as early as possible — because that's where the actual skills live. Wrestling with
-          missing values, weird formats, and ambiguous questions teaches what no clean tutorial can:
-          that{" "}
-          <Link href="/knowledge/elements-of-data-processing">most of the work is the data</Link>, and
-          that judgement matters more than memorised steps.
+          things a mentor can do is move a learner off tidy toy problems and onto <em>real</em>,
+          messy data as early as possible — because that's where the actual skills live. Wrestling
+          with missing values, weird formats, and ambiguous questions teaches what no clean tutorial
+          can: that{" "}
+          <Link href="/knowledge/elements-of-data-processing">most of the work is the data</Link>,
+          and that judgement matters more than memorised steps.
         </p>
         <p>
           It also builds the right relationship with being stuck. On real data everyone is stuck
@@ -189,17 +237,17 @@ function EnBody() {
 
       <KSection id="protege" eyebrow="06" title="Teaching deepens learning">
         <p>
-          The phenomenon has a name — the <Term>protégé effect</Term>: you learn material more deeply
-          when you prepare to teach it and explain it to others. Teaching forces you to organise your
-          knowledge, find the gaps, and build the clean explanations that only exist once you truly
-          understand. I learned more data science by mentoring it than by sitting in some of the
-          classes.
+          The phenomenon has a name — the <Term>protégé effect</Term>: you learn material more
+          deeply when you prepare to teach it and explain it to others. Teaching forces you to
+          organise your knowledge, find the gaps, and build the clean explanations that only exist
+          once you truly understand. I learned more data science by mentoring it than by sitting in
+          some of the classes.
         </p>
         <p>
           This is, frankly, the whole reason this knowledge section exists. Writing each page from
           scratch is teaching at scale — and the act of having to explain embeddings, or the
-          bootstrap, or the CAP theorem clearly is exactly what keeps my own understanding sharp. The
-          section <em>is</em> the protégé effect, applied to myself.
+          bootstrap, or the CAP theorem clearly is exactly what keeps my own understanding sharp.
+          The section <em>is</em> the protégé effect, applied to myself.
         </p>
       </KSection>
 
@@ -207,30 +255,30 @@ function EnBody() {
         <p>
           Mentoring surfaced something the curriculum never grades: in real data science,{" "}
           <strong>communication and judgement matter as much as the maths</strong>. Beginners
-          systematically underrate this — they think the job is the algorithm, when the job is framing
-          the right question, working with people, and explaining the result so it gets used (the{" "}
-          <Link href="/knowledge/science-communication">communication</Link> page). The best thing I
-          could do for a mentee was widen their definition of "the skill" to include the parts no exam
-          measures.
+          systematically underrate this — they think the job is the algorithm, when the job is
+          framing the right question, working with people, and explaining the result so it gets used
+          (the <Link href="/knowledge/science-communication">communication</Link> page). The best
+          thing I could do for a mentee was widen their definition of "the skill" to include the
+          parts no exam measures.
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="08" title="The through-line to my work">
         <Callout type="applied" label="Why teaching is the whole point">
           <p>
-            Mentoring isn't a detour from my data-science career — it's the spine of it. The thing I'm
-            hired for, again and again, is{" "}
+            Mentoring isn't a detour from my data-science career — it's the spine of it. The thing
+            I'm hired for, again and again, is{" "}
             <strong>explaining complex analysis to people who can't do it themselves</strong> —
             executives, a minister's office, cross-functional teams. That is mentoring under another
-            name: meet them where they are, strip the jargon, build the intuition, leave them able to
-            act. The <Link href="/knowledge/science-communication">science communication</Link> page
-            is this skill pointed at decision-makers.
+            name: meet them where they are, strip the jargon, build the intuition, leave them able
+            to act. The <Link href="/knowledge/science-communication">science communication</Link>{" "}
+            page is this skill pointed at decision-makers.
           </p>
           <p>
-            And the <Link href="/knowledge">whole knowledge section</Link> you're reading is the same
-            instinct: I learn by teaching, and I keep what I've learned sharp by having to explain it
-            clearly. Generalist by nature, specialist by discipline — and a teacher throughout,
-            because explaining something is how I make sure I actually understand it.
+            And the <Link href="/knowledge">whole knowledge section</Link> you're reading is the
+            same instinct: I learn by teaching, and I keep what I've learned sharp by having to
+            explain it clearly. Generalist by nature, specialist by discipline — and a teacher
+            throughout, because explaining something is how I make sure I actually understand it.
           </p>
         </Callout>
       </KSection>
@@ -244,8 +292,8 @@ function EnBody() {
             </li>
             <li>
               Learners get stuck on <strong>maths anxiety</strong>, <strong>tool-fixation</strong>,
-              and <strong>tutorial-following without understanding</strong> — diagnose the wall before
-              teaching.
+              and <strong>tutorial-following without understanding</strong> — diagnose the wall
+              before teaching.
             </li>
             <li>
               Explain simply: <strong>intuition before formalism</strong>, analogy, and the{" "}
@@ -258,8 +306,8 @@ function EnBody() {
               <strong>real messy data</strong> early.
             </li>
             <li>
-              The <strong>protégé effect</strong>: you learn more deeply by teaching — the reason this
-              whole section exists.
+              The <strong>protégé effect</strong>: you learn more deeply by teaching — the reason
+              this whole section exists.
             </li>
             <li>
               Mentoring proves <strong>communication and judgement</strong> matter as much as the
@@ -312,8 +360,8 @@ function ZhBody() {
           </li>
           <li>
             <Term>工具执念</Term>——纠结于用哪个库、哪个模型，而不去问他们究竟想回答什么问题。他们
-            要的是先「怎么做」、后「做什么」，这是反的（<Link href="/knowledge/applied-data-science">问题
-            优先</Link>的教训）。
+            要的是先「怎么做」、后「做什么」，这是反的（
+            <Link href="/knowledge/applied-data-science">问题 优先</Link>的教训）。
           </li>
           <li>
             <Term>照着教程走却不理解</Term>——他们能把一个笔记本从头跑到尾、感觉很有成效，但改动一处
@@ -331,7 +379,8 @@ function ZhBody() {
         <ul>
           <li>
             <Term>直觉先于形式</Term>——先给画面，再给公式。「梯度下降是在雾中下山」比
-            <Link href="/knowledge/calculus-optimisation">方程</Link>更先落地，然后方程才有处可附着。
+            <Link href="/knowledge/calculus-optimisation">方程</Link>
+            更先落地，然后方程才有处可附着。
           </li>
           <li>
             <Term>类比</Term>——把新想法连到他们已经知道的东西上。整个
@@ -364,7 +413,8 @@ function ZhBody() {
             自己抵达。感觉最慷慨的帮助（直接告诉他们）教得最少。
           </li>
           <li>
-            <Term>调试思维，而非代码</Term>——当某处坏了，错误通常在心智模型里，而非语法里。修好误解，
+            <Term>调试思维，而非代码</Term>
+            ——当某处坏了，错误通常在心智模型里，而非语法里。修好误解，
             代码自会修好；只修代码，误解下周还会回来。
           </li>
         </ul>
@@ -399,17 +449,19 @@ function ZhBody() {
         </p>
         <p>
           坦白说，这正是这个知识板块存在的全部理由。从零写每一页，是规模化的教学——而不得不把嵌入、
-          自助法、或 CAP 定理讲清楚这件事本身，正是让我自己的理解保持锋利的东西。这个板块<em>就是
-          </em>门徒效应，施加于我自己。
+          自助法、或 CAP 定理讲清楚这件事本身，正是让我自己的理解保持锋利的东西。这个板块
+          <em>就是</em>门徒效应，施加于我自己。
         </p>
       </KSection>
 
       <KSection id="soft" eyebrow="07" title="没人考的技能">
         <p>
-          带教让一样课程从不评分的东西浮出水面：在真实的数据科学里，<strong>沟通与判断力与数学同等
-          要紧</strong>。初学者系统性地低估这一点——他们以为工作是算法，而工作其实是框定正确的问题、
-          与人协作、并把结果讲清楚以让它被用起来（<Link href="/knowledge/science-communication">沟通
-          </Link>页）。我能为一个学员做的最好的事，是拓宽他们对「技能」的定义，把没有考试衡量的那些
+          带教让一样课程从不评分的东西浮出水面：在真实的数据科学里，
+          <strong>沟通与判断力与数学同等 要紧</strong>
+          。初学者系统性地低估这一点——他们以为工作是算法，而工作其实是框定正确的问题、
+          与人协作、并把结果讲清楚以让它被用起来（
+          <Link href="/knowledge/science-communication">沟通</Link>
+          页）。我能为一个学员做的最好的事，是拓宽他们对「技能」的定义，把没有考试衡量的那些
           部分也纳进来。
         </p>
       </KSection>
@@ -439,8 +491,8 @@ function ZhBody() {
               答案。
             </li>
             <li>
-              学习者卡在<strong>数学焦虑</strong>、<strong>工具执念</strong>，以及<strong>照着教程走
-              却不理解</strong>上——在教之前先诊断是哪道墙。
+              学习者卡在<strong>数学焦虑</strong>、<strong>工具执念</strong>，以及
+              <strong>照着教程走 却不理解</strong>上——在教之前先诊断是哪道墙。
             </li>
             <li>
               讲得简单：<strong>直觉先于形式</strong>、类比，以及<strong>「讲回来」</strong>测试。
@@ -448,7 +500,8 @@ function ZhBody() {
             </li>
             <li>
               策略手册：<strong>在他们所在之处与他们相会</strong>、允许<strong>有益的挣扎</strong>，
-              并<strong>调试思维，而非代码</strong>。尽早把他们带到<strong>真实杂乱的数据</strong>上。
+              并<strong>调试思维，而非代码</strong>。尽早把他们带到<strong>真实杂乱的数据</strong>
+              上。
             </li>
             <li>
               <strong>门徒效应</strong>：你靠教学而学得更深——这整个板块存在的原因。

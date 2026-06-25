@@ -40,6 +40,7 @@ const TIERS = [
       { href: "/knowledge/computational-statistics", status: "live" },
       { href: "/knowledge/advanced-database-systems", status: "live" },
       { href: "/knowledge/science-communication", status: "live" },
+      { href: "/knowledge/time-series-analysis", status: "live" },
     ],
   },
   {
@@ -49,9 +50,16 @@ const TIERS = [
       { href: "/knowledge/geospatial-analysis", status: "live" },
       { href: "/knowledge/intelligence-analysis", status: "live" },
       { href: "/knowledge/data-governance", status: "live" },
+      { href: "/knowledge/anomaly-detection", status: "live" },
     ],
   },
-  { key: "taught", topics: [{ href: "/knowledge/data-science-mentoring", status: "live" }] },
+  {
+    key: "taught",
+    topics: [
+      { href: "/knowledge/data-science-mentoring", status: "live" },
+      { href: "/knowledge/edtech-digital-learning", status: "live" },
+    ],
+  },
 ];
 
 function Row({ href, status, label, note, statusLabel }) {

@@ -28,12 +28,50 @@ function FairFigure({ caption, ariaLabel, quads, centre }) {
       >
         {QUAD_POS.map((p, i) => (
           <g key={i}>
-            <rect x={p.x} y={p.y} width={140} height={48} rx={2} fill="#FF3C3C" fillOpacity="0.08" stroke="#FF3C3C" strokeWidth="1.2" />
-            <text x={p.x + 70} y={p.y + 22} textAnchor="middle" fontSize="11" fontFamily="monospace" fill="currentColor">{quads[i].label}</text>
-            <text x={p.x + 70} y={p.y + 37} textAnchor="middle" fontSize="13" fontFamily="monospace" fill="#FF3C3C">{quads[i].letter}</text>
+            <rect
+              x={p.x}
+              y={p.y}
+              width={140}
+              height={48}
+              rx={2}
+              fill="#FF3C3C"
+              fillOpacity="0.08"
+              stroke="#FF3C3C"
+              strokeWidth="1.2"
+            />
+            <text
+              x={p.x + 70}
+              y={p.y + 22}
+              textAnchor="middle"
+              fontSize="11"
+              fontFamily="monospace"
+              fill="currentColor"
+            >
+              {quads[i].label}
+            </text>
+            <text
+              x={p.x + 70}
+              y={p.y + 37}
+              textAnchor="middle"
+              fontSize="13"
+              fontFamily="monospace"
+              fill="#FF3C3C"
+            >
+              {quads[i].letter}
+            </text>
           </g>
         ))}
-        <text x="220" y="158" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{centre}</text>
+        <text
+          x="220"
+          y="158"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {centre}
+        </text>
       </svg>
     </Figure>
   );
@@ -47,9 +85,9 @@ function EnBody() {
         Every other page makes you better at <em>using</em> data. This one is about being{" "}
         <em>allowed and trusted</em> to use it. <Term>Data governance</Term> is the set of rules,
         roles, and processes that keep an organisation's data accurate, secure, compliant, and
-        trustworthy. It's the least glamorous topic in this section and, for the work I do, one of the
-        most important — because handling sensitive government, health, and policing data well isn't
-        optional, and getting it wrong turns good analysis into a serious liability.
+        trustworthy. It's the least glamorous topic in this section and, for the work I do, one of
+        the most important — because handling sensitive government, health, and policing data well
+        isn't optional, and getting it wrong turns good analysis into a serious liability.
       </p>
       <p>
         It threads through everything else: the{" "}
@@ -63,17 +101,17 @@ function EnBody() {
       <KSection id="what" eyebrow="01" title="Trust as infrastructure">
         <p>
           Governance answers a deceptively simple question:{" "}
-          <em>can we trust this data, and are we handling it responsibly?</em> It defines who owns and
-          is accountable for each dataset (<Term>stewardship</Term>), what the rules are for quality,
-          access, and retention, and how those rules are enforced. Done well it's invisible; done
-          badly it shows up as contradictory numbers, a privacy breach, or a decision no one can
-          defend.
+          <em>can we trust this data, and are we handling it responsibly?</em> It defines who owns
+          and is accountable for each dataset (<Term>stewardship</Term>), what the rules are for
+          quality, access, and retention, and how those rules are enforced. Done well it's
+          invisible; done badly it shows up as contradictory numbers, a privacy breach, or a
+          decision no one can defend.
         </p>
         <p>
           The mindset shift is to treat data as a managed <em>asset</em> with obligations attached,
           not a free-floating resource. In a regulated setting that's not bureaucracy for its own
-          sake — it's what lets the analysis hold up when someone asks "where did this come from, who
-          could see it, and should you have used it?"
+          sake — it's what lets the analysis hold up when someone asks "where did this come from,
+          who could see it, and should you have used it?"
         </p>
       </KSection>
 
@@ -86,12 +124,11 @@ function EnBody() {
           derived.
         </p>
         <p>
-          This is the{" "}
-          <Link href="/knowledge/elements-of-data-processing">reproducibility</Link> discipline from
-          the data-processing page, raised to an organisational standard. In government work it's not
-          a nicety: when a figure feeds a decision that affects people, "here is exactly where this
-          came from and what we did to it" is the difference between a defensible result and an
-          indefensible one.
+          This is the <Link href="/knowledge/elements-of-data-processing">reproducibility</Link>{" "}
+          discipline from the data-processing page, raised to an organisational standard. In
+          government work it's not a nicety: when a figure feeds a decision that affects people,
+          "here is exactly where this came from and what we did to it" is the difference between a
+          defensible result and an indefensible one.
         </p>
       </KSection>
 
@@ -99,8 +136,8 @@ function EnBody() {
         <p>
           The modern backbone of good data management is a set of four principles known by the
           acronym <Term>FAIR</Term> — Findable, Accessible, Interoperable, Reusable. Born in
-          scientific research (and now adopted across government and industry), they describe what it
-          takes for data to be genuinely useful beyond the moment and the person that created it:
+          scientific research (and now adopted across government and industry), they describe what
+          it takes for data to be genuinely useful beyond the moment and the person that created it:
         </p>
         <ul>
           <li>
@@ -113,12 +150,13 @@ function EnBody() {
             hoc.
           </li>
           <li>
-            <Term>Interoperable</Term> — it uses shared standards, formats, and vocabularies so it can
-            be combined with other data and read by other systems. The opposite of a locked silo.
+            <Term>Interoperable</Term> — it uses shared standards, formats, and vocabularies so it
+            can be combined with other data and read by other systems. The opposite of a locked
+            silo.
           </li>
           <li>
-            <Term>Reusable</Term> — it's richly documented and clearly licensed, so others (including
-            future-you) can understand and reuse it correctly.
+            <Term>Reusable</Term> — it's richly documented and clearly licensed, so others
+            (including future-you) can understand and reuse it correctly.
           </li>
         </ul>
 
@@ -137,14 +175,15 @@ function EnBody() {
         <Callout type="pitfall">
           <p>
             <strong>FAIR is not the same as "open".</strong> This is the most important and most
-            misunderstood point. FAIR is about being well-managed and well-described — it says nothing
-            about who's allowed in. Highly sensitive data (health records, policing data) can and
-            should be FAIR: findable in a catalogue, accessible <em>through proper authorisation</em>,
-            interoperable, and reusable by those entitled to it — while staying tightly controlled.
-            "Accessible" means "by a defined process", not "available to everyone". That's exactly why
-            FAIR works in government, where most data is anything but open. (FAIR also pairs with the{" "}
-            <Term>CARE</Term> principles for Indigenous data governance, which add collective benefit,
-            authority to control, responsibility, and ethics.)
+            misunderstood point. FAIR is about being well-managed and well-described — it says
+            nothing about who's allowed in. Highly sensitive data (health records, policing data)
+            can and should be FAIR: findable in a catalogue, accessible{" "}
+            <em>through proper authorisation</em>, interoperable, and reusable by those entitled to
+            it — while staying tightly controlled. "Accessible" means "by a defined process", not
+            "available to everyone". That's exactly why FAIR works in government, where most data is
+            anything but open. (FAIR also pairs with the <Term>CARE</Term> principles for Indigenous
+            data governance, which add collective benefit, authority to control, responsibility, and
+            ethics.)
           </p>
         </Callout>
       </KSection>
@@ -165,8 +204,8 @@ function EnBody() {
             whatever turns out to be convenient later.
           </li>
           <li>
-            <Term>De-identification</Term> — strip the identifying fields so records can't be tied to
-            individuals — while knowing its <em>limits</em>: combining "anonymous" datasets can
+            <Term>De-identification</Term> — strip the identifying fields so records can't be tied
+            to individuals — while knowing its <em>limits</em>: combining "anonymous" datasets can
             re-identify people, so de-identification is a risk-reduction, not a guarantee.
           </li>
         </ul>
@@ -186,10 +225,10 @@ function EnBody() {
         </p>
         <p>
           This is the{" "}
-          <Link href="/knowledge/web-information-technology">"never trust by default"</Link> security
-          mindset applied to data: encrypt it in transit and at rest, log who accessed what, and
-          assume that the cost of a breach of sensitive records is severe. In policing and health
-          contexts, access control isn't IT hygiene — it's a core part of the public's trust.
+          <Link href="/knowledge/web-information-technology">"never trust by default"</Link>{" "}
+          security mindset applied to data: encrypt it in transit and at rest, log who accessed
+          what, and assume that the cost of a breach of sensitive records is severe. In policing and
+          health contexts, access control isn't IT hygiene — it's a core part of the public's trust.
         </p>
       </KSection>
 
@@ -216,20 +255,22 @@ function EnBody() {
           Principles only matter if they're operationalised. In practice that means assigning{" "}
           <Term>data stewards</Term> accountable for specific domains, maintaining a{" "}
           <Term>data catalogue</Term> (the inventory that makes data findable and documents its
-          lineage — the practical face of FAIR), setting <Term>retention</Term> rules so data is kept
-          no longer than needed, and defining the policies for quality, access, and classification.
-          Governance is the unglamorous scaffolding that lets an organisation trust its own data.
+          lineage — the practical face of FAIR), setting <Term>retention</Term> rules so data is
+          kept no longer than needed, and defining the policies for quality, access, and
+          classification. Governance is the unglamorous scaffolding that lets an organisation trust
+          its own data.
         </p>
       </KSection>
 
       <KSection id="ai" eyebrow="08" title="Governing AI">
         <p>
           As models drive more decisions, governance is extending to <Term>AI governance</Term>:
-          managing the risks of the models themselves, not just the data. The themes are transparency
-          (can you explain how a decision was reached?), accountability (who is responsible when it's
-          wrong?), fairness (is the impact equitable?), and human oversight of consequential automated
-          decisions. It's the ethics and reproducibility threads of this whole section, pointed at the
-          model — and it's fast becoming a formal requirement, especially in the public sector.
+          managing the risks of the models themselves, not just the data. The themes are
+          transparency (can you explain how a decision was reached?), accountability (who is
+          responsible when it's wrong?), fairness (is the impact equitable?), and human oversight of
+          consequential automated decisions. It's the ethics and reproducibility threads of this
+          whole section, pointed at the model — and it's fast becoming a formal requirement,
+          especially in the public sector.
         </p>
       </KSection>
 
@@ -241,13 +282,13 @@ function EnBody() {
             the analysis both useful and defensible: <strong>lineage</strong> so every figure is
             traceable, <strong>least-privilege access</strong> and classification on sensitive
             records, <strong>privacy</strong> and de-identification handled properly, and a constant
-            eye on <strong>fairness</strong> because the decisions affect people. Integrating sources
-            like ABS, health, and other government data only works inside this framework.
+            eye on <strong>fairness</strong> because the decisions affect people. Integrating
+            sources like ABS, health, and other government data only works inside this framework.
           </p>
           <p>
             <strong>FAIR</strong> is the part that ties my research background to my current work:
-            making data findable, well-described, and reusable — <em>without</em> making it open — is
-            exactly what responsible analytics in a sensitive setting requires. It's the quiet
+            making data findable, well-described, and reusable — <em>without</em> making it open —
+            is exactly what responsible analytics in a sensitive setting requires. It's the quiet
             foundation under everything else in this section: the maths and models only earn trust
             when the data beneath them is governed well.
           </p>
@@ -272,12 +313,13 @@ function EnBody() {
               controlled.
             </li>
             <li>
-              <strong>Privacy</strong>: data minimisation, purpose limitation, de-identification (and
-              its limits); privacy by design; the Australian Privacy Principles.
+              <strong>Privacy</strong>: data minimisation, purpose limitation, de-identification
+              (and its limits); privacy by design; the Australian Privacy Principles.
             </li>
             <li>
               <strong>Access</strong>: least privilege + classification + encryption + audit logs.{" "}
-              <strong>Ethics</strong>: models inherit bias; check fairness, keep a human accountable.
+              <strong>Ethics</strong>: models inherit bias; check fairness, keep a human
+              accountable.
             </li>
             <li>
               Operationalise via <strong>stewards, a data catalogue, retention rules</strong>;{" "}
@@ -404,8 +446,8 @@ function ZhBody() {
             <Term>目的限制</Term>——把数据用于它被采集的那个目的，而非日后碰巧方便的任何用途。
           </li>
           <li>
-            <Term>去标识化</Term>——剥掉可识别字段，使记录无法被关联到个人——同时清楚它的<em>限度
-            </em>：把若干「匿名」数据集组合起来可能重新识别出人，所以去标识化是一种风险降低，而非
+            <Term>去标识化</Term>——剥掉可识别字段，使记录无法被关联到个人——同时清楚它的<em>限度</em>
+            ：把若干「匿名」数据集组合起来可能重新识别出人，所以去标识化是一种风险降低，而非
             一个保证。
           </li>
         </ul>
@@ -498,12 +540,12 @@ function ZhBody() {
               隐私原则。
             </li>
             <li>
-              <strong>访问</strong>：最小权限 + 分级 + 加密 + 审计日志。<strong>伦理</strong>：模型会
-              承袭偏见；检查公平，保留一个负责的人。
+              <strong>访问</strong>：最小权限 + 分级 + 加密 + 审计日志。<strong>伦理</strong>
+              ：模型会 承袭偏见；检查公平，保留一个负责的人。
             </li>
             <li>
-              通过<strong>管护人、数据目录、留存规则</strong>来落地；<strong>AI 治理</strong>把透明与
-              监督延伸到模型。
+              通过<strong>管护人、数据目录、留存规则</strong>来落地；<strong>AI 治理</strong>
+              把透明与 监督延伸到模型。
             </li>
           </ul>
         </Callout>

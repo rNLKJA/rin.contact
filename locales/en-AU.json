@@ -1028,6 +1028,10 @@
           {
             "label": "Science Communication at Work",
             "note": "Briefing decisions: lead with the recommendation"
+          },
+          {
+            "label": "Time Series Analysis",
+            "note": "Trend, seasonality, ARIMA, forecasting honestly"
           }
         ]
       },
@@ -1050,6 +1054,10 @@
           {
             "label": "Data Governance, Privacy & Ethics",
             "note": "FAIR, privacy, access, fairness, lineage"
+          },
+          {
+            "label": "Anomaly Detection",
+            "note": "Outliers, isolation forest, alert-fatigue trade-off"
           }
         ]
       },
@@ -1057,7 +1065,11 @@
         "label": "Taught",
         "blurb": "Topics I taught or mentored — written from the other side of the desk.",
         "topics": [
-          { "label": "Data Science mentoring themes", "note": "UniMelb peer mentoring, 2024" }
+          { "label": "Data Science mentoring themes", "note": "UniMelb peer mentoring, 2024" },
+          {
+            "label": "EdTech & the Science of Learning",
+            "note": "Cognitive load, spacing, retrieval, desirable difficulties"
+          }
         ]
       }
     }

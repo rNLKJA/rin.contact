@@ -120,6 +120,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/data-science-mentoring", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/intelligence-analysis", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/data-governance", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/time-series-analysis", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/anomaly-detection", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/edtech-digital-learning", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
