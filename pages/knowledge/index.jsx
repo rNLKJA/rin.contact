@@ -34,6 +34,11 @@ const TIERS = [
     { href: "/knowledge/statistical-modelling", status: "live" },
     { href: "/knowledge/computational-statistics", status: "live" },
     { href: "/knowledge/advanced-database-systems", status: "live" },
+    { href: "/knowledge/science-communication", status: "live" },
+  ]},
+  { key: "practice", topics: [
+    { href: "/knowledge/business-intelligence-dashboards", status: "live" },
+    { href: "/knowledge/geospatial-analysis", status: "live" },
   ]},
   { key: "taught", topics: [
     { status: "planned" },

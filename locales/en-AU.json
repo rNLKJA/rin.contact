@@ -702,7 +702,16 @@
           { "label": "Cluster & Cloud Computing", "note": "MPI, Spark, HPC at scale" },
           { "label": "Statistical Modelling", "note": "GLMs, logistic & Poisson, link functions, AIC" },
           { "label": "Computational Statistics", "note": "Monte Carlo, the bootstrap, permutation tests, EM" },
-          { "label": "Advanced Database Systems", "note": "Query optimisation, MVCC, distribution, columnar" }
+          { "label": "Advanced Database Systems", "note": "Query optimisation, MVCC, distribution, columnar" },
+          { "label": "Science Communication at Work", "note": "Briefing decisions: lead with the recommendation" }
+        ]
+      },
+      "practice": {
+        "label": "In Practice",
+        "blurb": "What I do now — applied to current government-analyst work.",
+        "topics": [
+          { "label": "Business Intelligence & Dashboards", "note": "Power BI, star schema, one question per page" },
+          { "label": "Geospatial Analysis & GIS", "note": "Spatial joins, choropleths, rates, the MAUP" }
         ]
       },
       "taught": {
