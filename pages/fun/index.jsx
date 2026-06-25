@@ -59,13 +59,13 @@ export default function FunIndexPage() {
         <link rel="canonical" href="https://rin.contact/fun" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=Fun&subtitle=40%2B%20easter%20eggs%2C%20games%2C%20and%20interactive%20experiences%20on%20rin&section=fun" />
+        <meta property="og:image" content="https://rin.contact/api/og/?title=Fun&subtitle=40%2B%20easter%20eggs%2C%20games%2C%20and%20interactive%20experiences%20on%20rin&section=fun" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Fun" />
         <meta name="twitter:description" content="40+ easter eggs, games, and interactive experiences on rin." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=Fun&subtitle=40%2B%20easter%20eggs%2C%20games%2C%20and%20interactive%20experiences%20on%20rin&section=fun" />
+        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Fun&subtitle=40%2B%20easter%20eggs%2C%20games%2C%20and%20interactive%20experiences%20on%20rin&section=fun" />
       </Head>
 
       <SeoHead

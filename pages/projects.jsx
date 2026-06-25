@@ -15,7 +15,7 @@ export function getStaticProps() {
 
 export default function ProjectsPage({ count = 0 }) {
   const { t } = useI18n();
-  const ogImage = `https://rin.contact/api/og?title=${count}%20Projects&subtitle=Data%20engineering%2C%20cloud%2C%20mobile%20%26%20open-source&section=projects`;
+  const ogImage = `https://rin.contact/api/og/?title=${count}%20Projects&subtitle=Data%20engineering%2C%20cloud%2C%20mobile%20%26%20open-source&section=projects`;
   return (
     <>
       <Head>

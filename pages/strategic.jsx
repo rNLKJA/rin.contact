@@ -61,13 +61,13 @@ export default function StrategicPage() {
         <meta property="og:description" content="How strategic thinking + data science creates meaningful impact. Frameworks, mental models, and real-world impacts." />
         <meta property="og:url" content="https://rin.contact/strategic/" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic" />
+        <meta property="og:image" content="https://rin.contact/api/og/?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Strategic Data Science — Sunchuangyu (Rin) Huang" />
         <meta name="twitter:description" content="Problem-first, not model-first. Frameworks + real-world impact." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic" />
+        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic" />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">

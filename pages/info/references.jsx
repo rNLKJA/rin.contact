@@ -14,13 +14,13 @@ export default function ReferencesPage() {
         <link rel="canonical" href="https://rin.contact/info/references" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=References&subtitle=People%20who%20can%20speak%20to%20Rin%20Huang%20work%20and%20character&section=info" />
+        <meta property="og:image" content="https://rin.contact/api/og/?title=References&subtitle=People%20who%20can%20speak%20to%20Rin%20Huang%20work%20and%20character&section=info" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="References" />
         <meta name="twitter:description" content="People who can speak to Rin Huang work and character." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=References&subtitle=People%20who%20can%20speak%20to%20Rin%20Huang%20work%20and%20character&section=info" />
+        <meta name="twitter:image" content="https://rin.contact/api/og/?title=References&subtitle=People%20who%20can%20speak%20to%20Rin%20Huang%20work%20and%20character&section=info" />
       </Head>
 
       <SeoHead

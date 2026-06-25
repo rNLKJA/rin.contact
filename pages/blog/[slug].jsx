@@ -87,7 +87,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
     subtitle: post.description || "Notes by Rin Huang",
     section: "blog",
   };
-  const ogImageUrl = `https://rin.contact/api/og?${new URLSearchParams(ogImage).toString()}`;
+  const ogImageUrl = `https://rin.contact/api/og/?${new URLSearchParams(ogImage).toString()}`;
 
   return (
     <>

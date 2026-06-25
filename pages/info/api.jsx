@@ -28,13 +28,13 @@ export default function ApiPage() {
         <link rel="canonical" href="https://rin.contact/info/api" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=API&subtitle=Public%20API%20endpoints%20for%20rin&section=info" />
+        <meta property="og:image" content="https://rin.contact/api/og/?title=API&subtitle=Public%20API%20endpoints%20for%20rin&section=info" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="API" />
         <meta name="twitter:description" content="Public API endpoints for rin." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=API&subtitle=Public%20API%20endpoints%20for%20rin&section=info" />
+        <meta name="twitter:image" content="https://rin.contact/api/og/?title=API&subtitle=Public%20API%20endpoints%20for%20rin&section=info" />
       </Head>
 
       <SeoHead

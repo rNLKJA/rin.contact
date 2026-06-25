@@ -58,7 +58,7 @@ export default function SeoHead({
       subtitle: ogImage.subtitle,
       section: ogImage.section,
     });
-    ogImageUrl = `${BASE_URL}/api/og?${params.toString()}`;
+    ogImageUrl = `${BASE_URL}/api/og/?${params.toString()}`;
   }
 
   return (

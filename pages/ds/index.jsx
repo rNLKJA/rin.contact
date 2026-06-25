@@ -34,13 +34,13 @@ export default function DsIndexPage() {
         <link rel="canonical" href="https://rin.contact/ds" />
       
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=Data%20Science%20Profile%20Pages&subtitle=20%20interactive%20Data%20Science%20profile%20pages%20explaining%20concepts%20through%20Rin%20Huang%20career%20data&section=ds" />
+        <meta property="og:image" content="https://rin.contact/api/og/?title=Data%20Science%20Profile%20Pages&subtitle=20%20interactive%20Data%20Science%20profile%20pages%20explaining%20concepts%20through%20Rin%20Huang%20career%20data&section=ds" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Data Science Profile Pages" />
         <meta name="twitter:description" content="20 interactive Data Science profile pages explaining concepts through Rin Huang career data." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=Data%20Science%20Profile%20Pages&subtitle=20%20interactive%20Data%20Science%20profile%20pages%20explaining%20concepts%20through%20Rin%20Huang%20career%20data&section=ds" />
+        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Data%20Science%20Profile%20Pages&subtitle=20%20interactive%20Data%20Science%20profile%20pages%20explaining%20concepts%20through%20Rin%20Huang%20career%20data&section=ds" />
       </Head>
       <SeoHead
         title="Data Science Profile — rin.contact"

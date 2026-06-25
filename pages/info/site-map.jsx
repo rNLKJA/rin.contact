@@ -25,13 +25,13 @@ export default function SiteMapPage() {
         <link rel="canonical" href="https://rin.contact/info/site-map" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=Site%20Map&subtitle=Complete%20directory%20of%20all%20pages%20on%20rin&section=info" />
+        <meta property="og:image" content="https://rin.contact/api/og/?title=Site%20Map&subtitle=Complete%20directory%20of%20all%20pages%20on%20rin&section=info" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Site Map" />
         <meta name="twitter:description" content="Complete directory of all pages on rin." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=Site%20Map&subtitle=Complete%20directory%20of%20all%20pages%20on%20rin&section=info" />
+        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Site%20Map&subtitle=Complete%20directory%20of%20all%20pages%20on%20rin&section=info" />
       </Head>
 
       <SeoHead

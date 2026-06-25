@@ -20,13 +20,13 @@ export default function CareerPage() {
         <meta property="og:description" content="Four years across Government, Research, and Engineering. Seven roles. One startup. ASO7 @ SAPOL, WEHI, CSIRO, Mapiva." />
         <meta property="og:url" content="https://rin.contact/career/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=Career%20Journey&subtitle=7%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career" />
+        <meta property="og:image" content="https://rin.contact/api/og/?title=Career%20Journey&subtitle=7%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Career — Sunchuangyu (Rin) Huang" />
         <meta name="twitter:description" content="ASO7 @ SAPOL · WEHI · CSIRO · Mapiva. Interactive career metro map." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=Career%20Journey&subtitle=7%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career" />
+        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Career%20Journey&subtitle=7%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career" />
       </Head>
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">

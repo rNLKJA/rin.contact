@@ -18,13 +18,13 @@ export default function LabPage() {
         <meta property="og:description" content="Data science turned inward. Career intelligence reports, self-analysis as a dataset, and compound growth index." />
         <meta property="og:url" content="https://rin.contact/lab/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=Data%20Playground&subtitle=Career%20intelligence%20reports%20%26%20self-analysis&section=lab" />
+        <meta property="og:image" content="https://rin.contact/api/og/?title=Data%20Playground&subtitle=Career%20intelligence%20reports%20%26%20self-analysis&section=lab" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Lab — Sunchuangyu (Rin) Huang" />
         <meta name="twitter:description" content="Data science turned inward. Career intelligence reports." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=Data%20Playground&subtitle=Career%20intelligence%20reports%20%26%20self-analysis&section=lab" />
+        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Data%20Playground&subtitle=Career%20intelligence%20reports%20%26%20self-analysis&section=lab" />
       </Head>
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">

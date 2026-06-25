@@ -33,13 +33,13 @@ export default function AccessibilityPage() {
         <link rel="canonical" href="https://rin.contact/info/accessibility" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rin.contact/api/og?title=Accessibility&subtitle=WCAG%202&section=info" />
+        <meta property="og:image" content="https://rin.contact/api/og/?title=Accessibility&subtitle=WCAG%202&section=info" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Accessibility" />
         <meta name="twitter:description" content="WCAG 2." />
-        <meta name="twitter:image" content="https://rin.contact/api/og?title=Accessibility&subtitle=WCAG%202&section=info" />
+        <meta name="twitter:image" content="https://rin.contact/api/og/?title=Accessibility&subtitle=WCAG%202&section=info" />
       </Head>
 
       <SeoHead
