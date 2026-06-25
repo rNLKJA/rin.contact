@@ -991,6 +991,10 @@
           {
             "label": "Applied Data Science",
             "note": "The project lifecycle, CRISP-DM, problem-first"
+          },
+          {
+            "label": "Data Visualisation & Perception",
+            "note": "Encoding accuracy, pre-attentive cues, honest charts"
           }
         ]
       },
@@ -1032,6 +1036,14 @@
           {
             "label": "Time Series Analysis",
             "note": "Trend, seasonality, ARIMA, forecasting honestly"
+          },
+          {
+            "label": "Causal Inference & A/B Testing",
+            "note": "Counterfactuals, RCTs, confounders, DiD"
+          },
+          {
+            "label": "Deep Learning & Neural Networks",
+            "note": "Neurons, backprop, gradient descent, CNNs to transformers"
           }
         ]
       },

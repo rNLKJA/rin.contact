@@ -123,6 +123,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/time-series-analysis", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/anomaly-detection", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/edtech-digital-learning", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/causal-inference", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/data-visualisation", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/deep-learning", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
