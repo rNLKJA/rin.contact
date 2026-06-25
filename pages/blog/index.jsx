@@ -164,6 +164,15 @@ export default function BlogIndex({ posts }) {
           </div>
         )}
 
+        {/* Result count — feedback that the search/filter narrowed the list.
+            Language-neutral (matched / total) with the localised noun; aria-live
+            announces the new count to screen readers as the query changes. */}
+        {(q || activeTag) && filtered.length > 0 && (
+          <p className="text-[11px] tracking-wide text-[#9A9A9A] mb-6" aria-live="polite">
+            <span className="text-[#FF3C3C]">{filtered.length}</span> / {posts.length} {t("blog.postsLabel")}
+          </p>
+        )}
+
         {/* Posts */}
         {posts.length === 0 ? (
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-12 text-center">

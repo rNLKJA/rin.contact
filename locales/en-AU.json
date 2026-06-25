@@ -960,6 +960,7 @@
     "filterLabel": "Filter by topic",
     "searchPlaceholder": "Search writing…",
     "searchNoResults": "No posts match your search. Try a different term or clear the filter.",
+    "postsLabel": "posts",
     "shareLabel": "Share this",
     "copyLink": "Copy link",
     "copied": "Copied"
