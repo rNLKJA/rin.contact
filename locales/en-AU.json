@@ -1007,6 +1007,10 @@
           {
             "label": "SQL & Querying Data",
             "note": "Execution order, joins, window functions, NULLs"
+          },
+          {
+            "label": "Model Evaluation & Validation",
+            "note": "Cross-validation, ROC/AUC, the metric that matters"
           }
         ]
       },
@@ -1060,6 +1064,10 @@
           {
             "label": "Reinforcement Learning",
             "note": "Reward, MDPs, Bellman, Q-learning, reward hacking"
+          },
+          {
+            "label": "Ensemble Methods & Gradient Boosting",
+            "note": "Bagging, random forests, boosting, XGBoost"
           }
         ]
       },
@@ -1094,6 +1102,10 @@
           {
             "label": "Reproducibility & Analytical Pipelines",
             "note": "Version control, environments, RAP, lineage"
+          },
+          {
+            "label": "MLOps & Model Monitoring",
+            "note": "Deployment, drift, the retrain loop, skew"
           }
         ]
       },

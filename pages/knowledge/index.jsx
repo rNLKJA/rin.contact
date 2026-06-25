@@ -29,6 +29,7 @@ const TIERS = [
       { href: "/knowledge/feature-engineering", status: "live" },
       { href: "/knowledge/sampling-survey-methodology", status: "live" },
       { href: "/knowledge/sql-querying-data", status: "live" },
+      { href: "/knowledge/model-evaluation", status: "live" },
     ],
   },
   {
@@ -48,6 +49,7 @@ const TIERS = [
       { href: "/knowledge/causal-inference", status: "live" },
       { href: "/knowledge/deep-learning", status: "live" },
       { href: "/knowledge/reinforcement-learning", status: "live" },
+      { href: "/knowledge/ensemble-methods", status: "live" },
     ],
   },
   {
@@ -60,6 +62,7 @@ const TIERS = [
       { href: "/knowledge/anomaly-detection", status: "live" },
       { href: "/knowledge/network-graph-analysis", status: "live" },
       { href: "/knowledge/reproducibility", status: "live" },
+      { href: "/knowledge/mlops-monitoring", status: "live" },
     ],
   },
   {

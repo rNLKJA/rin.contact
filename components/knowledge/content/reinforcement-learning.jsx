@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/reinforcement-learning.
@@ -17,19 +24,89 @@ function RLLoopFigure({ caption, ariaLabel, agentLabel, envLabel, actionLabel, r
         role="img"
         aria-label={ariaLabel}
       >
-        <rect x="60" y="55" width="110" height="42" rx="4" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <text x="115" y="80" textAnchor="middle" fontSize="12" fontFamily="monospace" fill="currentColor">{agentLabel}</text>
-        <rect x="270" y="55" width="110" height="42" rx="4" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <text x="325" y="80" textAnchor="middle" fontSize="12" fontFamily="monospace" fill="currentColor">{envLabel}</text>
+        <rect
+          x="60"
+          y="55"
+          width="110"
+          height="42"
+          rx="4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+        <text
+          x="115"
+          y="80"
+          textAnchor="middle"
+          fontSize="12"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {agentLabel}
+        </text>
+        <rect
+          x="270"
+          y="55"
+          width="110"
+          height="42"
+          rx="4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+        <text
+          x="325"
+          y="80"
+          textAnchor="middle"
+          fontSize="12"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {envLabel}
+        </text>
         {/* action arrow top */}
-        <path d="M170 64 H270" fill="none" stroke="#FF3C3C" strokeWidth="1.5" markerEnd="url(#rlah)" />
-        <text x="220" y="40" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill="#FF3C3C">{actionLabel}</text>
+        <path
+          d="M170 64 H270"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.5"
+          markerEnd="url(#rlah)"
+        />
+        <text
+          x="220"
+          y="40"
+          textAnchor="middle"
+          fontSize="9.5"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {actionLabel}
+        </text>
         {/* reward + state arrow bottom */}
-        <path d="M270 88 H170" fill="none" stroke="currentColor" strokeWidth="1.5" markerEnd="url(#rlah2)" />
-        <text x="220" y="112" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill="currentColor">{rewardLabel}</text>
+        <path
+          d="M270 88 H170"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          markerEnd="url(#rlah2)"
+        />
+        <text
+          x="220"
+          y="112"
+          textAnchor="middle"
+          fontSize="9.5"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {rewardLabel}
+        </text>
         <defs>
-          <marker id="rlah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" /></marker>
-          <marker id="rlah2" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
+          <marker id="rlah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+          </marker>
+          <marker id="rlah2" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -293,8 +370,10 @@ function ZhBody() {
       <p>
         机器学习有三大范式。<Link href="/knowledge/statistical-machine-learning">监督学习</Link>从
         带标签的样本中学习（这是猫，这是狗）。<Link href="/knowledge/clustering">无监督学习</Link>则
-        在完全没有标签的情况下发现结构。<Term>强化学习</Term>（RL）是第三种，也是最不一样的一种：它从
-        <strong>奖励</strong>中学习，靠<strong>去做</strong>。没人告诉智能体正确答案；它尝试各种动作、
+        在完全没有标签的情况下发现结构。<Term>强化学习</Term>
+        （RL）是第三种，也是最不一样的一种：它从
+        <strong>奖励</strong>中学习，靠<strong>去做</strong>
+        。没人告诉智能体正确答案；它尝试各种动作、
         看会发生什么，并逐渐摸索出一套随时间赚取最多奖励的策略。
       </p>
       <p>
@@ -305,7 +384,8 @@ function ZhBody() {
 
       <KSection id="third" eyebrow="01" title="第三种范式：从奖励中学习">
         <p>
-          RL 的决定性特征是：没有带标签的数据集。取而代之的是一个目标，以及一个告诉智能体自己做得好不好
+          RL
+          的决定性特征是：没有带标签的数据集。取而代之的是一个目标，以及一个告诉智能体自己做得好不好
           的<Term>奖励信号</Term>。智能体的任务是学出一个<Term>策略</Term>——一种选择动作的方式——使它
           随时间收集到的总奖励最大化。它靠试错学习，就像你学一个没人讲解过的游戏：玩、留意什么能得分、
           然后多做那个。
@@ -313,7 +393,8 @@ function ZhBody() {
         <p>
           有两个特征让 RL 真正比监督学习更难。第一，反馈是<Term>评价性的，而非指导性的</Term>——奖励
           告诉你你的动作<em>有多好</em>，而不是<em>正确的动作本该是什么</em>。第二，奖励可能是
-          <Term>延迟的</Term>：赢下一盘棋的那一步，也许是二十步之前下的。把一个迟到的奖励，连回到那个
+          <Term>延迟的</Term>
+          ：赢下一盘棋的那一步，也许是二十步之前下的。把一个迟到的奖励，连回到那个
           赢得它的早期动作上——<Term>信用分配</Term>问题——正是 RL 很大一部分内容所在。
         </p>
       </KSection>
@@ -321,7 +402,8 @@ function ZhBody() {
       <KSection id="loop" eyebrow="02" title="智能体-环境循环">
         <p>
           RL 里的一切都建立在一个循环之上。一个<Term>智能体</Term>观察一个<Term>环境</Term>的当前
-          <Term>状态</Term>，采取一个<Term>动作</Term>，环境则以一个<Term>奖励</Term>和一个新状态回应。
+          <Term>状态</Term>，采取一个<Term>动作</Term>，环境则以一个<Term>奖励</Term>
+          和一个新状态回应。
           重复。智能体的全部存在就是这个循环，而它的目标是选择那些在长期内最大化奖励的动作——而不只是
           下一步。
         </p>
@@ -337,9 +419,11 @@ function ZhBody() {
 
       <KSection id="mdp" eyebrow="03" title="马尔可夫决策过程">
         <p>
-          那个循环的形式化框架是<Term>马尔可夫决策过程</Term>（MDP）：一组状态 <TeX>{String.raw`S`}</TeX>、
-          动作 <TeX>{String.raw`A`}</TeX>、转移概率，以及奖励。它的决定性假设是<Term>马尔可夫性质</Term>
-          ——未来只取决于<em>当前</em>状态，而非你如何走到这里的全部历史。当前状态捕获了所有相关的东西。
+          那个循环的形式化框架是<Term>马尔可夫决策过程</Term>（MDP）：一组状态{" "}
+          <TeX>{String.raw`S`}</TeX>、 动作 <TeX>{String.raw`A`}</TeX>
+          、转移概率，以及奖励。它的决定性假设是<Term>马尔可夫性质</Term>
+          ——未来只取决于<em>当前</em>
+          状态，而非你如何走到这里的全部历史。当前状态捕获了所有相关的东西。
         </p>
         <p>
           智能体的目标是最大化<Term>期望回报</Term>——累积的未来奖励——通常是<em>折扣过的</em>，好让
@@ -349,9 +433,9 @@ function ZhBody() {
           {String.raw`G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}`}
         </Formula>
         <p>
-          <Term>折扣因子</Term> <TeX>{String.raw`\gamma \in [0,1)`}</TeX> 设定智能体有多远视：接近 0 时
-          它很短视（现在就抓奖励），接近 1 时它为长远谋划。那一个旋钮，就捕获了短期与长期回报之间的
-          全部张力。
+          <Term>折扣因子</Term> <TeX>{String.raw`\gamma \in [0,1)`}</TeX> 设定智能体有多远视：接近 0
+          时 它很短视（现在就抓奖励），接近 1
+          时它为长远谋划。那一个旋钮，就捕获了短期与长期回报之间的 全部张力。
         </p>
       </KSection>
 
@@ -372,13 +456,14 @@ function ZhBody() {
 
       <KSection id="value" eyebrow="05" title="价值函数与贝尔曼方程">
         <p>
-          要行动得好，智能体需要一种对哪些处境是<em>好的</em>的感觉。一个<Term>价值函数</Term>恰恰捕获
-          了这个：从某个状态出发（或在某状态采取某动作）所期望的长期奖励。动作价值{" "}
+          要行动得好，智能体需要一种对哪些处境是<em>好的</em>的感觉。一个<Term>价值函数</Term>
+          恰恰捕获 了这个：从某个状态出发（或在某状态采取某动作）所期望的长期奖励。动作价值{" "}
           <TeX>{String.raw`Q(s,a)`}</TeX> 就是「如果我在状态 <TeX>{String.raw`s`}</TeX> 采取动作{" "}
           <TeX>{String.raw`a`}</TeX>、此后一直行动得当，我能期望多少总奖励？」
         </p>
         <p>
-          基石是<Term>贝尔曼方程</Term>，它赋予价值一种递归结构：此刻的价值，是即时奖励，加上你接下来
+          基石是<Term>贝尔曼方程</Term>
+          ，它赋予价值一种递归结构：此刻的价值，是即时奖励，加上你接下来
           落脚之处的（折扣过的）价值。
         </p>
         <Formula label="Q of s, a equals the immediate reward r plus gamma times the maximum over next actions a-prime of Q of s-prime, a-prime.">
@@ -402,8 +487,8 @@ function ZhBody() {
         </Formula>
         <p>
           方括号里是<Term>时序差分误差</Term>——智能体所期望的与实际发生的之间的落差（奖励，加上它
-          落脚之处的价值）。它把估计沿那个方向移动一个分数 <TeX>{String.raw`\alpha`}</TeX>（学习率）。
-          在探索的同时一遍遍这样做，Q 值便收敛到真实的那些——智能体学出最优策略，
+          落脚之处的价值）。它把估计沿那个方向移动一个分数 <TeX>{String.raw`\alpha`}</TeX>
+          （学习率）。 在探索的同时一遍遍这样做，Q 值便收敛到真实的那些——智能体学出最优策略，
           <em>却从未被告知这个世界的规则</em>，纯粹来自它收集到的奖励。最后这一点，正是让 RL 显得
           了不起的地方。
         </p>
@@ -430,11 +515,12 @@ function ZhBody() {
         </p>
         <Callout type="pitfall">
           <p>
-            <strong>奖励作弊</strong>（规范博弈）是指智能体找到一个漏洞，在不达成真实目标的情况下拿到
-            高奖励——一个赛船智能体学会原地打转去捡奖励点，而不是去完成比赛。这不是智能体里的一个 bug；
-            它正是在做被告知的事。优化器越深，它就越有创意地利用一个不完美的奖励——这让
-            <strong>奖励设计</strong>成为现代人工智能中最难、也最事关重大的问题之一，并且随着 RL 被用来
-            调校强大的系统，它是一个活生生的安全关切。
+            <strong>奖励作弊</strong>
+            （规范博弈）是指智能体找到一个漏洞，在不达成真实目标的情况下拿到
+            高奖励——一个赛船智能体学会原地打转去捡奖励点，而不是去完成比赛。这不是智能体里的一个
+            bug； 它正是在做被告知的事。优化器越深，它就越有创意地利用一个不完美的奖励——这让
+            <strong>奖励设计</strong>成为现代人工智能中最难、也最事关重大的问题之一，并且随着 RL
+            被用来 调校强大的系统，它是一个活生生的安全关切。
           </p>
         </Callout>
         <p>
@@ -448,16 +534,20 @@ function ZhBody() {
       <KSection id="applied" eyebrow="09" title="它在我工作中的体现">
         <Callout type="applied" label="序贯决策的正确框架">
           <p>
-            与其说 RL 是一件日常的分析师工具，不如说它是一种<strong>思考序贯决策的方式</strong>——那些
+            与其说 RL 是一件日常的分析师工具，不如说它是一种<strong>思考序贯决策的方式</strong>
+            ——那些
             今天的选择会改变明天处境、而你追求的是长期回报而非一次性预测的问题。认出一个问题何时有那种
-            形状（以及何时没有），才是有用的判断：很大一部分分析，由<Link href="/knowledge/causal-inference">因果推断</Link>
+            形状（以及何时没有），才是有用的判断：很大一部分分析，由
+            <Link href="/knowledge/causal-inference">因果推断</Link>
             或一个监督模型来服务，比伸手去拿 RL 要好。
           </p>
           <p>
             最能迁移过来的，是那个警示性的内核。<strong>探索-利用</strong>权衡，与{" "}
             <Link href="/knowledge/causal-inference">A/B 测试</Link>里的多臂老虎机是同一套逻辑。而
-            <strong>奖励作弊</strong>，是贯穿整个板块的一个教训的最尖锐版本：优化一个代理指标，你得到的
-            就是那个代理指标，而非目标——这是一条在任何由指标驱动行为之处都要紧的纪律，远不止 RL 本身。
+            <strong>奖励作弊</strong>
+            ，是贯穿整个板块的一个教训的最尖锐版本：优化一个代理指标，你得到的
+            就是那个代理指标，而非目标——这是一条在任何由指标驱动行为之处都要紧的纪律，远不止 RL
+            本身。
           </p>
         </Callout>
       </KSection>

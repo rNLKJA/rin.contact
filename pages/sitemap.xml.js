@@ -132,6 +132,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/sampling-survey-methodology", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/sql-querying-data", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/reinforcement-learning", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/ensemble-methods", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/model-evaluation", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/mlops-monitoring", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
