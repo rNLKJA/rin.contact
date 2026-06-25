@@ -208,7 +208,7 @@ export default function Home() {
           name="description"
           content={isZh
             ? "Rin Huang（黄孙创宇）的官方网站 — 南澳大利亚警察局高级数据分析师，曾任WEHI研究软件工程师、CSIRO数据科学顾问。完整的职业经历、项目成果和联系方式。"
-            : "Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI &amp; CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+            : "Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
           }
         />
         <meta
@@ -294,7 +294,7 @@ export default function Home() {
 
       <SeoHead
         title={isZh ? "Rin Huang (黄孙创宇) — 个人主页 | 高级数据分析师" : "Rin Huang (黄孙创宇) — Official Portfolio | Senior Data Analyst"}
-        description={isZh ? "Rin Huang（黄孙创宇）的官方网站 — 南澳大利亚警察局高级数据分析师。职业经历、项目成果、23项专业认证。亦被称为 Huang Sunchuangyu、HUANGSUNCHUANGYU。" : "Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI &amp; CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."}
+        description={isZh ? "Rin Huang（黄孙创宇）的官方网站 — 南澳大利亚警察局高级数据分析师。职业经历、项目成果、23项专业认证。亦被称为 Huang Sunchuangyu、HUANGSUNCHUANGYU。" : "Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."}
         path="/"
         ogImage={{ title: "Rin Huang", subtitle: isZh ? "高级数据分析师 @ SAPOL" : "Senior Data Analyst @ SAPOL", section: "home" }}
         ogType="profile"

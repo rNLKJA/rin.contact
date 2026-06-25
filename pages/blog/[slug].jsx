@@ -56,7 +56,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
   return (
     <>
       <SeoHead
-        title={`${post.title} — Rin Huang . rin.contact`}
+        title={`${post.title} — Rin Huang · rin.contact`}
         description={post.description || "Blog post by Rin Huang"}
         path={`/blog/${post.slug}/`}
         ogType="article"

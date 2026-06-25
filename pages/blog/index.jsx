@@ -67,7 +67,7 @@ export default function BlogIndex({ posts }) {
   return (
     <>
       <SeoHead
-        title="Blog — Rin Huang . rin.contact"
+        title="Blog — Rin Huang · rin.contact"
         description="Thoughts on data science, intelligence frameworks, government analytics, and building things that compound."
         path="/blog/"
         ogTitle="Blog — Rin Huang"
