@@ -1148,5 +1148,77 @@
     "download": "下载 .vcf 联系人名片",
     "email": "邮箱",
     "fullProfile": "完整资料"
+  },
+  "ds": {
+    "index": {
+      "metaTitle": "数据科学画像 — rin.contact",
+      "metaDescription": "把 Rin Huang 当作数据科学——模型卡、SHAP、混淆矩阵，等等。",
+      "ogTitle": "数据科学",
+      "ogSubtitle": "讲解、模型卡与技术笔记",
+      "heading": "把 Rin 当作数据科学。",
+      "subtitle": "模型卡、特征重要性、混淆矩阵、生存曲线。因为每位数据科学家都值得成为一个数据集。",
+      "notes": [
+        "把 Rin 当作一个 ML 模型",
+        "SHAP 式的贡献",
+        "人们以为的 vs 现实",
+        "30% 分析师，25% 工程师……",
+        "通才的取舍",
+        "人生各纪元上的损失",
+        "把职业生涯当作数据管线",
+        "任期的 Kaplan-Meier",
+        "为你的人生做 git 提交",
+        "H₀：Rin 不可雇用",
+        "预测五年后的 Rin",
+        "企业版 vs 这个网站",
+        "1000 个回归，3 个发表",
+        "把 Rin 当作一个数据集",
+        "看过 Rin 的用户也看了",
+        "对 Rin 做 NLP 分析",
+        "简历热词探测器",
+        "重训你的心智模型",
+        "职业部署流水线",
+        "已知的债，估算的回报"
+      ]
+    },
+    "abTest": {
+      "metaTitle": "A/B 测试 — rin.contact",
+      "metaDescription": "企业版 vs 这个网站。",
+      "ogTitle": "A/B 测试",
+      "ogSubtitle": "企业版 vs 这个网站。",
+      "heading": "A/B 测试结果",
+      "subtitle": "我们对两个版本的 Rin 做了 A/B 测试。结果如下。",
+      "thVariant": "变体",
+      "thDescription": "描述",
+      "thEngagement": "参与度",
+      "aDesc": "企业简历，2 页",
+      "aEng": "基线",
+      "bDesc": "这个网站",
+      "footer": "胜者：B。p < 0.001。发布它。"
+    },
+    "regression": {
+      "metaTitle": "回归 — rin.contact",
+      "metaDescription": "预测五年后的 Rin。",
+      "ogTitle": "回归",
+      "ogSubtitle": "预测五年后的 Rin。",
+      "heading": "向均值回归",
+      "subtitle": "预测五年后的 Rin。对职业轨迹做简单线性回归。",
+      "model": "模型：y = β₀ + β₁·t",
+      "predicted": "预测角色（2030）：高级+ / 首席 / 负责人",
+      "ci": "95% 置信区间：[仍在职, 但愿没倦怠]",
+      "note": "R² = 0.87。请谨慎解读。过往表现 ≠ 未来结果。"
+    },
+    "dataDrift": {
+      "metaTitle": "数据漂移 — rin.contact",
+      "metaDescription": "重训你的心智模型。",
+      "ogTitle": "数据漂移",
+      "ogSubtitle": "重训你的心智模型。",
+      "heading": "检测到数据漂移",
+      "subtitle": "你对 Rin 的假设已经漂移。最后更新：2024。重训你的心智模型。",
+      "warning": "警告：检测到分布偏移",
+      "b1": "• 角色：初级 → 高级",
+      "b2": "• 地点：墨尔本 → 阿德莱德",
+      "b3": "• 领域：新增政府、研究、创业",
+      "action": "建议操作：重训。访问 /career 获取更新数据。"
+    }
   }
 }

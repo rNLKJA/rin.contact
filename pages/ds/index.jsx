@@ -1,38 +1,44 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 
+// Route id (label) is the stable identifier shown as /ds/<label>; the note is
+// localised via ds.index.notes[i] (index-aligned).
 const ITEMS = [
-  { href: "/ds/model-card",        label: "model-card",        note: "Rin as an ML model" },
-  { href: "/ds/feature-importance", label: "feature-importance", note: "SHAP-style contributions" },
-  { href: "/ds/confusion-matrix",  label: "confusion-matrix",  note: "what people think vs reality" },
-  { href: "/ds/ensemble",         label: "ensemble",          note: "30% Analyst, 25% Engineer..." },
-  { href: "/ds/bias-variance",    label: "bias-variance",     note: "generalist tradeoff" },
-  { href: "/ds/training-curves",  label: "training-curves",   note: "loss over life epochs" },
-  { href: "/ds/pipeline",         label: "pipeline",          note: "career as data pipeline" },
-  { href: "/ds/survival",         label: "survival",          note: "Kaplan-Meier of tenure" },
-  { href: "/ds/version-control",  label: "version-control",   note: "git commits for your life" },
-  { href: "/ds/null-hypothesis",  label: "null-hypothesis",  note: "H₀: Rin is not hireable" },
-  { href: "/ds/regression",       label: "regression",        note: "predict Rin in 5 years" },
-  { href: "/ds/ab-test",         label: "ab-test",           note: "corporate vs this website" },
-  { href: "/ds/phacking",        label: "phacking",          note: "1000 regressions, 3 published" },
-  { href: "/ds/eda",             label: "eda",               note: "Rin as a dataset" },
-  { href: "/ds/recommendation",   label: "recommendation",    note: "users who viewed Rin also viewed" },
-  { href: "/ds/sentiment",        label: "sentiment",         note: "NLP analysis of Rin" },
-  { href: "/ds/overfitting",      label: "overfitting",       note: "CV buzzword detector" },
-  { href: "/ds/data-drift",      label: "data-drift",        note: "retrain your mental model" },
-  { href: "/ds/cicd",            label: "cicd",              note: "career deployment pipeline" },
-  { href: "/ds/technical-debt",   label: "technical-debt",    note: "known debt, estimated payoff" },
+  { href: "/ds/model-card",         label: "model-card" },
+  { href: "/ds/feature-importance", label: "feature-importance" },
+  { href: "/ds/confusion-matrix",   label: "confusion-matrix" },
+  { href: "/ds/ensemble",           label: "ensemble" },
+  { href: "/ds/bias-variance",      label: "bias-variance" },
+  { href: "/ds/training-curves",    label: "training-curves" },
+  { href: "/ds/pipeline",           label: "pipeline" },
+  { href: "/ds/survival",           label: "survival" },
+  { href: "/ds/version-control",    label: "version-control" },
+  { href: "/ds/null-hypothesis",    label: "null-hypothesis" },
+  { href: "/ds/regression",         label: "regression" },
+  { href: "/ds/ab-test",            label: "ab-test" },
+  { href: "/ds/phacking",           label: "phacking" },
+  { href: "/ds/eda",                label: "eda" },
+  { href: "/ds/recommendation",     label: "recommendation" },
+  { href: "/ds/sentiment",          label: "sentiment" },
+  { href: "/ds/overfitting",        label: "overfitting" },
+  { href: "/ds/data-drift",         label: "data-drift" },
+  { href: "/ds/cicd",               label: "cicd" },
+  { href: "/ds/technical-debt",     label: "technical-debt" },
 ];
 
 export default function DsIndexPage() {
+  const { t, locale = "en-AU" } = useI18n();
+  const notes = t("ds.index.notes") || [];
+
   return (
     <>
       <Head>
-        <title>Data Science Profile — rin.contact</title>
-        <meta name="description" content="Rin Huang as data science — model cards, SHAP, confusion matrices, and more." />
+        <title>{t("ds.index.metaTitle")}</title>
+        <meta name="description" content={t("ds.index.metaDescription")} />
         <link rel="canonical" href="https://rin.contact/ds" />
-      
+
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://rin.contact/api/og/?title=Data%20Science%20Profile%20Pages&subtitle=20%20interactive%20Data%20Science%20profile%20pages%20explaining%20concepts%20through%20Rin%20Huang%20career%20data&section=ds" />
         <meta property="og:image:width" content="1200" />
@@ -43,29 +49,29 @@ export default function DsIndexPage() {
         <meta name="twitter:image" content="https://rin.contact/api/og/?title=Data%20Science%20Profile%20Pages&subtitle=20%20interactive%20Data%20Science%20profile%20pages%20explaining%20concepts%20through%20Rin%20Huang%20career%20data&section=ds" />
       </Head>
       <SeoHead
-        title="Data Science Profile — rin.contact"
-        description="Rin Huang as data science — model cards, SHAP, confusion matrices, and more."
+        title={t("ds.index.metaTitle")}
+        description={t("ds.index.metaDescription")}
         path="/ds"
         ogImage={{
-          title: "Data Science",
-          subtitle: "Explanations, model cards, and technical notes",
+          title: t("ds.index.ogTitle"),
+          subtitle: t("ds.index.ogSubtitle"),
           section: "ds",
         }}
+        locale={locale}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
           <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">/ds</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-            Rin as data science.
+            {t("ds.index.heading")}
           </h1>
           <p className="text-sm text-[#7A7A7A] leading-relaxed mb-14">
-            Model cards, feature importance, confusion matrices, survival curves.
-            Because every data scientist deserves to be a dataset.
+            {t("ds.index.subtitle")}
           </p>
 
           <div className="space-y-0 divide-y divide-[#E0E0E0] dark:divide-[#3D3D3D]">
-            {ITEMS.map(({ href, label, note }) => (
+            {ITEMS.map(({ href, label }, i) => (
               <Link
                 key={href}
                 href={href}
@@ -74,7 +80,7 @@ export default function DsIndexPage() {
                 <span className="font-mono text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#FF3C3C] transition-colors">
                   /ds/{label}
                 </span>
-                <span className="text-[11px] text-[#AAAAAA] flex-shrink-0">{note}</span>
+                <span className="text-[11px] text-[#AAAAAA] flex-shrink-0">{notes[i]}</span>
               </Link>
             ))}
           </div>
@@ -84,7 +90,7 @@ export default function DsIndexPage() {
               href="/"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
-              ← Home
+              ← {t("nav.home")}
             </Link>
           </div>
         </div>

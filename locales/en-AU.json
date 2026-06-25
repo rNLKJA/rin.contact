@@ -1148,5 +1148,77 @@
     "download": "Download .vcf contact card",
     "email": "Email",
     "fullProfile": "Full Profile"
+  },
+  "ds": {
+    "index": {
+      "metaTitle": "Data Science Profile — rin.contact",
+      "metaDescription": "Rin Huang as data science — model cards, SHAP, confusion matrices, and more.",
+      "ogTitle": "Data Science",
+      "ogSubtitle": "Explanations, model cards, and technical notes",
+      "heading": "Rin as data science.",
+      "subtitle": "Model cards, feature importance, confusion matrices, survival curves. Because every data scientist deserves to be a dataset.",
+      "notes": [
+        "Rin as an ML model",
+        "SHAP-style contributions",
+        "what people think vs reality",
+        "30% Analyst, 25% Engineer...",
+        "generalist tradeoff",
+        "loss over life epochs",
+        "career as data pipeline",
+        "Kaplan-Meier of tenure",
+        "git commits for your life",
+        "H₀: Rin is not hireable",
+        "predict Rin in 5 years",
+        "corporate vs this website",
+        "1000 regressions, 3 published",
+        "Rin as a dataset",
+        "users who viewed Rin also viewed",
+        "NLP analysis of Rin",
+        "CV buzzword detector",
+        "retrain your mental model",
+        "career deployment pipeline",
+        "known debt, estimated payoff"
+      ]
+    },
+    "abTest": {
+      "metaTitle": "A/B Test — rin.contact",
+      "metaDescription": "Corporate vs this website.",
+      "ogTitle": "A/B Test",
+      "ogSubtitle": "Corporate vs this website.",
+      "heading": "A/B Test Results",
+      "subtitle": "We A/B tested two versions of Rin. Here are the results.",
+      "thVariant": "Variant",
+      "thDescription": "Description",
+      "thEngagement": "Engagement",
+      "aDesc": "Corporate CV, 2 pages",
+      "aEng": "Baseline",
+      "bDesc": "This website",
+      "footer": "Winner: B. p < 0.001. Ship it."
+    },
+    "regression": {
+      "metaTitle": "Regression — rin.contact",
+      "metaDescription": "Predict Rin in 5 years.",
+      "ogTitle": "Regression",
+      "ogSubtitle": "Predict Rin in 5 years.",
+      "heading": "Regression to the Mean",
+      "subtitle": "Predicting Rin in 5 years. Simple linear regression on career trajectory.",
+      "model": "Model: y = β₀ + β₁·t",
+      "predicted": "Predicted role (2030): Senior+ / Principal / Lead",
+      "ci": "95% CI: [Still employed, Hopefully not burnt out]",
+      "note": "R² = 0.87. Interpret with caution. Past performance ≠ future results."
+    },
+    "dataDrift": {
+      "metaTitle": "Data Drift — rin.contact",
+      "metaDescription": "Retrain your mental model.",
+      "ogTitle": "Data Drift",
+      "ogSubtitle": "Retrain your mental model.",
+      "heading": "Data Drift Detected",
+      "subtitle": "Your assumptions about Rin have drifted. Last updated: 2024. Retrain your mental model.",
+      "warning": "WARNING: Distribution shift detected",
+      "b1": "• Role: Junior → Senior",
+      "b2": "• Location: Melbourne → Adelaide",
+      "b3": "• Domain: Added government, research, startup",
+      "action": "Recommended action: Retrain. Visit /career for updated data."
+    }
   }
 }
