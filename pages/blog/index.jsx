@@ -18,6 +18,7 @@ export default function BlogIndex({ posts }) {
   // no-JS and SSR always render the full list. Only tags on >=2 posts become filter
   // chips; one-off tags are noise as filters.
   const [activeTag, setActiveTag] = useState(null);
+  const [query, setQuery] = useState("");
   const topTags = useMemo(() => {
     const counts = {};
     posts.forEach((p) => (p.tags || []).forEach((tag) => { counts[tag] = (counts[tag] || 0) + 1; }));
@@ -26,30 +27,42 @@ export default function BlogIndex({ posts }) {
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
       .map(([tag]) => tag);
   }, [posts]);
-  const filtered = activeTag ? posts.filter((p) => (p.tags || []).includes(activeTag)) : posts;
 
-  // ── Shareable topic filter via the URL ────────────────────────────────────
-  // Read ?tag= on load and on back/forward, so a filtered view is a shareable
-  // link (e.g. send a government recruiter /blog?tag=government). Only honour a
-  // tag that actually exists as a filter chip.
+  // Text search matches title, summary, and tags — the fields a reader searches
+  // by. The tag filter and the text query compose: both must match.
+  const q = query.trim().toLowerCase();
+  const filtered = posts.filter((p) => {
+    if (activeTag && !(p.tags || []).includes(activeTag)) return false;
+    if (!q) return true;
+    const hay = `${p.title || ""} ${p.description || ""} ${(p.tags || []).join(" ")}`.toLowerCase();
+    return hay.includes(q);
+  });
+
+  // ── Shareable filter + search via the URL ─────────────────────────────────
+  // Read ?tag= and ?q= on load and on back/forward, so a filtered or searched
+  // view is a shareable link (e.g. /blog?tag=government, or Google's search box
+  // landing on /blog?q=…). Only honour a tag that exists as a filter chip.
   const router = useRouter();
   useEffect(() => {
     if (!router.isReady) return;
     const tag = router.query.tag;
     if (typeof tag === "string" && topTags.includes(tag)) setActiveTag(tag);
     else if (tag == null) setActiveTag(null);
-  }, [router.isReady, router.query.tag, topTags]);
+    const urlQ = router.query.q;
+    setQuery(typeof urlQ === "string" ? urlQ : "");
+  }, [router.isReady, router.query.tag, router.query.q, topTags]);
 
-  // Apply a filter AND reflect it in the URL (shallow, no scroll). The URL write
-  // lives in the click handler, not an effect watching activeTag, so it cannot
-  // race the read effect above on first load. null clears the param.
-  const selectTag = (tag) => {
-    setActiveTag(tag);
+  // Apply a filter/search AND reflect it in the URL (shallow, no scroll). The URL
+  // write lives in the handler, not an effect watching state, so it cannot race
+  // the read effect above on first load. A falsy value clears its param.
+  const writeUrl = (next) => {
     if (!router.isReady) return;
-    const query = { ...router.query };
-    if (tag) query.tag = tag; else delete query.tag;
-    router.replace({ pathname: router.pathname, query }, undefined, { shallow: true, scroll: false });
+    const nextQuery = { ...router.query, ...next };
+    Object.keys(next).forEach((k) => { if (!next[k]) delete nextQuery[k]; });
+    router.replace({ pathname: router.pathname, query: nextQuery }, undefined, { shallow: true, scroll: false });
   };
+  const selectTag = (tag) => { setActiveTag(tag); writeUrl({ tag }); };
+  const onSearch = (value) => { setQuery(value); writeUrl({ q: value }); };
 
   return (
     <>
@@ -95,6 +108,25 @@ export default function BlogIndex({ posts }) {
           </p>
         </div>
 
+        {/* Search */}
+        <div className="relative max-w-md mb-6">
+          <svg
+            width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-[#9A9A9A] pointer-events-none"
+          >
+            <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" strokeWidth="1.4" />
+            <path d="M10.5 10.5L14 14" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+          </svg>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => onSearch(e.target.value)}
+            placeholder={t("blog.searchPlaceholder")}
+            aria-label={t("blog.searchPlaceholder")}
+            className="w-full pl-9 pr-3 py-2.5 text-sm bg-transparent border border-[#E0E0E0] dark:border-[#3D3D3D] text-black dark:text-white placeholder:text-[#9A9A9A] focus:border-[#FF3C3C] focus:outline-none transition-colors duration-200"
+          />
+        </div>
+
         {/* Topic filter */}
         {topTags.length > 1 && (
           <div
@@ -137,6 +169,12 @@ export default function BlogIndex({ posts }) {
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-12 text-center">
             <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">
               {t("blog.noPosts")}
+            </p>
+          </div>
+        ) : filtered.length === 0 ? (
+          <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-12 text-center">
+            <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">
+              {t("blog.searchNoResults")}
             </p>
           </div>
         ) : (

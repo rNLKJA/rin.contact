@@ -957,6 +957,8 @@
     "postNotFound": "文章未找到。",
     "allTopics": "全部",
     "filterLabel": "按主题筛选",
+    "searchPlaceholder": "搜索文章…",
+    "searchNoResults": "没有匹配的文章。换个关键词，或清除筛选。",
     "shareLabel": "分享",
     "copyLink": "复制链接",
     "copied": "已复制"

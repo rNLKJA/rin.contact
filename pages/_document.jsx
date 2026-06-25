@@ -136,13 +136,14 @@ const WEBSITE_SCHEMA = {
   copyrightYear: 2026,
   datePublished: "2024-01-01T00:00:00+10:30",
   dateModified: "2026-03-10T00:00:00+10:30",
-  // SearchAction enables a site search box in Google rich results and signals
-  // this is a first-class website (not just a social profile).
+  // SearchAction points at the blog's real text search (/blog/?q=…), which filters
+  // posts by title, summary, and tags. The template must resolve to a working
+  // endpoint — pointing it at a dead URL declares a search box that leads nowhere.
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://rin.contact/?s={search_term_string}",
+      urlTemplate: "https://rin.contact/blog/?q={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },

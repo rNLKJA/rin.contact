@@ -957,6 +957,8 @@
     "postNotFound": "Post not found.",
     "allTopics": "All",
     "filterLabel": "Filter by topic",
+    "searchPlaceholder": "Search writing…",
+    "searchNoResults": "No posts match your search. Try a different term or clear the filter.",
     "shareLabel": "Share this",
     "copyLink": "Copy link",
     "copied": "Copied"
