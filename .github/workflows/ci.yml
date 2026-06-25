@@ -30,10 +30,6 @@ jobs:
   format:
     name: Format check
     runs-on: ubuntu-latest
-    # Transitional: the codebase predates Prettier, so drift is reported as an
-    # annotation rather than blocking CI. Remove once a one-time `npm run format`
-    # pass has landed (track the format commit in .git-blame-ignore-revs).
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

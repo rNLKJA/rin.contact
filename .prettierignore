@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+build/
+coverage/
+
+# Generated / vendored — not hand-edited
+package-lock.json
+public/sw.js
+
+# Agent tooling (kept out of formatting)
+.claude/
+.agents/
