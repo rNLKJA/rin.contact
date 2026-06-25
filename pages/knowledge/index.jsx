@@ -25,8 +25,8 @@ const TIERS = [
     { href: "/knowledge/statistical-machine-learning", status: "live" },
     { href: "/knowledge/bayesian-statistics", status: "live" },
     { href: "/knowledge/pca-dimensionality-reduction", status: "live" },
+    { href: "/knowledge/clustering", status: "live" },
     { status: "soon" },
-    { status: "planned" },
   ]},
   { key: "taught", topics: [
     { status: "planned" },
