@@ -26,14 +26,13 @@ The hype makes it sound like you describe a product and it appears. The reality 
 
 **The friction**: Running multiple agents in parallel sounds efficient, but they tend to drift. They craft things you didn't ask for if you're not watching carefully. The energy cost shifts onto code review. Even when vibe coding the whole way through, someone still needs to read every line and decide if it's right.
 
-```mermaid
-flowchart TD
-    A[Prompt: build CRM] --> B[Agent architects schema]
-    B --> C[Agent writes components]
-    C --> D{Review pass}
-    D -- drift detected --> E[Rewind + refine prompt]
-    E --> B
-    D -- clean --> F[Ship to Vercel]
+```flow
+step Prompt: build CRM
+step Agent architects schema
+step Agent writes components
+decision Review pass
+  branch drift detected -> Rewind + refine prompt, loop back to schema
+  branch clean -> Ship to Vercel
 ```
 
 I went through this loop about six times before the app felt solid.

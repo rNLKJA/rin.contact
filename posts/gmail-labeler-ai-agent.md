@@ -15,19 +15,16 @@ So I built a Claude Cowork skill that does it instead.
 
 The Gmail Labeler Skill is an agent skill for Cursor, Claude Desktop, and Codex that triages Gmail by provider. Here's the workflow:
 
-```mermaid
-flowchart LR
-    A[Run skill] --> B[Read Gmail MCP]
-    B --> C[Parse sender + subject]
-    C --> D{Match provider?}
-    D -->|Shopping/Amazon| E[Label: Shopping]
-    D -->|Subscriptions/Spotify| F[Label: Subscriptions]
-    D -->|Banking/PayPal| G[Label: Banking]
-    D -->|Unknown| H[Add to new-senders list]
-    E --> I[Archive]
-    F --> I
-    G --> I
-    H --> J[Generate filter rule]
+```flow
+step Run skill
+step Read Gmail MCP
+step Parse sender + subject
+decision Match provider?
+  branch Shopping/Amazon -> Label: Shopping
+  branch Subscriptions/Spotify -> Label: Subscriptions
+  branch Banking/PayPal -> Label: Banking
+  branch Unknown -> Add to new-senders list → generate filter rule
+step Archive
 ```
 
 The key behaviors:

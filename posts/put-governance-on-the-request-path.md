@@ -13,13 +13,12 @@ I came at this from the other direction. The work I do sits in government, where
 
 The request path is the sequence a question travels through to become an answer. A user asks something, data is pulled, a method runs, a narrative is generated, and a result comes back. Governance on the request path means the controls live inside that sequence rather than in a separate document. Every answer the system gives produces its own evidence as a side effect of being produced.
 
-```mermaid
-flowchart LR
-    A[Request] --> B[Data and method]
-    B --> C[Narrative]
-    C --> D[Answer]
-    B -.->|audit and compliance| D
-    C -.->|faithfulness check| D
+```flow
+step Request
+step Data and method
+step Narrative
+step Answer
+note Audit & compliance and a faithfulness check sit on the path into the answer
 ```
 
 Concretely, in the product I have been building, three things ride along with every response.

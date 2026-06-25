@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 import PostCard from "@/components/blog/PostCard";
 import ShareButtons from "@/components/blog/ShareButtons";
@@ -10,48 +9,12 @@ import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
 import AuthorBio from "@/components/blog/AuthorBio";
 import { useI18n } from "@/contexts/I18nContext";
-import { useTheme } from "@/contexts/ThemeContext";
 import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
 
 const NewsletterSignup = dynamic(
   () => import("@/components/blog/NewsletterSignup"),
   { ssr: false }
 );
-
-/**
- * Client-side only — renders any .mermaid diagrams in the post.
- *
- * - Loads the (heavy) mermaid library ONLY when the post actually contains a
- *   diagram, so diagram-free posts never pay for it.
- * - Theme-aware: uses mermaid's dark theme on the dark page so diagrams stop
- *   rendering as light boxes on #0A0A0A, and re-renders when the theme toggles
- *   (the original source is stashed in data-src so it can be re-parsed).
- */
-function MermaidRenderer() {
-  const { resolved } = useTheme();
-
-  useEffect(() => {
-    const nodes = Array.from(document.querySelectorAll(".mermaid"));
-    if (nodes.length === 0) return; // no diagram -> never import mermaid
-    let cancelled = false;
-
-    // Stash the original graph source once, before mermaid replaces it with SVG.
-    nodes.forEach((el) => { if (el.dataset.src == null) el.dataset.src = el.textContent; });
-
-    import("mermaid").then((mermaid) => {
-      if (cancelled) return;
-      // Restore source + clear the processed flag so run() re-renders with the
-      // current theme (covers a theme toggle mid-read).
-      nodes.forEach((el) => { el.textContent = el.dataset.src; el.removeAttribute("data-processed"); });
-      mermaid.default.initialize({ startOnLoad: false, theme: resolved === "dark" ? "dark" : "default" });
-      Promise.resolve(mermaid.default.run({ nodes })).catch(() => {});
-    });
-
-    return () => { cancelled = true; };
-  }, [resolved]);
-
-  return null;
-}
 
 export default function BlogPost({ post, relatedPosts = [] }) {
   const { t, locale = "en-AU" } = useI18n();
@@ -145,7 +108,6 @@ export default function BlogPost({ post, relatedPosts = [] }) {
         />
       </Head>
 
-      <MermaidRenderer />
       <ReadingProgress />
       <BackToTop />
 

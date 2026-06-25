@@ -21,16 +21,15 @@ The first question is satisfied by a chart. The second is only satisfied by a ju
 
 The move from analytics to intelligence is the move from describing to framing. The numbers describe what is there. To turn that into a recommendation, you have to layer three things on top that do not live in the dataset.
 
-```mermaid
-flowchart LR
-    Q[Question someone has to act on] --> N[The numbers: what happened]
-    N --> C[Operational context]
-    N --> R[Risk tolerance]
-    N --> O[What the organisation protects]
-    C --> A[A recommendation: what to do]
-    R --> A
-    O --> A
-    A --> Q
+```flow
+step Question someone has to act on
+step The numbers: what happened
+split Weighed against
+  branch Operational context
+  branch Risk tolerance
+  branch What the organisation protects
+step A recommendation: what to do
+loop the recommendation drives the next question
 ```
 
 Operational context tells you what can actually be acted on. A perfect ranking of problem sites is useless if the team can only reach three of them this month. Risk tolerance tells you how wrong you are allowed to be, which decides how much evidence you need before you say anything at all. And the objective, what the organisation is really trying to protect, decides which signal in the data is worth chasing and which is noise dressed up as insight.

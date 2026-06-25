@@ -23,12 +23,12 @@ The single most useful thing I learned is to generate something workable quickly
 
 A rough first version does something a perfect plan cannot: it gives everyone a shared object to point at. Stakeholders who could not describe what they wanted in the abstract become very clear the moment they see a draft that is not quite right. The wrong number on a real dashboard gets corrected within the hour. The missing category gets named. Ambiguity collapses into specifics the instant there is something real on the table.
 
-```mermaid
-flowchart LR
-    A[Rough but real first version] --> B[People react to something concrete]
-    B --> C[Ambiguity turns into specifics]
-    C --> D[Refine against real feedback]
-    D --> A
+```flow
+step Rough but real first version
+step People react to something concrete
+step Ambiguity turns into specifics
+step Refine against real feedback
+loop back to a rougher-but-better next version
 ```
 
 This is not an argument for shipping sloppy work. It is an argument about sequence. You earn the right to refine by first making something that exists. Momentum matters more than polish when clarity is low, because momentum is what produces the information you are missing.

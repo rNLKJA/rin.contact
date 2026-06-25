@@ -19,13 +19,13 @@ Then that person takes leave, or moves on, or simply forgets one step on a busy 
 
 The instinct is to sell automation on speed. It is faster, the pitch goes, it saves hours. That is true and it is the least interesting part. The real prize is that the method becomes visible.
 
-```mermaid
-flowchart TD
-    A[Raw inputs] --> B[Versioned, documented steps]
-    B --> C[Same transformation every run]
-    C --> D[Result + a record of how it was made]
-    D --> E[Anyone can re-run it]
-    E --> F[Trust]
+```flow
+step Raw inputs
+step Versioned, documented steps
+step Same transformation every run
+step Result + a record of how it was made
+step Anyone can re-run it
+step Trust
 ```
 
 Once a process is written down as steps a machine follows, the steps can be read, reviewed, corrected, and re-run by anyone. The correction that used to live in one person's memory now lives in a file with a history. When the result looks wrong, you can trace exactly which step produced it. When someone new joins, the process teaches itself.

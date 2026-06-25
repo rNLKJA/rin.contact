@@ -19,16 +19,14 @@ A blog formalises that process. Instead of burying lessons in commit messages RE
 
 The growth index on the Intelligence Section tells a story about career velocity. The same logic applies to learning:
 
-```mermaid
-graph LR
-  A[New Problem] --> B[Research]
-  B --> C[Build]
-  C --> D[Reflect]
-  D --> E[Framework]
-  E --> A
-  D --> F[Blog Post]
-  F --> G[Feedback]
-  G --> A
+```flow
+step New problem
+step Research
+step Build
+split Reflect
+  branch Framework
+  branch Blog post → feedback
+loop both feed the next problem
 ```
 
 Each cycle deepens the understanding of every prior cycle. The blog is the feedback loop that keeps the cycle honest.
@@ -38,7 +36,7 @@ Each cycle deepens the understanding of every prior cycle. The blog is the feedb
 - Data science explainers with interactive widgets
 - Architecture deep-dives (this site is fully open-source)
 - Occasional philosophy on government analytics, intelligence frameworks, and evidence-based policy
-- Mermaid diagrams wherever a picture saves a thousand words
+- Flow diagrams wherever a picture saves a thousand words
 
 ## What not to expect
 

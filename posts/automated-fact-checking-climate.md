@@ -36,15 +36,13 @@ Our system had two stages, mirroring how a human fact-checker works:
 
 **Stage 2: Claim classification (Transformer).** Once we had the top-N evidence passages, we fed them into a Transformer classifier trained from scratch. The model learned to attend to the relationship between claim text and evidence text, outputting one of the four labels.
 
-```mermaid
-flowchart LR
-    A[Claim] --> B[TF-IDF Vectoriser]
-    C[Evidence Corpus] --> D[TF-IDF Index]
-    B --> E[Cosine Similarity]
-    D --> E
-    E --> F[Top-K Passages]
-    F --> G[Transformer Classifier]
-    G --> H[SUPPORTS / REFUTES / NOT_ENOUGH_INFO / DISPUTED]
+```flow
+join Cosine similarity
+  from Claim → TF-IDF vectoriser
+  from Evidence corpus → TF-IDF index
+step Top-K passages
+step Transformer classifier
+step SUPPORTS / REFUTES / NOT_ENOUGH_INFO / DISPUTED
 ```
 
 ## The dataset

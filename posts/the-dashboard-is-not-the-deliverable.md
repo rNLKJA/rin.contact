@@ -23,13 +23,13 @@ So I changed where I start. Before I open a notebook, I try to write down the de
 - What would change their mind one way or the other?
 - What is the smallest piece of evidence that would let them choose well?
 
-```mermaid
-flowchart LR
-    A[Decision to be made] --> B[What would change the call?]
-    B --> C[Smallest evidence that settles it]
-    C --> D[Analysis]
-    D --> E[One clear read + its uncertainty]
-    E --> A
+```flow
+step Decision to be made
+step What would change the call?
+step Smallest evidence that settles it
+step Analysis
+step One clear read + its uncertainty
+loop back to the decision
 ```
 
 The loop runs backwards from how I used to work. I no longer begin with the data I have and look for something interesting in it. I begin with the choice, and let that decide what is worth measuring. Most of the time the answer is far less than I would have built if left to my own curiosity.

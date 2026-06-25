@@ -19,11 +19,10 @@ Here's my job-hunting dataset, cleaned and annotated.
 | Duration (serious hunt) | 3 months |
 | Offers | 1 |
 
-```mermaid
-pie title 208 Applications: What Happened
-    "Rejected / Ghosted" : 187
-    "Interviewed" : 20
-    "Offer" : 1
+```bars
+187 Rejected / Ghosted
+20 Interviewed
+1 Offer
 ```
 
 A 90.87% rejection rate isn't a fun number to look at. But here's what it actually means: every "no" was a step closer to the right "yes." Collectively, they were signal.

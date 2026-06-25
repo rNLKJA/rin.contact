@@ -43,20 +43,15 @@ What they didn't give me:
 
 Industry is where constraints are real. Technology choices are often inherited, not chosen. Resources are finite. People disagree about what matters. You build things and sometimes they get reworked the next day because priorities shifted.
 
-```mermaid
-graph TD
-    A[Academia] -->|Foundation| B[Internships]
-    B -->|Exposure| C[Industry]
-    A -.->|Mindset| C
-    B -.->|Context| C
-
-    C --> D[Continuous Improvement]
-    D --> E[Adaptability]
-    D --> F[Tolerance of Complexity]
-    D --> G[Communication by Default]
-    E --> H[Growth]
-    F --> H
-    G --> H
+```flow
+step Academia
+step Internships
+step Industry
+split Continuous improvement
+  branch Adaptability
+  branch Tolerance of complexity
+  branch Communication by default
+step Growth
 ```
 
 The most valuable skill that carried me through all three worlds wasn't Python, wasn't statistics, wasn't any technology I learned in a lab. It was **continuous improvement** — the mindset of treating every day as a chance to get slightly better.

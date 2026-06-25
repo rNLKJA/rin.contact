@@ -19,12 +19,11 @@ So before I report a trend, I want something more disciplined than "it looks lik
 
 A trend test does one careful thing: it checks whether the values tend to rise or fall through time more consistently than random noise would. The version I reach for most, the Mann-Kendall test, does this by comparing every point with the ones that came before it and counting how often later values are higher rather than lower. It does not assume the trend is a straight line, and it does not assume the data follow a neat bell curve, which matters because real operational data almost never do.
 
-```mermaid
-flowchart TD
-    A[Monthly series] --> B{Is the movement more than noise?}
-    B -->|yes| C[Estimate the slope, robustly]
-    C --> D[Report the trend with its rate]
-    B -->|no| E[Leave the line off, and say why]
+```flow
+step Monthly series
+decision Is the movement more than noise?
+  branch yes -> Estimate the slope robustly, report the trend with its rate
+  branch no -> Leave the line off, and say why
 ```
 
 If the series genuinely drifts in one direction, those comparisons pile up and the test says the movement is unlikely to be chance. If the series is just noisy, the comparisons roughly cancel, and the honest answer is "no trend you can stand behind." That second answer is the valuable one, because it stops you acting on a pattern that was only ever in your eyes.

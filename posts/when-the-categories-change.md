@@ -21,12 +21,12 @@ This is the kind of error that does not announce itself. The code runs, the char
 
 Handling it was not clever. It was a harmonisation layer: a small piece of code that maps both the old and the new vocabularies onto one stable internal scheme, so that a row recorded under either label lands in the same place.
 
-```mermaid
-flowchart LR
-    A["theft and related offences (old)"] --> C[Stable internal category]
-    B["theft (new)"] --> C
-    C --> D[One continuous series]
-    D --> E[Trend and forecast you can trust]
+```flow
+join Stable internal category
+  from theft and related offences (old)
+  from theft (new)
+step One continuous series
+step Trend and forecast you can trust
 ```
 
 The same mapping has to apply everywhere the data enters, to the live feed and to any stored snapshot, or you reintroduce the split you just removed. It is perhaps thirty lines. It will never be the part of the project anyone asks about. And it is the part that decides whether every chart above it is honest.

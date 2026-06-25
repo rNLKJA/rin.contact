@@ -13,21 +13,21 @@ Then Claude shipped the entire thing in a weekend.
 
 rin.contact started as a single-page HTML resume and grew — through six months of late nights and between-meeting commits — into 94 pages of interactive data stories, CLI tools, Easter eggs, and a design system I actually enjoy looking at. Somewhere along the way it crossed the line from "portfolio" to "playground," and a blog became the obvious next piece.
 
-The problem wasn't the writing. The problem was everything else: Markdown compilation, frontmatter parsing, Mermaid diagram support, RSS generation, newsletter backend, navigation integration, SEO, dark mode, route design, and the fifty micro-decisions that separate a blog that works from a blog that you *plan* to build.
+The problem wasn't the writing. The problem was everything else: Markdown compilation, frontmatter parsing, flow-diagram support, RSS generation, newsletter backend, navigation integration, SEO, dark mode, route design, and the fifty micro-decisions that separate a blog that works from a blog that you *plan* to build.
 
 So I ran an experiment. I gave Claude Opus — Anthropic's most capable reasoning model — the entire Linear backlog and said: *if a job is complete, mark it, commit, check the next task, and work on it.*
 
 It executed like this:
 
-```mermaid
-graph LR
-    A[Dark mode gaps] --> B[Blog scaffolding]
-    B --> C[Markdown + Mermaid]
-    C --> D[RSS feed]
-    D --> E[Newsletter backend]
-    E --> F[CSS cleanup]
-    F --> G[Service worker fix]
-    G --> H[Deploy to Vercel]
+```flow
+step Dark mode gaps
+step Blog scaffolding
+step Markdown + flow diagrams
+step RSS feed
+step Newsletter backend
+step CSS cleanup
+step Service worker fix
+step Deploy to Vercel
 ```
 
 Six tasks. Three commits per task. Zero regressions.
@@ -37,7 +37,7 @@ Six tasks. Three commits per task. Zero regressions.
 Not a template. Not a starter. The full thing:
 
 - **Blog pages**: `/blog` listing with paginated post cards and `/blog/[slug]` for individual posts, using Next.js `getStaticProps` and `getStaticPaths`
-- **Markdown pipeline**: `gray-matter` for frontmatter, `remark` + `remark-html` for compilation, a custom remark plugin that transforms ` ```mermaid ` blocks into client-renderable divs
+- **Markdown pipeline**: `gray-matter` for frontmatter, `remark` + `remark-html` for compilation, a custom remark plugin that transforms ` ```flow ` blocks into self-contained, on-brand diagrams at build time
 - **RSS feed**: `/blog/feed.xml` via `getServerSideProps`, following the same pattern as the existing sitemap generator, with proper XML namespaces
 - **Newsletter backend**: Provider-agnostic API route supporting Buttondown, ConvertKit, Mailchimp, generic webhooks, and Vercel KV self-hosting — all driven by a single env var
 - **Dark mode on 50+ sub-pages**: Every `pages/ds/*`, `pages/fun/*`, and `pages/info/*` wrapper, plus form inputs, modals, and design-system components that had been missed in the first dark mode pass
@@ -64,7 +64,7 @@ I plan to use this space for:
 3. **Analytics in government** — a lot of what I do at SAPOL doesn't fit in a tweet, but it does fit in a blog post
 4. **Experiments with AI tooling** — because if the last weekend taught me anything, it's that the tools are moving faster than most people realise
 
-No publishing schedule. No SEO playbook. Just the same principle that drives the rest of this site: continuous improvement, a commitment to building things that compound, and the occasional Mermaid diagram.
+No publishing schedule. No SEO playbook. Just the same principle that drives the rest of this site: continuous improvement, a commitment to building things that compound, and the occasional flow diagram.
 
 ## A note on authorship
 

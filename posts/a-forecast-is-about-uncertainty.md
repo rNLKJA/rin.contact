@@ -23,13 +23,12 @@ So the real work of forecasting is not squeezing the point estimate closer to so
 
 A few habits make that honesty concrete. Project the trend forward, but widen the band as you go, because confidence decays with distance and a forecast that stays equally confident ten steps out is lying. Separate the recurring seasonal swing from the underlying movement, so you are not fooled by a pattern that repeats every year. And mark the forecast as indicative rather than settled when there is too little history to support it, instead of laundering a guess through a model and presenting it as precision.
 
-```mermaid
-flowchart LR
-    A[History] --> B[Trend + seasonality]
-    B --> C[Point estimate]
-    B --> D[Widening prediction interval]
-    C --> E[A careful decision]
-    D --> E
+```flow
+step History
+split Trend + seasonality
+  branch Point estimate
+  branch Widening prediction interval
+step A careful decision
 ```
 
 In the products I build now, every forecast carries that interval with it, on the chart as a widening cone and in the numbers behind it. The point estimate is there, but it travels with the honest statement of how much to trust it.
