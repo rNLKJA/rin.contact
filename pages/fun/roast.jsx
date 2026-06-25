@@ -12,7 +12,7 @@ export default function RoastPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/roast");
+      const res = await fetch("/api/roast/");
       const json = await res.json();
       setData(json);
     } catch (e) {

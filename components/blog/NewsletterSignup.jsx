@@ -18,7 +18,9 @@ export default function NewsletterSignup() {
     if (!email.trim()) return;
     setStatus("loading");
     try {
-      const res = await fetch("/api/blog/subscribe", {
+      // Trailing slash: trailingSlash is on, so /api/blog/subscribe 308-redirects
+      // to /api/blog/subscribe/. Call the canonical URL directly to avoid the hop.
+      const res = await fetch("/api/blog/subscribe/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim() }),
