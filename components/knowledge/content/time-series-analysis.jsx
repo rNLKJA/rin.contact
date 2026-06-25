@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/time-series-analysis.
@@ -14,8 +21,14 @@ import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/know
 const DECOMP_ROWS = [
   { y: 12, d: "M40 28 C 90 10, 130 34, 170 16 C 210 0, 250 30, 300 14 C 340 4, 380 24, 420 12" },
   { y: 52, d: "M40 64 L 420 46" },
-  { y: 92, d: "M40 100 C 75 84, 110 116, 145 100 C 180 84, 215 116, 250 100 C 285 84, 320 116, 355 100 C 390 84, 420 108, 420 100" },
-  { y: 132, d: "M40 144 L 70 138 L 100 148 L 130 140 L 160 146 L 190 137 L 220 147 L 250 141 L 280 146 L 310 138 L 340 147 L 370 140 L 400 145 L 420 142" },
+  {
+    y: 92,
+    d: "M40 100 C 75 84, 110 116, 145 100 C 180 84, 215 116, 250 100 C 285 84, 320 116, 355 100 C 390 84, 420 108, 420 100",
+  },
+  {
+    y: 132,
+    d: "M40 144 L 70 138 L 100 148 L 130 140 L 160 146 L 190 137 L 220 147 L 250 141 L 280 146 L 310 138 L 340 147 L 370 140 L 400 145 L 420 142",
+  },
 ];
 
 function DecompositionFigure({ caption, ariaLabel, labels }) {
@@ -31,8 +44,23 @@ function DecompositionFigure({ caption, ariaLabel, labels }) {
           const accent = i === 0; // observed row
           return (
             <g key={i}>
-              <text x="4" y={row.y + 22} fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.7">{labels[i]}</text>
-              <path d={row.d} fill="none" stroke={accent ? "#FF3C3C" : "currentColor"} strokeWidth={accent ? 1.6 : 1.2} opacity={accent ? 1 : 0.7} />
+              <text
+                x="4"
+                y={row.y + 22}
+                fontSize="8"
+                fontFamily="monospace"
+                fill="currentColor"
+                opacity="0.7"
+              >
+                {labels[i]}
+              </text>
+              <path
+                d={row.d}
+                fill="none"
+                stroke={accent ? "#FF3C3C" : "currentColor"}
+                strokeWidth={accent ? 1.6 : 1.2}
+                opacity={accent ? 1 : 0.7}
+              />
             </g>
           );
         })}
@@ -294,32 +322,37 @@ function ZhBody() {
   return (
     <>
       <p>
-        大多数统计方法假设你的观测是独立的——假设顺序无关紧要。<Term>时间序列</Term>数据恰恰相反：它是
+        大多数统计方法假设你的观测是独立的——假设顺序无关紧要。<Term>时间序列</Term>
+        数据恰恰相反：它是
         一串穿越时间的测量（一个股价、每月降雨、每日病例数），而每个点都与它周围的那些点紧密相连。昨天
         关于今天告诉你很多。那种时间依赖既是挑战，也是信号，它需要它自己的一门学科。
       </p>
       <p>
-        我在 CSIRO 与时间序列打过交道，建模厄尔尼诺—南方涛动如何与大宗商品的波动性和风险相关联。这一页
+        我在 CSIRO
+        与时间序列打过交道，建模厄尔尼诺—南方涛动如何与大宗商品的波动性和风险相关联。这一页
         是实用的内核：如何分解一个序列、让它可被分析、给它建模，以及——人们最常弄错的那部分——
         <em>诚实地预测并评估它</em>。
       </p>
 
       <KSection id="why" eyebrow="01" title="当顺序要紧时">
         <p>
-          时间序列的决定性特征是<Term>时间依赖</Term>：一个值与它自己的过去相关（这就是下面的自相关）。
-          那一个事实，打破了<Link href="/knowledge/statistics">统计学</Link>与
-          <Link href="/knowledge/linear-statistical-models">回归</Link>页背后的独立性假设——你不能随便
-          打乱那些行，而一个朴素的模型会严重低估它自己的不确定性。
+          时间序列的决定性特征是<Term>时间依赖</Term>
+          ：一个值与它自己的过去相关（这就是下面的自相关）。 那一个事实，打破了
+          <Link href="/knowledge/statistics">统计学</Link>与
+          <Link href="/knowledge/linear-statistical-models">回归</Link>
+          页背后的独立性假设——你不能随便 打乱那些行，而一个朴素的模型会严重低估它自己的不确定性。
         </p>
         <p>
           目标也是不同的。有时你想<em>理解</em>结构（趋势是什么，有没有周期？）；通常你想
-          <Term>预测</Term>——从过去预测未来的值。两者都以同样的方式开始：把序列拆开，分成藏在它里面的
-          那些模式。
+          <Term>预测</Term>
+          ——从过去预测未来的值。两者都以同样的方式开始：把序列拆开，分成藏在它里面的 那些模式。
         </p>
       </KSection>
 
       <KSection id="components" eyebrow="02" title="趋势、季节、噪声">
-        <p>基础性的一步是<Term>分解</Term>——把一个序列分离成三个可解释的部分：</p>
+        <p>
+          基础性的一步是<Term>分解</Term>——把一个序列分离成三个可解释的部分：
+        </p>
         <ul>
           <li>
             <Term>趋势</Term>——长期的方向（销售逐年增长、一条变暖的基线）。
@@ -346,8 +379,9 @@ function ZhBody() {
 
       <KSection id="stationarity" eyebrow="03" title="平稳性">
         <p>
-          核心的技术概念是<Term>平稳性</Term>：如果一个序列的统计性质——均值、方差——不随时间改变，它就
-          是平稳的。大多数经典方法都<em>要求</em>它，因为你没法可靠地对一个移动的目标建模。一个带趋势、
+          核心的技术概念是<Term>平稳性</Term>
+          ：如果一个序列的统计性质——均值、方差——不随时间改变，它就 是平稳的。大多数经典方法都
+          <em>要求</em>它，因为你没法可靠地对一个移动的目标建模。一个带趋势、
           或方差不断增长的序列是非平稳的，必须先被驯服。
         </p>
         <p>
@@ -358,29 +392,31 @@ function ZhBody() {
           <p>
             这里有两个相反的错误，都很常见。<strong>不检查平稳性就拟合</strong>——因为序列「看起来没
             问题」——会给出虚假的系数和糟糕的预测。但<strong>过度差分</strong>——做你不需要的差分——会
-            注入人为的结构、抬高方差，同样使预测变差。差分到刚好让它平稳为止（ADF 检验会告诉你），不要
-            更多。
+            注入人为的结构、抬高方差，同样使预测变差。差分到刚好让它平稳为止（ADF
+            检验会告诉你），不要 更多。
           </p>
         </Callout>
       </KSection>
 
       <KSection id="autocorrelation" eyebrow="04" title="自相关">
         <p>
-          时间序列有它自己的诊断工具：<Term>自相关</Term>——序列与它自己一个滞后副本之间的相关。「今天与
-          7 天前有多相关？」<Term>ACF</Term>（自相关函数）与 <Term>PACF</Term>（偏自相关函数）图就是
+          时间序列有它自己的诊断工具：<Term>自相关</Term>
+          ——序列与它自己一个滞后副本之间的相关。「今天与 7 天前有多相关？」<Term>ACF</Term>
+          （自相关函数）与 <Term>PACF</Term>（偏自相关函数）图就是
           那个读数，它们既是你检测结构的方式（在月度数据里，滞后 12 处的一个尖峰高喊着一年一度的
           季节性），也是你选择模型参数的方式。
         </p>
         <p>
-          读 ACF/PACF 是一项核心技能：这些图的形状告诉你一个模型需要多少个过去的项。它是时间序列分析师
+          读 ACF/PACF
+          是一项核心技能：这些图的形状告诉你一个模型需要多少个过去的项。它是时间序列分析师
           版本的残差图——那张告诉你数据在做什么的图。
         </p>
       </KSection>
 
       <KSection id="arima" eyebrow="05" title="AR、MA 与 ARIMA">
         <p>
-          经典的主力家族结合了三个简单的想法，而整件事都被 <Term>ARIMA</Term>（<TeX>{String.raw`p, d, q`}</TeX>）
-          这个名字所捕获：
+          经典的主力家族结合了三个简单的想法，而整件事都被 <Term>ARIMA</Term>（
+          <TeX>{String.raw`p, d, q`}</TeX>） 这个名字所捕获：
         </p>
         <ul>
           <li>
@@ -400,7 +436,8 @@ function ZhBody() {
           {String.raw`X_t = c + \sum_{i=1}^{p} \varphi_i\, X_{t-i} + \varepsilon_t`}
         </Formula>
         <p>
-          你从 ACF/PACF 图和信息准则（又是 <Link href="/knowledge/statistical-modelling">AIC/BIC</Link>
+          你从 ACF/PACF 图和信息准则（又是{" "}
+          <Link href="/knowledge/statistical-modelling">AIC/BIC</Link>
           ——拟合对复杂度）里挑出 <TeX>{String.raw`(p, d, q)`}</TeX>，用极大似然来拟合，并且——关键
           地——<strong>检查残差</strong>：如果残差里还剩下任何东西，模型就漏掉了结构，预测就会有偏。
           残差诊断是没得商量的。
@@ -411,27 +448,32 @@ function ZhBody() {
         <p>
           当数据有一个重复的周期时——而气候、零售、运营数据几乎总是有——你扩展到 <Term>SARIMA</Term>，
           它在季节滞后处（月度—年度数据为 12，日度—周度为 7）加入季节性的 AR、MA 与差分项。陷阱是
-          <em>误判周期</em>：假设了错误的周期长度，会毁掉模型。季节子序列图和 ACF（在季节滞后处的一个
-          尖峰）是你把它钉死、而非猜测的方式。
+          <em>误判周期</em>：假设了错误的周期长度，会毁掉模型。季节子序列图和
+          ACF（在季节滞后处的一个 尖峰）是你把它钉死、而非猜测的方式。
         </p>
       </KSection>
 
       <KSection id="evaluation" eyebrow="07" title="诚实地预测">
         <p>
-          这是时间序列最常出错的地方，而错误很微妙：你<strong>不能用一次普通的随机训练/测试拆分来评估
-          一个预测</strong>。打乱行让模型偷看未来来预测过去——一种美化了分数、却对真实表现撒谎的泄漏。
+          这是时间序列最常出错的地方，而错误很微妙：你
+          <strong>不能用一次普通的随机训练/测试拆分来评估 一个预测</strong>
+          。打乱行让模型偷看未来来预测过去——一种美化了分数、却对真实表现撒谎的泄漏。
         </p>
         <p>
-          相反，你<em>按时间</em>拆分：在过去上训练，在它从未见过的未来上测试。更好的是用一个滚动原点
-          做<Term>回测</Term>——反复地训练到某一点、预测接下来的一段，再向前滑动——这会展示模型在许多个
-          时期上的表现，而非一个走运的窗口。并且对<Term>预测视野</Term>保持诚实：你看得越远，预测就越
+          相反，你<em>按时间</em>
+          拆分：在过去上训练，在它从未见过的未来上测试。更好的是用一个滚动原点 做<Term>回测</Term>
+          ——反复地训练到某一点、预测接下来的一段，再向前滑动——这会展示模型在许多个
+          时期上的表现，而非一个走运的窗口。并且对<Term>预测视野</Term>
+          保持诚实：你看得越远，预测就越
           衰减，所以一个提前一步的分数，关于一个十二步的预测什么也说明不了。
         </p>
         <Callout type="pitfall">
           <p>
-            还有两个生产中的现实。<strong>模型会变陈旧</strong>：一个在旧数据上拟合的模型，随着世界的
+            还有两个生产中的现实。<strong>模型会变陈旧</strong>
+            ：一个在旧数据上拟合的模型，随着世界的
             变迁会悄悄退化，所以在生产中做预测意味着监控与重新拟合，而非「训练一次」。而预测带着
-            <strong>随预测视野加宽的不确定性</strong>——永远报告一个预测区间，而不只是一条线，否则你就
+            <strong>随预测视野加宽的不确定性</strong>
+            ——永远报告一个预测区间，而不只是一条线，否则你就
             在掩盖你对遥远的未来实际上知道得有多少。
           </p>
         </Callout>
@@ -439,7 +481,8 @@ function ZhBody() {
 
       <KSection id="modern" eyebrow="08" title="现代方法">
         <p>
-          ARIMA 是地基，但工具包已经长大了。<Term>指数平滑</Term>（ETS）是一个简单、稳健的经典替代品。
+          ARIMA 是地基，但工具包已经长大了。<Term>指数平滑</Term>
+          （ETS）是一个简单、稳健的经典替代品。
           <Term>Prophet</Term> 几乎不用调参就能处理多重季节性和节假日。而
           <Link href="/knowledge/statistical-machine-learning">机器学习</Link>与深度学习模型（在滞后
           特征上的梯度提升、LSTM、transformer）在你有足够数据时能捕获复杂的非线性模式——尽管对许多真实
@@ -451,10 +494,11 @@ function ZhBody() {
       <KSection id="applied" eyebrow="09" title="它在我工作中的体现">
         <Callout type="applied" label="从气候信号到运营预测">
           <p>
-            我在 <strong>CSIRO</strong> 与时间序列打过交道，构建自回归模型，把厄尔尼诺—南方涛动与大宗
+            我在 <strong>CSIRO</strong>{" "}
+            与时间序列打过交道，构建自回归模型，把厄尔尼诺—南方涛动与大宗
             商品的波动性和冲突风险联系起来——正是这门学科：分解信号、处理季节性与非平稳性、对时间结构
-            建模，并对预测能伸到多远保持诚实。那个让我记住的教训，正是大多数人会跳过的——<strong>按
-            时间评估，绝不在打乱的拆分上评估</strong>，并报出不确定性。
+            建模，并对预测能伸到多远保持诚实。那个让我记住的教训，正是大多数人会跳过的——
+            <strong>按 时间评估，绝不在打乱的拆分上评估</strong>，并报出不确定性。
           </p>
           <p>
             它直接泛化到政府工作：任何随时间测量的东西——案件量、需求、运营指标——都是一个预测问题，而
@@ -468,16 +512,16 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              时间序列有<strong>时间依赖</strong>——每个点都依赖于过去，打破了独立性假设。不要打乱那些
-              行。
+              时间序列有<strong>时间依赖</strong>
+              ——每个点都依赖于过去，打破了独立性假设。不要打乱那些 行。
             </li>
             <li>
               <strong>分解</strong>成趋势 + 季节性 + 噪声。靠<strong>差分</strong>（ADF 检验）让它
               <strong>平稳</strong>——但不要过度差分。
             </li>
             <li>
-              读 <strong>ACF/PACF</strong> 来找出结构、挑选阶数。<strong>ARIMA(p,d,q)</strong> = 自回归
-              + 整合 + 移动平均；<strong>SARIMA</strong> 加入季节项。永远检查残差。
+              读 <strong>ACF/PACF</strong> 来找出结构、挑选阶数。<strong>ARIMA(p,d,q)</strong> =
+              自回归 + 整合 + 移动平均；<strong>SARIMA</strong> 加入季节项。永远检查残差。
             </li>
             <li>
               <strong>按时间评估</strong>，绝不用随机拆分：按时间顺序拆分，用一个滚动原点

@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/ensemble-methods.
@@ -31,32 +38,119 @@ function BaggingBoostingFigure({
         aria-label={ariaLabel}
       >
         {/* bagging */}
-        <text x="20" y="26" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.7">{baggingHeader}</text>
+        <text x="20" y="26" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.7">
+          {baggingHeader}
+        </text>
         {BAG_X.map((x, i) => (
           <g key={`b${i}`}>
-            <rect x={x} y="36" width="40" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="1.2" />
-            <text x={x + 20} y="52" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{treeLabel}</text>
-            <line x1={x + 20} y1="60" x2="280" y2="74" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+            <rect
+              x={x}
+              y="36"
+              width="40"
+              height="24"
+              rx="3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+            />
+            <text
+              x={x + 20}
+              y="52"
+              textAnchor="middle"
+              fontSize="9"
+              fontFamily="monospace"
+              fill="currentColor"
+            >
+              {treeLabel}
+            </text>
+            <line
+              x1={x + 20}
+              y1="60"
+              x2="280"
+              y2="74"
+              stroke="currentColor"
+              strokeWidth="1"
+              opacity="0.5"
+            />
           </g>
         ))}
-        <rect x="280" y="60" width="80" height="26" rx="3" fill="none" stroke="#FF3C3C" strokeWidth="1.4" />
-        <text x="320" y="77" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill="#FF3C3C">{averageLabel}</text>
+        <rect
+          x="280"
+          y="60"
+          width="80"
+          height="26"
+          rx="3"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.4"
+        />
+        <text
+          x="320"
+          y="77"
+          textAnchor="middle"
+          fontSize="9.5"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {averageLabel}
+        </text>
         {/* boosting */}
-        <text x="20" y="118" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.7">{boostingHeader}</text>
+        <text x="20" y="118" fontSize="10" fontFamily="monospace" fill="currentColor" opacity="0.7">
+          {boostingHeader}
+        </text>
         {boostTreeLabels.map((t, i) => {
           const x = 40 + i * 95;
           const last = i === boostTreeLabels.length - 1;
           return (
             <g key={`s${i}`}>
-              <rect x={x} y="132" width="62" height="26" rx="3" fill="none" stroke={last ? "#FF3C3C" : "currentColor"} strokeWidth={last ? "1.4" : "1.2"} />
-              <text x={x + 31} y="149" textAnchor="middle" fontSize="9" fontFamily="monospace" fill={last ? "#FF3C3C" : "currentColor"}>{t}</text>
-              {i < boostTreeLabels.length - 1 && <line x1={x + 62} y1="145" x2={x + 95} y2="145" stroke="currentColor" strokeWidth="1.1" markerEnd="url(#eah)" />}
+              <rect
+                x={x}
+                y="132"
+                width="62"
+                height="26"
+                rx="3"
+                fill="none"
+                stroke={last ? "#FF3C3C" : "currentColor"}
+                strokeWidth={last ? "1.4" : "1.2"}
+              />
+              <text
+                x={x + 31}
+                y="149"
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill={last ? "#FF3C3C" : "currentColor"}
+              >
+                {t}
+              </text>
+              {i < boostTreeLabels.length - 1 && (
+                <line
+                  x1={x + 62}
+                  y1="145"
+                  x2={x + 95}
+                  y2="145"
+                  stroke="currentColor"
+                  strokeWidth="1.1"
+                  markerEnd="url(#eah)"
+                />
+              )}
             </g>
           );
         })}
-        <text x="40" y="178" fontSize="8.5" fontFamily="monospace" fill="currentColor" opacity="0.55">{boostFooter}</text>
+        <text
+          x="40"
+          y="178"
+          fontSize="8.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.55"
+        >
+          {boostFooter}
+        </text>
         <defs>
-          <marker id="eah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
+          <marker id="eah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -317,26 +411,29 @@ function ZhBody() {
     <>
       <p>
         在实用机器学习的核心，有一个惊人的结果：你可以拿一堆<em>平庸</em>的模型——每一个都只比瞎猜好
-        一点点——巧妙地组合它们，最终得到一个现有最准确的预测器之一。这就是<Term>集成学习</Term>，而它
-        不是一个小众的把戏。对大多数真实世界分析所依赖的结构化、表格数据而言，<Term>随机森林</Term>和
-        <Term>梯度提升</Term>这样的集成方法是当朝的冠军——它们赢下竞赛，并静悄悄地驱动着大量的生产
-        建模。
+        一点点——巧妙地组合它们，最终得到一个现有最准确的预测器之一。这就是<Term>集成学习</Term>
+        ，而它 不是一个小众的把戏。对大多数真实世界分析所依赖的结构化、表格数据而言，
+        <Term>随机森林</Term>和<Term>梯度提升</Term>
+        这样的集成方法是当朝的冠军——它们赢下竞赛，并静悄悄地驱动着大量的生产 建模。
       </p>
       <p>
         这一页从头搭起这个想法：为什么一群模型胜过一个个体、构建那群模型的两大策略（bagging 与
         boosting），以及梯度提升——XGBoost 及其同类——如何成了在表格数据上默认第一个要试的东西。它直接
-        建立在机器学习页的<Link href="/knowledge/statistical-machine-learning">偏差-方差</Link>想法之上。
+        建立在机器学习页的<Link href="/knowledge/statistical-machine-learning">偏差-方差</Link>
+        想法之上。
       </p>
 
       <KSection id="why" eyebrow="01" title="为什么许多弱模型胜过一个强模型">
         <p>
-          直觉是<Term>群体的智慧</Term>。让一个人猜一罐子里有多少颗软糖，他会猜偏；把一千个猜测求平均，
+          直觉是<Term>群体的智慧</Term>
+          。让一个人猜一罐子里有多少颗软糖，他会猜偏；把一千个猜测求平均，
           答案却近得出奇——那些个体的误差，因为部分随机且相互独立，互相抵消了。集成学习对模型做的正是
           这件事：组合许多误差<em>去相关</em>的预测器，错误便平均掉，而共享的信号则相互加强。
         </p>
         <p>
           关键的词是<strong>去相关</strong>。把一千个一模一样的模型求平均，你什么也得不到——它们都犯
-          同一个错误。集成的全部艺术，是构建一些各自尚可、却彼此<em>相异</em>的模型，好让它们的误差不
+          同一个错误。集成的全部艺术，是构建一些各自尚可、却彼此<em>相异</em>
+          的模型，好让它们的误差不
           对齐。下面那两个家族，是对「我们如何让它们相异？」的两个不同答案。
         </p>
       </KSection>
@@ -348,8 +445,10 @@ function ZhBody() {
           单独的树极为可解释，并且毫不费力地处理混合的数据类型。
         </p>
         <p>
-          但一棵单独的深树是教科书式的<Link href="/knowledge/statistical-machine-learning">高方差</Link>
-          模型：它<strong>严重过拟合</strong>，把训练数据的噪声背了下来，而数据里一点微小的改动，就会
+          但一棵单独的深树是教科书式的
+          <Link href="/knowledge/statistical-machine-learning">高方差</Link>
+          模型：它<strong>严重过拟合</strong>
+          ，把训练数据的噪声背了下来，而数据里一点微小的改动，就会
           产出一棵完全不同的树。那种不稳定看起来像个弱点——而它恰恰是让树成为完美集成原料的东西。一个
           从样本到样本变化很大的模型，正是你可以大有成效地求平均的那种。集成把树的缺陷变成了它的长处。
         </p>
@@ -357,23 +456,26 @@ function ZhBody() {
 
       <KSection id="bagging" eyebrow="03" title="Bagging 与随机森林">
         <p>
-          <Term>Bagging</Term>（自助聚合，bootstrap aggregating）是第一种策略：<em>并行地</em>训练许多
-          树，每一棵都在数据的一个不同的随机<Link href="/knowledge/computational-statistics">自助</Link>
+          <Term>Bagging</Term>（自助聚合，bootstrap aggregating）是第一种策略：<em>并行地</em>
+          训练许多 树，每一棵都在数据的一个不同的随机
+          <Link href="/knowledge/computational-statistics">自助</Link>
           样本上，然后把它们的预测求平均（或取多数票）。因为每棵树看到的数据略有不同，每一棵的过拟合
           方式也不同——把那些各异的过拟合求平均，就抵消了噪声，在不增加偏差的情况下，大幅削减方差。
         </p>
         <p>
-          <Term>随机森林</Term>加上了一个绝妙的转折：在每一次分裂时，每棵树只可以考虑<em>特征的一个
-          随机子集</em>。这阻止了每棵树都依赖同样的一两个占主导的预测因子，迫使它们真正地相异——更多的
+          <Term>随机森林</Term>加上了一个绝妙的转折：在每一次分裂时，每棵树只可以考虑
+          <em>特征的一个 随机子集</em>
+          。这阻止了每棵树都依赖同样的一两个占主导的预测因子，迫使它们真正地相异——更多的
           去相关，更好的求平均。随机森林稳健、几乎不用调参、给出一个免费的准确度估计（来自每棵树没见过
-          的数据的<Term>袋外</Term>误差），并报告有用的<Term>特征重要性</Term>。它们是可靠的、不闹腾的
-          默认选择。
+          的数据的<Term>袋外</Term>误差），并报告有用的<Term>特征重要性</Term>
+          。它们是可靠的、不闹腾的 默认选择。
         </p>
       </KSection>
 
       <KSection id="boosting" eyebrow="04" title="Boosting：按顺序从错误中学习">
         <p>
-          <Term>Boosting</Term> 采取相反的路子。它不是独立的并行树，而是<em>串行地</em>构建它们，每一棵
+          <Term>Boosting</Term> 采取相反的路子。它不是独立的并行树，而是<em>串行地</em>
+          构建它们，每一棵
           都聚焦于之前那些树的错误。训练一棵弱树；看它在哪里出错；训练下一棵树去修那些错误；重复。集成
           靠不懈地攻击它自己剩余的弱点而成长。
         </p>
@@ -404,13 +506,15 @@ function ZhBody() {
           {String.raw`F_m(x) = F_{m-1}(x) + \eta\, h_m(x)`}
         </Formula>
         <p>
-          这个名字来自一个洞见：拟合残差，其实就是在做<Link href="/knowledge/calculus-optimisation">
-          梯度下降</Link>——每一棵树都是在函数空间里，沿损失的梯度向下的一步。它就是微积分页的优化想法，
+          这个名字来自一个洞见：拟合残差，其实就是在做
+          <Link href="/knowledge/calculus-optimisation">梯度下降</Link>
+          ——每一棵树都是在函数空间里，沿损失的梯度向下的一步。它就是微积分页的优化想法，
           被应用到构建一个集成上。
         </p>
         <p>
-          <Term>XGBoost</Term> 和 <Term>LightGBM</Term> 是那些经过工程打磨、工业级强度的实现，正是它们
-          让梯度提升占据了主导。它们加入<Link href="/knowledge/statistical-machine-learning">正则化</Link>
+          <Term>XGBoost</Term> 和 <Term>LightGBM</Term>{" "}
+          是那些经过工程打磨、工业级强度的实现，正是它们 让梯度提升占据了主导。它们加入
+          <Link href="/knowledge/statistical-machine-learning">正则化</Link>
           以遏制过拟合、对缺失值的巧妙处理，以及认真的速度优化。在结构化／表格数据上，它们年复一年地，
           仍然是那个要击败的模型——往往是一名从业者第一个伸手去拿的东西，也常常是最后一个，因为在那里
           几乎没有别的能胜过它们。
@@ -425,16 +529,17 @@ function ZhBody() {
             极少、可并行。安全而强劲的基线。
           </li>
           <li>
-            <Term>Boosting / XGBoost</Term>——串行，降低<strong>偏差</strong>。调好时通常准确度更高，但
-            更敏感——它<em>可能</em>过拟合，需要小心调参（学习率、树深、提前停止），而且没法以同样的
-            方式并行。
+            <Term>Boosting / XGBoost</Term>——串行，降低<strong>偏差</strong>
+            。调好时通常准确度更高，但 更敏感——它<em>可能</em>
+            过拟合，需要小心调参（学习率、树深、提前停止），而且没法以同样的 方式并行。
           </li>
         </ul>
         <Callout type="intuition">
           <p>
-            一条实用的经验法则：当你想不费什么劲就得到一个强结果时，去拿<strong>随机森林</strong>；当你
-            想榨出最大的准确度、并愿意调参时，去拿<strong>梯度提升</strong>。还有，记住<strong>堆叠
-            </strong>（stacking）这个选项——你甚至可以把集成再集成，把好几个模型的预测喂给一个最终的
+            一条实用的经验法则：当你想不费什么劲就得到一个强结果时，去拿<strong>随机森林</strong>
+            ；当你 想榨出最大的准确度、并愿意调参时，去拿<strong>梯度提升</strong>。还有，记住
+            <strong>堆叠</strong>
+            （stacking）这个选项——你甚至可以把集成再集成，把好几个模型的预测喂给一个最终的
             「元学习器」。
           </p>
         </Callout>
@@ -456,7 +561,8 @@ function ZhBody() {
           </li>
         </ul>
         <p>
-          对不透明的部分答案，是可解释性工具——<Term>SHAP</Term> 值之类——它把每一个预测归因回它的特征。
+          对不透明的部分答案，是可解释性工具——<Term>SHAP</Term>{" "}
+          值之类——它把每一个预测归因回它的特征。
           有用，但那是事后的一种重建，而非一个简单模型那种货真价实的透明。当解释和答案一样要紧时，那个
           权衡必须被诚实地掂量。
         </p>
@@ -467,16 +573,18 @@ function ZhBody() {
           <p>
             对大多数分析工作所依赖的表格化、结构化数据而言，集成根本就是最好的工具——所以当一个预测
             问题落到我桌上时，<strong>随机森林</strong>是那个强劲的基线，<strong>梯度提升</strong>是
-            准确度的天花板。知道它们<em>为什么</em>管用（去相关的误差；方差对偏差），正是让我能挑对那
+            准确度的天花板。知道它们<em>为什么</em>
+            管用（去相关的误差；方差对偏差），正是让我能挑对那
             一个、并明智地调它，而非随机地拧旋钮的东西。
           </p>
           <p>
             但<strong>可解释性代价</strong>，恰恰是在政府的环境里最要紧的那个考量，那里一个决定往往
-            必须被<em>解释和辩护</em>，而不只是准确地做出。那是那个活生生的张力——一个提升的模型可能更
+            必须被<em>解释和辩护</em>
+            ，而不只是准确地做出。那是那个活生生的张力——一个提升的模型可能更
             准确，而一个更简单的更可辩护——而诚实地把它点出来（用 SHAP 来缩小差距，用
             <Link href="/knowledge/model-evaluation">恰当的验证</Link>来信任那份准确度），才是真正的
-            技能。它直接连到<Link href="/knowledge/deep-learning">「何时不该上深度」</Link>的判断：挑那个
-            问题实际需要的模型。
+            技能。它直接连到<Link href="/knowledge/deep-learning">「何时不该上深度」</Link>
+            的判断：挑那个 问题实际需要的模型。
           </p>
         </Callout>
       </KSection>
@@ -498,8 +606,8 @@ function ZhBody() {
             </li>
             <li>
               <strong>Boosting → XGBoost/LightGBM</strong>：串行的树，每一棵修上一棵的错误；梯度提升
-              拟合残差（<TeX>{String.raw`F_m = F_{m-1} + \eta h_m`}</TeX>）。削减<strong>偏差</strong>；
-              表格数据的冠军。
+              拟合残差（<TeX>{String.raw`F_m = F_{m-1} + \eta h_m`}</TeX>）。削减
+              <strong>偏差</strong>； 表格数据的冠军。
             </li>
             <li>
               森林 = 不费劲就强；boosting = 调参换最大准确度（而且它<em>可能</em>过拟合——交叉验证、
@@ -512,8 +620,8 @@ function ZhBody() {
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          bagging 对 boosting 的取景、把梯度提升看作残差拟合，以及 XGBoost 的正则化/提前停止实务，反映
-          了当前的集成学习参考文献以及机器学习课程。
+          bagging 对 boosting 的取景、把梯度提升看作残差拟合，以及 XGBoost
+          的正则化/提前停止实务，反映 了当前的集成学习参考文献以及机器学习课程。
         </p>
       </KSection>
     </>
@@ -544,7 +652,10 @@ const META = {
       { id: "applied", label: "Where it shows up in my work" },
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
-    prev: { href: "/knowledge/statistical-machine-learning", label: "Statistical Machine Learning" },
+    prev: {
+      href: "/knowledge/statistical-machine-learning",
+      label: "Statistical Machine Learning",
+    },
     next: { href: "/knowledge", label: "Back to all topics" },
   },
   "zh-Hans": {

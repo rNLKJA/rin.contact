@@ -1072,6 +1072,14 @@
           {
             "label": "Recommender Systems",
             "note": "Collaborative filtering, matrix factorisation, cold start"
+          },
+          {
+            "label": "Survival Analysis",
+            "note": "Censoring, Kaplan-Meier, Cox hazard ratios"
+          },
+          {
+            "label": "Information Retrieval & Search",
+            "note": "Inverted index, BM25, dense & hybrid retrieval"
           }
         ]
       },
@@ -1118,6 +1126,10 @@
           {
             "label": "Fairness & Bias in ML",
             "note": "Proxies, fairness metrics, the impossibility result"
+          },
+          {
+            "label": "Differential Privacy",
+            "note": "Re-identification, epsilon, calibrated noise, utility"
           }
         ]
       },

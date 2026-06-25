@@ -138,6 +138,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/explainable-ai", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/fairness-bias", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/recommender-systems", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/differential-privacy", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/survival-analysis", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/information-retrieval", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
