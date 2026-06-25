@@ -683,7 +683,8 @@
           { "label": "微积分与最优化", "note": "梯度、梯度下降与反向传播" },
           { "label": "线性统计模型", "note": "OLS、推断与诊断" },
           { "label": "数据库系统", "note": "关系模型、SQL 与索引" },
-          { "label": "人工智能", "note": "搜索、逻辑与规划" }
+          { "label": "人工智能", "note": "搜索、逻辑与规划" },
+          { "label": "Web 信息技术", "note": "HTTP、HTML/CSS/JS、REST API 与请求周期" }
         ]
       },
       "advanced": {

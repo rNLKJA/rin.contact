@@ -19,6 +19,7 @@ const TIERS = [
     { href: "/knowledge/linear-statistical-models", status: "live" },
     { href: "/knowledge/database-systems", status: "live" },
     { href: "/knowledge/artificial-intelligence", status: "live" },
+    { href: "/knowledge/web-information-technology", status: "live" },
   ]},
   { key: "advanced", topics: [
     { href: "/knowledge/natural-language-processing", status: "live" },
