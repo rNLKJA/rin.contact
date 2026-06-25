@@ -8,7 +8,7 @@
  * Hover any station to read its record in the info panel below.
  */
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useI18n } from "@/contexts/I18nContext";
 
 // ── Layout constants ──────────────────────────────────────────────────────────
@@ -122,6 +122,36 @@ export default function MetroMapSection() {
   const [hovered, setHovered] = useState(null);
   const active = STATIONS.find((s) => s.id === hovered);
 
+  // Scroll-shadow state. The map is wider than a phone screen, so it scrolls
+  // horizontally — and at scrollLeft 0 the most recent stations (the current
+  // SAPOL role) sit off-screen to the right. Edge fades + a nudging chevron cue
+  // that there is more to swipe to; both auto-hide on desktop (where the map
+  // fits, so nothing is scrollable) and once scrolled to the end.
+  const scrollRef = useRef(null);
+  const [edges, setEdges] = useState({ atStart: true, atEnd: true, scrollable: false });
+  const updateEdges = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const scrollable = el.scrollWidth > el.clientWidth + 2;
+    setEdges({
+      scrollable,
+      atStart: el.scrollLeft <= 2,
+      atEnd: el.scrollLeft >= el.scrollWidth - el.clientWidth - 2,
+    });
+  }, []);
+  useEffect(() => {
+    updateEdges();
+    const el = scrollRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateEdges, { passive: true });
+    window.addEventListener("resize", updateEdges);
+    return () => {
+      el.removeEventListener("scroll", updateEdges);
+      window.removeEventListener("resize", updateEdges);
+    };
+  }, [updateEdges]);
+  const showRightCue = edges.scrollable && !edges.atEnd;
+
   return (
     <section id="career-map" className="py-20" aria-label="Career metro map">
 
@@ -135,7 +165,8 @@ export default function MetroMapSection() {
       </div>
 
       {/* Map (horizontally scrollable on small screens) */}
-      <div className="overflow-x-auto -mx-2 px-2">
+      <div className="relative">
+       <div ref={scrollRef} className="overflow-x-auto -mx-2 px-2">
         <div style={{ minWidth: 580 }}>
           <svg
             viewBox={`0 0 ${VW} ${VH}`}
@@ -279,6 +310,43 @@ export default function MetroMapSection() {
             })}
           </svg>
         </div>
+       </div>
+
+       {/* Left fade — appears once the reader has scrolled away from the start */}
+       <div
+         aria-hidden="true"
+         className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-300 ${
+           edges.scrollable && !edges.atStart ? "opacity-100" : "opacity-0"
+         }`}
+       />
+
+       {/* Right fade + nudging chevron — cues that recent roles are off-screen */}
+       <div
+         aria-hidden="true"
+         className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-300 ${
+           showRightCue ? "opacity-100" : "opacity-0"
+         }`}
+       />
+       <div
+         aria-hidden="true"
+         className={`metro-cue pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[#FF3C3C] transition-opacity duration-300 ${
+           showRightCue ? "opacity-100" : "opacity-0"
+         }`}
+       >
+         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+           <path d="M5 3.5L11 9L5 14.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+         </svg>
+       </div>
+
+       <style jsx>{`
+         @media (prefers-reduced-motion: no-preference) {
+           .metro-cue { animation: metroNudge 1.4s ease-in-out infinite; }
+         }
+         @keyframes metroNudge {
+           0%, 100% { transform: translate(0, -50%); }
+           50% { transform: translate(4px, -50%); }
+         }
+       `}</style>
       </div>
 
       {/* Info panel */}
