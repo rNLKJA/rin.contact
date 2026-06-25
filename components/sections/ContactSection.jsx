@@ -140,6 +140,10 @@ export default function ContactSection() {
   const [form,   setForm]   = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
   const [toast,  setToast]  = useState(null);   // { type: "success" | "error", message }
+  // Honeypot — a field hidden from people. Bots that auto-fill every input trip it,
+  // and we drop the submission without emailing. Uncontrolled (ref), so it never
+  // enters the payload sent to EmailJS.
+  const honeypotRef = useRef(null);
   const sectionRef      = useRef(null);
   const spotlightRef    = useRef(null); // direct DOM ref — no React state on mousemove
   const sectionDocTop   = useRef(0);    // absolute document position — constant on scroll
@@ -205,6 +209,14 @@ export default function ContactSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Honeypot tripped: a bot filled the hidden field. Mimic success so the bot
+    // gets no signal, but send nothing.
+    if (honeypotRef.current?.value) {
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+      showToast("success", t("contact.toast.successMessage"));
+      return;
+    }
     setStatus("sending");
     const payload = { name: form.name, email: form.email, message: form.message };
     try {
@@ -396,6 +408,17 @@ export default function ContactSection() {
 
           {/* Right — contact form */}
           <form onSubmit={handleSubmit} noValidate aria-label="Contact form" className="flex flex-col gap-5">
+            {/* Honeypot — off-screen, hidden from assistive tech, skipped by Tab.
+                Real visitors never see or fill it; bots that fill everything do. */}
+            <input
+              ref={honeypotRef}
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="absolute left-[-9999px] top-0 h-px w-px opacity-0 pointer-events-none"
+            />
             <div className="flex flex-col gap-1.5">
               <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#AAAAAA]">{t("contact.form.name")}</label>
               <input
