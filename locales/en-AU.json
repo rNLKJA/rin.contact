@@ -244,7 +244,7 @@
     "ogTitle": "Curriculum Vitae",
     "ogSubtitle": "Sunchuangyu (Rin) Huang — Senior Data Analyst",
     "backToResume": "Interactive resume",
-    "savePdf": "Save as PDF",
+    "savePdf": "Download PDF",
     "eyebrow": "Curriculum Vitae",
     "tagline": "Senior Data Analyst · Strategic Intelligence · Research Software Engineer",
     "contact": {
@@ -263,6 +263,10 @@
       "certifications": "Certifications"
     },
     "profileBody": "Senior Data Analyst working where data, strategy, and engineering meet. I translate complex data into decision-ready intelligence across government, research, and engineering, from climate-risk modelling at CSIRO and genomics pipelines at WEHI to ministerial reporting in the South Australian government. Problem-first, not model-first: I start from the decision that needs making and the minimum data to make it well. Generalist by nature, specialist by discipline.",
+    "objective": {
+      "title": "Objective",
+      "body": "Statistically rigorous, strategically framed data scientist at the intersection of analytics, intelligence, and responsible AI — turning complex data into decision-ready intelligence for government, research, and high-stakes settings. Open to senior data-science and AI-governance roles in Australia and remote."
+    },
     "skills": {
       "dataAnalytics": {
         "group": "Data & analytics",

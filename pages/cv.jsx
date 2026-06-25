@@ -1,38 +1,36 @@
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
 import BackToTop from "@/components/ui/BackToTop";
 import { useI18n } from "@/contexts/I18nContext";
-import { CAREER_RAW, EDUCATION } from "@/components/sections/TimelineSection";
+import { buildExperience, buildEducation } from "@/components/cv/cvData";
 import { CERTS } from "@/components/sections/CertificationsSection";
 
 // Build the CV from the same verified data that powers /career and /about, at build
 // time, so it can never drift from the rest of the site and adds no client weight.
+// Experience/education are built per locale (en-AU derives from the shared data;
+// zh-Hans is the hand-translated layer) so the Chinese CV reads in Chinese too.
 export function getStaticProps() {
-  const experience = CAREER_RAW.map((r) => ({
-    role: r.role,
-    org: r.org,
-    period: r.period,
-    location: r.location || "",
-    summary: r.summary || "",
-    bullets: (r.bullets || []).slice(0, 3),
-  }));
+  const experienceByLocale = {
+    "en-AU": buildExperience("en-AU"),
+    "zh-Hans": buildExperience("zh-Hans"),
+  };
+  const educationByLocale = {
+    "en-AU": buildEducation("en-AU"),
+    "zh-Hans": buildEducation("zh-Hans"),
+  };
 
-  const education = EDUCATION.filter((e) => e.tag !== "Secondary").map((e) => ({
-    role: e.role,
-    org: e.org,
-    period: e.period,
-    location: e.location || "",
-  }));
-
-  // Group certifications by issuer, ordered by how many Rin holds.
+  // Group certifications by issuer, ordered by how many Rin holds. Issuer and
+  // cert names are proper nouns — kept identical across locales.
   const byIssuer = {};
   for (const c of CERTS) (byIssuer[c.issuer] ||= []).push(c.name);
   const certGroups = Object.entries(byIssuer)
     .map(([issuer, names]) => ({ issuer, names, count: names.length }))
     .sort((a, b) => b.count - a.count || a.issuer.localeCompare(b.issuer));
 
-  return { props: { experience, education, certGroups, certTotal: CERTS.length } };
+  return {
+    props: { experienceByLocale, educationByLocale, certGroups, certTotal: CERTS.length },
+  };
 }
 
 // Skill groups — labels and item lists localised via cvPage.skills.<key>.
@@ -52,11 +50,50 @@ const CONTACT = [
   { key: "location", value: null, href: null },
 ];
 
-export default function CvPage({ experience, education, certGroups, certTotal }) {
+export default function CvPage({ experienceByLocale, educationByLocale, certGroups, certTotal }) {
   const { t, locale = "en-AU" } = useI18n();
-  const print = useCallback(() => {
-    if (typeof window !== "undefined") window.print();
-  }, []);
+  const experience = experienceByLocale[locale] || experienceByLocale["en-AU"];
+  const education = educationByLocale[locale] || educationByLocale["en-AU"];
+  const cvRef = useRef(null);
+
+  // One-click PDF download. Lazy-loads html2pdf from a CDN on first click (no
+  // bundle weight); forces a clean light render via .cv-pdf-export during the
+  // capture, and falls back to the browser print dialog if the library can't
+  // load (offline / blocked).
+  const downloadPdf = useCallback(async () => {
+    if (typeof window === "undefined") return;
+    const el = cvRef.current;
+    if (!el) return window.print();
+    const ensureLib = () =>
+      new Promise((resolve, reject) => {
+        if (window.html2pdf) return resolve(window.html2pdf);
+        const s = document.createElement("script");
+        s.src = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js";
+        s.onload = () => resolve(window.html2pdf);
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    try {
+      const html2pdf = await ensureLib();
+      el.classList.add("cv-pdf-export");
+      const filename = locale === "zh-Hans" ? "Rin-Huang-简历.pdf" : "Rin-Huang-CV.pdf";
+      await html2pdf()
+        .set({
+          margin: [10, 10, 12, 10],
+          filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+          pagebreak: { mode: ["css", "avoid-all"] },
+        })
+        .from(el)
+        .save();
+    } catch (e) {
+      window.print();
+    } finally {
+      el.classList.remove("cv-pdf-export");
+    }
+  }, [locale]);
 
   return (
     <>
@@ -70,7 +107,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
 
       <BackToTop />
       <div className="bg-white dark:bg-[#0A0A0A] min-h-screen cv-print-root">
-        <div className="max-w-[820px] mx-auto px-6 md:px-12 py-14 md:py-20">
+        <div ref={cvRef} className="max-w-[820px] mx-auto px-6 md:px-12 py-14 md:py-20">
           {/* Action bar — hidden when printing */}
           <div className="cv-noprint flex items-center justify-between gap-4 mb-12">
             <Link
@@ -80,7 +117,7 @@ export default function CvPage({ experience, education, certGroups, certTotal })
               ← {t("cvPage.backToResume")}
             </Link>
             <button
-              onClick={print}
+              onClick={downloadPdf}
               className="inline-flex items-center gap-2 border border-[#FF3C3C] px-5 py-2 text-[11px] tracking-widest uppercase
                          text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white transition-colors duration-200"
             >
@@ -124,6 +161,13 @@ export default function CvPage({ experience, education, certGroups, certTotal })
           <Section title={t("cvPage.sections.profile")}>
             <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
               {t("cvPage.profileBody")}
+            </p>
+          </Section>
+
+          {/* Objective — positioning statement (求职意向 in zh) */}
+          <Section title={t("cvPage.objective.title")}>
+            <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+              {t("cvPage.objective.body")}
             </p>
           </Section>
 
@@ -265,6 +309,18 @@ export default function CvPage({ experience, education, certGroups, certTotal })
 
           @page { margin: 14mm; }
         }
+
+        /* One-click PDF export (html2pdf): force a clean light render while the
+           CV element is captured, regardless of the on-screen theme. Mirrors the
+           print rules but as a toggled class html2canvas can see. */
+        .cv-pdf-export { background: #ffffff !important; }
+        .cv-pdf-export *:not(.cv-accent) {
+          color: #1a1a1a !important;
+          background-color: transparent !important;
+          border-color: #d8d8d8 !important;
+        }
+        .cv-pdf-export .cv-accent { color: #ff3c3c !important; }
+        .cv-pdf-export .cv-noprint { display: none !important; }
       `}</style>
     </>
   );
