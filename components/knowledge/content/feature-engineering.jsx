@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/feature-engineering.
@@ -13,7 +20,16 @@ const TEX = {
   zShort: String.raw`z=(x-\mu)/\sigma`,
 };
 
-function LeakageFigure({ caption, ariaLabel, wrongFit, wrongSplit, wrongLeak, rightSplit, rightFit, rightApply }) {
+function LeakageFigure({
+  caption,
+  ariaLabel,
+  wrongFit,
+  wrongSplit,
+  wrongLeak,
+  rightSplit,
+  rightFit,
+  rightApply,
+}) {
   return (
     <Figure caption={caption}>
       <svg
@@ -22,25 +38,149 @@ function LeakageFigure({ caption, ariaLabel, wrongFit, wrongSplit, wrongLeak, ri
         role="img"
         aria-label={ariaLabel}
       >
-        <text x="14" y="30" fontSize="11" fontFamily="monospace" fill="#FF3C3C">✗</text>
-        <rect x="30" y="18" width="92" height="24" rx="3" fill="none" stroke="#FF3C3C" strokeWidth="1.3" />
-        <text x="76" y="34" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{wrongFit}</text>
-        <line x1="122" y1="30" x2="158" y2="30" stroke="#FF3C3C" strokeWidth="1.2" markerEnd="url(#fah)" />
-        <rect x="158" y="18" width="70" height="24" rx="3" fill="none" stroke="#FF3C3C" strokeWidth="1.3" />
-        <text x="193" y="34" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{wrongSplit}</text>
-        <text x="245" y="34" fontSize="8.5" fontFamily="monospace" fill="#FF3C3C">{wrongLeak}</text>
-        <text x="14" y="108" fontSize="11" fontFamily="monospace" fill="currentColor">✓</text>
-        <rect x="30" y="96" width="70" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="1.3" />
-        <text x="65" y="112" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{rightSplit}</text>
-        <line x1="100" y1="108" x2="132" y2="108" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#fah2)" />
-        <rect x="132" y="96" width="104" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="1.3" />
-        <text x="184" y="112" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{rightFit}</text>
-        <line x1="236" y1="108" x2="268" y2="108" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#fah2)" />
-        <rect x="268" y="96" width="120" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="1.3" />
-        <text x="328" y="112" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor">{rightApply}</text>
+        <text x="14" y="30" fontSize="11" fontFamily="monospace" fill="#FF3C3C">
+          ✗
+        </text>
+        <rect
+          x="30"
+          y="18"
+          width="92"
+          height="24"
+          rx="3"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+        />
+        <text
+          x="76"
+          y="34"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {wrongFit}
+        </text>
+        <line
+          x1="122"
+          y1="30"
+          x2="158"
+          y2="30"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+          markerEnd="url(#fah)"
+        />
+        <rect
+          x="158"
+          y="18"
+          width="70"
+          height="24"
+          rx="3"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+        />
+        <text
+          x="193"
+          y="34"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {wrongSplit}
+        </text>
+        <text x="245" y="34" fontSize="8.5" fontFamily="monospace" fill="#FF3C3C">
+          {wrongLeak}
+        </text>
+        <text x="14" y="108" fontSize="11" fontFamily="monospace" fill="currentColor">
+          ✓
+        </text>
+        <rect
+          x="30"
+          y="96"
+          width="70"
+          height="24"
+          rx="3"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.3"
+        />
+        <text
+          x="65"
+          y="112"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {rightSplit}
+        </text>
+        <line
+          x1="100"
+          y1="108"
+          x2="132"
+          y2="108"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#fah2)"
+        />
+        <rect
+          x="132"
+          y="96"
+          width="104"
+          height="24"
+          rx="3"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.3"
+        />
+        <text
+          x="184"
+          y="112"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {rightFit}
+        </text>
+        <line
+          x1="236"
+          y1="108"
+          x2="268"
+          y2="108"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#fah2)"
+        />
+        <rect
+          x="268"
+          y="96"
+          width="120"
+          height="24"
+          rx="3"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.3"
+        />
+        <text
+          x="328"
+          y="112"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {rightApply}
+        </text>
         <defs>
-          <marker id="fah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" /></marker>
-          <marker id="fah2" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
+          <marker id="fah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+          </marker>
+          <marker id="fah2" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -52,11 +192,12 @@ function EnBody() {
   return (
     <>
       <p>
-        There's a well-worn saying in data science: you spend 80% of your time preparing the data and
-        20% complaining about it. It's a joke, but the proportion is real. The model — the bit that
-        gets the attention — is often a few lines and an afternoon. The <strong>data preparation</strong>{" "}
-        and <strong>feature engineering</strong> — turning messy raw records into clean, informative
-        inputs — is where most of the effort goes, and where most of the final accuracy is won or lost.
+        There's a well-worn saying in data science: you spend 80% of your time preparing the data
+        and 20% complaining about it. It's a joke, but the proportion is real. The model — the bit
+        that gets the attention — is often a few lines and an afternoon. The{" "}
+        <strong>data preparation</strong> and <strong>feature engineering</strong> — turning messy
+        raw records into clean, informative inputs — is where most of the effort goes, and where
+        most of the final accuracy is won or lost.
       </p>
       <p>
         The principle underneath is blunt: <strong>garbage in, garbage out</strong>. The most
@@ -67,10 +208,10 @@ function EnBody() {
 
       <KSection id="why" eyebrow="01" title="The unglamorous 80%">
         <p>
-          A <Term>feature</Term> is just an input variable the model sees. <Term>Feature engineering</Term>{" "}
-          is the work of deciding what those inputs should be and getting the raw data into that shape:
-          fixing what's broken, transforming what's awkward, and creating what isn't there yet. It sits
-          right after the data wrangling on the{" "}
+          A <Term>feature</Term> is just an input variable the model sees.{" "}
+          <Term>Feature engineering</Term> is the work of deciding what those inputs should be and
+          getting the raw data into that shape: fixing what's broken, transforming what's awkward,
+          and creating what isn't there yet. It sits right after the data wrangling on the{" "}
           <Link href="/knowledge/elements-of-data-processing">data-processing</Link> page and right
           before the modelling, and it's the highest-leverage stage in the whole pipeline.
         </p>
@@ -81,8 +222,8 @@ function EnBody() {
             trustworthy.
           </li>
           <li>
-            <strong>Transform</strong> — scale, normalise, and encode so each feature is in a form the
-            model can use.
+            <strong>Transform</strong> — scale, normalise, and encode so each feature is in a form
+            the model can use.
           </li>
           <li>
             <strong>Create</strong> — combine and derive new features that expose the signal more
@@ -103,8 +244,9 @@ function EnBody() {
             least harmful case.
           </li>
           <li>
-            <Term>MAR</Term> (missing at random) — the missingness depends on other observed variables
-            (older people skip a question); recoverable if you account for those variables.
+            <Term>MAR</Term> (missing at random) — the missingness depends on other observed
+            variables (older people skip a question); recoverable if you account for those
+            variables.
           </li>
           <li>
             <Term>MNAR</Term> (missing not at random) — the missingness depends on the missing value
@@ -115,18 +257,18 @@ function EnBody() {
         <p>
           Options run from dropping rows (fine if few and MCAR, biased otherwise) to{" "}
           <Term>imputation</Term> — filling with the mean/median, the most frequent category, or a
-          model-based guess (KNN, regression). A useful trick: add a <em>"was missing"</em> indicator
-          column, so the model can learn from the fact of absence itself — which matters most precisely
-          in the MNAR case.
+          model-based guess (KNN, regression). A useful trick: add a <em>"was missing"</em>{" "}
+          indicator column, so the model can learn from the fact of absence itself — which matters
+          most precisely in the MNAR case.
         </p>
       </KSection>
 
       <KSection id="scaling" eyebrow="03" title="Scaling & transformations">
         <p>
-          Features arrive on wildly different scales — age in tens, income in tens of thousands. Many
-          methods are sensitive to that, so we put features on a common footing. The most common is{" "}
-          <Term>standardisation</Term> (the z-score): subtract the mean, divide by the standard
-          deviation, so each feature has mean 0 and standard deviation 1:
+          Features arrive on wildly different scales — age in tens, income in tens of thousands.
+          Many methods are sensitive to that, so we put features on a common footing. The most
+          common is <Term>standardisation</Term> (the z-score): subtract the mean, divide by the
+          standard deviation, so each feature has mean 0 and standard deviation 1:
         </p>
         <Formula label="The standardised value z equals x minus the mean mu, divided by the standard deviation sigma.">
           {TEX.z}
@@ -135,22 +277,22 @@ function EnBody() {
           This matters enormously for any method that uses distances or magnitudes —{" "}
           <Link href="/knowledge/clustering">clustering</Link>,{" "}
           <Link href="/knowledge/pca-dimensionality-reduction">PCA</Link>, k-NN, gradient descent.
-          Without it, the largest-scaled feature dominates by sheer numerical size, regardless of its
-          actual relevance. (<Term>Min-max scaling</Term> to a fixed [0, 1] range is the common
+          Without it, the largest-scaled feature dominates by sheer numerical size, regardless of
+          its actual relevance. (<Term>Min-max scaling</Term> to a fixed [0, 1] range is the common
           alternative.)
         </p>
         <p>
           Separately, skewed variables — income, populations, counts — often benefit from a{" "}
           <Term>log transform</Term> (or Box-Cox), which pulls in a long right tail toward a more
-          symmetric, model-friendly shape. The goal throughout is the same: present each feature in the
-          form where its signal is easiest to use.
+          symmetric, model-friendly shape. The goal throughout is the same: present each feature in
+          the form where its signal is easiest to use.
         </p>
       </KSection>
 
       <KSection id="encoding" eyebrow="04" title="Encoding categories">
         <p>
-          Models eat numbers, but much real data is categorical — a suburb, a status, a type. Encoding
-          turns categories into numbers, and the method has to respect the data:
+          Models eat numbers, but much real data is categorical — a suburb, a status, a type.
+          Encoding turns categories into numbers, and the method has to respect the data:
         </p>
         <ul>
           <li>
@@ -159,14 +301,14 @@ function EnBody() {
             high-cardinality fields.
           </li>
           <li>
-            <Term>Ordinal encoding</Term> — map ordered categories to ordered integers (low/med/high →
-            0/1/2). Correct <em>only</em> when the order is real; misuse invents a ranking that isn't
-            there.
+            <Term>Ordinal encoding</Term> — map ordered categories to ordered integers (low/med/high
+            → 0/1/2). Correct <em>only</em> when the order is real; misuse invents a ranking that
+            isn't there.
           </li>
           <li>
-            <Term>Target encoding</Term> — replace each category with the average target value for it.
-            Powerful for high-cardinality fields (thousands of postcodes), but it peeks at the target,
-            so it's a prime source of the leakage problem below if done carelessly.
+            <Term>Target encoding</Term> — replace each category with the average target value for
+            it. Powerful for high-cardinality fields (thousands of postcodes), but it peeks at the
+            target, so it's a prime source of the leakage problem below if done carelessly.
           </li>
         </ul>
       </KSection>
@@ -174,8 +316,8 @@ function EnBody() {
       <KSection id="creation" eyebrow="05" title="Creating features: where domain knowledge pays">
         <p>
           The most valuable step is often <em>inventing</em> features that expose the signal more
-          directly than the raw data does. This is where human understanding of the problem beats any
-          algorithm:
+          directly than the raw data does. This is where human understanding of the problem beats
+          any algorithm:
         </p>
         <ul>
           <li>
@@ -183,12 +325,12 @@ function EnBody() {
             is-weekend, or "days since last event" can be enormously predictive.
           </li>
           <li>
-            <strong>Interactions &amp; ratios</strong> — price-per-square-metre, debt-to-income, events
-            per day. A ratio can capture in one feature what two raw columns hide.
+            <strong>Interactions &amp; ratios</strong> — price-per-square-metre, debt-to-income,
+            events per day. A ratio can capture in one feature what two raw columns hide.
           </li>
           <li>
-            <strong>Binning</strong> — grouping a continuous variable into bands when the relationship
-            isn't smooth (age brackets).
+            <strong>Binning</strong> — grouping a continuous variable into bands when the
+            relationship isn't smooth (age brackets).
           </li>
           <li>
             <strong>Domain features</strong> — anything your understanding of the field says should
@@ -196,16 +338,16 @@ function EnBody() {
           </li>
         </ul>
         <p>
-          Good feature creation is the closest thing to a free lunch in modelling: it's where a person
-          who understands the problem hands the model a head start.
+          Good feature creation is the closest thing to a free lunch in modelling: it's where a
+          person who understands the problem hands the model a head start.
         </p>
       </KSection>
 
       <KSection id="leakage" eyebrow="06" title="The cardinal sin: data leakage">
         <p>
-          Here's the mistake that quietly ruins more analyses than any other, and it hides inside the
-          very steps above. <Term>Data leakage</Term> is when information that wouldn't really be
-          available at prediction time sneaks into the features during training. The model looks
+          Here's the mistake that quietly ruins more analyses than any other, and it hides inside
+          the very steps above. <Term>Data leakage</Term> is when information that wouldn't really
+          be available at prediction time sneaks into the features during training. The model looks
           brilliant in testing and then fails in the real world — because it was secretly peeking at
           answers it won't have.
         </p>
@@ -222,10 +364,10 @@ function EnBody() {
         <p>
           The classic version: you standardise or target-encode using statistics from the{" "}
           <em>whole</em> dataset, <em>then</em> split into train and test. Now the mean and standard
-          deviation carry information from the test set — the model has seen a whisper of its own exam.
-          The fix is an iron rule:{" "}
-          <strong>split first, then fit every transform on the training data only</strong>, and apply
-          those fitted transforms to the test set. (This is exactly why honest{" "}
+          deviation carry information from the test set — the model has seen a whisper of its own
+          exam. The fix is an iron rule:{" "}
+          <strong>split first, then fit every transform on the training data only</strong>, and
+          apply those fitted transforms to the test set. (This is exactly why honest{" "}
           <Link href="/knowledge/causal-inference">evaluation</Link> and{" "}
           <Link href="/knowledge/statistics">held-out testing</Link> are so insistent about order.)
         </p>
@@ -236,7 +378,8 @@ function EnBody() {
           More features isn't always better. Irrelevant or redundant ones add noise, invite{" "}
           <Link href="/knowledge/statistical-machine-learning">overfitting</Link>, and worsen the{" "}
           <Link href="/knowledge/pca-dimensionality-reduction">curse of dimensionality</Link>.{" "}
-          <Term>Feature selection</Term> trims to the inputs that earn their place, broadly three ways:
+          <Term>Feature selection</Term> trims to the inputs that earn their place, broadly three
+          ways:
         </p>
         <ul>
           <li>
@@ -248,8 +391,8 @@ function EnBody() {
             selection). Thorough but expensive.
           </li>
           <li>
-            <Term>Embedded</Term> — let the model select as it trains (Lasso's L1 penalty drives weak
-            coefficients to zero; tree importances). Often the sweet spot.
+            <Term>Embedded</Term> — let the model select as it trains (Lasso's L1 penalty drives
+            weak coefficients to zero; tree importances). Often the sweet spot.
           </li>
         </ul>
       </KSection>
@@ -257,20 +400,20 @@ function EnBody() {
       <KSection id="applied" eyebrow="08" title="Where it shows up in my work">
         <Callout type="applied" label="Where the real time goes">
           <p>
-            As an analyst, this <em>is</em> most of the job. The data arrives messy — missing fields,
-            inconsistent categories, timestamps that need turning into something useful — and the
-            quality of the final answer is set here, long before any model runs. Knowing the{" "}
-            <strong>missing-data taxonomy</strong> (is this gap MNAR and therefore informative?), when
-            to <strong>standardise</strong>, and how to <strong>encode</strong> a high-cardinality field
-            without leaking is the difference between a result that holds up and one that silently
-            misleads.
+            As an analyst, this <em>is</em> most of the job. The data arrives messy — missing
+            fields, inconsistent categories, timestamps that need turning into something useful —
+            and the quality of the final answer is set here, long before any model runs. Knowing the{" "}
+            <strong>missing-data taxonomy</strong> (is this gap MNAR and therefore informative?),
+            when to <strong>standardise</strong>, and how to <strong>encode</strong> a
+            high-cardinality field without leaking is the difference between a result that holds up
+            and one that silently misleads.
           </p>
           <p>
-            And the <strong>leakage</strong> rule is the one I'm most disciplined about, because it's
-            the failure that looks like success: a model that dazzles in testing and collapses in
-            production has almost always been fed information it won't have at decision time. Split
-            first, fit on train only — every time. It's unglamorous, and it's where the trustworthiness
-            of the whole analysis is decided.
+            And the <strong>leakage</strong> rule is the one I'm most disciplined about, because
+            it's the failure that looks like success: a model that dazzles in testing and collapses
+            in production has almost always been fed information it won't have at decision time.
+            Split first, fit on train only — every time. It's unglamorous, and it's where the
+            trustworthiness of the whole analysis is decided.
           </p>
         </Callout>
       </KSection>
@@ -279,20 +422,20 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              Prep + feature engineering is <strong>most of real analysis</strong>. Garbage in, garbage
-              out — a simple model on good features beats a fancy one on raw data.
+              Prep + feature engineering is <strong>most of real analysis</strong>. Garbage in,
+              garbage out — a simple model on good features beats a fancy one on raw data.
             </li>
             <li>
-              <strong>Missing data</strong>: know <strong>MCAR / MAR / MNAR</strong> (MNAR is dangerous
-              — the gap is informative). Impute, or add a "was-missing" flag.
+              <strong>Missing data</strong>: know <strong>MCAR / MAR / MNAR</strong> (MNAR is
+              dangerous — the gap is informative). Impute, or add a "was-missing" flag.
             </li>
             <li>
               <strong>Standardise</strong> <TeX>{TEX.zShort}</TeX> for distance/magnitude methods;{" "}
               <strong>log-transform</strong> skew. Put each feature in its most usable form.
             </li>
             <li>
-              <strong>Encode</strong>: one-hot (unordered), ordinal (truly ordered only), target (high
-              cardinality — leakage-prone).
+              <strong>Encode</strong>: one-hot (unordered), ordinal (truly ordered only), target
+              (high cardinality — leakage-prone).
             </li>
             <li>
               <strong>Create</strong> features (date parts, ratios, domain knowledge) — the closest
@@ -334,21 +477,27 @@ function ZhBody() {
         <p>
           一个<Term>特征</Term>不过是模型所看到的一个输入变量。<Term>特征工程</Term>是「决定那些输入
           应当是什么、并把原始数据弄成那个形状」的工作：修好坏掉的、转换别扭的、创造尚不存在的。它
-          紧接在<Link href="/knowledge/elements-of-data-processing">数据处理</Link>页上的数据整理之后、
-          紧接在建模之前，是整条流水线中杠杆最高的阶段。
+          紧接在<Link href="/knowledge/elements-of-data-processing">数据处理</Link>
+          页上的数据整理之后、 紧接在建模之前，是整条流水线中杠杆最高的阶段。
         </p>
         <p>它由三类工作构成，本页的其余部分依次讲每一类：</p>
         <ul>
-          <li><strong>清洗</strong>——处理缺失值、离群点与错误类型，好让数据可信。</li>
-          <li><strong>转换</strong>——缩放、归一化、编码，好让每个特征都处于模型能用的形式。</li>
-          <li><strong>创造</strong>——组合并派生出更直接地暴露信号的新特征。</li>
+          <li>
+            <strong>清洗</strong>——处理缺失值、离群点与错误类型，好让数据可信。
+          </li>
+          <li>
+            <strong>转换</strong>——缩放、归一化、编码，好让每个特征都处于模型能用的形式。
+          </li>
+          <li>
+            <strong>创造</strong>——组合并派生出更直接地暴露信号的新特征。
+          </li>
         </ul>
       </KSection>
 
       <KSection id="cleaning" eyebrow="02" title="清洗与缺失数据">
         <p>
-          真实数据缺着值，而<em>你如何</em>处理这些缺口，比人们预期的更要紧——因为一个值<em>为什么
-          </em>缺失，改变了什么做法才安全。标准的分类法：
+          真实数据缺着值，而<em>你如何</em>处理这些缺口，比人们预期的更要紧——因为一个值
+          <em>为什么</em>缺失，改变了什么做法才安全。标准的分类法：
         </p>
         <ul>
           <li>
@@ -364,9 +513,11 @@ function ZhBody() {
           </li>
         </ul>
         <p>
-          选项从丢掉行（若数量少且为 MCAR 则没问题，否则有偏）一直到<Term>插补</Term>——用均值/中位数、
-          最频繁的类别，或一个基于模型的猜测（KNN、回归）来填。一个有用的技巧：添加一个<em>「曾缺失」
-          </em>指示列，好让模型能从「缺失」这一事实本身学习——而这恰恰在 MNAR 的情形里最要紧。
+          选项从丢掉行（若数量少且为 MCAR 则没问题，否则有偏）一直到<Term>插补</Term>
+          ——用均值/中位数、
+          最频繁的类别，或一个基于模型的猜测（KNN、回归）来填。一个有用的技巧：添加一个
+          <em>「曾缺失」</em>指示列，好让模型能从「缺失」这一事实本身学习——而这恰恰在 MNAR
+          的情形里最要紧。
         </p>
       </KSection>
 
@@ -376,14 +527,13 @@ function ZhBody() {
           共同的基准上。最常见的是<Term>标准化</Term>（z 分数）：减去均值，除以标准差，好让每个特征
           均值为 0、标准差为 1：
         </p>
-        <Formula label="标准化后的值 z 等于 x 减去均值 mu，再除以标准差 sigma。">
-          {TEX.z}
-        </Formula>
+        <Formula label="标准化后的值 z 等于 x 减去均值 mu，再除以标准差 sigma。">{TEX.z}</Formula>
         <p>
           这对任何使用距离或大小的方法——<Link href="/knowledge/clustering">聚类</Link>、
-          <Link href="/knowledge/pca-dimensionality-reduction">PCA</Link>、k-NN、梯度下降——都极其要紧。
-          没有它，尺度最大的特征会仅凭数值上的大小而主导，不管它实际相关性如何。（缩放到固定的
-          [0, 1] 范围的<Term>最小-最大缩放</Term>是常见的替代。）
+          <Link href="/knowledge/pca-dimensionality-reduction">PCA</Link>
+          、k-NN、梯度下降——都极其要紧。
+          没有它，尺度最大的特征会仅凭数值上的大小而主导，不管它实际相关性如何。（缩放到固定的 [0,
+          1] 范围的<Term>最小-最大缩放</Term>是常见的替代。）
         </p>
         <p>
           另外，偏斜的变量——收入、人口、计数——往往受益于一次<Term>对数变换</Term>（或 Box-Cox），它
@@ -469,8 +619,8 @@ function ZhBody() {
         <p>
           特征更多并不总是更好。无关的或冗余的特征添加噪声、招致
           <Link href="/knowledge/statistical-machine-learning">过拟合</Link>，并加剧
-          <Link href="/knowledge/pca-dimensionality-reduction">维度灾难</Link>。<Term>特征选择</Term>把
-          输入修剪到那些配得上自己位置的，大体有三种方式：
+          <Link href="/knowledge/pca-dimensionality-reduction">维度灾难</Link>。
+          <Term>特征选择</Term>把 输入修剪到那些配得上自己位置的，大体有三种方式：
         </p>
         <ul>
           <li>
@@ -490,11 +640,12 @@ function ZhBody() {
       <KSection id="applied" eyebrow="08" title="它在我工作中的体现">
         <Callout type="applied" label="真正的时间都去哪了">
           <p>
-            作为一名分析师，这<em>就是</em>工作的大头。数据到来时是杂乱的——缺失的字段、不一致的类别、
+            作为一名分析师，这<em>就是</em>
+            工作的大头。数据到来时是杂乱的——缺失的字段、不一致的类别、
             需要被变成有用之物的时间戳——而最终答案的质量在这里就已定下，远在任何模型运行之前。懂得
             <strong>缺失数据的分类法</strong>（这个缺口是 MNAR、因而有信息量吗？）、何时该
-            <strong>标准化</strong>，以及如何在不泄漏的情况下<strong>编码</strong>一个高基数字段，正是
-            「一个站得住脚的结果」与「一个悄悄误导的结果」之间的区别。
+            <strong>标准化</strong>，以及如何在不泄漏的情况下<strong>编码</strong>
+            一个高基数字段，正是 「一个站得住脚的结果」与「一个悄悄误导的结果」之间的区别。
           </p>
           <p>
             而<strong>泄漏</strong>规则是我最严守的那一条，因为它是那种看起来像成功的失败：一个在
@@ -516,8 +667,8 @@ function ZhBody() {
               信息量）。插补，或添加一个「曾缺失」标志。
             </li>
             <li>
-              为距离/大小类方法<strong>标准化</strong> <TeX>{TEX.zShort}</TeX>；对偏斜做<strong>对数
-              变换</strong>。把每个特征放到它最可用的形式。
+              为距离/大小类方法<strong>标准化</strong> <TeX>{TEX.zShort}</TeX>；对偏斜做
+              <strong>对数 变换</strong>。把每个特征放到它最可用的形式。
             </li>
             <li>
               <strong>编码</strong>：独热（无序）、序数（仅真正有序）、目标（高基数——易泄漏）。

@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/deep-learning.
@@ -42,21 +49,113 @@ function TrainingLoopFigure({ caption, ariaLabel, topLabels, backpropLabel, upda
       >
         {TOP_X.map((x, i) => (
           <g key={i}>
-            <rect x={x - 34} y="36" width="68" height="26" rx="3" fill="none" stroke="currentColor" strokeWidth="1.3" />
-            <text x={x} y="53" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill="currentColor">{topLabels[i]}</text>
-            {i < 3 && <line x1={x + 34} y1="49" x2={x + 76} y2="49" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#dah)" />}
+            <rect
+              x={x - 34}
+              y="36"
+              width="68"
+              height="26"
+              rx="3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.3"
+            />
+            <text
+              x={x}
+              y="53"
+              textAnchor="middle"
+              fontSize="9.5"
+              fontFamily="monospace"
+              fill="currentColor"
+            >
+              {topLabels[i]}
+            </text>
+            {i < 3 && (
+              <line
+                x1={x + 34}
+                y1="49"
+                x2={x + 76}
+                y2="49"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                markerEnd="url(#dah)"
+              />
+            )}
           </g>
         ))}
-        <rect x={150 - 52} y="104" width="104" height="26" rx="3" fill="none" stroke="#FF3C3C" strokeWidth="1.3" />
-        <text x="150" y="121" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill="#FF3C3C">{backpropLabel}</text>
-        <rect x={300 - 44} y="104" width="92" height="26" rx="3" fill="none" stroke="#FF3C3C" strokeWidth="1.3" />
-        <text x="300" y="121" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill="#FF3C3C">{updateLabel}</text>
-        <line x1="372" y1="62" x2="346" y2="104" stroke="#FF3C3C" strokeWidth="1.2" markerEnd="url(#dahr)" />
-        <line x1="254" y1="117" x2="202" y2="117" stroke="#FF3C3C" strokeWidth="1.2" markerEnd="url(#dahr)" />
-        <line x1="150" y1="104" x2="150" y2="64" stroke="#FF3C3C" strokeWidth="1.2" markerEnd="url(#dahr)" />
+        <rect
+          x={150 - 52}
+          y="104"
+          width="104"
+          height="26"
+          rx="3"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+        />
+        <text
+          x="150"
+          y="121"
+          textAnchor="middle"
+          fontSize="9.5"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {backpropLabel}
+        </text>
+        <rect
+          x={300 - 44}
+          y="104"
+          width="92"
+          height="26"
+          rx="3"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+        />
+        <text
+          x="300"
+          y="121"
+          textAnchor="middle"
+          fontSize="9.5"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {updateLabel}
+        </text>
+        <line
+          x1="372"
+          y1="62"
+          x2="346"
+          y2="104"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+          markerEnd="url(#dahr)"
+        />
+        <line
+          x1="254"
+          y1="117"
+          x2="202"
+          y2="117"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+          markerEnd="url(#dahr)"
+        />
+        <line
+          x1="150"
+          y1="104"
+          x2="150"
+          y2="64"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+          markerEnd="url(#dahr)"
+        />
         <defs>
-          <marker id="dah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
-          <marker id="dahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" /></marker>
+          <marker id="dah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
+          <marker id="dahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -69,13 +168,13 @@ function EnBody() {
     <>
       <p>
         Deep learning powers the things that feel like magic — image recognition, translation, the
-        large language models behind today's AI. The magic dissolves, in a good way, once you see the
-        machinery: a neural network is a big stack of simple operations —{" "}
+        large language models behind today's AI. The magic dissolves, in a good way, once you see
+        the machinery: a neural network is a big stack of simple operations —{" "}
         <Link href="/knowledge/linear-algebra">matrix multiplications</Link> with a bit of
         non-linearity between them — and "training" is just{" "}
         <Link href="/knowledge/calculus-optimisation">gradient descent</Link> nudging millions of
-        numbers to make the errors smaller. No single piece is mysterious; the power comes from scale
-        and how the pieces compose.
+        numbers to make the errors smaller. No single piece is mysterious; the power comes from
+        scale and how the pieces compose.
       </p>
       <p>
         This page builds that up from the neuron, leaning on the linear algebra and calculus pages
@@ -85,37 +184,38 @@ function EnBody() {
 
       <KSection id="what" eyebrow="01" title="What's actually new: learning the features">
         <p>
-          Classical <Link href="/knowledge/statistical-machine-learning">machine learning</Link> leans
-          on humans to engineer good features: you decide what to measure, and the model learns weights
-          over those hand-picked inputs. That works until the features are too subtle to name — what{" "}
-          <em>is</em> the feature that distinguishes a cat from a dog in raw pixels?
+          Classical <Link href="/knowledge/statistical-machine-learning">machine learning</Link>{" "}
+          leans on humans to engineer good features: you decide what to measure, and the model
+          learns weights over those hand-picked inputs. That works until the features are too subtle
+          to name — what <em>is</em> the feature that distinguishes a cat from a dog in raw pixels?
         </p>
         <p>
-          Deep learning's defining move is <Term>representation learning</Term>: instead of being given
-          features, the network <em>learns</em> them, layer by layer, from raw data. Early layers pick
-          up simple patterns (edges, in an image), later layers compose those into complex ones
-          (textures, then shapes, then faces). "Deep" just means many layers stacked, so the
-          representations can build on each other. That's the whole reason it beats classical methods on
-          images, audio, and language — it discovers the features we couldn't specify.
+          Deep learning's defining move is <Term>representation learning</Term>: instead of being
+          given features, the network <em>learns</em> them, layer by layer, from raw data. Early
+          layers pick up simple patterns (edges, in an image), later layers compose those into
+          complex ones (textures, then shapes, then faces). "Deep" just means many layers stacked,
+          so the representations can build on each other. That's the whole reason it beats classical
+          methods on images, audio, and language — it discovers the features we couldn't specify.
         </p>
       </KSection>
 
       <KSection id="neuron" eyebrow="02" title="The neuron: weighted sum, then a bend">
         <p>
           The building block is the artificial <Term>neuron</Term>. It takes inputs{" "}
-          <TeX>{TEX.xs}</TeX>, multiplies each by a <Term>weight</Term>, adds a <Term>bias</Term>, and
-          passes the result through a non-linear <Term>activation function</Term> <TeX>{TEX.sigma}</TeX>:
+          <TeX>{TEX.xs}</TeX>, multiplies each by a <Term>weight</Term>, adds a <Term>bias</Term>,
+          and passes the result through a non-linear <Term>activation function</Term>{" "}
+          <TeX>{TEX.sigma}</TeX>:
         </p>
         <Formula label="The neuron output a equals sigma of the sum over i of w-i times x-i, plus b — a weighted sum of inputs passed through an activation function.">
           {TEX.neuron}
         </Formula>
         <p>
           The weighted sum is just{" "}
-          <Link href="/knowledge/linear-statistical-models">linear regression</Link>. The crucial extra
-          is <TeX>{TEX.sigma}</TeX>, the <strong>non-linearity</strong> — and it's not optional. Without
-          it, stacking layers is pointless: a composition of linear maps is still just one linear map,
-          so a deep network would collapse to a single-layer one and could only ever draw straight
-          boundaries. The activation is what lets depth buy you expressive power.
+          <Link href="/knowledge/linear-statistical-models">linear regression</Link>. The crucial
+          extra is <TeX>{TEX.sigma}</TeX>, the <strong>non-linearity</strong> — and it's not
+          optional. Without it, stacking layers is pointless: a composition of linear maps is still
+          just one linear map, so a deep network would collapse to a single-layer one and could only
+          ever draw straight boundaries. The activation is what lets depth buy you expressive power.
         </p>
         <p>
           The modern default is <Term>ReLU</Term>, <TeX>{TEX.relu}</TeX> — dead simple, and its
@@ -126,16 +226,16 @@ function EnBody() {
 
       <KSection id="layer" eyebrow="03" title="A layer is a matrix multiply">
         <p>
-          A <Term>layer</Term> is just many neurons computed at once. Stack their weights into a matrix{" "}
-          <TeX>{TEX.W}</TeX> and their biases into a vector <TeX>{TEX.b}</TeX>, and the whole layer is
-          one clean expression:
+          A <Term>layer</Term> is just many neurons computed at once. Stack their weights into a
+          matrix <TeX>{TEX.W}</TeX> and their biases into a vector <TeX>{TEX.b}</TeX>, and the whole
+          layer is one clean expression:
         </p>
         <Formula label="The layer output vector a equals sigma applied elementwise to W times x plus b.">
           {TEX.layer}
         </Formula>
         <p>
-          This is why <Link href="/knowledge/linear-algebra">linear algebra</Link> is the language of
-          deep learning, and why GPUs matter — they're built to do exactly this, enormous matrix
+          This is why <Link href="/knowledge/linear-algebra">linear algebra</Link> is the language
+          of deep learning, and why GPUs matter — they're built to do exactly this, enormous matrix
           multiplies, in parallel. A deep network just chains these: <TeX>{TEX.a1}</TeX>, then{" "}
           <TeX>{TEX.a2}</TeX>, and so on to the output.
         </p>
@@ -143,10 +243,10 @@ function EnBody() {
 
       <KSection id="forward" eyebrow="04" title="The forward pass">
         <p>
-          Running input through the chain to get a prediction is the <Term>forward pass</Term> — feed in
-          the data, multiply-add-activate layer after layer, read off the answer at the end. With fixed
-          weights that's all a trained network does to make a prediction. The interesting question is how
-          those weights got to be any good, which is the rest of this page.
+          Running input through the chain to get a prediction is the <Term>forward pass</Term> —
+          feed in the data, multiply-add-activate layer after layer, read off the answer at the end.
+          With fixed weights that's all a trained network does to make a prediction. The interesting
+          question is how those weights got to be any good, which is the rest of this page.
         </p>
         <TrainingLoopFigure
           caption="The training loop. Forward pass turns inputs into a prediction; the loss measures how wrong it is; backpropagation pushes that error backward to get each weight's gradient; gradient descent nudges every weight downhill. Repeat millions of times."
@@ -161,24 +261,23 @@ function EnBody() {
         <p>
           To improve, the network needs a number for how wrong it is: the <Term>loss</Term>{" "}
           <TeX>{TEX.L}</TeX> (mean squared error for regression, cross-entropy for classification).
-          Training is then an{" "}
-          <Link href="/knowledge/calculus-optimisation">optimisation</Link> problem: find the weights
-          that make <TeX>{TEX.L}</TeX> as small as possible.
+          Training is then an <Link href="/knowledge/calculus-optimisation">optimisation</Link>{" "}
+          problem: find the weights that make <TeX>{TEX.L}</TeX> as small as possible.
         </p>
         <p>
           With millions of weights there's no formula for the minimum, so we walk toward it.{" "}
-          <Term>Gradient descent</Term> computes the gradient of the loss with respect to every weight —
-          the direction of steepest <em>increase</em> — and steps the opposite way:
+          <Term>Gradient descent</Term> computes the gradient of the loss with respect to every
+          weight — the direction of steepest <em>increase</em> — and steps the opposite way:
         </p>
         <Formula label="Each weight w is updated to w minus eta times the partial derivative of the loss with respect to w, where eta is the learning rate.">
           {TEX.update}
         </Formula>
         <p>
-          The <Term>learning rate</Term> <TeX>{TEX.eta}</TeX> sets the step size, and it's a delicate
-          knob: too small and training crawls or stalls in a poor spot; too large and it overshoots and
-          diverges. In practice we use <Term>stochastic gradient descent</Term> — estimating the
-          gradient from a small batch of examples at a time, which is far cheaper and, helpfully, the
-          noise helps escape bad minima.
+          The <Term>learning rate</Term> <TeX>{TEX.eta}</TeX> sets the step size, and it's a
+          delicate knob: too small and training crawls or stalls in a poor spot; too large and it
+          overshoots and diverges. In practice we use <Term>stochastic gradient descent</Term> —
+          estimating the gradient from a small batch of examples at a time, which is far cheaper
+          and, helpfully, the noise helps escape bad minima.
         </p>
       </KSection>
 
@@ -191,46 +290,47 @@ function EnBody() {
           systematically.
         </p>
         <p>
-          The error at the output is propagated <em>backward</em> through the network. The chain rule
-          says the loss's sensitivity to an early weight is the product of the local sensitivities along
-          the path from that weight to the loss:
+          The error at the output is propagated <em>backward</em> through the network. The chain
+          rule says the loss's sensitivity to an early weight is the product of the local
+          sensitivities along the path from that weight to the loss:
         </p>
         <Formula label="The partial derivative of the loss with respect to a weight equals the partial of the loss with respect to the layer output, times the partial of that output with respect to the weight — the chain rule.">
           {TEX.backprop}
         </Formula>
         <p>
-          By reusing the quantities it already computed for later layers, backprop gets the gradient for{" "}
-          <em>every</em> weight in a single backward sweep — efficiently enough to train networks with
-          billions of parameters. Forward pass to get the prediction, backward pass to get all the
-          gradients, one gradient-descent step, repeat. That loop, run at scale, is deep learning.
+          By reusing the quantities it already computed for later layers, backprop gets the gradient
+          for <em>every</em> weight in a single backward sweep — efficiently enough to train
+          networks with billions of parameters. Forward pass to get the prediction, backward pass to
+          get all the gradients, one gradient-descent step, repeat. That loop, run at scale, is deep
+          learning.
         </p>
         <Callout type="pitfall">
           <p>
             The classic failure is the <Term>vanishing gradient</Term>: in a very deep stack those
-            chained derivatives multiply together, and if each is small the product shrinks toward zero
-            by the time it reaches the early layers — so they barely learn. Much of modern deep learning
-            (ReLU activations, residual/skip connections, careful initialisation, batch normalisation)
-            exists precisely to keep gradients flowing.
+            chained derivatives multiply together, and if each is small the product shrinks toward
+            zero by the time it reaches the early layers — so they barely learn. Much of modern deep
+            learning (ReLU activations, residual/skip connections, careful initialisation, batch
+            normalisation) exists precisely to keep gradients flowing.
           </p>
         </Callout>
       </KSection>
 
       <KSection id="families" eyebrow="07" title="CNNs, RNNs & transformers">
         <p>
-          The general recipe is the same; the architectures differ in how they wire the layers to match
-          the structure of the data:
+          The general recipe is the same; the architectures differ in how they wire the layers to
+          match the structure of the data:
         </p>
         <ul>
           <li>
-            <Term>CNNs</Term> (convolutional networks) — for images. Instead of connecting every pixel
-            to every neuron, they slide small filters across the image, sharing weights. This bakes in
-            the idea that a feature (an edge, a texture) means the same thing wherever it appears, and
-            slashes the parameter count.
+            <Term>CNNs</Term> (convolutional networks) — for images. Instead of connecting every
+            pixel to every neuron, they slide small filters across the image, sharing weights. This
+            bakes in the idea that a feature (an edge, a texture) means the same thing wherever it
+            appears, and slashes the parameter count.
           </li>
           <li>
             <Term>RNNs</Term> (recurrent networks) — for sequences (text, time series). They carry a
-            hidden state forward step by step, giving the network a memory of what came before. Powerful
-            but hard to train over long sequences (vanishing gradients again).
+            hidden state forward step by step, giving the network a memory of what came before.
+            Powerful but hard to train over long sequences (vanishing gradients again).
           </li>
           <li>
             <Term>Transformers</Term> — the architecture behind modern{" "}
@@ -247,19 +347,21 @@ function EnBody() {
           The core ideas are decades old. What changed was a coincidence of three things:{" "}
           <strong>data</strong> (the internet made huge labelled datasets), <strong>compute</strong>{" "}
           (GPUs made the matrix maths cheap), and <strong>tricks</strong> (ReLU, dropout, better
-          initialisation, attention) that made deep networks actually trainable. Together they tipped
-          deep learning from a curiosity to the dominant approach.
+          initialisation, attention) that made deep networks actually trainable. Together they
+          tipped deep learning from a curiosity to the dominant approach.
         </p>
         <Callout type="pitfall">
           <p>
             But the limits are real and worth stating plainly. Deep learning is{" "}
-            <strong>data-hungry</strong> (it needs a lot of examples), <strong>compute-expensive</strong>,
-            and largely a <strong>black box</strong> — it's hard to say <em>why</em> it decided
-            something, which matters enormously in any setting with accountability. It can be{" "}
-            <strong>confidently wrong</strong> on inputs unlike its training data, and it happily{" "}
-            <Link href="/knowledge/statistical-machine-learning">overfits</Link> without regularisation
-            (dropout, early stopping, weight decay). For many tabular problems a simpler model is more
-            accurate, cheaper, and explainable. Deep learning is a powerful tool, not a default.
+            <strong>data-hungry</strong> (it needs a lot of examples),{" "}
+            <strong>compute-expensive</strong>, and largely a <strong>black box</strong> — it's hard
+            to say <em>why</em> it decided something, which matters enormously in any setting with
+            accountability. It can be <strong>confidently wrong</strong> on inputs unlike its
+            training data, and it happily{" "}
+            <Link href="/knowledge/statistical-machine-learning">overfits</Link> without
+            regularisation (dropout, early stopping, weight decay). For many tabular problems a
+            simpler model is more accurate, cheaper, and explainable. Deep learning is a powerful
+            tool, not a default.
           </p>
         </Callout>
       </KSection>
@@ -268,18 +370,19 @@ function EnBody() {
         <Callout type="applied" label="Knowing when not to go deep">
           <p>
             In a government-analyst setting the most useful thing this understanding buys is{" "}
-            <strong>judgement about when deep learning is the wrong tool</strong>. For the structured,
-            tabular data most analysis runs on — and where every decision needs to be{" "}
+            <strong>judgement about when deep learning is the wrong tool</strong>. For the
+            structured, tabular data most analysis runs on — and where every decision needs to be{" "}
             <em>explained and defended</em> — a transparent model usually beats an opaque deep one.
             Knowing what's inside the black box is what lets me say so with confidence rather than
             reaching for it because it's fashionable.
           </p>
           <p>
-            Where deep learning does earn its place is unstructured data — text, documents, imagery — and
-            there the foundations here (it's matrix multiplies trained by gradient descent; it's
-            data-hungry and opaque; transformers power the{" "}
-            <Link href="/knowledge/natural-language-processing">language models</Link> increasingly part
-            of the toolkit) are exactly what's needed to use it critically rather than credulously.
+            Where deep learning does earn its place is unstructured data — text, documents, imagery
+            — and there the foundations here (it's matrix multiplies trained by gradient descent;
+            it's data-hungry and opaque; transformers power the{" "}
+            <Link href="/knowledge/natural-language-processing">language models</Link> increasingly
+            part of the toolkit) are exactly what's needed to use it critically rather than
+            credulously.
           </p>
         </Callout>
       </KSection>
@@ -288,13 +391,13 @@ function EnBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              A neural net is stacked <strong>matrix multiplies + non-linear activations</strong>; "deep"
-              = many layers. Its superpower is <strong>representation learning</strong> — it learns
-              features instead of being handed them.
+              A neural net is stacked <strong>matrix multiplies + non-linear activations</strong>;
+              "deep" = many layers. Its superpower is <strong>representation learning</strong> — it
+              learns features instead of being handed them.
             </li>
             <li>
-              A neuron: <TeX>{TEX.neuronShort}</TeX>. The activation <TeX>{TEX.sigma}</TeX> (e.g. ReLU) is
-              essential — without it, depth collapses to one linear layer.
+              A neuron: <TeX>{TEX.neuronShort}</TeX>. The activation <TeX>{TEX.sigma}</TeX> (e.g.
+              ReLU) is essential — without it, depth collapses to one linear layer.
             </li>
             <li>
               A layer is <TeX>{TEX.layerShort}</TeX> (hence GPUs + linear algebra). The{" "}
@@ -302,17 +405,17 @@ function EnBody() {
             </li>
             <li>
               Train by minimising a <strong>loss</strong> with <strong>gradient descent</strong>:{" "}
-              <TeX>{TEX.updateShort}</TeX>. Learning rate <TeX>{TEX.eta}</TeX> is delicate; use stochastic
-              mini-batches.
+              <TeX>{TEX.updateShort}</TeX>. Learning rate <TeX>{TEX.eta}</TeX> is delicate; use
+              stochastic mini-batches.
             </li>
             <li>
-              <strong>Backpropagation</strong> = the chain rule run backward to get every gradient in one
-              sweep. Watch the <strong>vanishing gradient</strong> in deep stacks.
+              <strong>Backpropagation</strong> = the chain rule run backward to get every gradient
+              in one sweep. Watch the <strong>vanishing gradient</strong> in deep stacks.
             </li>
             <li>
               Families: <strong>CNNs</strong> (images), <strong>RNNs</strong> (sequences),{" "}
-              <strong>transformers</strong> (attention → modern LLMs). Limits: data-hungry, expensive,
-              black-box, overfits — <strong>not always the right tool</strong>.
+              <strong>transformers</strong> (attention → modern LLMs). Limits: data-hungry,
+              expensive, black-box, overfits — <strong>not always the right tool</strong>.
             </li>
           </ul>
         </Callout>
@@ -333,7 +436,8 @@ function ZhBody() {
         深度学习驱动着那些感觉像魔法的东西——图像识别、翻译、今天 AI 背后的大语言模型。一旦你看清
         其机理，魔法就（以一种好的方式）消散了：一个神经网络是一大摞简单操作——
         <Link href="/knowledge/linear-algebra">矩阵乘法</Link>，中间夹着一点非线性——而「训练」不过是
-        <Link href="/knowledge/calculus-optimisation">梯度下降</Link>推动数百万个数字、好让错误变小。
+        <Link href="/knowledge/calculus-optimisation">梯度下降</Link>
+        推动数百万个数字、好让错误变小。
         没有任何单个部件是神秘的；力量来自规模，以及这些部件如何组合。
       </p>
       <p>
@@ -358,15 +462,16 @@ function ZhBody() {
       <KSection id="neuron" eyebrow="02" title="神经元：加权和，再来个弯折">
         <p>
           构建块是人工<Term>神经元</Term>。它接受输入 <TeX>{TEX.xs}</TeX>，把每个乘以一个
-          <Term>权重</Term>，加上一个<Term>偏置</Term>，再把结果通过一个非线性的<Term>激活函数</Term>{" "}
-          <TeX>{TEX.sigma}</TeX>：
+          <Term>权重</Term>，加上一个<Term>偏置</Term>，再把结果通过一个非线性的
+          <Term>激活函数</Term> <TeX>{TEX.sigma}</TeX>：
         </p>
         <Formula label="神经元输出 a 等于 sigma 作用于「对 i 求和的 w_i 乘 x_i，再加 b」——输入的加权和通过一个激活函数。">
           {TEX.neuron}
         </Formula>
         <p>
-          那个加权和就是<Link href="/knowledge/linear-statistical-models">线性回归</Link>。关键的额外
-          之物是 <TeX>{TEX.sigma}</TeX>，那个<strong>非线性</strong>——而它并非可选。没有它，叠层就
+          那个加权和就是<Link href="/knowledge/linear-statistical-models">线性回归</Link>
+          。关键的额外 之物是 <TeX>{TEX.sigma}</TeX>，那个<strong>非线性</strong>
+          ——而它并非可选。没有它，叠层就
           毫无意义：线性映射的复合仍然只是一个线性映射，所以一个深网络会坍缩成一个单层网络，永远
           只能画出笔直的边界。激活正是让深度为你换来表达力的东西。
         </p>
@@ -378,12 +483,10 @@ function ZhBody() {
 
       <KSection id="layer" eyebrow="03" title="一层就是一次矩阵乘法">
         <p>
-          一<Term>层</Term>不过是一次性算出的许多神经元。把它们的权重堆进一个矩阵 <TeX>{TEX.W}</TeX>、
-          把它们的偏置堆进一个向量 <TeX>{TEX.b}</TeX>，整层就是一个干净的表达式：
+          一<Term>层</Term>不过是一次性算出的许多神经元。把它们的权重堆进一个矩阵 <TeX>{TEX.W}</TeX>
+          、 把它们的偏置堆进一个向量 <TeX>{TEX.b}</TeX>，整层就是一个干净的表达式：
         </p>
-        <Formula label="层输出向量 a 等于 sigma 逐元素作用于 W 乘 x 加 b。">
-          {TEX.layer}
-        </Formula>
+        <Formula label="层输出向量 a 等于 sigma 逐元素作用于 W 乘 x 加 b。">{TEX.layer}</Formula>
         <p>
           这就是为什么<Link href="/knowledge/linear-algebra">线性代数</Link>是深度学习的语言，也是
           为什么 GPU 要紧——它们生来就是并行地做这件事，巨大的矩阵乘法。一个深网络只是把这些串起来：
@@ -409,7 +512,8 @@ function ZhBody() {
       <KSection id="loss" eyebrow="05" title="损失与梯度下降">
         <p>
           要改进，网络需要一个表示它有多错的数字：<Term>损失</Term> <TeX>{TEX.L}</TeX>（回归用均方
-          误差，分类用交叉熵）。于是训练是一个<Link href="/knowledge/calculus-optimisation">优化</Link>
+          误差，分类用交叉熵）。于是训练是一个
+          <Link href="/knowledge/calculus-optimisation">优化</Link>
           问题：找到让 <TeX>{TEX.L}</TeX> 尽可能小的权重。
         </p>
         <p>
@@ -428,9 +532,9 @@ function ZhBody() {
 
       <KSection id="backprop" eyebrow="06" title="反向传播：大规模的链式法则">
         <p>
-          还剩一个问题：当损失只在最末端被计算时，你如何为一个深埋在堆叠里的权重得到 <TeX>{TEX.dLdw}</TeX>？
-          <Term>反向传播</Term>就是答案，而它不过是来自微积分的<Link href="/knowledge/calculus-optimisation">链式
-          法则</Link>，被系统地应用。
+          还剩一个问题：当损失只在最末端被计算时，你如何为一个深埋在堆叠里的权重得到{" "}
+          <TeX>{TEX.dLdw}</TeX>？<Term>反向传播</Term>就是答案，而它不过是来自微积分的
+          <Link href="/knowledge/calculus-optimisation">链式 法则</Link>，被系统地应用。
         </p>
         <p>
           输出处的误差被<em>向后</em>传播穿过网络。链式法则说，损失对一个早期权重的敏感度，是沿着从
@@ -467,8 +571,9 @@ function ZhBody() {
             携带，给网络一份对此前之事的记忆。强大，但在长序列上难以训练（又是梯度消失）。
           </li>
           <li>
-            <Term>Transformer</Term>——现代<Link href="/knowledge/natural-language-processing">语言
-            模型</Link>背后的架构。它们的<em>注意力</em>机制让每个位置都能直接看向每个其他位置，无需
+            <Term>Transformer</Term>——现代
+            <Link href="/knowledge/natural-language-processing">语言 模型</Link>背后的架构。它们的
+            <em>注意力</em>机制让每个位置都能直接看向每个其他位置，无需
             逐步穿过一个序列就能捕捉长程关系——而且它并行得极好，这就是为什么它扩展到了今天的巨型
             模型。
           </li>
@@ -484,11 +589,13 @@ function ZhBody() {
         </p>
         <Callout type="pitfall">
           <p>
-            但局限是真实的，值得直白地说出来。深度学习<strong>饥渴于数据</strong>（它需要大量样本）、
+            但局限是真实的，值得直白地说出来。深度学习<strong>饥渴于数据</strong>
+            （它需要大量样本）、
             <strong>算力昂贵</strong>，且大体上是个<strong>黑箱</strong>——很难说出它<em>为什么</em>
             做出某个决定，而这在任何有问责的场景里都极其要紧。在不像其训练数据的输入上，它可能
             <strong>自信地犯错</strong>，而且没有正则化（dropout、早停、权重衰减）它会乐呵呵地
-            <Link href="/knowledge/statistical-machine-learning">过拟合</Link>。对许多表格类问题，一个
+            <Link href="/knowledge/statistical-machine-learning">过拟合</Link>
+            。对许多表格类问题，一个
             更简单的模型更准确、更便宜、也可解释。深度学习是一件强大的工具，而非默认之选。
           </p>
         </Callout>
@@ -497,8 +604,9 @@ function ZhBody() {
       <KSection id="applied" eyebrow="09" title="它在我工作中的体现">
         <Callout type="applied" label="知道何时不该走深">
           <p>
-            在政府分析师的场景里，这份理解所换来的最有用的东西，是<strong>对「深度学习何时是错的
-            工具」的判断</strong>。对大多数分析所跑的结构化、表格类数据——以及每个决策都需要被
+            在政府分析师的场景里，这份理解所换来的最有用的东西，是
+            <strong>对「深度学习何时是错的 工具」的判断</strong>
+            。对大多数分析所跑的结构化、表格类数据——以及每个决策都需要被
             <em>解释与辩护</em>之处——一个透明的模型通常胜过一个不透明的深模型。知道黑箱里头是什么，
             正是让我能有信心地这么说、而非因为它时髦就去拿它的东西。
           </p>
@@ -535,9 +643,9 @@ function ZhBody() {
               的<strong>梯度消失</strong>。
             </li>
             <li>
-              家族：<strong>CNN</strong>（图像）、<strong>RNN</strong>（序列）、<strong>Transformer
-              </strong>（注意力 → 现代 LLM）。局限：饥渴于数据、昂贵、黑箱、会过拟合——<strong>并非
-              总是对的工具</strong>。
+              家族：<strong>CNN</strong>（图像）、<strong>RNN</strong>（序列）、
+              <strong>Transformer</strong>（注意力 → 现代
+              LLM）。局限：饥渴于数据、昂贵、黑箱、会过拟合——<strong>并非 总是对的工具</strong>。
             </li>
           </ul>
         </Callout>
@@ -575,7 +683,10 @@ const META = {
       { id: "applied", label: "Where it shows up in my work" },
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
-    prev: { href: "/knowledge/statistical-machine-learning", label: "Statistical Machine Learning" },
+    prev: {
+      href: "/knowledge/statistical-machine-learning",
+      label: "Statistical Machine Learning",
+    },
     next: { href: "/knowledge", label: "Back to all topics" },
   },
   "zh-Hans": {

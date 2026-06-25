@@ -999,6 +999,14 @@
           {
             "label": "Feature Engineering & Data Preparation",
             "note": "Cleaning, scaling, encoding, and avoiding leakage"
+          },
+          {
+            "label": "Sampling & Survey Methodology",
+            "note": "Frames, probability sampling, bias, weighting"
+          },
+          {
+            "label": "SQL & Querying Data",
+            "note": "Execution order, joins, window functions, NULLs"
           }
         ]
       },
@@ -1048,6 +1056,10 @@
           {
             "label": "Deep Learning & Neural Networks",
             "note": "Neurons, backprop, gradient descent, CNNs to transformers"
+          },
+          {
+            "label": "Reinforcement Learning",
+            "note": "Reward, MDPs, Bellman, Q-learning, reward hacking"
           }
         ]
       },

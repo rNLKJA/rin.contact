@@ -27,6 +27,8 @@ const TIERS = [
       { href: "/knowledge/applied-data-science", status: "live" },
       { href: "/knowledge/data-visualisation", status: "live" },
       { href: "/knowledge/feature-engineering", status: "live" },
+      { href: "/knowledge/sampling-survey-methodology", status: "live" },
+      { href: "/knowledge/sql-querying-data", status: "live" },
     ],
   },
   {
@@ -45,6 +47,7 @@ const TIERS = [
       { href: "/knowledge/time-series-analysis", status: "live" },
       { href: "/knowledge/causal-inference", status: "live" },
       { href: "/knowledge/deep-learning", status: "live" },
+      { href: "/knowledge/reinforcement-learning", status: "live" },
     ],
   },
   {
