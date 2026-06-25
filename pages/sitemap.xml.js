@@ -164,6 +164,34 @@ const INFO = [
   { path: "/info/manifest", priority: 0.3, freq: "yearly" },
 ];
 
+// ── zh-Hans coverage ──────────────────────────────────────────────────────────
+// Mirrors i18n progress so crawlers index the /zh-Hans/ URL with hreflang
+// alternates. Knowledge pages still awaiting a zh content module are excluded
+// below — as each is translated, delete its slug from NOT_ZH_KNOWLEDGE.
+const NOT_ZH_KNOWLEDGE = new Set([
+  "/knowledge/ai-agents",
+  "/knowledge/mlops-monitoring",
+  "/knowledge/model-evaluation",
+  "/knowledge/recommender-systems",
+  "/knowledge/spatial-statistics",
+  "/knowledge/streaming-analytics",
+  "/knowledge/survival-analysis",
+  "/knowledge/topic-modelling",
+]);
+
+// Every /info/* page and the listed /knowledge/* articles have full zh-Hans
+// content; /cv, /projects/signal and /tools/card are bilingual.
+const ZH_COVERED = [
+  ...ZH_PAGES,
+  { path: "/cv", priority: 0.8, freq: "monthly" },
+  { path: "/projects/signal", priority: 0.8, freq: "monthly" },
+  { path: "/tools/card", priority: 0.7, freq: "monthly" },
+  { path: "/knowledge", priority: 0.7, freq: "weekly" },
+  { path: "/info", priority: 0.5, freq: "monthly" },
+  ...INFO,
+  ...KNOWLEDGE.filter((p) => !NOT_ZH_KNOWLEDGE.has(p.path)),
+];
+
 // ── XML helpers ────────────────────────────────────────────────────────────────
 function esc(s) {
   return String(s)
@@ -240,7 +268,7 @@ async function generateSitemap() {
     // Blog posts
     ...blogPostUrls,
     // zh-Hans pages
-    ...ZH_PAGES.map(({ path, priority, freq }) =>
+    ...ZH_COVERED.map(({ path, priority, freq }) =>
       urlXml(
         { path: `/zh-Hans${path}`, priority, freq },
         today,
