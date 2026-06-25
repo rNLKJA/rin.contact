@@ -68,6 +68,7 @@ const KNOWLEDGE = [
   { path: "/knowledge/clustering", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/web-information-technology", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/operations-research", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/cluster-cloud-computing", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
