@@ -20,6 +20,7 @@ const TIERS = [
     { href: "/knowledge/database-systems", status: "live" },
     { href: "/knowledge/artificial-intelligence", status: "live" },
     { href: "/knowledge/web-information-technology", status: "live" },
+    { href: "/knowledge/operations-research", status: "live" },
   ]},
   { key: "advanced", topics: [
     { href: "/knowledge/natural-language-processing", status: "live" },

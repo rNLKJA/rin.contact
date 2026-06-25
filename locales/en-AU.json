@@ -684,7 +684,8 @@
           { "label": "Linear Statistical Models", "note": "OLS, inference, diagnostics" },
           { "label": "Database Systems", "note": "Relational model, SQL, indexing" },
           { "label": "Artificial Intelligence", "note": "Search, logic, planning" },
-          { "label": "Web Information Technology", "note": "HTTP, HTML/CSS/JS, REST APIs, the request cycle" }
+          { "label": "Web Information Technology", "note": "HTTP, HTML/CSS/JS, REST APIs, the request cycle" },
+          { "label": "Operations Research", "note": "Linear programming, feasible regions, the simplex method" }
         ]
       },
       "advanced": {
