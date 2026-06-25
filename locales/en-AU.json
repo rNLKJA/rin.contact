@@ -698,7 +698,8 @@
           { "label": "Bayesian Statistics", "note": "Priors, posteriors, MCMC" },
           { "label": "PCA & Dimensionality Reduction", "note": "Covariance, eigenvectors, variance explained" },
           { "label": "Clustering", "note": "k-means, hierarchical, choosing k" },
-          { "label": "Cluster & Cloud Computing", "note": "MPI, Spark, HPC at scale" }
+          { "label": "Cluster & Cloud Computing", "note": "MPI, Spark, HPC at scale" },
+          { "label": "Statistical Modelling", "note": "GLMs, logistic & Poisson, link functions, AIC" }
         ]
       },
       "taught": {

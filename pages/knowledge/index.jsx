@@ -30,6 +30,7 @@ const TIERS = [
     { href: "/knowledge/pca-dimensionality-reduction", status: "live" },
     { href: "/knowledge/clustering", status: "live" },
     { href: "/knowledge/cluster-cloud-computing", status: "live" },
+    { href: "/knowledge/statistical-modelling", status: "live" },
   ]},
   { key: "taught", topics: [
     { status: "planned" },
