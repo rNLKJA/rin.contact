@@ -60,7 +60,7 @@ export default function ColophonPage() {
       <Head>
         <title>{t("infoColophon.metaTitle")}</title>
         <meta name="description" content={t("infoColophon.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/colophon" />
+        <link rel="canonical" href="https://rin.contact/info/colophon/" />
 
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://rin.contact/api/og/?title=Colophon&subtitle=How%20this%20site%20was%20built&section=info" />
