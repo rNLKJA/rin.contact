@@ -5,7 +5,7 @@
  * and df.describe() — a tongue-in-cheek data scientist self-portrait.
  */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 const LINE = "─".repeat(64);
 
@@ -54,6 +54,33 @@ export default function DatasetCard() {
     return () => clearTimeout(id);
   }, [tab]);
 
+  // Scroll-shadow state. The dataframe is wider than a phone screen, so the witty
+  // Value column scrolls off-screen on mobile. Subtle edge fades (matching the
+  // terminal background) cue that there is more to read; both auto-hide on desktop
+  // where it fits, and once scrolled to the end.
+  const scrollRef = useRef(null);
+  const [edges, setEdges] = useState({ atStart: true, atEnd: true, scrollable: false });
+  const updateEdges = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setEdges({
+      scrollable: el.scrollWidth > el.clientWidth + 2,
+      atStart: el.scrollLeft <= 2,
+      atEnd: el.scrollLeft >= el.scrollWidth - el.clientWidth - 2,
+    });
+  }, []);
+  useEffect(() => {
+    updateEdges();
+    const el = scrollRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateEdges, { passive: true });
+    window.addEventListener("resize", updateEdges);
+    return () => {
+      el.removeEventListener("scroll", updateEdges);
+      window.removeEventListener("resize", updateEdges);
+    };
+  }, [updateEdges, tab]);
+
   return (
     <section className="py-20" aria-label="Profile in data terms">
 
@@ -84,7 +111,8 @@ export default function DatasetCard() {
       </div>
 
       {/* Terminal card */}
-      <div className="bg-[#F5F5F5] dark:bg-[#0C0C0C] border border-[#E0E0E0] dark:border-[#232323] overflow-x-auto">
+      <div className="relative">
+       <div ref={scrollRef} className="bg-[#F5F5F5] dark:bg-[#0C0C0C] border border-[#E0E0E0] dark:border-[#232323] overflow-x-auto">
 
         {/* Title bar */}
         <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#E0E0E0] dark:border-[#181818]">
@@ -130,7 +158,7 @@ export default function DatasetCard() {
                   <span className="w-5 flex-shrink-0 text-[#AAA] dark:text-[#2E2E2E] select-none">{i}</span>
                   <span className="w-36 flex-shrink-0 text-[#888] dark:text-[#686868]">{r.col}</span>
                   <span className="w-14 flex-shrink-0 text-[#888] dark:text-[#494949]">{r.dtype}</span>
-                  <span className="text-[#333] dark:text-[#CCCCCC] group-hover:text-black dark:group-hover:text-white transition-colors">
+                  <span className="flex-shrink-0 whitespace-nowrap text-[#333] dark:text-[#CCCCCC] group-hover:text-black dark:group-hover:text-white transition-colors">
                     {r.value}
                   </span>
                 </div>
@@ -172,7 +200,7 @@ export default function DatasetCard() {
                 >
                   <span className="w-40 flex-shrink-0 text-[#888] dark:text-[#686868]">{r.metric}</span>
                   <span className="w-14 flex-shrink-0 text-[#FF3C3C]">{r.val}</span>
-                  <span className="text-[#777] dark:text-[#444] group-hover:text-[#999] dark:group-hover:text-[#666] transition-colors">
+                  <span className="flex-shrink-0 whitespace-nowrap text-[#777] dark:text-[#444] group-hover:text-[#999] dark:group-hover:text-[#666] transition-colors">
                     # {r.note}
                   </span>
                 </div>
@@ -195,6 +223,22 @@ export default function DatasetCard() {
             &gt;&gt;&gt; <span className="inline-block w-1.5 h-3 bg-[#999] dark:bg-[#555] animate-pulse align-middle" aria-hidden="true" />
           </p>
         </div>
+       </div>
+
+       {/* Edge fades — cue that the dataframe scrolls to reveal the Value column.
+           Matched to the terminal background so they read as a soft mask. */}
+       <div
+         aria-hidden="true"
+         className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#F5F5F5] dark:from-[#0C0C0C] to-transparent transition-opacity duration-300 ${
+           edges.scrollable && !edges.atStart ? "opacity-100" : "opacity-0"
+         }`}
+       />
+       <div
+         aria-hidden="true"
+         className={`pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#F5F5F5] dark:from-[#0C0C0C] to-transparent transition-opacity duration-300 ${
+           edges.scrollable && !edges.atEnd ? "opacity-100" : "opacity-0"
+         }`}
+       />
       </div>
 
       <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-2 font-mono leading-relaxed">
