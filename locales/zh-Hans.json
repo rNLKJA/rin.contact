@@ -1487,6 +1487,15 @@
       "varianceText": "政府、研究、生物科技、初创公司。预测随情境而变。",
       "optimalLabel": "最适合",
       "optimalText": "初创公司、政府、研究、跨职能团队。高风险分析。"
+    },
+    "cicd": {
+      "metaTitle": "CI/CD — rin.contact",
+      "metaDescription": "职业部署流水线。",
+      "ogTitle": "CI/CD",
+      "ogSubtitle": "职业部署流水线。",
+      "heading": "你职业的 CI/CD",
+      "subtitle": "构建 → 测试 → 部署。流水线状态：通过。",
+      "stageDescs": ["教育", "证书", "已就业"]
     }
   }
 }

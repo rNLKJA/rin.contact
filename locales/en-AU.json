@@ -1810,6 +1810,15 @@
       "varianceText": "Government, research, biotech, startups. Predictions vary by context.",
       "optimalLabel": "Optimal for",
       "optimalText": "Startups, government, research, cross-functional teams. High-stakes analytics."
+    },
+    "cicd": {
+      "metaTitle": "CI/CD — rin.contact",
+      "metaDescription": "Career deployment pipeline.",
+      "ogTitle": "CI/CD",
+      "ogSubtitle": "Career deployment pipeline.",
+      "heading": "CI/CD for Your Career",
+      "subtitle": "Build → Test → Deploy. Pipeline status: passing.",
+      "stageDescs": ["Education", "Certifications", "Employed"]
     }
   }
 }
