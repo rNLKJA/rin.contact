@@ -27,21 +27,85 @@ function AgentLoopFigure({ caption, ariaLabel, nodeLabels, loopLabel, untilLabel
           const hot = i === 1; // act (tool)
           return (
             <g key={i}>
-              <rect x={cx - 56} y={cy - 15} width="112" height="30" rx="5" fill="none" stroke={hot ? "#FF3C3C" : "currentColor"} strokeWidth={hot ? "1.5" : "1.3"} />
-              <text x={cx} y={cy + 4} textAnchor="middle" fontSize="10" fontFamily="monospace" fill={hot ? "#FF3C3C" : "currentColor"}>{nodeLabels[i]}</text>
+              <rect
+                x={cx - 56}
+                y={cy - 15}
+                width="112"
+                height="30"
+                rx="5"
+                fill="none"
+                stroke={hot ? "#FF3C3C" : "currentColor"}
+                strokeWidth={hot ? "1.5" : "1.3"}
+              />
+              <text
+                x={cx}
+                y={cy + 4}
+                textAnchor="middle"
+                fontSize="10"
+                fontFamily="monospace"
+                fill={hot ? "#FF3C3C" : "currentColor"}
+              >
+                {nodeLabels[i]}
+              </text>
             </g>
           );
         })}
         {/* reason -> act */}
-        <line x1="146" y1="44" x2="296" y2="74" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#agah)" />
+        <line
+          x1="146"
+          y1="44"
+          x2="296"
+          y2="74"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#agah)"
+        />
         {/* act -> observe */}
-        <line x1="296" y1="86" x2="146" y2="116" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#agah)" />
+        <line
+          x1="296"
+          y1="86"
+          x2="146"
+          y2="116"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#agah)"
+        />
         {/* observe -> reason (loop back) */}
-        <line x1="90" y1="105" x2="90" y2="55" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#agah)" />
-        <text x="60" y="83" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">{loopLabel}</text>
-        <text x="240" y="135" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">{untilLabel}</text>
+        <line
+          x1="90"
+          y1="105"
+          x2="90"
+          y2="55"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#agah)"
+        />
+        <text
+          x="60"
+          y="83"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {loopLabel}
+        </text>
+        <text
+          x="240"
+          y="135"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {untilLabel}
+        </text>
         <defs>
-          <marker id="agah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
+          <marker id="agah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -256,38 +320,43 @@ function ZhBody() {
   return (
     <>
       <p>
-        一个<Link href="/knowledge/large-language-models">语言模型</Link>独自只做一件事：你给它文本，它
-        给你文本。一个 <Term>AI 智能体</Term>，是你把那个模型包进一个循环、并给它<strong>工具</strong>时
-        所得到的——在世界中采取行动、观察发生了什么、再决定下一步做什么的能力。从<em>回答</em>一个问题，
-        到<em>行动</em>以达成一个目标，这一转变就是全部的想法，也是当前 AI 中大多数的兴奋（与风险）所
-        栖居的前沿。
+        一个<Link href="/knowledge/large-language-models">语言模型</Link>
+        独自只做一件事：你给它文本，它 给你文本。一个 <Term>AI 智能体</Term>
+        ，是你把那个模型包进一个循环、并给它<strong>工具</strong>时
+        所得到的——在世界中采取行动、观察发生了什么、再决定下一步做什么的能力。从<em>回答</em>
+        一个问题， 到<em>行动</em>以达成一个目标，这一转变就是全部的想法，也是当前 AI
+        中大多数的兴奋（与风险）所 栖居的前沿。
       </p>
       <p>
         值得好好弄懂它，因为智能体式工具正迅速进入日常工作流——也因为让它们强大的那些东西，一旦不加
         批判地使用，同样让它们危险。这一页从那个循环出发把智能体搭起来、讲清各个部件（工具、规划、
-        记忆），并对难点保持诚实——借助本板块的 <Link href="/knowledge/large-language-models">LLM</Link>、
+        记忆），并对难点保持诚实——借助本板块的{" "}
+        <Link href="/knowledge/large-language-models">LLM</Link>、
         <Link href="/knowledge/reinforcement-learning">强化学习</Link>与
         <Link href="/knowledge/information-retrieval">检索</Link>线索。
       </p>
 
       <KSection id="what" eyebrow="01" title="从回答到行动">
         <p>
-          决定性的飞跃是<strong>能动性</strong>：一个智能体不只是一次性产出一个最终答案，而是跨多个步骤
-          追求一个目标，沿途自己决定行动。问一个普通的 LLM「阿德莱德天气如何，我该带伞吗？」，它只能从
-          陈旧的训练数据里瞎猜。一个智能体则<em>调用一个天气 API</em>、读取结果、从真实而当前的数据
+          决定性的飞跃是<strong>能动性</strong>
+          ：一个智能体不只是一次性产出一个最终答案，而是跨多个步骤
+          追求一个目标，沿途自己决定行动。问一个普通的
+          LLM「阿德莱德天气如何，我该带伞吗？」，它只能从 陈旧的训练数据里瞎猜。一个智能体则
+          <em>调用一个天气 API</em>、读取结果、从真实而当前的数据
           回答——然后或许查看你的日历、起草一条提醒。
         </p>
         <p>
           那份自主，正是解锁真正有用的工作——研究、自动化、写代码、操作软件——的东西，但它也意味着这个
-          系统现在是在<em>做事</em>，而不只是说话，这抬高了每一个错误的赌注。理解那个循环，就是你让这份
-          力量保持有用的方式。
+          系统现在是在<em>做事</em>
+          ，而不只是说话，这抬高了每一个错误的赌注。理解那个循环，就是你让这份 力量保持有用的方式。
         </p>
       </KSection>
 
       <KSection id="loop" eyebrow="02" title="推理-行动-观察循环">
         <p>
-          几乎每一个智能体的核心，是一个简单的循环，因 <Term>ReAct</Term>（Reason + Act，推理 + 行动）而
-          广为人知：模型<strong>推理</strong>该做什么、采取一个<strong>行动</strong>（调用一个工具）、
+          几乎每一个智能体的核心，是一个简单的循环，因 <Term>ReAct</Term>（Reason + Act，推理 +
+          行动）而 广为人知：模型<strong>推理</strong>该做什么、采取一个<strong>行动</strong>
+          （调用一个工具）、
           <strong>观察</strong>结果，然后循环——带着新信息再次推理——直到目标达成。
         </p>
         <AgentLoopFigure
@@ -300,22 +369,24 @@ function ZhBody() {
         <p>
           正是这一点，把一个一次性的文本生成器，变成某种能对付它在单次回应里解决不了的任务的东西。循环
           的每一轮，模型都能看见它上一个行动的后果并做出调整——恰恰是强化学习里那个
-          <Link href="/knowledge/reinforcement-learning">智能体-环境循环</Link>的反馈结构，只不过这里由
-          一个 LLM 的推理、而非一个学到的策略来驱动。
+          <Link href="/knowledge/reinforcement-learning">智能体-环境循环</Link>
+          的反馈结构，只不过这里由 一个 LLM 的推理、而非一个学到的策略来驱动。
         </p>
       </KSection>
 
       <KSection id="tools" eyebrow="03" title="工具使用：把模型锚定在真实的能力上">
         <p>
-          工具是赋予一个智能体力量的东西。通过<Term>函数调用</Term>，模型被告知有哪些工具可用（一个搜索
+          工具是赋予一个智能体力量的东西。通过<Term>函数调用</Term>
+          ，模型被告知有哪些工具可用（一个搜索
           引擎、一个计算器、一次数据库查询、一个代码解释器、一个邮件发送器），并可以选择用它自己生成的
           参数去调用其中一个，而非直接回答。工具运行，它的输出回到模型的上下文里。
         </p>
         <p>
           这一举解决了 LLM 的核心弱点。它做不了可靠的算术？给它一个计算器。它的知识陈旧、或者它
           <Link href="/knowledge/large-language-models">幻觉</Link>？给它在真实文档上的
-          <Link href="/knowledge/information-retrieval">搜索</Link>（这就是作为工具的 <Term>RAG</Term>）。
-          它没法在世界中行动？给它一个 API。工具把那个流畅却不可靠的模型，<strong>锚定</strong>在精确、
+          <Link href="/knowledge/information-retrieval">搜索</Link>（这就是作为工具的{" "}
+          <Term>RAG</Term>）。 它没法在世界中行动？给它一个 API。工具把那个流畅却不可靠的模型，
+          <strong>锚定</strong>在精确、
           当前、真实的能力上——这就是为什么「它有哪些工具？」与「它是哪个模型？」一样要紧。
         </p>
       </KSection>
@@ -324,16 +395,18 @@ function ZhBody() {
         <p>再有两个部件，把一个反应式的循环变成能处理真正复杂度的东西：</p>
         <ul>
           <li>
-            <Term>规划</Term>——对一个多步骤的目标，智能体先把它分解成一连串子任务（「要订这趟行程：先
+            <Term>规划</Term>
+            ——对一个多步骤的目标，智能体先把它分解成一连串子任务（「要订这趟行程：先
             找航班，再找酒店，再加进日历」），而非一次一步地即兴发挥。更好的规划，很大程度上正是把一个
             能完成复杂任务的智能体、与一个四处乱逛的智能体区分开来的东西。
           </li>
           <li>
             <Term>记忆</Term>——循环的工作上下文是<em>短期记忆</em>（且它受
-            <Link href="/knowledge/large-language-models">上下文窗口</Link>限制）。对任何更长的东西，
-            智能体需要<em>长期记忆</em>——一个它能写入并从中检索的外部存储（往往是一个
-            <Link href="/knowledge/information-retrieval">向量数据库</Link>），好让它能回想起更早的发现，
-            而不必一次把一切都装在上下文里。
+            <Link href="/knowledge/large-language-models">上下文窗口</Link>
+            限制）。对任何更长的东西， 智能体需要<em>长期记忆</em>
+            ——一个它能写入并从中检索的外部存储（往往是一个
+            <Link href="/knowledge/information-retrieval">向量数据库</Link>
+            ），好让它能回想起更早的发现， 而不必一次把一切都装在上下文里。
           </li>
         </ul>
       </KSection>
@@ -342,8 +415,9 @@ function ZhBody() {
         <p>
           一个自然的扩展，是把<em>好几个</em>智能体一起用，每一个各有专长——一个收集信息的「研究者」
           智能体、一个起草的「写作者」、一个检查的「批评者」——协同解决一个通才智能体会吃力的问题。它
-          映照了一个人类团队如何分工，而「批评者」或「验证者」的角色尤其有价值，因为它把检查<em>内建
-          </em>进了系统。这是一个有前景的模式，尽管它把成本与协调的挑战翻了倍，并非免费的胜利。
+          映照了一个人类团队如何分工，而「批评者」或「验证者」的角色尤其有价值，因为它把检查
+          <em>内建</em>
+          进了系统。这是一个有前景的模式，尽管它把成本与协调的挑战翻了倍，并非免费的胜利。
         </p>
       </KSection>
 
@@ -351,15 +425,18 @@ function ZhBody() {
         <p>智能体强大、又确实不可靠，而这里的诚实比炒作更重要：</p>
         <Callout type="pitfall">
           <p>
-            <strong>错误会累积。</strong>每一步都有一定出错的概率，而在一条长链上，那些概率相乘——一个
-            95% 可靠的步骤，在十步之后只有约 60% 可靠。一个早期的小错误（一个读错的工具结果、一个错误的
-            假设）就能让整次运行跑偏，而智能体可能<strong>自信地去追一个已经坏掉的计划</strong>。再加上
-            从 LLM 继承来的问题——<Link href="/knowledge/large-language-models">幻觉</Link>、那种满足目标的
-            字面而非其本意的<Link href="/knowledge/reinforcement-learning">奖励作弊</Link>倾向——以及真实
-            的<strong>成本与延迟</strong>（每一次循环都是又一次模型调用），还有智能体<strong>难以评估
-            </strong>这一事实（成功是模糊的、且是多步骤的）。结论很实际：<strong>智能体必须被设界</strong>
-            （有限的工具、有限的步数、对有后果的行动设置许可门），并被<strong>验证</strong>，对任何要紧
-            的事都要有一个人在循环里。自主是一个旋钮，而非一个默认值。
+            <strong>错误会累积。</strong>
+            每一步都有一定出错的概率，而在一条长链上，那些概率相乘——一个 95%
+            可靠的步骤，在十步之后只有约 60% 可靠。一个早期的小错误（一个读错的工具结果、一个错误的
+            假设）就能让整次运行跑偏，而智能体可能<strong>自信地去追一个已经坏掉的计划</strong>
+            。再加上 从 LLM 继承来的问题——<Link href="/knowledge/large-language-models">幻觉</Link>
+            、那种满足目标的 字面而非其本意的
+            <Link href="/knowledge/reinforcement-learning">奖励作弊</Link>倾向——以及真实 的
+            <strong>成本与延迟</strong>（每一次循环都是又一次模型调用），还有智能体
+            <strong>难以评估</strong>这一事实（成功是模糊的、且是多步骤的）。结论很实际：
+            <strong>智能体必须被设界</strong>
+            （有限的工具、有限的步数、对有后果的行动设置许可门），并被<strong>验证</strong>
+            ，对任何要紧 的事都要有一个人在循环里。自主是一个旋钮，而非一个默认值。
           </p>
         </Callout>
       </KSection>
@@ -368,17 +445,22 @@ function ZhBody() {
         <Callout type="applied" label="有用，但要开着护栏">
           <p>
             智能体式工具正越来越成为我研究与自动化方式的一部分——一个能
-            <Link href="/knowledge/information-retrieval">搜索</Link>、阅读、运行代码、把步骤串起来的
-            智能体，能做真正的、单个提示做不了的工作。有回报的那份理解，是知道它是<strong>一个在循环里、
-            带着工具的 LLM</strong>，所以它的力量来自工具（把它锚定在真实、当前的能力上），它的危险则
-            来自<strong>累积的错误</strong>与继承来的幻觉。
+            <Link href="/knowledge/information-retrieval">搜索</Link>
+            、阅读、运行代码、把步骤串起来的
+            智能体，能做真正的、单个提示做不了的工作。有回报的那份理解，是知道它是
+            <strong>一个在循环里、 带着工具的 LLM</strong>
+            ，所以它的力量来自工具（把它锚定在真实、当前的能力上），它的危险则 来自
+            <strong>累积的错误</strong>与继承来的幻觉。
           </p>
           <p>
-            在须问责的政府环境里，这让那份纪律没得商量：<strong>给它能做的事设界、验证它产出的东西、并
-            对任何有后果的行动让一个人留在循环里</strong>——一个自主的智能体照着一个自信的错误去行动，
-            正是要据以设计来防范的失败模式。它是本板块一直在朝其搭建的、关于 AI 前沿的操作手册——而贯穿
-            那些负责任实践页的同一种<Link href="/knowledge/explainable-ai">验证而非信任</Link>的心态，在
-            这里完全适用。
+            在须问责的政府环境里，这让那份纪律没得商量：
+            <strong>
+              给它能做的事设界、验证它产出的东西、并 对任何有后果的行动让一个人留在循环里
+            </strong>
+            ——一个自主的智能体照着一个自信的错误去行动，
+            正是要据以设计来防范的失败模式。它是本板块一直在朝其搭建的、关于 AI
+            前沿的操作手册——而贯穿 那些负责任实践页的同一种
+            <Link href="/knowledge/explainable-ai">验证而非信任</Link>的心态，在 这里完全适用。
           </p>
         </Callout>
       </KSection>
@@ -391,24 +473,25 @@ function ZhBody() {
               <strong>行动</strong>，而非只回答一次。
             </li>
             <li>
-              核心是<strong>推理 → 行动 → 观察</strong>的循环（ReAct）——推理、调用一个工具、读取结果，
-              重复直到完成。
+              核心是<strong>推理 → 行动 → 观察</strong>
+              的循环（ReAct）——推理、调用一个工具、读取结果， 重复直到完成。
             </li>
             <li>
-              <strong>工具 / 函数调用</strong>把模型锚定：计算器、搜索（RAG）、数据库、代码、API——修好
-              它知识陈旧与不能行动的弱点。
+              <strong>工具 / 函数调用</strong>
+              把模型锚定：计算器、搜索（RAG）、数据库、代码、API——修好 它知识陈旧与不能行动的弱点。
             </li>
             <li>
-              <strong>规划</strong>（分解目标）与<strong>记忆</strong>（短期上下文 + 长期外部存储）处理
-              复杂度。<strong>多智能体</strong>系统各有专长，并加入一个批评者/验证者。
+              <strong>规划</strong>（分解目标）与<strong>记忆</strong>（短期上下文 +
+              长期外部存储）处理 复杂度。<strong>多智能体</strong>
+              系统各有专长，并加入一个批评者/验证者。
             </li>
             <li>
-              难点：<strong>错误在长链上累积</strong>，它会自信地去追一个坏掉的计划，再加上幻觉、成本/
-              延迟，以及难以评估。
+              难点：<strong>错误在长链上累积</strong>
+              ，它会自信地去追一个坏掉的计划，再加上幻觉、成本/ 延迟，以及难以评估。
             </li>
             <li>
-              所以<strong>给它设界</strong>（有限的工具/步数、许可门）并<strong>验证</strong>，让一个人
-              留在循环里。自主是一个旋钮，而非一个默认值。
+              所以<strong>给它设界</strong>（有限的工具/步数、许可门）并<strong>验证</strong>
+              ，让一个人 留在循环里。自主是一个旋钮，而非一个默认值。
             </li>
           </ul>
         </Callout>

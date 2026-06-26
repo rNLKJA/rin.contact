@@ -1100,6 +1100,14 @@
           {
             "label": "Spatial Statistics",
             "note": "Autocorrelation, Moran's I, hotspots, kriging"
+          },
+          {
+            "label": "Conformal Prediction & Uncertainty",
+            "note": "Guaranteed coverage intervals around any model"
+          },
+          {
+            "label": "Causal Discovery",
+            "note": "Learning the DAG, PC & GES, Markov equivalence"
           }
         ]
       },
@@ -1158,6 +1166,10 @@
           {
             "label": "Streaming & Real-Time Analytics",
             "note": "Windowing, event time, watermarks, Kafka/Flink"
+          },
+          {
+            "label": "Data Architecture & the Modern Stack",
+            "note": "Warehouse/lake/lakehouse, ELT, dbt, medallion"
           }
         ]
       },

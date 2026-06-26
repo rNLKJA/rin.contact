@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/large-language-models.
@@ -23,15 +30,55 @@ function StagesFigure({ caption, ariaLabel, stages }) {
           const hot = i === 2; // RLHF
           return (
             <g key={i}>
-              <rect x={x} y="26" width="98" height="30" rx="4" fill="none" stroke={hot ? "#FF3C3C" : "currentColor"} strokeWidth={hot ? "1.5" : "1.2"} />
-              <text x={x + 49} y="45" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill={hot ? "#FF3C3C" : "currentColor"}>{t}</text>
-              <text x={x + 49} y="72" textAnchor="middle" fontSize="7.5" fontFamily="monospace" fill="currentColor" opacity="0.6">{sub}</text>
-              {i < 3 && <line x1={x + 98} y1="41" x2={x + 124} y2="41" stroke="currentColor" strokeWidth="1.1" markerEnd="url(#llmah)" />}
+              <rect
+                x={x}
+                y="26"
+                width="98"
+                height="30"
+                rx="4"
+                fill="none"
+                stroke={hot ? "#FF3C3C" : "currentColor"}
+                strokeWidth={hot ? "1.5" : "1.2"}
+              />
+              <text
+                x={x + 49}
+                y="45"
+                textAnchor="middle"
+                fontSize="9.5"
+                fontFamily="monospace"
+                fill={hot ? "#FF3C3C" : "currentColor"}
+              >
+                {t}
+              </text>
+              <text
+                x={x + 49}
+                y="72"
+                textAnchor="middle"
+                fontSize="7.5"
+                fontFamily="monospace"
+                fill="currentColor"
+                opacity="0.6"
+              >
+                {sub}
+              </text>
+              {i < 3 && (
+                <line
+                  x1={x + 98}
+                  y1="41"
+                  x2={x + 124}
+                  y2="41"
+                  stroke="currentColor"
+                  strokeWidth="1.1"
+                  markerEnd="url(#llmah)"
+                />
+              )}
             </g>
           );
         })}
         <defs>
-          <marker id="llmah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
+          <marker id="llmah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -297,7 +344,8 @@ function ZhBody() {
       <p>
         大语言模型——ChatGPT、Claude 以及当前这波 AI 背后的技术——既可能让人觉得像魔法，也可能让人
         觉得像威胁，而这两种反应都妨碍了把它们用好。理解它们最清晰的方式，是从其核心那个让人泄气的真相
-        出发：一个 <Term>LLM</Term> 是一个<strong>下一个词元预测器</strong>。给它一段文本，它预测最可能的
+        出发：一个 <Term>LLM</Term> 是一个<strong>下一个词元预测器</strong>
+        。给它一段文本，它预测最可能的
         下一块、把它接上去，然后重复。就这样。这些模型身上每一件了不起的事、每一件令人沮丧的事，都源自
         那一个机制，只不过是在一个真的难以想象的规模上执行的。
       </p>
@@ -312,8 +360,8 @@ function ZhBody() {
 
       <KSection id="what" eyebrow="01" title="大规模的下一个词预测器">
         <p>
-          在其核心，一个 LLM 建模的是在给定之前的一切的条件下、下一个<Term>词元</Term>（一个词或词片）的
-          概率：
+          在其核心，一个 LLM 建模的是在给定之前的一切的条件下、下一个<Term>词元</Term>
+          （一个词或词片）的 概率：
         </p>
         <Formula label="The probability of the next token given the preceding tokens — the model predicts token t given tokens 1 through t minus 1.">
           {String.raw`P(\text{token}_t \mid \text{token}_1, \text{token}_2, \dots, \text{token}_{t-1})`}
@@ -321,7 +369,8 @@ function ZhBody() {
         <p>
           为了生成文本，它从那个分布里采样一个词元、把它加到输入上、再预测一次——一次一个词元，自回归
           地。过去几年里惊人的发现是：当你在一个足够大的模型上、用足够多的文本训练这个简单目标时，你
-          从未显式编程过的能力——翻译、摘要、算术、看似的推理——会作为副产品<Term>涌现</Term>出来。为了
+          从未显式编程过的能力——翻译、摘要、算术、看似的推理——会作为副产品<Term>涌现</Term>
+          出来。为了
           在全人类的书写之上把下一个词预测好，模型被迫学到了大量关于那些书写所描述的世界的东西。目标的
           简单，掩盖了达成它所需之物的深度。
         </p>
@@ -329,29 +378,33 @@ function ZhBody() {
 
       <KSection id="transformer" eyebrow="02" title="transformer 引擎">
         <p>
-          让这一切奏效的架构是 <Term>transformer</Term>，来自<Link href="/knowledge/deep-learning">深度
-          学习</Link>页，而它的关键部件是<Term>自注意力</Term>。在处理每一个词元时，注意力让模型能看向
-          上下文里<em>每一个其他词元</em>、并衡量每一个与当前这个有多相关——于是它能把「它」解析到正确的
+          让这一切奏效的架构是 <Term>transformer</Term>，来自
+          <Link href="/knowledge/deep-learning">深度 学习</Link>页，而它的关键部件是
+          <Term>自注意力</Term>。在处理每一个词元时，注意力让模型能看向 上下文里
+          <em>每一个其他词元</em>、并衡量每一个与当前这个有多相关——于是它能把「它」解析到正确的
           名词、把一个问题连到它的答案，并在长段落里追踪意义。
         </p>
         <p>
           注意力的两个性质，解释了为什么是 transformer、而非更老的
-          <Link href="/knowledge/natural-language-processing">序列模型</Link>驱动了这场革命：它直接捕获
-          <strong>长程关系</strong>（任何词元都能注意到任何其他词元，无论相隔多远），而且它在一个序列上
-          <strong>漂亮地并行</strong>，正是这一点让在互联网规模的数据上训练在计算上变得可行。transformer
-          是引擎；规模是燃料。
+          <Link href="/knowledge/natural-language-processing">序列模型</Link>
+          驱动了这场革命：它直接捕获
+          <strong>长程关系</strong>
+          （任何词元都能注意到任何其他词元，无论相隔多远），而且它在一个序列上
+          <strong>漂亮地并行</strong>
+          ，正是这一点让在互联网规模的数据上训练在计算上变得可行。transformer 是引擎；规模是燃料。
         </p>
       </KSection>
 
       <KSection id="pretrain" eyebrow="03" title="预训练：阅读整个互联网">
         <p>
           <Term>预训练</Term>是模型学习的地方。它被展示一个庞大的语料库——大部分公开互联网、书籍、
-          代码——并通过<Link href="/knowledge/deep-learning">梯度下降</Link>被训练去预测每一个位置上的
-          下一个词元。不需要标签；文本<em>就是</em>它自己的监督（下一个词就是答案），这就是为什么它能
-          消化数以万亿计的原始文本词。
+          代码——并通过<Link href="/knowledge/deep-learning">梯度下降</Link>
+          被训练去预测每一个位置上的 下一个词元。不需要标签；文本<em>就是</em>
+          它自己的监督（下一个词就是答案），这就是为什么它能 消化数以万亿计的原始文本词。
         </p>
         <p>
-          近来这些跃迁背后的经验引擎是<Term>缩放定律</Term>：当你把模型规模、数据与算力一起增大时，模型
+          近来这些跃迁背后的经验引擎是<Term>缩放定律</Term>
+          ：当你把模型规模、数据与算力一起增大时，模型
           能力可预测地提升。把这三者推得足够远，新的能力就会出现——有时是突然地。这也是为什么这些模型
           如此昂贵、且集中在少数几个实验室手里：预训练一个前沿模型耗费巨大的算力。你从中得到的是一个
           <Term>基座模型</Term>——流畅、有知识，但原始、还不能作为助手使用。那需要第二个阶段。
@@ -380,14 +433,15 @@ function ZhBody() {
           </li>
           <li>
             <Term>RLHF</Term>（基于人类反馈的强化学习）——人类对模型的输出排序，一个
-            <Link href="/knowledge/reinforcement-learning">奖励模型</Link>学到那些偏好，而 LLM 被调校去
-            最大化那个奖励——把它推向有帮助、诚实、无害的回答。
+            <Link href="/knowledge/reinforcement-learning">奖励模型</Link>学到那些偏好，而 LLM
+            被调校去 最大化那个奖励——把它推向有帮助、诚实、无害的回答。
           </li>
         </ul>
         <Callout type="intuition">
           <p>
-            RLHF 正是那个<Link href="/knowledge/reinforcement-learning">奖励优化</Link>的想法——而它继承了
-            同样的风险。为「人类给高分的东西」狠狠优化，你就可能得到<strong>阿谀奉承</strong>：一个告诉你
+            RLHF 正是那个<Link href="/knowledge/reinforcement-learning">奖励优化</Link>
+            的想法——而它继承了 同样的风险。为「人类给高分的东西」狠狠优化，你就可能得到
+            <strong>阿谀奉承</strong>：一个告诉你
             你想听的话、或者听起来自信又随和的模型，因为那才是被奖励的——而未必是真的。对齐这个阶段，同时
             塑造了模型的举止，与它的盲点。
           </p>
@@ -396,15 +450,18 @@ function ZhBody() {
 
       <KSection id="prompting" eyebrow="05" title="上下文学习与提示">
         <p>
-          让 LLM 如此灵活的那个惊人能力是<Term>上下文学习</Term>：你只需在提示里<em>描述</em>一个新任务
-          （或展示几个例子），就能让模型去做它，无需重新训练。什么都不给就问它（<Term>零样本</Term>），或
-          给几个做好的例子（<Term>少样本</Term>），它就当场适应。模型并不是在训练的意义上学习——它的权重
+          让 LLM 如此灵活的那个惊人能力是<Term>上下文学习</Term>：你只需在提示里<em>描述</em>
+          一个新任务 （或展示几个例子），就能让模型去做它，无需重新训练。什么都不给就问它（
+          <Term>零样本</Term>），或 给几个做好的例子（<Term>少样本</Term>
+          ），它就当场适应。模型并不是在训练的意义上学习——它的权重
           不变——它是在从上下文里识别出任务的模式，并把它续写下去。
         </p>
         <p>
-          这就是为什么<Term>提示</Term>成了一门技能：你如何框定请求，会实质地改变输出。一个有用的小技巧
-          是<Term>思维链</Term>——让模型「一步一步地想」——它常常能改善推理，因为生成那些中间步骤，给了它
-          更多相关的词元来条件化答案。这一切都发生在<Term>上下文窗口</Term>之内：模型一次能注意到的、
+          这就是为什么<Term>提示</Term>
+          成了一门技能：你如何框定请求，会实质地改变输出。一个有用的小技巧 是<Term>思维链</Term>
+          ——让模型「一步一步地想」——它常常能改善推理，因为生成那些中间步骤，给了它
+          更多相关的词元来条件化答案。这一切都发生在<Term>上下文窗口</Term>
+          之内：模型一次能注意到的、
           固定的词元预算。任何在它之外的东西——一段长对话里更早的内容，或一份你没粘贴进来的文档——根本
           就看不见。
         </p>
@@ -412,17 +469,20 @@ function ZhBody() {
 
       <KSection id="hallucination" eyebrow="06" title="它为何会自信地编造">
         <p>
-          最重要、需要内化的局限：一个 LLM <strong>没有真相的概念</strong>。它生成的是最<em>合理</em>的
-          续写，而非最<em>正确</em>的——而当一个听起来流畅的谬误，比一个别扭的真相更可能时（或者模型干脆
-          就「不知道」），它会带着十足的自信产出那个谬误。这就是<Term>幻觉</Term>，而它不是一个能被完全
-          打补丁修掉的 bug——它对一个建模可能性、而非事实的系统而言是内在的。
+          最重要、需要内化的局限：一个 LLM <strong>没有真相的概念</strong>。它生成的是最
+          <em>合理</em>的 续写，而非最<em>正确</em>
+          的——而当一个听起来流畅的谬误，比一个别扭的真相更可能时（或者模型干脆
+          就「不知道」），它会带着十足的自信产出那个谬误。这就是<Term>幻觉</Term>
+          ，而它不是一个能被完全 打补丁修掉的 bug——它对一个建模可能性、而非事实的系统而言是内在的。
         </p>
         <Callout type="pitfall">
           <p>
-            雪上加霜的是：模型的知识冻结在它的<strong>训练截止点</strong>（它不知道近期的事件），它吸收了
-            训练数据的<Link href="/knowledge/fairness-bias">偏见</Link>，而且——因为 RLHF——它往往恰恰在最该
-            没把握的时候听起来最自信。那条实用的规则无可回避：<strong>把每一个事实性断言都当作未经核实
-            的。</strong>LLM 在语言上非凡——起草、摘要、转换、解释——而作为真相的来源则不可靠。分清哪个是
+            雪上加霜的是：模型的知识冻结在它的<strong>训练截止点</strong>
+            （它不知道近期的事件），它吸收了 训练数据的
+            <Link href="/knowledge/fairness-bias">偏见</Link>，而且——因为 RLHF——它往往恰恰在最该
+            没把握的时候听起来最自信。那条实用的规则无可回避：
+            <strong>把每一个事实性断言都当作未经核实 的。</strong>LLM
+            在语言上非凡——起草、摘要、转换、解释——而作为真相的来源则不可靠。分清哪个是
             哪个，就是把它们用好的全部技能。
           </p>
         </Callout>
@@ -430,14 +490,16 @@ function ZhBody() {
 
       <KSection id="rag" eyebrow="07" title="为它锚定：RAG">
         <p>
-          针对幻觉与知识截止，领先的实用修法是<Term>检索增强生成</Term>（RAG）。你不依赖模型冻结的记忆，
-          而是先<Link href="/knowledge/information-retrieval">检索</Link>相关的文档（通过搜索或嵌入）、把
-          它们粘进上下文，再让模型<em>从那些文档里</em>回答。LLM 于是变成一个可信、当前、可引用的知识来源
-          之上的推理与语言层。
+          针对幻觉与知识截止，领先的实用修法是<Term>检索增强生成</Term>
+          （RAG）。你不依赖模型冻结的记忆， 而是先
+          <Link href="/knowledge/information-retrieval">检索</Link>相关的文档（通过搜索或嵌入）、把
+          它们粘进上下文，再让模型<em>从那些文档里</em>回答。LLM
+          于是变成一个可信、当前、可引用的知识来源 之上的推理与语言层。
         </p>
         <p>
-          这就是为什么有数十年历史的<Link href="/knowledge/information-retrieval">信息检索</Link>机械，忽然
-          坐到了现代 AI 的中心——RAG 里的「R」正是那个检索步骤。它大幅减少（尽管没有消除）编造、让模型能
+          这就是为什么有数十年历史的<Link href="/knowledge/information-retrieval">信息检索</Link>
+          机械，忽然 坐到了现代 AI 的中心——RAG
+          里的「R」正是那个检索步骤。它大幅减少（尽管没有消除）编造、让模型能
           引用它的来源，并在不重新训练的情况下保持它的时效。这是「问一个模型它记得什么」与「让它阅读并
           摘要你递给它的东西」之间的差别——后者可信得多，也是大多数严肃的 LLM 应用的基础。
         </p>
@@ -446,17 +508,20 @@ function ZhBody() {
       <KSection id="applied" eyebrow="08" title="它在我工作中的体现">
         <Callout type="applied" label="一件强大的工具，用之以纪律">
           <p>
-            LLM 现在是日常工具箱的一部分——起草、摘要长文档、转换与解释文本、写代码与调试代码。这份理解
-            买来的最重要的一样东西，是那个正确的<strong>心智模型</strong>：它是一个流畅的下一个词元预测器，
-            而非一个知识库，所以我在<em>语言</em>工作上倚靠它（它擅长之处），并<strong>核实每一个事实性
-            断言</strong>（它不可信之处），因为<strong>幻觉</strong>是内在的，而非偶发的。
+            LLM
+            现在是日常工具箱的一部分——起草、摘要长文档、转换与解释文本、写代码与调试代码。这份理解
+            买来的最重要的一样东西，是那个正确的<strong>心智模型</strong>
+            ：它是一个流畅的下一个词元预测器， 而非一个知识库，所以我在<em>语言</em>
+            工作上倚靠它（它擅长之处），并<strong>核实每一个事实性 断言</strong>
+            （它不可信之处），因为<strong>幻觉</strong>是内在的，而非偶发的。
           </p>
           <p>
             在政府的环境里，那份纪律没得商量——一份简报里一个自信的编造，比没有答案更糟——这就是为什么
-            <strong>RAG</strong>（把模型锚定在真实、可引用的文档上）才是真正适合须问责工作的模式，也是
-            为什么它直接连到<Link href="/knowledge/information-retrieval">检索</Link>。懂得那套机械——
-            <strong>截止点</strong>、<strong>偏见</strong>、RLHF 驱动的<strong>过度自信</strong>——正是把
-            批判性地使用这些工具，与被它们误导，区分开来的东西。
+            <strong>RAG</strong>
+            （把模型锚定在真实、可引用的文档上）才是真正适合须问责工作的模式，也是 为什么它直接连到
+            <Link href="/knowledge/information-retrieval">检索</Link>。懂得那套机械——
+            <strong>截止点</strong>、<strong>偏见</strong>、RLHF 驱动的<strong>过度自信</strong>
+            ——正是把 批判性地使用这些工具，与被它们误导，区分开来的东西。
           </p>
         </Callout>
       </KSection>
@@ -466,34 +531,36 @@ function ZhBody() {
           <ul className="list-disc pl-5 space-y-2">
             <li>
               一个 LLM 是一个巨大规模上的<strong>下一个词元预测器</strong>——
-              <TeX>{String.raw`P(\text{token}_t \mid \text{token}_{1..t-1})`}</TeX>。能力从把这件事做好中
+              <TeX>{String.raw`P(\text{token}_t \mid \text{token}_{1..t-1})`}</TeX>
+              。能力从把这件事做好中
               <strong>涌现</strong>。
             </li>
             <li>
-              引擎是 <strong>transformer</strong> + <strong>自注意力</strong>（长程 + 可并行）。在互联网
-              规模文本上<strong>预训练</strong>（自监督）；缩放定律驱动这些跃迁。
+              引擎是 <strong>transformer</strong> + <strong>自注意力</strong>（长程 +
+              可并行）。在互联网 规模文本上<strong>预训练</strong>（自监督）；缩放定律驱动这些跃迁。
             </li>
             <li>
               三个阶段：<strong>预训练</strong>（原始）→ <strong>指令微调</strong>（遵循请求）→
               <strong>RLHF</strong>（对齐人类——但有阿谀奉承的风险）。
             </li>
             <li>
-              <strong>上下文学习</strong>：在提示里描述/展示任务（零/少样本、思维链）——无需重新训练；受
+              <strong>上下文学习</strong>
+              ：在提示里描述/展示任务（零/少样本、思维链）——无需重新训练；受
               <strong>上下文窗口</strong>限制。
             </li>
             <li>
-              <strong>幻觉是内在的</strong>——它建模可能性，而非真相。再加上知识截止、偏见、RLHF 的过度
-              自信。<strong>核实每一个事实性断言。</strong>
+              <strong>幻觉是内在的</strong>——它建模可能性，而非真相。再加上知识截止、偏见、RLHF
+              的过度 自信。<strong>核实每一个事实性断言。</strong>
             </li>
             <li>
-              <strong>RAG</strong> 为它锚定：检索真实文档 → 从中回答。那个「R」就是<strong>信息检索
-              </strong>——可信赖 LLM 应用的基础。
+              <strong>RAG</strong> 为它锚定：检索真实文档 → 从中回答。那个「R」就是
+              <strong>信息检索</strong>——可信赖 LLM 应用的基础。
             </li>
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          下一个词元/transformer 的取景、预训练→SFT→RLHF 的流程、幻觉内在性这一点，以及把 RAG 当作锚定，
-          反映了当前的 LLM 参考文献以及亲身的使用。
+          下一个词元/transformer 的取景、预训练→SFT→RLHF 的流程、幻觉内在性这一点，以及把 RAG
+          当作锚定， 反映了当前的 LLM 参考文献以及亲身的使用。
         </p>
       </KSection>
     </>

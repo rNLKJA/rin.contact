@@ -147,6 +147,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/ai-agents", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/spatial-statistics", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/streaming-analytics", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/conformal-prediction", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/causal-discovery", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/data-architecture", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
