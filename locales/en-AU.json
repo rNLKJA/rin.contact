@@ -1950,6 +1950,23 @@
       "subtitle": "Kaplan–Meier curve of tenure. Survival = still employed. Censored = promoted or moved.",
       "monthsUnit": "months",
       "medianNote": "Median survival: ~12 months. No events = death. All events = career progression."
+    },
+    "technicalDebt": {
+      "metaTitle": "Technical Debt — rin.contact",
+      "metaDescription": "Known debt, estimated payoff.",
+      "ogTitle": "Technical Debt",
+      "ogSubtitle": "Known debt, estimated payoff.",
+      "heading": "Technical Debt",
+      "subtitle": "Known debt. Estimated payoff. Styled like a codebase.",
+      "commentHeader": "# Known technical debt",
+      "payoffLabel": "payoff",
+      "priorityLabel": "priority",
+      "debt": [
+        { "item": "Rust", "payoff": "2030", "priority": "Low" },
+        { "item": "Production debugging at midnight", "payoff": "Never", "priority": "High" },
+        { "item": "Unread papers", "payoff": "TBD", "priority": "Medium" }
+      ],
+      "runNote": "# Run `rin --payoff-debt` to resolve. (Not implemented.)"
     }
   }
 }

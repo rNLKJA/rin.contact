@@ -1627,6 +1627,23 @@
       "subtitle": "任期的 Kaplan–Meier 曲线。生存 = 仍在职。删失 = 晋升或调动。",
       "monthsUnit": "个月",
       "medianNote": "中位生存期：约 12 个月。无事件 = 死亡。全部事件 = 职业进展。"
+    },
+    "technicalDebt": {
+      "metaTitle": "技术债 — rin.contact",
+      "metaDescription": "已知的债，预估的偿还。",
+      "ogTitle": "技术债",
+      "ogSubtitle": "已知的债，预估的偿还。",
+      "heading": "技术债",
+      "subtitle": "已知的债。预估的偿还。仿照代码库的样式。",
+      "commentHeader": "# 已知的技术债",
+      "payoffLabel": "偿还",
+      "priorityLabel": "优先级",
+      "debt": [
+        { "item": "Rust", "payoff": "2030", "priority": "低" },
+        { "item": "凌晨的生产环境调试", "payoff": "永不", "priority": "高" },
+        { "item": "未读的论文", "payoff": "待定", "priority": "中" }
+      ],
+      "runNote": "# 运行 `rin --payoff-debt` 来解决。（未实现。）"
     }
   }
 }
