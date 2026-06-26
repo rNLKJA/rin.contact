@@ -1967,6 +1967,16 @@
         { "item": "Unread papers", "payoff": "TBD", "priority": "Medium" }
       ],
       "runNote": "# Run `rin --payoff-debt` to resolve. (Not implemented.)"
+    },
+    "trainingCurves": {
+      "metaTitle": "Training Curves — rin.contact",
+      "metaDescription": "Loss over life epochs.",
+      "ogTitle": "Training Curves",
+      "ogSubtitle": "Loss over life epochs.",
+      "heading": "Training Curves",
+      "subtitle": "Loss over life epochs. X-axis: time. Y-axis: confusion. (Convergence: ongoing.)",
+      "epochLabel": "Epoch",
+      "labels": ["Uni dropout risk", "First internship", "Employed", "Master's", "Senior"]
     }
   }
 }

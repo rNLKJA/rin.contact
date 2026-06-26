@@ -1644,6 +1644,16 @@
         { "item": "未读的论文", "payoff": "待定", "priority": "中" }
       ],
       "runNote": "# 运行 `rin --payoff-debt` 来解决。（未实现。）"
+    },
+    "trainingCurves": {
+      "metaTitle": "训练曲线 — rin.contact",
+      "metaDescription": "人生周期上的损失。",
+      "ogTitle": "训练曲线",
+      "ogSubtitle": "人生周期上的损失。",
+      "heading": "训练曲线",
+      "subtitle": "人生各周期上的损失。X 轴：时间。Y 轴：困惑。（收敛：进行中。）",
+      "epochLabel": "周期",
+      "labels": ["大学辍学风险", "第一份实习", "已就业", "硕士", "高级"]
     }
   }
 }

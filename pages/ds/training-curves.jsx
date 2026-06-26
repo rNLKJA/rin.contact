@@ -1,33 +1,41 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 
+// epoch numbers + loss are the data (kept); each epoch's life-stage label is
+// localised via ds.trainingCurves.labels[i] (index-aligned).
 const EPOCHS = [
-  { epoch: 1, label: "Uni dropout risk", loss: 0.9 },
-  { epoch: 25, label: "First internship", loss: 0.6 },
-  { epoch: 50, label: "Employed", loss: 0.4 },
-  { epoch: 75, label: "Master's", loss: 0.25 },
-  { epoch: 100, label: "Senior", loss: 0.1 },
+  { epoch: 1, loss: 0.9 },
+  { epoch: 25, loss: 0.6 },
+  { epoch: 50, loss: 0.4 },
+  { epoch: 75, loss: 0.25 },
+  { epoch: 100, loss: 0.1 },
 ];
 
 export default function TrainingCurvesPage() {
+  const { t, locale = "en-AU" } = useI18n();
+  const labels = t("ds.trainingCurves.labels") || [];
+  const epochLabel = t("ds.trainingCurves.epochLabel");
+
   return (
     <>
       <Head>
-        <title>Training Curves — rin.contact</title>
-        <meta name="description" content="Loss over life epochs." />
+        <title>{t("ds.trainingCurves.metaTitle")}</title>
+        <meta name="description" content={t("ds.trainingCurves.metaDescription")} />
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/training-curves" />
       </Head>
       <SeoHead
-        title="Training Curves — rin.contact"
-        description="Loss over life epochs."
+        title={t("ds.trainingCurves.metaTitle")}
+        description={t("ds.trainingCurves.metaDescription")}
         path="/ds/training-curves"
         ogImage={{
-          title: "Training Curves",
-          subtitle: "Loss over life epochs.",
+          title: t("ds.trainingCurves.ogTitle"),
+          subtitle: t("ds.trainingCurves.ogSubtitle"),
           section: "ds",
         }}
+        locale={locale}
         noindex
       />
 
@@ -37,11 +45,9 @@ export default function TrainingCurvesPage() {
             /ds/training-curves
           </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-            Training Curves
+            {t("ds.trainingCurves.heading")}
           </h1>
-          <p className="text-sm text-[#7A7A7A] mb-10">
-            Loss over life epochs. X-axis: time. Y-axis: confusion. (Convergence: ongoing.)
-          </p>
+          <p className="text-sm text-[#7A7A7A] mb-10">{t("ds.trainingCurves.subtitle")}</p>
 
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 font-mono text-xs">
             <div className="flex items-end gap-2 h-32 mb-4">
@@ -58,9 +64,9 @@ export default function TrainingCurvesPage() {
               ))}
             </div>
             <div className="space-y-2 pt-4 border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
-              {EPOCHS.map(({ epoch, label }) => (
+              {EPOCHS.map(({ epoch }, i) => (
                 <p key={epoch} className="text-[#7A7A7A]">
-                  Epoch {epoch}: {label}
+                  {epochLabel} {epoch}: {labels[i]}
                 </p>
               ))}
             </div>
@@ -77,7 +83,7 @@ export default function TrainingCurvesPage() {
               href="/"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
-              Home
+              {t("nav.home")}
             </Link>
           </div>
         </div>
