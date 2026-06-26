@@ -186,7 +186,6 @@ const INFO = [
 const NOT_ZH_KNOWLEDGE = new Set([
   "/knowledge/graph-neural-networks",
   "/knowledge/probabilistic-graphical-models",
-  "/knowledge/federated-learning",
   "/knowledge/robust-statistics",
   "/knowledge/quantile-regression",
   "/knowledge/optimisation-methods",
