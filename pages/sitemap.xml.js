@@ -185,7 +185,6 @@ const INFO = [
 // below — as each is translated, delete its slug from NOT_ZH_KNOWLEDGE.
 const NOT_ZH_KNOWLEDGE = new Set([
   "/knowledge/robust-statistics",
-  "/knowledge/quantile-regression",
   "/knowledge/statistical-process-control",
   "/knowledge/recommender-systems",
   "/knowledge/spatial-statistics",
