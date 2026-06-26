@@ -1873,6 +1873,29 @@
       ],
       "footnote": "Recommendation: Add more specific metrics. \"Led 3 projects\" > \"Led projects\".",
       "resumeCta": "Resume"
+    },
+    "phacking": {
+      "metaTitle": "P-Hacking — rin.contact",
+      "metaDescription": "1000 regressions, 3 published.",
+      "ogTitle": "P-Hacking",
+      "ogSubtitle": "1000 regressions, 3 published.",
+      "heading": "P-Hacking (Satire)",
+      "subtitle": "We ran 1000 regressions on Rin's career. We found 47 significant results. Here are the 3 we're publishing.",
+      "rows": [
+        {
+          "label": "Result 1 (p=0.032)",
+          "text": "Coffee consumption correlates with project completion rate."
+        },
+        {
+          "label": "Result 2 (p=0.047)",
+          "text": "Python proficiency predicts government employment."
+        },
+        {
+          "label": "Result 3 (p=0.021)",
+          "text": "Adelaide timezone associated with strategic thinking at midnight."
+        }
+      ],
+      "footnote": "* This is satire. Don't p-hack. Pre-register your hypotheses."
     }
   }
 }
