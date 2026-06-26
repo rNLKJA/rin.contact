@@ -1654,6 +1654,21 @@
       "subtitle": "人生各周期上的损失。X 轴：时间。Y 轴：困惑。（收敛：进行中。）",
       "epochLabel": "周期",
       "labels": ["大学辍学风险", "第一份实习", "已就业", "硕士", "高级"]
+    },
+    "versionControl": {
+      "metaTitle": "版本控制 — rin.contact",
+      "metaDescription": "你人生的 Git 提交。",
+      "ogTitle": "版本控制",
+      "ogSubtitle": "你人生的 Git 提交。",
+      "heading": "你人生的版本控制",
+      "msgs": [
+        "添加 SAPOL 职位",
+        "-移除「初级」，+添加「高级」",
+        "合并 MoodQ 研究分支",
+        "WEHI 实习完成",
+        "授予数据科学硕士学位"
+      ],
+      "aheadNote": "领先 origin/main 5 个提交"
     }
   }
 }
