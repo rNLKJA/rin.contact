@@ -1533,6 +1533,27 @@
         "We tried imputation. Some things can't be filled.",
         "It left without saying why. Classic missing-not-at-random."
       ]
+    },
+    "ci": {
+      "metaTitle": "Confidence Interval — rin.contact",
+      "metaDescription": "Because no one likes uncertainty.",
+      "ogTitle": "Confidence Interval",
+      "ogSubtitle": "Because no one likes uncertainty.",
+      "heading": "Confidence Interval Generator",
+      "subtitle": "Because no one likes uncertainty. 95% CI for when this project will ship: [never, ∞].",
+      "moods": [
+        "productivity",
+        "confidence",
+        "coffee tolerance",
+        "meeting patience",
+        "debugging stamina",
+        "documentation enthusiasm",
+        "estimation accuracy"
+      ],
+      "ciBefore": "95% CI for your ",
+      "ciAfter": ": ",
+      "estimationNote": "95% CI: [never, ∞]",
+      "button": "Generate CI"
     }
   },
   "info": {
