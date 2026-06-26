@@ -184,7 +184,6 @@ const INFO = [
 // alternates. Knowledge pages still awaiting a zh content module are excluded
 // below — as each is translated, delete its slug from NOT_ZH_KNOWLEDGE.
 const NOT_ZH_KNOWLEDGE = new Set([
-  "/knowledge/topic-modelling",
 ]);
 
 // Every /info/* page and the listed /knowledge/* articles have full zh-Hans
