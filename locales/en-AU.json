@@ -1116,6 +1116,18 @@
           {
             "label": "Active & Semi-Supervised Learning",
             "note": "Learning with few labels, uncertainty sampling"
+          },
+          {
+            "label": "Extreme Value Theory",
+            "note": "Tail risk, GEV/GPD, return levels, the 1-in-N event"
+          },
+          {
+            "label": "Hierarchical & Mixed-Effects Models",
+            "note": "Grouped data, partial pooling, shrinkage"
+          },
+          {
+            "label": "Optimisation Methods",
+            "note": "Convex vs not, LP/simplex, integer, metaheuristics"
           }
         ]
       },

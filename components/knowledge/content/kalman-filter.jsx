@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/kalman-filter.
@@ -27,19 +34,110 @@ function KalmanLoopFigure({
         role="img"
         aria-label={ariaLabel}
       >
-        <rect x="50" y="55" width="120" height="42" rx="5" fill="none" stroke="currentColor" strokeWidth="1.4" />
-        <text x="110" y="73" textAnchor="middle" fontSize="11" fontFamily="monospace" fill="currentColor">{predictLabel}</text>
-        <text x="110" y="88" textAnchor="middle" fontSize="7.5" fontFamily="monospace" fill="currentColor" opacity="0.6">{predictSub}</text>
-        <rect x="270" y="55" width="120" height="42" rx="5" fill="none" stroke="#FF3C3C" strokeWidth="1.5" />
-        <text x="330" y="73" textAnchor="middle" fontSize="11" fontFamily="monospace" fill="#FF3C3C">{updateLabel}</text>
-        <text x="330" y="88" textAnchor="middle" fontSize="7.5" fontFamily="monospace" fill="currentColor" opacity="0.6">{updateSub}</text>
-        <path d="M170 66 H270" fill="none" stroke="currentColor" strokeWidth="1.3" markerEnd="url(#kfah)" />
-        <text x="220" y="58" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">{priorLabel}</text>
-        <path d="M270 86 H170" fill="none" stroke="#FF3C3C" strokeWidth="1.3" markerEnd="url(#kfahr)" />
-        <text x="220" y="104" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="#FF3C3C">{measureLabel}</text>
+        <rect
+          x="50"
+          y="55"
+          width="120"
+          height="42"
+          rx="5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+        />
+        <text
+          x="110"
+          y="73"
+          textAnchor="middle"
+          fontSize="11"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {predictLabel}
+        </text>
+        <text
+          x="110"
+          y="88"
+          textAnchor="middle"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {predictSub}
+        </text>
+        <rect
+          x="270"
+          y="55"
+          width="120"
+          height="42"
+          rx="5"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.5"
+        />
+        <text
+          x="330"
+          y="73"
+          textAnchor="middle"
+          fontSize="11"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {updateLabel}
+        </text>
+        <text
+          x="330"
+          y="88"
+          textAnchor="middle"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {updateSub}
+        </text>
+        <path
+          d="M170 66 H270"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          markerEnd="url(#kfah)"
+        />
+        <text
+          x="220"
+          y="58"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {priorLabel}
+        </text>
+        <path
+          d="M270 86 H170"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.3"
+          markerEnd="url(#kfahr)"
+        />
+        <text
+          x="220"
+          y="104"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {measureLabel}
+        </text>
         <defs>
-          <marker id="kfah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
-          <marker id="kfahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" /></marker>
+          <marker id="kfah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
+          <marker id="kfahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -311,22 +409,25 @@ function ZhBody() {
     <>
       <p>
         每一个传感器都撒一点谎。一个 GPS 读数、一支温度计、一个移动物体位置的带噪估计——每一个都是
-        <em>真实</em>值加上某种测量误差。<Term>卡尔曼滤波</Term>是一个优雅、影响极大的算法，用于从一串
-        带噪声的测量中、<strong>实时地</strong>恢复那个真实的、隐藏的值——而它靠一个漂亮的想法做到：在
-        每一步，它把它<em>预测</em>会发生的、与它<em>实际测量</em>到的融合起来，各自按有多可信来加权。
+        <em>真实</em>值加上某种测量误差。<Term>卡尔曼滤波</Term>
+        是一个优雅、影响极大的算法，用于从一串 带噪声的测量中、<strong>实时地</strong>
+        恢复那个真实的、隐藏的值——而它靠一个漂亮的想法做到：在 每一步，它把它<em>预测</em>
+        会发生的、与它<em>实际测量</em>到的融合起来，各自按有多可信来加权。
       </p>
       <p>
         它是 GPS、航天器导航、物体跟踪与传感器融合背后的引擎，也是一个有别于
-        <Link href="/knowledge/time-series-analysis">ARIMA 式时间序列</Link>页的工具——那一页对单条观测
-        到的序列建模；这一页则在数据流入时估计一个<em>隐藏状态</em>。这一页从状态空间的想法出发，经由
-        预测-更新循环，抵达让它豁然开朗的直觉。它连到<Link href="/knowledge/bayesian-statistics">贝叶斯
-        更新</Link>与<Link href="/knowledge/streaming-analytics">流式分析</Link>。
+        <Link href="/knowledge/time-series-analysis">ARIMA 式时间序列</Link>
+        页的工具——那一页对单条观测 到的序列建模；这一页则在数据流入时估计一个<em>隐藏状态</em>
+        。这一页从状态空间的想法出发，经由 预测-更新循环，抵达让它豁然开朗的直觉。它连到
+        <Link href="/knowledge/bayesian-statistics">贝叶斯 更新</Link>与
+        <Link href="/knowledge/streaming-analytics">流式分析</Link>。
       </p>
 
       <KSection id="why" eyebrow="01" title="隐藏的真实状态">
         <p>
-          核心的框架是<Term>状态空间模型</Term>，它干净地分开了我们通常混为一谈的两样东西：<em>世界的
-          真实状态</em>，与我们对它的<em>带噪一瞥</em>。有一个隐藏的<Term>状态</Term>——比方说一个物体
+          核心的框架是<Term>状态空间模型</Term>，它干净地分开了我们通常混为一谈的两样东西：
+          <em>世界的 真实状态</em>，与我们对它的<em>带噪一瞥</em>。有一个隐藏的<Term>状态</Term>
+          ——比方说一个物体
           真实的位置与速度——我们无法直接观测到它。它随时间按某种动态演化。我们得到的全部，是
           <Term>观测</Term>：那些等于真实状态、被噪声污染过的测量。
         </p>
@@ -354,11 +455,11 @@ function ZhBody() {
         </Formula>
         <p>
           这里 <TeX>{String.raw`F`}</TeX> 编码动态（状态如何移动——例如位置按速度更新），
-          <TeX>{String.raw`H`}</TeX> 把状态映射到测量，而两个噪声项 <TeX>{String.raw`\mathbf{w}_t`}</TeX>、
-          <TeX>{String.raw`\mathbf{v}_t`}</TeX> 是<em>过程</em>与<em>测量</em>的不确定性。整个滤波器的
-          任务，是在给定迄今所有带噪的 <TeX>{String.raw`\mathbf{z}`}</TeX> 的条件下估计{" "}
-          <TeX>{String.raw`\mathbf{x}_t`}</TeX>——而关键地，要追踪那个估计<em>有多不确定</em>，因为正是
-          那份不确定性驱动着整件事。
+          <TeX>{String.raw`H`}</TeX> 把状态映射到测量，而两个噪声项{" "}
+          <TeX>{String.raw`\mathbf{w}_t`}</TeX>、<TeX>{String.raw`\mathbf{v}_t`}</TeX> 是
+          <em>过程</em>与<em>测量</em>的不确定性。整个滤波器的 任务，是在给定迄今所有带噪的{" "}
+          <TeX>{String.raw`\mathbf{z}`}</TeX> 的条件下估计 <TeX>{String.raw`\mathbf{x}_t`}</TeX>
+          ——而关键地，要追踪那个估计<em>有多不确定</em>，因为正是 那份不确定性驱动着整件事。
         </p>
       </KSection>
 
@@ -376,8 +477,9 @@ function ZhBody() {
         />
         <ul>
           <li>
-            <Term>预测</Term>——用动态（<TeX>{String.raw`F`}</TeX>）把当前估计向前投射到下一个时间步。
-            估计移动，而——因为世界是不确定的——它的<em>不确定性增长</em>。这是滤波器在看到新数据
+            <Term>预测</Term>——用动态（<TeX>{String.raw`F`}</TeX>
+            ）把当前估计向前投射到下一个时间步。 估计移动，而——因为世界是不确定的——它的
+            <em>不确定性增长</em>。这是滤波器在看到新数据
             <em>之前</em>的最佳猜测。
           </li>
           <li>
@@ -393,38 +495,40 @@ function ZhBody() {
 
       <KSection id="gain" eyebrow="04" title="卡尔曼增益：信任谁">
         <p>
-          更新的核心是一个量：<Term>卡尔曼增益</Term> <TeX>{String.raw`K`}</TeX>。它决定<strong>把预测朝
-          新测量移动多少</strong>——也就是，相对于你自己的预测，要多信任那个测量。修正后的估计本质上是：
+          更新的核心是一个量：<Term>卡尔曼增益</Term> <TeX>{String.raw`K`}</TeX>。它决定
+          <strong>把预测朝 新测量移动多少</strong>
+          ——也就是，相对于你自己的预测，要多信任那个测量。修正后的估计本质上是：
         </p>
         <Formula label="The new estimate equals the prediction, plus the Kalman gain times the difference between the measurement and the prediction.">
           {String.raw`\hat{\mathbf{x}}_t = \hat{\mathbf{x}}_{t}^{-} + K\big(\mathbf{z}_t - H\hat{\mathbf{x}}_{t}^{-}\big)`}
         </Formula>
         <p>
-          那个括号——测量减去预测——是<Term>新息</Term>，那个惊讶。增益 <TeX>{String.raw`K`}</TeX> 缩放
-          你吸收多少惊讶，而它由相对的不确定性来设定：
+          那个括号——测量减去预测——是<Term>新息</Term>，那个惊讶。增益 <TeX>{String.raw`K`}</TeX>{" "}
+          缩放 你吸收多少惊讶，而它由相对的不确定性来设定：
         </p>
         <Callout type="intuition">
           <p>
-            如果你的<strong>测量很吵</strong>、但你的预测很有把握，增益就<em>小</em>——朝测量几乎不动，
-            信任模型。如果你的<strong>预测不确定</strong>、但测量很精确，增益就<em>大</em>——朝测量跳过去，
-            信任传感器。卡尔曼滤波，归根结底，是一个<strong>预测与测量的加权平均，按谁更可信来加权
-            </strong>——以最优的方式计算、每一步更新。那一个想法就是整个滤波器；矩阵代数不过是为了在许多
+            如果你的<strong>测量很吵</strong>、但你的预测很有把握，增益就<em>小</em>
+            ——朝测量几乎不动， 信任模型。如果你的<strong>预测不确定</strong>、但测量很精确，增益就
+            <em>大</em>——朝测量跳过去， 信任传感器。卡尔曼滤波，归根结底，是一个
+            <strong>预测与测量的加权平均，按谁更可信来加权</strong>
+            ——以最优的方式计算、每一步更新。那一个想法就是整个滤波器；矩阵代数不过是为了在许多
             维度上同时做这件事的记账。
           </p>
         </Callout>
       </KSection>
 
       <KSection id="uses" eyebrow="05" title="它用在哪里">
-        <p>
-          卡尔曼滤波是工程中部署得最多的算法之一——它真的帮助把阿波罗送上了月球。它的归宿：
-        </p>
+        <p>卡尔曼滤波是工程中部署得最多的算法之一——它真的帮助把阿波罗送上了月球。它的归宿：</p>
         <ul>
           <li>
-            <Term>跟踪与导航</Term>——从带噪的、断断续续的定位中，估计一个移动物体（飞机、导弹、你手机的
+            <Term>跟踪与导航</Term>
+            ——从带噪的、断断续续的定位中，估计一个移动物体（飞机、导弹、你手机的
             位置）的位置与速度。
           </li>
           <li>
-            <Term>传感器融合</Term>——把多个带噪传感器（GPS + 加速度计 + 陀螺仪）最优地<em>组合</em>成一个
+            <Term>传感器融合</Term>——把多个带噪传感器（GPS + 加速度计 + 陀螺仪）最优地<em>组合</em>
+            成一个
             连贯的估计，各自按其可靠度加权。这是它的杀手级应用——一部手机或一架无人机正是这样知道自己在
             哪里的。
           </li>
@@ -447,8 +551,8 @@ function ZhBody() {
           </li>
           <li>
             <Term>粒子滤波</Term>——彻底丢掉高斯假设，用一团加权的样本来表示状态的不确定性（把
-            <Link href="/knowledge/computational-statistics">蒙特卡洛</Link>的想法应用到滤波）。更灵活，
-            更昂贵。
+            <Link href="/knowledge/computational-statistics">蒙特卡洛</Link>
+            的想法应用到滤波）。更灵活， 更昂贵。
           </li>
         </ul>
         <p>
@@ -463,8 +567,9 @@ function ZhBody() {
           <p>
             每当有一个随时间演化的真实值、我只能透过带噪的测量看见它，而我想要一个干净的、被持续更新的
             估计时——实时跟踪、平滑一个抖动的运营信号、或把几个不完美的来源融成一个——卡尔曼滤波就是对的
-            工具。我从它带走的那个想法是最有用的部分：一个估计是<strong>你所预期的与你所观测的的加权
-            融合，按它们相对的不确定性加权</strong>——一个远远超出这个正式滤波器的原则。
+            工具。我从它带走的那个想法是最有用的部分：一个估计是
+            <strong>你所预期的与你所观测的的加权 融合，按它们相对的不确定性加权</strong>
+            ——一个远远超出这个正式滤波器的原则。
           </p>
           <p>
             它也把本板块各处的线索缝到一起：它是<strong>递归贝叶斯更新</strong>（每步一次
@@ -480,25 +585,28 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              一个<strong>状态空间模型</strong>把一个隐藏的<strong>真实状态</strong>（演化中）与带噪的
+              一个<strong>状态空间模型</strong>把一个隐藏的<strong>真实状态</strong>
+              （演化中）与带噪的
               <strong>观测</strong>分开。两个方程：状态转移（<TeX>{String.raw`F`}</TeX>）+ 观测（
               <TeX>{String.raw`H`}</TeX>）。
             </li>
             <li>
-              <strong>卡尔曼滤波</strong><em>递归地</em>估计隐藏状态——一遍过、极小内存——经由一个
+              <strong>卡尔曼滤波</strong>
+              <em>递归地</em>估计隐藏状态——一遍过、极小内存——经由一个
               <strong>预测 → 更新</strong>循环。
             </li>
             <li>
-              <strong>预测</strong>：把状态向前投射，不确定性增长。<strong>更新</strong>：一个测量到达，
-              朝它修正，不确定性缩小。
+              <strong>预测</strong>：把状态向前投射，不确定性增长。<strong>更新</strong>
+              ：一个测量到达， 朝它修正，不确定性缩小。
             </li>
             <li>
-              <strong>卡尔曼增益</strong>设定朝测量移动多远——一个预测与测量的加权平均，按相对的信任。
-              带噪的传感器 → 小增益；不确定的预测 → 大增益。
+              <strong>卡尔曼增益</strong>
+              设定朝测量移动多远——一个预测与测量的加权平均，按相对的信任。 带噪的传感器 →
+              小增益；不确定的预测 → 大增益。
             </li>
             <li>
-              用于<strong>跟踪、导航、传感器融合</strong>（GPS + IMU）、信号平滑。对<strong>线性-高斯
-              </strong>最优；EKF/UKF/粒子滤波放松这一点。
+              用于<strong>跟踪、导航、传感器融合</strong>（GPS + IMU）、信号平滑。对
+              <strong>线性-高斯</strong>最优；EKF/UKF/粒子滤波放松这一点。
             </li>
             <li>
               它是<strong>递归贝叶斯更新</strong>——每个测量一次贝叶斯。

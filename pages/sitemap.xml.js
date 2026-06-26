@@ -153,6 +153,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/kalman-filter", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/active-semi-supervised-learning", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/statistical-process-control", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/extreme-value-theory", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/hierarchical-models", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/optimisation-methods", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────

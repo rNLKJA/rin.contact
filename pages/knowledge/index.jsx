@@ -61,6 +61,9 @@ const TIERS = [
       { href: "/knowledge/causal-discovery", status: "live" },
       { href: "/knowledge/kalman-filter", status: "live" },
       { href: "/knowledge/active-semi-supervised-learning", status: "live" },
+      { href: "/knowledge/extreme-value-theory", status: "live" },
+      { href: "/knowledge/hierarchical-models", status: "live" },
+      { href: "/knowledge/optimisation-methods", status: "live" },
     ],
   },
   {
