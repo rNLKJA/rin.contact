@@ -1,33 +1,34 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 
-const SCORES = [
-  { label: "Optimism", value: 0.92 },
-  { label: "Genuine", value: 0.87 },
-  { label: "Corporate-speak", value: 0.15 },
-  { label: "Sarcasm", value: 0.23 },
-  { label: "Coffee mentions", value: 0.41 },
-];
+// scores are the data (kept); the bar labels are localised via
+// ds.sentiment.labels[i] (index-aligned).
+const SCORES = [0.92, 0.87, 0.15, 0.23, 0.41];
 
 export default function SentimentPage() {
+  const { t, locale = "en-AU" } = useI18n();
+  const labels = t("ds.sentiment.labels") || [];
+
   return (
     <>
       <Head>
-        <title>NLP Sentiment — rin.contact</title>
-        <meta name="description" content="NLP analysis of Rin." />
+        <title>{t("ds.sentiment.metaTitle")}</title>
+        <meta name="description" content={t("ds.sentiment.metaDescription")} />
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/sentiment" />
       </Head>
       <SeoHead
-        title="NLP Sentiment — rin.contact"
-        description="NLP analysis of Rin."
+        title={t("ds.sentiment.metaTitle")}
+        description={t("ds.sentiment.metaDescription")}
         path="/ds/sentiment"
         ogImage={{
-          title: "NLP Sentiment",
-          subtitle: "NLP analysis of Rin.",
+          title: t("ds.sentiment.ogTitle"),
+          subtitle: t("ds.sentiment.ogSubtitle"),
           section: "ds",
         }}
+        locale={locale}
         noindex
       />
 
@@ -37,18 +38,15 @@ export default function SentimentPage() {
             /ds/sentiment
           </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-            NLP Sentiment Analysis
+            {t("ds.sentiment.heading")}
           </h1>
-          <p className="text-sm text-[#7A7A7A] mb-10">
-            Analysing Rin&apos;s writing. Detected: 0.92 optimism, 0.15 corporate-speak, 0.87
-            genuine.
-          </p>
+          <p className="text-sm text-[#7A7A7A] mb-10">{t("ds.sentiment.subtitle")}</p>
 
           <div className="space-y-3">
-            {SCORES.map(({ label, value }) => (
-              <div key={label} className="flex items-center gap-4">
+            {SCORES.map((value, i) => (
+              <div key={i} className="flex items-center gap-4">
                 <span className="font-mono text-sm text-[#1A1A1A] dark:text-white w-32">
-                  {label}
+                  {labels[i]}
                 </span>
                 <div className="flex-1 h-4 bg-[#F5F5F5] dark:bg-[#141414]">
                   <div className="h-full bg-[#FF3C3C]" style={{ width: `${value * 100}%` }} />
@@ -58,9 +56,7 @@ export default function SentimentPage() {
             ))}
           </div>
 
-          <p className="text-[9px] text-[#AAAAAA] mt-8 font-mono">
-            * Fake NLP. Real sentiment: hire me.
-          </p>
+          <p className="text-[9px] text-[#AAAAAA] mt-8 font-mono">{t("ds.sentiment.footnote")}</p>
 
           <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
             <Link
@@ -73,7 +69,7 @@ export default function SentimentPage() {
               href="/"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
-              Home
+              {t("nav.home")}
             </Link>
           </div>
         </div>

@@ -1607,6 +1607,16 @@
         "Pandas 文档",
         "Stack Overflow"
       ]
+    },
+    "sentiment": {
+      "metaTitle": "NLP 情感分析 — rin.contact",
+      "metaDescription": "对 Rin 的 NLP 分析。",
+      "ogTitle": "NLP 情感分析",
+      "ogSubtitle": "对 Rin 的 NLP 分析。",
+      "heading": "NLP 情感分析",
+      "subtitle": "正在分析 Rin 的写作。检测到：0.92 乐观、0.15 企业腔、0.87 真诚。",
+      "labels": ["乐观", "真诚", "企业腔", "讽刺", "提及咖啡"],
+      "footnote": "* 假的 NLP。真实情感：雇我。"
     }
   }
 }

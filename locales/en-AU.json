@@ -1930,6 +1930,16 @@
         "Pandas documentation",
         "Stack Overflow"
       ]
+    },
+    "sentiment": {
+      "metaTitle": "NLP Sentiment — rin.contact",
+      "metaDescription": "NLP analysis of Rin.",
+      "ogTitle": "NLP Sentiment",
+      "ogSubtitle": "NLP analysis of Rin.",
+      "heading": "NLP Sentiment Analysis",
+      "subtitle": "Analysing Rin's writing. Detected: 0.92 optimism, 0.15 corporate-speak, 0.87 genuine.",
+      "labels": ["Optimism", "Genuine", "Corporate-speak", "Sarcasm", "Coffee mentions"],
+      "footnote": "* Fake NLP. Real sentiment: hire me."
     }
   }
 }
