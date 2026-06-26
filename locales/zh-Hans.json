@@ -1531,6 +1531,25 @@
       "boxConclusion": "结论：雇用 Rin。",
       "footnote": "* 统计显著性并不意味着因果关系。但它确实意味着可雇用性。",
       "hireCta": "雇用我 →"
+    },
+    "overfitting": {
+      "metaTitle": "过拟合检测器 — rin.contact",
+      "metaDescription": "CV 流行词检测器。",
+      "ogTitle": "过拟合检测器",
+      "ogSubtitle": "CV 流行词检测器。",
+      "heading": "过拟合检测器",
+      "subtitle": "扫描你的简历。报告流行词密度与泛化能力。",
+      "rows": [
+        { "label": "每平方英寸的流行词", "value": "低 ✓" },
+        { "label": "检测到过拟合", "value": "否" },
+        {
+          "label": "检测到欠拟合",
+          "value": "也许——你把自己卖低了",
+          "accent": true
+        }
+      ],
+      "footnote": "建议：添加更多具体的指标。「主导了 3 个项目」 > 「主导了项目」。",
+      "resumeCta": "简历"
     }
   }
 }

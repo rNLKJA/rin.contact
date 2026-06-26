@@ -1854,6 +1854,25 @@
       "boxConclusion": "Conclusion: Hire Rin.",
       "footnote": "* Statistical significance does not imply causation. But it does imply employability.",
       "hireCta": "Hire Me →"
+    },
+    "overfitting": {
+      "metaTitle": "Overfitting Detector — rin.contact",
+      "metaDescription": "CV buzzword detector.",
+      "ogTitle": "Overfitting Detector",
+      "ogSubtitle": "CV buzzword detector.",
+      "heading": "Overfitting Detector",
+      "subtitle": "Scans your CV. Reports buzzword density and generalisation.",
+      "rows": [
+        { "label": "Buzzwords per square inch", "value": "Low ✓" },
+        { "label": "Overfitting detected", "value": "No" },
+        {
+          "label": "Underfitting detected",
+          "value": "Maybe — you're underselling yourself",
+          "accent": true
+        }
+      ],
+      "footnote": "Recommendation: Add more specific metrics. \"Led 3 projects\" > \"Led projects\".",
+      "resumeCta": "Resume"
     }
   }
 }
