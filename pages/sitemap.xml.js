@@ -186,7 +186,6 @@ const INFO = [
 const NOT_ZH_KNOWLEDGE = new Set([
   "/knowledge/robust-statistics",
   "/knowledge/statistical-process-control",
-  "/knowledge/recommender-systems",
   "/knowledge/spatial-statistics",
   "/knowledge/streaming-analytics",
   "/knowledge/survival-analysis",
