@@ -1796,6 +1796,20 @@
       "types": ["Analyst", "Engineer", "Researcher", "Mentor", "Coffee consumer"],
       "finalLabel": "Final prediction:",
       "finalNote": "Weighted average of all components. No single model dominates."
+    },
+    "biasVariance": {
+      "metaTitle": "Bias-Variance Tradeoff — rin.contact",
+      "metaDescription": "Rin Huang: low bias, moderate variance.",
+      "ogTitle": "Bias-Variance Tradeoff",
+      "ogSubtitle": "Rin Huang: low bias, moderate variance.",
+      "heading": "Bias–Variance Tradeoff",
+      "subtitle": "Every model has a tradeoff. Rin: low bias (generalist), moderate variance (many domains).",
+      "biasLabel": "Bias: Low",
+      "biasText": "Generalist by nature. Doesn't assume one domain. Fits many problem types.",
+      "varianceLabel": "Variance: Moderate",
+      "varianceText": "Government, research, biotech, startups. Predictions vary by context.",
+      "optimalLabel": "Optimal for",
+      "optimalText": "Startups, government, research, cross-functional teams. High-stakes analytics."
     }
   }
 }

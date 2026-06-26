@@ -1473,6 +1473,20 @@
       "types": ["分析师", "工程师", "研究员", "导师", "咖啡消费者"],
       "finalLabel": "最终预测：",
       "finalNote": "所有组件的加权平均。没有单一模型占据主导。"
+    },
+    "biasVariance": {
+      "metaTitle": "偏差-方差权衡 — rin.contact",
+      "metaDescription": "Rin Huang：低偏差，中等方差。",
+      "ogTitle": "偏差-方差权衡",
+      "ogSubtitle": "Rin Huang：低偏差，中等方差。",
+      "heading": "偏差–方差权衡",
+      "subtitle": "每个模型都有一个权衡。Rin：低偏差（通才），中等方差（涉足多个领域）。",
+      "biasLabel": "偏差：低",
+      "biasText": "天生的通才。不预设单一领域。能拟合许多类型的问题。",
+      "varianceLabel": "方差：中等",
+      "varianceText": "政府、研究、生物科技、初创公司。预测随情境而变。",
+      "optimalLabel": "最适合",
+      "optimalText": "初创公司、政府、研究、跨职能团队。高风险分析。"
     }
   }
 }
