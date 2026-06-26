@@ -59,6 +59,8 @@ const TIERS = [
       { href: "/knowledge/spatial-statistics", status: "live" },
       { href: "/knowledge/conformal-prediction", status: "live" },
       { href: "/knowledge/causal-discovery", status: "live" },
+      { href: "/knowledge/kalman-filter", status: "live" },
+      { href: "/knowledge/active-semi-supervised-learning", status: "live" },
     ],
   },
   {
@@ -78,6 +80,7 @@ const TIERS = [
       { href: "/knowledge/knowledge-graphs", status: "live" },
       { href: "/knowledge/streaming-analytics", status: "live" },
       { href: "/knowledge/data-architecture", status: "live" },
+      { href: "/knowledge/statistical-process-control", status: "live" },
     ],
   },
   {

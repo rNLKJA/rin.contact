@@ -150,6 +150,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/conformal-prediction", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/causal-discovery", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/data-architecture", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/kalman-filter", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/active-semi-supervised-learning", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/statistical-process-control", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────

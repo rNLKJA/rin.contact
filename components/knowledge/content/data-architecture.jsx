@@ -22,15 +22,55 @@ function DataStackFigure({ caption, ariaLabel, stages }) {
           const hot = i === 2; // warehouse / lakehouse
           return (
             <g key={i}>
-              <rect x={x} y="26" width="78" height="30" rx="4" fill="none" stroke={hot ? "#FF3C3C" : "currentColor"} strokeWidth={hot ? "1.5" : "1.2"} />
-              <text x={x + 39} y="44" textAnchor="middle" fontSize="9" fontFamily="monospace" fill={hot ? "#FF3C3C" : "currentColor"}>{t}</text>
-              <text x={x + 39} y="72" textAnchor="middle" fontSize="7" fontFamily="monospace" fill="currentColor" opacity="0.6">{sub}</text>
-              {i < 4 && <line x1={x + 78} y1="41" x2={x + 98} y2="41" stroke="currentColor" strokeWidth="1.1" markerEnd="url(#daah)" />}
+              <rect
+                x={x}
+                y="26"
+                width="78"
+                height="30"
+                rx="4"
+                fill="none"
+                stroke={hot ? "#FF3C3C" : "currentColor"}
+                strokeWidth={hot ? "1.5" : "1.2"}
+              />
+              <text
+                x={x + 39}
+                y="44"
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill={hot ? "#FF3C3C" : "currentColor"}
+              >
+                {t}
+              </text>
+              <text
+                x={x + 39}
+                y="72"
+                textAnchor="middle"
+                fontSize="7"
+                fontFamily="monospace"
+                fill="currentColor"
+                opacity="0.6"
+              >
+                {sub}
+              </text>
+              {i < 4 && (
+                <line
+                  x1={x + 78}
+                  y1="41"
+                  x2={x + 98}
+                  y2="41"
+                  stroke="currentColor"
+                  strokeWidth="1.1"
+                  markerEnd="url(#daah)"
+                />
+              )}
             </g>
           );
         })}
         <defs>
-          <marker id="daah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
+          <marker id="daah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -283,45 +323,52 @@ function ZhBody() {
   return (
     <>
       <p>
-        每一次分析都搁在一个大多数人从未看见的问题之上：<em>数据住在哪里，它又是怎么到那儿的？</em>在
-        <em>创建</em>数据的系统（一个应用、一个传感器、一张表单）与<em>使用</em>它的分析师之间，坐着
+        每一次分析都搁在一个大多数人从未看见的问题之上：<em>数据住在哪里，它又是怎么到那儿的？</em>
+        在<em>创建</em>数据的系统（一个应用、一个传感器、一张表单）与<em>使用</em>
+        它的分析师之间，坐着
         一整套架构——存储、管道、转换——而在那里做出的选择，悄悄地决定了什么是可能的、数据有多新鲜、
-        以及一名分析师能多信任它。<Term>数据架构</Term>是那条流的设计，而<Term>现代数据栈</Term>是如今
-        标准的、基于云的构建方式。
+        以及一名分析师能多信任它。<Term>数据架构</Term>是那条流的设计，而<Term>现代数据栈</Term>
+        是如今 标准的、基于云的构建方式。
       </p>
       <p>
         即便你从不亲手搭一套，也值得了解它，因为理解数据如何被存储和供给，正是让你能明智地与之打交道的
         东西——并看出何时是架构、而非你的分析，才是问题所在。这一页是那片实用的地景：存储的选项、那次
-        伟大的 ETL→ELT 转变，以及现代数据栈的各个组件。它建立在<Link href="/knowledge/database-systems">数据库系统</Link>页之上。
+        伟大的 ETL→ELT 转变，以及现代数据栈的各个组件。它建立在
+        <Link href="/knowledge/database-systems">数据库系统</Link>页之上。
       </p>
 
       <KSection id="why" eyebrow="01" title="数据住在哪里、如何流动">
         <p>
-          把它想成一段有阶段的旅程：数据在源系统里被<strong>创建</strong>，然后被<strong>摄取</strong>进
-          中央存储，被<strong>转换</strong>成干净、可用的形状，最后被<strong>供给</strong>给仪表板、模型
-          与分析师。每一个数据平台都是这四个阶段的某种安排，而有趣的决定在于存储与转换<em>在哪里</em>
+          把它想成一段有阶段的旅程：数据在源系统里被<strong>创建</strong>，然后被
+          <strong>摄取</strong>进 中央存储，被<strong>转换</strong>成干净、可用的形状，最后被
+          <strong>供给</strong>给仪表板、模型
+          与分析师。每一个数据平台都是这四个阶段的某种安排，而有趣的决定在于存储与转换
+          <em>在哪里</em>
           发生——而这恰恰是过去十年里发生了剧变的地方。
         </p>
       </KSection>
 
       <KSection id="oltpolap" eyebrow="02" title="两份工作：OLTP 对 OLAP">
         <p>
-          那个基础性的划分，来自<Link href="/knowledge/database-systems">数据库</Link>页：数据库做两份
-          非常不同的工作，而你不会想把它们混在一起。
+          那个基础性的划分，来自<Link href="/knowledge/database-systems">数据库</Link>
+          页：数据库做两份 非常不同的工作，而你不会想把它们混在一起。
         </p>
         <ul>
           <li>
-            <Term>OLTP</Term>（事务型）——<em>运行</em>业务的那些运营数据库：快速、微小的读与写（「记录
+            <Term>OLTP</Term>（事务型）——<em>运行</em>
+            业务的那些运营数据库：快速、微小的读与写（「记录
             这笔销售」「更新这个账户」）。为许多小操作而优化。
           </li>
           <li>
-            <Term>OLAP</Term>（分析型）——为<em>分析</em>而建的系统：扫描并聚合巨量数据（「今年各地区的
+            <Term>OLAP</Term>（分析型）——为<em>分析</em>
+            而建的系统：扫描并聚合巨量数据（「今年各地区的
             总销售额」）。为大问题、而非小更新而优化。
           </li>
         </ul>
         <p>
-          在活的事务数据库上跑沉重的分析，会拖垮应用，所以一套分析架构的全部要点，就是<strong>把数据从
-          运营系统里搬出来、搬进一个为分析而建的地方</strong>。那个地方就是仓库——或者湖，或者湖仓。
+          在活的事务数据库上跑沉重的分析，会拖垮应用，所以一套分析架构的全部要点，就是
+          <strong>把数据从 运营系统里搬出来、搬进一个为分析而建的地方</strong>
+          。那个地方就是仓库——或者湖，或者湖仓。
         </p>
       </KSection>
 
@@ -329,13 +376,14 @@ function ZhBody() {
         <p>三大存储范式，以及从一个到下一个的弧线：</p>
         <ul>
           <li>
-            <Term>数据仓库</Term>——把<em>结构化的</em>、清洗过的数据存进一个定义好的模式里（<em>写时
-            模式</em>：在存之前先把它塑形）。对快速、可靠的
-            <Link href="/knowledge/business-intelligence-dashboards"> BI</Link> 与 SQL 极好——但僵硬，
-            且不适合原始或非结构化数据。
+            <Term>数据仓库</Term>——把<em>结构化的</em>、清洗过的数据存进一个定义好的模式里（
+            <em>写时 模式</em>：在存之前先把它塑形）。对快速、可靠的
+            <Link href="/knowledge/business-intelligence-dashboards"> BI</Link> 与 SQL
+            极好——但僵硬， 且不适合原始或非结构化数据。
           </li>
           <li>
-            <Term>数据湖</Term>——把<em>一切</em>都存下来，原始的、任何格式的（<em>读时模式</em>：先存，
+            <Term>数据湖</Term>——把<em>一切</em>都存下来，原始的、任何格式的（<em>读时模式</em>
+            ：先存，
             查询时再施加结构）。便宜又灵活——但很容易变成一个「数据沼泽」：无治理、无文档、难以信任。
           </li>
           <li>
@@ -347,9 +395,9 @@ function ZhBody() {
         <Callout type="intuition">
           <p>
             把它们分开最简单的方式：<strong>仓库</strong>是一座整洁的图书馆（编了目、有结构、容易找
-            东西，但你必须先编目才能上架）；<strong>湖</strong>是一片巨大的仓库地面（什么都往里倒，回头
-            再理——也冒着一团乱的风险）；<strong>湖仓</strong>试图成为一片巨大的地面、<em>带着</em>一份
-            好的编目。
+            东西，但你必须先编目才能上架）；<strong>湖</strong>
+            是一片巨大的仓库地面（什么都往里倒，回头 再理——也冒着一团乱的风险）；
+            <strong>湖仓</strong>试图成为一片巨大的地面、<em>带着</em>一份 好的编目。
           </p>
         </Callout>
       </KSection>
@@ -357,12 +405,15 @@ function ZhBody() {
       <KSection id="eltl" eyebrow="04" title="ETL 对 ELT：改变了一切的那次转变">
         <p>
           最大的实际变化之一，是两个字母的顺序。经典的做法是 <Term>ETL</Term>——抽取（Extract）、
-          <strong>转换</strong>（Transform）、加载（Load）：把数据拉出来，在把它加载进仓库<em>之前</em>
+          <strong>转换</strong>（Transform）、加载（Load）：把数据拉出来，在把它加载进仓库
+          <em>之前</em>
           清洗并重塑它。你不得不如此，因为仓库的存储与算力稀缺而昂贵。
         </p>
         <p>
-          廉价、可扩展的云存储把这个翻转成了 <Term>ELT</Term>——抽取、加载、<strong>转换</strong>：先把
-          <em>原始</em>数据加载进仓库，再用仓库（如今充裕的）算力<em>在仓库内部</em>转换它。好处是实打
+          廉价、可扩展的云存储把这个翻转成了 <Term>ELT</Term>——抽取、加载、<strong>转换</strong>
+          ：先把
+          <em>原始</em>数据加载进仓库，再用仓库（如今充裕的）算力<em>在仓库内部</em>
+          转换它。好处是实打
           实的：你保留了原始数据（所以需求变化时你能在之后重新转换它）、转换是受版本控制的 SQL 而非
           不透明的管道，而且更快、更灵活。这单单一次重新排序，就是让现代数据栈成为可能的东西。
         </p>
@@ -385,11 +436,13 @@ function ZhBody() {
           ]}
         />
         <p>
-          转换层值得有个名字：<Term>dbt</Term>（data build tool）成了行业标准，因为它让分析师把转换写成
-          <em>受版本控制的、经过测试的、模块化的 SQL</em>——把<Link href="/knowledge/reproducibility">
-          软件工程纪律</Link>带到了数据建模上。一个<Link href="/knowledge/reproducibility">编排器</Link>
-          调度并串起整条流，而<Link href="/knowledge/business-intelligence-dashboards">BI 工具</Link>坐在
-          上面做仪表板。
+          转换层值得有个名字：<Term>dbt</Term>（data build
+          tool）成了行业标准，因为它让分析师把转换写成
+          <em>受版本控制的、经过测试的、模块化的 SQL</em>——把
+          <Link href="/knowledge/reproducibility">软件工程纪律</Link>带到了数据建模上。一个
+          <Link href="/knowledge/reproducibility">编排器</Link>
+          调度并串起整条流，而
+          <Link href="/knowledge/business-intelligence-dashboards">BI 工具</Link>坐在 上面做仪表板。
         </p>
       </KSection>
 
@@ -402,7 +455,8 @@ function ZhBody() {
             <Term>青铜</Term>——原始的、按摄取原样的数据，未经触碰（你对到达之物的忠实记录）。
           </li>
           <li>
-            <Term>白银</Term>——清洗过、验证过、规整过的（那个<Link href="/knowledge/feature-engineering">数据准备</Link>层级——去重、定类型、连接）。
+            <Term>白银</Term>——清洗过、验证过、规整过的（那个
+            <Link href="/knowledge/feature-engineering">数据准备</Link>层级——去重、定类型、连接）。
           </li>
           <li>
             <Term>黄金</Term>——业务层面的聚合与特征，分析就绪（仪表板与模型实际消费的）。
@@ -410,16 +464,17 @@ function ZhBody() {
         </ul>
         <p>
           这是一种干净的、逐级的精炼——每一层都改善质量与结构——而保留原始的青铜层本身就是一项
-          <Link href="/knowledge/reproducibility">可复现性</Link>的胜利：你总能从原初的真相重建白银与
-          黄金。
+          <Link href="/knowledge/reproducibility">可复现性</Link>
+          的胜利：你总能从原初的真相重建白银与 黄金。
         </p>
       </KSection>
 
       <KSection id="mesh" eyebrow="07" title="集中式对数据网格">
         <p>
           最后一个组织层面的问题：该不该由一个中央数据团队拥有一切？传统模型是集中式的——一个团队、一个
-          仓库、一个可信来源——这易于治理，但随着机构成长可能变成一个瓶颈。<Term>数据网格</Term>是相反的
-          想法：<strong>去中心化</strong>所有权，让每个领域团队把自己的数据<em>当作一件产品</em>来拥有，
+          仓库、一个可信来源——这易于治理，但随着机构成长可能变成一个瓶颈。<Term>数据网格</Term>
+          是相反的 想法：<strong>去中心化</strong>所有权，让每个领域团队把自己的数据
+          <em>当作一件产品</em>来拥有，
           治理则以联邦的方式处理。它更像是一种组织哲学，而非一项技术，并且它更适合大型、复杂的机构，而非
           小型的——是中央控制与领域自治之间的一个权衡，而非一次普适的升级。
         </p>
@@ -428,15 +483,17 @@ function ZhBody() {
       <KSection id="applied" eyebrow="08" title="它在我工作中的体现">
         <Callout type="applied" label="知道数据从哪里来">
           <p>
-            作为一名分析师，我通常是这套架构的<em>消费者</em>，而非它的建造者——但理解它，改变了我能把
-            工作做得多好。知道数据是住在<strong>仓库还是湖</strong>里、它是经过了<strong>白银/黄金
-            </strong>清洗、还是原始的<strong>青铜</strong>，以及管道把它保持得多新鲜，告诉我能多信任一张
+            作为一名分析师，我通常是这套架构的<em>消费者</em>
+            ，而非它的建造者——但理解它，改变了我能把 工作做得多好。知道数据是住在
+            <strong>仓库还是湖</strong>里、它是经过了<strong>白银/黄金</strong>清洗、还是原始的
+            <strong>青铜</strong>，以及管道把它保持得多新鲜，告诉我能多信任一张
             表、以及一个问题大概源自哪里——往往是架构，而非我的查询。
           </p>
           <p>
-            <strong>ELT</strong> 的转变也很要紧：原始数据被保留、转换是受版本控制的 SQL（dbt），分析层
-            于是变成某种我能读、能信、能追溯的东西——把同样的<Link href="/knowledge/reproducibility">可
-            复现性</Link>与<Link href="/knowledge/data-governance">血缘</Link>纪律，应用到数据住在哪里
+            <strong>ELT</strong> 的转变也很要紧：原始数据被保留、转换是受版本控制的
+            SQL（dbt），分析层 于是变成某种我能读、能信、能追溯的东西——把同样的
+            <Link href="/knowledge/reproducibility">可 复现性</Link>与
+            <Link href="/knowledge/data-governance">血缘</Link>纪律，应用到数据住在哪里
             这件事上。它连到<Link href="/knowledge/database-systems">数据库系统</Link>（地基）、
             <Link href="/knowledge/business-intelligence-dashboards">BI</Link>（供给层），以及
             <Link href="/knowledge/streaming-analytics">流式分析</Link>（实时路径）。
@@ -452,29 +509,30 @@ function ZhBody() {
               <strong>OLTP</strong> 系统挪到一个 <strong>OLAP</strong> 系统上。
             </li>
             <li>
-              存储：<strong>仓库</strong>（结构化、写时模式）对<strong>湖</strong>（原始、读时模式、有
-              沼泽风险）对<strong>湖仓</strong>（现代的融合）。
+              存储：<strong>仓库</strong>（结构化、写时模式）对<strong>湖</strong>
+              （原始、读时模式、有 沼泽风险）对<strong>湖仓</strong>（现代的融合）。
             </li>
             <li>
               <strong>ETL → ELT</strong>：廉价的云算力把它翻转了——先加载原始，在仓库里转换。保留原始
               数据，让转换成为受版本控制的 SQL。
             </li>
             <li>
-              <strong>现代数据栈</strong>：摄取 → 云仓库 → <strong>dbt</strong>（经测试的、模块化的 SQL
-              转换）→ BI/ML，带一个编排器。
+              <strong>现代数据栈</strong>：摄取 → 云仓库 → <strong>dbt</strong>（经测试的、模块化的
+              SQL 转换）→ BI/ML，带一个编排器。
             </li>
             <li>
-              <strong>奖牌架构</strong>：青铜（原始）→ 白银（清洗）→ 黄金（分析就绪）。保留青铜是一项可
-              复现性的胜利。
+              <strong>奖牌架构</strong>：青铜（原始）→ 白银（清洗）→
+              黄金（分析就绪）。保留青铜是一项可 复现性的胜利。
             </li>
             <li>
-              <strong>集中式</strong>（一个团队/仓库）对<strong>数据网格</strong>（去中心化的领域所有
-              权）——一个组织上的权衡，而非普适的升级。
+              <strong>集中式</strong>（一个团队/仓库）对<strong>数据网格</strong>
+              （去中心化的领域所有 权）——一个组织上的权衡，而非普适的升级。
             </li>
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          仓库/湖/湖仓的弧线、ETL→ELT 的转变、现代数据栈（dbt）的组件，以及奖牌架构与数据网格的模式，
+          仓库/湖/湖仓的弧线、ETL→ELT
+          的转变、现代数据栈（dbt）的组件，以及奖牌架构与数据网格的模式，
           反映了当前的数据架构参考文献以及亲身的工作。
         </p>
       </KSection>

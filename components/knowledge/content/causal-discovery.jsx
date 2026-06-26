@@ -37,31 +37,111 @@ function MarkovEquivFigure({ caption, ariaLabel, subs, detectableLabel }) {
             {nodes.map(([t, x], i) => (
               <g key={i}>
                 <circle cx={x} cy="50" r="14" fill="none" stroke="currentColor" strokeWidth="1.3" />
-                <text x={x} y="54" textAnchor="middle" fontSize="10" fill="currentColor">{t}</text>
+                <text x={x} y="54" textAnchor="middle" fontSize="10" fill="currentColor">
+                  {t}
+                </text>
               </g>
             ))}
-            <text x={nodes[1][1]} y="92" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">{subs[gi]}</text>
+            <text
+              x={nodes[1][1]}
+              y="92"
+              textAnchor="middle"
+              fontSize="8"
+              fontFamily="monospace"
+              fill="currentColor"
+              opacity="0.6"
+            >
+              {subs[gi]}
+            </text>
           </g>
         ))}
         {/* arrows chain A→C→B */}
-        <line x1="34" y1="50" x2="46" y2="50" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#cdah)" />
-        <line x1="74" y1="50" x2="86" y2="50" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#cdah)" />
+        <line
+          x1="34"
+          y1="50"
+          x2="46"
+          y2="50"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#cdah)"
+        />
+        <line
+          x1="74"
+          y1="50"
+          x2="86"
+          y2="50"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#cdah)"
+        />
         {/* arrows common cause A←C→B (from C out) */}
-        <line x1="201" y1="50" x2="189" y2="50" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#cdah)" />
-        <line x1="229" y1="50" x2="241" y2="50" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#cdah)" />
+        <line
+          x1="201"
+          y1="50"
+          x2="189"
+          y2="50"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#cdah)"
+        />
+        <line
+          x1="229"
+          y1="50"
+          x2="241"
+          y2="50"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          markerEnd="url(#cdah)"
+        />
         {/* collider — detectable */}
-        <text x="370" y="30" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{detectableLabel}</text>
+        <text x="370" y="30" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {detectableLabel}
+        </text>
         <circle cx="340" cy="55" r="13" fill="none" stroke="#FF3C3C" strokeWidth="1.2" />
-        <text x="340" y="59" textAnchor="middle" fontSize="9" fill="currentColor">A</text>
-        <circle cx="375" cy="80" r="13" fill="#FF3C3C" opacity="0.25" stroke="#FF3C3C" strokeWidth="1.2" />
-        <text x="375" y="84" textAnchor="middle" fontSize="9" fill="currentColor">C</text>
+        <text x="340" y="59" textAnchor="middle" fontSize="9" fill="currentColor">
+          A
+        </text>
+        <circle
+          cx="375"
+          cy="80"
+          r="13"
+          fill="#FF3C3C"
+          opacity="0.25"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+        />
+        <text x="375" y="84" textAnchor="middle" fontSize="9" fill="currentColor">
+          C
+        </text>
         <circle cx="410" cy="55" r="13" fill="none" stroke="#FF3C3C" strokeWidth="1.2" />
-        <text x="410" y="59" textAnchor="middle" fontSize="9" fill="currentColor">B</text>
-        <line x1="348" y1="65" x2="366" y2="72" stroke="#FF3C3C" strokeWidth="1.1" markerEnd="url(#cdahr)" />
-        <line x1="402" y1="65" x2="384" y2="72" stroke="#FF3C3C" strokeWidth="1.1" markerEnd="url(#cdahr)" />
+        <text x="410" y="59" textAnchor="middle" fontSize="9" fill="currentColor">
+          B
+        </text>
+        <line
+          x1="348"
+          y1="65"
+          x2="366"
+          y2="72"
+          stroke="#FF3C3C"
+          strokeWidth="1.1"
+          markerEnd="url(#cdahr)"
+        />
+        <line
+          x1="402"
+          y1="65"
+          x2="384"
+          y2="72"
+          stroke="#FF3C3C"
+          strokeWidth="1.1"
+          markerEnd="url(#cdahr)"
+        />
         <defs>
-          <marker id="cdah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
-          <marker id="cdahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" /></marker>
+          <marker id="cdah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
+          <marker id="cdahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -124,7 +204,11 @@ function EnBody() {
         </p>
       </KSection>
 
-      <KSection id="equivalence" eyebrow="03" title="Markov equivalence: the limit of what's knowable">
+      <KSection
+        id="equivalence"
+        eyebrow="03"
+        title="Markov equivalence: the limit of what's knowable"
+      >
         <p>
           Here's the deep result that bounds the whole enterprise: several different DAGs can imply{" "}
           <em>exactly the same</em> set of conditional independencies. They're statistically
@@ -301,16 +385,17 @@ function ZhBody() {
       </p>
       <p>
         这是一个大胆的目标，正撞上那句著名的警告——相关不是因果——而诚实的答案是「部分地、在假设之下、
-        永不完全」。这一页讲它为什么这么难、你真正<em>能</em>恢复什么、两大算法家族，以及为什么结果是
-        一组有待检验的假设，而非一个完成了的真相。
+        永不完全」。这一页讲它为什么这么难、你真正<em>能</em>
+        恢复什么、两大算法家族，以及为什么结果是 一组有待检验的假设，而非一个完成了的真相。
       </p>
 
       <KSection id="why" eyebrow="01" title="从数据中找出那些箭头">
         <p>
-          前景是巨大的：实验（<Link href="/knowledge/causal-inference">随机对照试验 RCT</Link>）是因果的
-          黄金标准，但它们往往不可能、不道德、或昂贵。我们手里有的，反倒是堆积如山的<em>观测</em>数据。
-          因果发现问的是，那些数据能否揭示的不只是变量一起变动这一事实，而是影响的<em>方向</em>——箭头
-          指向哪一边。
+          前景是巨大的：实验（<Link href="/knowledge/causal-inference">随机对照试验 RCT</Link>
+          ）是因果的 黄金标准，但它们往往不可能、不道德、或昂贵。我们手里有的，反倒是堆积如山的
+          <em>观测</em>数据。
+          因果发现问的是，那些数据能否揭示的不只是变量一起变动这一事实，而是影响的<em>方向</em>
+          ——箭头 指向哪一边。
         </p>
         <p>
           哪怕它只是部分地奏效，它也是一种从我们已有的数据中、大规模生成因果假设的方式。难处在于，我们
@@ -325,17 +410,20 @@ function ZhBody() {
           同时导致两者，数据看起来都一模一样。单纯的相关根本分不清它们——它们产出相同的数字。
         </p>
         <p>
-          所以因果发现必须找到额外的杠杆，而它的主要来源是<Term>条件独立</Term>。关键的洞见是：不同的
-          因果结构，会在「一旦你控制住其他变量、哪些变量变得独立」这一模式里，留下不同的<em>指纹</em>。
-          一个<Link href="/knowledge/causal-inference">对撞因子</Link>（A → C ← B），在条件化之下的表现
-          与一条链（A → C → B）不同——而那些差异，跨许多变量小心地读出来，让你能恢复<em>一部分</em>结构。
+          所以因果发现必须找到额外的杠杆，而它的主要来源是<Term>条件独立</Term>
+          。关键的洞见是：不同的
+          因果结构，会在「一旦你控制住其他变量、哪些变量变得独立」这一模式里，留下不同的
+          <em>指纹</em>。 一个<Link href="/knowledge/causal-inference">对撞因子</Link>（A → C ←
+          B），在条件化之下的表现 与一条链（A → C →
+          B）不同——而那些差异，跨许多变量小心地读出来，让你能恢复<em>一部分</em>结构。
           但，关键地，不是全部。
         </p>
       </KSection>
 
       <KSection id="equivalence" eyebrow="03" title="马尔可夫等价：可知之物的极限">
         <p>
-          这是约束整个事业的那个深刻结果：几个不同的 DAG，可以蕴含<em>完全相同</em>的一组条件独立性。从
+          这是约束整个事业的那个深刻结果：几个不同的 DAG，可以蕴含<em>完全相同</em>
+          的一组条件独立性。从
           观测数据上看，它们在统计上无法区分——没有任何检验能把它们分开，因为它们对每一个相关与独立都
           做出相同的预测。这一组就是一个<Term>马尔可夫等价类</Term>。
         </p>
@@ -346,8 +434,9 @@ function ZhBody() {
           detectableLabel="A→C←B（可检测）"
         />
         <p>
-          所以观测性因果发现诚实的产出，通常不是单个 DAG，而是一个 <Term>CPDAG</Term>——一个部分有向的
-          图，其中一些边有确定的方向（数据<em>能</em>确定的那些，比如对撞因子），另一些则保持无向（它不能
+          所以观测性因果发现诚实的产出，通常不是单个 DAG，而是一个 <Term>CPDAG</Term>
+          ——一个部分有向的 图，其中一些边有确定的方向（数据<em>能</em>
+          确定的那些，比如对撞因子），另一些则保持无向（它不能
           确定的那些）。它告诉你什么是可知的，并对什么是不可知的保持诚实，而这对这个问题正是恰当的那种
           谦逊。
         </p>
@@ -356,8 +445,9 @@ function ZhBody() {
       <KSection id="constraint" eyebrow="04" title="基于约束：PC 算法">
         <p>
           第一个家族直接从独立性指纹入手。典范方法是 <Term>PC 算法</Term>（Peter–Clark）。它从一个全
-          连接的图出发——假设一切都可能相关——然后运行<Link href="/knowledge/statistics">条件独立检验
-          </Link>来<em>剪枝</em>：如果在给定某组其他变量时 A 与 B 独立，就删掉它们之间的边。剪枝之后，它给
+          连接的图出发——假设一切都可能相关——然后运行
+          <Link href="/knowledge/statistics">条件独立检验</Link>来<em>剪枝</em>
+          ：如果在给定某组其他变量时 A 与 B 独立，就删掉它们之间的边。剪枝之后，它给
           能定向的边定向（检测对撞因子，然后在被迫之处传播方向），其余的留作无向。
         </p>
         <p>
@@ -369,23 +459,28 @@ function ZhBody() {
       <KSection id="score" eyebrow="05" title="基于评分：GES">
         <p>
           第二个家族把发现重构为一个<Link href="/knowledge/calculus-optimisation">搜索</Link>问题。
-          <Term>GES</Term>（贪婪等价搜索）及其同类，给每一个候选图打一个分数，衡量它拟合数据有多好（一个
-          像 <Link href="/knowledge/statistical-modelling">BIC</Link> 那样的惩罚似然，奖励拟合、惩罚
+          <Term>GES</Term>
+          （贪婪等价搜索）及其同类，给每一个候选图打一个分数，衡量它拟合数据有多好（一个 像{" "}
+          <Link href="/knowledge/statistical-modelling">BIC</Link> 那样的惩罚似然，奖励拟合、惩罚
           复杂度），然后搜索图的空间——贪婪地增删边——以找出得分最高的结构。
         </p>
         <p>
-          这与别处模型选择中那同一个「拟合对简单」的权衡相同，只是应用到了图结构上。可能的 DAG 的空间
+          这与别处模型选择中那同一个「拟合对简单」的权衡相同，只是应用到了图结构上。可能的 DAG
+          的空间
           大到天文数字，所以搜索是启发式的——而一个现代的转折（NOTEARS）把整件事重新表述为一个连续优化，
           好让梯度方法能派上用场。两个家族通常落到同一种答案上：一个等价类，而非一个唯一的图。
         </p>
       </KSection>
 
       <KSection id="extra" eyebrow="06" title="打破平局">
-        <p>要<em>越过</em>等价类、得到一个唯一的方向，你需要额外的杠杆——比单纯的观测相关所能提供的更多：</p>
+        <p>
+          要<em>越过</em>
+          等价类、得到一个唯一的方向，你需要额外的杠杆——比单纯的观测相关所能提供的更多：
+        </p>
         <ul>
           <li>
-            <Term>干预数据</Term>——如果你能真的<em>干预</em>（哪怕一点点），你就直接打破了对称：拨动 A、
-            看着 B 动（而反过来不动），就敲定了那个箭头。这就是为什么实验仍然为王。
+            <Term>干预数据</Term>——如果你能真的<em>干预</em>（哪怕一点点），你就直接打破了对称：拨动
+            A、 看着 B 动（而反过来不动），就敲定了那个箭头。这就是为什么实验仍然为王。
           </li>
           <li>
             <Term>额外的假设</Term>——像 <Term>LiNGAM</Term> 这样的方法利用非高斯噪声，而加性噪声模型
@@ -399,11 +494,13 @@ function ZhBody() {
         <p>因果发现强大，又容易被过度信任。这些告诫是严肃的：</p>
         <Callout type="pitfall">
           <p>
-            大多数方法假设<strong>没有隐藏的混杂因子</strong>（每一个共因都被测量了）——而一个未被测量的
-            混杂因子，能产出一个自信的、错误的箭头。它们假设<strong>忠实性</strong>（效应之间没有巧合的
-            相互抵消）。它们对独立性检验中的错误<strong>敏感</strong>，在数据有限时尤甚——一个错误的检验
-            会在整张图里级联开来。而产出通常是一个<strong>等价类</strong>，而非一个唯一的答案。正确的
-            姿态很坚定：因果发现<strong>生成有待检验的假设，它并不交付被证明的因</strong>，而且它补充
+            大多数方法假设<strong>没有隐藏的混杂因子</strong>
+            （每一个共因都被测量了）——而一个未被测量的
+            混杂因子，能产出一个自信的、错误的箭头。它们假设<strong>忠实性</strong>
+            （效应之间没有巧合的 相互抵消）。它们对独立性检验中的错误<strong>敏感</strong>
+            ，在数据有限时尤甚——一个错误的检验 会在整张图里级联开来。而产出通常是一个
+            <strong>等价类</strong>，而非一个唯一的答案。正确的 姿态很坚定：因果发现
+            <strong>生成有待检验的假设，它并不交付被证明的因</strong>，而且它补充
             领域知识，而非取代它。把一个被发现的箭头当作一条要去调查的线索——最好用一个
             <Link href="/knowledge/causal-inference">实验</Link>——而非当作既定的事实。
           </p>
@@ -413,18 +510,20 @@ function ZhBody() {
       <KSection id="applied" eyebrow="08" title="它在我工作中的体现">
         <Callout type="applied" label="假设，而非定论">
           <p>
-            在<Link href="/knowledge/causal-inference">因果推断</Link>是主力之处，因果发现是更具探索性的
-            表亲——对从观测数据<strong>生成因果假设</strong>、以及对一个假定的结构做<strong>合理性检查
-            </strong>（「数据到底支不支持我们一直假设的那张图？」）有用。它灌输的最重要的一样东西，是
-            <strong>马尔可夫等价</strong>的纪律：知道仅凭观测数据往往<em>无法</em>敲定一个箭头的方向，让我
-            不会从一个整洁的算法输出里过度宣称因果。
+            在<Link href="/knowledge/causal-inference">因果推断</Link>
+            是主力之处，因果发现是更具探索性的 表亲——对从观测数据<strong>生成因果假设</strong>
+            、以及对一个假定的结构做<strong>合理性检查</strong>
+            （「数据到底支不支持我们一直假设的那张图？」）有用。它灌输的最重要的一样东西，是
+            <strong>马尔可夫等价</strong>的纪律：知道仅凭观测数据往往<em>无法</em>
+            敲定一个箭头的方向，让我 不会从一个整洁的算法输出里过度宣称因果。
           </p>
           <p>
-            在须问责的环境里，那份谦逊正是全部的重点——一个被发现的箭头是一条<strong>要去检验的线索
-            </strong>，而非一个被证明的因，而严谨的后续，是因果推断页里的
+            在须问责的环境里，那份谦逊正是全部的重点——一个被发现的箭头是一条
+            <strong>要去检验的线索</strong>，而非一个被证明的因，而严谨的后续，是因果推断页里的
             <Link href="/knowledge/causal-inference">实验或准实验</Link>。它与
-            <Link href="/knowledge/network-graph-analysis">图分析</Link>（那个结构）相配，也与那个更宽的
-            教训相配：尊重数据<em>不能</em>告诉你的，与它能告诉你的同样重要。
+            <Link href="/knowledge/network-graph-analysis">图分析</Link>
+            （那个结构）相配，也与那个更宽的 教训相配：尊重数据<em>不能</em>
+            告诉你的，与它能告诉你的同样重要。
           </p>
         </Callout>
       </KSection>
@@ -433,33 +532,34 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              因果发现从数据中学出<strong>结构（DAG）</strong>——它是因果推断（假设 DAG 已知）之前的那个
-              问题。
+              因果发现从数据中学出<strong>结构（DAG）</strong>——它是因果推断（假设 DAG
+              已知）之前的那个 问题。
             </li>
             <li>
-              难，因为<strong>相关是对称的，因果是有方向的</strong>——A→B、B→A、和一个混杂因子看起来都
-              一样。杠杆：<strong>条件独立</strong>的指纹。
+              难，因为<strong>相关是对称的，因果是有方向的</strong>
+              ——A→B、B→A、和一个混杂因子看起来都 一样。杠杆：<strong>条件独立</strong>的指纹。
             </li>
             <li>
               <strong>马尔可夫等价</strong>：许多 DAG 蕴含相同的独立性，所以诚实的产出是一个
-              <strong>CPDAG</strong>（一些边有向、一些无向）——而非一个唯一的图。对撞因子是那个可被检测的
-              例外。
+              <strong>CPDAG</strong>
+              （一些边有向、一些无向）——而非一个唯一的图。对撞因子是那个可被检测的 例外。
             </li>
             <li>
-              两个家族：<strong>基于约束</strong>（PC——靠独立性检验剪枝，再定向）与<strong>基于评分
-              </strong>（GES/NOTEARS——为最佳的「拟合对简单」分数搜索图）。
+              两个家族：<strong>基于约束</strong>（PC——靠独立性检验剪枝，再定向）与
+              <strong>基于评分</strong>（GES/NOTEARS——为最佳的「拟合对简单」分数搜索图）。
             </li>
             <li>
               用<strong>干预数据</strong>（实验）或额外的假设（LiNGAM、非高斯噪声）来打破平局。
             </li>
             <li>
-              局限：假设<strong>没有隐藏的混杂因子</strong> + 忠实性；对检验错误敏感。它<strong>生成
-              假设，不证明因</strong>——一条要去检验的线索。
+              局限：假设<strong>没有隐藏的混杂因子</strong> + 忠实性；对检验错误敏感。它
+              <strong>生成 假设，不证明因</strong>——一条要去检验的线索。
             </li>
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          马尔可夫等价/CPDAG 的取景、PC 与 GES 算法家族，以及没有隐藏混杂因子／假设而非证明的告诫，反映
+          马尔可夫等价/CPDAG 的取景、PC 与 GES
+          算法家族，以及没有隐藏混杂因子／假设而非证明的告诫，反映
           了当前的因果发现参考文献以及课程。
         </p>
       </KSection>

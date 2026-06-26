@@ -1108,6 +1108,14 @@
           {
             "label": "Causal Discovery",
             "note": "Learning the DAG, PC & GES, Markov equivalence"
+          },
+          {
+            "label": "State-Space Models & the Kalman Filter",
+            "note": "Hidden state, predict-update, the Kalman gain"
+          },
+          {
+            "label": "Active & Semi-Supervised Learning",
+            "note": "Learning with few labels, uncertainty sampling"
           }
         ]
       },
@@ -1170,6 +1178,10 @@
           {
             "label": "Data Architecture & the Modern Stack",
             "note": "Warehouse/lake/lakehouse, ELT, dbt, medallion"
+          },
+          {
+            "label": "Statistical Process Control",
+            "note": "Common vs special cause, control charts, ±3σ"
           }
         ]
       },
