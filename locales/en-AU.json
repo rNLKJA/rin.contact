@@ -1912,6 +1912,24 @@
         { "stage": "Deploy", "desc": "SAPOL, Mapiva, research" }
       ],
       "statusNote": "Pipeline status: running. No scheduled downtime."
+    },
+    "recommendation": {
+      "metaTitle": "Recommendation Engine — rin.contact",
+      "metaDescription": "Users who viewed Rin also viewed.",
+      "ogTitle": "Recommendation Engine",
+      "ogSubtitle": "Users who viewed Rin also viewed.",
+      "heading": "Recommendation Engine",
+      "subtitle": "Users who viewed Rin also viewed:",
+      "boxLabel": "Collaborative filtering output:",
+      "recs": [
+        "Coffee",
+        "Python docs",
+        "Job boards",
+        "LinkedIn (reluctantly)",
+        "GitHub",
+        "Pandas documentation",
+        "Stack Overflow"
+      ]
     }
   }
 }

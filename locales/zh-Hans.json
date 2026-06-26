@@ -1589,6 +1589,24 @@
         { "stage": "部署", "desc": "SAPOL、Mapiva、研究" }
       ],
       "statusNote": "流水线状态：运行中。无计划停机。"
+    },
+    "recommendation": {
+      "metaTitle": "推荐引擎 — rin.contact",
+      "metaDescription": "看过 Rin 的用户也看了。",
+      "ogTitle": "推荐引擎",
+      "ogSubtitle": "看过 Rin 的用户也看了。",
+      "heading": "推荐引擎",
+      "subtitle": "看过 Rin 的用户也看了：",
+      "boxLabel": "协同过滤输出：",
+      "recs": [
+        "咖啡",
+        "Python 文档",
+        "招聘网站",
+        "LinkedIn（不情愿地）",
+        "GitHub",
+        "Pandas 文档",
+        "Stack Overflow"
+      ]
     }
   }
 }
