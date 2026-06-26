@@ -159,6 +159,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/gaussian-processes", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/robust-statistics", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/quantile-regression", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/graph-neural-networks", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/probabilistic-graphical-models", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/federated-learning", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
@@ -181,6 +184,9 @@ const INFO = [
 // alternates. Knowledge pages still awaiting a zh content module are excluded
 // below — as each is translated, delete its slug from NOT_ZH_KNOWLEDGE.
 const NOT_ZH_KNOWLEDGE = new Set([
+  "/knowledge/graph-neural-networks",
+  "/knowledge/probabilistic-graphical-models",
+  "/knowledge/federated-learning",
   "/knowledge/robust-statistics",
   "/knowledge/quantile-regression",
   "/knowledge/optimisation-methods",

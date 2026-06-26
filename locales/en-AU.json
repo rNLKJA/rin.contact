@@ -1140,6 +1140,14 @@
           {
             "label": "Quantile Regression",
             "note": "Conditional quantiles, pinball loss, the whole spread"
+          },
+          {
+            "label": "Graph Neural Networks",
+            "note": "Message passing, node embeddings, GCN/SAGE/GAT"
+          },
+          {
+            "label": "Probabilistic Graphical Models",
+            "note": "Bayes nets, factorisation, inference under uncertainty"
           }
         ]
       },
@@ -1206,6 +1214,10 @@
           {
             "label": "Statistical Process Control",
             "note": "Common vs special cause, control charts, ±3σ"
+          },
+          {
+            "label": "Federated Learning",
+            "note": "Train without sharing data, FedAvg, non-IID"
           }
         ]
       },

@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/gaussian-processes.
@@ -43,7 +50,17 @@ function GPFitFigure({ caption, ariaLabel, legendLabel }) {
         {GP_POINTS.map(([x, y], i) => (
           <circle key={i} cx={x} cy={y} r="3.5" fill="#FF3C3C" />
         ))}
-        <text x="220" y="150" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.6">{legendLabel}</text>
+        <text
+          x="220"
+          y="150"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {legendLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -266,14 +283,16 @@ function ZhBody() {
     <>
       <p>
         大多数回归模型拟合一个函数，递给你一个单一的预测值——却没有一种诚实的、该多信任它的感觉，尤其在
-        你数据稀少的区域。一个<Term>高斯过程</Term>（GP）做的事更强大：它返回一个预测，<em>外加</em>一条
-        有原则的<strong>不确定性带</strong>，它在数据稀疏处自动变宽、在稠密处变窄。它是
-        <Link href="/knowledge/bayesian-statistics">贝叶斯</Link>回归，做的不是在一个固定方程的参数之上，
-        而是在<em>整个函数</em>之上——而正是这一转变，给了它那种出奇诚实的不确定性。
+        你数据稀少的区域。一个<Term>高斯过程</Term>（GP）做的事更强大：它返回一个预测，<em>外加</em>
+        一条 有原则的<strong>不确定性带</strong>，它在数据稀疏处自动变宽、在稠密处变窄。它是
+        <Link href="/knowledge/bayesian-statistics">贝叶斯</Link>
+        回归，做的不是在一个固定方程的参数之上， 而是在<em>整个函数</em>
+        之上——而正是这一转变，给了它那种出奇诚实的不确定性。
       </p>
       <p>
         它是一个值得填补的真正空缺，并把好几条线索系到一起：它是贝叶斯的，那一页上的空间
-        <Link href="/knowledge/spatial-statistics">克里金</Link><em>就是</em>一个 GP，而它的不确定性连到
+        <Link href="/knowledge/spatial-statistics">克里金</Link>
+        <em>就是</em>一个 GP，而它的不确定性连到
         <Link href="/knowledge/conformal-prediction">保形预测</Link>。这一页讲那个想法——函数之上的
         分布——驱动它的核、对数据条件化如何产出预测，以及它在哪里出彩（与不出彩）。
       </p>
@@ -281,12 +300,14 @@ function ZhBody() {
       <KSection id="why" eyebrow="01" title="函数之上的分布">
         <p>
           让 GP 特别的那个概念性飞跃：它不是为函数假设一个<em>形式</em>（线性、二次）再估计它的
-          <em>参数</em>，而是直接在<strong>所有可能函数</strong>的空间之上放一个概率分布，然后用数据把它
-          收窄。在看到数据之前，GP 表示「任何光滑的函数都有可能」；看到数据之后，它变成「穿过（或靠近）
+          <em>参数</em>，而是直接在<strong>所有可能函数</strong>
+          的空间之上放一个概率分布，然后用数据把它 收窄。在看到数据之前，GP
+          表示「任何光滑的函数都有可能」；看到数据之后，它变成「穿过（或靠近）
           这些点、而在它们之间可以是任何样子的函数」。
         </p>
         <p>
-          这是<strong>非参数的</strong>——没有一个带固定数量系数的固定方程；模型的复杂度随数据而增长。而
+          这是<strong>非参数的</strong>
+          ——没有一个带固定数量系数的固定方程；模型的复杂度随数据而增长。而
           因为它是函数之上的一个分布，任何一点处的预测本身就是一个分布——一个均值与一个方差——而这恰恰是
           那诚实的不确定性的来源。
         </p>
@@ -295,17 +316,18 @@ function ZhBody() {
       <KSection id="intuition" eyebrow="02" title="直觉：联合高斯">
         <p>
           形式化的定义出奇地干净：一个高斯过程是一组随机变量，其任何有限子集都是<em>联合</em>
-          <Link href="/knowledge/probability">高斯</Link>的。说得更白些——对任何一组输入点，那些点处的
-          函数值都服从一个多元正态分布。一个 GP 由一个<Term>均值函数</Term>（往往就是零）和一个
+          <Link href="/knowledge/probability">高斯</Link>
+          的。说得更白些——对任何一组输入点，那些点处的 函数值都服从一个多元正态分布。一个 GP 由一个
+          <Term>均值函数</Term>（往往就是零）和一个
           <Term>协方差函数</Term>完全确定：
         </p>
         <Formula label="f of x is distributed as a Gaussian process with mean function m of x and covariance function k of x, x-prime.">
           {String.raw`f(x) \sim \mathcal{GP}\big(m(x),\, k(x, x')\big)`}
         </Formula>
         <p>
-          模型的全部行为，都活在那个协方差函数 <TeX>{String.raw`k(x, x')`}</TeX>——<Term>核</Term>——之中，
-          它说明函数的值在两个输入 <TeX>{String.raw`x`}</TeX> 与 <TeX>{String.raw`x'`}</TeX> 处有多相关。
-          那是这个方法的核心，所以值得多停留一会儿。
+          模型的全部行为，都活在那个协方差函数 <TeX>{String.raw`k(x, x')`}</TeX>——<Term>核</Term>
+          ——之中， 它说明函数的值在两个输入 <TeX>{String.raw`x`}</TeX> 与{" "}
+          <TeX>{String.raw`x'`}</TeX> 处有多相关。 那是这个方法的核心，所以值得多停留一会儿。
         </p>
       </KSection>
 
@@ -313,23 +335,23 @@ function ZhBody() {
         <p>
           <Term>核</Term>编码你对函数的先验信念，也是你做的那唯一一个真正的选择。它的核心想法直观而
           熟悉：<strong>在输入空间里彼此靠近的点，应当有相似的输出值</strong>——恰恰是空间统计里的
-          <Link href="/knowledge/spatial-statistics">Tobler 第一定律</Link>，这并非巧合，因为克里金就是
-          一个 GP。
+          <Link href="/knowledge/spatial-statistics">Tobler 第一定律</Link>
+          ，这并非巧合，因为克里金就是 一个 GP。
         </p>
         <p>
           最常见的核（RBF / 平方指数）让两点之间的相关随距离平滑地衰减，由一个<Term>长度尺度</Term>
           控制——小的长度尺度意味着函数抖动得快（只有非常邻近的点才相关）；大的意味着它光滑、缓慢变化。
-          其他核编码<em>周期性</em>（对季节性数据）或粗糙度。选择核，就是你告诉 GP 该期待什么样的函数的
-          方式——而把它选对，是建模工作的大部分。
+          其他核编码<em>周期性</em>（对季节性数据）或粗糙度。选择核，就是你告诉 GP
+          该期待什么样的函数的 方式——而把它选对，是建模工作的大部分。
         </p>
       </KSection>
 
       <KSection id="posterior" eyebrow="04" title="对数据条件化：后验">
         <p>
           魔法在此，而它是纯粹的<Link href="/knowledge/bayesian-statistics">贝叶斯</Link>更新。从 GP
-          <em>先验</em>出发（按核来的所有光滑函数）。观测一些数据点。把 GP 对它们<Term>条件化</Term>——而
-          因为一切都是联合高斯的，数学算得出闭式解：结果是另一个 GP，那个<Term>后验</Term>，带着更新过的
-          均值与协方差。
+          <em>先验</em>出发（按核来的所有光滑函数）。观测一些数据点。把 GP 对它们<Term>条件化</Term>
+          ——而 因为一切都是联合高斯的，数学算得出闭式解：结果是另一个 GP，那个<Term>后验</Term>
+          ，带着更新过的 均值与协方差。
         </p>
         <GPFitFigure
           caption="一次高斯过程拟合。后验均值（那条线）从观测到的点附近穿过；阴影带是不确定性。它在数据处收紧、在它们之间与之外的缝隙里鼓得很宽——模型诚实地说「在这外头我不知道」。"
@@ -337,8 +359,10 @@ function ZhBody() {
           legendLabel="● 数据 · — 后验均值 · ▒ 不确定性（缝隙处更宽）"
         />
         <p>
-          后验<strong>均值</strong>是你最好的预测；后验<strong>方差</strong>是不确定性——而那关键、漂亮的
-          性质是：方差<em>在观测数据附近缩小、在远离它处增长</em>。GP <em>知道它不知道什么</em>：让它在
+          后验<strong>均值</strong>是你最好的预测；后验<strong>方差</strong>
+          是不确定性——而那关键、漂亮的 性质是：方差<em>
+            在观测数据附近缩小、在远离它处增长
+          </em>。GP <em>知道它不知道什么</em>：让它在
           远离任何数据处预测，它就会这么说，用一条宽带，而非自信地外推出胡话。那种被校准的、感知位置的
           不确定性，是没有任何普通回归会免费给你的。
         </p>
@@ -348,18 +372,19 @@ function ZhBody() {
         <p>GP 在不确定性与小数据要紧之处挣得它们的身价：</p>
         <ul>
           <li>
-            <Term>贝叶斯优化</Term>——杀手级应用。要用很少的评估次数调那些昂贵的东西（模型超参数、实验
-            设置），一个 GP 给目标及其不确定性建模，而你在<em>GP 既有希望、又不确定</em>之处采样下一个——
+            <Term>贝叶斯优化</Term>
+            ——杀手级应用。要用很少的评估次数调那些昂贵的东西（模型超参数、实验 设置），一个 GP
+            给目标及其不确定性建模，而你在<em>GP 既有希望、又不确定</em>之处采样下一个——
             用最少的试验高效地探索。
           </li>
           <li>
-            <Term>空间与地统计</Term>——<Link href="/knowledge/spatial-statistics">克里金</Link>恰恰是
-            空间之上的一个 GP；在采样点之间带不确定性地预测一个量，就是 GP 回归（对气候/环境工作是天然
-            契合）。
+            <Term>空间与地统计</Term>——<Link href="/knowledge/spatial-statistics">克里金</Link>
+            恰恰是 空间之上的一个 GP；在采样点之间带不确定性地预测一个量，就是 GP
+            回归（对气候/环境工作是天然 契合）。
           </li>
           <li>
-            <Term>小数据科学</Term>——当数据稀少而昂贵时（实验、仿真），一个 GP 的灵活性与内建的不确定性，
-            胜过一个会过拟合的大模型。
+            <Term>小数据科学</Term>——当数据稀少而昂贵时（实验、仿真），一个 GP
+            的灵活性与内建的不确定性， 胜过一个会过拟合的大模型。
           </li>
         </ul>
       </KSection>
@@ -368,12 +393,13 @@ function ZhBody() {
         <p>GP 优雅，但并非万能：</p>
         <Callout type="pitfall">
           <p>
-            最大的一个是<strong>缩放</strong>：精确的计算涉及对一个 <TeX>{String.raw`n \times n`}</TeX> 的
-            协方差矩阵求逆，代价大约是 <TeX>{String.raw`O(n^3)`}</TeX>——对几百或几千个点没问题，对数百万
-            个则不可行。GP 是一个<strong>中小数据</strong>的工具（稀疏/近似的变体存在，但增加复杂度）。
-            它们还<strong>只与核一样好</strong>——一个选得糟的核编码了错误的假设，而那优雅的不确定性就
-            变成自信地错。而且基本形式假设高斯噪声。所以当<em>对适度数据的诚实不确定性</em>是优先项时，
-            GP 是对的选择——而非当你有一个庞大的数据集、只想要一个点预测时。
+            最大的一个是<strong>缩放</strong>：精确的计算涉及对一个{" "}
+            <TeX>{String.raw`n \times n`}</TeX> 的 协方差矩阵求逆，代价大约是{" "}
+            <TeX>{String.raw`O(n^3)`}</TeX>——对几百或几千个点没问题，对数百万 个则不可行。GP 是一个
+            <strong>中小数据</strong>的工具（稀疏/近似的变体存在，但增加复杂度）。 它们还
+            <strong>只与核一样好</strong>——一个选得糟的核编码了错误的假设，而那优雅的不确定性就
+            变成自信地错。而且基本形式假设高斯噪声。所以当<em>对适度数据的诚实不确定性</em>
+            是优先项时， GP 是对的选择——而非当你有一个庞大的数据集、只想要一个点预测时。
           </p>
         </Callout>
       </KSection>
@@ -383,14 +409,17 @@ function ZhBody() {
           <p>
             当<strong>数据有限、而不确定性本身要紧</strong>时，GP 是我伸手去拿的工具——这在科学与风险
             工作里很常见（也与我 <strong>CSIRO</strong> 工作中空间/气候的那一面直接相关，那里
-            <Link href="/knowledge/spatial-statistics">克里金</Link>——一个 GP——带着诚实的误差棒在测量点
-            之间预测）。GP 给的、而普通模型不给的，是那种<strong>在没有数据处变宽</strong>的不确定性，
+            <Link href="/knowledge/spatial-statistics">克里金</Link>——一个
+            GP——带着诚实的误差棒在测量点 之间预测）。GP 给的、而普通模型不给的，是那种
+            <strong>在没有数据处变宽</strong>的不确定性，
             于是模型公开地承认它在哪里是猜的，而非带着虚假的自信外推。
           </p>
           <p>
-            这让它们成为<Link href="/knowledge/conformal-prediction">不确定性量化</Link>的天然伙伴，以及
-            <Link href="/knowledge/kalman-filter">卡尔曼滤波</Link>的兄弟（两者都是高斯的，都追踪不确定
-            性）。这门纪律，是知道那个 <strong>O(n³) 的天花板</strong>——GP 是给中小数据的，不是数百万
+            这让它们成为<Link href="/knowledge/conformal-prediction">不确定性量化</Link>
+            的天然伙伴，以及
+            <Link href="/knowledge/kalman-filter">卡尔曼滤波</Link>
+            的兄弟（两者都是高斯的，都追踪不确定 性）。这门纪律，是知道那个{" "}
+            <strong>O(n³) 的天花板</strong>——GP 是给中小数据的，不是数百万
             行——以及核的选择承载着那些假设。用在它们的甜区里，它们是对「一个模型知道与不知道什么」保持
             诚实的最优雅的方式之一。
           </p>
@@ -405,20 +434,21 @@ function ZhBody() {
               <strong>均值 + 一条不确定性带</strong>。
             </li>
             <li>
-              定义：任何有限的一组点都是<strong>联合高斯</strong>的；由一个均值和一个<strong>协方差函数
-              （核）</strong>确定 <TeX>{String.raw`f \sim \mathcal{GP}(m, k)`}</TeX>。
+              定义：任何有限的一组点都是<strong>联合高斯</strong>的；由一个均值和一个
+              <strong>协方差函数 （核）</strong>确定{" "}
+              <TeX>{String.raw`f \sim \mathcal{GP}(m, k)`}</TeX>。
             </li>
             <li>
-              <strong>核</strong>是心脏——邻近的点相关（又是 Tobler 定律）；长度尺度设定光滑度；选它来
-              编码你的假设。
+              <strong>核</strong>是心脏——邻近的点相关（又是 Tobler
+              定律）；长度尺度设定光滑度；选它来 编码你的假设。
             </li>
             <li>
-              对数据<strong>条件化</strong> → 一个后验 GP（闭式、贝叶斯）。方差<strong>在数据处缩小、在
-              缝隙里增长</strong>——GP 知道它不知道什么。
+              对数据<strong>条件化</strong> → 一个后验 GP（闭式、贝叶斯）。方差
+              <strong>在数据处缩小、在 缝隙里增长</strong>——GP 知道它不知道什么。
             </li>
             <li>
-              在<strong>贝叶斯优化</strong>、<strong>空间/克里金</strong>，以及不确定性要紧的<strong>小
-              数据</strong>问题上出彩。
+              在<strong>贝叶斯优化</strong>、<strong>空间/克里金</strong>，以及不确定性要紧的
+              <strong>小 数据</strong>问题上出彩。
             </li>
             <li>
               局限：<strong>O(n³) 的缩放</strong>——只适合中小数据；只与核一样好。

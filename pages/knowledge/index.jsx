@@ -67,6 +67,8 @@ const TIERS = [
       { href: "/knowledge/gaussian-processes", status: "live" },
       { href: "/knowledge/robust-statistics", status: "live" },
       { href: "/knowledge/quantile-regression", status: "live" },
+      { href: "/knowledge/graph-neural-networks", status: "live" },
+      { href: "/knowledge/probabilistic-graphical-models", status: "live" },
     ],
   },
   {
@@ -87,6 +89,7 @@ const TIERS = [
       { href: "/knowledge/streaming-analytics", status: "live" },
       { href: "/knowledge/data-architecture", status: "live" },
       { href: "/knowledge/statistical-process-control", status: "live" },
+      { href: "/knowledge/federated-learning", status: "live" },
     ],
   },
   {

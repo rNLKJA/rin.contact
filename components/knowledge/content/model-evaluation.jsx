@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/model-evaluation.
@@ -20,17 +27,48 @@ function CVGridFigure({ caption, ariaLabel, valLabel, trainLabel }) {
       >
         {[0, 1, 2, 3, 4].map((row) => (
           <g key={row}>
-            <text x="14" y={26 + row * 30} fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.6">{row + 1}</text>
+            <text
+              x="14"
+              y={26 + row * 30}
+              fontSize="9"
+              fontFamily="monospace"
+              fill="currentColor"
+              opacity="0.6"
+            >
+              {row + 1}
+            </text>
             {[0, 1, 2, 3, 4].map((col) => {
               const held = col === row;
               return (
-                <rect key={col} x={34 + col * 74} y={12 + row * 30} width="70" height="20" rx="2" fill={held ? "#FF3C3C" : "none"} opacity={held ? 0.8 : 1} stroke={held ? "#FF3C3C" : "currentColor"} strokeWidth="1.1" />
+                <rect
+                  key={col}
+                  x={34 + col * 74}
+                  y={12 + row * 30}
+                  width="70"
+                  height="20"
+                  rx="2"
+                  fill={held ? "#FF3C3C" : "none"}
+                  opacity={held ? 0.8 : 1}
+                  stroke={held ? "#FF3C3C" : "currentColor"}
+                  strokeWidth="1.1"
+                />
               );
             })}
           </g>
         ))}
-        <text x="34" y="170" fontSize="8.5" fontFamily="monospace" fill="#FF3C3C">{valLabel}</text>
-        <text x="170" y="170" fontSize="8.5" fontFamily="monospace" fill="currentColor" opacity="0.6">{trainLabel}</text>
+        <text x="34" y="170" fontSize="8.5" fontFamily="monospace" fill="#FF3C3C">
+          {valLabel}
+        </text>
+        <text
+          x="170"
+          y="170"
+          fontSize="8.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {trainLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -287,28 +325,34 @@ function ZhBody() {
     <>
       <p>
         搭一个模型，它会乐呵呵地给你一个数字，说它有多好。麻烦在于，那个显眼的数字——它拟合它所训练的
-        数据有多好——几乎毫无意义，而信任它，是分析自欺最常见的那一种方式。<Term>模型评估</Term>是衡量
-        一个模型是否<em>真的管用</em>的那门学科：它在从未见过的数据上会表现多好，而那才是唯一要紧的表现。
+        数据有多好——几乎毫无意义，而信任它，是分析自欺最常见的那一种方式。<Term>模型评估</Term>
+        是衡量 一个模型是否<em>真的管用</em>
+        的那门学科：它在从未见过的数据上会表现多好，而那才是唯一要紧的表现。
       </p>
       <p>
-        它是整个机器学习板块的连接组织——决定一个<Link href="/knowledge/statistical-machine-learning">模型</Link>、
-        一个<Link href="/knowledge/ensemble-methods">集成</Link>、或一个
-        <Link href="/knowledge/deep-learning">网络</Link>是否值得信任的东西。这一页讲它如何被正确地做：
+        它是整个机器学习板块的连接组织——决定一个
+        <Link href="/knowledge/statistical-machine-learning">模型</Link>、 一个
+        <Link href="/knowledge/ensemble-methods">集成</Link>、或一个
+        <Link href="/knowledge/deep-learning">网络</Link>
+        是否值得信任的东西。这一页讲它如何被正确地做：
         如何诚实地测试，以及如何选择那个真正反映你所在意之物的指标——因为错的指标能让一个无用的模型看
         起来出色。
       </p>
 
       <KSection id="why" eyebrow="01" title="为什么训练误差会撒谎">
         <p>
-          一个模型的<Term>训练误差</Term>——它拟合它从中学习的数据有多好——是一个会奉承的骗子。一个足够
-          灵活的模型，能把训练集完美地背下来、得分 100%，却没学到任何能泛化的东西。那就是<Term>过拟合
-          </Term>，直接来自<Link href="/knowledge/statistical-machine-learning">偏差-方差</Link>页，也是
+          一个模型的<Term>训练误差</Term>
+          ——它拟合它从中学习的数据有多好——是一个会奉承的骗子。一个足够
+          灵活的模型，能把训练集完美地背下来、得分 100%，却没学到任何能泛化的东西。那就是
+          <Term>过拟合</Term>，直接来自
+          <Link href="/knowledge/statistical-machine-learning">偏差-方差</Link>页，也是
           为什么训练准确率不是真实表现的向导。
         </p>
         <p>
-          你真正在意的是<Term>泛化</Term>——在新的、未见过的数据上的表现，模型将在真实世界里面对的那些
-          数据。整套评估的机器，都是为了诚实地估计那个而存在，而它全都搁在一条铁律之上：<strong>在模型
-          训练期间从未见过的数据上测试。</strong>
+          你真正在意的是<Term>泛化</Term>
+          ——在新的、未见过的数据上的表现，模型将在真实世界里面对的那些
+          数据。整套评估的机器，都是为了诚实地估计那个而存在，而它全都搁在一条铁律之上：
+          <strong>在模型 训练期间从未见过的数据上测试。</strong>
         </p>
       </KSection>
 
@@ -322,14 +366,17 @@ function ZhBody() {
             <Term>验证集</Term>——用来调整选择（哪个模型、哪些超参数）并比较选项。
           </li>
           <li>
-            <Term>测试集</Term>——只在最末尾<em>碰一次</em>，为真实世界表现给出一个最终的、诚实的估计。
+            <Term>测试集</Term>——只在最末尾<em>碰一次</em>
+            ，为真实世界表现给出一个最终的、诚实的估计。
           </li>
         </ul>
         <Callout type="pitfall">
           <p>
-            测试集是<strong>神圣的</strong>：你一旦用它来做决定——试几个模型、偷看测试分数、挑最好的——它
-            就不再是未见过的，而开始奉承你。它的分数<Link href="/knowledge/feature-engineering">泄漏
-            </Link>进了你的选择，而你报告的表现现在偏乐观了。在<em>验证</em>集上调；把测试集留给一次你
+            测试集是<strong>神圣的</strong>
+            ：你一旦用它来做决定——试几个模型、偷看测试分数、挑最好的——它
+            就不再是未见过的，而开始奉承你。它的分数
+            <Link href="/knowledge/feature-engineering">泄漏</Link>
+            进了你的选择，而你报告的表现现在偏乐观了。在<em>验证</em>集上调；把测试集留给一次你
             从不据以行动的、最终的一瞥。反复对着测试集调，是一个模型在纸面上看起来比在生产中更好的最常见
             方式之一。
           </p>
@@ -338,9 +385,10 @@ function ZhBody() {
 
       <KSection id="crossval" eyebrow="03" title="交叉验证：每一行都轮到一次">
         <p>
-          单次的训练/验证拆分浪费数据，且任凭哪些行碰巧落在哪里摆布。<Term>k 折交叉验证</Term>把两者都
-          修好：把数据切成 k 个相等的折，然后训练 k 次，每次留出一个不同的折做验证、在其余的上训练。把
-          这 k 个分数求平均，得到一个稳定得多、可信得多的估计——而每一行都被用于训练和验证两者，只是从
+          单次的训练/验证拆分浪费数据，且任凭哪些行碰巧落在哪里摆布。<Term>k 折交叉验证</Term>
+          把两者都 修好：把数据切成 k 个相等的折，然后训练 k
+          次，每次留出一个不同的折做验证、在其余的上训练。把 这 k
+          个分数求平均，得到一个稳定得多、可信得多的估计——而每一行都被用于训练和验证两者，只是从
           不在同一时间。
         </p>
         <CVGridFigure
@@ -350,8 +398,9 @@ function ZhBody() {
           trainLabel="□ 训练折 · 对 5 个分数求平均"
         />
         <p>
-          对不平衡的类别，用<Term>分层</Term> k 折，它让每一折的类别比例与整体相同——否则一个罕见的类别
-          可能从某些折里完全缺席。而对<Link href="/knowledge/time-series-analysis">时间序列</Link>，绝不要
+          对不平衡的类别，用<Term>分层</Term> k
+          折，它让每一折的类别比例与整体相同——否则一个罕见的类别 可能从某些折里完全缺席。而对
+          <Link href="/knowledge/time-series-analysis">时间序列</Link>，绝不要
           打乱：用前向链（在过去上训练、在未来上验证），这样你才不会把明天泄漏进今天。
         </p>
       </KSection>
@@ -363,11 +412,12 @@ function ZhBody() {
             <Term>MAE</Term>（平均绝对误差）——误差的平均大小，以原始单位计。容易解读，对离群值稳健。
           </li>
           <li>
-            <Term>RMSE</Term>（均方根误差）——在求平均之前先把误差平方，所以它<em>对大误差惩罚得更狠
-            </em>。当大失误尤其糟糕时用它。
+            <Term>RMSE</Term>（均方根误差）——在求平均之前先把误差平方，所以它
+            <em>对大误差惩罚得更狠</em>。当大失误尤其糟糕时用它。
           </li>
           <li>
-            <Term>R²</Term>——被解释的方差的比例，从 0 到 1；一种无量纲的、比单纯预测均值好多少的感觉。
+            <Term>R²</Term>——被解释的方差的比例，从 0 到
+            1；一种无量纲的、比单纯预测均值好多少的感觉。
           </li>
         </ul>
         <p>
@@ -377,14 +427,18 @@ function ZhBody() {
 
       <KSection id="confusion" eyebrow="05" title="混淆矩阵：为什么准确率会撒谎">
         <p>
-          对于分类，诱惑是报告<Term>准确率</Term>——正确的比例。在不平衡的数据上，准确率危险地误导人：如果
-          99% 的个案是阴性，一个总是说「阴性」的模型得到 99% 的准确率、却<em>一个也没逮到</em>。同样的
+          对于分类，诱惑是报告<Term>准确率</Term>
+          ——正确的比例。在不平衡的数据上，准确率危险地误导人：如果 99%
+          的个案是阴性，一个总是说「阴性」的模型得到 99% 的准确率、却<em>一个也没逮到</em>。同样的
           <Link href="/knowledge/probability">基础率</Link>陷阱，同样困扰着欺诈、疾病与异常检测。
         </p>
         <p>
-          诚实的起点是<Term>混淆矩阵</Term>，它把预测分成四个格子：真阳性、真阴性、<strong>假阳性</strong>
-          （假警报）与<strong>假阴性</strong>（漏报）。几乎每一个有用的指标都是从这四个建起来的，而关键的
-          领悟是：一个假阳性与一个假阴性通常有<em>非常不同的代价</em>——所以你需要能把它们分开的指标。
+          诚实的起点是<Term>混淆矩阵</Term>，它把预测分成四个格子：真阳性、真阴性、
+          <strong>假阳性</strong>
+          （假警报）与<strong>假阴性</strong>
+          （漏报）。几乎每一个有用的指标都是从这四个建起来的，而关键的
+          领悟是：一个假阳性与一个假阴性通常有<em>非常不同的代价</em>
+          ——所以你需要能把它们分开的指标。
         </p>
       </KSection>
 
@@ -401,30 +455,34 @@ function ZhBody() {
           </li>
         </ul>
         <p>
-          它们之间有一场拔河：标记得更激进，召回率上升，但精确率下降，反之亦然。<Term>F1 分数</Term>——
-          它们的调和平均——用一个数字概括这个平衡：
+          它们之间有一场拔河：标记得更激进，召回率上升，但精确率下降，反之亦然。<Term>F1 分数</Term>
+          —— 它们的调和平均——用一个数字概括这个平衡：
         </p>
         <Formula label="F1 equals 2 times precision times recall divided by precision plus recall.">
           {String.raw`F_1 = 2 \cdot \frac{\text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}`}
         </Formula>
         <p>
-          大多数分类器输出一个<em>概率</em>，而你把阈值设在哪里，决定了精确率/召回率的平衡。<Term>ROC
-          曲线</Term>在<em>所有</em>阈值上画出真阳性率对假阳性率，而 <Term>AUC</Term>（曲线下面积）用一个
-          无关阈值的数字概括模型的排序能力——0.5 是随机，1.0 是完美。对严重不平衡的问题，<Term>精确率-
-          召回率曲线</Term>往往比 ROC 更有信息量。贯穿始终的教训：<strong>选择那个匹配「弄错的真实代价」
-          的指标</strong>，而非随便哪个看起来最高的。
+          大多数分类器输出一个<em>概率</em>，而你把阈值设在哪里，决定了精确率/召回率的平衡。
+          <Term>ROC 曲线</Term>在<em>所有</em>阈值上画出真阳性率对假阳性率，而 <Term>AUC</Term>
+          （曲线下面积）用一个 无关阈值的数字概括模型的排序能力——0.5 是随机，1.0
+          是完美。对严重不平衡的问题，<Term>精确率- 召回率曲线</Term>往往比 ROC
+          更有信息量。贯穿始终的教训：<strong>选择那个匹配「弄错的真实代价」 的指标</strong>
+          ，而非随便哪个看起来最高的。
         </p>
       </KSection>
 
       <KSection id="calibration" eyebrow="07" title="诚实的概率：校准">
         <p>
-          一个容易忘记的维度：一个模型可以把个案排序得完美（AUC 很棒），而它的概率却是<em>不诚实</em>的。
-          <Term>校准</Term>问一个不同的问题——当模型说「70% 的可能」时，它真的大约 70% 的时候会发生吗？
+          一个容易忘记的维度：一个模型可以把个案排序得完美（AUC 很棒），而它的概率却是
+          <em>不诚实</em>的。
+          <Term>校准</Term>问一个不同的问题——当模型说「70% 的可能」时，它真的大约 70%
+          的时候会发生吗？
         </p>
         <p>
           每当概率本身驱动一个决策时——一个风险分数、一个期望成本、一个行动的阈值——这就极其要紧。一个
-          自信地校准错误的模型（说 95%、其实是 60%），即便它的排序没问题，也会导致糟糕的判断。它用一张
-          可靠性图来检查，用 Platt 缩放或保序回归这样的方法来修——而它是评估中人们最常跳过的那一部分。
+          自信地校准错误的模型（说 95%、其实是
+          60%），即便它的排序没问题，也会导致糟糕的判断。它用一张 可靠性图来检查，用 Platt
+          缩放或保序回归这样的方法来修——而它是评估中人们最常跳过的那一部分。
         </p>
       </KSection>
 
@@ -432,16 +490,20 @@ function ZhBody() {
         <Callout type="applied" label="信任——并辩护——一个模型的得分">
           <p>
             当一个模型的表现必须被报告或据以行动时，这里就是我确保那个数字真实的地方。每天都挣回身价的
-            那门纪律：<strong>绝不信任训练准确率</strong>、<strong>让测试集保持神圣</strong>（一个在测试集
-            上调出来的分数，是那种看起来像成功的失败），以及最重要的——<strong>挑那个匹配代价的指标
-            </strong>——在主导着情报与廉政工作的不平衡问题上，准确率毫无意义，那里一个
-            <Link href="/knowledge/anomaly-detection">漏掉的个案与一个假警报</Link>有着非常不同的价钱。
+            那门纪律：<strong>绝不信任训练准确率</strong>、<strong>让测试集保持神圣</strong>
+            （一个在测试集 上调出来的分数，是那种看起来像成功的失败），以及最重要的——
+            <strong>挑那个匹配代价的指标</strong>
+            ——在主导着情报与廉政工作的不平衡问题上，准确率毫无意义，那里一个
+            <Link href="/knowledge/anomaly-detection">漏掉的个案与一个假警报</Link>
+            有着非常不同的价钱。
           </p>
           <p>
-            它也是一件批判性阅读的工具：当有人报告一个模型「95% 准确」时，对的问题是<em>在哪个拆分上
-            准确，以及数据是否不平衡？</em>知道精确率、召回率、AUC 与校准之间的区别，正是让我能把一个真正
+            它也是一件批判性阅读的工具：当有人报告一个模型「95% 准确」时，对的问题是
+            <em>在哪个拆分上 准确，以及数据是否不平衡？</em>知道精确率、召回率、AUC
+            与校准之间的区别，正是让我能把一个真正
             好的模型、与一个奉承人的模型区分开来——并为这个区别辩护——的东西。它直接连到本板块各处的
-            <Link href="/knowledge/causal-inference">诚实的评估</Link>与<Link href="/knowledge/statistics">推断</Link>。
+            <Link href="/knowledge/causal-inference">诚实的评估</Link>与
+            <Link href="/knowledge/statistics">推断</Link>。
           </p>
         </Callout>
       </KSection>
@@ -450,28 +512,31 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>训练误差会撒谎</strong>——你在意的是对未见过数据的<strong>泛化</strong>。永远在模型
-              没训练过的数据上测试。
+              <strong>训练误差会撒谎</strong>——你在意的是对未见过数据的<strong>泛化</strong>
+              。永远在模型 没训练过的数据上测试。
             </li>
             <li>
-              拆成<strong>训练 / 验证 / 测试</strong>。<strong>测试集是神圣的</strong>——碰它一次；在它
-              上面调会泄漏并奉承。
+              拆成<strong>训练 / 验证 / 测试</strong>。<strong>测试集是神圣的</strong>
+              ——碰它一次；在它 上面调会泄漏并奉承。
             </li>
             <li>
-              <strong>k 折交叉验证</strong>（不平衡时用分层；时间序列用前向链）用每一行给出一个稳定的
-              估计。
+              <strong>k 折交叉验证</strong>
+              （不平衡时用分层；时间序列用前向链）用每一行给出一个稳定的 估计。
             </li>
             <li>
-              回归：<strong>MAE</strong>（稳健）、<strong>RMSE</strong>（惩罚大误差）、<strong>R²</strong>
+              回归：<strong>MAE</strong>（稳健）、<strong>RMSE</strong>（惩罚大误差）、
+              <strong>R²</strong>
               （被解释的方差）。
             </li>
             <li>
-              分类：<strong>准确率在不平衡数据上撒谎</strong>（基础率）。用<strong>混淆矩阵</strong> →
-              <strong>精确率</strong>（假警报）对<strong>召回率</strong>（漏报）、<strong>F1</strong>，以及
+              分类：<strong>准确率在不平衡数据上撒谎</strong>（基础率）。用<strong>混淆矩阵</strong>{" "}
+              →<strong>精确率</strong>（假警报）对<strong>召回率</strong>（漏报）、
+              <strong>F1</strong>，以及
               <strong>ROC/AUC</strong>（不平衡时用 PR 曲线）。
             </li>
             <li>
-              别忘了<strong>校准</strong>——那些概率诚实吗？而且永远挑那个匹配「弄错的真实代价」的指标。
+              别忘了<strong>校准</strong>
+              ——那些概率诚实吗？而且永远挑那个匹配「弄错的真实代价」的指标。
             </li>
           </ul>
         </Callout>
@@ -508,7 +573,10 @@ const META = {
       { id: "applied", label: "Where it shows up in my work" },
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
-    prev: { href: "/knowledge/statistical-machine-learning", label: "Statistical Machine Learning" },
+    prev: {
+      href: "/knowledge/statistical-machine-learning",
+      label: "Statistical Machine Learning",
+    },
     next: { href: "/knowledge", label: "Back to all topics" },
   },
   "zh-Hans": {
