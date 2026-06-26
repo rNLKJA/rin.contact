@@ -1518,6 +1518,19 @@
           "text": "Python–数据工程：0.92。React–移动端：0.78。政府–Power BI：0.85。"
         }
       ]
+    },
+    "nullHypothesis": {
+      "metaTitle": "原假设 — rin.contact",
+      "metaDescription": "H₀：Rin 不可雇。",
+      "ogTitle": "原假设",
+      "ogSubtitle": "H₀：Rin 不可雇。",
+      "heading": "原假设检验",
+      "subtitle": "H₀：Rin 不可雇。让我们来检验它。",
+      "boxNull": "H₀：Rin 不可雇",
+      "boxReject": "拒绝 H₀",
+      "boxConclusion": "结论：雇用 Rin。",
+      "footnote": "* 统计显著性并不意味着因果关系。但它确实意味着可雇用性。",
+      "hireCta": "雇用我 →"
     }
   }
 }

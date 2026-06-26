@@ -1841,6 +1841,19 @@
           "text": "Python–Data Eng: 0.92. React–Mobile: 0.78. Government–Power BI: 0.85."
         }
       ]
+    },
+    "nullHypothesis": {
+      "metaTitle": "Null Hypothesis — rin.contact",
+      "metaDescription": "H₀: Rin is not hireable.",
+      "ogTitle": "Null Hypothesis",
+      "ogSubtitle": "H₀: Rin is not hireable.",
+      "heading": "Null Hypothesis Test",
+      "subtitle": "H₀: Rin is not hireable. Let's test it.",
+      "boxNull": "H₀: Rin is not hireable",
+      "boxReject": "Reject H₀",
+      "boxConclusion": "Conclusion: Hire Rin.",
+      "footnote": "* Statistical significance does not imply causation. But it does imply employability.",
+      "hireCta": "Hire Me →"
     }
   }
 }
