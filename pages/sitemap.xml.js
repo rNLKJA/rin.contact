@@ -181,7 +181,6 @@ const INFO = [
 // alternates. Knowledge pages still awaiting a zh content module are excluded
 // below — as each is translated, delete its slug from NOT_ZH_KNOWLEDGE.
 const NOT_ZH_KNOWLEDGE = new Set([
-  "/knowledge/gaussian-processes",
   "/knowledge/robust-statistics",
   "/knowledge/quantile-regression",
   "/knowledge/optimisation-methods",
