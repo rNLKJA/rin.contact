@@ -1896,6 +1896,22 @@
         }
       ],
       "footnote": "* This is satire. Don't p-hack. Pre-register your hypotheses."
+    },
+    "pipeline": {
+      "metaTitle": "Data Pipeline — rin.contact",
+      "metaDescription": "Career as a data pipeline.",
+      "ogTitle": "Data Pipeline",
+      "ogSubtitle": "Career as a data pipeline.",
+      "heading": "Career as Data Pipeline",
+      "subtitle": "Raw → Clean → Transform → Model → Deploy. Each stage is a phase.",
+      "stages": [
+        { "stage": "Raw", "desc": "High school, China" },
+        { "stage": "Clean", "desc": "Trinity College, Melbourne" },
+        { "stage": "Transform", "desc": "UniMelb BSc + MDS" },
+        { "stage": "Model", "desc": "CSIRO, WEHI, CSL" },
+        { "stage": "Deploy", "desc": "SAPOL, Mapiva, research" }
+      ],
+      "statusNote": "Pipeline status: running. No scheduled downtime."
     }
   }
 }

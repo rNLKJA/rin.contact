@@ -1573,6 +1573,22 @@
         }
       ],
       "footnote": "* 这是讽刺。别做 P 值篡改。预先注册你的假设。"
+    },
+    "pipeline": {
+      "metaTitle": "数据流水线 — rin.contact",
+      "metaDescription": "职业作为一条数据流水线。",
+      "ogTitle": "数据流水线",
+      "ogSubtitle": "职业作为一条数据流水线。",
+      "heading": "职业即数据流水线",
+      "subtitle": "原始 → 清洗 → 转换 → 建模 → 部署。每个环节都是人生的一段。",
+      "stages": [
+        { "stage": "原始", "desc": "高中，中国" },
+        { "stage": "清洗", "desc": "三一学院，墨尔本" },
+        { "stage": "转换", "desc": "墨尔本大学 理学士 + 数据科学硕士" },
+        { "stage": "建模", "desc": "CSIRO、WEHI、CSL" },
+        { "stage": "部署", "desc": "SAPOL、Mapiva、研究" }
+      ],
+      "statusNote": "流水线状态：运行中。无计划停机。"
     }
   }
 }
