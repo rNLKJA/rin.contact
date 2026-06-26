@@ -73,6 +73,7 @@ const CORE = [
   { path: "/hire-me", priority: 0.7, freq: "monthly" },
   { path: "/tools/card", priority: 0.7, freq: "monthly" },
   { path: "/blog", priority: 0.8, freq: "weekly" },
+  { path: "/fun/art", priority: 0.4, freq: "monthly" },
 ];
 
 // ── zh-Hans pages (Tier 1 translations) ───────────────────────────────────────
@@ -195,6 +196,7 @@ const ZH_COVERED = [
   { path: "/tools/card", priority: 0.7, freq: "monthly" },
   { path: "/knowledge", priority: 0.7, freq: "weekly" },
   { path: "/info", priority: 0.5, freq: "monthly" },
+  { path: "/fun/art", priority: 0.4, freq: "monthly" },
   ...INFO,
   ...KNOWLEDGE.filter((p) => !NOT_ZH_KNOWLEDGE.has(p.path)),
 ];

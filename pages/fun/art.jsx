@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import SeoHead from "@/components/seo/SeoHead";
 import Link from "next/link";
+import { useI18n } from "@/contexts/I18nContext";
 
 // Phyllotaxis spiral — Fibonacci-based sunflower arrangement.
 // Each dot placed at angle i * golden_angle, radius ∝ sqrt(i).
@@ -55,10 +56,14 @@ function drawFrame(ctx, w, h, t) {
 }
 
 export default function ArtPage() {
+  const { t, locale = "en-AU" } = useI18n();
+  const labels = t("fun.art.labels") || [];
+  const labelCount = labels.length;
   const canvasRef = useRef(null);
   const frameRef = useRef(null);
-  const [label, setLabel] = useState("phyllotaxis");
+  const [labelIdx, setLabelIdx] = useState(0);
 
+  // Canvas animation
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -74,17 +79,8 @@ export default function ArtPage() {
     resize();
     window.addEventListener("resize", resize);
 
-    // Label cycles
-    const labels = ["phyllotaxis", "∑ Fibonacci", "golden angle", "137.508°", "∞ growth"];
-    let labelIdx = 0;
-    const labelInterval = setInterval(() => {
-      labelIdx = (labelIdx + 1) % labels.length;
-      setLabel(labels[labelIdx]);
-    }, 2800);
-
     function loop() {
       t++;
-      const dpr = window.devicePixelRatio;
       drawFrame(ctx, canvas.offsetWidth, canvas.offsetHeight, t);
       frameRef.current = requestAnimationFrame(loop);
     }
@@ -93,31 +89,37 @@ export default function ArtPage() {
 
     return () => {
       cancelAnimationFrame(frameRef.current);
-      clearInterval(labelInterval);
       window.removeEventListener("resize", resize);
     };
   }, []);
 
+  // Cycling label (index-based so it follows the localised labels array)
+  useEffect(() => {
+    if (labelCount < 2) return;
+    const id = setInterval(() => {
+      setLabelIdx((prev) => (prev + 1) % labelCount);
+    }, 2800);
+    return () => clearInterval(id);
+  }, [labelCount]);
+
   return (
     <>
       <Head>
-        <title>art — rin.contact</title>
-        <meta
-          name="description"
-          content="Generative art by Rin Huang — a Fibonacci phyllotaxis spiral that slowly morphs."
-        />
+        <title>{t("fun.art.metaTitle")}</title>
+        <meta name="description" content={t("fun.art.metaDescription")} />
         <link rel="canonical" href="https://rin.contact/fun/art" />
       </Head>
 
       <SeoHead
-        title="art — rin.contact"
-        description="Generative art by Rin Huang — a Fibonacci phyllotaxis spiral that slowly morphs."
+        title={t("fun.art.metaTitle")}
+        description={t("fun.art.metaDescription")}
         path="/fun/art"
         ogImage={{
-          title: "art",
-          subtitle: "Generative art by Rin Huang — a Fibonacci phyllotaxis spir…",
+          title: t("fun.art.ogTitle"),
+          subtitle: t("fun.art.ogSubtitle"),
           section: "fun",
         }}
+        locale={locale}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
@@ -126,17 +128,17 @@ export default function ArtPage() {
           <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-full"
-            aria-label="Generative phyllotaxis spiral"
+            aria-label={t("fun.art.ariaLabel")}
           />
 
           {/* Floating label */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center pointer-events-none">
             <p
               className="font-mono text-[10px] tracking-[0.3em] uppercase text-[#AAAAAA]"
-              key={label}
+              key={labelIdx}
               style={{ animation: "fade-in 0.6s ease-out both" }}
             >
-              {label}
+              {labels[labelIdx] || ""}
             </p>
           </div>
         </div>
@@ -144,11 +146,9 @@ export default function ArtPage() {
         {/* Info strip */}
         <div className="border-t border-[#F0F0F0] px-6 md:px-12 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 max-w-[1100px] mx-auto w-full">
           <div>
-            <p className="text-xs font-medium text-[#1A1A1A] mb-0.5">Phyllotaxis Spiral</p>
+            <p className="text-xs font-medium text-[#1A1A1A] mb-0.5">{t("fun.art.infoTitle")}</p>
             <p className="text-[11px] text-[#7A7A7A] leading-relaxed max-w-sm">
-              {N_DOTS} points placed at the golden angle (≈137.508°) — the same ratio sunflowers,
-              pinecones, and nautilus shells use to pack seeds optimally. The angle drifts slowly;
-              every 89th point (a Fibonacci number) is marked in red.
+              {t("fun.art.infoBody")}
             </p>
           </div>
           <div className="flex gap-4 flex-shrink-0">
@@ -156,7 +156,7 @@ export default function ArtPage() {
               href="/"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black border-b border-[#E0E0E0] hover:border-black transition-colors"
             >
-              ← Home
+              ← {t("nav.home")}
             </Link>
             <Link
               href="/fun/matrix"

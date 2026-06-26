@@ -1188,7 +1188,17 @@
   "fun": {
     "sectionLabel": "◆ — 彩蛋",
     "heading": "彩蛋与隐藏路线。",
-    "description": "数据科学笑话、命令行彩蛋、生成艺术与探索的兔子洞。"
+    "description": "数据科学笑话、命令行彩蛋、生成艺术与探索的兔子洞。",
+    "art": {
+      "metaTitle": "art — rin.contact",
+      "metaDescription": "Rin Huang 的生成艺术——一条缓慢变形的斐波那契叶序螺旋。",
+      "ogTitle": "art",
+      "ogSubtitle": "Rin Huang 的生成艺术——斐波那契叶序螺旋…",
+      "ariaLabel": "生成的叶序螺旋",
+      "labels": ["叶序", "∑ Fibonacci", "黄金角", "137.508°", "∞ 生长"],
+      "infoTitle": "叶序螺旋",
+      "infoBody": "600 个点放置在黄金角（≈137.508°）上——向日葵、松果和鹦鹉螺壳用来最优地排布种子的同一个比率。这个角度缓慢漂移；每第 89 个点（一个斐波那契数）被标成红色。"
+    }
   },
   "info": {
     "sectionLabel": "◆ — 信息",

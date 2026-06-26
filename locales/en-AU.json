@@ -1501,7 +1501,17 @@
   "fun": {
     "sectionLabel": "◆ — Easter eggs",
     "heading": "Easter eggs & hidden routes.",
-    "description": "Data science jokes, CLI tricks, generative art, and rabbit holes."
+    "description": "Data science jokes, CLI tricks, generative art, and rabbit holes.",
+    "art": {
+      "metaTitle": "art — rin.contact",
+      "metaDescription": "Generative art by Rin Huang — a Fibonacci phyllotaxis spiral that slowly morphs.",
+      "ogTitle": "art",
+      "ogSubtitle": "Generative art by Rin Huang — a Fibonacci phyllotaxis spiral…",
+      "ariaLabel": "Generative phyllotaxis spiral",
+      "labels": ["phyllotaxis", "∑ Fibonacci", "golden angle", "137.508°", "∞ growth"],
+      "infoTitle": "Phyllotaxis Spiral",
+      "infoBody": "600 points placed at the golden angle (≈137.508°) — the same ratio sunflowers, pinecones, and nautilus shells use to pack seeds optimally. The angle drifts slowly; every 89th point (a Fibonacci number) is marked in red."
+    }
   },
   "info": {
     "sectionLabel": "◆ — Info",
