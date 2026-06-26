@@ -1511,6 +1511,13 @@
       "labels": ["phyllotaxis", "∑ Fibonacci", "golden angle", "137.508°", "∞ growth"],
       "infoTitle": "Phyllotaxis Spiral",
       "infoBody": "600 points placed at the golden angle (≈137.508°) — the same ratio sunflowers, pinecones, and nautilus shells use to pack seeds optimally. The angle drifts slowly; every 89th point (a Fibonacci number) is marked in red."
+    },
+    "blank": {
+      "metaTitle": "Blank — rin.contact",
+      "metaDescription": "Sometimes the best design is nothing.",
+      "ogTitle": "Blank",
+      "ogSubtitle": "Sometimes the best design is nothing.",
+      "line": "Sometimes the best design is nothing."
     }
   },
   "info": {
