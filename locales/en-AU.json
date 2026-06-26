@@ -1819,6 +1819,28 @@
       "heading": "CI/CD for Your Career",
       "subtitle": "Build → Test → Deploy. Pipeline status: passing.",
       "stageDescs": ["Education", "Certifications", "Employed"]
+    },
+    "eda": {
+      "metaTitle": "EDA — rin.contact",
+      "metaDescription": "Rin as a dataset.",
+      "ogTitle": "EDA",
+      "ogSubtitle": "Rin as a dataset.",
+      "heading": "Exploratory Data Analysis",
+      "subtitle": "Rin as a dataset. Distributions, histograms, correlations.",
+      "rows": [
+        {
+          "label": "DISTRIBUTION: Skills",
+          "text": "Python (right-skewed), SQL (normal), Rust (bimodal, early stage)"
+        },
+        {
+          "label": "HISTOGRAM: Career timeline",
+          "text": "Peaks at 6–18 month tenure. No outliers (yet)."
+        },
+        {
+          "label": "CORRELATION: Skills × Projects",
+          "text": "Python–Data Eng: 0.92. React–Mobile: 0.78. Government–Power BI: 0.85."
+        }
+      ]
     }
   }
 }

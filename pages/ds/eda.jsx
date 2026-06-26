@@ -1,25 +1,30 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import { useI18n } from "@/contexts/I18nContext";
 
 export default function EdaPage() {
+  const { t, locale = "en-AU" } = useI18n();
+  const rows = t("ds.eda.rows") || [];
+
   return (
     <>
       <Head>
-        <title>EDA — rin.contact</title>
-        <meta name="description" content="Rin as a dataset." />
+        <title>{t("ds.eda.metaTitle")}</title>
+        <meta name="description" content={t("ds.eda.metaDescription")} />
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://rin.contact/ds/eda" />
       </Head>
       <SeoHead
-        title="EDA — rin.contact"
-        description="Rin as a dataset."
+        title={t("ds.eda.metaTitle")}
+        description={t("ds.eda.metaDescription")}
         path="/ds/eda"
         ogImage={{
-          title: "EDA",
-          subtitle: "Rin as a dataset.",
+          title: t("ds.eda.ogTitle"),
+          subtitle: t("ds.eda.ogSubtitle"),
           section: "ds",
         }}
+        locale={locale}
         noindex
       />
 
@@ -29,31 +34,17 @@ export default function EdaPage() {
             /ds/eda
           </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-            Exploratory Data Analysis
+            {t("ds.eda.heading")}
           </h1>
-          <p className="text-sm text-[#7A7A7A] mb-10">
-            Rin as a dataset. Distributions, histograms, correlations.
-          </p>
+          <p className="text-sm text-[#7A7A7A] mb-10">{t("ds.eda.subtitle")}</p>
 
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 font-mono text-xs space-y-6">
-            <div>
-              <p className="text-[10px] text-[#FF3C3C] mb-2">DISTRIBUTION: Skills</p>
-              <p className="text-[#1A1A1A] dark:text-white">
-                Python (right-skewed), SQL (normal), Rust (bimodal, early stage)
-              </p>
-            </div>
-            <div>
-              <p className="text-[10px] text-[#FF3C3C] mb-2">HISTOGRAM: Career timeline</p>
-              <p className="text-[#1A1A1A] dark:text-white">
-                Peaks at 6–18 month tenure. No outliers (yet).
-              </p>
-            </div>
-            <div>
-              <p className="text-[10px] text-[#FF3C3C] mb-2">CORRELATION: Skills × Projects</p>
-              <p className="text-[#1A1A1A] dark:text-white">
-                Python–Data Eng: 0.92. React–Mobile: 0.78. Government–Power BI: 0.85.
-              </p>
-            </div>
+            {rows.map((row, i) => (
+              <div key={i}>
+                <p className="text-[10px] text-[#FF3C3C] mb-2">{row.label}</p>
+                <p className="text-[#1A1A1A] dark:text-white">{row.text}</p>
+              </div>
+            ))}
           </div>
 
           <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
@@ -67,7 +58,7 @@ export default function EdaPage() {
               href="/"
               className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
-              Home
+              {t("nav.home")}
             </Link>
           </div>
         </div>

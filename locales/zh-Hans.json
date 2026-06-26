@@ -1496,6 +1496,28 @@
       "heading": "你职业的 CI/CD",
       "subtitle": "构建 → 测试 → 部署。流水线状态：通过。",
       "stageDescs": ["教育", "证书", "已就业"]
+    },
+    "eda": {
+      "metaTitle": "EDA — rin.contact",
+      "metaDescription": "Rin 作为一个数据集。",
+      "ogTitle": "EDA",
+      "ogSubtitle": "Rin 作为一个数据集。",
+      "heading": "探索性数据分析",
+      "subtitle": "Rin 作为一个数据集。分布、直方图、相关性。",
+      "rows": [
+        {
+          "label": "分布：技能",
+          "text": "Python（右偏）、SQL（正态）、Rust（双峰，早期阶段）"
+        },
+        {
+          "label": "直方图：职业时间线",
+          "text": "在 6–18 个月任期处出现峰值。还没有离群值。"
+        },
+        {
+          "label": "相关性：技能 × 项目",
+          "text": "Python–数据工程：0.92。React–移动端：0.78。政府–Power BI：0.85。"
+        }
+      ]
     }
   }
 }
