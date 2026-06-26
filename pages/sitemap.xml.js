@@ -180,7 +180,6 @@ const INFO = [
 const NOT_ZH_KNOWLEDGE = new Set([
   "/knowledge/optimisation-methods",
   "/knowledge/statistical-process-control",
-  "/knowledge/mlops-monitoring",
   "/knowledge/model-evaluation",
   "/knowledge/recommender-systems",
   "/knowledge/spatial-statistics",
