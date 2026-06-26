@@ -47,12 +47,43 @@ function MessagePassingFigure({ caption, ariaLabel, nodeLabel, messagesLabel, ag
             />
           </g>
         ))}
-        <circle cx="220" cy="75" r="20" fill="#FF3C3C" opacity="0.2" stroke="#FF3C3C" strokeWidth="1.6" />
-        <text x="220" y="79" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">{nodeLabel}</text>
-        <text x="130" y="20" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="#FF3C3C">{messagesLabel}</text>
-        <text x="220" y="120" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.7">{aggregateLabel}</text>
+        <circle
+          cx="220"
+          cy="75"
+          r="20"
+          fill="#FF3C3C"
+          opacity="0.2"
+          stroke="#FF3C3C"
+          strokeWidth="1.6"
+        />
+        <text
+          x="220"
+          y="79"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {nodeLabel}
+        </text>
+        <text x="130" y="20" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="#FF3C3C">
+          {messagesLabel}
+        </text>
+        <text
+          x="220"
+          y="120"
+          textAnchor="middle"
+          fontSize="8"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {aggregateLabel}
+        </text>
         <defs>
-          <marker id="gnnah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" /></marker>
+          <marker id="gnnah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -296,39 +327,47 @@ function ZhBody() {
   return (
     <>
       <p>
-        <Link href="/knowledge/deep-learning">深度学习</Link>靠利用结构征服了图像和文本——像素的网格、
+        <Link href="/knowledge/deep-learning">深度学习</Link>
+        靠利用结构征服了图像和文本——像素的网格、
         词的序列。但有海量重要的数据既不是网格也不是序列；它是
-        <Link href="/knowledge/network-graph-analysis">图</Link>：人连着人、账户连着交易、分子、知识。
-        <Term>图神经网络</Term>（GNN）正是为这个而生的深度学习架构——它们直接在图的连接结构上学习，靠一个
-        看似简单的想法：<strong>每个节点通过倾听它的邻居来更新对自己的理解</strong>，一遍又一遍。
+        <Link href="/knowledge/network-graph-analysis">图</Link>
+        ：人连着人、账户连着交易、分子、知识。
+        <Term>图神经网络</Term>
+        （GNN）正是为这个而生的深度学习架构——它们直接在图的连接结构上学习，靠一个 看似简单的想法：
+        <strong>每个节点通过倾听它的邻居来更新对自己的理解</strong>，一遍又一遍。
       </p>
       <p>
         它是这一节里已有的两页天然的交汇点——研究图结构的
         <Link href="/knowledge/network-graph-analysis">网络分析</Link>，与学习表示的
-        <Link href="/knowledge/deep-learning">深度学习</Link>——而且是一个真正现代的工具。这一页讲为什么
-        普通网络不适合图、核心处的消息传递机制、GNN 实际学到了什么，以及它在哪里见效。
+        <Link href="/knowledge/deep-learning">深度学习</Link>
+        ——而且是一个真正现代的工具。这一页讲为什么 普通网络不适合图、核心处的消息传递机制、GNN
+        实际学到了什么，以及它在哪里见效。
       </p>
 
       <KSection id="why" eyebrow="01" title="在连接的数据上学习">
         <p>
-          其承诺是把深度学习的威力——自动学习有用的表示——用到意义存在于其<em>连接</em>之中的数据上。经典
-          的<Link href="/knowledge/network-graph-analysis">网络分析</Link>页用手工计算结构特征（度、
-          中心性、社群）；而 GNN 从图中<em>学</em>出每个节点正确的表示，把一个节点自己的特征与它连接的
-          模式结合起来。这是「手工特征 → 学习特征」的飞跃，用到了关系型数据上。
+          其承诺是把深度学习的威力——自动学习有用的表示——用到意义存在于其<em>连接</em>
+          之中的数据上。经典 的<Link href="/knowledge/network-graph-analysis">网络分析</Link>
+          页用手工计算结构特征（度、 中心性、社群）；而 GNN 从图中<em>学</em>
+          出每个节点正确的表示，把一个节点自己的特征与它连接的 模式结合起来。这是「手工特征 →
+          学习特征」的飞跃，用到了关系型数据上。
         </p>
       </KSection>
 
       <KSection id="problem" eyebrow="02" title="为什么网格与序列不适合">
         <p>
-          <Link href="/knowledge/deep-learning">CNN</Link> 之所以奏效，是因为图像有固定的网格——每个像素
+          <Link href="/knowledge/deep-learning">CNN</Link>{" "}
+          之所以奏效，是因为图像有固定的网格——每个像素
           在相同的位置上有相同数量的邻居，所以一个滤波器可以在它上面滑动。
-          <Link href="/knowledge/natural-language-processing">RNN/Transformer</Link> 之所以奏效，是因为
-          文本是一个有序的序列。图<strong>两者都不是</strong>：节点的邻居数量千差万别，而且它们之间没有
+          <Link href="/knowledge/natural-language-processing">RNN/Transformer</Link>{" "}
+          之所以奏效，是因为 文本是一个有序的序列。图<strong>两者都不是</strong>
+          ：节点的邻居数量千差万别，而且它们之间没有
           自然的顺序。你没法在拥有任意、不规则连通性的东西上滑动一个固定的滤波器。
         </p>
         <p>
-          所以 GNN 需要一种<Term>置换不变</Term>的操作（答案不能取决于你列出一个节点邻居的任意顺序），
-          并且对<em>任何</em>数量的邻居都适用。那个操作就是消息传递。
+          所以 GNN 需要一种<Term>置换不变</Term>
+          的操作（答案不能取决于你列出一个节点邻居的任意顺序）， 并且对<em>任何</em>
+          数量的邻居都适用。那个操作就是消息传递。
         </p>
       </KSection>
 
@@ -350,8 +389,8 @@ function ZhBody() {
             都行）把所有进来的消息合起来。
           </li>
           <li>
-            <Term>更新</Term>——节点把聚合后的消息与自己之前的状态结合（经过一个小的神经网络），形成它
-            新的表示。
+            <Term>更新</Term>
+            ——节点把聚合后的消息与自己之前的状态结合（经过一个小的神经网络），形成它 新的表示。
           </li>
         </ol>
         <Formula label="The new representation of node v at layer k plus 1 is an update function applied to its old representation and the aggregate over its neighbours u of their representations.">
@@ -359,39 +398,45 @@ function ZhBody() {
         </Formula>
         <p>
           一层让每个节点看到它直接的邻居；<em>堆叠</em>层数，信息就传播得更远——经过{" "}
-          <TeX>{String.raw`k`}</TeX> 层后，一个节点的表示反映了它的 <TeX>{String.raw`k`}</TeX> 跳邻域。
-          信息在图上的这种扩散，就是整个诀窍。
+          <TeX>{String.raw`k`}</TeX> 层后，一个节点的表示反映了它的 <TeX>{String.raw`k`}</TeX>{" "}
+          跳邻域。 信息在图上的这种扩散，就是整个诀窍。
         </p>
       </KSection>
 
       <KSection id="learns" eyebrow="04" title="GNN 学到了什么">
         <p>
-          输出是为每个节点学到的一个<Term>嵌入</Term>——一个<em>同时</em>捕捉节点自身特征<em>和</em>它在图
-          结构中位置/角色的向量。两个特征相似<em>且</em>邻域相似的节点，最终会得到相似的嵌入。这就是强大
+          输出是为每个节点学到的一个<Term>嵌入</Term>——一个<em>同时</em>捕捉节点自身特征<em>和</em>
+          它在图 结构中位置/角色的向量。两个特征相似<em>且</em>
+          邻域相似的节点，最终会得到相似的嵌入。这就是强大
           之处：模型从数据中发现结构的哪些方面重要——而不是你去猜该用哪种手工的
-          <Link href="/knowledge/network-graph-analysis">中心性</Link>度量。那些嵌入随后送进一个最终层，去做
-          你关心的任何任务。
+          <Link href="/knowledge/network-graph-analysis">中心性</Link>
+          度量。那些嵌入随后送进一个最终层，去做 你关心的任何任务。
         </p>
       </KSection>
 
       <KSection id="flavours" eyebrow="05" title="GCN、GraphSAGE、GAT">
-        <p>流行的 GNN 变体都是同一个消息传递的想法，只是<em>聚合</em>那一步不同：</p>
+        <p>
+          流行的 GNN 变体都是同一个消息传递的想法，只是<em>聚合</em>那一步不同：
+        </p>
         <ul>
           <li>
-            <Term>GCN</Term>（图卷积网络）——对邻居的消息求平均（一个归一化的均值）。简单、奠基性的版本。
+            <Term>GCN</Term>
+            （图卷积网络）——对邻居的消息求平均（一个归一化的均值）。简单、奠基性的版本。
           </li>
           <li>
-            <Term>GraphSAGE</Term>——使用可学习的聚合，而且关键地<em>采样</em>固定数量的邻居，所以它能
-            扩展到巨大的图，并能泛化到训练时未见过的节点。
+            <Term>GraphSAGE</Term>——使用可学习的聚合，而且关键地<em>采样</em>
+            固定数量的邻居，所以它能 扩展到巨大的图，并能泛化到训练时未见过的节点。
           </li>
           <li>
             <Term>GAT</Term>（图注意力网络）——施加
-            <Link href="/knowledge/large-language-models">注意力</Link>，让节点对某些邻居赋予比其他更高的
-            权重（不是所有邻居都同等相关）——就是那个驱动 Transformer 的注意力想法，用在图上。
+            <Link href="/knowledge/large-language-models">注意力</Link>
+            ，让节点对某些邻居赋予比其他更高的 权重（不是所有邻居都同等相关）——就是那个驱动
+            Transformer 的注意力想法，用在图上。
           </li>
         </ul>
         <p>
-          那个统一的视角值得记住：<strong>每个 GNN 层都只是「让节点与它的邻居交谈」</strong>，而变体只在
+          那个统一的视角值得记住：<strong>每个 GNN 层都只是「让节点与它的邻居交谈」</strong>
+          ，而变体只在
           <em>如何</em>倾听上不同。
         </p>
       </KSection>
@@ -400,8 +445,8 @@ function ZhBody() {
         <p>GNN 处理图上三种自然的任务：</p>
         <ul>
           <li>
-            <Term>节点分类</Term>——根据一个节点的特征和邻域给它打标签（这个账户是欺诈的吗？这篇论文是
-            什么主题？）。
+            <Term>节点分类</Term>
+            ——根据一个节点的特征和邻域给它打标签（这个账户是欺诈的吗？这篇论文是 什么主题？）。
           </li>
           <li>
             <Term>链接预测</Term>——预测缺失的或未来的边（这两个人会连上吗？——好友/商品
@@ -418,11 +463,13 @@ function ZhBody() {
         <p>GNN 很强大，但有特征性的失败模式：</p>
         <Callout type="pitfall">
           <p>
-            标志性的那个是<Term>过平滑</Term>：堆叠太多层，每个节点的嵌入都朝<em>同一个</em>值收敛——在与
-            邻居平均了足够多轮之后，所有节点看起来都一样，模型再也分不清它们。实践中这把 GNN 限制在仅仅{" "}
-            <strong>2–3 层</strong>，从而限制了信息能传多远。它们在巨大的图上还面临<strong>可扩展性
-            </strong>的挑战（邻域会爆炸——GraphSAGE 的采样是一个答案），而且——显然——它们<strong>需要一张
-            图</strong>：如果你的数据不是关系型的，GNN 只是白白增加复杂度。它们是当连接真正承载信号时的
+            标志性的那个是<Term>过平滑</Term>：堆叠太多层，每个节点的嵌入都朝<em>同一个</em>
+            值收敛——在与
+            邻居平均了足够多轮之后，所有节点看起来都一样，模型再也分不清它们。实践中这把 GNN
+            限制在仅仅 <strong>2–3 层</strong>，从而限制了信息能传多远。它们在巨大的图上还面临
+            <strong>可扩展性</strong>的挑战（邻域会爆炸——GraphSAGE
+            的采样是一个答案），而且——显然——它们<strong>需要一张 图</strong>
+            ：如果你的数据不是关系型的，GNN 只是白白增加复杂度。它们是当连接真正承载信号时的
             正确工具，而非一个默认选项。
           </p>
         </Callout>
@@ -432,18 +479,20 @@ function ZhBody() {
         <Callout type="applied" label="在图上学习，而不只是测量它">
           <p>
             在情报与廉政工作把实体及其关系建模为一张
-            <Link href="/knowledge/network-graph-analysis">图</Link>之处，GNN 是从<em>测量</em>结构（手选的
-            中心性）迈向<em>从中学习</em>的那一步——把一个节点自身的属性与它连接的模式结合，去发现，比方说，
+            <Link href="/knowledge/network-graph-analysis">图</Link>之处，GNN 是从<em>测量</em>
+            结构（手选的 中心性）迈向<em>从中学习</em>
+            的那一步——把一个节点自身的属性与它连接的模式结合，去发现，比方说，
             通过一个账户「交往的圈子」识别它是欺诈账户，或在一个实体网络里预测一条隐藏的链接。尤其是
             <strong>链接预测</strong>（提示那些很可能存在但未被记录的连接）直接有用。
           </p>
           <p>
             让它保持诚实的，是知道它就是<strong>消息传递</strong>——节点倾听邻居——所以它的威力和它的
-            <strong>过平滑</strong>局限都来自那种平均，而且只有当<em>关系</em>承载信号时它才值得。它处在
+            <strong>过平滑</strong>局限都来自那种平均，而且只有当<em>关系</em>
+            承载信号时它才值得。它处在
             <Link href="/knowledge/deep-learning">深度学习</Link>、
             <Link href="/knowledge/network-graph-analysis">网络分析</Link>和
-            <Link href="/knowledge/knowledge-graphs">知识图谱</Link>的交汇处——是直接在连接的数据上做机器
-            学习的现代方式。
+            <Link href="/knowledge/knowledge-graphs">知识图谱</Link>
+            的交汇处——是直接在连接的数据上做机器 学习的现代方式。
           </p>
         </Callout>
       </KSection>
@@ -452,34 +501,35 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              GNN 在<strong>图上做深度学习</strong>——拥有任意连通性的数据，CNN（网格）和 RNN（序列）在
-              这里不适合。
+              GNN 在<strong>图上做深度学习</strong>——拥有任意连通性的数据，CNN（网格）和
+              RNN（序列）在 这里不适合。
             </li>
             <li>
-              核心是<strong>消息传递</strong>：每个节点<strong>收集</strong>邻居的特征 → <strong>聚合
-              </strong>（求和/平均/取最大——置换不变）→ <strong>更新</strong>自己。堆叠层数 → 信息扩散 k 跳。
+              核心是<strong>消息传递</strong>：每个节点<strong>收集</strong>邻居的特征 →{" "}
+              <strong>聚合</strong>（求和/平均/取最大——置换不变）→ <strong>更新</strong>
+              自己。堆叠层数 → 信息扩散 k 跳。
             </li>
             <li>
-              它学到一个节点<strong>嵌入</strong>，同时捕捉特征与结构——是学出来的，而非像经典中心性那样
-              手工制作的。
+              它学到一个节点<strong>嵌入</strong>
+              ，同时捕捉特征与结构——是学出来的，而非像经典中心性那样 手工制作的。
             </li>
             <li>
-              变体只在聚合上不同：<strong>GCN</strong>（平均）、<strong>GraphSAGE</strong>（采样 + 可学习，
-              可扩展）、<strong>GAT</strong>（注意力为邻居加权）。
+              变体只在聚合上不同：<strong>GCN</strong>（平均）、<strong>GraphSAGE</strong>（采样 +
+              可学习， 可扩展）、<strong>GAT</strong>（注意力为邻居加权）。
             </li>
             <li>
               任务：<strong>节点分类</strong>、<strong>链接预测</strong>（推荐/知识图谱补全）、
               <strong>图分类</strong>。
             </li>
             <li>
-              局限：<strong>过平滑</strong>（层太多 → 所有节点看起来一样，上限 2–3 层）、可扩展性，而且你
-              需要一张图。
+              局限：<strong>过平滑</strong>（层太多 → 所有节点看起来一样，上限 2–3
+              层）、可扩展性，而且你 需要一张图。
             </li>
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          消息传递框架、GCN/GraphSAGE/GAT 变体，以及过平滑的局限，反映了当前的 GNN 参考文献以及深度学习
-          课程。
+          消息传递框架、GCN/GraphSAGE/GAT 变体，以及过平滑的局限，反映了当前的 GNN
+          参考文献以及深度学习 课程。
         </p>
       </KSection>
     </>

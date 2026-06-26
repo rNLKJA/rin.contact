@@ -29,23 +29,96 @@ function FedLoopFigure({
         aria-label={ariaLabel}
       >
         {/* server */}
-        <rect x="175" y="12" width="90" height="28" rx="4" fill="#FF3C3C" opacity="0.2" stroke="#FF3C3C" strokeWidth="1.5" />
-        <text x="220" y="30" textAnchor="middle" fontSize="9.5" fontFamily="monospace" fill="currentColor">{serverLabel}</text>
+        <rect
+          x="175"
+          y="12"
+          width="90"
+          height="28"
+          rx="4"
+          fill="#FF3C3C"
+          opacity="0.2"
+          stroke="#FF3C3C"
+          strokeWidth="1.5"
+        />
+        <text
+          x="220"
+          y="30"
+          textAnchor="middle"
+          fontSize="9.5"
+          fontFamily="monospace"
+          fill="currentColor"
+        >
+          {serverLabel}
+        </text>
         {/* sites */}
         {SITE_X.map((x, i) => (
           <g key={i}>
-            <rect x={x - 38} y="110" width="76" height="30" rx="4" fill="none" stroke="currentColor" strokeWidth="1.3" />
-            <text x={x} y="125" textAnchor="middle" fontSize="8.5" fontFamily="monospace" fill="currentColor">{siteLabel} {i + 1}</text>
-            <text x={x} y="135" textAnchor="middle" fontSize="6.5" fontFamily="monospace" fill="currentColor" opacity="0.55">{dataStaysLabel}</text>
-            <line x1={210 - (i - 1) * 8} y1="42" x2={x - 6} y2="108" stroke="currentColor" strokeWidth="1" opacity="0.5" markerEnd="url(#flah)" />
-            <line x1={x + 6} y1="108" x2={230 - (i - 1) * 8} y2="42" stroke="#FF3C3C" strokeWidth="1" opacity="0.6" markerEnd="url(#flahr)" />
+            <rect
+              x={x - 38}
+              y="110"
+              width="76"
+              height="30"
+              rx="4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.3"
+            />
+            <text
+              x={x}
+              y="125"
+              textAnchor="middle"
+              fontSize="8.5"
+              fontFamily="monospace"
+              fill="currentColor"
+            >
+              {siteLabel} {i + 1}
+            </text>
+            <text
+              x={x}
+              y="135"
+              textAnchor="middle"
+              fontSize="6.5"
+              fontFamily="monospace"
+              fill="currentColor"
+              opacity="0.55"
+            >
+              {dataStaysLabel}
+            </text>
+            <line
+              x1={210 - (i - 1) * 8}
+              y1="42"
+              x2={x - 6}
+              y2="108"
+              stroke="currentColor"
+              strokeWidth="1"
+              opacity="0.5"
+              markerEnd="url(#flah)"
+            />
+            <line
+              x1={x + 6}
+              y1="108"
+              x2={230 - (i - 1) * 8}
+              y2="42"
+              stroke="#FF3C3C"
+              strokeWidth="1"
+              opacity="0.6"
+              markerEnd="url(#flahr)"
+            />
           </g>
         ))}
-        <text x="120" y="80" fontSize="7" fontFamily="monospace" fill="currentColor" opacity="0.55">{modelDownLabel}</text>
-        <text x="300" y="80" fontSize="7" fontFamily="monospace" fill="#FF3C3C">{updatesUpLabel}</text>
+        <text x="120" y="80" fontSize="7" fontFamily="monospace" fill="currentColor" opacity="0.55">
+          {modelDownLabel}
+        </text>
+        <text x="300" y="80" fontSize="7" fontFamily="monospace" fill="#FF3C3C">
+          {updatesUpLabel}
+        </text>
         <defs>
-          <marker id="flah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
-          <marker id="flahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" /></marker>
+          <marker id="flah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
+          <marker id="flahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -253,33 +326,37 @@ function ZhBody() {
     <>
       <p>
         机器学习的标准配方很简单：把所有数据聚到一处，然后在它上面训练一个模型。但有大量有价值的数据
-        <em>没法</em>被聚起来——它太敏感、太受监管，或散落在不被允许把它汇集到一起的不同组织或司法辖区
-        里。数据被锁在孤岛里，而那个显而易见的办法根本行不通。<Term>联邦学习</Term>（FL）是那个巧妙的
-        反转：不是把数据带到模型那里，而是<strong>把模型带到数据那里</strong>——在所有孤岛上训练，而
-        原始数据<em>从不离开</em>它所在的地方。
+        <em>没法</em>
+        被聚起来——它太敏感、太受监管，或散落在不被允许把它汇集到一起的不同组织或司法辖区
+        里。数据被锁在孤岛里，而那个显而易见的办法根本行不通。<Term>联邦学习</Term>
+        （FL）是那个巧妙的 反转：不是把数据带到模型那里，而是<strong>把模型带到数据那里</strong>
+        ——在所有孤岛上训练，而 原始数据<em>从不离开</em>它所在的地方。
       </p>
       <p>
         在任何隐私与数据共享规则起作用之处，它都越来越相关，并与
         <Link href="/knowledge/differential-privacy">差分隐私</Link>和
-        <Link href="/knowledge/mlops-monitoring">MLOps</Link> 页天然相配。这一页讲核心的想法、让它奏效的
+        <Link href="/knowledge/mlops-monitoring">MLOps</Link>{" "}
+        页天然相配。这一页讲核心的想法、让它奏效的
         联邦平均、真实的隐私好处（及其局限），以及那些让它不只是「分布式训练」的困难之处。
       </p>
 
       <KSection id="why" eyebrow="01" title="当数据无法移动">
         <p>
           那个推动性的问题很具体：你想要一个在散布于许多地方的数据上训练的模型——医院、机构、手机、
-          司法辖区——但数据<strong>无法被集中</strong>。隐私法禁止它，数据在商业上或法律上敏感，或者它
-          根本不能离开持有它的设备或组织。你被卡住了：你本可以从<em>所有</em>数据建起的模型，会远好过
+          司法辖区——但数据<strong>无法被集中</strong>
+          。隐私法禁止它，数据在商业上或法律上敏感，或者它
+          根本不能离开持有它的设备或组织。你被卡住了：你本可以从<em>所有</em>
+          数据建起的模型，会远好过
           任何单个孤岛独自能训练的，然而你没法把数据合起来去建它。联邦学习是走出那个困局的路。
         </p>
       </KSection>
 
       <KSection id="idea" eyebrow="02" title="把模型送到数据">
         <p>
-          核心的想法是一个让数据待在原地的循环。一个中央服务器持有当前的<em>共享</em>模型。每一轮：它把
-          一份副本发给每一个参与的站点；每个站点在<em>它自己本地的数据</em>上简短地训练它；每个站点只把
-          得到的<strong>模型更新</strong>（改变了的权重）发回来——<em>而非</em>数据；服务器把那些更新
-          合并成一个改进了的共享模型；循环重复。
+          核心的想法是一个让数据待在原地的循环。一个中央服务器持有当前的<em>共享</em>
+          模型。每一轮：它把 一份副本发给每一个参与的站点；每个站点在<em>它自己本地的数据</em>
+          上简短地训练它；每个站点只把 得到的<strong>模型更新</strong>（改变了的权重）发回来——
+          <em>而非</em>数据；服务器把那些更新 合并成一个改进了的共享模型；循环重复。
         </p>
         <FedLoopFigure
           caption="联邦学习循环。服务器把共享模型发给每个站点；每个在从不离开的数据上本地训练；只有模型更新回来；服务器把它们平均成一个更好的共享模型、再发出去。原始数据自始至终待在家里。"
@@ -291,33 +368,37 @@ function ZhBody() {
           updatesUpLabel="更新 ↑（无数据）"
         />
         <p>
-          结果是一个实际上<em>从所有数据中学到了东西</em>的模型，尽管没有任何原始数据被共享或移动过。
-          信息以模型更新、而非记录的形式流动。
+          结果是一个实际上<em>从所有数据中学到了东西</em>
+          的模型，尽管没有任何原始数据被共享或移动过。 信息以模型更新、而非记录的形式流动。
         </p>
       </KSection>
 
       <KSection id="fedavg" eyebrow="03" title="联邦平均">
         <p>
-          合并这些更新的标准算法是<Term>联邦平均</Term>（FedAvg），而它令人愉快地简单：服务器拿来所有
-          站点的模型更新，计算一个<strong>加权平均</strong>——每个站点的贡献按它有多少数据来加权（数据
-          更多的站点更有发言权）。那个平均后的模型成为新的共享模型。尽管简单，FedAvg 出奇地有效，是实用
-          联邦学习的主力。
+          合并这些更新的标准算法是<Term>联邦平均</Term>
+          （FedAvg），而它令人愉快地简单：服务器拿来所有 站点的模型更新，计算一个
+          <strong>加权平均</strong>——每个站点的贡献按它有多少数据来加权（数据
+          更多的站点更有发言权）。那个平均后的模型成为新的共享模型。尽管简单，FedAvg
+          出奇地有效，是实用 联邦学习的主力。
         </p>
       </KSection>
 
       <KSection id="privacy" eyebrow="04" title="隐私角度——以及它的局限">
         <p>
-          标志性的好处是隐私：<strong>原始数据从不离开它的家</strong>，这绕开了集中化最大的风险、并有助于
-          合规。但有一个关键的、诚实的告诫：
+          标志性的好处是隐私：<strong>原始数据从不离开它的家</strong>
+          ，这绕开了集中化最大的风险、并有助于 合规。但有一个关键的、诚实的告诫：
         </p>
         <Callout type="pitfall">
           <p>
-            <strong>模型更新并非自动就是私密的。</strong>一个站点发回的权重变化是从它的数据算出来的，而
-            一个铁了心的攻击者，有时能从更新（甚至是元数据，比如数据集的大小）里<em>部分地重建</em>关于
-            那些数据的信息。所以联邦学习是隐私的一个<em>改进</em>，而非它单独就是一个隐私<em>保证</em>。要
-            真正的保护，它要与<Link href="/knowledge/differential-privacy">差分隐私</Link>页里的工具
-            结合——给更新加上校准的噪声——以及<Term>安全聚合</Term>（密码学协议，让服务器永远只看到更新
-            之<em>和</em>，而非任何单个站点的）。联邦学习让数据待在家里；DP 与安全聚合保护那些通过更新
+            <strong>模型更新并非自动就是私密的。</strong>
+            一个站点发回的权重变化是从它的数据算出来的，而
+            一个铁了心的攻击者，有时能从更新（甚至是元数据，比如数据集的大小）里<em>部分地重建</em>
+            关于 那些数据的信息。所以联邦学习是隐私的一个<em>改进</em>，而非它单独就是一个隐私
+            <em>保证</em>。要 真正的保护，它要与
+            <Link href="/knowledge/differential-privacy">差分隐私</Link>页里的工具
+            结合——给更新加上校准的噪声——以及<Term>安全聚合</Term>
+            （密码学协议，让服务器永远只看到更新 之<em>和</em>
+            ，而非任何单个站点的）。联邦学习让数据待在家里；DP 与安全聚合保护那些通过更新
             泄漏出去的东西。
           </p>
         </Callout>
@@ -327,17 +408,18 @@ function ZhBody() {
         <p>FL 不只是「在许多机器上训练」。它独特的困难：</p>
         <ul>
           <li>
-            <Term>非独立同分布数据</Term>——最大的那个。每个站点的数据都<em>不同</em>、且不代表整体（一家
+            <Term>非独立同分布数据</Term>——最大的那个。每个站点的数据都<em>不同</em>
+            、且不代表整体（一家
             医院的病人与另一家不同）。当本地数据集很偏斜时，把它们的更新平均会朝相互冲突的方向拉，拖慢
             收敛并使模型有偏。标准机器学习假设独立同分布（IID）数据；FL 几乎从不具备它。
           </li>
           <li>
-            <Term>通信成本</Term>——每一轮来回发送模型更新是昂贵的，在客户端很多或带宽受限时尤甚；减少
-            轮数很要紧。
+            <Term>通信成本</Term>
+            ——每一轮来回发送模型更新是昂贵的，在客户端很多或带宽受限时尤甚；减少 轮数很要紧。
           </li>
           <li>
-            <Term>掉队者与可靠性</Term>——客户端（尤其是设备）会掉线、变慢，或在能力上千差万别；系统必须
-            容忍这一点。
+            <Term>掉队者与可靠性</Term>
+            ——客户端（尤其是设备）会掉线、变慢，或在能力上千差万别；系统必须 容忍这一点。
           </li>
         </ul>
       </KSection>
@@ -346,11 +428,13 @@ function ZhBody() {
         <p>两种场景，性格不同：</p>
         <ul>
           <li>
-            <Term>跨设备</Term>——数百万个小的、不可靠的客户端（手机）。著名的例子是手机键盘的下一个词
+            <Term>跨设备</Term>
+            ——数百万个小的、不可靠的客户端（手机）。著名的例子是手机键盘的下一个词
             预测，跨手机训练，而不上传任何人打的字。
           </li>
           <li>
-            <Term>跨孤岛</Term>——少数几个大的、可靠的参与者（医院、银行、机构），每个都有大量敏感数据。
+            <Term>跨孤岛</Term>
+            ——少数几个大的、可靠的参与者（医院、银行、机构），每个都有大量敏感数据。
             参与者更少、赌注更高，也是与「不能合法汇集数据的组织」最相关的场景。
           </li>
         </ul>
@@ -359,18 +443,20 @@ function ZhBody() {
       <KSection id="applied" eyebrow="07" title="它在我工作中的体现">
         <Callout type="applied" label="不共享数据地协作">
           <p>
-            联邦学习所解决的那个确切问题，在政府里是真实存在的：<strong>不同的机构或司法辖区持有在法律上
-            或实际上无法合并的敏感数据</strong>，然而一个在这一切之上训练的模型，会远比任何一个机构的
-            切片更有用。FL——本地训练、只共享模型更新——是那种协作的机制，<em>而无需</em>隐私法与信任本会
-            禁止的数据共享。是那个<strong>跨孤岛</strong>的场景契合。
+            联邦学习所解决的那个确切问题，在政府里是真实存在的：
+            <strong>不同的机构或司法辖区持有在法律上 或实际上无法合并的敏感数据</strong>
+            ，然而一个在这一切之上训练的模型，会远比任何一个机构的
+            切片更有用。FL——本地训练、只共享模型更新——是那种协作的机制，<em>而无需</em>
+            隐私法与信任本会 禁止的数据共享。是那个<strong>跨孤岛</strong>的场景契合。
           </p>
           <p>
-            让它保持诚实的，是那个隐私告诫：FL 是一个真实的改进，但它单独并非一个保证——更新可能泄漏，
-            所以为了真正的保护，它必须与<Link href="/knowledge/differential-privacy">差分隐私</Link>和
-            安全聚合配对。而<strong>非独立同分布</strong>的现实（每个机构的数据都不同）是那个让它不只是
+            让它保持诚实的，是那个隐私告诫：FL
+            是一个真实的改进，但它单独并非一个保证——更新可能泄漏， 所以为了真正的保护，它必须与
+            <Link href="/knowledge/differential-privacy">差分隐私</Link>和 安全聚合配对。而
+            <strong>非独立同分布</strong>的现实（每个机构的数据都不同）是那个让它不只是
             分布式训练的实际障碍。它与 <Link href="/knowledge/differential-privacy">DP</Link> 和
-            <Link href="/knowledge/data-governance">治理</Link>一道，补全了隐私保护的工具包——那套在不
-            暴露人的前提下，从关于人的数据中获取价值的技术。
+            <Link href="/knowledge/data-governance">治理</Link>
+            一道，补全了隐私保护的工具包——那套在不 暴露人的前提下，从关于人的数据中获取价值的技术。
           </p>
         </Callout>
       </KSection>
@@ -379,33 +465,35 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              联邦学习<strong>在不集中数据的情况下</strong>训练一个共享模型——用于数据太敏感/太孤岛化而
-              无法汇集时。<strong>把模型送到数据那里。</strong>
+              联邦学习<strong>在不集中数据的情况下</strong>
+              训练一个共享模型——用于数据太敏感/太孤岛化而 无法汇集时。
+              <strong>把模型送到数据那里。</strong>
             </li>
             <li>
-              循环：服务器把模型发给每个站点 → 每个<strong>本地训练</strong> → 只发回<strong>模型更新
-              </strong>（非数据）→ 服务器平均 → 重复。
+              循环：服务器把模型发给每个站点 → 每个<strong>本地训练</strong> → 只发回
+              <strong>模型更新</strong>（非数据）→ 服务器平均 → 重复。
             </li>
             <li>
-              <strong>联邦平均（FedAvg）</strong>：对更新的加权平均（按数据量）。简单、有效，是主力。
+              <strong>联邦平均（FedAvg）</strong>
+              ：对更新的加权平均（按数据量）。简单、有效，是主力。
             </li>
             <li>
-              隐私好处：<strong>原始数据待在家里</strong>——但<strong>更新仍可能泄漏</strong>，所以为了
-              真正的保护，要与<strong>差分隐私 + 安全聚合</strong>结合。
+              隐私好处：<strong>原始数据待在家里</strong>——但<strong>更新仍可能泄漏</strong>
+              ，所以为了 真正的保护，要与<strong>差分隐私 + 安全聚合</strong>结合。
             </li>
             <li>
-              困难之处：<strong>非独立同分布数据</strong>（每个站点的数据不同 → 收敛慢/有偏）、通信成本、
-              掉队者。
+              困难之处：<strong>非独立同分布数据</strong>（每个站点的数据不同 →
+              收敛慢/有偏）、通信成本、 掉队者。
             </li>
             <li>
-              <strong>跨设备</strong>（手机——键盘预测）对<strong>跨孤岛</strong>（组织/机构——数据无法
-              汇集的情形）。
+              <strong>跨设备</strong>（手机——键盘预测）对<strong>跨孤岛</strong>
+              （组织/机构——数据无法 汇集的情形）。
             </li>
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          把模型送到数据的想法、FedAvg、更新泄漏的告诫（DP + 安全聚合），以及非独立同分布的挑战，反映了
-          当前的联邦学习参考文献以及隐私机器学习工作。
+          把模型送到数据的想法、FedAvg、更新泄漏的告诫（DP +
+          安全聚合），以及非独立同分布的挑战，反映了 当前的联邦学习参考文献以及隐私机器学习工作。
         </p>
       </KSection>
     </>

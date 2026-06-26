@@ -1,11 +1,83 @@
 import Link from "next/link";
-import { KSection, Callout, Term } from "@/components/knowledge/KnowledgeLayout";
+import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/science-communication.
  * getContent(locale) → localised meta + per-locale Body (EN fallback). Prose,
- * callouts, lists, and the sources footnote are localised. No maths or figures.
+ * callouts, lists, the BLUF figure (localised labels), and the sources footnote
+ * are localised.
  */
+
+/* ── Shared figure: the inverted pyramid / BLUF (localised labels) ─────────── */
+function InvertedPyramid({ top, mid, bot, order }) {
+  return (
+    <svg
+      viewBox="0 0 440 160"
+      className="w-full max-w-[460px] h-auto mx-auto text-[#3D3D3D] dark:text-[#CFCFCF]"
+      role="img"
+      aria-label="An inverted pyramid: the widest band at the top is the recommendation, the middle band the key findings, the narrow band at the bottom the methodology — read top first."
+    >
+      {[
+        [top, 30, 380, true],
+        [mid, 90, 260, false],
+        [bot, 150, 140, false],
+      ].map(([label, x, w, hot], i) => {
+        const y = 22 + i * 40;
+        return (
+          <g key={i}>
+            <rect
+              x={x}
+              y={y}
+              width={w}
+              height="30"
+              rx="3"
+              fill={hot ? "#FF3C3C" : "none"}
+              opacity={hot ? 0.8 : 1}
+              stroke={hot ? "#FF3C3C" : "currentColor"}
+              strokeWidth="1.2"
+            />
+            <text
+              x="220"
+              y={y + 19}
+              textAnchor="middle"
+              fontSize="10"
+              fontFamily="monospace"
+              fill="currentColor"
+            >
+              {label}
+            </text>
+          </g>
+        );
+      })}
+      {/* read-order arrow down the side */}
+      <line
+        x1="14"
+        y1="26"
+        x2="14"
+        y2="138"
+        stroke="#FF3C3C"
+        strokeWidth="1.2"
+        markerEnd="url(#scah)"
+      />
+      <text
+        x="9"
+        y="82"
+        textAnchor="middle"
+        fontSize="8"
+        fontFamily="monospace"
+        fill="#FF3C3C"
+        transform="rotate(-90 9 82)"
+      >
+        {order}
+      </text>
+      <defs>
+        <marker id="scah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+          <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+        </marker>
+      </defs>
+    </svg>
+  );
+}
 
 /* ── English ─────────────────────────────────────────────────────────────── */
 function EnBody() {
@@ -77,6 +149,14 @@ function EnBody() {
             the lede under a build-up is the single most common way analysts lose the room.
           </p>
         </Callout>
+        <Figure caption="The inverted pyramid. Open with the recommendation (the widest, most important band), support it with the few findings that bear on the decision, and keep the methodology in reserve at the bottom. Read top-first — the opposite of how academic writing builds up to its conclusion.">
+          <InvertedPyramid
+            top="Recommendation"
+            mid="Key findings"
+            bot="Methodology"
+            order="read order"
+          />
+        </Figure>
       </KSection>
 
       <KSection id="arc" eyebrow="04" title="The narrative arc">
@@ -296,6 +376,9 @@ function ZhBody() {
             分析师失掉全场最常见的一种方式。
           </p>
         </Callout>
+        <Figure caption="倒金字塔。以建议开场（最宽、最重要的一层），再用与决策相关的少数发现来支撑，把方法论留在最底层备用。自上而下阅读——与学术写作层层铺垫到结论的方式恰好相反。">
+          <InvertedPyramid top="建议" mid="关键发现" bot="方法论" order="阅读顺序" />
+        </Figure>
       </KSection>
 
       <KSection id="arc" eyebrow="04" title="叙事弧">

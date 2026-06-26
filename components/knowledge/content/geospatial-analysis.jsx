@@ -1,5 +1,155 @@
 import Link from "next/link";
-import { KSection, Callout, Term } from "@/components/knowledge/KnowledgeLayout";
+import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
+
+/* ── Shared figure: the MAUP zone effect (localised panel labels) ─────────── */
+// The SAME 12 points are shown in both panels; only the boundary is redrawn.
+const MAUP_POINTS = [
+  [20, 50],
+  [55, 42],
+  [40, 95],
+  [90, 60],
+  [120, 48],
+  [70, 105],
+  [140, 90],
+  [100, 100],
+  [150, 55],
+  [30, 75],
+  [110, 80],
+  [80, 68],
+];
+function MaupFigure({ a, b, note }) {
+  return (
+    <svg
+      viewBox="0 0 440 170"
+      className="w-full max-w-[470px] h-auto mx-auto text-[#3D3D3D] dark:text-[#CFCFCF]"
+      role="img"
+      aria-label="The same scattered points shown twice. With one boundary the left region holds the most points; redraw the boundary and the top region holds the most — same data, different conclusion."
+    >
+      {[0, 240].map((dx, panel) => (
+        <g key={panel}>
+          <rect
+            x={dx + 20}
+            y="26"
+            width="160"
+            height="100"
+            rx="3"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+            opacity="0.4"
+          />
+          {/* shaded 'hotspot' sub-region */}
+          {panel === 0 ? (
+            <rect x={dx + 20} y="26" width="95" height="100" fill="#FF3C3C" opacity="0.12" />
+          ) : (
+            <rect x={dx + 20} y="26" width="160" height="56" fill="#FF3C3C" opacity="0.12" />
+          )}
+          {/* the same points */}
+          {MAUP_POINTS.map(([px, py], i) => (
+            <circle key={i} cx={dx + 20 + px} cy={py} r="2.6" fill="currentColor" opacity="0.65" />
+          ))}
+          {/* boundary divider — vertical (panel 0) vs horizontal (panel 1) */}
+          {panel === 0 ? (
+            <line
+              x1={dx + 115}
+              y1="26"
+              x2={dx + 115}
+              y2="126"
+              stroke="#FF3C3C"
+              strokeWidth="1.3"
+              strokeDasharray="4 3"
+            />
+          ) : (
+            <line
+              x1={dx + 20}
+              y1="82"
+              x2={dx + 180}
+              y2="82"
+              stroke="#FF3C3C"
+              strokeWidth="1.3"
+              strokeDasharray="4 3"
+            />
+          )}
+          {/* counts */}
+          {panel === 0 ? (
+            <>
+              <text
+                x={dx + 67}
+                y="142"
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill="#FF3C3C"
+              >
+                7 ●
+              </text>
+              <text
+                x={dx + 148}
+                y="142"
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill="currentColor"
+                opacity="0.7"
+              >
+                5 ●
+              </text>
+            </>
+          ) : (
+            <>
+              <text
+                x={dx + 100}
+                y="20"
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill="#FF3C3C"
+              >
+                8 ● (top)
+              </text>
+              <text
+                x={dx + 100}
+                y="142"
+                textAnchor="middle"
+                fontSize="9"
+                fontFamily="monospace"
+                fill="currentColor"
+                opacity="0.7"
+              >
+                4 ● (bottom)
+              </text>
+            </>
+          )}
+          <text
+            x={dx + 100}
+            y="160"
+            textAnchor="middle"
+            fontSize="8"
+            fontFamily="monospace"
+            fill="currentColor"
+            opacity="0.6"
+          >
+            {panel === 0 ? a : b}
+          </text>
+        </g>
+      ))}
+      <text
+        x="220"
+        y="100"
+        textAnchor="middle"
+        fontSize="11"
+        fontFamily="monospace"
+        fill="currentColor"
+        opacity="0.5"
+      >
+        →
+      </text>
+      <text x="220" y="14" textAnchor="middle" fontSize="8" fontFamily="monospace" fill="#FF3C3C">
+        {note}
+      </text>
+    </svg>
+  );
+}
 
 /**
  * Per-locale content for /knowledge/geospatial-analysis.
@@ -152,6 +302,9 @@ function EnBody() {
             behind gerrymandering.
           </li>
         </ul>
+        <Figure caption="The zone effect, concretely. The exact same points appear in both panels — only the boundary is redrawn. With a vertical split the left region is the 'hotspot' (7 vs 5); redraw it as a horizontal split and the top region wins (8 vs 4). Same data, opposite conclusion — purely from the boundary choice.">
+          <MaupFigure a="Boundaries A" b="Boundaries B (redrawn)" note="same points ↓" />
+        </Figure>
         <p>
           The lesson isn't that spatial analysis is hopeless — it's that the choice of geographic
           unit is a real analytical decision with real consequences, not a neutral given. Be
@@ -376,6 +529,9 @@ function ZhBody() {
             结果就会变——正是「不公正划区」（gerrymandering）背后的机制。
           </li>
         </ul>
+        <Figure caption="分区效应，具体来看。两个面板里是完全相同的点——只是边界被重画了。竖直划分时左侧区域是「热点」（7 对 5）；改成水平划分，则上方区域胜出（8 对 4）。同样的数据，相反的结论——纯粹来自边界的选择。">
+          <MaupFigure a="边界 A" b="边界 B（重画）" note="相同的点 ↓" />
+        </Figure>
         <p>
           教训不是空间分析没救——而是地理单元的选择是一个有真实后果的、真实的分析决策，而非一个
           中立的既定前提。明确说出你为什么选了你所选的单元，并检查你的结论是否能在另一种选择下
