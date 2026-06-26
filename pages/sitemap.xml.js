@@ -185,7 +185,6 @@ const NOT_ZH_KNOWLEDGE = new Set([
   "/knowledge/quantile-regression",
   "/knowledge/optimisation-methods",
   "/knowledge/statistical-process-control",
-  "/knowledge/model-evaluation",
   "/knowledge/recommender-systems",
   "/knowledge/spatial-statistics",
   "/knowledge/streaming-analytics",
