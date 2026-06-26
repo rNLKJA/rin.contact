@@ -1518,6 +1518,21 @@
       "ogTitle": "Blank",
       "ogSubtitle": "Sometimes the best design is nothing.",
       "line": "Sometimes the best design is nothing."
+    },
+    "breakup": {
+      "metaTitle": "Breakup — rin.contact",
+      "metaDescription": "Too many missing values.",
+      "ogTitle": "Breakup",
+      "ogSubtitle": "Too many missing values.",
+      "heading": "Missing Data",
+      "subtitle": "The data has feelings, you know. Always ask why they were missing.",
+      "puns": [
+        "My dataset and I broke up… too many missing values.",
+        "It said we had compatibility issues. I ran a correlation. It was right.",
+        "Relationship status: NaN. It's complicated.",
+        "We tried imputation. Some things can't be filled.",
+        "It left without saying why. Classic missing-not-at-random."
+      ]
     }
   },
   "info": {
