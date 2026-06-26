@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, Figure, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import {
+  KSection,
+  Callout,
+  Formula,
+  Figure,
+  TeX,
+  Term,
+} from "@/components/knowledge/KnowledgeLayout";
 
 /**
  * Per-locale content for /knowledge/extreme-value-theory.
@@ -19,25 +26,98 @@ function BlockPotFigure({ caption, ariaLabel, blockHeader, potHeader, thresholdL
         aria-label={ariaLabel}
       >
         {/* left: block maxima */}
-        <text x="105" y="14" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{blockHeader}</text>
+        <text
+          x="105"
+          y="14"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {blockHeader}
+        </text>
         {[120, 90, 135, 70, 110, 45, 125].map((y, i) => {
           const x = 25 + i * 26;
           const isMax = y === 135 || y === 125; // block highs
-          return <circle key={i} cx={x} cy={y} r={isMax ? 5 : 3} fill={isMax ? "#FF3C3C" : "currentColor"} opacity={isMax ? 1 : 0.4} />;
+          return (
+            <circle
+              key={i}
+              cx={x}
+              cy={y}
+              r={isMax ? 5 : 3}
+              fill={isMax ? "#FF3C3C" : "currentColor"}
+              opacity={isMax ? 1 : 0.4}
+            />
+          );
         })}
-        <line x1="25" y1="148" x2="181" y2="148" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
+        <line
+          x1="25"
+          y1="148"
+          x2="181"
+          y2="148"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
         {/* divider */}
-        <line x1="220" y1="20" x2="220" y2="150" stroke="currentColor" strokeWidth="0.6" opacity="0.25" />
+        <line
+          x1="220"
+          y1="20"
+          x2="220"
+          y2="150"
+          stroke="currentColor"
+          strokeWidth="0.6"
+          opacity="0.25"
+        />
         {/* right: POT */}
-        <text x="335" y="14" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{potHeader}</text>
-        <line x1="255" y1="60" x2="415" y2="60" stroke="#FF3C3C" strokeWidth="1" strokeDasharray="4 3" opacity="0.7" />
-        <text x="418" y="63" fontSize="7.5" fontFamily="monospace" fill="#FF3C3C" textAnchor="end" opacity="0.8">{thresholdLabel}</text>
+        <text x="335" y="14" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {potHeader}
+        </text>
+        <line
+          x1="255"
+          y1="60"
+          x2="415"
+          y2="60"
+          stroke="#FF3C3C"
+          strokeWidth="1"
+          strokeDasharray="4 3"
+          opacity="0.7"
+        />
+        <text
+          x="418"
+          y="63"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+          textAnchor="end"
+          opacity="0.8"
+        >
+          {thresholdLabel}
+        </text>
         {[120, 50, 135, 70, 45, 125, 30].map((y, i) => {
           const x = 265 + i * 22;
           const over = y < 60; // smaller y = higher on chart = more extreme
-          return <circle key={i} cx={x} cy={y} r={over ? 4.5 : 3} fill={over ? "#FF3C3C" : "currentColor"} opacity={over ? 1 : 0.35} />;
+          return (
+            <circle
+              key={i}
+              cx={x}
+              cy={y}
+              r={over ? 4.5 : 3}
+              fill={over ? "#FF3C3C" : "currentColor"}
+              opacity={over ? 1 : 0.35}
+            />
+          );
         })}
-        <line x1="255" y1="148" x2="415" y2="148" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
+        <line
+          x1="255"
+          y1="148"
+          x2="415"
+          y2="148"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
       </svg>
     </Figure>
   );
@@ -299,57 +379,65 @@ function ZhBody() {
     <>
       <p>
         大多数统计学关乎<em>典型</em>——平均、离散、一个分布中央的主体。但塑造我们的生活与风险预算的
-        事件，是那些<em>极端</em>：百年一遇的洪水、破纪录的热浪、一代人一遇的崩盘。而残酷的转折在于——
-        这些恰恰是围绕中心而建的普通统计学描述得最差的事件。<Term>极值理论</Term>（EVT）是为尾部而建的
+        事件，是那些<em>极端</em>
+        ：百年一遇的洪水、破纪录的热浪、一代人一遇的崩盘。而残酷的转折在于——
+        这些恰恰是围绕中心而建的普通统计学描述得最差的事件。<Term>极值理论</Term>
+        （EVT）是为尾部而建的
         专门分支：估计一个罕见极端有多可能的数学，哪怕是一个比迄今所记录的任何东西都更严重的极端。
       </p>
       <p>
-        这是一个贴近我 <Link href="/knowledge/time-series-analysis">CSIRO 气候风险</Link>工作的话题，那里
-        全部的问题就是极端的概率。这一页讲为什么尾部需要它自己的理论、为它们建模的两个框架（GEV 与广义
-        帕累托）、那个著名的「N 年一遇」事件如何计算，以及气候变化抛给整个事业的那个严肃的告诫。它建立
-        在<Link href="/knowledge/probability">概率</Link>页之上。
+        这是一个贴近我 <Link href="/knowledge/time-series-analysis">CSIRO 气候风险</Link>
+        工作的话题，那里
+        全部的问题就是极端的概率。这一页讲为什么尾部需要它自己的理论、为它们建模的两个框架（GEV
+        与广义 帕累托）、那个著名的「N
+        年一遇」事件如何计算，以及气候变化抛给整个事业的那个严肃的告诫。它建立 在
+        <Link href="/knowledge/probability">概率</Link>页之上。
       </p>
 
       <KSection id="why" eyebrow="01" title="尾部才是重点">
         <p>
-          EVT 的决定性特征，是它刻意<strong>丢掉数据的主体</strong>、只研究那些极端——因为一个分布的中心
+          EVT 的决定性特征，是它刻意<strong>丢掉数据的主体</strong>
+          、只研究那些极端——因为一个分布的中心
           几乎告诉不了你关于它尾部的任何事。两个数据集可以有完全相同的均值与方差，却有着迥然不同的、出现
           灾难性离群值的机会。对防洪、保险、基础设施与灾害规划而言，决定你是有备还是暴露的，是尾部
           概率——而非平均。
         </p>
         <p>
-          而目标确实大胆：估计一个<em>比迄今观测到的任何东西都更极端</em>的事件的概率。你有 50 年的记录，
-          却需要 200 年一遇的洪水。那是<em>超出</em>数据的外推——一般来说这不可能，只不过 EVT 提供了一个
-          了不起的理论理由，说明它有时是能做到的。
+          而目标确实大胆：估计一个<em>比迄今观测到的任何东西都更极端</em>的事件的概率。你有 50
+          年的记录， 却需要 200 年一遇的洪水。那是<em>超出</em>数据的外推——一般来说这不可能，只不过
+          EVT 提供了一个 了不起的理论理由，说明它有时是能做到的。
         </p>
       </KSection>
 
       <KSection id="fail" eyebrow="02" title="为什么正态统计在尾部失灵">
         <p>
-          本能是给所有数据拟合一个熟悉的分布（一个<Link href="/knowledge/statistics">正态</Link>）、再
-          从中读出尾部。这会败得很惨：一个拟合的正态被塑造成去匹配大多数数据所在的<em>中心</em>，而它
-          系统性地<strong>低估</strong>极端事件的机会，因为现实世界的尾部往往远比正态那条又薄又快速衰减的
+          本能是给所有数据拟合一个熟悉的分布（一个<Link href="/knowledge/statistics">正态</Link>
+          ）、再 从中读出尾部。这会败得很惨：一个拟合的正态被塑造成去匹配大多数数据所在的
+          <em>中心</em>，而它 系统性地<strong>低估</strong>
+          极端事件的机会，因为现实世界的尾部往往远比正态那条又薄又快速衰减的
           尾巴更重。用主体去预测尾部，正是「不可能的」10 西格玛事件不断发生的原因。
         </p>
         <p>
           更深的问题是概念性的：一个「百年一遇」的事件，并不是在任何简单的线性意义上比一个典型年份罕见
-          100 倍——在尾部，量级与稀有度之间的关系遵循它自己的法则。EVT 的贡献，是辨认出<em>那个法则是
-          什么</em>，好让你用对的那一族分布给极端建模，而非硬套上错的那一族。
+          100 倍——在尾部，量级与稀有度之间的关系遵循它自己的法则。EVT 的贡献，是辨认出
+          <em>那个法则是 什么</em>，好让你用对的那一族分布给极端建模，而非硬套上错的那一族。
         </p>
       </KSection>
 
       <KSection id="blockmax" eyebrow="03" title="块极大值与 GEV 分布">
         <p>
-          第一个框架是<Term>块极大值</Term>：把记录分成若干块（例如年），只保留每一块的<em>极大值</em>
+          第一个框架是<Term>块极大值</Term>：把记录分成若干块（例如年），只保留每一块的
+          <em>极大值</em>
           （每一年最热的那天）。接着来的，是让 EVT 奏效的那个漂亮结果——<Term>极值类型定理</Term>
           （Fisher–Tippett）：无论原始分布是什么，那些块极大值的分布都收敛到一个单一的族，
           <Term>广义极值</Term>（GEV）分布。
         </p>
         <Callout type="intuition">
           <p>
-            这是 EVT 版本的<Link href="/knowledge/probability">中心极限定理</Link>，而且同样深刻。CLT 说
-            <em>和/平均</em>无论母分布如何都收敛到正态；极值类型定理说<em>极大值</em>无论母分布如何都
-            收敛到 GEV。那份普适性，正是授权那个外推的东西：你不需要知道每日气温的真实分布——你知道极大值
+            这是 EVT 版本的<Link href="/knowledge/probability">中心极限定理</Link>
+            ，而且同样深刻。CLT 说<em>和/平均</em>无论母分布如何都收敛到正态；极值类型定理说
+            <em>极大值</em>无论母分布如何都 收敛到
+            GEV。那份普适性，正是授权那个外推的东西：你不需要知道每日气温的真实分布——你知道极大值
             必定服从一个 GEV，于是你把那一个族拟合到你手里的极大值上，并在其中外推。
           </p>
         </Callout>
@@ -361,9 +449,11 @@ function ZhBody() {
 
       <KSection id="pot" eyebrow="04" title="超阈值与广义帕累托">
         <p>
-          块极大值很浪费——它每年只保留一个值，即便第二糟糕的那天也极端，也被丢掉。<Term>超阈值</Term>
-          （POT）方法更好地利用了数据：挑一个高<em>阈值</em>，给<em>每一个</em>超过它的越界值建模。配套的
-          定理（Pickands–Balkema–de Haan）说，这些阈值越界收敛到<Term>广义帕累托分布</Term>（GPD）。
+          块极大值很浪费——它每年只保留一个值，即便第二糟糕的那天也极端，也被丢掉。
+          <Term>超阈值</Term>
+          （POT）方法更好地利用了数据：挑一个高<em>阈值</em>，给<em>每一个</em>
+          超过它的越界值建模。配套的 定理（Pickands–Balkema–de Haan）说，这些阈值越界收敛到
+          <Term>广义帕累托分布</Term>（GPD）。
         </p>
         <BlockPotFigure
           caption="捕获尾部的两种方式。块极大值每块只保留单一最大值（每年一个）并拟合一个 GEV。超阈值保留每一个高于一个高阈值的值并拟合一个广义帕累托——从同一份记录里用上多得多的极端数据。"
@@ -373,7 +463,8 @@ function ZhBody() {
           thresholdLabel="阈值"
         />
         <p>
-          POT 在实践中（水文、金融、气候）通常更受青睐，恰恰因为它从尾部提取了更多信息——更多越界意味着
+          POT
+          在实践中（水文、金融、气候）通常更受青睐，恰恰因为它从尾部提取了更多信息——更多越界意味着
           更多数据，从同一份记录里把分布钉得更准。代价是阈值的选择：太低，你就用非极端数据污染了尾部；
           太高，你又回到了点太少。
         </p>
@@ -381,33 +472,36 @@ function ZhBody() {
 
       <KSection id="shape" eyebrow="05" title="形状参数：尾部有多重？">
         <p>
-          GEV 与 GPD 都有一个关键的<Term>形状参数</Term> <TeX>{String.raw`\xi`}</TeX>（xi），它控制尾部的
+          GEV 与 GPD 都有一个关键的<Term>形状参数</Term> <TeX>{String.raw`\xi`}</TeX>
+          （xi），它控制尾部的
           性格——可以说是整个分析中单一最重要的数字。它的符号把世界分成三种尾部类型：
         </p>
         <ul>
           <li>
-            <TeX>{String.raw`\xi = 0`}</TeX>——<Term>Gumbel</Term>：一条轻的、指数的尾巴（极端迅速变得更
-            罕见；例如大致接近正态的数据）。
+            <TeX>{String.raw`\xi = 0`}</TeX>——<Term>Gumbel</Term>
+            ：一条轻的、指数的尾巴（极端迅速变得更 罕见；例如大致接近正态的数据）。
           </li>
           <li>
             <TeX>{String.raw`\xi > 0`}</TeX>——<Term>Fréchet</Term>：一条<strong>重</strong>尾，没有
             上界（极端事件比直觉所暗示的可能得多——金融损失、某些降雨）。危险的情形。
           </li>
           <li>
-            <TeX>{String.raw`\xi < 0`}</TeX>——<Term>Weibull</Term>：一条有有限上限的尾巴（存在一个硬性的
-            物理极大值）。
+            <TeX>{String.raw`\xi < 0`}</TeX>——<Term>Weibull</Term>
+            ：一条有有限上限的尾巴（存在一个硬性的 物理极大值）。
           </li>
         </ul>
         <p>
-          估计 <TeX>{String.raw`\xi`}</TeX> 告诉你，你是活在一个最坏有界的世界里，还是一个总有一场更大
+          估计 <TeX>{String.raw`\xi`}</TeX>{" "}
+          告诉你，你是活在一个最坏有界的世界里，还是一个总有一场更大
           灾难潜伏着的世界里——一个彻底改变你该留多少余量的区别。
         </p>
       </KSection>
 
       <KSection id="return" eyebrow="06" title="重现水平：「N 年一遇」事件">
         <p>
-          EVT 的标志性产出是<Term>重现水平</Term>——平均每 <TeX>{String.raw`N`}</TeX> 年被超过一次的量级
-          （那个「百年一遇的洪水」）。配套的想法是<Term>重现期</Term>：一个重现期为 <TeX>{String.raw`N`}</TeX>
+          EVT 的标志性产出是<Term>重现水平</Term>——平均每 <TeX>{String.raw`N`}</TeX>{" "}
+          年被超过一次的量级 （那个「百年一遇的洪水」）。配套的想法是<Term>重现期</Term>
+          ：一个重现期为 <TeX>{String.raw`N`}</TeX>
           年的事件，每一年大约有 <TeX>{String.raw`1/N`}</TeX> 的概率发生：
         </p>
         <Formula label="The return period T equals one divided by the annual exceedance probability p.">
@@ -415,10 +509,11 @@ function ZhBody() {
         </Formula>
         <Callout type="pitfall">
           <p>
-            「百年一遇」这个说法危险地容易被误读。它<strong>不</strong>意味着它像钟表那样每 100 年发生
-            一次，也不意味着刚发生过一次就买来了一个安全的世纪。它意味着<strong>每一年都有 1% 的机会
-            </strong>——所以两次可以在连续的年份里袭来，而在一笔 30 年的按揭里，至少发生一次的累积机会约为
-            26%，而非 30%。它是一个<em>年度概率</em>，而非一张时间表——一个每次都值得抓住的沟通陷阱。
+            「百年一遇」这个说法危险地容易被误读。它<strong>不</strong>意味着它像钟表那样每 100
+            年发生 一次，也不意味着刚发生过一次就买来了一个安全的世纪。它意味着
+            <strong>每一年都有 1% 的机会</strong>——所以两次可以在连续的年份里袭来，而在一笔 30
+            年的按揭里，至少发生一次的累积机会约为 26%，而非 30%。它是一个<em>年度概率</em>
+            ，而非一张时间表——一个每次都值得抓住的沟通陷阱。
           </p>
         </Callout>
       </KSection>
@@ -428,13 +523,15 @@ function ZhBody() {
         <Callout type="pitfall">
           <p>
             你在<strong>超出数据外推</strong>，所以从 50 年记录得出的一个 500 年水平的不确定性是
-            <em>巨大的</em>——永远报告置信区间，并把一个点估计当作一个宽阔范围的中心，而非一个事实。结果对
-            <strong>阈值/块的选择敏感</strong>。而且——对气候最为严重的——经典 EVT 假设<strong>平稳性
-            </strong>：极端的分布不在改变。<Link href="/knowledge/mlops-monitoring">在气候变化之下它在
-            改变</Link>，这意味着那个熟悉的「重现期」与「重现水平」可能彻头彻尾地误导人——昨天的百年一遇，
-            可能是明天的二十年一遇。现代实践使用<strong>非平稳 EVT</strong>（让参数随时间或协变量趋势
-            变化），但不确定性进一步增长。这门纪律，是去量化极端，<em>并且</em>对那份量化有多不确定大声
-            说出来。
+            <em>巨大的</em>
+            ——永远报告置信区间，并把一个点估计当作一个宽阔范围的中心，而非一个事实。结果对
+            <strong>阈值/块的选择敏感</strong>。而且——对气候最为严重的——经典 EVT 假设
+            <strong>平稳性</strong>：极端的分布不在改变。
+            <Link href="/knowledge/mlops-monitoring">在气候变化之下它在 改变</Link>
+            ，这意味着那个熟悉的「重现期」与「重现水平」可能彻头彻尾地误导人——昨天的百年一遇，
+            可能是明天的二十年一遇。现代实践使用<strong>非平稳 EVT</strong>
+            （让参数随时间或协变量趋势 变化），但不确定性进一步增长。这门纪律，是去量化极端，
+            <em>并且</em>对那份量化有多不确定大声 说出来。
           </p>
         </Callout>
       </KSection>
@@ -443,18 +540,19 @@ function ZhBody() {
         <Callout type="applied" label="罕见之事的概率">
           <p>
             EVT 是我在 <strong>CSIRO</strong> 所做气候风险工作的核心——那里整个问题就是<em>极端</em>
-            （极端高温、降雨、灾害事件）的概率与量级，而这恰恰是普通统计学处理得最差、EVT 为之而建的。它
-            灌输的关键纪律，是<strong>直接给尾部建模</strong>（GEV 或 POT），而非给主体拟合一个分布、从而
-            低估那场灾难。
+            （极端高温、降雨、灾害事件）的概率与量级，而这恰恰是普通统计学处理得最差、EVT
+            为之而建的。它 灌输的关键纪律，是<strong>直接给尾部建模</strong>（GEV 或
+            POT），而非给主体拟合一个分布、从而 低估那场灾难。
           </p>
           <p>
-            两个告诫到哪都跟着它：那个<strong>「N 年一遇」的沟通陷阱</strong>（它是一个年度概率，而非
-            一张时间表——一个真实的风险沟通问题，连到<Link href="/knowledge/science-communication">清晰地
-            做汇报</Link>），以及气候变化下的<strong>非平稳性</strong>，它意味着一个在历史数据上算出的
+            两个告诫到哪都跟着它：那个<strong>「N 年一遇」的沟通陷阱</strong>
+            （它是一个年度概率，而非 一张时间表——一个真实的风险沟通问题，连到
+            <Link href="/knowledge/science-communication">清晰地 做汇报</Link>），以及气候变化下的
+            <strong>非平稳性</strong>，它意味着一个在历史数据上算出的
             重现水平可能危险地过时（换了个样子的<Link href="/knowledge/mlops-monitoring">漂移</Link>
             问题）。它与<Link href="/knowledge/time-series-analysis">时间序列</Link>（底层的记录）和
-            <Link href="/knowledge/probability">概率</Link>（尾部的法则）相配——并且，当罕见事件正是全部
-            重点时，它是最事关重大的工具之一。
+            <Link href="/knowledge/probability">概率</Link>
+            （尾部的法则）相配——并且，当罕见事件正是全部 重点时，它是最事关重大的工具之一。
           </p>
         </Callout>
       </KSection>
@@ -463,28 +561,31 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              EVT 给<strong>尾部</strong>、而非主体建模——因为一个分布的中心几乎约束不了它的极端，而正态
-              拟合的尾部会<strong>低估</strong>灾难。
+              EVT 给<strong>尾部</strong>
+              、而非主体建模——因为一个分布的中心几乎约束不了它的极端，而正态 拟合的尾部会
+              <strong>低估</strong>灾难。
             </li>
             <li>
-              <strong>块极大值 → GEV</strong>：极大值无论母分布如何都收敛到广义极值分布（极大值版本的
+              <strong>块极大值 → GEV</strong>
+              ：极大值无论母分布如何都收敛到广义极值分布（极大值版本的
               <strong>CLT</strong>——Fisher-Tippett）。
             </li>
             <li>
-              <strong>超阈值 → GPD</strong>：给每一个超过一个高阈值的越界建模——用上更多尾部数据；实践中
+              <strong>超阈值 → GPD</strong>
+              ：给每一个超过一个高阈值的越界建模——用上更多尾部数据；实践中
               更受青睐（留意阈值的选择）。
             </li>
             <li>
-              <strong>形状参数 ξ</strong>设定尾部类型：Gumbel（轻）、<strong>Fréchet（重、无界——危险）
-              </strong>、Weibull（有界）。
+              <strong>形状参数 ξ</strong>设定尾部类型：Gumbel（轻）、
+              <strong>Fréchet（重、无界——危险）</strong>、Weibull（有界）。
             </li>
             <li>
-              <strong>重现水平 / 重现期</strong>：「N 年一遇」事件 = 一个 <strong>1/N 的年度概率</strong>，
-              而非一张时间表（两次可以接连袭来）。
+              <strong>重现水平 / 重现期</strong>：「N 年一遇」事件 = 一个{" "}
+              <strong>1/N 的年度概率</strong>， 而非一张时间表（两次可以接连袭来）。
             </li>
             <li>
-              局限：巨大的<strong>外推不确定性</strong>（报告置信区间）、阈值敏感性，以及<strong>非平稳性
-              </strong>——气候变化打破了平稳的假设。
+              局限：巨大的<strong>外推不确定性</strong>（报告置信区间）、阈值敏感性，以及
+              <strong>非平稳性</strong>——气候变化打破了平稳的假设。
             </li>
           </ul>
         </Callout>

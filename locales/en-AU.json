@@ -1128,6 +1128,18 @@
           {
             "label": "Optimisation Methods",
             "note": "Convex vs not, LP/simplex, integer, metaheuristics"
+          },
+          {
+            "label": "Gaussian Processes",
+            "note": "Distribution over functions, kernels, uncertainty"
+          },
+          {
+            "label": "Robust Statistics",
+            "note": "Breakdown point, median/MAD, M-estimators, Huber"
+          },
+          {
+            "label": "Quantile Regression",
+            "note": "Conditional quantiles, pinball loss, the whole spread"
           }
         ]
       },

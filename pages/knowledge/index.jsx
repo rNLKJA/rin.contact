@@ -64,6 +64,9 @@ const TIERS = [
       { href: "/knowledge/extreme-value-theory", status: "live" },
       { href: "/knowledge/hierarchical-models", status: "live" },
       { href: "/knowledge/optimisation-methods", status: "live" },
+      { href: "/knowledge/gaussian-processes", status: "live" },
+      { href: "/knowledge/robust-statistics", status: "live" },
+      { href: "/knowledge/quantile-regression", status: "live" },
     ],
   },
   {

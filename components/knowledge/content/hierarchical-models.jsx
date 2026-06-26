@@ -36,20 +36,51 @@ function PartialPoolingFigure({ caption, ariaLabel, meanLabel, noPoolLabel, part
         aria-label={ariaLabel}
       >
         {/* mean line */}
-        <line x1="30" y1="75" x2="410" y2="75" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
-        <text x="414" y="78" fontSize="7.5" fontFamily="monospace" fill="currentColor" textAnchor="end" opacity="0.6">{meanLabel}</text>
+        <line
+          x1="30"
+          y1="75"
+          x2="410"
+          y2="75"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
+        <text
+          x="414"
+          y="78"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          textAnchor="end"
+          opacity="0.6"
+        >
+          {meanLabel}
+        </text>
         {/* no pooling row (top) */}
-        <text x="30" y="22" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{noPoolLabel}</text>
+        <text x="30" y="22" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">
+          {noPoolLabel}
+        </text>
         {NO_POOL.map(([x, y], i) => (
           <circle key={i} cx={x} cy={y} r={3} fill="currentColor" opacity="0.55" />
         ))}
         {/* partial pooling row (bottom) */}
-        <text x="30" y="140" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{partialPoolLabel}</text>
+        <text x="30" y="140" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {partialPoolLabel}
+        </text>
         {PARTIAL.map(([x, y0, keep], i) => {
           const y = 75 + (y0 - 75) * keep;
           return (
             <g key={i}>
-              <line x1={x} y1={y0} x2={x} y2={y} stroke="#FF3C3C" strokeWidth="0.7" strokeDasharray="2 2" opacity="0.5" />
+              <line
+                x1={x}
+                y1={y0}
+                x2={x}
+                y2={y}
+                stroke="#FF3C3C"
+                strokeWidth="0.7"
+                strokeDasharray="2 2"
+                opacity="0.5"
+              />
               <circle cx={x} cy={y} r={3.5} fill="#FF3C3C" />
             </g>
           );
@@ -284,12 +315,14 @@ function ZhBody() {
         真实世界的数据，很少是一张扁平、独立的列表——它成组而来。嵌套在学校里的学生、医院里的病人、同一个
         人身上的重复测量、同一个传感器的读数、一个地区内的案件。而数据一旦成组，来自同一组的两个观测就
         <em>不独立</em>了——一所学校里的学生共享它的教学，一个站点的读数共享它的条件。
-        <Term>层次模型</Term>（也叫多层模型或混合效应模型）正是为这种结构而建，而它们用一个真正优雅的
-        想法把它解决：<strong>部分汇集</strong>——让每一组都有它自己的估计，但让这些组彼此借力。
+        <Term>层次模型</Term>
+        （也叫多层模型或混合效应模型）正是为这种结构而建，而它们用一个真正优雅的 想法把它解决：
+        <strong>部分汇集</strong>——让每一组都有它自己的估计，但让这些组彼此借力。
       </p>
       <p>
-        它有别于统计建模页上的 <Link href="/knowledge/statistical-modelling">GLM</Link>——那个处理响应的
-        形状；这个处理<em>分组结构</em>——而它与<Link href="/knowledge/spatial-statistics">空间统计</Link>
+        它有别于统计建模页上的 <Link href="/knowledge/statistical-modelling">GLM</Link>
+        ——那个处理响应的 形状；这个处理<em>分组结构</em>——而它与
+        <Link href="/knowledge/spatial-statistics">空间统计</Link>
         是同一个「独立性被打破」的教训，只是换了个样子。这一页讲成组数据带来的问题、那两个诱人的错误
         答案，以及胜过两者的部分汇集方案。
       </p>
@@ -302,8 +335,8 @@ function ZhBody() {
           成员身份、而非地理来驱动。
         </p>
         <p>
-          更糟的是，你往往真的<em>在意</em>那些组：各学校有何不同？哪些站点偏热？你想要<em>每组</em>的
-          估计，对每一组实际有多少数据保持诚实。而这正是那两个朴素的办法都栽跟头之处。
+          更糟的是，你往往真的<em>在意</em>那些组：各学校有何不同？哪些站点偏热？你想要<em>每组</em>
+          的 估计，对每一组实际有多少数据保持诚实。而这正是那两个朴素的办法都栽跟头之处。
         </p>
       </KSection>
 
@@ -311,11 +344,13 @@ function ZhBody() {
         <p>面对成组的数据，本能是两个极端之一——而两者都有缺陷：</p>
         <ul>
           <li>
-            <Term>完全汇集</Term>——彻底忽略那些组；把所有数据扔进一个模型。这<strong>抹去了真实的组间
-            差异</strong>，假装每一所学校都是平均的。你恰恰丢掉了你想要的那个组层面的信号。
+            <Term>完全汇集</Term>——彻底忽略那些组；把所有数据扔进一个模型。这
+            <strong>抹去了真实的组间 差异</strong>
+            ，假装每一所学校都是平均的。你恰恰丢掉了你想要的那个组层面的信号。
           </li>
           <li>
-            <Term>无汇集</Term>——为每一组拟合一个完全独立的模型。这会疯狂地<strong>过拟合小组</strong>：
+            <Term>无汇集</Term>——为每一组拟合一个完全独立的模型。这会疯狂地
+            <strong>过拟合小组</strong>：
             一所只有三名学生的学校，得到一个基于三个带噪点的估计，却被当作和一所有三千名学生的学校一样
             可靠。微小的组产出荒谬、不可信的估计。
           </li>
@@ -328,8 +363,9 @@ function ZhBody() {
 
       <KSection id="partial" eyebrow="03" title="部分汇集：两全其美">
         <p>
-          <Term>部分汇集</Term>是那个优雅的折中：给每一组它自己的估计，但把那个估计朝总体平均拉，拉的
-          幅度取决于<strong>这一组有多少数据</strong>。一个数据丰富的组，它的估计贴近它自己的数据；一个
+          <Term>部分汇集</Term>
+          是那个优雅的折中：给每一组它自己的估计，但把那个估计朝总体平均拉，拉的 幅度取决于
+          <strong>这一组有多少数据</strong>。一个数据丰富的组，它的估计贴近它自己的数据；一个
           数据贫乏的组，它的估计被强力地朝全局均值拉，向所有其他组借力。
         </p>
         <PartialPoolingFigure
@@ -340,7 +376,8 @@ function ZhBody() {
           partialPoolLabel="部分汇集"
         />
         <p>
-          正式地做，这之所以奏效，是因为模型把组效应本身当作从一个共享分布——一个<em>组的分布</em>——中
+          正式地做，这之所以奏效，是因为模型把组效应本身当作从一个共享分布——一个<em>组的分布</em>
+          ——中
           抽出来的，所以估计一个组的效应，会用上关于组在总体上如何变异的信息。那就是被精确化了的「借力」，
           也是为什么部分汇集的估计，平均而言比任何一个极端都更接近真相。
         </p>
@@ -348,16 +385,19 @@ function ZhBody() {
 
       <KSection id="shrinkage" eyebrow="04" title="收缩：可见的签名">
         <p>
-          部分汇集可见的效果是<Term>收缩</Term>：极端的组估计被朝总体均值拉（「收缩」），而且<strong>组
-          越小、越吵，被拉得越狠</strong>。一个只有一个狂野数据点的组，没法声称一个狂野的估计——模型正确
+          部分汇集可见的效果是<Term>收缩</Term>：极端的组估计被朝总体均值拉（「收缩」），而且
+          <strong>组 越小、越吵，被拉得越狠</strong>
+          。一个只有一个狂野数据点的组，没法声称一个狂野的估计——模型正确
           地说「那大概是噪声」，并把它拽回均值附近。
         </p>
         <Callout type="intuition">
           <p>
-            收缩与<Link href="/knowledge/statistical-machine-learning">正则化</Link>是同一个想法——它刻意
-            把估计朝一个合理的默认值偏置，以<em>减少方差</em>，而净结果是整体上更准确的估计。这也是为
-            什么层次模型在小组问题上如此出色：它们不是要么忽略一个微小的组、要么盲目地信任它，而是<em>按
-            它的证据成比例地</em>信任它。那所「三名学生的学校」不会得到一个疯狂的估计；它得到一个接近平均
+            收缩与<Link href="/knowledge/statistical-machine-learning">正则化</Link>
+            是同一个想法——它刻意 把估计朝一个合理的默认值偏置，以<em>减少方差</em>
+            ，而净结果是整体上更准确的估计。这也是为
+            什么层次模型在小组问题上如此出色：它们不是要么忽略一个微小的组、要么盲目地信任它，而是
+            <em>按 它的证据成比例地</em>
+            信任它。那所「三名学生的学校」不会得到一个疯狂的估计；它得到一个接近平均
             的，而那几乎肯定更接近真相。
           </p>
         </Callout>
@@ -365,15 +405,18 @@ function ZhBody() {
 
       <KSection id="fixedrandom" eyebrow="05" title="固定对随机效应">
         <p>
-          那套让所有人都犯晕的词汇，说简单了。一个<Term>固定效应</Term>，是你具体在意、并想直接比较的
-          一个变量的单一估计值（比方说，某个处理的总体效应）。一个<Term>随机效应</Term>，是组层面的变异，
-          被建模为从一个分布中抽出来的偏差——用于当那些组是从一个更大的总体里抽出的一个<em>样本</em>、而
-          你在意的是它们之间的变异、而非逐个的它们时。
+          那套让所有人都犯晕的词汇，说简单了。一个<Term>固定效应</Term>
+          ，是你具体在意、并想直接比较的 一个变量的单一估计值（比方说，某个处理的总体效应）。一个
+          <Term>随机效应</Term>，是组层面的变异，
+          被建模为从一个分布中抽出来的偏差——用于当那些组是从一个更大的总体里抽出的一个<em>样本</em>
+          、而 你在意的是它们之间的变异、而非逐个的它们时。
         </p>
         <p>
-          一个<Term>混合效应模型</Term>，无非是两者都有——固定效应对应你要估计的总体层面的关系，随机效应
+          一个<Term>混合效应模型</Term>
+          ，无非是两者都有——固定效应对应你要估计的总体层面的关系，随机效应
           对应组的结构。那个「随机」的部分，恰恰是交付部分汇集的东西：通过假设组效应来自一个共同的分布，
-          模型就在它们之间共享信息。（这也是为什么层次模型天然是<Link href="/knowledge/bayesian-statistics">贝叶斯</Link>
+          模型就在它们之间共享信息。（这也是为什么层次模型天然是
+          <Link href="/knowledge/bayesian-statistics">贝叶斯</Link>
           的——那个共享分布，是组效应上的一个先验。）
         </p>
       </KSection>
@@ -382,8 +425,9 @@ function ZhBody() {
         <p>组可以以两种方式不同，而模型可以捕获其中之一或两者：</p>
         <ul>
           <li>
-            <Term>随机截距</Term>——每一组有它自己的基线水平（有些学校整体上就是分数更高），但一个预测
-            因子的<em>效应</em>在各组间是共享的。
+            <Term>随机截距</Term>
+            ——每一组有它自己的基线水平（有些学校整体上就是分数更高），但一个预测 因子的<em>效应</em>
+            在各组间是共享的。
           </li>
           <li>
             <Term>随机斜率</Term>——<em>关系</em>本身随组变化（学习时长对成绩的效应，在某些学校比别的
@@ -399,18 +443,21 @@ function ZhBody() {
       <KSection id="applied" eyebrow="07" title="它在我工作中的体现">
         <Callout type="applied" label="诚实地对待成组的数据">
           <p>
-            大量政府数据本质上是成组的——按<strong>地区、按单位、按办公室</strong>的数字，或每个实体随
-            时间的重复测量——而层次模型给我的最重要的东西，是<strong>不</strong>去伸手够那两个诱人的极端
+            大量政府数据本质上是成组的——按<strong>地区、按单位、按办公室</strong>
+            的数字，或每个实体随 时间的重复测量——而层次模型给我的最重要的东西，是<strong>不</strong>
+            去伸手够那两个诱人的极端
             的纪律：把一切混在一起（抹去地区之间真实的差异），或孤立地分析每一组（让一个微小地区的三个
             数据点，和一个大地区的数千个有同样的权重）。
           </p>
           <p>
-            <strong>部分汇集</strong>是那个诚实的中间——小的或吵的组被合理地朝平均<strong>收缩</strong>，
+            <strong>部分汇集</strong>是那个诚实的中间——小的或吵的组被合理地朝平均
+            <strong>收缩</strong>，
             而不是产出吓人的、不可靠的估计，而这恰恰是你在依据一个按地区的数字行动之前所想要的。它与
-            <Link href="/knowledge/spatial-statistics">空间统计</Link>是同一个「独立性被打破」的教训、同一
-            种<Link href="/knowledge/statistical-machine-learning">正则化</Link>的直觉，以及一个天然的
-            <Link href="/knowledge/bayesian-statistics">贝叶斯</Link>结构——是在不自欺的前提下分析真实、
-            杂乱、成组数据的最低调而强大的工具之一。
+            <Link href="/knowledge/spatial-statistics">空间统计</Link>
+            是同一个「独立性被打破」的教训、同一 种
+            <Link href="/knowledge/statistical-machine-learning">正则化</Link>的直觉，以及一个天然的
+            <Link href="/knowledge/bayesian-statistics">贝叶斯</Link>
+            结构——是在不自欺的前提下分析真实、 杂乱、成组数据的最低调而强大的工具之一。
           </p>
         </Callout>
       </KSection>
@@ -419,28 +466,29 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              成组/嵌套的数据（学校里的学生、地区、重复测量）打破<strong>独立性</strong>——一组内的观测
-              是相关的。
+              成组/嵌套的数据（学校里的学生、地区、重复测量）打破<strong>独立性</strong>
+              ——一组内的观测 是相关的。
             </li>
             <li>
-              两个糟糕的选项：<strong>完全汇集</strong>（忽略组 → 抹去真实差异）与<strong>无汇集</strong>
+              两个糟糕的选项：<strong>完全汇集</strong>（忽略组 → 抹去真实差异）与
+              <strong>无汇集</strong>
               （每组一个独立模型 → 过拟合小组）。
             </li>
             <li>
-              <strong>部分汇集</strong>是那个修法：每一组得到它自己的估计，按它有多少数据朝总体均值拉——在
-              组间借力。
+              <strong>部分汇集</strong>
+              是那个修法：每一组得到它自己的估计，按它有多少数据朝总体均值拉——在 组间借力。
             </li>
             <li>
-              <strong>收缩</strong>是它的签名——小的/吵的组被朝平均拉得最狠。它是<strong>正则化</strong>：
-              用一点偏差换来少得多的方差。
+              <strong>收缩</strong>是它的签名——小的/吵的组被朝平均拉得最狠。它是
+              <strong>正则化</strong>： 用一点偏差换来少得多的方差。
             </li>
             <li>
-              <strong>固定效应</strong>（你比较的总体层面估计）+ <strong>随机效应</strong>（来自一个共享
-              分布的组变异）= 一个<strong>混合效应模型</strong>。天然是贝叶斯的。
+              <strong>固定效应</strong>（你比较的总体层面估计）+ <strong>随机效应</strong>
+              （来自一个共享 分布的组变异）= 一个<strong>混合效应模型</strong>。天然是贝叶斯的。
             </li>
             <li>
-              <strong>随机截距</strong>（组的基线不同）对<strong>随机斜率</strong>（关系随组不同——更灵活、
-              更消耗数据）。
+              <strong>随机截距</strong>（组的基线不同）对<strong>随机斜率</strong>
+              （关系随组不同——更灵活、 更消耗数据）。
             </li>
           </ul>
         </Callout>

@@ -21,23 +21,98 @@ function MlopsLoopFigure({ caption, ariaLabel, stageLabels, driftLabel, retrainL
       >
         {STAGE_X.map((x, i) => (
           <g key={i}>
-            <rect x={x} y="30" width="86" height="28" rx="4" fill="none" stroke="currentColor" strokeWidth="1.3" />
-            <text x={x + 43} y="48" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">{stageLabels[i]}</text>
-            {i < 2 && <line x1={x + 86} y1="44" x2={x + 125} y2="44" stroke="currentColor" strokeWidth="1.2" markerEnd="url(#mah)" />}
+            <rect
+              x={x}
+              y="30"
+              width="86"
+              height="28"
+              rx="4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.3"
+            />
+            <text
+              x={x + 43}
+              y="48"
+              textAnchor="middle"
+              fontSize="10"
+              fontFamily="monospace"
+              fill="currentColor"
+            >
+              {stageLabels[i]}
+            </text>
+            {i < 2 && (
+              <line
+                x1={x + 86}
+                y1="44"
+                x2={x + 125}
+                y2="44"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                markerEnd="url(#mah)"
+              />
+            )}
           </g>
         ))}
         {/* drift alarm on monitor */}
-        <text x="333" y="76" textAnchor="middle" fontSize="8.5" fontFamily="monospace" fill="#FF3C3C">{driftLabel}</text>
+        <text
+          x="333"
+          y="76"
+          textAnchor="middle"
+          fontSize="8.5"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {driftLabel}
+        </text>
         {/* retrain box */}
-        <rect x="165" y="104" width="86" height="28" rx="4" fill="none" stroke="#FF3C3C" strokeWidth="1.4" />
-        <text x="208" y="122" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="#FF3C3C">{retrainLabel}</text>
+        <rect
+          x="165"
+          y="104"
+          width="86"
+          height="28"
+          rx="4"
+          fill="none"
+          stroke="#FF3C3C"
+          strokeWidth="1.4"
+        />
+        <text
+          x="208"
+          y="122"
+          textAnchor="middle"
+          fontSize="10"
+          fontFamily="monospace"
+          fill="#FF3C3C"
+        >
+          {retrainLabel}
+        </text>
         {/* monitor -> retrain */}
-        <line x1="333" y1="58" x2="251" y2="112" stroke="#FF3C3C" strokeWidth="1.2" markerEnd="url(#mahr)" />
+        <line
+          x1="333"
+          y1="58"
+          x2="251"
+          y2="112"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+          markerEnd="url(#mahr)"
+        />
         {/* retrain -> deploy */}
-        <line x1="208" y1="104" x2="208" y2="60" stroke="#FF3C3C" strokeWidth="1.2" markerEnd="url(#mahr)" />
+        <line
+          x1="208"
+          y1="104"
+          x2="208"
+          y2="60"
+          stroke="#FF3C3C"
+          strokeWidth="1.2"
+          markerEnd="url(#mahr)"
+        />
         <defs>
-          <marker id="mah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" /></marker>
-          <marker id="mahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" /></marker>
+          <marker id="mah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="currentColor" />
+          </marker>
+          <marker id="mahr" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#FF3C3C" />
+          </marker>
         </defs>
       </svg>
     </Figure>
@@ -304,10 +379,12 @@ function ZhBody() {
         （机器学习运营）是在生产中部署、监控、维护模型，让它们持续干活的那门学科。
       </p>
       <p>
-        这是<Link href="/knowledge/reproducibility">可复现性</Link>页的「已部署模型」伴侣：那一页关于让
-        <em>分析</em>可重跑；这一页关于在一个<em>活模型</em>上线之后保持它可信。它在任何模型为持续的决策、
-        而非一次性答案提供依据之处都要紧——而那个核心的、容易被错过的真相是：部署是工作的<em>开始</em>，
-        而非结束。
+        这是<Link href="/knowledge/reproducibility">可复现性</Link>
+        页的「已部署模型」伴侣：那一页关于让
+        <em>分析</em>可重跑；这一页关于在一个<em>活模型</em>
+        上线之后保持它可信。它在任何模型为持续的决策、
+        而非一次性答案提供依据之处都要紧——而那个核心的、容易被错过的真相是：部署是工作的
+        <em>开始</em>， 而非结束。
       </p>
 
       <KSection id="gap" eyebrow="01" title="最后一公里的鸿沟">
@@ -317,14 +394,16 @@ function ZhBody() {
           工程与运营，而非建模。MLOps 是那套——从软件的 DevOps 借来的——弥合那道鸿沟的实践。
         </p>
         <p>
-          心态的转变才是重要的部分：一个已部署的模型是一个<strong>要去运营的系统</strong>，而非一个要
+          心态的转变才是重要的部分：一个已部署的模型是一个<strong>要去运营的系统</strong>
+          ，而非一个要
           归档的结果。它需要版本控制、测试、监控，以及一个应对它表现下滑那一天的计划——因为那一天总会来。
         </p>
       </KSection>
 
       <KSection id="lifecycle" eyebrow="02" title="模型生命周期是一个循环">
         <p>
-          MLOps 的决定性想法是：一个模型的生命不是一条终止于部署的直线——它是一个<strong>循环</strong>：
+          MLOps 的决定性想法是：一个模型的生命不是一条终止于部署的直线——它是一个
+          <strong>循环</strong>：
           训练、部署、监控、（当它衰减时）重新训练，一圈又一圈。部署不是终点；它是一个只要模型还在用就
           一直转动的循环上的一站。
         </p>
@@ -341,40 +420,47 @@ function ZhBody() {
         <p>把一个模型送到它能做预测的地方，有几种常见的形态，而选择取决于预测如何被使用：</p>
         <ul>
           <li>
-            <Term>批处理</Term>——按计划在一堆数据上运行模型（隔夜给每个个案打分）。简单而稳健；在不需要
+            <Term>批处理</Term>
+            ——按计划在一堆数据上运行模型（隔夜给每个个案打分）。简单而稳健；在不需要
             即时预测时很好。
           </li>
           <li>
-            <Term>实时 / API</Term>——把模型包进一个服务里，按需一次回答一个请求。当一个决策实时发生时
+            <Term>实时 / API</Term>
+            ——把模型包进一个服务里，按需一次回答一个请求。当一个决策实时发生时
             需要它，但活动部件更多。
           </li>
           <li>
-            <Term>影子部署</Term>——让一个新模型与旧的并排运行，比较它的预测而不据以行动，以在切换之前
-            建立信心。
+            <Term>影子部署</Term>
+            ——让一个新模型与旧的并排运行，比较它的预测而不据以行动，以在切换之前 建立信心。
           </li>
         </ul>
       </KSection>
 
       <KSection id="drift" eyebrow="04" title="模型为何腐烂：漂移">
         <p>
-          这就是让监控没得商量的那个事实：<strong>一个模型的准确度随时间衰减，尽管模型本身从不改变。
-          </strong>它是在世界的一张快照上训练的，而世界继续向前。这就是<Term>漂移</Term>，它有两种值得
+          这就是让监控没得商量的那个事实：
+          <strong>一个模型的准确度随时间衰减，尽管模型本身从不改变。</strong>
+          它是在世界的一张快照上训练的，而世界继续向前。这就是<Term>漂移</Term>，它有两种值得
           区分开来的味道：
         </p>
         <ul>
           <li>
-            <Term>数据漂移</Term>——<em>输入</em>的分布移动了。新种类的客户、一个改变了的流程、一个不同的
+            <Term>数据漂移</Term>——<em>输入</em>
+            的分布移动了。新种类的客户、一个改变了的流程、一个不同的
             季节——流进来的数据不再像训练数据，即便底层的关系仍然成立。
           </li>
           <li>
-            <Term>概念漂移</Term>——输入与目标之间的<em>关系</em>变了。去年能预测欺诈的，今年不能了，因为
+            <Term>概念漂移</Term>——输入与目标之间的<em>关系</em>
+            变了。去年能预测欺诈的，今年不能了，因为
             欺诈者适应了。游戏本身的规则移动了，而这是更危险的那种。
           </li>
         </ul>
         <p>
           两者都悄悄侵蚀表现，而除非你盯着，否则哪一个都不会显现。一个上线时优秀的模型，一年后可能悄悄
-          变得一文不值——直接连到时间序列页的<Link href="/knowledge/time-series-analysis">模型陈旧</Link>
-          告诫，以及<Link href="/knowledge/anomaly-detection">异常检测</Link>里那个不断演化的目标问题。
+          变得一文不值——直接连到时间序列页的
+          <Link href="/knowledge/time-series-analysis">模型陈旧</Link>
+          告诫，以及<Link href="/knowledge/anomaly-detection">异常检测</Link>
+          里那个不断演化的目标问题。
         </p>
       </KSection>
 
@@ -385,7 +471,8 @@ function ZhBody() {
             <Term>运营健康</Term>——延迟、错误、在线时长。标准的软件监控；必要但不充分。
           </li>
           <li>
-            <Term>输入分布</Term>——盯着进来的特征以发现数据漂移。这是最早的警告，立刻就有，甚至在你知道
+            <Term>输入分布</Term>
+            ——盯着进来的特征以发现数据漂移。这是最早的警告，立刻就有，甚至在你知道
             预测是否出错之前。
           </li>
           <li>
@@ -398,8 +485,8 @@ function ZhBody() {
         </ul>
         <Callout type="intuition">
           <p>
-            那个标签滞后，恰恰是为什么<strong>输入漂移监控如此重要</strong>：你能<em>今天</em>就检测出
-            世界已经移动，远在你能测出准确度下降之前。盯着输入，让你在腐烂面前抢得先机。
+            那个标签滞后，恰恰是为什么<strong>输入漂移监控如此重要</strong>：你能<em>今天</em>
+            就检测出 世界已经移动，远在你能测出准确度下降之前。盯着输入，让你在腐烂面前抢得先机。
           </p>
         </Callout>
       </KSection>
@@ -411,31 +498,37 @@ function ZhBody() {
           意味着模型实际上被喂入了它从未学过的输入，而它表现欠佳的原因，与模型本身毫无关系。
         </p>
         <p>
-          标准的防御是一个<Term>特征存储</Term>——每个特征的一个单一、共享的定义，对训练与服务都被同样地
-          使用，好让两者无法分道扬镳。它是<Link href="/knowledge/feature-engineering">泄漏</Link>与
-          <Link href="/knowledge/reproducibility">可复现性</Link>纪律在生产中的表亲：同样的转换，以同样的
-          方式，每一次都如此。
+          标准的防御是一个<Term>特征存储</Term>
+          ——每个特征的一个单一、共享的定义，对训练与服务都被同样地 使用，好让两者无法分道扬镳。它是
+          <Link href="/knowledge/feature-engineering">泄漏</Link>与
+          <Link href="/knowledge/reproducibility">可复现性</Link>
+          纪律在生产中的表亲：同样的转换，以同样的 方式，每一次都如此。
         </p>
       </KSection>
 
       <KSection id="retrain" eyebrow="07" title="何时重新训练">
-        <p>漂移的答案是在新鲜的数据上重新训练——但<em>何时</em>？两种策略，常常结合使用：</p>
+        <p>
+          漂移的答案是在新鲜的数据上重新训练——但<em>何时</em>？两种策略，常常结合使用：
+        </p>
         <ul>
           <li>
             <Term>定时</Term>——按固定的节奏重新训练（每月、每季）。简单而可预测，但可能不必要地重新
             训练、或太晚。
           </li>
           <li>
-            <Term>触发</Term>——当监控检测到漂移、或一次表现下降越过一个阈值时重新训练。更灵敏，也是现代
-            MLOps 偏好的方向——监控自己决定循环的下一圈何时开始。
+            <Term>触发</Term>
+            ——当监控检测到漂移、或一次表现下降越过一个阈值时重新训练。更灵敏，也是现代 MLOps
+            偏好的方向——监控自己决定循环的下一圈何时开始。
           </li>
         </ul>
         <Callout type="pitfall">
           <p>
             不过，重新训练不是一次免费的重置。每一个新模型都需要和原来一样的
-            <Link href="/knowledge/model-evaluation">验证</Link>——一个自动重新训练、却悄悄变得<em>更差
-            </em>、或从被污染的近期数据中学习、又未经检查就被部署的模型，是它自己的一种失败模式。而且要
-            保留一条<strong>回滚</strong>路径，并且，对有后果的决策，让一个<strong>人留在回路里</strong>：
+            <Link href="/knowledge/model-evaluation">验证</Link>——一个自动重新训练、却悄悄变得
+            <em>更差</em>
+            、或从被污染的近期数据中学习、又未经检查就被部署的模型，是它自己的一种失败模式。而且要
+            保留一条<strong>回滚</strong>路径，并且，对有后果的决策，让一个
+            <strong>人留在回路里</strong>：
             自动化应当呈现并提议，而非悄悄地把一个更差的模型换进生产。
           </p>
         </Callout>
@@ -445,15 +538,18 @@ function ZhBody() {
         <Callout type="applied" label="让一个已部署的模型保持诚实">
           <p>
             任何为<em>持续</em>的决策——而非回答一次问题——提供依据的分析模型，存亡都系于此。在政府的
-            环境里，这让监控成为一个可信赖性的问题，而不只是工程卫生：一个悄悄<strong>漂移</strong>出
+            环境里，这让监控成为一个可信赖性的问题，而不只是工程卫生：一个悄悄<strong>漂移</strong>
+            出
             准确度的模型，在仍然看起来权威的同时，做出越来越糟的判断，而唯一的防御，是刻意地盯着输入与
-            结果。<strong>数据漂移对概念漂移</strong>的区分，告诉我是输入移动了、还是世界的规则变了，而
-            这指向不同的修法。
+            结果。<strong>数据漂移对概念漂移</strong>
+            的区分，告诉我是输入移动了、还是世界的规则变了，而 这指向不同的修法。
           </p>
           <p>
             它是本板块其余部分在运营端的另一个书挡：那个在上线时证明模型好的
-            <Link href="/knowledge/model-evaluation">评估</Link>，必须随它变老而被<em>重跑</em>；那条
-            <Link href="/knowledge/reproducibility">可复现的流水线</Link>，是让一次干净的重新训练成为
+            <Link href="/knowledge/model-evaluation">评估</Link>，必须随它变老而被<em>重跑</em>
+            ；那条
+            <Link href="/knowledge/reproducibility">可复现的流水线</Link>
+            ，是让一次干净的重新训练成为
             可能的东西；而一个带回滚路径、人在回路的安排，让自动化保持可问责。一个你部署完就忘掉的模型，
             是一个等着浮现的隐患。
           </p>
@@ -464,28 +560,29 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              一个笔记本里的模型是工作的一半——<strong>大多数模型从不上线</strong>。MLOps 弥合那道鸿沟，
-              并把一个已部署的模型当作一个<strong>要去运营的系统</strong>。
+              一个笔记本里的模型是工作的一半——<strong>大多数模型从不上线</strong>。MLOps
+              弥合那道鸿沟， 并把一个已部署的模型当作一个<strong>要去运营的系统</strong>。
             </li>
             <li>
-              生命周期是一个<strong>循环</strong>：训练 → 部署 → 监控 → 重新训练。部署模式：<strong>批
-              处理、实时/API、影子</strong>。
+              生命周期是一个<strong>循环</strong>：训练 → 部署 → 监控 → 重新训练。部署模式：
+              <strong>批 处理、实时/API、影子</strong>。
             </li>
             <li>
-              模型通过<strong>漂移</strong>腐烂：<strong>数据漂移</strong>（输入移动）对<strong>概念漂移
-              </strong>（输入-输出关系改变——更糟的那种）。
+              模型通过<strong>漂移</strong>腐烂：<strong>数据漂移</strong>（输入移动）对
+              <strong>概念漂移</strong>（输入-输出关系改变——更糟的那种）。
             </li>
             <li>
-              盯着的不只是在线时长：<strong>输入分布</strong>（最早的警告）、<strong>预测</strong>，以及
+              盯着的不只是在线时长：<strong>输入分布</strong>（最早的警告）、<strong>预测</strong>
+              ，以及
               <strong>结果</strong>（黄金标准，但<strong>标签滞后</strong>会推迟它）。
             </li>
             <li>
-              当心<strong>训练-服务偏斜</strong>——用一个<strong>特征存储</strong>修它（训练与服务用同一个
-              定义）。
+              当心<strong>训练-服务偏斜</strong>——用一个<strong>特征存储</strong>
+              修它（训练与服务用同一个 定义）。
             </li>
             <li>
-              按<strong>计划</strong>、或由<strong>漂移触发</strong>来重新训练——但每次重新训练都要重新
-              验证，并保留<strong>回滚 + 人在回路</strong>。
+              按<strong>计划</strong>、或由<strong>漂移触发</strong>
+              来重新训练——但每次重新训练都要重新 验证，并保留<strong>回滚 + 人在回路</strong>。
             </li>
           </ul>
         </Callout>

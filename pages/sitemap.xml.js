@@ -156,6 +156,9 @@ const KNOWLEDGE = [
   { path: "/knowledge/extreme-value-theory", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/hierarchical-models", priority: 0.6, freq: "monthly" },
   { path: "/knowledge/optimisation-methods", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/gaussian-processes", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/robust-statistics", priority: 0.6, freq: "monthly" },
+  { path: "/knowledge/quantile-regression", priority: 0.6, freq: "monthly" },
 ];
 
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
@@ -178,6 +181,9 @@ const INFO = [
 // alternates. Knowledge pages still awaiting a zh content module are excluded
 // below — as each is translated, delete its slug from NOT_ZH_KNOWLEDGE.
 const NOT_ZH_KNOWLEDGE = new Set([
+  "/knowledge/gaussian-processes",
+  "/knowledge/robust-statistics",
+  "/knowledge/quantile-regression",
   "/knowledge/optimisation-methods",
   "/knowledge/statistical-process-control",
   "/knowledge/model-evaluation",
