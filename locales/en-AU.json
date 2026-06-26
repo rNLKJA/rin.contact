@@ -1940,6 +1940,16 @@
       "subtitle": "Analysing Rin's writing. Detected: 0.92 optimism, 0.15 corporate-speak, 0.87 genuine.",
       "labels": ["Optimism", "Genuine", "Corporate-speak", "Sarcasm", "Coffee mentions"],
       "footnote": "* Fake NLP. Real sentiment: hire me."
+    },
+    "survival": {
+      "metaTitle": "Survival Analysis — rin.contact",
+      "metaDescription": "Kaplan-Meier of tenure.",
+      "ogTitle": "Survival Analysis",
+      "ogSubtitle": "Kaplan-Meier of tenure.",
+      "heading": "Survival Analysis",
+      "subtitle": "Kaplan–Meier curve of tenure. Survival = still employed. Censored = promoted or moved.",
+      "monthsUnit": "months",
+      "medianNote": "Median survival: ~12 months. No events = death. All events = career progression."
     }
   }
 }

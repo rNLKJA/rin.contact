@@ -1617,6 +1617,16 @@
       "subtitle": "正在分析 Rin 的写作。检测到：0.92 乐观、0.15 企业腔、0.87 真诚。",
       "labels": ["乐观", "真诚", "企业腔", "讽刺", "提及咖啡"],
       "footnote": "* 假的 NLP。真实情感：雇我。"
+    },
+    "survival": {
+      "metaTitle": "生存分析 — rin.contact",
+      "metaDescription": "任期的 Kaplan-Meier。",
+      "ogTitle": "生存分析",
+      "ogSubtitle": "任期的 Kaplan-Meier。",
+      "heading": "生存分析",
+      "subtitle": "任期的 Kaplan–Meier 曲线。生存 = 仍在职。删失 = 晋升或调动。",
+      "monthsUnit": "个月",
+      "medianNote": "中位生存期：约 12 个月。无事件 = 死亡。全部事件 = 职业进展。"
     }
   }
 }
