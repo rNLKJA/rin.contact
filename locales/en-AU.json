@@ -844,6 +844,7 @@
     "heading": "Changelog",
     "intro": "What changed. Version {version} and counting.",
     "entries": [
+      "Site-wide performance pass: KaTeX scoped to the /knowledge pages that use it, font preload trimmed, Edge Proxy skips static assets, homepage-only structured data no longer ships on every page. Also fixed stale image caching and a font-family CSS bug; blog builds ~3x faster.",
       "Blog: 6 posts with Mermaid diagrams, RSS feed at /blog/feed.xml, newsletter signup component. Service worker: self-destructing on activate for cache hygiene.",
       "Blog infrastructure: markdown pipeline (gray-matter + remark), PostCard, blog listing + individual post pages.",
       "Dark mode on 50+ pages (IntelligenceSection, DatasetCard, ContactSection, all section landing pages, strategic.jsx).",

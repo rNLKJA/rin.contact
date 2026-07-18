@@ -29,7 +29,7 @@ function isCliClient(userAgent = "") {
   return CLI.some((token) => userAgent.toLowerCase().includes(token));
 }
 
-export function middleware(request) {
+export function proxy(request) {
   const { pathname } = request.nextUrl;
   const ua = request.headers.get("user-agent") ?? "";
 
@@ -60,8 +60,8 @@ export const config = {
   // rewrite never ran for `curl rin.contact`. List "/" explicitly as well.
   // Also exclude static file extensions (fonts, images, css, etc. under
   // /public) — none of them need the CLI-detection or .well-known logic
-  // below, so skipping the middleware invocation for them removes an Edge
-  // Function hop from every font/image/stylesheet request on every page.
+  // below, so skipping the proxy invocation for them removes a request hop
+  // from every font/image/stylesheet request on every page.
   matcher: [
     "/",
     "/((?!api|_next/static|_next/image|.*\\.(?:css|html|ico|jpe?g|js|json|pdf|png|svg|txt|webmanifest|woff2?|xml)$).*)",
