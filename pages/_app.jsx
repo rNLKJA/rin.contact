@@ -16,6 +16,10 @@ const Analytics = dynamic(
   () => import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),
   { ssr: false }
 );
+const SpeedInsights = dynamic(
+  () => import("@vercel/speed-insights/react").then((m) => ({ default: m.SpeedInsights })),
+  { ssr: false }
+);
 
 const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
 const BootOverlay = dynamic(() => import("@/components/ui/BootOverlay"), { ssr: false });
@@ -349,6 +353,7 @@ function MyApp({ Component, pageProps }) {
           </main>
           <Footer />
           <Analytics debug={false} />
+          <SpeedInsights debug={false} />
         </div>
       </I18nProvider>
     </ThemeProvider>

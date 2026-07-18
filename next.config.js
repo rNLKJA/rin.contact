@@ -3,6 +3,7 @@ const path = require("path");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
+  poweredByHeader: false,
 
   i18n: {
     locales: ["en-AU", "zh-Hans"],
