@@ -699,6 +699,7 @@
     "heading": "更新日志",
     "intro": "更新了什么。版本 {version}，仍在继续。",
     "entries": [
+      "全站性能优化：KaTeX 仅在实际使用的 /knowledge 页面加载，精简字体预加载，Edge Proxy 跳过静态资源请求，仅首页需要的结构化数据不再随每个页面加载。同时修复了图片缓存过期与字体字族 CSS 错配问题，博客构建速度提升约 3 倍。",
       "博客：6 篇文章，含 Mermaid 图表、位于 /blog/feed.xml 的 RSS 订阅、邮件订阅组件。Service worker：激活时自我销毁以保持缓存整洁。",
       "博客基础设施：markdown 管线（gray-matter + remark）、PostCard、博客列表与单篇文章页面。",
       "为 50+ 个页面添加深色模式（IntelligenceSection、DatasetCard、ContactSection、所有板块着陆页、strategic.jsx）。",

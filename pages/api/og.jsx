@@ -13,24 +13,33 @@ const SUB2 = "#AAAAAA";
 // Edge Functions may persist module state across invocations.
 let fontCache = null;
 
+// Returns [] on failure rather than throwing, so a cold-start network hiccup
+// against jsdelivr degrades to satori's built-in font instead of breaking
+// social-preview generation outright. fontCache stays null on failure so the
+// next invocation retries instead of caching a bad result.
 async function getFonts() {
   if (fontCache) return fontCache;
 
-  const [interRegular, interSemiBold] = await Promise.all([
-    fetch("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.ttf").then((r) =>
-      r.arrayBuffer()
-    ),
-    fetch("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.ttf").then((r) =>
-      r.arrayBuffer()
-    ),
-  ]);
+  try {
+    const [interRegular, interSemiBold] = await Promise.all([
+      fetch("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.ttf").then(
+        (r) => r.arrayBuffer()
+      ),
+      fetch("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.ttf").then(
+        (r) => r.arrayBuffer()
+      ),
+    ]);
 
-  fontCache = [
-    { name: "Inter", data: interRegular, weight: 400, style: "normal" },
-    { name: "Inter", data: interSemiBold, weight: 600, style: "normal" },
-  ];
+    fontCache = [
+      { name: "Inter", data: interRegular, weight: 400, style: "normal" },
+      { name: "Inter", data: interSemiBold, weight: 600, style: "normal" },
+    ];
 
-  return fontCache;
+    return fontCache;
+  } catch (err) {
+    console.error("og.jsx: failed to fetch Inter fonts, falling back to satori default", err);
+    return [];
+  }
 }
 
 // ── Handler ────────────────────────────────────────────────────────────────────
