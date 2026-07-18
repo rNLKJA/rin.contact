@@ -184,8 +184,7 @@ const INFO = [
 // Mirrors i18n progress so crawlers index the /zh-Hans/ URL with hreflang
 // alternates. Knowledge pages still awaiting a zh content module are excluded
 // below — as each is translated, delete its slug from NOT_ZH_KNOWLEDGE.
-const NOT_ZH_KNOWLEDGE = new Set([
-]);
+const NOT_ZH_KNOWLEDGE = new Set([]);
 
 // Every /info/* page and the listed /knowledge/* articles have full zh-Hans
 // content; /cv, /projects/signal and /tools/card are bilingual.

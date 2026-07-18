@@ -7,7 +7,10 @@ import { I18nProvider } from "@/contexts/I18nContext";
 import { bitcount, dmSans, playfair } from "@/lib/fonts";
 
 import "../public/styles/globals.css";
-import "katex/dist/katex.min.css";
+// -swap variant: font-display:swap instead of the default's font-display:block,
+// so the ~39 /knowledge pages that render <Formula>/<TeX> don't risk a FOIT
+// while KaTeX's math fonts load. Same file size either way.
+import "katex/dist/katex-swap.min.css";
 
 const Analytics = dynamic(
   () => import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),

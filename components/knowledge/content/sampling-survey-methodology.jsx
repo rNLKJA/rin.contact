@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { KSection, Callout, Formula, TeX, Term } from "@/components/knowledge/KnowledgeLayout";
+import { KSection, Callout, Term } from "@/components/knowledge/KnowledgeLayout";
+import { Formula, TeX } from "@/components/knowledge/KatexFormula";
 
 /**
  * Per-locale content for /knowledge/sampling-survey-methodology.

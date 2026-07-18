@@ -1,4 +1,5 @@
-import { KSection, Callout, Formula, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
+import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
+import { Formula } from "@/components/knowledge/KatexFormula";
 
 /**
  * Per-locale content for /knowledge/natural-language-processing.

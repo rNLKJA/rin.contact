@@ -39,7 +39,9 @@ export default function NullHypothesisPage() {
 
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-8 font-mono text-sm text-center">
             <p className="text-[#7A7A7A] mb-4">{t("ds.nullHypothesis.boxNull")}</p>
-            <p className="text-2xl font-semibold text-[#1A1A1A] dark:text-white mb-4">p &lt; 0.01</p>
+            <p className="text-2xl font-semibold text-[#1A1A1A] dark:text-white mb-4">
+              p &lt; 0.01
+            </p>
             <p className="text-[#FF3C3C] font-semibold">{t("ds.nullHypothesis.boxReject")}</p>
             <p className="text-sm text-[#7A7A7A] mt-4">{t("ds.nullHypothesis.boxConclusion")}</p>
           </div>

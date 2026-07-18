@@ -1,12 +1,6 @@
 import Link from "next/link";
-import {
-  KSection,
-  Callout,
-  Formula,
-  Figure,
-  TeX,
-  Term,
-} from "@/components/knowledge/KnowledgeLayout";
+import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
+import { Formula, TeX } from "@/components/knowledge/KatexFormula";
 
 /**
  * Per-locale content for /knowledge/graph-neural-networks.

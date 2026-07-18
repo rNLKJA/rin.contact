@@ -81,7 +81,7 @@ select {
 /* ─── Typography Scale ───────────────────────────────────────────── */
 /* h1 brand name only — pixel display (Bitcount) */
 h1 {
-  font-family: "Bitcount Prop Double", monospace;
+  font-family: var(--font-bitcount), monospace;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1;
