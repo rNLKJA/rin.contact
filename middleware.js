@@ -58,5 +58,12 @@ export function middleware(request) {
 export const config = {
   // The "/((?!...).*)" pattern does NOT match the bare root "/", so the curl
   // rewrite never ran for `curl rin.contact`. List "/" explicitly as well.
-  matcher: ["/", "/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  // Also exclude static file extensions (fonts, images, css, etc. under
+  // /public) — none of them need the CLI-detection or .well-known logic
+  // below, so skipping the middleware invocation for them removes an Edge
+  // Function hop from every font/image/stylesheet request on every page.
+  matcher: [
+    "/",
+    "/((?!api|_next/static|_next/image|.*\\.(?:css|html|ico|jpe?g|js|json|pdf|png|svg|txt|webmanifest|woff2?|xml)$).*)",
+  ],
 };

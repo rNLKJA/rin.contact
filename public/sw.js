@@ -2,9 +2,12 @@
  * rin.contact — PWA Service Worker
  *
  * Strategies:
- *   - /_next/static/*, /images/*:  cache-first (content-hashed, immutable)
- *   - navigation requests:          network-first, fallback to cache
- *   - everything else:              network-only (API, sitemap, etc.)
+ *   - /_next/static/*:     cache-first (content-hashed, safe forever)
+ *   - /images/*:           stale-while-revalidate (filenames are NOT
+ *                          content-hashed — cache-first would serve a
+ *                          replaced image forever to returning visitors)
+ *   - navigation requests:  network-first, fallback to cache
+ *   - everything else:      network-only (API, sitemap, etc.)
  *
  * Caches are versioned so old ones get cleaned on activation.
  */
@@ -68,9 +71,18 @@ self.addEventListener("fetch", (event) => {
   // Only handle same-origin GET requests
   if (url.origin !== self.location.origin || request.method !== "GET") return;
 
-  // Cache-first: content-hassed static assets
-  if (url.pathname.startsWith("/_next/static/") || url.pathname.startsWith("/images/")) {
+  // Cache-first: content-hashed static assets
+  if (url.pathname.startsWith("/_next/static/")) {
     event.respondWith(cacheFirst(request));
+    return;
+  }
+
+  // Stale-while-revalidate: images are NOT content-hashed, so serve the
+  // cached copy instantly but always refetch in the background — a
+  // replaced image at the same path reaches returning visitors on their
+  // next request instead of never.
+  if (url.pathname.startsWith("/images/")) {
+    event.respondWith(staleWhileRevalidate(request));
     return;
   }
 
@@ -104,6 +116,18 @@ async function cacheFirst(request) {
   } catch {
     return caches.match(request);
   }
+}
+
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(CACHE);
+  const cached = await cache.match(request);
+  const fetchPromise = fetch(request)
+    .then((res) => {
+      if (res.ok) cache.put(request, res.clone());
+      return res;
+    })
+    .catch(() => cached);
+  return cached || fetchPromise;
 }
 
 async function networkFirst(request) {

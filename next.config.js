@@ -11,14 +11,9 @@ const nextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      { protocol: "https", hostname: "upload.wikimedia.org" },
-      { protocol: "https", hostname: "yt3.googleusercontent.com" },
-      { protocol: "https", hostname: "encrypted-tbn0.gstatic.com" },
-      { protocol: "https", hostname: "media.licdn.com" },
-      { protocol: "https", hostname: "s3-symbol-logo.tradingview.com" },
-      { protocol: "https", hostname: "companieslogo.com" },
-    ],
+    // No remotePatterns: all logos/images are self-hosted under /public/images
+    // (see components/sections/TimelineSection.jsx). Nothing routes through
+    // next/image from a remote host today.
   },
 
   webpack: (config, { isServer }) => {

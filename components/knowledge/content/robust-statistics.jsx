@@ -1,12 +1,6 @@
 import Link from "next/link";
-import {
-  KSection,
-  Callout,
-  Formula,
-  Figure,
-  TeX,
-  Term,
-} from "@/components/knowledge/KnowledgeLayout";
+import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
+import { Formula, TeX } from "@/components/knowledge/KatexFormula";
 
 /**
  * Per-locale content for /knowledge/robust-statistics.
@@ -34,15 +28,49 @@ function BreakdownFigure({
         role="img"
         aria-label={ariaLabel}
       >
-        <text x="20" y="34" fontSize="10" fontFamily="monospace" fill="currentColor">{meanLabel}</text>
+        <text x="20" y="34" fontSize="10" fontFamily="monospace" fill="currentColor">
+          {meanLabel}
+        </text>
         <rect x="120" y="22" width="6" height="18" fill="#FF3C3C" />
-        <text x="134" y="36" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{meanNote}</text>
-        <text x="20" y="84" fontSize="10" fontFamily="monospace" fill="currentColor">{medianLabel}</text>
+        <text x="134" y="36" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {meanNote}
+        </text>
+        <text x="20" y="84" fontSize="10" fontFamily="monospace" fill="currentColor">
+          {medianLabel}
+        </text>
         <rect x="120" y="72" width="150" height="18" fill="#FF3C3C" opacity="0.65" />
-        <text x="278" y="86" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{medianNote}</text>
-        <line x1="120" y1="100" x2="270" y2="100" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
-        <text x="120" y="113" fontSize="7.5" fontFamily="monospace" fill="currentColor" opacity="0.6">{zeroLabel}</text>
-        <text x="262" y="113" fontSize="7.5" fontFamily="monospace" fill="currentColor" opacity="0.6">{fiftyLabel}</text>
+        <text x="278" y="86" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {medianNote}
+        </text>
+        <line
+          x1="120"
+          y1="100"
+          x2="270"
+          y2="100"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
+        <text
+          x="120"
+          y="113"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {zeroLabel}
+        </text>
+        <text
+          x="262"
+          y="113"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.6"
+        >
+          {fiftyLabel}
+        </text>
       </svg>
     </Figure>
   );
@@ -284,25 +312,29 @@ function ZhBody() {
   return (
     <>
       <p>
-        关于那些最熟悉的统计量，有一个令人不安的事实：<Link href="/knowledge/statistics">均值</Link>、标准差
-        和最小二乘回归全都<strong>脆弱</strong>。单单一个极端的离群值——一个打字错误、一次传感器故障、一个
+        关于那些最熟悉的统计量，有一个令人不安的事实：<Link href="/knowledge/statistics">均值</Link>
+        、标准差 和最小二乘回归全都<strong>脆弱</strong>
+        。单单一个极端的离群值——一个打字错误、一次传感器故障、一个
         真实的怪例——就能把均值从数据主体所在之处拖得很远，把标准差吹胀，并把一条回归线从其他所有点都遵循的
-        模式上扳开。而真实数据<em>充满</em>这样的污染。<Term>稳健统计</Term>是那套正是为抵抗这一点而设计的
-        方法：给出一个反映数据<em>主体</em>的答案，而非被几个坏点挟持。
+        模式上扳开。而真实数据<em>充满</em>这样的污染。<Term>稳健统计</Term>
+        是那套正是为抵抗这一点而设计的 方法：给出一个反映数据<em>主体</em>
+        的答案，而非被几个坏点挟持。
       </p>
       <p>
         它独特而极其实用——与那套假设数据干净的经典工具箱是不同的心态。这一页讲为什么标准方法会崩、我们
-        <em>度量</em>稳健性的精确方式（崩溃点）、抵抗性的替代品（中位数、MAD、M 估计量），以及稳健性所逼出的
-        那个判断：修方法，还是调查离群值？它建立在<Link href="/knowledge/statistics">统计学</Link>和
+        <em>度量</em>稳健性的精确方式（崩溃点）、抵抗性的替代品（中位数、MAD、M
+        估计量），以及稳健性所逼出的 那个判断：修方法，还是调查离群值？它建立在
+        <Link href="/knowledge/statistics">统计学</Link>和
         <Link href="/knowledge/feature-engineering">数据准备</Link>页之上。
       </p>
 
       <KSection id="why" eyebrow="01" title="一个坏点如何劫持一切">
         <p>
-          这种脆弱来自<strong>平方</strong>。均值和最小二乘都最小化<em>平方</em>误差，而平方给了离群值巨大的
+          这种脆弱来自<strong>平方</strong>。均值和最小二乘都最小化<em>平方</em>
+          误差，而平方给了离群值巨大的
           杠杆：一个离十个单位远的点，对损失贡献一百，于是估计值会不惜代价去迁就它。
-          <code>[1, 2, 3, 4, 1000]</code> 的均值是 202——一个<em>没有</em>任何数据点靠近的值，是对「数据落在
-          哪里」一个无用的概括。一个点，全面扭曲。
+          <code>[1, 2, 3, 4, 1000]</code> 的均值是 202——一个<em>没有</em>
+          任何数据点靠近的值，是对「数据落在 哪里」一个无用的概括。一个点，全面扭曲。
         </p>
         <p>
           同样的事发生在回归线上：单单一个高杠杆的离群值，就能把整个拟合旋转过去，产出一条歪曲了其他每个点都
@@ -313,7 +345,8 @@ function ZhBody() {
 
       <KSection id="breakdown" eyebrow="02" title="崩溃点：度量稳健性">
         <p>
-          稳健性有一个精确、漂亮的度量：<Term>崩溃点</Term>——在估计量给出一个无意义（无界地错误）的答案
+          稳健性有一个精确、漂亮的度量：<Term>崩溃点</Term>
+          ——在估计量给出一个无意义（无界地错误）的答案
           之前，数据中可以被任意污染的那个比例。它是这个领域的标志性数字。
         </p>
         <BreakdownFigure
@@ -328,8 +361,9 @@ function ZhBody() {
         />
         <p>
           <strong>均值的崩溃点是 0%</strong>——<em>单单一个</em>被推向无穷的点就把它拖向无穷。
-          <strong>中位数的崩溃点是 50%</strong>——你可以污染（将近）一半的数据，而中位数仍然合理地坐落在好的
-          那一半之中。50% 是可能的最大值（超过一半，「离群值」<em>就是</em>数据了），这使中位数成为存在的最
+          <strong>中位数的崩溃点是 50%</strong>
+          ——你可以污染（将近）一半的数据，而中位数仍然合理地坐落在好的 那一半之中。50%
+          是可能的最大值（超过一半，「离群值」<em>就是</em>数据了），这使中位数成为存在的最
           稳健的集中趋势估计。那个差距——0% 对 50%——就是稳健统计的全部理由，浓缩在一个对比里。
         </p>
       </KSection>
@@ -338,35 +372,38 @@ function ZhBody() {
         <p>那些脆弱的经典量的稳健替代品，是你已经半知半解的：</p>
         <ul>
           <li>
-            对<em>集中趋势</em>：用<Term>中位数</Term>代替均值——不受极端值有多极端的影响，只受每一侧坐落着
-            多少个点的影响。
+            对<em>集中趋势</em>：用<Term>中位数</Term>
+            代替均值——不受极端值有多极端的影响，只受每一侧坐落着 多少个点的影响。
           </li>
           <li>
-            对<em>离散程度</em>：用 <Term>MAD</Term>（中位数绝对偏差）代替标准差。它是到中位数的绝对距离的
-            中位数——一种对中位数的两阶段使用（中心，然后典型偏差），继承了它 50% 的崩溃点。标准差建立在平方
-            偏差之上，会被单单一个离群值吹胀；MAD 则不当回事。
+            对<em>离散程度</em>：用 <Term>MAD</Term>
+            （中位数绝对偏差）代替标准差。它是到中位数的绝对距离的
+            中位数——一种对中位数的两阶段使用（中心，然后典型偏差），继承了它 50%
+            的崩溃点。标准差建立在平方 偏差之上，会被单单一个离群值吹胀；MAD 则不当回事。
           </li>
         </ul>
         <p>
-          这些不只是替代品——它们是抵抗性的<em>基础</em>，也是为什么一次稳健的分析常常在做别的之前，先悄悄地
-          把均值换成中位数、把标准差换成 MAD。
+          这些不只是替代品——它们是抵抗性的<em>基础</em>
+          ，也是为什么一次稳健的分析常常在做别的之前，先悄悄地 把均值换成中位数、把标准差换成 MAD。
         </p>
       </KSection>
 
       <KSection id="mestimators" eyebrow="04" title="M 估计量与 Huber 损失">
         <p>
-          中位数稳健，但扔掉了信息（它忽略实际的值，只看它们的顺序），所以当数据<em>确实</em>干净时它效率
-          较低。<Term>M 估计量</Term>是优雅的中间地带：不是最小化平方误差（它过度加权离群值）或绝对误差
-          （稳健但效率较低），而是用一个对<em>小残差表现得像平方误差</em>、对<em>大残差表现得像绝对误差</em>的
-          损失。著名的例子是 <Term>Huber 损失</Term>：
+          中位数稳健，但扔掉了信息（它忽略实际的值，只看它们的顺序），所以当数据<em>确实</em>
+          干净时它效率 较低。<Term>M 估计量</Term>
+          是优雅的中间地带：不是最小化平方误差（它过度加权离群值）或绝对误差
+          （稳健但效率较低），而是用一个对<em>小残差表现得像平方误差</em>、对
+          <em>大残差表现得像绝对误差</em>的 损失。著名的例子是 <Term>Huber 损失</Term>：
         </p>
         <Formula label="The Huber loss is one-half the residual squared when the absolute residual is at most delta, and delta times the absolute residual minus half delta otherwise.">
           {String.raw`L_\delta(r) = \begin{cases} \tfrac{1}{2}r^2 & |r| \le \delta \\[4pt] \delta\,(|r| - \tfrac{1}{2}\delta) & |r| > \delta \end{cases}`}
         </Formula>
         <p>
-          在阈值 <TeX>{String.raw`\delta`}</TeX> 之下，它是高效的平方损失；之上，损失只<em>线性</em>增长，于是
-          一个遥远的离群值的影响被封顶，而非二次地爆炸。那一个弯就是全部的诀窍——它<strong>平滑地降低离群值的
-          权重</strong>，同时在表现良好的大多数上保持最小二乘的统计效率。M 估计量给你一个在稳健性与效率之间
+          在阈值 <TeX>{String.raw`\delta`}</TeX> 之下，它是高效的平方损失；之上，损失只<em>线性</em>
+          增长，于是 一个遥远的离群值的影响被封顶，而非二次地爆炸。那一个弯就是全部的诀窍——它
+          <strong>平滑地降低离群值的 权重</strong>
+          ，同时在表现良好的大多数上保持最小二乘的统计效率。M 估计量给你一个在稳健性与效率之间
           可调的旋钮，这正是为什么 Huber 损失也作为一个损失函数出现在
           <Link href="/knowledge/deep-learning">机器学习</Link>里。
         </p>
@@ -384,7 +421,8 @@ function ZhBody() {
             <Term>Huber / M 估计量回归</Term>——上面那种平滑的降权，应用到拟合上。
           </li>
           <li>
-            <Term>RANSAC</Term>——在随机子集上拟合，保留最多点认同的那个模型，明确地把离群值当作「非共识」
+            <Term>RANSAC</Term>
+            ——在随机子集上拟合，保留最多点认同的那个模型，明确地把离群值当作「非共识」
             忽略掉。在计算机视觉里常见。
           </li>
         </ul>
@@ -397,18 +435,21 @@ function ZhBody() {
         <p>稳健统计逼出一个容易搞错的判断，而它是最重要的部分：</p>
         <Callout type="pitfall">
           <p>
-            <strong>稳健性与删除或忽略离群值不是一回事。</strong>一个稳健的方法降低一个离群值<em>对估计的
-            影响</em>——但那个离群值仍然在那里，而它可能是数据集里最重要的东西。一个极端值可以是一个要去
-            稳健化抵抗的打字错误，<em>也可以</em>是一个真实的信号——那个欺诈、那次入侵、那个突破——而这正是
-            <Link href="/knowledge/anomaly-detection">异常检测</Link>所要猎取的。所以需要的纪律是：用稳健的
-            方法，让几个坏点不至于悄悄毁掉你的中心估计，<em>并且</em>始终亲自去看那些离群值，去判断它们是该
+            <strong>稳健性与删除或忽略离群值不是一回事。</strong>一个稳健的方法降低一个离群值
+            <em>对估计的 影响</em>
+            ——但那个离群值仍然在那里，而它可能是数据集里最重要的东西。一个极端值可以是一个要去
+            稳健化抵抗的打字错误，<em>也可以</em>
+            是一个真实的信号——那个欺诈、那次入侵、那个突破——而这正是
+            <Link href="/knowledge/anomaly-detection">异常检测</Link>
+            所要猎取的。所以需要的纪律是：用稳健的 方法，让几个坏点不至于悄悄毁掉你的中心估计，
+            <em>并且</em>始终亲自去看那些离群值，去判断它们是该
             折扣掉的错误，还是该去追的证据。盲目地稳健化，可能扔掉那个发现；盲目地信任最小二乘，会让一个打字
             错误毁掉整个分析。本领在于同时握住两者。
           </p>
         </Callout>
         <p>
-          （还有那个诚实的代价：当数据真的<em>是</em>干净、表现良好的时候，稳健方法比经典方法稍微<em>低效
-          </em>一点——为你通常都有的、防污染的保险所付的一个小价钱。）
+          （还有那个诚实的代价：当数据真的<em>是</em>干净、表现良好的时候，稳健方法比经典方法稍微
+          <em>低效</em>一点——为你通常都有的、防污染的保险所付的一个小价钱。）
         </p>
       </KSection>
 
@@ -417,16 +458,19 @@ function ZhBody() {
           <p>
             真实的政府数据很脏——打字错误、传感器错误、键入错误的条目、真实的极端案例——所以均值和最小二乘的
             脆弱是一个活生生的风险，而非教科书的脚注。稳健统计给我的最有价值的本能，是在污染有可能时，用
-            <strong>中位数和 MAD</strong>而非均值和标准差，这样一小撮坏记录不至于悄悄劫持一个概括或一个拟合的
-            关系。<strong>崩溃点</strong>（均值 0%，中位数 50%）是记住为什么的那个干脆的方式。
+            <strong>中位数和 MAD</strong>
+            而非均值和标准差，这样一小撮坏记录不至于悄悄劫持一个概括或一个拟合的 关系。
+            <strong>崩溃点</strong>（均值 0%，中位数 50%）是记住为什么的那个干脆的方式。
           </p>
           <p>
-            但那个判断才是真正的教训：<strong>稳健 ≠ 忽略</strong>。廉政或情报数据里的一个离群值，可能正是
-            <em>那个要紧的案件</em>——所以我稳健化那个中心估计，<em>并</em>调查那个离群值
-            （<Link href="/knowledge/anomaly-detection">异常检测</Link>的心态），而非让一个方法悄悄替我决定。
-            它连到<Link href="/knowledge/feature-engineering">数据准备</Link>（处理离群值）、
-            <Link href="/knowledge/quantile-regression">分位数回归</Link>（中位数回归是稳健的），以及那个更
-            宏大的主题——不要让几个点在任一方向上把你骗了。
+            但那个判断才是真正的教训：<strong>稳健 ≠ 忽略</strong>
+            。廉政或情报数据里的一个离群值，可能正是
+            <em>那个要紧的案件</em>——所以我稳健化那个中心估计，<em>并</em>调查那个离群值 （
+            <Link href="/knowledge/anomaly-detection">异常检测</Link>
+            的心态），而非让一个方法悄悄替我决定。 它连到
+            <Link href="/knowledge/feature-engineering">数据准备</Link>（处理离群值）、
+            <Link href="/knowledge/quantile-regression">分位数回归</Link>
+            （中位数回归是稳健的），以及那个更 宏大的主题——不要让几个点在任一方向上把你骗了。
           </p>
         </Callout>
       </KSection>
@@ -435,33 +479,35 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              均值、标准差和最小二乘都<strong>脆弱</strong>——它们最小化<em>平方</em>误差，所以一个离群值
-              获得巨大的杠杆，劫持估计。
+              均值、标准差和最小二乘都<strong>脆弱</strong>——它们最小化<em>平方</em>
+              误差，所以一个离群值 获得巨大的杠杆，劫持估计。
             </li>
             <li>
               <strong>崩溃点</strong>度量稳健性——在估计变得无意义之前你能污染的数据比例。
               <strong>均值 = 0%，中位数 = 50%</strong>（最大值）。
             </li>
             <li>
-              抵抗性的基础：<strong>中位数</strong>（对均值）和 <strong>MAD</strong>（对标准差）——都是 50%
-              崩溃。
+              抵抗性的基础：<strong>中位数</strong>（对均值）和 <strong>MAD</strong>
+              （对标准差）——都是 50% 崩溃。
             </li>
             <li>
-              <strong>M 估计量</strong>（例如 <strong>Huber 损失</strong>）= 对小残差用平方误差、对大的用
-              线性——<strong>封顶一个离群值的影响</strong>，同时保持效率。一个可调的稳健性/效率旋钮。
+              <strong>M 估计量</strong>（例如 <strong>Huber 损失</strong>）=
+              对小残差用平方误差、对大的用 线性——<strong>封顶一个离群值的影响</strong>
+              ，同时保持效率。一个可调的稳健性/效率旋钮。
             </li>
             <li>
-              <strong>稳健回归</strong>：最小绝对偏差、Huber、RANSAC——拟合<em>主体</em>所支持的那条线。
+              <strong>稳健回归</strong>：最小绝对偏差、Huber、RANSAC——拟合<em>主体</em>
+              所支持的那条线。
             </li>
             <li>
-              关键的判断：<strong>稳健 ≠ 删除</strong>。稳健化估计，<em>并</em>调查离群值——它可能就是信号。
-              （数据干净时有小的效率代价。）
+              关键的判断：<strong>稳健 ≠ 删除</strong>。稳健化估计，<em>并</em>
+              调查离群值——它可能就是信号。 （数据干净时有小的效率代价。）
             </li>
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          崩溃点、中位数/MAD 的抵抗性、Huber 损失 M 估计量，以及稳健化对调查的判断，反映了当前的稳健统计
-          参考文献以及课程。
+          崩溃点、中位数/MAD 的抵抗性、Huber 损失 M
+          估计量，以及稳健化对调查的判断，反映了当前的稳健统计 参考文献以及课程。
         </p>
       </KSection>
     </>

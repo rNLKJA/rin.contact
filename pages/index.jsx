@@ -4,6 +4,373 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 
+// Moved from pages/_document.jsx — these describe homepage-only content
+// (career timeline anchors, project list, credentials) and were previously
+// shipped in every page's <head> even though only the homepage uses them.
+const BREADCRUMB_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://rin.contact/#breadcrumb",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Rin Huang",
+      item: "https://rin.contact/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Career",
+      item: "https://rin.contact/#timeline",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Projects",
+      item: "https://rin.contact/#projects",
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: "Skills",
+      item: "https://rin.contact/#skills",
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      name: "Contact",
+      item: "https://rin.contact/#contact",
+    },
+  ],
+};
+
+const PROJECTS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://rin.contact/#projects",
+  name: "Projects by Rin Huang (Sunchuangyu Huang)",
+  description: "Software, data science, and analytics projects by Rin Huang",
+  author: { "@id": "https://rin.contact/#person" },
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      item: {
+        "@type": "SoftwareApplication",
+        name: "Mapiva",
+        description:
+          "Co-founded a mobile social connection app — full product ownership from architecture through implementation as Dev Lead.",
+        applicationCategory: "SocialNetworkingApplication",
+        operatingSystem: "iOS, Android",
+        author: { "@id": "https://rin.contact/#person" },
+        programmingLanguage: ["React Native", "Expo"],
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      item: {
+        "@type": "SoftwareSourceCode",
+        name: "SA Address Generator",
+        description:
+          "Internal tool to generate validated South Australian addresses based on SEIFA indices and remoteness classifications, verified via Mapbox API.",
+        codeRepository: "https://github.com/rNLKJA/SA-Mock-Address-Generator",
+        programmingLanguage: "Python",
+        author: { "@id": "https://rin.contact/#person" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      item: {
+        "@type": "SoftwareSourceCode",
+        name: "US Political Data Collection System",
+        description:
+          "Scraped ~180 presidential debate transcripts and ~25,000 campaign documents from the UC Santa Barbara American Presidency Project with multi-threaded processing.",
+        codeRepository: "https://github.com/rNLKJA/Political-Data-Collection-System",
+        programmingLanguage: "Python",
+        author: { "@id": "https://rin.contact/#person" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      item: {
+        "@type": "SoftwareApplication",
+        name: "CBS Intelligence Analytics",
+        description:
+          "First intelligence analytics capability within the CBS Prevention Team — integrating ABS, SA Health, ACCC, and DataSA data into unified dashboards and GIS maps used by the Minister's Office.",
+        applicationCategory: "BusinessApplication",
+        author: { "@id": "https://rin.contact/#person" },
+        programmingLanguage: ["Python", "Power BI"],
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      item: {
+        "@type": "SoftwareApplication",
+        name: "MoodQ",
+        description:
+          "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Psychiatry research group. Migrated from Uniapp to Expo React Native, reducing hosting costs ~$500/month.",
+        applicationCategory: "HealthApplication",
+        operatingSystem: "iOS, Android",
+        author: { "@id": "https://rin.contact/#person" },
+        programmingLanguage: ["Expo", "React Native", "Node.js"],
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 6,
+      item: {
+        "@type": "SoftwareApplication",
+        name: "SAPOL Intelligence Dashboards",
+        description:
+          "Operational intelligence and crime analytics dashboards supporting frontline policing, resource allocation, and command-level decision-making across South Australia.",
+        applicationCategory: "BusinessApplication",
+        author: { "@id": "https://rin.contact/#person" },
+        programmingLanguage: ["Python", "Power BI", "SQL"],
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 7,
+      item: {
+        "@type": "SoftwareSourceCode",
+        name: "Flow Cytometry Analysis Pipeline",
+        description:
+          "Automated flow cytometry data analysis using cloud and HPC, with test infrastructure for reproducibility and open-source contributions to celseq2.",
+        programmingLanguage: "Python",
+        author: { "@id": "https://rin.contact/#person" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 8,
+      item: {
+        "@type": "SoftwareSourceCode",
+        name: "Climate Fact-Checker",
+        description:
+          "Two-stage automated fact-checking for climate change claims — TF-IDF evidence retrieval and Transformer-based classification, outperforming LSTM baselines.",
+        codeRepository: "https://github.com/rNLKJA",
+        programmingLanguage: "Python",
+        author: { "@id": "https://rin.contact/#person" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 9,
+      item: {
+        "@type": "SoftwareSourceCode",
+        name: "Australia Social Media Analytics on the Cloud",
+        description:
+          "Harvested and analysed Twitter and Mastodon data alongside ABS SUDO spatial data to produce a Social Sense Dashboard across Australian regions.",
+        codeRepository: "https://github.com/rNLKJA/Australia-Social-Media-Analytics-on-the-Cloud",
+        programmingLanguage: ["Python", "CouchDB"],
+        author: { "@id": "https://rin.contact/#person" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 10,
+      item: {
+        "@type": "SoftwareSourceCode",
+        name: "Twitter HPC Analysis",
+        description:
+          "Processed a large-scale Twitter dataset on SPARTAN HPC using MPI and Python, identifying tweet distribution across Australian cities.",
+        codeRepository: "https://github.com/rNLKJA/Twitter-Data-Analysis-with-HPC",
+        programmingLanguage: "Python",
+        author: { "@id": "https://rin.contact/#person" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 11,
+      item: {
+        "@type": "SoftwareSourceCode",
+        name: "Cachex AI Game Agent",
+        description:
+          "AI agents for Cachex — a two-player connection game — using heuristic A* search and competitive game theory with strategic sabotage logic.",
+        codeRepository: "https://github.com/rNLKJA/Cachex-AI",
+        programmingLanguage: "Python",
+        author: { "@id": "https://rin.contact/#person" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 12,
+      item: {
+        "@type": "SoftwareSourceCode",
+        name: "PCRM — Personal Customer Relationship Management",
+        description:
+          "Full-stack CRM system with React frontend, Express REST API, and MongoDB backend, built as the COMP30022 IT Project at the University of Melbourne.",
+        codeRepository: "https://github.com/rNLKJA/Personal-Customer-Relation-Management-PCRM",
+        programmingLanguage: ["Node.js", "React.js", "MongoDB"],
+        author: { "@id": "https://rin.contact/#person" },
+      },
+    },
+  ],
+};
+
+const CREDENTIALS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "VETASSESS — Statistician (ANZSCO 224113)",
+      credentialCategory: "ProfessionalAssessment",
+      recognizedBy: { "@type": "Organization", name: "VETASSESS" },
+      dateCreated: "2026-02-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "IELTS General Training — Band 8",
+      credentialCategory: "LanguageAssessment",
+      recognizedBy: { "@type": "Organization", name: "IELTS Official" },
+      dateCreated: "2026-02-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Credentialed Community Language — Mandarin",
+      credentialCategory: "LanguageCredential",
+      recognizedBy: { "@type": "Organization", name: "NAATI" },
+      dateCreated: "2025-12-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Microsoft Certified: Azure Fundamentals (AZ-900)",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Microsoft", url: "https://microsoft.com" },
+      dateCreated: "2024-07-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Neo4j Certified Professional",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Neo4j", url: "https://neo4j.com" },
+      dateCreated: "2025-08-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Neo4j Graph Data Science Certification",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Neo4j", url: "https://neo4j.com" },
+      dateCreated: "2025-08-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Google UX Design Specialisation",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
+      dateCreated: "2025-12-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Google Business Intelligence Specialisation",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
+      dateCreated: "2025-12-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Google Project Management Specialisation",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
+      dateCreated: "2025-12-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Google IT Automation with Python",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
+      dateCreated: "2022-05-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Google Data Analytics Specialisation",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
+      dateCreated: "2021-06-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Open-Source Intelligence (OSINT) Fundamentals",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "TCM Security" },
+      dateCreated: "2025-10-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Google Analytics Individual Qualification (GAIQ)",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
+      dateCreated: "2024-05-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Advanced SQL for Data Scientists",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "LinkedIn Learning" },
+      dateCreated: "2024-01-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Atlassian Agile Project Management Professional Certificate",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Atlassian", url: "https://atlassian.com" },
+      dateCreated: "2024-04-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Career Essentials in GitHub Professional Certificate",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "GitHub", url: "https://github.com" },
+      dateCreated: "2024-01-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Melbourne Plus: Innovation",
+      credentialCategory: "microcredential",
+      recognizedBy: {
+        "@type": "CollegeOrUniversity",
+        name: "University of Melbourne",
+        url: "https://www.unimelb.edu.au",
+      },
+      dateCreated: "2024-05-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Melbourne Plus: People Leadership",
+      credentialCategory: "microcredential",
+      recognizedBy: {
+        "@type": "CollegeOrUniversity",
+        name: "University of Melbourne",
+        url: "https://www.unimelb.edu.au",
+      },
+      dateCreated: "2024-10-01",
+      holder: { "@id": "https://rin.contact/#person" },
+    },
+  ],
+};
+
 // ── Background art helpers (Nothing OS + Wisr design language) ───────────────
 
 // Earth: thin cross/plus mark — precision & structure
@@ -318,6 +685,20 @@ export default function Home() {
               ],
             }),
           }}
+        />
+
+        {/* ── Breadcrumb / projects / credentials structured data — homepage-only ── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_SCHEMA) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PROJECTS_SCHEMA) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(CREDENTIALS_SCHEMA) }}
         />
       </Head>
 

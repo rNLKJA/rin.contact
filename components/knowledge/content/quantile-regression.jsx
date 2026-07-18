@@ -1,12 +1,6 @@
 import Link from "next/link";
-import {
-  KSection,
-  Callout,
-  Formula,
-  Figure,
-  TeX,
-  Term,
-} from "@/components/knowledge/KnowledgeLayout";
+import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
+import { Formula, TeX } from "@/components/knowledge/KatexFormula";
 
 /**
  * Per-locale content for /knowledge/quantile-regression.
@@ -48,11 +42,24 @@ function FanFigure({ caption, ariaLabel }) {
           <circle key={i} cx={x} cy={y} r="2.5" fill="currentColor" opacity="0.4" />
         ))}
         <line x1="30" y1="62" x2="415" y2="22" stroke="#FF3C3C" strokeWidth="1.4" />
-        <text x="420" y="22" fontSize="7.5" fontFamily="monospace" fill="#FF3C3C" textAnchor="end">τ=.9</text>
+        <text x="420" y="22" fontSize="7.5" fontFamily="monospace" fill="#FF3C3C" textAnchor="end">
+          τ=.9
+        </text>
         <line x1="30" y1="80" x2="415" y2="80" stroke="currentColor" strokeWidth="1.4" />
-        <text x="420" y="92" fontSize="7.5" fontFamily="monospace" fill="currentColor" textAnchor="end">τ=.5</text>
+        <text
+          x="420"
+          y="92"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill="currentColor"
+          textAnchor="end"
+        >
+          τ=.5
+        </text>
         <line x1="30" y1="98" x2="415" y2="138" stroke="#FF3C3C" strokeWidth="1.4" />
-        <text x="420" y="148" fontSize="7.5" fontFamily="monospace" fill="#FF3C3C" textAnchor="end">τ=.1</text>
+        <text x="420" y="148" fontSize="7.5" fontFamily="monospace" fill="#FF3C3C" textAnchor="end">
+          τ=.1
+        </text>
       </svg>
     </Figure>
   );
@@ -269,73 +276,83 @@ function ZhBody() {
   return (
     <>
       <p>
-        普通<Link href="/knowledge/linear-statistical-models">回归</Link>回答一个问题：一个预测变量如何移动
-        结果的<strong>平均值</strong>？那有用——而它能把几乎一切要紧的东西都藏起来。一项政策的平均效应可能
+        普通<Link href="/knowledge/linear-statistical-models">回归</Link>
+        回答一个问题：一个预测变量如何移动 结果的<strong>平均值</strong>
+        ？那有用——而它能把几乎一切要紧的东西都藏起来。一项政策的平均效应可能
         很小，却对顶部帮助极大、对底部毫无帮助；等待时间的离散程度可能随需求拉大，即便均值稳稳不动。
-        <Term>分位数回归</Term>超越平均值：它建模一个预测变量如何影响分布上<em>任何</em>选定的点——中位数、
-        第 10 百分位、第 90——这样你看到的是对<strong>整个</strong>响应的影响，而不只是它的质心。
+        <Term>分位数回归</Term>超越平均值：它建模一个预测变量如何影响分布上<em>任何</em>
+        选定的点——中位数、 第 10 百分位、第 90——这样你看到的是对<strong>整个</strong>
+        响应的影响，而不只是它的质心。
       </p>
       <p>
         它是一个独特而出人意料地实用的工具——并干净利落地连到两个邻居：它的损失函数让它天然
         <Link href="/knowledge/robust-statistics">稳健</Link>，而对尾部建模又连到
         <Link href="/knowledge/extreme-value-theory">极值理论</Link>和
-        <Link href="/knowledge/conformal-prediction">预测区间</Link>。这一页讲这个想法、驱动它的那个巧妙的
-        损失、如何读它的输出，以及它在哪里赢得自己的位置。
+        <Link href="/knowledge/conformal-prediction">预测区间</Link>
+        。这一页讲这个想法、驱动它的那个巧妙的 损失、如何读它的输出，以及它在哪里赢得自己的位置。
       </p>
 
       <KSection id="why" eyebrow="01" title="超越平均值">
         <p>
           均值回归的局限在于，条件均值是一个单一的概括，而一个单一的概括无法捕捉一种关系如何随分布而变化。
-          两种有着相同均值效应的情形可以完全不同：一个预测变量可能把所有人同等地往上抬，<em>或者</em>抬高
-          顶部而让底部不动，<em>或者</em>在不移动中心的情况下增大<em>离散程度</em>。普通最小二乘对这三者
-          报告同样的平均值，对其间的差别视而不见。
+          两种有着相同均值效应的情形可以完全不同：一个预测变量可能把所有人同等地往上抬，
+          <em>或者</em>抬高 顶部而让底部不动，<em>或者</em>在不移动中心的情况下增大<em>离散程度</em>
+          。普通最小二乘对这三者 报告同样的平均值，对其间的差别视而不见。
         </p>
         <p>
           然而那个差别往往才是全部的重点——在公平上（「这帮的是最弱势的人，还是只帮了已经占优的人？」）、在
-          风险上（「糟糕的情形有多糟，而不是典型情形？」），以及在服务保证上（「第 95 百分位的等待是多少，
-          而不是平均等待？」）。分位数回归正是为回答这些而生的。
+          风险上（「糟糕的情形有多糟，而不是典型情形？」），以及在服务保证上（「第 95
+          百分位的等待是多少， 而不是平均等待？」）。分位数回归正是为回答这些而生的。
         </p>
       </KSection>
 
       <KSection id="idea" eyebrow="02" title="对一个条件分位数建模">
         <p>
-          这个想法是一个直接的推广。普通回归建模 <TeX>{String.raw`Y`}</TeX> 在给定 <TeX>{String.raw`X`}</TeX>{" "}
-          下的条件<em>均值</em>，而分位数回归把一个条件<Term>分位数</Term> <TeX>{String.raw`\tau`}</TeX>——
-          例如 <TeX>{String.raw`\tau = 0.5`}</TeX>（中位数），或 <TeX>{String.raw`0.9`}</TeX>（第 90 百分
-          位）——建模为预测变量的一个函数。在好几个分位数上拟合它，你就得到一族线，描述结果的<em>底部</em>、
-          <em>中部</em>和<em>顶部</em>各自如何对预测变量做出响应。你建模了整个条件分布，而不只是它的均值。
+          这个想法是一个直接的推广。普通回归建模 <TeX>{String.raw`Y`}</TeX> 在给定{" "}
+          <TeX>{String.raw`X`}</TeX> 下的条件<em>均值</em>，而分位数回归把一个条件
+          <Term>分位数</Term> <TeX>{String.raw`\tau`}</TeX>—— 例如{" "}
+          <TeX>{String.raw`\tau = 0.5`}</TeX>（中位数），或 <TeX>{String.raw`0.9`}</TeX>（第 90 百分
+          位）——建模为预测变量的一个函数。在好几个分位数上拟合它，你就得到一族线，描述结果的
+          <em>底部</em>、<em>中部</em>和<em>顶部</em>
+          各自如何对预测变量做出响应。你建模了整个条件分布，而不只是它的均值。
         </p>
       </KSection>
 
       <KSection id="loss" eyebrow="03" title="弹球损失">
         <p>
-          其机制是损失函数的一个优雅的改变。普通回归最小化<em>平方</em>误差（它瞄准均值）；分位数回归最小化
-          一个<strong>不对称的绝对</strong>误差——<Term>弹球</Term>（或检验）损失——它瞄准一个选定的
-          分位数：
+          其机制是损失函数的一个优雅的改变。普通回归最小化<em>平方</em>
+          误差（它瞄准均值）；分位数回归最小化 一个<strong>不对称的绝对</strong>误差——
+          <Term>弹球</Term>（或检验）损失——它瞄准一个选定的 分位数：
         </p>
         <Formula label="The pinball loss for quantile tau is tau times the residual when the residual is non-negative, and tau minus one times the residual when the residual is negative.">
           {String.raw`L_\tau(r) = \begin{cases} \tau\,r & r \ge 0 \\[3pt] (\tau - 1)\,r & r < 0 \end{cases}`}
         </Formula>
         <p>
-          那个不对称就是全部的诀窍。对 <TeX>{String.raw`\tau = 0.9`}</TeX>，低估（真值在线之上）受到的惩罚
-          比高估<strong>重 9 倍</strong>——于是拟合的线被往上推，直到只有约 10% 的点落在它之上：第 90 百分位。
-          调 <TeX>{String.raw`\tau`}</TeX>，你就能瞄准任何分位数。而因为它建立在<em>绝对</em>（而非平方）
-          误差之上，分位数回归对离群值天然<Link href="/knowledge/robust-statistics">稳健</Link>——中位数回归
-          （<TeX>{String.raw`\tau = 0.5`}</TeX>）正是最小绝对偏差，最小二乘那个稳健的表亲。
+          那个不对称就是全部的诀窍。对 <TeX>{String.raw`\tau = 0.9`}</TeX>
+          ，低估（真值在线之上）受到的惩罚 比高估<strong>重 9 倍</strong>
+          ——于是拟合的线被往上推，直到只有约 10% 的点落在它之上：第 90 百分位。 调{" "}
+          <TeX>{String.raw`\tau`}</TeX>，你就能瞄准任何分位数。而因为它建立在<em>绝对</em>
+          （而非平方） 误差之上，分位数回归对离群值天然
+          <Link href="/knowledge/robust-statistics">稳健</Link>——中位数回归 （
+          <TeX>{String.raw`\tau = 0.5`}</TeX>）正是最小绝对偏差，最小二乘那个稳健的表亲。
         </p>
       </KSection>
 
       <KSection id="reading" eyebrow="04" title="读懂扇形展开的线">
-        <p>真正的洞见来自一次性拟合好几个分位数，并把这些线<em>放在一起</em>看：</p>
+        <p>
+          真正的洞见来自一次性拟合好几个分位数，并把这些线<em>放在一起</em>看：
+        </p>
         <FanFigure
           caption="分位数线揭示了什么。如果它们保持平行，离散程度是恒定的——预测变量移动整个分布。如果它们扇形散开，离散程度随预测变量增大（异方差）——这是一条单一的均值线完全藏起来的东西。"
           ariaLabel="一片向右变宽的散点，配上三条扇形散开的拟合分位数线，外加一条单一的均值线。"
         />
         <p>
-          如果分位数线大致<strong>平行</strong>，预测变量同等地移动整个分布（离散程度恒定）。如果它们
-          <strong>扇形散开</strong>，离散程度随预测变量<em>增大</em>——<Term>异方差</Term>——意味着预测变量
-          影响的不只是水平，还有<em>变异性</em>。那种扇形展开对一条单一的均值线是不可见的，而它常常是最重要的
-          发现：「随着 X 增加，结果不只是上升，它们变得更不平等。」
+          如果分位数线大致<strong>平行</strong>
+          ，预测变量同等地移动整个分布（离散程度恒定）。如果它们
+          <strong>扇形散开</strong>，离散程度随预测变量<em>增大</em>——<Term>异方差</Term>
+          ——意味着预测变量 影响的不只是水平，还有<em>变异性</em>
+          。那种扇形展开对一条单一的均值线是不可见的，而它常常是最重要的 发现：「随着 X
+          增加，结果不只是上升，它们变得更不平等。」
         </p>
       </KSection>
 
@@ -343,15 +360,17 @@ function ZhBody() {
         <p>在离散程度或尾部与中心同等要紧之处，分位数回归赢得自己的位置：</p>
         <ul>
           <li>
-            <Term>预测区间</Term>——拟合第 5 和第 95 分位数，你就有了一个直接、诚实的区间（「90% 的情形
-            落在这两者之间」）——<Link href="/knowledge/conformal-prediction">保形预测</Link>的近亲。
+            <Term>预测区间</Term>——拟合第 5 和第 95 分位数，你就有了一个直接、诚实的区间（「90%
+            的情形 落在这两者之间」）——<Link href="/knowledge/conformal-prediction">保形预测</Link>
+            的近亲。
           </li>
           <li>
             <Term>风险与尾部</Term>——直接建模损失或延误的第 99 百分位，在那里
             <Link href="/knowledge/extreme-value-theory">极端</Link>才是关切所在，而非平均。
           </li>
           <li>
-            <Term>公平分析</Term>——一个效应对分布的底部与顶部是否不同？（一个项目抬高的是最弱势的人，还是
+            <Term>公平分析</Term>
+            ——一个效应对分布的底部与顶部是否不同？（一个项目抬高的是最弱势的人，还是
             只是已经过得好的人？）均值告诉不了你；分位数回归能。
           </li>
         </ul>
@@ -361,10 +380,12 @@ function ZhBody() {
         <p>几条告诫让它保持诚实：</p>
         <Callout type="pitfall">
           <p>
-            <em>分别</em>拟合每个分位数可能产生<Term>分位数交叉</Term>——估计出的第 90 百分位在某些输入处
-            跌到第 50 之下，这在逻辑上不可能，是模型在勉强的一个信号（有一些方法会强制不交叉）。而因为每个
-            分位数是从它<em>附近</em>的数据估计出来的，<strong>极端分位数需要更多数据</strong>才能可靠地
-            钉住——第 99 百分位天生比中位数更难估计。所以分位数回归在分布的主体里最可信，当你往尾部深处
+            <em>分别</em>拟合每个分位数可能产生<Term>分位数交叉</Term>——估计出的第 90
+            百分位在某些输入处 跌到第 50
+            之下，这在逻辑上不可能，是模型在勉强的一个信号（有一些方法会强制不交叉）。而因为每个
+            分位数是从它<em>附近</em>的数据估计出来的，<strong>极端分位数需要更多数据</strong>
+            才能可靠地 钉住——第 99
+            百分位天生比中位数更难估计。所以分位数回归在分布的主体里最可信，当你往尾部深处
             推进时，应当与<Link href="/knowledge/extreme-value-theory">极值理论</Link>配对。
           </p>
         </Callout>
@@ -373,17 +394,20 @@ function ZhBody() {
       <KSection id="applied" eyebrow="07" title="它在我工作中的体现">
         <Callout type="applied" label="当平均值不是那个问题时">
           <p>
-            政府分析里许多最重要的问题，都不是关于平均值的——它们是关于<strong>分布</strong>的：最坏情形的
-            等待或延误（第 95 百分位，而非均值）、一项干预帮的是<strong>最弱势的人</strong>还是只是已经
-            占优的人（公平），以及结果有多<em>不平等</em>、那是否在拉大。分位数回归在均值回归视而不见之处
-            直接回答这些，而那些<strong>扇形展开的线</strong>是一种有力的方式，去展示一个预测变量增加的
+            政府分析里许多最重要的问题，都不是关于平均值的——它们是关于<strong>分布</strong>
+            的：最坏情形的 等待或延误（第 95 百分位，而非均值）、一项干预帮的是
+            <strong>最弱势的人</strong>还是只是已经 占优的人（公平），以及结果有多<em>不平等</em>
+            、那是否在拉大。分位数回归在均值回归视而不见之处 直接回答这些，而那些
+            <strong>扇形展开的线</strong>是一种有力的方式，去展示一个预测变量增加的
             不只是一个结果的水平，还有它的<em>不平等</em>。
           </p>
           <p>
-            它还与我所倚重的几个邻居相配：它天然<Link href="/knowledge/robust-statistics">稳健</Link>
+            它还与我所倚重的几个邻居相配：它天然
+            <Link href="/knowledge/robust-statistics">稳健</Link>
             （中位数回归 = 最小绝对偏差），它给出诚实的
-            <Link href="/knowledge/conformal-prediction">预测区间</Link>（拟合两个分位数），而对于真正的
-            尾部它交棒给<Link href="/knowledge/extreme-value-theory">极值理论</Link>。知道平均值很少就是
+            <Link href="/knowledge/conformal-prediction">预测区间</Link>
+            （拟合两个分位数），而对于真正的 尾部它交棒给
+            <Link href="/knowledge/extreme-value-theory">极值理论</Link>。知道平均值很少就是
             全部的故事——分位数回归是你询问其余部分的方式。
           </p>
         </Callout>
@@ -393,27 +417,30 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              普通回归建模<strong>均值</strong>——它藏起一个预测变量如何影响底部对顶部。分位数回归建模任何
+              普通回归建模<strong>均值</strong>
+              ——它藏起一个预测变量如何影响底部对顶部。分位数回归建模任何
               <strong>条件分位数</strong>（中位数、第 90……）。
             </li>
             <li>
-              它最小化<strong>弹球 / 检验损失</strong>——不对称的绝对误差；对 τ=0.9，低估的代价多 9 倍，于是
-              线落在第 90 百分位。
+              它最小化<strong>弹球 / 检验损失</strong>——不对称的绝对误差；对 τ=0.9，低估的代价多 9
+              倍，于是 线落在第 90 百分位。
             </li>
             <li>
-              建立在绝对（而非平方）误差之上 → 天然<strong>稳健</strong>；中位数回归 = 最小绝对偏差。
+              建立在绝对（而非平方）误差之上 → 天然<strong>稳健</strong>；中位数回归 =
+              最小绝对偏差。
             </li>
             <li>
               拟合好几个分位数并把它们放在一起读：<strong>平行 = 离散程度恒定</strong>；
-              <strong>扇形展开 = 异方差</strong>（预测变量改变离散程度/不平等——对一条均值线不可见）。
+              <strong>扇形展开 = 异方差</strong>
+              （预测变量改变离散程度/不平等——对一条均值线不可见）。
             </li>
             <li>
               非常适合<strong>预测区间</strong>（拟合两个分位数）、<strong>风险/尾部</strong>，以及
               <strong>公平</strong>（对最弱势者与顶部的效应）。
             </li>
             <li>
-              告诫：<strong>分位数交叉</strong>，以及<strong>极端分位数需要更多数据</strong>——真正的尾部
-              交给 EVT。
+              告诫：<strong>分位数交叉</strong>，以及<strong>极端分位数需要更多数据</strong>
+              ——真正的尾部 交给 EVT。
             </li>
           </ul>
         </Callout>
