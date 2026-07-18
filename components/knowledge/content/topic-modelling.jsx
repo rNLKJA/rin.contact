@@ -18,31 +18,99 @@ function LDAFigure({ caption, ariaLabel, documentsLabel, topicsLabel, wordsLabel
         aria-label={ariaLabel}
       >
         {/* documents */}
-        <text x="55" y="16" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{documentsLabel}</text>
+        <text
+          x="55"
+          y="16"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {documentsLabel}
+        </text>
         {[34, 70, 106].map((y, i) => (
-          <rect key={i} x="24" y={y} width="62" height="18" rx="2" fill="none" stroke="currentColor" strokeWidth="1.1" />
+          <rect
+            key={i}
+            x="24"
+            y={y}
+            width="62"
+            height="18"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.1"
+          />
         ))}
         {/* topics */}
-        <text x="220" y="16" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{topicsLabel}</text>
+        <text x="220" y="16" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {topicsLabel}
+        </text>
         {[44, 96].map((y, i) => (
           <circle key={i} cx="220" cy={y} r="13" fill="none" stroke="#FF3C3C" strokeWidth="1.4" />
         ))}
         {/* words */}
-        <text x="390" y="16" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{wordsLabel}</text>
+        <text
+          x="390"
+          y="16"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill="currentColor"
+          opacity="0.7"
+        >
+          {wordsLabel}
+        </text>
         {[30, 56, 82, 108].map((y, i) => (
-          <rect key={i} x="358" y={y} width="58" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.7" />
+          <rect
+            key={i}
+            x="358"
+            y={y}
+            width="58"
+            height="14"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+            opacity="0.7"
+          />
         ))}
         {/* doc -> topic links */}
         {[43, 79, 115].map((y, i) => (
           <g key={i}>
-            <line x1="86" y1={y} x2="207" y2="44" stroke="currentColor" strokeWidth="0.7" opacity="0.4" />
-            <line x1="86" y1={y} x2="207" y2="96" stroke="currentColor" strokeWidth="0.7" opacity="0.4" />
+            <line
+              x1="86"
+              y1={y}
+              x2="207"
+              y2="44"
+              stroke="currentColor"
+              strokeWidth="0.7"
+              opacity="0.4"
+            />
+            <line
+              x1="86"
+              y1={y}
+              x2="207"
+              y2="96"
+              stroke="currentColor"
+              strokeWidth="0.7"
+              opacity="0.4"
+            />
           </g>
         ))}
         {/* topic -> word links */}
         {[44, 96].map((ty, i) =>
           [37, 63, 89, 115].map((wy, j) => (
-            <line key={`${i}-${j}`} x1="233" y1={ty} x2="358" y2={wy} stroke="#FF3C3C" strokeWidth="0.6" opacity="0.3" />
+            <line
+              key={`${i}-${j}`}
+              x1="233"
+              y1={ty}
+              x2="358"
+              y2={wy}
+              stroke="#FF3C3C"
+              strokeWidth="0.6"
+              opacity="0.3"
+            />
           ))
         )}
       </svg>
@@ -274,23 +342,25 @@ function ZhBody() {
     <>
       <p>
         想象一个装着一万份文档的文件夹——调查回应、报告、文章、情报笔记——没人有时间读它们。它们
-        <em>关于</em>什么？什么主题贯穿其中，哪些文档共享哪些？<Term>主题建模</Term>正好回答这个：它是一族
-        无监督的方法，自动发现一个文本集合里潜在的主题（「话题」），<strong>不需要任何标签</strong>，也不需要
-        事先被告知要找什么。
+        <em>关于</em>什么？什么主题贯穿其中，哪些文档共享哪些？<Term>主题建模</Term>
+        正好回答这个：它是一族 无监督的方法，自动发现一个文本集合里潜在的主题（「话题」），
+        <strong>不需要任何标签</strong>，也不需要 事先被告知要找什么。
       </p>
       <p>
         它是一个真正独特的工具——不是分类（没有类别可预测），也不是一般的
         <Link href="/knowledge/natural-language-processing">NLP</Link>——它是把
-        <Link href="/knowledge/clustering">聚类</Link>的想法用到文档上。这一页一步步建起经典的方法（LDA）、
+        <Link href="/knowledge/clustering">聚类</Link>
+        的想法用到文档上。这一页一步步建起经典的方法（LDA）、
         如何读懂并评判它的输出，以及现代基于嵌入的继任者——连同那个诚实的警告：它找到的主题并不总是有意义的。
       </p>
 
       <KSection id="why" eyebrow="01" title="无标签地寻找主题">
         <p>
-          决定性的特征是它<Term>无监督</Term>：你不告诉它有哪些主题，它从文档间词共现的模式中<em>发现</em>
+          决定性的特征是它<Term>无监督</Term>：你不告诉它有哪些主题，它从文档间词共现的模式中
+          <em>发现</em>
           它们。如果一组词——「预算」「赤字」「支出」「税」——在许多文档里不断一起出现，那个反复出现的词簇
-          <em>就是</em>一个主题，一个人随后可以把它认出来是「财政政策」。模型找到统计结构；意义在于词如何
-          成组。
+          <em>就是</em>
+          一个主题，一个人随后可以把它认出来是「财政政策」。模型找到统计结构；意义在于词如何 成组。
         </p>
         <p>
           这使它成为面对任何大型、未读文本集合的天然第一步：在你能分析一个语料库之前，你需要知道里面有什么，
@@ -301,26 +371,29 @@ function ZhBody() {
 
       <KSection id="bow" eyebrow="02" title="文档作为词袋">
         <p>
-          经典的主题建模从<Term>词袋</Term>表示出发（与<Link href="/knowledge/information-retrieval">信息
-          检索</Link>同样的起点）：一份文档被归约成它所含词的多重集，<strong>完全忽略顺序</strong>。「The cat
-          sat」和「sat the cat」看起来一模一样。那听起来有损——确实是——但对于寻找<em>主题</em>，它出奇地
-          好用，因为一份文档的主题内容，主要由<em>哪些</em>词出现、出现多少次来承载，而非它们的顺序。主题
-          建模利用的，正是这种表示所保留的共现模式。
+          经典的主题建模从<Term>词袋</Term>表示出发（与
+          <Link href="/knowledge/information-retrieval">信息 检索</Link>
+          同样的起点）：一份文档被归约成它所含词的多重集，<strong>完全忽略顺序</strong>。「The cat
+          sat」和「sat the cat」看起来一模一样。那听起来有损——确实是——但对于寻找<em>主题</em>
+          ，它出奇地 好用，因为一份文档的主题内容，主要由<em>哪些</em>
+          词出现、出现多少次来承载，而非它们的顺序。主题 建模利用的，正是这种表示所保留的共现模式。
         </p>
       </KSection>
 
       <KSection id="lda" eyebrow="03" title="LDA：生成的故事">
         <p>
-          标准的方法是<Term>潜在狄利克雷分配</Term>（LDA）。它巧妙的一步，是想象一个文档如何被写出来的
+          标准的方法是<Term>潜在狄利克雷分配</Term>
+          （LDA）。它巧妙的一步，是想象一个文档如何被写出来的
           <em>生成的故事</em>，然后把它倒过来跑。这个故事有两个简单的想法：
         </p>
         <ul>
           <li>
-            每个<strong>主题</strong>是一个在词上的分布（「财政政策」主题给「预算」「税」「赤字」很高的
-            概率）。
+            每个<strong>主题</strong>
+            是一个在词上的分布（「财政政策」主题给「预算」「税」「赤字」很高的 概率）。
           </li>
           <li>
-            每份<strong>文档</strong>是主题的一个混合（一篇新闻文章可能 70% 财政政策、20% 政治、10% 经济）。
+            每份<strong>文档</strong>是主题的一个混合（一篇新闻文章可能 70% 财政政策、20% 政治、10%
+            经济）。
           </li>
         </ul>
         <LDAFigure
@@ -331,10 +404,12 @@ function ZhBody() {
           wordsLabel="词"
         />
         <p>
-          LDA 只观测到词——主题和混合是<em>潜在的</em>（隐藏的）。它通过推断倒推，找到最能解释实际所见之词的
-          那组主题以及每份文档的混合。「狄利克雷」那部分只是那个先验，它鼓励每份文档关于<em>少数几个</em>
-          主题、而非全部，这让结果保持可解释。要紧的是那个直觉：<strong>文档 = 主题的混合，主题 = 在词上的
-          分布</strong>，仅从共现推断而来。
+          LDA 只观测到词——主题和混合是<em>潜在的</em>
+          （隐藏的）。它通过推断倒推，找到最能解释实际所见之词的
+          那组主题以及每份文档的混合。「狄利克雷」那部分只是那个先验，它鼓励每份文档关于
+          <em>少数几个</em>
+          主题、而非全部，这让结果保持可解释。要紧的是那个直觉：
+          <strong>文档 = 主题的混合，主题 = 在词上的 分布</strong>，仅从共现推断而来。
         </p>
       </KSection>
 
@@ -344,8 +419,9 @@ function ZhBody() {
           <em>
             {"{"}病人、医院、治疗、临床、护理{"}"}
           </em>
-          。那个关键而常被忽略的要点：<strong>模型并不给主题命名。</strong>它递给你词组；一个<em>人</em>读
-          「病人、医院、治疗……」并把它标为「医疗保健」。主题建模是一个<em>协助</em>人来解读、而非取代人的
+          。那个关键而常被忽略的要点：<strong>模型并不给主题命名。</strong>它递给你词组；一个
+          <em>人</em>读 「病人、医院、治疗……」并把它标为「医疗保健」。主题建模是一个<em>协助</em>
+          人来解读、而非取代人的
           工具——它的价值在于快速浮现出结构，由分析师供给意义。在主题之外，你还得到每份文档的混合，这让你能在
           整个集合里给主题打标、过滤和追踪。
         </p>
@@ -353,31 +429,37 @@ function ZhBody() {
 
       <KSection id="howmany" eyebrow="05" title="多少个主题？艰难的选择">
         <p>
-          LDA 需要你事先指定主题的数量——而没有客观正确的答案，正是<Link href="/knowledge/clustering">聚类
-          </Link>里那个「选 k」的问题。太少，不同的主题会被搅在一起；太多，主题会碎裂成噪声和近乎重复的东西。
+          LDA 需要你事先指定主题的数量——而没有客观正确的答案，正是
+          <Link href="/knowledge/clustering">聚类</Link>里那个「选
+          k」的问题。太少，不同的主题会被搅在一起；太多，主题会碎裂成噪声和近乎重复的东西。
         </p>
         <p>
-          标准的指引是一个<Term>一致性分数</Term>，它度量一个主题的头部词在语义上有多相关——对一个人来说
+          标准的指引是一个<Term>一致性分数</Term>
+          ，它度量一个主题的头部词在语义上有多相关——对一个人来说
           它们是否真的「凑在一起」？你在一系列主题数量上计算一致性，找它在哪里达到峰值。但它是一个指引、而非
-          神谕：一致性通常上升、走平、然后下降，而最终的判断仍然落在「主题是否<em>有用</em>」这一人的判断上。
+          神谕：一致性通常上升、走平、然后下降，而最终的判断仍然落在「主题是否<em>有用</em>
+          」这一人的判断上。
           与聚类一样，主题的数量是一个你必须自己担起的建模决定，而非数据递给你的一个参数。
         </p>
       </KSection>
 
       <KSection id="alternatives" eyebrow="06" title="NMF 与神经的继任者">
         <p>
-          LDA 不是唯一的选择。<Term>非负矩阵分解</Term>（NMF）经由一条不同的路径达到相似的结果——把文档—词
-          矩阵分解成主题成分（与 PCA 和推荐器同一个
-          <Link href="/knowledge/pca-dimensionality-reduction">矩阵分解</Link>家族），往往更快，在短文本上
-          有时更利落。
+          LDA 不是唯一的选择。<Term>非负矩阵分解</Term>
+          （NMF）经由一条不同的路径达到相似的结果——把文档—词 矩阵分解成主题成分（与 PCA
+          和推荐器同一个
+          <Link href="/knowledge/pca-dimensionality-reduction">矩阵分解</Link>
+          家族），往往更快，在短文本上 有时更利落。
         </p>
         <p>
-          更大的转变是现代的、基于<Link href="/knowledge/natural-language-processing">嵌入</Link>的方法——
+          更大的转变是现代的、基于<Link href="/knowledge/natural-language-processing">嵌入</Link>
+          的方法——
           <Term>BERTopic</Term> 及同类——它把文档嵌入为捕捉意义的稠密向量，
-          <Link href="/knowledge/clustering">聚类</Link>那些向量，再从簇中导出主题。因为它理解<em>意义</em>、
+          <Link href="/knowledge/clustering">聚类</Link>那些向量，再从簇中导出主题。因为它理解
+          <em>意义</em>、
           而不只是词频，它对同义词和短文本处理得好得多，通常产出更一致的主题——代价是更高的计算成本。这就是
-          贯穿<Link href="/knowledge/information-retrieval">检索</Link>和一般 NLP 的那个「词袋 → 嵌入」的同样
-          的演进。
+          贯穿<Link href="/knowledge/information-retrieval">检索</Link>和一般 NLP 的那个「词袋 →
+          嵌入」的同样 的演进。
         </p>
       </KSection>
 
@@ -385,10 +467,12 @@ function ZhBody() {
         <p>那些诚实的告诫，因为主题建模可能华而不实地骗人：</p>
         <Callout type="pitfall">
           <p>
-            <strong>主题不保证有意义。</strong>模型找到统计结构，而有时那个结构是垃圾——一个只是常见词大杂烩
-            的「主题」，或者一个格式造成的假象。结果可能<strong>不稳定</strong>（用不同的种子重跑，主题就变
-            了），词袋方法对上下文<strong>视而不见</strong>（它们分不清河「岸」的 bank 和「银行」的 bank），
-            而整件事需要<strong>仔细的预处理</strong>（去停用词、合理的分词），否则主题里会塞满「的」和
+            <strong>主题不保证有意义。</strong>
+            模型找到统计结构，而有时那个结构是垃圾——一个只是常见词大杂烩
+            的「主题」，或者一个格式造成的假象。结果可能<strong>不稳定</strong>
+            （用不同的种子重跑，主题就变 了），词袋方法对上下文<strong>视而不见</strong>
+            （它们分不清河「岸」的 bank 和「银行」的 bank）， 而整件事需要
+            <strong>仔细的预处理</strong>（去停用词、合理的分词），否则主题里会塞满「的」和
             「和」。把输出当作一个要去验证的、<em>生成假设</em>的起点，而绝非一个完成了的答案。
           </p>
         </Callout>
@@ -402,9 +486,10 @@ function ZhBody() {
             文档围绕哪些主题聚集」的快速地图，把一个读不完的语料库变成某种可导航的东西。
           </p>
           <p>
-            让它保持诚实的，是同时握住两件事：它是一个<strong>人在环</strong>的工具（模型找到词组，由我供给
-            意义和标签），而主题在被验证之前可能是<strong>垃圾</strong>——所以它生成要核查的假设，而非要上报
-            的结论。它直接连到<Link href="/knowledge/clustering">聚类</Link>（同样的无监督想法）、
+            让它保持诚实的，是同时握住两件事：它是一个<strong>人在环</strong>
+            的工具（模型找到词组，由我供给 意义和标签），而主题在被验证之前可能是
+            <strong>垃圾</strong>——所以它生成要核查的假设，而非要上报 的结论。它直接连到
+            <Link href="/knowledge/clustering">聚类</Link>（同样的无监督想法）、
             <Link href="/knowledge/natural-language-processing">NLP</Link>（文本处理），以及与
             <Link href="/knowledge/information-retrieval">检索</Link>共享的嵌入方法。
           </p>
@@ -415,32 +500,33 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              主题建模<strong>无监督地发现一个文本集合里的主题</strong>——无标签。它是<strong>给文档的
-              聚类</strong>。
+              主题建模<strong>无监督地发现一个文本集合里的主题</strong>——无标签。它是
+              <strong>给文档的 聚类</strong>。
             </li>
             <li>
               经典方法从<strong>词袋</strong>出发（忽略顺序；共现承载主题）。
             </li>
             <li>
-              <strong>LDA</strong>：文档 = <strong>主题的混合</strong>，主题 = <strong>在词上的分布</strong>；
-              从观测到的词推断隐藏的主题。
+              <strong>LDA</strong>：文档 = <strong>主题的混合</strong>，主题 ={" "}
+              <strong>在词上的分布</strong>； 从观测到的词推断隐藏的主题。
             </li>
             <li>
               模型给出词组——<strong>由人给主题命名</strong>。外加每份文档的主题混合。
             </li>
             <li>
-              <strong>选择主题的数量</strong>是那个「选 k」的问题——用<strong>一致性</strong>作指引，但判断
-              说了算。<strong>NMF</strong> 和 <strong>BERTopic</strong>（基于嵌入）是替代品。
+              <strong>选择主题的数量</strong>是那个「选 k」的问题——用<strong>一致性</strong>
+              作指引，但判断 说了算。<strong>NMF</strong> 和 <strong>BERTopic</strong>
+              （基于嵌入）是替代品。
             </li>
             <li>
-              告诫：<strong>主题可能是垃圾</strong>、不稳定、对上下文视而不见——一个要去验证的、生成假设的
-              工具，而非一个完成了的答案。
+              告诫：<strong>主题可能是垃圾</strong>
+              、不稳定、对上下文视而不见——一个要去验证的、生成假设的 工具，而非一个完成了的答案。
             </li>
           </ul>
         </Callout>
         <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
-          LDA 的生成框架、基于一致性的主题数量选择，以及 BERTopic 的对比，反映了当前的主题建模参考文献以及
-          NLP 课程。
+          LDA 的生成框架、基于一致性的主题数量选择，以及 BERTopic
+          的对比，反映了当前的主题建模参考文献以及 NLP 课程。
         </p>
       </KSection>
     </>

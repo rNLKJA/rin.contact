@@ -36,13 +36,38 @@ function WindowFigure({ caption, ariaLabel, tumblingLabel, slidingLabel }) {
         {EVENT_X.map((x, i) => (
           <circle key={i} cx={x} cy="22" r="3" fill="currentColor" opacity="0.6" />
         ))}
-        <text x="14" y="58" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">{tumblingLabel}</text>
+        <text x="14" y="58" fontSize="9" fontFamily="monospace" fill="currentColor" opacity="0.7">
+          {tumblingLabel}
+        </text>
         {TUMBLING.map(([x0, x1], i) => (
-          <rect key={i} x={x0} y="44" width={x1 - x0} height="22" rx="2" fill="none" stroke="currentColor" strokeWidth="1.1" />
+          <rect
+            key={i}
+            x={x0}
+            y="44"
+            width={x1 - x0}
+            height="22"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.1"
+          />
         ))}
-        <text x="14" y="118" fontSize="9" fontFamily="monospace" fill="#FF3C3C">{slidingLabel}</text>
+        <text x="14" y="118" fontSize="9" fontFamily="monospace" fill="#FF3C3C">
+          {slidingLabel}
+        </text>
         {SLIDING.map(([x0, x1], i) => (
-          <rect key={i} x={x0} y={92 + (i % 2) * 10} width={x1 - x0} height="18" rx="2" fill="none" stroke="#FF3C3C" strokeWidth="1" opacity="0.7" />
+          <rect
+            key={i}
+            x={x0}
+            y={92 + (i % 2) * 10}
+            width={x1 - x0}
+            height="18"
+            rx="2"
+            fill="none"
+            stroke="#FF3C3C"
+            strokeWidth="1"
+            opacity="0.7"
+          />
         ))}
       </svg>
     </Figure>
@@ -287,13 +312,15 @@ function ZhBody() {
   return (
     <>
       <p>
-        这一节里几乎所有东西都假设<Term>批处理</Term>：你有一个数据集，你分析它，你得到一个答案。但有一整类
-        问题等不了数据集变完整——你需要在<em>数据到达时</em>就得到答案。在欺诈发生那一刻抓住它、在一个传感器
-        越过阈值时发警报、更新一个实时仪表盘——这些需要<Term>流处理</Term>：连续地、作为一股无尽的事件流来
-        分析数据，而非分周期地成批分析。
+        这一节里几乎所有东西都假设<Term>批处理</Term>
+        ：你有一个数据集，你分析它，你得到一个答案。但有一整类 问题等不了数据集变完整——你需要在
+        <em>数据到达时</em>就得到答案。在欺诈发生那一刻抓住它、在一个传感器
+        越过阈值时发警报、更新一个实时仪表盘——这些需要<Term>流处理</Term>
+        ：连续地、作为一股无尽的事件流来 分析数据，而非分周期地成批分析。
       </p>
       <p>
-        它是一门真正不同的学问，而不只是「批处理但更快」，因为数据是<strong>无限的</strong>——而那一个事实
+        它是一门真正不同的学问，而不只是「批处理但更快」，因为数据是<strong>无限的</strong>
+        ——而那一个事实
         逼出一些巧妙的重新思考，尤其是关于时间。这一页讲实用的地形：流式与批处理有何不同、让无限数据可处理的
         开窗想法、「一个事件<em>何时</em>发生」这个微妙的问题，以及运行它的技术栈。它建立在
         <Link href="/knowledge/cluster-cloud-computing">分布式计算</Link>页之上。
@@ -303,32 +330,36 @@ function ZhBody() {
         <p>
           这两种范式回答不同的问题。<Term>批处理</Term>在一个<em>有界</em>的数据集上运行——昨天所有的
           交易——并产出一个完整、正确的答案，但只在数据被收集、作业运行之后（数分钟到数小时的延迟）。
-          <Term>流处理</Term>在一股<em>无界</em>的流上运行——每笔交易在它发生的那一瞬间——以亚秒级的延迟
-          产出连续更新的答案。
+          <Term>流处理</Term>在一股<em>无界</em>
+          的流上运行——每笔交易在它发生的那一瞬间——以亚秒级的延迟 产出连续更新的答案。
         </p>
         <p>
           取舍是延迟对完整性。批处理更简单、给你完整的图景，但来得晚；流式是即时的，但必须对仍在到达的
-          数据进行推理。当答案的<em>及时性</em>值那份额外的复杂度时——当一个小时后的答案毫无价值时——你才
-          动用流式。
+          数据进行推理。当答案的<em>及时性</em>
+          值那份额外的复杂度时——当一个小时后的答案毫无价值时——你才 动用流式。
         </p>
       </KSection>
 
       <KSection id="infinite" eyebrow="02" title="永不结束的数据">
         <p>
-          那个决定性的挑战是，一股流是<strong>无限的</strong>。你没法「加载数据集」——没有尽头。你没法计算
+          那个决定性的挑战是，一股流是<strong>无限的</strong>
+          。你没法「加载数据集」——没有尽头。你没法计算
           一个简单的平均值，因为这个平均值所覆盖的数据永不停止增长。每一个熟悉的聚合，都得为一股不会结束的
           流重新思考。
         </p>
         <p>
-          一股流是一串<Term>事件</Term>，每一个都是一条盖了时间戳的、小而不可变的记录——一次点击、一笔交易、
-          一个传感器读数。处理必须是<em>连续</em>且<Term>有状态</Term>的（它在事件流经时记住一个运行中的
+          一股流是一串<Term>事件</Term>
+          ，每一个都是一条盖了时间戳的、小而不可变的记录——一次点击、一笔交易、
+          一个传感器读数。处理必须是<em>连续</em>且<Term>有状态</Term>
+          的（它在事件流经时记住一个运行中的
           概括），因为它永远没法回头去重读整段历史。让无限数据变得可处理的关键一步，是把它切成有限的小块。
         </p>
       </KSection>
 
       <KSection id="windows" eyebrow="03" title="开窗：把无限变成有限">
         <p>
-          你没法对一股无限流的「全部」求平均，但你<em>可以</em>对「最近五分钟」求平均。一个<Term>窗口</Term>是
+          你没法对一股无限流的「全部」求平均，但你<em>可以</em>对「最近五分钟」求平均。一个
+          <Term>窗口</Term>是
           流的一个有限切片，你在它上面做计算——而开窗是流处理的核心想法。主要的种类：
         </p>
         <WindowFigure
@@ -339,15 +370,16 @@ function ZhBody() {
         />
         <ul>
           <li>
-            <Term>滚动</Term>——固定大小、不重叠（「每 5 分钟」）。每个事件恰好属于一个窗口。适合规则的、
-            离散的聚合。
+            <Term>滚动</Term>——固定大小、不重叠（「每 5
+            分钟」）。每个事件恰好属于一个窗口。适合规则的、 离散的聚合。
           </li>
           <li>
-            <Term>滑动</Term>——固定大小但相互重叠，以一小步推进（「最近 5 分钟，每 30 秒更新」）。每个事件
-            落在好几个窗口里——是平滑滚动平均的理想之选。
+            <Term>滑动</Term>——固定大小但相互重叠，以一小步推进（「最近 5 分钟，每 30
+            秒更新」）。每个事件 落在好几个窗口里——是平滑滚动平均的理想之选。
           </li>
           <li>
-            <Term>会话</Term>——由活动间隙定义的动态窗口（一个用户的一阵点击，在他们安静下来后关闭）。窗口
+            <Term>会话</Term>
+            ——由活动间隙定义的动态窗口（一个用户的一阵点击，在他们安静下来后关闭）。窗口
             大小随数据自适应。
           </li>
         </ul>
@@ -355,8 +387,8 @@ function ZhBody() {
 
       <KSection id="time" eyebrow="04" title="事件时间、处理时间与水位线">
         <p>
-          这里有一个流式独有的微妙问题：每个事件都有<strong>两个不同的时间</strong>，而把它们搞混会污染你的
-          结果。
+          这里有一个流式独有的微妙问题：每个事件都有<strong>两个不同的时间</strong>
+          ，而把它们搞混会污染你的 结果。
         </p>
         <ul>
           <li>
@@ -367,18 +399,20 @@ function ZhBody() {
           </li>
         </ul>
         <p>
-          在一个完美的世界里它们会一致。现实中，事件<strong>迟到且乱序</strong>地到达——一部手机失去信号，
-          二十分钟后才上传它的读数，于是一个在 3:00 <em>发生</em>的事件直到 3:20 才<em>到达</em>。如果你按
-          处理时间分桶，那个读数会落进错误的窗口，你的「3:00–3:05」总数就错了。你几乎总是想按<strong>事件
-          时间</strong>聚合，才能得到正确的答案。
+          在一个完美的世界里它们会一致。现实中，事件<strong>迟到且乱序</strong>
+          地到达——一部手机失去信号， 二十分钟后才上传它的读数，于是一个在 3:00 <em>发生</em>
+          的事件直到 3:20 才<em>到达</em>。如果你按
+          处理时间分桶，那个读数会落进错误的窗口，你的「3:00–3:05」总数就错了。你几乎总是想按
+          <strong>事件 时间</strong>聚合，才能得到正确的答案。
         </p>
         <Callout type="intuition">
           <p>
-            但事件时间制造了一个两难：在关闭一个窗口之前，你<em>要等掉队者多久</em>？永远等下去，你就永远
-            产不出结果；关得太早，你就漏掉迟到的数据。<Term>水位线</Term>是系统的答案——一个移动的标记，
-            宣告「我现在有理由相信，我已经看到了截至时刻 T 的所有事件」，这触发窗口关闭并发出它的结果。它是
-            对流式那个根本取舍的一个显式、可调的赌注：<strong>延迟对完整性</strong>。没有办法把两者都完美地
-            拥有——水位线就是你选择平衡点的地方。
+            但事件时间制造了一个两难：在关闭一个窗口之前，你<em>要等掉队者多久</em>
+            ？永远等下去，你就永远 产不出结果；关得太早，你就漏掉迟到的数据。<Term>水位线</Term>
+            是系统的答案——一个移动的标记， 宣告「我现在有理由相信，我已经看到了截至时刻 T
+            的所有事件」，这触发窗口关闭并发出它的结果。它是
+            对流式那个根本取舍的一个显式、可调的赌注：<strong>延迟对完整性</strong>
+            。没有办法把两者都完美地 拥有——水位线就是你选择平衡点的地方。
           </p>
         </Callout>
       </KSection>
@@ -393,11 +427,12 @@ function ZhBody() {
             <Term>至多一次</Term>——事件可能在失败时被丢弃。快、有损；很少可接受。
           </li>
           <li>
-            <Term>至少一次</Term>——没有事件丢失，但有些可能在重试时被处理两次（所以一个计数可能多报）。
-            常见的默认。
+            <Term>至少一次</Term>
+            ——没有事件丢失，但有些可能在重试时被处理两次（所以一个计数可能多报）。 常见的默认。
           </li>
           <li>
-            <Term>恰好一次</Term>——黄金标准：每个事件恰好影响结果一次，即便经历失败也是如此。靠检查点和
+            <Term>恰好一次</Term>
+            ——黄金标准：每个事件恰好影响结果一次，即便经历失败也是如此。靠检查点和
             细致的协调来实现——更昂贵，但在重复计数会成为真正的问题时（钱、合规）是必不可少的。
           </li>
         </ul>
@@ -409,32 +444,37 @@ function ZhBody() {
 
       <KSection id="tools" eyebrow="06" title="技术栈">
         <p>
-          一个流式系统通常分成两个角色。一个<Term>消息代理</Term>——<strong>Kafka</strong> 是标准——是那条
+          一个流式系统通常分成两个角色。一个<Term>消息代理</Term>——<strong>Kafka</strong>{" "}
+          是标准——是那条
           持久的管道：它摄入事件，把它们存放在有序的日志里，好让生产者和消费者解耦、且什么都不丢失。一个
           <Term>流处理器</Term>——<strong>Flink</strong>，或 Spark Structured Streaming（绑定到
-          <Link href="/knowledge/cluster-cloud-computing">Spark</Link> 引擎）——做实际的计算：上面讲的开窗、
-          有状态的聚合、事件时间逻辑。
+          <Link href="/knowledge/cluster-cloud-computing">Spark</Link>{" "}
+          引擎）——做实际的计算：上面讲的开窗、 有状态的聚合、事件时间逻辑。
         </p>
         <p>
-          你还会听到 <Term>Lambda</Term> 和 <Term>Kappa</Term> 架构——大体上，是你运行分开的批处理层和流式层
-          （Lambda），还是把一切都当作流来处理（Kappa）。还有与机器学习的联系：流式是<em>在线学习</em>和
-          <Link href="/knowledge/mlops-monitoring">MLOps</Link> 页里那种实时漂移检测的天然归宿——一个随数据
-          流动而被更新或监控、而非每夜重训的模型。
+          你还会听到 <Term>Lambda</Term> 和 <Term>Kappa</Term>{" "}
+          架构——大体上，是你运行分开的批处理层和流式层
+          （Lambda），还是把一切都当作流来处理（Kappa）。还有与机器学习的联系：流式是
+          <em>在线学习</em>和<Link href="/knowledge/mlops-monitoring">MLOps</Link>{" "}
+          页里那种实时漂移检测的天然归宿——一个随数据 流动而被更新或监控、而非每夜重训的模型。
         </p>
       </KSection>
 
       <KSection id="applied" eyebrow="07" title="它在我工作中的体现">
         <Callout type="applied" label="当答案等不了时">
           <p>
-            需要流式的问题，是那些<strong>及时性就是全部重点</strong>的问题——对进来的数据做实时监控和
-            警报、在一个<Link href="/knowledge/anomaly-detection">异常</Link>发生那一刻抓住它，而非在明天的
+            需要流式的问题，是那些<strong>及时性就是全部重点</strong>
+            的问题——对进来的数据做实时监控和 警报、在一个
+            <Link href="/knowledge/anomaly-detection">异常</Link>发生那一刻抓住它，而非在明天的
             报告里。懂得这门学问，正是让我能判断「流式那份额外的复杂度何时比一个简单的批处理作业更划算」
             （往往并不划算——当一个小时后的答案可接受时，批处理更简单也够用）。
           </p>
           <p>
-            而在实践中最要紧的概念，是<strong>开窗</strong>（你如何聚合一股无尽的流）与<strong>事件时间对
-            处理时间</strong>的区分——因为迟到、乱序的数据悄悄污染一个实时计数，正是那种破坏对实时仪表盘
-            信任的微妙错误。它连到<Link href="/knowledge/cluster-cloud-computing">分布式计算</Link>（引擎）、
+            而在实践中最要紧的概念，是<strong>开窗</strong>（你如何聚合一股无尽的流）与
+            <strong>事件时间对 处理时间</strong>
+            的区分——因为迟到、乱序的数据悄悄污染一个实时计数，正是那种破坏对实时仪表盘
+            信任的微妙错误。它连到<Link href="/knowledge/cluster-cloud-computing">分布式计算</Link>
+            （引擎）、
             <Link href="/knowledge/anomaly-detection">异常检测</Link>（警报），以及
             <Link href="/knowledge/mlops-monitoring">MLOps</Link>（实时监控）。
           </p>
@@ -445,23 +485,25 @@ function ZhBody() {
         <Callout type="refresher">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>批处理</strong> = 有界数据、完整答案、高延迟。<strong>流</strong> = 无界流、连续答案、
-              低延迟。当及时性是重点时用流式。
+              <strong>批处理</strong> = 有界数据、完整答案、高延迟。<strong>流</strong> =
+              无界流、连续答案、 低延迟。当及时性是重点时用流式。
             </li>
             <li>
-              一股流是<strong>无限的</strong>，所以处理是连续且<strong>有状态</strong>的——你没法重读整段
-              历史。
+              一股流是<strong>无限的</strong>，所以处理是连续且<strong>有状态</strong>
+              的——你没法重读整段 历史。
             </li>
             <li>
-              <strong>开窗</strong>让它变有限：<strong>滚动</strong>（固定、不重叠）、<strong>滑动</strong>
+              <strong>开窗</strong>让它变有限：<strong>滚动</strong>（固定、不重叠）、
+              <strong>滑动</strong>
               （重叠的滚动）、<strong>会话</strong>（基于活动间隙）。
             </li>
             <li>
-              <strong>事件时间</strong>（何时发生）对<strong>处理时间</strong>（何时到达）——按事件时间
-              聚合；数据迟到且乱序。
+              <strong>事件时间</strong>（何时发生）对<strong>处理时间</strong>
+              （何时到达）——按事件时间 聚合；数据迟到且乱序。
             </li>
             <li>
-              一条<strong>水位线</strong>决定何时停止等待掉队者——那个显式的<strong>延迟对完整性</strong>
+              一条<strong>水位线</strong>决定何时停止等待掉队者——那个显式的
+              <strong>延迟对完整性</strong>
               取舍。
             </li>
             <li>
