@@ -177,38 +177,6 @@ const WEBSITE_SCHEMA = {
   },
 };
 
-const PROFILE_PAGE_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "@id": "https://rin.contact/#profilepage",
-  url: "https://rin.contact",
-  name: "Rin Huang (黄孙创宇) — Official Portfolio",
-  datePublished: "2024-01-01T00:00:00+10:30",
-  dateModified: "2026-03-10T00:00:00+10:30",
-  mainEntity: { "@id": "https://rin.contact/#person" },
-  about: { "@id": "https://rin.contact/#person" },
-  // isPartOf links this page into the WebSite entity — completing the entity graph
-  isPartOf: { "@id": "https://rin.contact/#website" },
-  // breadcrumb cross-reference tightens the structured data graph
-  breadcrumb: { "@id": "https://rin.contact/#breadcrumb" },
-  // primaryImageOfPage helps Google associate the OG image with this entity in image search
-  primaryImageOfPage: {
-    "@type": "ImageObject",
-    "@id": "https://rin.contact/#og-image",
-    url: "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
-    width: 1200,
-    height: 630,
-    caption:
-      "Rin Huang (黄孙创宇, Sunchuangyu Huang) — Senior Data Analyst & Research Software Engineer",
-  },
-  // significantLinks tells Google that LinkedIn/GitHub are related pages, not competitors
-  significantLinks: ["https://linkedin.com/in/sunchuangyuhuang", "https://github.com/rNLKJA"],
-  speakable: {
-    "@type": "SpeakableSpecification",
-    cssSelector: ["h1", "#hero-bio", ".hero-role", "h2"],
-  },
-};
-
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -346,13 +314,16 @@ class MyDocument extends Document {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
           />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFILE_PAGE_SCHEMA) }}
-          />
-          {/* BREADCRUMB_SCHEMA / PROJECTS_SCHEMA / CREDENTIALS_SCHEMA moved to
-              pages/index.jsx — they describe homepage-only content and were
-              previously shipped in every page's <head>. */}
+          {/* PROFILE_PAGE_SCHEMA / BREADCRUMB_SCHEMA / PROJECTS_SCHEMA /
+              CREDENTIALS_SCHEMA moved to pages/index.jsx — they describe
+              homepage-only content (ProfilePage's url is literally
+              "https://rin.contact") and were previously shipped in every
+              page's <head>. Keeping ProfilePage global left a dangling
+              breadcrumb: {"@id": "#breadcrumb"} reference on every other
+              page once BREADCRUMB_SCHEMA moved — Search Console flagged
+              that as a Breadcrumbs rich-result error (missing
+              itemListElement) since it evaluates structured data per page,
+              not across pages. */}
         </Head>
 
         {/*

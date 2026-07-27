@@ -7,6 +7,38 @@ import SeoHead from "@/components/seo/SeoHead";
 // Moved from pages/_document.jsx — these describe homepage-only content
 // (career timeline anchors, project list, credentials) and were previously
 // shipped in every page's <head> even though only the homepage uses them.
+const PROFILE_PAGE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://rin.contact/#profilepage",
+  url: "https://rin.contact",
+  name: "Rin Huang (黄孙创宇) — Official Portfolio",
+  datePublished: "2024-01-01T00:00:00+10:30",
+  dateModified: "2026-03-10T00:00:00+10:30",
+  mainEntity: { "@id": "https://rin.contact/#person" },
+  about: { "@id": "https://rin.contact/#person" },
+  // isPartOf links this page into the WebSite entity — completing the entity graph
+  isPartOf: { "@id": "https://rin.contact/#website" },
+  // breadcrumb cross-reference tightens the structured data graph
+  breadcrumb: { "@id": "https://rin.contact/#breadcrumb" },
+  // primaryImageOfPage helps Google associate the OG image with this entity in image search
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    "@id": "https://rin.contact/#og-image",
+    url: "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
+    width: 1200,
+    height: 630,
+    caption:
+      "Rin Huang (黄孙创宇, Sunchuangyu Huang) — Senior Data Analyst & Research Software Engineer",
+  },
+  // significantLinks tells Google that LinkedIn/GitHub are related pages, not competitors
+  significantLinks: ["https://linkedin.com/in/sunchuangyuhuang", "https://github.com/rNLKJA"],
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["h1", "#hero-bio", ".hero-role", "h2"],
+  },
+};
+
 const BREADCRUMB_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -687,7 +719,11 @@ export default function Home() {
           }}
         />
 
-        {/* ── Breadcrumb / projects / credentials structured data — homepage-only ── */}
+        {/* ── Profile page / breadcrumb / projects / credentials — homepage-only ── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFILE_PAGE_SCHEMA) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_SCHEMA) }}
