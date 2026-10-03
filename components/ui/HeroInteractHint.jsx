@@ -75,7 +75,7 @@ export default function HeroInteractHint() {
     <div
       aria-hidden="true"
       className={`hidden md:flex fixed bottom-6 left-6 z-40 items-center gap-3 pointer-events-none
-                  transition-opacity duration-500 ${shown ? "opacity-100" : "opacity-0"}`}
+                  ${shown ? "opacity-100 animate-enter" : "opacity-0 transition-opacity duration-200"}`}
     >
       <span className="hint-grid" role="presentation">
         {DOTS.map(([cx, cy], i) => {

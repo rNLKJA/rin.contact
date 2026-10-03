@@ -95,8 +95,8 @@ function EngagementBand() {
   return (
     <div
       ref={ref}
-      className={`mb-16 transition-all duration-700 relative z-10 ${
-        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      className={`mb-16 transition-all duration-200 ease-out relative z-10 ${
+        inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
       }`}
     >
       <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#9A9A9A] mb-7">
@@ -109,14 +109,14 @@ function EngagementBand() {
           <li
             key={item.n || i}
             className="engage-card group relative bg-[#1A1A1A] px-7 py-8 overflow-hidden
-                       transition-all duration-500"
-            style={{ transitionDelay: inView ? `${i * 90}ms` : "0ms" }}
+                       transition-all duration-200"
+            style={{ transitionDelay: inView ? `${Math.min(i * 30, 100)}ms` : "0ms" }}
           >
             {/* Ghost index — drifts up + ignites red on hover */}
             <span
               aria-hidden="true"
               className="pointer-events-none absolute -top-3 right-3 leading-none select-none
-                         text-[5.5rem] text-[#202020] transition-all duration-500
+                         text-[5.5rem] text-[#202020] transition-all duration-200
                          group-hover:text-[rgba(255,60,60,0.16)] group-hover:-translate-y-1"
               style={{ fontFamily: "var(--font-bitcount), monospace" }}
             >
@@ -136,7 +136,8 @@ function EngagementBand() {
             <span
               aria-hidden="true"
               className="pointer-events-none absolute left-7 right-7 bottom-5 h-px origin-left scale-x-0
-                         bg-[#FF3C3C] transition-transform duration-500 group-hover:scale-x-100"
+                         bg-[#FF3C3C] transition-transform duration-200 group-hover:scale-x-100
+                         group-hover:transition-none group-hover:animate-enter-grow-x"
             />
           </li>
         ))}
@@ -264,8 +265,8 @@ export default function ContactSection() {
         {/* Header */}
         <div
           ref={ref}
-          className={`mb-16 transition-all duration-600 relative z-10 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          className={`mb-16 transition-all duration-200 ease-out relative z-10 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
           }`}
         >
           <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
@@ -296,8 +297,8 @@ export default function ContactSection() {
 
         <div
           ref={formRef}
-          className={`grid grid-cols-1 md:grid-cols-2 gap-16 transition-all duration-600 relative z-10 ${
-            formInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          className={`grid grid-cols-1 md:grid-cols-2 gap-16 transition-all duration-200 ease-out relative z-10 ${
+            formInView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
           }`}
         >
           {/* Left — contact details */}

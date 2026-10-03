@@ -1,6 +1,6 @@
 {
   "name": "rin-contact",
-  "version": "5.23.0",
+  "version": "5.24.0",
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
@@ -10,7 +10,8 @@
     "format": "prettier --write \"**/*.{js,jsx,json,css,md}\" --ignore-path .gitignore --ignore-path .prettierignore",
     "format:check": "prettier --check \"**/*.{js,jsx,json,css,md}\" --ignore-path .gitignore --ignore-path .prettierignore",
     "deploy": "vercel --prod",
-    "prepare": "husky"
+    "prepare": "husky",
+    "check:career": "node --no-warnings scripts/check-career-data.mjs"
   },
   "lint-staged": {
     "*.{js,jsx,json,css,md}": "prettier --write --ignore-path .gitignore --ignore-path .prettierignore"

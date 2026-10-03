@@ -134,9 +134,8 @@ export default function ArtPage() {
           {/* Floating label */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center pointer-events-none">
             <p
-              className="font-mono text-[10px] tracking-[0.3em] uppercase text-[#AAAAAA]"
+              className="animate-enter font-mono text-[10px] tracking-[0.3em] uppercase text-[#AAAAAA]"
               key={labelIdx}
-              style={{ animation: "fade-in 0.6s ease-out both" }}
             >
               {labels[labelIdx] || ""}
             </p>

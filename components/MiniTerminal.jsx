@@ -9,6 +9,7 @@
  */
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useI18n } from "@/contexts/I18nContext";
+import { ROLES, CERTS } from "@/lib/career-data";
 
 // ── Colour helpers ────────────────────────────────────────────────────────────
 const CLS = {
@@ -38,6 +39,10 @@ const G = (t) => L("green", t);
 const E = (t) => L("error", t);
 const BR = () => L("normal", "");
 
+// PROJECTS.length in components/sections/ProjectsSection.jsx. Hard-coded so the
+// terminal chunk does not pull in that whole section; update both together.
+const PROJECT_COUNT = 20;
+
 const BANNER = [
   D("┌─────────────────────────────────────────────────┐"),
   D("│   rin.contact  ·  interactive terminal  v5.10  │"),
@@ -52,7 +57,8 @@ const HELP = [
   D("  whoami         personal profile & bio"),
   D("  ls             list site sections"),
   D("  skills         skill domains overview"),
-  D("  projects       17+ selected projects"),
+  D(`  projects       ${PROJECT_COUNT} selected projects`),
+  D("  resume         current roles & resume link"),
   D("  contact        how to reach me"),
   D("  curl           ascii art profile"),
   D("  neofetch       system info panel"),
@@ -83,9 +89,9 @@ const LS = [
   R("▸  SECTIONS"),
   BR(),
   W("  #hero        Profile & introduction"),
-  W("  #timeline    Career history  (2022 → 2026)"),
-  W("  #projects    17+ selected projects"),
-  W("  #skills      7 expertise domains  ·  23+ certifications"),
+  W("  #timeline    Career history  (2022 → present)"),
+  W(`  #projects    ${PROJECT_COUNT} selected projects`),
+  W(`  #skills      7 expertise domains  ·  ${CERTS.length} certifications`),
   W("  #faq         Frequently asked questions"),
   W("  #contact     Get in touch"),
   BR(),
@@ -113,14 +119,12 @@ const SKILLS = [
   BR(),
 ];
 
-const PROJECTS = [
-  R("▸  SELECTED PROJECTS  (17 total)"),
-  BR(),
-  W("  ● Mapiva               Mobile · Social connection app"),
-  D("               Co-founded · Dev Lead · MVP Jan 2027"),
+const FEATURED_PROJECT_LINES = [
+  W("  ● Mapiva               Mobile · Map-first social discovery"),
+  D("               Co-founded · Dev Lead · Beta in early 2027"),
+  W("  ● SAPOL EPSB Analytics Reporting · IAPro/BlueTeam tooling · Gov"),
   W("  ● CBS Intelligence     Analytics · Ministerial dashboards · Gov"),
   W("  ● MoodQ                Mobile · Mental health · UniMelb Psychiatry"),
-  W("  ● SAPOL Intelligence   Analytics · Crime analytics · Gov"),
   D("  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─"),
   N("  ○ SA Address Generator    Data Eng · Internal Gov tool"),
   N("  ○ US Political Data        Scraper · ~25,000 documents"),
@@ -128,7 +132,14 @@ const PROJECTS = [
   N("  ○ Climate Fact-Checker     NLP · Transformers · BERT"),
   N("  ○ ENSO Climate Risk        Time series · CSIRO × UniMelb"),
   N("  ○ Cachex AI                A* · Minimax · Game theory"),
-  D("  ○ ...and 7 more at #projects"),
+];
+const LISTED_PROJECTS = FEATURED_PROJECT_LINES.filter((l) => /^ {2}[●○] /.test(l.t)).length;
+
+const PROJECTS = [
+  R(`▸  SELECTED PROJECTS  (${PROJECT_COUNT} total)`),
+  BR(),
+  ...FEATURED_PROJECT_LINES,
+  D(`  ○ ...and ${PROJECT_COUNT - LISTED_PROJECTS} more at #projects`),
   BR(),
 ];
 
@@ -155,14 +166,15 @@ const CURL_OUTPUT = [
   BR(),
   R("  ▸  CAREER TIMELINE"),
   BR(),
-  W("  2026  ─●─  Senior Data Analyst         South Australia Police"),
-  D("         │   ASO7  ·  Adelaide, SA  ·  2026 → present"),
+  W("  2026  ─●─  ASO7 Senior Data Analyst             South Australia Police"),
+  D("         │   EPSB  ·  Adelaide, SA  ·  2026 → present"),
   D("         │"),
-  N("  2025  ─○─  Intelligence Officer         AG's Dept SA"),
-  N("  2024  ─○─  Research Assistant           University of Melbourne"),
-  N("         ─○─  Software Engineer Intern    WEHI"),
-  N("  2023  ─○─  Data Science Consultant      CSIRO"),
-  N("  2022  ─○─  Data Analyst · Agile Lead    CSL Behring"),
+  W("  2025  ─●─  Co-Founder & Dev Lead                Mapiva"),
+  N("  2025  ─○─  Intelligence & Coordination Officer  CBS · AGD SA"),
+  N("  2024  ─○─  Research Assistant (RA.1)            UniMelb Psychiatry"),
+  N("        ─○─  Software Engineer Intern             WEHI"),
+  N("  2023  ─○─  Data Science Industrial Consultant   CSIRO"),
+  N("  2022  ─○─  Data Analyst · Agile Leader          CSL Behring"),
   BR(),
   R("  ▸  SKILLS"),
   BR(),
@@ -198,9 +210,21 @@ const NEOFETCH = [
   D("  Location   Adelaide, SA, Australia"),
   D("  Uptime     2020 → present  (6+ years)"),
   D("  CPU        Generalist × Specialist"),
-  D("  Memory     23+ certs · 2 degrees · 20+ projects"),
+  D(`  Memory     ${CERTS.length} certs · 2 degrees · ${PROJECT_COUNT} projects`),
   BR(),
   L("red", "  ████"),
+  BR(),
+];
+
+// Current roles (no end date) from the single career source, newest first.
+const CURRENT_ROLES = ROLES.filter((r) => !r.end);
+const ROLE_WIDTH = Math.max(0, ...CURRENT_ROLES.map((r) => r.en.role.length));
+const RESUME = [
+  R("▸  RESUME"),
+  BR(),
+  ...CURRENT_ROLES.map((r) => W(`  ${r.en.role.padEnd(ROLE_WIDTH)}  ·  ${r.en.org}`)),
+  BR(),
+  D("  open rin.contact/resume"),
   BR(),
 ];
 
@@ -288,6 +312,8 @@ function resolve(raw, inputHistory) {
       return SKILLS;
     case "projects":
       return PROJECTS;
+    case "resume":
+      return RESUME;
     case "contact":
       return CONTACT;
     case "curl":

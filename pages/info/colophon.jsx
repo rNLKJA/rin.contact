@@ -31,7 +31,7 @@ const SECTIONS = [
   {
     key: "easterEggs",
     hrefs: [
-      "/resume",
+      "/resume/terminal",
       "/fun/matrix",
       "/fun/art",
       "/fun/haiku",

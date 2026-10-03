@@ -132,12 +132,13 @@ function EnBody() {
         recorded.
       </p>
       <p>
-        It's a topic close to my{" "}
-        <Link href="/knowledge/time-series-analysis">CSIRO climate-risk</Link> work, where the whole
-        question is the probability of extremes. This page is why the tails need their own theory,
-        the two frameworks for modelling them (GEV and the Generalised Pareto), how the famous
-        "1-in-N-year" event is computed, and the serious caveat that climate change has thrown at
-        the whole enterprise. It builds on the{" "}
+        It's a topic next door to my{" "}
+        <Link href="/knowledge/time-series-analysis">CSIRO climate-risk</Link> work, where I built
+        autoregressive models of how the El Niño–Southern Oscillation amplifies commodity price
+        volatility and conflict risk, and where the outcomes that matter most sit in the tails. This
+        page is why the tails need their own theory, the two frameworks for modelling them (GEV and
+        the Generalised Pareto), how the famous "1-in-N-year" event is computed, and the serious
+        caveat that climate change has thrown at the whole enterprise. It builds on the{" "}
         <Link href="/knowledge/probability">probability</Link> page.
       </p>
 
@@ -302,12 +303,13 @@ function EnBody() {
       <KSection id="applied" eyebrow="08" title="Where it shows up in my work">
         <Callout type="applied" label="The probability of the rare">
           <p>
-            EVT is core to the climate-risk work I did at <strong>CSIRO</strong> — the entire
-            question there is the probability and magnitude of <em>extremes</em> (extreme heat,
-            rainfall, hazard events), which is exactly what ordinary statistics handles worst and
-            EVT is built for. The key discipline it instils is to{" "}
-            <strong>model the tail directly</strong> (GEV or POT) rather than fit a distribution to
-            the bulk and underestimate the catastrophe.
+            At <strong>CSIRO</strong> I built autoregressive time-series models of how the El
+            Niño–Southern Oscillation amplifies commodity price volatility and the conflict risk
+            that follows food insecurity. That work wasn't EVT, but it showed me why the tails
+            deserve their own tools: the sharp price spikes and conflict flare-ups people worry
+            about most are exactly the <em>extremes</em> a model of the average handles worst. The
+            key discipline EVT instils is to <strong>model the tail directly</strong> (GEV or POT)
+            rather than fit a distribution to the bulk and underestimate the catastrophe.
           </p>
           <p>
             Two cautions travel with it everywhere: the{" "}
@@ -380,9 +382,8 @@ function ZhBody() {
         专门分支：估计一个罕见极端有多可能的数学，哪怕是一个比迄今所记录的任何东西都更严重的极端。
       </p>
       <p>
-        这是一个贴近我 <Link href="/knowledge/time-series-analysis">CSIRO 气候风险</Link>
-        工作的话题，那里
-        全部的问题就是极端的概率。这一页讲为什么尾部需要它自己的理论、为它们建模的两个框架（GEV
+        这个话题和我在 <Link href="/knowledge/time-series-analysis">CSIRO 气候风险</Link>
+        方面的工作离得很近。当时我用自回归模型研究厄尔尼诺—南方涛动怎样放大大宗商品价格波动和冲突风险，最要紧的结果都落在分布的尾部。这一页讲为什么尾部需要它自己的理论、为它们建模的两个框架（GEV
         与广义 帕累托）、那个著名的「N
         年一遇」事件如何计算，以及气候变化抛给整个事业的那个严肃的告诫。它建立 在
         <Link href="/knowledge/probability">概率</Link>页之上。
@@ -533,9 +534,10 @@ function ZhBody() {
       <KSection id="applied" eyebrow="08" title="它在我工作中的体现">
         <Callout type="applied" label="罕见之事的概率">
           <p>
-            EVT 是我在 <strong>CSIRO</strong> 所做气候风险工作的核心——那里整个问题就是<em>极端</em>
-            （极端高温、降雨、灾害事件）的概率与量级，而这恰恰是普通统计学处理得最差、EVT
-            为之而建的。它 灌输的关键纪律，是<strong>直接给尾部建模</strong>（GEV 或
+            我在 <strong>CSIRO</strong>{" "}
+            用自回归时间序列模型研究厄尔尼诺—南方涛动怎样放大大宗商品价格波动，以及粮食安全引发的冲突风险。那份工作没有用到
+            EVT，却让我看清尾部为什么值得单独对待。价格暴涨、冲突升级这类最让人担心的结果，恰恰是围绕平均值建的模型最难描述的
+            <em>极端</em>。EVT 灌输的关键纪律，是<strong>直接给尾部建模</strong>（GEV 或
             POT），而非给主体拟合一个分布、从而 低估那场灾难。
           </p>
           <p>
@@ -598,12 +600,12 @@ const META = {
     subtitle:
       "The events that matter most — the once-a-century flood, the record heat, the market crash — are exactly the ones ordinary statistics describes worst. Extreme value theory is the maths of the tail: estimating the rare, before it happens.",
     description:
-      "A thorough, practical explainer of extreme value theory — why normal statistics fail in the tails, block maxima and the Generalised Extreme Value distribution, peaks-over-threshold and the Generalised Pareto distribution, the shape parameter and tail types, return levels and return periods, and the honest limits under non-stationarity. Advanced tier, anchored to Rin Huang's CSIRO climate-risk work.",
+      "A thorough, practical explainer of extreme value theory — why normal statistics fail in the tails, block maxima and the Generalised Extreme Value distribution, peaks-over-threshold and the Generalised Pareto distribution, the shape parameter and tail types, return levels and return periods, and the honest limits under non-stationarity. Advanced tier, connected to Rin Huang's CSIRO climate time-series work.",
     course: "Extreme Value Theory",
     courseCode: "Advanced · the statistics of extremes",
     level: "Master's+",
-    learned: "CSIRO climate risk · 2023",
-    applied: "Rare-event & hazard risk",
+    learned: "Statistics · climate risk",
+    applied: "Rare-event & tail risk",
     readingTime: "~15 min read",
     sections: [
       { id: "why", label: "The tail is the point" },
@@ -624,12 +626,12 @@ const META = {
     subtitle:
       "最要紧的那些事件——百年一遇的洪水、破纪录的高温、市场崩盘——恰恰是普通统计学描述得最差的。极值理论是尾部的数学：在罕见之事发生之前，估计它。",
     description:
-      "对极值理论的详尽、实用讲解——为什么正态统计在尾部失灵、块极大值与广义极值分布、超阈值与广义帕累托分布、形状参数与尾部类型、重现水平与重现期，以及非平稳下诚实的局限。进阶层，锚定 Rin Huang 在 CSIRO 的气候风险工作。",
+      "对极值理论的详尽、实用讲解——为什么正态统计在尾部失灵、块极大值与广义极值分布、超阈值与广义帕累托分布、形状参数与尾部类型、重现水平与重现期，以及非平稳下诚实的局限。进阶层，和 Rin Huang 在 CSIRO 的气候时间序列工作相连。",
     course: "极值理论",
     courseCode: "进阶 · 极端的统计学",
     level: "硕士及以上",
-    learned: "CSIRO 气候风险 · 2023",
-    applied: "罕见事件与灾害风险",
+    learned: "统计学 · 气候风险",
+    applied: "罕见事件与尾部风险",
     readingTime: "约 15 分钟阅读",
     sections: [
       { id: "why", label: "尾部才是重点" },

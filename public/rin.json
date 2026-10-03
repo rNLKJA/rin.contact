@@ -2,7 +2,7 @@
   "meta": {
     "api_version": "v1",
     "schema": "ProfileSchema/2026",
-    "generated_at": "2026-06-07T12:53:58.823Z",
+    "generated_at": "2026-10-03T00:00:00.000Z",
     "source": "https://rin.contact",
     "note": "A living document. Static build. Updated manually."
   },
@@ -43,50 +43,59 @@
     {
       "degree": "Master of Data Science",
       "institution": "University of Melbourne",
-      "year": 2023,
-      "note": "Graduated with distinction"
+      "year": 2024
     },
     {
       "degree": "Bachelor of Science (Data Science)",
       "institution": "University of Melbourne",
       "year": 2022
+    },
+    {
+      "degree": "Foundation Studies Programme",
+      "institution": "Trinity College, University of Melbourne",
+      "year": 2019
     }
   ],
   "experience": [
     {
       "role": "ASO7 Senior Data Analyst",
-      "org": "SA Police",
-      "period": "2025–present"
-    },
-    {
-      "role": "Research Software Engineer",
-      "org": "WEHI",
-      "period": "2024–2025"
-    },
-    {
-      "role": "Data Science Consultant",
-      "org": "CSIRO & CSL",
-      "period": "2023–2024"
-    },
-    {
-      "role": "Intelligence & Coordination Officer",
-      "org": "Attorney-Generals Dept",
-      "period": "2024–2025"
-    },
-    {
-      "role": "Full-Stack Engineer",
-      "org": "University of Melbourne",
-      "period": "2021–2023"
+      "org": "South Australia Police, Intelligence & Probity Unit, Ethical and Professional Standards Branch (EPSB)",
+      "period": "Mar 2026–present"
     },
     {
       "role": "Co-Founder & Dev Lead",
       "org": "Mapiva",
-      "period": "2022–2023"
+      "period": "Aug 2025–present"
+    },
+    {
+      "role": "ASO4 Intelligence & Coordination Officer",
+      "org": "Consumer and Business Services (CBS), Attorney-General's Department SA",
+      "period": "Jan 2025–Mar 2026"
+    },
+    {
+      "role": "Research Assistant (RA.1), MoodQ",
+      "org": "University of Melbourne, Department of Psychiatry",
+      "period": "Aug 2024–Feb 2026"
+    },
+    {
+      "role": "Software Engineer Intern (Data Science)",
+      "org": "WEHI",
+      "period": "Feb 2024–Jul 2024"
+    },
+    {
+      "role": "Data Science Industrial Consultant",
+      "org": "CSIRO",
+      "period": "Feb 2023–Nov 2023"
+    },
+    {
+      "role": "Data Analyst & Agile Leader",
+      "org": "CSL (CSL Behring)",
+      "period": "Feb 2022–Jun 2022"
     }
   ],
   "stats": {
-    "roles": 6,
-    "projects_shipped": 17,
+    "roles": 7,
+    "projects": 20,
     "certifications": 23,
     "degrees": 2,
     "coffees_consumed": "undefined (stack overflow)"
@@ -101,7 +110,7 @@
   },
   "easter_eggs": {
     "terminal": "curl rin.contact",
-    "cli_resume": "https://rin.contact/resume",
+    "cli_resume": "https://rin.contact/resume/terminal",
     "konami": "↑↑↓↓←→←→BA",
     "matrix": "https://rin.contact/fun/matrix",
     "source": "check the HTML comments"

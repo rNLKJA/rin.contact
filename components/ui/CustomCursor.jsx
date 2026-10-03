@@ -21,6 +21,16 @@ export default function CustomCursor() {
     style.textContent = "*, *::before, *::after { cursor: none !important; }";
     document.head.appendChild(style);
 
+    // Entrance fades start at 70% of the target opacity (site motion rules);
+    // the CSS opacity transition then only matters for the exit fade.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fadeIn = (el, to) => {
+      el.style.opacity = String(to);
+      if (!reduceMotion && el.animate) {
+        el.animate({ opacity: [to * 0.7, to] }, { duration: 200, easing: "ease-out" });
+      }
+    };
+
     const mouse = { x: -300, y: -300 };
     const trails = Array.from({ length: TRAIL_COUNT }, () => ({ x: -300, y: -300 }));
     let visible = false;
@@ -82,9 +92,9 @@ export default function CustomCursor() {
       mouse.y = e.clientY;
       if (!visible) {
         visible = true;
-        if (dotRef.current) dotRef.current.style.opacity = "1";
+        if (dotRef.current) fadeIn(dotRef.current, 1);
         trailRefs.current.forEach((el, i) => {
-          if (el) el.style.opacity = String(TRAIL_ALPHA[i]);
+          if (el) fadeIn(el, TRAIL_ALPHA[i]);
         });
         startTick();
       }
@@ -134,7 +144,7 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <>
+    <div className="print:hidden">
       {/* ── Comet tail — trail dots ─────────────────────────── */}
       {Array.from({ length: TRAIL_COUNT }, (_, i) => (
         <div
@@ -158,7 +168,7 @@ export default function CustomCursor() {
             zIndex: 10001,
             opacity: 0,
             willChange: "transform",
-            transition: "opacity 0.25s",
+            transition: "opacity 0.2s",
           }}
         />
       ))}
@@ -195,6 +205,6 @@ export default function CustomCursor() {
           }}
         />
       </div>
-    </>
+    </div>
   );
 }

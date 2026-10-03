@@ -88,25 +88,27 @@ export default function PositioningStatement() {
       </div>
 
       <style jsx>{`
+        /* Motion rules: start at 70% (opacity 0.7, 5px) and finish within
+           300ms of the reveal: 200ms + a stagger capped at 100ms. */
         .line,
         .gloss {
-          opacity: 0;
-          transform: translateY(18px);
+          opacity: 0.7;
+          transform: translateY(5px);
         }
         .in .line,
         .in .gloss {
           opacity: 1;
           transform: translateY(0);
           transition:
-            opacity 0.6s ease,
-            transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-          transition-delay: calc(var(--i) * 110ms);
+            opacity 200ms ease-out,
+            transform 200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+          transition-delay: min(calc(var(--i) * 30ms), 100ms);
         }
         .hud-tick {
           position: absolute;
           width: 14px;
           height: 14px;
-          opacity: 0;
+          opacity: 0.7;
         }
         .hud-tick.tl {
           top: -16px;
@@ -122,7 +124,7 @@ export default function PositioningStatement() {
         }
         .in .hud-tick {
           opacity: 1;
-          transition: opacity 0.5s ease 0.45s;
+          transition: opacity 200ms ease-out 100ms;
         }
         @media (prefers-reduced-motion: reduce) {
           .line,

@@ -22,7 +22,7 @@
     "hireMe": "招聘意向",
     "businessCard": "电子名片",
     "cliResume": "命令行简历",
-    "cv": "简历 (PDF)",
+    "cv": "完整简历",
     "api": "API",
     "linkedin": "领英",
     "github": "GitHub",
@@ -50,30 +50,31 @@
     "srName": " — 黄孙创宇 · Huang Sunchuangyu · HUANGSUNCHUANGYU · Rin Huang · Sunchuangyu Huang",
     "subtitle": "黄孙创宇 (Sunchuangyu Huang)",
     "pronouns": "阿德莱德 & 墨尔本",
-    "bio": "从CSIRO的气候风险建模到南澳政府的内阁仪表盘，从WEHI的基因组学流程到墨尔本大学的心理健康移动应用——我一直在数据、战略和工程交汇的领域工作。通才的天性，专才的素养。",
+    "bio": "从CSIRO的气候风险建模到南澳政府的部长级仪表盘，从WEHI的基因组学流程到墨尔本大学的心理健康移动应用——我一直在数据、战略和工程交汇的领域工作。通才的天性，专才的素养。",
     "ctaCareer": "职业路径",
     "ctaContact": "联系我"
   },
   "heroRoles": [
     "高级数据分析师 @ 南澳警察局",
-    "研究软件工程师 @ WEHI",
-    "数据科学顾问 @ CSIRO & CSL",
-    "联合创始人兼技术负责人 @ Mapiva",
-    "情报协调官 @ 南澳律政部",
-    "全栈工程师 @ 墨尔本大学",
+    "软件工程实习生 @ WEHI",
+    "数据科学顾问 @ CSIRO",
+    "数据分析师 · 敏捷负责人 @ CSL",
+    "联合创始人兼开发负责人 @ Mapiva",
+    "情报与协调官 @ 南澳总检察长部",
+    "研究助理 · 独立开发 @ 墨尔本大学",
     "持续改进专员 @ 人生",
     "战略思考专员 @ 人生"
   ],
   "heroStats": [
     {
-      "value": 6,
+      "value": 7,
       "label": "行业角色",
       "sub": "横跨政府、科研与创业"
     },
     {
-      "value": 21,
+      "value": 20,
       "label": "项目",
-      "sub": "已交付上线"
+      "sub": "数据 · 云 · 移动 · Web"
     },
     {
       "value": 2,
@@ -128,7 +129,7 @@
           "n": "03",
           "domain": "工程",
           "title": "产品与全栈开发",
-          "desc": "从数据层到界面，端到端交付真实应用，如 Signal 与 Mapiva。"
+          "desc": "从数据层到界面，端到端构建真实应用，如 Signal 与 Mapiva。"
         }
       ]
     },
@@ -168,7 +169,7 @@
     "intro": {
       "eyebrow": "简介",
       "heading": "以问题为先、在交叉地带工作的分析师。",
-      "body1": "我是一名数据分析师与数据科学家，常驻阿德莱德，目前在南澳警察局担任 ASO7 级别的职务。过去四年里，我的工作横跨 CSIRO 的气候风险建模、南澳政府的内阁仪表盘、WEHI 的基因组学流程，以及墨尔本大学的一款心理健康应用。通才的天性，专才的素养。",
+      "body1": "我是一名数据分析师与数据科学家，常驻阿德莱德，目前在南澳警察局担任 ASO7 级别的职务。2022 年以来，我的工作横跨 CSIRO 的气候风险建模、南澳政府的部长级仪表盘、WEHI 的基因组学流程，以及墨尔本大学的一款心理健康应用。通才的天性，专才的素养。",
       "body2": "贯穿其中的始终是同一条线索：先厘清需要做的决策，以及做好它所需的最少数据，再选择合适的工具，而不是时髦的工具。问题优先，而非模型优先。正是这个习惯，让同一个人能够在科研实验室、政府情报团队和工程项目中都派上用场。",
       "domainsLabel": "工作领域"
     }
@@ -191,7 +192,7 @@
       },
       {
         "label": "战略 + 技术双轨",
-        "note": "既能做ASO7情报框架，也能写Python数据管道——两者兼具"
+        "note": "既能搭建政府情报框架，也能写 Python 数据管道"
       },
       {
         "label": "沟通桥梁",
@@ -203,7 +204,7 @@
       },
       {
         "label": "双语能力",
-        "note": "中文（母语）· 英语（专业水平）· NAATI CPCB1认证"
+        "note": "中文（母语）· 英语（雅思 8 分）· NAATI CCL 社区语言认证（普通话）"
       }
     ],
     "openToList": [
@@ -234,13 +235,13 @@
     "hintBar": "浏览历史  ·  Enter 执行  ·  help 帮助  ·  clear 清屏  ·  exit 返回"
   },
   "cvPage": {
-    "metaTitle": "简历 — Rin Huang · rin.contact",
+    "metaTitle": "完整简历 · 黄孙创宇 (Rin Huang) · rin.contact",
     "metaDescription": "Sunchuangyu（Rin）Huang 的完整简历 — 南澳大利亚警察局高级数据分析师。工作经历、教育背景、专业认证与技能，可在线阅读或保存为 PDF。",
-    "ogTitle": "简历",
+    "ogTitle": "完整简历",
     "ogSubtitle": "Sunchuangyu (Rin) Huang — 高级数据分析师",
-    "backToResume": "交互式简历",
-    "savePdf": "下载 PDF",
-    "eyebrow": "简历",
+    "backToResume": "简历",
+    "savePdf": "另存为 PDF",
+    "eyebrow": "完整简历",
     "tagline": "高级数据分析师 · 战略情报 · 研究软件工程师",
     "contact": {
       "email": "邮箱",
@@ -283,7 +284,7 @@
     "metaDescription": "Rin Huang 当前正在做什么、在读什么、在思考什么。",
     "ogSubtitle": "Rin Huang 当前在做、在读、在想的事……",
     "updated": "更新于",
-    "updatedDate": "2026年6月23日",
+    "updatedDate": "2026年10月3日",
     "heading": "我现在在做什么。",
     "introPrefix": "一份快照。最近更新于南澳阿德莱德 — ACST（UTC+9:30）。灵感来自 ",
     "introSuffix": "。",
@@ -299,10 +300,10 @@
     "building": [
       {
         "text": "Mapiva — 一款帮助人们发现彼此并建立联系的移动社交发现应用",
-        "sub": "联合创始人兼开发负责人 · iOS + Android · 目标 2027 年 1 月发布 v1"
+        "sub": "联合创始人兼开发负责人 · iOS + Android · 计划 2027 年初公测"
       },
       {
-        "text": "为南澳警察局职业与道德标准处构建内部分析仪表板",
+        "text": "为南澳警察局职业道德与专业标准处（EPSB）编制季度使用武力与车辆追缉统计报告，并开发 IAPro/BlueTeam API 的 Python 客户端",
         "sub": "ASO7 高级数据分析师 · 政府级、高风险"
       },
       {
@@ -469,7 +470,7 @@
         { "name": "重点", "value": "无布局偏移", "note": "font display:swap + 明确的图片尺寸" }
       ],
       "easterEggs": [
-        { "name": "/resume", "value": "交互式命令行", "note": "输入命令，探索职业数据" },
+        { "name": "/resume/terminal", "value": "交互式命令行", "note": "输入命令，探索职业数据" },
         { "name": "/fun/matrix", "value": "数据科学之雨", "note": "∑ ∇ λ σ 等等" },
         { "name": "/fun/art", "value": "生成式螺旋", "note": "斐波那契叶序" },
         { "name": "/fun/haiku", "value": "俳句集", "note": "5–7–5 数据科学荒诞主义" },
@@ -530,7 +531,10 @@
     "lists": {
       "done": [
         { "title": "带贪吃蛇游戏的自定义 404", "note": "等待时玩两把。排行榜会保存。" },
-        { "title": "命令行风格的交互式简历", "note": "输入命令，探索职业数据。" },
+        {
+          "title": "命令行风格的交互式简历",
+          "note": "输入命令探索职业数据，现位于 /resume/terminal。"
+        },
         { "title": "数据科学符号的矩阵雨", "note": "∑ ∇ λ σ — 你懂那感觉。" },
         { "title": "复制邮箱 → 撒花特效", "note": "选中 huang@rin.contact，Ctrl+C，尽情享受。" },
         { "title": "状态徽章里的阿德莱德实时天气", "note": "wttr.in。无需 API key。免费。" },
@@ -699,6 +703,7 @@
     "heading": "更新日志",
     "intro": "更新了什么。版本 {version}，仍在继续。",
     "entries": [
+      "新增正式简历页 /resume：30 秒看清职位、成果和联系方式，每个数字都链接到出处，可导出纯文本 PDF。职业数据改为单一来源，/resume、/cv、/career 和命令行简历（现位于 /resume/terminal）共用，构建时会自动拦截已知的错误表述。工作经历更新到 SAPOL 和 Mapiva，修正资格证书列表，并收紧全站动效：界面动画在 300 毫秒内完成，起始状态不低于 70%。",
       "全站性能优化：KaTeX 仅在实际使用的 /knowledge 页面加载，精简字体预加载，Edge Proxy 跳过静态资源请求，仅首页需要的结构化数据不再随每个页面加载。同时修复了图片缓存过期与字体字族 CSS 错配问题，博客构建速度提升约 3 倍。",
       "博客：6 篇文章，含 Mermaid 图表、位于 /blog/feed.xml 的 RSS 订阅、邮件订阅组件。Service worker：激活时自我销毁以保持缓存整洁。",
       "博客基础设施：markdown 管线（gray-matter + remark）、PostCard、博客列表与单篇文章页面。",
@@ -969,14 +974,14 @@
         "title": "职业经历",
         "desc": "三条专业线。七个站点。一个汇聚点——政府、科研与工程在此并行交汇。",
         "tags": ["政府", "科研", "工程"],
-        "stat": "4年 · 7个站点"
+        "stat": "2022 年至今 · 7个站点"
       },
       {
         "num": "03",
         "title": "项目",
-        "desc": "已上线项目，覆盖数据工程、云基础设施、移动端与Web平台。",
+        "desc": "覆盖数据工程、云基础设施、移动端与Web平台的项目。",
         "tags": ["Python", "Next.js", "AWS", "React Native"],
-        "stat": "21个已交付"
+        "stat": "20个项目"
       },
       {
         "num": "04",
@@ -995,9 +1000,9 @@
       {
         "num": "06",
         "title": "简历",
-        "desc": "交互式命令行简历。输入命令，探索职业数据。Ping、open、ls——终端体验。",
-        "tags": ["命令行", "交互", "终端"],
-        "stat": "输入探索"
+        "desc": "一页看清职位、成果和联系方式，30 秒读完。可另存为 PDF；喜欢终端的话，也可以打开命令行版本。",
+        "tags": ["简历", "PDF", "命令行"],
+        "stat": "30 秒读完"
       }
     ]
   },
@@ -1047,6 +1052,7 @@
   "timeline": {
     "sectionLabel": "02 — 职业历程",
     "heading": "职业路径",
+    "intro": "从政府情报、生物医学研究、气候科学到软件工程，我一直在找数据能带来实际改变的地方。",
     "tabCareer": "职业经历",
     "tabEducation": "教育背景",
     "tabVolunteer": "志愿服务",
@@ -1060,7 +1066,7 @@
   "projects": {
     "sectionLabel": "03 — 项目",
     "heading": "精选项目",
-    "headingDesc": "已上线项目，覆盖数据工程、云基础设施、移动端与Web平台。",
+    "headingDesc": "覆盖数据工程、云基础设施、移动端与Web平台的项目。",
     "searchPlaceholder": "搜索项目...",
     "allProjects": "全部",
     "impact": "影响",
@@ -1074,7 +1080,7 @@
   },
   "metroMap": {
     "heading": "三条线路。",
-    "description": "政府、科研、工程——七年历程，数个站点，一段职业。",
+    "description": "政府、科研、工程三条线，2022 年至今，七个站点，一段职业。",
     "govt": "政府",
     "research": "科研",
     "engineer": "工程",
@@ -1161,7 +1167,8 @@
   "career": {
     "sectionLabel": "◆ — 职业经历",
     "heading": "历程。",
-    "description": "三条专业线。七个站点。一个汇聚点。"
+    "description": "三条专业线。七个站点。一个汇聚点。",
+    "resumeLink": "简历与 PDF"
   },
   "projectsPage": {
     "sectionLabel": "◆ — 项目",
@@ -1476,7 +1483,7 @@
         { "label": "框架", "value": "University of Melbourne、CSIRO、WEHI、SAPOL" }
       ],
       "performance": [
-        { "label": "已交付项目", "value": "21" },
+        { "label": "项目", "value": "20" },
         { "label": "认证", "value": "23" },
         { "label": "正常运行时间", "value": "约 26 年（靠咖啡）" }
       ],
@@ -1680,7 +1687,7 @@
       "heading": "生存分析",
       "subtitle": "任期的 Kaplan–Meier 曲线。生存 = 仍在职。删失 = 晋升或调动。",
       "monthsUnit": "个月",
-      "medianNote": "中位生存期：约 12 个月。无事件 = 死亡。全部事件 = 职业进展。"
+      "medianNote": "中位生存期：约 {median} 个月。无事件 = 死亡。全部事件 = 职业进展。"
     },
     "technicalDebt": {
       "metaTitle": "技术债 — rin.contact",
@@ -1723,6 +1730,79 @@
         "授予数据科学硕士学位"
       ],
       "aheadNote": "领先 origin/main 5 个提交"
+    }
+  },
+  "resumePage": {
+    "metaTitle": "简历 · 黄孙创宇 (Rin Huang) · rin.contact",
+    "metaDescription": "黄孙创宇（Rin Huang）的简历：南澳大利亚警察局 ASO7 高级数据分析师、Mapiva 联合创始人。核心成果、工作经历、专业技能和资格证书，可直接另存为 PDF。",
+    "ogTitle": "简历 · 黄孙创宇",
+    "ogSubtitle": "高级数据分析师 · 南澳警察局 · Mapiva",
+    "eyebrow": "个人简历",
+    "updated": "更新于",
+    "pdfMeta": "A4 · 文本 PDF",
+    "actions": {
+      "savePdf": "另存为 PDF",
+      "email": "发邮件",
+      "emailSubject": "职位咨询",
+      "copyEmail": "复制邮箱",
+      "copied": "已复制",
+      "viewDocument": "完整简历"
+    },
+    "glance": {
+      "heading": "速览",
+      "current": "现任",
+      "since": "自",
+      "also": "同时",
+      "experience": "经历",
+      "experienceSince": "自",
+      "roles": "段经历",
+      "sectors": "行业",
+      "basedIn": "所在地",
+      "basedInNote": "可在澳洲各地或远程工作",
+      "languages": "语言",
+      "education": "学历",
+      "screening": "背景审查"
+    },
+    "sections": {
+      "summary": "个人简介",
+      "openTo": "求职意向",
+      "impact": "核心成果",
+      "timeline": "时间线",
+      "experience": "工作经历",
+      "skills": "专业技能",
+      "education": "教育背景",
+      "credentials": "资格证书",
+      "languages": "语言",
+      "goDeeper": "了解更多"
+    },
+    "role": {
+      "current": "现任",
+      "tools": "工具",
+      "showMorePrefix": "展开其余 ",
+      "showMoreSuffix": " 条",
+      "showLess": "收起",
+      "onTimeline": "在时间线上查看"
+    },
+    "evidence": {
+      "internal": "工作成果属于机构内部资料，这里只做公开层面的介绍。如需推荐人，可以联系我。"
+    },
+    "track": {
+      "government": "政府",
+      "research": "科研",
+      "engineering": "工程"
+    },
+    "credentials": {
+      "morePrefix": "完整简历中还有 ",
+      "moreSuffix": " 项"
+    },
+    "goDeeper": {
+      "cv": "完整简历：全部经历与证书",
+      "career": "职业时间线与地铁图",
+      "projects": "项目与案例",
+      "terminal": "喜欢命令行？试试 CLI 简历"
+    },
+    "footer": {
+      "referees": "推荐人信息可按需提供"
     }
   }
 }

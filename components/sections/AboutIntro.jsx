@@ -23,8 +23,8 @@ export default function AboutIntro() {
   return (
     <section ref={ref} aria-label={t("about.intro.eyebrow")} className="py-20 md:py-24">
       <div
-        className={`transition-all duration-700 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        className={`transition-all duration-200 ease-out ${
+          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
         <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-6">

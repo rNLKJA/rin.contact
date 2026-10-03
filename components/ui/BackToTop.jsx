@@ -11,7 +11,14 @@ import { useI18n } from "@/contexts/I18nContext";
  * Visibility is toggled by a passive scroll listener that writes opacity/pointer
  * state directly to the node (no React re-render on scroll). Smooth scroll is
  * skipped under prefers-reduced-motion.
+ *
+ * Motion: the entrance is the shared `animate-enter-up` (opacity 0.7 -> 1, 4px,
+ * 200ms), so it never fades in from 0. The opacity transition is only attached
+ * while hiding, so it drives the exit fade (150ms) and never the entrance.
  */
+const COLOUR_TRANSITION = "color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease";
+const EXIT_TRANSITION = `opacity 0.15s ease, ${COLOUR_TRANSITION}`;
+
 export default function BackToTop() {
   const { t } = useI18n();
   const ref = useRef(null);
@@ -27,9 +34,10 @@ export default function BackToTop() {
       shownRef.current = show;
       const el = ref.current;
       if (!el) return;
+      el.style.transition = show ? COLOUR_TRANSITION : EXIT_TRANSITION;
       el.style.opacity = show ? "1" : "0";
-      el.style.transform = show ? "translateY(0)" : "translateY(8px)";
       el.style.pointerEvents = show ? "auto" : "none";
+      el.classList.toggle("animate-enter-up", show);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -49,10 +57,8 @@ export default function BackToTop() {
       title={t("common.backToTop")}
       style={{
         opacity: 0,
-        transform: "translateY(8px)",
         pointerEvents: "none",
-        transition:
-          "opacity 0.25s ease, transform 0.25s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease",
+        transition: EXIT_TRANSITION,
       }}
       className="fixed bottom-6 right-6 z-40 hidden md:flex print:!hidden items-center justify-center w-10 h-10 rounded-full
                  border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#1A1A1A]

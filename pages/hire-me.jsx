@@ -162,10 +162,10 @@ export default function HireMePage() {
                   </a>
                 )}
                 <Link
-                  href="/cv"
+                  href="/resume"
                   className="block border border-[#3D3D3D] text-[#C8C8C8] px-6 py-3 text-xs tracking-widest uppercase hover:border-white hover:text-white transition-colors duration-200 text-center"
                 >
-                  {t("nav.cv")}
+                  {t("nav.resume")}
                 </Link>
                 <div className="flex gap-3">
                   <Link

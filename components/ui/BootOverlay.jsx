@@ -13,13 +13,20 @@ import { useState, useEffect, useCallback } from "react";
 import { useI18n } from "@/contexts/I18nContext";
 
 const LS_KEY = "rin_boot_seen";
+// Document pages (resume, CV, hire-me) skip the intro: someone opening a shared
+// resume link should see it at once. The skip also marks the intro as seen for
+// the session, so it never interrupts them later (e.g. on a reload of another
+// page). The path test is mirrored in the _document pre-paint script.
+export const SKIP_BOOT_PATH = /^\/(zh-Hans\/)?(resume|cv|hire-me)(\/|$)/;
 
-// Timeline (ms). ~1.85s of visible animation + a ~0.46s fade ≈ 2.3s total —
+// Timeline (ms). ~1.85s of visible animation + a 0.2s exit fade ≈ 2.05s total —
 // longer and more deliberate than a flash, but safely under the ~2.5s point
 // where an intro starts to read as "frozen". (UX research: 1.5–2.5s sweet spot.)
+// The exit fade is UI chrome, so it follows the site motion rules (exits <= 200ms).
 const STEP_AT = [0, 380, 780, 1220]; // status line reveal times
 const DONE_AT = 1850; // sequence settles → fade
-const HIDE_AT = DONE_AT + 460; // unmount
+const EXIT_MS = 200; // overlay exit fade
+const HIDE_AT = DONE_AT + EXIT_MS; // unmount
 
 export default function BootOverlay() {
   const { t } = useI18n();
@@ -32,7 +39,7 @@ export default function BootOverlay() {
   const finish = useCallback(() => {
     setStep(STEP_AT.length - 1);
     setDone(true);
-    setTimeout(() => setVisible(false), 460);
+    setTimeout(() => setVisible(false), EXIT_MS);
   }, []);
 
   // Lift the pre-paint cover (set by the inline script in _document) once the
@@ -47,6 +54,7 @@ export default function BootOverlay() {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(LS_KEY)) return;
     sessionStorage.setItem(LS_KEY, "1");
+    if (SKIP_BOOT_PATH.test(window.location.pathname)) return;
 
     // The pre-paint cover (in _document) has a safety timer that lifts it if the
     // boot never loads. Now that the boot HAS mounted, cancel it so the cover
@@ -71,7 +79,7 @@ export default function BootOverlay() {
 
     const timers = [];
     if (prefersReduced) {
-      // Same ~2.3s duration as the full motion path, just calm visuals (the
+      // Same ~2.05s duration as the full motion path, just calm visuals (the
       // CSS reduced-motion rules drop the flicker / scanline / weight morph).
       setStep(STEP_AT.length - 1);
       timers.push(setTimeout(() => setDone(true), DONE_AT));
@@ -155,8 +163,8 @@ export default function BootOverlay() {
           font-family: var(--font-dm-sans), system-ui, sans-serif;
           opacity: 1;
           transition:
-            opacity 0.45s ease,
-            transform 0.45s ease;
+            opacity ${EXIT_MS}ms ease-out,
+            transform ${EXIT_MS}ms ease-out;
           will-change: opacity, transform;
         }
         .boot-root.is-done {
@@ -173,10 +181,10 @@ export default function BootOverlay() {
           -webkit-mask-image: radial-gradient(circle at center, #000 0%, #000 38%, transparent 74%);
           mask-image: radial-gradient(circle at center, #000 0%, #000 38%, transparent 74%);
           opacity: 0;
-          animation: boot-grid-in 0.6s ease-out 0.05s both;
+          animation: boot-grid-in 200ms ease-out 50ms both;
         }
         .is-done .boot-grid {
-          animation: boot-grid-out 0.45s ease-in both;
+          animation: boot-grid-out ${EXIT_MS}ms ease-in both;
         }
 
         .boot-stack {
@@ -198,7 +206,7 @@ export default function BootOverlay() {
           text-transform: uppercase;
           color: var(--dim);
           opacity: 0;
-          animation: boot-soft-in 0.5s ease-out 0.1s both;
+          animation: boot-soft-in 200ms ease-out 50ms both;
         }
         .boot-led {
           width: 6px;
@@ -225,7 +233,7 @@ export default function BootOverlay() {
           animation: boot-charge 1.05s cubic-bezier(0.22, 0.7, 0.2, 1) both;
         }
         .is-done .boot-word {
-          animation: boot-word-flash 0.4s ease-out both;
+          animation: boot-word-flash ${EXIT_MS}ms ease-out both;
         }
         .boot-dot {
           color: var(--accent);
@@ -257,7 +265,7 @@ export default function BootOverlay() {
           background: var(--dim);
           overflow: hidden;
           opacity: 0;
-          animation: boot-soft-in 0.4s ease-out 0.15s both;
+          animation: boot-soft-in 200ms ease-out 75ms both;
         }
         .boot-fill {
           position: absolute;
@@ -345,8 +353,8 @@ export default function BootOverlay() {
         }
         @keyframes boot-grid-in {
           from {
-            opacity: 0;
-            transform: scale(1.04);
+            opacity: 0.7;
+            transform: scale(1.012);
           }
           to {
             opacity: 1;
@@ -364,8 +372,8 @@ export default function BootOverlay() {
         }
         @keyframes boot-soft-in {
           from {
-            opacity: 0;
-            transform: translateY(4px);
+            opacity: 0.7;
+            transform: translateY(1px);
           }
           to {
             opacity: 1;
@@ -394,7 +402,7 @@ export default function BootOverlay() {
 
         /* Calm fallback — no flicker, sweep, or weight morph */
         .boot-root.is-reduced .boot-word {
-          animation: boot-soft-in 0.4s ease-out both;
+          animation: boot-soft-in 200ms ease-out both;
           font-variation-settings: "wght" 700;
         }
         .is-reduced .boot-scan,
@@ -402,11 +410,11 @@ export default function BootOverlay() {
           animation: none;
         }
         .is-reduced .boot-fill {
-          animation: boot-fill 0.5s ease-out both;
+          animation: boot-fill 250ms ease-out both;
         }
         @media (prefers-reduced-motion: reduce) {
           .boot-word {
-            animation: boot-soft-in 0.4s ease-out both;
+            animation: boot-soft-in 200ms ease-out both;
             font-variation-settings: "wght" 700;
           }
           .boot-scan,

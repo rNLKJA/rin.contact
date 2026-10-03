@@ -3,6 +3,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
+import { CERTS } from "@/lib/career-data";
 
 // Moved from pages/_document.jsx — these describe homepage-only content
 // (career timeline anchors, project list, credentials) and were previously
@@ -14,7 +15,7 @@ const PROFILE_PAGE_SCHEMA = {
   url: "https://rin.contact",
   name: "Rin Huang (黄孙创宇) — Official Portfolio",
   datePublished: "2024-01-01T00:00:00+10:30",
-  dateModified: "2026-03-10T00:00:00+10:30",
+  dateModified: "2026-10-03T00:00:00+09:30",
   mainEntity: { "@id": "https://rin.contact/#person" },
   about: { "@id": "https://rin.contact/#person" },
   // isPartOf links this page into the WebSite entity — completing the entity graph
@@ -92,11 +93,11 @@ const PROJECTS_SCHEMA = {
         "@type": "SoftwareApplication",
         name: "Mapiva",
         description:
-          "Co-founded a mobile social connection app — full product ownership from architecture through implementation as Dev Lead.",
+          "A map-first social discovery app from a Melbourne startup Rin co-founded. As Dev Lead he owns the architecture and code review, working towards a beta in early 2027.",
         applicationCategory: "SocialNetworkingApplication",
         operatingSystem: "iOS, Android",
         author: { "@id": "https://rin.contact/#person" },
-        programmingLanguage: ["React Native", "Expo"],
+        programmingLanguage: ["React Native", "Expo", "Django", "Rust", "PostgreSQL"],
       },
     },
     {
@@ -145,11 +146,11 @@ const PROJECTS_SCHEMA = {
         "@type": "SoftwareApplication",
         name: "MoodQ",
         description:
-          "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Psychiatry research group. Migrated from Uniapp to Expo React Native, reducing hosting costs ~$500/month.",
+          "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Department of Psychiatry. Rin was the sole developer: he rebuilt it from Uniapp in Expo React Native on a Flask backend, cut hosting costs by about $500 a month with AWS RDS and LightSail, and handed it to a professional team for production.",
         applicationCategory: "HealthApplication",
         operatingSystem: "iOS, Android",
         author: { "@id": "https://rin.contact/#person" },
-        programmingLanguage: ["Expo", "React Native", "Node.js"],
+        programmingLanguage: ["React Native", "Expo", "Python", "Flask"],
       },
     },
     {
@@ -157,12 +158,12 @@ const PROJECTS_SCHEMA = {
       position: 6,
       item: {
         "@type": "SoftwareApplication",
-        name: "SAPOL Intelligence Dashboards",
+        name: "SAPOL EPSB Analytics",
         description:
-          "Operational intelligence and crime analytics dashboards supporting frontline policing, resource allocation, and command-level decision-making across South Australia.",
+          "Analytics work for the Intelligence & Probity Unit of South Australia Police's Ethical and Professional Standards Branch (EPSB) since March 2026: quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the complaint administration workflow, an expiation notices analysis, and a Python client and web console for the IAPro and BlueTeam APIs covering more than 1,100 endpoints.",
         applicationCategory: "BusinessApplication",
         author: { "@id": "https://rin.contact/#person" },
-        programmingLanguage: ["Python", "Power BI", "SQL"],
+        programmingLanguage: ["Python", "SQL", "Power BI", "FastAPI", "Vue"],
       },
     },
     {
@@ -245,162 +246,39 @@ const PROJECTS_SCHEMA = {
   ],
 };
 
+// Built from CERTS in lib/career-data.js so the JSON-LD always lists the same
+// verified credentials as /career, /cv and /resume. Issue dates are kept to the
+// year (ISO 8601 allows a bare year) rather than guessing a month.
+const CREDENTIAL_CATEGORY = {
+  VETASSESS: "ProfessionalAssessment",
+  IELTS: "LanguageAssessment",
+  NAATI: "LanguageCredential",
+  "University of Melbourne": "microcredential",
+};
+
+const ISSUER_URL = {
+  Google: "https://google.com",
+  Microsoft: "https://microsoft.com",
+  Neo4j: "https://neo4j.com",
+  Atlassian: "https://atlassian.com",
+  GitHub: "https://github.com",
+  "University of Melbourne": "https://www.unimelb.edu.au",
+};
+
 const CREDENTIALS_SCHEMA = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "VETASSESS — Statistician (ANZSCO 224113)",
-      credentialCategory: "ProfessionalAssessment",
-      recognizedBy: { "@type": "Organization", name: "VETASSESS" },
-      dateCreated: "2026-02-01",
-      holder: { "@id": "https://rin.contact/#person" },
+  "@graph": CERTS.map((c) => ({
+    "@type": "EducationalOccupationalCredential",
+    name: c.name,
+    credentialCategory: CREDENTIAL_CATEGORY[c.issuer] || "certification",
+    recognizedBy: {
+      "@type": c.issuer === "University of Melbourne" ? "CollegeOrUniversity" : "Organization",
+      name: c.issuer,
+      ...(ISSUER_URL[c.issuer] ? { url: ISSUER_URL[c.issuer] } : {}),
     },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "IELTS General Training — Band 8",
-      credentialCategory: "LanguageAssessment",
-      recognizedBy: { "@type": "Organization", name: "IELTS Official" },
-      dateCreated: "2026-02-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Credentialed Community Language — Mandarin",
-      credentialCategory: "LanguageCredential",
-      recognizedBy: { "@type": "Organization", name: "NAATI" },
-      dateCreated: "2025-12-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Microsoft Certified: Azure Fundamentals (AZ-900)",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Microsoft", url: "https://microsoft.com" },
-      dateCreated: "2024-07-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Neo4j Certified Professional",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Neo4j", url: "https://neo4j.com" },
-      dateCreated: "2025-08-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Neo4j Graph Data Science Certification",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Neo4j", url: "https://neo4j.com" },
-      dateCreated: "2025-08-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Google UX Design Specialisation",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2025-12-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Google Business Intelligence Specialisation",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2025-12-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Google Project Management Specialisation",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2025-12-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Google IT Automation with Python",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2022-05-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Google Data Analytics Specialisation",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2021-06-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Open-Source Intelligence (OSINT) Fundamentals",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "TCM Security" },
-      dateCreated: "2025-10-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Google Analytics Individual Qualification (GAIQ)",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Google", url: "https://google.com" },
-      dateCreated: "2024-05-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Advanced SQL for Data Scientists",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "LinkedIn Learning" },
-      dateCreated: "2024-01-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Atlassian Agile Project Management Professional Certificate",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "Atlassian", url: "https://atlassian.com" },
-      dateCreated: "2024-04-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Career Essentials in GitHub Professional Certificate",
-      credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "GitHub", url: "https://github.com" },
-      dateCreated: "2024-01-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Melbourne Plus: Innovation",
-      credentialCategory: "microcredential",
-      recognizedBy: {
-        "@type": "CollegeOrUniversity",
-        name: "University of Melbourne",
-        url: "https://www.unimelb.edu.au",
-      },
-      dateCreated: "2024-05-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Melbourne Plus: People Leadership",
-      credentialCategory: "microcredential",
-      recognizedBy: {
-        "@type": "CollegeOrUniversity",
-        name: "University of Melbourne",
-        url: "https://www.unimelb.edu.au",
-      },
-      dateCreated: "2024-10-01",
-      holder: { "@id": "https://rin.contact/#person" },
-    },
-  ],
+    ...(c.year ? { dateCreated: c.year } : {}),
+    holder: { "@id": "https://rin.contact/#person" },
+  })),
 };
 
 // ── Background art helpers (Nothing OS + Wisr design language) ───────────────
@@ -635,8 +513,8 @@ export default function Home() {
           name="description"
           content={
             isZh
-              ? "Rin Huang（黄孙创宇）的官方网站 — 南澳大利亚警察局高级数据分析师，曾任WEHI研究软件工程师、CSIRO数据科学顾问。完整的职业经历、项目成果和联系方式。"
-              : "Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+              ? "Rin Huang（黄孙创宇）的官方网站。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任职于南澳总检察长部消费者与商业服务局（CBS）、墨尔本大学、WEHI、CSIRO 和 CSL。完整的职业经历、项目成果和联系方式。"
+              : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI, CSIRO and CSL. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
           }
         />
         <meta
@@ -663,7 +541,7 @@ export default function Home() {
                   name: "What does a Senior Data Analyst do at South Australia Police?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "As an ASO7 Senior Data Analyst in SAPOL's Professional and Ethical Standards Branch (PESB), I develop analytical models and statistical frameworks that translate complex policing data into decision-ready intelligence. This includes strategic planning, parliamentary reporting, and governance of end-to-end analytics solutions across IAPro and connected systems.",
+                    text: "As an ASO7 Senior Data Analyst in the Intelligence & Probity Unit of SAPOL's Ethical and Professional Standards Branch (EPSB), I turn complaint, investigation and workforce data into reports and advice that executives and oversight bodies can act on. That includes the quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the branch's complaint administration workflow, an analysis of expiation notices, and tooling such as a Python client and web console for the IAPro and BlueTeam APIs, covering more than 1,100 endpoints.",
                   },
                 },
                 {
@@ -695,7 +573,7 @@ export default function Home() {
                   name: "What is your educational background?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "I hold two degrees from the University of Melbourne: a Bachelor of Science (Computing and Software Systems) and a Master of Data Science, along with 23 professional certifications across cloud, analytics, and project management.",
+                    text: `I hold two degrees from the University of Melbourne: a Bachelor of Science majoring in Data Science and a Master of Data Science. Alongside them I hold ${CERTS.length} professional credentials and assessments across data, analytics, cloud, project management and language, including a VETASSESS Statistician skills assessment, IELTS General Training Band 8 and NAATI Credentialed Community Language (Mandarin).`,
                   },
                 },
                 {
@@ -746,8 +624,8 @@ export default function Home() {
         }
         description={
           isZh
-            ? "Rin Huang（黄孙创宇）的官方网站 — 南澳大利亚警察局高级数据分析师。职业经历、项目成果、23项专业认证。亦被称为 Huang Sunchuangyu、HUANGSUNCHUANGYU。"
-            : "Rin Huang's official website — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Full career history, projects, and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+            ? `Rin Huang（黄孙创宇）的官方网站。南澳大利亚警察局（SAPOL）ASO7 高级数据分析师，Mapiva 联合创始人兼开发负责人。职业经历、项目成果、${CERTS.length} 项专业认证。亦被称为 Huang Sunchuangyu、HUANGSUNCHUANGYU。`
+            : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI, CSIRO and CSL. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
         }
         path="/"
         ogImage={{
@@ -763,8 +641,8 @@ export default function Home() {
         }
         ogDescription={
           isZh
-            ? "Rin Huang（黄孙创宇）的个人主页 — 南澳大利亚警察局高级数据分析师，WEHI研究软件工程师，CSIRO数据科学顾问。职业经历、项目成果、技能与联系方式。"
-            : "Official personal portfolio of Rin Huang (黄孙创宇) — Senior Data Analyst at South Australia Police, Research Software Engineer at WEHI & CSIRO. Career history, projects, skills, and contact."
+            ? "Rin Huang（黄孙创宇）的个人主页。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任 WEHI 软件工程实习生（数据科学）和 CSIRO 数据科学产业顾问。职业经历、项目成果、技能与联系方式。"
+            : "Official portfolio of Rin Huang (黄孙创宇), ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously a Software Engineer Intern (Data Science) at WEHI and a Data Science Industrial Consultant at CSIRO. Career history, projects, skills and contact."
         }
         locale={locale}
         extraMeta={[
@@ -786,7 +664,7 @@ export default function Home() {
           { property: "profile:first_name", content: "Sunchuangyu" },
           { property: "profile:last_name", content: "Huang" },
           { property: "profile:username", content: "rNLKJA" },
-          { property: "og:updated_time", content: "2026-03-10T00:00:00+10:30" },
+          { property: "og:updated_time", content: "2026-10-03T00:00:00+09:30" },
           { property: "og:locale:alternate", content: isZh ? "en_AU" : "zh_CN" },
         ]}
       />

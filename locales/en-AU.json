@@ -22,7 +22,7 @@
     "hireMe": "Hire Me",
     "businessCard": "Business Card",
     "cliResume": "CLI Resume",
-    "cv": "CV (PDF)",
+    "cv": "Full CV",
     "api": "API",
     "linkedin": "LinkedIn",
     "github": "GitHub",
@@ -56,24 +56,25 @@
   },
   "heroRoles": [
     "Senior Data Analyst @ SAPOL",
-    "Research Software Engineer @ WEHI",
-    "Data Science Consultant @ CSIRO & CSL",
+    "Software Engineer Intern @ WEHI",
+    "Data Science Consultant @ CSIRO",
+    "Data Analyst & Agile Leader @ CSL",
     "Co-Founder & Dev Lead @ Mapiva",
     "Intelligence & Coordination Officer @ AGD",
-    "Full-Stack Engineer @ Unimelb",
+    "Research Assistant (sole developer) @ UniMelb",
     "Continuous Improvement Specialist @ Life",
     "Strategic Thinking Specialist @ Life"
   ],
   "heroStats": [
     {
-      "value": 6,
+      "value": 7,
       "label": "Roles",
       "sub": "across gov, research & startup"
     },
     {
-      "value": 21,
+      "value": 20,
       "label": "Projects",
-      "sub": "shipped to production"
+      "sub": "data · cloud · mobile · web"
     },
     {
       "value": 2,
@@ -133,7 +134,7 @@
           "n": "03",
           "domain": "Engineering",
           "title": "Product and full-stack build",
-          "desc": "Shipping real applications end to end, from the data layer to the interface, like Signal and Mapiva."
+          "desc": "Building real applications end to end, from the data layer to the interface, like Signal and Mapiva."
         }
       ]
     },
@@ -173,7 +174,7 @@
     "intro": {
       "eyebrow": "Profile",
       "heading": "A problem-first analyst who works across the edges.",
-      "body1": "I am a data analyst and data scientist based in Adelaide, currently working at ASO7 level with the South Australia Police. Over the past four years my work has moved across climate risk modelling at CSIRO, ministerial dashboards for the South Australian Government, genomics pipelines at WEHI, and a mental health app at the University of Melbourne. Generalist by nature, specialist by discipline.",
+      "body1": "I am a data analyst and data scientist based in Adelaide, currently working at ASO7 level with the South Australia Police. Since 2022 my work has moved across climate risk modelling at CSIRO, ministerial dashboards for the South Australian Government, genomics pipelines at WEHI, and a mental health app at the University of Melbourne. Generalist by nature, specialist by discipline.",
       "body2": "The thread through all of it is the same. I start from the decision that needs making and the smallest amount of data needed to make it well, then reach for the right tool rather than the fashionable one. Problem first, not model first. That habit is what lets the same person be useful in a research lab, a government intelligence team, and an engineering project.",
       "domainsLabel": "Where I work"
     }
@@ -196,7 +197,7 @@
       },
       {
         "label": "Strategic + technical",
-        "note": "ASO7 intelligence frameworks AND Python pipelines — not one or the other"
+        "note": "Government intelligence frameworks AND Python pipelines, not one or the other"
       },
       {
         "label": "Communication layer",
@@ -208,7 +209,7 @@
       },
       {
         "label": "Bilingual",
-        "note": "Mandarin (native) · English (professional) · NAATI CPCB1 credentialled"
+        "note": "Mandarin (native) · English (IELTS Band 8) · NAATI CCL (Mandarin)"
       }
     ],
     "openToList": [
@@ -225,7 +226,7 @@
         "l": "Current Level"
       },
       {
-        "v": "4 yrs",
+        "v": "4+ yrs",
         "l": "Industry Exp."
       },
       {
@@ -243,8 +244,8 @@
     "metaDescription": "The full curriculum vitae of Sunchuangyu (Rin) Huang — Senior Data Analyst at South Australia Police. Experience, education, certifications and skills, ready to read or save as PDF.",
     "ogTitle": "Curriculum Vitae",
     "ogSubtitle": "Sunchuangyu (Rin) Huang — Senior Data Analyst",
-    "backToResume": "Interactive resume",
-    "savePdf": "Download PDF",
+    "backToResume": "Resume",
+    "savePdf": "Save as PDF",
     "eyebrow": "Curriculum Vitae",
     "tagline": "Senior Data Analyst · Strategic Intelligence · Research Software Engineer",
     "contact": {
@@ -288,7 +289,7 @@
     "metaDescription": "What Rin Huang is working on, reading, and thinking about right now.",
     "ogSubtitle": "What Rin Huang is working on, reading, and thinking about...",
     "updated": "updated",
-    "updatedDate": "23 June 2026",
+    "updatedDate": "3 October 2026",
     "heading": "What I'm doing now.",
     "introPrefix": "A snapshot. Last updated from Adelaide, SA — ACST (UTC+9:30). Inspired by ",
     "introSuffix": ".",
@@ -304,10 +305,10 @@
     "building": [
       {
         "text": "Mapiva — a mobile social discovery app that helps people discover and connect",
-        "sub": "Co-founder & Dev Lead · iOS + Android · targeting v1 Jan 2027"
+        "sub": "Co-founder & Dev Lead · iOS + Android · beta planned for early 2027"
       },
       {
-        "text": "Internal analytics dashboards for SAPOL Professional & Ethical Standards Branch",
+        "text": "Quarterly Use of Force and Vehicle Pursuit reporting and an IAPro/BlueTeam API client for SAPOL's Ethical and Professional Standards Branch",
         "sub": "ASO7 Senior Data Analyst · government-grade, high-stakes"
       },
       {
@@ -566,7 +567,7 @@
       ],
       "easterEggs": [
         {
-          "name": "/resume",
+          "name": "/resume/terminal",
           "value": "interactive CLI",
           "note": "type commands, explore career data"
         },
@@ -657,7 +658,10 @@
           "title": "Custom 404 with Snake game",
           "note": "Play while you wait. Leaderboard persists."
         },
-        { "title": "CLI-style interactive resume", "note": "Type commands. Explore career data." },
+        {
+          "title": "CLI-style interactive resume",
+          "note": "Type commands to explore career data. Now at /resume/terminal."
+        },
         {
           "title": "Matrix rain with data science symbols",
           "note": "∑ ∇ λ σ — you know the vibe."
@@ -844,6 +848,7 @@
     "heading": "Changelog",
     "intro": "What changed. Version {version} and counting.",
     "entries": [
+      "A proper resume at /resume: role, impact and contact in a 30-second read, every number linked to its source, and a clean text PDF. Career facts now come from one data source shared by /resume, /cv, /career and the terminal (now at /resume/terminal), with a build check against known-wrong claims. Experience updated to SAPOL and Mapiva, credentials corrected, and site-wide motion tightened: UI animations finish within 300ms and never start from zero.",
       "Site-wide performance pass: KaTeX scoped to the /knowledge pages that use it, font preload trimmed, Edge Proxy skips static assets, homepage-only structured data no longer ships on every page. Also fixed stale image caching and a font-family CSS bug; blog builds ~3x faster.",
       "Blog: 6 posts with Mermaid diagrams, RSS feed at /blog/feed.xml, newsletter signup component. Service worker: self-destructing on activate for cache hygiene.",
       "Blog infrastructure: markdown pipeline (gray-matter + remark), PostCard, blog listing + individual post pages.",
@@ -1282,14 +1287,14 @@
         "title": "Career",
         "desc": "Three domain lines. Seven stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
         "tags": ["Government", "Research", "Engineering"],
-        "stat": "4 years · 7 stations"
+        "stat": "Since 2022 · 7 stations"
       },
       {
         "num": "03",
         "title": "Projects",
-        "desc": "Shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
+        "desc": "Built across data engineering, cloud infrastructure, mobile, and web platforms.",
         "tags": ["Python", "Next.js", "AWS", "React Native"],
-        "stat": "21 shipped"
+        "stat": "20 projects"
       },
       {
         "num": "04",
@@ -1308,9 +1313,9 @@
       {
         "num": "06",
         "title": "Resume",
-        "desc": "Interactive CLI-style CV. Type commands, explore career data. Ping, open, ls — the terminal experience.",
-        "tags": ["CLI", "Interactive", "Terminal"],
-        "stat": "Type to explore"
+        "desc": "Role, impact and contact on one page, built for a 30-second read. Save it as a PDF, or open the CLI version if you prefer a terminal.",
+        "tags": ["Resume", "PDF", "CLI"],
+        "stat": "30-second read"
       }
     ]
   },
@@ -1360,6 +1365,7 @@
   "timeline": {
     "sectionLabel": "02 — Journey",
     "heading": "Career Path",
+    "intro": "A path built on curiosity across government intelligence, biomedical research, climate science and software engineering, always looking for where data can make a genuine difference.",
     "tabCareer": "career",
     "tabEducation": "education",
     "tabVolunteer": "volunteer",
@@ -1373,7 +1379,7 @@
   "projects": {
     "sectionLabel": "03 — Work",
     "heading": "Selected Projects",
-    "headingDesc": "Shipped to production across data engineering, cloud infrastructure, mobile, and web platforms.",
+    "headingDesc": "Built across data engineering, cloud infrastructure, mobile, and web platforms.",
     "searchPlaceholder": "Search projects...",
     "allProjects": "All",
     "impact": "Impact",
@@ -1387,7 +1393,7 @@
   },
   "metroMap": {
     "heading": "Three lines.",
-    "description": "Government, Research, Engineering — seven years, several stations, one career.",
+    "description": "Government, Research, Engineering. Seven stations since 2022, one career.",
     "govt": "GOVT",
     "research": "RESEARCH",
     "engineer": "ENGINEER",
@@ -1474,7 +1480,8 @@
   "career": {
     "sectionLabel": "◆ — Career",
     "heading": "Journey.",
-    "description": "Three domain lines. Seven stations. One convergence point."
+    "description": "Three domain lines. Seven stations. One convergence point.",
+    "resumeLink": "Resume and PDF"
   },
   "projectsPage": {
     "sectionLabel": "◆ — Projects",
@@ -1789,7 +1796,7 @@
         { "label": "Framework", "value": "University of Melbourne, CSIRO, WEHI, SAPOL" }
       ],
       "performance": [
-        { "label": "Projects shipped", "value": "21" },
+        { "label": "Projects", "value": "20" },
         { "label": "Certifications", "value": "23" },
         { "label": "Uptime", "value": "~26 years (with coffee)" }
       ],
@@ -2003,7 +2010,7 @@
       "heading": "Survival Analysis",
       "subtitle": "Kaplan–Meier curve of tenure. Survival = still employed. Censored = promoted or moved.",
       "monthsUnit": "months",
-      "medianNote": "Median survival: ~12 months. No events = death. All events = career progression."
+      "medianNote": "Median survival: ~{median} months. No events = death. All events = career progression."
     },
     "technicalDebt": {
       "metaTitle": "Technical Debt — rin.contact",
@@ -2046,6 +2053,79 @@
         "Master of Data Science conferred"
       ],
       "aheadNote": "5 commits ahead of origin/main"
+    }
+  },
+  "resumePage": {
+    "metaTitle": "Resume · Sunchuangyu (Rin) Huang · rin.contact",
+    "metaDescription": "Resume of Sunchuangyu (Rin) Huang, ASO7 Senior Data Analyst at South Australia Police and co-founder of Mapiva: impact, experience, skills and credentials, ready to save as a PDF.",
+    "ogTitle": "Resume · Sunchuangyu (Rin) Huang",
+    "ogSubtitle": "Senior Data Analyst · SA Police · Mapiva",
+    "eyebrow": "Resume",
+    "updated": "Updated",
+    "pdfMeta": "A4 · text PDF",
+    "actions": {
+      "savePdf": "Save as PDF",
+      "email": "Email Rin",
+      "emailSubject": "Role enquiry",
+      "copyEmail": "Copy email",
+      "copied": "Copied",
+      "viewDocument": "Full CV"
+    },
+    "glance": {
+      "heading": "At a glance",
+      "current": "Current role",
+      "since": "since",
+      "also": "Also",
+      "experience": "Experience",
+      "experienceSince": "Since",
+      "roles": "roles",
+      "sectors": "Sectors",
+      "basedIn": "Based in",
+      "basedInNote": "open to roles across Australia or remote",
+      "languages": "Languages",
+      "education": "Education",
+      "screening": "Screening"
+    },
+    "sections": {
+      "summary": "Summary",
+      "openTo": "Open to",
+      "impact": "Selected impact",
+      "timeline": "Timeline",
+      "experience": "Experience",
+      "skills": "Skills",
+      "education": "Education",
+      "credentials": "Credentials",
+      "languages": "Languages",
+      "goDeeper": "Go deeper"
+    },
+    "role": {
+      "current": "Current",
+      "tools": "Tools",
+      "showMorePrefix": "Show ",
+      "showMoreSuffix": " more",
+      "showLess": "Show less",
+      "onTimeline": "On the timeline"
+    },
+    "evidence": {
+      "internal": "Work products are internal to the agency and described here at a public level. Referees on request."
+    },
+    "track": {
+      "government": "Government",
+      "research": "Research",
+      "engineering": "Engineering"
+    },
+    "credentials": {
+      "morePrefix": "+",
+      "moreSuffix": " more on the full CV"
+    },
+    "goDeeper": {
+      "cv": "Full CV, with every bullet and credential",
+      "career": "Career timeline and metro map",
+      "projects": "Projects and case studies",
+      "terminal": "Prefer a terminal? Try the CLI resume"
+    },
+    "footer": {
+      "referees": "Referees available on request"
     }
   }
 }

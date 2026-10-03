@@ -151,7 +151,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 bg-white dark:bg-[#0A0A0A] transition-all duration-200"
+      className="sticky top-0 z-50 bg-white dark:bg-[#0A0A0A] transition-all duration-200 print:hidden"
       role="banner"
     >
       {/* Scroll progress bar */}
@@ -250,7 +250,7 @@ export default function Header() {
             className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""} bg-black dark:bg-white`}
           />
           <span
-            className={`block w-5 h-px bg-black dark:bg-white transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`}
+            className={`block w-5 h-px bg-black dark:bg-white duration-200 ${menuOpen ? "opacity-0 transition-opacity" : "transition-none"}`}
           />
           <span
             className={`block w-5 h-px transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""} bg-black dark:bg-white`}
@@ -262,11 +262,11 @@ export default function Header() {
       <div
         id="mobile-menu"
         className={`fixed inset-0 z-50 bg-white dark:bg-[#0A0A0A] flex flex-col md:hidden
-                    transition-opacity duration-200 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+                    transition-opacity duration-200 ${menuOpen ? "opacity-100 pointer-events-auto animate-enter" : "opacity-0 pointer-events-none"}`}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
-        {...(!menuOpen ? { inert: "" } : {})}
+        {...(!menuOpen ? { inert: true } : {})}
       >
         {/* Top bar — brand only (close button stays in header, top-right) */}
         <div className="flex items-center px-6 py-4 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">

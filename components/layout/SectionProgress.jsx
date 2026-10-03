@@ -25,8 +25,10 @@ export default function SectionProgress() {
         visibleRef.current = show;
         const el = navRef.current;
         if (el) {
+          // Enter from 70% opacity and a 4px offset (Rin's motion rule), not 0 / 16px.
+          el.classList.toggle("animate-enter", show);
           el.style.opacity = show ? "1" : "0";
-          el.style.transform = show ? "translateY(-50%)" : "translate(16px, -50%)";
+          el.style.transform = show ? "translateY(-50%)" : "translate(4px, -50%)";
           el.style.pointerEvents = show ? "auto" : "none";
         }
       }
@@ -68,7 +70,7 @@ export default function SectionProgress() {
       ref={navRef}
       aria-label={t("sectionProgress.label")}
       className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-end gap-3
-                  transition-all duration-300 opacity-0 pointer-events-none"
+                  transition-all duration-200 opacity-0 pointer-events-none"
     >
       {SECTIONS.map(({ id, key }) => {
         const label = t(key);
@@ -84,7 +86,7 @@ export default function SectionProgress() {
             {/* Label — slides in on hover */}
             <span
               className={`text-[10px] tracking-widest uppercase transition-all duration-200
-                          ${isActive ? "text-[#FF3C3C] opacity-100" : "text-[#7A7A7A] opacity-0 group-hover:opacity-100"}
+                          ${isActive ? "text-[#FF3C3C] opacity-100 animate-enter" : "text-[#7A7A7A] opacity-0 group-hover:opacity-100 group-hover:animate-enter"}
                           translate-x-1 group-hover:translate-x-0`}
             >
               {label}

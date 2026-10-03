@@ -28,7 +28,7 @@ const NAV_COLS = [
       { href: "/blog", key: "nav.blog" },
       { href: "/knowledge", key: "nav.knowledge" },
       { href: "/info/api", key: "nav.api" },
-      { href: "/resume", key: "nav.cliResume" },
+      { href: "/resume/terminal", key: "nav.cliResume" },
       {
         href: "https://www.linkedin.com/in/sunchuangyuhuang/",
         key: "nav.linkedin",
@@ -53,7 +53,10 @@ const Footer = () => {
   const { t } = useI18n();
 
   return (
-    <footer className="bg-[#1A1A1A] dark:bg-[#0A0A0A] relative overflow-hidden" role="contentinfo">
+    <footer
+      className="bg-[#1A1A1A] dark:bg-[#0A0A0A] relative overflow-hidden print:hidden"
+      role="contentinfo"
+    >
       {/* Wisr-style wavy top divider */}
       <svg
         aria-hidden="true"

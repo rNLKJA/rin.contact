@@ -210,12 +210,13 @@ function EnBody() {
           <p>
             GPs are the tool I reach for when{" "}
             <strong>data is limited and the uncertainty itself matters</strong> — which is common in
-            scientific and risk work (and was directly relevant to the spatial/climate side of my{" "}
-            <strong>CSIRO</strong> work, where{" "}
-            <Link href="/knowledge/spatial-statistics">kriging</Link> — a GP — predicts between
-            measurement sites with honest error bars). The thing GPs give that ordinary models don't
-            is uncertainty that <strong>widens where there's no data</strong>, so the model openly
-            admits where it's guessing rather than extrapolating with false confidence.
+            scientific and risk work (and a natural step on from the time-series forecasting I did
+            at <strong>CSIRO</strong>, where an honest range mattered more than a point forecast; in
+            space, the same idea is <Link href="/knowledge/spatial-statistics">kriging</Link>, a GP
+            that predicts between measurement sites with honest error bars). The thing GPs give that
+            ordinary models don't is uncertainty that <strong>widens where there's no data</strong>,
+            so the model openly admits where it's guessing rather than extrapolating with false
+            confidence.
           </p>
           <p>
             That makes them a natural partner to{" "}
@@ -402,9 +403,10 @@ function ZhBody() {
         <Callout type="applied" label="对适度数据的诚实不确定性">
           <p>
             当<strong>数据有限、而不确定性本身要紧</strong>时，GP 是我伸手去拿的工具——这在科学与风险
-            工作里很常见（也与我 <strong>CSIRO</strong> 工作中空间/气候的那一面直接相关，那里
-            <Link href="/knowledge/spatial-statistics">克里金</Link>——一个
-            GP——带着诚实的误差棒在测量点 之间预测）。GP 给的、而普通模型不给的，是那种
+            工作里很常见（也是我在 <strong>CSIRO</strong>{" "}
+            做时间序列预测之后很自然的下一步，当时一个诚实的区间比一个点预测更有用；放到空间上，
+            <Link href="/knowledge/spatial-statistics">克里金</Link>
+            就是一个 GP，带着诚实的误差棒在测量点之间预测）。GP 给的、而普通模型不给的，是那种
             <strong>在没有数据处变宽</strong>的不确定性，
             于是模型公开地承认它在哪里是猜的，而非带着虚假的自信外推。
           </p>
@@ -468,7 +470,7 @@ const META = {
     course: "Gaussian Processes",
     courseCode: "Advanced · regression with uncertainty",
     level: "Master's+",
-    learned: "Bayesian ML & CSIRO",
+    learned: "Bayesian ML coursework",
     applied: "Small-data, honest uncertainty",
     readingTime: "~15 min read",
     sections: [
@@ -493,7 +495,7 @@ const META = {
     course: "高斯过程",
     courseCode: "进阶 · 带不确定性的回归",
     level: "硕士及以上",
-    learned: "贝叶斯机器学习 & CSIRO",
+    learned: "贝叶斯机器学习课程",
     applied: "小数据、诚实的不确定性",
     readingTime: "约 15 分钟阅读",
     sections: [

@@ -11,9 +11,9 @@
   <LongName>Rin Huang — Senior Data Analyst &amp; Research Software Engineer</LongName>
   <Description>
     Search Rin Huang's portfolio. Explore career history, projects, skills,
-    certifications, and contact details for Sunchuangyu (Rin) Huang 黄孙创宇 —
-    Senior Data Analyst at South Australia Police, Research Software Engineer at
-    WEHI &amp; CSIRO, and Full-Stack Developer based in Adelaide, Australia.
+    certifications and contact details for Sunchuangyu (Rin) Huang 黄孙创宇,
+    ASO7 Senior Data Analyst at South Australia Police and Co-Founder &amp; Dev
+    Lead at Mapiva, based in Adelaide, Australia.
   </Description>
 
   <!-- ── Search endpoint ───────────────────────────────────────────────────── -->
@@ -35,7 +35,8 @@
   <Query role="example" searchTerms="HUANG SUNCHUANGYU" />
   <Query role="example" searchTerms="data analyst Adelaide" />
   <Query role="example" searchTerms="SAPOL data analyst" />
-  <Query role="example" searchTerms="WEHI research software engineer" />
+  <Query role="example" searchTerms="WEHI data science" />
+  <Query role="example" searchTerms="Mapiva co-founder" />
   <Query role="example" searchTerms="CSIRO data science" />
 
   <!-- ── Encoding ───────────────────────────────────────────────────────────── -->
@@ -56,7 +57,7 @@
     Rin Huang Sunchuangyu Huang Sunchuangyu 黄孙创宇 黄孙 Rin
     HUANGSUNCHUANGYU HUANG SUNCHUANGYU HUANG SUN CHUANG YU
     data science analytics machine learning
-    software engineering government intelligence SAPOL WEHI CSIRO
+    software engineering government intelligence SAPOL Mapiva WEHI CSIRO
     Adelaide Melbourne Australia Python React Next.js
   </Tags>
 

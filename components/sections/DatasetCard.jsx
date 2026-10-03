@@ -6,6 +6,7 @@
  */
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { ROLES, CERTS } from "@/lib/career-data";
 
 const LINE = "─".repeat(64);
 
@@ -20,15 +21,28 @@ const INFO_ROWS = [
     dtype: "int64",
     value: `6  # gov · research · biotech · climate · health-tech · startup`,
   },
-  { col: "certifications", dtype: "int64", value: `23  # cloud, analytics, agile, language` },
+  {
+    col: "certifications",
+    dtype: "int64",
+    value: `${CERTS.length}  # cloud, analytics, agile, language`,
+  },
   { col: "current_role", dtype: "object", value: `'ASO7 Senior Data Analyst, SAPOL'` },
   { col: "is_founder", dtype: "bool", value: `True   # Mapiva, Aug 2025–present` },
   { col: "open_to_collab", dtype: "bool", value: `True` },
   { col: "outlier", dtype: "bool", value: `True   # confirmed ≥ 3σ · see Signal vs Noise below` },
 ];
 
-const DESCRIBE_ROWS = [
-  { metric: "years_experience", val: "4.0", note: "since Feb 2022 · no null years" },
+// Years since the first professional role (Feb 2022), to one decimal. Worked out
+// when the .describe() tab renders, which only happens in the browser after a
+// click, so it always shows today's figure and never a stale build-time one.
+const MS_PER_YEAR = 365.25 * 24 * 3600 * 1000;
+function yearsExperience(now = new Date()) {
+  const first = new Date(ROLES[ROLES.length - 1].start);
+  return ((now - first) / MS_PER_YEAR).toFixed(1);
+}
+
+const describeRows = () => [
+  { metric: "years_experience", val: yearsExperience(), note: "since Feb 2022 · no null years" },
   { metric: "career_growth_idx", val: "5.37×", note: "vs 2020 baseline (CAGR 32.7%)" },
   { metric: "domain_breadth", val: "7", note: "distinct technical skill domains" },
   { metric: "sectors", val: "6", note: "unique industry contexts" },
@@ -163,9 +177,9 @@ export default function DatasetCard() {
                     key={r.col}
                     className="flex gap-4 group hover:bg-[#E8E8E8] dark:hover:bg-[#111] px-1 -mx-1"
                     style={{
-                      opacity: shown ? 1 : 0,
-                      transform: shown ? "none" : "translateY(3px)",
-                      transition: `opacity 0.3s ease ${i * 30}ms, transform 0.3s ease ${i * 30}ms, background-color 0.15s`,
+                      opacity: shown ? 1 : 0.7,
+                      transform: shown ? "none" : "translateY(1px)",
+                      transition: `opacity 200ms ease-out ${Math.min(i * 30, 100)}ms, transform 200ms ease-out ${Math.min(i * 30, 100)}ms, background-color 0.15s`,
                     }}
                   >
                     <span className="w-5 flex-shrink-0 text-[#AAA] dark:text-[#2E2E2E] select-none">
@@ -209,14 +223,14 @@ export default function DatasetCard() {
                 </div>
                 <p className="text-[#DDD] dark:text-[#252525] mb-2">{LINE}</p>
 
-                {DESCRIBE_ROWS.map((r, i) => (
+                {describeRows().map((r, i) => (
                   <div
                     key={r.metric}
                     className="flex gap-4 group hover:bg-[#E8E8E8] dark:hover:bg-[#111] px-1 -mx-1"
                     style={{
-                      opacity: shown ? 1 : 0,
-                      transform: shown ? "none" : "translateY(3px)",
-                      transition: `opacity 0.3s ease ${i * 36}ms, transform 0.3s ease ${i * 36}ms, background-color 0.15s`,
+                      opacity: shown ? 1 : 0.7,
+                      transform: shown ? "none" : "translateY(1px)",
+                      transition: `opacity 200ms ease-out ${Math.min(i * 30, 100)}ms, transform 200ms ease-out ${Math.min(i * 30, 100)}ms, background-color 0.15s`,
                     }}
                   >
                     <span className="w-40 flex-shrink-0 text-[#888] dark:text-[#686868]">
@@ -254,14 +268,14 @@ export default function DatasetCard() {
            Matched to the terminal background so they read as a soft mask. */}
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#F5F5F5] dark:from-[#0C0C0C] to-transparent transition-opacity duration-300 ${
-            edges.scrollable && !edges.atStart ? "opacity-100" : "opacity-0"
+          className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#F5F5F5] dark:from-[#0C0C0C] to-transparent transition-opacity duration-200 ${
+            edges.scrollable && !edges.atStart ? "opacity-100 animate-enter" : "opacity-0"
           }`}
         />
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#F5F5F5] dark:from-[#0C0C0C] to-transparent transition-opacity duration-300 ${
-            edges.scrollable && !edges.atEnd ? "opacity-100" : "opacity-0"
+          className={`pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#F5F5F5] dark:from-[#0C0C0C] to-transparent transition-opacity duration-200 ${
+            edges.scrollable && !edges.atEnd ? "opacity-100 animate-enter" : "opacity-0"
           }`}
         />
       </div>

@@ -329,7 +329,7 @@ function Constellation({ cards, pal, isDark }) {
         key={`g${active}`}
         className="pointer-events-none absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 select-none"
         aria-hidden="true"
-        style={{ animation: "rinoFade .5s ease both" }}
+        style={{ animation: "rinoFade .2s ease-out both" }}
       >
         <span
           className="font-display leading-none"
@@ -380,7 +380,7 @@ function Constellation({ cards, pal, isDark }) {
           >
             <span
               aria-hidden="true"
-              className="rounded-full transition-all duration-200"
+              className="rounded-full transition-[width,height,background-color] duration-200"
               style={{
                 width: on ? 12 : 9,
                 height: on ? 12 : 9,
@@ -401,7 +401,10 @@ function Constellation({ cards, pal, isDark }) {
                 style={{ color: pal.title, flexDirection: p.r ? "row-reverse" : "row" }}
               >
                 {card.title}
-                <span className="transition-opacity duration-200" style={{ opacity: on ? 1 : 0 }}>
+                <span
+                  className={`transition-opacity duration-200 ${on ? "animate-enter" : ""}`}
+                  style={{ opacity: on ? 1 : 0 }}
+                >
                   <Arrow size={16} color={pal.redHex} />
                 </span>
               </span>
@@ -421,7 +424,7 @@ function Constellation({ cards, pal, isDark }) {
         className="absolute bottom-[7%] left-[4%] z-10 w-[52%] max-w-[440px] pl-4"
         style={{ borderLeft: `2px solid ${pal.redHex}` }}
       >
-        <div key={active} style={{ animation: "rinoFade .4s ease both" }}>
+        <div key={active} style={{ animation: "rinoFade .2s ease-out both" }}>
           <div
             className="mb-1 font-mono text-[10px] tracking-[0.2em]"
             style={{ color: pal.redHex }}
@@ -478,7 +481,7 @@ function LogCard({ card, index, href, pal, reduced }) {
           style={{ left: 18, borderLeft: `1px dotted rgba(${pal.line},0.35)` }}
         />
         <span
-          className="absolute transition-all duration-300"
+          className="absolute transition-[left,width,height,background-color] duration-200 ease-out"
           style={{
             left: show ? 12 : 13,
             top: 8,
@@ -494,10 +497,10 @@ function LogCard({ card, index, href, pal, reduced }) {
       <span
         className="relative block min-w-0 flex-1 pb-7 pl-1.5 pr-1"
         style={{
-          opacity: show ? 1 : 0,
-          transform: show ? "none" : "translateY(14px)",
-          transition: reduced ? "none" : "opacity .6s ease, transform .6s ease",
-          transitionDelay: reduced ? "0ms" : `${index * 80}ms`,
+          opacity: show ? 1 : 0.7,
+          transform: show ? "none" : "translateY(4px)",
+          transition: reduced ? "none" : "opacity .2s ease-out, transform .2s ease-out",
+          transitionDelay: reduced ? "0ms" : `${Math.min(index * 30, 100)}ms`,
         }}
       >
         <span
@@ -626,12 +629,12 @@ export default function SectionNavCards() {
       <style
         dangerouslySetInnerHTML={{
           __html:
-            "@keyframes rinoFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}",
+            "@keyframes rinoFade{from{opacity:0.7;transform:translateY(1.5px)}to{opacity:1;transform:none}}",
         }}
       />
 
       <div
-        className={`mb-12 transition-all duration-600 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        className={`mb-12 transition-all duration-200 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"}`}
       >
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4 font-mono">
           {t("sectionNav.label")}

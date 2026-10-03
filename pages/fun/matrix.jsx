@@ -122,10 +122,12 @@ export default function MatrixPage() {
 
       {/* Overlay — fades in */}
       <div
-        className="fixed inset-0 flex flex-col items-center justify-center pointer-events-none z-10"
+        className={`fixed inset-0 flex flex-col items-center justify-center pointer-events-none z-10 ${
+          revealed ? "animate-enter" : ""
+        }`}
         style={{
           opacity: revealed ? 1 : 0,
-          transition: "opacity 1.2s ease-in",
+          transition: "opacity 0.2s ease-out",
         }}
       >
         <div className="text-center px-6 max-w-lg pointer-events-auto">
@@ -157,7 +159,7 @@ export default function MatrixPage() {
               ← back to surface
             </Link>
             <Link
-              href="/resume"
+              href="/resume/terminal"
               className="font-mono text-[11px] tracking-widest uppercase border border-[#FF3C3C] text-[#FF3C3C]
                          px-6 py-2.5 hover:bg-[#FF3C3C] hover:text-black transition-colors duration-200"
             >

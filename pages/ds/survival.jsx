@@ -2,19 +2,36 @@ import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
+import { ROLES } from "@/lib/career-data";
+import { monthsBetween } from "@/lib/career-format";
 
-// org names + tenure months are the data (kept); only the "months" unit and
-// surrounding prose are localised.
-const ROLES = [
-  { role: "CSL", months: 5 },
-  { role: "CSIRO", months: 10 },
-  { role: "WEHI", months: 6 },
-  { role: "MoodQ", months: 18 },
-  { role: "CBS", months: 15 },
-  { role: "SAPOL", months: 12 },
-];
+// Short labels for the chart; anything not listed uses the role's orgShort.
+const LABELS = { "unimelb-psychiatry": "MoodQ" };
 
-export default function SurvivalPage() {
+// Whole months from an ISO start date to today, for roles still running.
+function completedMonths(startIso, now) {
+  const [y, m, d] = startIso.split("-").map(Number);
+  const months = (now.getFullYear() - y) * 12 + (now.getMonth() + 1 - m);
+  return Math.max(0, now.getDate() < d ? months - 1 : months);
+}
+
+// Tenure is computed from the start and end dates in lib/career-data.js at build
+// time, so the chart follows the career data and the server and client render
+// the same numbers. Finished roles count calendar months inclusively (the same
+// rule /resume uses); current roles count completed months to the build date.
+export function getStaticProps() {
+  const now = new Date();
+  const rows = [...ROLES].reverse().map((r) => ({
+    role: LABELS[r.id] || r.orgShort,
+    months: r.end ? monthsBetween(r.start, r.end) : completedMonths(r.start, now),
+  }));
+  const sorted = rows.map((r) => r.months).sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  const median = sorted.length % 2 ? sorted[mid] : Math.round((sorted[mid - 1] + sorted[mid]) / 2);
+  return { props: { rows, median } };
+}
+
+export default function SurvivalPage({ rows = [], median = 0 }) {
   const { t, locale = "en-AU" } = useI18n();
   const monthsUnit = t("ds.survival.monthsUnit");
 
@@ -51,7 +68,7 @@ export default function SurvivalPage() {
 
           <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 font-mono text-xs">
             <div className="space-y-3">
-              {ROLES.map(({ role, months }) => (
+              {rows.map(({ role, months }) => (
                 <div key={role} className="flex items-center gap-4">
                   <span className="w-16 text-[#1A1A1A] dark:text-white">{role}</span>
                   <div className="flex-1 h-6 bg-[#F5F5F5] dark:bg-[#141414] flex">
@@ -66,7 +83,9 @@ export default function SurvivalPage() {
                 </div>
               ))}
             </div>
-            <p className="text-[9px] text-[#AAAAAA] mt-6">{t("ds.survival.medianNote")}</p>
+            <p className="text-[9px] text-[#AAAAAA] mt-6">
+              {t("ds.survival.medianNote").replace("{median}", median)}
+            </p>
           </div>
 
           <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">

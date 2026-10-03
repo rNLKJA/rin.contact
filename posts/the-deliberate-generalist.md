@@ -9,7 +9,7 @@ There is a quiet pressure in data science to specialise early. Pick a lane, the 
 
 ## Breadth as a decision, not an accident
 
-I treat government, research, and engineering as three parallel lines rather than three chapters that follow one another. In the same months I have built dashboards inside a regulator, worked on genomics pipelines for a medical research institute, and helped ship a mobile app as a startup co-founder. The work spans climate risk modelling at CSIRO, flow cytometry automation at WEHI, a mental health application at the University of Melbourne, strategic intelligence at Consumer and Business Services and at South Australia Police, and laboratory data work at CSL.
+I treat government, research, and engineering as three parallel lines rather than three chapters that follow one another. In the same months I have built dashboards inside a regulator, developed a mental health app for a university research team, and started building a mobile app as a startup co-founder. The work spans climate risk modelling at CSIRO, flow cytometry automation at WEHI, a mental health application at the University of Melbourne, intelligence and data analysis at Consumer and Business Services and at South Australia Police, and laboratory data work at CSL.
 
 That list can read as scattered. I would argue it is the reverse. Each domain teaches a different way of being wrong, and the lessons compound. Government taught me to frame a question so a decision maker can act on it within a day. Research taught me to care about reproducibility long after the result lands. Engineering taught me that a model nobody can deploy is a model nobody will use. None of those lessons sit comfortably inside a single field.
 

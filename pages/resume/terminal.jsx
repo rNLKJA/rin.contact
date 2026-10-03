@@ -1,54 +1,29 @@
 /**
- * /resume — Interactive CLI resume
- * A fake shell that responds to typed commands with real career data.
+ * /resume/terminal: the interactive CLI resume.
+ * A fake shell that answers typed commands with the same career data as /resume.
  */
-import Head from "next/head";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
+import {
+  welcomeLines,
+  HELP_TEXT,
+  PROJECTS_TEXT,
+  PING_TEXT,
+  whoamiLines,
+  lsLines,
+  experienceLines,
+  educationLines,
+  skillsLines,
+  certsLines,
+  languagesLines,
+} from "@/components/resume/terminalContent";
 
 // ── Command output library ────────────────────────────────────────────────────
-
-const WELCOME = [
-  "",
-  "  ╭──────────────────────────────────────────────────╮",
-  "  │  rin.contact/resume  ·  interactive CV           │",
-  "  │  type  help  to see available commands           │",
-  "  ╰──────────────────────────────────────────────────╯",
-  "",
-  "  Logged in as: guest@rin.contact",
-  "  Session: " + new Date().toLocaleDateString("en-AU", { timeZone: "Australia/Adelaide" }),
-  "",
-  "  Prefer a document?  Type  open /cv  for a printable CV.",
-  "",
-];
-
-const HELP_TEXT = [
-  "",
-  "  COMMANDS",
-  "  ─────────────────────────────────────────────────",
-  "  whoami              identity summary",
-  "  ls                  list available files",
-  "  cat experience.json career history (JSON)",
-  "  cat education.txt   academic qualifications",
-  "  cat skills.txt      technical skill domains",
-  "  cat projects.txt    shipped projects",
-  "  cat certs.txt       professional certifications",
-  "  ping rin.contact    heartbeat check",
-  "  type                typing speed test",
-  "  open /cv            document CV (save as PDF)",
-  "  open /hire-me       hiring pitch & contact",
-  "  open /tools/card    digital business card",
-  "  open /career        career timeline & metro map",
-  "  open /lab           data playground",
-  "  clear               clear the terminal",
-  "  exit                return home",
-  "  ─────────────────────────────────────────────────",
-  "",
-];
-
+// Career output is generated from lib/career-data.js (see terminalContent.js), so
+// the terminal can never disagree with /resume, /cv or /career.
 // Sentences for the typing challenge
 const TYPE_SENTENCES = [
   "All models are wrong, but some are useful.",
@@ -65,171 +40,23 @@ function pickSentence() {
   return TYPE_SENTENCES[Math.floor(Math.random() * TYPE_SENTENCES.length)];
 }
 
-const WHOAMI_TEXT = [
-  "",
-  "  Sunchuangyu Huang  (Rin · 黄孙创宇)",
-  "",
-  "  Role      ASO7 Senior Data Analyst @ South Australia Police",
-  "  Also      Co-founder & Dev Lead @ Mapiva",
-  "  Location  Adelaide, SA, Australia  ·  UTC+9:30",
-  "  Languages Mandarin (native)  ·  English (professional)",
-  "  Web       https://rin.contact",
-  "  Email     huang@rin.contact",
-  "",
-  "  uid=26  gid=data-science  groups=gov,research,engineering,startup",
-  "",
-];
-
-const LS_TEXT = [
-  "",
-  "  total 6",
-  "  -rw-r--r--  experience.json    7 roles  since 2022",
-  "  -rw-r--r--  education.txt      2 degrees  University of Melbourne",
-  "  -rw-r--r--  skills.txt         7+ technical domains",
-  "  -rw-r--r--  projects.txt       21 shipped to production",
-  "  -rw-r--r--  certs.txt          23 professional certifications",
-  "  drwxr-xr-x  contact/           → rin.contact/#contact",
-  "",
-];
-
-const EXPERIENCE_TEXT = [
-  "",
-  "  [",
-  '    { "role": "ASO7 Senior Data Analyst",',
-  '      "org": "South Australia Police · PESB",',
-  '      "period": "Mar 2026 – present",',
-  '      "status": "LIVE ●",',
-  '      "highlight": "First-principles intelligence · Parliamentary reporting" },',
-  "",
-  '    { "role": "Co-founder & Dev Lead",',
-  '      "org": "Mapiva",',
-  '      "period": "Aug 2025 – present",',
-  '      "status": "BUILDING ●",',
-  '      "highlight": "Social connection app · MVP Jan 2027" },',
-  "",
-  '    { "role": "ASO4 Intelligence & Coordination Officer",',
-  '      "org": "CBS · Attorney-General\'s Dept SA",',
-  '      "period": "Jan 2025 – Mar 2026",',
-  '      "highlight": "Built analytics capability from zero · GIS dashboards" },',
-  "",
-  '    { "role": "Research Assistant",',
-  '      "org": "University of Melbourne · Psychiatry",',
-  '      "period": "Aug 2024 – Feb 2026",',
-  '      "highlight": "MoodQ mobile app · GDPR-compliant · $500/mo infra savings" },',
-  "",
-  '    { "role": "Software Engineer Intern",',
-  '      "org": "WEHI – Walter & Eliza Hall Institute",',
-  '      "period": "Feb – Jul 2024",',
-  '      "highlight": "Bioinformatics · celseq2 open-source · cloud HPC" },',
-  "",
-  '    { "role": "Data Science Consultant",',
-  '      "org": "CSIRO – Australia\'s National Science Agency",',
-  '      "period": "Feb – Nov 2023",',
-  '      "highlight": "Climate risk · ENSO time-series · food security" },',
-  "",
-  '    { "role": "Data Analyst & Agile Lead",',
-  '      "org": "CSL – global biotech",',
-  '      "period": "Feb – Jun 2022",',
-  '      "highlight": "HPLC automation · T-SNE / DBSCAN / UMAP" }',
-  "  ]",
-  "",
-];
-
-const EDUCATION_TEXT = [
-  "",
-  "  EDUCATION.TXT",
-  "  ─────────────────────────────────────────────────",
-  "",
-  "  Master of Data Science",
-  "  University of Melbourne  ·  2023 – 2024",
-  "  Specialisation: machine learning, statistical modelling, NLP",
-  "",
-  "  Bachelor of Science",
-  "  University of Melbourne  ·  2019 – 2022",
-  "  Major: Data Science  ·  Minor: Computing & Software Systems",
-  "",
-  "  STEM Peer Mentor  ·  UniMelb  ·  2022 – 2024",
-  "  Trinity College Foundation Studies  ·  2018 – 2019",
-  "",
-];
-
-const SKILLS_TEXT = [
-  "",
-  "  SKILLS.TXT",
-  "  ─────────────────────────────────────────────────",
-  "",
-  "  Languages    Python · R · SQL · TypeScript · Bash",
-  "  Data         pandas · scikit-learn · PyTorch · Spark · dbt",
-  "  Viz          Power BI · Tableau · D3.js · Plotly · Seaborn",
-  "  Cloud        AWS · Azure · GCP · Vercel",
-  "  Geo          ArcGIS · QGIS · PostGIS · Mapbox · Folium",
-  "  Mobile       React Native · Expo · Firebase",
-  "  Web          Next.js · React · FastAPI · Node.js",
-  "  Methods      Time-series · NLP · Computer Vision · Stats",
-  "  Agile        Scrum · JIRA · Confluence · Notion",
-  "  Gov          IAPro · Power Platform · ESRI Suite",
-  "",
-];
-
-const PROJECTS_TEXT = [
-  "",
-  "  PROJECTS.TXT  (21 shipped to production)",
-  "  ─────────────────────────────────────────────────",
-  "",
-  "  ● Mapiva            social connection app · React Native · Aug 2025",
-  "  ● MoodQ             mood-tracking research app · UniMelb Psychiatry",
-  "  ● CBS Dashboard     GIS + analytics · Power BI · AGD SA",
-  "  ● celseq2 (contrib) bioinformatics pipeline · open-source · WEHI",
-  "  ● ENSO risk model   climate & food-security · CSIRO",
-  "  ● HPLC automation   bioprocess data pipeline · CSL",
-  "  ● rin.contact       this site · Next.js · Vercel",
-  "  · · ·  + 14 more  →  rin.contact/projects",
-  "",
-];
-
-const CERTS_TEXT = [
-  "",
-  "  CERTS.TXT  (23 certifications)",
-  "  ─────────────────────────────────────────────────",
-  "  AWS Cloud Practitioner  ·  Azure Fundamentals",
-  "  Google Analytics  ·  Google Data Analytics",
-  "  Meta Front-End Dev  ·  Meta Back-End Dev",
-  "  IBM Data Science  ·  IBM AI Engineering",
-  "  Scrum Master (PSM I)  ·  CAPM (PMI)",
-  "  NAATI CPCB1 (Mandarin ↔ English)",
-  "  IELTS 7.0  ·  + 10 more",
-  "",
-];
-
-const PING_TEXT = [
-  "",
-  "  PING rin.contact",
-  "",
-  "  64 bytes from rin.contact: seq=0 time=<1ms",
-  "  64 bytes from rin.contact: seq=1 time=<1ms",
-  "  64 bytes from rin.contact: seq=2 time=<1ms",
-  "",
-  "  --- rin.contact ping statistics ---",
-  "  3 packets transmitted · 3 received · 0% packet loss",
-  "  Status: OPERATIONAL ● all systems nominal",
-  "",
-];
-
 const COMMANDS = {
   help: () => HELP_TEXT,
   "?": () => HELP_TEXT,
-  whoami: () => WHOAMI_TEXT,
-  ls: () => LS_TEXT,
-  "ls -la": () => LS_TEXT,
-  "cat experience.json": () => EXPERIENCE_TEXT,
-  "cat education.txt": () => EDUCATION_TEXT,
-  "cat skills.txt": () => SKILLS_TEXT,
+  whoami: whoamiLines,
+  ls: lsLines,
+  "ls -la": lsLines,
+  "cat experience.json": experienceLines,
+  "cat education.txt": educationLines,
+  "cat skills.txt": skillsLines,
   "cat projects.txt": () => PROJECTS_TEXT,
-  "cat certs.txt": () => CERTS_TEXT,
+  "cat certs.txt": certsLines,
+  "cat languages.txt": languagesLines,
   "ping rin.contact": () => PING_TEXT,
 };
 
 const INTERNAL_ROUTES = [
+  "/resume",
   "/cv",
   "/hire-me",
   "/tools/card",
@@ -241,11 +68,12 @@ const INTERNAL_ROUTES = [
 ];
 
 // ── Component ─────────────────────────────────────────────────────────────────
-export default function ResumePage() {
+export default function ResumeTerminalPage() {
   const router = useRouter();
   const { t, locale = "en-AU" } = useI18n();
   const isZh = locale === "zh-Hans";
-  const [lines, setLines] = useState(WELCOME);
+  // Date is set after mount so the static HTML and the first client render match.
+  const [lines, setLines] = useState(() => welcomeLines(""));
   const [input, setInput] = useState("");
   const [cmdHist, setCmdHist] = useState([]);
   const histIdxRef = useRef(-1);
@@ -263,8 +91,11 @@ export default function ResumePage() {
     if (el) el.scrollTop = el.scrollHeight;
   }, [lines]);
 
-  // Focus input on mount and click anywhere in terminal
+  // Stamp the session date and focus the input on mount
   useEffect(() => {
+    const date = new Date().toLocaleDateString("en-AU", { timeZone: "Australia/Adelaide" });
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the date must be stamped after hydration, or the static HTML and first client render disagree
+    setLines((prev) => (prev.length === welcomeLines("").length ? welcomeLines(date) : prev));
     inputRef.current?.focus();
   }, []);
 
@@ -291,7 +122,7 @@ export default function ResumePage() {
 
       if (cmd === "exit") {
         push(["", "  Goodbye. Redirecting to home...", ""]);
-        setTimeout(() => router.push("/"), 1000);
+        setTimeout(() => router.push("/"), 150);
         return;
       }
 
@@ -300,12 +131,12 @@ export default function ResumePage() {
         const target = cmd.slice(5).trim();
         if (INTERNAL_ROUTES.includes(target)) {
           push(["", `  Opening ${target}...`, ""]);
-          setTimeout(() => router.push(target), 600);
+          setTimeout(() => router.push(target), 150);
           return;
         }
         if (target.startsWith("http")) {
           push(["", `  Opening ${target} in a new tab...`, ""]);
-          setTimeout(() => window.open(target, "_blank", "noreferrer"), 400);
+          setTimeout(() => window.open(target, "_blank", "noreferrer"), 150);
           return;
         }
         push(["", `  route not found: ${target}`, `  try: ${INTERNAL_ROUTES.join("  ")}`, ""]);
@@ -435,7 +266,8 @@ export default function ResumePage() {
             ? "Rin Huang（黄孙创宇）的交互式命令行简历。输入命令探索职业经历、技能、项目和学历。"
             : "Interactive CLI resume for Rin Huang. Type commands to explore career, skills, projects, and education."
         }
-        path="/resume"
+        path="/resume/terminal"
+        noindex
         ogImage={{
           title: isZh ? "交互式简历" : "Interactive Resume",
           subtitle: isZh ? "输入命令探索职业与项目" : "Type commands to explore career & projects",
@@ -473,17 +305,17 @@ export default function ResumePage() {
           <span className="w-2.5 h-2.5 rounded-full bg-[#222]" aria-hidden="true" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#222]" aria-hidden="true" />
           <span className="ml-3 text-[10px] font-mono text-[#3A3A3A] truncate min-w-0">
-            guest@rin.contact — zsh — /resume
+            guest@rin.contact · zsh · /resume/terminal
           </span>
-          {/* Always-visible escape to the clean, printable CV — a recruiter who
-              lands on the terminal and does not know to type `open /cv` still has
-              a one-click path to the actual document. */}
+          {/* Always-visible way back to the readable resume, so a recruiter who
+              lands here and does not know to type `open /resume` still has a
+              one-click path to the document. */}
           <div className="ml-auto flex items-center gap-3 flex-shrink-0 pl-3">
             <Link
-              href="/cv"
+              href="/resume"
               className="text-[10px] font-mono tracking-wide text-[#B0B0B0] hover:text-white border border-[#2A2A2A] hover:border-[#FF3C3C] rounded px-2 py-0.5 transition-colors"
             >
-              {t("nav.cv")} <span aria-hidden="true">↗</span>
+              {t("nav.resume")} <span aria-hidden="true">↗</span>
             </Link>
             <Link
               href="/"

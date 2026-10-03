@@ -38,7 +38,7 @@ export default function MagneticWrapper({
   const onMouseLeave = useCallback(() => {
     setTilt({
       transform: "perspective(700px) rotateY(0deg) rotateX(0deg) translateZ(0px)",
-      transition: "transform 0.45s ease-out",
+      transition: "transform 0.2s ease-out",
     });
   }, []);
 

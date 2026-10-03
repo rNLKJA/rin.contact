@@ -48,15 +48,12 @@ export default function VoidPage() {
         {/* After 7 clicks, the void responds */}
         {clicked >= 7 && clicked < 14 && (
           <div className="text-center font-mono pointer-events-none">
-            <p
-              className="text-[11px] tracking-widest uppercase text-[#333]"
-              style={{ animation: "fade-in 1s ease-out both" }}
-            >
+            <p className="animate-enter text-[11px] tracking-widest uppercase text-[#333]">
               you clicked the void {clicked} times.
             </p>
             <p
-              className="text-[11px] tracking-widest uppercase text-[#1F1F1F] mt-2"
-              style={{ animation: "fade-in 1s 0.3s ease-out both" }}
+              className="animate-enter text-[11px] tracking-widest uppercase text-[#1F1F1F] mt-2"
+              style={{ animationDelay: "30ms" }}
             >
               the void is impressed.
             </p>
@@ -65,10 +62,7 @@ export default function VoidPage() {
 
         {clicked >= 14 && (
           <div className="text-center font-mono">
-            <p
-              className="text-[11px] tracking-widest uppercase text-[#FF3C3C] mb-6"
-              style={{ animation: "fade-in 0.8s ease-out both" }}
-            >
+            <p className="animate-enter text-[11px] tracking-widest uppercase text-[#FF3C3C] mb-6">
               ok. you win. here&apos;s the exit.
             </p>
             <Link

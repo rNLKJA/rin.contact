@@ -134,10 +134,13 @@ h1 {
 }
 
 /* ─── Scroll-reveal animation primitives ────────────────────────── */
+/* Motion rules: every UI animation completes within 300ms of its trigger
+   (delay + duration <= 300ms) and starts at least 70% of the way to its end
+   state, so entrances begin at opacity 0.7 with a small (<= 8px) offset. */
 @keyframes fade-up {
   from {
-    opacity: 0;
-    transform: translateY(24px);
+    opacity: 0.7;
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -146,7 +149,7 @@ h1 {
 }
 @keyframes fade-in {
   from {
-    opacity: 0;
+    opacity: 0.7;
   }
   to {
     opacity: 1;
@@ -154,8 +157,8 @@ h1 {
 }
 @keyframes slide-right {
   from {
-    opacity: 0;
-    transform: translateX(-20px);
+    opacity: 0.7;
+    transform: translateX(-6px);
   }
   to {
     opacity: 1;
@@ -173,13 +176,13 @@ h1 {
 }
 
 .animate-fade-up {
-  animation: fade-up 600ms ease-in-out both;
+  animation: fade-up 200ms ease-out both;
 }
 .animate-fade-in {
-  animation: fade-in 600ms ease-in-out both;
+  animation: fade-in 200ms ease-out both;
 }
 .animate-slide-right {
-  animation: slide-right 500ms ease-in-out both;
+  animation: slide-right 200ms ease-out both;
 }
 .animate-blink {
   animation: blink 1.2s ease-in-out infinite;
@@ -187,18 +190,20 @@ h1 {
   will-change: opacity;
 }
 
-/* Stagger delay helpers */
+/* Stagger delay helpers — scaled so the longest stagger (100ms) plus the
+   200ms entrance still finishes within 300ms. The class names keep their
+   ordinal meaning (1st..4th step), not their millisecond value. */
 .delay-100 {
-  animation-delay: 100ms;
+  animation-delay: 25ms;
 }
 .delay-200 {
-  animation-delay: 200ms;
+  animation-delay: 50ms;
 }
 .delay-300 {
-  animation-delay: 300ms;
+  animation-delay: 75ms;
 }
 .delay-400 {
-  animation-delay: 400ms;
+  animation-delay: 100ms;
 }
 
 /* ─── LCP: skip hero animations on mobile so h1/role/bio paint immediately ── */
@@ -426,7 +431,7 @@ h1 {
   }
 }
 .animate-glitch-shake {
-  animation: glitch-shake 0.4s ease-in-out;
+  animation: glitch-shake 250ms ease-in-out;
 }
 
 /* ─── Below-fold section optimisation ──────────────────────────────────── */

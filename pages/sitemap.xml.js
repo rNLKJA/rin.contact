@@ -18,7 +18,8 @@ const IMAGES = [
   {
     loc: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Coat_of_arms_of_the_South_Australia_Police.svg",
     title: "South Australia Police",
-    caption: "ASO7 Senior Data Analyst — SAPOL Professional & Ethical Standards Branch",
+    caption:
+      "ASO7 Senior Data Analyst, Ethical and Professional Standards Branch, SA Police, since Mar 2026",
     license: "https://www.police.sa.gov.au",
   },
   {
@@ -30,25 +31,26 @@ const IMAGES = [
   {
     loc: "https://yt3.googleusercontent.com/wD1YaCDSytQDbDcSAkR21j8IQTl9lyC6LDr3p5ZC2yGX-RzU1ayGmn6swOS_LLzMKpvyA--UJQY=s176-c-k-c0x00ffffff-no-rj-mo",
     title: "University of Melbourne",
-    caption: "Master of Data Science, Bachelor of Science, STEM Mentor",
+    caption:
+      "Master of Data Science, Bachelor of Science (Data Science), RA.1 Research Assistant (MoodQ), STEM Mentor",
     license: "https://www.unimelb.edu.au",
   },
   {
     loc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjRIgIQHaq6ZhUDwJUqfFa5xZJ9Tn5f6YLBA&s",
     title: "WEHI — Biomedical Research",
-    caption: "Software Engineer Intern — Bioinformatics, Feb–Jul 2024",
+    caption: "Software Engineer Intern (Data Science), Feb–Jul 2024",
     license: "https://www.wehi.edu.au",
   },
   {
     loc: "https://upload.wikimedia.org/wikipedia/en/thumb/9/92/CSIRO_Logo.svg/120px-CSIRO_Logo.svg.png",
     title: "CSIRO",
-    caption: "Data Science Consultant — Climate & Earth Systems, Feb–Nov 2023",
+    caption: "Data Science Industrial Consultant, Feb–Nov 2023",
     license: "https://www.csiro.au",
   },
   {
     loc: "https://s3-symbol-logo.tradingview.com/csl--600.png",
     title: "CSL Behring",
-    caption: "Data Analyst & Agile Leader — R&D, Feb–Jun 2022",
+    caption: "Data Analyst & Agile Leader, Feb–Jun 2022",
     license: "https://www.csl.com",
   },
   {
@@ -68,7 +70,7 @@ const CORE = [
   { path: "/projects/signal", priority: 0.8, freq: "monthly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
   { path: "/lab", priority: 0.8, freq: "monthly" },
-  { path: "/resume", priority: 0.7, freq: "monthly" },
+  { path: "/resume", priority: 0.9, freq: "monthly" },
   { path: "/cv", priority: 0.8, freq: "monthly" },
   { path: "/hire-me", priority: 0.7, freq: "monthly" },
   { path: "/tools/card", priority: 0.7, freq: "monthly" },
@@ -80,7 +82,7 @@ const CORE = [
 const ZH_PAGES = [
   { path: "/", priority: 1.0, freq: "weekly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
-  { path: "/resume", priority: 0.7, freq: "monthly" },
+  { path: "/resume", priority: 0.9, freq: "monthly" },
   { path: "/hire-me", priority: 0.7, freq: "monthly" },
 ];
 
