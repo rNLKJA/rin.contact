@@ -69,7 +69,7 @@ function IdleToast() {
                  tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D]
                  bg-white dark:bg-[#1A1A1A] text-[#3D3D3D] dark:text-[#AAAAAA]
                  px-5 py-2.5 shadow-none pointer-events-none select-none"
-      style={{ animation: "fade-in 0.4s ease-out both" }}
+      style={{ animation: "fade-in 200ms ease-out both" }}
       aria-live="polite"
     >
       {msg}
@@ -100,7 +100,7 @@ function CopyUrlToast() {
                  tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D]
                  bg-white dark:bg-[#1A1A1A] text-[#3D3D3D] dark:text-[#AAAAAA]
                  px-4 py-2 pointer-events-none select-none"
-      style={{ animation: "fade-in 0.3s ease-out both" }}
+      style={{ animation: "fade-in 200ms ease-out both" }}
       aria-live="polite"
     >
       Link copied. Share responsibly.
@@ -214,7 +214,7 @@ function SecretWordTrigger() {
       <span
         className="absolute -top-7 left-1/2 -translate-x-1/2 font-mono text-[10px]
                    text-[#FF3C3C] whitespace-nowrap tracking-widest"
-        style={{ animation: "fade-in 0.3s ease-out both" }}
+        style={{ animation: "fade-in 200ms ease-out both" }}
       >
         {label}
       </span>

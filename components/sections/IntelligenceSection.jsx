@@ -17,6 +17,7 @@ import { useInView } from "@/hooks/useInView";
 import ConfettiBurst from "@/components/ui/ConfettiBurst";
 import { useI18n } from "@/contexts/I18nContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { CERTS } from "@/lib/career-data";
 
 // Chart data carries light-mode colours. These muted darks vanish on the dark
 // canvas, so lighten only those in dark mode (accents like red/amber pass through).
@@ -40,7 +41,8 @@ const toY = (seniority) => Math.round(280 - (seniority / 10) * 260);
 // PANEL A — Bubble chart data
 // X  = years in formal workforce (0 = CBS). Pre-career roles at -2 to -0.5 (not officially workforce).
 // Y  = career seniority level (0–10; Entry≈2, Junior≈3–4, Mid≈5–6, Senior≈7, Principal≈9)
-// Key: CBS (yr 0) → SAPOL (yr 1) = level 4 to 7 in 1 year. Typical: 4 years minimum.
+// Key: CBS (yr 0) → SAPOL (yr ~1.2) = level 4 to 7 in 14 months. Typical: 4 years minimum.
+// Plots the 6 employed roles; Mapiva (co-founded, Aug 2025–present) is left out.
 // Sources: APS Career Pathfinder (APSC 2024), IAPA Skills & Salary Survey 2023
 // ═══════════════════════════════════════════════════════════════════════════════
 const RIN_BUBBLES = [
@@ -56,7 +58,7 @@ const RIN_BUBBLES = [
     color: "#555555",
     domain: "Pre-career",
     period: "Feb–Jun 2022",
-    detail: "Data Analyst & Agile Lead · HPLC automation · T-SNE/DBSCAN/UMAP clustering",
+    detail: "Data Analyst & Agile Leader · HPLC automation · t-SNE/DBSCAN/UMAP clustering",
     why: "Entry/junior. Not officially workforce — internship/industry placement. CSL Behring biotech.",
   },
   {
@@ -71,7 +73,7 @@ const RIN_BUBBLES = [
     color: "#555555",
     domain: "Pre-career",
     period: "Feb–Nov 2023",
-    detail: "Data Science Consultant · Climate & Food Security · AR time series modelling",
+    detail: "Data Science Industrial Consultant · ENSO & commodity volatility · AR time series",
     why: "Junior. Not officially workforce — capstone/consulting. Dr Vassili Kitsios, CSIRO.",
   },
   {
@@ -86,7 +88,7 @@ const RIN_BUBBLES = [
     color: "#555555",
     domain: "Pre-career",
     period: "Feb–Jul 2024",
-    detail: "Software Engineer Intern · Bioinformatics · Cloud HPC · celseq2 open-source",
+    detail: "Software Engineer Intern (Data Science) · Cloud HPC · celseq2 open-source",
     why: "Junior. Not officially workforce — internship. Automated genomics pipelines, celseq2 contributor.",
   },
   {
@@ -101,8 +103,8 @@ const RIN_BUBBLES = [
     color: "#555555",
     domain: "Pre-career",
     period: "Aug 2024–Feb 2026",
-    detail: "RA1 Research Assistant (casual) · UniMelb Psychiatry · Full-stack mobile app",
-    why: "Junior. Not officially workforce — casual RA1. Full product ownership, MoodQ mobile app.",
+    detail: "RA1 Research Assistant (casual) · UniMelb Psychiatry · Sole developer, MoodQ app",
+    why: "Junior. Not officially workforce — casual RA1. Sole developer of the MoodQ mobile app.",
   },
   {
     id: "cbs",
@@ -117,8 +119,8 @@ const RIN_BUBBLES = [
     domain: "Government",
     period: "Jan 2025–Mar 2026",
     detail:
-      "ASO4 Intelligence Officer · Power BI & GIS · Ministerial reporting · Cross-agency MOUs",
-    why: "First formal workforce role. Mid-junior (level 4). Built CBS analytics from zero.",
+      "ASO4 Intelligence & Coordination Officer · Power BI & GIS · Ministerial reporting · Cross-agency MOUs",
+    why: "First full-time role. Mid-junior (level 4). Built the Prevention Team's analytics from scratch.",
   },
   {
     id: "sapol",
@@ -133,8 +135,8 @@ const RIN_BUBBLES = [
     domain: "Government",
     period: "Mar 2026–present",
     detail:
-      "ASO7 Senior Data Analyst · PESB · First-principles analytics · Parliamentary reporting",
-    why: "Mid-management (level 7). 1 year from CBS to SAPOL. Typical pathway: 4 years minimum (APSC).",
+      "ASO7 Senior Data Analyst · EPSB · UoF & Vehicle Pursuit reporting · IAPro/BlueTeam tooling",
+    why: "Mid-management (level 7). 14 months from CBS to SAPOL. Typical pathway: 4 years minimum (APSC).",
   },
 ];
 
@@ -222,7 +224,11 @@ const RIN_INDEXED = [
   { year: 2022, idx: 2.18, event: "CSL — first industry role · HPLC + ML clustering" },
   { year: 2023, idx: 2.91, event: "CSIRO capstone · climate science & AR modelling" },
   { year: 2024, idx: 4.18, event: "WEHI + MoodQ + MDS graduation — breakout year" },
-  { year: 2025, idx: 4.72, event: "CBS built from zero · Mapiva co-founded" },
+  {
+    year: 2025,
+    idx: 4.72,
+    event: "CBS Prevention Team analytics built from scratch · Mapiva co-founded",
+  },
   { year: 2026, idx: 5.37, event: "SAPOL ASO7 · Strategic Leadership operating at its peak" },
 ];
 
@@ -264,12 +270,12 @@ const FP_TREE = {
         {
           label: "Intelligence frameworks",
           proof:
-            "CBS tobacco compliance schedule (first of its kind in the team) · SAPOL analytics roadmap for PESB — both built from first principles with zero prior infrastructure.",
+            "CBS tobacco compliance schedule for 1,500+ licensed sites (first of its kind in the team) · End-to-end review of EPSB's complaint administration workflow at SAPOL, built from team interviews and the team's own procedure notes.",
         },
         {
           label: "Stakeholder alignment",
           proof:
-            "Cross-agency MOUs with SAPOL, ITEC, and federal partners (CBS) · Ministerial Office reporting pipeline · EPSB senior advisory at SAPOL.",
+            "Cross-agency MOUs with SAPOL, ITEC, and federal partners (CBS) · Ministerial Office reporting pipeline · Quarterly Use of Force and Vehicle Pursuit reports for SAPOL executives.",
         },
         {
           label: "Risk-based prioritisation",
@@ -291,7 +297,7 @@ const FP_TREE = {
         {
           label: "Machine learning",
           proof:
-            "T-SNE, DBSCAN, UMAP on HPLC lab data (CSL Behring) · BERT-based climate fact-checker (UniMelb NLP capstone) · Unsupervised clustering on large social-media corpora (UniMelb research).",
+            "T-SNE, DBSCAN, UMAP on HPLC lab data (CSL Behring) · Transformer-based climate fact-checker (UniMelb COMP90042 NLP project) · Unsupervised clustering on large social-media corpora (UniMelb research).",
         },
         {
           label: "Geospatial analysis",
@@ -308,12 +314,12 @@ const FP_TREE = {
         {
           label: "Mobile & Web",
           proof:
-            "Expo React Native: MoodQ (UniMelb Psychiatry, production) and Mapiva (co-founded, MVP Jan 2027) · Next.js App Router: rin.contact · Uniapp → Expo RN migration that cut ~$500/mo in AWS infrastructure.",
+            "Expo React Native: MoodQ (UniMelb Psychiatry, handed to a production team) and Mapiva (co-founded, beta in early 2027) · Next.js: rin.contact · Uniapp → Expo RN migration of MoodQ as sole developer.",
         },
         {
           label: "HPC & Cloud",
           proof:
-            "SPARTAN HPC (UniMelb): ~65 GB Twitter corpus for social media analysis · AWS RDS + LightSail: GDPR-compliant MoodQ backend · GitHub Actions CI/CD pipelines across all active repos.",
+            "SPARTAN HPC (UniMelb): ~65 GB Twitter corpus for social media analysis · AWS RDS + LightSail: GDPR-aligned MoodQ backend, ~$500/mo saved · GitHub Actions CI/CD pipelines across all active repos.",
         },
         {
           label: "Data pipelines",
@@ -330,12 +336,11 @@ const FP_TREE = {
         {
           label: "Cross-sector career design",
           proof:
-            "6 distinct sectors in 4 years: biotech (CSL), climate research (CSIRO), bioinformatics (WEHI), mental-health tech (MoodQ), government intelligence (CBS), law-enforcement analytics (SAPOL). Each role chosen for what it would teach, not for comfort. Professionals today are on pace to hold twice as many jobs as workers from 15 years ago (LinkedIn Work Change Report, 2024).",
+            "6 distinct sectors since 2022: biotech (CSL), climate research (CSIRO), bioinformatics (WEHI), mental-health tech (MoodQ), government intelligence (CBS), law-enforcement analytics (SAPOL). Each role chosen for what it would teach, not for comfort. Professionals today are on pace to hold twice as many jobs as workers from 15 years ago (LinkedIn Work Change Report, 2024).",
         },
         {
           label: "Lifelong learning & reskilling",
-          proof:
-            "23+ certifications: AWS, Azure, Tableau, Power BI, Agile (PMI-ACP path), NAATI CPCB1 Mandarin. 75% of Gen Z use AI to upskill — the highest of any generation (Randstad Gen Z Workplace Blueprint, 2025). Rin is actively among them.",
+          proof: `${CERTS.length} certifications, including VETASSESS Statistician, Azure Fundamentals (AZ-900), Neo4j and NAATI CCL (Mandarin). 75% of Gen Z use AI to upskill — the highest of any generation (Randstad Gen Z Workplace Blueprint, 2025). Rin is actively among them.`,
         },
         {
           label: "Mentorship & knowledge transfer",
@@ -440,8 +445,9 @@ function BubblePanel() {
       confettiFiredRef.current = false;
       return;
     }
-    setStep(1);
-    setTimeout(() => setStep(2), 1400);
+    // Motion rule R1: everything lands within 300ms of the click, so go
+    // straight to the final step (per-element delays <= 100ms + 200ms).
+    setStep(2);
   };
 
   // Confetti when gap annotation appears (step 2)
@@ -604,7 +610,7 @@ function BubblePanel() {
               className="stroke-[#999] dark:stroke-[#2A2A2A]"
               strokeWidth={1.5}
               strokeDasharray="4,3"
-              style={{ animation: "fadeUp 0.5s ease 0.1s both" }}
+              style={{ animation: "fadeUp 200ms ease-out both" }}
             />
           )}
 
@@ -616,17 +622,18 @@ function BubblePanel() {
               stroke="#FF3C3C"
               strokeWidth={1}
               strokeOpacity={0.4}
-              style={{ animation: "fadeUp 0.5s ease 0.3s both" }}
+              style={{ animation: "fadeUp 200ms ease-out 50ms both" }}
             />
           )}
 
-          {/* Benchmark bubbles — fade in at step 2 */}
+          {/* Benchmark bubbles — hidden until step 2 (must stay invisible before
+              the run), then enter from 70% via fadeUp rather than fading from 0 */}
           {BENCHMARKS.map((b) => (
             <g
               key={b.id}
               style={{
                 opacity: step >= 2 ? 1 : 0,
-                transition: step >= 2 ? "opacity 0.6s ease 0.2s" : "none",
+                animation: step >= 2 ? "fadeUp 200ms ease-out 25ms both" : "none",
                 cursor: "pointer",
               }}
               onMouseEnter={() => setHovered(b.id)}
@@ -682,9 +689,9 @@ function BubblePanel() {
                   strokeWidth={step >= 1 ? 1.5 : 1}
                   style={{
                     transition: [
-                      "cx 0.9s cubic-bezier(0.34,1.2,0.64,1)",
-                      "cy 0.9s cubic-bezier(0.34,1.2,0.64,1)",
-                      "fill 0.4s ease",
+                      "cx 0.25s cubic-bezier(0.34,1.2,0.64,1)",
+                      "cy 0.25s cubic-bezier(0.34,1.2,0.64,1)",
+                      "fill 0.2s ease",
                       "r 0.15s ease",
                     ].join(", "),
                   }}
@@ -697,7 +704,7 @@ function BubblePanel() {
                     fontSize={9}
                     fill={tone(b.color, isDark)}
                     fontFamily="monospace"
-                    style={{ animation: "fadeUp 0.35s ease 0.8s both" }}
+                    style={{ animation: "fadeUp 200ms ease-out 100ms both" }}
                   >
                     {b.label}
                   </text>
@@ -706,9 +713,9 @@ function BubblePanel() {
             );
           })}
 
-          {/* Gap annotation at Year 1 — Rin at 7 vs benchmark at 4.5; 1 yr vs 4 yr to reach 7 */}
+          {/* Gap annotation at Year 1 — Rin at 7 vs benchmark at 4.5; 14 months vs 4 yr to reach 7 */}
           {step >= 2 && (
-            <g style={{ animation: "fadeUp 0.4s ease 0.8s both" }}>
+            <g style={{ animation: "fadeUp 200ms ease-out 75ms both" }}>
               <line
                 x1={toX(1) + 8}
                 y1={toY(7)}
@@ -754,7 +761,7 @@ function BubblePanel() {
                 className="fill-[#999] dark:fill-[#686868]"
                 fontFamily="monospace"
               >
-                1 yr vs 4 yr
+                14 mo vs 4 yr
               </text>
             </g>
           )}
@@ -797,7 +804,7 @@ function BubblePanel() {
         </button>
         <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
           {step === 0 &&
-            "6 roles (4 pre-career + 2 formal) · 5 benchmark cohorts · click to reveal the pattern"}
+            "6 employed roles (4 pre-career + 2 formal; excludes co-founded Mapiva) · 5 benchmark cohorts · click to reveal the pattern"}
           {step === 1 && "Plotting true positions…"}
           {step === 2 && "Hover any bubble for context"}
         </span>
@@ -805,14 +812,14 @@ function BubblePanel() {
 
       {/* Insight — step 2 */}
       {step >= 2 && (
-        <div className="mt-6 space-y-3" style={{ animation: "fadeUp 0.4s ease 1.1s both" }}>
+        <div className="mt-6 space-y-3" style={{ animation: "fadeUp 200ms ease-out 100ms both" }}>
           <div className="border-l-2 border-[#FF3C3C] pl-4">
             <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">
               Pattern Detected
             </p>
             <p className="text-sm text-[#666] dark:text-[#AAAAAA] leading-relaxed font-light">
               Formal career starts at CBS/AGD (level 4). From there, Rin reached SAPOL ASO7 (level
-              7) in <span className="text-black dark:text-white font-normal">1 year</span>. The
+              7) in <span className="text-black dark:text-white font-normal">14 months</span>. The
               typical analyst pathway requires{" "}
               <span className="text-black dark:text-white font-normal">4 years minimum</span> to
               reach ASO7-equivalent
@@ -881,15 +888,15 @@ function BubblePanel() {
             </p>
           </div>
           <p className="text-[10px] text-[#AAA] dark:text-[#333] font-mono pt-1">
-            n = 6 roles (4 pre-career + 2 formal) · benchmarks: APS Career Pathfinder (APSC 2024) ·
-            LinkedIn Work Change Report (2024) · IAPA Skills &amp; Salary Survey (2023) · Randstad
-            Gen Z Workplace Blueprint (2025)
+            n = 6 employed roles (4 pre-career + 2 formal; excludes co-founded Mapiva) · benchmarks:
+            APS Career Pathfinder (APSC 2024) · LinkedIn Work Change Report (2024) · IAPA Skills
+            &amp; Salary Survey (2023) · Randstad Gen Z Workplace Blueprint (2025)
           </p>
           <AiDeclaration />
         </div>
       )}
 
-      {/* Confetti when "1 yr vs 4 yr" gap annotation appears */}
+      {/* Confetti when "14 mo vs 4 yr" gap annotation appears */}
       <ConfettiBurst trigger={confettiTrigger} />
     </div>
   );
@@ -907,9 +914,10 @@ function GrowthPanel() {
       setStep(0);
       return;
     }
-    setStep(1);
-    setTimeout(() => setStep(2), 800);
-    setTimeout(() => setStep(3), 1800);
+    // Motion rule R1: everything lands within 300ms of the click, so go
+    // straight to the final step (per-element delays <= 100ms + 200ms,
+    // drawLine 250ms). No pending timers means Reset can't be overridden.
+    setStep(3);
   };
 
   const hovPt = RIN_INDEXED.find((d) => d.year === hovered);
@@ -1058,7 +1066,7 @@ function GrowthPanel() {
               d={GAP_FILL_PATH}
               fill="#FF3C3C"
               fillOpacity={0.05}
-              style={{ animation: "fadeUp 0.6s ease" }}
+              style={{ animation: "fadeUp 200ms ease-out" }}
             />
           )}
 
@@ -1071,7 +1079,7 @@ function GrowthPanel() {
                 strokeWidth={1.5}
                 strokeDasharray="4,3"
                 fill="none"
-                style={{ animation: "fadeUp 0.5s ease" }}
+                style={{ animation: "fadeUp 200ms ease-out" }}
               />
               <path
                 d={BENCH_PROJ_PATH}
@@ -1079,7 +1087,7 @@ function GrowthPanel() {
                 strokeWidth={1}
                 strokeDasharray="3,4"
                 fill="none"
-                style={{ animation: "fadeUp 0.5s ease 0.2s both" }}
+                style={{ animation: "fadeUp 200ms ease-out 50ms both" }}
               />
               <text
                 x={366}
@@ -1105,14 +1113,17 @@ function GrowthPanel() {
           {/* Rin's line — step 2 */}
           {step >= 2 && (
             <>
+              {/* pathLength=100 normalises the dash maths so drawLine can
+                  start 70% drawn (dashoffset 30) regardless of path length */}
               <path
                 d={RIN_PATH}
                 stroke="#FF3C3C"
                 strokeWidth={2}
                 fill="none"
-                strokeDasharray={2000}
+                pathLength={100}
+                strokeDasharray={100}
                 strokeDashoffset={0}
-                style={{ animation: "drawLine 1.2s ease-out forwards" }}
+                style={{ animation: "drawLine 250ms ease-out forwards" }}
               />
               <path
                 d={RIN_PROJ_PATH}
@@ -1120,7 +1131,7 @@ function GrowthPanel() {
                 strokeWidth={1.5}
                 strokeDasharray="3,4"
                 fill="none"
-                style={{ animation: "fadeUp 0.5s ease 1s both" }}
+                style={{ animation: "fadeUp 200ms ease-out 75ms both" }}
               />
               <text
                 x={465}
@@ -1128,7 +1139,7 @@ function GrowthPanel() {
                 fontSize={10}
                 fill="#FF3C3C"
                 fontFamily="monospace"
-                style={{ animation: "fadeUp 0.4s ease 1.4s both" }}
+                style={{ animation: "fadeUp 200ms ease-out 100ms both" }}
               >
                 ∞
               </text>
@@ -1151,7 +1162,7 @@ function GrowthPanel() {
                   stroke="#FF3C3C"
                   strokeWidth={isBk ? 0 : 1.5}
                   style={{
-                    animation: `fadeUp 0.3s ease ${0.3 + (d.year - 2020) * 0.12}s both`,
+                    animation: `fadeUp 200ms ease-out ${Math.min((d.year - 2020) * 15, 100)}ms both`,
                     cursor: "pointer",
                   }}
                   onMouseEnter={() => setHovered(d.year)}
@@ -1163,7 +1174,7 @@ function GrowthPanel() {
 
           {/* Breakout annotation — step 3 */}
           {step >= 3 && (
-            <g style={{ animation: "fadeUp 0.4s ease 0.2s both" }}>
+            <g style={{ animation: "fadeUp 200ms ease-out 25ms both" }}>
               <line
                 x1={px(2024)}
                 y1={py(4.18) - 8}
@@ -1185,7 +1196,7 @@ function GrowthPanel() {
 
           {/* Gap bracket at 2026 — step 3 */}
           {step >= 3 && (
-            <g style={{ animation: "fadeUp 0.4s ease 0.5s both" }}>
+            <g style={{ animation: "fadeUp 200ms ease-out 50ms both" }}>
               <line
                 x1={392}
                 y1={py(5.37)}
@@ -1267,7 +1278,7 @@ function GrowthPanel() {
       {step >= 3 && (
         <div
           className="mt-6 border-t border-[#E0E0E0] dark:border-[#1E1E1E] pt-5 grid grid-cols-3 gap-4"
-          style={{ animation: "fadeUp 0.4s ease 0.6s both" }}
+          style={{ animation: "fadeUp 200ms ease-out 75ms both" }}
         >
           <div>
             <p className="text-[10px] uppercase tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A] mb-1 font-mono">
@@ -1298,7 +1309,7 @@ function GrowthPanel() {
 
       {/* Insight — step 3 */}
       {step >= 3 && (
-        <div className="mt-6 space-y-3" style={{ animation: "fadeUp 0.4s ease 0.8s both" }}>
+        <div className="mt-6 space-y-3" style={{ animation: "fadeUp 200ms ease-out 100ms both" }}>
           <div className="border-l-2 border-[#FF3C3C] pl-4">
             <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">
               Why compound beats linear
@@ -1478,8 +1489,8 @@ export default function IntelligenceSection() {
       {/* Section header */}
       <div
         ref={ref}
-        className={`mb-10 transition-all duration-600 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        className={`mb-10 transition-all duration-200 ease-out ${
+          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
@@ -1546,14 +1557,16 @@ export default function IntelligenceSection() {
         </p>
       </div>
 
+      {/* Motion rules: entrances start at 70% (opacity 0.7, 1.5px; the line
+          70% drawn against pathLength=100) and finish within 300ms. */}
       <style>{`
         @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(5px); }
-          to   { opacity: 1; transform: translateY(0);   }
+          from { opacity: 0.7; transform: translateY(1.5px); }
+          to   { opacity: 1;   transform: translateY(0);     }
         }
         @keyframes drawLine {
-          from { stroke-dashoffset: 2000; }
-          to   { stroke-dashoffset: 0;    }
+          from { stroke-dashoffset: 30; }
+          to   { stroke-dashoffset: 0;  }
         }
       `}</style>
     </section>

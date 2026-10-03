@@ -1,3 +1,5 @@
+import { CERTS, ROLES } from "@/lib/career-data";
+
 /**
  * GET /api/curl  (internal — invoked via middleware rewrite for CLI clients)
  *
@@ -97,17 +99,27 @@ const lines = [
     true,
     "Senior Data Analyst",
     "South Australia Police",
-    "ASO7  ·  Professional & Ethical Standards",
+    "ASO7  ·  Intelligence & Probity Unit  ·  EPSB",
     "2026 → present",
     "Adelaide, SA"
   ),
 
   tEntry(
     "2025",
+    true,
+    "Co-Founder & Dev Lead",
+    "Mapiva",
+    "Startup  ·  Engineering",
+    "2025 → present",
+    "Melbourne, VIC (remote)"
+  ),
+
+  tEntry(
+    null,
     false,
     "Intelligence & Coordination Officer",
     "Attorney-General's Dept SA",
-    "ASO4  ·  Prevention  ·  Compliance & Enforcement",
+    "ASO4  ·  CBS  ·  Prevention  ·  Compliance & Enforcement",
     "2025 – 2026",
     "Adelaide, SA"
   ),
@@ -125,7 +137,7 @@ const lines = [
   tEntry(
     null,
     false,
-    "Software Engineer Intern",
+    "Software Engineer Intern (Data Science)",
     "WEHI",
     "Bioinformatics",
     "2024",
@@ -135,9 +147,9 @@ const lines = [
   tEntry(
     "2023",
     false,
-    "Data Science Consultant",
+    "Data Science Industrial Consultant",
     "CSIRO",
-    "Climate & Earth Systems",
+    "Climate science",
     "2023",
     "Melbourne, VIC"
   ),
@@ -178,10 +190,12 @@ const lines = [
   // Stats
   H("BY THE NUMBERS"),
   "",
-  statBar(6, "roles", "across gov, research & startup"),
-  statBar(21, "projects", "shipped to production"),
+  statBar(ROLES.length, "roles", "across gov, research & startup"),
+  // Keep in step with PROJECTS in components/sections/ProjectsSection.jsx (not
+  // imported here: it would pull React and the locale bundles into this route).
+  statBar(20, "projects", "built and delivered"),
   statBar(2, "degrees", "University of Melbourne"),
-  statBar(23, "certifications", "cloud · analytics · agile · language"),
+  statBar(CERTS.length, "certifications", "cloud · analytics · agile · language"),
   "",
   RULE,
   "",

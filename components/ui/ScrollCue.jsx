@@ -23,7 +23,7 @@ export default function ScrollCue() {
       href="#featured"
       aria-label="Scroll to featured work"
       className={`hidden md:flex fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex-col items-center gap-2 group
-                  transition-opacity duration-500 ${hidden ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+                  ${hidden ? "opacity-0 pointer-events-none transition-opacity duration-200" : "opacity-100 animate-enter"}`}
     >
       <span className="text-[9px] tracking-[0.3em] uppercase text-[#6E6E6E] dark:text-[#9A9A9A] group-hover:text-[#FF3C3C] transition-colors duration-200">
         Scroll

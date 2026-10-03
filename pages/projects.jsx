@@ -24,13 +24,13 @@ export default function ProjectsPage({ count = 0 }) {
         <title>Projects — Rin Huang · rin.contact</title>
         <meta
           name="description"
-          content="Rin Huang's shipped projects — data engineering, Python automation, React Native mobile apps, Next.js web apps, cloud infrastructure, and open-source work."
+          content="Rin Huang's projects, from coursework to production: data engineering, Python automation, React Native mobile apps, Next.js web apps, cloud infrastructure and open-source work."
         />
         <link rel="canonical" href="https://rin.contact/projects/" />
         <meta property="og:title" content="Projects — Sunchuangyu (Rin) Huang" />
         <meta
           property="og:description"
-          content={`${count} projects shipped to production. Data engineering, cloud infrastructure, mobile apps, open-source.`}
+          content={`${count} projects across data engineering, cloud infrastructure, mobile apps and open source, from coursework to production.`}
         />
         <meta property="og:url" content="https://rin.contact/projects/" />
         <meta property="og:type" content="website" />
@@ -41,7 +41,7 @@ export default function ProjectsPage({ count = 0 }) {
         <meta name="twitter:title" content="Projects — Sunchuangyu (Rin) Huang" />
         <meta
           name="twitter:description"
-          content={`${count} projects shipped. Data engineering, cloud, mobile, open-source.`}
+          content={`${count} projects, from coursework to production. Data engineering, cloud, mobile, open source.`}
         />
         <meta name="twitter:image" content={ogImage} />
       </Head>

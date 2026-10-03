@@ -35,9 +35,14 @@ export default function HeroDotField() {
       x = e.clientX - r.left;
       y = e.clientY - r.top;
       el.style.setProperty("--active", "1");
+      // data-active drives the glow's entrance (starts at 70% opacity, no fade from 0)
+      if (!el.hasAttribute("data-active")) el.setAttribute("data-active", "");
       if (!raf) raf = requestAnimationFrame(apply);
     };
-    const onLeave = () => el.style.setProperty("--active", "0");
+    const onLeave = () => {
+      el.style.setProperty("--active", "0");
+      el.removeAttribute("data-active");
+    };
 
     parent.addEventListener("pointermove", onMove, { passive: true });
     parent.addEventListener("pointerleave", onLeave);
@@ -103,7 +108,21 @@ export default function HeroDotField() {
             transparent 72%
           );
           opacity: var(--active);
-          transition: opacity 0.45s ease;
+          transition: opacity 0.2s ease;
+        }
+        /* Entrance: no transition from 0 — animate in from 70% instead. The
+           0.2s transition above then only runs on exit (pointer leaves). */
+        .hero-dotfield[data-active] .hero-dotfield-glow {
+          transition: none;
+          animation: hero-glow-in 150ms ease-out backwards;
+        }
+        @keyframes hero-glow-in {
+          from {
+            opacity: 0.7;
+          }
+          to {
+            opacity: 1;
+          }
         }
       `}</style>
     </div>

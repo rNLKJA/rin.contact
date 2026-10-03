@@ -53,15 +53,26 @@ export default function FeaturedWork() {
     const px = (e.clientX - r.left) / r.width;
     const py = (e.clientY - r.top) / r.height;
     card.style.transform = `rotateX(${(0.5 - py) * 6}deg) rotateY(${(px - 0.5) * 6}deg)`;
-    if (sheenRef.current) {
-      sheenRef.current.style.background = `radial-gradient(620px circle at ${px * 100}% ${py * 100}%, rgba(255,60,60,0.07), transparent 46%)`;
-      sheenRef.current.style.opacity = "1";
+    const sheen = sheenRef.current;
+    if (sheen) {
+      sheen.style.background = `radial-gradient(620px circle at ${px * 100}% ${py * 100}%, rgba(255,60,60,0.07), transparent 46%)`;
+      // Motion rules: enter from 70% opacity, not 0. Drop the fade transition for
+      // the entry (it only plays on exit) and run a short 0.7 -> 1 enter instead.
+      if (sheen.style.opacity !== "1") {
+        sheen.style.transition = "none";
+        sheen.style.opacity = "1";
+        sheen.animate?.([{ opacity: 0.7 }, { opacity: 1 }], { duration: 150, easing: "ease-out" });
+      }
     }
   }, []);
 
   const onLeave = useCallback(() => {
     if (cardRef.current) cardRef.current.style.transform = "rotateX(0deg) rotateY(0deg)";
-    if (sheenRef.current) sheenRef.current.style.opacity = "0";
+    const sheen = sheenRef.current;
+    if (sheen) {
+      sheen.style.transition = "opacity 0.2s ease";
+      sheen.style.opacity = "0";
+    }
   }, []);
 
   return (
@@ -80,7 +91,7 @@ export default function FeaturedWork() {
       <div
         onPointerMove={onMove}
         onPointerLeave={onLeave}
-        className={`transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        className={`transition-all duration-200 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"}`}
         style={{ perspective: "1500px" }}
       >
         <div
@@ -93,7 +104,7 @@ export default function FeaturedWork() {
             ref={sheenRef}
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 z-20"
-            style={{ opacity: 0, transition: "opacity 0.3s ease" }}
+            style={{ opacity: 0, transition: "opacity 0.2s ease" }}
           />
           {/* header bar */}
           <div className="px-6 md:px-8 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">

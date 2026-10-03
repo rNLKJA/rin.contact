@@ -9,6 +9,10 @@
  *
  * Decorative only (aria-hidden, no semantic weight). Theme-aware. Honours
  * prefers-reduced-motion by rendering the final state with no motion.
+ *
+ * Motion rules: every part starts at least 70% of the way to its end state
+ * (rules at scaleX 0.7, diamond at scale 0.7, ticks at opacity 0.7) and the
+ * whole reveal completes within 300ms of entering view.
  */
 import { useInView } from "@/hooks/useInView";
 
@@ -37,8 +41,8 @@ export default function SectionDivider() {
             background-size: 7px 3px;
             background-repeat: repeat-x;
             background-position: center;
-            transform: scaleX(0);
-            transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.05s;
+            transform: scaleX(0.7);
+            transition: transform 200ms cubic-bezier(0.2, 0.7, 0.2, 1) 50ms;
           }
           .dline.left {
             transform-origin: right center;
@@ -56,8 +60,8 @@ export default function SectionDivider() {
             height: 7px;
             margin: 0 14px;
             background: #ff3c3c;
-            transform: rotate(45deg) scale(0);
-            transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) 0.34s;
+            transform: rotate(45deg) scale(0.7);
+            transition: transform 200ms cubic-bezier(0.2, 0.7, 0.2, 1) 100ms;
           }
           .in .diamond {
             transform: rotate(45deg) scale(1);
@@ -68,8 +72,8 @@ export default function SectionDivider() {
             width: 1px;
             height: 9px;
             background: #cfcfcf;
-            opacity: 0;
-            transition: opacity 0.4s ease 0.5s;
+            opacity: 0.7;
+            transition: opacity 200ms ease-out 100ms;
           }
           .in .endtick {
             opacity: 1;

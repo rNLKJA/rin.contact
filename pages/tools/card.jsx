@@ -57,6 +57,8 @@ function TiltFlipCard() {
     tilt.style.transform = `rotateX(${tx}deg) rotateY(${ty}deg)`;
     if (sheenRef.current) {
       sheenRef.current.style.background = `radial-gradient(circle at ${px * 100}% ${py * 100}%, rgba(255,255,255,0.22), rgba(255,255,255,0.04) 38%, transparent 60%)`;
+      // Enter from 70% opacity (Rin's motion rule) rather than fading up from 0.
+      sheenRef.current.classList.add("animate-enter");
       sheenRef.current.style.opacity = "1";
     }
   }, []);
@@ -64,7 +66,10 @@ function TiltFlipCard() {
   const onLeave = useCallback(() => {
     const tilt = tiltRef.current;
     if (tilt) tilt.style.transform = "rotateX(0deg) rotateY(0deg)";
-    if (sheenRef.current) sheenRef.current.style.opacity = "0";
+    if (sheenRef.current) {
+      sheenRef.current.classList.remove("animate-enter");
+      sheenRef.current.style.opacity = "0";
+    }
   }, []);
 
   const flip = useCallback(() => setFlipped((f) => !f), []);
@@ -111,7 +116,7 @@ function TiltFlipCard() {
               aspectRatio: "1.7 / 1",
               minHeight: 214,
               transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
-              transition: "transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)",
+              transition: "transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)",
             }}
           >
             {/* ── FRONT — identity ── */}
@@ -160,7 +165,7 @@ function TiltFlipCard() {
                   position: "absolute",
                   inset: 0,
                   opacity: 0,
-                  transition: "opacity 0.25s ease",
+                  transition: "opacity 0.2s ease",
                   pointerEvents: "none",
                 }}
               />

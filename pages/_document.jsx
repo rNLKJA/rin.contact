@@ -88,12 +88,12 @@ const PERSON_SCHEMA = {
       addressCountry: "AU",
     },
   },
-  jobTitle: "Senior Data Analyst",
+  jobTitle: "ASO7 Senior Data Analyst",
   hasOccupation: {
     "@type": "Occupation",
     name: "Senior Data Analyst",
     description:
-      "Develops analytical models and statistical frameworks that translate complex policing data into decision-ready intelligence for government and public safety organisations.",
+      "Produces statistical reports, workflow reviews and analytics tooling for the Ethical and Professional Standards Branch of South Australia Police, including the quarterly Use of Force and Vehicle Pursuit reports.",
     occupationLocation: { "@type": "City", name: "Adelaide" },
     skills:
       "Python, R, SQL, Power BI, Statistical Modelling, Strategic Intelligence, GIS, Machine Learning",
@@ -102,11 +102,25 @@ const PERSON_SCHEMA = {
     { "@type": "Language", name: "English", alternateName: "en" },
     { "@type": "Language", name: "Mandarin Chinese", alternateName: "zh" },
   ],
-  worksFor: {
-    "@type": "Organization",
-    name: "South Australia Police",
-    url: "https://www.police.sa.gov.au",
-  },
+  worksFor: [
+    {
+      "@type": "GovernmentOrganization",
+      name: "South Australia Police",
+      alternateName: "SAPOL",
+      url: "https://www.police.sa.gov.au",
+      department: {
+        "@type": "GovernmentOrganization",
+        name: "Ethical and Professional Standards Branch",
+        alternateName: "EPSB",
+      },
+    },
+    {
+      "@type": "Organization",
+      name: "Mapiva",
+      description:
+        "Melbourne startup building a map-first social discovery app. Rin is Co-Founder & Dev Lead.",
+    },
+  ],
   alumniOf: [
     {
       "@type": "CollegeOrUniversity",
@@ -147,7 +161,7 @@ const PERSON_SCHEMA = {
     ],
   },
   description:
-    "Sunchuangyu (Rin) Huang — also known as 黄孙创宇 (黄孙 Rin), Huang Sunchuangyu, HUANG SUNCHUANGYU, and HUANGSUNCHUANGYU — is a Senior Data Analyst at South Australia Police, Research Software Engineer, and Full-Stack Developer specialising in data science, strategic intelligence, and continuous improvement.",
+    "Sunchuangyu (Rin) Huang, also known as 黄孙创宇 (黄孙 Rin), Huang Sunchuangyu, HUANG SUNCHUANGYU and HUANGSUNCHUANGYU, is an ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead of Mapiva, working across data science, strategic intelligence and research software engineering.",
 };
 
 const WEBSITE_SCHEMA = {
@@ -163,7 +177,7 @@ const WEBSITE_SCHEMA = {
   inLanguage: ["en-AU", "zh-Hans"],
   copyrightYear: 2026,
   datePublished: "2024-01-01T00:00:00+10:30",
-  dateModified: "2026-03-10T00:00:00+10:30",
+  dateModified: "2026-10-03T00:00:00+09:30",
   // SearchAction points at the blog's real text search (/blog/?q=…), which filters
   // posts by title, summary, and tags. The template must resolve to a working
   // endpoint — pointing it at a dead URL declares a search box that leads nowhere.
@@ -225,7 +239,7 @@ class MyDocument extends Document {
           />
           <script
             dangerouslySetInnerHTML={{
-              __html: `(function(){try{if(sessionStorage.getItem("rin_boot_seen"))return;var e=document.documentElement;var d=e.classList.contains("dark");e.style.setProperty("--boot-cover-bg",d?"#0A0A0A":"#FFFFFF");e.classList.add("boot-cover");window.__bootCoverTimer=setTimeout(function(){e.classList.remove("boot-cover");},8000);}catch(_){}})();`,
+              __html: `(function(){try{if(sessionStorage.getItem("rin_boot_seen"))return;if(/^\\/(zh-Hans\\/)?(resume|cv|hire-me)(\\/|$)/.test(location.pathname))return;var e=document.documentElement;var d=e.classList.contains("dark");e.style.setProperty("--boot-cover-bg",d?"#0A0A0A":"#FFFFFF");e.classList.add("boot-cover");window.__bootCoverTimer=setTimeout(function(){e.classList.remove("boot-cover");},8000);}catch(_){}})();`,
             }}
           />
           <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
@@ -340,7 +354,7 @@ class MyDocument extends Document {
           │                                                                      │
           │   Easter eggs:                                                       │
           │     /fun/secret  →  Morse code reveal                               │
-          │     /resume     →  interactive CLI                                  │
+          │     /resume/terminal  →  interactive CLI                            │
           │     /fun/coffee →  you know why                                     │
           │     ↑↑↓↓←→←→BA  →  try it on the homepage                         │
           │     curl rin.contact  →  a different view entirely                  │

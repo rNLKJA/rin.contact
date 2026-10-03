@@ -8,7 +8,7 @@
  * Hover any station to read its record in the info panel below.
  */
 
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, useSyncExternalStore } from "react";
 import { useI18n } from "@/contexts/I18nContext";
 
 // ── Layout constants ──────────────────────────────────────────────────────────
@@ -55,9 +55,9 @@ const STATIONS = [
     label: "CSL",
     labelAbove: true,
     period: "Feb – Jun 2022",
-    role: "Data Analyst · Agile Lead",
+    role: "Data Analyst · Agile Leader",
     detail:
-      "First industry role. HPLC automation, T-SNE / DBSCAN / UMAP for bioprocess analysis. Worked across data engineering and team coordination.",
+      "First industry role. Python automation of HPLC results, and t-SNE / DBSCAN / UMAP to flag out-of-control research data. Led the team's Agile ceremonies.",
     current: false,
   },
   {
@@ -68,9 +68,9 @@ const STATIONS = [
     label: "CSIRO",
     labelAbove: false,
     period: "Feb – Nov 2023",
-    role: "Data Science Consultant",
+    role: "Data Science Industrial Consultant",
     detail:
-      "Climate and food-security risk modelling. Autoregressive time-series analysis, ENSO / rainfall correlations. Australia's national science agency.",
+      "Climate and food-security risk modelling with Dr Vassili Kitsios. Autoregressive time series with rolling-window forecasts of how ENSO amplifies commodity price volatility. Australia's national science agency.",
     current: false,
   },
   {
@@ -81,9 +81,9 @@ const STATIONS = [
     label: "WEHI",
     labelAbove: true,
     period: "Feb – Jul 2024",
-    role: "Software Engineer Intern",
+    role: "Software Engineer Intern (Data Science)",
     detail:
-      "Bioinformatics at Walter & Eliza Hall Institute. Automated flow-cytometry cloud pipelines. Contributed to the open-source celseq2 library.",
+      "Bioinformatics at Walter & Eliza Hall Institute. Automated flow-cytometry analysis on cloud and HPC. Contributed to the open-source celseq2 library.",
     current: false,
   },
   {
@@ -96,7 +96,7 @@ const STATIONS = [
     period: "Aug 2024 – Feb 2026",
     role: "Research Assistant · UniMelb Psychiatry",
     detail:
-      "Full-stack Expo / React Native mobile app for mood-tracking research. GDPR-compliant. Reduced server costs ~$500/mo. Principal investigator: UniMelb.",
+      "Sole developer of MoodQ (formerly Moodist), a clinical mental-health app. Rebuilt it from Uniapp to Expo React Native, built the clinician dashboard on a Flask backend, and cut hosting costs ~$500/mo with AWS RDS and LightSail. GDPR-aligned; handed to a professional team for production.",
     current: false,
   },
   {
@@ -109,7 +109,7 @@ const STATIONS = [
     period: "Jan 2025 – Mar 2026",
     role: "ASO4 Intelligence & Coordination Officer",
     detail:
-      "Built Consumer and Business Services' analytics capability from zero. GIS dashboards, ministerial reporting, cross-agency coordination. Attorney-General's Department SA.",
+      "Built the Prevention Team's analytics capability at Consumer and Business Services. Inspection scheduling for 1,500+ licensed sites, Power BI and GIS dashboards, ministerial reporting, data-sharing MOUs. Attorney-General's Department SA.",
     current: false,
   },
   {
@@ -122,7 +122,7 @@ const STATIONS = [
     period: "Aug 2025 – present",
     role: "Co-founder · Dev Lead",
     detail:
-      "Social connection mobile app for young adults in Adelaide. Full product ownership — design, engineering, growth. MVP shipped Jan 2027.",
+      "Melbourne startup building a map-first social discovery app. As Dev Lead: architecture, the Expo React Native client, a Django, Rust and PostgreSQL backend, GitHub Actions CI/CD. Beta planned for early 2027.",
     current: true,
   },
   {
@@ -135,20 +135,32 @@ const STATIONS = [
     period: "Mar 2026 – present",
     role: "ASO7 Senior Data Analyst",
     detail:
-      "Professional & Ethical Standards Branch, South Australia Police. First-principles intelligence analysis, Parliamentary reporting, strategic data products.",
+      "Intelligence & Probity Unit, Ethical and Professional Standards Branch, South Australia Police. Quarterly Use of Force and Vehicle Pursuit reports, a review of the complaint administration workflow, an expiation notices analysis, IAPro/BlueTeam API tooling.",
     current: true,
   },
 ];
 
 // ── Special markers ───────────────────────────────────────────────────────────
 const CONNECTOR_X = toX(2025.75); // peak triple-concurrent period
-const NOW_X = toX(2026.19); // March 10, 2026
+
+// NOW follows today's date (to the month), capped at the axis end. Read through
+// useSyncExternalStore so the server and the hydration pass render no marker
+// and the client then draws it at its own date: the statically built HTML can
+// never pin NOW to the build date.
+const subscribeNoop = () => () => {};
+const todayAsYear = () => {
+  const d = new Date();
+  return Math.min(d.getFullYear() + d.getMonth() / 12, YEAR_END);
+};
+const noYearOnServer = () => null;
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function MetroMapSection() {
   const { t } = useI18n();
   const [hovered, setHovered] = useState(null);
   const active = STATIONS.find((s) => s.id === hovered);
+  const nowYear = useSyncExternalStore(subscribeNoop, todayAsYear, noYearOnServer);
+  const NOW_X = nowYear == null ? null : toX(nowYear);
 
   // Scroll-shadow state. The map is wider than a phone screen, so it scrolls
   // horizontally — and at scrollLeft 0 the most recent stations (the current
@@ -300,25 +312,29 @@ export default function MetroMapSection() {
               </text>
 
               {/* ── NOW marker ───────────────────────────────────────────────── */}
-              <line
-                x1={NOW_X}
-                y1={MARGIN_T - 2}
-                x2={NOW_X}
-                y2={VH - 18}
-                stroke="#FF3C3C"
-                strokeWidth={1}
-                strokeDasharray="3,4"
-                strokeOpacity={0.45}
-              />
-              <text
-                x={NOW_X + 3}
-                y={MARGIN_T + 8}
-                fontSize={8}
-                fill="#FF3C3C"
-                fontFamily="ui-monospace,monospace"
-              >
-                NOW
-              </text>
+              {NOW_X != null && (
+                <g>
+                  <line
+                    x1={NOW_X}
+                    y1={MARGIN_T - 2}
+                    x2={NOW_X}
+                    y2={VH - 18}
+                    stroke="#FF3C3C"
+                    strokeWidth={1}
+                    strokeDasharray="3,4"
+                    strokeOpacity={0.45}
+                  />
+                  <text
+                    x={NOW_X + 3}
+                    y={MARGIN_T + 8}
+                    fontSize={8}
+                    fill="#FF3C3C"
+                    fontFamily="ui-monospace,monospace"
+                  >
+                    NOW
+                  </text>
+                </g>
+              )}
 
               {/* ── Station dots ──────────────────────────────────────────────── */}
               {STATIONS.map((s) => {
@@ -391,22 +407,22 @@ export default function MetroMapSection() {
         {/* Left fade — appears once the reader has scrolled away from the start */}
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-300 ${
-            edges.scrollable && !edges.atStart ? "opacity-100" : "opacity-0"
+          className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-200 ${
+            edges.scrollable && !edges.atStart ? "opacity-100 animate-enter" : "opacity-0"
           }`}
         />
 
         {/* Right fade + nudging chevron — cues that recent roles are off-screen */}
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-300 ${
-            showRightCue ? "opacity-100" : "opacity-0"
+          className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-200 ${
+            showRightCue ? "opacity-100 animate-enter" : "opacity-0"
           }`}
         />
         <div
           aria-hidden="true"
-          className={`metro-cue pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[#FF3C3C] transition-opacity duration-300 ${
-            showRightCue ? "opacity-100" : "opacity-0"
+          className={`metro-cue pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[#FF3C3C] transition-opacity duration-200 ${
+            showRightCue ? "cue-on opacity-100" : "opacity-0"
           }`}
         >
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -425,6 +441,22 @@ export default function MetroMapSection() {
             .metro-cue {
               animation: metroNudge 1.4s ease-in-out infinite;
             }
+            /* Shown: enter from 70% opacity (motion rules) alongside the ambient
+               nudge. Lives here, not in animate-enter, because this scoped
+               animation shorthand would override the Tailwind utility. */
+            .metro-cue.cue-on {
+              animation:
+                metroCueIn 150ms ease-out both,
+                metroNudge 1.4s ease-in-out infinite;
+            }
+          }
+          @keyframes metroCueIn {
+            from {
+              opacity: 0.7;
+            }
+            to {
+              opacity: 1;
+            }
           }
           @keyframes metroNudge {
             0%,
@@ -442,7 +474,7 @@ export default function MetroMapSection() {
       <div
         className={`mt-4 border-l-2 pl-4 transition-all duration-200 ${
           active
-            ? "opacity-100"
+            ? "opacity-100 animate-enter"
             : "opacity-30 pointer-events-none border-[#E0E0E0] dark:border-[#3D3D3D]"
         }`}
         style={

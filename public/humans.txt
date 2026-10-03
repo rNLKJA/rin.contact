@@ -1,14 +1,14 @@
 /* TEAM */
 Name: Sunchuangyu (Rin) Huang
 Legal name: Sunchuangyu Huang / 黄孙创宇
-Role: Designer & Developer
+Role: Designer & Developer of this site; ASO7 Senior Data Analyst at South Australia Police; Co-Founder & Dev Lead at Mapiva
 Email: huang@rin.contact
 LinkedIn: https://linkedin.com/in/sunchuangyuhuang
 GitHub: https://github.com/rNLKJA
 Location: Adelaide & Melbourne, Australia
 
 /* SITE */
-Last update: 2026-03-09
+Last update: 2026-10-03
 Language: English (en-AU)
 Doctype: HTML5
 Standards: HTML5, CSS3, ARIA, Schema.org

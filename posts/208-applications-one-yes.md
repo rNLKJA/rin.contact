@@ -59,7 +59,7 @@ The data told me I was doing the right things. It just took 208 attempts for the
 
 The offer that came through was from Consumer and Business Services, SA — a government role where my data science background, my continuous improvement mindset, and my willingness to learn from scratch all aligned. It wasn't the highest-paying role I applied to. It was the best fit.
 
-Three months later, I was an ASO7 at SAPOL. The data point of success only needed to work once.
+Fourteen months after I started there, I was an ASO7 at SAPOL. The data point of success only needed to work once.
 
 ---
 

@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import { useI18n } from "@/contexts/I18nContext";
 
-function CountUp({ target, started, duration = 900 }) {
-  const [n, setN] = useState(0);
+// Motion rules: count from 70% of the target and finish within 300ms.
+function CountUp({ target, started, duration = 300 }) {
+  const from = Math.round(target * 0.7);
+  const [n, setN] = useState(from);
   const raf = useRef(null);
   useEffect(() => {
     if (!started) return;
@@ -15,12 +17,12 @@ function CountUp({ target, started, duration = 900 }) {
     const tick = (now) => {
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3);
-      setN(Math.round(eased * target));
+      setN(Math.round(from + eased * (target - from)));
       if (p < 1) raf.current = requestAnimationFrame(tick);
     };
     raf.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf.current);
-  }, [started, target, duration]);
+  }, [started, target, from, duration]);
   return <>{n}</>;
 }
 
@@ -106,7 +108,7 @@ const DOMAINS = [
       "AWS RDS",
       "AWS LightSail",
       "CI/CD",
-      "GDPR compliance",
+      "GDPR-aligned data protection",
       "iOS",
       "Android",
     ],
@@ -173,7 +175,7 @@ const CERT_GROUPS = [
     group: "Analytics & Intelligence",
     items: [
       { label: "Open-Source Intelligence (OSINT) Fundamentals", issuer: "TCM Security · Oct 2025" },
-      { label: "Advanced Google Analytics", issuer: "Liontech · Jun 2024" },
+      { label: "Advanced Google Analytics", issuer: "Google · Jun 2024" },
       { label: "Google Analytics Individual Qualification (GAIQ)", issuer: "Google · May 2024" },
       { label: "Advanced SQL for Data Scientists", issuer: "LinkedIn · Jan 2024" },
       { label: "AI-Powered Productivity for Tech Roles", issuer: "Maven · Jul 2024" },
@@ -202,7 +204,7 @@ const CERT_GROUPS = [
       { label: "Working with Children Check", issuer: "Victorian Government · Jul 2024" },
       {
         label: "Mental Health First Aid — Tertiary Students",
-        issuer: "MHFA International · Nov 2019",
+        issuer: "Mental Health First Aid Australia · Nov 2019",
       },
       { label: "Inbound Marketing", issuer: "HubSpot Academy · Dec 2023" },
     ],
@@ -216,10 +218,10 @@ function DomainCard({ domain, index }) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-500 ${
-        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      className={`transition-all duration-200 ease-out ${
+        inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
       }`}
-      style={{ transitionDelay: `${index * 70}ms` }}
+      style={{ transitionDelay: `${Math.min(index * 30, 100)}ms` }}
     >
       {/* Clickable header row */}
       <button
@@ -253,24 +255,24 @@ function DomainCard({ domain, index }) {
         </span>
       </button>
 
-      {/* Collapsible body */}
+      {/* Collapsible body — height snaps (never animates from 0); the revealed
+          content enters from 70% opacity and 4px instead. */}
       <div
         className="overflow-hidden"
         style={{
           maxHeight: open ? "500px" : "0px",
           opacity: open ? 1 : 0,
-          transition: "max-height 0.35s ease, opacity 0.25s ease",
         }}
       >
-        <div className="pb-8">
-          {/* Animated fill bar */}
+        <div className={`pb-8 ${open ? "animate-enter-up" : ""}`}>
+          {/* Animated fill bar — grows from 70% of its final width */}
           <div className="h-px w-full bg-[#E0E0E0] dark:bg-[#3D3D3D] mb-4 overflow-hidden">
             <div
               className="h-full"
               style={{
                 backgroundColor: domain.color,
-                width: open ? "100%" : "0%",
-                transition: "width 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+                width: open ? "100%" : "70%",
+                transition: "width 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             />
           </div>
@@ -278,15 +280,11 @@ function DomainCard({ domain, index }) {
             {domain.description}
           </p>
           <div className="flex flex-wrap gap-1.5">
-            {domain.skills.map((s, si) => (
+            {domain.skills.map((s) => (
               <span
                 key={s}
                 className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wide text-[#7A7A7A] dark:text-[#9A9A9A] rounded-full
-                           cursor-default transition-all duration-200 animate-fade-up opacity-0"
-                style={{
-                  animationDelay: open ? `${si * 30}ms` : "0ms",
-                  animationFillMode: "forwards",
-                }}
+                           cursor-default transition-all duration-200"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = domain.color;
                   e.currentTarget.style.color = domain.color;
@@ -316,8 +314,8 @@ export default function SkillsSection() {
       {/* Header */}
       <div
         ref={ref}
-        className={`mb-4 transition-all duration-600 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        className={`mb-4 transition-all duration-200 ease-out ${
+          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
         <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-6">
@@ -408,8 +406,8 @@ export default function SkillsSection() {
       {/* Certifications */}
       <div
         ref={certRef}
-        className={`mt-16 transition-all duration-600 ${
-          certInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        className={`mt-16 transition-all duration-200 ease-out ${
+          certInView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">
@@ -441,8 +439,8 @@ export default function SkillsSection() {
       </div>
       {/* Languages */}
       <div
-        className={`mt-16 transition-all duration-600 ${
-          certInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        className={`mt-16 transition-all duration-200 ease-out ${
+          certInView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">Languages</p>
@@ -453,7 +451,11 @@ export default function SkillsSection() {
               level: "Full Professional",
               detail: "IELTS General Training · Band 8",
             },
-            { lang: "Mandarin Chinese", level: "Native / Bilingual", detail: null },
+            {
+              lang: "Mandarin Chinese",
+              level: "Native / Bilingual",
+              detail: "NAATI CCL (Mandarin) · Dec 2025",
+            },
           ].map((l) => (
             <div
               key={l.lang}

@@ -111,10 +111,8 @@ export default function TestimonialsSection() {
             {TESTIMONIALS.map((t, i) => (
               <blockquote
                 key={i}
-                className={`[grid-area:1/1] transition-all duration-700 ${
-                  i === current
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4 pointer-events-none"
+                className={`[grid-area:1/1] transition-opacity duration-200 ${
+                  i === current ? "opacity-100 animate-enter-up" : "opacity-0 pointer-events-none"
                 }`}
               >
                 <p className="text-lg md:text-xl leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] mb-6">

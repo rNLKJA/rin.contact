@@ -79,52 +79,41 @@ export const PROJECTS = [
   {
     id: "sapol-epsb",
     title: "SAPOL EPSB Analytics",
-    subtitle: "Integrity & Disciplinary Intelligence",
-    org: "South Australia Police — Ethical & Professional Standards",
+    subtitle: "Professional Standards Reporting & Tooling",
+    org: "South Australia Police, Ethical and Professional Standards Branch",
     period: "Mar 2026 – Present",
     tag: "Analytics",
     domain: "Government",
     status: "In production",
     stack: [
       "IAPro",
-      "Blue Team",
-      "Business Objects",
-      "SQL",
+      "BlueTeam",
       "Python",
-      "Statistical Modelling",
-      "ETL",
-      "Data Modelling",
       "Power BI",
+      "SQL Server",
+      "FastAPI",
+      "Vue",
+      "Statistical modelling",
     ],
     summary:
-      "As ASO7 Senior Data Analyst in SAPOL's Ethical & Professional Standards Branch, leads the high-level analysis behind complaint resolution, governance and disciplinary processes — building IAPro reporting templates and dashboards, and maintaining SAPOL's core data as the authoritative single source for strategic, corporate and Parliamentary reporting.",
+      "As ASO7 Senior Data Analyst in the Intelligence & Probity Unit of SAPOL's Ethical and Professional Standards Branch, produces the quarterly Use of Force and Vehicle Pursuit statistical reports, led an end-to-end review of the complaint administration workflow, and analysed a financial year of expiation notices. Also built a Python client and web console for the IAPro and BlueTeam APIs, covering more than 1,100 endpoints.",
     impact:
-      "Senior officer level · Authoritative single source of truth · Parliamentary & executive reporting",
+      "Quarterly executive reporting · Admin workflow review · 1,100+ IAPro/BlueTeam endpoints in one client",
     current: true,
   },
   {
     id: "mapiva",
     title: "Mapiva",
-    subtitle: "Social Connection Mobile App",
+    subtitle: "Map-First Social Discovery App",
     org: "Mapiva (Co-founded)",
     period: "Aug 2025 – Present",
     tag: "Mobile Dev",
     domain: "Startup",
-    status: "MVP Jan 2027",
-    stack: [
-      "React Native",
-      "Expo",
-      "Product design",
-      "GitHub Actions",
-      "CI/CD",
-      "PostgreSQL",
-      "SQLite",
-      "Django",
-      "Rust",
-    ],
+    status: "Beta 2027",
+    stack: ["React Native", "Expo", "Django", "Rust", "PostgreSQL", "GitHub Actions"],
     summary:
-      "Co-founded a mobile app to help people discover and connect with others. Full product ownership from architecture through implementation as Dev Lead.",
-    impact: "Co-founder · Full product ownership · MVP ETA Jan 2027",
+      "Co-founded a Melbourne startup building a map-first app for discovering people and events nearby. As Dev Lead, owns the technical architecture (an Expo React Native client on a Django, Rust and PostgreSQL backend, shipped through GitHub Actions) and leads code review for a part-time engineering team.",
+    impact: "Co-founder · Dev Lead · Beta planned for early 2027",
     current: true,
   },
   {
@@ -212,44 +201,10 @@ export const PROJECTS = [
     tag: "Mobile Dev",
     domain: "Research",
     status: "Handed to production team",
-    stack: [
-      "Expo",
-      "React Native",
-      "AWS RDS",
-      "LightSail",
-      "Rust",
-      "CI/CD",
-      "PostgreSQL",
-      "SQLite",
-      "Django",
-    ],
+    stack: ["Expo", "React Native", "Flask", "Python", "AWS RDS", "LightSail", "CI/CD"],
     summary:
-      "A clinician-facing and patient-facing mental health mobile app developed for the University of Melbourne's Psychiatry research group. Migrated from Uniapp to Expo React Native, reducing costs by ~$500/month and delivering a GDPR-compliant production application.",
-    impact: "~$500/month cost saved · Production deployed · Cross-platform iOS + Android",
-  },
-  {
-    id: "sapol",
-    title: "SAPOL Intelligence",
-    subtitle: "Crime Analytics & Operational Dashboards",
-    org: "South Australia Police",
-    period: "Jul 2024 – Dec 2024",
-    tag: "Analytics",
-    domain: "Government",
-    status: "Completed",
-    stack: [
-      "Power BI",
-      "Python",
-      "SQL",
-      "ArcGIS",
-      "Time series",
-      "Jupyter Notebook",
-      "Research Software Engineering",
-      "Power Query",
-      "IAPro",
-    ],
-    summary:
-      "Contributed to operational intelligence and crime analytics as an Intelligence and Coordination Officer. Built dashboards and analytical products supporting frontline policing, resource allocation, and command-level decision-making across South Australia.",
-    impact: "Operational decision support · Crime pattern analytics · Cross-unit coordination",
+      "A clinician-facing and patient-facing mental health app (formerly Moodist) for the University of Melbourne's Department of Psychiatry, built as sole developer. Rebuilt it from Uniapp to Expo React Native with a clinician dashboard on a Flask backend, cut hosting costs by about $500/month with AWS RDS and LightSail, and kept it GDPR-aligned before handing it to a professional team for production.",
+    impact: "Sole developer · ~$500/month hosting saved · Cross-platform iOS + Android",
   },
   {
     id: "wehi-flow",
@@ -406,7 +361,7 @@ export const PROJECTS = [
     period: "Feb 2023 – Nov 2023",
     tag: "Data Science",
     domain: "Climate Research",
-    status: "Research published",
+    status: "Completed",
     stack: [
       "Python",
       "AR time series",
@@ -571,8 +526,10 @@ const DOMAINS = [
   "Personal",
 ];
 
-function CountUp({ target, duration = 900, started }) {
-  const [count, setCount] = useState(0);
+// Motion rules: start at 70% of the target and land within 300ms.
+function CountUp({ target, duration = 300, started }) {
+  const from = Math.round(target * 0.7);
+  const [count, setCount] = useState(from);
   const frameRef = useRef(null);
 
   useEffect(() => {
@@ -581,12 +538,12 @@ function CountUp({ target, duration = 900, started }) {
     const tick = (now) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(eased * target));
+      setCount(Math.round(from + eased * (target - from)));
       if (progress < 1) frameRef.current = requestAnimationFrame(tick);
     };
     frameRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frameRef.current);
-  }, [started, target, duration]);
+  }, [started, target, duration, from]);
 
   return <>{count}</>;
 }
@@ -927,8 +884,8 @@ export default function ProjectsSection() {
       {/* Section header */}
       <div
         ref={ref}
-        className={`mb-12 transition-all duration-600 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        className={`mb-12 transition-all duration-200 ease-out ${
+          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
@@ -1048,7 +1005,7 @@ export default function ProjectsSection() {
                 >
                   {/* Domain colour left accent bar */}
                   <div
-                    className="absolute left-0 top-0 bottom-0 w-[3px] transition-opacity duration-200 opacity-0 group-hover/row:opacity-100"
+                    className="absolute left-0 top-0 bottom-0 w-[3px] transition-opacity duration-200 opacity-0 group-hover/row:opacity-100 group-hover/row:animate-enter"
                     style={{ backgroundColor: dc?.color ?? "#FF3C3C" }}
                     aria-hidden="true"
                   />
@@ -1092,15 +1049,18 @@ export default function ProjectsSection() {
                       +
                     </span>
                   </button>
+                  {/* Height snaps (no max-height tween); the revealed content
+                      enters from 70% via animate-enter-up instead. */}
                   <div
                     className="overflow-hidden"
                     style={{
                       maxHeight: isOpen ? "600px" : "0px",
                       opacity: isOpen ? 1 : 0,
-                      transition: "max-height 0.4s ease, opacity 0.25s ease",
                     }}
                   >
-                    <div className="border-t border-[#F0F0F0] dark:border-[#1E1E1E]">
+                    <div
+                      className={`border-t border-[#F0F0F0] dark:border-[#1E1E1E] ${isOpen ? "animate-enter-up" : ""}`}
+                    >
                       <ProjectDetail project={project} />
                     </div>
                   </div>
@@ -1166,11 +1126,13 @@ export default function ProjectsSection() {
                 );
               })}
             </div>
+            {/* Height snaps (no max-height tween); the opened detail enters
+                from 70% via animate-enter-up. Border colour still eases. */}
             <div
-              className={`border transition-all duration-400 overflow-hidden ${activeProject ? "border-[#FF3C3C]" : "border-[#E0E0E0] dark:border-[#3D3D3D]"}`}
+              className={`border overflow-hidden ${activeProject ? "border-[#FF3C3C]" : "border-[#E0E0E0] dark:border-[#3D3D3D]"}`}
               style={{
                 maxHeight: activeProject ? "600px" : "52px",
-                transition: "max-height 0.4s ease, border-color 0.2s ease",
+                transition: "border-color 0.2s ease",
               }}
             >
               {!activeProject && (
@@ -1179,7 +1141,11 @@ export default function ProjectsSection() {
                   <span>Select a folder to view project details</span>
                 </div>
               )}
-              {activeProject && <ProjectDetail project={activeProject} />}
+              {activeProject && (
+                <div className="animate-enter-up">
+                  <ProjectDetail project={activeProject} />
+                </div>
+              )}
             </div>
           </div>
 
@@ -1207,20 +1173,21 @@ export default function ProjectsSection() {
                       <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" />
                     )}
                     <span
-                      className={`text-[#595959] dark:text-[#AAAAAA] transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-45" : ""}`}
+                      className={`text-[#595959] dark:text-[#AAAAAA] transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-45" : ""}`}
                     >
                       +
                     </span>
                   </button>
+                  {/* Height snaps (no max-height tween); the revealed content
+                      enters from 70% via animate-enter-up instead. */}
                   <div
                     className="overflow-hidden"
                     style={{
                       maxHeight: isOpen ? "800px" : "0px",
                       opacity: isOpen ? 1 : 0,
-                      transition: "max-height 0.4s ease, opacity 0.25s ease",
                     }}
                   >
-                    <div className="pb-6 pl-9 space-y-4">
+                    <div className={`pb-6 pl-9 space-y-4 ${isOpen ? "animate-enter-up" : ""}`}>
                       <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">
                         {project.org} · {project.period}
                       </p>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useInView } from "@/hooks/useInView";
 import { FiPlus, FiChevronDown } from "react-icons/fi";
 import { useI18n } from "@/contexts/I18nContext";
+import { CERTS } from "@/lib/career-data";
 
 /* ── Categorised FAQ data ────────────────────────────────────────────────── */
 
@@ -13,7 +14,7 @@ export const CATEGORIES = [
     items: [
       {
         q: "What does a Senior Data Analyst do at South Australia Police?",
-        a: "As an ASO7 Senior Data Analyst in SAPOL's Professional and Ethical Standards Branch (PESB), I develop analytical models and statistical frameworks that translate complex policing data into decision-ready intelligence. This includes strategic planning, parliamentary reporting, and governance of end-to-end analytics solutions across IAPro and connected systems — always anchored in first-principles thinking and evidence-based recommendations to senior leadership.",
+        a: "As an ASO7 Senior Data Analyst in the Intelligence & Probity Unit of SAPOL's Ethical and Professional Standards Branch (EPSB), I turn complaint, investigation and workforce data into reports and advice that executives and oversight bodies can act on. That includes the quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the branch's complaint administration workflow, an analysis of expiation notices, and tooling such as a Python client and web console for the IAPro and BlueTeam APIs, covering more than 1,100 endpoints.",
       },
       {
         q: "What is strategic intelligence analytics and how does it differ from standard data analysis?",
@@ -36,7 +37,7 @@ export const CATEGORIES = [
       },
       {
         q: "What does 'first-principles thinking' mean in a data context?",
-        a: "First-principles thinking means refusing to inherit assumptions from how a problem has been framed before. In data work, it means starting from the raw question — what decision needs to be made? what is the minimum data needed to make it? — rather than defaulting to familiar tools or prior solutions. I applied this at SAPOL to redesign reporting infrastructure from the ground up rather than iterating on broken legacy systems.",
+        a: "First-principles thinking means refusing to inherit assumptions from how a problem has been framed before. In data work, it means starting from the raw question — what decision needs to be made? what is the minimum data needed to make it? — rather than defaulting to familiar tools or prior solutions. I applied this at SAPOL in a review of the branch's complaint administration workflow, tracing each step from receipt to file closure and asking what it is for, rather than starting from how it had always been done.",
       },
       {
         q: "What are your thoughts on AI and large language models in data science?",
@@ -59,7 +60,7 @@ export const CATEGORIES = [
       },
       {
         q: "What industries have you worked in?",
-        a: "My experience spans Australian state government (South Australia Police and Attorney-General's Department), biomedical research (WEHI and CSIRO), financial services (CSL), food service (McDonald's), and the startup sector as a co-founder. This breadth means I can translate analytical frameworks across very different operational contexts — from parliamentary compliance reporting to clinical mobile applications.",
+        a: "My experience spans Australian state government (South Australia Police and the Attorney-General's Department), medical and climate research (WEHI, CSIRO, and the University of Melbourne's Department of Psychiatry), biotech (CSL), and the startup sector as co-founder of Mapiva. This breadth means I can translate analytical frameworks across very different operational contexts — from parliamentary compliance reporting to clinical mobile applications.",
       },
       {
         q: "What's the biggest difference between working in government, research, and a startup?",
@@ -78,7 +79,7 @@ export const CATEGORIES = [
     items: [
       {
         q: "What is your educational background?",
-        a: "I hold two degrees from the University of Melbourne: a Bachelor of Science with a major in Computing and Software Systems, and a Master of Data Science. I also hold 23 certifications across cloud platforms (AWS, Azure), analytics (Power BI, Tableau), and project management (Agile, Scrum), as well as professional assessments in English (IELTS) and translation (NAATI).",
+        a: `I hold two degrees from the University of Melbourne: a Bachelor of Science majoring in Data Science, and a Master of Data Science. I also hold ${CERTS.length} certifications, including a VETASSESS skills assessment as a Statistician, IELTS General Training Band 8, NAATI Credentialed Community Language (Mandarin), Microsoft Azure Fundamentals (AZ-900), Neo4j, Google data and project-management certificates, and Atlassian Agile project management.`,
       },
       {
         q: "What would you tell someone just starting out in data science?",
@@ -148,11 +149,13 @@ function FAQItem({ q, a, index }) {
         </span>
       </button>
 
-      <div
-        className="overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: open ? "800px" : "0px" }}
-      >
-        <p className="text-sm text-[#5A5A5A] dark:text-[#9A9A9A] leading-relaxed pb-5 pl-9 pr-6 border-l border-[#FF3C3C] ml-5">
+      {/* Height snaps (never animates from 0); the answer enters from 70% opacity + 4px */}
+      <div className="overflow-hidden" style={{ maxHeight: open ? "800px" : "0px" }}>
+        <p
+          className={`text-sm text-[#5A5A5A] dark:text-[#9A9A9A] leading-relaxed pb-5 pl-9 pr-6 border-l border-[#FF3C3C] ml-5 ${
+            open ? "animate-enter-up" : ""
+          }`}
+        >
           {a}
         </p>
       </div>
@@ -200,19 +203,23 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
         {/* Chevron */}
         <FiChevronDown
           size={16}
-          className={`flex-shrink-0 text-[#AAAAAA] transition-transform duration-300 ${
+          className={`flex-shrink-0 text-[#AAAAAA] transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
           aria-hidden="true"
         />
       </button>
 
-      {/* Sub-items */}
+      {/* Sub-items — height snaps; the list enters from 70% opacity + 4px */}
       <div
-        className="overflow-hidden transition-all duration-400 ease-in-out"
+        className="overflow-hidden"
         style={{ maxHeight: open ? `${cat.items.length * 400}px` : "0px" }}
       >
-        <div className="px-6 pt-1 pb-2 border-t border-[#F0F0F0] dark:border-[#1E1E1E]">
+        <div
+          className={`px-6 pt-1 pb-2 border-t border-[#F0F0F0] dark:border-[#1E1E1E] ${
+            open ? "animate-enter-up" : ""
+          }`}
+        >
           {cat.items.map((item, i) => (
             <FAQItem key={i} index={i} q={item.q} a={item.a} />
           ))}
@@ -232,8 +239,8 @@ export default function FAQSection() {
     <section id="faq" aria-label={t("faq.ariaLabel")} className="py-24">
       <div
         ref={ref}
-        className={`transition-all duration-600 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        className={`transition-all duration-200 ease-out ${
+          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
         {/* Header */}

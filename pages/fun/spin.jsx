@@ -91,14 +91,7 @@ export default function SpinPage() {
           {spinning ? "Spinning..." : "Spin"}
         </button>
 
-        {result && (
-          <p
-            className="mt-8 text-lg text-white font-medium"
-            style={{ animation: "fade-in 0.5s ease-out both" }}
-          >
-            {result}
-          </p>
-        )}
+        {result && <p className="animate-enter mt-8 text-lg text-white font-medium">{result}</p>}
 
         <Link
           href="/"

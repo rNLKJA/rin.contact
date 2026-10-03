@@ -58,8 +58,10 @@ function useTypewriter(words, speed = 80, pause = 1800) {
 }
 
 // ─── Count-up ────────────────────────────────────────────────────────────────
-function CountUp({ target, duration = 1200, started }) {
-  const [count, setCount] = useState(0);
+// Motion rules: start at 70% of the target and land within 300ms.
+function CountUp({ target, duration = 300, started }) {
+  const from = Math.round(target * 0.7);
+  const [count, setCount] = useState(from);
   const frameRef = useRef(null);
 
   useEffect(() => {
@@ -68,12 +70,12 @@ function CountUp({ target, duration = 1200, started }) {
     const tick = (now) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(eased * target));
+      setCount(Math.round(from + eased * (target - from)));
       if (progress < 1) frameRef.current = requestAnimationFrame(tick);
     };
     frameRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frameRef.current);
-  }, [started, target, duration]);
+  }, [started, target, duration, from]);
 
   return <>{count}</>;
 }
@@ -261,7 +263,7 @@ export default function HeroSection() {
           {greeting && (
             <p
               className="text-[11px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-5 font-mono"
-              style={{ animation: "fade-in 0.8s ease-out both" }}
+              style={{ animation: "fade-in 200ms ease-out both" }}
               aria-label={greeting}
             >
               {t(greeting)}
@@ -376,15 +378,17 @@ export default function HeroSection() {
             <MagneticButton href="#contact">{t("hero.ctaContact")}</MagneticButton>
           </div>
 
-          {/* Tags — visible on mobile for LCP; staggered fade on desktop only */}
+          {/* Tags — visible on mobile for LCP; staggered fade on desktop only.
+              md:animate-enter-up is a Tailwind-registered animation (fill: both),
+              so it starts at opacity 0.7 during the delay with no hidden state. */}
           <div className="flex flex-wrap gap-2 mt-10">
             {tags.map((tag, i) => (
               <span
                 key={tag}
                 className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wider uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]
                            rounded-full hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200 cursor-default
-                           md:animate-fade-up md:opacity-0"
-                style={{ animationDelay: `${500 + i * 50}ms`, animationFillMode: "forwards" }}
+                           md:animate-enter-up"
+                style={{ animationDelay: `${Math.min(i * 30, 100)}ms` }}
               >
                 {tag}
               </span>
@@ -399,18 +403,22 @@ export default function HeroSection() {
             {stats.map(({ value, label, sub }, i) => (
               <div
                 key={label}
-                className="bg-white dark:bg-[#0A0A0A] px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-300 text-black dark:text-white"
+                className="bg-white dark:bg-[#0A0A0A] px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-200 text-black dark:text-white"
               >
-                <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight text-black dark:text-white group-hover:text-white transition-colors duration-300">
-                  <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
-                  <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-300">
+                <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight text-black dark:text-white group-hover:text-white transition-colors duration-200">
+                  <CountUp
+                    target={value}
+                    duration={Math.min(200 + i * 30, 300)}
+                    started={statsStarted}
+                  />
+                  <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-200">
                     +
                   </span>
                 </span>
-                <span className="text-sm font-medium tracking-wide uppercase text-black dark:text-white group-hover:text-white transition-colors duration-300">
+                <span className="text-sm font-medium tracking-wide uppercase text-black dark:text-white group-hover:text-white transition-colors duration-200">
                   {label}
                 </span>
-                <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] font-light group-hover:text-white/70 transition-colors duration-300">
+                <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] font-light group-hover:text-white/70 transition-colors duration-200">
                   {sub}
                 </span>
               </div>
@@ -422,7 +430,11 @@ export default function HeroSection() {
             {stats.map(({ value, label }, i) => (
               <div key={label} className="flex flex-col items-start">
                 <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight text-black dark:text-white">
-                  <CountUp target={value} duration={900 + i * 120} started={statsStarted} />
+                  <CountUp
+                    target={value}
+                    duration={Math.min(200 + i * 30, 300)}
+                    started={statsStarted}
+                  />
                   <span className="text-[#FF3C3C]">+</span>
                 </span>
                 <span className="text-[10px] tracking-widest uppercase text-black dark:text-white mt-1">
@@ -445,7 +457,7 @@ export default function HeroSection() {
         }
         .hero-name {
           font-variation-settings: "wght" 600;
-          transition: font-variation-settings 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+          transition: font-variation-settings 0.2s cubic-bezier(0.2, 0.7, 0.2, 1);
         }
         @media (hover: hover) {
           .hero-name:hover { font-variation-settings: "wght" 820; }

@@ -3,7 +3,9 @@ import dynamic from "next/dynamic";
 import PageHero from "@/components/layout/PageHero";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
+import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
+import { assertCareerData } from "@/lib/career-check";
 
 const TimelineSection = dynamic(() => import("@/components/sections/TimelineSection"), {
   loading: () => <div className="min-h-[480px]" />,
@@ -11,6 +13,13 @@ const TimelineSection = dynamic(() => import("@/components/sections/TimelineSect
 const MetroMapSection = dynamic(() => import("@/components/sections/MetroMapSection"), {
   loading: () => <div className="min-h-[360px]" />,
 });
+
+// Fails the build if the shared career data is malformed or a known-wrong claim
+// creeps back in (see lib/career-check.js).
+export function getStaticProps() {
+  assertCareerData();
+  return { props: {} };
+}
 
 export default function CareerPage() {
   const { t } = useI18n();
@@ -22,13 +31,13 @@ export default function CareerPage() {
         <title>Career — Rin Huang · rin.contact</title>
         <meta
           name="description"
-          content="Rin Huang's full career timeline — ASO7 at SAPOL, research at WEHI & CSIRO, co-founder of Mapiva. Interactive career metro map across Government, Research, and Engineering."
+          content="Rin Huang's full career timeline: ASO7 Senior Data Analyst at SA Police, co-founder of Mapiva, and earlier roles at CBS, the University of Melbourne, WEHI, CSIRO and CSL. Interactive career metro map across Government, Research and Engineering."
         />
         <link rel="canonical" href="https://rin.contact/career/" />
         <meta property="og:title" content="Career — Sunchuangyu (Rin) Huang" />
         <meta
           property="og:description"
-          content="Four years across Government, Research, and Engineering. Seven roles. One startup. ASO7 @ SAPOL, WEHI, CSIRO, Mapiva."
+          content="Since 2022 across Government, Research and Engineering. Seven roles. One startup. ASO7 @ SAPOL, Mapiva, CBS, WEHI, CSIRO."
         />
         <meta property="og:url" content="https://rin.contact/career/" />
         <meta property="og:type" content="website" />
@@ -57,6 +66,14 @@ export default function CareerPage() {
           description={t("career.description")}
           backLabel={t("about.back")}
         />
+        <p className="-mt-10 mb-10 text-xs tracking-widest uppercase">
+          <Link
+            href="/resume"
+            className="text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
+          >
+            {t("career.resumeLink")} <span aria-hidden="true">→</span>
+          </Link>
+        </p>
       </div>
 
       {/* Timeline */}

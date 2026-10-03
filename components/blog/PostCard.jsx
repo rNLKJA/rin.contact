@@ -21,7 +21,7 @@ export default function PostCard({ slug, title, date, tags, description, reading
       {/* red dot-matrix wash — blooms from the top-left corner on hover */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:animate-enter transition-opacity duration-200"
         style={{
           backgroundImage: "radial-gradient(rgba(255,60,60,0.16) 1px, transparent 1.6px)",
           backgroundSize: "16px 16px",
@@ -33,7 +33,8 @@ export default function PostCard({ slug, title, date, tags, description, reading
       <span
         aria-hidden="true"
         className="pointer-events-none absolute left-0 bottom-0 h-[2px] w-full bg-[#FF3C3C]
-                   origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
+                   origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-200 ease-out
+                   group-hover:transition-none group-hover:animate-enter-grow-x"
       />
 
       <div className="relative z-10">
@@ -82,7 +83,7 @@ export default function PostCard({ slug, title, date, tags, description, reading
         {/* read affordance — signifier appears and slides in on hover (no layout shift; held in flow) */}
         <span
           className="inline-flex items-center gap-1.5 text-[10px] tracking-widest uppercase text-[#FF3C3C]
-                     opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+                     opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:animate-enter transition-all duration-200"
           aria-hidden="true"
         >
           Read

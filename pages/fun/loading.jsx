@@ -69,7 +69,7 @@ export default function LoadingPage() {
           </div>
 
           {/* Status message */}
-          <p className="text-xs text-[#7A7A7A] mb-6 h-4 transition-opacity duration-500">
+          <p className="text-xs text-[#7A7A7A] mb-6 h-4 transition-opacity duration-200">
             {MESSAGES[msgIdx]}
           </p>
 
