@@ -3,7 +3,9 @@
  * npm run check:career
  *
  * 1. Runs the lib/career-check.js assertions on lib/career-data.js.
- * 2. Searches the site's source for claims that were once published and are
+ * 2. Runs the lib/coursework-check.js assertions on lib/coursework-data.js
+ *    (site rules for /projects/coursework: no marks, public repos only, ...).
+ * 3. Searches the site's source for claims that were once published and are
  *    false (BANNED), so they cannot quietly come back through another file.
  * Exits non-zero on any problem. Node 22, no dependencies.
  */
@@ -12,6 +14,7 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { BANNED, careerDataProblems } from "../lib/career-check.js";
+import { courseworkDataProblems } from "../lib/coursework-check.js";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const SCAN = ["components", "pages", "lib", "locales", "posts", "public/rin.json"];
@@ -27,7 +30,7 @@ function* walk(path) {
   }
 }
 
-const problems = careerDataProblems();
+const problems = [...careerDataProblems(), ...courseworkDataProblems()];
 
 for (const entry of SCAN) {
   const start = join(root, entry);

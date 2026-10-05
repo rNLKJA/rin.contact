@@ -29,7 +29,8 @@
     "instagram": "Instagram",
     "email": "Email",
     "strategic": "Strategic",
-    "fullProfile": "Full Profile"
+    "fullProfile": "Full Profile",
+    "coursework": "Coursework"
   },
   "locale": {
     "current": "EN",
@@ -848,6 +849,7 @@
     "heading": "Changelog",
     "intro": "What changed. Version {version} and counting.",
     "entries": [
+      "University coursework, revived: /projects/coursework shows eleven University of Melbourne assignments from 2019 to 2024 as live demos, on a timeline by term with filters by area, level and skill and a skills matrix. Copy comes from one bilingual data source with a build check for site rules (no marks, public repositories only, every teammate named).",
       "A proper resume at /resume: role, impact and contact in a 30-second read, every number linked to its source, and a clean text PDF. Career facts now come from one data source shared by /resume, /cv, /career and the terminal (now at /resume/terminal), with a build check against known-wrong claims. Experience updated to SAPOL and Mapiva, credentials corrected, and site-wide motion tightened: UI animations finish within 300ms and never start from zero.",
       "Site-wide performance pass: KaTeX scoped to the /knowledge pages that use it, font preload trimmed, Edge Proxy skips static assets, homepage-only structured data no longer ships on every page. Also fixed stale image caching and a font-family CSS bug; blog builds ~3x faster.",
       "Blog: 6 posts with Mermaid diagrams, RSS feed at /blog/feed.xml, newsletter signup component. Service worker: self-destructing on activate for cache hygiene.",
@@ -892,6 +894,7 @@
           "Strategic Data Science",
           "Career",
           "Projects",
+          "University coursework, revived",
           "Lab",
           "About",
           "Resume",
@@ -1486,7 +1489,8 @@
   "projectsPage": {
     "sectionLabel": "◆ — Projects",
     "heading": "Work.",
-    "description": "Data engineering, cloud infrastructure, mobile, and web platforms."
+    "description": "Data engineering, cloud infrastructure, mobile, and web platforms.",
+    "courseworkLink": "University coursework, revived"
   },
   "strategic": {
     "sectionLabel": "◆ — Framework",
@@ -2126,6 +2130,119 @@
     },
     "footer": {
       "referees": "Referees available on request"
+    }
+  },
+  "courseworkPage": {
+    "metaTitle": "University Coursework, Revived · Rin Huang · rin.contact",
+    "metaDescription": "{count} University of Melbourne assignments from {from} to {to}, rebuilt as live demos: faithful ports checked against the originals, statistical re-analysis and optional bring-your-own-key AI.",
+    "ogTitle": "University Coursework, Revived · Rin Huang",
+    "ogSubtitle": "{count} UniMelb assignments, {from} to {to}, as live demos",
+    "sectionLabel": "◆ — Coursework",
+    "heading": "Coursework, revived.",
+    "description": "{count} University of Melbourne assignments from {from} to {to}, rebuilt in 2026 as live demos you can try in the browser.",
+    "back": "Projects",
+    "breadcrumb": {
+      "home": "Home",
+      "projects": "Projects",
+      "coursework": "Coursework"
+    },
+    "sections": {
+      "revived": "What revived means",
+      "timeline": "Timeline",
+      "matrix": "Skills matrix",
+      "goDeeper": "Go deeper"
+    },
+    "intro": "Each project began as an assignment I submitted at the University of Melbourne. In 2026 I brought them back in three steps, kept separate so it is always clear what is original and what is new.",
+    "steps": [
+      {
+        "title": "Faithful port",
+        "body": "The original code is ported to TypeScript and checked against the original Python, C, R or JavaScript with parity tests. Known bugs are kept as submitted and documented, with a corrected mode where it helps."
+      },
+      {
+        "title": "Statistical rigour",
+        "body": "Results are re-checked with confidence intervals, paired tests and simulation, and the notes record where the original conclusions do not hold."
+      },
+      {
+        "title": "Optional BYOK AI",
+        "body": "Most labs add an optional AI feature that runs on the visitor's own API key. Its output is checked against the data or scored against simple baselines, and most labs keep a local log of every call."
+      }
+    ],
+    "glance": {
+      "heading": "At a glance",
+      "projects": "Projects",
+      "subjects": "Subjects",
+      "years": "Years",
+      "withTeam": "Team projects"
+    },
+    "notes": [
+      "Dates are the final deadline or submission month, shown only as precisely as the records allow.",
+      "Team projects name every teammate. Source code is linked where the repository is public, and every project links its live demo."
+    ],
+    "filters": {
+      "heading": "Filter projects",
+      "area": "Area",
+      "allAreas": "All areas",
+      "level": "Level",
+      "allLevels": "All levels",
+      "skill": "Skill",
+      "anySkill": "Any skill",
+      "showing": "Showing {shown} of {total} projects",
+      "clear": "Clear filters",
+      "empty": "No projects match these filters."
+    },
+    "areas": {
+      "statistics": "Statistics",
+      "ml": "AI & machine learning",
+      "algorithms": "Algorithms",
+      "data-engineering": "Data engineering",
+      "web": "Web",
+      "genai-eval": "GenAI evaluation",
+      "reproducibility": "Testing & reproducibility"
+    },
+    "levels": {
+      "undergraduate": "Undergraduate",
+      "master": "Master's"
+    },
+    "semesters": {
+      "1": "Semester 1",
+      "2": "Semester 2"
+    },
+    "yearPrefix": "{year}, ",
+    "termFormat": "{semester}, {year}",
+    "card": {
+      "date": "Date",
+      "myRole": "My role",
+      "team": "Team",
+      "individual": "Individual",
+      "original": "Original",
+      "revival": "2026 revival",
+      "highlights": "Highlights",
+      "skills": "Skills",
+      "showMorePrefix": "Show ",
+      "showMoreSuffix": " more",
+      "showLess": "Show less",
+      "liveDemo": "Live demo",
+      "liveDemoLabel": "Live demo: {title} (opens in a new tab)",
+      "source": "Source on GitHub",
+      "sourceLabel": "Source on GitHub: {title} (opens in a new tab)",
+      "listSeparator": ", ",
+      "listConjunction": " and "
+    },
+    "status": {
+      "live": "Live",
+      "upgradePending": "Shared database coming soon"
+    },
+    "matrix": {
+      "intro": "Each row is a skill and each column a project, oldest on the left. Choose a skill to filter the timeline above.",
+      "caption": "Skills shown in each coursework project",
+      "skill": "Skill",
+      "count": "Projects",
+      "yes": "Yes",
+      "filterBy": "Show projects with: {skill}"
+    },
+    "goDeeper": {
+      "projects": "All projects and case studies",
+      "resume": "Resume and PDF"
     }
   }
 }

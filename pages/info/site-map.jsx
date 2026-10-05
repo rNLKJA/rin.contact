@@ -13,6 +13,7 @@ const SECTIONS = [
       "/strategic",
       "/career",
       "/projects",
+      "/projects/coursework",
       "/lab",
       "/about",
       "/resume",

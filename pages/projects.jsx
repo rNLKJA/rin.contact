@@ -1,5 +1,6 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import PageHero from "@/components/layout/PageHero";
 import { useI18n } from "@/contexts/I18nContext";
 import { PROJECTS } from "@/components/sections/ProjectsSection";
@@ -53,6 +54,14 @@ export default function ProjectsPage({ count = 0 }) {
           description={t("projectsPage.description")}
           backLabel={t("about.back")}
         />
+        <p className="-mt-10 mb-10 text-xs tracking-widest uppercase">
+          <Link
+            href="/projects/coursework"
+            className="text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
+          >
+            {t("projectsPage.courseworkLink")} <span aria-hidden="true">→</span>
+          </Link>
+        </p>
       </div>
 
       <div className="bg-white dark:bg-[#0A0A0A] relative overflow-hidden">

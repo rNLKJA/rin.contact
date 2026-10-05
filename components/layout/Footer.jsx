@@ -13,6 +13,7 @@ const NAV_COLS = [
       { href: "/strategic", key: "nav.strategic" },
       { href: "/career", key: "nav.career" },
       { href: "/projects", key: "nav.projects" },
+      { href: "/projects/coursework", key: "nav.coursework" },
       { href: "/lab", key: "nav.lab" },
       { href: "/about", key: "nav.about" },
       { href: "/resume", key: "nav.resume" },

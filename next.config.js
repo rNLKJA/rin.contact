@@ -65,6 +65,8 @@ const nextConfig = {
       ["colophon", "info/colophon"],
       ["card", "tools/card"],
       ["404.404", "fun/float404"],
+      // Short link for resumes and posts; the page lives under /projects.
+      ["coursework", "projects/coursework"],
     ];
     return moved.flatMap(([from, to]) => [
       { source: `/${from}`, destination: `/${to}`, permanent: true },
