@@ -1,14 +1,19 @@
 import { useState } from "react";
-import { fill, joinNames } from "@/components/coursework/fill";
+import { fill, joinNames } from "@/lib/fill";
 
 const K = "courseworkPage.card";
 const LABEL = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
-// Highlights shown before "Show more" (the same pattern as /resume role entries).
+const ROWS =
+  "grid grid-cols-1 sm:grid-cols-[112px_minmax(0,1fr)] gap-x-4 text-[13px] leading-relaxed";
+// Highlights shown before "Show details" (the same pattern as /resume role
+// entries). Phones show only the first until the card is opened.
 const SHOWN = 2;
 
-function Highlight({ text }) {
+function Highlight({ text, className = "" }) {
   return (
-    <li className="flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+    <li
+      className={`flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] ${className}`}
+    >
       <span className="text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0" aria-hidden="true">
         ·
       </span>
@@ -19,23 +24,27 @@ function Highlight({ text }) {
 
 /**
  * One revived coursework project: subject, date at its recorded precision,
- * status, summary, role and team credits, original vs revived stack,
- * highlights, skills and links. GitHub appears only when the data layer passed
- * a repoUrl, which it does for public repositories alone.
+ * status, summary, role and team credits and the first highlights. "Show
+ * details" opens the rest: further highlights, original vs revived stack and
+ * skills, which keeps eleven cards short enough to scan on a phone. GitHub
+ * appears only when the data layer passed a repoUrl, which it does for public
+ * repositories whose main branch holds the revival.
  */
 export default function CourseworkCard({ project: p, termLabel, t }) {
   const [open, setOpen] = useState(false);
   const shown = p.highlights.slice(0, SHOWN);
   const more = p.highlights.slice(SHOWN);
-  const moreId = `${p.slug}-more`;
+  const detailsId = `${p.slug}-details`;
   const headingId = `${p.slug}-h`;
   const highlightsId = `${p.slug}-highlights`;
-  const team = p.team.length
-    ? joinNames(p.team, {
-        separator: t(`${K}.listSeparator`),
-        conjunction: t(`${K}.listConjunction`),
-      })
-    : t(`${K}.individual`);
+  const skillsId = `${p.slug}-skills`;
+  const team = joinNames(p.team, {
+    separator: t(`${K}.listSeparator`),
+    conjunction: t(`${K}.listConjunction`),
+  });
+  const revival = p.revivedExtras.length
+    ? fill(t(`${K}.revivalPlus`), { extras: p.revivedExtras.join(" · ") })
+    : t(`${K}.revivalShared`);
 
   return (
     <article
@@ -61,12 +70,7 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
               className="w-1.5 h-1.5 rounded-full bg-[#CC0000] dark:bg-[#FF3C3C]"
               aria-hidden="true"
             />
-            {t("courseworkPage.status.live")}
-            {p.status === "live-upgrade-pending" && (
-              <span className="normal-case tracking-normal text-[#5C5C5C] dark:text-[#9A9A9A]">
-                · {t("courseworkPage.status.upgradePending")}
-              </span>
-            )}
+            {t(`courseworkPage.status.${p.status}`)}
           </p>
         </div>
       </div>
@@ -81,67 +85,69 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
         {p.summary}
       </p>
 
-      {/* Role, team and stacks */}
-      <dl className="mt-5 grid grid-cols-1 sm:grid-cols-[112px_minmax(0,1fr)] gap-x-4 text-[13px] leading-relaxed">
+      {/* Role and team credits (an individual project's role already says so) */}
+      <dl className={`mt-5 ${ROWS}`}>
         <dt className={`${LABEL} sm:pt-1`}>{t(`${K}.myRole`)}</dt>
         <dd className="mb-3 text-[#1A1A1A] dark:text-[#DDDDDD]">{p.myRole}</dd>
-        <dt className={`${LABEL} sm:pt-1`}>{t(`${K}.team`)}</dt>
-        <dd className="mb-3 text-[#1A1A1A] dark:text-[#DDDDDD]">{team}</dd>
-        <dt className={`${LABEL} sm:pt-1`}>{t(`${K}.original`)}</dt>
-        <dd className="mb-3 text-[#5C5C5C] dark:text-[#9A9A9A]">{p.originalStack.join(" · ")}</dd>
-        <dt className={`${LABEL} sm:pt-1`}>{t(`${K}.revival`)}</dt>
-        <dd className="text-[#5C5C5C] dark:text-[#9A9A9A]">{p.revivedStack.join(" · ")}</dd>
+        {p.team.length > 0 && (
+          <>
+            <dt className={`${LABEL} sm:pt-1`}>{t(`${K}.team`)}</dt>
+            <dd className="mb-3 text-[#1A1A1A] dark:text-[#DDDDDD]">{team}</dd>
+          </>
+        )}
       </dl>
 
       {/* Highlights */}
-      <p id={highlightsId} className={`mt-5 mb-2 font-mono ${LABEL}`}>
+      <p id={highlightsId} className={`mt-2 mb-2 font-mono ${LABEL}`}>
         {t(`${K}.highlights`)}
       </p>
       <ul aria-labelledby={highlightsId} className="space-y-1.5 max-w-[72ch]">
-        {shown.map((h) => (
-          <Highlight key={h} text={h} />
+        {shown.map((h, i) => (
+          <Highlight key={h} text={h} className={i > 0 && !open ? "max-sm:hidden" : ""} />
         ))}
       </ul>
-      {more.length > 0 && (
-        <>
-          <ul
-            id={moreId}
-            hidden={!open}
-            aria-labelledby={highlightsId}
-            className="mt-1.5 space-y-1.5 max-w-[72ch] animate-enter-up"
-          >
+
+      {/* Details: further highlights, stacks and skills */}
+      <div id={detailsId} hidden={!open} className="animate-enter-up">
+        {more.length > 0 && (
+          <ul aria-labelledby={highlightsId} className="mt-1.5 space-y-1.5 max-w-[72ch]">
             {more.map((h) => (
               <Highlight key={h} text={h} />
             ))}
           </ul>
-          <button
-            type="button"
-            aria-expanded={open}
-            aria-controls={moreId}
-            onClick={() => setOpen((o) => !o)}
-            className="mt-2 min-h-[24px] text-[11px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
-          >
-            {open
-              ? t(`${K}.showLess`)
-              : `${t(`${K}.showMorePrefix`)}${more.length}${t(`${K}.showMoreSuffix`)}`}
-          </button>
-        </>
-      )}
+        )}
+        <dl className={`mt-5 ${ROWS}`}>
+          <dt className={`${LABEL} sm:pt-1`}>{t(`${K}.original`)}</dt>
+          <dd className="mb-3 text-[#5C5C5C] dark:text-[#9A9A9A]">{p.originalStack.join(" · ")}</dd>
+          <dt className={`${LABEL} sm:pt-1`}>{t(`${K}.revival`)}</dt>
+          <dd className="text-[#5C5C5C] dark:text-[#9A9A9A]">{revival}</dd>
+        </dl>
+        <p id={skillsId} className={`mt-5 mb-2 font-mono ${LABEL}`}>
+          {t(`${K}.skills`)}
+        </p>
+        <ul aria-labelledby={skillsId} className="flex flex-wrap gap-1.5">
+          {p.skills.map((s) => (
+            <li
+              key={s}
+              className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA]"
+            >
+              {s}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={detailsId}
+        onClick={() => setOpen((o) => !o)}
+        className="mt-3 min-h-[24px] text-[11px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
+      >
+        {open ? t(`${K}.hideDetails`) : t(`${K}.showDetails`)}
+      </button>
 
-      {/* Skills */}
-      <ul aria-label={t(`${K}.skills`)} className="mt-5 flex flex-wrap gap-1.5">
-        {p.skills.map((s) => (
-          <li
-            key={s}
-            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA]"
-          >
-            {s}
-          </li>
-        ))}
-      </ul>
-
-      {/* Links: the live demo always; GitHub only for public repositories */}
-      <div className="mt-6 flex flex-wrap items-center gap-2">
+      {/* Links: the live demo always; GitHub only for public, up-to-date repositories */}
+      <div className="mt-5 flex flex-wrap items-center gap-2">
         <a
           href={p.liveUrl}
           target="_blank"

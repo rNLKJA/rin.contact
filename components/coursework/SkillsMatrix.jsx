@@ -1,4 +1,4 @@
-import { fill } from "@/components/coursework/fill";
+import { fill } from "@/lib/fill";
 
 const K = "courseworkPage.matrix";
 const GROUP =
@@ -8,8 +8,10 @@ const GROUP =
  * Skill -> project dot matrix: one row per canonical skill, one column per
  * project (oldest on the left), a filled dot where the project demonstrates the
  * skill. Choosing a skill filters the timeline. Columns outside the current
- * filter fade back. A table from md up; a list on phones, where 11 columns
- * would not fit.
+ * filter fade back, and their headings stop linking to cards that are not on
+ * the page. A table from md up; a list on phones, where 11 columns would not
+ * fit. There is deliberately no per-skill count: a tally of self-tagged skills
+ * reads like a score.
  */
 export default function SkillsMatrix({
   t,
@@ -55,37 +57,37 @@ export default function SkillsMatrix({
               >
                 {t(`${K}.skill`)}
               </th>
-              {projects.map((p) => (
-                <th
-                  key={p.slug}
-                  scope="col"
-                  className={`align-bottom pb-3 px-0.5 font-normal transition-opacity duration-200 ${
-                    visible.has(p.slug) ? "" : "opacity-40"
-                  }`}
-                >
-                  <a
-                    href={`#${p.slug}`}
-                    className={`mx-auto inline-block max-h-[168px] overflow-hidden text-[11px] leading-tight text-[#3D3D3D] dark:text-[#CCCCCC] hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200 [writing-mode:vertical-rl] ${
-                      isZh ? "" : "rotate-180"
+              {projects.map((p) => {
+                const shown = visible.has(p.slug);
+                const Label = shown ? "a" : "span";
+                return (
+                  <th
+                    key={p.slug}
+                    scope="col"
+                    className={`align-bottom pb-3 px-0.5 font-normal transition-opacity duration-200 ${
+                      shown ? "" : "opacity-40"
                     }`}
                   >
-                    <span className="sr-only">{p.subjectCode} </span>
-                    {p.title}
-                  </a>
-                </th>
-              ))}
-              <th
-                scope="col"
-                className="align-bottom pb-3 pl-3 text-right text-[10px] tracking-widest uppercase font-normal text-[#5C5C5C] dark:text-[#9A9A9A]"
-              >
-                {t(`${K}.count`)}
-              </th>
+                    <Label
+                      {...(shown ? { href: `#${p.slug}` } : {})}
+                      className={`mx-auto inline-block max-h-[168px] overflow-hidden text-[11px] leading-tight text-[#3D3D3D] dark:text-[#CCCCCC] [writing-mode:vertical-rl] ${
+                        shown
+                          ? "hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200"
+                          : ""
+                      } ${isZh ? "" : "rotate-180"}`}
+                    >
+                      <span className="sr-only">{p.subjectCode} </span>
+                      {p.title}
+                    </Label>
+                  </th>
+                );
+              })}
             </tr>
           </thead>
           {rows.map(({ group, caps }) => (
             <tbody key={group}>
               <tr>
-                <th scope="rowgroup" colSpan={projects.length + 2} className={`${GROUP} pt-5 pb-2`}>
+                <th scope="rowgroup" colSpan={projects.length + 1} className={`${GROUP} pt-5 pb-2`}>
                   {t(`courseworkPage.areas.${group}`)}
                 </th>
               </tr>
@@ -125,9 +127,6 @@ export default function SkillsMatrix({
                       </td>
                     );
                   })}
-                  <td className="py-1.5 pl-3 text-right text-xs tabular-nums text-[#5C5C5C] dark:text-[#9A9A9A]">
-                    {c.projects.length}
-                  </td>
                 </tr>
               ))}
             </tbody>
@@ -143,14 +142,11 @@ export default function SkillsMatrix({
             <ul className="divide-y divide-[#F0F0F0] dark:divide-[#1E1E1E] border-y border-[#F0F0F0] dark:border-[#1E1E1E]">
               {caps.map((c) => (
                 <li key={c.id} className="py-3">
-                  <p className="flex items-baseline justify-between gap-3">
+                  <p>
                     {skillButton(
                       c,
                       "min-h-[24px] text-sm font-medium text-[#1A1A1A] dark:text-[#DDDDDD]"
                     )}
-                    <span className="text-xs tabular-nums text-[#5C5C5C] dark:text-[#9A9A9A]">
-                      {c.projects.length}
-                    </span>
                   </p>
                   <p className="mt-1 text-xs leading-relaxed text-[#5C5C5C] dark:text-[#9A9A9A]">
                     {c.projects.map((slug) => titleOf[slug]).join(" · ")}

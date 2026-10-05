@@ -16,7 +16,7 @@ import ResumeSection from "@/components/resume/ResumeSection";
 import CourseworkCard from "@/components/coursework/CourseworkCard";
 import CourseworkFilters from "@/components/coursework/CourseworkFilters";
 import SkillsMatrix from "@/components/coursework/SkillsMatrix";
-import { fill } from "@/components/coursework/fill";
+import { fill } from "@/lib/fill";
 import { useI18n } from "@/contexts/I18nContext";
 import { getCoursework } from "@/lib/coursework-data";
 import { assertCourseworkData } from "@/lib/coursework-check";
@@ -26,9 +26,11 @@ import zh from "@/locales/zh-Hans.json";
 const BASE = "https://rin.contact";
 const PATH = "/projects/coursework";
 const ALL = "all";
+const STACK_LABEL =
+  "block mb-1 font-mono text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]";
 
 export function getStaticProps({ locale = "en-AU" }) {
-  assertCourseworkData();
+  assertCourseworkData([en.courseworkPage, zh.courseworkPage]);
   const data = getCoursework(locale);
   const copy = (locale === "zh-Hans" ? zh : en).courseworkPage;
   const prefix = locale === "zh-Hans" ? "/zh-Hans" : "";
@@ -95,9 +97,8 @@ export function getStaticProps({ locale = "en-AU" }) {
               url: data.university.url,
             },
             author: { "@id": `${BASE}/#person` },
-            ...(p.team.length
-              ? { contributor: p.team.map((name) => ({ "@type": "Person", name })) }
-              : {}),
+            // Teammates are credited on the page but not published as schema.org
+            // Person entries until they have agreed to be indexed by name.
           },
         })),
       },
@@ -135,7 +136,17 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
   const { t, locale = "en-AU" } = useI18n();
   const router = useRouter();
   const statusRef = useRef(null);
-  const { projects, stats, degrees, levels, areas, skillGroups, capabilities } = data;
+  const {
+    projects,
+    stats,
+    degrees,
+    levels,
+    areas,
+    skillGroups,
+    capabilities,
+    sharedStack,
+    sharedCapabilities,
+  } = data;
   const vars = { count: stats.projects, from: stats.from, to: stats.to };
 
   // ── Filters: read from the URL; unknown values fall back to "all" ─────────
@@ -153,7 +164,7 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
       for (const [key, value] of Object.entries(patch)) {
         if (!value || value === ALL) delete query[key];
       }
-      router.replace({ pathname: router.pathname, query }, undefined, {
+      return router.replace({ pathname: router.pathname, query }, undefined, {
         shallow: true,
         scroll: false,
       });
@@ -170,12 +181,15 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
   const visible = new Set(filtered.map((p) => p.slug));
   const groups = groupTimeline(filtered, levels);
 
-  // A skill chosen in the matrix filters the timeline: jump there instantly (the
+  // A skill chosen in the matrix filters the timeline. router.replace resolves
+  // once the shorter list is in the DOM; only then jump to it instantly (the
   // site's smooth scroll can run past 300ms) and move focus to the result count.
-  const selectSkill = (id) => {
-    setFilters({ skill: filters.skill === id ? ALL : id });
+  // Scrolling before the re-render leaves the heading under the sticky header.
+  const selectSkill = async (id) => {
+    // A newer click can cancel this navigation; then the newer one scrolls.
+    const changed = await setFilters({ skill: filters.skill === id ? ALL : id }).catch(() => false);
     const target = document.getElementById("timeline");
-    if (!target) return;
+    if (!changed || !target) return;
     const root = document.documentElement;
     const previous = root.style.scrollBehavior;
     root.style.scrollBehavior = "auto";
@@ -256,6 +270,12 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
                     </li>
                   ))}
                 </ol>
+                {sharedStack.length > 0 && (
+                  <p className="mt-5 text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] max-w-[72ch]">
+                    <span className={STACK_LABEL}>{t("courseworkPage.sharedStack")}</span>
+                    {sharedStack.join(" · ")}
+                  </p>
+                )}
                 <ul className="mt-5 space-y-1 text-xs leading-relaxed text-[#5C5C5C] dark:text-[#9A9A9A] max-w-[72ch]">
                   {(t("courseworkPage.notes") || []).map((n) => (
                     <li key={n}>{n}</li>
@@ -377,9 +397,17 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
 
           {/* 03 Skills matrix */}
           <ResumeSection id="skills" n="03" title={t("courseworkPage.sections.matrix")}>
-            <p className="mb-6 text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] max-w-[68ch]">
-              {t("courseworkPage.matrix.intro")}
-            </p>
+            <div className="mb-6 max-w-[68ch] space-y-3">
+              <p className="text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+                {t("courseworkPage.matrix.intro")}
+              </p>
+              {sharedCapabilities.length > 0 && (
+                <p className="text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+                  <span className={STACK_LABEL}>{t("courseworkPage.matrix.everyProject")}</span>
+                  {sharedCapabilities.join(" · ")}
+                </p>
+              )}
+            </div>
             <SkillsMatrix
               t={t}
               locale={locale}

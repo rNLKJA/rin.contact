@@ -3,8 +3,9 @@
  * npm run check:career
  *
  * 1. Runs the lib/career-check.js assertions on lib/career-data.js.
- * 2. Runs the lib/coursework-check.js assertions on lib/coursework-data.js
- *    (site rules for /projects/coursework: no marks, public repos only, ...).
+ * 2. Runs the lib/coursework-check.js assertions on lib/coursework-data.js and
+ *    the courseworkPage locale strings (site rules for /projects/coursework: no
+ *    marks or grades, GitHub linked only for repos marked public, en and zh in step).
  * 3. Searches the site's source for claims that were once published and are
  *    false (BANNED), so they cannot quietly come back through another file.
  * Exits non-zero on any problem. Node 22, no dependencies.
@@ -30,7 +31,11 @@ function* walk(path) {
   }
 }
 
-const problems = [...careerDataProblems(), ...courseworkDataProblems()];
+const courseworkCopy = ["en-AU", "zh-Hans"].map(
+  (locale) =>
+    JSON.parse(readFileSync(join(root, "locales", `${locale}.json`), "utf8")).courseworkPage
+);
+const problems = [...careerDataProblems(), ...courseworkDataProblems(courseworkCopy)];
 
 for (const entry of SCAN) {
   const start = join(root, entry);

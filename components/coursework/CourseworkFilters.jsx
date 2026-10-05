@@ -1,4 +1,4 @@
-import { fill } from "@/components/coursework/fill";
+import { fill } from "@/lib/fill";
 
 const K = "courseworkPage.filters";
 const LABEL = "text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]";
@@ -84,17 +84,19 @@ export default function CourseworkFilters({
             className="min-h-[32px] w-full sm:w-auto sm:max-w-[24rem] border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#0A0A0A] dark:[color-scheme:dark] px-2 py-1 text-sm text-black dark:text-white"
           >
             <option value="all">{t(`${K}.anySkill`)}</option>
-            {groups.map((g) => (
-              <optgroup key={g} label={t(`courseworkPage.areas.${g}`)}>
-                {capabilities
-                  .filter((c) => c.group === g)
-                  .map((c) => (
+            {groups.map((g) => {
+              const caps = capabilities.filter((c) => c.group === g);
+              if (!caps.length) return null;
+              return (
+                <optgroup key={g} label={t(`courseworkPage.areas.${g}`)}>
+                  {caps.map((c) => (
                     <option key={c.id} value={c.id}>
                       {c.label}
                     </option>
                   ))}
-              </optgroup>
-            ))}
+                </optgroup>
+              );
+            })}
           </select>
         </label>
       </div>
