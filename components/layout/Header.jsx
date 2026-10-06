@@ -39,7 +39,7 @@ function LogoWithGlitch() {
   return (
     <Link
       href="/"
-      className="flex flex-row items-center gap-2.5 group"
+      className="flex flex-row items-center gap-2.5 group flex-shrink-0"
       aria-label="Rin Huang — home"
       onDoubleClick={onDoubleClick}
     >
@@ -69,6 +69,7 @@ function LogoWithGlitch() {
 const NAV_LINKS = [
   { href: "/career", key: "nav.career" },
   { href: "/projects", key: "nav.projects" },
+  { href: "/projects/coursework", key: "nav.coursework" },
   { href: "/lab", key: "nav.lab" },
   { href: "/knowledge", key: "nav.knowledge" },
   { href: "/blog", key: "nav.blog" },
@@ -90,11 +91,16 @@ export default function Header() {
 
   // "You are here" wayfinding. Matches exact route or any sub-route (e.g.
   // /projects/signal lights /projects). Skips hash links and the home anchor.
-  const isActive = (href) => {
+  // When a more specific link also matches (/projects/coursework), only that
+  // one lights up, so Projects and Coursework are never active together.
+  const matches = (href) => {
     if (!href || !href.startsWith("/") || href.includes("#")) return false;
     if (href === "/") return pathname === "/";
     return pathname === href || pathname.startsWith(href + "/");
   };
+  const isActive = (href) =>
+    matches(href) &&
+    !NAV_LINKS.some((l) => l.href !== href && l.href.startsWith(href + "/") && matches(l.href));
   // Direct DOM refs — scroll state never goes through React, so no re-renders on scroll
   const headerRef = useRef(null);
   const progressRef = useRef(null);
@@ -165,9 +171,11 @@ export default function Header() {
         {/* ── Logo — double-click to glitch ── */}
         <LogoWithGlitch />
 
-        {/* ── Desktop nav ── */}
+        {/* ── Desktop nav ── shown from lg: nine sections plus the page links do
+            not fit a tablet-width bar, so 768-1023px keeps the burger menu.
+            Tight item padding lets the full bar fit at 1024px. */}
         <nav
-          className="hidden md:flex flex-row items-center gap-1 text-[11px] tracking-widest uppercase"
+          className="hidden lg:flex flex-row items-center gap-0 xl:gap-0.5 whitespace-nowrap text-[11px] tracking-widest uppercase"
           aria-label="Primary navigation"
         >
           {NAV_LINKS.map(({ href, key }) => {
@@ -177,7 +185,7 @@ export default function Header() {
                 key={key}
                 href={href}
                 aria-current={active ? "page" : undefined}
-                className={`relative px-3 py-1.5 rounded-full transition-all duration-200 ${
+                className={`relative px-1.5 xl:px-2 py-1.5 rounded-full transition-all duration-200 ${
                   active
                     ? "text-[#FF3C3C]"
                     : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
@@ -219,7 +227,7 @@ export default function Header() {
                           ? "bg-[#FF3C3C] text-white"
                           : "text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
                       }`
-                    : `relative px-3 py-1.5 rounded-full transition-all duration-200 ${
+                    : `relative px-1.5 xl:px-2 py-1.5 rounded-full transition-all duration-200 ${
                         active
                           ? "text-[#FF3C3C]"
                           : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
@@ -240,7 +248,7 @@ export default function Header() {
 
         {/* ── Mobile burger ── */}
         <button
-          className="md:hidden flex flex-col gap-[5px] p-2 z-[60] relative"
+          className="lg:hidden flex flex-col gap-[5px] p-2 z-[60] relative"
           onClick={() => setMenuOpen((o) => !o)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
@@ -261,7 +269,7 @@ export default function Header() {
       {/* ══ Full-page mobile menu ══ */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-50 bg-white dark:bg-[#0A0A0A] flex flex-col md:hidden
+        className={`fixed inset-0 z-50 bg-white dark:bg-[#0A0A0A] flex flex-col lg:hidden
                     transition-opacity duration-200 ${menuOpen ? "opacity-100 pointer-events-auto animate-enter" : "opacity-0 pointer-events-none"}`}
         role="dialog"
         aria-modal="true"
@@ -276,8 +284,9 @@ export default function Header() {
         </div>
 
         {/* Nav links — editorial numbered style */}
+        {/* Scrolls on short screens; safe centring keeps the first item reachable */}
         <nav
-          className="flex-1 flex flex-col justify-center px-8 gap-0"
+          className="flex-1 min-h-0 overflow-y-auto flex flex-col [justify-content:safe_center] px-8 gap-0"
           aria-label="Mobile navigation"
         >
           {NAV_LINKS.map(({ href, key }, i) => {
@@ -288,7 +297,7 @@ export default function Header() {
                 href={href}
                 onClick={() => setMenuOpen(false)}
                 aria-current={active ? "page" : undefined}
-                className={`flex items-baseline gap-4 py-5 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
+                className={`flex flex-shrink-0 items-baseline gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                   active ? "text-[#FF3C3C]" : "text-black dark:text-white hover:text-[#FF3C3C]"
                 }`}
               >
@@ -318,7 +327,7 @@ export default function Header() {
           })}
 
           {/* Page links — separated by a subtle label */}
-          <p className="text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">
+          <p className="flex-shrink-0 text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">
             {t("nav.pages")}
           </p>
           {PAGE_LINKS.map(({ href, key, cta }) => {
@@ -329,7 +338,7 @@ export default function Header() {
                 href={href}
                 onClick={() => setMenuOpen(false)}
                 aria-current={active ? "page" : undefined}
-                className={`flex items-center gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
+                className={`flex flex-shrink-0 items-center gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                   cta
                     ? active
                       ? "text-[#CC2020]"
