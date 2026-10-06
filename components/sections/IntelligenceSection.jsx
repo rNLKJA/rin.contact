@@ -17,6 +17,7 @@ import { useInView } from "@/hooks/useInView";
 import ConfettiBurst from "@/components/ui/ConfettiBurst";
 import { useI18n } from "@/contexts/I18nContext";
 import ScrollRegion from "@/components/ui/ScrollRegion";
+import Tabs, { tabPanelProps } from "@/components/ui/Tabs";
 import { useTheme } from "@/contexts/ThemeContext";
 import { CERTS } from "@/lib/career-data";
 
@@ -1528,26 +1529,34 @@ export default function IntelligenceSection() {
         </p>
       </div>
 
-      {/* Tab navigation */}
-      <div className="flex border-b border-[#E0E0E0] dark:border-[#3D3D3D] overflow-x-auto">
-        {TABS.map((tInfo) => (
-          <button
-            key={tInfo.id}
-            onClick={() => setTab(tInfo.id)}
-            aria-selected={tab === tInfo.id}
-            className={`px-5 py-3 text-xs tracking-widest uppercase flex-shrink-0 transition-colors duration-150 border-b-2 -mb-px ${
-              tab === tInfo.id
+      {/* Tab navigation — APG tabs: one tab stop, arrows select (auto). The
+          strip scrolls sideways on narrow screens with an edge fade. */}
+      <ScrollRegion
+        focusable={false}
+        scrollerClassName="border-b border-[#E0E0E0] dark:border-[#3D3D3D]"
+      >
+        <Tabs
+          idBase="lab"
+          label={t("intelligence.tabsLabel")}
+          items={TABS.map((tInfo) => ({ id: tInfo.id, label: t(tInfo.labelKey) }))}
+          value={tab}
+          onChange={setTab}
+          className="flex"
+          tabClassName={(selected) =>
+            `px-5 py-3 text-xs tracking-widest uppercase flex-shrink-0 transition-colors duration-150 border-b-2 -mb-px ${
+              selected
                 ? "border-[#FF3C3C] text-black dark:text-white"
-                : "border-transparent text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
-            }`}
-          >
-            {t(tInfo.labelKey)}
-          </button>
-        ))}
-      </div>
+                : "border-transparent text-ink-subtle hover:text-black dark:hover:text-white"
+            }`
+          }
+        />
+      </ScrollRegion>
 
       {/* Dark panel */}
-      <div className="bg-[#F5F5F5] dark:bg-[#0D0D0D] border border-t-0 border-[#E0E0E0] dark:border-[#2A2A2A] p-6 md:p-8 min-h-[480px]">
+      <div
+        {...tabPanelProps("lab", tab)}
+        className="bg-[#F5F5F5] dark:bg-[#0D0D0D] border border-t-0 border-[#E0E0E0] dark:border-[#2A2A2A] p-6 md:p-8 min-h-[480px]"
+      >
         {tab === "signal" && <BubblePanel />}
         {tab === "compound" && <GrowthPanel />}
         {tab === "first" && <FirstPrinciplesPanel />}

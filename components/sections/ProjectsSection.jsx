@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useI18n } from "@/contexts/I18nContext";
+import ScrollRegion from "@/components/ui/ScrollRegion";
+import Tabs, { tabPanelProps } from "@/components/ui/Tabs";
 
 // Turn a domain label into a clean URL slug ("AI / ML" -> "ai-ml"), so a
 // filtered Projects view can be shared as /projects?category=ai-ml.
@@ -1122,19 +1124,21 @@ export default function ProjectsSection() {
       {!isAllView && (
         <>
           <div className="hidden md:block w-full">
-            <div
-              className="flex items-stretch overflow-x-auto gap-0 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-              role="tablist"
+            {/* Folder tabs — APG tabs with manual activation: arrows move focus,
+                Enter/Space opens. The strip scrolls with an edge fade. */}
+            <ScrollRegion
+              focusable={false}
+              scrollerClassName="scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             >
-              {filtered.map((project, i) => {
-                const isActive = openId === project.id;
-                return (
-                  <button
-                    key={project.id}
-                    role="tab"
-                    aria-selected={isActive}
-                    onClick={() => handleSelect(project.id)}
-                    className={`
+              <Tabs
+                idBase="projects-folder"
+                label={t("nav.projects")}
+                activation="manual"
+                items={filtered.map((project) => ({ id: project.id, label: project.title }))}
+                value={openId}
+                onChange={handleSelect}
+                className="flex items-stretch gap-0"
+                tabClassName={(isActive) => `
                       group relative flex-shrink-0 flex flex-col justify-center
                       px-4 py-3 min-w-[110px] max-w-[160px] text-left
                       border-t border-l border-r transition-colors duration-200
@@ -1144,30 +1148,37 @@ export default function ProjectsSection() {
                           : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#AAAAAA] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
                       }
                     `}
-                    style={{ borderRadius: "4px 4px 0 0" }}
-                  >
-                    <span
-                      className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}`}
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div className="flex items-center gap-1.5 min-w-0">
-                      <span className="text-xs font-medium leading-tight truncate">
-                        {project.title}
+                tabStyle={{ borderRadius: "4px 4px 0 0" }}
+                renderTab={(item, isActive, i) => {
+                  const project = filtered[i];
+                  return (
+                    <>
+                      <span
+                        className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}`}
+                      >
+                        {String(i + 1).padStart(2, "0")}
                       </span>
-                      {project.current && (
-                        <span
-                          className={`inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${isActive ? "bg-white opacity-50" : "bg-[#FF3C3C]"}`}
-                        />
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <span className="text-xs font-medium leading-tight truncate">
+                          {project.title}
+                        </span>
+                        {project.current && (
+                          <span
+                            className={`inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${isActive ? "bg-white opacity-50" : "bg-[#FF3C3C]"}`}
+                          />
+                        )}
+                      </div>
+                    </>
+                  );
+                }}
+              />
+            </ScrollRegion>
             {/* Height snaps (no max-height tween); the opened detail enters
                 from 70% via animate-enter-up. Border colour still eases. */}
             <div
+              {...(activeProject
+                ? tabPanelProps("projects-folder", activeProject.id)
+                : { id: "projects-folder-panel" })}
               className={`border overflow-hidden ${activeProject ? "border-[#FF3C3C]" : "border-[#E0E0E0] dark:border-[#3D3D3D]"}`}
               style={{
                 maxHeight: activeProject ? "600px" : "52px",
@@ -1177,7 +1188,7 @@ export default function ProjectsSection() {
               {!activeProject && (
                 <div className="px-6 py-4 flex items-center gap-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] tracking-wide select-none">
                   <span>↑</span>
-                  <span>Select a folder to view project details</span>
+                  <span>{t("projectsPage.selectFolder")}</span>
                 </div>
               )}
               {activeProject && (

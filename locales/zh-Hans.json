@@ -1101,7 +1101,8 @@
     "heading": "情报报告",
     "tabSignal": "信号 vs 噪声",
     "tabGrowth": "复合增长",
-    "tabFirstPrinciples": "第一性原理"
+    "tabFirstPrinciples": "第一性原理",
+    "tabsLabel": "职业视角"
   },
   "bootOverlay": {
     "line1": "正在启动 rin.contact...",
@@ -1184,7 +1185,8 @@
     "sectionLabel": "◆ — 项目",
     "heading": "作品。",
     "description": "数据工程、云基础设施、移动端与Web平台。",
-    "courseworkLink": "大学课程作业复活版"
+    "courseworkLink": "大学课程作业复活版",
+    "selectFolder": "选择一个文件夹查看项目详情"
   },
   "strategic": {
     "sectionLabel": "◆ — 框架",
