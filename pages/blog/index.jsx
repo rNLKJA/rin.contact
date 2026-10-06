@@ -1,10 +1,11 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
 import PostCard from "@/components/blog/PostCard";
+import EmptyState from "@/components/ui/EmptyState";
 import { getAllPosts } from "@/lib/posts";
 
 const NewsletterSignup = dynamic(() => import("@/components/blog/NewsletterSignup"), {
@@ -77,6 +78,13 @@ export default function BlogIndex({ posts }) {
     setQuery(value);
     writeUrl({ q: value });
   };
+  const searchRef = useRef(null);
+  const clearSearch = () => {
+    setQuery("");
+    setActiveTag(null);
+    writeUrl({ q: "", tag: null });
+    searchRef.current?.focus();
+  };
 
   return (
     <>
@@ -141,6 +149,7 @@ export default function BlogIndex({ posts }) {
             />
           </svg>
           <input
+            ref={searchRef}
             type="search"
             value={query}
             onChange={(e) => onSearch(e.target.value)}
@@ -199,15 +208,11 @@ export default function BlogIndex({ posts }) {
 
         {/* Posts */}
         {posts.length === 0 ? (
-          <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-12 text-center">
-            <p className="text-sm text-ink-subtle dark:text-[#9A9A9A]">{t("blog.noPosts")}</p>
-          </div>
+          <EmptyState role={null}>{t("blog.noPosts")}</EmptyState>
         ) : filtered.length === 0 ? (
-          <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-12 text-center">
-            <p className="text-sm text-ink-subtle dark:text-[#9A9A9A]">
-              {t("blog.searchNoResults")}
-            </p>
-          </div>
+          <EmptyState action={{ label: t("blog.clearSearch"), onClick: clearSearch }}>
+            {t("blog.searchNoResults")}
+          </EmptyState>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filtered.map((post) => (

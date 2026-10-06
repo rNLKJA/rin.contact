@@ -1489,7 +1489,8 @@
     "postsLabel": "posts",
     "shareLabel": "Share this",
     "copyLink": "Copy link",
-    "copied": "Copied"
+    "copied": "Copied",
+    "clearSearch": "Clear search"
   },
   "lab": {
     "sectionLabel": "◆ — Lab",
