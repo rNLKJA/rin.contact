@@ -1440,6 +1440,11 @@
     "message": "You've read this far — why not say hello?",
     "dismiss": "Dismiss"
   },
+  "guide": {
+    "launch": "Start the site guide with Pawsibly",
+    "pressStart": "Press start",
+    "continue": "Continue"
+  },
   "snakeGame": {
     "title": "snake — while you wait",
     "score": "Score",

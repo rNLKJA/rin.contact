@@ -1127,6 +1127,11 @@
     "message": "已经看到这里了——不打个招呼吗？",
     "dismiss": "关闭"
   },
+  "guide": {
+    "launch": "和 Pawsibly 一起逛逛这个网站",
+    "pressStart": "开始导览",
+    "continue": "继续"
+  },
   "snakeGame": {
     "title": "贪吃蛇 —— 等待时玩一把",
     "score": "得分",

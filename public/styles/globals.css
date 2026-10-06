@@ -385,6 +385,27 @@ h1 {
   background-size: 16px 16px;
 }
 
+/* ─── Pixel frame ────────────────────────────────────────────────── */
+/* Knocks the 2px corner pixel off a square, 2px-bordered box, so it reads as
+   drawn on a pixel grid (Pawsibly's dialogue box, quest log, history deck).
+   Still flat: no shadow, no radius. */
+.pixel-frame {
+  clip-path: polygon(
+    0 2px,
+    2px 2px,
+    2px 0,
+    calc(100% - 2px) 0,
+    calc(100% - 2px) 2px,
+    100% 2px,
+    100% calc(100% - 2px),
+    calc(100% - 2px) calc(100% - 2px),
+    calc(100% - 2px) 100%,
+    2px 100%,
+    2px calc(100% - 2px),
+    0 calc(100% - 2px)
+  );
+}
+
 /* ─── Background shape animations ───────────────────────────────── */
 @keyframes art-float {
   0%,
