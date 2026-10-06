@@ -110,7 +110,7 @@ export default function RoleEntry({ role, t }) {
               aria-expanded={open}
               aria-controls={moreId}
               onClick={() => setOpen((o) => !o)}
-              className="print:hidden mt-2 text-[11px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
+              className="print:hidden py-1.5 mt-0.5 -mb-1.5 text-[11px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
             >
               {open
                 ? t("resumePage.role.showLess")

@@ -31,7 +31,7 @@ const Principle = ({ num, title, body }) => (
 
 const ImpactItem = ({ domain, examples }) => (
   <div className="flex gap-4 mb-4">
-    <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 border border-[#FF3C3C] text-[#FF3C3C] text-xs font-mono font-bold">
+    <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 border border-[#FF3C3C] text-accent-ink text-xs font-mono font-bold">
       ○
     </div>
     <div>
@@ -45,10 +45,10 @@ const ImpactItem = ({ domain, examples }) => (
 
 const FrameworkItem = ({ name, source, desc }) => (
   <div className="py-3.5 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-6 border-b border-[#F5F5F5] dark:border-[#1E1E1E] last:border-0">
-    <span className="text-xs text-[#7A7A7A] font-mono w-40 flex-shrink-0">{name}</span>
+    <span className="text-xs text-ink-subtle font-mono w-40 flex-shrink-0">{name}</span>
     <div className="flex-1">
       <p className="text-xs text-[#1A1A1A] dark:text-white">{desc}</p>
-      {source && <p className="text-[11px] text-[#AAAAAA] mt-0.5">{source}</p>}
+      {source && <p className="text-[11px] text-ink-subtle mt-0.5">{source}</p>}
     </div>
   </div>
 );
@@ -95,7 +95,7 @@ export default function StrategicPage() {
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
           {/* Header */}
           <div className="mb-14">
-            <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">
+            <p className="text-[10px] tracking-widest uppercase text-accent-ink font-mono mb-4">
               {t("strategic.sectionLabel")}
             </p>
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
@@ -249,7 +249,7 @@ export default function StrategicPage() {
             <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">
               Transparency
             </p>
-            <p className="text-xs text-[#7A7A7A] leading-relaxed">
+            <p className="text-xs text-ink-subtle leading-relaxed">
               This page&apos;s content was generated with assistance from an AI assistant. The
               structure, frameworks, and references are research-based; the articulation reflects
               Rin&apos;s approach to strategic data science. Human review and editing applied.
@@ -260,19 +260,19 @@ export default function StrategicPage() {
           <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
             <Link
               href="/hire-me"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#FF3C3C] hover:text-black dark:hover:text-white border-b border-[#FF3C3C] hover:border-black dark:hover:border-white transition-colors"
+              className="text-[11px] font-mono tracking-widest uppercase text-accent-ink hover:text-black dark:hover:text-white border-b border-[#FF3C3C] hover:border-black dark:hover:border-white transition-colors"
             >
               Hire me for strategic data challenges →
             </Link>
             <Link
               href="/"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+              className="text-[11px] font-mono tracking-widest uppercase text-ink-subtle hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
               ← Home
             </Link>
             <Link
               href="/career"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+              className="text-[11px] font-mono tracking-widest uppercase text-ink-subtle hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
               Career
             </Link>

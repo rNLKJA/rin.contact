@@ -34,7 +34,7 @@ export default function AuthorBio() {
         <div className="flex flex-wrap gap-2.5">
           <Link
             href="/hire-me"
-            className="inline-flex items-center gap-1.5 border border-[#FF3C3C] text-[#FF3C3C] px-4 py-1.5 text-[11px] tracking-widest uppercase rounded-full hover:bg-[#FF3C3C] hover:text-white transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 border border-[#FF3C3C] text-accent-ink px-4 py-1.5 text-[11px] tracking-widest uppercase rounded-full hover:bg-accent-fill hover:border-accent-fill hover:text-white transition-colors duration-200"
           >
             {t("nav.hireMe")} <span aria-hidden="true">&rarr;</span>
           </Link>

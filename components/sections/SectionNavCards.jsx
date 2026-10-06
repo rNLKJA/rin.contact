@@ -636,7 +636,7 @@ export default function SectionNavCards() {
       <div
         className={`mb-12 transition-all duration-200 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"}`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4 font-mono">
+        <p className="text-xs tracking-widest uppercase text-accent-ink mb-4 font-mono">
           {t("sectionNav.label")}
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">

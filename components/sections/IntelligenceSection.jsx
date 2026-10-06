@@ -16,6 +16,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import ConfettiBurst from "@/components/ui/ConfettiBurst";
 import { useI18n } from "@/contexts/I18nContext";
+import ScrollRegion from "@/components/ui/ScrollRegion";
+import Tabs, { tabPanelProps } from "@/components/ui/Tabs";
 import { useTheme } from "@/contexts/ThemeContext";
 import { CERTS } from "@/lib/career-data";
 
@@ -432,6 +434,7 @@ function SeniorityBands() {
 }
 
 function BubblePanel() {
+  const { t } = useI18n();
   const { resolved } = useTheme();
   const isDark = resolved === "dark";
   const [step, setStep] = useState(0);
@@ -480,34 +483,39 @@ function BubblePanel() {
         (2024) · IAPA Skills &amp; Salary Survey (2023).
       </p>
 
-      <div className="relative overflow-x-auto">
-        {/* Tooltip */}
-        {hovPt && step > 0 && (
-          <div className="absolute top-0 right-0 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] p-3 text-xs max-w-[230px] pointer-events-none">
-            <p className="font-medium text-black dark:text-white text-sm">
-              {hovPt.label?.replace(/\n/g, " ")}
-              {hovPt.year ? (
-                <span className="text-[#6E6E6E] dark:text-[#9A9A9A] ml-2 text-xs">
-                  · {hovPt.year}
-                </span>
-              ) : null}
-            </p>
-            {hovPt.domain && (
-              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5 mb-1.5">
-                {hovPt.domain}
+      {/* Tooltip sits beside the scroller so the edge fade never hides it. */}
+      <ScrollRegion
+        label={t("intelligence.tabSignal")}
+        fade="12px"
+        overlay={
+          hovPt &&
+          step > 0 && (
+            <div className="absolute top-0 right-0 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] p-3 text-xs max-w-[230px] pointer-events-none">
+              <p className="font-medium text-black dark:text-white text-sm">
+                {hovPt.label?.replace(/\n/g, " ")}
+                {hovPt.year ? (
+                  <span className="text-[#6E6E6E] dark:text-[#9A9A9A] ml-2 text-xs">
+                    · {hovPt.year}
+                  </span>
+                ) : null}
               </p>
-            )}
-            <p className="text-[#666] dark:text-[#888] leading-relaxed">
-              {hovPt.detail || hovPt.source}
-            </p>
-            {hovPt.why && (
-              <p className="text-[#6E6E6E] dark:text-[#9A9A9A] mt-1.5 text-[10px] italic leading-relaxed">
-                {hovPt.why}
+              {hovPt.domain && (
+                <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5 mb-1.5">
+                  {hovPt.domain}
+                </p>
+              )}
+              <p className="text-[#666] dark:text-[#888] leading-relaxed">
+                {hovPt.detail || hovPt.source}
               </p>
-            )}
-          </div>
-        )}
-
+              {hovPt.why && (
+                <p className="text-[#6E6E6E] dark:text-[#9A9A9A] mt-1.5 text-[10px] italic leading-relaxed">
+                  {hovPt.why}
+                </p>
+              )}
+            </div>
+          )
+        }
+      >
         <svg viewBox="0 0 520 310" width="100%" style={{ overflow: "visible", minWidth: 320 }}>
           {/* Background bands + grid */}
           <SeniorityBands />
@@ -766,7 +774,7 @@ function BubblePanel() {
             </g>
           )}
         </svg>
-      </div>
+      </ScrollRegion>
 
       {/* Legend */}
       <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
@@ -797,7 +805,7 @@ function BubblePanel() {
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
               ? "border-[#CCC] dark:border-[#444] text-[#6E6E6E] dark:text-[#9A9A9A] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
-              : "border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
+              : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:border-accent-fill hover:text-white"
           }`}
         >
           {step === 0 ? "Run Analysis →" : "↺  Reset"}
@@ -814,7 +822,7 @@ function BubblePanel() {
       {step >= 2 && (
         <div className="mt-6 space-y-3" style={{ animation: "fadeUp 200ms ease-out 100ms both" }}>
           <div className="border-l-2 border-[#FF3C3C] pl-4">
-            <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-accent-ink uppercase tracking-widest mb-2 font-mono">
               Pattern Detected
             </p>
             <p className="text-sm text-[#666] dark:text-[#AAAAAA] leading-relaxed font-light">
@@ -867,14 +875,14 @@ function BubblePanel() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
               <div className="border border-[#E0E0E0] dark:border-[#1E1E1E] p-3 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
-                <p className="text-[#FF3C3C] font-medium mb-2">CBS ASO4 (mid-junior)</p>
+                <p className="text-accent-ink font-medium mb-2">CBS ASO4 (mid-junior)</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">SA · ASO4</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">APS · APS5</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">VPS · VPS4</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">NSW · Clerk 5/6</p>
               </div>
               <div className="border border-[#E0E0E0] dark:border-[#1E1E1E] p-3 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
-                <p className="text-[#FF3C3C] font-medium mb-2">SAPOL ASO7 (mid-management)</p>
+                <p className="text-accent-ink font-medium mb-2">SAPOL ASO7 (mid-management)</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">SA · ASO7</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">APS · EL1</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">VPS · VPS6</p>
@@ -906,6 +914,7 @@ function BubblePanel() {
 // PANEL B — Compound Growth Index chart
 // ═══════════════════════════════════════════════════════════════════════════════
 function GrowthPanel() {
+  const { t } = useI18n();
   const [step, setStep] = useState(0);
   const [hovered, setHovered] = useState(null);
 
@@ -935,14 +944,20 @@ function GrowthPanel() {
         compounding (IAPA 2023).
       </p>
 
-      <div className="relative overflow-x-auto">
-        {hovPt && step >= 2 && (
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] px-4 py-2.5 text-xs font-mono text-[#6E6E6E] dark:text-[#9A9A9A] pointer-events-none whitespace-nowrap">
-            <span className="text-black dark:text-white font-medium mr-2">{hovPt.year}</span>
-            <span className="text-[#FF3C3C] mr-2">{hovPt.idx.toFixed(2)}×</span>
-            {hovPt.event}
-          </div>
-        )}
+      <ScrollRegion
+        label={t("intelligence.tabGrowth")}
+        fade="12px"
+        overlay={
+          hovPt &&
+          step >= 2 && (
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] px-4 py-2.5 text-xs font-mono text-[#6E6E6E] dark:text-[#9A9A9A] pointer-events-none whitespace-nowrap">
+              <span className="text-black dark:text-white font-medium mr-2">{hovPt.year}</span>
+              <span className="text-accent-ink mr-2">{hovPt.idx.toFixed(2)}×</span>
+              {hovPt.event}
+            </div>
+          )
+        }
+      >
         <svg viewBox="0 0 500 270" width="100%" style={{ overflow: "visible", minWidth: 320 }}>
           {/* Grid */}
           {yTicks.map((v) => (
@@ -1253,7 +1268,7 @@ function GrowthPanel() {
             baseline
           </text>
         </svg>
-      </div>
+      </ScrollRegion>
 
       {/* Controls */}
       <div className="mt-4 flex flex-wrap items-center gap-4">
@@ -1262,7 +1277,7 @@ function GrowthPanel() {
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
               ? "border-[#CCC] dark:border-[#444] text-[#6E6E6E] dark:text-[#9A9A9A] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
-              : "border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
+              : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:border-accent-fill hover:text-white"
           }`}
         >
           {step === 0 ? "Play →" : "↺  Reset"}
@@ -1311,7 +1326,7 @@ function GrowthPanel() {
       {step >= 3 && (
         <div className="mt-6 space-y-3" style={{ animation: "fadeUp 200ms ease-out 100ms both" }}>
           <div className="border-l-2 border-[#FF3C3C] pl-4">
-            <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-accent-ink uppercase tracking-widest mb-2 font-mono">
               Why compound beats linear
             </p>
             <p className="text-sm text-[#666] dark:text-[#AAAAAA] leading-relaxed font-light">
@@ -1493,7 +1508,7 @@ export default function IntelligenceSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
+        <p className="text-xs tracking-widest uppercase text-accent-ink mb-3">
           {t("intelligence.sectionLabel")}
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">
@@ -1516,26 +1531,34 @@ export default function IntelligenceSection() {
         </p>
       </div>
 
-      {/* Tab navigation */}
-      <div className="flex border-b border-[#E0E0E0] dark:border-[#3D3D3D] overflow-x-auto">
-        {TABS.map((tInfo) => (
-          <button
-            key={tInfo.id}
-            onClick={() => setTab(tInfo.id)}
-            aria-selected={tab === tInfo.id}
-            className={`px-5 py-3 text-xs tracking-widest uppercase flex-shrink-0 transition-colors duration-150 border-b-2 -mb-px ${
-              tab === tInfo.id
+      {/* Tab navigation — APG tabs: one tab stop, arrows select (auto). The
+          strip scrolls sideways on narrow screens with an edge fade. */}
+      <ScrollRegion
+        focusable={false}
+        scrollerClassName="border-b border-[#E0E0E0] dark:border-[#3D3D3D]"
+      >
+        <Tabs
+          idBase="lab"
+          label={t("intelligence.tabsLabel")}
+          items={TABS.map((tInfo) => ({ id: tInfo.id, label: t(tInfo.labelKey) }))}
+          value={tab}
+          onChange={setTab}
+          className="flex"
+          tabClassName={(selected) =>
+            `px-5 py-3 text-xs tracking-widest uppercase flex-shrink-0 transition-colors duration-150 border-b-2 -mb-px ${
+              selected
                 ? "border-[#FF3C3C] text-black dark:text-white"
-                : "border-transparent text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
-            }`}
-          >
-            {t(tInfo.labelKey)}
-          </button>
-        ))}
-      </div>
+                : "border-transparent text-ink-subtle hover:text-black dark:hover:text-white"
+            }`
+          }
+        />
+      </ScrollRegion>
 
       {/* Dark panel */}
-      <div className="bg-[#F5F5F5] dark:bg-[#0D0D0D] border border-t-0 border-[#E0E0E0] dark:border-[#2A2A2A] p-6 md:p-8 min-h-[480px]">
+      <div
+        {...tabPanelProps("lab", tab)}
+        className="bg-[#F5F5F5] dark:bg-[#0D0D0D] border border-t-0 border-[#E0E0E0] dark:border-[#2A2A2A] p-6 md:p-8 min-h-[480px]"
+      >
         {tab === "signal" && <BubblePanel />}
         {tab === "compound" && <GrowthPanel />}
         {tab === "first" && <FirstPrinciplesPanel />}
@@ -1544,7 +1567,7 @@ export default function IntelligenceSection() {
       {/* Disclaimer */}
       <div className="mt-4 border-t border-[#E0E0E0] dark:border-[#3D3D3D] pt-4">
         <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed max-w-4xl">
-          <span className="text-[#7A7A7A] dark:text-[#9A9A9A] font-medium">
+          <span className="text-ink-subtle dark:text-[#9A9A9A] font-medium">
             For reference only.
           </span>{" "}
           Career seniority scores and domain depth values are self-assessed approximations

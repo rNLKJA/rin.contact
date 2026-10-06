@@ -5,7 +5,10 @@
     "siteDescription": "高级数据分析师 · 研究软件工程师 · 澳大利亚阿德莱德",
     "copyright": "保留所有权利",
     "thereIsMore": "更多的内容等你发现",
-    "backToTop": "返回顶部"
+    "backToTop": "返回顶部",
+    "close": "关闭",
+    "scrollsSideways": "{label}（可左右滚动）",
+    "formula": "公式"
   },
   "nav": {
     "home": "首页",
@@ -30,11 +33,16 @@
     "email": "邮箱",
     "strategic": "战略能力",
     "fullProfile": "完整主页",
-    "coursework": "课程作业"
+    "coursework": "课程作业",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "menuLabel": "网站菜单",
+    "primaryNav": "主导航"
   },
   "locale": {
     "current": "EN",
-    "switchTo": "中文"
+    "switchTo": "中文",
+    "label": "语言"
   },
   "hero": {
     "greeting": {
@@ -155,7 +163,10 @@
       "errorTitle": "出错了",
       "errorMessage": "请直接发送邮件至 huang@rin.contact",
       "dismiss": "关闭通知"
-    }
+    },
+    "copyEmail": "复制邮箱地址",
+    "emailCopied": "邮箱地址已复制",
+    "copyFailed": "复制失败，请手动选择地址"
   },
   "footer": {
     "navigate": "导航",
@@ -1094,7 +1105,8 @@
     "heading": "情报报告",
     "tabSignal": "信号 vs 噪声",
     "tabGrowth": "复合增长",
-    "tabFirstPrinciples": "第一性原理"
+    "tabFirstPrinciples": "第一性原理",
+    "tabsLabel": "职业视角"
   },
   "bootOverlay": {
     "line1": "正在启动 rin.contact...",
@@ -1105,7 +1117,11 @@
   },
   "themeToggle": {
     "switchToLight": "切换到浅色模式",
-    "switchToDark": "切换到深色模式"
+    "switchToDark": "切换到深色模式",
+    "label": "主题",
+    "light": "浅色",
+    "system": "跟随系统",
+    "dark": "深色"
   },
   "readingToast": {
     "message": "已经看到这里了——不打个招呼吗？",
@@ -1160,7 +1176,9 @@
     "postsLabel": "篇文章",
     "shareLabel": "分享",
     "copyLink": "复制链接",
-    "copied": "已复制"
+    "copied": "已复制",
+    "clearSearch": "清除搜索",
+    "postsHeading": "文章"
   },
   "lab": {
     "sectionLabel": "◆ — 实验室",
@@ -1177,7 +1195,8 @@
     "sectionLabel": "◆ — 项目",
     "heading": "作品。",
     "description": "数据工程、云基础设施、移动端与Web平台。",
-    "courseworkLink": "大学课程作业复活版"
+    "courseworkLink": "大学课程作业复活版",
+    "selectFolder": "选择一个文件夹查看项目详情"
   },
   "strategic": {
     "sectionLabel": "◆ — 框架",

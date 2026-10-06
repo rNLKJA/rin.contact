@@ -61,7 +61,7 @@ export default function PostCard({ slug, title, date, tags, description, reading
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[9px] tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-[#7A7A7A] dark:text-[#9A9A9A]"
+                  className="text-[9px] tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-ink-subtle dark:text-[#9A9A9A]"
                 >
                   {tag}
                 </span>
@@ -75,14 +75,14 @@ export default function PostCard({ slug, title, date, tags, description, reading
         </h3>
 
         {description && (
-          <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A] leading-relaxed line-clamp-2 mb-4">
+          <p className="text-sm text-ink-subtle dark:text-[#9A9A9A] leading-relaxed line-clamp-2 mb-4">
             {description}
           </p>
         )}
 
         {/* read affordance — signifier appears and slides in on hover (no layout shift; held in flow) */}
         <span
-          className="inline-flex items-center gap-1.5 text-[10px] tracking-widest uppercase text-[#FF3C3C]
+          className="inline-flex items-center gap-1.5 text-[10px] tracking-widest uppercase text-accent-ink
                      opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:animate-enter transition-all duration-200"
           aria-hidden="true"
         >

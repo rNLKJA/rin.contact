@@ -5,7 +5,10 @@
     "siteDescription": "Senior Data Analyst · Research Software Engineer · Adelaide, Australia.",
     "copyright": "All rights reserved.",
     "thereIsMore": "there's more if you look",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "close": "Close",
+    "scrollsSideways": "{label} (scrolls sideways)",
+    "formula": "Formula"
   },
   "nav": {
     "home": "Home",
@@ -30,11 +33,16 @@
     "email": "Email",
     "strategic": "Strategic",
     "fullProfile": "Full Profile",
-    "coursework": "Coursework"
+    "coursework": "Coursework",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuLabel": "Site menu",
+    "primaryNav": "Primary navigation"
   },
   "locale": {
     "current": "EN",
-    "switchTo": "中文"
+    "switchTo": "中文",
+    "label": "Language"
   },
   "hero": {
     "greeting": {
@@ -160,7 +168,10 @@
       "errorTitle": "Something went wrong",
       "errorMessage": "Please try emailing huang@rin.contact directly.",
       "dismiss": "Dismiss notification"
-    }
+    },
+    "copyEmail": "Copy email address",
+    "emailCopied": "Email address copied",
+    "copyFailed": "Couldn't copy, please select the address"
   },
   "footer": {
     "navigate": "Navigate",
@@ -1407,7 +1418,8 @@
     "heading": "Intelligence Report",
     "tabSignal": "Signal vs Noise",
     "tabGrowth": "Compound Growth",
-    "tabFirstPrinciples": "First Principles"
+    "tabFirstPrinciples": "First Principles",
+    "tabsLabel": "Career lenses"
   },
   "bootOverlay": {
     "line1": "Booting rin.contact...",
@@ -1418,7 +1430,11 @@
   },
   "themeToggle": {
     "switchToLight": "Switch to light mode",
-    "switchToDark": "Switch to dark mode"
+    "switchToDark": "Switch to dark mode",
+    "label": "Theme",
+    "light": "Light",
+    "system": "System",
+    "dark": "Dark"
   },
   "readingToast": {
     "message": "You've read this far — why not say hello?",
@@ -1473,7 +1489,9 @@
     "postsLabel": "posts",
     "shareLabel": "Share this",
     "copyLink": "Copy link",
-    "copied": "Copied"
+    "copied": "Copied",
+    "clearSearch": "Clear search",
+    "postsHeading": "Posts"
   },
   "lab": {
     "sectionLabel": "◆ — Lab",
@@ -1490,7 +1508,8 @@
     "sectionLabel": "◆ — Projects",
     "heading": "Work.",
     "description": "Data engineering, cloud infrastructure, mobile, and web platforms.",
-    "courseworkLink": "University coursework, revived"
+    "courseworkLink": "University coursework, revived",
+    "selectFolder": "Select a folder to view project details"
   },
   "strategic": {
     "sectionLabel": "◆ — Framework",

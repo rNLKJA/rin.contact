@@ -64,7 +64,7 @@ export default function CertificationsSection() {
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
         {/* section header — oversized count anchors the scale, breakdown shows the breadth */}
         <div className="mb-12">
-          <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6 font-mono">
+          <p className="text-xs tracking-widest uppercase text-accent-ink mb-6 font-mono">
             ◈ — Certifications
           </p>
 
@@ -79,7 +79,7 @@ export default function CertificationsSection() {
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black dark:text-white">
                 Credentials.
               </h2>
-              <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
+              <p className="text-sm text-ink-subtle dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
                 {CERTS.length} credentials across data, analytics, graph databases, intelligence,
                 language and leadership, each one verifiable.
               </p>
@@ -94,7 +94,7 @@ export default function CertificationsSection() {
                 className="inline-flex items-center gap-2 border border-[#E8E8E8] dark:border-[#2A2A2A] px-3 py-1 text-[11px] tracking-wide"
               >
                 <span className="text-black dark:text-white">{g}</span>
-                <span className="text-[#FF3C3C] font-mono tabular-nums">{n}</span>
+                <span className="text-accent-ink font-mono tabular-nums">{n}</span>
               </span>
             ))}
           </div>
@@ -116,10 +116,10 @@ export default function CertificationsSection() {
               />
               <div className="min-w-0">
                 <p className="text-sm text-black dark:text-white truncate">{cert.name}</p>
-                <p className="text-[11px] text-[#7A7A7A]">
+                <p className="text-[11px] text-ink-subtle">
                   {cert.issuer}
                   {cert.year && (
-                    <span className="text-[#CCCCCC] dark:text-[#555] ml-1.5">{cert.year}</span>
+                    <span className="text-[#CCCCCC] dark:text-[#9A9A9A] ml-1.5">{cert.year}</span>
                   )}
                 </p>
               </div>

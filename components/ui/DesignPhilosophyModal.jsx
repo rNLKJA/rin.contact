@@ -1,16 +1,18 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useI18n } from "@/contexts/I18nContext";
+import { useDialog } from "@/hooks/useDialog";
 
 const PALETTE = [
   { name: "White", hex: "#FFFFFF", border: true },
   { name: "Black", hex: "#000000" },
   { name: "Dark", hex: "#1A1A1A" },
   { name: "Mid", hex: "#3D3D3D" },
-  { name: "Subtle", hex: "#7A7A7A" },
+  { name: "Subtle", hex: "#6B6B6B" },
   { name: "Divider", hex: "#E0E0E0", border: true },
   { name: "Surface", hex: "#F5F5F5", border: true },
   { name: "Accent — dot", hex: "#FF3C3C" },
+  { name: "Accent — text", hex: "#CC0000" },
 ];
 
 const ELEMENTS = [
@@ -64,24 +66,19 @@ const PRINCIPLES = [
 
 function Modal({ onClose }) {
   const { t } = useI18n();
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [onClose]);
+  const dialogRef = useRef(null);
+  const closeRef = useRef(null);
+  // Mounted only while open: Escape, focus trap, scroll lock, and focus back
+  // to the trigger on unmount.
+  useDialog({ open: true, onClose, containerRef: dialogRef, initialFocusRef: closeRef });
 
   return createPortal(
     <div
+      ref={dialogRef}
       className="fixed inset-0 z-[10000] flex items-end md:items-center justify-center"
       role="dialog"
       aria-modal="true"
-      aria-label={t("designPhilosophy.modalTitle")}
+      aria-labelledby="design-philosophy-title"
     >
       {/* Backdrop */}
       <div
@@ -99,19 +96,21 @@ function Modal({ onClose }) {
         {/* Header */}
         <div className="sticky top-0 bg-white dark:bg-[#1A1A1A] border-b border-[#E0E0E0] dark:border-[#3D3D3D] px-6 py-4 flex items-center justify-between z-10">
           <div>
-            <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-0.5">
+            <p className="text-[10px] tracking-widest uppercase text-accent-ink mb-0.5">
               Design System
             </p>
-            <h2 className="text-base font-semibold tracking-tight">
+            <h2 id="design-philosophy-title" className="text-base font-semibold tracking-tight">
               {t("designPhilosophy.modalTitle")}
             </h2>
           </div>
           <button
+            ref={closeRef}
+            type="button"
             onClick={onClose}
-            className="border border-[#E0E0E0] w-8 h-8 flex items-center justify-center
-                       text-[#7A7A7A] hover:border-black hover:text-black dark:hover:text-white transition-colors duration-200
+            className="border border-[#E0E0E0] dark:border-[#3D3D3D] dark:hover:border-white w-8 h-8 flex items-center justify-center
+                       text-ink-subtle hover:border-black hover:text-black dark:hover:text-white transition-colors duration-200
                        text-xs"
-            aria-label="Close modal"
+            aria-label={t("common.close")}
           >
             ✕
           </button>

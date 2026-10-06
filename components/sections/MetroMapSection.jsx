@@ -196,7 +196,7 @@ export default function MetroMapSection() {
     <section id="career-map" className="py-20" aria-label="Career metro map">
       {/* Section header */}
       <div className="mb-8">
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">◈ — Career Map</p>
+        <p className="text-xs tracking-widest uppercase text-accent-ink mb-3">◈ — Career Map</p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
           {t("metroMap.heading")}
         </h2>
@@ -421,7 +421,7 @@ export default function MetroMapSection() {
         />
         <div
           aria-hidden="true"
-          className={`metro-cue pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[#FF3C3C] transition-opacity duration-200 ${
+          className={`metro-cue pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-accent-ink transition-opacity duration-200 ${
             showRightCue ? "cue-on opacity-100" : "opacity-0"
           }`}
         >
@@ -484,16 +484,16 @@ export default function MetroMapSection() {
       >
         {active ? (
           <>
-            <p className="text-[10px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] mb-0.5">
+            <p className="text-[10px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] mb-0.5">
               {active.period}
             </p>
             <p className="font-semibold text-sm mb-0.5">{active.label}</p>
             <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] mb-1">{active.role}</p>
-            <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] leading-relaxed max-w-xl">
+            <p className="text-xs text-ink-subtle dark:text-[#9A9A9A] leading-relaxed max-w-xl">
               {active.detail}
             </p>
             {active.current && (
-              <span className="inline-block mt-1.5 text-[10px] tracking-widest uppercase text-[#FF3C3C]">
+              <span className="inline-block mt-1.5 text-[10px] tracking-widest uppercase text-accent-ink">
                 ● Live
               </span>
             )}

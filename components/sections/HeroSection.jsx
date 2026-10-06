@@ -279,7 +279,7 @@ export default function HeroSection() {
             {t("hero.statusPill")}
           </div>
 
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] mb-4">
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] mb-4">
             {t("hero.sectionLabel")}
           </p>
 
@@ -331,7 +331,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn profile"
-              className="text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
+              className="p-1.5 -m-1.5 text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
             >
               <LinkedInIcon />
             </a>
@@ -340,7 +340,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub profile"
-              className="text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
+              className="p-1.5 -m-1.5 text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
             >
               <GitHubIcon />
             </a>

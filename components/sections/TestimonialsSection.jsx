@@ -89,13 +89,13 @@ export default function TestimonialsSection() {
       <div className="max-w-[800px] mx-auto px-6 md:px-12">
         {/* section header */}
         <div className="mb-14">
-          <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-4 font-mono">
+          <p className="text-xs tracking-widest uppercase text-accent-ink mb-4 font-mono">
             ◈ — Testimonials
           </p>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black dark:text-white">
             Trusted by.
           </h2>
-          <p className="text-sm text-[#7A7A7A] mt-2">What people say about working with Rin.</p>
+          <p className="text-sm text-ink-subtle mt-2">What people say about working with Rin.</p>
         </div>
 
         {/* quote card */}
@@ -119,7 +119,7 @@ export default function TestimonialsSection() {
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <footer className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#F5F5F5] dark:bg-[#1A1A1A] flex items-center justify-center text-[10px] font-mono text-[#7A7A7A]">
+                  <div className="w-8 h-8 rounded-full bg-[#F5F5F5] dark:bg-[#1A1A1A] flex items-center justify-center text-[10px] font-mono text-ink-subtle">
                     {t.name.charAt(0)}
                   </div>
                   <div>
@@ -137,7 +137,7 @@ export default function TestimonialsSection() {
                         t.name
                       )}
                     </p>
-                    <p className="text-xs text-[#7A7A7A]">{t.title}</p>
+                    <p className="text-xs text-ink-subtle">{t.title}</p>
                   </div>
                 </footer>
               </blockquote>
@@ -148,7 +148,7 @@ export default function TestimonialsSection() {
         {/* editorial counter + play/pause (WCAG 2.2.2: pausable auto-advance) */}
         {total > 1 && (
           <div className="flex items-center gap-2 mt-10 font-mono text-[11px] tracking-[0.3em]">
-            <span className="text-[#FF3C3C]">{String(current + 1).padStart(2, "0")}</span>
+            <span className="text-accent-ink">{String(current + 1).padStart(2, "0")}</span>
             <span className="text-[#D0D0D0] dark:text-[#3D3D3D]">/</span>
             <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">
               {String(total).padStart(2, "0")}
@@ -158,7 +158,7 @@ export default function TestimonialsSection() {
                 onClick={() => setAutoPlay((p) => !p)}
                 aria-label={autoPlay ? "Pause testimonials" : "Play testimonials"}
                 aria-pressed={!autoPlay}
-                className="ml-3 w-6 h-6 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors"
+                className="ml-3 w-6 h-6 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] text-ink-subtle hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors"
               >
                 {autoPlay ? (
                   <svg

@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useI18n } from "@/contexts/I18nContext";
+import ScrollRegion from "@/components/ui/ScrollRegion";
+import Tabs, { tabPanelProps } from "@/components/ui/Tabs";
 
 // Turn a domain label into a clean URL slug ("AI / ML" -> "ai-ml"), so a
 // filtered Projects view can be shared as /projects?category=ai-ml.
@@ -539,11 +541,15 @@ const DOMAIN_COLORS = {
   Biotech: { color: "#7C3AED", bg: "#F5F3FF" }, // violet-700 6.26:1 ✓
   Startup: { color: "#C2410C", bg: "#FFF7ED" }, // orange-700 7.24:1 ✓
   Research: { color: "#15803D", bg: "#F0FDF4" }, // green-700  7.55:1 ✓
-  "AI / ML": { color: "#CC0000", bg: "#FFF1F1" }, // dark red   5.53:1 ✓
+  "AI / ML": { color: "#CC0000", dark: "#FF3C3C", bg: "#FFF1F1" }, // dark red   5.53:1 ✓ (dark: 5.62:1)
   "Cloud / HPC": { color: "#B45309", bg: "#FFFBEB" }, // amber-700  5.25:1 ✓
   "Open Source": { color: "#0E7490", bg: "#ECFEFF" }, // cyan-700   5.87:1 ✓
   Personal: { color: "#595959", bg: "#F5F5F5" }, // neutral    5.05:1 ✓
 };
+
+// Text colour for a domain in the current theme; #CC0000 only reaches 3.36:1 on
+// the dark background, so entries can carry a brighter dark-mode ink.
+const domainInk = (dc, isDark) => (isDark && dc.dark) || dc.color;
 
 const DOMAINS = [
   "All",
@@ -589,7 +595,7 @@ function ProjectDetail({ project }) {
           <h3 className="text-xl font-semibold tracking-tight mb-1 flex items-center gap-3 flex-wrap">
             {project.title}
             {project.current && (
-              <span className="border border-[#FF3C3C] px-3 py-0.5 text-[10px] tracking-widest uppercase text-[#FF3C3C] rounded-full">
+              <span className="border border-[#FF3C3C] px-3 py-0.5 text-[10px] tracking-widest uppercase text-accent-ink rounded-full">
                 {t("projects.active")}
               </span>
             )}
@@ -607,7 +613,7 @@ function ProjectDetail({ project }) {
           {project.summary}
         </p>
         <div className="mt-3 p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
-          <span className="inline-block mb-2 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
+          <span className="inline-block mb-2 px-2 py-0.5 bg-accent-fill text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
             {t("projects.impact")}
           </span>
           <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
@@ -661,7 +667,7 @@ function ProjectDetail({ project }) {
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://rin.contact/projects")}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-3 py-1.5 text-[10px] tracking-widest uppercase text-[#7A7A7A] hover:border-[#0A66C2] hover:text-[#0A66C2] transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-3 py-1.5 text-[10px] tracking-widest uppercase text-ink-subtle hover:border-[#0A66C2] hover:text-[#0A66C2] transition-colors duration-200"
             aria-label={`Share ${project.title} on LinkedIn`}
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -673,7 +679,7 @@ function ProjectDetail({ project }) {
             href={`https://x.com/intent/tweet?text=${encodeURIComponent(`Check out "${project.title}" — ${project.summary.split(".")[0]}.`)}&url=${encodeURIComponent("https://rin.contact/projects")}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-3 py-1.5 text-[10px] tracking-widest uppercase text-[#7A7A7A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-3 py-1.5 text-[10px] tracking-widest uppercase text-ink-subtle hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
             aria-label={`Tweet ${project.title}`}
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -720,13 +726,15 @@ function ProjectDetail({ project }) {
 }
 
 function FeaturedSpotlight({ project }) {
+  const { resolved } = useTheme();
+  const isDark = resolved === "dark";
   if (!project) return null;
   const primaryDomain = Array.isArray(project.domain) ? project.domain[0] : project.domain;
   const dc = DOMAIN_COLORS[primaryDomain];
   return (
     <div className="mb-12 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
       <div className="px-6 md:px-8 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
-        <span className="text-[10px] tracking-widest uppercase text-[#FF3C3C] flex items-center gap-2">
+        <span className="text-[10px] tracking-widest uppercase text-accent-ink flex items-center gap-2">
           <span
             className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse"
             aria-hidden="true"
@@ -820,7 +828,7 @@ function FeaturedSpotlight({ project }) {
             </p>
             <p
               className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]"
-              style={dc ? { color: dc.color } : undefined}
+              style={dc ? { color: domainInk(dc, isDark) } : undefined}
             >
               {Array.isArray(project.domain) ? project.domain.join(" · ") : project.domain}
             </p>
@@ -920,7 +928,7 @@ export default function ProjectsSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
+        <p className="text-xs tracking-widest uppercase text-accent-ink mb-3">
           {t("projects.sectionLabel")}
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
@@ -948,7 +956,7 @@ export default function ProjectsSection() {
             const isActive = activeFilter === d;
             const activeStyle = dc
               ? { borderColor: dc.color, backgroundColor: dc.color, color: "#fff" }
-              : { borderColor: "#FF3C3C", backgroundColor: "#FF3C3C", color: "#fff" };
+              : { borderColor: "#CC0000", backgroundColor: "#CC0000", color: "#fff" };
             const idleStyle = { borderColor: idleBorder, color: idleText };
             return (
               <button
@@ -960,7 +968,7 @@ export default function ProjectsSection() {
                   if (isActive) return;
                   if (dc) {
                     e.currentTarget.style.borderColor = dc.color;
-                    e.currentTarget.style.color = dc.color;
+                    e.currentTarget.style.color = domainInk(dc, isDark);
                   } else {
                     e.currentTarget.style.borderColor = "#FF3C3C";
                     e.currentTarget.style.color = "#FF3C3C";
@@ -1064,7 +1072,7 @@ export default function ProjectsSection() {
                           className="text-[10px] tracking-widest uppercase border px-2.5 py-0.5 rounded-full"
                           style={
                             dc
-                              ? { borderColor: dc.color, color: dc.color }
+                              ? { borderColor: dc.color, color: domainInk(dc, isDark) }
                               : { borderColor: "#595959", color: "#595959" }
                           }
                         >
@@ -1076,7 +1084,7 @@ export default function ProjectsSection() {
                       </span>
                     </span>
                     <span
-                      className={`text-[#6B6B6B] transition-transform duration-200 flex-shrink-0 text-sm ${isOpen ? "rotate-45 text-[#FF3C3C]" : "group-hover:text-[#FF3C3C]"}`}
+                      className={`text-[#6B6B6B] transition-transform duration-200 flex-shrink-0 text-sm ${isOpen ? "rotate-45 text-accent-ink" : "group-hover:text-[#FF3C3C]"}`}
                     >
                       +
                     </span>
@@ -1116,53 +1124,63 @@ export default function ProjectsSection() {
       {!isAllView && (
         <>
           <div className="hidden md:block w-full">
-            <div
-              className="flex items-stretch overflow-x-auto gap-0 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-              role="tablist"
+            {/* Folder tabs — APG tabs with manual activation: arrows move focus,
+                Enter/Space opens. The strip scrolls with an edge fade. */}
+            <ScrollRegion
+              focusable={false}
+              scrollerClassName="scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             >
-              {filtered.map((project, i) => {
-                const isActive = openId === project.id;
-                return (
-                  <button
-                    key={project.id}
-                    role="tab"
-                    aria-selected={isActive}
-                    onClick={() => handleSelect(project.id)}
-                    className={`
+              <Tabs
+                idBase="projects-folder"
+                label={t("nav.projects")}
+                activation="manual"
+                items={filtered.map((project) => ({ id: project.id, label: project.title }))}
+                value={openId}
+                onChange={handleSelect}
+                className="flex items-stretch gap-0"
+                tabClassName={(isActive) => `
                       group relative flex-shrink-0 flex flex-col justify-center
                       px-4 py-3 min-w-[110px] max-w-[160px] text-left
                       border-t border-l border-r transition-colors duration-200
                       ${
                         isActive
-                          ? "bg-[#FF3C3C] text-white border-[#FF3C3C]"
+                          ? "bg-accent-fill text-white border-accent-fill"
                           : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#AAAAAA] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
                       }
                     `}
-                    style={{ borderRadius: "4px 4px 0 0" }}
-                  >
-                    <span
-                      className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}`}
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div className="flex items-center gap-1.5 min-w-0">
-                      <span className="text-xs font-medium leading-tight truncate">
-                        {project.title}
+                tabStyle={{ borderRadius: "4px 4px 0 0" }}
+                renderTab={(item, isActive, i) => {
+                  const project = filtered[i];
+                  return (
+                    <>
+                      <span
+                        aria-hidden="true"
+                        className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}`}
+                      >
+                        {String(i + 1).padStart(2, "0")}
                       </span>
-                      {project.current && (
-                        <span
-                          className={`inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${isActive ? "bg-white opacity-50" : "bg-[#FF3C3C]"}`}
-                        />
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <span className="text-xs font-medium leading-tight truncate">
+                          {project.title}
+                        </span>
+                        {project.current && (
+                          <span
+                            className={`inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${isActive ? "bg-white opacity-50" : "bg-[#FF3C3C]"}`}
+                          />
+                        )}
+                      </div>
+                    </>
+                  );
+                }}
+              />
+            </ScrollRegion>
             {/* Height snaps (no max-height tween); the opened detail enters
                 from 70% via animate-enter-up. Border colour still eases. */}
             <div
-              className={`border overflow-hidden ${activeProject ? "border-[#FF3C3C]" : "border-[#E0E0E0] dark:border-[#3D3D3D]"}`}
+              {...(activeProject
+                ? tabPanelProps("projects-folder", activeProject.id)
+                : { id: "projects-folder-panel" })}
+              className={`border overflow-hidden ${activeProject ? "border-accent-fill" : "border-[#E0E0E0] dark:border-[#3D3D3D]"}`}
               style={{
                 maxHeight: activeProject ? "600px" : "52px",
                 transition: "border-color 0.2s ease",
@@ -1171,7 +1189,7 @@ export default function ProjectsSection() {
               {!activeProject && (
                 <div className="px-6 py-4 flex items-center gap-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] tracking-wide select-none">
                   <span>↑</span>
-                  <span>Select a folder to view project details</span>
+                  <span>{t("projectsPage.selectFolder")}</span>
                 </div>
               )}
               {activeProject && (
@@ -1228,7 +1246,7 @@ export default function ProjectsSection() {
                         {project.summary}
                       </p>
                       <div className="p-3 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
-                        <span className="inline-block mb-1.5 px-2 py-0.5 bg-[#FF3C3C] text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
+                        <span className="inline-block mb-1.5 px-2 py-0.5 bg-accent-fill text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
                           {t("projects.impact")}
                         </span>
                         <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
@@ -1290,7 +1308,7 @@ export default function ProjectsSection() {
                           href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://rin.contact/projects")}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-[#7A7A7A] hover:border-[#0A66C2] hover:text-[#0A66C2] transition-colors"
+                          className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-ink-subtle hover:border-[#0A66C2] hover:text-[#0A66C2] transition-colors"
                           aria-label="Share on LinkedIn"
                         >
                           <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
@@ -1301,7 +1319,7 @@ export default function ProjectsSection() {
                           href={`https://x.com/intent/tweet?text=${encodeURIComponent(`Check out "${project.title}" — ${project.summary.split(".")[0]}.`)}&url=${encodeURIComponent("https://rin.contact/projects")}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-[#7A7A7A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
+                          className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-ink-subtle hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
                           aria-label="Share on X"
                         >
                           <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">

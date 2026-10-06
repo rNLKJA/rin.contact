@@ -27,7 +27,7 @@ export default function AboutIntro() {
           inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
-        <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-6">
+        <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-accent-ink mb-6">
           <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
           {t("about.intro.eyebrow")}
         </p>

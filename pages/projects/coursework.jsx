@@ -20,6 +20,7 @@ import { fill } from "@/lib/fill";
 import { useI18n } from "@/contexts/I18nContext";
 import { getCoursework } from "@/lib/coursework-data";
 import { assertCourseworkData } from "@/lib/coursework-check";
+import EmptyState from "@/components/ui/EmptyState";
 import en from "@/locales/en-AU.json";
 import zh from "@/locales/zh-Hans.json";
 
@@ -198,6 +199,12 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
     statusRef.current?.focus({ preventScroll: true });
   };
 
+  // Reset from the empty state, then hand focus back to the result count.
+  const clearFilters = async () => {
+    await setFilters({ area: ALL, level: ALL, skill: ALL }).catch(() => false);
+    statusRef.current?.focus({ preventScroll: true });
+  };
+
   const termLabel = (p) =>
     fill(t("courseworkPage.termFormat"), {
       semester: t(`courseworkPage.semesters.${p.term.semester}`),
@@ -322,9 +329,14 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
             />
 
             {groups.length === 0 && (
-              <p className="py-10 text-sm text-[#5C5C5C] dark:text-[#9A9A9A]">
+              // The filter count above is already the live region.
+              <EmptyState
+                role={null}
+                className="my-8"
+                action={{ label: t("courseworkPage.filters.clear"), onClick: clearFilters }}
+              >
                 {t("courseworkPage.filters.empty")}
-              </p>
+              </EmptyState>
             )}
 
             <div className="space-y-14">
