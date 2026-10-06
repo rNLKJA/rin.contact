@@ -54,7 +54,7 @@ export default function handler(req, res) {
     performance: {
       strategy: "dynamic imports for below-fold components",
       images: "lazy loading with priority hints on LCP",
-      fonts: "next/font with display:swap",
+      fonts: "self-hosted @font-face (Fontsource + local Bitcount), display:swap",
       lcp_target: "< 1.5s on 4G",
     },
     easter_eggs: {

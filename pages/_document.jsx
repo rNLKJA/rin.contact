@@ -203,6 +203,14 @@ class MyDocument extends Document {
     return (
       <Html lang={locale} suppressHydrationWarning>
         <Head>
+          {/* Pixel display face: needed by the first-load boot intro and the hero name. */}
+          <link
+            rel="preload"
+            href="/fonts/BitcountPropDouble-VariableFont.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           {/* ── Character set ── */}
           <meta charSet="utf-8" />
           {/* ── Locale-aware meta ── */}
@@ -315,7 +323,7 @@ class MyDocument extends Document {
           <link rel="dns-prefetch" href="https://api.emailjs.com" />
 
           {/*
-            Fonts are self-hosted at build time via next/font/google (lib/fonts.js).
+            Fonts are self-hosted: Fontsource packages (DM Sans, Playfair) + public/fonts (Bitcount).
             No external Google Fonts requests — eliminates the critical request chain.
           */}
 

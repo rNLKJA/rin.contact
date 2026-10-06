@@ -4,7 +4,13 @@ import Head from "next/head";
 import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { I18nProvider } from "@/contexts/I18nContext";
-import { bitcount, dmSans, playfair } from "@/lib/fonts";
+// Self-hosted fonts (Fontsource packages + a local Bitcount @font-face in globals.css).
+// next/font is not used: its hashed --font-* variable classes stopped matching between the
+// server-rendered HTML and the client CSS on Vercel, which silently dropped every font.
+import "@fontsource-variable/dm-sans";
+import "@fontsource-variable/dm-sans/wght-italic.css";
+import "@fontsource-variable/playfair-display";
+import "@fontsource-variable/playfair-display/wght-italic.css";
 
 import "../public/styles/globals.css";
 // -swap variant: font-display:swap instead of the default's font-display:block,
@@ -327,9 +333,7 @@ function MyApp({ Component, pageProps }) {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         </Head>
-        <div
-          className={`${bitcount.variable} ${dmSans.variable} ${playfair.variable} flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]`}
-        >
+        <div className="flex flex-col min-h-screen bg-white dark:bg-[#0A0A0A]">
           {/* Skip-to-content link — WCAG 2.4.1: first focusable element */}
           <a
             href="#main-content"
