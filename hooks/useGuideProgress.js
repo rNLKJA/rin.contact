@@ -75,9 +75,13 @@ export function updateGuide(patch) {
   write(typeof patch === "function" ? patch(current) : { ...current, ...patch });
 }
 
+/** Fired when a page button opens the guide, so GuideRoot can move focus into it. */
+export const GUIDE_OPEN_EVENT = "rin:guide-open";
+
 /** Clear progress and open the guide at the welcome. Used by /info/history. */
 export function restartGuide() {
   write({ ...GUIDE_DEFAULT, minimised: false });
+  window.dispatchEvent(new Event(GUIDE_OPEN_EVENT));
 }
 
 export function useGuideProgress() {

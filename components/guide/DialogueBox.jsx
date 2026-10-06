@@ -9,16 +9,18 @@
  * live region; the typed copy is aria-hidden.
  *
  * Keys: buttons handle Enter and Space natively. Enter or Space elsewhere in the
- * box runs the main button, and Escape closes the box back to the launcher.
+ * box runs the main button. Escape closes the box back to the launcher, from
+ * inside the box or, once the visitor has engaged, from anywhere on the page.
  *
  * Pawsibly himself lives in GuideStage, outside the box: once the visitor
  * engages (opens the guide or presses a button), he walks to whatever the
  * current line points at, the box anchors beside it and the page greys out
- * around it. Escape anywhere, or closing the box, clears all of that at once;
- * a click on the greyed page lifts the focus for that line.
+ * around it. Escape, or closing the box, clears all of that at once; a click
+ * on the page lifts the grey for that line and still does what it would do.
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import { GUIDE_OPEN_EVENT } from "@/hooks/useGuideProgress";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { focusFor, nextUndoneIndex, stopIndexForPath } from "@/lib/guide-stops";
 import { SIDE, TOUR, UI, fill, goToStop } from "@/lib/guide-tour";
@@ -152,12 +154,28 @@ export default function DialogueBox({
     if (autoFocus) primaryRef.current?.focus();
   }, [autoFocus]);
 
-  // Escape from anywhere on the page closes the tour while the page is greyed,
-  // unless another modal (the quest log, a menu) is handling it.
+  // "Start again" on /info/history while the box is already open: same thing.
   useEffect(() => {
-    if (!spotOn) return undefined;
+    const onOpen = () => {
+      setEngaged(true);
+      requestAnimationFrame(() => primaryRef.current?.focus());
+    };
+    window.addEventListener(GUIDE_OPEN_EVENT, onOpen);
+    return () => window.removeEventListener(GUIDE_OPEN_EVENT, onOpen);
+  }, []);
+
+  // Escape from anywhere on the page closes the box once the visitor has
+  // engaged (the grey may already be lifted), unless a field has focus or
+  // another modal (the quest log, a menu) is handling it.
+  useEffect(() => {
+    if (!engaged) return undefined;
     const onKey = (e) => {
       if (e.key !== "Escape" || e.defaultPrevented) return;
+      if (
+        e.target instanceof Element &&
+        e.target.closest("input, textarea, select, [contenteditable]")
+      )
+        return;
       const modalOpen = [...document.querySelectorAll('[aria-modal="true"]')].some((el) => {
         const cs = getComputedStyle(el);
         return el.getClientRects().length > 0 && cs.visibility !== "hidden" && cs.opacity !== "0";
@@ -167,7 +185,7 @@ export default function DialogueBox({
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [spotOn, onMinimise]);
+  }, [engaged, onMinimise]);
 
   // ── Actions ───────────────────────────────────────────────────────────────
   const walkTo = useCallback(
@@ -284,6 +302,22 @@ export default function DialogueBox({
                  border-2 border-black dark:border-white bg-white dark:bg-[#0A0A0A] text-[#1A1A1A] dark:text-white p-[3px] animate-enter-up"
         >
           <div className="border border-[#1A1A1A] dark:border-[#CCCCCC] p-3 md:p-4">
+            {/* Floated top right so the action row keeps one line on a phone. */}
+            <button
+              type="button"
+              onClick={onMinimise}
+              aria-label={ui.minimise}
+              className={`${BTN_ICON} float-right -mt-2 -mr-2 ml-2`}
+            >
+              <svg
+                viewBox="0 0 7 7"
+                shapeRendering="crispEdges"
+                aria-hidden="true"
+                className="w-3 h-3 fill-current"
+              >
+                <path d="M0 0h1v1H0zM1 1h1v1H1zM2 2h1v1H2zM3 3h1v1H3zM4 4h1v1H4zM5 5h1v1H5zM6 6h1v1H6zM6 0h1v1H6zM5 1h1v1H5zM4 2h1v1H4zM2 4h1v1H2zM1 5h1v1H1zM0 6h1v1H0z" />
+              </svg>
+            </button>
             <div>
               <p
                 id="guide-nameplate"
@@ -303,7 +337,7 @@ export default function DialogueBox({
               </p>
             </div>
 
-            <div className="mt-3 flex flex-wrap items-center justify-end gap-2">
+            <div className="clear-both mt-3 flex flex-wrap items-center justify-end gap-2">
               <span className="mr-auto font-display text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
                 <span aria-hidden="true">{counter}</span>
                 <span className="sr-only">{counterLabel}</span>
@@ -329,21 +363,6 @@ export default function DialogueBox({
                 className={`${BTN_ICON} font-display uppercase tracking-widest text-[11px]`}
               >
                 {ui.log}
-              </button>
-              <button
-                type="button"
-                onClick={onMinimise}
-                aria-label={ui.minimise}
-                className={BTN_ICON}
-              >
-                <svg
-                  viewBox="0 0 7 7"
-                  shapeRendering="crispEdges"
-                  aria-hidden="true"
-                  className="w-3 h-3 fill-current"
-                >
-                  <path d="M0 0h1v1H0zM1 1h1v1H1zM2 2h1v1H2zM3 3h1v1H3zM4 4h1v1H4zM5 5h1v1H5zM6 6h1v1H6zM6 0h1v1H6zM5 1h1v1H5zM4 2h1v1H4zM2 4h1v1H2zM1 5h1v1H1zM0 6h1v1H0z" />
-                </svg>
               </button>
             </div>
           </div>

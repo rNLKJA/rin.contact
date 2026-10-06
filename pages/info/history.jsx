@@ -30,10 +30,12 @@ export default function HistoryPage() {
           <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">
             /info/history
           </p>
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-            {t("infoHistory.heading")}
-          </h1>
-          <p className="text-sm text-[#7A7A7A] leading-relaxed mb-12">{t("infoHistory.intro")}</p>
+          <div data-guide="history-intro" className="mb-12">
+            <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
+              {t("infoHistory.heading")}
+            </h1>
+            <p className="text-sm text-[#7A7A7A] leading-relaxed">{t("infoHistory.intro")}</p>
+          </div>
 
           <VersionDeck versions={VERSIONS} />
 

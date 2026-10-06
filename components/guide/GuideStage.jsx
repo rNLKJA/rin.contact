@@ -5,10 +5,11 @@
  * Focus is three tiers of grey. The stop's key element keeps full colour and a
  * red outline. Its section is lightly desaturated (about 60% greyscale). The
  * rest of the page goes fully grey and dimmer. Two fixed layers do this with
- * backdrop-filter, each masked by rounded-rect cut-outs built from gradient
- * tiles (seven disjoint pieces per rect, combined with mask-composite: exclude,
- * so "page minus section" and "section minus target" need no SVG and never
- * flicker). Browsers without backdrop-filter get a plain dim instead.
+ * backdrop-filter, each masked by near-square cut-outs (2px corners, like the
+ * site's flat frames) built from gradient tiles (seven disjoint pieces per
+ * rect, combined with mask-composite: exclude, so "page minus section" and
+ * "section minus target" need no SVG and never flicker). Browsers without
+ * backdrop-filter get a plain dim instead.
  *
  * The cat walks: a two-frame paw swap while it travels an L-shaped path along
  * the margin to sit beside the target, and the dialogue box anchors above or
@@ -18,10 +19,9 @@
  * rects first and writes styles after, and scroll or resize just re-runs it.
  * With reduced motion nothing walks or slides; things appear in place.
  *
- * The layers never take clicks. A separate transparent blocker sits under the
- * dialogue box and stops stray clicks on the greyed page (a click there lifts
- * the focus for this line); on steps that invite interaction it has a hole
- * over the target. Scrolling still works through it.
+ * The layers never take clicks, so the page works on the first click. A click
+ * anywhere outside the box also lifts the grey for this line, except a click
+ * on the target of a step that invites interaction (the career map, the deck).
  */
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import PixelCat from "./PixelCat";
@@ -29,8 +29,8 @@ import PixelCat from "./PixelCat";
 const DOCK_BELOW = 640; // narrower than this, the box docks to the bottom edge
 const PAD = 8; // cut-out padding around the target
 const CTX_PAD = 16; // and around its section
-const R_TARGET = 8;
-const R_CONTEXT = 18;
+const R_TARGET = 2;
+const R_CONTEXT = 2;
 const GAP = 16; // between the target and the box
 const MOVE_MS = 260; // cut-out, outline and box
 const WALK_PX_PER_MS = 1.1;
@@ -252,7 +252,7 @@ function createStage(io) {
 
   // ── Paint: write transforms and masks (no reads) ─────────────────────────
   function paint(L) {
-    const { outer, context, ring, block, cat } = refs;
+    const { outer, context, ring, cat } = refs;
     if (boxRef.current) {
       boxRef.current.style.transform =
         L.box.x || L.box.y
@@ -275,11 +275,6 @@ function createStage(io) {
         s.width = `${Math.round(T.w)}px`;
         s.height = `${Math.round(T.h)}px`;
         s.transform = `translate3d(${Math.round(T.x)}px, ${Math.round(T.y)}px, 0)`;
-      }
-      if (block.current) {
-        block.current.style.clipPath = live.current.focus?.interactive
-          ? `path(evenodd, "M0 0H${L.vw}V${L.vh}H0Z M${t.x} ${t.y}H${t.x + t.w}V${t.y + t.h}H${t.x}Z")`
-          : "";
       }
     }
     cur = { box: L.box, cat: L.cat, T, C, place: L.place };
@@ -411,6 +406,8 @@ function createStage(io) {
       move();
     },
     pending: () => target.pending,
+    /** True when `node` is inside the current target. */
+    holds: (node) => Boolean(target.el?.contains(node)),
     animating: () => Boolean(anim),
     dispose() {
       cancelAnimationFrame(raf);
@@ -435,13 +432,12 @@ export default function GuideStage({
   const outer = useRef(null);
   const context = useRef(null);
   const ring = useRef(null);
-  const block = useRef(null);
   const cat = useRef(null);
 
   // Latest props for the rAF loop, which outlives any one render.
-  const live = useRef({ focus, anchored, spotOn, reduced });
+  const live = useRef({ focus, anchored, spotOn, reduced, onLift });
   useLayoutEffect(() => {
-    live.current = { focus, anchored, spotOn, reduced };
+    live.current = { focus, anchored, spotOn, reduced, onLift };
   });
 
   const [hasTarget, setHasTarget] = useState(false);
@@ -453,7 +449,7 @@ export default function GuideStage({
       engine.current = createStage({
         boxRef,
         live,
-        refs: { outer, context, ring, block, cat },
+        refs: { outer, context, ring, cat },
         setStep,
         setHasTarget,
       });
@@ -511,6 +507,21 @@ export default function GuideStage({
     if (L) stage.paint(L);
   }, [showSpot, getStage]);
 
+  // A click outside the box lifts the grey and still reaches the page, so a
+  // header link works on the first click. Clicks on an interactive target keep
+  // the focus. "click", not "pointerdown", so a touch scroll does not count.
+  useEffect(() => {
+    if (!showSpot) return undefined;
+    const onClick = (e) => {
+      const node = e.target;
+      if (!(node instanceof Node) || boxRef.current?.contains(node)) return;
+      if (live.current.focus?.interactive && getStage().holds(node)) return;
+      live.current.onLift?.();
+    };
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, [showSpot, getStage, boxRef]);
+
   return (
     <>
       <div aria-hidden="true" className={showSpot ? "print:hidden" : "hidden"}>
@@ -526,12 +537,6 @@ export default function GuideStage({
         />
         <div ref={ring} className="guide-spot-ring" />
       </div>
-      <div
-        ref={block}
-        aria-hidden="true"
-        onClick={onLift}
-        className={showSpot ? "fixed inset-0 z-[55] print:hidden" : "hidden"}
-      />
       <div
         ref={cat}
         aria-hidden="true"

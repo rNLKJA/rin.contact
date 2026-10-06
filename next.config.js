@@ -98,7 +98,7 @@ const nextConfig = {
               "font-src 'self'",
               "connect-src 'self' https://api.emailjs.com https://wttr.in",
               // /info/history can open an archived version of the site in a sandboxed frame.
-              "frame-src https://web.archive.org",
+              "frame-src 'self' https://web.archive.org",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",

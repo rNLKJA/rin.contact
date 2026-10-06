@@ -16,7 +16,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useI18n } from "@/contexts/I18nContext";
-import { useGuideProgress } from "@/hooks/useGuideProgress";
+import { GUIDE_OPEN_EVENT, useGuideProgress } from "@/hooks/useGuideProgress";
 import {
   GUIDE_HIDDEN_ON,
   SIDE_QUEST,
@@ -97,6 +97,14 @@ export default function GuideRoot() {
       update((s) => ({ ...s, side: [...new Set([...s.side, SIDE_QUEST.id])] }));
     }
   }, [path, started, hidden, done, side, update]);
+
+  // A page button (start again, on /info/history) opened the box: treat it like
+  // the launcher, so focus moves to the box's main button.
+  useEffect(() => {
+    const onOpen = () => setUserOpened(true);
+    window.addEventListener(GUIDE_OPEN_EVENT, onOpen);
+    return () => window.removeEventListener(GUIDE_OPEN_EVENT, onOpen);
+  }, []);
 
   // Put focus back on the launcher after the box closes from the keyboard.
   useEffect(() => {

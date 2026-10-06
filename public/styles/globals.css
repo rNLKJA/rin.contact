@@ -793,6 +793,6 @@ h1 {
   z-index: 55;
   pointer-events: none;
   border: 2px solid #ff3c3c;
-  border-radius: 8px;
+  border-radius: 2px;
   contain: layout style;
 }
