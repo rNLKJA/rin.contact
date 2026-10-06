@@ -41,7 +41,8 @@
   },
   "locale": {
     "current": "EN",
-    "switchTo": "中文"
+    "switchTo": "中文",
+    "label": "语言"
   },
   "hero": {
     "greeting": {
@@ -1113,7 +1114,11 @@
   },
   "themeToggle": {
     "switchToLight": "切换到浅色模式",
-    "switchToDark": "切换到深色模式"
+    "switchToDark": "切换到深色模式",
+    "label": "主题",
+    "light": "浅色",
+    "system": "跟随系统",
+    "dark": "深色"
   },
   "readingToast": {
     "message": "已经看到这里了——不打个招呼吗？",

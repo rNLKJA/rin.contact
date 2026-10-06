@@ -2,8 +2,8 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import ThemeToggle from "@/components/ui/ThemeToggle";
-import LocaleSwitcher from "@/components/ui/LocaleSwitcher";
+import ThemeToggle, { ThemeSegmented } from "@/components/ui/ThemeToggle";
+import LocaleSwitcher, { LocaleSegmented } from "@/components/ui/LocaleSwitcher";
 import { useI18n } from "@/contexts/I18nContext";
 import { useDialog } from "@/hooks/useDialog";
 
@@ -424,13 +424,27 @@ export default function Header() {
           </div>
         </nav>
 
-        {/* Bottom bar — theme toggle + social pill chips */}
-        <div className="px-8 py-6 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <ThemeToggle size="mobile" />
-            <LocaleSwitcher />
+        {/* Bottom bar — Nothing-style settings rows, then square social chips */}
+        <div className="px-8 py-5 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col gap-3">
+          <div className="flex items-center justify-between gap-4">
+            <span
+              id="menu-theme-label"
+              className="text-[10px] tracking-widest uppercase text-ink-subtle"
+            >
+              {t("themeToggle.label")}
+            </span>
+            <ThemeSegmented labelledBy="menu-theme-label" />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between gap-4">
+            <span
+              id="menu-locale-label"
+              className="text-[10px] tracking-widest uppercase text-ink-subtle"
+            >
+              {t("locale.label")}
+            </span>
+            <LocaleSegmented labelledBy="menu-locale-label" />
+          </div>
+          <div className="flex items-center gap-2 pt-1">
             {[
               { label: "LinkedIn", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },
               { label: "GitHub", href: "https://github.com/rNLKJA" },
@@ -440,8 +454,8 @@ export default function Header() {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 py-1.5 text-[10px] tracking-widest uppercase
-                           rounded-full text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all duration-200"
+                className="inline-flex items-center min-h-[36px] border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 text-[10px] tracking-widest uppercase
+                           text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
               >
                 {label}
               </a>

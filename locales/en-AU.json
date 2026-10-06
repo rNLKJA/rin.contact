@@ -41,7 +41,8 @@
   },
   "locale": {
     "current": "EN",
-    "switchTo": "中文"
+    "switchTo": "中文",
+    "label": "Language"
   },
   "hero": {
     "greeting": {
@@ -1426,7 +1427,11 @@
   },
   "themeToggle": {
     "switchToLight": "Switch to light mode",
-    "switchToDark": "Switch to dark mode"
+    "switchToDark": "Switch to dark mode",
+    "label": "Theme",
+    "light": "Light",
+    "system": "System",
+    "dark": "Dark"
   },
   "readingToast": {
     "message": "You've read this far — why not say hello?",

@@ -74,7 +74,10 @@ export default function BootOverlay() {
     } catch {
       /* ignore */
     }
-    setDark(storedTheme === "dark");
+    setDark(
+      storedTheme === "dark" ||
+        (storedTheme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
     setVisible(true);
 
     const timers = [];
