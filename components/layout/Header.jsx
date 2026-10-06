@@ -258,8 +258,8 @@ export default function Header() {
                   cta
                     ? `px-3.5 py-1.5 border border-[#FF3C3C] transition-colors duration-200 ${
                         active
-                          ? "bg-accent-fill text-white"
-                          : "text-accent-ink hover:bg-accent-fill hover:text-white"
+                          ? "bg-[#FF3C3C] text-white"
+                          : "text-accent-ink hover:bg-[#FF3C3C] hover:text-white"
                       }`
                     : `relative px-1.5 xl:px-2 py-1.5 rounded-full transition-colors duration-200 ${
                         active

@@ -956,7 +956,7 @@ export default function ProjectsSection() {
             const isActive = activeFilter === d;
             const activeStyle = dc
               ? { borderColor: dc.color, backgroundColor: dc.color, color: "#fff" }
-              : { borderColor: "#FF3C3C", backgroundColor: "#CC0000", color: "#fff" };
+              : { borderColor: "#CC0000", backgroundColor: "#CC0000", color: "#fff" };
             const idleStyle = { borderColor: idleBorder, color: idleText };
             return (
               <button
@@ -1144,7 +1144,7 @@ export default function ProjectsSection() {
                       border-t border-l border-r transition-colors duration-200
                       ${
                         isActive
-                          ? "bg-accent-fill text-white border-[#FF3C3C]"
+                          ? "bg-accent-fill text-white border-accent-fill"
                           : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#AAAAAA] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
                       }
                     `}
@@ -1154,6 +1154,7 @@ export default function ProjectsSection() {
                   return (
                     <>
                       <span
+                        aria-hidden="true"
                         className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}`}
                       >
                         {String(i + 1).padStart(2, "0")}
@@ -1179,7 +1180,7 @@ export default function ProjectsSection() {
               {...(activeProject
                 ? tabPanelProps("projects-folder", activeProject.id)
                 : { id: "projects-folder-panel" })}
-              className={`border overflow-hidden ${activeProject ? "border-[#FF3C3C]" : "border-[#E0E0E0] dark:border-[#3D3D3D]"}`}
+              className={`border overflow-hidden ${activeProject ? "border-accent-fill" : "border-[#E0E0E0] dark:border-[#3D3D3D]"}`}
               style={{
                 maxHeight: activeProject ? "600px" : "52px",
                 transition: "border-color 0.2s ease",

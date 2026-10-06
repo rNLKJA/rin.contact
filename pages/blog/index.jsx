@@ -172,7 +172,7 @@ export default function BlogIndex({ posts }) {
               aria-pressed={activeTag === null}
               className={`text-[10px] tracking-widest uppercase px-3 py-1 border transition-colors duration-200 ${
                 activeTag === null
-                  ? "border-[#FF3C3C] bg-accent-fill text-white"
+                  ? "border-accent-fill bg-accent-fill text-white"
                   : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#5C5C5C] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
               }`}
             >
@@ -186,7 +186,7 @@ export default function BlogIndex({ posts }) {
                 aria-pressed={activeTag === tag}
                 className={`text-[10px] tracking-widest uppercase px-3 py-1 border transition-colors duration-200 ${
                   activeTag === tag
-                    ? "border-[#FF3C3C] bg-accent-fill text-white"
+                    ? "border-accent-fill bg-accent-fill text-white"
                     : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#5C5C5C] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
                 }`}
               >

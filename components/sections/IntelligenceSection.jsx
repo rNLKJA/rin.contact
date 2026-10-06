@@ -804,7 +804,7 @@ function BubblePanel() {
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
               ? "border-[#CCC] dark:border-[#444] text-[#6E6E6E] dark:text-[#9A9A9A] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
-              : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:text-white"
+              : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:border-accent-fill hover:text-white"
           }`}
         >
           {step === 0 ? "Run Analysis →" : "↺  Reset"}
@@ -1275,7 +1275,7 @@ function GrowthPanel() {
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
               ? "border-[#CCC] dark:border-[#444] text-[#6E6E6E] dark:text-[#9A9A9A] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
-              : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:text-white"
+              : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:border-accent-fill hover:text-white"
           }`}
         >
           {step === 0 ? "Play →" : "↺  Reset"}
