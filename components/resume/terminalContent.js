@@ -162,6 +162,7 @@ export const PROJECTS_TEXT = [
   "",
   "  ● Signal            governed data product · flagship case study",
   "  ● Mapiva            map-first social discovery app · React Native",
+  "  ● Order system      mum's meal-prep studio · Expo + Hono · private",
   "  ● MoodQ             clinical mental-health app · UniMelb Psychiatry",
   "  ● IAPro API client  1,100+ endpoints · Python + FastAPI + Vue · SAPOL",
   "  ● celseq2 (contrib) scRNA-seq workflow · open source · WEHI",

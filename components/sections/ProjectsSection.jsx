@@ -77,6 +77,38 @@ export const PROJECTS = [
     linkLabel: "Open Ranking Radar live demo",
   },
   {
+    // Private repo and private production system holding real customer data:
+    // no link or demo on purpose. The case study describes how it works only.
+    id: "order-system",
+    title: "Meal-Prep Studio Order System",
+    subtitle: "Members, Prepaid Cards, Orders & Finance App",
+    org: "Family Business · Private",
+    period: "Apr 2026 – Present",
+    tag: "Full Stack",
+    domain: "Personal",
+    status: "In production · Private",
+    stack: [
+      "TypeScript",
+      "Expo",
+      "React Native",
+      "Hono",
+      "Turso (libSQL)",
+      "Drizzle ORM",
+      "Zod",
+      "argon2id + JWT",
+      "Vitest",
+      "Turborepo",
+      "Vercel",
+      "GitHub Actions",
+    ],
+    summary:
+      "Built as sole developer for my mum's meal-prep studio: one system for members, prepaid meal cards, daily orders, kitchen and delivery, and finance. A single Expo codebase builds for iOS, Android and the web, on a Hono API on Vercel with Turso (libSQL) and Drizzle. It was built to replace group-chat sign-ups that were tallied by hand and re-keyed into an Excel workbook.",
+    impact:
+      "Sole developer · In production since April 2026 · One codebase for iOS, Android and web",
+    caseStudy: "/projects/order-system",
+    current: true,
+  },
+  {
     id: "sapol-epsb",
     title: "SAPOL EPSB Analytics",
     subtitle: "Professional Standards Reporting & Tooling",
@@ -1050,11 +1082,12 @@ export default function ProjectsSection() {
                     </span>
                   </button>
                   {/* Height snaps (no max-height tween); the revealed content
-                      enters from 70% via animate-enter-up instead. */}
+                      enters from 70% via animate-enter-up instead. No cap when
+                      open: a fixed cap clipped stack and status on phones. */}
                   <div
                     className="overflow-hidden"
                     style={{
-                      maxHeight: isOpen ? "600px" : "0px",
+                      maxHeight: isOpen ? "none" : "0px",
                       opacity: isOpen ? 1 : 0,
                     }}
                   >
@@ -1183,7 +1216,7 @@ export default function ProjectsSection() {
                   <div
                     className="overflow-hidden"
                     style={{
-                      maxHeight: isOpen ? "800px" : "0px",
+                      maxHeight: isOpen ? "none" : "0px",
                       opacity: isOpen ? 1 : 0,
                     }}
                   >
