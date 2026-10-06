@@ -2160,11 +2160,11 @@
       },
       {
         "title": "Statistical re-checks",
-        "body": "Results are re-checked with confidence intervals, paired tests and simulation, and the notes record where the original conclusions do not hold."
+        "body": "Results are re-checked with confidence intervals, paired tests and simulation (still in progress for the two newest labs), and the notes record where the original conclusions do not hold."
       },
       {
         "title": "Optional BYOK AI",
-        "body": "Most labs add an optional AI feature that runs on the visitor's own API key. Its output is checked against the data or scored against simple baselines, and most keep a local log of every call."
+        "body": "Most labs add an optional AI feature that runs on the visitor's own API key. Its output is checked against the data or scored against simple baselines, and many keep a local log of every call."
       }
     ],
     "glance": {

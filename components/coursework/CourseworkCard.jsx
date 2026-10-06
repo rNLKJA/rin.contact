@@ -28,7 +28,7 @@ function Highlight({ text, className = "" }) {
  * One revived coursework project: subject, date at its recorded precision,
  * status, summary, role and team credits and the first highlights. "Show
  * details" opens the rest: further highlights, original vs revived stack and
- * skills, which keeps eleven cards short enough to scan on a phone. The guided
+ * skills, which keeps every card short enough to scan on a phone. The guided
  * tour appears when the demo has one (tourUrl). GitHub appears only when the
  * data layer passed a repoUrl, which it does for public repositories whose
  * main branch holds the revival.

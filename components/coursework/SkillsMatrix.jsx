@@ -9,7 +9,7 @@ const GROUP =
  * project (oldest on the left), a filled dot where the project demonstrates the
  * skill. Choosing a skill filters the timeline. Columns outside the current
  * filter fade back, and their headings stop linking to cards that are not on
- * the page. A table from md up; a list on phones, where 11 columns would not
+ * the page. A table from md up; a list on phones, where one column per project would not
  * fit. There is deliberately no per-skill count: a tally of self-tagged skills
  * reads like a score.
  */

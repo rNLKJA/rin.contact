@@ -187,7 +187,7 @@ export default function Header() {
                 aria-current={active ? "page" : undefined}
                 className={`relative px-1.5 xl:px-2 py-1.5 rounded-full transition-all duration-200 ${
                   active
-                    ? "text-[#FF3C3C]"
+                    ? "text-[#CC0000] dark:text-[#FF3C3C]"
                     : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
                 }`}
               >
@@ -229,7 +229,7 @@ export default function Header() {
                       }`
                     : `relative px-1.5 xl:px-2 py-1.5 rounded-full transition-all duration-200 ${
                         active
-                          ? "text-[#FF3C3C]"
+                          ? "text-[#CC0000] dark:text-[#FF3C3C]"
                           : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
                       }`
                 }
@@ -284,89 +284,91 @@ export default function Header() {
         </div>
 
         {/* Nav links — editorial numbered style */}
-        {/* Scrolls on short screens; safe centring keeps the first item reachable */}
+        {/* Scrolls on short screens; auto margins centre the list and keep the first item reachable */}
         <nav
-          className="flex-1 min-h-0 overflow-y-auto flex flex-col [justify-content:safe_center] px-8 gap-0"
+          className="flex-1 min-h-0 overflow-y-auto overscroll-contain flex flex-col px-8"
           aria-label="Mobile navigation"
         >
-          {NAV_LINKS.map(({ href, key }, i) => {
-            const active = isActive(href);
-            return (
-              <Link
-                key={key}
-                href={href}
-                onClick={() => setMenuOpen(false)}
-                aria-current={active ? "page" : undefined}
-                className={`flex flex-shrink-0 items-baseline gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
-                  active ? "text-[#FF3C3C]" : "text-black dark:text-white hover:text-[#FF3C3C]"
-                }`}
-              >
-                <span
-                  className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
-                    active ? "text-[#FF3C3C]" : "text-[#C8C8C8] group-hover:text-[#FF3C3C]"
+          <div className="my-auto flex flex-shrink-0 flex-col">
+            {NAV_LINKS.map(({ href, key }, i) => {
+              const active = isActive(href);
+              return (
+                <Link
+                  key={key}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={`flex flex-shrink-0 items-baseline gap-4 py-4 [@media(max-height:700px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
+                    active ? "text-[#FF3C3C]" : "text-black dark:text-white hover:text-[#FF3C3C]"
                   }`}
                 >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="text-2xl font-semibold tracking-tight">{t(key)}</span>
-                {active ? (
                   <span
-                    aria-hidden="true"
-                    className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C] self-center"
-                  />
-                ) : (
-                  <span
-                    aria-hidden="true"
-                    className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm"
+                    className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
+                      active ? "text-[#FF3C3C]" : "text-[#C8C8C8] group-hover:text-[#FF3C3C]"
+                    }`}
                   >
-                    ↗
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                )}
-              </Link>
-            );
-          })}
+                  <span className="text-2xl font-semibold tracking-tight">{t(key)}</span>
+                  {active ? (
+                    <span
+                      aria-hidden="true"
+                      className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C] self-center"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm"
+                    >
+                      ↗
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
 
-          {/* Page links — separated by a subtle label */}
-          <p className="flex-shrink-0 text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">
-            {t("nav.pages")}
-          </p>
-          {PAGE_LINKS.map(({ href, key, cta }) => {
-            const active = isActive(href);
-            return (
-              <Link
-                key={key}
-                href={href}
-                onClick={() => setMenuOpen(false)}
-                aria-current={active ? "page" : undefined}
-                className={`flex flex-shrink-0 items-center gap-4 py-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
-                  cta
-                    ? active
-                      ? "text-[#CC2020]"
-                      : "text-[#FF3C3C] hover:text-[#CC2020]"
-                    : active
-                      ? "text-[#FF3C3C]"
-                      : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white"
-                }`}
-              >
-                <span
-                  className={`text-[10px] tracking-widest flex-shrink-0 w-5 ${active ? "text-[#FF3C3C]" : "text-[#E0E0E0]"}`}
+            {/* Page links — separated by a subtle label */}
+            <p className="flex-shrink-0 text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">
+              {t("nav.pages")}
+            </p>
+            {PAGE_LINKS.map(({ href, key, cta }) => {
+              const active = isActive(href);
+              return (
+                <Link
+                  key={key}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={`flex flex-shrink-0 items-center gap-4 py-4 [@media(max-height:700px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
+                    cta
+                      ? active
+                        ? "text-[#CC2020]"
+                        : "text-[#FF3C3C] hover:text-[#CC2020]"
+                      : active
+                        ? "text-[#FF3C3C]"
+                        : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white"
+                  }`}
                 >
-                  →
-                </span>
-                <span className="text-xl font-semibold tracking-tight">{t(key)}</span>
-                {active ? (
-                  <span aria-hidden="true" className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C]" />
-                ) : (
                   <span
-                    aria-hidden="true"
-                    className="ml-auto text-[#E0E0E0] group-hover:text-current transition-colors duration-200 text-sm"
+                    className={`text-[10px] tracking-widest flex-shrink-0 w-5 ${active ? "text-[#FF3C3C]" : "text-[#E0E0E0]"}`}
                   >
-                    ↗
+                    →
                   </span>
-                )}
-              </Link>
-            );
-          })}
+                  <span className="text-xl font-semibold tracking-tight">{t(key)}</span>
+                  {active ? (
+                    <span aria-hidden="true" className="ml-auto w-1.5 h-1.5 bg-[#FF3C3C]" />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="ml-auto text-[#E0E0E0] group-hover:text-current transition-colors duration-200 text-sm"
+                    >
+                      ↗
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
         </nav>
 
         {/* Bottom bar — theme toggle + social pill chips */}
