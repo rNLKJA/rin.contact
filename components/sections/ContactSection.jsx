@@ -11,8 +11,11 @@ import {
   FiAlertCircle,
   FiCoffee,
   FiCalendar,
+  FiCopy,
+  FiCheck,
 } from "react-icons/fi";
 import { useInView } from "@/hooks/useInView";
+import { useCopy } from "@/hooks/useCopy";
 import { useI18n } from "@/contexts/I18nContext";
 
 // ─── EmailJS config ───────────────────────────────────────────────
@@ -31,6 +34,39 @@ const SOCIALS = [
   { label: "GitHub", href: "https://github.com/rNLKJA", icon: FiGithub, handle: "rNLKJA" },
   { label: "Email", href: "mailto:huang@rin.contact", icon: FiMail, handle: "huang@rin.contact" },
 ];
+
+const EMAIL = "huang@rin.contact";
+
+/** Square copy control beside the address: mailto fails for webmail users. */
+function CopyEmailButton() {
+  const { t } = useI18n();
+  const { copied, failed, copy } = useCopy();
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => copy(EMAIL)}
+        aria-label={t("contact.copyEmail")}
+        title={t("contact.copyEmail")}
+        className="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 border border-[#3D3D3D] text-[#AAAAAA] hover:border-white hover:text-white transition-colors duration-200"
+      >
+        {copied ? (
+          <FiCheck size={14} aria-hidden="true" />
+        ) : (
+          <FiCopy size={14} aria-hidden="true" />
+        )}
+      </button>
+      <span role="status" className="sr-only">
+        {copied ? t("contact.emailCopied") : failed ? t("contact.copyFailed") : ""}
+      </span>
+      {failed && (
+        <span aria-hidden="true" className="basis-full pl-7 text-[11px] text-[#AAAAAA]">
+          {t("contact.copyFailed")}
+        </span>
+      )}
+    </>
+  );
+}
 
 function Toast({ type, message, onClose }) {
   const { t } = useI18n();
@@ -314,7 +350,7 @@ export default function ContactSection() {
               <meta itemProp="alternateName" content="黄孙创宇" />
               <meta itemProp="url" content="https://rin.contact/" />
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
                 <FiMail size={16} className="text-[#7A7A7A]" aria-hidden="true" />
                 <a
                   href="mailto:huang@rin.contact"
@@ -323,6 +359,7 @@ export default function ContactSection() {
                 >
                   huang@rin.contact
                 </a>
+                <CopyEmailButton />
               </div>
               <div className="flex items-center gap-3">
                 <FiPhone size={16} className="text-[#7A7A7A]" aria-hidden="true" />

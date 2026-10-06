@@ -163,7 +163,10 @@
       "errorTitle": "出错了",
       "errorMessage": "请直接发送邮件至 huang@rin.contact",
       "dismiss": "关闭通知"
-    }
+    },
+    "copyEmail": "复制邮箱地址",
+    "emailCopied": "邮箱地址已复制",
+    "copyFailed": "复制失败，请手动选择地址"
   },
   "footer": {
     "navigate": "导航",

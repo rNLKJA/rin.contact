@@ -168,7 +168,10 @@
       "errorTitle": "Something went wrong",
       "errorMessage": "Please try emailing huang@rin.contact directly.",
       "dismiss": "Dismiss notification"
-    }
+    },
+    "copyEmail": "Copy email address",
+    "emailCopied": "Email address copied",
+    "copyFailed": "Couldn't copy, please select the address"
   },
   "footer": {
     "navigate": "Navigate",

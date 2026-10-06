@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { FiLink, FiCheck } from "react-icons/fi";
 import { useI18n } from "@/contexts/I18nContext";
+import { useCopy } from "@/hooks/useCopy";
 
 /**
  * ShareButtons — end-of-post share affordance for the blog.
@@ -14,20 +14,13 @@ import { useI18n } from "@/contexts/I18nContext";
  */
 export default function ShareButtons({ url, title }) {
   const { t } = useI18n();
-  const [copied, setCopied] = useState(false);
+  // Same 2s copied state as before; failures stay silent here.
+  const { copied, copy: copyText } = useCopy(2000);
 
   const linkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
   const x = `https://x.com/intent/tweet?text=${encodeURIComponent(`"${title}" by Rin Huang`)}&url=${encodeURIComponent(url)}`;
 
-  const copy = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* clipboard unavailable — silently ignore */
-    }
-  }, [url]);
+  const copy = () => copyText(url);
 
   const pill =
     "inline-flex items-center gap-1.5 border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 py-1.5 rounded-full " +
