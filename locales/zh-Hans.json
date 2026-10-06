@@ -29,7 +29,8 @@
     "instagram": "Instagram",
     "email": "邮箱",
     "strategic": "战略能力",
-    "fullProfile": "完整主页"
+    "fullProfile": "完整主页",
+    "coursework": "课程作业"
   },
   "locale": {
     "current": "EN",
@@ -703,6 +704,7 @@
     "heading": "更新日志",
     "intro": "更新了什么。版本 {version}，仍在继续。",
     "entries": [
+      "新增大学课程作业复活版 /projects/coursework：2019 至 2024 年的十八个墨尔本大学课程作业项目都以在线演示呈现（多数附视频导览），按学期排成时间线，可按领域、阶段和技能筛选，并附技能矩阵。文案来自同一份中英双语数据，构建时会检查站点规则（不展示分数或等级、只为标记为公开的仓库附 GitHub 链接、中英文案保持同步）。",
       "新增正式简历页 /resume：30 秒看清职位、成果和联系方式，每个数字都链接到出处，可导出纯文本 PDF。职业数据改为单一来源，/resume、/cv、/career 和命令行简历（现位于 /resume/terminal）共用，构建时会自动拦截已知的错误表述。工作经历更新到 SAPOL 和 Mapiva，修正资格证书列表，并收紧全站动效：界面动画在 300 毫秒内完成，起始状态不低于 70%。",
       "全站性能优化：KaTeX 仅在实际使用的 /knowledge 页面加载，精简字体预加载，Edge Proxy 跳过静态资源请求，仅首页需要的结构化数据不再随每个页面加载。同时修复了图片缓存过期与字体字族 CSS 错配问题，博客构建速度提升约 3 倍。",
       "博客：6 篇文章，含 Mermaid 图表、位于 /blog/feed.xml 的 RSS 订阅、邮件订阅组件。Service worker：激活时自我销毁以保持缓存整洁。",
@@ -747,6 +749,7 @@
           "战略数据科学",
           "职业经历",
           "项目",
+          "大学课程作业复活版",
           "实验室",
           "关于我",
           "简历",
@@ -1173,7 +1176,8 @@
   "projectsPage": {
     "sectionLabel": "◆ — 项目",
     "heading": "作品。",
-    "description": "数据工程、云基础设施、移动端与Web平台。"
+    "description": "数据工程、云基础设施、移动端与Web平台。",
+    "courseworkLink": "大学课程作业复活版"
   },
   "strategic": {
     "sectionLabel": "◆ — 框架",
@@ -1803,6 +1807,121 @@
     },
     "footer": {
       "referees": "推荐人信息可按需提供"
+    }
+  },
+  "courseworkPage": {
+    "metaTitle": "大学课程作业复活版 · 黄孙创宇 · rin.contact",
+    "metaDescription": "{count} 个墨尔本大学课程作业项目（{from}–{to} 年）重建为在线演示：对照原版核对的忠实移植、统计复检，以及可选的自带密钥（BYOK）AI 功能。",
+    "ogTitle": "大学课程作业复活版 · 黄孙创宇",
+    "ogSubtitle": "{count} 个墨尔本大学课程作业项目 · {from}–{to} · 在线演示",
+    "sectionLabel": "◆ — 课程作业",
+    "heading": "课程作业，复活上线。",
+    "description": "{count} 个墨尔本大学课程作业项目（{from}–{to} 年），2026 年重建为可以直接在浏览器里试用的在线演示。",
+    "back": "项目",
+    "breadcrumb": {
+      "home": "首页",
+      "projects": "项目",
+      "coursework": "课程作业"
+    },
+    "sections": {
+      "revived": "“复活”指什么",
+      "timeline": "时间线",
+      "matrix": "技能矩阵",
+      "goDeeper": "了解更多"
+    },
+    "intro": "每个项目最初都是我在墨尔本大学提交的作业。2026 年我分三步把它们重新做出来，三步彼此分开，哪些是原作、哪些是新增，一眼就能分清。",
+    "steps": [
+      {
+        "title": "忠实移植",
+        "body": "把原来的代码移植成 TypeScript，用一致性测试对照原版的 Python、C、R 或 JavaScript 逐项核对。已知 bug 按提交时的样子保留并写进文档，需要时另设修正模式。"
+      },
+      {
+        "title": "统计复检",
+        "body": "用置信区间、配对检验和模拟重新核对结果（最新的两个实验室仍在补充中），并在说明里写明原结论站不住的地方。"
+      },
+      {
+        "title": "可选的 BYOK AI",
+        "body": "多数实验室都加了一个可选的 AI 功能，使用访客自己的 API key 运行。它的输出会对照数据核查，或与简单基线比较打分；不少还会在本地记录每次调用。"
+      }
+    ],
+    "glance": {
+      "heading": "概览",
+      "projects": "项目",
+      "subjects": "科目",
+      "years": "时间跨度",
+      "withTeam": "团队项目"
+    },
+    "notes": [
+      "日期为最终截止日或最后提交的月份，只精确到现有记录能确认的程度。",
+      "团队项目列出了每一位队友。每个项目都附在线演示，有视频导览（带字幕的操作演示）的也一并附上；公开仓库合并 2026 复活版之后，再附上源码链接。"
+    ],
+    "sharedStack": "所有复活版共用的技术栈",
+    "filters": {
+      "heading": "筛选项目",
+      "area": "领域",
+      "allAreas": "全部领域",
+      "level": "阶段",
+      "allLevels": "全部阶段",
+      "skill": "技能",
+      "anySkill": "任意技能",
+      "showing": "显示 {shown} / {total} 个项目",
+      "clear": "清除筛选",
+      "empty": "没有符合筛选条件的项目。"
+    },
+    "areas": {
+      "statistics": "统计",
+      "ml": "人工智能与机器学习",
+      "algorithms": "算法",
+      "data-engineering": "数据工程",
+      "web": "Web 开发",
+      "genai-eval": "生成式 AI 评测",
+      "reproducibility": "测试与可复现性"
+    },
+    "levels": {
+      "undergraduate": "本科",
+      "master": "硕士"
+    },
+    "semesters": {
+      "1": "第一学期",
+      "2": "第二学期"
+    },
+    "yearPrefix": "{year}年",
+    "termFormat": "{year}年{semester}",
+    "card": {
+      "date": "日期",
+      "myRole": "我的角色",
+      "team": "团队",
+      "original": "原版",
+      "revival": "2026 复活版",
+      "revivalPlus": "通用技术栈 + {extras}",
+      "revivalShared": "通用技术栈",
+      "highlights": "亮点",
+      "skills": "技能",
+      "showDetails": "展开详情",
+      "hideDetails": "收起详情",
+      "liveDemo": "在线演示",
+      "liveDemoLabel": "在线演示：{title}（在新标签页打开）",
+      "tour": "视频导览",
+      "tourLabel": "视频导览：{title}（在新标签页打开）",
+      "source": "GitHub 源码",
+      "sourceLabel": "GitHub 源码：{title}（在新标签页打开）",
+      "listSeparator": "、",
+      "listConjunction": " 和 "
+    },
+    "status": {
+      "live": "已上线"
+    },
+    "matrix": {
+      "intro": "每项技能都标出体现它的项目，按时间先后排列。点选技能即可筛选上方的时间线。",
+      "everyProject": "每个项目都有",
+      "caption": "各课程项目体现的技能",
+      "skill": "技能",
+      "yes": "有",
+      "filterBy": "只看涉及此技能的项目：{skill}"
+    },
+    "goDeeper": {
+      "projects": "全部项目与案例",
+      "resume": "简历与 PDF"
     }
   }
 }

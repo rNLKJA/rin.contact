@@ -68,6 +68,7 @@ const CORE = [
   { path: "/strategic", priority: 0.9, freq: "monthly" },
   { path: "/projects", priority: 0.9, freq: "monthly" },
   { path: "/projects/signal", priority: 0.8, freq: "monthly" },
+  { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
   { path: "/lab", priority: 0.8, freq: "monthly" },
   { path: "/resume", priority: 0.9, freq: "monthly" },
@@ -189,11 +190,12 @@ const INFO = [
 const NOT_ZH_KNOWLEDGE = new Set([]);
 
 // Every /info/* page and the listed /knowledge/* articles have full zh-Hans
-// content; /cv, /projects/signal and /tools/card are bilingual.
+// content; /cv, /projects/signal, /projects/coursework and /tools/card are bilingual.
 const ZH_COVERED = [
   ...ZH_PAGES,
   { path: "/cv", priority: 0.8, freq: "monthly" },
   { path: "/projects/signal", priority: 0.8, freq: "monthly" },
+  { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/tools/card", priority: 0.7, freq: "monthly" },
   { path: "/knowledge", priority: 0.7, freq: "weekly" },
   { path: "/info", priority: 0.5, freq: "monthly" },
@@ -201,6 +203,7 @@ const ZH_COVERED = [
   ...INFO,
   ...KNOWLEDGE.filter((p) => !NOT_ZH_KNOWLEDGE.has(p.path)),
 ];
+const ZH_PATHS = new Set(ZH_COVERED.map((p) => p.path));
 
 // ── XML helpers ────────────────────────────────────────────────────────────────
 function esc(s) {
@@ -230,10 +233,29 @@ function withTrailingSlash(path) {
   return path.endsWith("/") ? path : `${path}/`;
 }
 
+function absolute(path) {
+  return `${BASE_URL}${withTrailingSlash(path)}`;
+}
+
+// hreflang must be reciprocal: the English and the /zh-Hans/ entry of a page
+// both list the same set of alternates.
+function alternates(path) {
+  return [
+    `    <xhtml:link rel="alternate" hreflang="en-AU" href="${absolute(path)}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="zh-Hans" href="${absolute(`/zh-Hans${path}`)}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${absolute(path)}"/>`,
+  ].join("\n");
+}
+
+// An English entry carries alternates when the page also has zh-Hans content.
+function enUrlXml(page, today) {
+  return urlXml(page, today, ZH_PATHS.has(page.path) ? alternates(page.path) : "");
+}
+
 function urlXml({ path, priority, freq }, today, extra = "") {
   return [
     "  <url>",
-    `    <loc>${BASE_URL}${withTrailingSlash(path)}</loc>`,
+    `    <loc>${absolute(path)}</loc>`,
     `    <lastmod>${today}</lastmod>`,
     `    <changefreq>${freq}</changefreq>`,
     `    <priority>${priority}</priority>`,
@@ -260,34 +282,21 @@ async function generateSitemap() {
     urlXml(
       { path: "/", priority: 1.0, freq: "weekly" },
       today,
-      [
-        `    <xhtml:link rel="alternate" hreflang="en-AU"     href="${BASE_URL}/"/>`,
-        `    <xhtml:link rel="alternate" hreflang="zh-Hans"   href="${BASE_URL}/zh-Hans/"/>`,
-        `    <xhtml:link rel="alternate" hreflang="x-default"  href="${BASE_URL}/"/>`,
-        imageExtra,
-      ].join("\n")
+      [alternates("/"), imageExtra].join("\n")
     ),
     // Core pages
-    ...CORE.filter((p) => p.path !== "/").map((p) => urlXml(p, today)),
+    ...CORE.filter((p) => p.path !== "/").map((p) => enUrlXml(p, today)),
     // Section indexes
-    ...INDEXES.map((p) => urlXml(p, today)),
+    ...INDEXES.map((p) => enUrlXml(p, today)),
     // Info sub-pages
-    ...INFO.map((p) => urlXml(p, today)),
+    ...INFO.map((p) => enUrlXml(p, today)),
     // Knowledge topic pages
-    ...KNOWLEDGE.map((p) => urlXml(p, today)),
+    ...KNOWLEDGE.map((p) => enUrlXml(p, today)),
     // Blog posts
     ...blogPostUrls,
     // zh-Hans pages
     ...ZH_COVERED.map(({ path, priority, freq }) =>
-      urlXml(
-        { path: `/zh-Hans${path}`, priority, freq },
-        today,
-        [
-          `    <xhtml:link rel="alternate" hreflang="en-AU"   href="${BASE_URL}${path === "/" ? "/" : path}/"/>`,
-          `    <xhtml:link rel="alternate" hreflang="zh-Hans" href="${BASE_URL}/zh-Hans${path === "/" ? "/" : path}/"/>`,
-          `    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}${path === "/" ? "/" : path}/"/>`,
-        ].join("\n")
-      )
+      urlXml({ path: `/zh-Hans${path}`, priority, freq }, today, alternates(path))
     ),
   ].join("\n");
 
