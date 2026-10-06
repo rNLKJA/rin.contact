@@ -143,7 +143,7 @@ export default function HireMePage() {
                 </span>
                 connect
               </p>
-              <div className="space-y-3">
+              <div className="space-y-3" data-guide="hire-connect">
                 <a
                   href="mailto:huang@rin.contact?subject=Let's%20talk"
                   className="block border border-[#FF3C3C] bg-[#FF3C3C] text-white px-6 py-3 text-xs tracking-widest uppercase hover:bg-transparent hover:text-[#FF3C3C] transition-colors duration-200 text-center"

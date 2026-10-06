@@ -34,6 +34,7 @@
     "strategic": "Strategic",
     "fullProfile": "Full Profile",
     "coursework": "Coursework",
+    "history": "History",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "menuLabel": "Site menu",
@@ -860,6 +861,7 @@
     "heading": "Changelog",
     "intro": "What changed. Version {version} and counting.",
     "entries": [
+      "New /info/history page: the five versions of rin.contact since 2021 as a slide deck, each with a screenshot, its stack and what I was trying to do at the time. The screenshots come from the Wayback Machine, my own v1 README and local rebuilds of the old branches, and two versions open live from the archive inside the page. Also new is Pawsibly, an optional pixel-cat guide. Press START in the bottom-left corner for a seven-stop tour with a quest log. It stays off until you start it and remembers where you got to.",
       "University coursework, revived: /projects/coursework shows eighteen University of Melbourne coursework projects from 2019 to 2024 as live demos (most with a guided video tour), on a timeline by term with filters by area, level and skill and a skills matrix. Copy comes from one bilingual data source with a build check for site rules (no marks or grades, GitHub linked only for repos marked public, English and Chinese copy kept in step).",
       "A proper resume at /resume: role, impact and contact in a 30-second read, every number linked to its source, and a clean text PDF. Career facts now come from one data source shared by /resume, /cv, /career and the terminal (now at /resume/terminal), with a build check against known-wrong claims. Experience updated to SAPOL and Mapiva, credentials corrected, and site-wide motion tightened: UI animations finish within 300ms and never start from zero.",
       "Site-wide performance pass: KaTeX scoped to the /knowledge pages that use it, font preload trimmed, Edge Proxy skips static assets, homepage-only structured data no longer ships on every page. Also fixed stale image caching and a font-family CSS bug; blog builds ~3x faster.",
@@ -873,6 +875,42 @@
       "Index pages for fun/, info/, tools/",
       "Pages organised into fun/, info/, tools/ subfolders"
     ]
+  },
+  "infoHistory": {
+    "metaTitle": "Site History · Rin Huang · rin.contact",
+    "metaDescription": "Five versions of rin.contact from 2021 to now: what each one looked like, what it was built with and what I was trying to do at the time.",
+    "ogSubtitle": "Five versions of rin.contact, from 2021 to now",
+    "heading": "Five versions of rin.contact.",
+    "intro": "I started this site in October 2021 as a student project and have rebuilt it four times since. Each slide shows what a version looked like, what it was built with and what I was trying to do at the time. Where no screenshot survived, the slide says so.",
+    "deckLabel": "Versions of rin.contact",
+    "deckRole": "carousel",
+    "slideRole": "slide",
+    "pickLabel": "Choose a version",
+    "prev": "Previous version",
+    "next": "Next version",
+    "slideOf": "{n} of {total}: {version}",
+    "changedLabel": "What changed",
+    "thinkingLabel": "What I was thinking",
+    "stackLabel": "Built with",
+    "source": "{version} source",
+    "viewArchived": "View archived · {date}",
+    "hideArchived": "Hide archived view",
+    "closeArchive": "Close the archived view",
+    "archiveTitle": "rin.contact {version} as archived by the Wayback Machine on {date}",
+    "archiveLoading": "Loading the archived page from the Wayback Machine. This can take a few seconds.",
+    "openNewTab": "Open in new tab",
+    "captions": {
+      "readme": "My own screenshot from the v1 README, {date}, cropped to the top of the page.",
+      "wayback": "Wayback Machine capture, {date}.",
+      "localBuild": "Rebuilt locally from the {version} branch and captured in {date}. The Wayback Machine has no usable copy of this version.",
+      "production": "rin.contact today, captured in {date}."
+    },
+    "mobileAlt": "{version} on a phone-sized screen",
+    "noCapture": "No surviving capture. The Wayback Machine did not archive this version, and the old build could not be restored.",
+    "timelineHeading": "Timeline",
+    "guideHeading": "Pawsibly, the site guide",
+    "guideText": "Pawsibly can walk you around the site in seven short stops. If you switched the guide off, this button turns it back on and starts again from the beginning.",
+    "restartGuide": "Start the guide again"
   },
   "infoApi": {
     "metaTitle": "API — rin.contact",
@@ -934,6 +972,7 @@
           "Site Map",
           "Manifest",
           "Changelog",
+          "History",
           "Thank You",
           "References"
         ]
@@ -1440,6 +1479,11 @@
     "message": "You've read this far — why not say hello?",
     "dismiss": "Dismiss"
   },
+  "guide": {
+    "launch": "Start the site guide with Pawsibly",
+    "pressStart": "Press start",
+    "continue": "Continue"
+  },
   "snakeGame": {
     "title": "snake — while you wait",
     "score": "Score",
@@ -1601,6 +1645,7 @@
       "site-map": "human-readable sitemap",
       "manifest": "what I believe",
       "changelog": "what changed",
+      "history": "how this site changed",
       "thank-you": "thanks for reaching out",
       "references": "people who might say nice things"
     }

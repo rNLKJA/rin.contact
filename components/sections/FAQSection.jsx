@@ -244,7 +244,7 @@ export default function FAQSection() {
         }`}
       >
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-12" data-guide="faq-intro">
           <p className="text-xs tracking-widest uppercase text-accent-ink mb-3">
             {t("faq.sectionLabel")}
           </p>

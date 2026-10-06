@@ -385,6 +385,27 @@ h1 {
   background-size: 16px 16px;
 }
 
+/* ─── Pixel frame ────────────────────────────────────────────────── */
+/* Knocks the 2px corner pixel off a square, 2px-bordered box, so it reads as
+   drawn on a pixel grid (Pawsibly's dialogue box, quest log, history deck).
+   Still flat: no shadow, no radius. */
+.pixel-frame {
+  clip-path: polygon(
+    0 2px,
+    2px 2px,
+    2px 0,
+    calc(100% - 2px) 0,
+    calc(100% - 2px) 2px,
+    100% 2px,
+    100% calc(100% - 2px),
+    calc(100% - 2px) calc(100% - 2px),
+    calc(100% - 2px) 100%,
+    2px 100%,
+    2px calc(100% - 2px),
+    0 calc(100% - 2px)
+  );
+}
+
 /* ─── Background shape animations ───────────────────────────────── */
 @keyframes art-float {
   0%,
@@ -717,4 +738,61 @@ h1 {
     outline: 2px solid var(--accent);
     outline-offset: -2px;
   }
+}
+
+/* ─── Pawsibly's focus tiers ─────────────────────────────────────── */
+/* GuideStage paints the cut-outs (mask position and size) every frame it
+   moves; these rules hold the parts that never change. Outer tier: the page,
+   fully grey and dimmed. Context tier: the stop's section, lightly grey. The
+   target itself sits in a hole in both and keeps its colour. */
+.guide-spot {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  pointer-events: none;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.guide-spot-outer {
+  -webkit-backdrop-filter: grayscale(1) brightness(0.72);
+  backdrop-filter: grayscale(1) brightness(0.72);
+}
+.guide-spot-context {
+  -webkit-backdrop-filter: grayscale(0.6) brightness(0.94);
+  backdrop-filter: grayscale(0.6) brightness(0.94);
+}
+.dark .guide-spot-outer {
+  -webkit-backdrop-filter: grayscale(1) brightness(0.55);
+  backdrop-filter: grayscale(1) brightness(0.55);
+}
+.dark .guide-spot-context {
+  -webkit-backdrop-filter: grayscale(0.6) brightness(0.85);
+  backdrop-filter: grayscale(0.6) brightness(0.85);
+}
+/* No backdrop-filter: a plain dim in two strengths instead. */
+@supports not ((backdrop-filter: grayscale(1)) or (-webkit-backdrop-filter: grayscale(1))) {
+  .guide-spot-outer {
+    background: rgba(10, 10, 10, 0.45);
+  }
+  .guide-spot-context {
+    background: rgba(10, 10, 10, 0.15);
+  }
+}
+/* No mask compositing: skip the grey rather than cover the target too. */
+@supports not ((mask-composite: exclude) or (-webkit-mask-composite: xor)) {
+  .guide-spot {
+    display: none;
+  }
+}
+.guide-spot-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 55;
+  pointer-events: none;
+  border: 2px solid #ff3c3c;
+  border-radius: 2px;
+  contain: layout style;
 }

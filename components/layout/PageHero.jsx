@@ -27,7 +27,7 @@ export default function PageHero({
         className="dot-matrix pointer-events-none absolute right-[-80px] top-1/2 -translate-y-1/2 w-[420px] h-[420px] opacity-[0.05] md:opacity-[0.08]"
       />
 
-      <div className="relative">
+      <div className="relative" data-guide="page-hero">
         <Link
           href={backHref}
           className="animate-fade-up inline-flex items-center gap-1.5 py-1.5 -mt-1.5 mb-[22px] text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors"

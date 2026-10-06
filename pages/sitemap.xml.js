@@ -177,6 +177,7 @@ const INFO = [
   { path: "/info/api", priority: 0.5, freq: "monthly" },
   { path: "/info/roadmap", priority: 0.5, freq: "monthly" },
   { path: "/info/changelog", priority: 0.4, freq: "monthly" },
+  { path: "/info/history", priority: 0.4, freq: "monthly" },
   { path: "/info/colophon", priority: 0.4, freq: "monthly" },
   { path: "/info/references", priority: 0.4, freq: "monthly" },
   { path: "/info/thank-you", priority: 0.4, freq: "monthly" },

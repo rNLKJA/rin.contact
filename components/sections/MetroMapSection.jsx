@@ -205,304 +205,307 @@ export default function MetroMapSection() {
         </p>
       </div>
 
-      {/* Map (horizontally scrollable on small screens) */}
-      <div className="relative">
-        <div ref={scrollRef} className="overflow-x-auto -mx-2 px-2">
-          <div style={{ minWidth: 580 }}>
-            <svg
-              viewBox={`0 0 ${VW} ${VH}`}
-              width="100%"
-              aria-label="Interactive career metro map, 2022 to present"
-              style={{ overflow: "visible" }}
-            >
-              {/* ── Year grid ────────────────────────────────────────────────── */}
-              {[2022, 2023, 2024, 2025, 2026, 2027].map((yr) => (
-                <g key={yr}>
-                  <line
-                    x1={toX(yr)}
-                    y1={MARGIN_T + 4}
-                    x2={toX(yr)}
-                    y2={VH - 20}
-                    stroke="#F2F2F2"
-                    className="dark:stroke-[#1E1E1E]"
-                    strokeWidth={1}
-                  />
+      {/* Map and station panel; the site guide highlights both together. */}
+      <div data-guide="career-map">
+        {/* Map (horizontally scrollable on small screens) */}
+        <div className="relative">
+          <div ref={scrollRef} className="overflow-x-auto -mx-2 px-2">
+            <div style={{ minWidth: 580 }}>
+              <svg
+                viewBox={`0 0 ${VW} ${VH}`}
+                width="100%"
+                aria-label="Interactive career metro map, 2022 to present"
+                style={{ overflow: "visible" }}
+              >
+                {/* ── Year grid ────────────────────────────────────────────────── */}
+                {[2022, 2023, 2024, 2025, 2026, 2027].map((yr) => (
+                  <g key={yr}>
+                    <line
+                      x1={toX(yr)}
+                      y1={MARGIN_T + 4}
+                      x2={toX(yr)}
+                      y2={VH - 20}
+                      stroke="#F2F2F2"
+                      className="dark:stroke-[#1E1E1E]"
+                      strokeWidth={1}
+                    />
+                    <text
+                      x={toX(yr)}
+                      y={MARGIN_T - 4}
+                      textAnchor="middle"
+                      fontSize={10}
+                      fill="#C0C0C0"
+                      className="dark:fill-[#666666]"
+                      fontFamily="ui-monospace,monospace"
+                    >
+                      {yr}
+                    </text>
+                  </g>
+                ))}
+
+                {/* ── Line name labels ─────────────────────────────────────────── */}
+                {LINES.map((ln) => (
                   <text
-                    x={toX(yr)}
-                    y={MARGIN_T - 4}
-                    textAnchor="middle"
-                    fontSize={10}
-                    fill="#C0C0C0"
-                    className="dark:fill-[#666666]"
+                    key={ln.id}
+                    x={MARGIN_L - 8}
+                    y={ln.y + 4}
+                    textAnchor="end"
+                    fontSize={8}
+                    fill={ln.color}
                     fontFamily="ui-monospace,monospace"
+                    letterSpacing={1.2}
                   >
-                    {yr}
+                    {ln.label}
                   </text>
-                </g>
-              ))}
+                ))}
 
-              {/* ── Line name labels ─────────────────────────────────────────── */}
-              {LINES.map((ln) => (
-                <text
-                  key={ln.id}
-                  x={MARGIN_L - 8}
-                  y={ln.y + 4}
-                  textAnchor="end"
-                  fontSize={8}
-                  fill={ln.color}
-                  fontFamily="ui-monospace,monospace"
-                  letterSpacing={1.2}
-                >
-                  {ln.label}
-                </text>
-              ))}
-
-              {/* ── Background (ghost) rails ──────────────────────────────────── */}
-              {LINES.map((ln) => (
-                <line
-                  key={ln.id}
-                  x1={MARGIN_L}
-                  y1={ln.y}
-                  x2={VW - MARGIN_R}
-                  y2={ln.y}
-                  stroke={ln.color}
-                  strokeWidth={1}
-                  strokeOpacity={0.1}
-                  strokeDasharray="4,7"
-                />
-              ))}
-
-              {/* ── Active rail segments ──────────────────────────────────────── */}
-              {RAILS.map((r, i) => {
-                const ln = LINES.find((l) => l.id === r.line);
-                return (
+                {/* ── Background (ghost) rails ──────────────────────────────────── */}
+                {LINES.map((ln) => (
                   <line
-                    key={i}
-                    x1={r.x1}
+                    key={ln.id}
+                    x1={MARGIN_L}
                     y1={ln.y}
-                    x2={r.x2}
+                    x2={VW - MARGIN_R}
                     y2={ln.y}
                     stroke={ln.color}
-                    strokeWidth={3.5}
-                    strokeLinecap="round"
-                  />
-                );
-              })}
-
-              {/* ── Triple-convergence connector ──────────────────────────────── */}
-              <line
-                x1={CONNECTOR_X}
-                y1={78}
-                x2={CONNECTOR_X}
-                y2={246}
-                stroke="#CCCCCC"
-                className="dark:stroke-[#555555]"
-                strokeWidth={1}
-                strokeDasharray="3,4"
-              />
-              <text
-                x={CONNECTOR_X + 4}
-                y={166}
-                fontSize={7.5}
-                fill="#C0C0C0"
-                className="dark:fill-[#666666]"
-                fontFamily="ui-monospace,monospace"
-              >
-                3 concurrent
-              </text>
-
-              {/* ── NOW marker ───────────────────────────────────────────────── */}
-              {NOW_X != null && (
-                <g>
-                  <line
-                    x1={NOW_X}
-                    y1={MARGIN_T - 2}
-                    x2={NOW_X}
-                    y2={VH - 18}
-                    stroke="#FF3C3C"
                     strokeWidth={1}
-                    strokeDasharray="3,4"
-                    strokeOpacity={0.45}
+                    strokeOpacity={0.1}
+                    strokeDasharray="4,7"
                   />
-                  <text
-                    x={NOW_X + 3}
-                    y={MARGIN_T + 8}
-                    fontSize={8}
-                    fill="#FF3C3C"
-                    fontFamily="ui-monospace,monospace"
-                  >
-                    NOW
-                  </text>
-                </g>
-              )}
+                ))}
 
-              {/* ── Station dots ──────────────────────────────────────────────── */}
-              {STATIONS.map((s) => {
-                const ln = LINES.find((l) => l.id === s.line);
-                const isHov = hovered === s.id;
-                const r = isHov ? 7 : s.current ? 5.5 : 5;
-                const fill = s.current ? ln.color : isHov ? ln.color : "#FFFFFF";
-                const sw = s.current ? 0 : 2;
+                {/* ── Active rail segments ──────────────────────────────────────── */}
+                {RAILS.map((r, i) => {
+                  const ln = LINES.find((l) => l.id === r.line);
+                  return (
+                    <line
+                      key={i}
+                      x1={r.x1}
+                      y1={ln.y}
+                      x2={r.x2}
+                      y2={ln.y}
+                      stroke={ln.color}
+                      strokeWidth={3.5}
+                      strokeLinecap="round"
+                    />
+                  );
+                })}
 
-                return (
-                  <g
-                    key={s.id}
-                    role="button"
-                    onMouseEnter={() => setHovered(s.id)}
-                    onMouseLeave={() => setHovered(null)}
-                    // Tap to reveal the record on touch devices, where hover never
-                    // fires — without this, mobile users cannot read any station.
-                    onClick={() => setHovered(s.id)}
-                    style={{ cursor: "pointer" }}
-                    tabIndex={0}
-                    onFocus={() => setHovered(s.id)}
-                    onBlur={() => setHovered(null)}
-                    aria-label={`${s.label} — ${s.period}`}
-                  >
-                    {/* Pulse ring for live stations */}
-                    {s.current && (
+                {/* ── Triple-convergence connector ──────────────────────────────── */}
+                <line
+                  x1={CONNECTOR_X}
+                  y1={78}
+                  x2={CONNECTOR_X}
+                  y2={246}
+                  stroke="#CCCCCC"
+                  className="dark:stroke-[#555555]"
+                  strokeWidth={1}
+                  strokeDasharray="3,4"
+                />
+                <text
+                  x={CONNECTOR_X + 4}
+                  y={166}
+                  fontSize={7.5}
+                  fill="#C0C0C0"
+                  className="dark:fill-[#666666]"
+                  fontFamily="ui-monospace,monospace"
+                >
+                  3 concurrent
+                </text>
+
+                {/* ── NOW marker ───────────────────────────────────────────────── */}
+                {NOW_X != null && (
+                  <g>
+                    <line
+                      x1={NOW_X}
+                      y1={MARGIN_T - 2}
+                      x2={NOW_X}
+                      y2={VH - 18}
+                      stroke="#FF3C3C"
+                      strokeWidth={1}
+                      strokeDasharray="3,4"
+                      strokeOpacity={0.45}
+                    />
+                    <text
+                      x={NOW_X + 3}
+                      y={MARGIN_T + 8}
+                      fontSize={8}
+                      fill="#FF3C3C"
+                      fontFamily="ui-monospace,monospace"
+                    >
+                      NOW
+                    </text>
+                  </g>
+                )}
+
+                {/* ── Station dots ──────────────────────────────────────────────── */}
+                {STATIONS.map((s) => {
+                  const ln = LINES.find((l) => l.id === s.line);
+                  const isHov = hovered === s.id;
+                  const r = isHov ? 7 : s.current ? 5.5 : 5;
+                  const fill = s.current ? ln.color : isHov ? ln.color : "#FFFFFF";
+                  const sw = s.current ? 0 : 2;
+
+                  return (
+                    <g
+                      key={s.id}
+                      role="button"
+                      onMouseEnter={() => setHovered(s.id)}
+                      onMouseLeave={() => setHovered(null)}
+                      // Tap to reveal the record on touch devices, where hover never
+                      // fires — without this, mobile users cannot read any station.
+                      onClick={() => setHovered(s.id)}
+                      style={{ cursor: "pointer" }}
+                      tabIndex={0}
+                      onFocus={() => setHovered(s.id)}
+                      onBlur={() => setHovered(null)}
+                      aria-label={`${s.label} — ${s.period}`}
+                    >
+                      {/* Pulse ring for live stations */}
+                      {s.current && (
+                        <circle
+                          cx={s.x}
+                          cy={s.y}
+                          r={12}
+                          fill="none"
+                          stroke={ln.color}
+                          strokeWidth={1.5}
+                          style={{ animation: "metroPulse 2.2s ease-out infinite" }}
+                        />
+                      )}
+
+                      {/* Station circle */}
                       <circle
                         cx={s.x}
                         cy={s.y}
-                        r={12}
-                        fill="none"
+                        r={r}
+                        fill={fill}
                         stroke={ln.color}
-                        strokeWidth={1.5}
-                        style={{ animation: "metroPulse 2.2s ease-out infinite" }}
+                        strokeWidth={sw}
+                        style={{ transition: "r 0.12s ease, fill 0.12s ease" }}
                       />
-                    )}
 
-                    {/* Station circle */}
-                    <circle
-                      cx={s.x}
-                      cy={s.y}
-                      r={r}
-                      fill={fill}
-                      stroke={ln.color}
-                      strokeWidth={sw}
-                      style={{ transition: "r 0.12s ease, fill 0.12s ease" }}
-                    />
+                      {/* Station label */}
+                      <text
+                        x={s.x}
+                        y={s.labelAbove ? s.y - 11 : s.y + 20}
+                        textAnchor="middle"
+                        fontSize={9}
+                        fill={isHov ? ln.color : "#3D3D3D"}
+                        className={isHov ? "" : "dark:fill-[#AAAAAA]"}
+                        fontFamily="ui-monospace,monospace"
+                        fontWeight={isHov ? "600" : "400"}
+                        style={{ transition: "fill 0.12s ease" }}
+                      >
+                        {s.label}
+                      </text>
+                    </g>
+                  );
+                })}
+              </svg>
+            </div>
+          </div>
 
-                    {/* Station label */}
-                    <text
-                      x={s.x}
-                      y={s.labelAbove ? s.y - 11 : s.y + 20}
-                      textAnchor="middle"
-                      fontSize={9}
-                      fill={isHov ? ln.color : "#3D3D3D"}
-                      className={isHov ? "" : "dark:fill-[#AAAAAA]"}
-                      fontFamily="ui-monospace,monospace"
-                      fontWeight={isHov ? "600" : "400"}
-                      style={{ transition: "fill 0.12s ease" }}
-                    >
-                      {s.label}
-                    </text>
-                  </g>
-                );
-              })}
+          {/* Left fade — appears once the reader has scrolled away from the start */}
+          <div
+            aria-hidden="true"
+            className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-200 ${
+              edges.scrollable && !edges.atStart ? "opacity-100 animate-enter" : "opacity-0"
+            }`}
+          />
+
+          {/* Right fade + nudging chevron — cues that recent roles are off-screen */}
+          <div
+            aria-hidden="true"
+            className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-200 ${
+              showRightCue ? "opacity-100 animate-enter" : "opacity-0"
+            }`}
+          />
+          <div
+            aria-hidden="true"
+            className={`metro-cue pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-accent-ink transition-opacity duration-200 ${
+              showRightCue ? "cue-on opacity-100" : "opacity-0"
+            }`}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path
+                d="M5 3.5L11 9L5 14.5"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
-        </div>
 
-        {/* Left fade — appears once the reader has scrolled away from the start */}
-        <div
-          aria-hidden="true"
-          className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-200 ${
-            edges.scrollable && !edges.atStart ? "opacity-100 animate-enter" : "opacity-0"
-          }`}
-        />
-
-        {/* Right fade + nudging chevron — cues that recent roles are off-screen */}
-        <div
-          aria-hidden="true"
-          className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-[#0A0A0A] to-transparent transition-opacity duration-200 ${
-            showRightCue ? "opacity-100 animate-enter" : "opacity-0"
-          }`}
-        />
-        <div
-          aria-hidden="true"
-          className={`metro-cue pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-accent-ink transition-opacity duration-200 ${
-            showRightCue ? "cue-on opacity-100" : "opacity-0"
-          }`}
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path
-              d="M5 3.5L11 9L5 14.5"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-
-        <style jsx>{`
-          @media (prefers-reduced-motion: no-preference) {
-            .metro-cue {
-              animation: metroNudge 1.4s ease-in-out infinite;
-            }
-            /* Shown: enter from 70% opacity (motion rules) alongside the ambient
+          <style jsx>{`
+            @media (prefers-reduced-motion: no-preference) {
+              .metro-cue {
+                animation: metroNudge 1.4s ease-in-out infinite;
+              }
+              /* Shown: enter from 70% opacity (motion rules) alongside the ambient
                nudge. Lives here, not in animate-enter, because this scoped
                animation shorthand would override the Tailwind utility. */
-            .metro-cue.cue-on {
-              animation:
-                metroCueIn 150ms ease-out both,
-                metroNudge 1.4s ease-in-out infinite;
+              .metro-cue.cue-on {
+                animation:
+                  metroCueIn 150ms ease-out both,
+                  metroNudge 1.4s ease-in-out infinite;
+              }
             }
-          }
-          @keyframes metroCueIn {
-            from {
-              opacity: 0.7;
+            @keyframes metroCueIn {
+              from {
+                opacity: 0.7;
+              }
+              to {
+                opacity: 1;
+              }
             }
-            to {
-              opacity: 1;
+            @keyframes metroNudge {
+              0%,
+              100% {
+                transform: translate(0, -50%);
+              }
+              50% {
+                transform: translate(4px, -50%);
+              }
             }
-          }
-          @keyframes metroNudge {
-            0%,
-            100% {
-              transform: translate(0, -50%);
-            }
-            50% {
-              transform: translate(4px, -50%);
-            }
-          }
-        `}</style>
-      </div>
+          `}</style>
+        </div>
 
-      {/* Info panel */}
-      <div
-        className={`mt-4 border-l-2 pl-4 transition-all duration-200 ${
-          active
-            ? "opacity-100 animate-enter"
-            : "opacity-30 pointer-events-none border-[#E0E0E0] dark:border-[#3D3D3D]"
-        }`}
-        style={
-          active ? { borderColor: LINES.find((l) => l.id === active?.line)?.color } : undefined
-        }
-        aria-live="polite"
-      >
-        {active ? (
-          <>
-            <p className="text-[10px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] mb-0.5">
-              {active.period}
+        {/* Info panel */}
+        <div
+          className={`mt-4 border-l-2 pl-4 transition-all duration-200 ${
+            active
+              ? "opacity-100 animate-enter"
+              : "opacity-30 pointer-events-none border-[#E0E0E0] dark:border-[#3D3D3D]"
+          }`}
+          style={
+            active ? { borderColor: LINES.find((l) => l.id === active?.line)?.color } : undefined
+          }
+          aria-live="polite"
+        >
+          {active ? (
+            <>
+              <p className="text-[10px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] mb-0.5">
+                {active.period}
+              </p>
+              <p className="font-semibold text-sm mb-0.5">{active.label}</p>
+              <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] mb-1">{active.role}</p>
+              <p className="text-xs text-ink-subtle dark:text-[#9A9A9A] leading-relaxed max-w-xl">
+                {active.detail}
+              </p>
+              {active.current && (
+                <span className="inline-block mt-1.5 text-[10px] tracking-widest uppercase text-accent-ink">
+                  ● Live
+                </span>
+              )}
+            </>
+          ) : (
+            <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] italic">
+              Tap or hover a station to read its record.
             </p>
-            <p className="font-semibold text-sm mb-0.5">{active.label}</p>
-            <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] mb-1">{active.role}</p>
-            <p className="text-xs text-ink-subtle dark:text-[#9A9A9A] leading-relaxed max-w-xl">
-              {active.detail}
-            </p>
-            {active.current && (
-              <span className="inline-block mt-1.5 text-[10px] tracking-widest uppercase text-accent-ink">
-                ● Live
-              </span>
-            )}
-          </>
-        ) : (
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] italic">
-            Tap or hover a station to read its record.
-          </p>
-        )}
+          )}
+        </div>
       </div>
 
       {/* Legend */}

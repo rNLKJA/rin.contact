@@ -30,6 +30,9 @@ const SpeedInsights = dynamic(
 const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
 const BootOverlay = dynamic(() => import("@/components/ui/BootOverlay"), { ssr: false });
 const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
+// Pawsibly, the optional site guide. Client-only and off until the visitor
+// presses START; the dialogue and quest log load as their own chunks on first open.
+const GuideRoot = dynamic(() => import("@/components/guide/GuideRoot"), { ssr: false });
 
 // ── Idle toast ────────────────────────────────────────────────────────────────
 const IDLE_MS = 30_000;
@@ -356,6 +359,7 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </main>
           <Footer />
+          <GuideRoot />
           <Analytics debug={false} />
           <SpeedInsights debug={false} />
         </div>
