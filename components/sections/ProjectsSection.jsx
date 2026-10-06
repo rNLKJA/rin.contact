@@ -1082,11 +1082,12 @@ export default function ProjectsSection() {
                     </span>
                   </button>
                   {/* Height snaps (no max-height tween); the revealed content
-                      enters from 70% via animate-enter-up instead. */}
+                      enters from 70% via animate-enter-up instead. No cap when
+                      open: a fixed cap clipped stack and status on phones. */}
                   <div
                     className="overflow-hidden"
                     style={{
-                      maxHeight: isOpen ? "600px" : "0px",
+                      maxHeight: isOpen ? "none" : "0px",
                       opacity: isOpen ? 1 : 0,
                     }}
                   >
@@ -1215,7 +1216,7 @@ export default function ProjectsSection() {
                   <div
                     className="overflow-hidden"
                     style={{
-                      maxHeight: isOpen ? "800px" : "0px",
+                      maxHeight: isOpen ? "none" : "0px",
                       opacity: isOpen ? 1 : 0,
                     }}
                   >
