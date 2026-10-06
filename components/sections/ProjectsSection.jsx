@@ -77,6 +77,38 @@ export const PROJECTS = [
     linkLabel: "Open Ranking Radar live demo",
   },
   {
+    // Private repo and private production system holding real customer data:
+    // no link or demo on purpose. The case study describes how it works only.
+    id: "order-system",
+    title: "Meal-Prep Studio Order System",
+    subtitle: "Members, Prepaid Cards, Orders & Finance App",
+    org: "Family Business · Private",
+    period: "Apr 2026 – Present",
+    tag: "Full Stack",
+    domain: "Personal",
+    status: "In production · Private",
+    stack: [
+      "TypeScript",
+      "Expo",
+      "React Native",
+      "Hono",
+      "Turso (libSQL)",
+      "Drizzle ORM",
+      "Zod",
+      "argon2id + JWT",
+      "Vitest",
+      "Turborepo",
+      "Vercel",
+      "GitHub Actions",
+    ],
+    summary:
+      "Built as sole developer for my mum's meal-prep studio: one system for members, prepaid meal cards, daily orders, kitchen and delivery, and finance. A single Expo codebase builds for iOS, Android and the web, on a Hono API on Vercel with Turso (libSQL) and Drizzle. It takes the place of next-day sign-ups relayed by group chat and re-keyed into an Excel workbook.",
+    impact:
+      "Sole developer · In production since April 2026 · One codebase for iOS, Android and web",
+    caseStudy: "/projects/order-system",
+    current: true,
+  },
+  {
     id: "sapol-epsb",
     title: "SAPOL EPSB Analytics",
     subtitle: "Professional Standards Reporting & Tooling",

@@ -41,7 +41,7 @@ const BR = () => L("normal", "");
 
 // PROJECTS.length in components/sections/ProjectsSection.jsx. Hard-coded so the
 // terminal chunk does not pull in that whole section; update both together.
-const PROJECT_COUNT = 20;
+const PROJECT_COUNT = 21;
 
 const BANNER = [
   D("┌─────────────────────────────────────────────────┐"),

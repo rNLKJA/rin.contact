@@ -73,7 +73,7 @@
       "sub": "across gov, research & startup"
     },
     {
-      "value": 20,
+      "value": 21,
       "label": "Projects",
       "sub": "data · cloud · mobile · web"
     },
@@ -1297,7 +1297,7 @@
         "title": "Projects",
         "desc": "Built across data engineering, cloud infrastructure, mobile, and web platforms.",
         "tags": ["Python", "Next.js", "AWS", "React Native"],
-        "stat": "20 projects"
+        "stat": "21 projects"
       },
       {
         "num": "04",
@@ -1694,6 +1694,73 @@
         "d": "Mandatory by December 2026; Signal generates it now, one per use case. Who is affected, the risks, the safeguards, the fairness considerations, the residual risk — citing the live faithfulness score and human-review rate, not boilerplate."
       }
     ]
+  },
+  "orderSystem": {
+    "metaTitle": "Meal-Prep Studio Order System · Case Study · rin.contact",
+    "metaDescription": "How Rin Huang built the members, prepaid card, ordering and finance system for his mum's meal-prep studio: one Expo app for iOS, Android and the web, on a Hono API with Turso and Drizzle.",
+    "ogTitle": "Meal-Prep Studio Order System · Rin Huang",
+    "back": "Back to projects",
+    "label": "Case study · Family business",
+    "title": "Meal-Prep Studio Order System",
+    "tagline": "The members, prepaid card, ordering and finance system I built for my mum's meal-prep studio, with one app for phones and the web.",
+    "privateNote": "The app and its code are private because they hold real customer data, so there is no public demo or repository. This page describes how the system works, not who uses it.",
+    "glance": [
+      { "k": "Status", "v": "In production" },
+      { "k": "Started", "v": "22 Apr 2026" },
+      { "k": "Platforms", "v": "iOS · Android · Web" },
+      { "k": "Role", "v": "Sole developer" }
+    ],
+    "footerNote": "Built for my mum's studio. The app and its code stay private.",
+    "sections": {
+      "context": {
+        "title": "The starting point",
+        "body": [
+          "My mum runs a small meal-prep studio. Customers buy prepaid meal cards, then sign up for the next day's lunch and dinner in a group chat. Before this system, each evening's sign-ups were tallied by hand and passed along by message, and the day's orders, card balances, income and spending were keyed into an Excel workbook.",
+          "The aim was not to change how the studio works. It was to record each step once, when it happens, by the person who does it, so the evening numbers no longer need to be relayed and typed in a second time."
+        ]
+      },
+      "whatItDoes": {
+        "title": "What it does",
+        "body": [
+          "Staff create member records and sell, renew or upgrade prepaid meal cards. Orders go in one at a time or as a batch for the next day, and each meal is deducted from the member's card. On the phone, a kitchen and delivery view moves every lunch and dinner from pending to prepared to delivered.",
+          "Card sales and delivered meals post to the finance ledger automatically, and spending is entered by hand. Around that sit retail sales, meal box label printing, staff accounts and an audit log of changes."
+        ]
+      },
+      "design": {
+        "title": "Decisions that keep the numbers right",
+        "body": [
+          "A member's lunch and dinner on the same day are two separate orders, each with a simple status flow: pending, prepared, delivered. Delivered and cancelled are final states, so a completed order cannot be quietly edited later.",
+          "Cancelling an order returns the meal to the card, reverses any related finance entry and writes an audit record in a single database transaction, so card balances and the books cannot drift apart. The system also expects people to make mistakes: an admin can correct a delivery that was marked by accident, and a failed delivery returns the meal to the member's card, again in one transaction.",
+          "The server checks the card balance before it accepts an order, and every new order carries an idempotency key, so a double tap or a retried request on a patchy connection does not create a second order."
+        ]
+      },
+      "security": {
+        "title": "Access and security",
+        "body": [
+          "Passwords are hashed with argon2id. Signing in issues a short-lived signed token (HS256 JWT, one day by default), held in SecureStore on phones. Every request is checked against the account's active flag and token version, so a deactivated account loses access straight away, and the login route is rate limited.",
+          "There are three tiers of account: a super admin, admins and staff. Write access to members, cards, orders and finance can be limited to an allow-list, so an admin who only checks the numbers can be read-only and cannot change anything by accident."
+        ]
+      },
+      "build": {
+        "title": "How it was built",
+        "body": [
+          "It is a pnpm and Turborepo monorepo with three parts: the Expo app, the Hono API on Vercel, and a shared package that holds the zod schemas, the card catalogue and formatting helpers, so the app and the API follow one set of rules. Drizzle migrations run as part of each deploy, and GitHub Actions runs type checks and Vitest tests on every change to the main branch.",
+          "I planned the work in phases, and the early phases were tracked in Linear with one issue per branch and pull request. Work started on 22 April 2026, and Phases 0 to 4, from sign-in through members, cards and ordering to the kitchen view, record editing and the audit log, were live by 25 April. Later releases through to July 2026 added retail sales, label printing, a full interface redesign, an upgrade from Expo SDK 51 to 54, and performance work such as virtualised lists and fewer database round trips."
+        ]
+      },
+      "next": {
+        "title": "What's next",
+        "body": [
+          "Still on the list: a next-day sign-up summary, an end-of-day report, spreadsheet exports and automated off-site backups."
+        ]
+      },
+      "takeaway": {
+        "title": "What I took from it",
+        "body": [
+          "Building for family is still building for users. The studio's day already had a shape, from the evening sign-ups to the last delivery, and the job was to fit that shape and make each step leave a record, not to ask people to work around the software."
+        ]
+      }
+    }
   },
   "cardPage": {
     "metaTitle": "Card — Rin Huang · rin.contact",
