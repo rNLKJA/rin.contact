@@ -48,7 +48,7 @@ function CopyEmailButton() {
         onClick={() => copy(EMAIL)}
         aria-label={t("contact.copyEmail")}
         title={t("contact.copyEmail")}
-        className="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 border border-[#3D3D3D] text-[#AAAAAA] hover:border-white hover:text-white transition-colors duration-200"
+        className="inline-flex items-center justify-center w-8 h-8 -my-1.5 flex-shrink-0 border border-[#3D3D3D] text-[#AAAAAA] hover:border-white hover:text-white transition-colors duration-200"
       >
         {copied ? (
           <FiCheck size={14} aria-hidden="true" />
