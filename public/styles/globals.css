@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Fonts (self-hosted) ──────────────────────────────────────── */
+/* Bitcount Prop Double: the pixel/dot-matrix display face (OFL, public/fonts/Bitcount-OFL.txt).
+   DM Sans and Playfair Display come from Fontsource (imported in pages/_app.jsx).
+   Defined here as plain variables so they never depend on next/font's hashed classes. */
+@font-face {
+  font-family: "Bitcount Prop Double";
+  src: url("/fonts/BitcountPropDouble-VariableFont.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --font-bitcount: "Bitcount Prop Double";
+  --font-dm-sans: "DM Sans Variable";
+  --font-playfair: "Playfair Display Variable";
+}
+
 /* ─── Nothing Design System Tokens ─────────────────────────────── */
 :root {
   --white: #ffffff;
@@ -56,7 +73,7 @@
 }
 
 body {
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.7;
@@ -72,7 +89,7 @@ body {
 /* ─── Wisr editorial serif — all section headings ───────────────── */
 h2,
 h3 {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-family: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
   letter-spacing: -0.025em;
   line-height: 1.15;
   font-feature-settings:
@@ -87,7 +104,7 @@ input,
 textarea,
 label,
 select {
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
 }
 
 /* ─── Typography Scale ───────────────────────────────────────────── */
@@ -242,7 +259,7 @@ h1 {
   border-collapse: collapse;
   font-size: 0.8125rem;
   margin: 1.5em 0;
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
 }
 .prose thead th {
   border-bottom: 1.5px solid var(--black);
