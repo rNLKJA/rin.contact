@@ -291,7 +291,7 @@ export default function VersionDeck({ versions }) {
       aria-label={t("infoHistory.deckLabel")}
       onKeyDown={onKeyDown}
     >
-      <div className="flex items-center justify-between gap-2 mb-4">
+      <div className="flex items-center justify-between gap-2 mb-4" data-guide="deck-controls">
         <div
           role="group"
           aria-label={t("infoHistory.pickLabel")}

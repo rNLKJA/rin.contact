@@ -158,6 +158,7 @@ export default function GuideRoot() {
           path={path}
           locale={locale}
           autoFocus={userOpened}
+          paused={logOpen}
           onMinimise={minimise}
           onHide={hide}
           onOpenLog={() => setLogOpen(true)}

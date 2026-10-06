@@ -10,13 +10,19 @@
  *
  * Keys: buttons handle Enter and Space natively. Enter or Space elsewhere in the
  * box runs the main button, and Escape closes the box back to the launcher.
+ *
+ * Pawsibly himself lives in GuideStage, outside the box: once the visitor
+ * engages (opens the guide or presses a button), he walks to whatever the
+ * current line points at, the box anchors beside it and the page greys out
+ * around it. Escape anywhere, or closing the box, clears all of that at once;
+ * a click on the greyed page lifts the focus for that line.
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { nextUndoneIndex, stopIndexForPath } from "@/lib/guide-stops";
+import { focusFor, nextUndoneIndex, stopIndexForPath } from "@/lib/guide-stops";
 import { SIDE, TOUR, UI, fill, goToStop } from "@/lib/guide-tour";
-import PixelCat from "./PixelCat";
+import GuideStage from "./GuideStage";
 
 const TYPE_MS = 300;
 const BLINK_EVERY_MS = 4200;
@@ -52,6 +58,7 @@ export default function DialogueBox({
   path,
   locale,
   autoFocus,
+  paused,
   onMinimise,
   onHide,
   onOpenLog,
@@ -61,12 +68,17 @@ export default function DialogueBox({
   const lang = locale === "zh-Hans" ? "zh" : "en";
   const ui = UI[lang];
   const primaryRef = useRef(null);
+  const boxRef = useRef(null);
   const rafRef = useRef(0);
 
   const [lineState, setLineState] = useState({ key: "", i: 0 });
   const [typed, setTyped] = useState({ key: "", count: 0 });
   const [finishedOn, setFinishedOn] = useState(null);
   const [blink, setBlink] = useState(false);
+  // The stage stays quiet until the visitor acts in this session, so a box that
+  // reopens itself after a reload does not grey out the page or block clicks.
+  const [engaged, setEngaged] = useState(Boolean(autoFocus));
+  const [liftedKey, setLiftedKey] = useState(null);
 
   // ── Which view the box is showing ─────────────────────────────────────────
   const allDone = nextUndoneIndex(state.done) === -1;
@@ -90,6 +102,13 @@ export default function DialogueBox({
   const text = lines[li];
   const isLast = li === lines.length - 1;
   const lineKey = `${viewKey}:${li}`;
+
+  // ── What this line points at ──────────────────────────────────────────────
+  const onStopPage = (view.kind === "intro" || view.kind === "stop") && path === stop.href;
+  const focus = onStopPage ? focusFor(view.idx, li) : null;
+  const focusKey = focus ? `${path}:${focus.target}` : `none:${path}`;
+  const anchored = engaged && Boolean(focus) && !paused;
+  const spotOn = anchored && liftedKey !== focusKey;
 
   // ── Typewriter (300ms per line, skipped under reduced motion) ─────────────
   const full = text.length;
@@ -132,6 +151,23 @@ export default function DialogueBox({
   useEffect(() => {
     if (autoFocus) primaryRef.current?.focus();
   }, [autoFocus]);
+
+  // Escape from anywhere on the page closes the tour while the page is greyed,
+  // unless another modal (the quest log, a menu) is handling it.
+  useEffect(() => {
+    if (!spotOn) return undefined;
+    const onKey = (e) => {
+      if (e.key !== "Escape" || e.defaultPrevented) return;
+      const modalOpen = [...document.querySelectorAll('[aria-modal="true"]')].some((el) => {
+        const cs = getComputedStyle(el);
+        return el.getClientRects().length > 0 && cs.visibility !== "hidden" && cs.opacity !== "0";
+      });
+      if (modalOpen) return;
+      onMinimise();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [spotOn, onMinimise]);
 
   // ── Actions ───────────────────────────────────────────────────────────────
   const walkTo = useCallback(
@@ -227,82 +263,104 @@ export default function DialogueBox({
   const showMore = !isLast && !revealing;
 
   return (
-    <section
-      role="dialog"
-      aria-modal="false"
-      aria-labelledby="guide-nameplate"
-      onKeyDown={onKeyDown}
-      className="pixel-frame fixed left-1/2 -translate-x-1/2 z-40 print:hidden w-[min(560px,calc(100vw-24px))] max-h-[45vh] overflow-y-auto
+    <>
+      {/* Docked bottom-centre by CSS; GuideStage moves it with a transform. */}
+      <div
+        ref={boxRef}
+        className={`fixed left-1/2 ${spotOn ? "z-[56]" : "z-40"} print:hidden w-[min(560px,calc(100vw-24px))]`}
+        style={{
+          bottom: "max(12px, env(safe-area-inset-bottom))",
+          marginLeft: "calc(min(560px, 100vw - 24px) / -2)",
+        }}
+      >
+        <section
+          role="dialog"
+          aria-modal="false"
+          aria-labelledby="guide-nameplate"
+          onKeyDown={onKeyDown}
+          onPointerDown={() => setEngaged(true)}
+          onKeyDownCapture={() => setEngaged(true)}
+          className="pixel-frame max-h-[45vh] overflow-y-auto
                  border-2 border-black dark:border-white bg-white dark:bg-[#0A0A0A] text-[#1A1A1A] dark:text-white p-[3px] animate-enter-up"
-      style={{ bottom: "max(12px, env(safe-area-inset-bottom))" }}
-    >
-      <div className="border border-[#1A1A1A] dark:border-[#CCCCCC] p-3 md:p-4">
-        <div className="flex gap-3 md:gap-4">
-          <div
-            aria-hidden="true"
-            className="dot-matrix shrink-0 w-10 h-10 md:w-14 md:h-14 border border-[#E0E0E0] dark:border-[#3D3D3D] flex items-center justify-center text-black dark:text-white"
-          >
-            <PixelCat frame={frame} className="w-7 h-7 md:w-10 md:h-10" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <p
-              id="guide-nameplate"
-              className="font-display text-[11px] leading-none tracking-widest uppercase flex items-center gap-2 mb-2"
-            >
-              <span aria-hidden="true" className="inline-block w-1.5 h-1.5 bg-[#FF3C3C]" />
-              {ui.name}
-              <span className="sr-only">, {ui.dialogLabel}</span>
-            </p>
-            <p aria-hidden="true" className="text-[15px] md:text-base leading-[1.6]">
-              {text.slice(0, count)}
-              <span className="opacity-0">{text.slice(count)}</span>
-              {showMore && <MoreMark />}
-            </p>
-            <p className="sr-only" aria-live="polite" aria-atomic="true">
-              {text}
-            </p>
-          </div>
-        </div>
+        >
+          <div className="border border-[#1A1A1A] dark:border-[#CCCCCC] p-3 md:p-4">
+            <div>
+              <p
+                id="guide-nameplate"
+                className="font-display text-[11px] leading-none tracking-widest uppercase flex items-center gap-2 mb-2"
+              >
+                <span aria-hidden="true" className="inline-block w-1.5 h-1.5 bg-[#FF3C3C]" />
+                {ui.name}
+                <span className="sr-only">, {ui.dialogLabel}</span>
+              </p>
+              <p aria-hidden="true" className="text-[15px] md:text-base leading-[1.6]">
+                {text.slice(0, count)}
+                <span className="opacity-0">{text.slice(count)}</span>
+                {showMore && <MoreMark />}
+              </p>
+              <p className="sr-only" aria-live="polite" aria-atomic="true">
+                {text}
+              </p>
+            </div>
 
-        <div className="mt-3 flex flex-wrap items-center justify-end gap-2">
-          <span className="mr-auto font-display text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
-            <span aria-hidden="true">{counter}</span>
-            <span className="sr-only">{counterLabel}</span>
-          </span>
-          {li > 0 && (
-            <button type="button" onClick={prevLine} className={BTN_SECONDARY}>
-              {ui.back}
-            </button>
-          )}
-          {secondary.map((b) => (
-            <button key={b.label} type="button" onClick={b.run} className={BTN_SECONDARY}>
-              {b.label}
-            </button>
-          ))}
-          <button ref={primaryRef} type="button" onClick={runPrimary} className={BTN_PRIMARY}>
-            {primary.label}
-            {primary.arrow && <span aria-hidden="true">▸</span>}
-          </button>
-          <button
-            type="button"
-            onClick={onOpenLog}
-            aria-label={ui.openLog}
-            className={`${BTN_ICON} font-display uppercase tracking-widest text-[11px]`}
-          >
-            {ui.log}
-          </button>
-          <button type="button" onClick={onMinimise} aria-label={ui.minimise} className={BTN_ICON}>
-            <svg
-              viewBox="0 0 7 7"
-              shapeRendering="crispEdges"
-              aria-hidden="true"
-              className="w-3 h-3 fill-current"
-            >
-              <path d="M0 0h1v1H0zM1 1h1v1H1zM2 2h1v1H2zM3 3h1v1H3zM4 4h1v1H4zM5 5h1v1H5zM6 6h1v1H6zM6 0h1v1H6zM5 1h1v1H5zM4 2h1v1H4zM2 4h1v1H2zM1 5h1v1H1zM0 6h1v1H0z" />
-            </svg>
-          </button>
-        </div>
+            <div className="mt-3 flex flex-wrap items-center justify-end gap-2">
+              <span className="mr-auto font-display text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
+                <span aria-hidden="true">{counter}</span>
+                <span className="sr-only">{counterLabel}</span>
+              </span>
+              {li > 0 && (
+                <button type="button" onClick={prevLine} className={BTN_SECONDARY}>
+                  {ui.back}
+                </button>
+              )}
+              {secondary.map((b) => (
+                <button key={b.label} type="button" onClick={b.run} className={BTN_SECONDARY}>
+                  {b.label}
+                </button>
+              ))}
+              <button ref={primaryRef} type="button" onClick={runPrimary} className={BTN_PRIMARY}>
+                {primary.label}
+                {primary.arrow && <span aria-hidden="true">▸</span>}
+              </button>
+              <button
+                type="button"
+                onClick={onOpenLog}
+                aria-label={ui.openLog}
+                className={`${BTN_ICON} font-display uppercase tracking-widest text-[11px]`}
+              >
+                {ui.log}
+              </button>
+              <button
+                type="button"
+                onClick={onMinimise}
+                aria-label={ui.minimise}
+                className={BTN_ICON}
+              >
+                <svg
+                  viewBox="0 0 7 7"
+                  shapeRendering="crispEdges"
+                  aria-hidden="true"
+                  className="w-3 h-3 fill-current"
+                >
+                  <path d="M0 0h1v1H0zM1 1h1v1H1zM2 2h1v1H2zM3 3h1v1H3zM4 4h1v1H4zM5 5h1v1H5zM6 6h1v1H6zM6 0h1v1H6zM5 1h1v1H5zM4 2h1v1H4zM2 4h1v1H2zM1 5h1v1H1zM0 6h1v1H0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+      {/* After the box, so its ref is attached when the stage first measures. */}
+      <GuideStage
+        focus={focus}
+        focusKey={focusKey}
+        anchored={anchored}
+        spotOn={spotOn}
+        reduced={reduced}
+        frame={frame}
+        boxRef={boxRef}
+        fromLauncher={Boolean(autoFocus)}
+        onLift={() => setLiftedKey(focusKey)}
+      />
+    </>
   );
 }

@@ -28,6 +28,9 @@ const FRAMES = {
   blink: withRows({ 4: "KWWWWWWWWWWK", 5: "KWKKWWWWKKWK" }),
   // Happy: eyes turned into little arches.
   happy: withRows({ 4: "KWWKWWWWKWWK", 5: "KWKWKWWKWKWK" }),
+  // Walk cycle: one paw lifts a pixel, then the other, and the tail flicks.
+  walkA: withRows({ 8: "..KKKRRKKK.K", 10: ".KKKKWWKWWKK", 11: "....KKKKKKK." }),
+  walkB: withRows({ 10: ".KWWKWWKKKKK", 11: ".KKKKKKK...." }),
 };
 
 const FILL = {

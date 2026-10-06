@@ -206,7 +206,7 @@ export default function MetroMapSection() {
       </div>
 
       {/* Map (horizontally scrollable on small screens) */}
-      <div className="relative">
+      <div className="relative" data-guide="career-map">
         <div ref={scrollRef} className="overflow-x-auto -mx-2 px-2">
           <div style={{ minWidth: 580 }}>
             <svg

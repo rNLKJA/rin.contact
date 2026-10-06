@@ -258,7 +258,7 @@ export default function HeroSection() {
       {/* ── Two-column grid ── */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
         {/* LEFT — identity + copy */}
-        <div>
+        <div data-guide="hero-intro">
           {/* Time-of-day greeting — client-side only, fades in */}
           {greeting && (
             <p

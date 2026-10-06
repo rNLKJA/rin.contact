@@ -65,9 +65,9 @@ function renderText(text) {
   );
 }
 
-function Section({ title, paragraphs, children }) {
+function Section({ title, paragraphs, children, guide }) {
   return (
-    <section className="mb-12">
+    <section className="mb-12" data-guide={guide}>
       <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-[#1A1A1A] dark:text-[#EEEEEE]">
         {title}
       </h2>
@@ -174,7 +174,7 @@ export default function SignalCaseStudy() {
         </div>
 
         <Section {...S("problem")} />
-        <Section {...S("whatItDoes")} />
+        <Section {...S("whatItDoes")} guide="signal-what" />
         <Section {...S("design")} />
         <Section {...S("checking")} />
         <Section {...S("statistics")} />
