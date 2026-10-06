@@ -6,6 +6,7 @@ import pkg from "../../package.json";
 // Version + date are stable identifiers; the change descriptions are localised
 // via infoChangelog.entries (index-aligned, newest first).
 const RELEASES = [
+  { version: "5.26.0", date: "2026-10" },
   { version: "5.25.0", date: "2026-10" },
   { version: "5.24.0", date: "2026-10" },
   { version: "5.23.0", date: "2026-07" },
