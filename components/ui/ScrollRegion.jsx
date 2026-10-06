@@ -3,8 +3,6 @@ import clsx from "clsx";
 import { useI18n } from "@/contexts/I18nContext";
 import { fill } from "@/lib/fill";
 
-const FADE = "24px";
-
 /**
  * Horizontally scrollable wrapper (charts, tab strips, formulas, wide tables).
  * While its content overflows it fades the clipped edge(s) with a mask, so the
@@ -12,6 +10,9 @@ const FADE = "24px";
  * named, keyboard-focusable group so arrow keys can scroll it. When nothing
  * overflows it is a plain box: no tab stop, no role, no mask. The first render
  * carries none of these, so server and client markup match.
+ *
+ * `fade` sets the mask width; charts use a narrow one so a mark near the
+ * clipped edge is not washed into a gradient.
  *
  * `overlay` renders beside the scroller inside the `relative` wrapper, for
  * hover tooltips that must not be faded or scrolled away.
@@ -21,6 +22,7 @@ const FADE = "24px";
 export default function ScrollRegion({
   label,
   focusable = true,
+  fade = "24px",
   overlay,
   className,
   scrollerClassName,
@@ -55,8 +57,8 @@ export default function ScrollRegion({
   const overflowing = edges.left || edges.right;
   const mask = overflowing
     ? `linear-gradient(to right, ${edges.left ? "transparent" : "#000"}, #000 ${
-        edges.left ? FADE : "0px"
-      }, #000 calc(100% - ${edges.right ? FADE : "0px"}), ${edges.right ? "transparent" : "#000"})`
+        edges.left ? fade : "0px"
+      }, #000 calc(100% - ${edges.right ? fade : "0px"}), ${edges.right ? "transparent" : "#000"})`
     : undefined;
   const a11y =
     overflowing && focusable

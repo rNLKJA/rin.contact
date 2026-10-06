@@ -424,27 +424,20 @@ export default function Header() {
           </div>
         </nav>
 
-        {/* Bottom bar — Nothing-style settings rows, then square social chips */}
-        <div className="px-8 py-5 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col gap-3">
-          <div className="flex items-center justify-between gap-4">
-            <span
-              id="menu-theme-label"
-              className="text-[10px] tracking-widest uppercase text-ink-subtle"
-            >
+        {/* Bottom bar — one settings row (theme left, language right; both
+            radiogroups are named by visually hidden labels), then social pills */}
+        <div className="px-8 py-3 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-col gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span id="menu-theme-label" className="sr-only">
               {t("themeToggle.label")}
             </span>
             <ThemeSegmented labelledBy="menu-theme-label" />
-          </div>
-          <div className="flex items-center justify-between gap-4">
-            <span
-              id="menu-locale-label"
-              className="text-[10px] tracking-widest uppercase text-ink-subtle"
-            >
+            <span id="menu-locale-label" className="sr-only">
               {t("locale.label")}
             </span>
             <LocaleSegmented labelledBy="menu-locale-label" />
           </div>
-          <div className="flex items-center gap-2 pt-1">
+          <div className="flex items-center gap-2">
             {[
               { label: "LinkedIn", href: "https://www.linkedin.com/in/sunchuangyuhuang/" },
               { label: "GitHub", href: "https://github.com/rNLKJA" },
@@ -454,7 +447,7 @@ export default function Header() {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center min-h-[36px] border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 text-[10px] tracking-widest uppercase
+                className="inline-flex items-center min-h-[36px] rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 text-[10px] tracking-widest uppercase
                            text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
               >
                 {label}

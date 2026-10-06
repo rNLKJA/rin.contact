@@ -486,6 +486,7 @@ function BubblePanel() {
       {/* Tooltip sits beside the scroller so the edge fade never hides it. */}
       <ScrollRegion
         label={t("intelligence.tabSignal")}
+        fade="12px"
         overlay={
           hovPt &&
           step > 0 && (
@@ -945,6 +946,7 @@ function GrowthPanel() {
 
       <ScrollRegion
         label={t("intelligence.tabGrowth")}
+        fade="12px"
         overlay={
           hovPt &&
           step >= 2 && (

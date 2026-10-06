@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 /**
- * Empty / no-results block: dashed hairline box, red square dot, the message,
+ * Empty / no-results block: solid hairline box, red round dot, the message,
  * and an optional recovery action styled like the coursework "Clear" link.
  * The message is a status live region by default; pass `role={null}` where a
  * nearby live region already announces the change.
@@ -12,11 +12,11 @@ export default function EmptyState({ children, action, role = "status", classNam
   return (
     <div
       className={clsx(
-        "flex flex-col items-center gap-3 border border-dashed border-[#E0E0E0] dark:border-[#3D3D3D] px-6 py-10 text-center",
+        "flex flex-col items-center gap-3 border border-[#E0E0E0] dark:border-[#3D3D3D] px-6 py-10 text-center",
         className
       )}
     >
-      <span aria-hidden="true" className="w-1.5 h-1.5 bg-[#FF3C3C]" />
+      <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" />
       <p role={role || undefined} className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA]">
         {children}
       </p>
