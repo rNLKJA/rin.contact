@@ -273,7 +273,10 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
           {/* Foot */}
           <p className="cv-noprint mt-12 pt-6 border-t border-[#E5E5E5] dark:border-[#262626] text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]">
             {t("cvPage.footPrefix")}{" "}
-            <Link href="/" className="text-[#CC0000] dark:text-[#FF3C3C] hover:underline">
+            <Link
+              href="/"
+              className="text-[#CC0000] dark:text-[#FF3C3C] underline decoration-1 underline-offset-4"
+            >
               rin.contact
             </Link>
             .

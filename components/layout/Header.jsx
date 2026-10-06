@@ -219,7 +219,7 @@ export default function Header() {
                 key={key}
                 href={href}
                 aria-current={active ? "page" : undefined}
-                className={`relative px-1.5 xl:px-2 py-1.5 rounded-full transition-all duration-200 ${
+                className={`relative px-1.5 xl:px-2 py-1.5 rounded-full transition-colors duration-200 ${
                   active
                     ? "text-[#CC0000] dark:text-[#FF3C3C]"
                     : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
@@ -256,12 +256,12 @@ export default function Header() {
                 aria-current={active ? "page" : undefined}
                 className={
                   cta
-                    ? `px-3.5 py-1.5 border border-[#FF3C3C] transition-all duration-200 ${
+                    ? `px-3.5 py-1.5 border border-[#FF3C3C] transition-colors duration-200 ${
                         active
                           ? "bg-accent-fill text-white"
                           : "text-accent-ink hover:bg-accent-fill hover:text-white"
                       }`
-                    : `relative px-1.5 xl:px-2 py-1.5 rounded-full transition-all duration-200 ${
+                    : `relative px-1.5 xl:px-2 py-1.5 rounded-full transition-colors duration-200 ${
                         active
                           ? "text-[#CC0000] dark:text-[#FF3C3C]"
                           : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"

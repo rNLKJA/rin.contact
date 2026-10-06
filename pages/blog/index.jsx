@@ -206,7 +206,8 @@ export default function BlogIndex({ posts }) {
           </p>
         )}
 
-        {/* Posts */}
+        {/* Posts — a visually hidden h2 keeps the outline h1 > h2 > h3 (cards) */}
+        <h2 className="sr-only">{t("blog.postsHeading")}</h2>
         {posts.length === 0 ? (
           <EmptyState role={null}>{t("blog.noPosts")}</EmptyState>
         ) : filtered.length === 0 ? (

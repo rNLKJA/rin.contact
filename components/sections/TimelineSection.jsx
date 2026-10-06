@@ -17,7 +17,7 @@ function TimelineItem({ item, index }) {
       ref={ref}
       id={item.anchor}
       className={`relative pl-8 pb-12 scroll-mt-24 transition-all duration-200 ease-out ${
-        inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+        inView ? "translate-y-0" : "translate-y-1.5"
       }`}
       style={{ transitionDelay: `${Math.min(index * 30, 100)}ms` }}
     >
@@ -102,7 +102,7 @@ function TimelineItem({ item, index }) {
               <button
                 onClick={() => setExpanded((e) => !e)}
                 className="text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white
-                           transition-colors duration-200 flex items-center gap-1 mb-3"
+                           transition-colors duration-200 flex items-center gap-1 py-1.5 -mt-1.5 mb-1.5"
                 aria-expanded={expanded}
               >
                 {expanded ? t("timeline.detailsLess") : t("timeline.detailsMore")}
@@ -216,7 +216,7 @@ export default function TimelineSection() {
       <div
         ref={ref}
         className={`mb-16 transition-all duration-200 ease-out ${
-          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+          inView ? "translate-y-0" : "translate-y-1.5"
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] mb-3">
