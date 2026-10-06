@@ -849,7 +849,7 @@
     "heading": "Changelog",
     "intro": "What changed. Version {version} and counting.",
     "entries": [
-      "University coursework, revived: /projects/coursework shows eleven University of Melbourne coursework projects from 2019 to 2024 as live demos, on a timeline by term with filters by area, level and skill and a skills matrix. Copy comes from one bilingual data source with a build check for site rules (no marks or grades, GitHub linked only for repos marked public, English and Chinese copy kept in step).",
+      "University coursework, revived: /projects/coursework shows eleven University of Melbourne coursework projects from 2019 to 2024 as live demos (most with a guided video tour), on a timeline by term with filters by area, level and skill and a skills matrix. Copy comes from one bilingual data source with a build check for site rules (no marks or grades, GitHub linked only for repos marked public, English and Chinese copy kept in step).",
       "A proper resume at /resume: role, impact and contact in a 30-second read, every number linked to its source, and a clean text PDF. Career facts now come from one data source shared by /resume, /cv, /career and the terminal (now at /resume/terminal), with a build check against known-wrong claims. Experience updated to SAPOL and Mapiva, credentials corrected, and site-wide motion tightened: UI animations finish within 300ms and never start from zero.",
       "Site-wide performance pass: KaTeX scoped to the /knowledge pages that use it, font preload trimmed, Edge Proxy skips static assets, homepage-only structured data no longer ships on every page. Also fixed stale image caching and a font-family CSS bug; blog builds ~3x faster.",
       "Blog: 6 posts with Mermaid diagrams, RSS feed at /blog/feed.xml, newsletter signup component. Service worker: self-destructing on activate for cache hygiene.",
@@ -2176,7 +2176,7 @@
     },
     "notes": [
       "Dates are the final deadline or submission month, shown only as precisely as the records allow.",
-      "Team projects name every teammate. Every project links its live demo, and source code is linked once its public repository holds the 2026 revival."
+      "Team projects name every teammate. Every project links its live demo, plus its guided tour of captioned walkthrough videos where there is one. Source code is linked once its public repository holds the 2026 revival."
     ],
     "sharedStack": "Every revival is built with",
     "filters": {
@@ -2224,6 +2224,8 @@
       "hideDetails": "Hide details",
       "liveDemo": "Live demo",
       "liveDemoLabel": "Live demo: {title} (opens in a new tab)",
+      "tour": "Guided tour",
+      "tourLabel": "Guided tour: {title} (opens in a new tab)",
       "source": "Source on GitHub",
       "sourceLabel": "Source on GitHub: {title} (opens in a new tab)",
       "listSeparator": ", ",

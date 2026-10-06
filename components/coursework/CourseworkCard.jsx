@@ -5,6 +5,8 @@ const K = "courseworkPage.card";
 const LABEL = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
 const ROWS =
   "grid grid-cols-1 sm:grid-cols-[112px_minmax(0,1fr)] gap-x-4 text-[13px] leading-relaxed";
+const SECONDARY =
+  "inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] px-4 py-2 text-[11px] tracking-widest uppercase text-black dark:text-white hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-[#EEEEEE] dark:hover:text-black transition-colors duration-200";
 // Highlights shown before "Show details" (the same pattern as /resume role
 // entries). Phones show only the first until the card is opened.
 const SHOWN = 2;
@@ -26,9 +28,10 @@ function Highlight({ text, className = "" }) {
  * One revived coursework project: subject, date at its recorded precision,
  * status, summary, role and team credits and the first highlights. "Show
  * details" opens the rest: further highlights, original vs revived stack and
- * skills, which keeps eleven cards short enough to scan on a phone. GitHub
- * appears only when the data layer passed a repoUrl, which it does for public
- * repositories whose main branch holds the revival.
+ * skills, which keeps eleven cards short enough to scan on a phone. The guided
+ * tour appears when the demo has one (tourUrl). GitHub appears only when the
+ * data layer passed a repoUrl, which it does for public repositories whose
+ * main branch holds the revival.
  */
 export default function CourseworkCard({ project: p, termLabel, t }) {
   const [open, setOpen] = useState(false);
@@ -146,7 +149,8 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
         {open ? t(`${K}.hideDetails`) : t(`${K}.showDetails`)}
       </button>
 
-      {/* Links: the live demo always; GitHub only for public, up-to-date repositories */}
+      {/* Links: the live demo always; its guided tour where one exists; GitHub
+          only for public repositories whose main branch holds the revival */}
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <a
           href={p.liveUrl}
@@ -157,13 +161,24 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
         >
           {t(`${K}.liveDemo`)} <span aria-hidden="true">↗</span>
         </a>
+        {p.tourUrl && (
+          <a
+            href={p.tourUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={fill(t(`${K}.tourLabel`), { title: p.title })}
+            className={SECONDARY}
+          >
+            {t(`${K}.tour`)} <span aria-hidden="true">↗</span>
+          </a>
+        )}
         {p.repoUrl && (
           <a
             href={p.repoUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={fill(t(`${K}.sourceLabel`), { title: p.title })}
-            className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] px-4 py-2 text-[11px] tracking-widest uppercase text-black dark:text-white hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-[#EEEEEE] dark:hover:text-black transition-colors duration-200"
+            className={SECONDARY}
           >
             {t(`${K}.source`)} <span aria-hidden="true">↗</span>
           </a>
