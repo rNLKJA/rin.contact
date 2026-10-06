@@ -1,4 +1,6 @@
 import katex from "katex";
+import ScrollRegion from "@/components/ui/ScrollRegion";
+import { useI18n } from "@/contexts/I18nContext";
 
 /*
  * Split out from KnowledgeLayout.jsx so pages that never render maths don't
@@ -15,6 +17,7 @@ import katex from "katex";
  * `caption` optionally annotates the formula beneath it.
  */
 export function Formula({ children, label, caption }) {
+  const { t } = useI18n();
   const tex = typeof children === "string" ? children : String(children ?? "");
   const html = katex.renderToString(tex, {
     displayMode: true,
@@ -23,12 +26,13 @@ export function Formula({ children, label, caption }) {
   });
   return (
     <div className="not-prose my-7">
-      <div
-        className="px-5 py-5 bg-[#F7F7F7] dark:bg-[#0D0D0D] border border-[#E0E0E0] dark:border-[#2A2A2A] overflow-x-auto text-[#1A1A1A] dark:text-[#E8E8E8]"
-        role="math"
-        aria-label={label}
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <div className="bg-[#F7F7F7] dark:bg-[#0D0D0D] border border-[#E0E0E0] dark:border-[#2A2A2A] text-[#1A1A1A] dark:text-[#E8E8E8]">
+        {/* Long derivations scroll sideways; the region is focusable and the
+            clipped edge fades only while they overflow. */}
+        <ScrollRegion label={t("common.formula")} scrollerClassName="px-5 py-5">
+          <div role="math" aria-label={label} dangerouslySetInnerHTML={{ __html: html }} />
+        </ScrollRegion>
+      </div>
       {caption && (
         <p className="mt-2 text-[12px] text-ink-subtle dark:text-[#6E6E6E] [text-wrap:pretty]">
           {caption}

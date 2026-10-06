@@ -683,3 +683,19 @@ h1 {
 .flowbar:nth-child(n + 3) .flowbar-fill {
   opacity: 0.3;
 }
+
+/* ─── ScrollRegion focus ring ────────────────────────────────────── */
+/* Ring the whole region (not the masked scroller, whose edges fade). */
+.scroll-region:has(> [data-scroller]:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.scroll-region > [data-scroller]:focus-visible {
+  outline: none;
+}
+@supports not selector(:has(*)) {
+  .scroll-region > [data-scroller]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+}

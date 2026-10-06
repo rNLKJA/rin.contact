@@ -6,7 +6,9 @@
     "copyright": "保留所有权利",
     "thereIsMore": "更多的内容等你发现",
     "backToTop": "返回顶部",
-    "close": "关闭"
+    "close": "关闭",
+    "scrollsSideways": "{label}（可左右滚动）",
+    "formula": "公式"
   },
   "nav": {
     "home": "首页",

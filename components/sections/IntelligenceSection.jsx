@@ -16,6 +16,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import ConfettiBurst from "@/components/ui/ConfettiBurst";
 import { useI18n } from "@/contexts/I18nContext";
+import ScrollRegion from "@/components/ui/ScrollRegion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { CERTS } from "@/lib/career-data";
 
@@ -432,6 +433,7 @@ function SeniorityBands() {
 }
 
 function BubblePanel() {
+  const { t } = useI18n();
   const { resolved } = useTheme();
   const isDark = resolved === "dark";
   const [step, setStep] = useState(0);
@@ -480,34 +482,38 @@ function BubblePanel() {
         (2024) · IAPA Skills &amp; Salary Survey (2023).
       </p>
 
-      <div className="relative overflow-x-auto">
-        {/* Tooltip */}
-        {hovPt && step > 0 && (
-          <div className="absolute top-0 right-0 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] p-3 text-xs max-w-[230px] pointer-events-none">
-            <p className="font-medium text-black dark:text-white text-sm">
-              {hovPt.label?.replace(/\n/g, " ")}
-              {hovPt.year ? (
-                <span className="text-[#6E6E6E] dark:text-[#9A9A9A] ml-2 text-xs">
-                  · {hovPt.year}
-                </span>
-              ) : null}
-            </p>
-            {hovPt.domain && (
-              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5 mb-1.5">
-                {hovPt.domain}
+      {/* Tooltip sits beside the scroller so the edge fade never hides it. */}
+      <ScrollRegion
+        label={t("intelligence.tabSignal")}
+        overlay={
+          hovPt &&
+          step > 0 && (
+            <div className="absolute top-0 right-0 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] p-3 text-xs max-w-[230px] pointer-events-none">
+              <p className="font-medium text-black dark:text-white text-sm">
+                {hovPt.label?.replace(/\n/g, " ")}
+                {hovPt.year ? (
+                  <span className="text-[#6E6E6E] dark:text-[#9A9A9A] ml-2 text-xs">
+                    · {hovPt.year}
+                  </span>
+                ) : null}
               </p>
-            )}
-            <p className="text-[#666] dark:text-[#888] leading-relaxed">
-              {hovPt.detail || hovPt.source}
-            </p>
-            {hovPt.why && (
-              <p className="text-[#6E6E6E] dark:text-[#9A9A9A] mt-1.5 text-[10px] italic leading-relaxed">
-                {hovPt.why}
+              {hovPt.domain && (
+                <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5 mb-1.5">
+                  {hovPt.domain}
+                </p>
+              )}
+              <p className="text-[#666] dark:text-[#888] leading-relaxed">
+                {hovPt.detail || hovPt.source}
               </p>
-            )}
-          </div>
-        )}
-
+              {hovPt.why && (
+                <p className="text-[#6E6E6E] dark:text-[#9A9A9A] mt-1.5 text-[10px] italic leading-relaxed">
+                  {hovPt.why}
+                </p>
+              )}
+            </div>
+          )
+        }
+      >
         <svg viewBox="0 0 520 310" width="100%" style={{ overflow: "visible", minWidth: 320 }}>
           {/* Background bands + grid */}
           <SeniorityBands />
@@ -766,7 +772,7 @@ function BubblePanel() {
             </g>
           )}
         </svg>
-      </div>
+      </ScrollRegion>
 
       {/* Legend */}
       <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
@@ -906,6 +912,7 @@ function BubblePanel() {
 // PANEL B — Compound Growth Index chart
 // ═══════════════════════════════════════════════════════════════════════════════
 function GrowthPanel() {
+  const { t } = useI18n();
   const [step, setStep] = useState(0);
   const [hovered, setHovered] = useState(null);
 
@@ -935,14 +942,19 @@ function GrowthPanel() {
         compounding (IAPA 2023).
       </p>
 
-      <div className="relative overflow-x-auto">
-        {hovPt && step >= 2 && (
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] px-4 py-2.5 text-xs font-mono text-[#6E6E6E] dark:text-[#9A9A9A] pointer-events-none whitespace-nowrap">
-            <span className="text-black dark:text-white font-medium mr-2">{hovPt.year}</span>
-            <span className="text-accent-ink mr-2">{hovPt.idx.toFixed(2)}×</span>
-            {hovPt.event}
-          </div>
-        )}
+      <ScrollRegion
+        label={t("intelligence.tabGrowth")}
+        overlay={
+          hovPt &&
+          step >= 2 && (
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] px-4 py-2.5 text-xs font-mono text-[#6E6E6E] dark:text-[#9A9A9A] pointer-events-none whitespace-nowrap">
+              <span className="text-black dark:text-white font-medium mr-2">{hovPt.year}</span>
+              <span className="text-accent-ink mr-2">{hovPt.idx.toFixed(2)}×</span>
+              {hovPt.event}
+            </div>
+          )
+        }
+      >
         <svg viewBox="0 0 500 270" width="100%" style={{ overflow: "visible", minWidth: 320 }}>
           {/* Grid */}
           {yTicks.map((v) => (
@@ -1253,7 +1265,7 @@ function GrowthPanel() {
             baseline
           </text>
         </svg>
-      </div>
+      </ScrollRegion>
 
       {/* Controls */}
       <div className="mt-4 flex flex-wrap items-center gap-4">

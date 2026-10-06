@@ -6,7 +6,9 @@
     "copyright": "All rights reserved.",
     "thereIsMore": "there's more if you look",
     "backToTop": "Back to top",
-    "close": "Close"
+    "close": "Close",
+    "scrollsSideways": "{label} (scrolls sideways)",
+    "formula": "Formula"
   },
   "nav": {
     "home": "Home",

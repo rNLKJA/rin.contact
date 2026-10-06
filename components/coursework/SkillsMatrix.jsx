@@ -1,4 +1,5 @@
 import { fill } from "@/lib/fill";
+import ScrollRegion from "@/components/ui/ScrollRegion";
 
 const K = "courseworkPage.matrix";
 const GROUP =
@@ -46,7 +47,7 @@ export default function SkillsMatrix({
   return (
     <>
       {/* md and up: the matrix */}
-      <div className="hidden md:block overflow-x-auto">
+      <ScrollRegion label={t(`${K}.caption`)} className="hidden md:block">
         <table className="w-full border-collapse">
           <caption className="sr-only">{t(`${K}.caption`)}</caption>
           <thead>
@@ -132,7 +133,7 @@ export default function SkillsMatrix({
             </tbody>
           ))}
         </table>
-      </div>
+      </ScrollRegion>
 
       {/* Phones: the same data as a list */}
       <div className="md:hidden space-y-6">
