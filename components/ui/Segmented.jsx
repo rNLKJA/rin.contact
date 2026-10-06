@@ -6,6 +6,8 @@ import { useRovingFocus } from "@/hooks/useRovingFocus";
  * Single-choice segmented switch: a radiogroup with one tab stop, where the
  * arrow keys select and wrap. Square hairline segments with 1px dividers;
  * the checked segment uses the site's inverted selected state.
+ * `activation="manual"` makes the arrows move focus only; Enter, Space or a
+ * click selects. Use it when selecting has a big side effect (a navigation).
  * Pass `value` undefined until it is known (e.g. before mount) so server and
  * client markup match: nothing is checked and the first option is tabbable.
  * Ported from the COMP20008 coursework Segmented control.
@@ -17,13 +19,14 @@ export default function Segmented({
   value,
   onChange,
   size = "md",
+  activation = "auto",
   className,
 }) {
   const activeIndex = options.findIndex((o) => o.value === value);
   const { getItemProps } = useRovingFocus({
     count: options.length,
     activeIndex,
-    onMove: (next) => onChange(options[next].value),
+    onMove: activation === "auto" ? (next) => onChange(options[next].value) : undefined,
     vertical: true,
   });
 

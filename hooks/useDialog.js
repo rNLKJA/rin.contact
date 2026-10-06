@@ -3,10 +3,23 @@ import { useEffect, useRef } from "react";
 const FOCUSABLE =
   'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
 
+const isVisible = (el) => el.getClientRects().length > 0;
+
+// Roving groups park their inactive items at tabindex -1; those are not Tab
+// stops, so they must not count as the trap's first or last element.
 function focusablesIn(container) {
   return Array.from(container.querySelectorAll(FOCUSABLE)).filter(
-    (el) => el.getClientRects().length > 0
+    (el) => el.getAttribute("tabindex") !== "-1" && isVisible(el)
   );
+}
+
+// Where focus goes when the opener can no longer take it (e.g. the burger is
+// hidden because the window grew past the mobile breakpoint).
+function fallbackFocus() {
+  const main = document.getElementById("main-content");
+  if (!main) return;
+  if (!main.hasAttribute("tabindex")) main.setAttribute("tabindex", "-1");
+  main.focus({ preventScroll: true });
 }
 
 /**
@@ -44,9 +57,12 @@ export function useDialog({ open, onClose, containerRef, initialFocusRef, lockSc
         returnTo &&
         returnTo.isConnected &&
         typeof returnTo.focus === "function" &&
-        returnTo !== document.body
+        returnTo !== document.body &&
+        isVisible(returnTo)
       ) {
         returnTo.focus();
+      } else if (returnTo && returnTo !== document.body) {
+        fallbackFocus();
       }
     };
   }, [open, containerRef, initialFocusRef]);

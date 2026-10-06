@@ -129,10 +129,16 @@ export default function DatasetCard() {
         </div>
       </div>
 
-      {/* Terminal card */}
-      <div className="relative">
+      {/* Terminal card — while it overflows (mobile) it is a named, focusable
+          scroller so the arrow keys reach the Value column; the shared
+          scroll-region ring marks focus. */}
+      <div className="scroll-region relative">
         <div
           ref={scrollRef}
+          data-scroller=""
+          {...(edges.scrollable
+            ? { role: "group", tabIndex: 0, "aria-label": "Dataset output (scrolls sideways)" }
+            : {})}
           className="bg-[#F5F5F5] dark:bg-[#0C0C0C] border border-[#E0E0E0] dark:border-[#232323] overflow-x-auto"
         >
           {/* Title bar */}

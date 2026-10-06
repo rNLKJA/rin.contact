@@ -44,7 +44,8 @@ export default function LocaleSwitcher() {
   );
 }
 
-/** Settings-row variant: EN | 中文 as a segmented radiogroup. */
+/** Settings-row variant: EN | 中文 as a segmented radiogroup. Arrows only move
+ * focus, so exploring the options never reloads the page in another language. */
 export function LocaleSegmented({ labelledBy, size }) {
   const { t, locale } = useI18n();
   const switchLocale = useSwitchLocale();
@@ -55,6 +56,7 @@ export function LocaleSegmented({ labelledBy, size }) {
       options={LOCALES}
       value={locale}
       onChange={switchLocale}
+      activation="manual"
       size={size}
     />
   );
