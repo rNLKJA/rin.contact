@@ -5,6 +5,7 @@ import Image from "next/image";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import LocaleSwitcher from "@/components/ui/LocaleSwitcher";
 import { useI18n } from "@/contexts/I18nContext";
+import { useDialog } from "@/hooks/useDialog";
 
 // ── Logo with double-click glitch easter egg ──────────────────────────────────
 const GLITCH_ALTS = ["rNLKJA", "r̷N̸L̵K̶J̷A̸", "404", "Rin?", "¯\\_(ツ)_/¯", "rNLKJA"];
@@ -87,7 +88,40 @@ const PAGE_LINKS = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useI18n();
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const { pathname } = router;
+
+  // Mobile menu behaves as a real modal dialog: Escape, focus trap, focus in
+  // on open (first link) and back to the burger on close, page scroll lock.
+  const menuRef = useRef(null);
+  const firstLinkRef = useRef(null);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  useDialog({
+    open: menuOpen,
+    onClose: closeMenu,
+    containerRef: menuRef,
+    initialFocusRef: firstLinkRef,
+  });
+
+  // Close on navigation. A locale switch keeps the same asPath, so changing
+  // language inside the menu leaves it open. (State adjusted during render,
+  // React's recommended alternative to a setState-in-effect.)
+  const pathKey = (router.asPath || "").split("#")[0];
+  const [menuPath, setMenuPath] = useState(pathKey);
+  if (menuPath !== pathKey) {
+    setMenuPath(pathKey);
+    setMenuOpen(false);
+  }
+
+  // Close once the viewport reaches the desktop nav (lg, 1024px).
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = (e) => {
+      if (e.matches) setMenuOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   // "You are here" wayfinding. Matches exact route or any sub-route (e.g.
   // /projects/signal lights /projects). Skips hash links and the home anchor.
@@ -176,7 +210,7 @@ export default function Header() {
             Tight item padding lets the full bar fit at 1024px. */}
         <nav
           className="hidden lg:flex flex-row items-center gap-0 xl:gap-0.5 whitespace-nowrap text-[11px] tracking-widest uppercase"
-          aria-label="Primary navigation"
+          aria-label={t("nav.primaryNav")}
         >
           {NAV_LINKS.map(({ href, key }) => {
             const active = isActive(href);
@@ -247,10 +281,13 @@ export default function Header() {
         </nav>
 
         {/* ── Mobile burger ── */}
+        {/* 44x44 hit area; negative margins keep the bars and the row height
+            where they were. The open menu covers it and has its own close. */}
         <button
-          className="lg:hidden flex flex-col gap-[5px] p-2 z-[60] relative"
+          type="button"
+          className="lg:hidden relative flex flex-col items-center justify-center gap-[5px] w-11 h-11 -mr-1 -my-1.5"
           onClick={() => setMenuOpen((o) => !o)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={t("nav.openMenu")}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >
@@ -268,26 +305,43 @@ export default function Header() {
 
       {/* ══ Full-page mobile menu ══ */}
       <div
+        ref={menuRef}
         id="mobile-menu"
         className={`fixed inset-0 z-50 bg-white dark:bg-[#0A0A0A] flex flex-col lg:hidden
                     transition-opacity duration-200 ${menuOpen ? "opacity-100 pointer-events-auto animate-enter" : "opacity-0 pointer-events-none"}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Mobile navigation"
+        aria-label={t("nav.menuLabel")}
         {...(!menuOpen ? { inert: true } : {})}
       >
-        {/* Top bar — brand only (close button stays in header, top-right) */}
-        <div className="flex items-center px-6 py-4 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
+        {/* Top bar — brand, and the close control at the burger's position so
+            it reads as the burger's open state and stays inside the dialog. */}
+        <div className="flex items-center justify-between px-6 md:px-12 py-4 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
           <span className="font-semibold text-sm tracking-tight text-black dark:text-white">
             rNLKJA
           </span>
+          <button
+            type="button"
+            onClick={closeMenu}
+            aria-label={t("nav.closeMenu")}
+            className="relative flex items-center justify-center w-11 h-11 -mr-1 -my-1.5"
+          >
+            <span
+              aria-hidden="true"
+              className="absolute w-5 h-px bg-black dark:bg-white rotate-45"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute w-5 h-px bg-black dark:bg-white -rotate-45"
+            />
+          </button>
         </div>
 
         {/* Nav links — editorial numbered style */}
         {/* Scrolls on short screens; auto margins centre the list and keep the first item reachable */}
         <nav
           className="flex-1 min-h-0 overflow-y-auto overscroll-contain flex flex-col px-8"
-          aria-label="Mobile navigation"
+          aria-label={t("nav.primaryNav")}
         >
           <div className="my-auto flex flex-shrink-0 flex-col">
             {NAV_LINKS.map(({ href, key }, i) => {
@@ -296,7 +350,8 @@ export default function Header() {
                 <Link
                   key={key}
                   href={href}
-                  onClick={() => setMenuOpen(false)}
+                  ref={i === 0 ? firstLinkRef : undefined}
+                  onClick={closeMenu}
                   aria-current={active ? "page" : undefined}
                   className={`flex flex-shrink-0 items-baseline gap-4 py-4 [@media(max-height:700px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                     active ? "text-[#FF3C3C]" : "text-black dark:text-white hover:text-[#FF3C3C]"
@@ -304,7 +359,7 @@ export default function Header() {
                 >
                   <span
                     className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
-                      active ? "text-accent-ink" : "text-[#C8C8C8] group-hover:text-[#FF3C3C]"
+                      active ? "text-accent-ink" : "text-ink-subtle group-hover:text-[#FF3C3C]"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -328,7 +383,7 @@ export default function Header() {
             })}
 
             {/* Page links — separated by a subtle label */}
-            <p className="flex-shrink-0 text-[9px] tracking-widest uppercase text-[#C8C8C8] mt-5 mb-1">
+            <p className="flex-shrink-0 text-[9px] tracking-widest uppercase text-ink-subtle mt-5 mb-1">
               {t("nav.pages")}
             </p>
             {PAGE_LINKS.map(({ href, key, cta }) => {
@@ -337,13 +392,11 @@ export default function Header() {
                 <Link
                   key={key}
                   href={href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={closeMenu}
                   aria-current={active ? "page" : undefined}
                   className={`flex flex-shrink-0 items-center gap-4 py-4 [@media(max-height:700px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                     cta
-                      ? active
-                        ? "text-[#CC2020]"
-                        : "text-accent-ink hover:text-[#CC2020]"
+                      ? "text-accent-ink"
                       : active
                         ? "text-accent-ink"
                         : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white"

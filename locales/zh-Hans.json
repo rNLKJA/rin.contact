@@ -5,7 +5,8 @@
     "siteDescription": "高级数据分析师 · 研究软件工程师 · 澳大利亚阿德莱德",
     "copyright": "保留所有权利",
     "thereIsMore": "更多的内容等你发现",
-    "backToTop": "返回顶部"
+    "backToTop": "返回顶部",
+    "close": "关闭"
   },
   "nav": {
     "home": "首页",
@@ -30,7 +31,11 @@
     "email": "邮箱",
     "strategic": "战略能力",
     "fullProfile": "完整主页",
-    "coursework": "课程作业"
+    "coursework": "课程作业",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "menuLabel": "网站菜单",
+    "primaryNav": "主导航"
   },
   "locale": {
     "current": "EN",

@@ -5,7 +5,8 @@
     "siteDescription": "Senior Data Analyst · Research Software Engineer · Adelaide, Australia.",
     "copyright": "All rights reserved.",
     "thereIsMore": "there's more if you look",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "close": "Close"
   },
   "nav": {
     "home": "Home",
@@ -30,7 +31,11 @@
     "email": "Email",
     "strategic": "Strategic",
     "fullProfile": "Full Profile",
-    "coursework": "Coursework"
+    "coursework": "Coursework",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuLabel": "Site menu",
+    "primaryNav": "Primary navigation"
   },
   "locale": {
     "current": "EN",
