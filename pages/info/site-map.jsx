@@ -36,6 +36,7 @@ const SECTIONS = [
       "/info/site-map",
       "/info/manifest",
       "/info/changelog",
+      "/info/history",
       "/info/thank-you",
       "/info/references",
     ],

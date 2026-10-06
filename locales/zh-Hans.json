@@ -34,6 +34,7 @@
     "strategic": "战略能力",
     "fullProfile": "完整主页",
     "coursework": "课程作业",
+    "history": "网站历史",
     "openMenu": "打开菜单",
     "closeMenu": "关闭菜单",
     "menuLabel": "网站菜单",
@@ -729,6 +730,42 @@
       "将页面整理进 fun/、info/、tools/ 子目录"
     ]
   },
+  "infoHistory": {
+    "metaTitle": "网站历史 · 黄孙创宇 · rin.contact",
+    "metaDescription": "rin.contact 从 2021 年到现在的五个版本：每一版长什么样、用什么技术做的，以及当时我想做成什么。",
+    "ogSubtitle": "rin.contact 的五个版本，从 2021 年到现在",
+    "heading": "五个版本的 rin.contact。",
+    "intro": "2021 年 10 月，我还是学生的时候开始做这个网站，之后又重做了四次。每张幻灯片是一个版本，写了它长什么样、用什么技术做的，以及当时我想做成什么。没留下截图的版本，会直接说明。",
+    "deckLabel": "rin.contact 的各个版本",
+    "deckRole": "轮播",
+    "slideRole": "幻灯片",
+    "pickLabel": "选择版本",
+    "prev": "上一个版本",
+    "next": "下一个版本",
+    "slideOf": "第 {n} 张，共 {total} 张：{version}",
+    "changedLabel": "改了什么",
+    "thinkingLabel": "当时的想法",
+    "stackLabel": "技术栈",
+    "source": "{version} 源码",
+    "viewArchived": "查看存档 · {date}",
+    "hideArchived": "收起存档",
+    "closeArchive": "关闭存档页面",
+    "archiveTitle": "Wayback Machine 在 {date} 存档的 rin.contact {version}",
+    "archiveLoading": "正在从 Wayback Machine 加载存档页面，可能要等几秒。",
+    "openNewTab": "在新标签页打开",
+    "captions": {
+      "readme": "v1 README 里我自己截的图（{date}），只保留了页面上半部分。",
+      "wayback": "Wayback Machine 存档截图，{date}。",
+      "localBuild": "{date} 用 {version} 分支在本地重新构建后截的图。Wayback Machine 没有留下这一版能用的存档。",
+      "production": "现在的 rin.contact，{date} 截图。"
+    },
+    "mobileAlt": "{version} 在手机尺寸屏幕上的样子",
+    "noCapture": "没有留存的截图。Wayback Machine 没有存下这一版，旧代码也没能重新跑起来。",
+    "timelineHeading": "时间线",
+    "guideHeading": "网站导览 Pawsibly",
+    "guideText": "Pawsibly 可以带你走七站，把网站逛一遍。如果之前关掉了导览，点这个按钮会重新打开，从第一站开始。",
+    "restartGuide": "重新开始导览"
+  },
   "infoApi": {
     "metaTitle": "API — rin.contact",
     "metaDescription": "rin.contact 的可用 API 接口 — ping、profile、now、fortune、roast、stack。",
@@ -789,6 +826,7 @@
           "站点地图",
           "宣言",
           "更新日志",
+          "网站历史",
           "致谢",
           "推荐人"
         ]
@@ -1293,6 +1331,7 @@
       "site-map": "人类可读的站点地图",
       "manifest": "我的信念",
       "changelog": "更新了什么",
+      "history": "这个网站是怎么一路改过来的",
       "thank-you": "感谢你的联系",
       "references": "愿意为我美言几句的人"
     }

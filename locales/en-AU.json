@@ -34,6 +34,7 @@
     "strategic": "Strategic",
     "fullProfile": "Full Profile",
     "coursework": "Coursework",
+    "history": "History",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "menuLabel": "Site menu",
@@ -874,6 +875,42 @@
       "Pages organised into fun/, info/, tools/ subfolders"
     ]
   },
+  "infoHistory": {
+    "metaTitle": "Site History · Rin Huang · rin.contact",
+    "metaDescription": "Five versions of rin.contact from 2021 to now: what each one looked like, what it was built with and what I was trying to do at the time.",
+    "ogSubtitle": "Five versions of rin.contact, from 2021 to now",
+    "heading": "Five versions of rin.contact.",
+    "intro": "I started this site in October 2021 as a student project and have rebuilt it four times since. Each slide shows what a version looked like, what it was built with and what I was trying to do at the time. Where no screenshot survived, the slide says so.",
+    "deckLabel": "Versions of rin.contact",
+    "deckRole": "carousel",
+    "slideRole": "slide",
+    "pickLabel": "Choose a version",
+    "prev": "Previous version",
+    "next": "Next version",
+    "slideOf": "{n} of {total}: {version}",
+    "changedLabel": "What changed",
+    "thinkingLabel": "What I was thinking",
+    "stackLabel": "Built with",
+    "source": "{version} source",
+    "viewArchived": "View archived · {date}",
+    "hideArchived": "Hide archived view",
+    "closeArchive": "Close the archived view",
+    "archiveTitle": "rin.contact {version} as archived by the Wayback Machine on {date}",
+    "archiveLoading": "Loading the archived page from the Wayback Machine. This can take a few seconds.",
+    "openNewTab": "Open in new tab",
+    "captions": {
+      "readme": "My own screenshot from the v1 README, {date}, cropped to the top of the page.",
+      "wayback": "Wayback Machine capture, {date}.",
+      "localBuild": "Rebuilt locally from the {version} branch and captured in {date}. The Wayback Machine has no usable copy of this version.",
+      "production": "rin.contact today, captured in {date}."
+    },
+    "mobileAlt": "{version} on a phone-sized screen",
+    "noCapture": "No surviving capture. The Wayback Machine did not archive this version, and the old build could not be restored.",
+    "timelineHeading": "Timeline",
+    "guideHeading": "Pawsibly, the site guide",
+    "guideText": "Pawsibly can walk you around the site in seven short stops. If you switched the guide off, this button turns it back on and starts again from the beginning.",
+    "restartGuide": "Start the guide again"
+  },
   "infoApi": {
     "metaTitle": "API — rin.contact",
     "metaDescription": "Available API endpoints for rin.contact — ping, profile, now, fortune, roast, stack.",
@@ -934,6 +971,7 @@
           "Site Map",
           "Manifest",
           "Changelog",
+          "History",
           "Thank You",
           "References"
         ]
@@ -1606,6 +1644,7 @@
       "site-map": "human-readable sitemap",
       "manifest": "what I believe",
       "changelog": "what changed",
+      "history": "how this site changed",
       "thank-you": "thanks for reaching out",
       "references": "people who might say nice things"
     }

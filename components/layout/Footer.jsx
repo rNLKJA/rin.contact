@@ -29,6 +29,7 @@ const NAV_COLS = [
       { href: "/blog", key: "nav.blog" },
       { href: "/knowledge", key: "nav.knowledge" },
       { href: "/info/api", key: "nav.api" },
+      { href: "/info/history", key: "nav.history" },
       { href: "/resume/terminal", key: "nav.cliResume" },
       {
         href: "https://www.linkedin.com/in/sunchuangyuhuang/",

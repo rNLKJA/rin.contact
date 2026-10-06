@@ -14,6 +14,7 @@ const ITEMS = [
   { href: "/info/site-map", label: "site-map" },
   { href: "/info/manifest", label: "manifest" },
   { href: "/info/changelog", label: "changelog" },
+  { href: "/info/history", label: "history" },
   { href: "/info/thank-you", label: "thank-you" },
   { href: "/info/references", label: "references" },
 ];
