@@ -86,7 +86,7 @@ export default function SectionProgress() {
             {/* Label — slides in on hover */}
             <span
               className={`text-[10px] tracking-widest uppercase transition-all duration-200
-                          ${isActive ? "text-[#FF3C3C] opacity-100 animate-enter" : "text-[#7A7A7A] opacity-0 group-hover:opacity-100 group-hover:animate-enter"}
+                          ${isActive ? "text-accent-ink opacity-100 animate-enter" : "text-ink-subtle opacity-0 group-hover:opacity-100 group-hover:animate-enter"}
                           translate-x-1 group-hover:translate-x-0`}
             >
               {label}

@@ -102,13 +102,13 @@ export default function KnowledgeLayout({
         <article className="max-w-[720px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1 w-full">
           <Link
             href="/knowledge"
-            className="inline-flex items-center gap-1 font-mono text-[11px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
+            className="inline-flex items-center gap-1 font-mono text-[11px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
           >
             ← {t("knowledgeLayout.back")}
           </Link>
 
           <header className="mb-12">
-            <p className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
+            <p className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.3em] uppercase text-accent-ink mb-5">
               <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
               {path}
             </p>
@@ -154,7 +154,7 @@ export default function KnowledgeLayout({
               <ol className="space-y-2.5">
                 {sections.map((s, i) => (
                   <li key={s.id} className="flex items-baseline gap-3">
-                    <span className="font-mono text-[11px] text-[#FF3C3C] tabular-nums">
+                    <span className="font-mono text-[11px] text-accent-ink tabular-nums">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <a
@@ -225,13 +225,13 @@ export default function KnowledgeLayout({
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/knowledge"
-                className="font-mono text-[11px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+                className="font-mono text-[11px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
               >
                 {t("knowledgeLayout.allTopics")}
               </Link>
               <Link
                 href="/"
-                className="font-mono text-[11px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+                className="font-mono text-[11px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
               >
                 {t("nav.home")}
               </Link>
@@ -252,7 +252,7 @@ export function KSection({ id, eyebrow, title, children }) {
   return (
     <section id={id} className="scroll-mt-24">
       {eyebrow && (
-        <p className="not-prose font-mono text-[10px] tracking-widest uppercase text-[#FF3C3C] mt-14 mb-2">
+        <p className="not-prose font-mono text-[10px] tracking-widest uppercase text-accent-ink mt-14 mb-2">
           {eyebrow}
         </p>
       )}
@@ -297,7 +297,7 @@ export function Figure({ children, caption }) {
         {children}
       </div>
       {caption && (
-        <figcaption className="mt-3 text-[12px] text-[#7A7A7A] dark:text-[#6E6E6E] [text-wrap:pretty]">
+        <figcaption className="mt-3 text-[12px] text-ink-subtle dark:text-[#6E6E6E] [text-wrap:pretty]">
           {caption}
         </figcaption>
       )}

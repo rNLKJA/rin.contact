@@ -82,7 +82,7 @@ export default function FeaturedWork() {
       aria-label="Featured work"
       ref={ref}
     >
-      <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-8 font-mono flex items-center gap-2">
+      <p className="text-xs tracking-widest uppercase text-accent-ink mb-8 font-mono flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse" aria-hidden="true" />
         Featured — Flagship
       </p>
@@ -111,7 +111,7 @@ export default function FeaturedWork() {
             <span className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] truncate">
               Independent Product · Jun 2026 – Present
             </span>
-            <span className="text-[10px] tracking-widest uppercase text-[#FF3C3C] flex items-center gap-1.5 flex-shrink-0">
+            <span className="text-[10px] tracking-widest uppercase text-accent-ink flex items-center gap-1.5 flex-shrink-0">
               <span
                 className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse"
                 aria-hidden="true"

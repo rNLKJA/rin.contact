@@ -279,7 +279,7 @@ export default function HeroSection() {
             {t("hero.statusPill")}
           </div>
 
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] mb-4">
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] mb-4">
             {t("hero.sectionLabel")}
           </p>
 

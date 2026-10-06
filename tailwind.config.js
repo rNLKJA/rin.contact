@@ -4,6 +4,14 @@ module.exports = {
   content: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}", "./hooks/**/*.{js,jsx}"],
   theme: {
     extend: {
+      // Contrast-safe inks; values live in globals.css so they track the theme.
+      // accent-fill: white on #CC0000 is 5.89:1, and #CC0000 against #0A0A0A
+      // is 3.36:1, above the 3:1 non-text minimum.
+      colors: {
+        "ink-subtle": "var(--ink-subtle)",
+        "accent-ink": "var(--accent-ink)",
+        "accent-fill": "#CC0000",
+      },
       fontFamily: {
         // Wisr × Nothing three-font system — CSS variables injected by next/font
         sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],

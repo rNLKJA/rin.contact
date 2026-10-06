@@ -142,7 +142,7 @@ function FAQItem({ q, a, index }) {
         </span>
         <span
           className={`flex-shrink-0 mt-0.5 transition-transform duration-200 ${
-            open ? "rotate-45 text-[#FF3C3C]" : "text-[#CCCCCC] dark:text-[#666666]"
+            open ? "rotate-45 text-accent-ink" : "text-[#CCCCCC] dark:text-[#666666]"
           }`}
         >
           <FiPlus size={14} />
@@ -179,7 +179,7 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
       >
         {/* Category number */}
         <span
-          className="flex-shrink-0 text-[11px] tracking-widest tabular-nums text-[#FF3C3C] font-medium select-none w-5"
+          className="flex-shrink-0 text-[11px] tracking-widest tabular-nums text-accent-ink font-medium select-none w-5"
           aria-hidden="true"
         >
           {String(catIndex + 1).padStart(2, "0")}
@@ -203,7 +203,7 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
         {/* Chevron */}
         <FiChevronDown
           size={16}
-          className={`flex-shrink-0 text-[#AAAAAA] transition-transform duration-200 ${
+          className={`flex-shrink-0 text-ink-subtle transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
           aria-hidden="true"
@@ -245,7 +245,7 @@ export default function FAQSection() {
       >
         {/* Header */}
         <div className="mb-12">
-          <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
+          <p className="text-xs tracking-widest uppercase text-accent-ink mb-3">
             {t("faq.sectionLabel")}
           </p>
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">FAQ</h2>
@@ -259,7 +259,7 @@ export default function FAQSection() {
               strokeLinecap="round"
             />
           </svg>
-          <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
+          <p className="text-sm text-ink-subtle dark:text-[#9A9A9A] max-w-xl leading-relaxed">
             Browse by topic — open a category then expand any question.
           </p>
         </div>

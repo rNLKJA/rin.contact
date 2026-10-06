@@ -49,7 +49,7 @@ function OrgTrack() {
     <div className="flex items-center shrink-0">
       {ORGS.map((org) => (
         <span key={org} className="flex items-center">
-          <span className="text-xs md:text-sm font-medium tracking-[0.25em] uppercase px-5 md:px-7 text-[#7A7A7A] dark:text-[#9A9A9A]">
+          <span className="text-xs md:text-sm font-medium tracking-[0.25em] uppercase px-5 md:px-7 text-ink-subtle dark:text-[#9A9A9A]">
             {org}
           </span>
           <span className="text-[#FF3C3C] text-[7px] md:text-[9px] select-none">&#9632;</span>

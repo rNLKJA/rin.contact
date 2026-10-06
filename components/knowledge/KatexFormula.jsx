@@ -30,7 +30,7 @@ export function Formula({ children, label, caption }) {
         dangerouslySetInnerHTML={{ __html: html }}
       />
       {caption && (
-        <p className="mt-2 text-[12px] text-[#7A7A7A] dark:text-[#6E6E6E] [text-wrap:pretty]">
+        <p className="mt-2 text-[12px] text-ink-subtle dark:text-[#6E6E6E] [text-wrap:pretty]">
           {caption}
         </p>
       )}

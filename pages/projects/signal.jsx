@@ -115,7 +115,7 @@ export default function SignalCaseStudy() {
           ← {t("signal.back")}
         </Link>
 
-        <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
+        <p className="text-[10px] tracking-widest uppercase text-accent-ink font-mono mb-4 flex items-center gap-2">
           <span
             className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse"
             aria-hidden="true"
@@ -198,7 +198,7 @@ export default function SignalCaseStudy() {
 
         {/* Further reading — connect the build to the thinking behind it */}
         <div className="mt-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-3">
+          <p className="text-[10px] tracking-widest uppercase text-accent-ink font-mono mb-3">
             {t("signal.furtherReading")}
           </p>
           <Link
@@ -208,17 +208,19 @@ export default function SignalCaseStudy() {
             {t("signal.essayTitle")}
             <span
               aria-hidden="true"
-              className="text-[#FF3C3C] transition-transform duration-200 group-hover:translate-x-0.5"
+              className="text-accent-ink transition-transform duration-200 group-hover:translate-x-0.5"
             >
               →
             </span>
           </Link>
-          <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] mt-1">{t("signal.essayDesc")}</p>
+          <p className="text-xs text-ink-subtle dark:text-[#9A9A9A] mt-1">
+            {t("signal.essayDesc")}
+          </p>
         </div>
 
         {/* Footer CTA */}
         <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D] flex flex-wrap items-center justify-between gap-4">
-          <p className="text-sm text-[#7A7A7A] dark:text-[#AAAAAA]">{t("signal.footerNote")}</p>
+          <p className="text-sm text-ink-subtle dark:text-[#AAAAAA]">{t("signal.footerNote")}</p>
           <div className="flex flex-wrap gap-2">
             <a
               href={LIVE}

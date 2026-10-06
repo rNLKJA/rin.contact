@@ -41,13 +41,13 @@ export default function NewsletterSignup() {
 
   return (
     <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-8 mt-12">
-      <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-2">
+      <p className="text-xs tracking-widest uppercase text-accent-ink mb-2">
         {t("newsletter.heading")}
       </p>
       <h3 className="text-lg font-semibold tracking-tight mb-2 text-black dark:text-white">
         {t("newsletter.title")}
       </h3>
-      <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A] mb-6 leading-relaxed">
+      <p className="text-sm text-ink-subtle dark:text-[#9A9A9A] mb-6 leading-relaxed">
         {t("newsletter.description")}
       </p>
 
@@ -101,7 +101,7 @@ export default function NewsletterSignup() {
         <p
           id="newsletter-msg"
           role="alert"
-          className="flex items-center gap-2 text-xs text-[#FF3C3C] mt-3"
+          className="flex items-center gap-2 text-xs text-accent-ink mt-3"
         >
           <FiAlertCircle size={14} aria-hidden="true" />
           {message || t("newsletter.error")}

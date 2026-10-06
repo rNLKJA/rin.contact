@@ -56,7 +56,7 @@ function TimelineItem({ item, index }) {
           /* No logo yet (e.g. Mapiva): a monogram tile keeps the rows aligned */
           <div className="flex-shrink-0 mt-0.5" aria-hidden="true">
             <div
-              className="w-9 h-9 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] font-display text-base text-[#FF3C3C]"
+              className="w-9 h-9 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] font-display text-base text-accent-ink"
               style={{ borderRadius: "22%" }}
             >
               {(item.orgShort || item.org).slice(0, 1)}
@@ -75,7 +75,7 @@ function TimelineItem({ item, index }) {
               </span>
             )}
             {item.current && (
-              <span className="border border-[#FF3C3C] px-2 py-0.5 text-xs tracking-wider uppercase text-[#FF3C3C]">
+              <span className="border border-[#FF3C3C] px-2 py-0.5 text-xs tracking-wider uppercase text-accent-ink">
                 {t("timeline.badgeCurrent")}
               </span>
             )}

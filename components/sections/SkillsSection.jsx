@@ -283,7 +283,7 @@ function DomainCard({ domain, index }) {
             {domain.skills.map((s) => (
               <span
                 key={s}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wide text-[#7A7A7A] dark:text-[#9A9A9A] rounded-full
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wide text-ink-subtle dark:text-[#9A9A9A] rounded-full
                            cursor-default transition-all duration-200"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = domain.color;
@@ -318,7 +318,7 @@ export default function SkillsSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
-        <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-6">
+        <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-accent-ink mb-6">
           <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
           {t("skills.sectionLabel")}
         </p>
@@ -333,7 +333,7 @@ export default function SkillsSection() {
               <CountUp target={DOMAINS.length} started={inView} />
             </span>
             <span
-              className="text-[10px] tracking-[0.3em] uppercase text-[#7A7A7A] dark:text-[#9A9A9A] mb-3 md:mb-4"
+              className="text-[10px] tracking-[0.3em] uppercase text-ink-subtle dark:text-[#9A9A9A] mb-3 md:mb-4"
               aria-hidden="true"
             >
               Domains
@@ -343,7 +343,7 @@ export default function SkillsSection() {
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">
               {t("skills.heading")}
             </h2>
-            <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
+            <p className="text-sm text-ink-subtle dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
               Seven technical domains, run in deliberate parallel.
             </p>
           </div>
@@ -384,7 +384,7 @@ export default function SkillsSection() {
               d.skills.map((skill) => (
                 <span
                   key={`${copy}-${d.label}-${skill}`}
-                  className="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-[#7A7A7A] whitespace-nowrap flex-shrink-0"
+                  className="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-ink-subtle whitespace-nowrap flex-shrink-0"
                 >
                   <span
                     className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
@@ -410,7 +410,7 @@ export default function SkillsSection() {
           certInView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">
+        <p className="text-xs tracking-widest uppercase text-accent-ink mb-6">
           Certifications & Assessment
         </p>
 
@@ -443,7 +443,7 @@ export default function SkillsSection() {
           certInView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-6">Languages</p>
+        <p className="text-xs tracking-widest uppercase text-accent-ink mb-6">Languages</p>
         <div className="flex flex-wrap gap-3">
           {[
             {
@@ -463,9 +463,9 @@ export default function SkillsSection() {
                          hover:border-black dark:hover:border-white transition-colors duration-200"
             >
               <p className="text-sm font-medium">{l.lang}</p>
-              <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] mt-0.5">{l.level}</p>
+              <p className="text-xs text-ink-subtle dark:text-[#9A9A9A] mt-0.5">{l.level}</p>
               {l.detail && (
-                <p className="text-xs text-[#7A7A7A] dark:text-[#9A9A9A] mt-0.5">{l.detail}</p>
+                <p className="text-xs text-ink-subtle dark:text-[#9A9A9A] mt-0.5">{l.detail}</p>
               )}
             </div>
           ))}

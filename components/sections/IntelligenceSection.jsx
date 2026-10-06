@@ -797,7 +797,7 @@ function BubblePanel() {
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
               ? "border-[#CCC] dark:border-[#444] text-[#6E6E6E] dark:text-[#9A9A9A] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
-              : "border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
+              : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:text-white"
           }`}
         >
           {step === 0 ? "Run Analysis →" : "↺  Reset"}
@@ -814,7 +814,7 @@ function BubblePanel() {
       {step >= 2 && (
         <div className="mt-6 space-y-3" style={{ animation: "fadeUp 200ms ease-out 100ms both" }}>
           <div className="border-l-2 border-[#FF3C3C] pl-4">
-            <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-accent-ink uppercase tracking-widest mb-2 font-mono">
               Pattern Detected
             </p>
             <p className="text-sm text-[#666] dark:text-[#AAAAAA] leading-relaxed font-light">
@@ -867,14 +867,14 @@ function BubblePanel() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
               <div className="border border-[#E0E0E0] dark:border-[#1E1E1E] p-3 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
-                <p className="text-[#FF3C3C] font-medium mb-2">CBS ASO4 (mid-junior)</p>
+                <p className="text-accent-ink font-medium mb-2">CBS ASO4 (mid-junior)</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">SA · ASO4</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">APS · APS5</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">VPS · VPS4</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">NSW · Clerk 5/6</p>
               </div>
               <div className="border border-[#E0E0E0] dark:border-[#1E1E1E] p-3 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
-                <p className="text-[#FF3C3C] font-medium mb-2">SAPOL ASO7 (mid-management)</p>
+                <p className="text-accent-ink font-medium mb-2">SAPOL ASO7 (mid-management)</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">SA · ASO7</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">APS · EL1</p>
                 <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">VPS · VPS6</p>
@@ -939,7 +939,7 @@ function GrowthPanel() {
         {hovPt && step >= 2 && (
           <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] px-4 py-2.5 text-xs font-mono text-[#6E6E6E] dark:text-[#9A9A9A] pointer-events-none whitespace-nowrap">
             <span className="text-black dark:text-white font-medium mr-2">{hovPt.year}</span>
-            <span className="text-[#FF3C3C] mr-2">{hovPt.idx.toFixed(2)}×</span>
+            <span className="text-accent-ink mr-2">{hovPt.idx.toFixed(2)}×</span>
             {hovPt.event}
           </div>
         )}
@@ -1262,7 +1262,7 @@ function GrowthPanel() {
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
               ? "border-[#CCC] dark:border-[#444] text-[#6E6E6E] dark:text-[#9A9A9A] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
-              : "border-[#FF3C3C] text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
+              : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:text-white"
           }`}
         >
           {step === 0 ? "Play →" : "↺  Reset"}
@@ -1311,7 +1311,7 @@ function GrowthPanel() {
       {step >= 3 && (
         <div className="mt-6 space-y-3" style={{ animation: "fadeUp 200ms ease-out 100ms both" }}>
           <div className="border-l-2 border-[#FF3C3C] pl-4">
-            <p className="text-[10px] text-[#FF3C3C] uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-accent-ink uppercase tracking-widest mb-2 font-mono">
               Why compound beats linear
             </p>
             <p className="text-sm text-[#666] dark:text-[#AAAAAA] leading-relaxed font-light">
@@ -1493,7 +1493,7 @@ export default function IntelligenceSection() {
           inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#FF3C3C] mb-3">
+        <p className="text-xs tracking-widest uppercase text-accent-ink mb-3">
           {t("intelligence.sectionLabel")}
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-black dark:text-white">
@@ -1526,7 +1526,7 @@ export default function IntelligenceSection() {
             className={`px-5 py-3 text-xs tracking-widest uppercase flex-shrink-0 transition-colors duration-150 border-b-2 -mb-px ${
               tab === tInfo.id
                 ? "border-[#FF3C3C] text-black dark:text-white"
-                : "border-transparent text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
+                : "border-transparent text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
             }`}
           >
             {t(tInfo.labelKey)}
@@ -1544,7 +1544,7 @@ export default function IntelligenceSection() {
       {/* Disclaimer */}
       <div className="mt-4 border-t border-[#E0E0E0] dark:border-[#3D3D3D] pt-4">
         <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed max-w-4xl">
-          <span className="text-[#7A7A7A] dark:text-[#9A9A9A] font-medium">
+          <span className="text-ink-subtle dark:text-[#9A9A9A] font-medium">
             For reference only.
           </span>{" "}
           Career seniority scores and domain depth values are self-assessed approximations

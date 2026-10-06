@@ -22,8 +22,8 @@ export default function BlogPost({ post, relatedPosts = [] }) {
   if (!post) {
     return (
       <div className="max-w-[700px] mx-auto px-6 md:px-12 py-24">
-        <p className="text-sm text-[#7A7A7A] dark:text-[#9A9A9A]">{t("blog.postNotFound")}</p>
-        <Link href="/blog" className="text-sm text-[#FF3C3C] hover:underline mt-4 inline-block">
+        <p className="text-sm text-ink-subtle dark:text-[#9A9A9A]">{t("blog.postNotFound")}</p>
+        <Link href="/blog" className="text-sm text-accent-ink hover:underline mt-4 inline-block">
           ← {t("blog.backToBlog")}
         </Link>
       </div>
@@ -111,14 +111,14 @@ export default function BlogPost({ post, relatedPosts = [] }) {
         {/* Back link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
+          className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
         >
           ← {t("blog.backToBlog")}
         </Link>
 
         {/* Post header */}
         <header className="mb-10">
-          <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
+          <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-accent-ink mb-5">
             <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
             {t("blog.sectionLabel")}
           </p>
@@ -145,7 +145,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-[10px] tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A]"
+                    className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-[10px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A]"
                   >
                     {tag}
                   </span>
@@ -183,7 +183,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
             (surfaces the clusters) instead of dead-ending */}
         {relatedPosts.length > 0 && (
           <div className="mt-14 pt-8 border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
-            <p className="flex items-center gap-2.5 text-[10px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
+            <p className="flex items-center gap-2.5 text-[10px] tracking-[0.3em] uppercase text-accent-ink mb-5">
               <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
               {t("blog.readNext")}
             </p>
@@ -202,7 +202,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
         <div className="mt-8 pt-8 border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
+            className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
           >
             ← {t("blog.backToAllPosts")}
           </Link>

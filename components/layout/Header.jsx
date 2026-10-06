@@ -224,8 +224,8 @@ export default function Header() {
                   cta
                     ? `px-3.5 py-1.5 border border-[#FF3C3C] transition-all duration-200 ${
                         active
-                          ? "bg-[#FF3C3C] text-white"
-                          : "text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white"
+                          ? "bg-accent-fill text-white"
+                          : "text-accent-ink hover:bg-accent-fill hover:text-white"
                       }`
                     : `relative px-1.5 xl:px-2 py-1.5 rounded-full transition-all duration-200 ${
                         active
@@ -304,7 +304,7 @@ export default function Header() {
                 >
                   <span
                     className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
-                      active ? "text-[#FF3C3C]" : "text-[#C8C8C8] group-hover:text-[#FF3C3C]"
+                      active ? "text-accent-ink" : "text-[#C8C8C8] group-hover:text-[#FF3C3C]"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -343,14 +343,14 @@ export default function Header() {
                     cta
                       ? active
                         ? "text-[#CC2020]"
-                        : "text-[#FF3C3C] hover:text-[#CC2020]"
+                        : "text-accent-ink hover:text-[#CC2020]"
                       : active
-                        ? "text-[#FF3C3C]"
+                        ? "text-accent-ink"
                         : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white"
                   }`}
                 >
                   <span
-                    className={`text-[10px] tracking-widest flex-shrink-0 w-5 ${active ? "text-[#FF3C3C]" : "text-[#E0E0E0]"}`}
+                    className={`text-[10px] tracking-widest flex-shrink-0 w-5 ${active ? "text-accent-ink" : "text-[#E0E0E0]"}`}
                   >
                     →
                   </span>

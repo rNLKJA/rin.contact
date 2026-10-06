@@ -35,7 +35,7 @@ export default function PageHero({
           <span aria-hidden="true">&larr;</span> {backLabel}
         </Link>
 
-        <p className="animate-fade-up delay-100 flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
+        <p className="animate-fade-up delay-100 flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-accent-ink mb-5">
           <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
           {label}
         </p>

@@ -99,7 +99,7 @@ function Modal({ onClose }) {
         {/* Header */}
         <div className="sticky top-0 bg-white dark:bg-[#1A1A1A] border-b border-[#E0E0E0] dark:border-[#3D3D3D] px-6 py-4 flex items-center justify-between z-10">
           <div>
-            <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] mb-0.5">
+            <p className="text-[10px] tracking-widest uppercase text-accent-ink mb-0.5">
               Design System
             </p>
             <h2 className="text-base font-semibold tracking-tight">
@@ -109,7 +109,7 @@ function Modal({ onClose }) {
           <button
             onClick={onClose}
             className="border border-[#E0E0E0] w-8 h-8 flex items-center justify-center
-                       text-[#7A7A7A] hover:border-black hover:text-black dark:hover:text-white transition-colors duration-200
+                       text-ink-subtle hover:border-black hover:text-black dark:hover:text-white transition-colors duration-200
                        text-xs"
             aria-label="Close modal"
           >
