@@ -102,7 +102,7 @@ export const PROJECTS = [
       "GitHub Actions",
     ],
     summary:
-      "Built as sole developer for my mum's meal-prep studio: one system for members, prepaid meal cards, daily orders, kitchen and delivery, and finance. A single Expo codebase builds for iOS, Android and the web, on a Hono API on Vercel with Turso (libSQL) and Drizzle. It takes the place of next-day sign-ups relayed by group chat and re-keyed into an Excel workbook.",
+      "Built as sole developer for my mum's meal-prep studio: one system for members, prepaid meal cards, daily orders, kitchen and delivery, and finance. A single Expo codebase builds for iOS, Android and the web, on a Hono API on Vercel with Turso (libSQL) and Drizzle. It was built to replace group-chat sign-ups that were tallied by hand and re-keyed into an Excel workbook.",
     impact:
       "Sole developer · In production since April 2026 · One codebase for iOS, Android and web",
     caseStudy: "/projects/order-system",
