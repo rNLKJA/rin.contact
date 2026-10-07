@@ -6,39 +6,54 @@ import { FiGithub, FiMail } from "react-icons/fi";
 import { useI18n } from "@/contexts/I18nContext";
 import DesignPhilosophyModal from "@/components/ui/DesignPhilosophyModal";
 
+// Grouped like a site map, so pages that are not in the header (the /ds
+// explainers, /info pages, tools, the easter-egg index) are still easy to find.
+// Social profiles live in the pill row below, not here.
 const NAV_COLS = [
   {
-    headingKey: "footer.navigate",
+    headingKey: "footer.work",
     links: [
       { href: "/strategic", key: "nav.strategic" },
       { href: "/career", key: "nav.career" },
       { href: "/projects", key: "nav.projects" },
       { href: "/projects/coursework", key: "nav.coursework" },
-      { href: "/lab", key: "nav.lab" },
-      { href: "/about", key: "nav.about" },
       { href: "/resume", key: "nav.resume" },
+      { href: "/cv", key: "nav.cv" },
       { href: "/#contact", key: "nav.contact" },
+      { href: "/hire-me", key: "nav.hireMe", cta: true },
     ],
   },
   {
-    headingKey: "footer.pages",
+    headingKey: "footer.learn",
     links: [
-      { href: "/hire-me", key: "nav.hireMe", cta: true },
-      { href: "/cv", key: "nav.cv" },
-      { href: "/tools/card", key: "nav.businessCard" },
-      { href: "/blog", key: "nav.blog" },
       { href: "/knowledge", key: "nav.knowledge" },
-      { href: "/info/api", key: "nav.api" },
+      { href: "/ds", key: "nav.dsExplainers" },
+      { href: "/lab", key: "nav.lab" },
+      { href: "/blog", key: "nav.blog" },
+      { href: "/blog/feed.xml", key: "nav.rss", plain: true },
+    ],
+  },
+  {
+    headingKey: "footer.site",
+    links: [
+      { href: "/about", key: "nav.about" },
+      { href: "/info/now", key: "nav.now" },
+      { href: "/info/uses", key: "nav.uses" },
+      { href: "/info/colophon", key: "nav.colophon" },
       { href: "/info/history", key: "nav.history" },
+      { href: "/info/changelog", key: "nav.changelog" },
+      { href: "/info/roadmap", key: "nav.roadmap" },
+      { href: "/info/accessibility", key: "nav.accessibility" },
+      { href: "/info/site-map", key: "nav.siteMap" },
+    ],
+  },
+  {
+    headingKey: "footer.tools",
+    links: [
+      { href: "/tools/card", key: "nav.businessCard" },
       { href: "/resume/terminal", key: "nav.cliResume" },
-      {
-        href: "https://www.linkedin.com/in/sunchuangyuhuang/",
-        key: "nav.linkedin",
-        external: true,
-      },
-      { href: "https://github.com/rNLKJA", key: "nav.github", external: true },
-      { href: "https://www.instagram.com/chuangyu_hscy/", key: "nav.instagram", external: true },
-      { href: "mailto:huang@rin.contact", key: "nav.email" },
+      { href: "/info/api", key: "nav.api" },
+      { href: "/fun", key: "nav.easterEggs" },
     ],
   },
 ];
@@ -85,9 +100,9 @@ const Footer = () => {
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12 pt-14 pb-10 relative z-10">
         {/* ── Top row — brand + nav columns ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-10 mb-12">
           {/* Brand */}
-          <div className="flex flex-col gap-4">
+          <div className="col-span-2 md:col-span-4 lg:col-span-1 flex flex-col gap-4">
             <div className="flex items-center gap-2.5">
               <div
                 className="rounded-full bg-white flex items-center justify-center flex-shrink-0"
@@ -119,7 +134,7 @@ const Footer = () => {
                 {t(headingKey)}
               </p>
               <ul className="space-y-2.5">
-                {links.map(({ href, key, external, cta }) => (
+                {links.map(({ href, key, external, cta, plain }) => (
                   <li key={key}>
                     {external ? (
                       <a
@@ -133,7 +148,7 @@ const Footer = () => {
                           ↗
                         </span>
                       </a>
-                    ) : href.startsWith("/") ? (
+                    ) : href.startsWith("/") && !plain ? (
                       <Link
                         href={href}
                         className={`text-xs transition-colors duration-200 ${
@@ -157,8 +172,8 @@ const Footer = () => {
                 ))}
               </ul>
 
-              {/* Subtle easter egg hint on the "Pages" column */}
-              {headingKey === "footer.pages" && (
+              {/* Subtle easter egg hint under the "Tools" column */}
+              {headingKey === "footer.tools" && (
                 <p className="text-[9px] text-[#333333] mt-5 leading-relaxed font-mono">
                   · · · <span title="Try /fun/secret">{t("common.thereIsMore")}</span>
                 </p>
