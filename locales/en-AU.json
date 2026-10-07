@@ -1553,7 +1553,14 @@
     "heading": "Work.",
     "description": "Data engineering, cloud infrastructure, mobile, and web platforms.",
     "courseworkLink": "University coursework, revived",
-    "selectFolder": "Select a folder to view project details"
+    "selectFolder": "Select a folder to view project details",
+    "pipeline": {
+      "label": "In the pipeline",
+      "heading": "Planned and in progress",
+      "intro": "Work I am writing up or reviving next. Each one moves into the main list, with its own card, once it ships.",
+      "repo": "Repository",
+      "repoLabel": "{title} repository on GitHub (opens in a new tab)"
+    }
   },
   "strategic": {
     "sectionLabel": "◆ — Framework",
@@ -2281,7 +2288,11 @@
       "revived": "What revived means",
       "timeline": "Timeline",
       "matrix": "Skills matrix",
+      "pipeline": "Coming next",
       "goDeeper": "Go deeper"
+    },
+    "pipeline": {
+      "intro": "Coursework I am rebuilding or still checking. Each one gets a full card, a live demo and a tour once it passes the same checks as the rest."
     },
     "intro": "Each project began as an assignment I submitted at the University of Melbourne. In 2026 I brought them back in three steps, kept separate so it is always clear what is original and what is new.",
     "steps": [
