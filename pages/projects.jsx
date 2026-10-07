@@ -4,6 +4,8 @@ import Link from "next/link";
 import PageHero from "@/components/layout/PageHero";
 import { useI18n } from "@/contexts/I18nContext";
 import { PROJECTS } from "@/components/sections/ProjectsSection";
+import PipelineList from "@/components/sections/PipelineList";
+import { PROJECT_PIPELINE, localisePipeline } from "@/lib/pipeline-data";
 
 const ProjectsSection = dynamic(() => import("@/components/sections/ProjectsSection"), {
   loading: () => <div className="min-h-[480px]" />,
@@ -17,7 +19,7 @@ export function getStaticProps() {
 }
 
 export default function ProjectsPage({ count = 0 }) {
-  const { t } = useI18n();
+  const { t, locale = "en-AU" } = useI18n();
   const ogImage = `https://rin.contact/api/og/?title=${count}%20Projects&subtitle=Data%20engineering%2C%20cloud%2C%20mobile%20%26%20open-source&section=projects`;
   return (
     <>
@@ -69,6 +71,29 @@ export default function ProjectsPage({ count = 0 }) {
           <ProjectsSection />
         </div>
       </div>
+
+      {/* Planned and in-progress work: placeholders until each one ships */}
+      <section
+        aria-labelledby="pipeline-heading"
+        className="bg-white dark:bg-[#0A0A0A] border-t border-[#F0F0F0] dark:border-[#1E1E1E]"
+      >
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-16 md:py-20">
+          <p className="text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C]">
+            <span aria-hidden="true">■ </span>
+            {t("projectsPage.pipeline.label")}
+          </p>
+          <h2
+            id="pipeline-heading"
+            className="mt-3 text-2xl md:text-3xl font-medium text-black dark:text-white"
+          >
+            {t("projectsPage.pipeline.heading")}
+          </h2>
+          <p className="mt-3 mb-8 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+            {t("projectsPage.pipeline.intro")}
+          </p>
+          <PipelineList items={localisePipeline(PROJECT_PIPELINE, locale)} t={t} />
+        </div>
+      </section>
     </>
   );
 }

@@ -1240,7 +1240,14 @@
     "heading": "作品。",
     "description": "数据工程、云基础设施、移动端与Web平台。",
     "courseworkLink": "大学课程作业复活版",
-    "selectFolder": "选择一个文件夹查看项目详情"
+    "selectFolder": "选择一个文件夹查看项目详情",
+    "pipeline": {
+      "label": "筹备中",
+      "heading": "计划中与进行中",
+      "intro": "接下来要整理或复活的作品。上线后会移到上面的主列表，拥有自己的卡片。",
+      "repo": "代码仓库",
+      "repoLabel": "{title} 的 GitHub 仓库（在新标签页打开）"
+    }
   },
   "strategic": {
     "sectionLabel": "◆ — 框架",
@@ -1956,7 +1963,11 @@
       "revived": "“复活”指什么",
       "timeline": "时间线",
       "matrix": "技能矩阵",
+      "pipeline": "即将上线",
       "goDeeper": "了解更多"
+    },
+    "pipeline": {
+      "intro": "正在重建或还在做最后检查的课程作业。通过和其他项目相同的检查之后，每个都会有完整的卡片、在线演示和导览。"
     },
     "intro": "每个项目最初都是我在墨尔本大学提交的作业。2026 年我分三步把它们重新做出来，三步彼此分开，哪些是原作、哪些是新增，一眼就能分清。",
     "steps": [

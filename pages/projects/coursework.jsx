@@ -16,6 +16,8 @@ import ResumeSection from "@/components/resume/ResumeSection";
 import CourseworkCard from "@/components/coursework/CourseworkCard";
 import CourseworkFilters from "@/components/coursework/CourseworkFilters";
 import SkillsMatrix from "@/components/coursework/SkillsMatrix";
+import PipelineList from "@/components/sections/PipelineList";
+import { COURSEWORK_PIPELINE, localisePipeline } from "@/lib/pipeline-data";
 import { fill } from "@/lib/fill";
 import { useI18n } from "@/contexts/I18nContext";
 import { getCoursework } from "@/lib/coursework-data";
@@ -430,6 +432,14 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
               activeSkill={filters.skill}
               onSelectSkill={selectSkill}
             />
+          </ResumeSection>
+
+          {/* 04 Coming next: placeholders until each rebuild ships */}
+          <ResumeSection id="coming-next" n="04" title={t("courseworkPage.sections.pipeline")}>
+            <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+              {t("courseworkPage.pipeline.intro")}
+            </p>
+            <PipelineList items={localisePipeline(COURSEWORK_PIPELINE, locale)} t={t} />
           </ResumeSection>
 
           {/* Go deeper */}
