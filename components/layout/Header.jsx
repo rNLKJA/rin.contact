@@ -6,6 +6,10 @@ import ThemeToggle, { ThemeSegmented } from "@/components/ui/ThemeToggle";
 import LocaleSwitcher, { LocaleSegmented } from "@/components/ui/LocaleSwitcher";
 import { useI18n } from "@/contexts/I18nContext";
 import { useDialog } from "@/hooks/useDialog";
+import { FiBookOpen, FiBriefcase, FiFileText, FiFolder, FiMail, FiUser } from "react-icons/fi";
+// Lucide is the Feather fork: same 24px grid and stroke, for the glyphs
+// Feather lacks (flask, library, newspaper, contact card).
+import { LuContact, LuFlaskConical, LuLibrary, LuNewspaper } from "react-icons/lu";
 
 // ── Logo with double-click glitch easter egg ──────────────────────────────────
 const GLITCH_ALTS = ["rNLKJA", "r̷N̸L̵K̶J̷A̸", "404", "Rin?", "¯\\_(ツ)_/¯", "rNLKJA"];
@@ -67,23 +71,95 @@ function LogoWithGlitch() {
   );
 }
 
+// `icon` is used by the desktop bar only; the mobile menu stays text-first.
 const NAV_LINKS = [
-  { href: "/career", key: "nav.career" },
-  { href: "/projects", key: "nav.projects" },
-  { href: "/projects/coursework", key: "nav.coursework" },
-  { href: "/lab", key: "nav.lab" },
-  { href: "/knowledge", key: "nav.knowledge" },
-  { href: "/blog", key: "nav.blog" },
-  { href: "/about", key: "nav.about" },
-  { href: "/resume", key: "nav.resume" },
-  { href: "/#contact", key: "nav.contact" },
+  { href: "/career", key: "nav.career", icon: FiBriefcase },
+  { href: "/projects", key: "nav.projects", icon: FiFolder },
+  { href: "/projects/coursework", key: "nav.coursework", icon: FiBookOpen },
+  { href: "/lab", key: "nav.lab", icon: LuFlaskConical },
+  { href: "/knowledge", key: "nav.knowledge", icon: LuLibrary },
+  { href: "/blog", key: "nav.blog", icon: LuNewspaper },
+  { href: "/about", key: "nav.about", icon: FiUser },
+  { href: "/resume", key: "nav.resume", icon: FiFileText },
+  { href: "/#contact", key: "nav.contact", icon: FiMail },
 ];
 
 // Standalone page links — rendered as distinct CTA buttons, not inline nav items
 const PAGE_LINKS = [
-  { href: "/tools/card", key: "nav.card", titleKey: "nav.businessCard" },
+  { href: "/tools/card", key: "nav.card", titleKey: "nav.businessCard", icon: LuContact },
   { href: "/hire-me", key: "nav.hireMe", titleKey: "nav.hireMe", cta: true },
 ];
+
+// ── Desktop icon links ────────────────────────────────────────────────────────
+// Every icon keeps a fixed 36px slot, so nothing in the bar moves on hover and
+// the pointer always lands on the icon it was aimed at. The label shows as a
+// hairline tip under the icon: absolutely positioned, pointer-events off (it
+// can never hold an item open), opacity only (75ms hover delay, so a sweep
+// along the bar does not flash every tip; keyboard focus shows it at once).
+// The tip text is never display:none, so it stays the link's accessible name.
+// Hover styles sit behind (hover: hover): touch screens have no hover, so a
+// tap never just reveals a tip, and on (hover: none) the sections drop their
+// icons and show the label as plain text, the way the bar read before.
+// Reduced motion: the global rule drops the transition, the tip just appears.
+const TIP =
+  "pointer-events-none absolute left-1/2 top-full z-10 mt-1.5 -translate-x-1/2 border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#0A0A0A] px-2 py-1 text-[10px] leading-none opacity-0 transition-opacity duration-150 group-focus-visible:opacity-100 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-hover:delay-75";
+
+// A section: round ghost icon. The current page shows its label inline (it
+// never changes while hovering, so it moves nothing) with the red dot.
+function NavIconLink({ href, icon: Icon, label, active }) {
+  return (
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className={`group relative inline-flex items-center h-9 px-[9px] [@media(hover:none)]:px-1 rounded-full transition-colors duration-200 ${
+        active
+          ? "text-[#CC0000] dark:text-[#FF3C3C]"
+          : "text-[#595959] dark:text-[#AAAAAA] [@media(hover:hover)]:hover:text-black dark:[@media(hover:hover)]:hover:text-white [@media(hover:hover)]:hover:bg-[#F5F5F5] dark:[@media(hover:hover)]:hover:bg-[#1A1A1A] focus-visible:text-black dark:focus-visible:text-white"
+      }`}
+    >
+      <Icon
+        size={18}
+        strokeWidth={1.5}
+        aria-hidden="true"
+        className="flex-shrink-0 [@media(hover:none)]:hidden"
+      />
+      <span
+        className={
+          active
+            ? "pl-2 pr-1 [@media(hover:none)]:px-0"
+            : `${TIP} [@media(hover:none)]:static [@media(hover:none)]:mt-0 [@media(hover:none)]:translate-x-0 [@media(hover:none)]:border-0 [@media(hover:none)]:p-0 [@media(hover:none)]:text-[11px] [@media(hover:none)]:opacity-100`
+        }
+      >
+        {label}
+      </span>
+      {active && (
+        <span
+          aria-hidden="true"
+          className="absolute left-1/2 -translate-x-1/2 bottom-[2px] w-[3px] h-[3px] bg-[#FF3C3C]"
+        />
+      )}
+    </Link>
+  );
+}
+
+// A tool (the card): a square hairline button, like the theme toggle and the
+// language switch beside it, with the same tip. Current page = red border.
+function ToolIconLink({ href, icon: Icon, label, active, className = "" }) {
+  return (
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className={`group relative inline-flex items-center justify-center w-9 h-9 border transition-colors duration-200 ${className} ${
+        active
+          ? "border-[#FF3C3C] text-[#CC0000] dark:text-[#FF3C3C]"
+          : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
+      }`}
+    >
+      <Icon size={18} strokeWidth={1.5} aria-hidden="true" />
+      <span className={TIP}>{label}</span>
+    </Link>
+  );
+}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -207,37 +283,31 @@ export default function Header() {
 
         {/* ── Desktop nav ── shown from lg: nine sections plus the page links do
             not fit a tablet-width bar, so 768-1023px keeps the burger menu.
-            Tight item padding lets the full bar fit at 1024px. */}
+            Sections are fixed-width icons with a label tip on hover/focus (see
+            NavIconLink); only the current page shows its label inline. The
+            group sits beside the logo; the settings cluster (all 36px square
+            hairline buttons) and the CTA hold the right edge. */}
         <nav
-          className="hidden lg:flex flex-row items-center gap-0 xl:gap-0.5 whitespace-nowrap text-[11px] tracking-widest uppercase"
+          className="hidden lg:flex flex-1 min-w-0 flex-row items-center ml-6 xl:ml-10 whitespace-nowrap text-[11px] tracking-widest uppercase"
           aria-label={t("nav.primaryNav")}
         >
-          {NAV_LINKS.map(({ href, key }) => {
-            const active = isActive(href);
-            return (
-              <Link
+          <div className="flex items-center gap-1 [@media(hover:none)]:gap-0 mr-4">
+            {NAV_LINKS.map(({ href, key, icon }) => (
+              <NavIconLink
                 key={key}
                 href={href}
-                aria-current={active ? "page" : undefined}
-                className={`relative px-1.5 xl:px-2 py-1.5 rounded-full transition-colors duration-200 ${
-                  active
-                    ? "text-[#CC0000] dark:text-[#FF3C3C]"
-                    : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
-                }`}
-              >
-                {t(key)}
-                {active && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-1/2 -translate-x-1/2 bottom-[2px] w-[3px] h-[3px] bg-[#FF3C3C]"
-                  />
-                )}
-              </Link>
-            );
-          })}
+                icon={icon}
+                label={t(key)}
+                active={isActive(href)}
+              />
+            ))}
+          </div>
 
-          {/* Thin separator */}
-          <span className="h-3.5 w-px bg-[#E0E0E0] dark:bg-[#3D3D3D] mx-1.5" aria-hidden="true" />
+          {/* Thin separator — ml-auto pushes the settings cluster right */}
+          <span
+            className="ml-auto mr-2 h-3.5 w-px bg-[#E0E0E0] dark:bg-[#3D3D3D]"
+            aria-hidden="true"
+          />
 
           {/* Locale switcher */}
           <LocaleSwitcher />
@@ -245,37 +315,32 @@ export default function Header() {
           {/* Theme toggle — desktop */}
           <ThemeToggle className="ml-1" />
 
-          {/* Page links — card + hire-me */}
-          {PAGE_LINKS.map(({ href, key, titleKey, cta }) => {
+          {/* Page links — card (square icon, like the toggles) + hire-me (CTA) */}
+          {PAGE_LINKS.map(({ href, key, titleKey, cta, icon }) => {
             const active = isActive(href);
-            return (
+            return cta ? (
               <Link
                 key={key}
                 href={href}
                 title={t(titleKey)}
                 aria-current={active ? "page" : undefined}
-                className={
-                  cta
-                    ? `px-3.5 py-1.5 border border-[#FF3C3C] transition-colors duration-200 ${
-                        active
-                          ? "bg-[#FF3C3C] text-white"
-                          : "text-accent-ink hover:bg-[#FF3C3C] hover:text-white"
-                      }`
-                    : `relative px-1.5 xl:px-2 py-1.5 rounded-full transition-colors duration-200 ${
-                        active
-                          ? "text-[#CC0000] dark:text-[#FF3C3C]"
-                          : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
-                      }`
-                }
+                className={`ml-2 inline-flex items-center h-9 px-3.5 border border-[#FF3C3C] transition-colors duration-200 ${
+                  active
+                    ? "bg-[#FF3C3C] text-white"
+                    : "text-accent-ink hover:bg-[#FF3C3C] hover:text-white"
+                }`}
               >
                 {t(key)}
-                {!cta && active && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-1/2 -translate-x-1/2 bottom-[2px] w-[3px] h-[3px] bg-[#FF3C3C]"
-                  />
-                )}
               </Link>
+            ) : (
+              <ToolIconLink
+                key={key}
+                href={href}
+                icon={icon}
+                label={t(titleKey)}
+                active={active}
+                className="ml-1"
+              />
             );
           })}
         </nav>

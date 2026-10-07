@@ -22,7 +22,8 @@ export function useSwitchLocale() {
   );
 }
 
-/** Compact header button: names the other language in its own script and voice. */
+/** Compact header button: names the other language in its own script and voice.
+ * A 36px square hairline box, matching the theme toggle beside it. */
 export default function LocaleSwitcher() {
   const { locale = "en-AU" } = useRouter();
   const switchLocale = useSwitchLocale();
@@ -35,9 +36,11 @@ export default function LocaleSwitcher() {
       onClick={() => switchLocale(nextLocale)}
       lang={nextLocale}
       aria-label={nextLocale === "zh-Hans" ? "中文" : "English"}
-      className="px-2.5 py-1 text-[11px] tracking-widest uppercase
+      className="inline-flex items-center justify-center h-9 min-w-9 px-2.5 text-[11px] tracking-widest uppercase
+                 border border-[#E0E0E0] dark:border-[#3D3D3D]
                  text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white
-                 hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-colors duration-200 rounded-full"
+                 hover:border-black dark:hover:border-white
+                 hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-colors duration-200"
     >
       {label}
     </button>
