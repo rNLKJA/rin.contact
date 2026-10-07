@@ -16,6 +16,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useI18n } from "@/contexts/I18nContext";
+import { useFooterClearance } from "@/hooks/useFooterClearance";
 import { GUIDE_OPEN_EVENT, useGuideProgress } from "@/hooks/useGuideProgress";
 import {
   GUIDE_HIDDEN_ON,
@@ -132,6 +133,9 @@ export default function GuideRoot() {
     requestAnimationFrame(focusMain);
   }, [update]);
 
+  // Stop the launcher at the footer's top edge rather than letting it sit on it.
+  const footerClearance = useFooterClearance([path]);
+
   if (state.hidden || blocked || !ready) return null;
 
   const total = STOPS.length;
@@ -146,7 +150,8 @@ export default function GuideRoot() {
           type="button"
           onClick={open}
           aria-label={t("guide.launch")}
-          className="fixed bottom-4 left-4 z-40 print:hidden flex items-center gap-2 h-12 min-w-[48px] p-[6px] sm:pr-3
+          style={{ bottom: `calc(1rem + ${footerClearance}px)` }}
+          className="fixed left-4 z-40 print:hidden flex items-center gap-2 h-12 min-w-[48px] p-[6px] sm:pr-3
                      border-2 border-black dark:border-white bg-white dark:bg-[#0A0A0A] text-black dark:text-white
                      hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-colors duration-150 animate-enter
                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF3C3C]"
