@@ -35,6 +35,16 @@
     "fullProfile": "完整主页",
     "coursework": "课程作业",
     "history": "网站历史",
+    "dsExplainers": "数据科学小讲解",
+    "now": "近况",
+    "uses": "我的工具",
+    "colophon": "本站构成",
+    "changelog": "更新日志",
+    "roadmap": "路线图",
+    "accessibility": "无障碍",
+    "siteMap": "网站地图",
+    "rss": "RSS 订阅",
+    "easterEggs": "彩蛋",
     "openMenu": "打开菜单",
     "closeMenu": "关闭菜单",
     "menuLabel": "网站菜单",
@@ -172,6 +182,10 @@
   "footer": {
     "navigate": "导航",
     "pages": "页面",
+    "work": "工作",
+    "learn": "学习",
+    "site": "关于本站",
+    "tools": "工具与彩蛋",
     "brandName": "rNLKJA"
   },
   "about": {

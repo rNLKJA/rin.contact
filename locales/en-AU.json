@@ -35,6 +35,16 @@
     "fullProfile": "Full Profile",
     "coursework": "Coursework",
     "history": "History",
+    "dsExplainers": "Data science explainers",
+    "now": "Now",
+    "uses": "Uses",
+    "colophon": "Colophon",
+    "changelog": "Changelog",
+    "roadmap": "Roadmap",
+    "accessibility": "Accessibility",
+    "siteMap": "Site map",
+    "rss": "RSS feed",
+    "easterEggs": "Easter eggs",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "menuLabel": "Site menu",
@@ -177,6 +187,10 @@
   "footer": {
     "navigate": "Navigate",
     "pages": "Pages",
+    "work": "Work",
+    "learn": "Learn",
+    "site": "This site",
+    "tools": "Tools & fun",
     "brandName": "rNLKJA"
   },
   "about": {
