@@ -265,6 +265,7 @@ export const PROJECTS = [
     summary:
       "Automated flow cytometry data analysis using cloud and HPC, developed test infrastructure for improved reproducibility, and contributed to the open-source celseq2 workflow toolkit.",
     impact: "Reduced manual processing · celseq2 open-source contribution",
+    caseStudy: "/projects/wehi-genomics",
   },
   {
     id: "factcheck",
