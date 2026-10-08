@@ -22,6 +22,18 @@ function jumpTo(el) {
 }
 
 /**
+ * Jump now, then once more on the next frame. Sections use content-visibility,
+ * so a section that comes into view during the first jump renders at its real
+ * height and can move the target; the second jump settles on it.
+ */
+function settleOn(el) {
+  jumpTo(el);
+  return requestAnimationFrame(() => {
+    if (el.isConnected) jumpTo(el);
+  });
+}
+
+/**
  * The skills atlas: search, area chips, an evidence-kind select and sort, then
  * one group per area with a disclosure row per skill. Filter state lives in the
  * URL (?q=&domain=&kind=&sort=&skill=) and is owned by the page; this component
@@ -89,10 +101,10 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
   const jumpToSkill = useCallback(
     (id, onDone) => {
       if (!byId[id]) return undefined;
-      const frame = requestAnimationFrame(() => {
+      let frame = requestAnimationFrame(() => {
         flushSync(() => openRow(id));
         const row = document.getElementById(`skill-${id}`);
-        if (row) jumpTo(row);
+        if (row) frame = settleOn(row);
         toggles.current[id]?.focus({ preventScroll: true });
         onDone?.();
       });
@@ -118,13 +130,20 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
   // A skill chosen elsewhere on the page (timeline, subjects, credentials).
   useEffect(() => (jump ? jumpToSkill(jump.id) : undefined), [jump, jumpToSkill]);
 
-  // #skill-<id> links work without JavaScript; with it, the matching row opens.
+  // #skill-<id>, #subject-<code> and #year-<y> links work without JavaScript.
+  // With it, a skill's row opens, and the jump is made instant and settled
+  // (see settleOn), since estimated section heights can move the target.
   useEffect(() => {
+    let frame = 0;
     const onHash = () => {
-      const m = window.location.hash.match(/^#skill-([a-z0-9-]+)$/);
-      if (m && byId[m[1]]) openRow(m[1]);
+      const target = window.location.hash.slice(1);
+      if (!/^(skill|subject|year)-[A-Za-z0-9-]+$/.test(target)) return;
+      const skill = target.startsWith("skill-") ? target.slice("skill-".length) : null;
+      if (skill && byId[skill]) flushSync(() => openRow(skill));
+      const el = document.getElementById(target);
+      if (el) frame = settleOn(el);
     };
-    const frame = requestAnimationFrame(onHash);
+    frame = requestAnimationFrame(onHash);
     window.addEventListener("hashchange", onHash);
     return () => {
       cancelAnimationFrame(frame);
@@ -293,7 +312,10 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
           <section
             key={d.id}
             aria-labelledby={`area-${d.id}`}
-            className="[content-visibility:auto] [contain-intrinsic-size:auto_720px]"
+            // Off-screen groups skip rendering. The size estimate follows the
+            // row count, so jumps past them land close before they render.
+            className="[content-visibility:auto]"
+            style={{ containIntrinsicSize: `auto ${160 + rows.length * 68}px` }}
           >
             <div className="pb-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E]">
               <p className="flex items-center gap-2 font-mono text-[10px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#FF3C3C]">

@@ -7,6 +7,16 @@ const K = "skillsPage.subjects";
 const LINK =
   "inline-flex min-h-[32px] items-center text-[13px] text-[#1A1A1A] dark:text-[#DDDDDD] underline decoration-[#D0D0D0] dark:decoration-[#555555] underline-offset-4 hover:text-[#CC0000] hover:decoration-current dark:hover:text-[#FF3C3C] transition-colors duration-200 [overflow-wrap:anywhere]";
 
+/**
+ * A rough height for a degree's subject list, so content-visibility reserves
+ * about the right space before it renders and anchor jumps land close.
+ */
+function estimatedHeight(years) {
+  const terms = years.reduce((n, y) => n + y.terms.length, 0);
+  const rows = years.reduce((n, y) => n + y.terms.reduce((m, tm) => m + tm.subjects.length, 0), 0);
+  return 80 + years.length * 48 + terms * 40 + rows * 124;
+}
+
 function termHeading(t, term) {
   if (term === null) return t(`${K}.yearOnly`);
   if (term === "winter") return t(`${K}.winter`);
@@ -38,7 +48,8 @@ export default function SubjectsList({ subjects, evidence, skills, onSelectSkill
           <section
             key={level}
             aria-labelledby={`subjects-${level}`}
-            className="[content-visibility:auto] [contain-intrinsic-size:auto_1600px]"
+            className="[content-visibility:auto]"
+            style={{ containIntrinsicSize: `auto ${estimatedHeight(years)}px` }}
           >
             <h3
               id={`subjects-${level}`}

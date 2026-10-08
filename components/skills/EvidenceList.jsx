@@ -54,8 +54,10 @@ export function SkillChip({ id, label, onSelect, lang }) {
 
 /**
  * One evidence item: label and meta, linked to where the evidence lives.
- * External links open in a new tab and say so. Blog posts are English only, so
- * on the Chinese page they link to the English post and carry a tag.
+ * External links open in a new tab and say so. Blog posts are written in
+ * English only: on the Chinese page they keep the zh-Hans chrome (the post
+ * page says the body is English), carry an "In English" tag and mark the
+ * title lang="en".
  */
 export function EvidenceLink({ item, hideMeta = false }) {
   const { t, locale } = useI18n();
@@ -101,14 +103,6 @@ export function EvidenceLink({ item, hideMeta = false }) {
       <a href={item.href.slice("/skills".length)} className={className}>
         {body}
       </a>
-    );
-  }
-  if (englishOnly) {
-    // /blog builds in English only, so /zh-Hans/blog/* does not exist.
-    return (
-      <Link href={item.href} locale="en-AU" hrefLang="en" className={className}>
-        {body}
-      </Link>
     );
   }
   return (
