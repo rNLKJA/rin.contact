@@ -782,7 +782,7 @@ const META = {
     description:
       "A thorough, first-principles explainer of clustering — unsupervised grouping, distance and similarity metrics, k-means and its objective, choosing k, where k-means fails, hierarchical clustering and dendrograms, density-based methods (DBSCAN), and evaluating clusters with the silhouette. Advanced tier, anchored to Rin Huang's UniMelb Multivariate Statistics; pairs with the PCA page.",
     course: "Multivariate Statistics — Clustering",
-    courseCode: "Master of Data Science (83/H1)",
+    courseCode: "Master of Data Science",
     level: "Postgraduate",
     learned: "UniMelb, 2023–2024",
     applied: "Segmentation · EDA",
@@ -812,7 +812,7 @@ const META = {
     description:
       "对聚类的详尽、第一性原理式讲解——无监督分组、距离与相似度度量、k-means 及其目标函数、k 的选择、k-means 何时失效、层次聚类与树状图、基于密度的方法（DBSCAN），以及用轮廓系数评估聚类。进阶层，锚定 Rin Huang 的墨尔本大学多元统计；与 PCA 页成对。",
     course: "多元统计——聚类",
-    courseCode: "数据科学硕士（83/H1）",
+    courseCode: "数据科学硕士",
     level: "研究生",
     learned: "墨尔本大学，2023–2024",
     applied: "分群 · 探索性分析",

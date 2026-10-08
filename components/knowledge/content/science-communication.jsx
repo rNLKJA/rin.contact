@@ -524,9 +524,9 @@ const META = {
     subtitle:
       "The most under-rated skill in data science. A correct analysis nobody understands or trusts changes nothing — communication is what turns analysis into a decision.",
     description:
-      "A thorough, practical explainer of communicating data and analysis to decision-makers — knowing your audience, leading with the recommendation, the situation-complication-resolution arc, answering the 'so what', decision-driven visuals, earning trust, and driving to action. Advanced tier, anchored to Rin Huang's UniMelb Communicating Science at Work (84/H1) and his current government-analyst work.",
+      "A thorough, practical explainer of communicating data and analysis to decision-makers — knowing your audience, leading with the recommendation, the situation-complication-resolution arc, answering the 'so what', decision-driven visuals, earning trust, and driving to action. Advanced tier, anchored to Rin Huang's UniMelb Communicating Science at Work and his current government-analyst work.",
     course: "Communicating Science at Work",
-    courseCode: "Master of Data Science (84/H1)",
+    courseCode: "Master of Data Science",
     level: "Postgraduate",
     learned: "UniMelb, 2024",
     applied: "Ministerial & exec briefings",
@@ -551,9 +551,9 @@ const META = {
     subtitle:
       "数据科学中最被低估的技能。一个没人理解或信任的正确分析改变不了任何事——传播才是把分析变成决策的东西。",
     description:
-      "对「向决策者传达数据与分析」的详尽、实用讲解——了解你的受众、以建议开场、情境-冲突-化解的叙事弧、回答「那又如何」、以决策为导向的可视化、赢得信任，以及推动行动。进阶层，锚定 Rin Huang 的墨尔本大学《工作中的科学传播》（84/H1）及其当前的政府分析师工作。",
+      "对「向决策者传达数据与分析」的详尽、实用讲解——了解你的受众、以建议开场、情境-冲突-化解的叙事弧、回答「那又如何」、以决策为导向的可视化、赢得信任，以及推动行动。进阶层，锚定 Rin Huang 的墨尔本大学《工作中的科学传播》及其当前的政府分析师工作。",
     course: "工作中的科学传播",
-    courseCode: "数据科学硕士（84/H1）",
+    courseCode: "数据科学硕士",
     level: "研究生",
     learned: "墨尔本大学，2024",
     applied: "部长级与高管简报",

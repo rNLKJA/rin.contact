@@ -766,9 +766,9 @@ const META = {
     subtitle:
       "How the web actually works — the request that travels from a click to a server and back, and the handful of technologies that turn it into the page you're reading right now.",
     description:
-      "A thorough, first-principles explainer of web information technology — the client/server request-response cycle, HTTP, the HTML/CSS/JS front-end triad and the DOM, client vs server rendering, REST APIs and JSON, the full stack down to the database, and web security basics. Foundation tier, anchored to Rin Huang's UniMelb degree (82/H1) — and to this very site.",
+      "A thorough, first-principles explainer of web information technology — the client/server request-response cycle, HTTP, the HTML/CSS/JS front-end triad and the DOM, client vs server rendering, REST APIs and JSON, the full stack down to the database, and web security basics. Foundation tier, anchored to Rin Huang's UniMelb degree — and to this very site.",
     course: "Web Information Technology",
-    courseCode: "Bachelor of Science · Data Science core (82/H1)",
+    courseCode: "Bachelor of Science · Data Science core",
     level: "Undergraduate",
     learned: "UniMelb, 2019–2022",
     applied: "Built rin.contact · dashboards",
@@ -793,9 +793,9 @@ const META = {
     subtitle:
       "Web 究竟如何运作——从一次点击出发、抵达服务器再返回的那个请求，以及把它变成你此刻正在阅读的页面的那一小撮技术。",
     description:
-      "对 Web 信息技术的详尽、第一性原理式讲解——客户端/服务器的请求-响应循环、HTTP、HTML/CSS/JS 前端三件套与 DOM、客户端 vs 服务器渲染、REST API 与 JSON、从前端一路到数据库的全栈，以及 Web 安全基础。基础层，锚定 Rin Huang 的墨尔本大学学位（82/H1）——也锚定这个网站本身。",
+      "对 Web 信息技术的详尽、第一性原理式讲解——客户端/服务器的请求-响应循环、HTTP、HTML/CSS/JS 前端三件套与 DOM、客户端 vs 服务器渲染、REST API 与 JSON、从前端一路到数据库的全栈，以及 Web 安全基础。基础层，锚定 Rin Huang 的墨尔本大学学位——也锚定这个网站本身。",
     course: "Web 信息技术",
-    courseCode: "理学学士 · 数据科学核心（82/H1）",
+    courseCode: "理学学士 · 数据科学核心",
     level: "本科",
     learned: "墨尔本大学，2019–2022",
     applied: "构建 rin.contact · 仪表板",

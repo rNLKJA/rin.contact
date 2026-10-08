@@ -682,7 +682,7 @@ const META = {
     description:
       "A thorough, first-principles explainer of Principal Component Analysis and dimensionality reduction — the curse of dimensionality, variance as information, the covariance matrix, principal components as its eigenvectors, the SVD route, choosing the number of components, projection and reconstruction, and PCA's limits. Advanced tier, anchored to Rin Huang's UniMelb Multivariate Statistics.",
     course: "Multivariate Statistics — PCA",
-    courseCode: "Master of Data Science (83/H1)",
+    courseCode: "Master of Data Science",
     level: "Postgraduate",
     learned: "UniMelb, 2023–2024",
     applied: "Pre-clustering · compression · EDA",
@@ -709,7 +709,7 @@ const META = {
     description:
       "对主成分分析与降维的详尽、第一性原理式讲解——维度灾难、作为信息的方差、协方差矩阵、作为其特征向量的主成分、SVD 路径、如何选择成分数、投影与重构，以及 PCA 的局限。进阶层，锚定 Rin Huang 的墨尔本大学多元统计。",
     course: "多元统计——PCA",
-    courseCode: "数据科学硕士（83/H1）",
+    courseCode: "数据科学硕士",
     level: "研究生",
     learned: "墨尔本大学，2023–2024",
     applied: "聚类前处理 · 压缩 · 探索性分析",

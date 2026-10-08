@@ -519,7 +519,7 @@ const META = {
     description:
       "A thorough, first-principles explainer of applied data science — the end-to-end project lifecycle (CRISP-DM), framing the right question, the data and modelling steps, deployment and monitoring, communication, ethics, and the problem-first philosophy. Foundation tier and the connective synthesis page for Rin Huang's knowledge section.",
     course: "Applied Data Science",
-    courseCode: "Bachelor of Science · Data Science core (79)",
+    courseCode: "Bachelor of Science · Data Science core",
     level: "Undergraduate",
     learned: "UniMelb, 2019–2022",
     applied: "Every project, end to end",
@@ -546,7 +546,7 @@ const META = {
     description:
       "对应用数据科学的详尽、第一性原理式讲解——端到端的项目生命周期（CRISP-DM）、框定正确的问题、数据与建模步骤、部署与监控、沟通、伦理，以及问题优先的哲学。基础层，也是 Rin Huang 知识板块的连接与综合页。",
     course: "应用数据科学",
-    courseCode: "理学学士 · 数据科学核心（79）",
+    courseCode: "理学学士 · 数据科学核心",
     level: "本科",
     learned: "墨尔本大学，2019–2022",
     applied: "每个项目，端到端",
