@@ -70,13 +70,13 @@
     "srName": " — Sunchuangyu Huang · Huang Sunchuangyu · 黄孙创宇 · 黄孙 Rin · HUANG SUNCHUANGYU · HUANGSUNCHUANGYU · HUANG SUN CHUANG YU",
     "subtitle": "Sunchuangyu Huang",
     "pronouns": "He/Him · Adelaide & Melbourne",
-    "bio": "From climate risk modelling at CSIRO to ministerial dashboards for the SA Government, from genomics pipelines at WEHI to a mental health mobile app at UniMelb — I work at the edges of disciplines where data, strategy, and engineering intersect. Generalist by nature, specialist by discipline.",
+    "bio": "From climate risk modelling at CSIRO to ministerial dashboards for the SA Government, and from genomics research software at WEHI to a mental health mobile app at UniMelb, I work at the edges of disciplines where data, strategy, and engineering intersect. Generalist by nature, specialist by discipline.",
     "ctaCareer": "Career Path",
     "ctaContact": "Get in Touch"
   },
   "heroRoles": [
     "Senior Data Analyst @ SAPOL",
-    "Software Engineer Intern @ WEHI",
+    "Former Research Software Engineer @ WEHI",
     "Data Science Consultant @ CSIRO",
     "Data Analyst & Agile Leader @ CSL",
     "Co-Founder & Dev Lead @ Mapiva",
@@ -201,7 +201,7 @@
     "intro": {
       "eyebrow": "Profile",
       "heading": "A problem-first analyst who works across the edges.",
-      "body1": "I am a data analyst and data scientist based in Adelaide, currently working at ASO7 level with the South Australia Police. Since 2022 my work has moved across climate risk modelling at CSIRO, ministerial dashboards for the South Australian Government, genomics pipelines at WEHI, and a mental health app at the University of Melbourne. Generalist by nature, specialist by discipline.",
+      "body1": "I am a data analyst and data scientist based in Adelaide, currently working at ASO7 level with the South Australia Police. Since 2022 my work has moved across climate risk modelling at CSIRO, ministerial dashboards for the South Australian Government, genomics research software at WEHI, and a mental health app at the University of Melbourne. Generalist by nature, specialist by discipline.",
       "body2": "The thread through all of it is the same. I start from the decision that needs making and the smallest amount of data needed to make it well, then reach for the right tool rather than the fashionable one. Problem first, not model first. That habit is what lets the same person be useful in a research lab, a government intelligence team, and an engineering project.",
       "domainsLabel": "Where I work"
     }
@@ -290,7 +290,7 @@
       "skills": "Skills",
       "certifications": "Certifications"
     },
-    "profileBody": "Senior Data Analyst working where data, strategy, and engineering meet. I translate complex data into decision-ready intelligence across government, research, and engineering, from climate-risk modelling at CSIRO and genomics pipelines at WEHI to ministerial reporting in the South Australian government. Problem-first, not model-first: I start from the decision that needs making and the minimum data to make it well. Generalist by nature, specialist by discipline.",
+    "profileBody": "Senior Data Analyst working where data, strategy, and engineering meet. I translate complex data into decision-ready intelligence across government, research, and engineering, from climate-risk modelling at CSIRO and genomics research software at WEHI to ministerial reporting in the South Australian government. Problem-first, not model-first: I start from the decision that needs making and the minimum data to make it well. Generalist by nature, specialist by discipline.",
     "objective": {
       "title": "Objective",
       "body": "Statistically rigorous, strategically framed data scientist at the intersection of analytics, intelligence, and responsible AI — turning complex data into decision-ready intelligence for government, research, and high-stakes settings. Open to senior data-science and AI-governance roles in Australia and remote."
@@ -2205,7 +2205,7 @@
         "Added SAPOL role",
         "-removed 'junior', +added 'senior'",
         "Merged MoodQ research branch",
-        "WEHI internship complete",
+        "Completed WEHI research software role",
         "Master of Data Science conferred"
       ],
       "aheadNote": "5 commits ahead of origin/main"

@@ -171,10 +171,10 @@ const PROJECTS_SCHEMA = {
       position: 7,
       item: {
         "@type": "SoftwareSourceCode",
-        name: "Flow Cytometry Analysis Pipeline",
+        name: "Genomics Metadata Multiplexing (GMM)",
         description:
-          "Automated flow cytometry data analysis using cloud and HPC, with test infrastructure for reproducibility and open-source contributions to celseq2.",
-        programmingLanguage: "Python",
+          "An R Shiny tool, built to run on WEHI's Milton HPC, that builds CEL-Seq2 sample sheets for plate-based single-cell sequencing and merges FACS index-sort metadata with plate layouts.",
+        programmingLanguage: ["R", "Python"],
         author: { "@id": "https://rin.contact/#person" },
       },
     },
@@ -641,8 +641,8 @@ export default function Home() {
         }
         ogDescription={
           isZh
-            ? "Rin Huang（黄孙创宇）的个人主页。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任 WEHI 软件工程实习生（数据科学）和 CSIRO 数据科学产业顾问。职业经历、项目成果、技能与联系方式。"
-            : "Official portfolio of Rin Huang (黄孙创宇), ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously a Software Engineer Intern (Data Science) at WEHI and a Data Science Industrial Consultant at CSIRO. Career history, projects, skills and contact."
+            ? "Rin Huang（黄孙创宇）的个人主页。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任 WEHI 研究软件工程师和 CSIRO 数据科学产业顾问。职业经历、项目成果、技能与联系方式。"
+            : "Official portfolio of Rin Huang (黄孙创宇), ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously a Research Software Engineer at WEHI and a Data Science Industrial Consultant at CSIRO. Career history, projects, skills and contact."
         }
         locale={locale}
         extraMeta={[

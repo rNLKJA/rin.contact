@@ -90,8 +90,9 @@ const RIN_BUBBLES = [
     color: "#555555",
     domain: "Pre-career",
     period: "Feb–Jul 2024",
-    detail: "Software Engineer Intern (Data Science) · Cloud HPC · celseq2 open-source",
-    why: "Junior. Not officially workforce — internship. Automated genomics pipelines, celseq2 contributor.",
+    detail:
+      "Research Software Engineer · GMM sample-sheet tooling · R Shiny, built to run on Milton HPC",
+    why: "Junior and pre-career, not counted as workforce. GMM sample-sheet tooling and a merged contribution to celseq-sample-sheet-generator.",
   },
   {
     id: "moodq",
@@ -326,7 +327,7 @@ const FP_TREE = {
         {
           label: "Data pipelines",
           proof:
-            "Flow cytometry automation + celseq2 open-source contributions (WEHI) · Multi-threaded scraper: ~25,000 US presidential documents (personal research) · HPLC result automation (CSL Behring).",
+            "Sample-sheet tooling that merges flow-cytometry sort metadata with plate layouts (WEHI) · Multi-threaded scraper: ~25,000 US presidential documents (personal research) · HPLC result automation (CSL Behring).",
         },
       ],
     },
@@ -835,9 +836,9 @@ function BubblePanel() {
                 {" "}
                 (APSC Career Pathfinder, 2024)
               </span>
-              . CSL, CSIRO, WEHI and RA1/MoodQ are not counted as workforce — internships, capstone,
-              casual RA1. At Year 1, Rin sits +2.5 seniority grades above the benchmark. Rin reached
-              ASO7 at 26.
+              . CSL, CSIRO, WEHI and RA1/MoodQ are not counted as workforce: industry placement,
+              capstone, pre-career research software and casual RA1. At Year 1, Rin sits +2.5
+              seniority grades above the benchmark. Rin reached ASO7 at 26.
             </p>
           </div>
           <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">

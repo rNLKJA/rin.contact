@@ -1,6 +1,6 @@
 /**
  * /projects/wehi-genomics: a case study of GMM (Genomics Metadata Multiplexing),
- * the R Shiny app Rin helped build during his WEHI student internship.
+ * the R Shiny app Rin helped build as a Research Software Engineer at WEHI.
  * Copy lives in lib/wehi-genomics-data.js ({ en, zh } per string).
  *
  * Both GMM repositories are public, so the page links to them. Credits follow

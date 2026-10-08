@@ -117,12 +117,12 @@ const DOMAINS = [
     label: "Research Engineering",
     color: "#14B8A6",
     description:
-      "Cloud and HPC-based bioinformatics pipelines, test infrastructure for reproducibility, and open-source contributions in genomics and medical research.",
+      "Research software for genomics labs: sample-sheet tooling that merges flow-cytometry sort metadata with plate layouts, checked against test inputs with known outputs and shared in public repositories.",
     skills: [
-      "Cloud HPC",
-      "Bioinformatics pipelines",
-      "celseq2",
-      "Flow cytometry automation",
+      "Milton HPC (built to run on)",
+      "R Shiny",
+      "Sample-sheet tooling",
+      "FACS index-sort metadata",
       "Reproducibility frameworks",
     ],
   },
@@ -352,8 +352,8 @@ export default function SkillsSection() {
 
         <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed mt-7">
           I have found that the most interesting problems sit at the edges of disciplines. My work
-          has taken me from flow cytometry pipelines at WEHI to ministerial dashboards at CBS to
-          mobile health apps at UniMelb — each domain adding a new lens to how I approach data,
+          has taken me from sample-sheet tooling at WEHI to ministerial dashboards at CBS to mobile
+          health apps at UniMelb, and each domain has added a new lens to how I approach data,
           systems, and people. The thread connecting it all is a belief that rigorous thinking and
           continuous improvement compound over time.
         </p>
