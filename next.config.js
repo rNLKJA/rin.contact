@@ -67,6 +67,9 @@ const nextConfig = {
       ["404.404", "fun/float404"],
       // Short link for resumes and posts; the page lives under /projects.
       ["coursework", "projects/coursework"],
+      // The Forage write-up folded into its Projects card. i18n prefixes these,
+      // so /zh-Hans/projects/virtual-internships goes to /zh-Hans/projects too.
+      ["projects/virtual-internships", "projects"],
     ];
     return moved.flatMap(([from, to]) => [
       { source: `/${from}`, destination: `/${to}`, permanent: true },
