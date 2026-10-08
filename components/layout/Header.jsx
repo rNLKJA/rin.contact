@@ -110,8 +110,9 @@ const PAGE_LINKS = [
 // tap never just reveals a tip, and on (hover: none) the sections drop their
 // icons and show the label as plain text, the way the bar read before.
 // Reduced motion: the global rule drops the transition, the tip just appears.
-// Below xl the text labels on touch screens track a little tighter, so all ten
-// sections still fit a 1024px bar beside the settings cluster.
+// Below xl the text labels on touch screens track a little tighter, and the
+// bar's margins shrink (see the nav below), so all ten sections fit a 1024px
+// bar beside the settings cluster with room to spare for other font metrics.
 const TIP =
   "pointer-events-none absolute left-1/2 top-full z-10 mt-1.5 -translate-x-1/2 border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#0A0A0A] px-2 py-1 text-[10px] leading-none opacity-0 transition-opacity duration-150 group-focus-visible:opacity-100 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-hover:delay-75";
 
@@ -299,10 +300,10 @@ export default function Header() {
             group sits beside the logo; the settings cluster (all 36px square
             hairline buttons) and the CTA hold the right edge. */}
         <nav
-          className="hidden lg:flex flex-1 min-w-0 flex-row items-center ml-6 xl:ml-10 whitespace-nowrap text-[11px] tracking-widest uppercase"
+          className="hidden lg:flex flex-1 min-w-0 flex-row items-center ml-6 max-xl:[@media(hover:none)]:ml-3 xl:ml-10 whitespace-nowrap text-[11px] tracking-widest uppercase"
           aria-label={t("nav.primaryNav")}
         >
-          <div className="flex items-center gap-1 [@media(hover:none)]:gap-0 mr-4">
+          <div className="flex items-center gap-1 [@media(hover:none)]:gap-0 mr-4 max-xl:[@media(hover:none)]:mr-2">
             {NAV_LINKS.map(({ href, key, icon }) => (
               <NavIconLink
                 key={key}
@@ -429,7 +430,7 @@ export default function Header() {
                   ref={i === 0 ? firstLinkRef : undefined}
                   onClick={closeMenu}
                   aria-current={active ? "page" : undefined}
-                  className={`flex flex-shrink-0 items-baseline gap-4 py-4 [@media(max-height:700px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
+                  className={`flex flex-shrink-0 items-baseline gap-4 py-4 [@media(max-height:900px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                     active ? "text-[#FF3C3C]" : "text-black dark:text-white hover:text-[#FF3C3C]"
                   }`}
                 >
@@ -470,7 +471,7 @@ export default function Header() {
                   href={href}
                   onClick={closeMenu}
                   aria-current={active ? "page" : undefined}
-                  className={`flex flex-shrink-0 items-center gap-4 py-4 [@media(max-height:700px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
+                  className={`flex flex-shrink-0 items-center gap-4 py-4 [@media(max-height:900px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                     cta
                       ? "text-accent-ink"
                       : active
