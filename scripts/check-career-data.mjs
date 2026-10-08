@@ -24,8 +24,7 @@ import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { BANNED, careerDataProblems } from "../lib/career-check.js";
 import { courseworkDataProblems } from "../lib/coursework-check.js";
-import { getAllPosts } from "../lib/posts.js";
-import { skillsDataProblems } from "../lib/skills-check.js";
+import { readPostsMeta, skillsDataProblems } from "../lib/skills-check.js";
 import {
   HISTORY_IMAGE_MAX_BYTES,
   historyDataProblems,
@@ -59,12 +58,8 @@ const dicts = Object.fromEntries(
     JSON.parse(readFileSync(join(root, "locales", `${locale}.json`), "utf8")),
   ])
 );
-const posts = (await getAllPosts()).map(({ slug, title, date, tags }) => ({
-  slug,
-  title,
-  date,
-  tags,
-}));
+// Frontmatter only, read without gray-matter: CI runs this script on bare Node.
+const posts = readPostsMeta(root);
 const problems = [
   ...careerDataProblems(),
   ...courseworkDataProblems(courseworkCopy),
