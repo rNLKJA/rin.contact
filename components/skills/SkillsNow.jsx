@@ -1,11 +1,22 @@
+import { useState } from "react";
 import { useI18n } from "@/contexts/I18nContext";
 import { fill } from "@/lib/fill";
-import { EvidenceLink, MICRO_LABEL, SkillChip } from "@/components/skills/EvidenceList";
+import {
+  EvidenceLink,
+  MICRO_LABEL,
+  MORE_BUTTON,
+  SkillChip,
+  skillLinkProps,
+} from "@/components/skills/EvidenceList";
 
 const K = "skillsPage.now";
 const SUBHEAD =
   "flex items-center gap-2.5 font-mono text-[10px] tracking-[0.25em] uppercase text-[#1A1A1A] dark:text-white";
 const NOTE = "mt-2 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]";
+const HAIRLINE = "border-[#F0F0F0] dark:border-[#1E1E1E]";
+
+/** How many skills "In active use" shows before "Show all". */
+const SHOWN = 15;
 
 /** A 3×3 pixel checker in the accent red: the page's small pixel touch. */
 function PixelMark() {
@@ -31,18 +42,23 @@ function PixelMark() {
 /**
  * "What I work with now", built on the server in lib/skills-atlas.js (now):
  *
- * 1. Core skills: the five I declare on LinkedIn, each with its two or three
- *    latest roles, projects or labs (linked) and the month I last used it.
+ * 1. Core skills: the five top skills on my LinkedIn profile, each with its two
+ *    or three latest roles, projects or labs (linked) and the month I last used
+ *    it. Where a core skill spans two atlas skills (SQL and SQL Server), each
+ *    chip carries its own date.
  * 2. In active use: every skill used in a role, project or lab in the last 18
- *    months, grouped by area, newest first. Each chip opens its atlas row.
+ *    months, in one list, newest first, then the ones used in more places. Each
+ *    shows where and when it was last used and opens its atlas row. The first
+ *    few show; the rest sit behind "Show all".
  *
- * Dates and counts only, never a level: the evidence carries the claim.
+ * Dates, places and counts only, never a level: the evidence carries the claim.
  */
 export default function SkillsNow({ atlas, onSelectSkill }) {
   const { t } = useI18n();
-  const { now, evidence, skills, domains } = atlas;
+  const [all, setAll] = useState(false);
+  const { now, evidence, skills } = atlas;
   const skillLabel = Object.fromEntries(skills.map((s) => [s.id, s.label]));
-  const areaLabel = Object.fromEntries(domains.map((d) => [d.id, d.short]));
+  const active = all ? now.active : now.active.slice(0, SHOWN);
 
   return (
     <div className="space-y-12">
@@ -53,11 +69,11 @@ export default function SkillsNow({ atlas, onSelectSkill }) {
         </h3>
         <p className={NOTE}>{t(`${K}.coreNote`)}</p>
 
-        <ul className="mt-6 divide-y divide-[#F0F0F0] dark:divide-[#1E1E1E] border-y border-[#F0F0F0] dark:border-[#1E1E1E]">
+        <ul className={`mt-6 divide-y border-y ${HAIRLINE} divide-[#F0F0F0] dark:divide-[#1E1E1E]`}>
           {now.core.map((c) => (
             <li
               key={c.id}
-              className="grid grid-cols-1 md:grid-cols-[240px_minmax(0,1fr)] gap-x-8 gap-y-2 py-5"
+              className="grid grid-cols-1 md:grid-cols-[240px_minmax(0,1fr)] gap-x-8 gap-y-3 py-5"
             >
               <div className="min-w-0">
                 <h4 className="flex items-center gap-2.5 text-lg font-semibold leading-snug text-black dark:text-white">
@@ -74,18 +90,39 @@ export default function SkillsNow({ atlas, onSelectSkill }) {
                 )}
                 <p className={`mt-3 pl-4 ${MICRO_LABEL}`}>{t(`${K}.inAtlas`)}</p>
                 <div className="mt-1.5 pl-4 flex flex-wrap gap-1.5">
-                  {c.skills.map((id) => (
-                    <SkillChip key={id} id={id} label={skillLabel[id]} onSelect={onSelectSkill} />
-                  ))}
+                  {c.skills.map((s) => {
+                    // One atlas skill shares the date above; two or more each
+                    // show their own, so "SQL" and "SQL Server" never seem to
+                    // disagree with the row's date.
+                    const meta = c.skills.length > 1 ? s.last : null;
+                    return (
+                      <SkillChip
+                        key={s.id}
+                        id={s.id}
+                        label={skillLabel[s.id]}
+                        meta={meta}
+                        srMeta={meta && fill(t(`${K}.chipLastUsed`), { date: meta })}
+                        onSelect={onSelectSkill}
+                      />
+                    );
+                  })}
                 </div>
               </div>
-              <ul className="min-w-0 pl-4 md:pl-0 divide-y divide-[#F0F0F0] dark:divide-[#1E1E1E]">
-                {c.evidence.map((i) => (
-                  <li key={evidence[i].id}>
-                    <EvidenceLink item={evidence[i]} />
-                  </li>
-                ))}
-              </ul>
+              <div className="min-w-0 pl-4 md:pl-0">
+                <p id={`now-core-${c.id}-work`} className={MICRO_LABEL}>
+                  {t(`${K}.latestWork`)}
+                </p>
+                <ul
+                  aria-labelledby={`now-core-${c.id}-work`}
+                  className="mt-1 divide-y divide-[#F0F0F0] dark:divide-[#1E1E1E]"
+                >
+                  {c.evidence.map((i) => (
+                    <li key={evidence[i].id}>
+                      <EvidenceLink item={evidence[i]} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </li>
           ))}
         </ul>
@@ -105,35 +142,46 @@ export default function SkillsNow({ atlas, onSelectSkill }) {
           })}
         </p>
 
-        <div className="mt-6 divide-y divide-[#F0F0F0] dark:divide-[#1E1E1E] border-y border-[#F0F0F0] dark:border-[#1E1E1E]">
-          {now.active.map((g) => (
-            <div
-              key={g.domain}
-              className="grid grid-cols-1 md:grid-cols-[180px_minmax(0,1fr)] gap-x-6 gap-y-2 py-4"
-            >
-              <h4
-                id={`now-area-${g.domain}`}
-                className="self-start flex items-center gap-2 md:min-h-[32px] font-mono text-[10px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#FF3C3C]"
+        <ol
+          id="now-active-list"
+          aria-labelledby="now-active-h"
+          className={`mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 border-t ${HAIRLINE}`}
+        >
+          {active.map((a) => (
+            <li key={a.id} className={`min-w-0 border-b ${HAIRLINE}`}>
+              <a
+                {...skillLinkProps(a.id, onSelectSkill)}
+                className="group flex min-h-[44px] flex-col justify-center py-2"
               >
-                <span aria-hidden="true" className="block w-1.5 h-1.5 shrink-0 bg-current" />
-                {areaLabel[g.domain]}
-              </h4>
-              <ul aria-labelledby={`now-area-${g.domain}`} className="flex flex-wrap gap-1.5">
-                {g.skills.map((s) => (
-                  <li key={s.id} className="max-w-full">
-                    <SkillChip
-                      id={s.id}
-                      label={skillLabel[s.id]}
-                      meta={s.last}
-                      metaPrefix={t(`${K}.lastUsedPrefix`)}
-                      onSelect={onSelectSkill}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <span className="text-[14px] leading-snug text-[#1A1A1A] dark:text-[#DDDDDD] group-hover:text-[#CC0000] dark:group-hover:text-[#FF3C3C] transition-colors duration-200 [overflow-wrap:anywhere]">
+                  {skillLabel[a.id]}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="mt-0.5 text-[12px] leading-snug tabular-nums text-[#5C5C5C] dark:text-[#9A9A9A] [overflow-wrap:anywhere]"
+                >
+                  {a.where} · {a.last}
+                </span>
+                <span className="sr-only">
+                  {fill(t(`${K}.chipLastUsedAt`), { where: a.where, date: a.last })}
+                </span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ol>
+        {now.active.length > SHOWN && (
+          <button
+            type="button"
+            aria-expanded={all}
+            aria-controls="now-active-list"
+            onClick={() => setAll((v) => !v)}
+            className={`mt-2 ${MORE_BUTTON}`}
+          >
+            {all
+              ? t("skillsPage.atlas.showFewer")
+              : fill(t("skillsPage.atlas.showAll"), { count: now.active.length })}
+          </button>
+        )}
       </section>
     </div>
   );

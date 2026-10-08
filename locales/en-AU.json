@@ -1463,13 +1463,16 @@
     "post": "Post",
     "viewOnGithub": "View on GitHub",
     "caseStudy": "Read case study",
-    "caseStudyLabel": "Read the {title} case study",
-    "courseworkCaseStudyLabel": "Read the {title} case study on the coursework page",
+    "caseStudyLabel": "Read case study: {title}",
+    "courseworkCaseStudy": "Coursework case study",
+    "courseworkCaseStudyLabel": "Coursework case study: {title}, on the coursework page",
     "liveDemo": "Live demo",
-    "liveDemoLabel": "Open the live {title} demo (opens in a new tab)",
+    "liveDemoLabel": "Live demo: {title} (opens in a new tab)",
     "tour": "Guided tour",
-    "tourLabel": "Watch the guided tour of {title} (opens in a new tab)",
-    "githubLabel": "View {title} on GitHub (opens in a new tab)"
+    "tourLabel": "Guided tour: {title} (opens in a new tab)",
+    "githubLabel": "View on GitHub: {title} (opens in a new tab)",
+    "githubProfileLabel": "View on GitHub: my profile (opens in a new tab)",
+    "newTab": "(opens in a new tab)"
   },
   "metroMap": {
     "heading": "Three lines.",
@@ -2453,12 +2456,15 @@
     },
     "now": {
       "coreTitle": "Core skills",
-      "coreNote": "These five are the skills I use most in my current work. Each one lists the latest roles, projects or labs where I used it, with links, so you can check the work behind it.",
+      "coreNote": "These are the five top skills on my LinkedIn profile. Each one shows the latest roles, projects or labs where I used it, with links, so you can check the work behind it.",
       "lastUsed": "Last used {date}",
-      "lastUsedPrefix": "last used",
+      "chipLastUsed": ", last used {date}",
+      "chipLastUsedAt": ", last used at {where}, {date}",
       "inAtlas": "In the atlas",
+      "latestWork": "Latest work",
+      "labWhere": "{title} lab",
       "activeTitle": "In active use",
-      "activeNote": "I have used these {count} skills in a role, a project or a coursework lab in the last {months} months, since {since}. The most recent come first, and each one opens its row in the atlas. A year on its own means the record has no month, as with the coursework labs, which carry only the year I rebuilt them. Dates are as of {asOf}."
+      "activeNote": "I have used these {count} skills in a role, a project or a coursework lab in the last {months} months, since {since}. The most recent come first, then the ones I used in more places. Each one shows where I last used it, and opens its row in the atlas. A year on its own means the record has no month, as with the coursework labs, which carry only the year I rebuilt them. Dates are as of {asOf}."
     },
     "howToRead": {
       "title": "How to read the numbers",
