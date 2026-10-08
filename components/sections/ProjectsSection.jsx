@@ -228,7 +228,7 @@ export const PROJECTS = [
   },
   {
     id: "moodq",
-    title: "MoodQ",
+    title: "Moodist",
     subtitle: "Mental Health Mobile Application",
     org: "University of Melbourne — Psychiatry",
     period: "Aug 2024 – Feb 2026",
@@ -237,8 +237,9 @@ export const PROJECTS = [
     status: "Handed to production team",
     stack: ["Expo", "React Native", "Flask", "Python", "AWS RDS", "LightSail", "CI/CD"],
     summary:
-      "A clinician-facing and patient-facing mental health app (formerly Moodist) for the University of Melbourne's Department of Psychiatry, built as sole developer. Rebuilt it from Uniapp to Expo React Native with a clinician dashboard on a Flask backend, kept hosting under $500 a month by running each service in its own Docker container on AWS LightSail, and kept it GDPR-aligned before handing it to a professional team for production.",
+      "A clinician-facing and patient-facing mental health app for the University of Melbourne's Department of Psychiatry, built as sole developer. Rebuilt it from Uniapp to Expo React Native with a clinician dashboard on a Flask backend, kept hosting under $500 a month by running each service in its own Docker container on AWS LightSail, and kept it GDPR-aligned before handing it to a professional team for production.",
     impact: "Sole developer · Hosting under $500/month · Cross-platform iOS + Android",
+    caseStudy: "/projects/moodist",
   },
   {
     id: "wehi-flow",
