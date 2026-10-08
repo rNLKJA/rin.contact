@@ -196,8 +196,10 @@ const NOT_ZH_KNOWLEDGE = new Set([]);
 // Every /info/* page and the listed /knowledge/* articles have full zh-Hans
 // content; /cv, /projects/signal, /projects/order-system, /projects/moodist,
 // /projects/wehi-genomics, /projects/coursework and /tools/card are bilingual.
+// /blog has zh-Hans chrome; its posts are added per slug in generateSitemap().
 const ZH_COVERED = [
   ...ZH_PAGES,
+  { path: "/blog", priority: 0.8, freq: "weekly" },
   { path: "/cv", priority: 0.8, freq: "monthly" },
   { path: "/projects/signal", priority: 0.8, freq: "monthly" },
   { path: "/projects/order-system", priority: 0.7, freq: "monthly" },
@@ -280,9 +282,13 @@ async function generateSitemap() {
 
   const imageExtra = IMAGES.map(imageXml).join("\n");
 
+  // Every post is built in both locales: the /zh-Hans/ version is the English
+  // post in the zh-Hans chrome. List both, each carrying the reciprocal alternates.
   const posts = await getAllPosts();
-  const blogPostUrls = posts.map((p) =>
-    urlXml({ path: `/blog/${p.slug}`, priority: 0.7, freq: "monthly" }, today)
+  const blogPosts = posts.map((p) => ({ path: `/blog/${p.slug}`, priority: 0.7, freq: "monthly" }));
+  const blogPostUrls = blogPosts.map((p) => urlXml(p, today, alternates(p.path)));
+  const zhBlogPostUrls = blogPosts.map(({ path, priority, freq }) =>
+    urlXml({ path: `/zh-Hans${path}`, priority, freq }, today, alternates(path))
   );
 
   const urls = [
@@ -306,6 +312,8 @@ async function generateSitemap() {
     ...ZH_COVERED.map(({ path, priority, freq }) =>
       urlXml({ path: `/zh-Hans${path}`, priority, freq }, today, alternates(path))
     ),
+    // zh-Hans blog posts
+    ...zhBlogPostUrls,
   ].join("\n");
 
   return [
