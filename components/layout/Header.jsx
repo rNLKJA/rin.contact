@@ -6,7 +6,15 @@ import ThemeToggle, { ThemeSegmented } from "@/components/ui/ThemeToggle";
 import LocaleSwitcher, { LocaleSegmented } from "@/components/ui/LocaleSwitcher";
 import { useI18n } from "@/contexts/I18nContext";
 import { useDialog } from "@/hooks/useDialog";
-import { FiBookOpen, FiBriefcase, FiFileText, FiFolder, FiMail, FiUser } from "react-icons/fi";
+import {
+  FiBookOpen,
+  FiBriefcase,
+  FiFileText,
+  FiFolder,
+  FiMail,
+  FiTool,
+  FiUser,
+} from "react-icons/fi";
 // Lucide is the Feather fork: same 24px grid and stroke, for the glyphs
 // Feather lacks (flask, library, newspaper, contact card).
 import { LuContact, LuFlaskConical, LuLibrary, LuNewspaper } from "react-icons/lu";
@@ -76,6 +84,7 @@ const NAV_LINKS = [
   { href: "/career", key: "nav.career", icon: FiBriefcase },
   { href: "/projects", key: "nav.projects", icon: FiFolder },
   { href: "/projects/coursework", key: "nav.coursework", icon: FiBookOpen },
+  { href: "/skills", key: "nav.skillsShort", icon: FiTool },
   { href: "/lab", key: "nav.lab", icon: LuFlaskConical },
   { href: "/knowledge", key: "nav.knowledge", icon: LuLibrary },
   { href: "/blog", key: "nav.blog", icon: LuNewspaper },
@@ -101,6 +110,8 @@ const PAGE_LINKS = [
 // tap never just reveals a tip, and on (hover: none) the sections drop their
 // icons and show the label as plain text, the way the bar read before.
 // Reduced motion: the global rule drops the transition, the tip just appears.
+// Below xl the text labels on touch screens track a little tighter, so all ten
+// sections still fit a 1024px bar beside the settings cluster.
 const TIP =
   "pointer-events-none absolute left-1/2 top-full z-10 mt-1.5 -translate-x-1/2 border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#0A0A0A] px-2 py-1 text-[10px] leading-none opacity-0 transition-opacity duration-150 group-focus-visible:opacity-100 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-hover:delay-75";
 
@@ -111,7 +122,7 @@ function NavIconLink({ href, icon: Icon, label, active }) {
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`group relative inline-flex items-center h-9 px-[9px] [@media(hover:none)]:px-1 rounded-full transition-colors duration-200 ${
+      className={`group relative inline-flex items-center h-9 px-[9px] [@media(hover:none)]:px-1 max-xl:[@media(hover:none)]:tracking-wider rounded-full transition-colors duration-200 ${
         active
           ? "text-[#CC0000] dark:text-[#FF3C3C]"
           : "text-[#595959] dark:text-[#AAAAAA] [@media(hover:hover)]:hover:text-black dark:[@media(hover:hover)]:hover:text-white [@media(hover:hover)]:hover:bg-[#F5F5F5] dark:[@media(hover:hover)]:hover:bg-[#1A1A1A] focus-visible:text-black dark:focus-visible:text-white"
@@ -281,7 +292,7 @@ export default function Header() {
         {/* ── Logo — double-click to glitch ── */}
         <LogoWithGlitch />
 
-        {/* ── Desktop nav ── shown from lg: nine sections plus the page links do
+        {/* ── Desktop nav ── shown from lg: ten sections plus the page links do
             not fit a tablet-width bar, so 768-1023px keeps the burger menu.
             Sections are fixed-width icons with a label tip on hover/focus (see
             NavIconLink); only the current page shows its label inline. The
