@@ -2427,6 +2427,7 @@
     "onThisPage": "On this page",
     "sections": {
       "glance": "At a glance",
+      "now": "What I work with now",
       "timeline": "Learning timeline",
       "atlas": "Skills atlas",
       "subjects": "Subjects I studied",
@@ -2441,6 +2442,15 @@
       "labs": "Coursework labs",
       "credentials": "Credentials",
       "years": "Years"
+    },
+    "now": {
+      "coreTitle": "Core skills",
+      "coreNote": "These five are the skills I use most in my current work. Each one lists the latest roles, projects or labs where I used it, with links, so you can check the work behind it.",
+      "lastUsed": "Last used {date}",
+      "lastUsedPrefix": "last used",
+      "inAtlas": "In the atlas",
+      "activeTitle": "In active use",
+      "activeNote": "I have used these {count} skills in a role, a project or a coursework lab in the last {months} months, since {since}. The most recent come first, and each one opens its row in the atlas. A year on its own means the record has no month, as with the coursework labs, which carry only the year I rebuilt them. Dates are as of {asOf}."
     },
     "howToRead": {
       "title": "How to read the numbers",

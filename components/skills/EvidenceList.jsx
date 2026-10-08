@@ -34,8 +34,10 @@ export function itemCount(
  * A link to a skill's row in the atlas. Without JavaScript it is a plain link
  * (?skill=<id>#skill-<id>); with it, the click is handed to `onSelect` with the
  * chip itself, which opens the row, jumps to it and brings Back to the chip.
+ * `meta` (a date) follows the label in grey; `metaPrefix` is read out before it
+ * by screen readers ("Python, last used Mar 2026").
  */
-export function SkillChip({ id, label, onSelect, lang }) {
+export function SkillChip({ id, label, onSelect, lang, meta, metaPrefix }) {
   return (
     <a
       href={`?skill=${id}#skill-${id}`}
@@ -48,6 +50,12 @@ export function SkillChip({ id, label, onSelect, lang }) {
       className={CHIP}
     >
       {label}
+      {meta && (
+        <span className="ml-2 shrink-0 whitespace-nowrap text-[11px] tabular-nums text-[#5C5C5C] dark:text-[#9A9A9A]">
+          {metaPrefix && <span className="sr-only">, {metaPrefix} </span>}
+          {meta}
+        </span>
+      )}
     </a>
   );
 }

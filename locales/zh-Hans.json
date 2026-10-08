@@ -2102,6 +2102,7 @@
     "onThisPage": "本页内容",
     "sections": {
       "glance": "概览",
+      "now": "我现在常用的技能",
       "timeline": "学习时间线",
       "atlas": "技能地图",
       "subjects": "修过的课程",
@@ -2116,6 +2117,15 @@
       "labs": "课程作业实验室",
       "credentials": "证书",
       "years": "年份"
+    },
+    "now": {
+      "coreTitle": "核心技能",
+      "coreNote": "这五项是我目前工作里用得最多的技能。每一项都列出最近用到它的职位、项目或实验室，并附上链接，背后的工作可以直接点开查看。",
+      "lastUsed": "最近一次使用：{date}",
+      "lastUsedPrefix": "最近一次使用",
+      "inAtlas": "技能地图",
+      "activeTitle": "近期在用",
+      "activeNote": "过去 {months} 个月里（{since}以来），我在工作、项目或课程实验室中用到过这 {count} 项技能。越近用到的排得越前，点开任意一项都会跳到技能地图里的对应条目。只显示年份的，是因为记录里没有月份，课程实验室就只记了重做的年份。日期截至 {asOf}。"
     },
     "howToRead": {
       "title": "这些数字怎么看",

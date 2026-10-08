@@ -4,7 +4,7 @@ import { Marker } from "@/components/skills/SkillRow";
 const K = "skillsPage";
 
 /** In-page links, in page order. */
-const ON_THIS_PAGE = ["timeline", "atlas", "subjects", "credentials", "deeper"];
+const ON_THIS_PAGE = ["now", "timeline", "atlas", "subjects", "credentials", "deeper"];
 
 /**
  * At a glance: six static stat tiles, the "How to read the numbers" box (every
