@@ -131,7 +131,7 @@ const FEATURED_PROJECT_LINES = [
   N("  ○ SA Address Generator    Data Eng · Internal Gov tool"),
   N("  ○ US Political Data        Scraper · ~25,000 documents"),
   N("  ○ GMM Sample Sheets        R Shiny · Single-cell · WEHI"),
-  N("  ○ Climate Fact-Checker     NLP · Transformers · BERT"),
+  N("  ○ Climate Fact-Checker     NLP · TF-IDF · Transformer"),
   N("  ○ ENSO Climate Risk        Time series · CSIRO × UniMelb"),
   N("  ○ Cachex AI                A* · Minimax · Game theory"),
 ];

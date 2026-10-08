@@ -185,8 +185,9 @@ const PROJECTS_SCHEMA = {
         "@type": "SoftwareSourceCode",
         name: "Climate Fact-Checker",
         description:
-          "Two-stage automated fact-checking for climate change claims — TF-IDF evidence retrieval and Transformer-based classification, outperforming LSTM baselines.",
-        codeRepository: "https://github.com/rNLKJA",
+          "A group project for COMP90042: a two-stage fact-checker for climate-science claims, with TF-IDF evidence retrieval and a Transformer classifier trained from scratch.",
+        codeRepository:
+          "https://github.com/rNLKJA/Automated-Fact-Checking-System-for-Climate-Change-Claims",
         programmingLanguage: "Python",
         author: { "@id": "https://rin.contact/#person" },
       },

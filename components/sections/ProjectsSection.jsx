@@ -69,43 +69,52 @@ function CountUp({ target, duration = 300, started }) {
 }
 
 // Link buttons: case study (ink), live demo (red), guided tour (ink outline)
-// and repository or site (hairline).
+// and repository or site (hairline). The demo red is the accent-fill token
+// (#CC0000, 5.9:1 with white text), the same as the coursework cards.
 const BTN =
   "inline-flex items-center gap-2 px-4 py-1.5 text-xs tracking-widest uppercase rounded-full transition-colors duration-200";
 const BTN_CASE_STUDY = `${BTN} border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] text-white dark:text-[#0A0A0A] hover:bg-black dark:hover:bg-white`;
-const BTN_DEMO = `${BTN} border border-[#FF3C3C] bg-[#FF3C3C] text-white hover:bg-[#E02020] hover:border-[#E02020]`;
+const BTN_DEMO = `${BTN} border border-[#CC0000] bg-[#CC0000] text-white hover:bg-[#A30000] hover:border-[#A30000]`;
 const BTN_TOUR = `${BTN} border border-[#1A1A1A] dark:border-[#EEEEEE] text-[#1A1A1A] dark:text-[#EEEEEE] hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-[#EEEEEE] dark:hover:text-[#0A0A0A]`;
 const BTN_LINK = `${BTN} border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white`;
 
+/** The bare GitHub profile: the link for a card with no public repository. */
+const GITHUB_PROFILE = "https://github.com/rNLKJA";
+
 /**
  * A card's link buttons. `coursework` holds the links a card gets from the
- * revived lab it grew out of (pages/projects.jsx): the case study is the lab's
- * card on /projects/coursework, plus the live demo and, when there is one, the
+ * revived lab it grew out of (pages/projects.jsx): a case study on the lab's
+ * card on /projects/coursework, the live demo and, when there is one, the
  * guided tour. A card's own case study and demo come first. The repository link
  * is the card's own and is only set for public repositories.
+ *
+ * Every accessible name comes from a locale template that starts with the
+ * visible text ("Live demo: Cachex AI (opens in a new tab)"), so voice control
+ * can reach each button by what it says.
  */
 function ProjectLinks({ project, coursework, className = "" }) {
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
+  const ownCaseStudy = Boolean(project.caseStudy);
   const caseStudy = project.caseStudy || coursework?.caseStudy;
   const demo = project.demo || coursework?.demo;
   const tour = coursework?.tour;
   const { link } = project;
   if (!caseStudy && !demo && !tour && !link) return null;
   const vars = { title: project.title };
-  // Hand-written labels in the data are English; the Chinese page uses its own.
-  const own = (label) => (locale === "zh-Hans" ? null : label);
+  const github = Boolean(link?.includes("github.com"));
   return (
     <div className={`flex flex-wrap gap-2 ${className}`}>
       {caseStudy && (
         <Link
           href={caseStudy}
           aria-label={fill(
-            t(project.caseStudy ? "projects.caseStudyLabel" : "projects.courseworkCaseStudyLabel"),
+            t(ownCaseStudy ? "projects.caseStudyLabel" : "projects.courseworkCaseStudyLabel"),
             vars
           )}
           className={BTN_CASE_STUDY}
         >
-          {t("projects.caseStudy")} <span aria-hidden="true">→</span>
+          {t(ownCaseStudy ? "projects.caseStudy" : "projects.courseworkCaseStudy")}{" "}
+          <span aria-hidden="true">→</span>
         </Link>
       )}
       {demo && (
@@ -113,7 +122,7 @@ function ProjectLinks({ project, coursework, className = "" }) {
           href={demo}
           target="_blank"
           rel="noreferrer"
-          aria-label={own(project.demoLabel) || fill(t("projects.liveDemoLabel"), vars)}
+          aria-label={fill(t("projects.liveDemoLabel"), vars)}
           className={BTN_DEMO}
         >
           {t("projects.liveDemo")} <span aria-hidden="true">↗</span>
@@ -130,19 +139,25 @@ function ProjectLinks({ project, coursework, className = "" }) {
           {t("projects.tour")} <span aria-hidden="true">↗</span>
         </a>
       )}
-      {link && (
+      {link && github && (
         <a
           href={link}
           target="_blank"
           rel="noreferrer"
           aria-label={
-            link.includes("github.com")
-              ? own(project.linkLabel) || fill(t("projects.githubLabel"), vars)
-              : project.linkLabel
+            link === GITHUB_PROFILE
+              ? t("projects.githubProfileLabel")
+              : fill(t("projects.githubLabel"), vars)
           }
           className={BTN_LINK}
         >
-          {project.linkText || `${t("projects.viewOnGithub")} ↗`}
+          {t("projects.viewOnGithub")} <span aria-hidden="true">↗</span>
+        </a>
+      )}
+      {link && !github && (
+        <a href={link} target="_blank" rel="noreferrer" className={BTN_LINK}>
+          {project.linkText} <span aria-hidden="true">↗</span>
+          <span className="sr-only"> {t("projects.newTab")}</span>
         </a>
       )}
     </div>
@@ -579,9 +594,11 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                   </button>
                   {/* Height snaps (no max-height tween); the revealed content
                       enters from 70% via animate-enter-up instead. No cap when
-                      open: a fixed cap clipped stack and status on phones. */}
+                      open: a fixed cap clipped stack and status on phones. A
+                      closed row is inert, so its links leave the tab order. */}
                   <div
                     className="overflow-hidden"
+                    inert={!isOpen}
                     style={{
                       maxHeight: isOpen ? "none" : "0px",
                       opacity: isOpen ? 1 : 0,
@@ -721,9 +738,11 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                     </span>
                   </button>
                   {/* Height snaps (no max-height tween); the revealed content
-                      enters from 70% via animate-enter-up instead. */}
+                      enters from 70% via animate-enter-up instead. A closed
+                      row is inert, so its links leave the tab order. */}
                   <div
                     className="overflow-hidden"
+                    inert={!isOpen}
                     style={{
                       maxHeight: isOpen ? "none" : "0px",
                       opacity: isOpen ? 1 : 0,
