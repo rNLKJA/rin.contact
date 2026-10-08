@@ -69,6 +69,7 @@ const CORE = [
   { path: "/projects", priority: 0.9, freq: "monthly" },
   { path: "/projects/signal", priority: 0.8, freq: "monthly" },
   { path: "/projects/order-system", priority: 0.7, freq: "monthly" },
+  { path: "/projects/virtual-internships", priority: 0.6, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
   { path: "/lab", priority: 0.8, freq: "monthly" },
@@ -192,13 +193,14 @@ const INFO = [
 const NOT_ZH_KNOWLEDGE = new Set([]);
 
 // Every /info/* page and the listed /knowledge/* articles have full zh-Hans
-// content; /cv, /projects/signal, /projects/order-system, /projects/coursework and
-// /tools/card are bilingual.
+// content; /cv, /projects/signal, /projects/order-system, /projects/coursework,
+// /projects/virtual-internships and /tools/card are bilingual.
 const ZH_COVERED = [
   ...ZH_PAGES,
   { path: "/cv", priority: 0.8, freq: "monthly" },
   { path: "/projects/signal", priority: 0.8, freq: "monthly" },
   { path: "/projects/order-system", priority: 0.7, freq: "monthly" },
+  { path: "/projects/virtual-internships", priority: 0.6, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/tools/card", priority: 0.7, freq: "monthly" },
   { path: "/knowledge", priority: 0.7, freq: "weekly" },
