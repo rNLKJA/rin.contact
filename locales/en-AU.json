@@ -1461,7 +1461,15 @@
     "active": "Active",
     "share": "Share",
     "post": "Post",
-    "viewOnGithub": "View on GitHub"
+    "viewOnGithub": "View on GitHub",
+    "caseStudy": "Read case study",
+    "caseStudyLabel": "Read the {title} case study",
+    "courseworkCaseStudyLabel": "Read the {title} case study on the coursework page",
+    "liveDemo": "Live demo",
+    "liveDemoLabel": "Open the live {title} demo (opens in a new tab)",
+    "tour": "Guided tour",
+    "tourLabel": "Watch the guided tour of {title} (opens in a new tab)",
+    "githubLabel": "View {title} on GitHub (opens in a new tab)"
   },
   "metroMap": {
     "heading": "Three lines.",

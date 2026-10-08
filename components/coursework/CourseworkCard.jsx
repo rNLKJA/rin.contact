@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { fill, joinNames } from "@/lib/fill";
 
 const K = "courseworkPage.card";
@@ -31,10 +32,30 @@ function Highlight({ text, className = "" }) {
  * skills, which keeps every card short enough to scan on a phone. The guided
  * tour appears when the demo has one (tourUrl). GitHub appears only when the
  * data layer passed a repoUrl, which it does for public repositories whose
- * main branch holds the revival.
+ * main branch holds the revival. A link to the card itself (#<slug>, which the
+ * case-study buttons on /projects and the labs on /skills use) opens its
+ * details, so the visitor lands on the whole write-up.
  */
 export default function CourseworkCard({ project: p, termLabel, t }) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const openIfTarget = () => {
+      if (window.location.hash === `#${p.slug}`) setOpen(true);
+    };
+    // A frame after mount: arriving from another page, the URL already holds
+    // the hash. Same-page jumps fire hashchange (plain links) or Next.js's
+    // hashChangeComplete (next/link).
+    const frame = requestAnimationFrame(openIfTarget);
+    window.addEventListener("hashchange", openIfTarget);
+    router.events.on("hashChangeComplete", openIfTarget);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", openIfTarget);
+      router.events.off("hashChangeComplete", openIfTarget);
+    };
+  }, [p.slug, router.events]);
   const shown = p.highlights.slice(0, SHOWN);
   const more = p.highlights.slice(SHOWN);
   const detailsId = `${p.slug}-details`;
