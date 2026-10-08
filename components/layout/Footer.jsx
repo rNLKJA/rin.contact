@@ -26,6 +26,7 @@ const NAV_COLS = [
   {
     headingKey: "footer.learn",
     links: [
+      { href: "/skills", key: "nav.skills" },
       { href: "/knowledge", key: "nav.knowledge" },
       { href: "/ds", key: "nav.dsExplainers" },
       { href: "/lab", key: "nav.lab" },

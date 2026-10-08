@@ -447,9 +447,10 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
             aria-label={t("courseworkPage.sections.goDeeper")}
             className="border-t border-[#F0F0F0] dark:border-[#1E1E1E] py-10"
           >
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#F0F0F0] dark:bg-[#1E1E1E] border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-[#F0F0F0] dark:bg-[#1E1E1E] border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
               {[
                 { href: "/projects", key: "projects" },
+                { href: "/skills", key: "skills" },
                 { href: "/resume", key: "resume" },
               ].map((l) => (
                 <li key={l.key} className="bg-white dark:bg-[#0A0A0A]">
