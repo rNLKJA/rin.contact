@@ -2399,7 +2399,162 @@
       "filterBy": "Show projects with: {skill}"
     },
     "goDeeper": {
+      "skills": "Every skill, with its evidence",
       "projects": "All projects and case studies",
+      "resume": "Resume and PDF"
+    }
+  },
+  "skillsPage": {
+    "metaTitle": "Everything I've learned · Rin Huang · rin.contact",
+    "metaDescription": "Rin Huang lists {skills} skills he learned and used from {from} to {to}, each linked to the subjects, coursework, projects, roles, credentials and notes that show it.",
+    "ogTitle": "Everything I've learned · Rin Huang",
+    "ogTitleShort": "Everything I've learned",
+    "ogSubtitle": "{skills} skills from {from} to {to}, each linked to its evidence",
+    "sectionLabel": "◆ Skills",
+    "heading": "Everything I've learned.",
+    "description": "This page holds every skill I have picked up since {from}, from my first Python subject to the work I do now. Each one links to where I learned it and where I used it.",
+    "back": "About",
+    "present": "Present",
+    "breadcrumb": {
+      "home": "Home",
+      "skills": "Everything I've learned"
+    },
+    "onThisPage": "On this page",
+    "sections": {
+      "glance": "At a glance",
+      "timeline": "Learning timeline",
+      "atlas": "Skills atlas",
+      "subjects": "Subjects I studied",
+      "credentials": "Credentials",
+      "deeper": "Where to go deeper"
+    },
+    "glance": {
+      "heading": "At a glance",
+      "skills": "Skills",
+      "subjects": "Subjects",
+      "projects": "Projects",
+      "labs": "Coursework labs",
+      "credentials": "Credentials",
+      "years": "Years"
+    },
+    "howToRead": {
+      "title": "How to read the numbers",
+      "body": "Every number on this page counts real things: subjects, assignments, projects, roles, credentials and notes. None of them is a level or a score. More items next to a skill means I have come back to it more often. It does not measure how well I know it.",
+      "legend": "Markers",
+      "filled": "Learned or used in study, work or a credential",
+      "hollow": "Written up in notes only"
+    },
+    "kinds": {
+      "subject": "Subject",
+      "coursework": "Coursework",
+      "project": "Project",
+      "role": "Role",
+      "credential": "Credential",
+      "note": "Knowledge note",
+      "explainer": "Explainer",
+      "post": "Blog post"
+    },
+    "kindsPlural": {
+      "subject": "Subjects",
+      "coursework": "Coursework",
+      "project": "Projects",
+      "role": "Roles",
+      "credential": "Credentials",
+      "note": "Knowledge notes",
+      "explainer": "Explainers",
+      "post": "Blog posts"
+    },
+    "kindCounts": {
+      "subject": ["{count} subject", "{count} subjects"],
+      "coursework": ["{count} coursework", "{count} coursework"],
+      "project": ["{count} project", "{count} projects"],
+      "role": ["{count} role", "{count} roles"],
+      "credential": ["{count} credential", "{count} credentials"],
+      "note": ["{count} note", "{count} notes"],
+      "explainer": ["{count} explainer", "{count} explainers"],
+      "post": ["{count} blog post", "{count} blog posts"]
+    },
+    "subs": {
+      "assignment": "Original assignment",
+      "revival": "Live lab, rebuilt in {year}",
+      "site": "Version of this site",
+      "mentoring": "Mentoring"
+    },
+    "timeline": {
+      "intro": "This is what I learned and used, year by year. Each square is one dated item. Knowledge notes and explainers are not in the grid because I wrote them later and they have no date of their own.",
+      "caption": "Dated items by kind and year",
+      "kind": "Kind",
+      "newSkills": "New on record",
+      "showItems": "Show {count} items",
+      "showItem": "Show 1 item",
+      "hideItems": "Hide items",
+      "itemsSummary": "{count} items",
+      "itemSummary": "1 item",
+      "more": "+{count}",
+      "moreSkills": "Show {count} more skills",
+      "fewerSkills": "Show fewer skills"
+    },
+    "atlas": {
+      "intro": "There are {skills} skills in {domains} areas. Open a skill to see every place it shows up, with a link to each one.",
+      "search": "Search skills",
+      "searchHint": "Searches skill names in English and Chinese, and the tools behind them.",
+      "searchPlaceholder": "Python, Bayesian, Power BI",
+      "domain": "Area",
+      "allDomains": "All areas",
+      "kind": "Evidence",
+      "anyKind": "Any evidence",
+      "sort": "Sort",
+      "sortAz": "A–Z",
+      "sortFirst": "Earliest first",
+      "showing": "Showing {shown} of {total} skills",
+      "clear": "Clear",
+      "empty": "No skill matches these filters.",
+      "items": "{count} items",
+      "item": "1 item",
+      "firstRecord": "First record {year}",
+      "undated": "No dated item",
+      "show": "Show evidence for {skill}",
+      "hide": "Hide evidence for {skill}",
+      "showAll": "Show all {count}",
+      "showFewer": "Show fewer",
+      "newTab": "opens in a new tab",
+      "englishOnly": "In English",
+      "skillCount": "{count} skills"
+    },
+    "subjects": {
+      "intro": "These are all {count} subjects from my two University of Melbourne degrees, in the order I took them. Where I rebuilt an assignment as a live lab, or wrote a note on the topic, the subject links to it.",
+      "topics": "Topics",
+      "lab": "Lab",
+      "note": "Note",
+      "caseStudy": "Case study",
+      "role": "Role",
+      "linkFormat": "{kind}: {label}",
+      "winter": "Winter term",
+      "yearOnly": "Year",
+      "yearFormat": "{year}"
+    },
+    "credentials": {
+      "intro": "These are my {count} credentials, the same list as on my resume, with the skills each one adds evidence to.",
+      "feeds": "Evidence for",
+      "byProvider": "Credentials by provider",
+      "providers": {
+        "Google": "Google",
+        "Microsoft": "Microsoft",
+        "Neo4j": "Neo4j",
+        "Agile": "Agile",
+        "Professional": "Professional assessment",
+        "Leadership": "Leadership and community",
+        "Technical": "Technical"
+      }
+    },
+    "deeper": {
+      "knowledge": "{count} knowledge notes",
+      "ds": "{count} data science explainers",
+      "coursework": "{count} coursework labs, revived",
+      "projects": "{count} projects and case studies",
+      "career": "My career as a metro map",
+      "history": "{count} versions of this site",
+      "blog": "{count} blog posts",
       "resume": "Resume and PDF"
     }
   }

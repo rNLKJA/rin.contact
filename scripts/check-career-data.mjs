@@ -11,6 +11,11 @@
  *    checks every history screenshot exists and stays under 250 KB.
  * 4. Searches the site's source for claims that were once published and are
  *    false (BANNED), so they cannot quietly come back through another file.
+ * 5. Runs the lib/skills-check.js assertions for /skills: the taxonomy, every
+ *    stack token mapping to a skill, the subject list, the built atlas in both
+ *    locales (evidence for every skill, source-only links, props budget, no
+ *    marks, grades, self-rated levels or SAPOL system names), the copy rules
+ *    and a scan of the knowledge notes for marks.
  * Exits non-zero on any problem. Node 22, no dependencies.
  */
 /* eslint-disable no-console -- a CLI reports to the console */
@@ -19,6 +24,8 @@ import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { BANNED, careerDataProblems } from "../lib/career-check.js";
 import { courseworkDataProblems } from "../lib/coursework-check.js";
+import { getAllPosts } from "../lib/posts.js";
+import { skillsDataProblems } from "../lib/skills-check.js";
 import {
   HISTORY_IMAGE_MAX_BYTES,
   historyDataProblems,
@@ -43,10 +50,26 @@ const courseworkCopy = ["en-AU", "zh-Hans"].map(
   (locale) =>
     JSON.parse(readFileSync(join(root, "locales", `${locale}.json`), "utf8")).courseworkPage
 );
+const dicts = Object.fromEntries(
+  [
+    ["en", "en-AU"],
+    ["zh", "zh-Hans"],
+  ].map(([key, locale]) => [
+    key,
+    JSON.parse(readFileSync(join(root, "locales", `${locale}.json`), "utf8")),
+  ])
+);
+const posts = (await getAllPosts()).map(({ slug, title, date, tags }) => ({
+  slug,
+  title,
+  date,
+  tags,
+}));
 const problems = [
   ...careerDataProblems(),
   ...courseworkDataProblems(courseworkCopy),
   ...historyDataProblems(),
+  ...skillsDataProblems({ dicts, posts, root }),
 ];
 
 // /info/history: screenshots exist and fit the budget; both locales have the page strings.

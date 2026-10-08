@@ -1,12 +1,13 @@
 import { fill } from "@/lib/fill";
 
 const K = "courseworkPage.filters";
-const LABEL = "text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]";
-const PILL =
+// Shared with the /skills atlas filters, so the two pages' controls match.
+export const LABEL = "text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]";
+export const PILL =
   "min-h-[32px] border px-3 py-1.5 text-[11px] tracking-widest uppercase transition-colors duration-200";
-const PILL_ON =
+export const PILL_ON =
   "border-[#1A1A1A] bg-[#1A1A1A] text-white dark:border-[#EEEEEE] dark:bg-[#EEEEEE] dark:text-black";
-const PILL_OFF =
+export const PILL_OFF =
   "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white";
 
 function Pills({ id, label, options, value, onChange }) {
