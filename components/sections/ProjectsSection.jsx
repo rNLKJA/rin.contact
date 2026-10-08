@@ -409,35 +409,6 @@ export const PROJECTS = [
     impact: "Climate → conflict risk insights · 10-month CSIRO research engagement",
   },
   {
-    // Twelve Forage job simulations grouped into one card. The repos are private,
-    // so the card links to the on-site write-up only.
-    id: "virtual-internships",
-    title: "Virtual internships (Forage)",
-    subtitle: "Twelve Company-Designed Job Simulations",
-    org: "Forage · KPMG, BCG, British Airways, PwC and others",
-    period: "Oct 2022 – Aug 2023",
-    tag: "Data Science",
-    domain: "Personal",
-    status: "Completed",
-    stack: [
-      "Python",
-      "pandas",
-      "scikit-learn",
-      "SHAP",
-      "SQL",
-      "R",
-      "Tableau",
-      "Power BI",
-      "Excel",
-      "PowerPoint",
-    ],
-    summary:
-      "Twelve Forage virtual experience programmes, which are self-paced job simulations designed by each company. I worked through briefs from KPMG, BCG, British Airways, Quantium, Tata, Cognizant, GE Aviation, Accenture, Red Bull, PwC (two) and Standard Bank. They covered customer analytics, churn and booking models, dashboards, data joins and sales conversations.",
-    impact:
-      "12 programmes · Analytics, ML, visualisation, data engineering and sales · Job simulations, not employment",
-    caseStudy: "/projects/virtual-internships",
-  },
-  {
     id: "cachex",
     title: "Cachex AI",
     subtitle: "Game-Playing AI Agent",
@@ -561,6 +532,33 @@ export const PROJECTS = [
     link: "https://github.com/rNLKJA",
     linkLabel: "View rin.contact portfolio on GitHub",
     current: true,
+  },
+  {
+    // Twelve Forage job simulations grouped into one low-priority card, kept last.
+    // The repos are private and there is no write-up page, so the card has no link.
+    id: "virtual-internships",
+    title: "Virtual internships (Forage)",
+    subtitle: "Twelve Company-Designed Job Simulations",
+    org: "Forage · KPMG, BCG, British Airways, PwC and others",
+    period: "Oct 2022 – Aug 2023",
+    tag: "Data Science",
+    domain: "Personal",
+    status: "Completed",
+    stack: [
+      "Python",
+      "pandas",
+      "scikit-learn",
+      "SHAP",
+      "SQL",
+      "R",
+      "Tableau",
+      "Power BI",
+      "Excel",
+      "PowerPoint",
+    ],
+    summary:
+      "I completed twelve self-paced job simulations on Forage, each designed by the company that set the brief. The companies were KPMG, BCG, British Airways, Quantium, Tata, Cognizant, GE Aviation, Accenture, Red Bull, PwC (two) and Standard Bank. The work covered customer analytics, churn and booking models, dashboards and data joins.",
+    impact: "12 job simulations · Oct 2022 – Aug 2023 · analytics, ML and visualisation",
   },
 ];
 
