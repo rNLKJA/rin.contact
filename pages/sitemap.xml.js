@@ -38,7 +38,7 @@ const IMAGES = [
   {
     loc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjRIgIQHaq6ZhUDwJUqfFa5xZJ9Tn5f6YLBA&s",
     title: "WEHI — Biomedical Research",
-    caption: "Software Engineer Intern (Data Science), Feb–Jul 2024",
+    caption: "Research Software Engineer, Feb–Jul 2024",
     license: "https://www.wehi.edu.au",
   },
   {

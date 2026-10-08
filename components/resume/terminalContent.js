@@ -165,7 +165,7 @@ export const PROJECTS_TEXT = [
   "  ● Order system      mum's meal-prep studio · Expo + Hono · private",
   "  ● MoodQ             clinical mental-health app · UniMelb Psychiatry",
   "  ● IAPro API client  1,100+ endpoints · Python + FastAPI + Vue · SAPOL",
-  "  ● celseq2 (contrib) scRNA-seq workflow · open source · WEHI",
+  "  ● GMM               single-cell sample sheets · R Shiny · WEHI",
   "  ● ENSO risk model   climate & food security · CSIRO",
   "  ● rin.contact       this site · Next.js · Vercel",
   "  · · ·  more  →  open /projects",

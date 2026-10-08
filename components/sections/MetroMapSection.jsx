@@ -81,9 +81,9 @@ const STATIONS = [
     label: "WEHI",
     labelAbove: true,
     period: "Feb – Jul 2024",
-    role: "Software Engineer Intern (Data Science)",
+    role: "Research Software Engineer",
     detail:
-      "Bioinformatics at Walter & Eliza Hall Institute. Automated flow-cytometry analysis on cloud and HPC. Contributed to the open-source celseq2 library.",
+      "Bioinformatics at Walter & Eliza Hall Institute. Worked on GMM, an R Shiny tool built to run on WEHI's Milton HPC that builds CEL-Seq2 sample sheets and merges FACS index-sort metadata with plate layouts. Contributed to celseq-sample-sheet-generator.",
     current: false,
   },
   {

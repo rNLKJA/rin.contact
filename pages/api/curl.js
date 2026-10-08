@@ -137,7 +137,7 @@ const lines = [
   tEntry(
     null,
     false,
-    "Software Engineer Intern (Data Science)",
+    "Research Software Engineer",
     "WEHI",
     "Bioinformatics",
     "2024",
