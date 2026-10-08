@@ -237,8 +237,8 @@ export const PROJECTS = [
     status: "Handed to production team",
     stack: ["Expo", "React Native", "Flask", "Python", "AWS RDS", "LightSail", "CI/CD"],
     summary:
-      "A clinician-facing and patient-facing mental health app (formerly Moodist) for the University of Melbourne's Department of Psychiatry, built as sole developer. Rebuilt it from Uniapp to Expo React Native with a clinician dashboard on a Flask backend, cut hosting costs by about $500/month with AWS RDS and LightSail, and kept it GDPR-aligned before handing it to a professional team for production.",
-    impact: "Sole developer · ~$500/month hosting saved · Cross-platform iOS + Android",
+      "A clinician-facing and patient-facing mental health app (formerly Moodist) for the University of Melbourne's Department of Psychiatry, built as sole developer. Rebuilt it from Uniapp to Expo React Native with a clinician dashboard on a Flask backend, kept hosting under $500 a month by running each service in its own Docker container on AWS LightSail, and kept it GDPR-aligned before handing it to a professional team for production.",
+    impact: "Sole developer · Hosting under $500/month · Cross-platform iOS + Android",
   },
   {
     id: "wehi-flow",
