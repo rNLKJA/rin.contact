@@ -2470,7 +2470,7 @@
     },
     "kindCounts": {
       "subject": ["{count} subject", "{count} subjects"],
-      "coursework": ["{count} coursework", "{count} coursework"],
+      "coursework": ["{count} coursework item", "{count} coursework items"],
       "project": ["{count} project", "{count} projects"],
       "role": ["{count} role", "{count} roles"],
       "credential": ["{count} credential", "{count} credentials"],
@@ -2485,7 +2485,8 @@
       "mentoring": "Mentoring"
     },
     "timeline": {
-      "intro": "This is what I learned and used, year by year. Each square is one dated item. Knowledge notes and explainers are not in the grid because I wrote them later and they have no date of their own.",
+      "intro": "This is what I learned and used, year by year. Knowledge notes and explainers are left out because I wrote them later and they have no date of their own.",
+      "gridNote": "Each square is one dated item, up to 12 in a cell, and the number beside them is the full count.",
       "caption": "Dated items by kind and year",
       "kind": "Kind",
       "newSkills": "New on record",
@@ -2494,9 +2495,8 @@
       "hideItems": "Hide items",
       "itemsSummary": "{count} items",
       "itemSummary": "1 item",
-      "more": "+{count}",
-      "moreSkills": "Show {count} more skills",
-      "fewerSkills": "Show fewer skills"
+      "more": "+{count} more",
+      "fewerSkills": "Show fewer"
     },
     "atlas": {
       "intro": "There are {skills} skills in {domains} areas. Open a skill to see every place it shows up, with a link to each one.",
@@ -2517,13 +2517,12 @@
       "item": "1 item",
       "firstRecord": "First record {year}",
       "undated": "No dated item",
-      "show": "Show evidence for {skill}",
-      "hide": "Hide evidence for {skill}",
       "showAll": "Show all {count}",
       "showFewer": "Show fewer",
       "newTab": "opens in a new tab",
       "englishOnly": "In English",
-      "skillCount": "{count} skills"
+      "skillCount": "{count} skills",
+      "skillCountFiltered": "{shown} of {count} skills"
     },
     "subjects": {
       "intro": "These are all {count} subjects from my two University of Melbourne degrees, in the order I took them. Where I rebuilt an assignment as a live lab, or wrote a note on the topic, the subject links to it.",
@@ -2534,7 +2533,7 @@
       "role": "Role",
       "linkFormat": "{kind}: {label}",
       "winter": "Winter term",
-      "yearOnly": "Year",
+      "yearOnly": "Term not recorded",
       "yearFormat": "{year}"
     },
     "credentials": {

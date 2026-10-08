@@ -15,7 +15,7 @@ export default function CredentialList({ credentials, skills, onSelectSkill, cou
   const provider = (key) => t(`${K}.providers.${key}`);
 
   return (
-    <div className="[content-visibility:auto] [contain-intrinsic-size:auto_1400px]">
+    <div>
       <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
         {fill(t(`${K}.intro`), { count })}
       </p>

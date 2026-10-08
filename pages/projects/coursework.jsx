@@ -456,7 +456,7 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
                 <li key={l.key} className="bg-white dark:bg-[#0A0A0A]">
                   <Link
                     href={l.href}
-                    className="group flex items-center justify-between gap-3 px-5 py-4 text-sm text-black dark:text-white hover:bg-[#FAFAFA] dark:hover:bg-[#111111] transition-colors duration-200"
+                    className="group flex items-center justify-between gap-3 px-5 py-4 text-sm text-black dark:text-white hover:bg-[#FAFAFA] dark:hover:bg-[#111111] transition-colors duration-200 focus-visible:[outline-offset:-2px]"
                   >
                     {t(`courseworkPage.goDeeper.${l.key}`)}
                     <span

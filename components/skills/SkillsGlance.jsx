@@ -50,7 +50,7 @@ export default function SkillsGlance({ stats }) {
         <div className="min-w-0">
           <h3
             id="how-to-read-h"
-            className="font-display text-[11px] tracking-widest uppercase text-[#1A1A1A] dark:text-white"
+            className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#1A1A1A] dark:text-white"
           >
             {t(`${K}.howToRead.title`)}
           </h3>

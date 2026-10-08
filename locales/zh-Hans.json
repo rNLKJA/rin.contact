@@ -2160,7 +2160,8 @@
       "mentoring": "导师经历"
     },
     "timeline": {
-      "intro": "按年份看我学了什么、用了什么。每个小方块代表一个有日期的条目。知识笔记和小讲解是后来写的，没有自己的日期，所以不放进这张表。",
+      "intro": "按年份看我学了什么、用了什么。知识笔记和小讲解是后来写的，没有自己的日期，所以不算在这里。",
+      "gridNote": "每个小方块代表一个有日期的条目，一格最多画 12 个，旁边的数字是实际总数。",
       "caption": "按类型和年份统计的条目",
       "kind": "类型",
       "newSkills": "首次出现",
@@ -2169,9 +2170,8 @@
       "hideItems": "收起条目",
       "itemsSummary": "{count} 个条目",
       "itemSummary": "1 个条目",
-      "more": "+{count}",
-      "moreSkills": "再显示 {count} 项技能",
-      "fewerSkills": "收起部分技能"
+      "more": "+{count} 项",
+      "fewerSkills": "收起"
     },
     "atlas": {
       "intro": "{skills} 项技能，分成 {domains} 个领域。展开任意一项，可以看到它出现过的每个地方，每一处都有链接。",
@@ -2192,13 +2192,12 @@
       "item": "1 个条目",
       "firstRecord": "最早记录 {year}",
       "undated": "暂无带日期的条目",
-      "show": "展开「{skill}」的出处",
-      "hide": "收起「{skill}」的出处",
       "showAll": "显示全部 {count} 个",
       "showFewer": "收起",
       "newTab": "在新标签页打开",
       "englishOnly": "英文",
-      "skillCount": "{count} 项技能"
+      "skillCount": "{count} 项技能",
+      "skillCountFiltered": "{shown} / {count} 项技能"
     },
     "subjects": {
       "intro": "我在墨尔本大学两个学位里修过的全部 {count} 门课，按修读顺序排列。如果某门课的作业被我重做成了在线实验室，或者我为相关主题写过笔记，这里都放了链接。",
@@ -2209,7 +2208,7 @@
       "role": "工作",
       "linkFormat": "{kind}：{label}",
       "winter": "冬季学期",
-      "yearOnly": "全年",
+      "yearOnly": "学期未注明",
       "yearFormat": "{year}年"
     },
     "credentials": {

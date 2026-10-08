@@ -22,9 +22,9 @@ function jumpTo(el) {
 }
 
 /**
- * Jump now, then once more on the next frame. Sections use content-visibility,
- * so a section that comes into view during the first jump renders at its real
- * height and can move the target; the second jump settles on it.
+ * Jump now, then once more on the next frame. Opening a row (or a panel that
+ * animates in) can move the target after the first jump; the second jump
+ * settles on it.
  */
 function settleOn(el) {
   jumpTo(el);
@@ -131,8 +131,8 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
   useEffect(() => (jump ? jumpToSkill(jump.id) : undefined), [jump, jumpToSkill]);
 
   // #skill-<id>, #subject-<code> and #year-<y> links work without JavaScript.
-  // With it, a skill's row opens, and the jump is made instant and settled
-  // (see settleOn), since estimated section heights can move the target.
+  // With it, a skill's row opens first, and the jump is made instant and
+  // settled (see settleOn), since the opened panel moves what follows it.
   useEffect(() => {
     let frame = 0;
     const onHash = () => {
@@ -309,14 +309,7 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
 
       <div className="space-y-12">
         {groups.map(({ domain: d, skills: rows }) => (
-          <section
-            key={d.id}
-            aria-labelledby={`area-${d.id}`}
-            // Off-screen groups skip rendering. The size estimate follows the
-            // row count, so jumps past them land close before they render.
-            className="[content-visibility:auto]"
-            style={{ containIntrinsicSize: `auto ${160 + rows.length * 68}px` }}
-          >
+          <section key={d.id} aria-labelledby={`area-${d.id}`}>
             <div className="pb-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E]">
               <p className="flex items-center gap-2 font-mono text-[10px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#FF3C3C]">
                 <span aria-hidden="true" className="block w-1.5 h-1.5 bg-current" />
@@ -332,7 +325,9 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
                 {d.blurb}
               </p>
               <p className="mt-1 text-[11px] tabular-nums text-[#5C5C5C] dark:text-[#9A9A9A]">
-                {fill(t(`${K}.skillCount`), { count: d.count })}
+                {active && rows.length !== d.count
+                  ? fill(t(`${K}.skillCountFiltered`), { shown: rows.length, count: d.count })
+                  : fill(t(`${K}.skillCount`), { count: d.count })}
               </p>
             </div>
             <ul className="divide-y divide-[#F0F0F0] dark:divide-[#1E1E1E]">

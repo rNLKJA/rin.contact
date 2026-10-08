@@ -10,31 +10,28 @@ import EvidenceList, {
 } from "@/components/skills/EvidenceList";
 
 const K = "skillsPage.timeline";
-/** Squares drawn per cell before the rest are summed up as "+N". */
+/** Squares drawn per cell; the number beside them is always the full count. */
 const MAX_SQUARES = 12;
-/** New skills shown per year before the "+N" button. */
+/** New skills shown per year before the "+N more" button. */
 const MAX_CHIPS = 12;
 
-const INK = "bg-[#1A1A1A] dark:bg-[#EEEEEE]";
-const RED = "bg-[#CC0000] dark:bg-[#FF3C3C]";
+// Forced-colours mode drops background colours, so the squares keep CanvasText.
+const FORCED = "forced-colors:[forced-color-adjust:none] forced-colors:bg-[CanvasText]";
+const INK = `bg-[#1A1A1A] dark:bg-[#EEEEEE] ${FORCED}`;
+const RED = `bg-[#CC0000] dark:bg-[#FF3C3C] ${FORCED}`;
 
-/** One grid cell: up to 12 6px squares (wrapping at 6), "+N" and the count. */
+/**
+ * One grid cell: up to 12 6px squares in fixed 6px columns (wrapping at 6, so
+ * they never merge into a bar), then the count.
+ */
 function Cell({ n, colour }) {
   return (
     <span className="inline-flex items-center gap-1.5">
       {n > 0 && (
-        <span aria-hidden="true" className="grid grid-cols-6 gap-[2px]">
+        <span aria-hidden="true" className="grid grid-cols-[repeat(6,6px)] gap-[2px]">
           {Array.from({ length: Math.min(n, MAX_SQUARES) }, (_, i) => (
             <span key={i} className={`block w-1.5 h-1.5 ${colour}`} />
           ))}
-        </span>
-      )}
-      {n > MAX_SQUARES && (
-        <span
-          aria-hidden="true"
-          className="font-mono text-[10px] text-[#5C5C5C] dark:text-[#9A9A9A]"
-        >
-          +{n - MAX_SQUARES}
         </span>
       )}
       <span className="font-mono text-[10px] tabular-nums text-[#3D3D3D] dark:text-[#AAAAAA]">
@@ -108,15 +105,12 @@ function YearEntry({ year, evidence, kinds, skillLabel, onSelectSkill }) {
                     type="button"
                     aria-expanded={allSkills}
                     aria-controls={chipsId}
-                    aria-label={
-                      allSkills
-                        ? t(`${K}.fewerSkills`)
-                        : fill(t(`${K}.moreSkills`), { count: hiddenChips })
-                    }
                     onClick={() => setAllSkills((v) => !v)}
                     className="inline-flex min-h-[32px] items-center border border-dashed border-[#BDBDBD] dark:border-[#555555] px-2.5 font-mono text-[11px] text-[#3D3D3D] dark:text-[#CCCCCC] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200"
                   >
-                    {allSkills ? "−" : fill(t(`${K}.more`), { count: hiddenChips })}
+                    {allSkills
+                      ? t(`${K}.fewerSkills`)
+                      : fill(t(`${K}.more`), { count: hiddenChips })}
                   </button>
                 </li>
               )}
@@ -163,10 +157,11 @@ function YearEntry({ year, evidence, kinds, skillLabel, onSelectSkill }) {
 }
 
 /**
- * Learning timeline: a static grid of dated items by kind and year (md and
- * up), a one-line summary per year on phones, then a year list where each year
- * names the skills that first appear in it and opens to its items. Knowledge
- * notes and explainers have no date of their own, so they stay out of it.
+ * Learning timeline: a static grid of dated items by kind and year (lg and
+ * up, where every column fits), then a year list where each year sums up its
+ * items, names the skills that first appear in it and opens to the items.
+ * Below lg the year list alone carries the same counts. Knowledge notes and
+ * explainers have no date of their own, so they stay out of it.
  */
 export default function LearningTimeline({ atlas, onSelectSkill }) {
   const { t } = useI18n();
@@ -180,10 +175,19 @@ export default function LearningTimeline({ atlas, onSelectSkill }) {
         {t(`${K}.intro`)}
       </p>
 
-      {/* md and up: the grid */}
-      <ScrollRegion label={t(`${K}.caption`)} className="hidden md:block">
-        <table className="w-full border-collapse">
+      {/* lg and up: the grid. Equal year columns; it scrolls if they ever stop fitting. */}
+      <p className="hidden lg:block mb-4 max-w-[68ch] text-[12px] leading-relaxed text-[#5C5C5C] dark:text-[#9A9A9A]">
+        {t(`${K}.gridNote`)}
+      </p>
+      <ScrollRegion label={t(`${K}.caption`)} className="hidden lg:block">
+        <table className="w-full min-w-[880px] table-fixed border-collapse">
           <caption className="sr-only">{t(`${K}.caption`)}</caption>
+          <colgroup>
+            <col className="w-36" />
+            {timeline.map((y) => (
+              <col key={y.year} />
+            ))}
+          </colgroup>
           <thead>
             <tr>
               <th
@@ -237,32 +241,8 @@ export default function LearningTimeline({ atlas, onSelectSkill }) {
         </table>
       </ScrollRegion>
 
-      {/* Phones: one line per year */}
-      <ol className="md:hidden divide-y divide-[#F0F0F0] dark:divide-[#1E1E1E] border-y border-[#F0F0F0] dark:border-[#1E1E1E]">
-        {timeline.map((y) => (
-          <li key={y.year} className="py-3 flex items-baseline gap-4">
-            <a
-              href={`#year-${y.year}`}
-              className="font-display text-3xl leading-none tabular-nums text-black dark:text-white shrink-0"
-            >
-              {y.year}
-            </a>
-            <p className="min-w-0 text-[12px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
-              {yearSentence(t, y, timelineKinds) ||
-                itemCount(t, 0, `${K}.itemSummary`, `${K}.itemsSummary`)}
-              {y.newSkills.length > 0 && (
-                <span className="text-[#CC0000] dark:text-[#FF3C3C]">
-                  {" · "}
-                  {t(`${K}.newSkills`)} {y.newSkills.length}
-                </span>
-              )}
-            </p>
-          </li>
-        ))}
-      </ol>
-
-      {/* Every year, with its new skills and items */}
-      <ol className="mt-6">
+      {/* Every year, with its counts, new skills and items */}
+      <ol className="-mt-8 lg:mt-6">
         {timeline.map((y) => (
           <YearEntry
             key={y.year}

@@ -406,9 +406,10 @@ export default function SkillsSection() {
       </div>
       {/* The evidence behind every skill lives on /skills */}
       <div className="mt-10 border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
+        {/* The ring is drawn inside: the rounded wrapper clips anything outside. */}
         <Link
           href="/skills"
-          className="group flex items-center justify-between gap-3 px-5 py-4 text-sm text-black dark:text-white bg-white dark:bg-[#0A0A0A] hover:bg-[#FAFAFA] dark:hover:bg-[#111111] transition-colors duration-200"
+          className="group flex items-center justify-between gap-3 px-5 py-4 text-sm text-black dark:text-white bg-white dark:bg-[#0A0A0A] hover:bg-[#FAFAFA] dark:hover:bg-[#111111] transition-colors duration-200 focus-visible:[outline-offset:-2px]"
         >
           {t("skills.atlasLink")}
           <span

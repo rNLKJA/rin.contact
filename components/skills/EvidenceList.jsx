@@ -32,8 +32,8 @@ export function itemCount(
 
 /**
  * A link to a skill's row in the atlas. Without JavaScript it is a plain link
- * (?skill=<id>#skill-<id>); with it, the click is handed to `onSelect`, which
- * opens the row and jumps to it.
+ * (?skill=<id>#skill-<id>); with it, the click is handed to `onSelect` with the
+ * chip itself, which opens the row, jumps to it and brings Back to the chip.
  */
 export function SkillChip({ id, label, onSelect, lang }) {
   return (
@@ -43,7 +43,7 @@ export function SkillChip({ id, label, onSelect, lang }) {
       onClick={(e) => {
         if (!onSelect || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         e.preventDefault();
-        onSelect(id);
+        onSelect(id, e.currentTarget);
       }}
       className={CHIP}
     >
@@ -129,7 +129,7 @@ function KindGroup({ kind, items, id, subGroup, Heading }) {
   }
 
   return (
-    <div>
+    <div className="break-inside-avoid pb-5">
       <Heading className={`${MICRO_LABEL} mb-1`}>
         {t(`skillsPage.kindsPlural.${kind}`)}
         <span className="ml-2 tabular-nums">{items.length}</span>
@@ -171,7 +171,9 @@ function KindGroup({ kind, items, id, subGroup, Heading }) {
  * Evidence grouped by kind, in the page's kind order. `id` prefixes the group
  * ids (for aria-controls), `headingLevel` sets the group headings under the
  * caller's own heading, and `subGroupSubjects` splits subjects by term, which
- * is their meta line.
+ * is their meta line. From sm up the groups flow into two balanced columns
+ * (reading order unchanged), so a short group never sits beside a long one
+ * with a blank cell under it.
  */
 export default function EvidenceList({
   items,
@@ -185,7 +187,7 @@ export default function EvidenceList({
     .map((kind) => ({ kind, items: items.filter((item) => item.kind === kind) }))
     .filter((g) => g.items.length);
   return (
-    <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+    <div className="-mb-5 sm:columns-2 sm:gap-x-8">
       {groups.map((g) => (
         <KindGroup
           key={g.kind}
