@@ -15,6 +15,11 @@ const NewsletterSignup = dynamic(() => import("@/components/blog/NewsletterSignu
   ssr: false,
 });
 
+// Posts are English-only Markdown. The /zh-Hans/ version renders the same English
+// post inside the zh-Hans chrome, so it opens with this note. The note is bilingual
+// on purpose and identical in every locale, so it lives here rather than in locales.
+const ENGLISH_ONLY_NOTE = { zh: "本文仅有英文版", en: "This post is available in English only" };
+
 export default function BlogPost({ post, relatedPosts = [] }) {
   const { t, locale = "en-AU" } = useI18n();
   const isZh = locale === "zh-Hans";
@@ -81,7 +86,8 @@ export default function BlogPost({ post, relatedPosts = [] }) {
               image: ogImageUrl,
               datePublished: post.date || undefined,
               dateModified: post.date || undefined,
-              inLanguage: locale === "zh-Hans" ? "zh-Hans" : "en-AU",
+              // The post body is English in every locale.
+              inLanguage: "en-AU",
               author: {
                 "@type": "Person",
                 name: "Rin Huang",
@@ -116,13 +122,28 @@ export default function BlogPost({ post, relatedPosts = [] }) {
           ← {t("blog.backToBlog")}
         </Link>
 
+        {isZh && (
+          <p
+            role="note"
+            className="flex flex-wrap items-center gap-x-2 gap-y-1 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-3 mb-10 text-xs text-ink-subtle dark:text-[#9A9A9A]"
+          >
+            <span className="block w-1.5 h-1.5 bg-[#FF3C3C]" aria-hidden="true" />
+            <span>{ENGLISH_ONLY_NOTE.zh}</span>
+            <span aria-hidden="true">/</span>
+            <span lang="en-AU">{ENGLISH_ONLY_NOTE.en}</span>
+          </p>
+        )}
+
         {/* Post header */}
         <header className="mb-10">
           <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-accent-ink mb-5">
             <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
             {t("blog.sectionLabel")}
           </p>
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-black dark:text-white">
+          <h1
+            lang={isZh ? "en-AU" : undefined}
+            className="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-black dark:text-white"
+          >
             {post.title}
           </h1>
           <div className="flex flex-wrap items-center gap-3 text-xs">
@@ -155,8 +176,10 @@ export default function BlogPost({ post, relatedPosts = [] }) {
           </div>
         </header>
 
-        {/* Post content */}
+        {/* Post content — English in every locale, so mark it for screen readers
+            when it sits inside the zh-Hans page */}
         <div
+          lang={isZh ? "en-AU" : undefined}
           className="prose prose-base max-w-none
                      prose-headings:text-black dark:prose-headings:text-white
                      prose-a:text-[#FF3C3C] prose-a:no-underline hover:prose-a:underline
@@ -212,9 +235,13 @@ export default function BlogPost({ post, relatedPosts = [] }) {
   );
 }
 
-export async function getStaticPaths() {
+// Build every post for every locale in the i18n config. Without the locale
+// entries Next only generates the default locale, so /zh-Hans/blog/<slug>/ was a
+// 404 even though /zh-Hans/blog/ links to it. The zh page renders the English post
+// inside the zh-Hans chrome (see ENGLISH_ONLY_NOTE).
+export async function getStaticPaths({ locales = ["en-AU"] }) {
   const slugs = getPostSlugs();
-  const paths = slugs.map((slug) => ({ params: { slug } }));
+  const paths = locales.flatMap((locale) => slugs.map((slug) => ({ params: { slug }, locale })));
   return { paths, fallback: false };
 }
 
