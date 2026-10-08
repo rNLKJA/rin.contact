@@ -1,7 +1,8 @@
 /**
  * /skills, "Everything I've learned": every skill since 2019, each linked to
  * the subjects, coursework, projects, roles, credentials, notes and posts that
- * show it. getStaticProps builds the atlas from the site's existing data
+ * show it. "What I work with now" leads with my core skills and the skills in
+ * use in the last 18 months, all dated from that same evidence. getStaticProps builds the atlas from the site's existing data
  * (lib/skills-atlas.js) and fails the build if it breaks a site rule
  * (lib/skills-check.js): no marks, grades or self-rated levels, no SAPOL system
  * names. Client components get everything through props.
@@ -18,6 +19,7 @@ import PageHero from "@/components/layout/PageHero";
 import BackToTop from "@/components/ui/BackToTop";
 import ResumeSection from "@/components/resume/ResumeSection";
 import SkillsGlance from "@/components/skills/SkillsGlance";
+import SkillsNow from "@/components/skills/SkillsNow";
 import LearningTimeline from "@/components/skills/LearningTimeline";
 import SkillsAtlas, { MAX_QUERY } from "@/components/skills/SkillsAtlas";
 import SubjectsList from "@/components/skills/SubjectsList";
@@ -247,11 +249,15 @@ export default function SkillsPage({ atlas, jsonLd, ogImage }) {
             <SkillsGlance stats={stats} />
           </ResumeSection>
 
-          <ResumeSection id="timeline" n="02" title={t("skillsPage.sections.timeline")}>
+          <ResumeSection id="now" n="02" title={t("skillsPage.sections.now")}>
+            <SkillsNow atlas={atlas} onSelectSkill={selectSkill} />
+          </ResumeSection>
+
+          <ResumeSection id="timeline" n="03" title={t("skillsPage.sections.timeline")}>
             <LearningTimeline atlas={atlas} onSelectSkill={selectSkill} />
           </ResumeSection>
 
-          <ResumeSection id="atlas" n="03" title={t("skillsPage.sections.atlas")}>
+          <ResumeSection id="atlas" n="04" title={t("skillsPage.sections.atlas")}>
             <SkillsAtlas
               atlas={atlas}
               filters={filters}
@@ -263,7 +269,7 @@ export default function SkillsPage({ atlas, jsonLd, ogImage }) {
             />
           </ResumeSection>
 
-          <ResumeSection id="subjects" n="04" title={t("skillsPage.sections.subjects")}>
+          <ResumeSection id="subjects" n="05" title={t("skillsPage.sections.subjects")}>
             <SubjectsList
               subjects={atlas.subjects}
               evidence={atlas.evidence}
@@ -273,7 +279,7 @@ export default function SkillsPage({ atlas, jsonLd, ogImage }) {
             />
           </ResumeSection>
 
-          <ResumeSection id="credentials" n="05" title={t("skillsPage.sections.credentials")}>
+          <ResumeSection id="credentials" n="06" title={t("skillsPage.sections.credentials")}>
             <CredentialList
               credentials={atlas.credentials}
               skills={atlas.skills}
@@ -284,7 +290,7 @@ export default function SkillsPage({ atlas, jsonLd, ogImage }) {
 
           <ResumeSection
             id="deeper"
-            n="06"
+            n="07"
             title={t("skillsPage.sections.deeper")}
             className="pb-10"
           >

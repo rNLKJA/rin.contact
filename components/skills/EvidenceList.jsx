@@ -8,7 +8,7 @@ const SHOWN = 6;
 
 export const MICRO_LABEL =
   "font-mono text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]";
-const MORE_BUTTON =
+export const MORE_BUTTON =
   "min-h-[32px] text-[11px] tracking-widest uppercase text-accent-ink underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200";
 const CHIP =
   "inline-flex min-h-[32px] items-center border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 text-[12px] leading-tight text-[#3D3D3D] dark:text-[#CCCCCC] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 [overflow-wrap:anywhere]";
@@ -31,23 +31,43 @@ export function itemCount(
 }
 
 /**
- * A link to a skill's row in the atlas. Without JavaScript it is a plain link
- * (?skill=<id>#skill-<id>); with it, the click is handed to `onSelect` with the
- * chip itself, which opens the row, jumps to it and brings Back to the chip.
+ * A link to a skill's atlas row: `?skill=<id>#skill-<id>`, a plain link without
+ * JavaScript. With it, a plain left click is handed to `onSelect` with the link
+ * itself, which opens the row, jumps to it and brings Back to the link.
  */
-export function SkillChip({ id, label, onSelect, lang }) {
+export function skillLinkProps(id, onSelect) {
+  return {
+    href: `?skill=${id}#skill-${id}`,
+    onClick: (e) => {
+      if (!onSelect || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      onSelect(id, e.currentTarget);
+    },
+  };
+}
+
+/**
+ * A skill as a chip that links to its atlas row (skillLinkProps). `meta` (a
+ * date) follows the label in grey. `srMeta` replaces it for screen readers
+ * with a full phrase from the locale (", last used Mar 2026"), separator
+ * included, so each language keeps its own punctuation.
+ */
+export function SkillChip({ id, label, onSelect, lang, meta, srMeta }) {
   return (
-    <a
-      href={`?skill=${id}#skill-${id}`}
-      lang={lang}
-      onClick={(e) => {
-        if (!onSelect || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        e.preventDefault();
-        onSelect(id, e.currentTarget);
-      }}
-      className={CHIP}
-    >
+    <a {...skillLinkProps(id, onSelect)} lang={lang} className={CHIP}>
       {label}
+      {meta && (
+        <span className="ml-2 shrink-0 whitespace-nowrap text-[11px] tabular-nums text-[#5C5C5C] dark:text-[#9A9A9A]">
+          {srMeta ? (
+            <>
+              <span aria-hidden="true">{meta}</span>
+              <span className="sr-only">{srMeta}</span>
+            </>
+          ) : (
+            meta
+          )}
+        </span>
+      )}
     </a>
   );
 }

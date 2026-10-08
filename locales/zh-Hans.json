@@ -35,6 +35,7 @@
     "fullProfile": "完整主页",
     "coursework": "课程作业",
     "skills": "这些年学过的东西",
+    "skillsShort": "技能",
     "history": "网站历史",
     "dsExplainers": "数据科学小讲解",
     "now": "近况",
@@ -1147,7 +1148,18 @@
     "active": "进行中",
     "share": "分享",
     "post": "发布",
-    "viewOnGithub": "在 GitHub 上查看"
+    "viewOnGithub": "在 GitHub 上查看",
+    "caseStudy": "阅读案例",
+    "caseStudyLabel": "阅读案例：{title}",
+    "courseworkCaseStudy": "课程作业案例",
+    "courseworkCaseStudyLabel": "课程作业案例：{title}（课程作业页面）",
+    "liveDemo": "在线演示",
+    "liveDemoLabel": "在线演示：{title}（在新标签页打开）",
+    "tour": "视频导览",
+    "tourLabel": "视频导览：{title}（在新标签页打开）",
+    "githubLabel": "在 GitHub 上查看：{title}（在新标签页打开）",
+    "githubProfileLabel": "在 GitHub 上查看：我的主页（在新标签页打开）",
+    "newTab": "（在新标签页打开）"
   },
   "metroMap": {
     "heading": "三条线路。",
@@ -2101,6 +2113,7 @@
     "onThisPage": "本页内容",
     "sections": {
       "glance": "概览",
+      "now": "我现在常用的技能",
       "timeline": "学习时间线",
       "atlas": "技能地图",
       "subjects": "修过的课程",
@@ -2115,6 +2128,18 @@
       "labs": "课程作业实验室",
       "credentials": "证书",
       "years": "年份"
+    },
+    "now": {
+      "coreTitle": "核心技能",
+      "coreNote": "这五项是我在 LinkedIn 上标注的核心技能。每一项下面都是最近用到它的工作、项目或课程实验室，附有链接，可以直接点开查看背后的工作。",
+      "lastUsed": "最近一次使用：{date}",
+      "chipLastUsed": "，最近一次使用：{date}",
+      "chipLastUsedAt": "，最近一次使用：{where}，{date}",
+      "inAtlas": "在技能地图中",
+      "latestWork": "最近的工作",
+      "labWhere": "{title}（课程实验室）",
+      "activeTitle": "近期在用",
+      "activeNote": "过去 {months} 个月里（{since}以来），我在工作、项目或课程实验室中用到过这 {count} 项技能。越近用到的排得越前，同一时间的，用到的地方越多越靠前。每一项都注明最近在哪里用到，点开会跳到技能地图里的对应条目。只显示年份的，是因为记录里没有月份，课程实验室就只记了重做的年份。日期截至 {asOf}。"
     },
     "howToRead": {
       "title": "这些数字怎么看",

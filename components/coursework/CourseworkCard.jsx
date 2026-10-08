@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { fill, joinNames } from "@/lib/fill";
 
 const K = "courseworkPage.card";
@@ -31,10 +32,38 @@ function Highlight({ text, className = "" }) {
  * skills, which keeps every card short enough to scan on a phone. The guided
  * tour appears when the demo has one (tourUrl). GitHub appears only when the
  * data layer passed a repoUrl, which it does for public repositories whose
- * main branch holds the revival.
+ * main branch holds the revival. A link to the card itself (#<slug>, which the
+ * case-study buttons on /projects and the labs on /skills use) opens its
+ * details, so the visitor lands on the whole write-up, and gives the card focus
+ * and the red border. The border follows state, not :target, because a
+ * client-side jump (pushState) never updates :target.
  */
 export default function CourseworkCard({ project: p, termLabel, t }) {
   const [open, setOpen] = useState(false);
+  const [targeted, setTargeted] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const openIfTarget = () => {
+      const hit = window.location.hash === `#${p.slug}`;
+      setTargeted(hit);
+      if (!hit) return;
+      setOpen(true);
+      // The browser or Next.js has scrolled to the card; focus starts there too.
+      document.getElementById(p.slug)?.focus({ preventScroll: true });
+    };
+    // A frame after mount: arriving from another page, the URL already holds
+    // the hash. Same-page jumps fire hashchange (plain links) or Next.js's
+    // hashChangeComplete (next/link).
+    const frame = requestAnimationFrame(openIfTarget);
+    window.addEventListener("hashchange", openIfTarget);
+    router.events.on("hashChangeComplete", openIfTarget);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", openIfTarget);
+      router.events.off("hashChangeComplete", openIfTarget);
+    };
+  }, [p.slug, router.events]);
   const shown = p.highlights.slice(0, SHOWN);
   const more = p.highlights.slice(SHOWN);
   const detailsId = `${p.slug}-details`;
@@ -54,7 +83,11 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
       id={p.slug}
       tabIndex={-1}
       aria-labelledby={headingId}
-      className="scroll-mt-24 rounded-lg border border-[#EBEBEB] dark:border-[#262626] bg-white dark:bg-[#0A0A0A] p-5 md:p-6 target:border-[#CC0000] dark:target:border-[#FF3C3C] target:animate-enter"
+      className={`scroll-mt-24 rounded-lg border bg-white dark:bg-[#0A0A0A] p-5 md:p-6 focus:outline-none ${
+        targeted
+          ? "border-[#CC0000] dark:border-[#FF3C3C] animate-enter"
+          : "border-[#EBEBEB] dark:border-[#262626]"
+      }`}
     >
       {/* Subject, date and status */}
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">

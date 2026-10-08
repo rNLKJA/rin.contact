@@ -35,6 +35,7 @@
     "fullProfile": "Full Profile",
     "coursework": "Coursework",
     "skills": "Everything I've learned",
+    "skillsShort": "Skills",
     "history": "History",
     "dsExplainers": "Data science explainers",
     "now": "Now",
@@ -1460,7 +1461,18 @@
     "active": "Active",
     "share": "Share",
     "post": "Post",
-    "viewOnGithub": "View on GitHub"
+    "viewOnGithub": "View on GitHub",
+    "caseStudy": "Read case study",
+    "caseStudyLabel": "Read case study: {title}",
+    "courseworkCaseStudy": "Coursework case study",
+    "courseworkCaseStudyLabel": "Coursework case study: {title}, on the coursework page",
+    "liveDemo": "Live demo",
+    "liveDemoLabel": "Live demo: {title} (opens in a new tab)",
+    "tour": "Guided tour",
+    "tourLabel": "Guided tour: {title} (opens in a new tab)",
+    "githubLabel": "View on GitHub: {title} (opens in a new tab)",
+    "githubProfileLabel": "View on GitHub: my profile (opens in a new tab)",
+    "newTab": "(opens in a new tab)"
   },
   "metroMap": {
     "heading": "Three lines.",
@@ -2426,6 +2438,7 @@
     "onThisPage": "On this page",
     "sections": {
       "glance": "At a glance",
+      "now": "What I work with now",
       "timeline": "Learning timeline",
       "atlas": "Skills atlas",
       "subjects": "Subjects I studied",
@@ -2440,6 +2453,18 @@
       "labs": "Coursework labs",
       "credentials": "Credentials",
       "years": "Years"
+    },
+    "now": {
+      "coreTitle": "Core skills",
+      "coreNote": "These are the five top skills on my LinkedIn profile. Each one shows the latest roles, projects or labs where I used it, with links, so you can check the work behind it.",
+      "lastUsed": "Last used {date}",
+      "chipLastUsed": ", last used {date}",
+      "chipLastUsedAt": ", last used at {where}, {date}",
+      "inAtlas": "In the atlas",
+      "latestWork": "Latest work",
+      "labWhere": "{title} lab",
+      "activeTitle": "In active use",
+      "activeNote": "I have used these {count} skills in a role, a project or a coursework lab in the last {months} months, since {since}. The most recent come first, then the ones I used in more places. Each one shows where I last used it, and opens its row in the atlas. A year on its own means the record has no month, as with the coursework labs, which carry only the year I rebuilt them. Dates are as of {asOf}."
     },
     "howToRead": {
       "title": "How to read the numbers",

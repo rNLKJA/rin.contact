@@ -14,6 +14,7 @@ const slugifyDomain = (d) =>
     .replace(/^-+|-+$/g, "");
 import { useTheme } from "@/contexts/ThemeContext";
 import { useInView } from "@/hooks/useInView";
+import { fill } from "@/lib/fill";
 import { PROJECTS } from "@/lib/projects-data";
 
 const DOMAIN_COLORS = {
@@ -67,7 +68,103 @@ function CountUp({ target, duration = 300, started }) {
   return <>{count}</>;
 }
 
-function ProjectDetail({ project }) {
+// Link buttons: case study (ink), live demo (red), guided tour (ink outline)
+// and repository or site (hairline). The demo red is the accent-fill token
+// (#CC0000, 5.9:1 with white text), the same as the coursework cards.
+const BTN =
+  "inline-flex items-center gap-2 px-4 py-1.5 text-xs tracking-widest uppercase rounded-full transition-colors duration-200";
+const BTN_CASE_STUDY = `${BTN} border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] text-white dark:text-[#0A0A0A] hover:bg-black dark:hover:bg-white`;
+const BTN_DEMO = `${BTN} border border-[#CC0000] bg-[#CC0000] text-white hover:bg-[#A30000] hover:border-[#A30000]`;
+const BTN_TOUR = `${BTN} border border-[#1A1A1A] dark:border-[#EEEEEE] text-[#1A1A1A] dark:text-[#EEEEEE] hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-[#EEEEEE] dark:hover:text-[#0A0A0A]`;
+const BTN_LINK = `${BTN} border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white`;
+
+/** The bare GitHub profile: the link for a card with no public repository. */
+const GITHUB_PROFILE = "https://github.com/rNLKJA";
+
+/**
+ * A card's link buttons. `coursework` holds the links a card gets from the
+ * revived lab it grew out of (pages/projects.jsx): a case study on the lab's
+ * card on /projects/coursework, the live demo and, when there is one, the
+ * guided tour. A card's own case study and demo come first. The repository link
+ * is the card's own and is only set for public repositories.
+ *
+ * Every accessible name comes from a locale template that starts with the
+ * visible text ("Live demo: Cachex AI (opens in a new tab)"), so voice control
+ * can reach each button by what it says.
+ */
+function ProjectLinks({ project, coursework, className = "" }) {
+  const { t } = useI18n();
+  const ownCaseStudy = Boolean(project.caseStudy);
+  const caseStudy = project.caseStudy || coursework?.caseStudy;
+  const demo = project.demo || coursework?.demo;
+  const tour = coursework?.tour;
+  const { link } = project;
+  if (!caseStudy && !demo && !tour && !link) return null;
+  const vars = { title: project.title };
+  const github = Boolean(link?.includes("github.com"));
+  return (
+    <div className={`flex flex-wrap gap-2 ${className}`}>
+      {caseStudy && (
+        <Link
+          href={caseStudy}
+          aria-label={fill(
+            t(ownCaseStudy ? "projects.caseStudyLabel" : "projects.courseworkCaseStudyLabel"),
+            vars
+          )}
+          className={BTN_CASE_STUDY}
+        >
+          {t(ownCaseStudy ? "projects.caseStudy" : "projects.courseworkCaseStudy")}{" "}
+          <span aria-hidden="true">→</span>
+        </Link>
+      )}
+      {demo && (
+        <a
+          href={demo}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={fill(t("projects.liveDemoLabel"), vars)}
+          className={BTN_DEMO}
+        >
+          {t("projects.liveDemo")} <span aria-hidden="true">↗</span>
+        </a>
+      )}
+      {tour && (
+        <a
+          href={tour}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={fill(t("projects.tourLabel"), vars)}
+          className={BTN_TOUR}
+        >
+          {t("projects.tour")} <span aria-hidden="true">↗</span>
+        </a>
+      )}
+      {link && github && (
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={
+            link === GITHUB_PROFILE
+              ? t("projects.githubProfileLabel")
+              : fill(t("projects.githubLabel"), vars)
+          }
+          className={BTN_LINK}
+        >
+          {t("projects.viewOnGithub")} <span aria-hidden="true">↗</span>
+        </a>
+      )}
+      {link && !github && (
+        <a href={link} target="_blank" rel="noreferrer" className={BTN_LINK}>
+          {project.linkText} <span aria-hidden="true">↗</span>
+          <span className="sr-only"> {t("projects.newTab")}</span>
+        </a>
+      )}
+    </div>
+  );
+}
+
+function ProjectDetail({ project, coursework }) {
   const { t } = useI18n();
   return (
     <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white dark:bg-[#0A0A0A]">
@@ -101,47 +198,7 @@ function ProjectDetail({ project }) {
             {project.impact}
           </p>
         </div>
-        {(project.link || project.demo || project.caseStudy) && (
-          <div className="flex flex-wrap gap-2">
-            {project.caseStudy && (
-              <Link
-                href={project.caseStudy}
-                aria-label={`Read the ${project.title} case study`}
-                className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] px-4 py-1.5 text-xs tracking-widest uppercase
-                           text-white dark:text-[#0A0A0A] rounded-full hover:bg-black dark:hover:bg-white transition-colors duration-200"
-              >
-                Read case study →
-              </Link>
-            )}
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={project.demoLabel || `Open the live ${project.title} demo`}
-                className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase
-                           text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200"
-              >
-                Live demo ↗
-              </a>
-            )}
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={project.linkLabel || `View ${project.title} on GitHub`}
-                className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
-                           text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
-              >
-                {project.linkText ||
-                  (project.link?.includes("github.com")
-                    ? `${t("projects.viewOnGithub")} ↗`
-                    : `${t("projects.viewOnGithub")} ↗`)}
-              </a>
-            )}
-          </div>
-        )}
+        <ProjectLinks project={project} coursework={coursework} />
         {/* Share buttons */}
         <div className="flex flex-wrap gap-2 mt-3">
           <a
@@ -206,7 +263,7 @@ function ProjectDetail({ project }) {
   );
 }
 
-function FeaturedSpotlight({ project }) {
+function FeaturedSpotlight({ project, coursework }) {
   const { resolved } = useTheme();
   const isDark = resolved === "dark";
   if (!project) return null;
@@ -247,44 +304,7 @@ function FeaturedSpotlight({ project }) {
               {project.impact}
             </p>
           </div>
-          {(project.link || project.demo || project.caseStudy) && (
-            <div className="flex flex-wrap gap-2 pt-1">
-              {project.caseStudy && (
-                <Link
-                  href={project.caseStudy}
-                  aria-label={`Read the ${project.title} case study`}
-                  className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] px-4 py-1.5 text-xs tracking-widest uppercase
-                             text-white dark:text-[#0A0A0A] rounded-full hover:bg-black dark:hover:bg-white transition-colors duration-200"
-                >
-                  Read case study →
-                </Link>
-              )}
-              {project.demo && (
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={project.demoLabel || `Open the live ${project.title} demo`}
-                  className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase
-                             text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200"
-                >
-                  Live demo ↗
-                </a>
-              )}
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={project.linkLabel || `View ${project.title} on GitHub`}
-                  className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
-                             text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
-                >
-                  {project.linkText || "View on GitHub ↗"}
-                </a>
-              )}
-            </div>
-          )}
+          <ProjectLinks project={project} coursework={coursework} className="pt-1" />
         </div>
         <div className="space-y-5">
           <div>
@@ -320,7 +340,7 @@ function FeaturedSpotlight({ project }) {
   );
 }
 
-export default function ProjectsSection() {
+export default function ProjectsSection({ courseworkLinks = {} }) {
   const { t } = useI18n();
   const { resolved } = useTheme();
   const isDark = resolved === "dark";
@@ -476,7 +496,9 @@ export default function ProjectsSection() {
       </div>
 
       {/* ── Featured flagship spotlight ── */}
-      {showSpotlight && <FeaturedSpotlight project={featured} />}
+      {showSpotlight && (
+        <FeaturedSpotlight project={featured} coursework={courseworkLinks[featured?.id]} />
+      )}
 
       {/* ── ALL view: searchable list ── */}
       {isAllView && (
@@ -572,9 +594,11 @@ export default function ProjectsSection() {
                   </button>
                   {/* Height snaps (no max-height tween); the revealed content
                       enters from 70% via animate-enter-up instead. No cap when
-                      open: a fixed cap clipped stack and status on phones. */}
+                      open: a fixed cap clipped stack and status on phones. A
+                      closed row is inert, so its links leave the tab order. */}
                   <div
                     className="overflow-hidden"
+                    inert={!isOpen}
                     style={{
                       maxHeight: isOpen ? "none" : "0px",
                       opacity: isOpen ? 1 : 0,
@@ -583,7 +607,7 @@ export default function ProjectsSection() {
                     <div
                       className={`border-t border-[#F0F0F0] dark:border-[#1E1E1E] ${isOpen ? "animate-enter-up" : ""}`}
                     >
-                      <ProjectDetail project={project} />
+                      <ProjectDetail project={project} coursework={courseworkLinks[project.id]} />
                     </div>
                   </div>
                 </div>
@@ -675,7 +699,10 @@ export default function ProjectsSection() {
               )}
               {activeProject && (
                 <div className="animate-enter-up">
-                  <ProjectDetail project={activeProject} />
+                  <ProjectDetail
+                    project={activeProject}
+                    coursework={courseworkLinks[activeProject.id]}
+                  />
                 </div>
               )}
             </div>
@@ -711,9 +738,11 @@ export default function ProjectsSection() {
                     </span>
                   </button>
                   {/* Height snaps (no max-height tween); the revealed content
-                      enters from 70% via animate-enter-up instead. */}
+                      enters from 70% via animate-enter-up instead. A closed
+                      row is inert, so its links leave the tab order. */}
                   <div
                     className="overflow-hidden"
+                    inert={!isOpen}
                     style={{
                       maxHeight: isOpen ? "none" : "0px",
                       opacity: isOpen ? 1 : 0,
@@ -744,46 +773,7 @@ export default function ProjectsSection() {
                           </span>
                         ))}
                       </div>
-                      {(project.link || project.demo || project.caseStudy) && (
-                        <div className="flex flex-wrap gap-2">
-                          {project.caseStudy && (
-                            <Link
-                              href={project.caseStudy}
-                              aria-label={`Read the ${project.title} case study`}
-                              className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] px-4 py-1.5 text-xs tracking-widest uppercase text-white dark:text-[#0A0A0A] rounded-full hover:bg-black dark:hover:bg-white transition-colors duration-200"
-                            >
-                              Read case study →
-                            </Link>
-                          )}
-                          {project.demo && (
-                            <a
-                              href={project.demo}
-                              target="_blank"
-                              rel="noreferrer"
-                              aria-label={
-                                project.demoLabel || `Open the live ${project.title} demo`
-                              }
-                              className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200"
-                            >
-                              Live demo ↗
-                            </a>
-                          )}
-                          {project.link && (
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noreferrer"
-                              aria-label={project.linkLabel || `View ${project.title} on GitHub`}
-                              className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
-                            >
-                              {project.linkText ||
-                                (project.link?.includes("github.com")
-                                  ? `${t("projects.viewOnGithub")} ↗`
-                                  : `${t("projects.viewOnGithub")} ↗`)}
-                            </a>
-                          )}
-                        </div>
-                      )}
+                      <ProjectLinks project={project} coursework={courseworkLinks[project.id]} />
                       <div className="flex gap-2 mt-3">
                         <a
                           href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://rin.contact/projects")}`}
