@@ -2,31 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
+import { DS_ITEMS } from "@/lib/ds-index";
 
-// Route id (label) is the stable identifier shown as /ds/<label>; the note is
-// localised via ds.index.notes[i] (index-aligned).
-const ITEMS = [
-  { href: "/ds/model-card", label: "model-card" },
-  { href: "/ds/feature-importance", label: "feature-importance" },
-  { href: "/ds/confusion-matrix", label: "confusion-matrix" },
-  { href: "/ds/ensemble", label: "ensemble" },
-  { href: "/ds/bias-variance", label: "bias-variance" },
-  { href: "/ds/training-curves", label: "training-curves" },
-  { href: "/ds/pipeline", label: "pipeline" },
-  { href: "/ds/survival", label: "survival" },
-  { href: "/ds/version-control", label: "version-control" },
-  { href: "/ds/null-hypothesis", label: "null-hypothesis" },
-  { href: "/ds/regression", label: "regression" },
-  { href: "/ds/ab-test", label: "ab-test" },
-  { href: "/ds/phacking", label: "phacking" },
-  { href: "/ds/eda", label: "eda" },
-  { href: "/ds/recommendation", label: "recommendation" },
-  { href: "/ds/sentiment", label: "sentiment" },
-  { href: "/ds/overfitting", label: "overfitting" },
-  { href: "/ds/data-drift", label: "data-drift" },
-  { href: "/ds/cicd", label: "cicd" },
-  { href: "/ds/technical-debt", label: "technical-debt" },
-];
+// Items and their order live in lib/ds-index.js; notes are localised via
+// ds.index.notes[i] (index-aligned).
+const ITEMS = DS_ITEMS;
 
 export default function DsIndexPage() {
   const { t, locale = "en-AU" } = useI18n();

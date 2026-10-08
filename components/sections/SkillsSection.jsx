@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 import { useI18n } from "@/contexts/I18nContext";
 
@@ -402,7 +403,23 @@ export default function SkillsSection() {
         {DOMAINS.map((d, i) => (
           <DomainCard key={d.label} domain={d} index={i} />
         ))}
-      </div>{" "}
+      </div>
+      {/* The evidence behind every skill lives on /skills */}
+      <div className="mt-10 border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
+        {/* The ring is drawn inside: the rounded wrapper clips anything outside. */}
+        <Link
+          href="/skills"
+          className="group flex items-center justify-between gap-3 px-5 py-4 text-sm text-black dark:text-white bg-white dark:bg-[#0A0A0A] hover:bg-[#FAFAFA] dark:hover:bg-[#111111] transition-colors duration-200 focus-visible:[outline-offset:-2px]"
+        >
+          {t("skills.atlasLink")}
+          <span
+            aria-hidden="true"
+            className="text-[#CC0000] dark:text-[#FF3C3C] group-hover:translate-x-0.5 transition-transform duration-200"
+          >
+            →
+          </span>
+        </Link>
+      </div>
       {/* Certifications */}
       <div
         ref={certRef}

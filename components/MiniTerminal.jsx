@@ -39,8 +39,8 @@ const G = (t) => L("green", t);
 const E = (t) => L("error", t);
 const BR = () => L("normal", "");
 
-// PROJECTS.length in components/sections/ProjectsSection.jsx. Hard-coded so the
-// terminal chunk does not pull in that whole section; update both together.
+// PROJECTS.length in lib/projects-data.js. Hard-coded so the
+// terminal chunk does not pull in the whole project list; update both together.
 const PROJECT_COUNT = 22;
 
 const BANNER = [
@@ -116,6 +116,8 @@ const SKILLS = [
   D("      R Shiny · Milton HPC (built to run on) · Bioinformatics"),
   W("  07  Cloud & Infrastructure"),
   D("      AWS · Azure · Docker · Infrastructure cost optimisation"),
+  BR(),
+  W("  Every skill, with its evidence → rin.contact/skills"),
   BR(),
 ];
 
