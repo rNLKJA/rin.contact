@@ -1,22 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "@/hooks/useInView";
-import { CERTS } from "@/lib/career-data";
+import { CERTS, certProvider as groupOf } from "@/lib/career-data";
 
 /* ── Credentials come from lib/career-data.js (verified against Rin's records),
    the same list /cv, /resume and the resume terminal use. ───────────────────── */
 export { CERTS };
-
-// Roll each issuer up to a provider bucket so the breadth reads at a glance.
-const groupOf = (issuer) => {
-  if (issuer.includes("Google")) return "Google";
-  if (issuer.includes("Microsoft")) return "Microsoft";
-  if (issuer.includes("Neo4j")) return "Neo4j";
-  if (issuer.includes("Atlassian")) return "Agile";
-  if (["NAATI", "IELTS", "VETASSESS"].some((a) => issuer.includes(a))) return "Professional";
-  if (["University of Melbourne", "Practera", "Mental Health"].some((a) => issuer.includes(a)))
-    return "Leadership";
-  return "Technical"; // LinkedIn Learning, GitHub, Maven, TCM Security
-};
 
 // Provider breakdown, most-certified first; drives both the chips and the grid order.
 const BREAKDOWN = (() => {

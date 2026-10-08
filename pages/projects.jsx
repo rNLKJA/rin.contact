@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import PageHero from "@/components/layout/PageHero";
 import { useI18n } from "@/contexts/I18nContext";
-import { PROJECTS } from "@/components/sections/ProjectsSection";
+import { PROJECTS } from "@/lib/projects-data";
 import PipelineList from "@/components/sections/PipelineList";
 import { PROJECT_PIPELINE, localisePipeline } from "@/lib/pipeline-data";
 
