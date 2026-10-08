@@ -146,7 +146,7 @@ const PROJECTS_SCHEMA = {
         "@type": "SoftwareApplication",
         name: "MoodQ",
         description:
-          "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Department of Psychiatry. Rin was the sole developer: he rebuilt it from Uniapp in Expo React Native on a Flask backend, cut hosting costs by about $500 a month with AWS RDS and LightSail, and handed it to a professional team for production.",
+          "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Department of Psychiatry. Rin was the sole developer: he rebuilt it from Uniapp in Expo React Native on a Flask backend, kept hosting under $500 a month by running each service in its own Docker container on AWS LightSail, and handed it to a professional team for production.",
         applicationCategory: "HealthApplication",
         operatingSystem: "iOS, Android",
         author: { "@id": "https://rin.contact/#person" },

@@ -96,7 +96,7 @@ const STATIONS = [
     period: "Aug 2024 – Feb 2026",
     role: "Research Assistant · UniMelb Psychiatry",
     detail:
-      "Sole developer of MoodQ (formerly Moodist), a clinical mental-health app. Rebuilt it from Uniapp to Expo React Native, built the clinician dashboard on a Flask backend, and cut hosting costs ~$500/mo with AWS RDS and LightSail. GDPR-aligned; handed to a professional team for production.",
+      "Sole developer of MoodQ (formerly Moodist), a clinical mental-health app. Rebuilt it from Uniapp to Expo React Native, built the clinician dashboard on a Flask backend, and kept hosting under $500/mo by running each service in its own Docker container on AWS LightSail. GDPR-aligned; handed to a professional team for production.",
     current: false,
   },
   {
