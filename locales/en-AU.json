@@ -1265,6 +1265,9 @@
     "previous": "Previous",
     "next": "Next",
     "allTopics": "All topics",
+    "conceptNote": "Concept note",
+    "conceptNotes": "Concept notes",
+    "conceptNotesBlurb": "Shorter pages that take one idea from this topic further, most with something to try.",
     "meta": {
       "studied": "Studied",
       "when": "When",

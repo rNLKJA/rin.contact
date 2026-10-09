@@ -19,6 +19,10 @@
  * 6. Checks the page index behind the ⌘K palette and /info/site-map
  *    (scripts/page-index.mjs): every page indexed, no easter egg listed, every
  *    link real, and the palette and site-map strings in both locales.
+ * 7. Runs the lib/knowledge-notes-check.js assertions on the concept notes
+ *    registry (lib/knowledge-notes.js): a live parent topic for every note, a
+ *    page and a content module for every live note, a registry entry for every
+ *    page, and no marks or em dashes in the note content.
  * Exits non-zero on any problem. Node 22, no dependencies.
  */
 /* eslint-disable no-console -- a CLI reports to the console */
@@ -33,6 +37,7 @@ import {
   historyDataProblems,
   historyImagePaths,
 } from "../lib/history-check.js";
+import { knowledgeNoteProblems } from "../lib/knowledge-notes-check.js";
 import { pageIndexProblems } from "./page-index.mjs";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
@@ -70,6 +75,7 @@ const problems = [
   ...historyDataProblems(),
   ...skillsDataProblems({ dicts, posts, root }),
   ...pageIndexProblems({ dicts, root }),
+  ...knowledgeNoteProblems(root),
 ];
 
 // /info/history: screenshots exist and fit the budget; both locales have the page strings.

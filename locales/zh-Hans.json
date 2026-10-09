@@ -952,6 +952,9 @@
     "previous": "上一篇",
     "next": "下一篇",
     "allTopics": "全部主题",
+    "conceptNote": "概念笔记",
+    "conceptNotes": "概念笔记",
+    "conceptNotesBlurb": "把本主题里的某一个概念单独讲深一点的短篇，大多附带一个可以动手试的小模拟。",
     "meta": {
       "studied": "学于",
       "when": "时间",

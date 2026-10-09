@@ -9,7 +9,8 @@
  * - Case studies: projects with a `caseStudy` page (lib/projects-data.js).
  * - Every other project card, by its anchor on /projects (#<id>).
  * - Coursework labs: each card's anchor on /projects/coursework (lib/coursework-data.js).
- * - The live knowledge topics (lib/knowledge-index.js) and /ds explainers (lib/ds-index.js).
+ * - The live knowledge topics (lib/knowledge-index.js), each followed by its live
+ *   concept notes (lib/knowledge-notes.js), and /ds explainers (lib/ds-index.js).
  * - Blog posts (posts/*.md front matter).
  * - A walk of pages/, so a page none of the above names is still listed,
  *   placed by its path, with a title made from its slug (check:career then
@@ -27,6 +28,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { getCoursework } from "../lib/coursework-data.js";
 import { DS_ITEMS } from "../lib/ds-index.js";
 import { KNOWLEDGE_TIERS } from "../lib/knowledge-index.js";
+import { noteHref, notesFor } from "../lib/knowledge-notes.js";
 import { PROJECTS, projectAnchor } from "../lib/projects-data.js";
 import { SEARCH_COPY } from "../lib/search-copy.js";
 import { FOOTER_COLUMNS, OTHER_PAGES } from "../lib/site-nav.js";
@@ -224,7 +226,8 @@ export function buildPageIndex(root = ROOT, { unlabelled = [] } = {}) {
     });
   }
 
-  // 4. Knowledge topics that are live, in tier order.
+  // 4. Knowledge topics that are live, in tier order, each followed by its
+  //    live concept notes (noted with the topic they sit under).
   for (const tier of KNOWLEDGE_TIERS) {
     tier.topics.forEach((topic, i) => {
       if (topic.status !== "live") return;
@@ -232,12 +235,25 @@ export function buildPageIndex(root = ROOT, { unlabelled = [] } = {}) {
       const copyZh = zh.knowledgeIndex?.tiers?.[tier.key]?.topics?.[i] || {};
       const fallback = titleFromSlug(topic.href);
       if (!copyEn.label) unlabelled.push(topic.href);
+      const label = { en: copyEn.label || fallback, zh: copyZh.label || copyEn.label || fallback };
       add({
         href: topic.href,
         group: "knowledge",
-        title: { en: copyEn.label || fallback, zh: copyZh.label || copyEn.label || fallback },
+        title: label,
         note: { en: copyEn.note, zh: copyZh.note || copyEn.note },
       });
+      for (const n of notesFor(topic.href.replace(/^\/knowledge\//, ""))) {
+        add({
+          href: noteHref(n.slug),
+          group: "knowledge",
+          title: { en: n.title.en, zh: n.title.zh || n.title.en },
+          note: {
+            en: `${both("knowledgeLayout.conceptNote").en} · ${label.en}. ${n.note.en}`,
+            zh: `${both("knowledgeLayout.conceptNote").zh} · ${label.zh}。${n.note.zh || n.note.en}`,
+          },
+          keywords: `concept note 概念笔记 ${n.keywords || ""}`.trim(),
+        });
+      }
     });
   }
 
