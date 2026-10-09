@@ -3,6 +3,7 @@
  * Excludes all pages with <meta name="robots" content="noindex">
  */
 
+import { KNOWLEDGE_NOTES, noteHref } from "@/lib/knowledge-notes";
 import { getAllPosts } from "@/lib/posts";
 
 const BASE_URL = "https://rin.contact";
@@ -172,6 +173,13 @@ const KNOWLEDGE = [
   { path: "/knowledge/federated-learning", priority: 0.6, freq: "monthly" },
 ];
 
+// ── Knowledge concept notes (lib/knowledge-notes.js), bilingual ───────────────
+const NOTES = KNOWLEDGE_NOTES.filter((n) => n.status === "live").map((n) => ({
+  path: noteHref(n.slug),
+  priority: 0.5,
+  freq: "monthly",
+}));
+
 // ── Info sub-pages (all indexable — no noindex meta) ──────────────────────────
 const INFO = [
   { path: "/info/now", priority: 0.6, freq: "weekly" },
@@ -215,6 +223,7 @@ const ZH_COVERED = [
   { path: "/fun/art", priority: 0.4, freq: "monthly" },
   ...INFO,
   ...KNOWLEDGE.filter((p) => !NOT_ZH_KNOWLEDGE.has(p.path)),
+  ...NOTES,
 ];
 const ZH_PATHS = new Set(ZH_COVERED.map((p) => p.path));
 
@@ -309,6 +318,8 @@ async function generateSitemap() {
     ...INFO.map((p) => enUrlXml(p, today)),
     // Knowledge topic pages
     ...KNOWLEDGE.map((p) => enUrlXml(p, today)),
+    // Knowledge concept notes
+    ...NOTES.map((p) => enUrlXml(p, today)),
     // Blog posts
     ...blogPostUrls,
     // zh-Hans pages

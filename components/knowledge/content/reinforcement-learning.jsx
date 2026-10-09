@@ -204,6 +204,14 @@ function EnBody() {
           <Term>multi-armed bandit</Term> — which slot machine to pull when you only learn by
           pulling — and it shows up far beyond RL, in A/B testing and recommendation alike.
         </p>
+        <p>
+          I go further into this in a concept note,{" "}
+          <Link href="/knowledge/notes/exploration-vs-exploitation">
+            Exploration vs Exploitation
+          </Link>
+          . It works through the maths behind ε-greedy and UCB1 and has a small simulator that races
+          them.
+        </p>
       </KSection>
 
       <KSection id="value" eyebrow="05" title="Value functions & the Bellman equation">
@@ -445,6 +453,11 @@ function ZhBody() {
           <TeX>{String.raw`\varepsilon`}</TeX> 挑一个随机动作，以保持学习。同样的困境，就是
           <Term>多臂老虎机</Term>的全部故事——当你只能靠拉才能学到时，该拉哪一台老虎机——而它出现在
           远超 RL 的地方，在 A/B 测试与推荐里同样如此。
+        </p>
+        <p>
+          我在概念笔记
+          <Link href="/knowledge/notes/exploration-vs-exploitation">探索与利用</Link>
+          里讲得更深，包括 ε-贪心和 UCB1 背后的数学，以及一个让它们同场比较的小模拟器。
         </p>
       </KSection>
 

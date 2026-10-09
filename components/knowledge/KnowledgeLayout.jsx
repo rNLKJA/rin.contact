@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
+import ConceptNotes from "@/components/knowledge/ConceptNotes";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
+import { noteNeighbours } from "@/lib/knowledge-notes";
 
 /**
  * KnowledgeLayout — shared shell for the /knowledge section.
@@ -15,6 +17,11 @@ import { useI18n } from "@/contexts/I18nContext";
  * this module and are designed to sit inside <prose> safely (they opt out
  * with `not-prose` where the typography plugin would interfere). Formula/TeX
  * live in ./KatexFormula.jsx so pages without maths don't bundle katex.
+ *
+ * Concept notes (/knowledge/notes/<slug>, lib/knowledge-notes.js) use the same
+ * shell with `kind="note"` and `parent={ href, label }`: the back link and the
+ * JSON-LD point at the parent topic, and the footer defaults to the sibling
+ * notes. A topic page lists its notes in a "Concept notes" block after the body.
  */
 
 const ACCENT = "#FF3C3C";
@@ -47,13 +54,21 @@ export default function KnowledgeLayout({
   updated,
   // navigation
   sections = [],
-  prev,
-  next,
+  prev: prevProp,
+  next: nextProp,
+  // concept notes: kind "note" sits under `parent` ({ href, label })
+  kind = "topic",
+  parent,
   children,
 }) {
   const { t, locale = "en-AU" } = useI18n();
   const path = `/knowledge/${slug}`;
   const url = `https://rin.contact${path}`;
+  const isNote = kind === "note" && Boolean(parent);
+  const noteSlug = isNote ? slug.replace(/^notes\//, "") : null;
+  const siblings = isNote ? noteNeighbours(noteSlug, parent, locale) : {};
+  const prev = prevProp ?? siblings.prev;
+  const next = nextProp ?? siblings.next;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -61,14 +76,25 @@ export default function KnowledgeLayout({
     name: title,
     description,
     url,
-    learningResourceType: "Concept explainer",
+    learningResourceType: isNote ? "Concept note" : "Concept explainer",
     educationalLevel: level || "Tertiary",
     inLanguage: locale,
-    isPartOf: {
-      "@type": "Collection",
-      name: "Knowledge — rin.contact",
-      url: "https://rin.contact/knowledge",
-    },
+    isPartOf: isNote
+      ? {
+          "@type": "LearningResource",
+          name: parent.label,
+          url: `https://rin.contact${parent.href}`,
+          isPartOf: {
+            "@type": "Collection",
+            name: "Knowledge — rin.contact",
+            url: "https://rin.contact/knowledge",
+          },
+        }
+      : {
+          "@type": "Collection",
+          name: "Knowledge — rin.contact",
+          url: "https://rin.contact/knowledge",
+        },
     author: {
       "@type": "Person",
       name: "Rin Huang",
@@ -101,10 +127,10 @@ export default function KnowledgeLayout({
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <article className="max-w-[720px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1 w-full">
           <Link
-            href="/knowledge"
+            href={isNote ? parent.href : "/knowledge"}
             className="inline-flex items-center gap-1 font-mono text-[11px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
           >
-            ← {t("knowledgeLayout.back")}
+            ← {isNote ? parent.label : t("knowledgeLayout.back")}
           </Link>
 
           <header className="mb-12">
@@ -112,6 +138,17 @@ export default function KnowledgeLayout({
               <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
               {path}
             </p>
+            {isNote && (
+              <p className="-mt-2 mb-4 font-mono text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+                {t("knowledgeLayout.conceptNote")} ·{" "}
+                <Link
+                  href={parent.href}
+                  className="underline decoration-[#E0E0E0] dark:decoration-[#3D3D3D] underline-offset-4 hover:text-black dark:hover:text-white hover:decoration-current transition-colors"
+                >
+                  {parent.label}
+                </Link>
+              </p>
+            )}
             <h1 className="text-3xl md:text-[2.6rem] md:leading-[1.1] font-semibold tracking-tight text-black dark:text-white [text-wrap:balance]">
               {title}
             </h1>
@@ -188,6 +225,8 @@ export default function KnowledgeLayout({
           >
             {children}
           </div>
+
+          {!isNote && <ConceptNotes topic={slug} />}
 
           <footer className="mt-16 pt-8 border-t border-[#E0E0E0] dark:border-[#2A2A2A]">
             {(prev || next) && (
