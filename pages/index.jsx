@@ -144,7 +144,7 @@ const PROJECTS_SCHEMA = {
       position: 5,
       item: {
         "@type": "SoftwareApplication",
-        name: "MoodQ",
+        name: "Moodist",
         description:
           "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Department of Psychiatry. Rin was the sole developer: he rebuilt it from Uniapp in Expo React Native on a Flask backend, kept hosting under $500 a month by running each service in its own Docker container on AWS LightSail, and handed it to a professional team for production.",
         applicationCategory: "HealthApplication",
@@ -160,7 +160,7 @@ const PROJECTS_SCHEMA = {
         "@type": "SoftwareApplication",
         name: "SAPOL EPSB Analytics",
         description:
-          "Analytics work for the Intelligence & Probity Unit of South Australia Police's Ethical and Professional Standards Branch (EPSB) since March 2026: quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the complaint administration workflow, an expiation notices analysis, and a Python client and web console for the IAPro and BlueTeam APIs covering more than 1,100 endpoints.",
+          "Analytics work for the Intelligence & Probity Unit of South Australia Police's Ethical and Professional Standards Branch (EPSB) since March 2026: quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the complaint administration workflow, an expiation notices analysis, and a Python client and web console for the complaint-management system APIs, covering more than 1,100 endpoints.",
         applicationCategory: "BusinessApplication",
         author: { "@id": "https://rin.contact/#person" },
         programmingLanguage: ["Python", "SQL", "Power BI", "FastAPI", "Vue"],
@@ -542,7 +542,7 @@ export default function Home() {
                   name: "What does a Senior Data Analyst do at South Australia Police?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "As an ASO7 Senior Data Analyst in the Intelligence & Probity Unit of SAPOL's Ethical and Professional Standards Branch (EPSB), I turn complaint, investigation and workforce data into reports and advice that executives and oversight bodies can act on. That includes the quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the branch's complaint administration workflow, an analysis of expiation notices, and tooling such as a Python client and web console for the IAPro and BlueTeam APIs, covering more than 1,100 endpoints.",
+                    text: "As an ASO7 Senior Data Analyst in the Intelligence & Probity Unit of SAPOL's Ethical and Professional Standards Branch (EPSB), I turn complaint, investigation and workforce data into reports and advice that executives and oversight bodies can act on. That includes the quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the branch's complaint administration workflow, an analysis of expiation notices, and tooling such as a Python client and web console for the complaint-management system APIs, covering more than 1,100 endpoints.",
                   },
                 },
                 {

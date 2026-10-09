@@ -10,9 +10,9 @@ const TRACK_COLOUR = {
 
 /**
  * Career strip: one bar per role on a shared year axis, so the parallel roles
- * (Mapiva alongside SAPOL, MoodQ alongside CBS) read at a glance. Each row
- * links to its role entry. Bars grow from 70% width in 200ms (Rin's motion
- * rules), staggered by at most 100ms.
+ * (Mapiva alongside SAPOL, the psychiatry RA role alongside CBS) read at a
+ * glance. Each row links to its role entry. Bars grow from 70% width in 200ms
+ * (Rin's motion rules), staggered by at most 100ms.
  */
 export default function CareerStrip({ rows, asOf, t }) {
   const jump = useJumpTo();
