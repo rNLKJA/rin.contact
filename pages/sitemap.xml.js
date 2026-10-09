@@ -72,6 +72,7 @@ const CORE = [
   { path: "/projects/order-system", priority: 0.7, freq: "monthly" },
   { path: "/projects/moodist", priority: 0.7, freq: "monthly" },
   { path: "/projects/wehi-genomics", priority: 0.7, freq: "monthly" },
+  { path: "/projects/virtual-internships", priority: 0.5, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/skills", priority: 0.8, freq: "monthly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
@@ -204,9 +205,9 @@ const NOT_ZH_KNOWLEDGE = new Set([]);
 
 // Every /info/* page and the listed /knowledge/* articles have full zh-Hans
 // content; /cv, /projects/signal, /projects/order-system, /projects/moodist,
-// /projects/wehi-genomics, /projects/coursework, /skills and /tools/card are
-// bilingual. /blog has zh-Hans chrome; its posts are added per slug in
-// generateSitemap().
+// /projects/wehi-genomics, /projects/virtual-internships, /projects/coursework,
+// /skills and /tools/card are bilingual. /blog has zh-Hans chrome; its posts are
+// added per slug in generateSitemap().
 const ZH_COVERED = [
   ...ZH_PAGES,
   { path: "/blog", priority: 0.8, freq: "weekly" },
@@ -215,6 +216,7 @@ const ZH_COVERED = [
   { path: "/projects/order-system", priority: 0.7, freq: "monthly" },
   { path: "/projects/moodist", priority: 0.7, freq: "monthly" },
   { path: "/projects/wehi-genomics", priority: 0.7, freq: "monthly" },
+  { path: "/projects/virtual-internships", priority: 0.5, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/skills", priority: 0.8, freq: "monthly" },
   { path: "/tools/card", priority: 0.7, freq: "monthly" },

@@ -206,7 +206,8 @@ export function buildPageIndex(root = ROOT, { unlabelled = [] } = {}) {
   for (const project of PROJECTS) {
     if (!project.caseStudy?.startsWith("/projects/")) continue;
     const entry = projectEntry(project, project.caseStudy, "caseStudies");
-    add({ ...entry, keywords: `${project.tag} case study 案例` });
+    const kind = project.caseStudyKind === "impact" ? "impact 成果" : "case study 案例";
+    add({ ...entry, keywords: `${project.tag} ${kind}` });
   }
   for (const project of PROJECTS) {
     const anchor = projectAnchor(project);

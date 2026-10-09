@@ -89,6 +89,10 @@ const GITHUB_PROFILE = "https://github.com/rNLKJA";
  * guided tour. A card's own case study and demo come first. The repository link
  * is the card's own and is only set for public repositories.
  *
+ * A demo on this site (a path such as /projects/moodist#daybook) opens in the
+ * same tab, and a deployed app opens in a new one. A case study whose
+ * `caseStudyKind` is "impact" reads Impact (the Forage card, which has no demo).
+ *
  * Every accessible name comes from a locale template that starts with the
  * visible text ("Live demo: Cachex AI (opens in a new tab)"), so voice control
  * can reach each button by what it says.
@@ -103,22 +107,34 @@ function ProjectLinks({ project, coursework, className = "" }) {
   if (!caseStudy && !demo && !tour && !link) return null;
   const vars = { title: project.title };
   const github = Boolean(link?.includes("github.com"));
+  const caseStudyKey =
+    project.caseStudyKind === "impact"
+      ? "projects.impactPage"
+      : ownCaseStudy
+        ? "projects.caseStudy"
+        : "projects.courseworkCaseStudy";
+  const onSiteDemo = Boolean(demo?.startsWith("/"));
   return (
     <div className={`flex flex-wrap gap-2 ${className}`}>
       {caseStudy && (
         <Link
           href={caseStudy}
-          aria-label={fill(
-            t(ownCaseStudy ? "projects.caseStudyLabel" : "projects.courseworkCaseStudyLabel"),
-            vars
-          )}
+          aria-label={fill(t(`${caseStudyKey}Label`), vars)}
           className={BTN_CASE_STUDY}
         >
-          {t(ownCaseStudy ? "projects.caseStudy" : "projects.courseworkCaseStudy")}{" "}
-          <span aria-hidden="true">→</span>
+          {t(caseStudyKey)} <span aria-hidden="true">→</span>
         </Link>
       )}
-      {demo && (
+      {demo && onSiteDemo && (
+        <Link
+          href={demo}
+          aria-label={fill(t("projects.liveDemoPageLabel"), vars)}
+          className={BTN_DEMO}
+        >
+          {t("projects.liveDemo")} <span aria-hidden="true">→</span>
+        </Link>
+      )}
+      {demo && !onSiteDemo && (
         <a
           href={demo}
           target="_blank"
