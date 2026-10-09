@@ -182,9 +182,7 @@ function ProjectLinks({ project, coursework, className = "" }) {
 }
 
 function ProjectDetail({ project, coursework }) {
-  const { t, locale } = useI18n();
-  // Cards stay in English, apart from a status that carries its own Chinese.
-  const status = (locale === "zh-Hans" && project.zh?.status) || project.status;
+  const { t } = useI18n();
   return (
     <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white dark:bg-[#0A0A0A]">
       <div className="md:col-span-2 space-y-4">
@@ -267,7 +265,7 @@ function ProjectDetail({ project, coursework }) {
           <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">
             {t("projects.status")}
           </p>
-          <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">{status}</p>
+          <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">{project.status}</p>
         </div>
         <div>
           <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">

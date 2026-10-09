@@ -1228,7 +1228,7 @@
     "pipeline": {
       "label": "筹备中",
       "heading": "计划中与进行中",
-      "intro": "接下来要整理或复活的作品。上线后会移到上面的主列表，拥有自己的卡片。",
+      "intro": "接下来要整理或重建的作品。上线后，它会在上面主列表的卡片上附上在线演示。",
       "repo": "代码仓库",
       "repoLabel": "{title} 的 GitHub 仓库（在新标签页打开）"
     }
@@ -1931,12 +1931,12 @@
   },
   "courseworkPage": {
     "metaTitle": "大学课程作业复活版 · 黄孙创宇 · rin.contact",
-    "metaDescription": "{count} 个墨尔本大学课程作业项目（{from}–{to} 年）重建为在线演示：对照原版核对的忠实移植、统计复检，以及可选的自带密钥（BYOK）AI 功能。",
+    "metaDescription": "{count} 个墨尔本大学课程作业与练习项目（{from}–{to} 年）重建为在线演示：对照原版核对的忠实移植、统计复检，以及可选的自带密钥（BYOK）AI 功能。",
     "ogTitle": "大学课程作业复活版 · 黄孙创宇",
-    "ogSubtitle": "{count} 个墨尔本大学课程作业项目 · {from}–{to} · 在线演示",
+    "ogSubtitle": "{count} 个墨尔本大学课程作业与练习项目 · {from}–{to} · 在线演示",
     "sectionLabel": "◆ — 课程作业",
     "heading": "课程作业，复活上线。",
-    "description": "{count} 个墨尔本大学课程作业项目（{from}–{to} 年），2026 年重建为可以直接在浏览器里试用的在线演示。",
+    "description": "{count} 个墨尔本大学课程作业与练习项目（{from}–{to} 年），2026 年重建为可以直接在浏览器里试用的在线演示。",
     "back": "项目",
     "breadcrumb": {
       "home": "首页",
