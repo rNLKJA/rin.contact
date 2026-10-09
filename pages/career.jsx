@@ -31,19 +31,19 @@ export default function CareerPage() {
         <title>Career — Rin Huang · rin.contact</title>
         <meta
           name="description"
-          content="Rin Huang's full career timeline: ASO7 Senior Data Analyst at SA Police, co-founder of Mapiva, and earlier roles at CBS, the University of Melbourne, WEHI and CSIRO. Interactive career metro map across Government, Research and Engineering."
+          content="Rin Huang's full career timeline: ASO7 Senior Data Analyst at SA Police, co-founder of Mapiva, and earlier roles at CBS, the University of Melbourne, Psyckitchen, WEHI and CSIRO. Interactive career metro map across Government, Research and Engineering."
         />
         <link rel="canonical" href="https://rin.contact/career/" />
         <meta property="og:title" content="Career — Sunchuangyu (Rin) Huang" />
         <meta
           property="og:description"
-          content="Since 2023 across Government, Research and Engineering. Six roles. One startup. ASO7 @ SAPOL, Mapiva, CBS, WEHI, CSIRO."
+          content="Since 2023 across Government, Research and Engineering. Nine roles. One startup. ASO7 @ SAPOL, Mapiva, CBS, Psyckitchen, WEHI, CSIRO."
         />
         <meta property="og:url" content="https://rin.contact/career/" />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://rin.contact/api/og/?title=Career%20Journey&subtitle=7%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career"
+          content="https://rin.contact/api/og/?title=Career%20Journey&subtitle=9%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career"
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -55,7 +55,7 @@ export default function CareerPage() {
         />
         <meta
           name="twitter:image"
-          content="https://rin.contact/api/og/?title=Career%20Journey&subtitle=7%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career"
+          content="https://rin.contact/api/og/?title=Career%20Journey&subtitle=9%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career"
         />
       </Head>
 

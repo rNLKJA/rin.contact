@@ -74,6 +74,7 @@ const CORE = [
   { path: "/projects/regulatory-analytics-map", priority: 0.7, freq: "monthly" },
   { path: "/projects/hex-micro-course", priority: 0.6, freq: "monthly" },
   { path: "/projects/teaching", priority: 0.5, freq: "monthly" },
+  { path: "/projects/psyckitchen-echo", priority: 0.6, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/skills", priority: 0.8, freq: "monthly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
@@ -206,9 +207,10 @@ const NOT_ZH_KNOWLEDGE = new Set([]);
 
 // Every /info/* page and the listed /knowledge/* articles have full zh-Hans
 // content; /cv, /projects/signal, /projects/order-system, /projects/moodist,
-// /projects/wehi-genomics, /projects/virtual-internships, the concept demo
-// pages, /projects/coursework, /skills and /tools/card are bilingual. /blog has zh-Hans chrome; its posts are
-// added per slug in generateSitemap().
+// /projects/wehi-genomics, /projects/virtual-internships, /projects/psyckitchen-echo,
+// the concept demo pages, /projects/coursework, /skills and /tools/card are
+// bilingual. /blog has zh-Hans chrome; its posts are added per slug in
+// generateSitemap().
 const ZH_COVERED = [
   ...ZH_PAGES,
   { path: "/blog", priority: 0.8, freq: "weekly" },
@@ -225,6 +227,7 @@ const ZH_COVERED = [
   { path: "/projects/regulatory-analytics-map", priority: 0.7, freq: "monthly" },
   { path: "/projects/hex-micro-course", priority: 0.6, freq: "monthly" },
   { path: "/projects/teaching", priority: 0.5, freq: "monthly" },
+  { path: "/projects/psyckitchen-echo", priority: 0.6, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/skills", priority: 0.8, freq: "monthly" },
   { path: "/tools/card", priority: 0.7, freq: "monthly" },
