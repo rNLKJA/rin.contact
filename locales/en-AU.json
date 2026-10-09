@@ -89,7 +89,6 @@
     "Senior Data Analyst @ SAPOL",
     "Former Research Software Engineer @ WEHI",
     "Data Science Consultant @ CSIRO",
-    "Data Analyst & Agile Leader @ CSL",
     "Co-Founder & Dev Lead @ Mapiva",
     "Intelligence & Coordination Officer @ AGD",
     "Research Assistant (sole developer) @ UniMelb",
@@ -212,7 +211,7 @@
     "intro": {
       "eyebrow": "Profile",
       "heading": "A problem-first analyst who works across the edges.",
-      "body1": "I am a data analyst and data scientist based in Adelaide, currently working at ASO7 level with the South Australia Police. Since 2022 my work has moved across climate risk modelling at CSIRO, ministerial dashboards for the South Australian Government, genomics research software at WEHI, and a mental health app at the University of Melbourne. Generalist by nature, specialist by discipline.",
+      "body1": "I am a data analyst and data scientist based in Adelaide, currently working at ASO7 level with the South Australia Police. Since 2023 my work has moved across climate risk modelling at CSIRO, ministerial dashboards for the South Australian Government, genomics research software at WEHI, and a mental health app at the University of Melbourne. Generalist by nature, specialist by discipline.",
       "body2": "The thread through all of it is the same. I start from the decision that needs making and the smallest amount of data needed to make it well, then reach for the right tool rather than the fashionable one. Problem first, not model first. That habit is what lets the same person be useful in a research lab, a government intelligence team, and an engineering project.",
       "domainsLabel": "Where I work"
     }
@@ -231,7 +230,7 @@
     "strengths": [
       {
         "label": "Cross-sector fluency",
-        "note": "Government · Research · Biotech · Climate · Health-tech · Startup"
+        "note": "Government · Research · Climate · Health-tech · Startup"
       },
       {
         "label": "Strategic + technical",
@@ -1307,9 +1306,9 @@
       {
         "num": "02",
         "title": "Career",
-        "desc": "Three domain lines. Seven stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
+        "desc": "Three domain lines. Six stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
         "tags": ["Government", "Research", "Engineering"],
-        "stat": "Since 2022 · 7 stations"
+        "stat": "Since 2023 · 6 stations"
       },
       {
         "num": "03",
@@ -1430,7 +1429,7 @@
   },
   "metroMap": {
     "heading": "Three lines.",
-    "description": "Government, Research, Engineering. Seven stations since 2022, one career.",
+    "description": "Government, Research, Engineering. Six stations since 2023, one career.",
     "govt": "GOVT",
     "research": "RESEARCH",
     "engineer": "ENGINEER",
@@ -1529,7 +1528,7 @@
   "career": {
     "sectionLabel": "◆ — Career",
     "heading": "Journey.",
-    "description": "Three domain lines. Seven stations. One convergence point.",
+    "description": "Three domain lines. Six stations. One convergence point.",
     "resumeLink": "Resume and PDF"
   },
   "projectsPage": {
@@ -1918,7 +1917,7 @@
       "secLimitations": "Limitations",
       "details": [
         { "label": "Model type", "value": "GeneralistClassifier (human)" },
-        { "label": "Architecture", "value": "Master of Data Science, BSc, 7 roles, 1 startup" },
+        { "label": "Architecture", "value": "Master of Data Science, BSc, 6 roles, 1 startup" },
         { "label": "Training date", "value": "2018–present (continuous)" },
         { "label": "Framework", "value": "University of Melbourne, CSIRO, WEHI, SAPOL" }
       ],
@@ -2096,7 +2095,7 @@
         { "stage": "Raw", "desc": "High school, China" },
         { "stage": "Clean", "desc": "Trinity College, Melbourne" },
         { "stage": "Transform", "desc": "UniMelb BSc + MDS" },
-        { "stage": "Model", "desc": "CSIRO, WEHI, CSL" },
+        { "stage": "Model", "desc": "CSIRO, WEHI, UniMelb" },
         { "stage": "Deploy", "desc": "SAPOL, Mapiva, research" }
       ],
       "statusNote": "Pipeline status: running. No scheduled downtime."

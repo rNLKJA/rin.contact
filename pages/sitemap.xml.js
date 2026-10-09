@@ -49,12 +49,6 @@ const IMAGES = [
     license: "https://www.csiro.au",
   },
   {
-    loc: "https://s3-symbol-logo.tradingview.com/csl--600.png",
-    title: "CSL Behring",
-    caption: "Data Analyst & Agile Leader, Feb–Jun 2022",
-    license: "https://www.csl.com",
-  },
-  {
     loc: "https://media.licdn.com/dms/image/v2/C560BAQHbsXv7y0802A/company-logo_200_200/company-logo_200_200/0/1630627937392/trinityunimelb_logo?e=2147483647&v=beta&t=L-l1ISC0casA8uKqb1QYyFZWMyfe9n8A_tuT_MyOG_c",
     title: "Trinity College, Unimelb",
     caption: "Foundation Studies Programme, 2018–2019",

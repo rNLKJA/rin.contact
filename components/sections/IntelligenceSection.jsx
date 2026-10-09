@@ -35,34 +35,19 @@ function tone(color, isDark) {
 
 // ─── SVG helpers ──────────────────────────────────────────────────────────────
 // Panel A viewBox "0 0 520 310", plot area x∈[70,470] y∈[20,280] (400×260)
-// X-axis: Years in formal workforce. 0 = CBS start (Jan 2025). Pre-career at -2 to -0.5.
+// X-axis: Years in formal workforce. 0 = CBS start (Jan 2025). Pre-career at -1.5 to -0.5.
 const toX = (years) => Math.round(70 + ((years + 2) / 7) * 400); // -2..5 → 70..470
 const toY = (seniority) => Math.round(280 - (seniority / 10) * 260);
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // PANEL A — Bubble chart data
-// X  = years in formal workforce (0 = CBS). Pre-career roles at -2 to -0.5 (not officially workforce).
+// X  = years in formal workforce (0 = CBS). Pre-career roles at -1.5 to -0.5 (not officially workforce).
 // Y  = career seniority level (0–10; Entry≈2, Junior≈3–4, Mid≈5–6, Senior≈7, Principal≈9)
 // Key: CBS (yr 0) → SAPOL (yr ~1.2) = level 4 to 7 in 14 months. Typical: 4 years minimum.
-// Plots the 6 employed roles; Mapiva (co-founded, Aug 2025–present) is left out.
+// Plots the 5 employed roles; Mapiva (co-founded, Aug 2025–present) is left out.
 // Sources: APS Career Pathfinder (APSC 2024), IAPA Skills & Salary Survey 2023
 // ═══════════════════════════════════════════════════════════════════════════════
 const RIN_BUBBLES = [
-  {
-    id: "csl",
-    label: "CSL",
-    year: "2022",
-    exp: -2.0,
-    sen: 2.5,
-    breadth: 3,
-    r: 20,
-    noisy: { x: 100, y: 250 },
-    color: "#555555",
-    domain: "Pre-career",
-    period: "Feb–Jun 2022",
-    detail: "Data Analyst & Agile Leader · HPLC automation · t-SNE/DBSCAN/UMAP clustering",
-    why: "Entry/junior. Not officially workforce — internship/industry placement. CSL Behring biotech.",
-  },
   {
     id: "csiro",
     label: "CSIRO",
@@ -227,8 +212,8 @@ const BENCHMARKS = [
 // CAGR ≈ 32.7% over 6 years
 const RIN_INDEXED = [
   { year: 2020, idx: 1.0, event: null },
-  { year: 2021, idx: 1.55, event: "BSc foundations · early tooling" },
-  { year: 2022, idx: 2.18, event: "CSL — first industry role · HPLC + ML clustering" },
+  { year: 2021, idx: 1.55, event: "BSc foundations · HPLC capstone with CSL (MAST30034)" },
+  { year: 2022, idx: 2.18, event: "BSc graduation · ML clustering and early tooling" },
   { year: 2023, idx: 2.91, event: "CSIRO capstone · climate science & AR modelling" },
   { year: 2024, idx: 4.18, event: "WEHI + UniMelb RA + MDS graduation · breakout year" },
   {
@@ -304,7 +289,7 @@ const FP_TREE = {
         {
           label: "Machine learning",
           proof:
-            "T-SNE, DBSCAN, UMAP on HPLC lab data (CSL Behring) · Transformer-based climate fact-checker (UniMelb COMP90042 NLP project) · Unsupervised clustering on large social-media corpora (UniMelb research).",
+            "T-SNE, DBSCAN, UMAP on HPLC lab data (MAST30034 capstone with CSL) · Transformer-based climate fact-checker (UniMelb COMP90042 NLP project) · Unsupervised clustering on large social-media corpora (UniMelb research).",
         },
         {
           label: "Geospatial analysis",
@@ -343,7 +328,7 @@ const FP_TREE = {
         {
           label: "Cross-sector career design",
           proof:
-            "6 distinct sectors since 2022: biotech (CSL), climate research (CSIRO), bioinformatics (WEHI), mental-health tech (UniMelb Psychiatry), government intelligence (CBS), law-enforcement analytics (SAPOL). Each role was chosen for what it would teach. Professionals today are on pace to hold twice as many jobs as workers from 15 years ago (LinkedIn Work Change Report, 2024).",
+            "5 distinct sectors since 2023: climate research (CSIRO), bioinformatics (WEHI), mental-health tech (UniMelb Psychiatry), government intelligence (CBS), law-enforcement analytics (SAPOL). Each role was chosen for what it would teach. Professionals today are on pace to hold twice as many jobs as workers from 15 years ago (LinkedIn Work Change Report, 2024).",
         },
         {
           label: "Lifelong learning & reskilling",
@@ -817,7 +802,7 @@ function BubblePanel() {
         </button>
         <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
           {step === 0 &&
-            "6 employed roles (4 pre-career + 2 formal; excludes co-founded Mapiva) · 5 benchmark cohorts · click to reveal the pattern"}
+            "5 employed roles (3 pre-career + 2 formal, excluding co-founded Mapiva) · 5 benchmark cohorts · click to reveal the pattern"}
           {step === 1 && "Plotting true positions…"}
           {step === 2 && "Hover any bubble for context"}
         </span>
@@ -840,9 +825,9 @@ function BubblePanel() {
                 {" "}
                 (APSC Career Pathfinder, 2024)
               </span>
-              . CSL, CSIRO, WEHI and UniMelb RA are not counted as workforce: industry placement,
-              capstone, pre-career research software and casual RA1. At Year 1, Rin sits +2.5
-              seniority grades above the benchmark. Rin reached ASO7 at 26.
+              . CSIRO, WEHI and UniMelb RA are not counted as workforce: capstone, pre-career
+              research software and casual RA1. At Year 1, Rin sits +2.5 seniority grades above the
+              benchmark. Rin reached ASO7 at 26.
             </p>
           </div>
           <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">
@@ -901,9 +886,9 @@ function BubblePanel() {
             </p>
           </div>
           <p className="text-[10px] text-[#AAA] dark:text-[#333] font-mono pt-1">
-            n = 6 employed roles (4 pre-career + 2 formal; excludes co-founded Mapiva) · benchmarks:
-            APS Career Pathfinder (APSC 2024) · LinkedIn Work Change Report (2024) · IAPA Skills
-            &amp; Salary Survey (2023) · Randstad Gen Z Workplace Blueprint (2025)
+            n = 5 employed roles (3 pre-career + 2 formal, excluding co-founded Mapiva) ·
+            benchmarks: APS Career Pathfinder (APSC 2024) · LinkedIn Work Change Report (2024) ·
+            IAPA Skills &amp; Salary Survey (2023) · Randstad Gen Z Workplace Blueprint (2025)
           </p>
           <AiDeclaration />
         </div>
@@ -1353,7 +1338,7 @@ function GrowthPanel() {
               every time a new problem is encountered, every time a mentee asks a question that
               forces clarity, every time a framework is rebuilt from first principles. The projected
               curve (dotted, marked ∞) is not speculation — it is the consequence of a learning
-              habit already compounding across six sectors and six years.
+              habit already compounding across five sectors and six years.
             </p>
           </div>
           <p className="text-[10px] text-[#AAA] dark:text-[#333] font-mono">

@@ -2,7 +2,7 @@
  * MetroMapSection — Career as a metro / subway map
  *
  * Three domain lines (Government, Research, Engineering) run along a time axis
- * from 2022 to present. Stations = roles. Where multiple lines are active
+ * from 2023 to present. Stations = roles. Where multiple lines are active
  * simultaneously, a vertical connector marks the interchange period.
  *
  * Hover any station to read its record in the info panel below.
@@ -18,9 +18,9 @@ const MARGIN_L = 108; // room for line-name labels
 const MARGIN_R = 12;
 const MARGIN_T = 28; // year labels
 const PLOT_W = VW - MARGIN_L - MARGIN_R; // 780 px
-const YEAR_START = 2022;
+const YEAR_START = 2023;
 const YEAR_END = 2027;
-const SCALE = PLOT_W / (YEAR_END - YEAR_START); // 156 px / yr
+const SCALE = PLOT_W / (YEAR_END - YEAR_START); // 195 px / yr
 
 const toX = (yr) => MARGIN_L + (yr - YEAR_START) * SCALE;
 
@@ -41,25 +41,11 @@ const RAILS = [
   { line: "research", x1: toX(2024.1), x2: toX(2024.5) }, // WEHI
   { line: "research", x1: toX(2024.6), x2: toX(2026.1) }, // UniMelb Psychiatry
   // Engineering
-  { line: "eng", x1: toX(2022.1), x2: toX(2022.5) }, // CSL
   { line: "eng", x1: toX(2025.6), x2: toX(2027) + 8 }, // Mapiva → ongoing
 ];
 
 // ── Stations ──────────────────────────────────────────────────────────────────
 const STATIONS = [
-  {
-    id: "csl",
-    line: "eng",
-    x: toX(2022.3),
-    y: 246,
-    label: "CSL",
-    labelAbove: true,
-    period: "Feb – Jun 2022",
-    role: "Data Analyst · Agile Leader",
-    detail:
-      "First industry role. Python automation of HPLC results, and t-SNE / DBSCAN / UMAP to flag out-of-control research data. Led the team's Agile ceremonies.",
-    current: false,
-  },
   {
     id: "csiro",
     line: "research",
@@ -214,11 +200,11 @@ export default function MetroMapSection() {
               <svg
                 viewBox={`0 0 ${VW} ${VH}`}
                 width="100%"
-                aria-label="Interactive career metro map, 2022 to present"
+                aria-label="Interactive career metro map, 2023 to present"
                 style={{ overflow: "visible" }}
               >
                 {/* ── Year grid ────────────────────────────────────────────────── */}
-                {[2022, 2023, 2024, 2025, 2026, 2027].map((yr) => (
+                {[2023, 2024, 2025, 2026, 2027].map((yr) => (
                   <g key={yr}>
                     <line
                       x1={toX(yr)}
