@@ -1758,7 +1758,8 @@
     "label": "Case study · Family business",
     "title": "Meal-Prep Studio Order System",
     "tagline": "The members, prepaid card, ordering and finance system I built for my mum's meal-prep studio, with one app for phones and the web.",
-    "privateNote": "The app and its code are private because they hold real customer data, so there is no public demo or repository. This page describes how the system works, not who uses it.",
+    "privateNote": "The app and its code are private because they hold real customer data, so the real app has no public demo and there is no public repository. This page describes how the system works, not who uses it.",
+    "sandboxLink": "Try the concept sandbox, on made-up members",
     "glance": [
       { "k": "Status", "v": "In production" },
       { "k": "Started", "v": "22 Apr 2026" },

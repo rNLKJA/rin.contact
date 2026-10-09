@@ -2,8 +2,10 @@
  * /projects/order-system: a short case study of the order system Rin built for
  * his mum's meal-prep studio. Copy lives in locales (orderSystem, en and zh).
  * The app and its repository are private because they hold real customer data,
- * so this page deliberately has no demo or source links, no screenshots and no
+ * so this page deliberately has no source links, no screenshots and no
  * customer, staff or business details: it describes how the system works only.
+ * Its one demo link goes to the concept sandbox on made-up members
+ * (/projects/order-system-sandbox), not the real app.
  */
 import Head from "next/head";
 import Link from "next/link";
@@ -125,10 +127,18 @@ export default function OrderSystemCaseStudy() {
           {t("orderSystem.tagline")}
         </p>
 
-        {/* Private by design: no demo or source links, said plainly. */}
-        <p className="mb-10 border-l-2 border-[#E0E0E0] dark:border-[#3D3D3D] pl-4 text-sm text-[#595959] dark:text-[#9A9A9A] leading-relaxed">
-          {t("orderSystem.privateNote")}
-        </p>
+        {/* Private by design: no source links, said plainly, then the sandbox. */}
+        <div className="mb-10 border-l-2 border-[#E0E0E0] dark:border-[#3D3D3D] pl-4">
+          <p className="text-sm text-[#595959] dark:text-[#9A9A9A] leading-relaxed">
+            {t("orderSystem.privateNote")}
+          </p>
+          <Link
+            href="/projects/order-system-sandbox#demo"
+            className="mt-3 inline-block text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
+          >
+            {t("orderSystem.sandboxLink")} <span aria-hidden="true">→</span>
+          </Link>
+        </div>
 
         {/* At a glance */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mb-6 border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">

@@ -3,8 +3,10 @@
  * (lib/pipeline-data.js). Used under the main lists on /projects and
  * /projects/coursework. A hollow red dot marks "not shipped yet", next to the
  * solid dot that live coursework cards use. A last card on its own spans both
- * columns, so the grid's grey gap colour never shows as an empty cell.
+ * columns, so the grid's grey gap colour never shows as an empty cell. An item
+ * with an on-site demo (`demo`) links it as Live demo, in the same tab.
  */
+import Link from "next/link";
 import { fill } from "@/lib/fill";
 
 export default function PipelineList({ items, t }) {
@@ -31,6 +33,15 @@ export default function PipelineList({ items, t }) {
           <p className="max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
             {p.summary}
           </p>
+          {p.demo && (
+            <Link
+              href={p.demo}
+              aria-label={fill(t("projects.liveDemoPageLabel"), { title: p.title })}
+              className="mt-auto self-start text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
+            >
+              {t("projects.liveDemo")} <span aria-hidden="true">→</span>
+            </Link>
+          )}
           {p.link && (
             <a
               href={p.link}
