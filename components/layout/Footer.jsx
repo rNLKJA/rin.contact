@@ -5,59 +5,12 @@ import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FiGithub, FiMail } from "react-icons/fi";
 import { useI18n } from "@/contexts/I18nContext";
 import DesignPhilosophyModal from "@/components/ui/DesignPhilosophyModal";
-
-// Grouped like a site map, so pages that are not in the header (the /ds
-// explainers, /info pages, tools, the easter-egg index) are still easy to find.
-// Social profiles live in the pill row below, not here.
-const NAV_COLS = [
-  {
-    headingKey: "footer.work",
-    links: [
-      { href: "/strategic", key: "nav.strategic" },
-      { href: "/career", key: "nav.career" },
-      { href: "/projects", key: "nav.projects" },
-      { href: "/projects/coursework", key: "nav.coursework" },
-      { href: "/resume", key: "nav.resume" },
-      { href: "/cv", key: "nav.cv" },
-      { href: "/#contact", key: "nav.contact" },
-      { href: "/hire-me", key: "nav.hireMe", cta: true },
-    ],
-  },
-  {
-    headingKey: "footer.learn",
-    links: [
-      { href: "/skills", key: "nav.skills" },
-      { href: "/knowledge", key: "nav.knowledge" },
-      { href: "/ds", key: "nav.dsExplainers" },
-      { href: "/lab", key: "nav.lab" },
-      { href: "/blog", key: "nav.blog" },
-      { href: "/blog/feed.xml", key: "nav.rss", plain: true },
-    ],
-  },
-  {
-    headingKey: "footer.site",
-    links: [
-      { href: "/about", key: "nav.about" },
-      { href: "/info/now", key: "nav.now" },
-      { href: "/info/uses", key: "nav.uses" },
-      { href: "/info/colophon", key: "nav.colophon" },
-      { href: "/info/history", key: "nav.history" },
-      { href: "/info/changelog", key: "nav.changelog" },
-      { href: "/info/roadmap", key: "nav.roadmap" },
-      { href: "/info/accessibility", key: "nav.accessibility" },
-      { href: "/info/site-map", key: "nav.siteMap" },
-    ],
-  },
-  {
-    headingKey: "footer.tools",
-    links: [
-      { href: "/tools/card", key: "nav.businessCard" },
-      { href: "/resume/terminal", key: "nav.cliResume" },
-      { href: "/info/api", key: "nav.api" },
-      { href: "/fun", key: "nav.easterEggs" },
-    ],
-  },
-];
+// Nav columns: grouped like a site map, so pages that are not in the header
+// (the /ds explainers, /info pages, tools, the easter-egg index) are still easy
+// to find. They live in lib/site-nav.js because the page index behind the ⌘K
+// palette and /info/site-map groups pages the same way. Social profiles live in
+// the pill row below, not here.
+import { FOOTER_COLUMNS } from "@/lib/site-nav";
 
 const SOCIAL_ICONS = [
   { href: "https://www.linkedin.com/in/sunchuangyuhuang/", key: "nav.linkedin", Icon: FaLinkedin },
@@ -129,7 +82,7 @@ const Footer = () => {
           </div>
 
           {/* Nav columns */}
-          {NAV_COLS.map(({ headingKey, links }) => (
+          {FOOTER_COLUMNS.map(({ headingKey, links }) => (
             <div key={headingKey}>
               <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">
                 {t(headingKey)}

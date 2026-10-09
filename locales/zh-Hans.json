@@ -50,7 +50,16 @@
     "openMenu": "打开菜单",
     "closeMenu": "关闭菜单",
     "menuLabel": "网站菜单",
-    "primaryNav": "主导航"
+    "primaryNav": "主导航",
+    "info": "网站信息",
+    "tools": "工具",
+    "manifest": "宣言",
+    "references": "推荐人",
+    "thankYou": "致谢"
+  },
+  "search": {
+    "open": "搜索全站",
+    "tip": "搜索"
   },
   "locale": {
     "current": "EN",
@@ -802,80 +811,19 @@
     ]
   },
   "infoSiteMap": {
-    "metaTitle": "站点地图 — rin.contact",
-    "metaDescription": "人类可读的站点地图。",
-    "ogSubtitle": "人类可读的站点地图。",
-    "heading": "站点地图",
-    "intro": "每一个页面。人类可读。不是 XML。",
-    "sections": {
-      "main": {
-        "heading": "主要",
-        "labels": [
-          "首页",
-          "战略数据科学",
-          "职业经历",
-          "项目",
-          "大学课程作业复活版",
-          "这些年学过的东西",
-          "实验室",
-          "关于我",
-          "简历",
-          "个人简历（CV）",
-          "招聘意向"
-        ]
-      },
-      "blog": {
-        "heading": "博客",
-        "labels": ["博客"]
-      },
-      "tools": {
-        "heading": "工具",
-        "labels": ["工具", "电子名片"]
-      },
-      "info": {
-        "heading": "信息",
-        "labels": [
-          "信息",
-          "API",
-          "近况",
-          "工具清单",
-          "路线图",
-          "无障碍",
-          "版本说明",
-          "站点地图",
-          "宣言",
-          "更新日志",
-          "网站历史",
-          "致谢",
-          "推荐人"
-        ]
-      },
-      "fun": {
-        "heading": "趣味",
-        "labels": [
-          "趣味",
-          "咖啡",
-          "吐槽",
-          "秘密",
-          "保险库",
-          "矩阵",
-          "相关性",
-          "P 值神谕",
-          "森林",
-          "代词",
-          "时区",
-          "名字",
-          "塔罗",
-          "骰子",
-          "打字",
-          "心情"
-        ]
-      },
-      "dataScience": {
-        "heading": "数据科学",
-        "labels": ["DS", "模型卡", "特征重要性"]
-      }
-    }
+    "metaTitle": "网站地图 · rin.contact",
+    "metaDescription": "rin.contact 的所有页面都在这里，分组方式和页脚一样，还可以输入关键词筛选。",
+    "ogSubtitle": "rin.contact 的所有页面",
+    "heading": "网站地图",
+    "intro": "这里列出了网站的每一个页面，分组方式和页脚一样。在输入框里打字，就能缩小范围。",
+    "shortcut": "在任何页面按 {keys}，也能直接跳到想去的页面。",
+    "openSearch": "打开搜索",
+    "filterLabel": "筛选页面",
+    "filterPlaceholder": "试试“回归”或“SQL”",
+    "showing": "有 {n} 个条目符合，共 {total} 个。",
+    "showingAll": "这里列出了全部 {total} 个条目。",
+    "empty": "没有和“{q}”匹配的页面。换个短一点的词试试。",
+    "clear": "清除筛选"
   },
   "infoReferences": {
     "metaTitle": "推荐人 — rin.contact",
@@ -1366,7 +1314,7 @@
       "accessibility": "本站的无障碍设计",
       "colophon": "本站是如何搭建的",
       "api": "可用的 API 接口",
-      "site-map": "人类可读的站点地图",
+      "site-map": "全站页面一览，可以筛选",
       "manifest": "我的信念",
       "changelog": "更新了什么",
       "history": "这个网站是怎么一路改过来的",

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useI18n } from "@/contexts/I18nContext";
@@ -15,7 +16,7 @@ const slugifyDomain = (d) =>
 import { useTheme } from "@/contexts/ThemeContext";
 import { useInView } from "@/hooks/useInView";
 import { fill } from "@/lib/fill";
-import { PROJECTS } from "@/lib/projects-data";
+import { PROJECTS, projectAnchor } from "@/lib/projects-data";
 
 const DOMAIN_COLORS = {
   Government: { color: "#2563EB", bg: "#EFF6FF" }, // blue-600  4.53:1 ✓
@@ -371,6 +372,46 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
     if (match) setActiveFilter(match);
   }, [router.isReady, router.query.category]);
 
+  // #<id> links a card (the ⌘K palette and /info/site-map list every card
+  // without a case study this way, see projectAnchor). It opens that card in
+  // the full list, clearing any filter or search that hid it, then brings the
+  // row into view and gives its button focus. A frame after mount covers
+  // arriving from another page (this section loads after the route, so the
+  // router's own jump can miss it). Same-page jumps fire hashchange or
+  // Next.js's hashChangeComplete, and a jump that also drops ?category= is a
+  // routeChangeComplete on this same page.
+  useEffect(() => {
+    let frame = 0;
+    const openIfTarget = () => {
+      const id = window.location.hash.slice(1);
+      const project = id ? PROJECTS.find((p) => projectAnchor(p) === id) : null;
+      if (!project) return;
+      flushSync(() => {
+        setActiveFilter("All");
+        setSearch("");
+        setOpenId(project.id);
+      });
+      const row = document.getElementById(id);
+      if (!row) return;
+      row.scrollIntoView({ block: "start" });
+      row.querySelector("button")?.focus({ preventScroll: true });
+    };
+    frame = requestAnimationFrame(openIfTarget);
+    const onRoute = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(openIfTarget);
+    };
+    window.addEventListener("hashchange", onRoute);
+    router.events.on("hashChangeComplete", onRoute);
+    router.events.on("routeChangeComplete", onRoute);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", onRoute);
+      router.events.off("hashChangeComplete", onRoute);
+      router.events.off("routeChangeComplete", onRoute);
+    };
+  }, [router.events]);
+
   // Apply a filter AND reflect it in the URL (shallow, no scroll) so the user can
   // copy the link to whatever they have filtered to. "All" clears the param. The
   // URL write lives here (on the user action) rather than in an effect watching
@@ -544,7 +585,8 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
               return (
                 <div
                   key={project.id}
-                  className="border-b border-[#E0E0E0] dark:border-[#3D3D3D] group/row transition-colors duration-150 hover:bg-[#FAFAFA] dark:hover:bg-[#1A1A1A] relative"
+                  id={projectAnchor(project) || undefined}
+                  className="scroll-mt-24 border-b border-[#E0E0E0] dark:border-[#3D3D3D] group/row transition-colors duration-150 hover:bg-[#FAFAFA] dark:hover:bg-[#1A1A1A] relative"
                 >
                   {/* Domain colour left accent bar */}
                   <div
