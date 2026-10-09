@@ -127,7 +127,7 @@ const lines = [
   tEntry(
     "2024",
     false,
-    "Research Assistant — MoodQ",
+    "Research Assistant  ·  digital mental health",
     "University of Melbourne",
     "RA.1  ·  Psychiatry Department",
     "2024 – 2026",

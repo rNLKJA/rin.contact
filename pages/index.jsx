@@ -144,7 +144,7 @@ const PROJECTS_SCHEMA = {
       position: 5,
       item: {
         "@type": "SoftwareApplication",
-        name: "MoodQ",
+        name: "Moodist",
         description:
           "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Department of Psychiatry. Rin was the sole developer: he rebuilt it from Uniapp in Expo React Native on a Flask backend, kept hosting under $500 a month by running each service in its own Docker container on AWS LightSail, and handed it to a professional team for production.",
         applicationCategory: "HealthApplication",

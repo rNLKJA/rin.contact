@@ -5,9 +5,6 @@ import { useI18n } from "@/contexts/I18nContext";
 import { ROLES } from "@/lib/career-data";
 import { monthsBetween } from "@/lib/career-format";
 
-// Short labels for the chart; anything not listed uses the role's orgShort.
-const LABELS = { "unimelb-psychiatry": "MoodQ" };
-
 // Whole months from an ISO start date to today, for roles still running.
 function completedMonths(startIso, now) {
   const [y, m, d] = startIso.split("-").map(Number);
@@ -22,7 +19,7 @@ function completedMonths(startIso, now) {
 export function getStaticProps() {
   const now = new Date();
   const rows = [...ROLES].reverse().map((r) => ({
-    role: LABELS[r.id] || r.orgShort,
+    role: r.orgShort,
     months: r.end ? monthsBetween(r.start, r.end) : completedMonths(r.start, now),
   }));
   const sorted = rows.map((r) => r.months).sort((a, b) => a - b);

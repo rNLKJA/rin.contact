@@ -39,7 +39,7 @@ const RAILS = [
   // Research
   { line: "research", x1: toX(2023.1), x2: toX(2023.92) }, // CSIRO
   { line: "research", x1: toX(2024.1), x2: toX(2024.5) }, // WEHI
-  { line: "research", x1: toX(2024.6), x2: toX(2026.1) }, // MoodQ
+  { line: "research", x1: toX(2024.6), x2: toX(2026.1) }, // UniMelb Psychiatry
   // Engineering
   { line: "eng", x1: toX(2022.1), x2: toX(2022.5) }, // CSL
   { line: "eng", x1: toX(2025.6), x2: toX(2027) + 8 }, // Mapiva → ongoing
@@ -91,12 +91,12 @@ const STATIONS = [
     line: "research",
     x: toX(2025.3),
     y: 162,
-    label: "MoodQ",
+    label: "UniMelb RA",
     labelAbove: false,
     period: "Aug 2024 – Feb 2026",
     role: "Research Assistant · UniMelb Psychiatry",
     detail:
-      "Sole developer of MoodQ (formerly Moodist), a clinical mental-health app. Rebuilt it from Uniapp to Expo React Native, built the clinician dashboard on a Flask backend, and kept hosting under $500/mo by running each service in its own Docker container on AWS LightSail. GDPR-aligned; handed to a professional team for production.",
+      "Sole developer of a clinical mood-tracking app for the Department of Psychiatry. Rebuilt it from Uniapp to Expo React Native, built the clinician dashboard on a Flask backend, and kept hosting under $500/mo by running each service in its own Docker container on AWS LightSail. Data protection was GDPR-aligned, and the app went to a professional team for production.",
     current: false,
   },
   {

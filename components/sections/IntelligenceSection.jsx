@@ -96,7 +96,7 @@ const RIN_BUBBLES = [
   },
   {
     id: "moodq",
-    label: "RA1/MoodQ",
+    label: "UniMelb RA1",
     year: "2024–26",
     exp: -0.5,
     sen: 3.5,
@@ -106,8 +106,9 @@ const RIN_BUBBLES = [
     color: "#555555",
     domain: "Pre-career",
     period: "Aug 2024–Feb 2026",
-    detail: "RA1 Research Assistant (casual) · UniMelb Psychiatry · Sole developer, MoodQ app",
-    why: "Junior. Not officially workforce — casual RA1. Sole developer of the MoodQ mobile app.",
+    detail:
+      "RA1 Research Assistant (casual) · UniMelb Psychiatry · Sole developer of a clinical mood-tracking app",
+    why: "Junior and casual (RA1), so not counted as workforce. Sole developer of a clinical mood-tracking mobile app.",
   },
   {
     id: "cbs",
@@ -226,7 +227,7 @@ const RIN_INDEXED = [
   { year: 2021, idx: 1.55, event: "BSc foundations · early tooling" },
   { year: 2022, idx: 2.18, event: "CSL — first industry role · HPLC + ML clustering" },
   { year: 2023, idx: 2.91, event: "CSIRO capstone · climate science & AR modelling" },
-  { year: 2024, idx: 4.18, event: "WEHI + MoodQ + MDS graduation — breakout year" },
+  { year: 2024, idx: 4.18, event: "WEHI + UniMelb RA + MDS graduation · breakout year" },
   {
     year: 2025,
     idx: 4.72,
@@ -317,12 +318,12 @@ const FP_TREE = {
         {
           label: "Mobile & Web",
           proof:
-            "Expo React Native: MoodQ (UniMelb Psychiatry, handed to a production team) and Mapiva (co-founded, beta in early 2027) · Next.js: rin.contact · Uniapp → Expo RN migration of MoodQ as sole developer.",
+            "Expo React Native: a clinical mood-tracking app (UniMelb Psychiatry, handed to a production team) and Mapiva (co-founded, beta in early 2027) · Next.js: rin.contact · Uniapp → Expo RN migration of the mood-tracking app as sole developer.",
         },
         {
           label: "HPC & Cloud",
           proof:
-            "SPARTAN HPC (UniMelb): ~65 GB Twitter corpus for social media analysis · AWS LightSail + Docker: GDPR-aligned MoodQ backend for under $500/mo · GitHub Actions CI/CD pipelines across all active repos.",
+            "SPARTAN HPC (UniMelb): ~65 GB Twitter corpus for social media analysis · AWS LightSail + Docker: GDPR-aligned backend for a clinical mood-tracking app, hosted for under $500/mo · GitHub Actions CI/CD pipelines across all active repos.",
         },
         {
           label: "Data pipelines",
@@ -339,7 +340,7 @@ const FP_TREE = {
         {
           label: "Cross-sector career design",
           proof:
-            "6 distinct sectors since 2022: biotech (CSL), climate research (CSIRO), bioinformatics (WEHI), mental-health tech (MoodQ), government intelligence (CBS), law-enforcement analytics (SAPOL). Each role chosen for what it would teach, not for comfort. Professionals today are on pace to hold twice as many jobs as workers from 15 years ago (LinkedIn Work Change Report, 2024).",
+            "6 distinct sectors since 2022: biotech (CSL), climate research (CSIRO), bioinformatics (WEHI), mental-health tech (UniMelb Psychiatry), government intelligence (CBS), law-enforcement analytics (SAPOL). Each role chosen for what it would teach, not for comfort. Professionals today are on pace to hold twice as many jobs as workers from 15 years ago (LinkedIn Work Change Report, 2024).",
         },
         {
           label: "Lifelong learning & reskilling",
@@ -353,7 +354,7 @@ const FP_TREE = {
         {
           label: "Adaptability over sunk-cost thinking",
           proof:
-            "Migrated MoodQ from Uniapp to Expo React Native when a clearly better architecture emerged — choosing long-term product health over the comfort of a working prototype. Applied the same principle at CBS: replaced ad-hoc Excel tracking with a reproducible, documented analytics framework.",
+            "Moved a clinical mood-tracking app from Uniapp to Expo React Native once a clearly better architecture emerged, although the Uniapp prototype already worked. Applied the same principle at CBS: replaced ad-hoc Excel tracking with a reproducible, documented analytics framework.",
         },
       ],
     },
@@ -836,7 +837,7 @@ function BubblePanel() {
                 {" "}
                 (APSC Career Pathfinder, 2024)
               </span>
-              . CSL, CSIRO, WEHI and RA1/MoodQ are not counted as workforce: industry placement,
+              . CSL, CSIRO, WEHI and UniMelb RA1 are not counted as workforce: industry placement,
               capstone, pre-career research software and casual RA1. At Year 1, Rin sits +2.5
               seniority grades above the benchmark. Rin reached ASO7 at 26.
             </p>
@@ -846,12 +847,12 @@ function BubblePanel() {
               What the bubble sizes say
             </p>
             <p className="text-sm text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed font-light">
-              The largest bubbles (SAPOL, CBS, RA1/MoodQ) each operated across 6–7 distinct
+              The largest bubbles (SAPOL, CBS, UniMelb RA1) each operated across 6–7 distinct
               technical domains simultaneously. The benchmark cohort at Year 4 is plotted with
               breadth ≈ 3.5 domains — consistent with IAPA 2023 findings that fewer than 15% of
               analysts under 28 have meaningful cross-sector experience. Bigger bubbles compounded
-              more; broader context produced faster seniority growth. RA1/MoodQ has high breadth but
-              lower seniority (casual framing).
+              more; broader context produced faster seniority growth. UniMelb RA1 has high breadth
+              and lower seniority, because the role was casual.
             </p>
           </div>
           <div className="border-l-2 border-[#DDD] dark:border-[#1A1A1A] pl-4">
@@ -860,11 +861,11 @@ function BubblePanel() {
             </p>
             <p className="text-sm text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed font-light">
               Rapid cross-sector mobility carries a real cost: less specialist depth than a domain
-              expert who stayed in one area for four years. RA1/MoodQ is plotted as casual (not
-              official career start) — high breadth, lower seniority. CBS (mid-junior) to SAPOL
-              (mid-management) shows the formal government trajectory. The comparison isn&apos;t
-              about ranking. It surfaces what happens when continuous improvement is treated as a
-              first principle rather than a HR talking point.
+              expert who stayed in one area for four years. UniMelb RA1 is plotted as a casual role
+              before the official career start, with high breadth and lower seniority. CBS
+              (mid-junior) to SAPOL (mid-management) shows the formal government trajectory. The
+              comparison isn&apos;t about ranking. It surfaces what happens when continuous
+              improvement is treated as a first principle rather than a HR talking point.
             </p>
           </div>
           <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">
@@ -1334,9 +1335,9 @@ function GrowthPanel() {
               A linear learner adds knowledge sequentially. A compound learner puts each new context
               to work <em>on top of</em> everything before it. Strategic thinking deepened at CSIRO
               made the CBS intelligence framework sharper. Bioinformatics at WEHI informed how data
-              pipelines were designed at SAPOL. 2024 was the inflection point: two simultaneous
-              high-depth roles (WEHI + MoodQ) compressed what would normally take three years into
-              one — visible as the steepest segment of the curve.
+              pipelines were designed at SAPOL. 2024 was the inflection point: two back-to-back
+              high-depth roles (WEHI, then the UniMelb psychiatry role) compressed what would
+              normally take three years into one, which shows as the steepest segment of the curve.
             </p>
           </div>
           <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">

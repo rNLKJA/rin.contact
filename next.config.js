@@ -70,7 +70,7 @@ const nextConfig = {
       // The Forage write-up folded into its Projects card. i18n prefixes these,
       // so /zh-Hans/projects/virtual-internships goes to /zh-Hans/projects too.
       ["projects/virtual-internships", "projects"],
-      // The MoodQ write-up page was renamed to Moodist.
+      // The clinical app write-up moved to /projects/moodist.
       ["projects/moodq", "projects/moodist"],
     ];
     return moved.flatMap(([from, to]) => [

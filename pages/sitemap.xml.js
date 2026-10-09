@@ -32,7 +32,7 @@ const IMAGES = [
     loc: "https://yt3.googleusercontent.com/wD1YaCDSytQDbDcSAkR21j8IQTl9lyC6LDr3p5ZC2yGX-RzU1ayGmn6swOS_LLzMKpvyA--UJQY=s176-c-k-c0x00ffffff-no-rj-mo",
     title: "University of Melbourne",
     caption:
-      "Master of Data Science, Bachelor of Science (Data Science), RA.1 Research Assistant (MoodQ), STEM Mentor",
+      "Master of Data Science, Bachelor of Science (Data Science), RA.1 Research Assistant (digital mental health), STEM Mentor",
     license: "https://www.unimelb.edu.au",
   },
   {

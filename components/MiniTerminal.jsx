@@ -126,7 +126,7 @@ const FEATURED_PROJECT_LINES = [
   D("               Co-founded · Dev Lead · Beta in early 2027"),
   W("  ● SAPOL EPSB Analytics Reporting · IAPro/BlueTeam tooling · Gov"),
   W("  ● CBS Intelligence     Analytics · Ministerial dashboards · Gov"),
-  W("  ● MoodQ                Mobile · Mental health · UniMelb Psychiatry"),
+  W("  ● Moodist              Mobile · Mental health · UniMelb Psychiatry"),
   D("  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─"),
   N("  ○ SA Address Generator    Data Eng · Internal Gov tool"),
   N("  ○ US Political Data        Scraper · ~25,000 documents"),
