@@ -41,7 +41,7 @@ const BR = () => L("normal", "");
 
 // PROJECTS.length in lib/projects-data.js. Hard-coded so the
 // terminal chunk does not pull in the whole project list; update both together.
-const PROJECT_COUNT = 22;
+const PROJECT_COUNT = 27;
 
 const BANNER = [
   D("┌─────────────────────────────────────────────────┐"),
@@ -128,8 +128,8 @@ const FEATURED_PROJECT_LINES = [
   W("  ● CBS Intelligence     Analytics · Ministerial dashboards · Gov"),
   W("  ● Moodist              Mobile · Mental health · UniMelb Psychiatry"),
   D("  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─"),
-  N("  ○ SA Address Generator    Data Eng · Internal Gov tool"),
-  N("  ○ US Political Data        Scraper · ~25,000 documents"),
+  N("  ○ SA Address Generator    Mock test data · Personal"),
+  N("  ○ US Political Data        Scraper · 7,556 documents"),
   N("  ○ GMM Sample Sheets        R Shiny · Single-cell · WEHI"),
   N("  ○ Climate Fact-Checker     NLP · TF-IDF · Transformer"),
   N("  ○ ENSO Climate Risk        Time series · CSIRO × UniMelb"),
@@ -180,11 +180,8 @@ const CURL_OUTPUT = [
   BR(),
   R("  ▸  SKILLS"),
   BR(),
-  N("  Python         ████████████████████░░  expert"),
-  N("  SQL            ████████████████████░░  expert"),
-  N("  Strategic      ████████████████████░░  expert"),
-  N("  R              █████████████████░░░░░  advanced"),
-  N("  Power BI       █████████████████░░░░░  advanced"),
+  N("  Python  ·  SQL  ·  R  ·  Power BI  ·  Strategy"),
+  D("  Every skill, with its evidence → rin.contact/skills"),
   BR(),
   D("· · · · · · · · · · · · · · · · · · · · · · · · · · · · ·"),
   D("  $ curl rin.contact"),

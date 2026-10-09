@@ -86,8 +86,8 @@ const GITHUB_PROFILE = "https://github.com/rNLKJA";
  * A card's link buttons. `coursework` holds the links a card gets from the
  * revived lab it grew out of (pages/projects.jsx): a case study on the lab's
  * card on /projects/coursework, the live demo and, when there is one, the
- * guided tour. A card's own case study and demo come first. The repository link
- * is the card's own and is only set for public repositories.
+ * guided tour. A card's own case study, demo and tour come first. The repository
+ * link is the card's own and is only set for public repositories.
  *
  * A demo on this site (a path such as /projects/moodist#daybook) opens in the
  * same tab, and a deployed app opens in a new one. A case study whose
@@ -102,7 +102,7 @@ function ProjectLinks({ project, coursework, className = "" }) {
   const ownCaseStudy = Boolean(project.caseStudy);
   const caseStudy = project.caseStudy || coursework?.caseStudy;
   const demo = project.demo || coursework?.demo;
-  const tour = coursework?.tour;
+  const tour = project.tour || coursework?.tour;
   const { link } = project;
   if (!caseStudy && !demo && !tour && !link) return null;
   const vars = { title: project.title };

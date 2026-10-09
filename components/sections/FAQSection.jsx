@@ -45,7 +45,7 @@ export const CATEGORIES = [
       },
       {
         q: "Do you work on open-source projects?",
-        a: "Yes. I maintain several open-source repositories on GitHub under the handle rNLKJA, including a South Australian address generator based on SEIFA socio-economic indices and a US presidential debate and campaign document scraper covering over 25,000 documents. Open-source work is how I give back to the data community and keep my skills sharp outside of government environments where code is not publicly shareable.",
+        a: "Yes. I maintain several open-source repositories on GitHub under the handle rNLKJA, including a mock South Australian address generator for software testing and a scraper that collected 7,556 US campaign documents and 179 presidential debate transcripts. Open-source work is how I give back to the data community and keep my skills sharp outside of government environments where code is not publicly shareable.",
       },
     ],
   },
