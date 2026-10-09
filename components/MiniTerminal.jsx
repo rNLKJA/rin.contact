@@ -41,7 +41,7 @@ const BR = () => L("normal", "");
 
 // PROJECTS.length in lib/projects-data.js. Hard-coded so the
 // terminal chunk does not pull in the whole project list; update both together.
-const PROJECT_COUNT = 27;
+const PROJECT_COUNT = 28;
 
 const BANNER = [
   D("┌─────────────────────────────────────────────────┐"),
@@ -173,7 +173,11 @@ const CURL_OUTPUT = [
   D("         │"),
   W("  2025  ─●─  Co-Founder & Dev Lead                Mapiva"),
   N("  2025  ─○─  Intelligence & Coordination Officer  CBS · AGD SA"),
-  N("  2024  ─○─  Research Assistant (RA.1)            UniMelb Psychiatry"),
+  N("  2024  ─○─  Cloud Engineer                       Psyckitchen"),
+  N("        ─○─  Research Assistant (RA.1)            UniMelb Psychiatry"),
+  N("        ─○─  Operating Officer & Organisational Development Lead"),
+  D("         │   Psyckitchen"),
+  N("        ─○─  AI Product and LLM Prompt Specialist Psyckitchen"),
   N("        ─○─  Research Software Engineer           WEHI"),
   N("  2023  ─○─  Data Science Industrial Consultant   CSIRO"),
   BR(),

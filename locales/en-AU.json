@@ -1306,16 +1306,16 @@
       {
         "num": "02",
         "title": "Career",
-        "desc": "Three domain lines. Six stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
+        "desc": "Three domain lines. Seven stations. One convergence point where Government, Research, and Engineering ran simultaneously.",
         "tags": ["Government", "Research", "Engineering"],
-        "stat": "Since 2023 · 6 stations"
+        "stat": "Since 2023 · 7 stations"
       },
       {
         "num": "03",
         "title": "Projects",
         "desc": "Built across data engineering, cloud infrastructure, mobile, and web platforms.",
         "tags": ["Python", "Next.js", "AWS", "React Native"],
-        "stat": "27 projects"
+        "stat": "28 projects"
       },
       {
         "num": "04",
@@ -1429,7 +1429,7 @@
   },
   "metroMap": {
     "heading": "Three lines.",
-    "description": "Government, Research, Engineering. Six stations since 2023, one career.",
+    "description": "Government, Research, Engineering. Seven stations since 2023, one career.",
     "govt": "GOVT",
     "research": "RESEARCH",
     "engineer": "ENGINEER",
@@ -1528,7 +1528,7 @@
   "career": {
     "sectionLabel": "◆ — Career",
     "heading": "Journey.",
-    "description": "Three domain lines. Six stations. One convergence point.",
+    "description": "Three domain lines. Seven stations. One convergence point.",
     "resumeLink": "Resume and PDF"
   },
   "projectsPage": {
@@ -1917,7 +1917,7 @@
       "secLimitations": "Limitations",
       "details": [
         { "label": "Model type", "value": "GeneralistClassifier (human)" },
-        { "label": "Architecture", "value": "Master of Data Science, BSc, 6 roles, 1 startup" },
+        { "label": "Architecture", "value": "Master of Data Science, BSc, 9 roles, 1 startup" },
         { "label": "Training date", "value": "2018–present (continuous)" },
         { "label": "Framework", "value": "University of Melbourne, CSIRO, WEHI, SAPOL" }
       ],

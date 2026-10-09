@@ -993,16 +993,16 @@
       {
         "num": "02",
         "title": "职业经历",
-        "desc": "三条专业线。六个站点。一个汇聚点，政府、科研与工程在此并行交汇。",
+        "desc": "三条专业线。七个站点。一个汇聚点，政府、科研与工程在此并行交汇。",
         "tags": ["政府", "科研", "工程"],
-        "stat": "2023 年至今 · 6个站点"
+        "stat": "2023 年至今 · 7个站点"
       },
       {
         "num": "03",
         "title": "项目",
         "desc": "覆盖数据工程、云基础设施、移动端与Web平台的项目。",
         "tags": ["Python", "Next.js", "AWS", "React Native"],
-        "stat": "27个项目"
+        "stat": "28个项目"
       },
       {
         "num": "04",
@@ -1116,7 +1116,7 @@
   },
   "metroMap": {
     "heading": "三条线路。",
-    "description": "政府、科研、工程三条线，2023 年至今，六个站点，一段职业。",
+    "description": "政府、科研、工程三条线，2023 年至今，七个站点，一段职业。",
     "govt": "政府",
     "research": "科研",
     "engineer": "工程",
@@ -1215,7 +1215,7 @@
   "career": {
     "sectionLabel": "◆ — 职业经历",
     "heading": "历程。",
-    "description": "三条专业线。六个站点。一个汇聚点。",
+    "description": "三条专业线。七个站点。一个汇聚点。",
     "resumeLink": "简历与 PDF"
   },
   "projectsPage": {
@@ -1602,7 +1602,7 @@
       "secLimitations": "局限性",
       "details": [
         { "label": "模型类型", "value": "GeneralistClassifier（人类）" },
-        { "label": "架构", "value": "数据科学硕士、理学学士、6 个角色、1 家创业公司" },
+        { "label": "架构", "value": "数据科学硕士、理学学士、9 个角色、1 家创业公司" },
         { "label": "训练日期", "value": "2018–至今（持续）" },
         { "label": "框架", "value": "University of Melbourne、CSIRO、WEHI、SAPOL" }
       ],

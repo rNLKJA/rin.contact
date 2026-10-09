@@ -73,9 +73,24 @@
       "period": "Jan 2025–Mar 2026"
     },
     {
+      "role": "Cloud Engineer",
+      "org": "Psyckitchen",
+      "period": "Oct 2024–Dec 2024"
+    },
+    {
       "role": "Research Assistant (RA.1), digital mental health",
       "org": "University of Melbourne, Department of Psychiatry",
       "period": "Aug 2024–Feb 2026"
+    },
+    {
+      "role": "Operating Officer & Organisational Development Lead",
+      "org": "Psyckitchen",
+      "period": "Jul 2024–Dec 2024"
+    },
+    {
+      "role": "AI Product and LLM Prompt Specialist",
+      "org": "Psyckitchen",
+      "period": "Jun 2024–Dec 2024"
     },
     {
       "role": "Research Software Engineer",
@@ -89,8 +104,8 @@
     }
   ],
   "stats": {
-    "roles": 6,
-    "projects": 27,
+    "roles": 9,
+    "projects": 28,
     "certifications": 23,
     "degrees": 2,
     "coffees_consumed": "undefined (stack overflow)"

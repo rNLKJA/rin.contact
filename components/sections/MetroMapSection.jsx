@@ -2,7 +2,8 @@
  * MetroMapSection — Career as a metro / subway map
  *
  * Three domain lines (Government, Research, Engineering) run along a time axis
- * from 2023 to present. Stations = roles. Where multiple lines are active
+ * from 2023 to present. Stations = organisations (Psyckitchen's three 2024
+ * roles share one station). Where multiple lines are active
  * simultaneously, a vertical connector marks the interchange period.
  *
  * Hover any station to read its record in the info panel below.
@@ -41,6 +42,7 @@ const RAILS = [
   { line: "research", x1: toX(2024.1), x2: toX(2024.5) }, // WEHI
   { line: "research", x1: toX(2024.6), x2: toX(2026.1) }, // UniMelb Psychiatry
   // Engineering
+  { line: "eng", x1: toX(2024.42), x2: toX(2025.0) }, // Psyckitchen
   { line: "eng", x1: toX(2025.6), x2: toX(2027) + 8 }, // Mapiva → ongoing
 ];
 
@@ -83,6 +85,19 @@ const STATIONS = [
     role: "Research Assistant · UniMelb Psychiatry",
     detail:
       "Sole developer of a clinical mood-tracking app for the Department of Psychiatry. Rebuilt it from Uniapp to Expo React Native, built the clinician dashboard on a Flask backend, and kept hosting under $500/mo by running each service in its own Docker container on AWS LightSail. Data protection was GDPR-aligned, and the app went to a professional team for production.",
+    current: false,
+  },
+  {
+    id: "psyckitchen",
+    line: "eng",
+    x: toX(2024.7),
+    y: 246,
+    label: "Psyckitchen",
+    labelAbove: true,
+    period: "Jun – Dec 2024",
+    role: "AI Product and LLM Prompt Specialist · Operating Officer & Organisational Development Lead · Cloud Engineer",
+    detail:
+      "Three roles at a small Melbourne team behind a Chinese-language psychology and wellbeing brand. Product ideas and prompt writing, including Echo, a June 2024 companion chatbot prototype that has since ended. Worked with a team of 20 on structure, free tools and a training program, then looked after its Azure web services.",
     current: false,
   },
   {

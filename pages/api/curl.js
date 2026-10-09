@@ -124,11 +124,41 @@ const lines = [
   tEntry(
     "2024",
     false,
+    "Cloud Engineer",
+    "Psyckitchen",
+    "Azure web services  ·  Freelance",
+    "2024",
+    "Melbourne, VIC (remote)"
+  ),
+
+  tEntry(
+    null,
+    false,
     "Research Assistant (RA.1)",
     "University of Melbourne",
     "Digital mental health  ·  Psychiatry Department",
     "2024 – 2026",
     "Parkville, VIC"
+  ),
+
+  tEntry(
+    null,
+    false,
+    "Operating Officer & Organisational Development Lead",
+    "Psyckitchen",
+    "Team of 20  ·  Tools and training",
+    "2024",
+    "Melbourne, VIC (hybrid)"
+  ),
+
+  tEntry(
+    null,
+    false,
+    "AI Product and LLM Prompt Specialist",
+    "Psyckitchen",
+    "Product ideas and prompts  ·  Echo prototype",
+    "2024",
+    "Melbourne, VIC (hybrid)"
   ),
 
   tEntry(
@@ -173,7 +203,7 @@ const lines = [
   statBar(ROLES.length, "roles", "across gov, research & startup"),
   // Keep in step with PROJECTS in lib/projects-data.js (not imported here, to
   // keep this route small).
-  statBar(27, "projects", "built and delivered"),
+  statBar(28, "projects", "built and delivered"),
   statBar(2, "degrees", "University of Melbourne"),
   statBar(CERTS.length, "certifications", "cloud · analytics · agile · language"),
   "",
