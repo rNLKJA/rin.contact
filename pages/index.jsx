@@ -107,7 +107,7 @@ const PROJECTS_SCHEMA = {
         "@type": "SoftwareSourceCode",
         name: "SA Address Generator",
         description:
-          "Internal tool to generate validated South Australian addresses based on SEIFA indices and remoteness classifications, verified via Mapbox API.",
+          "A personal tool that makes mock South Australian addresses for software testing, revived in 2026 as a web app with remoteness and SEIFA weighting and a check that each sample hits its target mix.",
         codeRepository: "https://github.com/rNLKJA/SA-Mock-Address-Generator",
         programmingLanguage: "Python",
         author: { "@id": "https://rin.contact/#person" },
@@ -120,7 +120,7 @@ const PROJECTS_SCHEMA = {
         "@type": "SoftwareSourceCode",
         name: "US Political Data Collection System",
         description:
-          "Scraped ~180 presidential debate transcripts and ~25,000 campaign documents from the UC Santa Barbara American Presidency Project with multi-threaded processing.",
+          "Collected 7,556 US campaign documents and 179 debate transcripts from the UC Santa Barbara American Presidency Project, revived in 2026 as Campaign Text Lab, a descriptive reading room.",
         codeRepository: "https://github.com/rNLKJA/Political-Data-Collection-System",
         programmingLanguage: "Python",
         author: { "@id": "https://rin.contact/#person" },

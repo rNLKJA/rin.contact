@@ -309,7 +309,7 @@ const FP_TREE = {
         {
           label: "Geospatial analysis",
           proof:
-            "Power BI + GIS dashboards for CBS covering SA tobacco & building compliance — used directly by Senior Management and the Minister's Office · SA Address Generator: SEIFA indices + ABS Remoteness + Mapbox API.",
+            "Power BI + GIS dashboards for CBS covering SA tobacco & building compliance — used directly by Senior Management and the Minister's Office · SA Address Generator (personal): mock addresses weighted by ABS remoteness and SEIFA, with Mapbox lookup.",
         },
       ],
     },
@@ -331,7 +331,7 @@ const FP_TREE = {
         {
           label: "Data pipelines",
           proof:
-            "Sample-sheet tooling that merges flow-cytometry sort metadata with plate layouts (WEHI) · Multi-threaded scraper: ~25,000 US presidential documents (personal research) · HPLC result automation (CSL Behring).",
+            "Sample-sheet tooling that merges flow-cytometry sort metadata with plate layouts (WEHI) · Multi-threaded scraper: 7,556 US campaign documents and 179 debate transcripts (personal research) · HPLC result automation (CSL Behring).",
         },
       ],
     },

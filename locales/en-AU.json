@@ -1316,7 +1316,7 @@
         "title": "Projects",
         "desc": "Built across data engineering, cloud infrastructure, mobile, and web platforms.",
         "tags": ["Python", "Next.js", "AWS", "React Native"],
-        "stat": "22 projects"
+        "stat": "27 projects"
       },
       {
         "num": "04",
@@ -2276,9 +2276,9 @@
       "goDeeper": "Go deeper"
     },
     "pipeline": {
-      "intro": "Coursework I am rebuilding or still checking. Each one gets a full card, a live demo and a tour once it passes the same checks as the rest."
+      "intro": "Coursework I am still rebuilding. Each one gets a full card and a live demo once it passes the same checks as the rest."
     },
-    "intro": "Each project began as an assignment I submitted at the University of Melbourne. In 2026 I brought them back in three steps, kept separate so it is always clear what is original and what is new.",
+    "intro": "Each project began as an assignment I submitted at the University of Melbourne, apart from one practice task on a past brief, which is labelled as such. In 2026 I brought them back in three steps, kept separate so it is always clear what is original and what is new. Where the original code was lost, the card says so.",
     "steps": [
       {
         "title": "Faithful port",
