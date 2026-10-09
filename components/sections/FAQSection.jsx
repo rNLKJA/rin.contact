@@ -60,7 +60,7 @@ export const CATEGORIES = [
       },
       {
         q: "What industries have you worked in?",
-        a: "My experience spans Australian state government (South Australia Police and the Attorney-General's Department), medical and climate research (WEHI, CSIRO, and the University of Melbourne's Department of Psychiatry), biotech (CSL), and the startup sector as co-founder of Mapiva. This breadth means I can translate analytical frameworks across very different operational contexts — from parliamentary compliance reporting to clinical mobile applications.",
+        a: "My experience spans Australian state government (South Australia Police and the Attorney-General's Department), medical and climate research (WEHI, CSIRO, and the University of Melbourne's Department of Psychiatry), and the startup sector as co-founder of Mapiva. This breadth means I can translate analytical frameworks across very different operational contexts, from parliamentary compliance reporting to clinical mobile applications.",
       },
       {
         q: "What's the biggest difference between working in government, research, and a startup?",

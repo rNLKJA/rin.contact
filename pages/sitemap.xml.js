@@ -49,12 +49,6 @@ const IMAGES = [
     license: "https://www.csiro.au",
   },
   {
-    loc: "https://s3-symbol-logo.tradingview.com/csl--600.png",
-    title: "CSL Behring",
-    caption: "Data Analyst & Agile Leader, Feb–Jun 2022",
-    license: "https://www.csl.com",
-  },
-  {
     loc: "https://media.licdn.com/dms/image/v2/C560BAQHbsXv7y0802A/company-logo_200_200/company-logo_200_200/0/1630627937392/trinityunimelb_logo?e=2147483647&v=beta&t=L-l1ISC0casA8uKqb1QYyFZWMyfe9n8A_tuT_MyOG_c",
     title: "Trinity College, Unimelb",
     caption: "Foundation Studies Programme, 2018–2019",
@@ -73,6 +67,13 @@ const CORE = [
   { path: "/projects/moodist", priority: 0.7, freq: "monthly" },
   { path: "/projects/wehi-genomics", priority: 0.7, freq: "monthly" },
   { path: "/projects/virtual-internships", priority: 0.5, freq: "monthly" },
+  // Concept demos on synthetic data for employer, startup and client work.
+  { path: "/projects/order-system-sandbox", priority: 0.6, freq: "monthly" },
+  { path: "/projects/professional-standards-reporting", priority: 0.7, freq: "monthly" },
+  { path: "/projects/map-first-discovery", priority: 0.7, freq: "monthly" },
+  { path: "/projects/regulatory-analytics-map", priority: 0.7, freq: "monthly" },
+  { path: "/projects/hex-micro-course", priority: 0.6, freq: "monthly" },
+  { path: "/projects/teaching", priority: 0.5, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/skills", priority: 0.8, freq: "monthly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
@@ -205,8 +206,8 @@ const NOT_ZH_KNOWLEDGE = new Set([]);
 
 // Every /info/* page and the listed /knowledge/* articles have full zh-Hans
 // content; /cv, /projects/signal, /projects/order-system, /projects/moodist,
-// /projects/wehi-genomics, /projects/virtual-internships, /projects/coursework,
-// /skills and /tools/card are bilingual. /blog has zh-Hans chrome; its posts are
+// /projects/wehi-genomics, /projects/virtual-internships, the concept demo
+// pages, /projects/coursework, /skills and /tools/card are bilingual. /blog has zh-Hans chrome; its posts are
 // added per slug in generateSitemap().
 const ZH_COVERED = [
   ...ZH_PAGES,
@@ -217,6 +218,13 @@ const ZH_COVERED = [
   { path: "/projects/moodist", priority: 0.7, freq: "monthly" },
   { path: "/projects/wehi-genomics", priority: 0.7, freq: "monthly" },
   { path: "/projects/virtual-internships", priority: 0.5, freq: "monthly" },
+  // Concept demos on synthetic data for employer, startup and client work.
+  { path: "/projects/order-system-sandbox", priority: 0.6, freq: "monthly" },
+  { path: "/projects/professional-standards-reporting", priority: 0.7, freq: "monthly" },
+  { path: "/projects/map-first-discovery", priority: 0.7, freq: "monthly" },
+  { path: "/projects/regulatory-analytics-map", priority: 0.7, freq: "monthly" },
+  { path: "/projects/hex-micro-course", priority: 0.6, freq: "monthly" },
+  { path: "/projects/teaching", priority: 0.5, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
   { path: "/skills", priority: 0.8, freq: "monthly" },
   { path: "/tools/card", priority: 0.7, freq: "monthly" },

@@ -6,7 +6,9 @@
  *
  * Nothing here is a hand-kept page list. The index is built from:
  * - The footer columns and OTHER_PAGES (lib/site-nav.js), labelled by nav.* keys.
- * - Case studies: projects with a `caseStudy` page (lib/projects-data.js).
+ * - Case studies: projects with a `caseStudy` page (lib/projects-data.js), then
+ *   any demo page of their own under /projects/ (`demo`), and the on-site demos
+ *   of planned work (lib/pipeline-data.js).
  * - Every other project card, by its anchor on /projects (#<id>).
  * - Coursework labs: each card's anchor on /projects/coursework (lib/coursework-data.js).
  * - The live knowledge topics (lib/knowledge-index.js), each followed by its live
@@ -29,6 +31,7 @@ import { getCoursework } from "../lib/coursework-data.js";
 import { DS_ITEMS } from "../lib/ds-index.js";
 import { KNOWLEDGE_TIERS } from "../lib/knowledge-index.js";
 import { noteHref, notesFor } from "../lib/knowledge-notes.js";
+import { PROJECT_PIPELINE } from "../lib/pipeline-data.js";
 import { PROJECTS, projectAnchor } from "../lib/projects-data.js";
 import { SEARCH_COPY } from "../lib/search-copy.js";
 import { FOOTER_COLUMNS, OTHER_PAGES } from "../lib/site-nav.js";
@@ -208,6 +211,24 @@ export function buildPageIndex(root = ROOT, { unlabelled = [] } = {}) {
     const entry = projectEntry(project, project.caseStudy, "caseStudies");
     const kind = project.caseStudyKind === "impact" ? "impact 成果" : "case study 案例";
     add({ ...entry, keywords: `${project.tag} ${kind}` });
+  }
+  // A demo with a page of its own (not a section of the case study), titled
+  // "<card> · Live demo", and the demo pages of planned work by their title.
+  const liveDemo = both("projects.liveDemo");
+  for (const project of PROJECTS) {
+    const page = project.demo?.split("#")[0];
+    if (!page?.startsWith("/projects/") || page === project.caseStudy) continue;
+    const entry = projectEntry(project, page, "caseStudies");
+    add({
+      ...entry,
+      title: { en: `${entry.title.en} · ${liveDemo.en}`, zh: `${entry.title.zh} · ${liveDemo.zh}` },
+      keywords: `${project.tag} live demo 在线演示`,
+    });
+  }
+  for (const item of PROJECT_PIPELINE) {
+    const page = item.demo?.split("#")[0];
+    if (!page?.startsWith("/projects/")) continue;
+    add({ href: page, group: "caseStudies", title: item.title, note: item.summary });
   }
   for (const project of PROJECTS) {
     const anchor = projectAnchor(project);

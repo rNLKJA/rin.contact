@@ -148,16 +148,6 @@ const lines = [
     "CSIRO",
     "Climate science",
     "2023",
-    "Melbourne, VIC"
-  ),
-
-  tEntry(
-    "2022",
-    false,
-    "Data Analyst  ·  Agile Leader",
-    "CSL Behring",
-    "Research & Development",
-    "2022",
     "Melbourne, VIC",
     true
   ),

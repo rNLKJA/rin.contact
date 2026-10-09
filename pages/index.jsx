@@ -514,8 +514,8 @@ export default function Home() {
           name="description"
           content={
             isZh
-              ? "Rin Huang（黄孙创宇）的官方网站。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任职于南澳总检察长部消费者与商业服务局（CBS）、墨尔本大学、WEHI、CSIRO 和 CSL。完整的职业经历、项目成果和联系方式。"
-              : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI, CSIRO and CSL. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+              ? "Rin Huang（黄孙创宇）的官方网站。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任职于南澳总检察长部消费者与商业服务局（CBS）、墨尔本大学、WEHI 和 CSIRO。完整的职业经历、项目成果和联系方式。"
+              : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI and CSIRO. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
           }
         />
         <meta
@@ -626,7 +626,7 @@ export default function Home() {
         description={
           isZh
             ? `Rin Huang（黄孙创宇）的官方网站。南澳大利亚警察局（SAPOL）ASO7 高级数据分析师，Mapiva 联合创始人兼开发负责人。职业经历、项目成果、${CERTS.length} 项专业认证。亦被称为 Huang Sunchuangyu、HUANGSUNCHUANGYU。`
-            : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI, CSIRO and CSL. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+            : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI and CSIRO. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
         }
         path="/"
         ogImage={{

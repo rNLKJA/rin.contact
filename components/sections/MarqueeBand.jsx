@@ -25,7 +25,6 @@ const ORGS = [
   "South Australia Police",
   "Attorney-General's Department",
   "University of Melbourne",
-  "CSL",
   "Mapiva",
 ];
 

@@ -19,7 +19,7 @@ const INFO_ROWS = [
   {
     col: "sectors_worked",
     dtype: "int64",
-    value: `6  # gov · research · biotech · climate · health-tech · startup`,
+    value: `5  # gov · research · climate · health-tech · startup`,
   },
   {
     col: "certifications",
@@ -32,7 +32,7 @@ const INFO_ROWS = [
   { col: "outlier", dtype: "bool", value: `True   # confirmed ≥ 3σ · see Signal vs Noise below` },
 ];
 
-// Years since the first professional role (Feb 2022), to one decimal. Worked out
+// Years since the first professional role (Feb 2023), to one decimal. Worked out
 // when the .describe() tab renders, which only happens in the browser after a
 // click, so it always shows today's figure and never a stale build-time one.
 const MS_PER_YEAR = 365.25 * 24 * 3600 * 1000;
@@ -42,7 +42,7 @@ function yearsExperience(now = new Date()) {
 }
 
 const describeRows = () => [
-  { metric: "years_experience", val: yearsExperience(), note: "since Feb 2022 · no null years" },
+  { metric: "years_experience", val: yearsExperience(), note: "since Feb 2023 · no null years" },
   { metric: "career_growth_idx", val: "5.37×", note: "vs 2020 baseline (CAGR 32.7%)" },
   { metric: "domain_breadth", val: "7", note: "distinct technical skill domains" },
   { metric: "sectors", val: "6", note: "unique industry contexts" },
