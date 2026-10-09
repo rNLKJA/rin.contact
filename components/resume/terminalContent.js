@@ -164,7 +164,7 @@ export const PROJECTS_TEXT = [
   "  ● Mapiva            map-first social discovery app · React Native",
   "  ● Order system      mum's meal-prep studio · Expo + Hono · private",
   "  ● Moodist           clinical mood-tracking app · UniMelb Psychiatry",
-  "  ● IAPro API client  1,100+ endpoints · Python + FastAPI + Vue · SAPOL",
+  "  ● Complaints API    1,100+ endpoints · Python + FastAPI + Vue · SAPOL",
   "  ● GMM               single-cell sample sheets · R Shiny · WEHI",
   "  ● ENSO risk model   climate & food security · CSIRO",
   "  ● rin.contact       this site · Next.js · Vercel",

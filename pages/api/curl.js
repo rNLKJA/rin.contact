@@ -8,7 +8,7 @@ import { CERTS, ROLES } from "@/lib/career-data";
  *
  * Creative elements:
  *   · Vertical timeline with ─●─ / ─○─ connectors and │ linking lines
- *   · ████░░░ skill bars rated by professional depth
+ *   · Skills as plain groups, with the evidence for each on /skills
  *   · Proportional █ bar chart for stats
  *   · [[ system header ]] with live status
  *   · Block-quote style bio
@@ -54,12 +54,9 @@ function tEntry(year, active, title, org, team, period, loc, isLast = false) {
   return rows.join("\n");
 }
 
-// ── Skill bar — ████████░░ rated depth ───────────────────────────────────────
-function skillBar(label, filled, level) {
-  const BAR_W = 22;
-  const lbl = label.padEnd(15);
-  const bar = `${RED}${"█".repeat(filled)}${DIM}${"░".repeat(BAR_W - filled)}${X}`;
-  return `  ${M}${lbl}${X}  ${bar}  ${S}${level}${X}`;
+// ── Skill group — label column + plain list, no self-rated levels ────────────
+function skillGroup(label, items) {
+  return `  ${G}${label.padEnd(10)}${X}  ${W}${items.join("  ·  ")}${X}`;
 }
 
 // ── Stat bar — proportional █ chart ──────────────────────────────────────────
@@ -127,9 +124,9 @@ const lines = [
   tEntry(
     "2024",
     false,
-    "Research Assistant  ·  digital mental health",
+    "Research Assistant (RA.1)",
     "University of Melbourne",
-    "RA.1  ·  Psychiatry Department",
+    "Digital mental health  ·  Psychiatry Department",
     "2024 – 2026",
     "Parkville, VIC"
   ),
@@ -171,18 +168,11 @@ const lines = [
 
   // Skills
   H("SKILLS"),
-  `  ${S}rated by professional depth${X}`,
+  `  ${S}Every skill, with its evidence →${X} ${W}https://rin.contact/skills${X}`,
   "",
-  skillBar("Python", 20, "expert"),
-  skillBar("SQL", 20, "expert"),
-  skillBar("Next.js", 20, "expert"),
-  skillBar("Strategic Thinking", 20, "expert"),
-  skillBar("Cont. Learning", 20, "expert"),
-  skillBar("R", 17, "advanced"),
-  skillBar("Power BI", 17, "advanced"),
-  skillBar("React Native", 17, "advanced"),
-  skillBar("GIS / ArcGIS", 15, "proficient"),
-  skillBar("AWS", 14, "proficient"),
+  skillGroup("languages", ["Python", "SQL", "R"]),
+  skillGroup("analytics", ["Power BI", "GIS / ArcGIS", "Statistical modelling"]),
+  skillGroup("building", ["Next.js", "React Native", "AWS"]),
   "",
   RULE,
   "",

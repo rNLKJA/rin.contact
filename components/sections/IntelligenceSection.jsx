@@ -96,7 +96,10 @@ const RIN_BUBBLES = [
   },
   {
     id: "moodq",
-    label: "UniMelb RA1",
+    label: "UniMelb RA",
+    // Centred, this label runs into the CBS/AGD bubble up and to the right, so
+    // it ends at its own bubble's centre and extends left instead.
+    labelAnchor: "end",
     year: "2024–26",
     exp: -0.5,
     sen: 3.5,
@@ -139,7 +142,7 @@ const RIN_BUBBLES = [
     domain: "Government",
     period: "Mar 2026–present",
     detail:
-      "ASO7 Senior Data Analyst · EPSB · UoF & Vehicle Pursuit reporting · IAPro/BlueTeam tooling",
+      "ASO7 Senior Data Analyst · EPSB · UoF & Vehicle Pursuit reporting · complaints API tooling",
     why: "Mid-management (level 7). 14 months from CBS to SAPOL. Typical pathway: 4 years minimum (APSC).",
   },
 ];
@@ -340,7 +343,7 @@ const FP_TREE = {
         {
           label: "Cross-sector career design",
           proof:
-            "6 distinct sectors since 2022: biotech (CSL), climate research (CSIRO), bioinformatics (WEHI), mental-health tech (UniMelb Psychiatry), government intelligence (CBS), law-enforcement analytics (SAPOL). Each role chosen for what it would teach, not for comfort. Professionals today are on pace to hold twice as many jobs as workers from 15 years ago (LinkedIn Work Change Report, 2024).",
+            "6 distinct sectors since 2022: biotech (CSL), climate research (CSIRO), bioinformatics (WEHI), mental-health tech (UniMelb Psychiatry), government intelligence (CBS), law-enforcement analytics (SAPOL). Each role was chosen for what it would teach. Professionals today are on pace to hold twice as many jobs as workers from 15 years ago (LinkedIn Work Change Report, 2024).",
         },
         {
           label: "Lifelong learning & reskilling",
@@ -710,7 +713,7 @@ function BubblePanel() {
                   <text
                     x={cx}
                     y={cy - b.r - 5}
-                    textAnchor="middle"
+                    textAnchor={b.labelAnchor || "middle"}
                     fontSize={9}
                     fill={tone(b.color, isDark)}
                     fontFamily="monospace"
@@ -837,7 +840,7 @@ function BubblePanel() {
                 {" "}
                 (APSC Career Pathfinder, 2024)
               </span>
-              . CSL, CSIRO, WEHI and UniMelb RA1 are not counted as workforce: industry placement,
+              . CSL, CSIRO, WEHI and UniMelb RA are not counted as workforce: industry placement,
               capstone, pre-career research software and casual RA1. At Year 1, Rin sits +2.5
               seniority grades above the benchmark. Rin reached ASO7 at 26.
             </p>
@@ -847,12 +850,12 @@ function BubblePanel() {
               What the bubble sizes say
             </p>
             <p className="text-sm text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed font-light">
-              The largest bubbles (SAPOL, CBS, UniMelb RA1) each operated across 6–7 distinct
+              The largest bubbles (SAPOL, CBS, UniMelb RA) each operated across 6–7 distinct
               technical domains simultaneously. The benchmark cohort at Year 4 is plotted with
-              breadth ≈ 3.5 domains — consistent with IAPA 2023 findings that fewer than 15% of
+              breadth ≈ 3.5 domains, consistent with IAPA 2023 findings that fewer than 15% of
               analysts under 28 have meaningful cross-sector experience. Bigger bubbles compounded
-              more; broader context produced faster seniority growth. UniMelb RA1 has high breadth
-              and lower seniority, because the role was casual.
+              more, and broader context produced faster seniority growth. UniMelb RA has high
+              breadth and lower seniority, because the role was casual.
             </p>
           </div>
           <div className="border-l-2 border-[#DDD] dark:border-[#1A1A1A] pl-4">
@@ -861,11 +864,11 @@ function BubblePanel() {
             </p>
             <p className="text-sm text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed font-light">
               Rapid cross-sector mobility carries a real cost: less specialist depth than a domain
-              expert who stayed in one area for four years. UniMelb RA1 is plotted as a casual role
+              expert who stayed in one area for four years. UniMelb RA is plotted as a casual role
               before the official career start, with high breadth and lower seniority. CBS
               (mid-junior) to SAPOL (mid-management) shows the formal government trajectory. The
-              comparison isn&apos;t about ranking. It surfaces what happens when continuous
-              improvement is treated as a first principle rather than a HR talking point.
+              comparison shows what happens when continuous improvement is treated as a first
+              principle.
             </p>
           </div>
           <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">

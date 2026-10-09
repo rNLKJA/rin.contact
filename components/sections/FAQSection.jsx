@@ -14,7 +14,7 @@ export const CATEGORIES = [
     items: [
       {
         q: "What does a Senior Data Analyst do at South Australia Police?",
-        a: "As an ASO7 Senior Data Analyst in the Intelligence & Probity Unit of SAPOL's Ethical and Professional Standards Branch (EPSB), I turn complaint, investigation and workforce data into reports and advice that executives and oversight bodies can act on. That includes the quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the branch's complaint administration workflow, an analysis of expiation notices, and tooling such as a Python client and web console for the IAPro and BlueTeam APIs, covering more than 1,100 endpoints.",
+        a: "As an ASO7 Senior Data Analyst in the Intelligence & Probity Unit of SAPOL's Ethical and Professional Standards Branch (EPSB), I turn complaint, investigation and workforce data into reports and advice that executives and oversight bodies can act on. That includes the quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the branch's complaint administration workflow, an analysis of expiation notices, and tooling such as a Python client and web console for the complaint-management system APIs, covering more than 1,100 endpoints.",
       },
       {
         q: "What is strategic intelligence analytics and how does it differ from standard data analysis?",

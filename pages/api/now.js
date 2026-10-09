@@ -14,7 +14,7 @@ export default function handler(req, res) {
     status: "open_to_opportunities",
     building: [
       "Mapiva, a map-first social discovery app for iOS and Android, working towards a beta in early 2027",
-      "Quarterly Use of Force and Vehicle Pursuit reports and IAPro/BlueTeam tooling for SAPOL's Ethical and Professional Standards Branch",
+      "Quarterly Use of Force and Vehicle Pursuit reports and complaint-management API tooling for SAPOL's Ethical and Professional Standards Branch",
       "This website, apparently — new easter eggs every sprint",
     ],
     learning: [

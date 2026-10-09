@@ -124,7 +124,7 @@ const SKILLS = [
 const FEATURED_PROJECT_LINES = [
   W("  ● Mapiva               Mobile · Map-first social discovery"),
   D("               Co-founded · Dev Lead · Beta in early 2027"),
-  W("  ● SAPOL EPSB Analytics Reporting · IAPro/BlueTeam tooling · Gov"),
+  W("  ● SAPOL EPSB           Analytics · Complaints API tooling · Gov"),
   W("  ● CBS Intelligence     Analytics · Ministerial dashboards · Gov"),
   W("  ● Moodist              Mobile · Mental health · UniMelb Psychiatry"),
   D("  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─"),

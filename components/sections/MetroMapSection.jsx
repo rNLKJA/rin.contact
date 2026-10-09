@@ -135,7 +135,7 @@ const STATIONS = [
     period: "Mar 2026 – present",
     role: "ASO7 Senior Data Analyst",
     detail:
-      "Intelligence & Probity Unit, Ethical and Professional Standards Branch, South Australia Police. Quarterly Use of Force and Vehicle Pursuit reports, a review of the complaint administration workflow, an expiation notices analysis, IAPro/BlueTeam API tooling.",
+      "Intelligence & Probity Unit, Ethical and Professional Standards Branch, South Australia Police. Quarterly Use of Force and Vehicle Pursuit reports, a review of the complaint administration workflow, an expiation notices analysis and API tooling for the complaint-management system.",
     current: true,
   },
 ];
@@ -359,7 +359,7 @@ export default function MetroMapSection() {
                       tabIndex={0}
                       onFocus={() => setHovered(s.id)}
                       onBlur={() => setHovered(null)}
-                      aria-label={`${s.label} — ${s.period}`}
+                      aria-label={`${s.label}, ${s.role}, ${s.period}`}
                     >
                       {/* Pulse ring for live stations */}
                       {s.current && (
