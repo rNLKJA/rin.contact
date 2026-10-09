@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -7,17 +8,34 @@ import LocaleSwitcher, { LocaleSegmented } from "@/components/ui/LocaleSwitcher"
 import { useI18n } from "@/contexts/I18nContext";
 import { useDialog } from "@/hooks/useDialog";
 import {
+  OPEN_SEARCH_EVENT,
+  isSearchShortcut,
+  useSearchShortcutLabel,
+} from "@/hooks/useSearchShortcut";
+import {
   FiBookOpen,
   FiBriefcase,
   FiFileText,
   FiFolder,
   FiMail,
+  FiSearch,
   FiTool,
   FiUser,
 } from "react-icons/fi";
 // Lucide is the Feather fork: same 24px grid and stroke, for the glyphs
 // Feather lacks (flask, library, newspaper, contact card).
 import { LuContact, LuFlaskConical, LuLibrary, LuNewspaper } from "react-icons/lu";
+
+// The ⌘K palette and its page index load on first use, never with the page.
+// Hovering or focusing a search button (or opening the mobile menu) starts the
+// download early, so the palette is usually ready by the time it is opened.
+const CommandPalette = dynamic(() => import("@/components/search/CommandPalette"), {
+  ssr: false,
+});
+const preloadPalette = () => {
+  // Same module, same chunk. A failed preload just tries again on open.
+  import("@/components/search/CommandPalette").catch(() => {});
+};
 
 // ── Logo with double-click glitch easter egg ──────────────────────────────────
 const GLITCH_ALTS = ["rNLKJA", "r̷N̸L̵K̶J̷A̸", "404", "Rin?", "¯\\_(ツ)_/¯", "rNLKJA"];
@@ -173,8 +191,33 @@ function ToolIconLink({ href, icon: Icon, label, active, className = "" }) {
   );
 }
 
+// Search: the same square hairline button as the card link, with the
+// shortcut in its tip. The tip repeats the label, so it is hidden from
+// screen readers, which hear the aria-label and aria-keyshortcuts instead.
+function SearchButton({ label, tip, shortcut, open, onOpen, className = "" }) {
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      onPointerEnter={preloadPalette}
+      onFocus={preloadPalette}
+      aria-label={label}
+      aria-haspopup="dialog"
+      aria-expanded={open}
+      aria-keyshortcuts={shortcut === "⌘K" ? "Meta+K" : "Control+K"}
+      className={`group relative inline-flex items-center justify-center w-9 h-9 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-colors duration-200 ${className}`}
+    >
+      <FiSearch size={18} strokeWidth={1.5} aria-hidden="true" />
+      <span aria-hidden="true" className={TIP}>
+        {tip} · {shortcut}
+      </span>
+    </button>
+  );
+}
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { t } = useI18n();
   const router = useRouter();
   const { pathname } = router;
@@ -193,13 +236,43 @@ export default function Header() {
 
   // Close on navigation. A locale switch keeps the same asPath, so changing
   // language inside the menu leaves it open. (State adjusted during render,
-  // React's recommended alternative to a setState-in-effect.)
+  // React's recommended alternative to a setState-in-effect.) Back or forward
+  // while the palette is open closes it too.
   const pathKey = (router.asPath || "").split("#")[0];
   const [menuPath, setMenuPath] = useState(pathKey);
   if (menuPath !== pathKey) {
     setMenuPath(pathKey);
     setMenuOpen(false);
+    setSearchOpen(false);
   }
+
+  // Site search: ⌘K / Ctrl+K toggles the palette from anywhere, and page
+  // content can open it with openSearch() (hooks/useSearchShortcut). Opening
+  // it from the mobile menu closes the menu first, so focus returns to the
+  // burger when the palette closes.
+  const shortcut = useSearchShortcutLabel();
+  const closeSearch = useCallback(() => setSearchOpen(false), []);
+  const openSearch = useCallback(() => {
+    setMenuOpen(false);
+    setSearchOpen(true);
+  }, []);
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (!isSearchShortcut(e)) return;
+      e.preventDefault();
+      setMenuOpen(false);
+      setSearchOpen((o) => !o);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener(OPEN_SEARCH_EVENT, openSearch);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener(OPEN_SEARCH_EVENT, openSearch);
+    };
+  }, [openSearch]);
+  useEffect(() => {
+    if (menuOpen) preloadPalette();
+  }, [menuOpen]);
 
   // Close once the viewport reaches the desktop nav (lg, 1024px).
   useEffect(() => {
@@ -321,6 +394,16 @@ export default function Header() {
             aria-hidden="true"
           />
 
+          {/* Site search (⌘K) */}
+          <SearchButton
+            label={t("search.open")}
+            tip={t("search.tip")}
+            shortcut={shortcut}
+            open={searchOpen}
+            onOpen={openSearch}
+            className="mr-1"
+          />
+
           {/* Locale switcher */}
           <LocaleSwitcher />
 
@@ -411,6 +494,25 @@ export default function Header() {
               aria-hidden="true"
               className="absolute w-5 h-px bg-black dark:bg-white -rotate-45"
             />
+          </button>
+        </div>
+
+        {/* Site search: closes the menu and opens the palette */}
+        <div className="flex-shrink-0 px-8 pt-4">
+          <button
+            type="button"
+            onClick={openSearch}
+            aria-haspopup="dialog"
+            className="w-full flex items-center gap-3 h-11 px-3 border border-[#E0E0E0] dark:border-[#3D3D3D] text-left text-sm text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+          >
+            <FiSearch size={16} strokeWidth={1.5} aria-hidden="true" className="flex-shrink-0" />
+            <span className="flex-1 min-w-0 truncate">{t("search.open")}</span>
+            <span
+              aria-hidden="true"
+              className="hidden [@media(hover:hover)]:inline font-mono text-[10px] tracking-widest text-ink-subtle"
+            >
+              {shortcut}
+            </span>
           </button>
         </div>
 
@@ -533,6 +635,8 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      {searchOpen && <CommandPalette onClose={closeSearch} />}
     </header>
   );
 }

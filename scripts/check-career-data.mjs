@@ -16,6 +16,9 @@
  *    locales (evidence for every skill, source-only links, props budget, no
  *    marks, grades, self-rated levels or SAPOL system names), the copy rules
  *    and a scan of the knowledge notes for marks.
+ * 6. Checks the page index behind the ⌘K palette and /info/site-map
+ *    (scripts/page-index.mjs): every page indexed, no easter egg listed, every
+ *    link real, and the palette and site-map strings in both locales.
  * Exits non-zero on any problem. Node 22, no dependencies.
  */
 /* eslint-disable no-console -- a CLI reports to the console */
@@ -30,6 +33,7 @@ import {
   historyDataProblems,
   historyImagePaths,
 } from "../lib/history-check.js";
+import { pageIndexProblems } from "./page-index.mjs";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const SCAN = ["components", "pages", "lib", "locales", "posts", "public/rin.json"];
@@ -65,6 +69,7 @@ const problems = [
   ...courseworkDataProblems(courseworkCopy),
   ...historyDataProblems(),
   ...skillsDataProblems({ dicts, posts, root }),
+  ...pageIndexProblems({ dicts, root }),
 ];
 
 // /info/history: screenshots exist and fit the budget; both locales have the page strings.

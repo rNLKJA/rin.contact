@@ -1,153 +1,220 @@
-import Head from "next/head";
+/**
+ * /info/site-map: every page on the site, grouped like the footer, with a box
+ * that filters the list as you type.
+ *
+ * The list comes from the page index that the ⌘K palette also reads
+ * (lib/page-index.data.js, built from the site's pages and data at compile
+ * time), passed in through getStaticProps for the visitor's locale. Nothing
+ * here is a hand-kept list, so the site map and the palette never drift apart.
+ * The filter uses the palette's matching (lib/page-search.js) and keeps the
+ * page order. With JavaScript off, the full list still renders.
+ */
+import { useId, useMemo, useState } from "react";
+import Link from "next/link";
+import { FiSearch } from "react-icons/fi";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
-import Link from "next/link";
+import { openSearch, useSearchShortcutLabel } from "@/hooks/useSearchShortcut";
+import { fill } from "@/lib/fill";
+import PAGE_INDEX from "@/lib/page-index.data";
+import { localiseIndex, queryWords, scorePage } from "@/lib/page-search";
+import { searchCopy } from "@/lib/search-copy";
 
-// Route order per section — single source for the hrefs. Section headings and
-// link labels are localised via infoSiteMap.sections.<key> (labels index-aligned).
-const SECTIONS = [
-  {
-    key: "main",
-    hrefs: [
-      "/",
-      "/strategic",
-      "/career",
-      "/projects",
-      "/projects/coursework",
-      "/skills",
-      "/lab",
-      "/about",
-      "/resume",
-      "/cv",
-      "/hire-me",
-    ],
-  },
-  { key: "blog", hrefs: ["/blog"] },
-  { key: "tools", hrefs: ["/tools", "/tools/card"] },
-  {
-    key: "info",
-    hrefs: [
-      "/info",
-      "/info/api",
-      "/info/now",
-      "/info/uses",
-      "/info/roadmap",
-      "/info/accessibility",
-      "/info/colophon",
-      "/info/site-map",
-      "/info/manifest",
-      "/info/changelog",
-      "/info/history",
-      "/info/thank-you",
-      "/info/references",
-    ],
-  },
-  {
-    key: "fun",
-    hrefs: [
-      "/fun",
-      "/fun/coffee",
-      "/fun/roast",
-      "/fun/secret",
-      "/fun/vault",
-      "/fun/matrix",
-      "/fun/correlation",
-      "/fun/pvalue",
-      "/fun/forest",
-      "/fun/pronouns",
-      "/fun/timezone",
-      "/fun/name",
-      "/fun/tarot",
-      "/fun/dice",
-      "/fun/typing",
-      "/fun/mood",
-    ],
-  },
-  { key: "dataScience", hrefs: ["/ds", "/ds/model-card", "/ds/feature-importance"] },
-];
+const MUTED = "text-[#6E6E6E] dark:text-[#9A9A9A]";
+const LABEL = "font-mono text-[10px] tracking-widest uppercase";
 
-export default function SiteMapPage() {
+export async function getStaticProps({ locale = "en-AU" }) {
+  return {
+    props: {
+      columns: PAGE_INDEX.columns,
+      pages: localiseIndex(PAGE_INDEX, locale),
+    },
+  };
+}
+
+export default function SiteMapPage({ columns, pages }) {
   const { t, locale = "en-AU" } = useI18n();
+  const groupLabels = searchCopy(locale).groups;
+  const shortcut = useSearchShortcutLabel();
+  const inputId = useId();
+  const [query, setQuery] = useState("");
+
+  const byGroup = useMemo(() => {
+    const map = new Map();
+    for (const page of pages) {
+      if (!map.has(page.group)) map.set(page.group, []);
+      map.get(page.group).push(page);
+    }
+    return map;
+  }, [pages]);
+
+  // null while the box is empty: show everything.
+  const visible = useMemo(() => {
+    const words = queryWords(query);
+    if (!words.length) return null;
+    return new Set(pages.filter((p) => scorePage(p, words) > 0).map((p) => p.href));
+  }, [pages, query]);
+
+  const trimmed = query.trim();
+  const total = pages.length;
+  let count = fill(t("infoSiteMap.showingAll"), { total });
+  if (visible) {
+    count = visible.size
+      ? fill(t("infoSiteMap.showing"), { n: visible.size, total })
+      : fill(t("infoSiteMap.empty"), { q: trimmed });
+  }
 
   return (
     <>
-      <Head>
-        <title>{t("infoSiteMap.metaTitle")}</title>
-        <meta name="description" content={t("infoSiteMap.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/info/site-map" />
-
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content="https://rin.contact/api/og/?title=Site%20Map&subtitle=Complete%20directory%20of%20all%20pages%20on%20rin&section=info"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Site Map" />
-        <meta name="twitter:description" content="Complete directory of all pages on rin." />
-        <meta
-          name="twitter:image"
-          content="https://rin.contact/api/og/?title=Site%20Map&subtitle=Complete%20directory%20of%20all%20pages%20on%20rin&section=info"
-        />
-      </Head>
-
       <SeoHead
         title={t("infoSiteMap.metaTitle")}
         description={t("infoSiteMap.metaDescription")}
         path="/info/site-map"
-        ogImage={{ title: "Site Map", subtitle: t("infoSiteMap.ogSubtitle"), section: "info" }}
+        ogTitle={t("infoSiteMap.heading")}
+        ogImage={{ title: "Site map", subtitle: t("infoSiteMap.ogSubtitle"), section: "info" }}
         locale={locale}
       />
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
-        <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">
-            /info/site-map
-          </p>
+        <div className="w-full max-w-[880px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
+          <p className={`${LABEL} ${MUTED} mb-4`}>/info/site-map</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
             {t("infoSiteMap.heading")}
           </h1>
-          <p className="text-sm text-[#7A7A7A] mb-14">{t("infoSiteMap.intro")}</p>
+          <p className="text-sm text-[#595959] dark:text-[#AAAAAA] max-w-[560px]">
+            {t("infoSiteMap.intro")}
+          </p>
 
-          <div className="space-y-10">
-            {SECTIONS.map(({ key, hrefs }) => {
-              const labels = t(`infoSiteMap.sections.${key}.labels`);
+          {/* The palette, for jumping without scrolling this list */}
+          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <button
+              type="button"
+              onClick={openSearch}
+              aria-haspopup="dialog"
+              className={`inline-flex items-center gap-2 h-9 px-3 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#1A1A1A] dark:text-white hover:border-black dark:hover:border-white transition-colors duration-200 ${LABEL}`}
+            >
+              <FiSearch size={14} strokeWidth={1.5} aria-hidden="true" />
+              {t("infoSiteMap.openSearch")}
+              <span aria-hidden="true" className={`hidden [@media(hover:hover)]:inline ${MUTED}`}>
+                {shortcut}
+              </span>
+            </button>
+            <p className={`hidden [@media(hover:hover)]:block text-xs ${MUTED}`}>
+              {fill(t("infoSiteMap.shortcut"), { keys: shortcut })}
+            </p>
+          </div>
+
+          {/* Filter */}
+          <div role="search" className="mt-10 mb-12">
+            <label htmlFor={inputId} className={`block mb-2 ${LABEL} ${MUTED}`}>
+              {t("infoSiteMap.filterLabel")}
+            </label>
+            <div className="flex items-center gap-3 pl-3 pr-1 border border-[#E0E0E0] dark:border-[#3D3D3D] focus-within:border-[#FF3C3C] dark:focus-within:border-[#FF3C3C] transition-colors duration-200">
+              <FiSearch
+                size={16}
+                strokeWidth={1.5}
+                aria-hidden="true"
+                className={`flex-shrink-0 ${MUTED}`}
+              />
+              <input
+                id={inputId}
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape" && query) {
+                    e.preventDefault();
+                    setQuery("");
+                  }
+                }}
+                placeholder={t("infoSiteMap.filterPlaceholder")}
+                autoComplete="off"
+                spellCheck={false}
+                enterKeyHint="search"
+                className="flex-1 min-w-0 h-11 bg-transparent text-base focus:outline-none focus-visible:outline-none placeholder:text-[#6E6E6E] dark:placeholder:text-[#9A9A9A] [&::-webkit-search-cancel-button]:appearance-none"
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  className={`flex-shrink-0 h-9 px-2 ${LABEL} ${MUTED} hover:text-black dark:hover:text-white transition-colors duration-200`}
+                >
+                  {t("infoSiteMap.clear")}
+                </button>
+              )}
+            </div>
+            <p role="status" className={`mt-2 text-xs ${MUTED}`}>
+              {count}
+            </p>
+          </div>
+
+          <div className="space-y-14">
+            {columns.map((column) => {
+              const groups = column.groups
+                .map((id) => ({
+                  id,
+                  items: (byGroup.get(id) || []).filter((p) => !visible || visible.has(p.href)),
+                }))
+                .filter((g) => g.items.length > 0);
+              if (!groups.length) return null;
+              const headingId = `site-map-${column.id}`;
               return (
-                <div key={key}>
-                  <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-4">
-                    {t(`infoSiteMap.sections.${key}.heading`)}
-                  </p>
-                  <ul className="space-y-2">
-                    {hrefs.map((href, i) => (
-                      <li key={href}>
-                        <Link
-                          href={href}
-                          className="text-sm text-[#1A1A1A] dark:text-white hover:text-[#FF3C3C] border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] transition-colors"
-                        >
-                          {href}
-                        </Link>
-                        <span className="text-[#6E6E6E] dark:text-[#9A9A9A] text-xs ml-2">
-                          — {labels[i]}
-                        </span>
-                      </li>
+                <section key={column.id} aria-labelledby={headingId}>
+                  <h2
+                    id={headingId}
+                    className={`flex items-center gap-2 mb-5 text-accent-ink ${LABEL}`}
+                  >
+                    <span aria-hidden="true" className="w-1.5 h-1.5 bg-[#FF3C3C]" />
+                    {t(column.headingKey)}
+                  </h2>
+                  <div className="space-y-8">
+                    {groups.map((g) => (
+                      <div key={g.id}>
+                        {g.id !== column.id && (
+                          <h3 className={`flex items-baseline gap-2 mb-3 ${LABEL} ${MUTED}`}>
+                            {groupLabels[g.id]}
+                            <span className="tabular-nums">{g.items.length}</span>
+                          </h3>
+                        )}
+                        <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-1">
+                          {g.items.map((page) => (
+                            <li key={page.href} className="min-w-0">
+                              <Link
+                                href={page.href}
+                                prefetch={false}
+                                className="group flex flex-col min-h-[44px] justify-center py-1"
+                              >
+                                <span className="text-sm text-[#1A1A1A] dark:text-white group-hover:text-accent-ink transition-colors duration-200">
+                                  {page.title}
+                                </span>
+                                <span
+                                  aria-hidden="true"
+                                  className={`font-mono text-[10px] truncate ${MUTED}`}
+                                >
+                                  {page.href}
+                                </span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ))}
-                  </ul>
-                </div>
+                  </div>
+                </section>
               );
             })}
           </div>
 
-          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
+          <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-14">
             <Link
               href="/info"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#6E6E6E] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
               ← /info
             </Link>
             <Link
               href="/"
-              className="text-[11px] font-mono tracking-widest uppercase text-[#7A7A7A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#6E6E6E] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
             >
               {t("nav.home")}
             </Link>

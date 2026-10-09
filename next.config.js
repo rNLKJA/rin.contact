@@ -20,6 +20,15 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     config.resolve.alias.canvas = false;
 
+    // Build the page index (⌘K palette, /info/site-map) at compile time: the
+    // loader replaces lib/page-index.data.js with the index generated from the
+    // site's pages and data. See scripts/page-index-loader.js.
+    config.module.rules.push({
+      test: /[\\/]lib[\\/]page-index\.data\.js$/,
+      enforce: "pre",
+      use: [path.resolve(__dirname, "scripts/page-index-loader.js")],
+    });
+
     // Drop Next.js's built-in polyfill-module from client bundles.
     // The module is a static pre-compiled file that patches String.trimStart/trimEnd,
     // Array.flat/flatMap/at, Object.fromEntries/hasOwn, Promise.finally, and URL.canParse

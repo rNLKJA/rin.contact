@@ -50,7 +50,16 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "menuLabel": "Site menu",
-    "primaryNav": "Primary navigation"
+    "primaryNav": "Primary navigation",
+    "info": "Site info",
+    "tools": "Tools",
+    "manifest": "Manifest",
+    "references": "References",
+    "thankYou": "Thank you"
+  },
+  "search": {
+    "open": "Search the site",
+    "tip": "Search"
   },
   "locale": {
     "current": "EN",
@@ -947,80 +956,19 @@
     ]
   },
   "infoSiteMap": {
-    "metaTitle": "Site Map — rin.contact",
-    "metaDescription": "Human-readable site map.",
-    "ogSubtitle": "Human-readable site map.",
-    "heading": "Site Map",
-    "intro": "Every page. Human-readable. Not XML.",
-    "sections": {
-      "main": {
-        "heading": "Main",
-        "labels": [
-          "Home",
-          "Strategic Data Science",
-          "Career",
-          "Projects",
-          "University coursework, revived",
-          "Everything I've learned",
-          "Lab",
-          "About",
-          "Resume",
-          "Curriculum Vitae",
-          "Hire Me"
-        ]
-      },
-      "blog": {
-        "heading": "Blog",
-        "labels": ["Blog"]
-      },
-      "tools": {
-        "heading": "Tools",
-        "labels": ["Tools", "Business Card"]
-      },
-      "info": {
-        "heading": "Info",
-        "labels": [
-          "Info",
-          "API",
-          "Now",
-          "Uses",
-          "Roadmap",
-          "Accessibility",
-          "Colophon",
-          "Site Map",
-          "Manifest",
-          "Changelog",
-          "History",
-          "Thank You",
-          "References"
-        ]
-      },
-      "fun": {
-        "heading": "Fun",
-        "labels": [
-          "Fun",
-          "Coffee",
-          "Roast",
-          "Secret",
-          "Vault",
-          "Matrix",
-          "Correlation",
-          "P-Value Oracle",
-          "Forest",
-          "Pronouns",
-          "Timezone",
-          "Name",
-          "Tarot",
-          "Dice",
-          "Typing",
-          "Mood"
-        ]
-      },
-      "dataScience": {
-        "heading": "Data Science",
-        "labels": ["DS", "Model Card", "Feature Importance"]
-      }
-    }
+    "metaTitle": "Site map · rin.contact",
+    "metaDescription": "This site map lists every page on rin.contact, grouped the same way as the footer, with a box to filter the list.",
+    "ogSubtitle": "Every page on rin.contact, in one place",
+    "heading": "Site map",
+    "intro": "This page lists every page on the site, grouped the same way as the footer. Type in the box to narrow the list.",
+    "shortcut": "You can also press {keys} on any page to jump straight to another one.",
+    "openSearch": "Open search",
+    "filterLabel": "Filter pages",
+    "filterPlaceholder": "Try “regression” or “SQL”",
+    "showing": "{n} of {total} pages match.",
+    "showingAll": "All {total} pages are listed.",
+    "empty": "No page matches “{q}”. Try a shorter word.",
+    "clear": "Clear filter"
   },
   "infoReferences": {
     "metaTitle": "References — rin.contact",
