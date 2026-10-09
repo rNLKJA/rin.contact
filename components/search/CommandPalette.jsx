@@ -189,11 +189,13 @@ export default function CommandPalette({ onClose }) {
           </button>
         </div>
 
-        {/* Results */}
+        {/* Results. With none, the listbox hides and the note below takes its
+            place, since a listbox may only hold options and their groups. */}
         <div
           id={listId}
           role="listbox"
           aria-label={copy.dialogLabel}
+          hidden={!flat.length}
           className="flex-1 min-h-0 overflow-y-auto overscroll-contain py-2"
         >
           {groups.map((g) => {
@@ -260,14 +262,14 @@ export default function CommandPalette({ onClose }) {
               </div>
             );
           })}
-
-          {trimmed && !flat.length && (
-            <div className="px-4 py-8">
-              <p className="text-sm">{fill(copy.empty, { q: trimmed })}</p>
-              <p className={`mt-1 text-[12px] ${MUTED}`}>{copy.emptyHint}</p>
-            </div>
-          )}
         </div>
+
+        {trimmed && !flat.length && (
+          <div className="flex-1 min-h-0 px-4 py-8">
+            <p className="text-sm">{fill(copy.empty, { q: trimmed })}</p>
+            <p className={`mt-1 text-[12px] ${MUTED}`}>{copy.emptyHint}</p>
+          </div>
+        )}
 
         {/* Keys, and the way to the full site map */}
         <div

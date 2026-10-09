@@ -7,11 +7,13 @@
  * Nothing here is a hand-kept page list. The index is built from:
  * - The footer columns and OTHER_PAGES (lib/site-nav.js), labelled by nav.* keys.
  * - Case studies: projects with a `caseStudy` page (lib/projects-data.js).
+ * - Every other project card, by its anchor on /projects (#<id>).
  * - Coursework labs: each card's anchor on /projects/coursework (lib/coursework-data.js).
  * - The live knowledge topics (lib/knowledge-index.js) and /ds explainers (lib/ds-index.js).
  * - Blog posts (posts/*.md front matter).
  * - A walk of pages/, so a page none of the above names is still listed,
- *   placed by its path, with a title made from its slug.
+ *   placed by its path, with a title made from its slug (check:career then
+ *   asks for a proper label).
  * The /fun hub is listed, but each easter egg under it stays a secret.
  *
  * It runs at build time: scripts/page-index-loader.js calls it while webpack
@@ -25,7 +27,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { getCoursework } from "../lib/coursework-data.js";
 import { DS_ITEMS } from "../lib/ds-index.js";
 import { KNOWLEDGE_TIERS } from "../lib/knowledge-index.js";
-import { PROJECTS } from "../lib/projects-data.js";
+import { PROJECTS, projectAnchor } from "../lib/projects-data.js";
 import { SEARCH_COPY } from "../lib/search-copy.js";
 import { FOOTER_COLUMNS, OTHER_PAGES } from "../lib/site-nav.js";
 import { readPostsMeta } from "../lib/skills-check.js";
@@ -39,6 +41,7 @@ const ROOT = fileURLToPath(new URL("..", import.meta.url));
 export const GROUPS = [
   { id: "work", column: "work" },
   { id: "caseStudies", column: "work" },
+  { id: "projects", column: "work" },
   { id: "coursework", column: "work" },
   { id: "learn", column: "learn" },
   { id: "knowledge", column: "learn" },
@@ -133,8 +136,10 @@ export function postsMeta(root = ROOT) {
  * groups } (group ids in display order). Each entry is
  * { href, group, title, note?, keywords? }, where title and note are one
  * string when both locales read the same, or { en, zh } when they differ.
+ * Pass `unlabelled: []` to collect the hrefs whose title had to be made from
+ * a slug (pageIndexProblems reports them).
  */
-export function buildPageIndex(root = ROOT) {
+export function buildPageIndex(root = ROOT, { unlabelled = [] } = {}) {
   const en = readJson(join(root, "locales", "en-AU.json"));
   const zh = readJson(join(root, "locales", "zh-Hans.json"));
   const both = (key) => {
@@ -159,6 +164,8 @@ export function buildPageIndex(root = ROOT) {
   };
 
   // 1. Footer columns and the pages it leaves out, labelled by their nav keys.
+  //    A hub the footer leaves out (/info, /tools) goes just before the first
+  //    page under it (its `before`), the rest after the footer's own links.
   //    /info pages also get the one-line blurb the /info index shows.
   const infoNote = (href) => {
     const slug = href.match(/^\/info\/(.+)$/)?.[1];
@@ -173,21 +180,35 @@ export function buildPageIndex(root = ROOT) {
   for (const column of FOOTER_COLUMNS) {
     for (const link of column.links) {
       if (link.plain || !link.href.startsWith("/")) continue;
+      for (const hub of OTHER_PAGES.filter((p) => p.before === link.href)) {
+        navPage(hub.href, hub.column, hub.key);
+      }
       navPage(link.href, column.id, link.key);
     }
   }
   for (const page of OTHER_PAGES) navPage(page.href, page.column, page.key);
 
-  // 2. Case studies, in the order /projects lists them.
+  // 2. Projects, in the order /projects lists them: case studies by their own
+  //    page (titled in the visitor's language where the card has a `zh`), and
+  //    every other card by its anchor on /projects. Card text only: title,
+  //    subtitle and tag.
+  const projectEntry = (project, href, group) => ({
+    href,
+    group,
+    title: { en: project.title, zh: project.zh?.title || project.title },
+    note: project.subtitle
+      ? { en: project.subtitle, zh: project.zh?.subtitle || project.subtitle }
+      : null,
+    keywords: project.tag,
+  });
   for (const project of PROJECTS) {
     if (!project.caseStudy?.startsWith("/projects/")) continue;
-    const note = project.subtitle ? { en: project.subtitle, zh: project.subtitle } : null;
-    add({
-      href: project.caseStudy,
-      group: "caseStudies",
-      title: { en: project.title, zh: project.title },
-      note,
-    });
+    const entry = projectEntry(project, project.caseStudy, "caseStudies");
+    add({ ...entry, keywords: `${project.tag} case study 案例` });
+  }
+  for (const project of PROJECTS) {
+    const anchor = projectAnchor(project);
+    if (anchor) add(projectEntry(project, `/projects#${anchor}`, "projects"));
   }
 
   // 3. Coursework labs: each card's anchor on /projects/coursework.
@@ -210,6 +231,7 @@ export function buildPageIndex(root = ROOT) {
       const copyEn = en.knowledgeIndex?.tiers?.[tier.key]?.topics?.[i] || {};
       const copyZh = zh.knowledgeIndex?.tiers?.[tier.key]?.topics?.[i] || {};
       const fallback = titleFromSlug(topic.href);
+      if (!copyEn.label) unlabelled.push(topic.href);
       add({
         href: topic.href,
         group: "knowledge",
@@ -222,6 +244,7 @@ export function buildPageIndex(root = ROOT) {
   // 5. /ds explainers.
   DS_ITEMS.forEach((item, i) => {
     const key = kebabToCamel(item.label);
+    if (!en.ds?.[key]?.heading) unlabelled.push(item.href);
     add({
       href: item.href,
       group: "explainers",
@@ -235,6 +258,7 @@ export function buildPageIndex(root = ROOT) {
 
   // 6. Blog posts (written in English, so both locales share the title).
   for (const post of postsMeta(root)) {
+    if (post.title === post.slug) unlabelled.push(`/blog/${post.slug}`);
     add({
       href: `/blog/${post.slug}`,
       group: "posts",
@@ -249,6 +273,7 @@ export function buildPageIndex(root = ROOT) {
     if (seen.has(route) || SECRET_ROUTE.test(route)) continue;
     const group = PLACE_BY_PREFIX.find(([re]) => re.test(route))?.[1] || "work";
     const title = titleFromSlug(route);
+    unlabelled.push(route);
     add({ href: route, group, title: { en: title, zh: title } });
   }
 
@@ -272,16 +297,29 @@ export function buildPageIndex(root = ROOT) {
 /**
  * Problems with the index, for npm run check:career: a page under pages/ that
  * is missing, an easter egg that leaked in, a link to a page that does not
- * exist, an entry without a title, or a string the palette and the site map
- * need that a locale lacks. `dicts` is { en, zh } (the parsed locale files).
+ * exist, an entry without a title or with one made from its slug, a hub
+ * placed before a link the footer lacks, or a string the palette and the site
+ * map need that a locale lacks. `dicts` is { en, zh } (the parsed locale files).
  */
 export function pageIndexProblems({ dicts, root = ROOT }) {
   const problems = [];
+  const unlabelled = [];
   let index;
   try {
-    index = buildPageIndex(root);
+    index = buildPageIndex(root, { unlabelled });
   } catch (err) {
     return [`page index: ${err.message}`];
+  }
+  for (const href of new Set(unlabelled)) {
+    problems.push(
+      `page index: ${href} has no label, so its title is made from its slug (name it in lib/site-nav.js or its own data)`
+    );
+  }
+  const footerHrefs = new Set(FOOTER_COLUMNS.flatMap((c) => c.links.map((l) => l.href)));
+  for (const page of OTHER_PAGES) {
+    if (page.before && !footerHrefs.has(page.before)) {
+      problems.push(`lib/site-nav.js: ${page.href} goes before ${page.before}, not a footer link`);
+    }
   }
   const routes = new Set(pageRoutes(root));
   const posts = new Set(postsMeta(root).map((p) => p.slug));

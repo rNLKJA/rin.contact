@@ -27,8 +27,8 @@ import {
 import { LuContact, LuFlaskConical, LuLibrary, LuNewspaper } from "react-icons/lu";
 
 // The ⌘K palette and its page index load on first use, never with the page.
-// Hovering or focusing a search button (or opening the mobile menu) starts the
-// download early, so the palette is usually ready by the time it is opened.
+// Hovering, focusing or pressing a search button starts the download early,
+// so the palette is usually ready by the time it is opened.
 const CommandPalette = dynamic(() => import("@/components/search/CommandPalette"), {
   ssr: false,
 });
@@ -36,6 +36,17 @@ const preloadPalette = () => {
   // Same module, same chunk. A failed preload just tries again on open.
   import("@/components/search/CommandPalette").catch(() => {});
 };
+
+// Another modal (the quest log, the design notes, the terminal) is on screen.
+// The palette then stays shut, so two dialogs never trap focus and answer
+// Escape at once. The mobile menu is the exception: the palette replaces it.
+function otherModalOpen(except) {
+  return [...document.querySelectorAll('[aria-modal="true"]')].some((el) => {
+    if (el === except) return false;
+    const cs = getComputedStyle(el);
+    return el.getClientRects().length > 0 && cs.visibility !== "hidden" && cs.opacity !== "0";
+  });
+}
 
 // ── Logo with double-click glitch easter egg ──────────────────────────────────
 const GLITCH_ALTS = ["rNLKJA", "r̷N̸L̵K̶J̷A̸", "404", "Rin?", "¯\\_(ツ)_/¯", "rNLKJA"];
@@ -249,16 +260,23 @@ export default function Header() {
   // Site search: ⌘K / Ctrl+K toggles the palette from anywhere, and page
   // content can open it with openSearch() (hooks/useSearchShortcut). Opening
   // it from the mobile menu closes the menu first, so focus returns to the
-  // burger when the palette closes.
+  // burger when the palette closes. While another modal is up, ⌘K is left
+  // alone (otherModalOpen).
   const shortcut = useSearchShortcutLabel();
   const closeSearch = useCallback(() => setSearchOpen(false), []);
+  const searchOpenRef = useRef(searchOpen);
+  useEffect(() => {
+    searchOpenRef.current = searchOpen;
+  }, [searchOpen]);
   const openSearch = useCallback(() => {
+    if (!searchOpenRef.current && otherModalOpen(menuRef.current)) return;
     setMenuOpen(false);
     setSearchOpen(true);
   }, []);
   useEffect(() => {
     const onKeyDown = (e) => {
       if (!isSearchShortcut(e)) return;
+      if (!searchOpenRef.current && otherModalOpen(menuRef.current)) return;
       e.preventDefault();
       setMenuOpen(false);
       setSearchOpen((o) => !o);
@@ -270,9 +288,6 @@ export default function Header() {
       window.removeEventListener(OPEN_SEARCH_EVENT, openSearch);
     };
   }, [openSearch]);
-  useEffect(() => {
-    if (menuOpen) preloadPalette();
-  }, [menuOpen]);
 
   // Close once the viewport reaches the desktop nav (lg, 1024px).
   useEffect(() => {
@@ -502,6 +517,8 @@ export default function Header() {
           <button
             type="button"
             onClick={openSearch}
+            onPointerDown={preloadPalette}
+            onFocus={preloadPalette}
             aria-haspopup="dialog"
             className="w-full flex items-center gap-3 h-11 px-3 border border-[#E0E0E0] dark:border-[#3D3D3D] text-left text-sm text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
           >

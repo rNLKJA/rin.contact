@@ -24,6 +24,8 @@ const MUTED = "text-[#6E6E6E] dark:text-[#9A9A9A]";
 const LABEL = "font-mono text-[10px] tracking-widest uppercase";
 
 export async function getStaticProps({ locale = "en-AU" }) {
+  // An empty index would render an empty map that no check notices.
+  if (!PAGE_INDEX.entries?.length) throw new Error("/info/site-map: the page index is empty");
   return {
     props: {
       columns: PAGE_INDEX.columns,
