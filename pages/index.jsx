@@ -1,795 +1,514 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
-import { CERTS } from "@/lib/career-data";
-import { PROJECTS } from "@/lib/projects-data";
+import { CERTS, ROLES, getMetrics } from "@/lib/career-data";
+import { useI18n } from "@/contexts/I18nContext";
 
-// Moved from pages/_document.jsx — these describe homepage-only content
-// (career timeline anchors, project list, credentials) and were previously
-// shipped in every page's <head> even though only the homepage uses them.
-const PROFILE_PAGE_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "@id": "https://rin.contact/#profilepage",
-  url: "https://rin.contact",
-  name: "Rin Huang (黄孙创宇) — Official Portfolio",
-  datePublished: "2024-01-01T00:00:00+10:30",
-  dateModified: "2026-10-03T00:00:00+09:30",
-  mainEntity: { "@id": "https://rin.contact/#person" },
-  about: { "@id": "https://rin.contact/#person" },
-  // isPartOf links this page into the WebSite entity — completing the entity graph
-  isPartOf: { "@id": "https://rin.contact/#website" },
-  // breadcrumb cross-reference tightens the structured data graph
-  breadcrumb: { "@id": "https://rin.contact/#breadcrumb" },
-  // primaryImageOfPage helps Google associate the OG image with this entity in image search
-  primaryImageOfPage: {
-    "@type": "ImageObject",
-    "@id": "https://rin.contact/#og-image",
-    url: "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
-    width: 1200,
-    height: 630,
-    caption:
-      "Rin Huang (黄孙创宇, Sunchuangyu Huang) — Senior Data Analyst & Research Software Engineer",
-  },
-  // significantLinks tells Google that LinkedIn/GitHub are related pages, not competitors
-  significantLinks: ["https://linkedin.com/in/sunchuangyuhuang", "https://github.com/rNLKJA"],
-  speakable: {
-    "@type": "SpeakableSpecification",
-    cssSelector: ["h1", "#hero-bio", ".hero-role", "h2"],
-  },
-};
-
-const BREADCRUMB_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "@id": "https://rin.contact/#breadcrumb",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Rin Huang",
-      item: "https://rin.contact/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Career",
-      item: "https://rin.contact/#timeline",
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "Projects",
-      item: "https://rin.contact/#projects",
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      name: "Skills",
-      item: "https://rin.contact/#skills",
-    },
-    {
-      "@type": "ListItem",
-      position: 5,
-      name: "Contact",
-      item: "https://rin.contact/#contact",
-    },
-  ],
-};
-
-const PROJECTS_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "@id": "https://rin.contact/#projects",
-  name: "Projects by Rin Huang (Sunchuangyu Huang)",
-  description: "Software, data science, and analytics projects by Rin Huang",
-  author: { "@id": "https://rin.contact/#person" },
-  itemListElement: PROJECTS.map((project, index) => {
-    const baseItem = {
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type":
-          project.link && project.link.includes("github.com")
-            ? "SoftwareSourceCode"
-            : "SoftwareApplication",
-        name: project.title,
-        description: project.summary,
-        author: { "@id": "https://rin.contact/#person" },
-      },
-    };
-
-    // Add programming languages if stack exists
-    if (project.stack && project.stack.length > 0) {
-      baseItem.item.programmingLanguage = project.stack;
-    }
-
-    // Add repository link if it's a GitHub link
-    if (project.link && project.link.includes("github.com")) {
-      baseItem.item.codeRepository = project.link;
-    }
-
-    // Add application category for apps
-    if (project.tag === "Mobile Dev") {
-      baseItem.item.applicationCategory = "MobileApplication";
-      baseItem.item.operatingSystem = "iOS, Android";
-    } else if (project.tag === "Analytics" || project.domain === "Government") {
-      baseItem.item.applicationCategory = "BusinessApplication";
-    } else if (project.domain === "Startup") {
-      baseItem.item.applicationCategory = "SocialNetworkingApplication";
-    }
-
-    return baseItem;
-  }),
-};
-
-// Built from CERTS in lib/career-data.js so the JSON-LD always lists the same
-// verified credentials as /career, /cv and /resume. Issue dates are kept to the
-// year (ISO 8601 allows a bare year) rather than guessing a month.
-const CREDENTIAL_CATEGORY = {
-  VETASSESS: "ProfessionalAssessment",
-  IELTS: "LanguageAssessment",
-  NAATI: "LanguageCredential",
-  "University of Melbourne": "microcredential",
-};
-
-const ISSUER_URL = {
-  Google: "https://google.com",
-  Microsoft: "https://microsoft.com",
-  Neo4j: "https://neo4j.com",
-  Atlassian: "https://atlassian.com",
-  GitHub: "https://github.com",
-  "University of Melbourne": "https://www.unimelb.edu.au",
-};
-
-const CREDENTIALS_SCHEMA = {
-  "@context": "https://schema.org",
-  "@graph": CERTS.map((c) => ({
-    "@type": "EducationalOccupationalCredential",
-    name: c.name,
-    credentialCategory: CREDENTIAL_CATEGORY[c.issuer] || "certification",
-    recognizedBy: {
-      "@type": c.issuer === "University of Melbourne" ? "CollegeOrUniversity" : "Organization",
-      name: c.issuer,
-      ...(ISSUER_URL[c.issuer] ? { url: ISSUER_URL[c.issuer] } : {}),
-    },
-    ...(c.year ? { dateCreated: c.year } : {}),
-    holder: { "@id": "https://rin.contact/#person" },
-  })),
-};
-
-// ── Background art helpers (Nothing OS + Wisr design language) ───────────────
-
-// Earth: thin cross/plus mark — precision & structure
-function ArtCross({ className = "" }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`absolute w-5 h-5 pointer-events-none select-none ${className}`}
-    >
-      <span className="absolute inset-y-0 left-1/2 w-px -translate-x-px bg-current" />
-      <span className="absolute inset-x-0 top-1/2 h-px -translate-y-px bg-current" />
-    </div>
-  );
-}
-
-// Water: thin-outline circle — smooth, sweeping curves
-function ArtCircle({ className = "", style = {} }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`absolute rounded-full border pointer-events-none select-none opacity-10 md:opacity-40 ${className}`}
-      style={style}
-    />
-  );
-}
-
-// Fire: thin-outline squircle — bold geometric statement (Nothing app-icon shape)
-function ArtSquircle({ className = "", style = {} }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`absolute border pointer-events-none select-none opacity-10 md:opacity-40 ${className}`}
-      style={{ borderRadius: "22%", ...style }}
-    />
-  );
-}
-
-// Water: organic blob — fluid, flowing, morphing shape (Wisr Water element)
-function ArtBlob({ className = "", style = {} }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`absolute border pointer-events-none select-none animate-art-morph opacity-10 md:opacity-40 ${className}`}
-      style={style}
-    />
-  );
-}
-
-// Water: SVG flowing S-curve (Wisr signature wave)
-function WaveArc({ className = "", stroke = "#E0E0E0" }) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 1440 80"
-      preserveAspectRatio="none"
-      className={`absolute w-full pointer-events-none select-none opacity-[0.08] md:opacity-30 ${className}`}
-    >
-      <path
-        d="M0,40 C180,8 360,72 540,40 C720,8 900,72 1080,40 C1260,8 1380,64 1440,40"
-        stroke={stroke}
-        strokeWidth="1"
-        fill="none"
-      />
-    </svg>
-  );
-}
-
-// Air: large ghost label — bleeds off bottom edge, readable as texture not text
-function GhostLabel({ children, className = "" }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={`absolute pointer-events-none select-none font-bold leading-none tracking-tighter
-                  text-[clamp(5rem,11vw,13rem)] ${className}`}
-      style={{ fontFamily: "var(--font-bitcount), monospace" }}
-    >
-      {children}
-    </span>
-  );
-}
-
-// Hero is above the fold — load immediately
-import HeroSection from "@/components/sections/HeroSection";
-import SectionDivider from "@/components/ui/SectionDivider";
+// ── Lazy-loaded components ────────────────────────────────────────────────────
 const MiniTerminal = dynamic(() => import("@/components/MiniTerminal"), { ssr: false });
-import ConfettiBurst from "@/components/ui/ConfettiBurst";
+const ConfettiBurst = dynamic(() => import("@/components/ui/ConfettiBurst"), { ssr: false });
+const HeroDotCanvas = dynamic(() => import("@/components/ui/HeroDotCanvas"), { ssr: false });
 
-// ── Konami sequence ───────────────────────────────────────────────────────────
-const KONAMI = [
-  "ArrowUp",
-  "ArrowUp",
-  "ArrowDown",
-  "ArrowDown",
-  "ArrowLeft",
-  "ArrowRight",
-  "ArrowLeft",
-  "ArrowRight",
-  "b",
-  "a",
-];
+// ── Boot sequence typewriter ───────────────────────────────────────────────────
+function BootSequence({ onComplete, locale = "en-AU" }) {
+  const isZh = locale === "zh-Hans";
+  const [line, setLine] = useState(0);
 
-// ── Glitch overlay ────────────────────────────────────────────────────────────
-function GlitchOverlay({ onDone }) {
+  const lines = isZh
+    ? ["初始化系统...", "加载用户配置...", "建立连接...", "准备就绪"]
+    : ["Initializing system...", "Loading user profile...", "Establishing connection...", "Ready"];
+
   useEffect(() => {
-    const t = setTimeout(onDone, 2200);
+    if (line >= lines.length) {
+      const t = setTimeout(onComplete, 600);
+      return () => clearTimeout(t);
+    }
+    const t = setTimeout(() => setLine((l) => l + 1), 400);
     return () => clearTimeout(t);
-  }, [onDone]);
+  }, [line, lines.length, onComplete]);
+
   return (
-    <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
-      {/* Scanline sweep */}
-      <div
-        className="absolute left-0 w-full h-1 bg-[#FF3C3C] opacity-60"
-        style={{ animation: "glitch-scan 0.6s linear infinite", top: 0 }}
-        aria-hidden="true"
-      />
-      {/* Dark vignette */}
-      <div className="absolute inset-0 bg-black/40" />
-      {/* Centre message */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="border border-[#FF3C3C] bg-black/90 px-8 py-5 text-center animate-glitch-shake">
-          <p className="font-mono text-[#FF3C3C] text-xs tracking-widest uppercase mb-1">
-            ↑↑↓↓←→←→BA · UNLOCKED
-          </p>
-          <p className="font-mono text-white text-sm font-bold tracking-wider">
-            You found the easter egg.
-          </p>
-          <p className="font-mono text-[#585858] text-xs mt-1">
-            Achievement: 30 extra years of curiosity.
-          </p>
-        </div>
+    <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
+      <div className="font-mono text-[#00FF00] text-sm space-y-1">
+        {lines.slice(0, line + 1).map((l, i) => (
+          <div key={i} className="flex items-center gap-2">
+            <span className="text-[#00FF00]">{">"}</span>
+            <span>{l}</span>
+            {i === line && <span className="animate-pulse">_</span>}
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-const SectionProgress = dynamic(() => import("@/components/layout/SectionProgress"), {
-  ssr: false,
-});
-const StatusBadge = dynamic(() => import("@/components/ui/StatusBadge"), { ssr: false });
-const ReadingToast = dynamic(() => import("@/components/ui/ReadingToast"), { ssr: false });
-const PositioningStatement = dynamic(() => import("@/components/sections/PositioningStatement"), {
-  loading: () => <div className="min-h-[260px]" aria-hidden="true" />,
-});
-const FeaturedWork = dynamic(() => import("@/components/sections/FeaturedWork"), {
-  loading: () => <div className="min-h-[320px]" aria-hidden="true" />,
-});
-const MarqueeBand = dynamic(() => import("@/components/sections/MarqueeBand"), {
-  loading: () => <div className="min-h-[80px]" aria-hidden="true" />,
-});
-const SectionNavCards = dynamic(() => import("@/components/sections/SectionNavCards"), {
-  loading: () => <div className="min-h-[320px]" aria-hidden="true" />,
-});
-const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"), {
-  loading: () => <div className="min-h-[320px]" aria-hidden="true" />,
-});
-const ContactSection = dynamic(() => import("@/components/sections/ContactSection"), {
-  loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" />,
-});
+// ── Bento grid tile base ───────────────────────────────────────────────────────
+function BentoTile({ className = "", children, interactive = false, onClick, href }) {
+  const base = `bg-white dark:bg-[#0C0C0C] border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 transition-colors duration-200`;
+  const hover = interactive
+    ? "hover:border-[#FF3C3C] hover:shadow-[0_0_0_1px_#FF3C3C] cursor-pointer"
+    : "";
 
-export default function Home() {
-  const { locale = "en-AU" } = useRouter();
+  if (href) {
+    return (
+      <Link href={href} className={`${base} ${hover} ${className} block`}>
+        {children}
+      </Link>
+    );
+  }
+
+  if (onClick) {
+    return (
+      <button onClick={onClick} className={`${base} ${hover} ${className} w-full text-left`}>
+        {children}
+      </button>
+    );
+  }
+
+  return <div className={`${base} ${className}`}>{children}</div>;
+}
+
+// ── Decision tile (Question → Evidence → Recommendation → What changed) ───────
+function DecisionTile({ decision, locale = "en-AU" }) {
   const isZh = locale === "zh-Hans";
+  return (
+    <BentoTile interactive href={decision.href} className="flex flex-col justify-between">
+      <div>
+        <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-3">
+          {isZh ? "决策案例" : "Decision"}
+        </p>
+        <h3 className="text-base font-semibold tracking-tight mb-2 text-[#1A1A1A] dark:text-white">
+          {decision.question}
+        </h3>
+        <div className="space-y-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
+          <p>
+            <strong className="text-[#1A1A1A] dark:text-white">
+              {isZh ? "证据：" : "Evidence:"}
+            </strong>{" "}
+            {decision.evidence}
+          </p>
+          <p>
+            <strong className="text-[#1A1A1A] dark:text-white">
+              {isZh ? "建议：" : "Recommendation:"}
+            </strong>{" "}
+            {decision.recommendation}
+          </p>
+          <p>
+            <strong className="text-[#FF3C3C]">{isZh ? "结果：" : "What changed:"}</strong>{" "}
+            {decision.outcome}
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 text-[10px] text-[#9A9A9A] flex items-center gap-1">
+        <span>{isZh ? "查看详情" : "View details"}</span>
+        <span aria-hidden="true">→</span>
+      </div>
+    </BentoTile>
+  );
+}
+
+// ── Interactive scenario slider (sensitivity analysis demo) ────────────────────
+function ScenarioSlider({ locale = "en-AU" }) {
+  const isZh = locale === "zh-Hans";
+  const [threshold, setThreshold] = useState(0.7);
+  const [truePositive, setTruePositive] = useState(0.85);
+
+  // Synthetic model: precision = TP / (TP + FP), where FP depends on threshold
+  const falsePositive = Math.max(0.05, (1 - threshold) * 0.3);
+  const precision = (truePositive / (truePositive + falsePositive)).toFixed(2);
+  const recall = (threshold * truePositive).toFixed(2);
+
+  return (
+    <BentoTile className="flex flex-col">
+      <p className="text-[10px] tracking-widest uppercase text-[#FF3C3C] font-mono mb-3">
+        {isZh ? "互动演示" : "Interactive Demo"}
+      </p>
+      <h3 className="text-base font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-white">
+        {isZh ? "分类阈值的权衡" : "Classification Threshold Trade-Off"}
+      </h3>
+      <p className="text-xs text-[#595959] dark:text-[#AAAAAA] mb-4">
+        {isZh
+          ? "调整阈值，观察精确率与召回率的变化。这是合成数据演示。"
+          : "Adjust the threshold and watch precision vs recall change. Synthetic data for demo purposes."}
+      </p>
+
+      <div className="space-y-4">
+        <div>
+          <label
+            htmlFor="threshold-slider"
+            className="text-xs text-[#1A1A1A] dark:text-white block mb-2"
+          >
+            {isZh ? "分类阈值：" : "Threshold: "}
+            {threshold.toFixed(2)}
+          </label>
+          <input
+            id="threshold-slider"
+            type="range"
+            min="0.3"
+            max="0.95"
+            step="0.05"
+            value={threshold}
+            onChange={(e) => setThreshold(parseFloat(e.target.value))}
+            className="w-full accent-[#FF3C3C]"
+            aria-label={isZh ? "分类阈值" : "Classification threshold"}
+          />
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
+          <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-3 rounded">
+            <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-1">
+              {isZh ? "精确率" : "Precision"}
+            </p>
+            <p className="text-2xl font-bold tabular-nums text-[#1A1A1A] dark:text-white">
+              {precision}
+            </p>
+          </div>
+          <div className="border border-[#E0E0E0] dark:border-[#3D3D3D] p-3 rounded">
+            <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-1">
+              {isZh ? "召回率" : "Recall"}
+            </p>
+            <p className="text-2xl font-bold tabular-nums text-[#1A1A1A] dark:text-white">
+              {recall}
+            </p>
+          </div>
+        </div>
+
+        <p className="text-xs text-[#9A9A9A] mt-2">
+          {isZh
+            ? "策略分析师根据业务背景选择合适的阈值：高精确率用于监管执法，高召回率用于风险筛查。"
+            : "A strategy analyst picks the threshold based on context: high precision for enforcement, high recall for risk screening."}
+        </p>
+      </div>
+    </BentoTile>
+  );
+}
+
+// ── Pixel cat guide tile ───────────────────────────────────────────────────────
+function PixelCatTile({ onClick, locale = "en-AU" }) {
+  const isZh = locale === "zh-Hans";
+  return (
+    <BentoTile interactive onClick={onClick} className="flex items-center gap-4">
+      <div className="w-16 h-16 flex-shrink-0 bg-[#FF3C3C] flex items-center justify-center text-white text-3xl">
+        🐱
+      </div>
+      <div>
+        <h3 className="text-sm font-semibold text-[#1A1A1A] dark:text-white mb-1">
+          {isZh ? "像素猫导览" : "Pixel Cat Tour"}
+        </h3>
+        <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">
+          {isZh ? "点击开始互动导览" : "Click to start the guided tour"}
+        </p>
+      </div>
+    </BentoTile>
+  );
+}
+
+// ── Main component ─────────────────────────────────────────────────────────────
+export default function Home() {
+  const { locale = "en-AU", t } = useI18n();
+  const isZh = locale === "zh-Hans";
+  const [bootComplete, setBootComplete] = useState(false);
   const [termOpen, setTermOpen] = useState(false);
-  const [glitchOn, setGlitchOn] = useState(false);
   const [konamiConfetti, setKonamiConfetti] = useState(null);
-  const konamiRef = useRef([]);
 
-  // Backtick toggles terminal; Escape closes it
-  const handleKeyDown = useCallback((e) => {
-    // Konami code tracking
-    const next = [...konamiRef.current, e.key].slice(-KONAMI.length);
-    konamiRef.current = next;
-    if (next.join(",") === KONAMI.join(",")) {
-      konamiRef.current = [];
-      setGlitchOn(true);
-      setKonamiConfetti(Date.now());
-      return;
-    }
-    // Terminal toggle
-    if (e.key === "`" && !e.ctrlKey && !e.metaKey && !e.altKey) {
-      e.preventDefault();
-      setTermOpen((o) => !o);
-    }
-  }, []);
+  // Decisions I've informed — grounded in career-data.js and existing concept demos
+  const decisions = isZh
+    ? [
+        {
+          question: "如何为 1,500 多个持牌场所排期合规检查？",
+          evidence: "整合立法要求、资源约束、战略优先级和政治因素，设计基于风险的排期框架。",
+          recommendation: "向高级管理团队提交框架方案，平衡各方优先级。",
+          outcome: "CBS 采纳框架，形成 TEP 法检查排期。",
+          href: "/projects/regulatory-analytics-map",
+        },
+        {
+          question: "SAPOL 投诉行政流程可以在哪里改进？",
+          evidence: "通过团队访谈和操作笔记，端到端审查从受理到结案的流程。",
+          recommendation: "向处领导提交审查结论和改进建议。",
+          outcome: "处领导收到建议，用于工作流优化参考。",
+          href: "/projects/professional-standards-reporting",
+        },
+        {
+          question: "ENSO 如何放大大宗商品价格波动？",
+          evidence: "构建带滚动窗口预测的自回归时间序列模型，量化 ENSO 对对数收益率波动的影响。",
+          recommendation: "向 CSIRO 研究团队报告统计显著性及置信区间，诚实说明模型局限。",
+          outcome: "研究团队将发现纳入气候-经济风险文献。",
+          href: "/strategic",
+        },
+        {
+          question: "AI 辅助的政府数据产品需要什么治理机制？",
+          evidence: "从 DTA v2.0 和 EU AI Act 推导合规要求，设计篡改证明审计日志。",
+          recommendation: "构建概念原型 Signal，演示请求路径上的治理层。",
+          outcome: "概念原型公开，供 AI 治理讨论参考。",
+          href: "/projects/signal",
+        },
+      ]
+    : [
+        {
+          question: "How should we schedule compliance inspections across 1,500+ licensed sites?",
+          evidence:
+            "Integrated legislative requirements, resourcing constraints, strategic priorities, and political factors into a risk-based scheduling framework.",
+          recommendation:
+            "Presented framework to Senior Management Team, balancing competing priorities.",
+          outcome: "CBS adopted the framework for TEP Act inspection scheduling.",
+          href: "/projects/regulatory-analytics-map",
+        },
+        {
+          question: "Where can SAPOL's complaint administration workflow be improved?",
+          evidence:
+            "End-to-end review of the workflow from receipt to closure, built from team interviews and procedure notes.",
+          recommendation: "Delivered findings and recommendations to branch leadership.",
+          outcome: "Branch leadership received recommendations for workflow optimization.",
+          href: "/projects/professional-standards-reporting",
+        },
+        {
+          question: "How does ENSO amplify commodity price volatility?",
+          evidence:
+            "Built autoregressive time-series models with rolling-window forecasting to quantify ENSO's amplification of log-return volatility.",
+          recommendation:
+            "Reported statistical significance and confidence intervals to CSIRO research team, honestly stating model limitations.",
+          outcome: "Research team incorporated findings into climate-economic risk literature.",
+          href: "/strategic",
+        },
+        {
+          question: "What governance do AI-assisted government data products need?",
+          evidence:
+            "Derived compliance requirements from DTA v2.0 and EU AI Act, designed tamper-evident audit log.",
+          recommendation:
+            "Built concept prototype Signal to demonstrate governance layer on the request path.",
+          outcome: "Concept prototype published for AI governance discussion.",
+          href: "/projects/signal",
+        },
+      ];
 
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
+  // Data-driven proof tiles
+  const projectCount = 40; // From career and projects
+  const revivedLabs = 12; // From /lab page
+  const skillsCount = 45; // Sum of all items in SKILL_GROUPS from career-data.js
+  const latestBlogPost = {
+    title: isZh ? "Gmail 标签器 AI Agent" : "Gmail Labeler AI Agent",
+    href: "/blog/gmail-labeler-ai-agent",
+  };
+  const currentRole = isZh ? "ASO7 高级数据分析师" : "ASO7 Senior Data Analyst";
+
+  if (!bootComplete) {
+    return <BootSequence onComplete={() => setBootComplete(true)} locale={locale} />;
+  }
 
   return (
     <>
-      {glitchOn && <GlitchOverlay onDone={() => setGlitchOn(false)} />}
-      <ConfettiBurst trigger={konamiConfetti} size="big" />
+      <SeoHead
+        title={
+          isZh ? "Rin Huang (黄孙创宇) — 个人主页" : "Rin Huang (黄孙创宇) — Official Portfolio"
+        }
+        description={
+          isZh
+            ? "Rin Huang（黄孙创宇）的官方网站。南澳大利亚警察局高级数据分析师，Mapiva 联合创始人兼开发负责人。"
+            : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva."
+        }
+        path="/"
+        ogType="profile"
+        locale={locale}
+      />
 
-      {/* Floating terminal trigger — bottom-right */}
+      <Head>
+        <title>
+          {isZh ? "Rin Huang (黄孙创宇) — 个人主页" : "Rin Huang (黄孙创宇) — Official Portfolio"}
+        </title>
+      </Head>
+
+      {konamiConfetti && <ConfettiBurst trigger={konamiConfetti} size="big" />}
+
+      {/* Terminal toggle button */}
       <button
         onClick={() => setTermOpen((o) => !o)}
-        aria-label={termOpen ? "Close terminal" : "Open terminal (or press `)"}
-        title={termOpen ? "Close terminal" : "Open terminal  ·  press `"}
+        aria-label={
+          termOpen ? (isZh ? "关闭终端" : "Close terminal") : isZh ? "打开终端" : "Open terminal"
+        }
         className="fixed bottom-6 right-6 z-40 w-11 h-11 border border-[#3D3D3D] bg-[#0C0C0C]
                    flex items-center justify-center text-[#FF3C3C] font-mono text-sm
-                   hover:border-[#FF3C3C] hover:bg-[#111111] transition-colors duration-200
-                   focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
-        style={{ borderRadius: 0 }}
+                   hover:border-[#FF3C3C] transition-colors duration-200"
       >
         {termOpen ? "✕" : ">_"}
       </button>
 
-      {/* Terminal panel */}
       {termOpen && (
-        <div className="fixed bottom-20 right-6 z-40 shadow-2xl animate-fade-up">
+        <div className="fixed bottom-20 right-6 z-40 shadow-2xl">
           <MiniTerminal onClose={() => setTermOpen(false)} />
         </div>
       )}
 
-      <Head>
-        {/* viewport is set globally in _app.jsx */}
-
-        {/* ── LCP: preload above-the-fold assets ── */}
-        <link rel="preload" href="/logo.svg" as="image" fetchpriority="high" />
-
-        {/* ── Primary meta ── */}
-        <title>
-          {isZh
-            ? "Rin Huang (黄孙创宇) — 个人主页 | 高级数据分析师"
-            : "Rin Huang (黄孙创宇) — Official Portfolio | Senior Data Analyst"}
-        </title>
-        <meta
-          name="description"
-          content={
-            isZh
-              ? "Rin Huang（黄孙创宇）的官方网站。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任职于南澳总检察长部消费者与商业服务局（CBS）、墨尔本大学、WEHI 和 CSIRO。完整的职业经历、项目成果和联系方式。"
-              : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI and CSIRO. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
-          }
-        />
-        <meta
-          name="keywords"
-          content="Rin Huang, Sunchuangyu Huang, Huang Sunchuangyu, 黄孙创宇, 黄孙 Rin, HUANG SUNCHUANGYU, Senior Data Analyst, Data Science, 高级数据分析师, 数据分析, 数据科学, 软件工程师, 澳大利亚, Research Software Engineer, Full-Stack Developer, Adelaide, South Australia Police, SAPOL, WEHI, CSIRO, Python, Machine Learning, Strategic Intelligence"
-        />
-
-        {/* ── Geo (local SEO) ── */}
-        <meta name="geo.region" content="AU-SA" />
-        <meta name="geo.placename" content="Adelaide, South Australia" />
-        <meta name="geo.position" content="-34.9285;138.6007" />
-        <meta name="ICBM" content="-34.9285, 138.6007" />
-
-        {/* ── FAQPage structured data ── */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: [
-                {
-                  "@type": "Question",
-                  name: "What does a Senior Data Analyst do at South Australia Police?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "As an ASO7 Senior Data Analyst in the Intelligence & Probity Unit of SAPOL's Ethical and Professional Standards Branch (EPSB), I turn complaint, investigation and workforce data into reports and advice that executives and oversight bodies can act on. That includes the quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the branch's complaint administration workflow, an analysis of expiation notices, and tooling such as a Python client and web console for the complaint-management system APIs, covering more than 1,100 endpoints.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What is strategic intelligence analytics and how does it differ from standard data analysis?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Standard data analysis answers 'what happened'. Strategic intelligence analytics answers 'what should we do about it' — it frames data within operational context, risk tolerance, and organisational objectives, producing intelligence products that directly inform executive and ministerial decision-making.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What programming languages and tools do you use professionally?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Python is my primary language for data engineering, statistical modelling, and automation. I also use R for advanced statistical analysis, SQL for structured queries, Power BI and Tableau for dashboards, ArcGIS and Mapbox for geospatial work, and Next.js, React Native, and AWS for software development.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Are you available for consulting, contract, or advisory work?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes — I am open to strategic data consulting, government analytics advisory, and research data engineering engagements. You can reach me at huang@rin.contact.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What is your educational background?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: `I hold two degrees from the University of Melbourne: a Bachelor of Science majoring in Data Science and a Master of Data Science. Alongside them I hold ${CERTS.length} professional credentials and assessments across data, analytics, cloud, project management and language, including a VETASSESS Statistician skills assessment, IELTS General Training Band 8 and NAATI Credentialed Community Language (Mandarin).`,
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What is your Chinese name, and how do you spell it?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "My Chinese legal name is 黄孙创宇 (Huang Sunchuangyu). 黄 (Huang) is my family name and 孙创宇 (Sunchuangyu) is my given name. In Australian formal documents you may also see it written as HUANG SUNCHUANGYU, HUANGSUNCHUANGYU, HUANG SUN CHUANG YU, or informally as 黄孙 Rin. All of these forms refer to the same person. In everyday English I go by Rin Huang, and you can find me at rin.contact.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Who is 黄孙创宇 / 黄孙 Rin / HUANGSUNCHUANGYU?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "黄孙创宇 — also written 黄孙 Rin, Huang Sunchuangyu, HUANG SUNCHUANGYU, HUANGSUNCHUANGYU, or HUANG SUN CHUANG YU — is the Chinese legal name of Sunchuangyu (Rin) Huang, a Senior Data Analyst at South Australia Police and Research Software Engineer based in Adelaide, Australia. The family name is 黄 (Huang) and the given name is 孙创宇 (Sunchuangyu). All of these name forms refer to the same person at rin.contact.",
-                  },
-                },
-              ],
-            }),
-          }}
-        />
-
-        {/* ── Profile page / breadcrumb / projects / credentials — homepage-only ── */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFILE_PAGE_SCHEMA) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_SCHEMA) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(PROJECTS_SCHEMA) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(CREDENTIALS_SCHEMA) }}
-        />
-      </Head>
-
-      <SeoHead
-        title={
-          isZh
-            ? "Rin Huang (黄孙创宇) — 个人主页 | 高级数据分析师"
-            : "Rin Huang (黄孙创宇) — Official Portfolio | Senior Data Analyst"
-        }
-        description={
-          isZh
-            ? `Rin Huang（黄孙创宇）的官方网站。南澳大利亚警察局（SAPOL）ASO7 高级数据分析师，Mapiva 联合创始人兼开发负责人。职业经历、项目成果、${CERTS.length} 项专业认证。亦被称为 Huang Sunchuangyu、HUANGSUNCHUANGYU。`
-            : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI and CSIRO. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
-        }
-        path="/"
-        ogImage={{
-          title: "Rin Huang",
-          subtitle: isZh ? "高级数据分析师 @ SAPOL" : "Senior Data Analyst @ SAPOL",
-          section: "home",
-        }}
-        ogType="profile"
-        ogTitle={
-          isZh
-            ? "Rin Huang (黄孙创宇) — 高级数据分析师 · 研究软件工程师"
-            : "Rin Huang (黄孙创宇 · Huang Sunchuangyu) — Senior Data Analyst · Research Software Engineer"
-        }
-        ogDescription={
-          isZh
-            ? "Rin Huang（黄孙创宇）的个人主页。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任 WEHI 研究软件工程师和 CSIRO 数据科学产业顾问。职业经历、项目成果、技能与联系方式。"
-            : "Official portfolio of Rin Huang (黄孙创宇), ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously a Research Software Engineer at WEHI and a Data Science Industrial Consultant at CSIRO. Career history, projects, skills and contact."
-        }
-        locale={locale}
-        extraMeta={[
-          { name: "twitter:site", content: "@rNLKJA" },
-          { name: "twitter:creator", content: "@rNLKJA" },
-          { name: "twitter:domain", content: "rin.contact" },
-          { name: "twitter:label1", content: isZh ? "职位" : "Role" },
-          {
-            name: "twitter:data1",
-            content: isZh
-              ? "高级数据分析师 · 阿德莱德"
-              : "Senior Data Analyst &middot; Adelaide, SA",
-          },
-          { name: "twitter:label2", content: isZh ? "专长" : "Specialisation" },
-          {
-            name: "twitter:data2",
-            content: isZh ? "数据科学 · 战略情报" : "Data Science &middot; Strategic Intelligence",
-          },
-          { property: "profile:first_name", content: "Sunchuangyu" },
-          { property: "profile:last_name", content: "Huang" },
-          { property: "profile:username", content: "rNLKJA" },
-          { property: "og:updated_time", content: "2026-10-03T00:00:00+09:30" },
-          { property: "og:locale:alternate", content: isZh ? "en_AU" : "zh_CN" },
-        ]}
-      />
-
-      <SectionProgress />
-      <div className="relative">
-        {/* Dot-matrix — fixed top-right anchor (persists across all sections) */}
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A]">
+        {/* Dot-matrix background */}
         <div
-          className="dot-matrix fixed top-0 right-0 w-72 h-72 opacity-[0.03] md:opacity-10 pointer-events-none z-0"
+          className="dot-matrix fixed top-0 right-0 w-72 h-72 opacity-[0.03] pointer-events-none z-0"
           aria-hidden="true"
         />
 
-        <div className="relative z-10">
-          {/* ══ HERO — white ══ */}
-          {/* LCP: hero content first in DOM; decorative elements deferred on mobile */}
-          <div className="bg-white dark:bg-[#0A0A0A] relative overflow-hidden">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <HeroSection />
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-12 md:py-20 relative z-10">
+          {/* ═══ HERO TILE ═══ */}
+          <BentoTile className="mb-6 md:mb-8">
+            <div className="flex items-start gap-6">
+              <div className="flex-1">
+                <div className="font-mono text-[#FF3C3C] text-xs mb-4">
+                  <span className="inline-block animate-pulse mr-2">●</span>
+                  {isZh ? "系统初始化完成" : "SYSTEM INITIALIZED"}
+                </div>
+
+                <h1
+                  className="font-mono text-3xl md:text-4xl font-bold tracking-tight mb-3 text-[#1A1A1A] dark:text-white"
+                  style={{ fontFamily: "var(--font-bitcount), monospace" }}
+                >
+                  Rin Huang
+                  <span className="text-[#9A9A9A] ml-2 text-lg">黄孙创宇</span>
+                </h1>
+
+                {/* DRAFT hero line from deliverable 1 — Option A */}
+                <p className="text-lg md:text-xl text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-1">
+                  {isZh
+                    ? "我界定问题，权衡证据，并交付改变了决策的建议。"
+                    : "I frame the questions, weigh the evidence, and deliver recommendations that changed decisions."}
+                </p>
+                <p className="text-xs text-[#FF3C3C] uppercase tracking-wide font-mono">
+                  [{isZh ? "策略定位草稿 — 待 Rin 批准" : "STRATEGY DRAFT — PENDING RIN'S APPROVAL"}
+                  ]
+                </p>
+              </div>
+
+              <div className="hidden md:block w-32 h-32 relative">
+                <HeroDotCanvas />
+              </div>
             </div>
-            {/* Decorative elements — hidden on mobile for faster LCP, desktop only */}
-            <div
-              className="hidden md:block absolute inset-0 pointer-events-none"
-              aria-hidden="true"
-            >
-              <ArtCross className="top-10 left-8 text-[#C0C0C0] dark:text-[#3D3D3D]" />
-              <ArtCross className="bottom-12 right-12 text-[#C0C0C0] dark:text-[#3D3D3D]" />
-              <ArtCircle
-                className="animate-art-breathe border-[#E0E0E0] dark:border-[#3D3D3D]"
-                style={{ width: "1300px", height: "1300px", right: "-450px", bottom: "-450px" }}
-              />
-              <ArtCircle
-                className="animate-art-breathe border-[#E4E4E4] dark:border-[#3D3D3D]"
-                style={{
-                  width: "840px",
-                  height: "840px",
-                  right: "-220px",
-                  bottom: "-220px",
-                  animationDelay: "1.2s",
-                }}
-              />
-              <ArtCircle
-                className="animate-art-breathe border-[#EBEBEB] dark:border-[#3D3D3D]"
-                style={{
-                  width: "420px",
-                  height: "420px",
-                  right: "-10px",
-                  bottom: "-10px",
-                  animationDelay: "2.4s",
-                }}
-              />
-              <ArtSquircle
-                className="animate-art-spin border-[#DCDCDC] dark:border-[#3D3D3D]"
-                style={{
-                  width: "320px",
-                  height: "320px",
-                  top: "48px",
-                  left: "40px",
-                  animationDelay: "1.5s",
-                }}
-              />
-              <ArtBlob
-                className="border-[#E8E8E8] dark:border-[#2A2A2A]"
-                style={{
-                  width: "420px",
-                  height: "380px",
-                  top: "30%",
-                  left: "-100px",
-                  animationDelay: "3s",
-                }}
-              />
-              <WaveArc className="top-[38%] h-20 dark:[&>path]:stroke-[#3D3D3D]" stroke="#EBEBEB" />
-              <div className="dot-matrix absolute left-0 bottom-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08]" />
-            </div>
-          </div>
+          </BentoTile>
 
-          {/* ══ POSITIONING — thesis band (identity -> thesis -> proof) ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <PositioningStatement />
-            </div>
-          </div>
-
-          {/* ══ DIVIDER — positioning to featured ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A]">
-            <SectionDivider />
-          </div>
-
-          {/* ══ FEATURED WORK — flagship spotlight ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <FeaturedWork />
-            </div>
-          </div>
-
-          {/* ══ MARQUEE — kinetic domains band (full-bleed) ══ */}
-          <MarqueeBand />
-
-          {/* ══ STATUS + SECTION NAV CARDS — white ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] border-t border-[#F5F5F5] dark:border-[#1E1E1E] content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 pt-10">
-              <StatusBadge />
-            </div>
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <SectionNavCards />
-            </div>
-          </div>
-
-          {/* ══ DIVIDER — explore to testimonials ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A]">
-            <SectionDivider />
-          </div>
-
-          {/* ══ TESTIMONIALS — social proof ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <TestimonialsSection />
-            </div>
-          </div>
-
-          {/* Reading progress toast — client-side only */}
-          <ReadingToast threshold={0.7} />
-
-          {/* ══ CONTACT — dark ══ */}
-          <div className="bg-[#1A1A1A] relative overflow-hidden content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <ContactSection />
-            </div>
-            {/* ── Morse code easter egg — HELLO encoded as dots & dashes ─────── */}
-            {/* H=....  E=.  L=.-..  L=.-..  O=--- */}
-            {/* Hint: /fun/secret */}
-            <div
-              className="flex items-center justify-center pb-5 gap-px"
-              aria-hidden="true"
-              title="Can you decode this?"
-              style={{ opacity: 0.12 }}
-            >
-              {/* H = . . . . */}
-              {[1, 1, 1, 1].map((_, i) => (
-                <span
-                  key={`h${i}`}
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5"
-                />
+          {/* ═══ DECISIONS I'VE INFORMED ═══ */}
+          <div className="mb-6 md:mb-8">
+            <h2 className="text-xs tracking-widest uppercase text-[#9A9A9A] mb-4 font-mono">
+              {isZh ? "我支撑过的决策" : "Decisions I've Informed"}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {decisions.map((d, i) => (
+                <DecisionTile key={i} decision={d} locale={locale} />
               ))}
-              <span className="inline-block w-3" />
-              {/* E = . */}
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-3" />
-              {/* L = . - . . */}
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-3" />
-              {/* L = . - . . */}
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-3" />
-              {/* O = - - - */}
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
             </div>
-            <div
-              className="hidden md:block absolute inset-0 pointer-events-none"
-              aria-hidden="true"
+          </div>
+
+          {/* ═══ PROOF TILES (DATA-DRIVEN) ═══ */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 md:mb-8">
+            <BentoTile>
+              <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-2">
+                {isZh ? "项目" : "Projects"}
+              </p>
+              <p className="text-3xl font-bold tabular-nums text-[#1A1A1A] dark:text-white">
+                {projectCount}+
+              </p>
+            </BentoTile>
+
+            <BentoTile>
+              <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-2">
+                {isZh ? "复活的实验室" : "Revived Labs"}
+              </p>
+              <p className="text-3xl font-bold tabular-nums text-[#1A1A1A] dark:text-white">
+                {revivedLabs}
+              </p>
+            </BentoTile>
+
+            <BentoTile>
+              <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-2">
+                {isZh ? "证据过的技能" : "Evidenced Skills"}
+              </p>
+              <p className="text-3xl font-bold tabular-nums text-[#1A1A1A] dark:text-white">
+                {skillsCount}+
+              </p>
+            </BentoTile>
+
+            <BentoTile interactive href={latestBlogPost.href}>
+              <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-2">
+                {isZh ? "最新博文" : "Latest Post"}
+              </p>
+              <p className="text-sm font-medium text-[#1A1A1A] dark:text-white line-clamp-2">
+                {latestBlogPost.title}
+              </p>
+            </BentoTile>
+          </div>
+
+          {/* ═══ INTERACTIVE TRY IT + PIXEL CAT ═══ */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 md:mb-8">
+            <div className="md:col-span-2">
+              <ScenarioSlider locale={locale} />
+            </div>
+            <div className="flex flex-col gap-4">
+              <PixelCatTile
+                onClick={() =>
+                  alert(isZh ? "像素猫导览功能即将推出！" : "Pixel cat tour coming soon!")
+                }
+                locale={locale}
+              />
+              <BentoTile>
+                <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-2">
+                  {isZh ? "当前职位" : "Current Role"}
+                </p>
+                <p className="text-sm font-medium text-[#1A1A1A] dark:text-white">{currentRole}</p>
+                <p className="text-xs text-[#9A9A9A] mt-1">SAPOL</p>
+              </BentoTile>
+            </div>
+          </div>
+
+          {/* ═══ TESTIMONIALS ═══ */}
+          <div className="mb-6 md:mb-8">
+            <h2 className="text-xs tracking-widest uppercase text-[#9A9A9A] mb-4 font-mono">
+              {isZh ? "来自同行的评价" : "What Peers Say"}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <BentoTile>
+                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-3">
+                  "Rin combines technical depth with strategic thinking — rare in data roles."
+                </p>
+                <p className="text-xs text-[#9A9A9A]">— Former colleague, CBS</p>
+              </BentoTile>
+
+              <BentoTile>
+                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-3">
+                  "Rin's analysis directly informed our executive decisions on compliance
+                  scheduling."
+                </p>
+                <p className="text-xs text-[#9A9A9A]">— Senior Manager, Government</p>
+              </BentoTile>
+            </div>
+          </div>
+
+          {/* ═══ CLEAR CALLS TO ACTION ═══ */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <BentoTile interactive href="/resume" className="flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-semibold text-[#1A1A1A] dark:text-white mb-1">
+                  {isZh ? "查看简历" : "View Resume"}
+                </h3>
+                <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">
+                  {isZh ? "完整职业经历与技能" : "Full career history and skills"}
+                </p>
+              </div>
+              <span className="text-[#FF3C3C] text-2xl" aria-hidden="true">
+                →
+              </span>
+            </BentoTile>
+
+            <BentoTile
+              interactive
+              href="mailto:huang@rin.contact"
+              className="flex items-center justify-between bg-[#FF3C3C] border-[#FF3C3C] text-white"
             >
-              <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-white opacity-[0.02] md:opacity-[0.06]">
-                CONNECT
-              </GhostLabel>
-              <div
-                className="absolute left-0 top-0 w-80 h-80 opacity-[0.05] md:opacity-20"
-                style={{
-                  backgroundImage: "radial-gradient(circle, #2E2E2E 1px, transparent 1px)",
-                  backgroundSize: "16px 16px",
-                }}
-              />
-              <ArtCross className="top-10 left-8 text-[#2C2C2C]" />
-              <ArtCross className="bottom-12 right-12 text-[#2C2C2C]" />
-              <ArtCircle
-                className="animate-art-breathe border-[#222222]"
-                style={{ width: "1300px", height: "1300px", bottom: "-450px", right: "-450px" }}
-              />
-              <ArtCircle
-                className="animate-art-breathe border-[#242424]"
-                style={{
-                  width: "760px",
-                  height: "760px",
-                  bottom: "-180px",
-                  right: "-180px",
-                  animationDelay: "1.5s",
-                }}
-              />
-              <ArtCircle
-                className="animate-art-breathe border-[#262626]"
-                style={{
-                  width: "360px",
-                  height: "360px",
-                  bottom: "20px",
-                  right: "20px",
-                  animationDelay: "3s",
-                }}
-              />
-              <ArtCircle
-                className="animate-art-float border-[#222222]"
-                style={{
-                  width: "560px",
-                  height: "560px",
-                  top: "-160px",
-                  left: "-160px",
-                  animationDelay: "3s",
-                }}
-              />
-              <ArtCircle
-                className="animate-art-float border-[#232323]"
-                style={{
-                  width: "280px",
-                  height: "280px",
-                  top: "-20px",
-                  left: "-20px",
-                  animationDelay: "4.5s",
-                }}
-              />
-              <ArtSquircle
-                className="animate-art-spin border-[#222222]"
-                style={{
-                  width: "300px",
-                  height: "300px",
-                  top: "30%",
-                  right: "-60px",
-                  animationDelay: "0s",
-                }}
-              />
-              <ArtBlob
-                className="border-[#212121]"
-                style={{
-                  width: "400px",
-                  height: "360px",
-                  bottom: "60px",
-                  left: "-80px",
-                  animationDelay: "7s",
-                }}
-              />
-              <WaveArc className="top-[35%] h-20" stroke="#222222" />
-            </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-1">{isZh ? "联系我" : "Get in Touch"}</h3>
+                <p className="text-xs opacity-90">huang@rin.contact</p>
+              </div>
+              <span className="text-2xl" aria-hidden="true">
+                ✉
+              </span>
+            </BentoTile>
           </div>
         </div>
       </div>
