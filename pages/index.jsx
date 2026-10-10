@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 import { CERTS } from "@/lib/career-data";
+import { PROJECTS } from "@/lib/projects-data";
 
 // Moved from pages/_document.jsx — these describe homepage-only content
 // (career timeline anchors, project list, credentials) and were previously
@@ -85,166 +86,43 @@ const PROJECTS_SCHEMA = {
   name: "Projects by Rin Huang (Sunchuangyu Huang)",
   description: "Software, data science, and analytics projects by Rin Huang",
   author: { "@id": "https://rin.contact/#person" },
-  itemListElement: [
-    {
+  itemListElement: PROJECTS.map((project, index) => {
+    const baseItem = {
       "@type": "ListItem",
-      position: 1,
+      position: index + 1,
       item: {
-        "@type": "SoftwareApplication",
-        name: "Mapiva",
-        description:
-          "A map-first social discovery app from a Melbourne startup Rin co-founded. As Dev Lead he owns the architecture and code review, working towards a beta in early 2027.",
-        applicationCategory: "SocialNetworkingApplication",
-        operatingSystem: "iOS, Android",
-        author: { "@id": "https://rin.contact/#person" },
-        programmingLanguage: ["React Native", "Expo", "Django", "Rust", "PostgreSQL"],
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      item: {
-        "@type": "SoftwareSourceCode",
-        name: "SA Address Generator",
-        description:
-          "A personal tool that makes mock South Australian addresses for software testing, revived in 2026 as a web app with remoteness and SEIFA weighting and a check that each sample hits its target mix.",
-        codeRepository: "https://github.com/rNLKJA/SA-Mock-Address-Generator",
-        programmingLanguage: "Python",
+        "@type":
+          project.link && project.link.includes("github.com")
+            ? "SoftwareSourceCode"
+            : "SoftwareApplication",
+        name: project.title,
+        description: project.summary,
         author: { "@id": "https://rin.contact/#person" },
       },
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      item: {
-        "@type": "SoftwareSourceCode",
-        name: "US Political Data Collection System",
-        description:
-          "Collected 7,556 US campaign documents and 179 debate transcripts from the UC Santa Barbara American Presidency Project, revived in 2026 as Campaign Text Lab, a descriptive reading room.",
-        codeRepository: "https://github.com/rNLKJA/Political-Data-Collection-System",
-        programmingLanguage: "Python",
-        author: { "@id": "https://rin.contact/#person" },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      item: {
-        "@type": "SoftwareApplication",
-        name: "CBS Intelligence Analytics",
-        description:
-          "First intelligence analytics capability within the CBS Prevention Team — integrating ABS, SA Health, ACCC, and DataSA data into unified dashboards and GIS maps used by the Minister's Office.",
-        applicationCategory: "BusinessApplication",
-        author: { "@id": "https://rin.contact/#person" },
-        programmingLanguage: ["Python", "Power BI"],
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 5,
-      item: {
-        "@type": "SoftwareApplication",
-        name: "Moodist",
-        description:
-          "Clinician-facing and patient-facing mental health mobile app for the University of Melbourne Department of Psychiatry. Rin was the sole developer: he rebuilt it from Uniapp in Expo React Native on a Flask backend, kept hosting under $500 a month by running each service in its own Docker container on AWS LightSail, and handed it to a professional team for production.",
-        applicationCategory: "HealthApplication",
-        operatingSystem: "iOS, Android",
-        author: { "@id": "https://rin.contact/#person" },
-        programmingLanguage: ["React Native", "Expo", "Python", "Flask"],
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 6,
-      item: {
-        "@type": "SoftwareApplication",
-        name: "SAPOL EPSB Analytics",
-        description:
-          "Analytics work for the Intelligence & Probity Unit of South Australia Police's Ethical and Professional Standards Branch (EPSB) since March 2026: quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the complaint administration workflow, an expiation notices analysis, and a Python client and web console for the complaint-management system APIs, covering more than 1,100 endpoints.",
-        applicationCategory: "BusinessApplication",
-        author: { "@id": "https://rin.contact/#person" },
-        programmingLanguage: ["Python", "SQL", "Power BI", "FastAPI", "Vue"],
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 7,
-      item: {
-        "@type": "SoftwareSourceCode",
-        name: "Genomics Metadata Multiplexing (GMM)",
-        description:
-          "An R Shiny tool, built to run on WEHI's Milton HPC, that builds CEL-Seq2 sample sheets for plate-based single-cell sequencing and merges FACS index-sort metadata with plate layouts.",
-        programmingLanguage: ["R", "Python"],
-        author: { "@id": "https://rin.contact/#person" },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 8,
-      item: {
-        "@type": "SoftwareSourceCode",
-        name: "Climate Fact-Checker",
-        description:
-          "A group project for COMP90042: a two-stage fact-checker for climate-science claims, with TF-IDF evidence retrieval and a Transformer classifier trained from scratch.",
-        codeRepository:
-          "https://github.com/rNLKJA/Automated-Fact-Checking-System-for-Climate-Change-Claims",
-        programmingLanguage: "Python",
-        author: { "@id": "https://rin.contact/#person" },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 9,
-      item: {
-        "@type": "SoftwareSourceCode",
-        name: "Australia Social Media Analytics on the Cloud",
-        description:
-          "Harvested and analysed Twitter and Mastodon data alongside ABS SUDO spatial data to produce a Social Sense Dashboard across Australian regions.",
-        codeRepository: "https://github.com/rNLKJA/Australia-Social-Media-Analytics-on-the-Cloud",
-        programmingLanguage: ["Python", "CouchDB"],
-        author: { "@id": "https://rin.contact/#person" },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 10,
-      item: {
-        "@type": "SoftwareSourceCode",
-        name: "Twitter HPC Analysis",
-        description:
-          "Processed a large-scale Twitter dataset on SPARTAN HPC using MPI and Python, identifying tweet distribution across Australian cities.",
-        codeRepository: "https://github.com/rNLKJA/Twitter-Data-Analysis-with-HPC",
-        programmingLanguage: "Python",
-        author: { "@id": "https://rin.contact/#person" },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 11,
-      item: {
-        "@type": "SoftwareSourceCode",
-        name: "Cachex AI Game Agent",
-        description:
-          "AI agents for Cachex — a two-player connection game — using heuristic A* search and competitive game theory with strategic sabotage logic.",
-        codeRepository: "https://github.com/rNLKJA/Cachex-AI",
-        programmingLanguage: "Python",
-        author: { "@id": "https://rin.contact/#person" },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 12,
-      item: {
-        "@type": "SoftwareSourceCode",
-        name: "PCRM — Personal Customer Relationship Management",
-        description:
-          "Full-stack CRM system with React frontend, Express REST API, and MongoDB backend, built as the COMP30022 IT Project at the University of Melbourne.",
-        codeRepository: "https://github.com/rNLKJA/Personal-Customer-Relation-Management-PCRM",
-        programmingLanguage: ["Node.js", "React.js", "MongoDB"],
-        author: { "@id": "https://rin.contact/#person" },
-      },
-    },
-  ],
+    };
+
+    // Add programming languages if stack exists
+    if (project.stack && project.stack.length > 0) {
+      baseItem.item.programmingLanguage = project.stack;
+    }
+
+    // Add repository link if it's a GitHub link
+    if (project.link && project.link.includes("github.com")) {
+      baseItem.item.codeRepository = project.link;
+    }
+
+    // Add application category for apps
+    if (project.tag === "Mobile Dev") {
+      baseItem.item.applicationCategory = "MobileApplication";
+      baseItem.item.operatingSystem = "iOS, Android";
+    } else if (project.tag === "Analytics" || project.domain === "Government") {
+      baseItem.item.applicationCategory = "BusinessApplication";
+    } else if (project.domain === "Startup") {
+      baseItem.item.applicationCategory = "SocialNetworkingApplication";
+    }
+
+    return baseItem;
+  }),
 };
 
 // Built from CERTS in lib/career-data.js so the JSON-LD always lists the same

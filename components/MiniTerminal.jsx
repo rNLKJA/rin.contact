@@ -122,6 +122,7 @@ const SKILLS = [
 ];
 
 const FEATURED_PROJECT_LINES = [
+  W("  ● Signal                AI Gov · Governed data product · FastAPI"),
   W("  ● Mapiva               Mobile · Map-first social discovery"),
   D("               Co-founded · Dev Lead · Beta in early 2027"),
   W("  ● SAPOL EPSB           Analytics · Complaints API tooling · Gov"),
@@ -130,7 +131,7 @@ const FEATURED_PROJECT_LINES = [
   D("  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─"),
   N("  ○ SA Address Generator    Mock test data · Personal"),
   N("  ○ US Political Data        Scraper · 7,556 documents"),
-  N("  ○ GMM Sample Sheets        R Shiny · Single-cell · WEHI"),
+  N("  ○ Genomics Metadata Multiplexing  R Shiny · Single-cell · WEHI"),
   N("  ○ Climate Fact-Checker     NLP · TF-IDF · Transformer"),
   N("  ○ ENSO Climate Risk        Time series · CSIRO × UniMelb"),
   N("  ○ Cachex AI                A* · Minimax · Game theory"),
