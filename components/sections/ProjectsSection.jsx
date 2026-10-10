@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useI18n } from "@/contexts/I18nContext";
 import ScrollRegion from "@/components/ui/ScrollRegion";
 import Tabs, { tabPanelProps } from "@/components/ui/Tabs";
+import ProjectStatus from "@/components/ui/ProjectStatus";
 
 // Turn a domain label into a clean URL slug ("AI / ML" -> "ai-ml"), so a
 // filtered Projects view can be shared as /projects?category=ai-ml.
@@ -266,6 +267,15 @@ function ProjectDetail({ project, coursework }) {
             {t("projects.status")}
           </p>
           <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">{project.status}</p>
+          {project.buildStatus && (
+            <div className="mt-3">
+              <ProjectStatus
+                stage={project.buildStatus.stage}
+                updated={project.buildStatus.updated}
+                checklist={project.buildStatus.checklist}
+              />
+            </div>
+          )}
         </div>
         <div>
           <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">

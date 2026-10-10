@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { fill, joinNames } from "@/lib/fill";
+import ProjectStatus from "@/components/ui/ProjectStatus";
 
 const K = "courseworkPage.card";
 const LABEL = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
@@ -120,6 +121,17 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
       <p className="mt-2 text-[15px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] max-w-[68ch]">
         {p.summary}
       </p>
+
+      {/* Build-in-public status */}
+      {p.buildStatus && (
+        <div className="mt-4">
+          <ProjectStatus
+            stage={p.buildStatus.stage}
+            updated={p.buildStatus.updated}
+            checklist={p.buildStatus.checklist}
+          />
+        </div>
+      )}
 
       {/* Role and team credits (an individual project's role already says so) */}
       <dl className={`mt-5 ${ROWS}`}>
