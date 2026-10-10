@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"));
-import { useRouter } from "next/router";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
-import { CERTS, ROLES, getMetrics } from "@/lib/career-data";
+import PixelCat from "@/components/guide/PixelCat";
+import { PROJECTS } from "@/lib/projects-data";
+import { COURSEWORK } from "@/lib/coursework-data";
+import { getAllPosts } from "@/lib/posts";
+import { buildSkillsAtlas } from "@/lib/skills-atlas";
+import { restartGuide } from "@/hooks/useGuideProgress";
 import { useI18n } from "@/contexts/I18nContext";
+import en from "@/locales/en-AU.json";
+import zh from "@/locales/zh-Hans.json";
 
 // ── Lazy-loaded components ────────────────────────────────────────────────────
+const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"));
 const MiniTerminal = dynamic(() => import("@/components/MiniTerminal"), { ssr: false });
 const ConfettiBurst = dynamic(() => import("@/components/ui/ConfettiBurst"), { ssr: false });
 const HeroDotCanvas = dynamic(() => import("@/components/ui/HeroDotCanvas"), { ssr: false });
@@ -115,7 +121,7 @@ function DecisionTile({ decision, locale = "en-AU" }) {
 function ScenarioSlider({ locale = "en-AU" }) {
   const isZh = locale === "zh-Hans";
   const [threshold, setThreshold] = useState(0.7);
-  const [truePositive, setTruePositive] = useState(0.85);
+  const truePositive = 0.85;
 
   // Synthetic model: precision = TP / (TP + FP), where FP depends on threshold
   const falsePositive = Math.max(0.05, (1 - threshold) * 0.3);
@@ -192,58 +198,128 @@ function PixelCatTile({ onClick, locale = "en-AU" }) {
   const isZh = locale === "zh-Hans";
   return (
     <BentoTile interactive onClick={onClick} className="flex items-center gap-4">
-      <div className="w-16 h-16 flex-shrink-0 bg-[#FF3C3C] flex items-center justify-center text-white text-3xl">
-        🐱
+      <div className="w-16 h-16 flex-shrink-0 border border-[#E0E0E0] dark:border-[#3D3D3D] flex items-center justify-center">
+        <PixelCat frame="idle" className="w-12 h-12" />
       </div>
       <div>
         <h3 className="text-sm font-semibold text-[#1A1A1A] dark:text-white mb-1">
-          {isZh ? "像素猫导览" : "Pixel Cat Tour"}
+          {isZh ? "跟着小猫逛一圈" : "Take the guided tour"}
         </h3>
         <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">
-          {isZh ? "点击开始互动导览" : "Click to start the guided tour"}
+          {isZh ? "Pawsibly 带你看完整个网站" : "Pawsibly walks you round the site"}
         </p>
       </div>
     </BentoTile>
   );
 }
 
+// ── Konami easter egg (kept from the previous home page) ──────────────────────
+const KONAMI = [
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "b",
+  "a",
+];
+
+function GlitchOverlay({ onDone }) {
+  useEffect(() => {
+    const t = setTimeout(onDone, 2200);
+    return () => clearTimeout(t);
+  }, [onDone]);
+  return (
+    <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
+      <div
+        className="absolute left-0 w-full h-1 bg-[#FF3C3C] opacity-60"
+        style={{ animation: "glitch-scan 0.6s linear infinite", top: 0 }}
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="border border-[#FF3C3C] bg-black/90 px-8 py-5 text-center animate-glitch-shake">
+          <p className="font-mono text-[#FF3C3C] text-xs tracking-widest uppercase mb-1">
+            ↑↑↓↓←→←→BA · UNLOCKED
+          </p>
+          <p className="font-mono text-white text-sm font-bold tracking-wider">
+            You found the easter egg.
+          </p>
+          <p className="font-mono text-[#585858] text-xs mt-1">
+            Achievement: 30 extra years of curiosity.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ─────────────────────────────────────────────────────────────
-export default function Home() {
-  const { locale = "en-AU", t } = useI18n();
+export default function Home({ stats }) {
+  const { locale = "en-AU" } = useI18n();
   const isZh = locale === "zh-Hans";
   const [bootComplete, setBootComplete] = useState(false);
   const [termOpen, setTermOpen] = useState(false);
   const [konamiConfetti, setKonamiConfetti] = useState(null);
+  const [glitchOn, setGlitchOn] = useState(false);
+  const konamiRef = useRef([]);
+
+  // Backtick toggles the terminal; the Konami code unlocks the easter egg
+  const handleKeyDown = useCallback((e) => {
+    const next = [...konamiRef.current, e.key].slice(-KONAMI.length);
+    konamiRef.current = next;
+    if (next.join(",") === KONAMI.join(",")) {
+      konamiRef.current = [];
+      setGlitchOn(true);
+      setKonamiConfetti(Date.now());
+      return;
+    }
+    if (e.key === "`" && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      e.preventDefault();
+      setTermOpen((o) => !o);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
 
   // Decisions I've informed — grounded in career-data.js and existing concept demos
   const decisions = isZh
     ? [
         {
-          question: "如何为 1,500 多个持牌场所排期合规检查？",
-          evidence: "整合立法要求、资源约束、战略优先级和政治因素，设计基于风险的排期框架。",
-          recommendation: "向高级管理团队提交框架方案，平衡各方优先级。",
-          outcome: "CBS 采纳框架，形成 TEP 法检查排期。",
+          question: "1,500 多个持牌场所的合规检查该怎么排期？",
+          evidence: "把立法要求、资源限制、战略重点和政治因素整合进一个基于风险的排期框架。",
+          recommendation: "向高级管理团队提交框架，在相互冲突的优先级之间取得平衡。",
+          outcome: "1,500 多个持牌场所的检查按这个框架排期，并配有季度合规与执法报告。",
           href: "/projects/regulatory-analytics-map",
         },
         {
-          question: "SAPOL 投诉行政流程可以在哪里改进？",
-          evidence: "通过团队访谈和操作笔记，端到端审查从受理到结案的流程。",
-          recommendation: "向处领导提交审查结论和改进建议。",
-          outcome: "处领导收到建议，用于工作流优化参考。",
+          question: "SAPOL 的投诉行政流程哪里可以改进？",
+          evidence: "从受理到结案，基于团队访谈和团队自己的操作笔记，对整个流程做端到端审查。",
+          recommendation: "把审查结论和改进建议提交给处领导。",
+          outcome: "结论和建议已交给处领导决定下一步。",
           href: "/projects/professional-standards-reporting",
         },
         {
-          question: "ENSO 如何放大大宗商品价格波动？",
-          evidence: "构建带滚动窗口预测的自回归时间序列模型，量化 ENSO 对对数收益率波动的影响。",
-          recommendation: "向 CSIRO 研究团队报告统计显著性及置信区间，诚实说明模型局限。",
-          outcome: "研究团队将发现纳入气候-经济风险文献。",
-          href: "/strategic",
+          question: "厄尔尼诺（ENSO）会在多大程度上放大大宗商品价格波动？",
+          evidence:
+            "作为 CSIRO 聘请的五人数据顾问团队一员，构建带滚动窗口预测的自回归时间序列模型，衡量 ENSO 对对数收益率波动的放大作用。",
+          recommendation: "向 CSIRO 研究人员汇报结果，并担任墨尔本大学与 CSIRO 之间的联络人。",
+          outcome:
+            "成果用于 CSIRO 关于气候风险与粮食安全的研究。2026 年用公开数据重建后复检，没有发现预测上的提升。",
+          href: "/projects/coursework#enso-commodity-prices",
         },
         {
-          question: "AI 辅助的政府数据产品需要什么治理机制？",
-          evidence: "从 DTA v2.0 和 EU AI Act 推导合规要求，设计篡改证明审计日志。",
-          recommendation: "构建概念原型 Signal，演示请求路径上的治理层。",
-          outcome: "概念原型公开，供 AI 治理讨论参考。",
+          question: "AI 辅助的政府数据产品需要怎样的治理？",
+          evidence:
+            "梳理 DTA AI 政策和欧盟 AI 法案对这类产品的要求，为每个请求设计防篡改、哈希链式的审计日志。",
+          recommendation: "构建 Signal 参考实现，把治理检查放在请求路径上。",
+          outcome: "已上线，覆盖南澳和纽约的犯罪统计，128 项测试全部通过。",
           href: "/projects/signal",
         },
       ]
@@ -251,48 +327,44 @@ export default function Home() {
         {
           question: "How should we schedule compliance inspections across 1,500+ licensed sites?",
           evidence:
-            "Integrated legislative requirements, resourcing constraints, strategic priorities, and political factors into a risk-based scheduling framework.",
+            "Brought legislative requirements, resourcing limits, strategic priorities and political factors into one risk-based scheduling framework.",
           recommendation:
-            "Presented framework to Senior Management Team, balancing competing priorities.",
-          outcome: "CBS adopted the framework for TEP Act inspection scheduling.",
+            "Presented the framework to the Senior Management Team, balancing priorities that pulled in different directions.",
+          outcome:
+            "Inspections for 1,500+ licensed sites were scheduled on the framework, backed by a quarterly compliance and enforcement report.",
           href: "/projects/regulatory-analytics-map",
         },
         {
           question: "Where can SAPOL's complaint administration workflow be improved?",
           evidence:
-            "End-to-end review of the workflow from receipt to closure, built from team interviews and procedure notes.",
-          recommendation: "Delivered findings and recommendations to branch leadership.",
-          outcome: "Branch leadership received recommendations for workflow optimization.",
+            "An end-to-end review of the workflow from receipt to file closure, built from team interviews and the team's own procedure notes.",
+          recommendation: "Took the findings and recommendations to branch leadership.",
+          outcome: "The findings and recommendations are with branch leadership to act on.",
           href: "/projects/professional-standards-reporting",
         },
         {
-          question: "How does ENSO amplify commodity price volatility?",
+          question: "How much does El Niño (ENSO) amplify commodity price volatility?",
           evidence:
-            "Built autoregressive time-series models with rolling-window forecasting to quantify ENSO's amplification of log-return volatility.",
+            "As one of a five-person team engaged by CSIRO as data consultants, I built autoregressive time-series models with rolling-window forecasting to measure ENSO's effect on log-return volatility.",
           recommendation:
-            "Reported statistical significance and confidence intervals to CSIRO research team, honestly stating model limitations.",
-          outcome: "Research team incorporated findings into climate-economic risk literature.",
-          href: "/strategic",
+            "Reported the results to CSIRO researchers and acted as the point of contact between the University and CSIRO.",
+          outcome:
+            "The work fed CSIRO research on climate risk and food security. A 2026 rebuild on public data re-tested the idea and found no forecasting gain.",
+          href: "/projects/coursework#enso-commodity-prices",
         },
         {
           question: "What governance do AI-assisted government data products need?",
           evidence:
-            "Derived compliance requirements from DTA v2.0 and EU AI Act, designed tamper-evident audit log.",
+            "Mapped what the DTA AI policy and the EU AI Act expect of these products, and designed a tamper-evident, hash-chained audit log for every request.",
           recommendation:
-            "Built concept prototype Signal to demonstrate governance layer on the request path.",
-          outcome: "Concept prototype published for AI governance discussion.",
+            "Built Signal, a working reference implementation that puts governance checks on the request path.",
+          outcome: "Live on SA and NYC crime statistics, with all 128 tests passing.",
           href: "/projects/signal",
         },
       ];
 
-  // Data-driven proof tiles
-  const projectCount = 40; // From career and projects
-  const revivedLabs = 12; // From /lab page
-  const skillsCount = 45; // Sum of all items in SKILL_GROUPS from career-data.js
-  const latestBlogPost = {
-    title: isZh ? "Gmail 标签器 AI Agent" : "Gmail Labeler AI Agent",
-    href: "/blog/gmail-labeler-ai-agent",
-  };
+  // Proof tiles, computed at build time from the site's own data (see getStaticProps)
+  const latestPost = stats?.latestPost;
   const currentRole = isZh ? "ASO7 高级数据分析师" : "ASO7 Senior Data Analyst";
 
   if (!bootComplete) {
@@ -321,6 +393,7 @@ export default function Home() {
         </title>
       </Head>
 
+      {glitchOn && <GlitchOverlay onDone={() => setGlitchOn(false)} />}
       {konamiConfetti && <ConfettiBurst trigger={konamiConfetti} size="big" />}
 
       {/* Terminal toggle button */}
@@ -404,34 +477,34 @@ export default function Home() {
                 {isZh ? "项目" : "Projects"}
               </p>
               <p className="text-3xl font-bold tabular-nums text-[#1A1A1A] dark:text-white">
-                {projectCount}+
+                {stats.projects}
               </p>
             </BentoTile>
 
-            <BentoTile>
+            <BentoTile interactive href="/projects/coursework">
               <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-2">
-                {isZh ? "复活的实验室" : "Revived Labs"}
+                {isZh ? "复活的课程项目" : "Coursework revived"}
               </p>
               <p className="text-3xl font-bold tabular-nums text-[#1A1A1A] dark:text-white">
-                {revivedLabs}
+                {stats.labs}
               </p>
             </BentoTile>
 
-            <BentoTile>
+            <BentoTile interactive href="/skills">
               <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-2">
-                {isZh ? "证据过的技能" : "Evidenced Skills"}
+                {isZh ? "有据可查的技能" : "Evidenced skills"}
               </p>
               <p className="text-3xl font-bold tabular-nums text-[#1A1A1A] dark:text-white">
-                {skillsCount}+
+                {stats.skills}
               </p>
             </BentoTile>
 
-            <BentoTile interactive href={latestBlogPost.href}>
+            <BentoTile interactive href={latestPost ? `/blog/${latestPost.slug}` : "/blog"}>
               <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-2">
                 {isZh ? "最新博文" : "Latest Post"}
               </p>
               <p className="text-sm font-medium text-[#1A1A1A] dark:text-white line-clamp-2">
-                {latestBlogPost.title}
+                {latestPost ? latestPost.title : isZh ? "博客" : "Blog"}
               </p>
             </BentoTile>
           </div>
@@ -442,12 +515,7 @@ export default function Home() {
               <ScenarioSlider locale={locale} />
             </div>
             <div className="flex flex-col gap-4">
-              <PixelCatTile
-                onClick={() =>
-                  alert(isZh ? "像素猫导览功能即将推出！" : "Pixel cat tour coming soon!")
-                }
-                locale={locale}
-              />
+              <PixelCatTile onClick={() => restartGuide()} locale={locale} />
               <BentoTile>
                 <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wide mb-2">
                   {isZh ? "当前职位" : "Current Role"}
@@ -497,4 +565,29 @@ export default function Home() {
       </div>
     </>
   );
+}
+
+// Proof-tile numbers come from the same data the rest of the site uses, so they
+// can't drift: the Projects list, the coursework entries, the skills atlas and
+// the newest blog post.
+export async function getStaticProps({ locale = "en-AU" }) {
+  const posts = (await getAllPosts()).map(({ slug, title, date, tags }) => ({
+    slug,
+    title,
+    date: date ?? null,
+    tags: tags ?? [],
+  }));
+  const dict = locale === "zh-Hans" ? zh : en;
+  const atlas = buildSkillsAtlas(locale, { dict, posts });
+  const latest = posts[0];
+  return {
+    props: {
+      stats: {
+        projects: PROJECTS.length,
+        labs: COURSEWORK.length,
+        skills: atlas.stats.skills,
+        latestPost: latest ? { slug: latest.slug, title: latest.title } : null,
+      },
+    },
+  };
 }
