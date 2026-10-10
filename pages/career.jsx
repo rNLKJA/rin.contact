@@ -10,6 +10,12 @@ import { assertCareerData } from "@/lib/career-check";
 const TimelineSection = dynamic(() => import("@/components/sections/TimelineSection"), {
   loading: () => <div className="min-h-[480px]" />,
 });
+// Needs today's month, so it renders on the client; the timeline below carries
+// the same information in the static HTML.
+const CareerInstrument = dynamic(() => import("@/components/sections/CareerInstrument"), {
+  ssr: false,
+  loading: () => <div className="min-h-[520px]" aria-hidden="true" />,
+});
 const MetroMapSection = dynamic(() => import("@/components/sections/MetroMapSection"), {
   loading: () => <div className="min-h-[360px]" />,
 });
@@ -74,6 +80,11 @@ export default function CareerPage() {
             {t("career.resumeLink")} <span aria-hidden="true">→</span>
           </Link>
         </p>
+      </div>
+
+      {/* Career signal — one light per month, per role */}
+      <div className="bg-white dark:bg-[#0A0A0A]">
+        <CareerInstrument />
       </div>
 
       {/* Timeline */}
