@@ -6,6 +6,10 @@ import { useI18n } from "@/contexts/I18nContext";
 const HeroDotCanvas = dynamic(() => import("@/components/ui/HeroDotCanvas"), { ssr: false });
 const ScrollCue = dynamic(() => import("@/components/ui/ScrollCue"), { ssr: false });
 const HeroInteractHint = dynamic(() => import("@/components/ui/HeroInteractHint"), { ssr: false });
+const EvidenceField = dynamic(() => import("@/components/ui/EvidenceField"), {
+  ssr: false,
+  loading: () => <div className="w-full aspect-[16/11] md:aspect-[5/4]" aria-hidden="true" />,
+});
 
 // Inline SVGs — avoids react-icons bundle on critical hero path
 const LinkedInIcon = () => (
@@ -55,29 +59,6 @@ function useTypewriter(words, speed = 80, pause = 1800) {
   }, [charIdx, deleting, wordIdx, words, speed, pause]);
 
   return display;
-}
-
-// ─── Count-up ────────────────────────────────────────────────────────────────
-// Motion rules: start at 70% of the target and land within 300ms.
-function CountUp({ target, duration = 300, started }) {
-  const from = Math.round(target * 0.7);
-  const [count, setCount] = useState(from);
-  const frameRef = useRef(null);
-
-  useEffect(() => {
-    if (!started) return;
-    const start = performance.now();
-    const tick = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(from + eased * (target - from)));
-      if (progress < 1) frameRef.current = requestAnimationFrame(tick);
-    };
-    frameRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frameRef.current);
-  }, [started, target, duration, from]);
-
-  return <>{count}</>;
 }
 
 // ─── Magnetic button ─────────────────────────────────────────────────────────
@@ -186,29 +167,10 @@ function useTimeGreeting() {
 export default function HeroSection() {
   const { t } = useI18n();
   const roles = t("heroRoles");
-  const stats = t("heroStats");
   const tags = t("heroTags");
   const role = useTypewriter(Array.isArray(roles) ? roles : []);
   const greeting = useTimeGreeting();
-  const [statsStarted, setStatsStarted] = useState(false);
-  const statsRef = useRef(null);
   const { spawn, bursts } = useDotBurst();
-
-  useEffect(() => {
-    const el = statsRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStatsStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
@@ -396,53 +358,10 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT — stats (ref here so observer works on all screen sizes) */}
-        <div ref={statsRef}>
-          {/* Desktop 2×2 grid */}
-          <div className="hidden md:grid grid-cols-2 gap-px animate-fade-up delay-300">
-            {stats.map(({ value, label, sub }, i) => (
-              <div
-                key={label}
-                className="bg-white dark:bg-[#0A0A0A] px-8 py-10 flex flex-col gap-2 group hover:bg-[#FF3C3C] transition-colors duration-200 text-black dark:text-white"
-              >
-                <span className="text-5xl font-semibold leading-none tabular-nums tracking-tight text-black dark:text-white group-hover:text-white transition-colors duration-200">
-                  <CountUp
-                    target={value}
-                    duration={Math.min(200 + i * 30, 300)}
-                    started={statsStarted}
-                  />
-                  <span className="text-[#FF3C3C] group-hover:text-white transition-colors duration-200">
-                    +
-                  </span>
-                </span>
-                <span className="text-sm font-medium tracking-wide uppercase text-black dark:text-white group-hover:text-white transition-colors duration-200">
-                  {label}
-                </span>
-                <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] font-light group-hover:text-white/70 transition-colors duration-200">
-                  {sub}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile — flat strip */}
-          <div className="flex flex-wrap gap-8 md:hidden text-black dark:text-white">
-            {stats.map(({ value, label }, i) => (
-              <div key={label} className="flex flex-col items-start">
-                <span className="text-3xl font-semibold leading-none tabular-nums tracking-tight text-black dark:text-white">
-                  <CountUp
-                    target={value}
-                    duration={Math.min(200 + i * 30, 300)}
-                    started={statsStarted}
-                  />
-                  <span className="text-[#FF3C3C]">+</span>
-                </span>
-                <span className="text-[10px] tracking-widest uppercase text-black dark:text-white mt-1">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div>
+        {/* RIGHT — the evidence field: name -> trend -> risk-ranked sites.
+            The counts that used to sit here now live in GlyphCounters below. */}
+        <div className="md:animate-fade-up md:delay-300">
+          <EvidenceField />
         </div>
       </div>
 
