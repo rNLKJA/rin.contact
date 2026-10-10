@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"));
 import { useRouter } from "next/router";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
@@ -457,27 +458,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ═══ TESTIMONIALS ═══ */}
+          {/* ═══ TESTIMONIALS (the site's real, named endorsements) ═══ */}
           <div className="mb-6 md:mb-8">
-            <h2 className="text-xs tracking-widest uppercase text-[#9A9A9A] mb-4 font-mono">
-              {isZh ? "来自同行的评价" : "What Peers Say"}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <BentoTile>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-3">
-                  "Rin combines technical depth with strategic thinking — rare in data roles."
-                </p>
-                <p className="text-xs text-[#9A9A9A]">— Former colleague, CBS</p>
-              </BentoTile>
-
-              <BentoTile>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-3">
-                  "Rin's analysis directly informed our executive decisions on compliance
-                  scheduling."
-                </p>
-                <p className="text-xs text-[#9A9A9A]">— Senior Manager, Government</p>
-              </BentoTile>
-            </div>
+            <TestimonialsSection />
           </div>
 
           {/* ═══ CLEAR CALLS TO ACTION ═══ */}
