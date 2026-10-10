@@ -315,6 +315,10 @@ const FeaturedWork = dynamic(() => import("@/components/sections/FeaturedWork"),
 const MarqueeBand = dynamic(() => import("@/components/sections/MarqueeBand"), {
   loading: () => <div className="min-h-[80px]" aria-hidden="true" />,
 });
+const CareerInstrument = dynamic(() => import("@/components/sections/CareerInstrument"), {
+  ssr: false,
+  loading: () => <div className="min-h-[360px]" aria-hidden="true" />,
+});
 const SectionNavCards = dynamic(() => import("@/components/sections/SectionNavCards"), {
   loading: () => <div className="min-h-[320px]" aria-hidden="true" />,
 });
@@ -649,6 +653,11 @@ export default function Home({ glyphStats }) {
             </div>
           </div>
 
+          {/* ══ CAREER SIGNAL — compact: one row per track, links to /career ══ */}
+          <div className="bg-white dark:bg-[#0A0A0A]">
+            <CareerInstrument compact />
+          </div>
+
           {/* ══ MARQUEE — kinetic domains band (full-bleed) ══ */}
           <MarqueeBand />
 
@@ -658,7 +667,7 @@ export default function Home({ glyphStats }) {
               <StatusBadge />
             </div>
             <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <SectionNavCards />
+              <SectionNavCards counts={{ projects: PROJECTS.length }} />
             </div>
           </div>
 
