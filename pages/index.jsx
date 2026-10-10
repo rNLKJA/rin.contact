@@ -3,8 +3,14 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
-import { CERTS } from "@/lib/career-data";
+import { CERTS, ROLES } from "@/lib/career-data";
 import { PROJECTS } from "@/lib/projects-data";
+import { COURSEWORK } from "@/lib/coursework-data";
+import { getAllPosts } from "@/lib/posts";
+import { buildSkillsAtlas } from "@/lib/skills-atlas";
+import en from "@/locales/en-AU.json";
+import zh from "@/locales/zh-Hans.json";
+import GlyphCounters from "@/components/sections/GlyphCounters";
 
 // Moved from pages/_document.jsx — these describe homepage-only content
 // (career timeline anchors, project list, credentials) and were previously
@@ -319,7 +325,7 @@ const ContactSection = dynamic(() => import("@/components/sections/ContactSectio
   loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" />,
 });
 
-export default function Home() {
+export default function Home({ glyphStats }) {
   const { locale = "en-AU" } = useRouter();
   const isZh = locale === "zh-Hans";
   const [termOpen, setTermOpen] = useState(false);
@@ -619,6 +625,11 @@ export default function Home() {
             </div>
           </div>
 
+          {/* ══ BY THE NUMBERS — glyph counters, counted at build time ══ */}
+          <div className="bg-white dark:bg-[#0A0A0A]">
+            <GlyphCounters stats={glyphStats} />
+          </div>
+
           {/* ══ POSITIONING — thesis band (identity -> thesis -> proof) ══ */}
           <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
             <div className="max-w-[1100px] mx-auto px-6 md:px-12">
@@ -795,4 +806,27 @@ export default function Home() {
       </div>
     </>
   );
+}
+
+// The glyph counters read the same data as the pages they link to (career,
+// projects, coursework and the skills atlas), so the numbers can't drift.
+export async function getStaticProps({ locale = "en-AU" }) {
+  const posts = (await getAllPosts()).map(({ slug, title, date, tags }) => ({
+    slug,
+    title,
+    date: date ?? null,
+    tags: tags ?? [],
+  }));
+  const dict = locale === "zh-Hans" ? zh : en;
+  const atlas = buildSkillsAtlas(locale, { dict, posts });
+  return {
+    props: {
+      glyphStats: {
+        roles: ROLES.length,
+        projects: PROJECTS.length,
+        coursework: COURSEWORK.length,
+        skills: atlas.stats.skills,
+      },
+    },
+  };
 }
