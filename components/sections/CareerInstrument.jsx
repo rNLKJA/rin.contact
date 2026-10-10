@@ -8,12 +8,16 @@
  * at their last light. Hovering or focusing a row reads it out in the dot-matrix
  * display; clicking jumps to that role in the timeline below (#role-<id>).
  *
+ * The compact variant (home page) folds each track into one row, reads out
+ * what is current, and links through to /career.
+ *
  * Everything comes from lib/career-data.js, so the panel can't drift from the
  * timeline. Rendered client-side only (it needs today's month); the timeline
  * below carries the same information for crawlers and screen readers.
  */
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { getRoles } from "@/lib/career-data";
 
@@ -37,6 +41,9 @@ const COPY = {
       return `${y} yr${r ? ` ${r} mo` : ""}`;
     },
     ongoing: "ongoing",
+    compactNote: "One light per month since 2023, by track.",
+    open: "Open the career page",
+    roleCount: (n) => `${n} role${n === 1 ? "" : "s"}`,
   },
   zh: {
     label: "职业信号",
@@ -47,6 +54,9 @@ const COPY = {
     now: "现在",
     months: (m) => `${m} 个月`,
     ongoing: "进行中",
+    compactNote: "自 2023 年起每月一格，按轨道排列。",
+    open: "查看完整职业经历",
+    roleCount: (n) => `${n} 个角色`,
   },
 };
 
@@ -69,8 +79,9 @@ function monthIndex(iso) {
   return (y - ORIGIN_YEAR) * 12 + (m - 1);
 }
 
-export default function CareerInstrument() {
-  const { locale = "en-AU" } = useRouter();
+export default function CareerInstrument({ compact = false }) {
+  const router = useRouter();
+  const { locale = "en-AU" } = router;
   const lang = locale === "zh-Hans" ? "zh" : "en";
   const copy = COPY[lang];
   const reduce = useReducedMotion();
@@ -94,8 +105,36 @@ export default function CareerInstrument() {
     })).filter((g) => g.roles.length);
   }, [locale, nowIdx]);
 
+  // Compact: one row per track, lit wherever any role in that track was active.
+  const lanes = useMemo(() => {
+    if (!compact) return groups;
+    return groups.map((g) => {
+      const months = new Set();
+      g.roles.forEach((r) => {
+        for (let m = r.s; m <= r.e; m++) months.add(m);
+      });
+      return {
+        track: g.track,
+        roles: [
+          {
+            id: g.track,
+            role: copy.tracks[g.track],
+            orgShort: copy.tracks[g.track],
+            org: [...new Set(g.roles.map((r) => r.orgShort || r.org))].join(" · "),
+            months,
+            s: Math.min(...g.roles.map((r) => r.s)),
+            e: Math.max(...g.roles.map((r) => r.e)),
+            current: g.roles.some((r) => r.current),
+            count: g.roles.length,
+          },
+        ],
+      };
+    });
+  }, [compact, groups, copy]);
+
   const allRoles = groups.flatMap((g) => g.roles);
-  const current = allRoles.find((r) => r.id === active);
+  const nowRoles = allRoles.filter((r) => r.current);
+  const current = lanes.flatMap((g) => g.roles).find((r) => r.id === active);
 
   useEffect(() => {
     const el = ref.current;
@@ -118,6 +157,10 @@ export default function CareerInstrument() {
   for (let y = ORIGIN_YEAR; (y - ORIGIN_YEAR) * 12 < total; y++) years.push(y);
 
   const jump = (id) => {
+    if (compact) {
+      router.push("/career");
+      return;
+    }
     const target = document.getElementById(`role-${id}`);
     if (!target) return;
     target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
@@ -138,7 +181,16 @@ export default function CareerInstrument() {
             <span aria-hidden="true">■ — </span>
             {copy.label}
           </p>
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] m-0">{copy.note}</p>
+          {compact ? (
+            <Link
+              href="/career"
+              className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
+            >
+              {copy.open} <span aria-hidden="true">→</span>
+            </Link>
+          ) : (
+            <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] m-0">{copy.note}</p>
+          )}
         </div>
 
         {/* Readout */}
@@ -152,7 +204,9 @@ export default function CareerInstrument() {
                 {current.role}
               </p>
               <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-2 m-0">
-                {current.org} · {current.period} · {copy.months(current.e - current.s + 1)}
+                {compact
+                  ? `${current.org} · ${copy.roleCount(current.count)}`
+                  : `${current.org} · ${current.period} · ${copy.months(current.e - current.s + 1)}`}
                 {current.current && (
                   <span className="text-[#B71C1C] dark:text-[#FF3C3C]"> · {copy.ongoing}</span>
                 )}
@@ -161,10 +215,22 @@ export default function CareerInstrument() {
           ) : (
             <>
               <p className="font-display text-3xl md:text-5xl leading-none text-black dark:text-white m-0">
-                {copy.idle(allRoles.length)}
+                {compact
+                  ? nowRoles.map((r) => r.orgShort || r.org).join(" + ")
+                  : copy.idle(allRoles.length)}
               </p>
               <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-3 m-0">
-                {copy.idleSub}
+                {compact ? (
+                  <>
+                    <span className="text-[#B71C1C] dark:text-[#FF3C3C]">{copy.now}</span>
+                    {" · "}
+                    {nowRoles.map((r) => r.role).join(" · ")}
+                    {" · "}
+                    {copy.compactNote}
+                  </>
+                ) : (
+                  copy.idleSub
+                )}
               </p>
             </>
           )}
@@ -174,15 +240,23 @@ export default function CareerInstrument() {
         <div className="flex gap-3 md:gap-5">
           {/* Labels */}
           <div className="w-[92px] md:w-[230px] flex-shrink-0">
-            {groups.map((g) => (
+            {lanes.map((g) => (
               <div key={g.track}>
-                <p className="h-8 flex items-end pb-1 m-0 font-mono text-[10px] md:text-[11px] tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C]">
-                  {copy.tracks[g.track]}
-                </p>
+                {!compact && (
+                  <p className="h-8 flex items-end pb-1 m-0 font-mono text-[10px] md:text-[11px] tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C]">
+                    {copy.tracks[g.track]}
+                  </p>
+                )}
                 {g.roles.map((r) => (
                   <a
                     key={r.id}
-                    href={`#role-${r.id}`}
+                    href={
+                      compact
+                        ? locale === "zh-Hans"
+                          ? "/zh-Hans/career/"
+                          : "/career/"
+                        : `#role-${r.id}`
+                    }
                     onClick={(e) => {
                       e.preventDefault();
                       jump(r.id);
@@ -190,7 +264,9 @@ export default function CareerInstrument() {
                     onMouseEnter={() => setActive(r.id)}
                     onFocus={() => setActive(r.id)}
                     onBlur={() => setActive(null)}
-                    aria-label={`${r.role}, ${r.org}, ${r.period}`}
+                    aria-label={
+                      compact ? `${r.role}: ${r.org}` : `${r.role}, ${r.org}, ${r.period}`
+                    }
                     className={`h-7 flex items-center text-xs truncate transition-colors duration-200 outline-none focus-visible:ring-1 focus-visible:ring-[#FF3C3C] ${
                       active === r.id
                         ? "text-[#B71C1C] dark:text-[#FF3C3C]"
@@ -203,7 +279,7 @@ export default function CareerInstrument() {
                       {r.orgShort || r.org}
                     </span>
                     <span className="hidden md:inline min-w-0 text-[#6E6E6E] dark:text-[#9A9A9A] truncate">
-                      {r.role}
+                      {compact ? r.org : r.role}
                     </span>
                   </a>
                 ))}
@@ -213,9 +289,9 @@ export default function CareerInstrument() {
 
           {/* Strips */}
           <div className="relative flex-1 min-w-0" aria-hidden="true">
-            {groups.map((g) => (
+            {lanes.map((g) => (
               <div key={g.track}>
-                <div className="h-8" />
+                {!compact && <div className="h-8" />}
                 {g.roles.map((r) => {
                   const hot = active === r.id;
                   const dim = active && !hot;
@@ -227,7 +303,7 @@ export default function CareerInstrument() {
                       onClick={() => jump(r.id)}
                     >
                       {Array.from({ length: total }, (_, m) => {
-                        const lit = m >= r.s && m <= r.e;
+                        const lit = r.months ? r.months.has(m) : m >= r.s && m <= r.e;
                         const head = lit && r.current && m === r.e;
                         let cls = "bg-black/[0.07] dark:bg-white/[0.08]";
                         if (lit && on) {
@@ -258,7 +334,7 @@ export default function CareerInstrument() {
 
             {/* Now line */}
             <div
-              className="absolute top-6 bottom-0 w-px bg-[#FF3C3C] pointer-events-none"
+              className={`absolute ${compact ? "top-0" : "top-6"} bottom-0 w-px bg-[#FF3C3C] pointer-events-none`}
               style={{
                 left: on ? `${((nowIdx + 0.5) / total) * 100}%` : "0%",
                 transition: reduce ? "none" : "left 2.4s cubic-bezier(0.2, 0.7, 0.2, 1)",

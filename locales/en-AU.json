@@ -1315,7 +1315,7 @@
         "title": "Projects",
         "desc": "Built across data engineering, cloud infrastructure, mobile, and web platforms.",
         "tags": ["Python", "Next.js", "AWS", "React Native"],
-        "stat": "28 projects"
+        "stat": "{projects} projects"
       },
       {
         "num": "04",

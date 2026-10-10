@@ -1002,7 +1002,7 @@
         "title": "项目",
         "desc": "覆盖数据工程、云基础设施、移动端与Web平台的项目。",
         "tags": ["Python", "Next.js", "AWS", "React Native"],
-        "stat": "28个项目"
+        "stat": "{projects}个项目"
       },
       {
         "num": "04",

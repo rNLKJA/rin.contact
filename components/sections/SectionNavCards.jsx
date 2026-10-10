@@ -21,6 +21,7 @@ import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useInView } from "@/hooks/useInView";
+import { fill } from "@/lib/fill";
 
 const HREFS = ["/blog", "/career", "/projects", "/lab", "/about", "/resume"];
 
@@ -592,7 +593,7 @@ function VerticalLog({ cards, pal, reduced }) {
 
 /* ───────────────────────────────── Section ────────────────────────────────── */
 
-export default function SectionNavCards() {
+export default function SectionNavCards({ counts = {} }) {
   const { t } = useI18n();
   const { resolved } = useTheme();
   const isDark = resolved === "dark";
@@ -621,7 +622,11 @@ export default function SectionNavCards() {
   }, []);
 
   const raw = t("sectionNav.cards");
-  const cards = Array.isArray(raw) ? raw : [];
+  // Counts like {projects} are filled from live data so the labels can't go stale.
+  const cards = (Array.isArray(raw) ? raw : []).map((c) => ({
+    ...c,
+    stat: fill(String(c.stat ?? ""), counts),
+  }));
   if (!cards.length) return null;
 
   return (
