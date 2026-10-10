@@ -1,4 +1,5 @@
 import { CERTS, ROLES } from "@/lib/career-data";
+import pkg from "../../package.json";
 
 /**
  * GET /api/curl  (internal — invoked via middleware rewrite for CLI clients)
@@ -73,7 +74,7 @@ const lines = [
   "",
 
   // System header bar
-  `  ${D}[[${X} ${M}rin.contact${X} ${D}]]${X}    ${D}[[${X} ${RED}●${X} ${W}ONLINE${X} ${D}]]${X}    ${D}[[${X} ${M}Adelaide, AU${X} ${D}]]${X}    ${D}[[${X} ${M}v5.9.0${X} ${D}]]${X}`,
+  `  ${D}[[${X} ${M}rin.contact${X} ${D}]]${X}    ${D}[[${X} ${RED}●${X} ${W}ONLINE${X} ${D}]]${X}    ${D}[[${X} ${M}Adelaide, AU${X} ${D}]]${X}    ${D}[[${X} ${M}v${pkg.version}${X} ${D}]]${X}`,
   "",
   DOTS,
   "",
