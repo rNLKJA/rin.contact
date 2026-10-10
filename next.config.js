@@ -79,6 +79,8 @@ const nextConfig = {
       // The clinical app write-up moved to /projects/moodist. i18n prefixes
       // these, so the /zh-Hans/ form redirects too.
       ["projects/moodq", "projects/moodist"],
+      // The teaching page moved to /projects/classbro. i18n prefixes these.
+      ["projects/teaching", "projects/classbro"],
     ];
     return moved.flatMap(([from, to]) => [
       { source: `/${from}`, destination: `/${to}`, permanent: true },
