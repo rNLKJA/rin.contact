@@ -97,12 +97,12 @@
   ],
   "heroStats": [
     {
-      "value": 7,
+      "value": 9,
       "label": "行业角色",
       "sub": "横跨政府、科研与创业"
     },
     {
-      "value": 24,
+      "value": 32,
       "label": "项目",
       "sub": "数据 · 云 · 移动 · Web"
     },
