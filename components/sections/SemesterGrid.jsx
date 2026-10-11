@@ -1,12 +1,13 @@
 /**
  * SemesterGrid — timeline of coursework labs by term and level.
  *
- * Every COURSEWORK entry (lib/coursework-data.js) becomes a lit cell:
+ * Every COURSEWORK entry (lib/coursework-data.js) becomes its own 10-14px lit cell:
  * columns = terms in chronological order (term {year, semester}),
- * two rows = undergraduate and master (LEVELS from the data file).
+ * two rows = undergraduate and master's (LEVELS from the data file).
  * Cells light in chronological order on first view. Hover/focus reads out
  * subject code + title, mono line with term and team/individual. Click scrolls
  * to that lab's entry (find its anchor id). Idle: "{n} labs revived" + year span.
+ * Matches CareerInstrument style: compact glyph grid, dot-matrix readout.
  *
  * Reduced motion shows all cells lit immediately, no sweep.
  */
@@ -20,19 +21,19 @@ const COPY = {
   en: {
     label: "Coursework timeline",
     note: "Each cell is a lab. Hover to read, click to jump.",
-    idle: (n, from, to) => `${n} lab${n === 1 ? "" : "s"} revived`,
-    idleSub: (from, to) => `${from} to ${to} · undergraduate and master`,
+    idle: (n) => `${n} lab${n === 1 ? "" : "s"} revived`,
+    idleSub: (from, to) => `${from} to ${to} · undergraduate and master's`,
     individual: "individual",
     team: (n) => `team of ${n}`,
     levels: {
       undergraduate: "Undergraduate",
-      master: "Master",
+      master: "Master's",
     },
   },
   zh: {
     label: "课程项目时间线",
     note: "每个格子是一个实验室。悬停读取，点击跳转。",
-    idle: (n, from, to) => `${n} 个实验室复活`,
+    idle: (n) => `已重建 ${n} 个课程实验室`,
     idleSub: (from, to) => `${from} 至 ${to} · 本科与硕士`,
     individual: "个人",
     team: (n) => `${n} 人团队`,
@@ -56,7 +57,7 @@ const useReducedMotion = () =>
     () => false
   );
 
-/** Term key for sorting: "2019-2", "2020-winter", etc. */
+/** Term key for sorting: "2019-2", "2020-1.5", etc. */
 function termKey(term) {
   const sem = term.semester === "winter" ? "1.5" : String(term.semester);
   return `${term.year}-${sem}`;
@@ -69,7 +70,8 @@ function termLabel(term, lang) {
 }
 
 export default function SemesterGrid({ coursework = [] }) {
-  const { locale = "en-AU" } = useRouter();
+  const router = useRouter();
+  const { locale = "en-AU" } = router;
   const lang = locale === "zh-Hans" ? "zh" : "en";
   const copy = COPY[lang];
   const reduce = useReducedMotion();
@@ -159,7 +161,7 @@ export default function SemesterGrid({ coursework = [] }) {
           ) : (
             <>
               <p className="font-display text-3xl md:text-5xl leading-none text-black dark:text-white m-0">
-                {copy.idle(coursework.length, from, to)}
+                {copy.idle(coursework.length)}
               </p>
               <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-3 m-0">
                 {copy.idleSub(from, to)}
@@ -168,96 +170,94 @@ export default function SemesterGrid({ coursework = [] }) {
           )}
         </div>
 
-        {/* The grid */}
-        <div className="overflow-x-auto">
-          <div className="inline-block min-w-full">
-            <div className="flex gap-px bg-[#E0E0E0] dark:bg-[#3D3D3D] border border-[#E0E0E0] dark:border-[#3D3D3D]">
-              {/* Level labels column */}
-              <div className="flex flex-col gap-px">
-                <div className="h-8 bg-white dark:bg-[#0A0A0A] flex items-center px-3">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C]">
-                    Level
+        {/* The grid: wrapping flex, no inner scrollbars */}
+        <div className="flex flex-wrap gap-3">
+          {/* Level labels column (always first) */}
+          <div className="w-[72px] md:w-20 flex-shrink-0 flex flex-col gap-2">
+            <div className="h-6 flex items-center">
+              <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C]">
+                Level
+              </span>
+            </div>
+            {levels.map((lvl) => (
+              <div key={lvl} className="h-auto min-h-[28px] flex items-center">
+                <span className="text-[10px] md:text-xs font-medium text-black dark:text-white leading-tight">
+                  {copy.levels[lvl]}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Term columns: each lab is its own cell, stacked if multiple labs per term/level */}
+          {terms.map((tk) => {
+            const termObj = coursework.find((c) => termKey(c.term) === tk)?.term;
+            if (!termObj) return null;
+
+            return (
+              <div
+                key={tk}
+                className="flex flex-col gap-2 w-auto min-w-[52px] md:min-w-[64px] flex-shrink-0"
+              >
+                {/* Term header */}
+                <div className="h-6 flex items-center justify-center">
+                  <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+                    {termLabel(termObj, lang)}
                   </span>
                 </div>
-                {levels.map((lvl) => (
-                  <div
-                    key={lvl}
-                    className="flex-1 bg-white dark:bg-[#0A0A0A] flex items-center px-3"
-                  >
-                    <span className="text-xs font-medium text-black dark:text-white whitespace-nowrap">
-                      {copy.levels[lvl]}
-                    </span>
-                  </div>
-                ))}
-              </div>
 
-              {/* Term columns */}
-              {terms.map((tk, colIdx) => {
-                const termObj = coursework.find((c) => termKey(c.term) === tk)?.term;
-                if (!termObj) return null;
+                {/* Cells for each level */}
+                {levels.map((lvl) => {
+                  const labs = grid[tk][lvl];
 
-                return (
-                  <div key={tk} className="flex flex-col gap-px min-w-[80px]">
-                    {/* Term header */}
-                    <div className="h-8 bg-white dark:bg-[#0A0A0A] flex items-center justify-center px-2">
-                      <span className="text-[10px] font-mono tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
-                        {termLabel(termObj, lang)}
-                      </span>
-                    </div>
+                  return (
+                    <div
+                      key={lvl}
+                      className="flex flex-wrap gap-1 items-center justify-center min-h-[28px]"
+                    >
+                      {labs.map((lab) => {
+                        const hot = active === lab.slug;
+                        const dim = active && !hot;
+                        const chronoIndex = coursework.findIndex((c) => c.slug === lab.slug);
 
-                    {/* Cells for each level */}
-                    {levels.map((lvl) => {
-                      const labs = grid[tk][lvl];
-                      const hasLab = labs.length > 0;
-                      const lab = hasLab ? labs[0] : null; // take first if multiple
-                      const hot = lab && active === lab.slug;
-                      const dim = active && !hot;
-                      const chronoIndex = coursework.findIndex((c) => c.slug === lab?.slug);
-
-                      return (
-                        <div
-                          key={lvl}
-                          className="flex-1 bg-white dark:bg-[#0A0A0A] flex items-center justify-center p-2"
-                        >
-                          {hasLab && lab ? (
-                            <button
-                              onClick={() => jump(lab.slug)}
-                              onMouseEnter={() => setActive(lab.slug)}
-                              onFocus={() => setActive(lab.slug)}
-                              onBlur={() => setActive(null)}
-                              aria-label={`${lab.subjectCode} ${lab.title}, ${termLabel(termObj, lang)}, ${
-                                lab.team.length === 0
-                                  ? copy.individual
-                                  : copy.team(lab.team.length + 1)
+                        return (
+                          <button
+                            key={lab.slug}
+                            data-lab-cell
+                            onClick={() => jump(lab.slug)}
+                            onMouseEnter={() => setActive(lab.slug)}
+                            onFocus={() => setActive(lab.slug)}
+                            onBlur={() => setActive(null)}
+                            aria-label={`${lab.subjectCode} ${lab.title}, ${termLabel(termObj, lang)}, ${
+                              lab.team.length === 0
+                                ? copy.individual
+                                : copy.team(lab.team.length + 1)
+                            }`}
+                            className="outline-none focus-visible:ring-2 focus-visible:ring-[#FF3C3C] transition-all duration-300"
+                            style={{
+                              transitionDelay: on && !active ? `${chronoIndex * 40}ms` : "0ms",
+                            }}
+                          >
+                            <span
+                              className={`block w-[11px] h-[11px] md:w-[13px] md:h-[13px] rounded-[2px] transition-all duration-300 ${
+                                on
+                                  ? hot
+                                    ? "bg-[#FF3C3C] scale-110"
+                                    : dim
+                                      ? "bg-black/20 dark:bg-white/20"
+                                      : "bg-black dark:bg-white"
+                                  : "bg-black/10 dark:bg-white/10"
                               }`}
-                              className="outline-none focus-visible:ring-2 focus-visible:ring-[#FF3C3C] transition-all duration-300"
-                              style={{
-                                transitionDelay: on && !active ? `${chronoIndex * 40}ms` : "0ms",
-                              }}
-                            >
-                              <span
-                                className={`block w-6 h-6 md:w-8 md:h-8 rounded-sm transition-all duration-300 ${
-                                  on
-                                    ? hot
-                                      ? "bg-[#FF3C3C] scale-110"
-                                      : dim
-                                        ? "bg-black/20 dark:bg-white/20"
-                                        : "bg-black dark:bg-white"
-                                    : "bg-black/10 dark:bg-white/10"
-                                }`}
-                              />
-                            </button>
-                          ) : (
-                            <span className="block w-6 h-6 md:w-8 md:h-8" />
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+                            />
+                          </button>
+                        );
+                      })}
+                      {labs.length === 0 && <span className="w-[11px] md:w-[13px]" />}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

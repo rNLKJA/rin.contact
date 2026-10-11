@@ -1,11 +1,12 @@
 /**
  * ProjectField — a visual timeline of all projects as glyph nodes.
  *
- * Every project from PROJECTS (lib/projects-data.js) becomes a lit glyph node:
+ * Every project from PROJECTS (lib/projects-data.js) becomes a lit 8-10px glyph:
  * x = start year/month parsed from its period, y = lanes by its domain/category.
  * Nodes light left to right on first view; hover/focus shows title, period and
- * domain in dot-matrix; click scrolls to the card (or opens it if the page does).
- * Category chips above the field dim non-matching nodes. Idle: "{n} projects".
+ * domain in the readout; click scrolls to the card. Category chips filter.
+ * Idle: "{n} projects". Matches CareerInstrument style: compact glyph grid, dot-matrix
+ * readout, hairline borders, section shell.
  *
  * Reduced motion shows all nodes lit immediately, no sweep.
  */
@@ -44,7 +45,7 @@ const useReducedMotion = () =>
     () => false
   );
 
-/** Parse "Jun 2026", "Aug 2025 – Present", etc. to a fractional year for x. */
+/** Parse period to a fractional year. Handles: "Jun 2026", "Aug 2025 – Present", "2020 – Present", "2024 – 2025". */
 function parseStartYear(period) {
   const months = {
     Jan: 0,
@@ -60,12 +61,23 @@ function parseStartYear(period) {
     Nov: 10,
     Dec: 11,
   };
-  const match = period.match(/^(\w+)\s+(\d{4})/);
-  if (!match) return 2019; // fallback
-  const [, mon, yr] = match;
-  const y = parseInt(yr, 10);
-  const m = months[mon] ?? 0;
-  return y + m / 12;
+  // Try "MMM YYYY" or "MMM YYYY – ..."
+  const monthYear = period.match(/^(\w+)\s+(\d{4})/);
+  if (monthYear) {
+    const [, mon, yr] = monthYear;
+    const y = parseInt(yr, 10);
+    const m = months[mon] ?? 0;
+    return y + m / 12;
+  }
+  // Try "YYYY" or "YYYY – ..."
+  const yearOnly = period.match(/^(\d{4})/);
+  if (yearOnly) {
+    return parseInt(yearOnly[1], 10);
+  }
+  // Fallback
+  // eslint-disable-next-line no-console
+  console.warn(`ProjectField: Could not parse period "${period}", defaulting to 2019`);
+  return 2019;
 }
 
 export default function ProjectField({ projects = [] }) {
@@ -83,8 +95,8 @@ export default function ProjectField({ projects = [] }) {
     new Set(projects.map((p) => (Array.isArray(p.domain) ? p.domain[0] : p.domain)))
   ).sort();
 
-  // Map projects to timeline coordinates
-  const nodes = projects.map((p) => {
+  // Map projects to timeline coordinates, with collision detection
+  const nodes = projects.map((p, idx) => {
     const x = parseStartYear(p.period);
     const domain = Array.isArray(p.domain) ? p.domain[0] : p.domain;
     const yIndex = allDomains.indexOf(domain);
@@ -95,12 +107,22 @@ export default function ProjectField({ projects = [] }) {
       title: p.title,
       period: p.period,
       domain,
-      tag: p.tag,
+      idx,
     };
   });
 
+  // Apply collision avoidance: if multiple nodes share the same x,y, offset them slightly
+  const occupied = new Map();
+  nodes.forEach((n) => {
+    const key = `${n.x.toFixed(2)},${n.y}`;
+    const count = occupied.get(key) || 0;
+    n.offsetX = count * 0.01; // 1% offset per collision (reduced from 1.5%)
+    n.offsetY = (count % 2) * 0.02 - 0.01; // alternate above/below (reduced from 3%)
+    occupied.set(key, count + 1);
+  });
+
   const filtered = filter === "all" ? nodes : nodes.filter((n) => n.domain === filter);
-  const now = new Date().getFullYear() + new Date().getMonth() / 12;
+  const now = new Date().getFullYear();
   const minX = Math.min(...nodes.map((n) => n.x));
   const maxX = now;
 
@@ -127,10 +149,7 @@ export default function ProjectField({ projects = [] }) {
     const project = projects.find((p) => p.id === id);
     if (!project) return;
     const anchor = projectAnchor(project);
-    if (!anchor) {
-      // Featured or has its own case-study page: do nothing or navigate
-      return;
-    }
+    if (!anchor) return;
     const target = document.getElementById(anchor);
     if (!target) return;
     target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
@@ -211,58 +230,18 @@ export default function ProjectField({ projects = [] }) {
           })}
         </div>
 
-        {/* The field */}
-        <div
-          className="relative bg-white/50 dark:bg-[#0A0A0A]/50 border border-[#E0E0E0] dark:border-[#3D3D3D] p-6 md:p-8"
-          style={{ minHeight: "320px" }}
-        >
-          {filtered.map((n, i) => {
-            const xFrac = (n.x - minX) / (maxX - minX);
-            const yFrac = (n.y + 0.5) / Math.max(allDomains.length, 1);
-            const hot = active === n.id;
-            const dim = active && !hot && filter === "all";
-            const lit = on;
-
-            return (
-              <button
-                key={n.id}
-                onClick={() => jump(n.id)}
-                onMouseEnter={() => setActive(n.id)}
-                onFocus={() => setActive(n.id)}
-                onBlur={() => setActive(null)}
-                aria-label={`${n.title}, ${n.period}, ${n.domain}`}
-                className="absolute outline-none focus-visible:ring-2 focus-visible:ring-[#FF3C3C] transition-all duration-300"
-                style={{
-                  left: `${xFrac * 100}%`,
-                  top: `${yFrac * 100}%`,
-                  transform: "translate(-50%, -50%)",
-                  transitionDelay: lit && !active ? `${i * 30}ms` : "0ms",
-                }}
-              >
-                <span
-                  className={`block w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${
-                    lit
-                      ? hot
-                        ? "bg-[#FF3C3C] scale-125"
-                        : dim
-                          ? "bg-black/20 dark:bg-white/20"
-                          : "bg-black dark:bg-white"
-                      : "bg-black/10 dark:bg-white/10"
-                  }`}
-                />
-              </button>
-            );
-          })}
-
-          {/* Lane labels (left side) */}
-          <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-around pointer-events-none pl-2">
+        {/* The plot */}
+        <div className="relative flex gap-2">
+          {/* Lane labels (left) */}
+          <div
+            data-lane-labels
+            className="w-20 md:w-24 flex-shrink-0 flex flex-col justify-around text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] py-2"
+          >
             {allDomains.map((d) => (
               <span
                 key={d}
-                className={`text-[10px] font-mono tracking-widest uppercase transition-opacity duration-300 ${
-                  filter === "all" || filter === d
-                    ? "text-[#6E6E6E] dark:text-[#9A9A9A] opacity-100"
-                    : "opacity-30"
+                className={`leading-tight transition-opacity duration-300 ${
+                  filter === "all" || filter === d ? "opacity-100" : "opacity-30"
                 }`}
               >
                 {d}
@@ -270,16 +249,78 @@ export default function ProjectField({ projects = [] }) {
             ))}
           </div>
 
-          {/* Year axis (bottom) */}
-          <div className="absolute left-0 right-0 bottom-0 h-6 flex items-end justify-between px-8 pointer-events-none">
-            {[Math.floor(minX), Math.floor((minX + maxX) / 2), Math.ceil(maxX)].map((yr) => (
-              <span
-                key={yr}
-                className="text-[10px] md:text-[11px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A]"
-              >
-                {yr}
-              </span>
-            ))}
+          {/* Plot area with dot grid + nodes */}
+          <div data-plot className="relative flex-1 min-w-0 min-h-[280px] md:min-h-[320px]">
+            {/* Faint dot grid background */}
+            <div
+              className="absolute inset-0 opacity-[0.15]"
+              style={{
+                backgroundImage: "radial-gradient(circle, currentColor 0.5px, transparent 0.5px)",
+                backgroundSize: "16px 16px",
+                backgroundPosition: "0 0",
+              }}
+              aria-hidden="true"
+            />
+
+            {/* Project nodes (inset by 8px to keep translate(-50%, -50%) within bounds) */}
+            <div className="absolute inset-0" style={{ padding: "8px" }}>
+              <div className="relative w-full h-full">
+                {filtered.map((n) => {
+                  // Clamp coordinates to keep nodes fully inside plot container
+                  let xFrac = (n.x - minX) / (maxX - minX) + (n.offsetX || 0);
+                  let yFrac = (n.y + 0.5) / Math.max(allDomains.length, 1) + (n.offsetY || 0);
+                  // Clamp to [0.01, 0.99] to ensure translate(-50%, -50%) stays inside
+                  xFrac = Math.max(0.01, Math.min(0.99, xFrac));
+                  yFrac = Math.max(0.01, Math.min(0.99, yFrac));
+                  const hot = active === n.id;
+                  const dim = active && !hot && filter === "all";
+                  const lit = on;
+
+                  return (
+                    <button
+                      key={n.id}
+                      data-project-node
+                      onClick={() => jump(n.id)}
+                      onMouseEnter={() => setActive(n.id)}
+                      onFocus={() => setActive(n.id)}
+                      onBlur={() => setActive(null)}
+                      aria-label={`${n.title}, ${n.period}, ${n.domain}`}
+                      className="absolute outline-none focus-visible:ring-2 focus-visible:ring-[#FF3C3C] focus-visible:ring-offset-1 transition-all duration-300"
+                      style={{
+                        left: `${xFrac * 100}%`,
+                        top: `${yFrac * 100}%`,
+                        transform: "translate(-50%, -50%)",
+                        transitionDelay: lit && !active ? `${n.idx * 30}ms` : "0ms",
+                      }}
+                    >
+                      <span
+                        className={`block w-[9px] h-[9px] rounded-[2px] transition-all duration-300 pointer-events-none ${
+                          lit
+                            ? hot
+                              ? "bg-[#FF3C3C] scale-110"
+                              : dim
+                                ? "bg-black/[0.07] dark:bg-white/[0.07]"
+                                : "bg-black dark:bg-white"
+                            : "bg-black/[0.07] dark:bg-white/[0.07]"
+                        }`}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Year ticks (bottom) */}
+            <div
+              className="absolute left-0 right-0 bottom-0 flex justify-between items-end h-6 px-3 text-[10px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A] pointer-events-none"
+              aria-hidden="true"
+            >
+              {[Math.floor(minX), Math.floor((minX + maxX) / 2), maxX].map((yr) => (
+                <span key={yr} data-year-tick>
+                  {yr}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

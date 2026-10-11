@@ -54,15 +54,20 @@ export async function getStaticProps({ locale = "en-AU" }) {
   const vars = { skills: atlas.stats.skills, from: atlas.stats.from, to: atlas.stats.to };
 
   // Prepare slim skills array for SkillMatrix: id, label, domain, lastWhere, lastWhen, count, recent
-  const matrixSkills = atlas.skills.map((s) => ({
-    id: s.id,
-    label: s.label,
-    domain: s.domain,
-    lastWhere: s.lastWhere || null,
-    lastWhen: s.lastWhen || null,
-    count: s.count,
-    recent: s.recent || false,
-  }));
+  // A skill is recent if it appears in atlas.now.active (used in last 18 months)
+  const activeMap = new Map(atlas.now.active.map((a) => [a.id, { where: a.where, last: a.last }]));
+  const matrixSkills = atlas.skills.map((s) => {
+    const active = activeMap.get(s.id);
+    return {
+      id: s.id,
+      label: s.label,
+      domain: s.domain,
+      lastWhere: active?.where || null,
+      lastWhen: active?.last || null,
+      count: s.count,
+      recent: !!active,
+    };
+  });
   const matrixAreas = atlas.domains;
 
   const jsonLd = {
