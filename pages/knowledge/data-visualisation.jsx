@@ -1,13 +1,19 @@
 import KnowledgeLayout from "@/components/knowledge/KnowledgeLayout";
 import { useI18n } from "@/contexts/I18nContext";
 import { getContent } from "@/components/knowledge/content/data-visualisation";
+import { getSkillsForTopic } from "@/lib/topic-skills-loader";
 
-export default function DataVisualisationKnowledgePage() {
+export async function getStaticProps({ locale = "en-AU" }) {
+  const relatedSkills = getSkillsForTopic("data-visualisation");
+  return { props: { relatedSkills } };
+}
+
+export default function DataVisualisationKnowledgePage({ relatedSkills = [] }) {
   const { locale = "en-AU" } = useI18n();
   const { Body, ...meta } = getContent(locale);
 
   return (
-    <KnowledgeLayout {...meta}>
+    <KnowledgeLayout {...meta} relatedSkills={relatedSkills}>
       <Body />
     </KnowledgeLayout>
   );

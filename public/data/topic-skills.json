@@ -1,0 +1,462 @@
+{
+  "linear-algebra": [
+    {
+      "id": "linear-algebra",
+      "label": "Linear algebra"
+    }
+  ],
+  "probability": [
+    {
+      "id": "probability",
+      "label": "Probability"
+    }
+  ],
+  "statistics": [
+    {
+      "id": "hypothesis-testing",
+      "label": "Hypothesis testing"
+    },
+    {
+      "id": "interval-estimation",
+      "label": "Confidence intervals and the bootstrap"
+    }
+  ],
+  "calculus-optimisation": [
+    {
+      "id": "calculus-optimisation",
+      "label": "Calculus and optimisation"
+    }
+  ],
+  "linear-statistical-models": [
+    {
+      "id": "regression",
+      "label": "Regression"
+    }
+  ],
+  "database-systems": [
+    {
+      "id": "database-design",
+      "label": "Database design and data modelling"
+    },
+    {
+      "id": "sql",
+      "label": "SQL"
+    }
+  ],
+  "artificial-intelligence": [
+    {
+      "id": "search-agents",
+      "label": "Search and game-playing agents"
+    }
+  ],
+  "web-information-technology": [
+    {
+      "id": "full-stack",
+      "label": "Full-stack web development"
+    },
+    {
+      "id": "rest-apis",
+      "label": "REST APIs"
+    }
+  ],
+  "operations-research": [
+    {
+      "id": "operations-research",
+      "label": "Operations research and linear programming"
+    }
+  ],
+  "elements-of-data-processing": [
+    {
+      "id": "data-wrangling",
+      "label": "Data cleaning and exploratory analysis"
+    },
+    {
+      "id": "data-pipelines",
+      "label": "Data pipelines and ETL"
+    }
+  ],
+  "applied-data-science": [
+    {
+      "id": "problem-framing",
+      "label": "Problem framing and the project lifecycle"
+    }
+  ],
+  "data-visualisation": [
+    {
+      "id": "data-visualisation",
+      "label": "Data visualisation"
+    }
+  ],
+  "feature-engineering": [
+    {
+      "id": "feature-engineering",
+      "label": "Feature engineering"
+    }
+  ],
+  "sampling-survey-methodology": [
+    {
+      "id": "sampling",
+      "label": "Sampling and survey methods"
+    }
+  ],
+  "sql-querying-data": [
+    {
+      "id": "sql",
+      "label": "SQL"
+    }
+  ],
+  "model-evaluation": [
+    {
+      "id": "model-evaluation",
+      "label": "Model evaluation and validation"
+    }
+  ],
+  "natural-language-processing": [
+    {
+      "id": "nlp",
+      "label": "Natural language processing"
+    }
+  ],
+  "statistical-machine-learning": [
+    {
+      "id": "statistical-learning",
+      "label": "Statistical learning"
+    }
+  ],
+  "bayesian-statistics": [
+    {
+      "id": "bayesian-inference",
+      "label": "Bayesian inference and MCMC"
+    }
+  ],
+  "pca-dimensionality-reduction": [
+    {
+      "id": "dimensionality-reduction",
+      "label": "Dimensionality reduction"
+    }
+  ],
+  "clustering": [
+    {
+      "id": "clustering",
+      "label": "Clustering"
+    }
+  ],
+  "cluster-cloud-computing": [
+    {
+      "id": "hpc",
+      "label": "HPC and parallel computing"
+    },
+    {
+      "id": "cloud-computing",
+      "label": "Cloud computing"
+    },
+    {
+      "id": "spark",
+      "label": "Apache Spark"
+    }
+  ],
+  "statistical-modelling": [
+    {
+      "id": "statistical-modelling",
+      "label": "Statistical modelling and GLMs"
+    }
+  ],
+  "computational-statistics": [
+    {
+      "id": "simulation",
+      "label": "Simulation and Monte Carlo"
+    },
+    {
+      "id": "interval-estimation",
+      "label": "Confidence intervals and the bootstrap"
+    }
+  ],
+  "advanced-database-systems": [
+    {
+      "id": "query-optimisation",
+      "label": "Query optimisation and indexing"
+    }
+  ],
+  "science-communication": [
+    {
+      "id": "science-communication",
+      "label": "Science and data communication"
+    }
+  ],
+  "time-series-analysis": [
+    {
+      "id": "time-series",
+      "label": "Time series and forecasting"
+    }
+  ],
+  "causal-inference": [
+    {
+      "id": "causal-inference",
+      "label": "Causal inference"
+    },
+    {
+      "id": "experiment-design",
+      "label": "Experiment and A/B test design"
+    }
+  ],
+  "deep-learning": [
+    {
+      "id": "deep-learning",
+      "label": "Deep learning and transformers"
+    }
+  ],
+  "reinforcement-learning": [
+    {
+      "id": "reinforcement-learning",
+      "label": "Reinforcement learning and bandits"
+    }
+  ],
+  "ensemble-methods": [
+    {
+      "id": "ensemble-methods",
+      "label": "Ensemble methods"
+    }
+  ],
+  "recommender-systems": [
+    {
+      "id": "recommender-systems",
+      "label": "Recommender systems"
+    }
+  ],
+  "survival-analysis": [
+    {
+      "id": "survival-analysis",
+      "label": "Survival analysis"
+    }
+  ],
+  "information-retrieval": [
+    {
+      "id": "information-retrieval",
+      "label": "Information retrieval"
+    }
+  ],
+  "large-language-models": [
+    {
+      "id": "llm-apps",
+      "label": "Building with LLMs"
+    }
+  ],
+  "topic-modelling": [
+    {
+      "id": "nlp",
+      "label": "Natural language processing"
+    }
+  ],
+  "ai-agents": [
+    {
+      "id": "ai-agents",
+      "label": "AI agents and tool use"
+    }
+  ],
+  "spatial-statistics": [
+    {
+      "id": "spatial-statistics",
+      "label": "Spatial statistics"
+    }
+  ],
+  "conformal-prediction": [
+    {
+      "id": "interval-estimation",
+      "label": "Confidence intervals and the bootstrap"
+    }
+  ],
+  "causal-discovery": [
+    {
+      "id": "causal-inference",
+      "label": "Causal inference"
+    }
+  ],
+  "kalman-filter": [
+    {
+      "id": "time-series",
+      "label": "Time series and forecasting"
+    }
+  ],
+  "active-semi-supervised-learning": [
+    {
+      "id": "statistical-learning",
+      "label": "Statistical learning"
+    }
+  ],
+  "extreme-value-theory": [
+    {
+      "id": "statistical-modelling",
+      "label": "Statistical modelling and GLMs"
+    }
+  ],
+  "hierarchical-models": [
+    {
+      "id": "statistical-modelling",
+      "label": "Statistical modelling and GLMs"
+    },
+    {
+      "id": "bayesian-inference",
+      "label": "Bayesian inference and MCMC"
+    }
+  ],
+  "optimisation-methods": [
+    {
+      "id": "calculus-optimisation",
+      "label": "Calculus and optimisation"
+    },
+    {
+      "id": "operations-research",
+      "label": "Operations research and linear programming"
+    }
+  ],
+  "gaussian-processes": [
+    {
+      "id": "bayesian-inference",
+      "label": "Bayesian inference and MCMC"
+    }
+  ],
+  "robust-statistics": [
+    {
+      "id": "statistical-modelling",
+      "label": "Statistical modelling and GLMs"
+    }
+  ],
+  "quantile-regression": [
+    {
+      "id": "regression",
+      "label": "Regression"
+    }
+  ],
+  "graph-neural-networks": [
+    {
+      "id": "deep-learning",
+      "label": "Deep learning and transformers"
+    },
+    {
+      "id": "graph-analytics",
+      "label": "Graph databases and network analysis"
+    }
+  ],
+  "probabilistic-graphical-models": [
+    {
+      "id": "bayesian-inference",
+      "label": "Bayesian inference and MCMC"
+    }
+  ],
+  "business-intelligence-dashboards": [
+    {
+      "id": "reporting",
+      "label": "Dashboards and decision reporting"
+    },
+    {
+      "id": "power-bi",
+      "label": "Power BI"
+    }
+  ],
+  "geospatial-analysis": [
+    {
+      "id": "geospatial",
+      "label": "GIS and geospatial analysis"
+    }
+  ],
+  "intelligence-analysis": [
+    {
+      "id": "intelligence-analysis",
+      "label": "Intelligence analysis and OSINT"
+    }
+  ],
+  "data-governance": [
+    {
+      "id": "data-governance",
+      "label": "Data governance and privacy"
+    }
+  ],
+  "anomaly-detection": [
+    {
+      "id": "anomaly-detection",
+      "label": "Anomaly detection"
+    }
+  ],
+  "network-graph-analysis": [
+    {
+      "id": "graph-analytics",
+      "label": "Graph databases and network analysis"
+    }
+  ],
+  "reproducibility": [
+    {
+      "id": "reproducibility",
+      "label": "Reproducible analysis"
+    }
+  ],
+  "mlops-monitoring": [
+    {
+      "id": "mlops",
+      "label": "MLOps and model monitoring"
+    }
+  ],
+  "explainable-ai": [
+    {
+      "id": "explainable-ai",
+      "label": "Explainability and model documentation"
+    }
+  ],
+  "fairness-bias": [
+    {
+      "id": "fairness",
+      "label": "Fairness and bias"
+    }
+  ],
+  "differential-privacy": [
+    {
+      "id": "data-governance",
+      "label": "Data governance and privacy"
+    }
+  ],
+  "knowledge-graphs": [
+    {
+      "id": "graph-analytics",
+      "label": "Graph databases and network analysis"
+    }
+  ],
+  "streaming-analytics": [
+    {
+      "id": "data-pipelines",
+      "label": "Data pipelines and ETL"
+    }
+  ],
+  "data-architecture": [
+    {
+      "id": "data-pipelines",
+      "label": "Data pipelines and ETL"
+    }
+  ],
+  "statistical-process-control": [
+    {
+      "id": "statistical-process-control",
+      "label": "Statistical process control"
+    }
+  ],
+  "federated-learning": [
+    {
+      "id": "statistical-learning",
+      "label": "Statistical learning"
+    },
+    {
+      "id": "data-governance",
+      "label": "Data governance and privacy"
+    }
+  ],
+  "data-science-mentoring": [
+    {
+      "id": "mentoring-teaching",
+      "label": "Mentoring and teaching"
+    }
+  ],
+  "edtech-digital-learning": [
+    {
+      "id": "mentoring-teaching",
+      "label": "Mentoring and teaching"
+    }
+  ]
+}

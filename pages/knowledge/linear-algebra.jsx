@@ -1,13 +1,19 @@
 import KnowledgeLayout from "@/components/knowledge/KnowledgeLayout";
 import { useI18n } from "@/contexts/I18nContext";
 import { getContent } from "@/components/knowledge/content/linear-algebra";
+import { getSkillsForTopic } from "@/lib/topic-skills-loader";
 
-export default function LinearAlgebraKnowledgePage() {
+export async function getStaticProps({ locale = "en-AU" }) {
+  const relatedSkills = getSkillsForTopic("linear-algebra");
+  return { props: { relatedSkills } };
+}
+
+export default function LinearAlgebraKnowledgePage({ relatedSkills = [] }) {
   const { locale = "en-AU" } = useI18n();
   const { Body, ...meta } = getContent(locale);
 
   return (
-    <KnowledgeLayout {...meta}>
+    <KnowledgeLayout {...meta} relatedSkills={relatedSkills}>
       <Body />
     </KnowledgeLayout>
   );

@@ -1,13 +1,19 @@
 import KnowledgeLayout from "@/components/knowledge/KnowledgeLayout";
 import { useI18n } from "@/contexts/I18nContext";
 import { getContent } from "@/components/knowledge/content/natural-language-processing";
+import { getSkillsForTopic } from "@/lib/topic-skills-loader";
 
-export default function NlpKnowledgePage() {
+export async function getStaticProps({ locale = "en-AU" }) {
+  const relatedSkills = getSkillsForTopic("natural-language-processing");
+  return { props: { relatedSkills } };
+}
+
+export default function NlpKnowledgePage({ relatedSkills = [] }) {
   const { locale = "en-AU" } = useI18n();
   const { Body, ...meta } = getContent(locale);
 
   return (
-    <KnowledgeLayout {...meta}>
+    <KnowledgeLayout {...meta} relatedSkills={relatedSkills}>
       <Body />
     </KnowledgeLayout>
   );
