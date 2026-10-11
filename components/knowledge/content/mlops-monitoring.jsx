@@ -5,7 +5,7 @@ import { KSection, Callout, Figure, Term } from "@/components/knowledge/Knowledg
  * Per-locale content for /knowledge/mlops-monitoring.
  * getContent(locale) → localised meta + per-locale Body (EN fallback). No maths.
  * Prose, captions, section labels, and the MLOps-loop figure's text labels are
- * localised; geometry is internal. The ⚠ glyph + the red retrain box are kept.
+ * localised; geometry is internal. The drift label and the red retrain box are kept.
  */
 
 const STAGE_X = [40, 165, 290]; // train, deploy, monitor
@@ -167,7 +167,7 @@ function EnBody() {
           caption="The MLOps loop. Train → deploy → monitor → and when monitoring detects drift or decay, retrain and redeploy. Unlike a one-off analysis, a live model runs this cycle continuously; the monitor is what triggers the next turn."
           ariaLabel="A cycle of four boxes: train, deploy, monitor, retrain, looping back to deploy, with a drift alarm on the monitor step."
           stageLabels={["train", "deploy", "monitor"]}
-          driftLabel="⚠ drift"
+          driftLabel="drift alert"
           retrainLabel="retrain"
         />
       </KSection>
@@ -411,7 +411,7 @@ function ZhBody() {
           caption="MLOps 循环。训练 → 部署 → 监控 → 而当监控检测到漂移或衰减时，重新训练并重新部署。与一次性的分析不同，一个活模型持续运行这个循环；监控正是触发下一圈的东西。"
           ariaLabel="四个框的循环：训练、部署、监控、重新训练，再循环回部署，监控这一步上有一个漂移警报。"
           stageLabels={["训练", "部署", "监控"]}
-          driftLabel="⚠ 漂移"
+          driftLabel="漂移警报"
           retrainLabel="重新训练"
         />
       </KSection>

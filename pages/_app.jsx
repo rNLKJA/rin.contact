@@ -17,6 +17,7 @@ import "../public/styles/globals.css";
 // so the ~39 /knowledge pages that render <Formula>/<TeX> don't risk a FOIT
 // while KaTeX's math fonts load. Same file size either way.
 import "katex/dist/katex-swap.min.css";
+import useStableHashScroll from "@/hooks/useStableHashScroll";
 
 const Analytics = dynamic(
   () => import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),
@@ -27,7 +28,6 @@ const SpeedInsights = dynamic(
   { ssr: false }
 );
 
-const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
 const BootOverlay = dynamic(() => import("@/components/ui/BootOverlay"), { ssr: false });
 const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
 // Pawsibly, the optional site guide. Client-only and off until the visitor
@@ -232,6 +232,8 @@ function SecretWordTrigger() {
 }
 
 function MyApp({ Component, pageProps }) {
+  // In-page jumps (/#contact) land exactly even while lower sections are still loading.
+  useStableHashScroll();
   // ── Register service worker + capture install prompt ───────────────────────
   useEffect(() => {
     if (typeof window !== "undefined" && "serviceWorker" in navigator) {
@@ -349,7 +351,6 @@ function MyApp({ Component, pageProps }) {
             Skip to content
           </a>
           <BootOverlay />
-          <CustomCursor />
           <CopyUrlToast />
           <IdleToast />
           <CopyEmailConfetti />

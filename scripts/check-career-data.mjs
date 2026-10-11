@@ -45,6 +45,12 @@ const SCAN = ["components", "pages", "lib", "locales", "posts", "public/rin.json
 const EXT = /\.(jsx?|mjs|json|md|txt|xml)$/;
 const SKIP = new Set(["lib/career-check.js"]);
 
+// Site rule: no emoji anywhere on rin.contact. The design uses text glyphs
+// (■ ● → ↗ ✕), so any pictographic character fails the build. A few symbols
+// that Unicode classes as pictographic are plain typography here and allowed.
+const EMOJI = /\p{Extended_Pictographic}|\u{FE0F}/u;
+const EMOJI_ALLOWED = new Set(["↗", "↔", "©"]);
+
 function* walk(path) {
   const st = statSync(path);
   if (st.isDirectory()) {
@@ -120,6 +126,14 @@ for (const entry of SCAN) {
     lines.forEach((line, i) => {
       for (const b of BANNED) {
         if (line.includes(b)) problems.push(`${rel}:${i + 1} contains "${b}"`);
+      }
+      for (const ch of line) {
+        if (EMOJI.test(ch) && !EMOJI_ALLOWED.has(ch)) {
+          const code = ch.codePointAt(0).toString(16).toUpperCase();
+          problems.push(
+            `${rel}:${i + 1} contains an emoji (U+${code}); the site uses text glyphs only`
+          );
+        }
       }
     });
   }

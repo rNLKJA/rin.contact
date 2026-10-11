@@ -491,6 +491,12 @@ h1 {
   contain-intrinsic-size: auto 600px;
 }
 
+/* During an in-page jump (see hooks/useStableHashScroll.js) render deferred
+   sections fully so the target's offset is real before scrolling starts. */
+html.hash-jump .content-visibility-auto {
+  content-visibility: visible;
+}
+
 /* ─── Flow diagrams ─────────────────────────────────────────────────────── */
 /* House-voice workflow visuals — replaces Mermaid with on-brand HTML/CSS, so
    no diagram library ships to the client. Fully token-driven → dark-mode aware.

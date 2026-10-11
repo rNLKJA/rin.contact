@@ -85,27 +85,19 @@ export default function ProjectStatus({ stage, updated, checklist, className = "
           const label = isZh ? checklistLabels[item.key]?.zh : checklistLabels[item.key]?.en;
           return (
             <li key={item.key} className="flex items-center gap-2">
+              {/* Nothing-style marker: solid ink square when done, hairline square when not */}
               <span
-                className={`w-3.5 h-3.5 flex-shrink-0 border ${
+                className={`w-2 h-2 flex-shrink-0 ${
                   item.done
-                    ? "border-[#22C55E] bg-[#22C55E]"
-                    : "border-[#E8E8E8] dark:border-[#2A2A2A]"
-                } flex items-center justify-center`}
+                    ? "bg-black dark:bg-white"
+                    : "border border-[#BDBDBD] dark:border-[#4A4A4A]"
+                }`}
                 aria-hidden="true"
-              >
-                {item.done && (
-                  <svg viewBox="0 0 12 12" fill="none" className="w-2.5 h-2.5 text-white">
-                    <path
-                      d="M2 6L5 9L10 3"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
-              </span>
+              />
               <span className={item.done ? "" : "text-[#AAAAAA] dark:text-[#6B6B6B]"}>{label}</span>
+              <span className="sr-only">
+                {item.done ? (isZh ? "（已完成）" : " (done)") : isZh ? "（未完成）" : " (not yet)"}
+              </span>
             </li>
           );
         })}

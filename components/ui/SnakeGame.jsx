@@ -213,7 +213,7 @@ export default function SnakeGame() {
 
       <div className="mt-3 flex items-center gap-3 flex-wrap">
         <button onClick={start} className={btn}>
-          {status === "idle" ? `▶ ${t("snakeGame.start")}` : `↺ ${t("snakeGame.restart")}`}
+          {status === "idle" ? `► ${t("snakeGame.start")}` : `↺ ${t("snakeGame.restart")}`}
         </button>
         <div className="flex items-center gap-1 md:hidden">
           <button onClick={() => mobileDir("LEFT")} className={btn}>
