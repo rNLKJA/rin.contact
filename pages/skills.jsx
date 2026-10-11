@@ -16,6 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 import PageHero from "@/components/layout/PageHero";
+import SkillMatrix from "@/components/sections/SkillMatrix";
 import BackToTop from "@/components/ui/BackToTop";
 import ResumeSection from "@/components/resume/ResumeSection";
 import SkillsGlance from "@/components/skills/SkillsGlance";
@@ -51,6 +52,23 @@ export async function getStaticProps({ locale = "en-AU" }) {
   const prefix = locale === "zh-Hans" ? "/zh-Hans" : "";
   const pageUrl = `${BASE}${prefix}${PATH}/`;
   const vars = { skills: atlas.stats.skills, from: atlas.stats.from, to: atlas.stats.to };
+
+  // Prepare slim skills array for SkillMatrix: id, label, domain, lastWhere, lastWhen, count, recent
+  // A skill is recent if it appears in atlas.now.active (used in last 18 months)
+  const activeMap = new Map(atlas.now.active.map((a) => [a.id, { where: a.where, last: a.last }]));
+  const matrixSkills = atlas.skills.map((s) => {
+    const active = activeMap.get(s.id);
+    return {
+      id: s.id,
+      label: s.label,
+      domain: s.domain,
+      lastWhere: active?.where || null,
+      lastWhen: active?.last || null,
+      count: s.count,
+      recent: !!active,
+    };
+  });
+  const matrixAreas = atlas.domains;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -95,7 +113,7 @@ export async function getStaticProps({ locale = "en-AU" }) {
     section: "skills",
   };
 
-  return { props: { atlas, jsonLd, ogImage } };
+  return { props: { atlas, jsonLd, ogImage, matrixSkills, matrixAreas } };
 }
 
 // False on the server and during hydration, true after: the URL filters are
@@ -122,7 +140,7 @@ function readFilters(query, atlas) {
   };
 }
 
-export default function SkillsPage({ atlas, jsonLd, ogImage }) {
+export default function SkillsPage({ atlas, jsonLd, ogImage, matrixSkills, matrixAreas }) {
   const { t, locale = "en-AU" } = useI18n();
   const router = useRouter();
   const statusRef = useRef(null);
@@ -239,6 +257,8 @@ export default function SkillsPage({ atlas, jsonLd, ogImage }) {
             backLabel={t("skillsPage.back")}
             backHref="/about"
           />
+
+          <SkillMatrix skills={matrixSkills} areas={matrixAreas} />
 
           <ResumeSection
             id="glance"

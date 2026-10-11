@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
 import PageHero from "@/components/layout/PageHero";
+import SemesterGrid from "@/components/sections/SemesterGrid";
 import BackToTop from "@/components/ui/BackToTop";
 import ResumeSection from "@/components/resume/ResumeSection";
 import CourseworkCard from "@/components/coursework/CourseworkCard";
@@ -248,6 +249,8 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
             backLabel={t("courseworkPage.back")}
             backHref="/projects"
           />
+
+          <SemesterGrid coursework={projects} />
 
           {/* 01 What revived means */}
           <ResumeSection

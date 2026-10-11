@@ -2,6 +2,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import PageHero from "@/components/layout/PageHero";
+import ProjectField from "@/components/sections/ProjectField";
 import { useI18n } from "@/contexts/I18nContext";
 import { PROJECTS } from "@/lib/projects-data";
 import { getCoursework } from "@/lib/coursework-data";
@@ -83,6 +84,8 @@ export default function ProjectsPage({ count = 0, courseworkLinks = {} }) {
           </Link>
         </p>
       </div>
+
+      <ProjectField projects={PROJECTS} />
 
       <div className="bg-white dark:bg-[#0A0A0A] relative overflow-hidden">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
