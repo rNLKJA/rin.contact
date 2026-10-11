@@ -207,14 +207,16 @@
     "back": "Back",
     "sectionLabel": "◈ — About",
     "heading": "Skills.",
-    "description": "Seven technical domains. Twenty-three professional credentials. And a set of questions people actually ask, answered honestly.",
+    "description": "Skills, credentials, and a set of questions people actually ask, answered honestly.",
     "intro": {
       "eyebrow": "Profile",
       "heading": "A problem-first analyst who works across the edges.",
       "body1": "I am a data analyst and data scientist based in Adelaide, currently working at ASO7 level with the South Australia Police. Since 2023 my work has moved across climate risk modelling at CSIRO, ministerial dashboards for the South Australian Government, genomics research software at WEHI, and a mental health app at the University of Melbourne. Generalist by nature, specialist by discipline.",
       "body2": "The thread through all of it is the same. I start from the decision that needs making and the smallest amount of data needed to make it well, then reach for the right tool rather than the fashionable one. Problem first, not model first. That habit is what lets the same person be useful in a research lab, a government intelligence team, and an engineering project.",
       "domainsLabel": "Where I work"
-    }
+    },
+    "skillsLinkIntro": "For detailed evidence across all technical skills",
+    "skillsLinkText": "see the Skills & Knowledge hub"
   },
   "hireMe": {
     "sectionLabel": "◈ — hire rin",
@@ -368,14 +370,32 @@
       }
     ],
     "listening": [
-      { "text": "Lo-fi hip hop while writing SQL", "sub": "" },
-      { "text": "Lex Fridman Podcast", "sub": "long-form tech, philosophy, AI" },
-      { "text": "Practical AI", "sub": "applied ML without the hype" }
+      {
+        "text": "Lo-fi hip hop while writing SQL",
+        "sub": ""
+      },
+      {
+        "text": "Lex Fridman Podcast",
+        "sub": "long-form tech, philosophy, AI"
+      },
+      {
+        "text": "Practical AI",
+        "sub": "applied ML without the hype"
+      }
     ],
     "notDoing": [
-      { "text": "Accepting meetings that could have been an email", "sub": "" },
-      { "text": "Writing models without first understanding the business problem", "sub": "" },
-      { "text": "Adding more dependencies when vanilla JS will do", "sub": "" }
+      {
+        "text": "Accepting meetings that could have been an email",
+        "sub": ""
+      },
+      {
+        "text": "Writing models without first understanding the business problem",
+        "sub": ""
+      },
+      {
+        "text": "Adding more dependencies when vanilla JS will do",
+        "sub": ""
+      }
     ]
   },
   "infoUses": {
@@ -404,7 +424,10 @@
           "desc": "One wide monitor. No more alt-tabbing between terminals and notebooks.",
           "badge": ""
         },
-        { "desc": "Tactile switches. The clickety-clack is 40% of the productivity.", "badge": "" },
+        {
+          "desc": "Tactile switches. The clickety-clack is 40% of the productivity.",
+          "badge": ""
+        },
         {
           "desc": "Active noise cancellation — the second-best productivity tool after good coffee.",
           "badge": ""
@@ -429,7 +452,10 @@
           "desc": "Primary language. NumPy, Pandas, scikit-learn, PyTorch, FastAPI — the whole ecosystem.",
           "badge": "primary"
         },
-        { "desc": "For anything web-facing. Types save future-me from past-me.", "badge": "" },
+        {
+          "desc": "For anything web-facing. Types save future-me from past-me.",
+          "badge": ""
+        },
         {
           "desc": "PostgreSQL day-to-day. BigQuery for large-scale. Still the most underrated skill in data science.",
           "badge": ""
@@ -470,7 +496,10 @@
           "desc": "Framework of choice for web. Pages Router on React 19 — fast, file-based, fantastic DX.",
           "badge": "this site"
         },
-        { "desc": "Utility-first styling. Initially sceptical. Now converted.", "badge": "" },
+        {
+          "desc": "Utility-first styling. Initially sceptical. Now converted.",
+          "badge": ""
+        },
         {
           "desc": "Deploy → done. Preview URLs on every push. The best CI/CD experience I've used.",
           "badge": ""
@@ -489,8 +518,14 @@
           "desc": "Issue tracking for Mapiva. Fast, minimal, opinionated — very Nothing OS.",
           "badge": ""
         },
-        { "desc": "Password manager. Non-negotiable.", "badge": "" },
-        { "desc": "Window management on macOS. Free. Simple. Indispensable.", "badge": "" }
+        {
+          "desc": "Password manager. Non-negotiable.",
+          "badge": ""
+        },
+        {
+          "desc": "Window management on macOS. Free. Simple. Indispensable.",
+          "badge": ""
+        }
       ]
     }
   },
@@ -518,9 +553,21 @@
           "value": "Next.js 16",
           "note": "Pages Router — SSG + SSR + CSR mix"
         },
-        { "name": "runtime", "value": "Node.js", "note": "via Vercel serverless functions" },
-        { "name": "language", "value": "TypeScript / JSX", "note": "strict mode where it matters" },
-        { "name": "pkg manager", "value": "npm", "note": "nothing fancy" }
+        {
+          "name": "runtime",
+          "value": "Node.js",
+          "note": "via Vercel serverless functions"
+        },
+        {
+          "name": "language",
+          "value": "TypeScript / JSX",
+          "note": "strict mode where it matters"
+        },
+        {
+          "name": "pkg manager",
+          "value": "npm",
+          "note": "nothing fancy"
+        }
       ],
       "styling": [
         {
@@ -538,7 +585,11 @@
           "value": "#FFFFFF · #000000 · #FF3C3C",
           "note": "white · black · dot red — used sparingly"
         },
-        { "name": "radius", "value": "none or rounded-full", "note": "never anything in between" },
+        {
+          "name": "radius",
+          "value": "none or rounded-full",
+          "note": "never anything in between"
+        },
         {
           "name": "animations",
           "value": "CSS keyframes",
@@ -551,10 +602,26 @@
           "value": "Bitcount Prop Double",
           "note": "weight 300–600 · headlines only"
         },
-        { "name": "body", "value": "DM Sans", "note": "weight 300–500 · reading comfort" },
-        { "name": "accent", "value": "Playfair Display", "note": "editorial moments only" },
-        { "name": "mono", "value": "Courier New", "note": "system fallback · terminals & labels" },
-        { "name": "loader", "value": "next/font", "note": "zero layout shift, self-hosted" }
+        {
+          "name": "body",
+          "value": "DM Sans",
+          "note": "weight 300–500 · reading comfort"
+        },
+        {
+          "name": "accent",
+          "value": "Playfair Display",
+          "note": "editorial moments only"
+        },
+        {
+          "name": "mono",
+          "value": "Courier New",
+          "note": "system fallback · terminals & labels"
+        },
+        {
+          "name": "loader",
+          "value": "next/font",
+          "note": "zero layout shift, self-hosted"
+        }
       ],
       "deployment": [
         {
@@ -562,10 +629,26 @@
           "value": "Vercel",
           "note": "edge network · preview deploys on every push"
         },
-        { "name": "domain", "value": "rin.contact", "note": "registered via Namecheap" },
-        { "name": "cdn", "value": "Vercel Edge Network", "note": "global, automatic" },
-        { "name": "ci/cd", "value": "GitHub + Vercel CLI", "note": "git push → build → alias" },
-        { "name": "analytics", "value": "none", "note": "privacy first — no tracking pixels" }
+        {
+          "name": "domain",
+          "value": "rin.contact",
+          "note": "registered via Namecheap"
+        },
+        {
+          "name": "cdn",
+          "value": "Vercel Edge Network",
+          "note": "global, automatic"
+        },
+        {
+          "name": "ci/cd",
+          "value": "GitHub + Vercel CLI",
+          "note": "git push → build → alias"
+        },
+        {
+          "name": "analytics",
+          "value": "none",
+          "note": "privacy first — no tracking pixels"
+        }
       ],
       "services": [
         {
@@ -578,7 +661,11 @@
           "value": "api.qrserver.com",
           "note": "on-the-fly QR generation for /card"
         },
-        { "name": "fonts", "value": "Google Fonts", "note": "loaded via next/font — not tracked" }
+        {
+          "name": "fonts",
+          "value": "Google Fonts",
+          "note": "loaded via next/font — not tracked"
+        }
       ],
       "performance": [
         {
@@ -608,33 +695,101 @@
           "value": "interactive CLI",
           "note": "type commands, explore career data"
         },
-        { "name": "/fun/matrix", "value": "data science rain", "note": "∑ ∇ λ σ and friends" },
-        { "name": "/fun/art", "value": "generative spiral", "note": "Fibonacci phyllotaxis" },
+        {
+          "name": "/fun/matrix",
+          "value": "data science rain",
+          "note": "∑ ∇ λ σ and friends"
+        },
+        {
+          "name": "/fun/art",
+          "value": "generative spiral",
+          "note": "Fibonacci phyllotaxis"
+        },
         {
           "name": "/fun/haiku",
           "value": "haiku collection",
           "note": "5–7–5 data science absurdism"
         },
-        { "name": "/fun/coffee", "value": "you know why", "note": "" },
-        { "name": "/fun/roast", "value": "honest feedback", "note": "data science roasts" },
-        { "name": "/fun/spin", "value": "what is Rin doing?", "note": "spin the wheel" },
-        { "name": "/fun/secret", "value": "morse code reveal", "note": "" },
-        { "name": "/tools/card", "value": "draggable card", "note": "try throwing it" },
+        {
+          "name": "/fun/coffee",
+          "value": "you know why",
+          "note": ""
+        },
+        {
+          "name": "/fun/roast",
+          "value": "honest feedback",
+          "note": "data science roasts"
+        },
+        {
+          "name": "/fun/spin",
+          "value": "what is Rin doing?",
+          "note": "spin the wheel"
+        },
+        {
+          "name": "/fun/secret",
+          "value": "morse code reveal",
+          "note": ""
+        },
+        {
+          "name": "/tools/card",
+          "value": "draggable card",
+          "note": "try throwing it"
+        },
         {
           "name": "/ds",
           "value": "Rin as data science",
           "note": "model cards, SHAP, confusion matrices"
         },
-        { "name": "/info/site-map", "value": "human sitemap", "note": "every page, not XML" },
-        { "name": "/info/changelog", "value": "what changed", "note": "" },
-        { "name": "↑↑↓↓←→←→BA", "value": "Konami code", "note": "try it on the homepage" },
-        { "name": "DevTools", "value": "console easter egg", "note": "open your browser console" },
-        { "name": "curl", "value": "terminal view", "note": "curl rin.contact" },
-        { "name": "/api/rin.json", "value": "profile API", "note": "" },
-        { "name": "/api/fortune", "value": "random wisdom", "note": "" },
-        { "name": "/api/roast", "value": "honest feedback", "note": "" },
-        { "name": "/api/now", "value": "current status", "note": "" },
-        { "name": "/api/stack", "value": "this site's stack", "note": "" }
+        {
+          "name": "/info/site-map",
+          "value": "human sitemap",
+          "note": "every page, not XML"
+        },
+        {
+          "name": "/info/changelog",
+          "value": "what changed",
+          "note": ""
+        },
+        {
+          "name": "↑↑↓↓←→←→BA",
+          "value": "Konami code",
+          "note": "try it on the homepage"
+        },
+        {
+          "name": "DevTools",
+          "value": "console easter egg",
+          "note": "open your browser console"
+        },
+        {
+          "name": "curl",
+          "value": "terminal view",
+          "note": "curl rin.contact"
+        },
+        {
+          "name": "/api/rin.json",
+          "value": "profile API",
+          "note": ""
+        },
+        {
+          "name": "/api/fortune",
+          "value": "random wisdom",
+          "note": ""
+        },
+        {
+          "name": "/api/roast",
+          "value": "honest feedback",
+          "note": ""
+        },
+        {
+          "name": "/api/now",
+          "value": "current status",
+          "note": ""
+        },
+        {
+          "name": "/api/stack",
+          "value": "this site's stack",
+          "note": ""
+        }
       ],
       "philosophy": [
         {
@@ -707,9 +862,18 @@
           "title": "Copy email → confetti burst",
           "note": "Select huang@rin.contact, Ctrl+C. Enjoy."
         },
-        { "title": "Adelaide live weather in status badge", "note": "wttr.in. No API key. Free." },
-        { "title": "30+ hidden routes and easter eggs", "note": "At this point we've lost count." },
-        { "title": "Nothing OS + Wisr design system", "note": "Stark. Minimal. Monochromatic." },
+        {
+          "title": "Adelaide live weather in status badge",
+          "note": "wttr.in. No API key. Free."
+        },
+        {
+          "title": "30+ hidden routes and easter eggs",
+          "note": "At this point we've lost count."
+        },
+        {
+          "title": "Nothing OS + Wisr design system",
+          "note": "Stark. Minimal. Monochromatic."
+        },
         {
           "title": "SEO for 6+ name variants",
           "note": "Sunchuangyu, 黄孙创宇, HUANGSUNCHUANGYU, etc."
@@ -718,18 +882,36 @@
           "title": "Blog / writing section",
           "note": "Live with reading time and Read-next. Eight posts and counting."
         },
-        { "title": "RSS feed", "note": "/blog/feed.xml — subscribe in any reader." },
-        { "title": "i18n — Mandarin version", "note": "Full zh-Hans site. 黄孙创宇 has his page." },
-        { "title": "PWA / offline support", "note": "Service worker, web manifest, installable." },
+        {
+          "title": "RSS feed",
+          "note": "/blog/feed.xml — subscribe in any reader."
+        },
+        {
+          "title": "i18n — Mandarin version",
+          "note": "Full zh-Hans site. 黄孙创宇 has his page."
+        },
+        {
+          "title": "PWA / offline support",
+          "note": "Service worker, web manifest, installable."
+        },
         {
           "title": "Dark mode",
           "note": "Nothing OS is dark by nature; the toggle makes it a choice."
         }
       ],
       "wip": [
-        { "title": "More easter eggs", "note": "The list never ends." },
-        { "title": "Accessibility audit", "note": "WCAG 2.1 AA. Continuous improvement." },
-        { "title": "Performance tuning", "note": "LCP < 1.5s. Dynamic imports. Font optimisation." }
+        {
+          "title": "More easter eggs",
+          "note": "The list never ends."
+        },
+        {
+          "title": "Accessibility audit",
+          "note": "WCAG 2.1 AA. Continuous improvement."
+        },
+        {
+          "title": "Performance tuning",
+          "note": "LCP < 1.5s. Dynamic imports. Font optimisation."
+        }
       ],
       "planned": [
         {
@@ -740,17 +922,32 @@
           "title": "Newsletter automation",
           "note": "The signup exists; the sending pipeline is next."
         },
-        { "title": "API versioning", "note": "v1 is forever. v2 when we break everything." }
+        {
+          "title": "API versioning",
+          "note": "v1 is forever. v2 when we break everything."
+        }
       ],
       "backlog": [
         {
           "title": "Replace weather with astrology",
           "note": "Sagittarius: your model will overfit today."
         },
-        { "title": "Blockchain integration", "note": "No." },
-        { "title": "NFT of the 404 page", "note": "Absolutely not." },
-        { "title": "AI chatbot that only says 'hire Rin'", "note": "Tempting. Too on-the-nose." },
-        { "title": "Infinite scroll", "note": "We have pagination. We have subpages. We're good." }
+        {
+          "title": "Blockchain integration",
+          "note": "No."
+        },
+        {
+          "title": "NFT of the 404 page",
+          "note": "Absolutely not."
+        },
+        {
+          "title": "AI chatbot that only says 'hire Rin'",
+          "note": "Tempting. Too on-the-nose."
+        },
+        {
+          "title": "Infinite scroll",
+          "note": "We have pagination. We have subpages. We're good."
+        }
       ]
     }
   },
@@ -991,19 +1188,44 @@
     "heading": "What I learned, and keep learning.",
     "intro": "Thorough, first-principles explainers of the data science I studied at the University of Melbourne — and the topics I taught. Writing each one from scratch is how I keep the fundamentals sharp. Foundation first, then advanced; built one topic at a time.",
     "liveCounter": "{live} of {total} live",
-    "statusLabels": { "live": "Live", "soon": "Next", "planned": "Planned" },
+    "statusLabels": {
+      "live": "Live",
+      "soon": "Next",
+      "planned": "Planned"
+    },
     "tiers": {
       "foundation": {
         "label": "Foundation",
         "blurb": "The maths, statistics, data and systems base — Bachelor of Science.",
         "topics": [
-          { "label": "Linear Algebra", "note": "Vectors, matrices, eigenvectors, the SVD" },
-          { "label": "Probability", "note": "Random variables, distributions, Bayes' rule" },
-          { "label": "Statistics", "note": "Estimation, inference, hypothesis tests" },
-          { "label": "Calculus & Optimisation", "note": "Gradients, gradient descent, backprop" },
-          { "label": "Linear Statistical Models", "note": "OLS, inference, diagnostics" },
-          { "label": "Database Systems", "note": "Relational model, SQL, indexing" },
-          { "label": "Artificial Intelligence", "note": "Search, logic, planning" },
+          {
+            "label": "Linear Algebra",
+            "note": "Vectors, matrices, eigenvectors, the SVD"
+          },
+          {
+            "label": "Probability",
+            "note": "Random variables, distributions, Bayes' rule"
+          },
+          {
+            "label": "Statistics",
+            "note": "Estimation, inference, hypothesis tests"
+          },
+          {
+            "label": "Calculus & Optimisation",
+            "note": "Gradients, gradient descent, backprop"
+          },
+          {
+            "label": "Linear Statistical Models",
+            "note": "OLS, inference, diagnostics"
+          },
+          {
+            "label": "Database Systems",
+            "note": "Relational model, SQL, indexing"
+          },
+          {
+            "label": "Artificial Intelligence",
+            "note": "Search, logic, planning"
+          },
           {
             "label": "Web Information Technology",
             "note": "HTTP, HTML/CSS/JS, REST APIs, the request cycle"
@@ -1054,13 +1276,22 @@
             "label": "Statistical Machine Learning",
             "note": "Bias-variance, regularisation, generalisation"
           },
-          { "label": "Bayesian Statistics", "note": "Priors, posteriors, MCMC" },
+          {
+            "label": "Bayesian Statistics",
+            "note": "Priors, posteriors, MCMC"
+          },
           {
             "label": "PCA & Dimensionality Reduction",
             "note": "Covariance, eigenvectors, variance explained"
           },
-          { "label": "Clustering", "note": "k-means, hierarchical, choosing k" },
-          { "label": "Cluster & Cloud Computing", "note": "MPI, Spark, HPC at scale" },
+          {
+            "label": "Clustering",
+            "note": "k-means, hierarchical, choosing k"
+          },
+          {
+            "label": "Cluster & Cloud Computing",
+            "note": "MPI, Spark, HPC at scale"
+          },
           {
             "label": "Statistical Modelling",
             "note": "GLMs, logistic & Poisson, link functions, AIC"
@@ -1249,7 +1480,10 @@
         "label": "Taught",
         "blurb": "Topics I taught or mentored — written from the other side of the desk.",
         "topics": [
-          { "label": "Data Science mentoring themes", "note": "UniMelb peer mentoring, 2024" },
+          {
+            "label": "Data Science mentoring themes",
+            "note": "UniMelb peer mentoring, 2024"
+          },
           {
             "label": "EdTech & the Science of Learning",
             "note": "Cognitive load, spacing, retrieval, desirable difficulties"
@@ -1279,7 +1513,8 @@
       "applied": "Where I used it",
       "intuition": "Intuition",
       "pitfall": "Common pitfall"
-    }
+    },
+    "skillsThisSupports": "Skills this supports"
   },
   "statusBadge": {
     "label": "Current status",
@@ -1658,10 +1893,22 @@
     "liveDemo": "Live demo ↗",
     "viewGithub": "View on GitHub ↗",
     "glance": [
-      { "k": "Status", "v": "Live · v1.14" },
-      { "k": "Tests", "v": "128 green" },
-      { "k": "Jurisdictions", "v": "SA + NYC" },
-      { "k": "Open datasets", "v": "~1,900" }
+      {
+        "k": "Status",
+        "v": "Live · v1.14"
+      },
+      {
+        "k": "Tests",
+        "v": "128 green"
+      },
+      {
+        "k": "Jurisdictions",
+        "v": "SA + NYC"
+      },
+      {
+        "k": "Open datasets",
+        "v": "~1,900"
+      }
     ],
     "furtherReading": "Further reading",
     "essayTitle": "Put AI Governance on the Request Path, Not in a Document",
@@ -1760,10 +2007,22 @@
     "privateNote": "The app and its code are private because they hold real customer data, so the real app has no public demo and there is no public repository. This page describes how the system works, not who uses it.",
     "sandboxLink": "Try the concept sandbox, on made-up members",
     "glance": [
-      { "k": "Status", "v": "In production" },
-      { "k": "Started", "v": "22 Apr 2026" },
-      { "k": "Platforms", "v": "Web · iOS/Android test builds" },
-      { "k": "Role", "v": "Sole developer" }
+      {
+        "k": "Status",
+        "v": "In production"
+      },
+      {
+        "k": "Started",
+        "v": "22 Apr 2026"
+      },
+      {
+        "k": "Platforms",
+        "v": "Web · iOS/Android test builds"
+      },
+      {
+        "k": "Role",
+        "v": "Sole developer"
+      }
     ],
     "footerNote": "Built for my mum's studio. The app and its code stay private.",
     "sections": {
@@ -1916,23 +2175,56 @@
       "secKnownBiases": "Known biases",
       "secLimitations": "Limitations",
       "details": [
-        { "label": "Model type", "value": "GeneralistClassifier (human)" },
-        { "label": "Architecture", "value": "Master of Data Science, BSc, 9 roles, 1 startup" },
-        { "label": "Training date", "value": "2018–present (continuous)" },
-        { "label": "Framework", "value": "University of Melbourne, CSIRO, WEHI, SAPOL" }
+        {
+          "label": "Model type",
+          "value": "GeneralistClassifier (human)"
+        },
+        {
+          "label": "Architecture",
+          "value": "Master of Data Science, BSc, 9 roles, 1 startup"
+        },
+        {
+          "label": "Training date",
+          "value": "2018–present (continuous)"
+        },
+        {
+          "label": "Framework",
+          "value": "University of Melbourne, CSIRO, WEHI, SAPOL"
+        }
       ],
       "performance": [
-        { "label": "Projects", "value": "20" },
-        { "label": "Certifications", "value": "23" },
-        { "label": "Uptime", "value": "~26 years (with coffee)" }
+        {
+          "label": "Projects",
+          "value": "20"
+        },
+        {
+          "label": "Certifications",
+          "value": "23"
+        },
+        {
+          "label": "Uptime",
+          "value": "~26 years (with coffee)"
+        }
       ],
       "biases": [
-        { "label": "Overfits on", "value": "Python, pandas, SQL" },
-        { "label": "Underfits on", "value": "Rust (borrow checker still winning)" }
+        {
+          "label": "Overfits on",
+          "value": "Python, pandas, SQL"
+        },
+        {
+          "label": "Underfits on",
+          "value": "Rust (borrow checker still winning)"
+        }
       ],
       "limitations": [
-        { "label": "Degrades after", "value": "2am (debugging at midnight)" },
-        { "label": "Recommended use", "value": "Government, research, startups, analytics" }
+        {
+          "label": "Degrades after",
+          "value": "2am (debugging at midnight)"
+        },
+        {
+          "label": "Recommended use",
+          "value": "Government, research, startups, analytics"
+        }
       ]
     },
     "featureImportance": {
@@ -1967,10 +2259,22 @@
       "thMatch": "Match",
       "footer": "Precision: 0.5 · Recall: 0.5 · F1: 0.5 · Interpretation: everyone is confused",
       "rows": [
-        { "who": "Recruiter thinks", "reality": "Analyses spreadsheets" },
-        { "who": "Mum thinks", "reality": "Fixes computers" },
-        { "who": "Friend thinks", "reality": "Makes charts" },
-        { "who": "Rin actually does", "reality": "Analyses spreadsheets" }
+        {
+          "who": "Recruiter thinks",
+          "reality": "Analyses spreadsheets"
+        },
+        {
+          "who": "Mum thinks",
+          "reality": "Fixes computers"
+        },
+        {
+          "who": "Friend thinks",
+          "reality": "Makes charts"
+        },
+        {
+          "who": "Rin actually does",
+          "reality": "Analyses spreadsheets"
+        }
       ]
     },
     "ensemble": {
@@ -2050,8 +2354,14 @@
       "heading": "Overfitting Detector",
       "subtitle": "Scans your CV. Reports buzzword density and generalisation.",
       "rows": [
-        { "label": "Buzzwords per square inch", "value": "Low ✓" },
-        { "label": "Overfitting detected", "value": "No" },
+        {
+          "label": "Buzzwords per square inch",
+          "value": "Low ✓"
+        },
+        {
+          "label": "Overfitting detected",
+          "value": "No"
+        },
         {
           "label": "Underfitting detected",
           "value": "Maybe — you're underselling yourself",
@@ -2092,11 +2402,26 @@
       "heading": "Career as Data Pipeline",
       "subtitle": "Raw → Clean → Transform → Model → Deploy. Each stage is a phase.",
       "stages": [
-        { "stage": "Raw", "desc": "High school, China" },
-        { "stage": "Clean", "desc": "Trinity College, Melbourne" },
-        { "stage": "Transform", "desc": "UniMelb BSc + MDS" },
-        { "stage": "Model", "desc": "CSIRO, WEHI, UniMelb" },
-        { "stage": "Deploy", "desc": "SAPOL, Mapiva, research" }
+        {
+          "stage": "Raw",
+          "desc": "High school, China"
+        },
+        {
+          "stage": "Clean",
+          "desc": "Trinity College, Melbourne"
+        },
+        {
+          "stage": "Transform",
+          "desc": "UniMelb BSc + MDS"
+        },
+        {
+          "stage": "Model",
+          "desc": "CSIRO, WEHI, UniMelb"
+        },
+        {
+          "stage": "Deploy",
+          "desc": "SAPOL, Mapiva, research"
+        }
       ],
       "statusNote": "Pipeline status: running. No scheduled downtime."
     },
@@ -2149,9 +2474,21 @@
       "payoffLabel": "payoff",
       "priorityLabel": "priority",
       "debt": [
-        { "item": "Rust", "payoff": "2030", "priority": "Low" },
-        { "item": "Production debugging at midnight", "payoff": "Never", "priority": "High" },
-        { "item": "Unread papers", "payoff": "TBD", "priority": "Medium" }
+        {
+          "item": "Rust",
+          "payoff": "2030",
+          "priority": "Low"
+        },
+        {
+          "item": "Production debugging at midnight",
+          "payoff": "Never",
+          "priority": "High"
+        },
+        {
+          "item": "Unread papers",
+          "payoff": "TBD",
+          "priority": "Medium"
+        }
       ],
       "runNote": "# Run `rin --payoff-debt` to resolve. (Not implemented.)"
     },
@@ -2376,13 +2713,13 @@
     }
   },
   "skillsPage": {
-    "metaTitle": "Everything I've learned · Rin Huang · rin.contact",
+    "metaTitle": "Skills & Knowledge · Rin Huang · rin.contact",
     "metaDescription": "Rin Huang lists {skills} skills he learned and used from {from} to {to}, each linked to the subjects, coursework, projects, roles, credentials and notes that show it.",
     "ogTitle": "Everything I've learned · Rin Huang",
     "ogTitleShort": "Everything I've learned",
     "ogSubtitle": "{skills} skills from {from} to {to}, each linked to its evidence",
     "sectionLabel": "◆ Skills",
-    "heading": "Everything I've learned.",
+    "heading": "Skills & Knowledge",
     "description": "This page holds every skill I have picked up since {from}, from my first Python subject to the work I do now. Each one links to where I learned it and where I used it.",
     "back": "About",
     "present": "Present",
@@ -2539,6 +2876,11 @@
       "history": "{count} versions of this site",
       "blog": "{count} blog posts",
       "resume": "Resume and PDF"
+    },
+    "tabs": {
+      "label": "Skills & Knowledge tabs",
+      "evidence": "Evidence",
+      "notes": "Notes"
     }
   }
 }

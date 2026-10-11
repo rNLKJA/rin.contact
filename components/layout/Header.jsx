@@ -115,7 +115,6 @@ const NAV_LINKS = [
   { href: "/projects/coursework", key: "nav.coursework", icon: FiBookOpen },
   { href: "/skills", key: "nav.skillsShort", icon: FiTool },
   { href: "/lab", key: "nav.lab", icon: LuFlaskConical },
-  { href: "/knowledge", key: "nav.knowledge", icon: LuLibrary },
   { href: "/blog", key: "nav.blog", icon: LuNewspaper },
   { href: "/about", key: "nav.about", icon: FiUser },
   { href: "/resume", key: "nav.resume", icon: FiFileText },
