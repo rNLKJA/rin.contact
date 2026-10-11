@@ -3,7 +3,7 @@ import { useI18n } from "@/contexts/I18nContext";
 import { getContent } from "@/components/knowledge/content/large-language-models";
 import { getSkillsForTopic } from "@/lib/topic-skills-loader";
 
-export async function getStaticProps({ locale = "en-AU" }) {
+export async function getStaticProps() {
   const relatedSkills = getSkillsForTopic("large-language-models");
   return { props: { relatedSkills } };
 }

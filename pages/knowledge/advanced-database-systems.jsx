@@ -3,7 +3,7 @@ import { useI18n } from "@/contexts/I18nContext";
 import { getContent } from "@/components/knowledge/content/advanced-database-systems";
 import { getSkillsForTopic } from "@/lib/topic-skills-loader";
 
-export async function getStaticProps({ locale = "en-AU" }) {
+export async function getStaticProps() {
   const relatedSkills = getSkillsForTopic("advanced-database-systems");
   return { props: { relatedSkills } };
 }

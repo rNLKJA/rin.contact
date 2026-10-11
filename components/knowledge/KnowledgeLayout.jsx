@@ -242,7 +242,7 @@ export default function KnowledgeLayout({
                     href={`/skills/?skill=${skill.id}`}
                     className="inline-flex items-center px-3 py-1.5 text-[13px] border border-[#E0E0E0] dark:border-[#2A2A2A] text-[#3D3D3D] dark:text-[#AAAAAA] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors"
                   >
-                    {skill.label}
+                    {locale === "zh-Hans" && skill.zh ? skill.zh : skill.label}
                   </Link>
                 ))}
               </div>

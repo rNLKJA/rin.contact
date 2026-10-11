@@ -3,7 +3,7 @@
  * Evidence tab = existing skills content. Notes tab = knowledge library.
  * Accessible tablist with arrow key navigation and URL state (?tab=notes).
  */
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useRouter } from "next/router";
 import { useI18n } from "@/contexts/I18nContext";
 import { KNOWLEDGE_TIERS } from "@/lib/knowledge-index";
@@ -56,23 +56,12 @@ function Row({ href, status, label, note, statusLabel }) {
 export default function SkillsKnowledgeTabs({ evidenceContent }) {
   const { t } = useI18n();
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState("evidence");
+  // The URL (?tab=notes) is the single source of truth for the active tab.
+  const activeTab = router.isReady && router.query.tab === "notes" ? "notes" : "evidence";
   const tablistRef = useRef(null);
-
-  // Read ?tab= from URL
-  useEffect(() => {
-    if (!router.isReady) return;
-    const tab = router.query.tab;
-    if (tab === "notes") {
-      setActiveTab("notes");
-    } else {
-      setActiveTab("evidence");
-    }
-  }, [router.isReady, router.query.tab]);
 
   // Update URL when tab changes (shallow replace, no scroll)
   const changeTab = (tab) => {
-    setActiveTab(tab);
     const query = { ...router.query };
     if (tab === "notes") {
       query.tab = "notes";

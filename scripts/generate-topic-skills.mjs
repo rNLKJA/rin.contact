@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console -- build-time CLI script that reports what it generated */
 /**
  * Generates topic-to-skills mapping for knowledge pages.
  * Reads KNOWLEDGE_SKILLS from skills-taxonomy.js (which maps topic slugs to
@@ -30,10 +31,13 @@ for (const [topicSlug, skillIds] of Object.entries(KNOWLEDGE_SKILLS)) {
     if (skillDef) {
       skills.push({
         id: skillId,
-        label: skillDef.en, // Use English label
+        label: skillDef.en,
+        zh: skillDef.zh || skillDef.en,
       });
     } else {
-      console.warn(`Warning: skill ID "${skillId}" referenced by topic "${topicSlug}" not found in SKILLS`);
+      console.warn(
+        `Warning: skill ID "${skillId}" referenced by topic "${topicSlug}" not found in SKILLS`
+      );
     }
   }
 
@@ -49,4 +53,6 @@ if (!fs.existsSync(outDir)) {
 // Write the JSON
 fs.writeFileSync(OUT, JSON.stringify(mapping, null, 2));
 
-console.log(`Generated topic-skills mapping: ${Object.keys(mapping).length} topics, written to ${OUT}`);
+console.log(
+  `Generated topic-skills mapping: ${Object.keys(mapping).length} topics, written to ${OUT}`
+);
