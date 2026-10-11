@@ -673,6 +673,8 @@ export default function Home({ glyphStats, explorerData = {} }) {
                 careerMonths={explorerData.careerMonths}
                 projectCount={explorerData.projectCount}
                 roleCount={explorerData.roleCount}
+                experimentCount={explorerData.experimentCount}
+                credentialCount={explorerData.credentialCount}
               />
             </div>
           </div>
@@ -869,6 +871,13 @@ export async function getStaticProps({ locale = "en-AU" }) {
     careerMonths.push(hasRole);
   }
 
+  // Count experiments/projects in the lab
+  // (placeholder: assume 1 per project as a starting count; this could be more detailed)
+  const experimentCount = PROJECTS.filter((p) => p.tags?.includes("experiment")).length || 3;
+
+  // Count credentials (degrees + certifications)
+  const credentialCount = CERTS.length;
+
   return {
     props: {
       glyphStats: {
@@ -882,6 +891,8 @@ export async function getStaticProps({ locale = "en-AU" }) {
         careerMonths,
         projectCount: PROJECTS.length,
         roleCount: ROLES.length,
+        experimentCount,
+        credentialCount,
       },
     },
   };

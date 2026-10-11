@@ -4,34 +4,22 @@
  *
  * Each of six tiles is a mini live instrument built from real data computed at
  * build time:
- *  - Writing: glyph bar per month of posts
- *  - Career: 9-role month strip in miniature (compact version)
- *  - Projects: one glyph per project with live count
- *  - Lab: small animated glyph pattern
- *  - About: dot-matrix Adelaide clock
- *  - Resume: "30-second read" with page glyph
+ *  - Writing: glyph bar per month of posts (ink color for history)
+ *  - Career: 9-role month strip in miniature (ink color)
+ *  - Projects: one glyph per project with live count (#FF3C3C for current)
+ *  - Lab: experiment count as large Bitcount numeral (#FF3C3C for live data)
+ *  - About: dot-matrix Adelaide clock (ink color)
+ *  - Resume: credential count as large Bitcount numeral (#FF3C3C for live data)
  *
- * Dot-matrix numerals for 01-06. Hover/focus lights glyphs red (CSS, no cursor
- * effects). Whole tile is one link. Marked with data-explore, data-explore-tile,
- * data-glyph. Supports EN + zh-Hans copy. No canvas, no hard-coded numbers.
+ * Square corners (no rounded-lg), hairline borders. Single numbering (no duplication).
+ * Large Bitcount numerals as hero of instrument. No cursor reactions, respects
+ * prefers-reduced-motion. Whole tile is one link. Marked with data-explore,
+ * data-explore-tile, data-glyph. Supports EN + zh-Hans copy. No canvas.
  */
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import { useI18n } from "@/contexts/I18nContext";
 import { useInView } from "@/hooks/useInView";
 import { fill } from "@/lib/fill";
-
-const REDUCE_QUERY = "(prefers-reduced-motion: reduce)";
-function subscribeReduce(cb) {
-  const mq = window.matchMedia(REDUCE_QUERY);
-  mq.addEventListener("change", cb);
-  return () => mq.removeEventListener("change", cb);
-}
-const useReducedMotion = () =>
-  useSyncExternalStore(
-    subscribeReduce,
-    () => window.matchMedia(REDUCE_QUERY).matches,
-    () => false
-  );
 
 const TILES = [
   { id: "writing", href: "/blog", num: "01" },
@@ -74,19 +62,24 @@ const COPY = {
 /**
  * GlyphBar — renders a simple bar of glyphs (mini rectangles).
  * Used in Writing tile and as reusable component.
+ * Sizes: sm (1px), md (2px), lg (3px) for different context scales.
  */
 function GlyphBar({ count, max = 12, size = "sm" }) {
-  const sizeClass = size === "sm" ? "h-1 gap-px" : "h-1.5 gap-1";
-  const glyphClass = size === "sm" ? "w-1" : "w-1.5";
+  const sizeMap = {
+    sm: { height: "h-1", gap: "gap-px", glyph: "w-1" },
+    md: { height: "h-1.5", gap: "gap-0.5", glyph: "w-1.5" },
+    lg: { height: "h-2", gap: "gap-1", glyph: "w-2" },
+  };
+  const { height, gap, glyph: glyphWidth } = sizeMap[size] || sizeMap.sm;
   const lit = Math.min(count, max);
 
   return (
-    <div className={`flex ${sizeClass}`} data-glyph>
+    <div className={`flex ${gap}`} data-glyph>
       {Array.from({ length: max }, (_, i) => (
         <span
           key={i}
-          className={`${glyphClass} rounded-[1px] transition-colors duration-300 ${
-            i < lit ? "bg-[#FF3C3C]" : "bg-black/10 dark:bg-white/10"
+          className={`${height} ${glyphWidth} transition-colors duration-300 ${
+            i < lit ? "bg-black dark:bg-white" : "bg-black/10 dark:bg-white/10"
           }`}
           aria-hidden="true"
         />
@@ -96,25 +89,22 @@ function GlyphBar({ count, max = 12, size = "sm" }) {
 }
 
 /**
- * WritingTile — shows glyph bar per month of posts.
- * Data: postsByMonth - array of counts per month
+ * WritingTile — shows glyph bar per month of posts (hero visualization).
+ * Data: postsByMonth - array of counts per month, uses ink color for history.
  */
-function WritingTile({ postsByMonth, reduce, copy, num }) {
+function WritingTile({ postsByMonth }) {
   const maxPostsInMonth = Math.max(1, ...(postsByMonth || [1]));
   const recentMonths = (postsByMonth || []).slice(-6);
 
   return (
-    <span className="flex flex-col gap-2" data-glyph>
-      <span className="text-[10px] font-mono tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]">
-        {num}
-      </span>
-      <span className="flex flex-col gap-1.5">
+    <span className="flex flex-col gap-4" data-glyph>
+      <span className="flex flex-col gap-3">
         {recentMonths.length > 0 ? (
           recentMonths.map((count, i) => (
-            <GlyphBar key={i} count={count} max={maxPostsInMonth} size="xs" />
+            <GlyphBar key={i} count={count} max={maxPostsInMonth} size="md" />
           ))
         ) : (
-          <GlyphBar count={0} max={1} size="xs" />
+          <GlyphBar count={0} max={1} size="md" />
         )}
       </span>
     </span>
@@ -123,72 +113,74 @@ function WritingTile({ postsByMonth, reduce, copy, num }) {
 
 /**
  * CareerTile — shows compact 9-role month strip (simplified CareerInstrument).
- * Data: careerMonths - array of booleans or month data, roleCount - number of roles
+ * Data: careerMonths - array of booleans or month data, roleCount - number of roles.
+ * Hero: large Bitcount numeral showing roleCount in ink color (history).
  */
-function CareerTile({ careerMonths, roleCount = 9, reduce, copy, num }) {
+function CareerTile({ careerMonths, roleCount = 9 }) {
   const months = (careerMonths || []).slice(-12);
 
   return (
-    <span className="flex flex-col gap-2" data-glyph>
-      <span className="text-[10px] font-mono tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]">
-        {num}
-      </span>
-      <div className="flex gap-px" data-glyph>
-        {months.map((active, i) => (
-          <span
-            key={i}
-            className={`h-4 w-1 rounded-[1px] transition-colors duration-300 ${
-              active ? "bg-black dark:bg-white" : "bg-black/10 dark:bg-white/10"
-            }`}
-            aria-hidden="true"
-          />
-        ))}
+    <span className="flex flex-col gap-4" data-glyph>
+      <div className="flex flex-col gap-2">
+        <span className="font-display text-4xl font-bold text-black dark:text-white tabular-nums leading-none">
+          {String(roleCount).padStart(2, "0")}
+        </span>
+        <div className="flex gap-px" data-glyph>
+          {months.map((active, i) => (
+            <span
+              key={i}
+              className={`h-4 w-1 transition-colors duration-300 ${
+                active ? "bg-black dark:bg-white" : "bg-black/10 dark:bg-white/10"
+              }`}
+              aria-hidden="true"
+            />
+          ))}
+        </div>
       </div>
-      <span className="text-[11px] font-display text-black dark:text-white tabular-nums">
-        {roleCount}
-      </span>
     </span>
   );
 }
 
 /**
- * ProjectsTile — one glyph per project.
+ * ProjectsTile — one glyph per project, hero is large Bitcount count in #FF3C3C.
  */
-function ProjectsTile({ projectCount, reduce, copy, num }) {
+function ProjectsTile({ projectCount }) {
   return (
-    <span className="flex flex-col gap-2" data-glyph>
-      <span className="text-[10px] font-mono tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]">
-        {num}
-      </span>
-      <div className="flex flex-wrap gap-1" data-glyph>
-        {Array.from({ length: Math.min(projectCount, 12) }, (_, i) => (
-          <span
-            key={i}
-            className="w-2 h-2 rounded-[1px] bg-black dark:bg-white transition-colors duration-300"
-            aria-hidden="true"
-          />
-        ))}
+    <span className="flex flex-col gap-4" data-glyph>
+      <div className="flex flex-col gap-2">
+        <span className="font-display text-4xl font-bold text-[#FF3C3C] tabular-nums leading-none">
+          {String(projectCount).padStart(2, "0")}
+        </span>
+        <div className="flex flex-wrap gap-1" data-glyph>
+          {Array.from({ length: Math.min(projectCount, 12) }, (_, i) => (
+            <span
+              key={i}
+              className="w-2 h-2 bg-black dark:bg-white transition-colors duration-300"
+              aria-hidden="true"
+            />
+          ))}
+        </div>
       </div>
-      <span className="text-[11px] font-display text-black dark:text-white tabular-nums">
-        {projectCount}
-      </span>
     </span>
   );
 }
 
 /**
- * LabTile — animated glyph pattern (dots that pulse).
+ * LabTile — shows experiment count as large Bitcount numeral in #FF3C3C (live/current data).
+ * No animations, static display. Data computed at build time.
  */
-function LabTile({ reduce, copy, num }) {
+function LabTile({ experimentCount = 0 }) {
   return (
-    <span className="flex flex-col gap-2" data-glyph>
-      <span className="text-[10px] font-mono tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]">
-        {num}
-      </span>
-      <div className="flex gap-1" data-glyph>
-        {Array.from({ length: 5 }, (_, i) => (
-          <span key={i} className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
-        ))}
+    <span className="flex flex-col gap-4" data-glyph>
+      <div className="flex flex-col gap-2">
+        <span className="font-display text-4xl font-bold text-[#FF3C3C] tabular-nums leading-none">
+          {String(experimentCount).padStart(2, "0")}
+        </span>
+        <div className="flex gap-1" data-glyph>
+          {Array.from({ length: Math.min(experimentCount, 5) }, (_, i) => (
+            <span key={i} className="w-1.5 h-1.5 bg-[#FF3C3C]" aria-hidden="true" />
+          ))}
+        </div>
       </div>
     </span>
   );
@@ -196,9 +188,9 @@ function LabTile({ reduce, copy, num }) {
 
 /**
  * AboutTile — dot-matrix Adelaide clock.
- * Shows HH:MM in a minimal dot-matrix style.
+ * Shows HH:MM in a minimal dot-matrix style. Ink color (history/static).
  */
-function AboutTile({ reduce, copy, num }) {
+function AboutTile() {
   const [time, setTime] = useState("--:--");
 
   useEffect(() => {
@@ -214,11 +206,8 @@ function AboutTile({ reduce, copy, num }) {
   }, []);
 
   return (
-    <span className="flex flex-col gap-2" data-glyph>
-      <span className="text-[10px] font-mono tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]">
-        {num}
-      </span>
-      <div className="font-display text-lg tabular-nums text-black dark:text-white tracking-wide">
+    <span className="flex flex-col gap-4" data-glyph>
+      <div className="font-display text-3xl tabular-nums text-black dark:text-white tracking-wide leading-none">
         {time}
       </div>
       <span className="text-[9px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A]">Adelaide</span>
@@ -227,41 +216,41 @@ function AboutTile({ reduce, copy, num }) {
 }
 
 /**
- * ResumeTile — "30-second read" label with page glyph.
+ * ResumeTile — shows credential count as large Bitcount numeral in #FF3C3C (live/current data).
+ * Includes page glyph as secondary visual. Data computed at build time.
  */
-function ResumeTile({ reduce, copy, num }) {
+function ResumeTile({ credentialCount = 0 }) {
   return (
-    <span className="flex flex-col gap-2" data-glyph>
-      <span className="text-[10px] font-mono tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]">
-        {num}
-      </span>
-      <div
-        className="w-3 h-4 border border-black dark:border-white rounded-[1px]"
-        aria-hidden="true"
-      />
-      <span className="text-[9px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A]">30 sec</span>
+    <span className="flex flex-col gap-4" data-glyph>
+      <div className="flex flex-col gap-2">
+        <span className="font-display text-4xl font-bold text-[#FF3C3C] tabular-nums leading-none">
+          {String(credentialCount).padStart(2, "0")}
+        </span>
+        <div className="w-3 h-4 border border-black dark:border-white" aria-hidden="true" />
+      </div>
     </span>
   );
 }
 
 /**
  * Explorer tile wrapper — the clickable card.
+ * Square corners (no rounded-lg), hairline border. Single numbering only in title area.
  */
 function ExploreTile({ href, num, title, desc, children }) {
   return (
     <div
       data-explore-tile
-      className="relative flex flex-col gap-3 p-4 md:p-5 bg-white/80 dark:bg-[#0A0A0A]/80 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-lg"
+      className="relative flex flex-col gap-4 p-4 md:p-5 bg-white/80 dark:bg-[#0A0A0A]/80 border border-[#E0E0E0] dark:border-[#3D3D3D]"
     >
       <a
         href={href}
-        className="absolute inset-0 rounded-lg outline-none"
+        className="absolute inset-0 outline-none"
         style={{ color: "inherit", textDecoration: "none" }}
         aria-hidden="true"
       />
       <div className="relative z-10">
         {children}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           <div className="flex items-baseline gap-2">
             <span className="font-mono text-[9px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
               {num}
@@ -285,13 +274,13 @@ export default function SectionExplorer({
   careerMonths = [],
   projectCount = 0,
   roleCount = 9,
+  experimentCount = 0,
+  credentialCount = 0,
   counts = {},
 }) {
   const { t } = useI18n();
   const [ref, inView] = useInView({ threshold: 0.12 });
-  const reduce = useReducedMotion();
 
-  const raw = t("sectionNav.cards") || [];
   const lang = typeof t === "function" ? "en" : "en";
   const copy = COPY[lang === "zh-Hans" || lang === "zh" ? "zh" : "en"];
 
@@ -316,26 +305,6 @@ export default function SectionExplorer({
 
   return (
     <section data-explore className="py-20" aria-label={copy.label} ref={ref}>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            @keyframes lab-pulse {
-              0%, 100% { opacity: 0.3; }
-              50% { opacity: 1; }
-            }
-            .lab-pulse {
-              animation: lab-pulse 2s ease-in-out infinite;
-            }
-            @media (prefers-reduced-motion: reduce) {
-              .lab-pulse {
-                animation: none;
-                opacity: 1;
-              }
-            }
-          `,
-        }}
-      />
-
       <div
         className={`mb-12 transition-all duration-200 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"}`}
       >
@@ -357,7 +326,7 @@ export default function SectionExplorer({
           title={tilesCopy.writing.title}
           desc={tilesCopy.writing.desc}
         >
-          <WritingTile postsByMonth={postsByMonth} reduce={reduce} copy={copy} num={TILES[0].num} />
+          <WritingTile postsByMonth={postsByMonth} />
         </ExploreTile>
 
         <ExploreTile
@@ -366,13 +335,7 @@ export default function SectionExplorer({
           title={tilesCopy.career.title}
           desc={tilesCopy.career.desc}
         >
-          <CareerTile
-            careerMonths={careerMonths}
-            roleCount={roleCount}
-            reduce={reduce}
-            copy={copy}
-            num={TILES[1].num}
-          />
+          <CareerTile careerMonths={careerMonths} roleCount={roleCount} />
         </ExploreTile>
 
         <ExploreTile
@@ -381,12 +344,7 @@ export default function SectionExplorer({
           title={tilesCopy.projects.title}
           desc={tilesCopy.projects.desc}
         >
-          <ProjectsTile
-            projectCount={projectCount}
-            reduce={reduce}
-            copy={copy}
-            num={TILES[2].num}
-          />
+          <ProjectsTile projectCount={projectCount} />
         </ExploreTile>
 
         <ExploreTile
@@ -395,7 +353,7 @@ export default function SectionExplorer({
           title={tilesCopy.lab.title}
           desc={tilesCopy.lab.desc}
         >
-          <LabTile reduce={reduce} copy={copy} num={TILES[3].num} />
+          <LabTile experimentCount={experimentCount} />
         </ExploreTile>
 
         <ExploreTile
@@ -404,7 +362,7 @@ export default function SectionExplorer({
           title={tilesCopy.about.title}
           desc={tilesCopy.about.desc}
         >
-          <AboutTile reduce={reduce} copy={copy} num={TILES[4].num} />
+          <AboutTile />
         </ExploreTile>
 
         <ExploreTile
@@ -413,7 +371,7 @@ export default function SectionExplorer({
           title={tilesCopy.resume.title}
           desc={tilesCopy.resume.desc}
         >
-          <ResumeTile reduce={reduce} copy={copy} num={TILES[5].num} />
+          <ResumeTile credentialCount={credentialCount} />
         </ExploreTile>
       </div>
     </section>
