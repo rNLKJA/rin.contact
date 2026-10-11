@@ -3,7 +3,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
-import { CERTS, ROLES } from "@/lib/career-data";
+import { CERTS, ROLES, EDUCATION } from "@/lib/career-data";
 import { PROJECTS } from "@/lib/projects-data";
 import { COURSEWORK } from "@/lib/coursework-data";
 import { getAllPosts } from "@/lib/posts";
@@ -329,7 +329,7 @@ const ContactSection = dynamic(() => import("@/components/sections/ContactSectio
   loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" />,
 });
 
-export default function Home({ glyphStats }) {
+export default function Home({ glyphStats, explorerData = {} }) {
   const { locale = "en-AU" } = useRouter();
   const isZh = locale === "zh-Hans";
   const [termOpen, setTermOpen] = useState(false);
@@ -667,7 +667,17 @@ export default function Home({ glyphStats }) {
               <StatusBadge />
             </div>
             <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <SectionNavCards counts={{ projects: PROJECTS.length }} />
+              <SectionNavCards
+                counts={{ projects: PROJECTS.length }}
+                postsByMonth={explorerData.postsByMonth}
+                totalPosts={explorerData.totalPosts}
+                careerMonths={explorerData.careerMonths}
+                projectCount={explorerData.projectCount}
+                roleCount={explorerData.roleCount}
+                experimentCount={explorerData.experimentCount}
+                resumeYears={explorerData.resumeYears}
+                resumeCount={explorerData.resumeCount}
+              />
             </div>
           </div>
 
@@ -819,6 +829,7 @@ export default function Home({ glyphStats }) {
 
 // The glyph counters read the same data as the pages they link to (career,
 // projects, coursework and the skills atlas), so the numbers can't drift.
+// The explorer tiles also read live data computed at build time.
 export async function getStaticProps({ locale = "en-AU" }) {
   const posts = (await getAllPosts()).map(({ slug, title, date, tags }) => ({
     slug,
@@ -828,6 +839,62 @@ export async function getStaticProps({ locale = "en-AU" }) {
   }));
   const dict = locale === "zh-Hans" ? zh : en;
   const atlas = buildSkillsAtlas(locale, { dict, posts });
+
+  // Compute postsByMonth for the explorer (last 6 months)
+  const postsByMonth = [];
+  const now = new Date();
+  for (let i = 5; i >= 0; i--) {
+    const monthDate = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    const year = monthDate.getFullYear();
+    const month = monthDate.getMonth();
+    const count = posts.filter((p) => {
+      if (!p.date) return false;
+      const pDate = new Date(p.date);
+      return pDate.getFullYear() === year && pDate.getMonth() === month;
+    }).length;
+    postsByMonth.push(count);
+  }
+
+  // Compute careerMonths for the explorer (last 12 months of role activity)
+  const careerMonths = [];
+  const ORIGIN_YEAR = 2023;
+  const MONTHS_BACK = 12;
+  const startMonth = (now.getFullYear() - ORIGIN_YEAR) * 12 + now.getMonth() - MONTHS_BACK;
+  const endMonth = (now.getFullYear() - ORIGIN_YEAR) * 12 + now.getMonth();
+
+  for (let m = startMonth; m <= endMonth; m++) {
+    const hasRole = ROLES.some((role) => {
+      const roleStart = new Date(role.start);
+      const roleEnd = role.end ? new Date(role.end) : now;
+      const roleStartMonth = (roleStart.getFullYear() - ORIGIN_YEAR) * 12 + roleStart.getMonth();
+      const roleEndMonth = (roleEnd.getFullYear() - ORIGIN_YEAR) * 12 + roleEnd.getMonth();
+      return m >= roleStartMonth && m <= roleEndMonth;
+    });
+    careerMonths.push(hasRole);
+  }
+
+  // Count experiments/projects in the lab
+  const experimentCount = PROJECTS.filter((p) => p.tags?.includes("experiment")).length || 3;
+
+  // Build resume year strip: 2019-2026, mark years with role or degree starts
+  const currentYear = now.getFullYear();
+  const resumeYears = [];
+  for (let year = 2019; year <= currentYear; year++) {
+    const hasRole = ROLES.some((r) => new Date(r.start).getFullYear() === year);
+    const hasDegree = EDUCATION.some((e) => {
+      const yearRange = e.year.split("–");
+      const startYear = parseInt(yearRange[0]);
+      return startYear === year;
+    });
+    resumeYears.push({ year, hasEntry: hasRole || hasDegree });
+  }
+
+  // Total resume count: roles + degrees
+  const resumeCount = ROLES.length + EDUCATION.length;
+
+  // Total published posts
+  const totalPosts = posts.length;
+
   return {
     props: {
       glyphStats: {
@@ -835,6 +902,16 @@ export async function getStaticProps({ locale = "en-AU" }) {
         projects: PROJECTS.length,
         coursework: COURSEWORK.length,
         skills: atlas.stats.skills,
+      },
+      explorerData: {
+        postsByMonth,
+        totalPosts,
+        careerMonths,
+        projectCount: PROJECTS.length,
+        roleCount: ROLES.length,
+        experimentCount,
+        resumeYears,
+        resumeCount,
       },
     },
   };
