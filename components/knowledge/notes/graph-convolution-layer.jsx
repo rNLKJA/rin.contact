@@ -77,6 +77,10 @@ function EnBody() {
 function ZhBody() {
   return (
     <>
+      <p>
+        图数据——分子、社交网络、引文——没有固定网格。图卷积层将每个节点的特征与其邻居的特征平均，按度数加权，以构建尊重图结构的表示。该操作是与重新归一化的邻接矩阵的矩阵乘法。
+      </p>
+
       <KSection id="idea" eyebrow="01" title="基本想法">
         <p>
           核心操作是 H^(l+1) = σ(D̃^(-1/2) Ã D̃^(-1/2) H^(l) W^(l))，其中 Ã = A + I
@@ -86,6 +90,10 @@ function ZhBody() {
         <p>
           没有规范化，高度节点占主导。对称规范化使每个邻居按其度数比例贡献。堆叠层让信息传播：3 层
           GCN 看到 3 跳邻居。
+        </p>
+        <p>
+          在实践中，GCN
+          在节点分类任务中表现出色：给定部分标记的节点，学习将标签传播到未标记的节点。半监督学习场景中，只需要少量标记数据。模型通过图结构推断相似节点应该有相似的标签。过度平滑是主要问题：深层网络中所有节点的表示趋于相同，因为信息过度混合。
         </p>
       </KSection>
 
@@ -135,10 +143,10 @@ const META = {
   "en-AU": {
     subtitle: "Graph Neural Networks",
     description: "Graph Neural Networks note",
-    course: "Deep Learning",
-    courseCode: "COMP90086",
+    course: "Statistical Machine Learning",
+    courseCode: "COMP90051",
     level: "Master's",
-    learned: "2023 S2",
+    learned: "2023 S1",
     applied: "Studied",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
@@ -153,10 +161,10 @@ const META = {
   "zh-Hans": {
     subtitle: "Graph Neural Networks",
     description: "Graph Neural Networks笔记",
-    course: "深度学习",
-    courseCode: "COMP90086",
+    course: "统计机器学习",
+    courseCode: "COMP90051",
     level: "硕士",
-    learned: "2023 年第二学期",
+    learned: "2023 年第一学期",
     applied: "学习但未使用",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
