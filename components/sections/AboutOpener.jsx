@@ -77,7 +77,7 @@ const EXAMPLES = {
 
 const COPY = {
   en: {
-    label: "About opener",
+    label: "Right now",
     timeCaption: "Adelaide, South Australia",
     howIWork: "How I work",
     roles: "Roles",
@@ -87,7 +87,7 @@ const COPY = {
     cities: "Cities",
   },
   zh: {
-    label: "关于页开场",
+    label: "此刻",
     timeCaption: "南澳大利亚 阿德莱德",
     howIWork: "我的工作方式",
     roles: "工作角色",
@@ -259,14 +259,28 @@ function HowIWorkPanel({ started, reduce }) {
               onMouseLeave={() => setHoverStage(null)}
               onFocus={() => setHoverStage(i)}
               onBlur={() => setHoverStage(null)}
-              className="flex-1 h-16 md:h-20 border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white/80 dark:bg-[#0A0A0A]/80 hover:bg-white dark:hover:bg-[#0A0A0A] transition-colors duration-200 flex items-center justify-center outline-none focus-visible:ring-1 focus-visible:ring-[#FF3C3C]"
-              aria-label={`${stage}: ${example.text}, ${example.role}`}
+              className="flex-1 min-w-0 h-16 md:h-20 border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white/80 dark:bg-[#0A0A0A]/80 hover:bg-white dark:hover:bg-[#0A0A0A] transition-colors duration-200 flex flex-col items-start justify-between px-3 py-2 md:px-4 md:py-3 text-left outline-none focus-visible:ring-1 focus-visible:ring-[#FF3C3C]"
+              aria-label={`${stage}: ${examples[i].text}, ${examples[i].role}`}
             >
+              <span className="flex w-full items-center justify-between">
+                <span className="font-mono text-[10px] md:text-[11px] tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span
+                  className={`block w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
+                    isActive || isHovered ? "bg-[#FF3C3C]" : "bg-black/10 dark:bg-white/10"
+                  }`}
+                />
+              </span>
               <span
-                className={`block w-3 h-3 rounded-full transition-colors duration-300 ${
-                  isActive || isHovered ? "bg-[#FF3C3C]" : "bg-black/10 dark:bg-white/10"
+                className={`font-mono text-[11px] md:text-xs tracking-widest uppercase truncate max-w-full transition-colors duration-300 ${
+                  isActive || isHovered
+                    ? "text-black dark:text-white"
+                    : "text-[#9A9A9A] dark:text-[#6B6B6B]"
                 }`}
-              />
+              >
+                {stage}
+              </span>
             </button>
           );
         })}
