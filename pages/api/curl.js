@@ -204,7 +204,7 @@ const lines = [
   statBar(ROLES.length, "roles", "across gov, research & startup"),
   // Keep in step with PROJECTS in lib/projects-data.js (not imported here, to
   // keep this route small).
-  statBar(32, "projects", "built and delivered"),
+  statBar(35, "projects", "built and delivered"),
   statBar(2, "degrees", "University of Melbourne"),
   statBar(CERTS.length, "certifications", "cloud · analytics · agile · language"),
   "",
