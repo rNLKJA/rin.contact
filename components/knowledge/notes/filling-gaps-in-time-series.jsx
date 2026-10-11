@@ -109,7 +109,7 @@ function ZhBody() {
       <KSection id="used" eyebrow="04" title="我在哪用到它">
         <Callout type="applied" label="南澳博彩机统计">
           <p>
-            在南澳博彩机统计项目中，2014/15财年的全州数据缺失。网站展示了这个缺口而不是填补它。演示：
+            在南澳博彩机统计项目中，2014/15财年的全州数据缺失。网站展示了这个缺口而不是填补它，因为填充会误导用户。演示：
             <a href="https://sa-gaming-machine-stats.vercel.app" className="underline">
               sa-gaming-machine-stats.vercel.app
             </a>
