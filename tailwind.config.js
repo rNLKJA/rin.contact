@@ -53,21 +53,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    // v3 compatibility: restore fixed line-heights for font-size utilities
-    function ({ addUtilities }) {
-      const fontSizeUtilities = {
-        ".text-xs": { "line-height": "1rem !important" },
-        ".text-sm": { "line-height": "1.25rem !important" },
-        ".text-base": { "line-height": "1.5rem !important" },
-        ".text-lg": { "line-height": "1.75rem !important" },
-        ".text-xl": { "line-height": "1.75rem !important" },
-        ".text-2xl": { "line-height": "2rem !important" },
-        ".text-3xl": { "line-height": "2.25rem !important" },
-        ".text-4xl": { "line-height": "2.5rem !important" },
-        ".text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl": { "line-height": "1 !important" },
-      };
-      addUtilities(fontSizeUtilities, ["responsive"]);
-    },
-  ],
+  plugins: [],
 };
