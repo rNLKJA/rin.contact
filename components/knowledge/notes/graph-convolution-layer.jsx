@@ -67,7 +67,9 @@ function EnBody() {
         </Callout>
       </KSection>
 
-      <KSection id="sources" eyebrow="06" title="Sources"></KSection>
+      <KSection id="sources" eyebrow="06" title="Sources">
+        <p>COMP90086 Deep Learning (2023). GCN architectures for node classification.</p>
+      </KSection>
     </>
   );
 }

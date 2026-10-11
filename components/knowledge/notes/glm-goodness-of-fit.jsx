@@ -66,7 +66,11 @@ function EnBody() {
         </Callout>
       </KSection>
 
-      <KSection id="sources" eyebrow="06" title="Sources"></KSection>
+      <KSection id="sources" eyebrow="06" title="Sources">
+        <p>
+          MAST90139 Statistical Modelling (2024). Deviance and Pearson X² for model diagnostics.
+        </p>
+      </KSection>
     </>
   );
 }

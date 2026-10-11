@@ -67,11 +67,7 @@ function EnBody() {
       </KSection>
 
       <KSection id="sources" eyebrow="06" title="Sources">
-        <p>
-          Covered in during my Master's studies. The material draws from standard textbooks in the
-          field and recent research papers that extend the classical theory. Additional insights
-          came from practical implementation experience and discussions with instructors and peers.
-        </p>
+        <p>From self-study of epidemiology texts, focused on observational study design.</p>
       </KSection>
     </>
   );
@@ -125,12 +121,7 @@ function ZhBody() {
       </KSection>
 
       <KSection id="sources" eyebrow="06" title="参考资料">
-        <p>
-          在我的硕士学习期间的中涵盖。该材料来自该领域的标准教科书和扩展经典理论的最新研究论文。其他见解来自实际实现经验以及与教师和同行的讨论。持续学习是掌握任何技术领域的关键。
-        </p>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
-          初稿于2023，2026年重写。
-        </p>
+        <p>从流行病学教材自学，重点关注观察性研究设计。</p>
       </KSection>
     </>
   );

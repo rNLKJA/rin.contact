@@ -66,7 +66,9 @@ function EnBody() {
         </Callout>
       </KSection>
 
-      <KSection id="sources" eyebrow="06" title="Sources"></KSection>
+      <KSection id="sources" eyebrow="06" title="Sources">
+        <p>Self-study of ggplot2 and Wilkinson's grammar (2024).</p>
+      </KSection>
     </>
   );
 }

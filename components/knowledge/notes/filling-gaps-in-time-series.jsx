@@ -72,7 +72,9 @@ function EnBody() {
         </Callout>
       </KSection>
 
-      <KSection id="sources" eyebrow="06" title="Sources"></KSection>
+      <KSection id="sources" eyebrow="06" title="Sources">
+        <p>MAST90083 Time Series (2024). Missing data strategies for forecast models.</p>
+      </KSection>
     </>
   );
 }

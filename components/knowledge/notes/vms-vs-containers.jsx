@@ -44,6 +44,10 @@ function EnBody() {
             containers, set up with Ansible. Also Moodist, where each service ran in its own Docker
             container on AWS Lightsail.
           </p>
+          <p>
+            Moodist 项目中的每个服务（auth、api、frontend、worker）都在 AWS Lightsail 上的单独
+            Docker 容器中运行。容器隔离简化了依赖管理，但需要仔细规划容器间通信和卷挂载。
+          </p>
         </Callout>
       </KSection>
 
@@ -69,10 +73,8 @@ function EnBody() {
 
       <KSection id="sources" eyebrow="06" title="Sources">
         <p>
-          Covered in COMP90024 during my Master's studies. The material draws from standard
-          textbooks in the field and recent research papers that extend the classical theory.
-          Additional insights came from practical implementation experience and discussions with
-          instructors and peers.
+          Covered in COMP90024 (2023). Hands-on practice with Docker and Ansible deployments on
+          Melbourne Research Cloud VMs.
         </p>
       </KSection>
     </>
@@ -137,10 +139,7 @@ function ZhBody() {
 
       <KSection id="sources" eyebrow="06" title="参考资料">
         <p>
-          在我的硕士学习期间的COMP90024中涵盖。该材料来自该领域的标准教科书和扩展经典理论的最新研究论文。其他见解来自实际实现经验以及与教师和同行的讨论。持续学习是掌握任何技术领域的关键。
-        </p>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
-          初稿于2023，2026年重写。
+          COMP90024（2023）中涵盖。在墨尔本研究云虚拟机上使用 Docker 和 Ansible 部署的实践经验。
         </p>
       </KSection>
     </>

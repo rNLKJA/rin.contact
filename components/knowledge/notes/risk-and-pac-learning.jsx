@@ -61,7 +61,9 @@ function EnBody() {
         </Callout>
       </KSection>
 
-      <KSection id="sources" eyebrow="06" title="Sources"></KSection>
+      <KSection id="sources" eyebrow="06" title="Sources">
+        <p>COMP90051 Statistical Machine Learning (2023). PAC bounds and VC dimension.</p>
+      </KSection>
     </>
   );
 }
