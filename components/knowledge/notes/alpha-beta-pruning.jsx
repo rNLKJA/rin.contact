@@ -118,9 +118,8 @@ function EnBody() {
 
       <KSection id="sources" eyebrow="06" title="Sources">
         <p>
-          Covered in COMP30024 Automated Planning. Based on Russell & Norvig,{" "}
-          <em>Artificial Intelligence: A Modern Approach</em> (2020), Chapter 5. The algorithm was
-          first published by McCarthy in 1956 and refined by multiple researchers through the 1970s.
+          COMP30024 (2022). Adversarial search and game tree algorithms. Formalised in Russell &
+          Norvig, <em>Artificial Intelligence: A Modern Approach</em> (2020), Chapter 5.
         </p>
       </KSection>
     </>
@@ -209,8 +208,8 @@ function ZhBody() {
 
       <KSection id="sources" eyebrow="06" title="参考资料">
         <p>
-          COMP30024自动规划课程中涵盖。基于Russell &
-          Norvig，《人工智能：现代方法》（2020），第5章。该算法由McCarthy在1956年首次发表，并在20世纪70年代由多位研究人员改进。
+          COMP30024（2022）。对抗搜索和博弈树算法。Russell &
+          Norvig《人工智能：现代方法》（2020），第5章。
         </p>
         <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
           初稿于2023，2026年重写。

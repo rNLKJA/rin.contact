@@ -123,10 +123,9 @@ function EnBody() {
 
       <KSection id="sources" eyebrow="06" title="Sources">
         <p>
-          Covered in COMP30024 Automated Planning. Based on Nisan, Roughgarden, Tardos & Vazirani,{" "}
-          <em>Algorithmic Game Theory</em> (2007), and Shoham & Leyton-Brown,{" "}
-          <em>Multiagent Systems</em> (2009). Vickrey's original paper is "Counterspeculation,
-          Auctions, and Competitive Sealed Tenders" (1961).
+          COMP30024 (2022). Auction theory and incentive design for multi-agent systems. Textbook
+          sources: Nisan, Roughgarden, Tardos & Vazirani, <em>Algorithmic Game Theory</em> (2007);
+          Shoham & Leyton-Brown, <em>Multiagent Systems</em> (2009).
         </p>
       </KSection>
     </>
@@ -215,10 +214,8 @@ function ZhBody() {
 
       <KSection id="sources" eyebrow="06" title="参考资料">
         <p>
-          COMP30024 自动规划中涵盖。基于 Nisan, Roughgarden, Tardos &
-          Vazirani，《算法博弈论》（2007），和 Shoham &
-          Leyton-Brown，《多智能体系统》（2009）。Vickrey
-          的原始论文是"反投机、拍卖和竞争性密封投标"（1961）。
+          COMP30024（2022）。拍卖理论和多智能体系统的激励设计。教材：Nisan, Roughgarden, Tardos &
+          Vazirani《算法博弈论》（2007）；Shoham & Leyton-Brown《多智能体系统》（2009）。
         </p>
         <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
           初稿于2023，2026年重写。
