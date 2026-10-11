@@ -3,9 +3,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
 
-const HeroDotCanvas = dynamic(() => import("@/components/ui/HeroDotCanvas"), { ssr: false });
+const HeroDotField = dynamic(() => import("@/components/ui/HeroDotField"), { ssr: false });
 const ScrollCue = dynamic(() => import("@/components/ui/ScrollCue"), { ssr: false });
-const HeroInteractHint = dynamic(() => import("@/components/ui/HeroInteractHint"), { ssr: false });
 const EvidenceField = dynamic(() => import("@/components/ui/EvidenceField"), {
   ssr: false,
   loading: () => <div className="w-full aspect-[16/11] md:aspect-[5/4]" aria-hidden="true" />,
@@ -214,8 +213,8 @@ export default function HeroSection() {
           animation: "blob-drift 18s ease-in-out infinite alternate",
         }}
       />
-      {/* Interactive dot-matrix backdrop — dots grow, glow red, and scatter under the cursor */}
-      <HeroDotCanvas />
+      {/* Still dot-matrix backdrop (no cursor reaction, by request) */}
+      <HeroDotField />
 
       {/* ── Two-column grid ── */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -366,7 +365,6 @@ export default function HeroSection() {
       </div>
 
       <ScrollCue />
-      <HeroInteractHint />
 
       {/* Blob keyframe + name hover charge */}
       <style>{`
