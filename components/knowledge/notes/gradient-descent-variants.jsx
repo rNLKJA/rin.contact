@@ -270,42 +270,6 @@ function ZhBody() {
   );
 }
 
-function ZhBody() {
-  return (
-    <>
-      <p>内容待写。</p>
-      <KSection id="idea" eyebrow="01" title="基本想法">
-        <p>主要思想在这里。</p>
-      </KSection>
-      <KSection id="maths" eyebrow="02" title="数学">
-        <p>如果适用，数学公式在这里。</p>
-      </KSection>
-      <KSection id="try" eyebrow="03" title="动手试">
-        <p>交互式工具或图表会在这里。</p>
-      </KSection>
-      <KSection id="used" eyebrow="04" title="我在哪用到它">
-        <Callout type="applied" label="在课程中应用">
-          <p>应用背景。</p>
-        </Callout>
-      </KSection>
-      <KSection id="pitfalls" eyebrow="05" title="容易出错的地方">
-        <Callout type="pitfall" label="常见错误">
-          <ul className="list-disc pl-5 space-y-2.5">
-            <li>错误一。</li>
-            <li>错误二。</li>
-            <li>错误三。</li>
-          </ul>
-        </Callout>
-      </KSection>
-      <KSection id="sources" eyebrow="06" title="参考资料">
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
-          最早写在我的 UOM-DS wiki（2023）里，2026 年从头重写。
-        </p>
-      </KSection>
-    </>
-  );
-}
-
 const META = {
   "en-AU": {
     subtitle: "Subtitle in English.",
