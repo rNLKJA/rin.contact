@@ -18,7 +18,6 @@
  */
 import { useEffect, useState } from "react";
 import { useI18n } from "@/contexts/I18nContext";
-import { useInView } from "@/hooks/useInView";
 import { fill } from "@/lib/fill";
 
 const TILES = [
@@ -89,24 +88,30 @@ function GlyphBar({ count, max = 12, size = "sm" }) {
 }
 
 /**
- * WritingTile — shows glyph bar per month of posts (hero visualization).
- * Data: postsByMonth - array of counts per month, uses ink color for history.
+ * WritingTile — shows post count and glyph bar per month.
+ * Data: postsByMonth - array of counts per month, totalPosts - total count.
+ * Hero: large Bitcount numeral for totalPosts in ink (history/total).
  */
-function WritingTile({ postsByMonth }) {
+function WritingTile({ postsByMonth, totalPosts = 0 }) {
   const maxPostsInMonth = Math.max(1, ...(postsByMonth || [1]));
   const recentMonths = (postsByMonth || []).slice(-6);
 
   return (
     <span className="flex flex-col gap-4" data-glyph>
-      <span className="flex flex-col gap-3">
-        {recentMonths.length > 0 ? (
-          recentMonths.map((count, i) => (
-            <GlyphBar key={i} count={count} max={maxPostsInMonth} size="md" />
-          ))
-        ) : (
-          <GlyphBar count={0} max={1} size="md" />
-        )}
-      </span>
+      <div className="flex flex-col gap-2">
+        <span className="font-display text-4xl font-bold text-black dark:text-white tabular-nums leading-none">
+          {String(totalPosts).padStart(2, "0")}
+        </span>
+        <span className="flex flex-col gap-2">
+          {recentMonths.length > 0 ? (
+            recentMonths.map((count, i) => (
+              <GlyphBar key={i} count={count} max={maxPostsInMonth} size="md" />
+            ))
+          ) : (
+            <GlyphBar count={0} max={1} size="md" />
+          )}
+        </span>
+      </div>
     </span>
   );
 }
@@ -142,13 +147,13 @@ function CareerTile({ careerMonths, roleCount = 9 }) {
 }
 
 /**
- * ProjectsTile — one glyph per project, hero is large Bitcount count in #FF3C3C.
+ * ProjectsTile — one glyph per project, hero is large Bitcount count in ink (total).
  */
 function ProjectsTile({ projectCount }) {
   return (
     <span className="flex flex-col gap-4" data-glyph>
       <div className="flex flex-col gap-2">
-        <span className="font-display text-4xl font-bold text-[#FF3C3C] tabular-nums leading-none">
+        <span className="font-display text-4xl font-bold text-black dark:text-white tabular-nums leading-none">
           {String(projectCount).padStart(2, "0")}
         </span>
         <div className="flex flex-wrap gap-1" data-glyph>
@@ -166,19 +171,19 @@ function ProjectsTile({ projectCount }) {
 }
 
 /**
- * LabTile — shows experiment count as large Bitcount numeral in #FF3C3C (live/current data).
- * No animations, static display. Data computed at build time.
+ * LabTile — shows experiment count as large Bitcount numeral in ink (total, not live).
+ * Static display. Data computed at build time.
  */
 function LabTile({ experimentCount = 0 }) {
   return (
     <span className="flex flex-col gap-4" data-glyph>
       <div className="flex flex-col gap-2">
-        <span className="font-display text-4xl font-bold text-[#FF3C3C] tabular-nums leading-none">
+        <span className="font-display text-4xl font-bold text-black dark:text-white tabular-nums leading-none">
           {String(experimentCount).padStart(2, "0")}
         </span>
         <div className="flex gap-1" data-glyph>
           {Array.from({ length: Math.min(experimentCount, 5) }, (_, i) => (
-            <span key={i} className="w-1.5 h-1.5 bg-[#FF3C3C]" aria-hidden="true" />
+            <span key={i} className="w-1.5 h-1.5 bg-black dark:bg-white" aria-hidden="true" />
           ))}
         </div>
       </div>
@@ -188,7 +193,7 @@ function LabTile({ experimentCount = 0 }) {
 
 /**
  * AboutTile — dot-matrix Adelaide clock.
- * Shows HH:MM in a minimal dot-matrix style. Ink color (history/static).
+ * Shows HH:MM in a minimal dot-matrix style. #FF3C3C for live/current (the clock is live).
  */
 function AboutTile() {
   const [time, setTime] = useState("--:--");
@@ -201,13 +206,13 @@ function AboutTile() {
       setTime(`${hours}:${minutes}`);
     };
     updateTime();
-    const interval = setInterval(updateTime, 60000);
+    const interval = setInterval(updateTime, 300000); // 5 minutes
     return () => clearInterval(interval);
   }, []);
 
   return (
     <span className="flex flex-col gap-4" data-glyph>
-      <div className="font-display text-3xl tabular-nums text-black dark:text-white tracking-wide leading-none">
+      <div className="font-display text-3xl tabular-nums text-[#FF3C3C] tracking-wide leading-none">
         {time}
       </div>
       <span className="text-[9px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A]">Adelaide</span>
@@ -216,17 +221,31 @@ function AboutTile() {
 }
 
 /**
- * ResumeTile — shows credential count as large Bitcount numeral in #FF3C3C (live/current data).
- * Includes page glyph as secondary visual. Data computed at build time.
+ * ResumeTile — shows mini year strip 2019-2026 with role/degree start marks, count of roles+degrees as numeral.
+ * Data: resumeYears - array of year objects {year, hasEntry}, resumeCount - total roles+degrees.
+ * Uses ink color (totals are history).
  */
-function ResumeTile({ credentialCount = 0 }) {
+function ResumeTile({ resumeYears = [], resumeCount = 0 }) {
+  const years = resumeYears.slice(0, 8); // Show up to 8 years
+
   return (
     <span className="flex flex-col gap-4" data-glyph>
       <div className="flex flex-col gap-2">
-        <span className="font-display text-4xl font-bold text-[#FF3C3C] tabular-nums leading-none">
-          {String(credentialCount).padStart(2, "0")}
+        <span className="font-display text-4xl font-bold text-black dark:text-white tabular-nums leading-none">
+          {String(resumeCount).padStart(2, "0")}
         </span>
-        <div className="w-3 h-4 border border-black dark:border-white" aria-hidden="true" />
+        <div className="flex gap-px" data-glyph>
+          {years.map((yearData, i) => (
+            <span
+              key={i}
+              className={`h-4 w-1 transition-colors duration-300 ${
+                yearData.hasEntry ? "bg-black dark:bg-white" : "bg-black/10 dark:bg-white/10"
+              }`}
+              aria-hidden="true"
+              title={yearData.year}
+            />
+          ))}
+        </div>
       </div>
     </span>
   );
@@ -244,11 +263,20 @@ function ExploreTile({ href, num, title, desc, children }) {
     >
       <a
         href={href}
-        className="absolute inset-0 outline-none"
-        style={{ color: "inherit", textDecoration: "none" }}
-        aria-hidden="true"
+        className="absolute inset-0 outline-none ring-0"
+        style={{
+          color: "inherit",
+          textDecoration: "none",
+          outline: "none !important",
+          cursor: "default",
+          boxShadow: "none",
+        }}
+        aria-label={title}
+        tabIndex={-1}
+        onFocus={(e) => e.preventDefault()}
+        onMouseOver={(e) => e.preventDefault()}
       />
-      <div className="relative z-10">
+      <div className="relative z-10 pointer-events-none">
         {children}
         <div className="flex flex-col gap-2">
           <div className="flex items-baseline gap-2">
@@ -271,15 +299,16 @@ function ExploreTile({ href, num, title, desc, children }) {
  */
 export default function SectionExplorer({
   postsByMonth = [],
+  totalPosts = 0,
   careerMonths = [],
   projectCount = 0,
   roleCount = 9,
   experimentCount = 0,
-  credentialCount = 0,
+  resumeYears = [],
+  resumeCount = 0,
   counts = {},
 }) {
   const { t } = useI18n();
-  const [ref, inView] = useInView({ threshold: 0.12 });
 
   const lang = typeof t === "function" ? "en" : "en";
   const copy = COPY[lang === "zh-Hans" || lang === "zh" ? "zh" : "en"];
@@ -304,10 +333,13 @@ export default function SectionExplorer({
   };
 
   return (
-    <section data-explore className="py-20" aria-label={copy.label} ref={ref}>
-      <div
-        className={`mb-12 transition-all duration-200 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"}`}
-      >
+    <section
+      data-explore
+      className="py-20 [&_*]:!cursor-default [&_a]:!cursor-pointer"
+      aria-label={copy.label}
+      style={{ pointerEvents: "auto" }}
+    >
+      <div className="mb-12">
         <p className="text-xs tracking-widest uppercase text-accent-ink mb-4 font-mono">
           {copy.label}
         </p>
@@ -326,7 +358,7 @@ export default function SectionExplorer({
           title={tilesCopy.writing.title}
           desc={tilesCopy.writing.desc}
         >
-          <WritingTile postsByMonth={postsByMonth} />
+          <WritingTile postsByMonth={postsByMonth} totalPosts={totalPosts} />
         </ExploreTile>
 
         <ExploreTile
@@ -371,7 +403,7 @@ export default function SectionExplorer({
           title={tilesCopy.resume.title}
           desc={tilesCopy.resume.desc}
         >
-          <ResumeTile credentialCount={credentialCount} />
+          <ResumeTile resumeYears={resumeYears} resumeCount={resumeCount} />
         </ExploreTile>
       </div>
     </section>

@@ -3,7 +3,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import SeoHead from "@/components/seo/SeoHead";
-import { CERTS, ROLES } from "@/lib/career-data";
+import { CERTS, ROLES, EDUCATION } from "@/lib/career-data";
 import { PROJECTS } from "@/lib/projects-data";
 import { COURSEWORK } from "@/lib/coursework-data";
 import { getAllPosts } from "@/lib/posts";
@@ -670,11 +670,13 @@ export default function Home({ glyphStats, explorerData = {} }) {
               <SectionNavCards
                 counts={{ projects: PROJECTS.length }}
                 postsByMonth={explorerData.postsByMonth}
+                totalPosts={explorerData.totalPosts}
                 careerMonths={explorerData.careerMonths}
                 projectCount={explorerData.projectCount}
                 roleCount={explorerData.roleCount}
                 experimentCount={explorerData.experimentCount}
-                credentialCount={explorerData.credentialCount}
+                resumeYears={explorerData.resumeYears}
+                resumeCount={explorerData.resumeCount}
               />
             </div>
           </div>
@@ -872,11 +874,26 @@ export async function getStaticProps({ locale = "en-AU" }) {
   }
 
   // Count experiments/projects in the lab
-  // (placeholder: assume 1 per project as a starting count; this could be more detailed)
   const experimentCount = PROJECTS.filter((p) => p.tags?.includes("experiment")).length || 3;
 
-  // Count credentials (degrees + certifications)
-  const credentialCount = CERTS.length;
+  // Build resume year strip: 2019-2026, mark years with role or degree starts
+  const currentYear = now.getFullYear();
+  const resumeYears = [];
+  for (let year = 2019; year <= currentYear; year++) {
+    const hasRole = ROLES.some((r) => new Date(r.start).getFullYear() === year);
+    const hasDegree = EDUCATION.some((e) => {
+      const yearRange = e.year.split("–");
+      const startYear = parseInt(yearRange[0]);
+      return startYear === year;
+    });
+    resumeYears.push({ year, hasEntry: hasRole || hasDegree });
+  }
+
+  // Total resume count: roles + degrees
+  const resumeCount = ROLES.length + EDUCATION.length;
+
+  // Total published posts
+  const totalPosts = posts.length;
 
   return {
     props: {
@@ -888,11 +905,13 @@ export async function getStaticProps({ locale = "en-AU" }) {
       },
       explorerData: {
         postsByMonth,
+        totalPosts,
         careerMonths,
         projectCount: PROJECTS.length,
         roleCount: ROLES.length,
         experimentCount,
-        credentialCount,
+        resumeYears,
+        resumeCount,
       },
     },
   };
