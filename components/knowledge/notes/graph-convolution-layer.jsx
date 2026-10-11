@@ -50,25 +50,18 @@ function EnBody() {
         <Callout type="pitfall" label="Pitfalls">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              Applying the technique without checking whether its assumptions hold for your specific
-              data. Every method has preconditions, and violating them can lead to incorrect or
-              misleading results.
+              <strong>Forgetting to add self-loops.</strong> Without them (Ã = A instead of A + I),
+              a node's new features depend only on its neighbours, not itself. The representation
+              drifts away from the input.
             </li>
             <li>
-              Misinterpreting the results or reading too much into specific numerical values without
-              considering uncertainty. Statistical and machine learning outputs should always be
-              interpreted in context, with appropriate confidence intervals or error bars where
-              applicable.
+              <strong>Stacking too many layers.</strong> Deep GCNs suffer from over-smoothing: after
+              many hops, all nodes have similar features. 2-3 layers usually suffice.
             </li>
             <li>
-              Overlooking computational or practical limitations that make the theoretical solution
-              infeasible. Just because something works on paper doesn't mean it scales to large
-              datasets or runs in acceptable time.
-            </li>
-            <li>
-              Training performance can be misleading if the model overfits. Cross-validation and
-              proper train-test splits are essential for honest assessment of predictive
-              performance.
+              <strong>Ignoring directed edges.</strong> GCN treats the graph as undirected. For
+              directed graphs (citations, following), you must decide whether to symmetrise or use a
+              directed propagation rule.
             </li>
           </ul>
         </Callout>
@@ -112,14 +105,16 @@ function ZhBody() {
         <Callout type="pitfall" label="陷阱">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              每种方法都有前提条件，违反它们可能导致不正确或误导性的结果。在信任输出之前，始终验证假设。
-            </li>
-            <li>误解结果或在不考虑不确定性的情况下过度解读特定数值。</li>
-            <li>
-              忽视使理论解决方案不可行的计算或实际限制。仅仅因为某事在纸上有效并不意味着它可以扩展到大型数据集或在可接受的时间内运行。始终考虑实现约束。
+              <strong>忘记添加自环。</strong>没有它们（Ã = A 而不是 A +
+              I），节点的新特征只依赖于其邻居，而不是自己。表示会偏离输入。
             </li>
             <li>
-              在部署之前未能在保留数据上验证该方法。如果模型过拟合，训练性能可能会产生误导。交叉验证和适当的训练测试分割对于诚实评估预测性能至关重要。
+              <strong>堆叠太多层。</strong>深层 GCN
+              遭受过度平滑：经过多次跳跃后，所有节点具有相似的特征。2-3 层通常就足够了。
+            </li>
+            <li>
+              <strong>忽略有向边。</strong>GCN
+              将图视为无向的。对于有向图（引用、关注），必须决定是对称化还是使用有向传播规则。
             </li>
           </ul>
         </Callout>

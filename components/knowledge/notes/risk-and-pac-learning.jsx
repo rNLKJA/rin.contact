@@ -45,25 +45,17 @@ function EnBody() {
         <Callout type="pitfall" label="Pitfalls">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              Applying the technique without checking whether its assumptions hold for your specific
-              data. Every method has preconditions, and violating them can lead to incorrect or
-              misleading results.
+              <strong>Confusing empirical and expected risk.</strong> Training minimises empirical
+              risk. The goal is low expected risk. The gap is generalisation error.
             </li>
             <li>
-              Misinterpreting the results or reading too much into specific numerical values without
-              considering uncertainty. Statistical and machine learning outputs should always be
-              interpreted in context, with appropriate confidence intervals or error bars where
-              applicable.
+              <strong>Ignoring hypothesis class complexity.</strong> A more expressive class can fit
+              the training data better but needs more samples to generalise. VC dimension quantifies
+              this.
             </li>
             <li>
-              Overlooking computational or practical limitations that make the theoretical solution
-              infeasible. Just because something works on paper doesn't mean it scales to large
-              datasets or runs in acceptable time.
-            </li>
-            <li>
-              Training performance can be misleading if the model overfits. Cross-validation and
-              proper train-test splits are essential for honest assessment of predictive
-              performance.
+              <strong>Misreading PAC bounds.</strong> They are worst-case guarantees, not tight
+              predictions of actual performance. Real generalisation gaps are usually smaller.
             </li>
           </ul>
         </Callout>
@@ -108,14 +100,16 @@ function ZhBody() {
         <Callout type="pitfall" label="陷阱">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              每种方法都有前提条件，违反它们可能导致不正确或误导性的结果。在信任输出之前，始终验证假设。
-            </li>
-            <li>误解结果或在不考虑不确定性的情况下过度解读特定数值。</li>
-            <li>
-              忽视使理论解决方案不可行的计算或实际限制。仅仅因为某事在纸上有效并不意味着它可以扩展到大型数据集或在可接受的时间内运行。始终考虑实现约束。
+              <strong>混淆经验风险和期望风险。</strong>
+              训练最小化经验风险。目标是低期望风险。差距是泛化误差。
             </li>
             <li>
-              在部署之前未能在保留数据上验证该方法。如果模型过拟合，训练性能可能会产生误导。交叉验证和适当的训练测试分割对于诚实评估预测性能至关重要。
+              <strong>忽略假设类复杂度。</strong>
+              更具表达力的类可以更好地拟合训练数据，但需要更多样本才能泛化。VC 维量化了这一点。
+            </li>
+            <li>
+              <strong>误读 PAC 界限。</strong>
+              它们是最坏情况保证，而不是对实际性能的严格预测。真实的泛化差距通常更小。
             </li>
           </ul>
         </Callout>

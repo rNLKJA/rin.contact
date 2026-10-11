@@ -54,25 +54,19 @@ function EnBody() {
         <Callout type="pitfall" label="Pitfalls">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              Applying the technique without checking whether its assumptions hold for your specific
-              data. Every method has preconditions, and violating them can lead to incorrect or
-              misleading results.
+              <strong>Using backward fill for prediction.</strong> It leaks future information into
+              the past. The model will see values at training time that it would not have at
+              prediction time.
             </li>
             <li>
-              Misinterpreting the results or reading too much into specific numerical values without
-              considering uncertainty. Statistical and machine learning outputs should always be
-              interpreted in context, with appropriate confidence intervals or error bars where
-              applicable.
+              <strong>Interpolating across non-stationary series.</strong> Linear interpolation
+              assumes smooth transitions. If the variable jumps (policy changes, sudden events),
+              interpolation creates values that never existed.
             </li>
             <li>
-              Overlooking computational or practical limitations that make the theoretical solution
-              infeasible. Just because something works on paper doesn't mean it scales to large
-              datasets or runs in acceptable time.
-            </li>
-            <li>
-              Training performance can be misleading if the model overfits. Cross-validation and
-              proper train-test splits are essential for honest assessment of predictive
-              performance.
+              <strong>Forgetting that forward fill introduces lag.</strong> If the last observation
+              was a week ago, forward fill makes the model think that value held for the entire
+              week, even if the true value changed.
             </li>
           </ul>
         </Callout>
@@ -123,14 +117,16 @@ function ZhBody() {
         <Callout type="pitfall" label="陷阱">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              每种方法都有前提条件，违反它们可能导致不正确或误导性的结果。在信任输出之前，始终验证假设。
-            </li>
-            <li>误解结果或在不考虑不确定性的情况下过度解读特定数值。</li>
-            <li>
-              忽视使理论解决方案不可行的计算或实际限制。仅仅因为某事在纸上有效并不意味着它可以扩展到大型数据集或在可接受的时间内运行。始终考虑实现约束。
+              <strong>用后向填充做预测。</strong>
+              它把未来信息泄露到过去。模型会在训练时看到它在预测时看不到的值。
             </li>
             <li>
-              在部署之前未能在保留数据上验证该方法。如果模型过拟合，训练性能可能会产生误导。交叉验证和适当的训练测试分割对于诚实评估预测性能至关重要。
+              <strong>对非平稳序列用插值。</strong>
+              线性插值假设平滑过渡。如果变量跳跃（政策变化、突发事件），插值会产生从未存在过的值。
+            </li>
+            <li>
+              <strong>忘记前向填充引入滞后。</strong>
+              如果最后观察值是一周前的，前向填充会让模型认为那个值持续了整整一周，即使真实值已经改变。
             </li>
           </ul>
         </Callout>

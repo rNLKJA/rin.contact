@@ -109,7 +109,7 @@ Sliders for cores and serial fraction."
           <p>
             COMP90024 Assignment 1 (2023, with Wei Zhao) on the Spartan HPC: 1 node × 1 core took
             11:01, 1 node × 8 cores took 1:41, 2 nodes × 4 cores took 1:41. The revival fits a
-            serial fraction of about 3%. The demo is at{" "}
+            serial fraction of about 3%. Demo:{" "}
             <a href="https://comp90024-spartan-twitter.vercel.app" className="underline">
               comp90024-spartan-twitter.vercel.app
             </a>

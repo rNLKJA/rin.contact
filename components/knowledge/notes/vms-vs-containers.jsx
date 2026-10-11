@@ -51,25 +51,17 @@ function EnBody() {
         <Callout type="pitfall" label="Pitfalls">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              Applying the technique without checking whether its assumptions hold for your specific
-              data. Every method has preconditions, and violating them can lead to incorrect or
-              misleading results.
+              <strong>Running containers with --privileged.</strong> This disables most isolation
+              and gives the container root access to the host. Use capability restrictions instead.
             </li>
             <li>
-              Misinterpreting the results or reading too much into specific numerical values without
-              considering uncertainty. Statistical and machine learning outputs should always be
-              interpreted in context, with appropriate confidence intervals or error bars where
-              applicable.
+              <strong>Storing state in containers.</strong> Containers are ephemeral. Data written
+              inside is lost when the container stops. Mount volumes for persistence.
             </li>
             <li>
-              Overlooking computational or practical limitations that make the theoretical solution
-              infeasible. Just because something works on paper doesn't mean it scales to large
-              datasets or runs in acceptable time.
-            </li>
-            <li>
-              Training performance can be misleading if the model overfits. Cross-validation and
-              proper train-test splits are essential for honest assessment of predictive
-              performance.
+              <strong>Confusing images and containers.</strong> An image is a read-only template. A
+              container is a running instance. Modifying a container does not change the image it
+              came from.
             </li>
           </ul>
         </Callout>
@@ -90,6 +82,11 @@ function EnBody() {
 function ZhBody() {
   return (
     <>
+      <p>
+        虚拟机在模拟硬件上运行完整的操作系统。容器共享主机内核并使用命名空间和 cgroups
+        隔离进程。权衡：虚拟机更重但更隔离；容器更轻但不太安全。
+      </p>
+
       <KSection id="idea" eyebrow="01" title="基本想法">
         <p>
           虚拟机监控程序（裸金属上的 Type 1，主机操作系统上的 Type
@@ -123,14 +120,16 @@ function ZhBody() {
         <Callout type="pitfall" label="陷阱">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              每种方法都有前提条件，违反它们可能导致不正确或误导性的结果。在信任输出之前，始终验证假设。
-            </li>
-            <li>误解结果或在不考虑不确定性的情况下过度解读特定数值。</li>
-            <li>
-              忽视使理论解决方案不可行的计算或实际限制。仅仅因为某事在纸上有效并不意味着它可以扩展到大型数据集或在可接受的时间内运行。始终考虑实现约束。
+              <strong>使用 --privileged 运行容器。</strong>这会禁用大部分隔离并给容器对主机的 root
+              访问权限。改用能力限制。
             </li>
             <li>
-              在部署之前未能在保留数据上验证该方法。如果模型过拟合，训练性能可能会产生误导。交叉验证和适当的训练测试分割对于诚实评估预测性能至关重要。
+              <strong>在容器中存储状态。</strong>
+              容器是临时的。容器停止时，内部写入的数据会丢失。挂载卷以持久化。
+            </li>
+            <li>
+              <strong>混淆镜像和容器。</strong>
+              镜像是只读模板。容器是运行实例。修改容器不会更改它来自的镜像。
             </li>
           </ul>
         </Callout>

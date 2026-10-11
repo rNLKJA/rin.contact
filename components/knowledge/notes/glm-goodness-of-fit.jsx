@@ -51,25 +51,16 @@ function EnBody() {
         <Callout type="pitfall" label="Pitfalls">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              Applying the technique without checking whether its assumptions hold for your specific
-              data. Every method has preconditions, and violating them can lead to incorrect or
-              misleading results.
+              <strong>Using X² or deviance with ungrouped data.</strong> Both need grouped counts.
+              For individual observations, use residual plots instead.
             </li>
             <li>
-              Misinterpreting the results or reading too much into specific numerical values without
-              considering uncertainty. Statistical and machine learning outputs should always be
-              interpreted in context, with appropriate confidence intervals or error bars where
-              applicable.
+              <strong>Forgetting the df.</strong> X² and deviance are only χ² distributed with the
+              correct degrees of freedom: (number of groups) - (number of parameters).
             </li>
             <li>
-              Overlooking computational or practical limitations that make the theoretical solution
-              infeasible. Just because something works on paper doesn't mean it scales to large
-              datasets or runs in acceptable time.
-            </li>
-            <li>
-              Training performance can be misleading if the model overfits. Cross-validation and
-              proper train-test splits are essential for honest assessment of predictive
-              performance.
+              <strong>Trusting one statistic blindly.</strong> X² and deviance can disagree. Check
+              both and inspect residual plots to see which groups fit poorly.
             </li>
           </ul>
         </Callout>
@@ -119,14 +110,16 @@ function ZhBody() {
         <Callout type="pitfall" label="陷阱">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              每种方法都有前提条件，违反它们可能导致不正确或误导性的结果。在信任输出之前，始终验证假设。
-            </li>
-            <li>误解结果或在不考虑不确定性的情况下过度解读特定数值。</li>
-            <li>
-              忽视使理论解决方案不可行的计算或实际限制。仅仅因为某事在纸上有效并不意味着它可以扩展到大型数据集或在可接受的时间内运行。始终考虑实现约束。
+              <strong>对未分组数据使用 X² 或偏差。</strong>
+              两者都需要分组计数。对于单个观察，改用残差图。
             </li>
             <li>
-              在部署之前未能在保留数据上验证该方法。如果模型过拟合，训练性能可能会产生误导。交叉验证和适当的训练测试分割对于诚实评估预测性能至关重要。
+              <strong>忘记自由度。</strong>X² 和偏差只有在正确的自由度下才服从 χ²
+              分布：（组数）-（参数数）。
+            </li>
+            <li>
+              <strong>盲目信任一个统计量。</strong>X²
+              和偏差可能不一致。检查两者并检查残差图以查看哪些组拟合不佳。
             </li>
           </ul>
         </Callout>

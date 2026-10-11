@@ -49,25 +49,18 @@ function EnBody() {
         <Callout type="pitfall" label="Pitfalls">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              Applying the technique without checking whether its assumptions hold for your specific
-              data. Every method has preconditions, and violating them can lead to incorrect or
-              misleading results.
+              <strong>Confusing geom and stat.</strong> geom_histogram() combines a binning stat and
+              a bar geom. If binning is wrong, specify stat_bin() explicitly.
             </li>
             <li>
-              Misinterpreting the results or reading too much into specific numerical values without
-              considering uncertainty. Statistical and machine learning outputs should always be
-              interpreted in context, with appropriate confidence intervals or error bars where
-              applicable.
+              <strong>Forgetting aesthetic inheritance.</strong> Aesthetics set in ggplot(data,
+              aes(x, y)) are inherited by all layers. If only one layer needs colour, put
+              aes(colour=...) in that geom.
             </li>
             <li>
-              Overlooking computational or practical limitations that make the theoretical solution
-              infeasible. Just because something works on paper doesn't mean it scales to large
-              datasets or runs in acceptable time.
-            </li>
-            <li>
-              Training performance can be misleading if the model overfits. Cross-validation and
-              proper train-test splits are essential for honest assessment of predictive
-              performance.
+              <strong>Using continuous scales for discrete data.</strong> Factors need
+              scale_x_discrete(), not scale_x_continuous(). Mismatched types produce blank plots or
+              errors.
             </li>
           </ul>
         </Callout>
@@ -81,6 +74,11 @@ function EnBody() {
 function ZhBody() {
   return (
     <>
+      <p>
+        图表不是命名模板（条形图、散点图、折线图）。它是图层的组合：数据映射到美学（x、y、颜色），呈现为几何对象（点、条），带有比例尺和坐标。ggplot2
+        实现了这种语法，让您从几条规则构建任何图表。
+      </p>
+
       <KSection id="idea" eyebrow="01" title="基本想法">
         <p>
           语法有七个图层：数据（数据框）、美学（x、y、颜色、大小）、几何对象（视觉标记：点、条、线）、统计（变换：分组、平滑）、比例尺（将数据映射到视觉属性）、坐标（笛卡尔、极坐标）和分面（小倍数）。每个都是独立的；更改一个不会破坏其他。
@@ -111,14 +109,17 @@ function ZhBody() {
         <Callout type="pitfall" label="陷阱">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              每种方法都有前提条件，违反它们可能导致不正确或误导性的结果。在信任输出之前，始终验证假设。
-            </li>
-            <li>误解结果或在不考虑不确定性的情况下过度解读特定数值。</li>
-            <li>
-              忽视使理论解决方案不可行的计算或实际限制。仅仅因为某事在纸上有效并不意味着它可以扩展到大型数据集或在可接受的时间内运行。始终考虑实现约束。
+              <strong>混淆 geom 和 stat。</strong>geom_histogram()
+              结合了分组统计和条形几何对象。如果分组不对，明确指定 stat_bin()。
             </li>
             <li>
-              在部署之前未能在保留数据上验证该方法。如果模型过拟合，训练性能可能会产生误导。交叉验证和适当的训练测试分割对于诚实评估预测性能至关重要。
+              <strong>忘记美学继承。</strong>在 ggplot(data, aes(x, y))
+              中设置的美学会传递给所有层。如果只有一层需要颜色，把 aes(colour=...) 放在那个 geom
+              里。
+            </li>
+            <li>
+              <strong>对离散数据用连续比例尺。</strong>因子需要 scale_x_discrete()，不是
+              scale_x_continuous()。类型不匹配会导致空白图或错误。
             </li>
           </ul>
         </Callout>

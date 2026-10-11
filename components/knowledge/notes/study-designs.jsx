@@ -48,25 +48,19 @@ function EnBody() {
         <Callout type="pitfall" label="Pitfalls">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              Applying the technique without checking whether its assumptions hold for your specific
-              data. Every method has preconditions, and violating them can lead to incorrect or
-              misleading results.
+              <strong>Estimating risk from a case-control study.</strong> You fixed the case:control
+              ratio, so you cannot compute P(disease | exposure). You can only estimate the odds
+              ratio.
             </li>
             <li>
-              Misinterpreting the results or reading too much into specific numerical values without
-              considering uncertainty. Statistical and machine learning outputs should always be
-              interpreted in context, with appropriate confidence intervals or error bars where
-              applicable.
+              <strong>Inferring causality from cross-sectional data.</strong> Measuring exposure and
+              outcome at the same time cannot establish which came first. Association is not
+              causation.
             </li>
             <li>
-              Overlooking computational or practical limitations that make the theoretical solution
-              infeasible. Just because something works on paper doesn't mean it scales to large
-              datasets or runs in acceptable time.
-            </li>
-            <li>
-              Training performance can be misleading if the model overfits. Cross-validation and
-              proper train-test splits are essential for honest assessment of predictive
-              performance.
+              <strong>Confusing cohort and case-control sampling.</strong> Cohort samples on
+              exposure and follows forward. Case-control samples on outcome and looks back. Choosing
+              the wrong design wastes data.
             </li>
           </ul>
         </Callout>
@@ -115,14 +109,16 @@ function ZhBody() {
         <Callout type="pitfall" label="陷阱">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              每种方法都有前提条件，违反它们可能导致不正确或误导性的结果。在信任输出之前，始终验证假设。
-            </li>
-            <li>误解结果或在不考虑不确定性的情况下过度解读特定数值。</li>
-            <li>
-              忽视使理论解决方案不可行的计算或实际限制。仅仅因为某事在纸上有效并不意味着它可以扩展到大型数据集或在可接受的时间内运行。始终考虑实现约束。
+              <strong>从病例对照研究估计风险。</strong>你固定了病例：对照比率，所以无法计算 P(疾病 |
+              暴露)。只能估计比值比。
             </li>
             <li>
-              在部署之前未能在保留数据上验证该方法。如果模型过拟合，训练性能可能会产生误导。交叉验证和适当的训练测试分割对于诚实评估预测性能至关重要。
+              <strong>从横断面数据推断因果关系。</strong>
+              同时测量暴露和结果无法确定哪个在前。关联不是因果。
+            </li>
+            <li>
+              <strong>混淆队列和病例对照抽样。</strong>
+              队列按暴露抽样，向前看发病。病例对照按结果抽样，向后看暴露。选错设计浪费数据。
             </li>
           </ul>
         </Callout>
@@ -144,10 +140,9 @@ const META = {
   "en-AU": {
     subtitle: "Epidemiology",
     description: "Epidemiology note",
-    course: "Biostatistics",
-    courseCode: "POPH90150",
+    course: "Self-study",
     level: "Master's",
-    learned: "2024 S2",
+    learned: "2024",
     applied: "Studied",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
@@ -162,10 +157,9 @@ const META = {
   "zh-Hans": {
     subtitle: "Epidemiology",
     description: "Epidemiology笔记",
-    course: "生物统计",
-    courseCode: "POPH90150",
+    course: "自学",
     level: "硕士",
-    learned: "2024 年第二学期",
+    learned: "2024",
     applied: "学习但未使用",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [

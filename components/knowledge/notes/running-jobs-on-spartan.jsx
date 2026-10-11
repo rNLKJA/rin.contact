@@ -94,7 +94,7 @@ function EnBody() {
         <Callout type="applied" label="COMP90024 · Assignment 1">
           <p>
             COMP90024 Assignment 1 (2023, with Wei Zhao): Slurm scripts for three configurations on
-            Spartan (1 node × 1 core, 1 node × 8 cores, 2 nodes × 4 cores). The demo is at{" "}
+            Spartan (1 node × 1 core, 1 node × 8 cores, 2 nodes × 4 cores). Demo:{" "}
             <a href="https://comp90024-spartan-twitter.vercel.app" className="underline">
               comp90024-spartan-twitter.vercel.app
             </a>
