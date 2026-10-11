@@ -89,13 +89,6 @@ function EnBody() {
             project.
           </p>
         </Callout>
-        <p>
-          One mobile project initially used REST but switched to GraphQL after profiling showed 8-12
-          requests per screen. Collapsing those to 1-2 GraphQL queries improved load times
-          significantly, though we needed DataLoader on the backend to prevent N+1 database queries.
-          The tradeoff was complexity: REST endpoints were straightforward to cache with standard
-          HTTP headers, while GraphQL required app-level caching logic.
-        </p>
       </KSection>
 
       <KSection id="pitfalls" eyebrow="05" title="Easy to get wrong">

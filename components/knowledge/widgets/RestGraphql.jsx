@@ -40,14 +40,12 @@ export default function RestGraphql({ copy, locale }) {
           </div>
           <div className="text-xs space-y-1 font-mono">
             <div>GET /api/users/1</div>
-            <div className="text-gray-600 dark:text-gray-400">
-              → {Math.ceil(Math.random() * 50)} ms
-            </div>
+            <div className="text-gray-600 dark:text-gray-400">→ round trip 1</div>
             {selectedFields.includes("postCount") && (
               <>
                 <div>GET /api/users/1/posts</div>
                 <div className="text-gray-600 dark:text-gray-400">
-                  → {Math.ceil(Math.random() * 100)} ms
+                  → round trip 2 (waits for the first)
                 </div>
               </>
             )}
@@ -61,7 +59,7 @@ export default function RestGraphql({ copy, locale }) {
           <div className="text-xs font-mono">
             <div>POST /graphql</div>
             <div className="text-gray-600 dark:text-gray-400">
-              → {Math.ceil(Math.random() * 50)} ms
+              → 1 round trip (nested fields resolved on the server)
             </div>
           </div>
         </div>

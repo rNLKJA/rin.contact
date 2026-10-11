@@ -44,10 +44,6 @@ function EnBody() {
             containers, set up with Ansible. Also Moodist, where each service ran in its own Docker
             container on AWS Lightsail.
           </p>
-          <p>
-            Moodist 项目中的每个服务（auth、api、frontend、worker）都在 AWS Lightsail 上的单独
-            Docker 容器中运行。容器隔离简化了依赖管理，但需要仔细规划容器间通信和卷挂载。
-          </p>
         </Callout>
       </KSection>
 
