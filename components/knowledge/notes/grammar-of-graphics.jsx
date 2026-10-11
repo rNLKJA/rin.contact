@@ -91,6 +91,11 @@ function ZhBody() {
           x（统计）并呈现条（几何对象）。颜色、分面和比例尺是正交添加的。这种可组合性用描述您所见的语法替换了
           40 多种命名图表类型。
         </p>
+        <p>
+          例如，要添加平滑趋势线，只需添加 + geom_smooth()。要按类别着色，添加 aes(colour =
+          category)。要分面显示，添加 +
+          facet_wrap(~variable)。每个添加都是独立的，不需要重写整个图表代码。这种模块化使得实验和迭代变得容易。
+        </p>
       </KSection>
 
       <KSection id="maths" eyebrow="02" title="数学"></KSection>
