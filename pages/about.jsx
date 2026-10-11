@@ -7,6 +7,7 @@ import { useI18n } from "@/contexts/I18nContext";
 import { CATEGORIES } from "@/components/sections/FAQSection";
 
 import AboutIntro from "@/components/sections/AboutIntro";
+import AboutOpener from "@/components/sections/AboutOpener";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
 
@@ -81,6 +82,11 @@ export default function AboutPage({ faqJsonLd }) {
           description={t("about.description")}
           backLabel={t("about.back")}
         />
+      </div>
+
+      <AboutOpener />
+
+      <div className="max-w-[1100px] mx-auto px-6 md:px-12">
         <AboutIntro />
       </div>
 
