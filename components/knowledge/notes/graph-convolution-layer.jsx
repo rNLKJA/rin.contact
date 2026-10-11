@@ -68,7 +68,9 @@ function EnBody() {
       </KSection>
 
       <KSection id="sources" eyebrow="06" title="Sources">
-        <p>COMP90086 Deep Learning (2023). GCN architectures for node classification.</p>
+        <p>
+          COMP90051 Statistical Machine Learning (2023). GCN architectures for node classification.
+        </p>
       </KSection>
     </>
   );
@@ -93,7 +95,7 @@ function ZhBody() {
         </p>
         <p>
           在实践中，GCN
-          在节点分类任务中表现出色：给定部分标记的节点，学习将标签传播到未标记的节点。半监督学习场景中，只需要少量标记数据。模型通过图结构推断相似节点应该有相似的标签。过度平滑是主要问题：深层网络中所有节点的表示趋于相同，因为信息过度混合。
+          在节点分类任务中表现出色：给定部分标记的节点，学习将标签传播到未标记的节点。半监督学习场景中，只需要少量标记数据。模型通过图结构推断相似节点应该有相似的标签。过度平滑是主要问题：深层网络中所有节点的表示趋于相同，因为信息过度混合。典型应用包括社交网络中的用户分类、分子属性预测和学术论文的主题分类。
         </p>
       </KSection>
 
@@ -131,6 +133,7 @@ function ZhBody() {
       </KSection>
 
       <KSection id="sources" eyebrow="06" title="参考资料">
+        <p>COMP90051 统计机器学习（2023）。节点分类的 GCN 架构。</p>
         <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
           初稿于2023，2026年重写。
         </p>
