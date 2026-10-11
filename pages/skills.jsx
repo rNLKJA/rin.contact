@@ -25,6 +25,7 @@ import LearningTimeline from "@/components/skills/LearningTimeline";
 import SkillsAtlas, { MAX_QUERY } from "@/components/skills/SkillsAtlas";
 import SubjectsList from "@/components/skills/SubjectsList";
 import CredentialList from "@/components/skills/CredentialList";
+import SkillsKnowledgeTabs from "@/components/skills/SkillsKnowledgeTabs";
 import { useI18n } from "@/contexts/I18nContext";
 import { fill } from "@/lib/fill";
 import { getAllPosts } from "@/lib/posts";
@@ -258,84 +259,89 @@ export default function SkillsPage({ atlas, jsonLd, ogImage, matrixSkills, matri
             backHref="/about"
           />
 
-          <SkillMatrix skills={matrixSkills} areas={matrixAreas} />
+          <SkillsKnowledgeTabs
+            evidenceContent={
+              <>
+                <SkillMatrix skills={matrixSkills} areas={matrixAreas} />
 
-          <ResumeSection
-            id="glance"
-            n="01"
-            title={t("skillsPage.sections.glance")}
-            className="border-t-0 pt-10"
-          >
-            <SkillsGlance stats={stats} />
-          </ResumeSection>
+                <ResumeSection
+                  id="glance"
+                  n="01"
+                  title={t("skillsPage.sections.glance")}
+                  className="border-t-0 pt-10"
+                >
+                  <SkillsGlance stats={stats} />
+                </ResumeSection>
 
-          <ResumeSection id="now" n="02" title={t("skillsPage.sections.now")}>
-            <SkillsNow atlas={atlas} onSelectSkill={selectSkill} />
-          </ResumeSection>
+                <ResumeSection id="now" n="02" title={t("skillsPage.sections.now")}>
+                  <SkillsNow atlas={atlas} onSelectSkill={selectSkill} />
+                </ResumeSection>
 
-          <ResumeSection id="timeline" n="03" title={t("skillsPage.sections.timeline")}>
-            <LearningTimeline atlas={atlas} onSelectSkill={selectSkill} />
-          </ResumeSection>
+                <ResumeSection id="timeline" n="03" title={t("skillsPage.sections.timeline")}>
+                  <LearningTimeline atlas={atlas} onSelectSkill={selectSkill} />
+                </ResumeSection>
 
-          <ResumeSection id="atlas" n="04" title={t("skillsPage.sections.atlas")}>
-            <SkillsAtlas
-              atlas={atlas}
-              filters={filters}
-              ready={ready}
-              onChange={setFilters}
-              onClear={clearFilters}
-              statusRef={statusRef}
-              jump={jump}
-            />
-          </ResumeSection>
+                <ResumeSection id="atlas" n="04" title={t("skillsPage.sections.atlas")}>
+                  <SkillsAtlas
+                    atlas={atlas}
+                    filters={filters}
+                    ready={ready}
+                    onChange={setFilters}
+                    onClear={clearFilters}
+                    statusRef={statusRef}
+                    jump={jump}
+                  />
+                </ResumeSection>
 
-          <ResumeSection id="subjects" n="05" title={t("skillsPage.sections.subjects")}>
-            <SubjectsList
-              subjects={atlas.subjects}
-              evidence={atlas.evidence}
-              skills={atlas.skills}
-              onSelectSkill={selectSkill}
-              count={stats.subjects}
-            />
-          </ResumeSection>
+                <ResumeSection id="subjects" n="05" title={t("skillsPage.sections.subjects")}>
+                  <SubjectsList
+                    subjects={atlas.subjects}
+                    evidence={atlas.evidence}
+                    skills={atlas.skills}
+                    onSelectSkill={selectSkill}
+                    count={stats.subjects}
+                  />
+                </ResumeSection>
 
-          <ResumeSection id="credentials" n="06" title={t("skillsPage.sections.credentials")}>
-            <CredentialList
-              credentials={atlas.credentials}
-              skills={atlas.skills}
-              onSelectSkill={selectSkill}
-              count={stats.credentials}
-            />
-          </ResumeSection>
+                <ResumeSection id="credentials" n="06" title={t("skillsPage.sections.credentials")}>
+                  <CredentialList
+                    credentials={atlas.credentials}
+                    skills={atlas.skills}
+                    onSelectSkill={selectSkill}
+                    count={stats.credentials}
+                  />
+                </ResumeSection>
 
-          <ResumeSection
-            id="deeper"
-            n="07"
-            title={t("skillsPage.sections.deeper")}
-            className="pb-10"
-          >
-            <nav aria-labelledby="deeper-h">
-              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#F0F0F0] dark:bg-[#1E1E1E] border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
-                {atlas.deeper.map((l) => (
-                  <li key={l.key} className="bg-white dark:bg-[#0A0A0A]">
-                    {/* The ring is drawn inside: the grid clips anything outside a cell. */}
-                    <Link
-                      href={l.href}
-                      className="group flex h-full items-center justify-between gap-3 px-5 py-4 text-sm text-black dark:text-white hover:bg-[#FAFAFA] dark:hover:bg-[#111111] transition-colors duration-200 focus-visible:[outline-offset:-2px]"
-                    >
-                      {fill(t(`skillsPage.deeper.${l.key}`), { count: l.count })}
-                      <span
-                        aria-hidden="true"
-                        className="text-[#CC0000] dark:text-[#FF3C3C] group-hover:translate-x-0.5 transition-transform duration-200"
-                      >
-                        →
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </ResumeSection>
+                <ResumeSection
+                  id="deeper"
+                  n="07"
+                  title={t("skillsPage.sections.deeper")}
+                  className="pb-10"
+                >
+                  <nav aria-labelledby="deeper-h">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#F0F0F0] dark:bg-[#1E1E1E] border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
+                      {atlas.deeper.map((l) => (
+                        <li key={l.key} className="bg-white dark:bg-[#0A0A0A]">
+                          <Link
+                            href={l.href}
+                            className="group flex h-full items-center justify-between gap-3 px-5 py-4 text-sm text-black dark:text-white hover:bg-[#FAFAFA] dark:hover:bg-[#111111] transition-colors duration-200 focus-visible:[outline-offset:-2px]"
+                          >
+                            {fill(t(`skillsPage.deeper.${l.key}`), { count: l.count })}
+                            <span
+                              aria-hidden="true"
+                              className="text-[#CC0000] dark:text-[#FF3C3C] group-hover:translate-x-0.5 transition-transform duration-200"
+                            >
+                              →
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </ResumeSection>
+              </>
+            }
+          />
         </div>
       </div>
     </>

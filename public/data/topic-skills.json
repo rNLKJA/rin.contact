@@ -1,0 +1,543 @@
+{
+  "linear-algebra": [
+    {
+      "id": "linear-algebra",
+      "label": "Linear algebra",
+      "zh": "线性代数"
+    }
+  ],
+  "probability": [
+    {
+      "id": "probability",
+      "label": "Probability",
+      "zh": "概率论"
+    }
+  ],
+  "statistics": [
+    {
+      "id": "hypothesis-testing",
+      "label": "Hypothesis testing",
+      "zh": "假设检验"
+    },
+    {
+      "id": "interval-estimation",
+      "label": "Confidence intervals and the bootstrap",
+      "zh": "置信区间与 bootstrap"
+    }
+  ],
+  "calculus-optimisation": [
+    {
+      "id": "calculus-optimisation",
+      "label": "Calculus and optimisation",
+      "zh": "微积分与最优化"
+    }
+  ],
+  "linear-statistical-models": [
+    {
+      "id": "regression",
+      "label": "Regression",
+      "zh": "回归分析"
+    }
+  ],
+  "database-systems": [
+    {
+      "id": "database-design",
+      "label": "Database design and data modelling",
+      "zh": "数据库设计与数据建模"
+    },
+    {
+      "id": "sql",
+      "label": "SQL",
+      "zh": "SQL"
+    }
+  ],
+  "artificial-intelligence": [
+    {
+      "id": "search-agents",
+      "label": "Search and game-playing agents",
+      "zh": "搜索与博弈智能体"
+    }
+  ],
+  "web-information-technology": [
+    {
+      "id": "full-stack",
+      "label": "Full-stack web development",
+      "zh": "全栈 Web 开发"
+    },
+    {
+      "id": "rest-apis",
+      "label": "REST APIs",
+      "zh": "REST API"
+    }
+  ],
+  "operations-research": [
+    {
+      "id": "operations-research",
+      "label": "Operations research and linear programming",
+      "zh": "运筹学与线性规划"
+    }
+  ],
+  "elements-of-data-processing": [
+    {
+      "id": "data-wrangling",
+      "label": "Data cleaning and exploratory analysis",
+      "zh": "数据清洗与探索性分析"
+    },
+    {
+      "id": "data-pipelines",
+      "label": "Data pipelines and ETL",
+      "zh": "数据管线与 ETL"
+    }
+  ],
+  "applied-data-science": [
+    {
+      "id": "problem-framing",
+      "label": "Problem framing and the project lifecycle",
+      "zh": "问题定义与项目生命周期"
+    }
+  ],
+  "data-visualisation": [
+    {
+      "id": "data-visualisation",
+      "label": "Data visualisation",
+      "zh": "数据可视化"
+    }
+  ],
+  "feature-engineering": [
+    {
+      "id": "feature-engineering",
+      "label": "Feature engineering",
+      "zh": "特征工程"
+    }
+  ],
+  "sampling-survey-methodology": [
+    {
+      "id": "sampling",
+      "label": "Sampling and survey methods",
+      "zh": "抽样与调查方法"
+    }
+  ],
+  "sql-querying-data": [
+    {
+      "id": "sql",
+      "label": "SQL",
+      "zh": "SQL"
+    }
+  ],
+  "model-evaluation": [
+    {
+      "id": "model-evaluation",
+      "label": "Model evaluation and validation",
+      "zh": "模型评估与验证"
+    }
+  ],
+  "natural-language-processing": [
+    {
+      "id": "nlp",
+      "label": "Natural language processing",
+      "zh": "自然语言处理"
+    }
+  ],
+  "statistical-machine-learning": [
+    {
+      "id": "statistical-learning",
+      "label": "Statistical learning",
+      "zh": "统计学习"
+    }
+  ],
+  "bayesian-statistics": [
+    {
+      "id": "bayesian-inference",
+      "label": "Bayesian inference and MCMC",
+      "zh": "贝叶斯推断与 MCMC"
+    }
+  ],
+  "pca-dimensionality-reduction": [
+    {
+      "id": "dimensionality-reduction",
+      "label": "Dimensionality reduction",
+      "zh": "降维"
+    }
+  ],
+  "clustering": [
+    {
+      "id": "clustering",
+      "label": "Clustering",
+      "zh": "聚类"
+    }
+  ],
+  "cluster-cloud-computing": [
+    {
+      "id": "hpc",
+      "label": "HPC and parallel computing",
+      "zh": "HPC 与并行计算"
+    },
+    {
+      "id": "cloud-computing",
+      "label": "Cloud computing",
+      "zh": "云计算"
+    },
+    {
+      "id": "spark",
+      "label": "Apache Spark",
+      "zh": "Apache Spark"
+    }
+  ],
+  "statistical-modelling": [
+    {
+      "id": "statistical-modelling",
+      "label": "Statistical modelling and GLMs",
+      "zh": "统计建模与广义线性模型"
+    }
+  ],
+  "computational-statistics": [
+    {
+      "id": "simulation",
+      "label": "Simulation and Monte Carlo",
+      "zh": "模拟与蒙特卡洛方法"
+    },
+    {
+      "id": "interval-estimation",
+      "label": "Confidence intervals and the bootstrap",
+      "zh": "置信区间与 bootstrap"
+    }
+  ],
+  "advanced-database-systems": [
+    {
+      "id": "query-optimisation",
+      "label": "Query optimisation and indexing",
+      "zh": "查询优化与索引"
+    }
+  ],
+  "science-communication": [
+    {
+      "id": "science-communication",
+      "label": "Science and data communication",
+      "zh": "科学与数据传播"
+    }
+  ],
+  "time-series-analysis": [
+    {
+      "id": "time-series",
+      "label": "Time series and forecasting",
+      "zh": "时间序列与预测"
+    }
+  ],
+  "causal-inference": [
+    {
+      "id": "causal-inference",
+      "label": "Causal inference",
+      "zh": "因果推断"
+    },
+    {
+      "id": "experiment-design",
+      "label": "Experiment and A/B test design",
+      "zh": "实验与 A/B 测试设计"
+    }
+  ],
+  "deep-learning": [
+    {
+      "id": "deep-learning",
+      "label": "Deep learning and transformers",
+      "zh": "深度学习与 Transformer"
+    }
+  ],
+  "reinforcement-learning": [
+    {
+      "id": "reinforcement-learning",
+      "label": "Reinforcement learning and bandits",
+      "zh": "强化学习与多臂老虎机"
+    }
+  ],
+  "ensemble-methods": [
+    {
+      "id": "ensemble-methods",
+      "label": "Ensemble methods",
+      "zh": "集成方法"
+    }
+  ],
+  "recommender-systems": [
+    {
+      "id": "recommender-systems",
+      "label": "Recommender systems",
+      "zh": "推荐系统"
+    }
+  ],
+  "survival-analysis": [
+    {
+      "id": "survival-analysis",
+      "label": "Survival analysis",
+      "zh": "生存分析"
+    }
+  ],
+  "information-retrieval": [
+    {
+      "id": "information-retrieval",
+      "label": "Information retrieval",
+      "zh": "信息检索"
+    }
+  ],
+  "large-language-models": [
+    {
+      "id": "llm-apps",
+      "label": "Building with LLMs",
+      "zh": "基于大语言模型的开发"
+    }
+  ],
+  "topic-modelling": [
+    {
+      "id": "nlp",
+      "label": "Natural language processing",
+      "zh": "自然语言处理"
+    }
+  ],
+  "ai-agents": [
+    {
+      "id": "ai-agents",
+      "label": "AI agents and tool use",
+      "zh": "AI 智能体与工具调用"
+    }
+  ],
+  "spatial-statistics": [
+    {
+      "id": "spatial-statistics",
+      "label": "Spatial statistics",
+      "zh": "空间统计"
+    }
+  ],
+  "conformal-prediction": [
+    {
+      "id": "interval-estimation",
+      "label": "Confidence intervals and the bootstrap",
+      "zh": "置信区间与 bootstrap"
+    }
+  ],
+  "causal-discovery": [
+    {
+      "id": "causal-inference",
+      "label": "Causal inference",
+      "zh": "因果推断"
+    }
+  ],
+  "kalman-filter": [
+    {
+      "id": "time-series",
+      "label": "Time series and forecasting",
+      "zh": "时间序列与预测"
+    }
+  ],
+  "active-semi-supervised-learning": [
+    {
+      "id": "statistical-learning",
+      "label": "Statistical learning",
+      "zh": "统计学习"
+    }
+  ],
+  "extreme-value-theory": [
+    {
+      "id": "statistical-modelling",
+      "label": "Statistical modelling and GLMs",
+      "zh": "统计建模与广义线性模型"
+    }
+  ],
+  "hierarchical-models": [
+    {
+      "id": "statistical-modelling",
+      "label": "Statistical modelling and GLMs",
+      "zh": "统计建模与广义线性模型"
+    },
+    {
+      "id": "bayesian-inference",
+      "label": "Bayesian inference and MCMC",
+      "zh": "贝叶斯推断与 MCMC"
+    }
+  ],
+  "optimisation-methods": [
+    {
+      "id": "calculus-optimisation",
+      "label": "Calculus and optimisation",
+      "zh": "微积分与最优化"
+    },
+    {
+      "id": "operations-research",
+      "label": "Operations research and linear programming",
+      "zh": "运筹学与线性规划"
+    }
+  ],
+  "gaussian-processes": [
+    {
+      "id": "bayesian-inference",
+      "label": "Bayesian inference and MCMC",
+      "zh": "贝叶斯推断与 MCMC"
+    }
+  ],
+  "robust-statistics": [
+    {
+      "id": "statistical-modelling",
+      "label": "Statistical modelling and GLMs",
+      "zh": "统计建模与广义线性模型"
+    }
+  ],
+  "quantile-regression": [
+    {
+      "id": "regression",
+      "label": "Regression",
+      "zh": "回归分析"
+    }
+  ],
+  "graph-neural-networks": [
+    {
+      "id": "deep-learning",
+      "label": "Deep learning and transformers",
+      "zh": "深度学习与 Transformer"
+    },
+    {
+      "id": "graph-analytics",
+      "label": "Graph databases and network analysis",
+      "zh": "图数据库与网络分析"
+    }
+  ],
+  "probabilistic-graphical-models": [
+    {
+      "id": "bayesian-inference",
+      "label": "Bayesian inference and MCMC",
+      "zh": "贝叶斯推断与 MCMC"
+    }
+  ],
+  "business-intelligence-dashboards": [
+    {
+      "id": "reporting",
+      "label": "Dashboards and decision reporting",
+      "zh": "仪表板与决策报告"
+    },
+    {
+      "id": "power-bi",
+      "label": "Power BI",
+      "zh": "Power BI"
+    }
+  ],
+  "geospatial-analysis": [
+    {
+      "id": "geospatial",
+      "label": "GIS and geospatial analysis",
+      "zh": "GIS 与地理空间分析"
+    }
+  ],
+  "intelligence-analysis": [
+    {
+      "id": "intelligence-analysis",
+      "label": "Intelligence analysis and OSINT",
+      "zh": "情报分析与 OSINT"
+    }
+  ],
+  "data-governance": [
+    {
+      "id": "data-governance",
+      "label": "Data governance and privacy",
+      "zh": "数据治理与隐私"
+    }
+  ],
+  "anomaly-detection": [
+    {
+      "id": "anomaly-detection",
+      "label": "Anomaly detection",
+      "zh": "异常检测"
+    }
+  ],
+  "network-graph-analysis": [
+    {
+      "id": "graph-analytics",
+      "label": "Graph databases and network analysis",
+      "zh": "图数据库与网络分析"
+    }
+  ],
+  "reproducibility": [
+    {
+      "id": "reproducibility",
+      "label": "Reproducible analysis",
+      "zh": "可复现分析"
+    }
+  ],
+  "mlops-monitoring": [
+    {
+      "id": "mlops",
+      "label": "MLOps and model monitoring",
+      "zh": "MLOps 与模型监控"
+    }
+  ],
+  "explainable-ai": [
+    {
+      "id": "explainable-ai",
+      "label": "Explainability and model documentation",
+      "zh": "可解释性与模型文档"
+    }
+  ],
+  "fairness-bias": [
+    {
+      "id": "fairness",
+      "label": "Fairness and bias",
+      "zh": "公平性与偏见"
+    }
+  ],
+  "differential-privacy": [
+    {
+      "id": "data-governance",
+      "label": "Data governance and privacy",
+      "zh": "数据治理与隐私"
+    }
+  ],
+  "knowledge-graphs": [
+    {
+      "id": "graph-analytics",
+      "label": "Graph databases and network analysis",
+      "zh": "图数据库与网络分析"
+    }
+  ],
+  "streaming-analytics": [
+    {
+      "id": "data-pipelines",
+      "label": "Data pipelines and ETL",
+      "zh": "数据管线与 ETL"
+    }
+  ],
+  "data-architecture": [
+    {
+      "id": "data-pipelines",
+      "label": "Data pipelines and ETL",
+      "zh": "数据管线与 ETL"
+    }
+  ],
+  "statistical-process-control": [
+    {
+      "id": "statistical-process-control",
+      "label": "Statistical process control",
+      "zh": "统计过程控制"
+    }
+  ],
+  "federated-learning": [
+    {
+      "id": "statistical-learning",
+      "label": "Statistical learning",
+      "zh": "统计学习"
+    },
+    {
+      "id": "data-governance",
+      "label": "Data governance and privacy",
+      "zh": "数据治理与隐私"
+    }
+  ],
+  "data-science-mentoring": [
+    {
+      "id": "mentoring-teaching",
+      "label": "Mentoring and teaching",
+      "zh": "辅导与教学"
+    }
+  ],
+  "edtech-digital-learning": [
+    {
+      "id": "mentoring-teaching",
+      "label": "Mentoring and teaching",
+      "zh": "辅导与教学"
+    }
+  ]
+}

@@ -59,6 +59,8 @@ export default function KnowledgeLayout({
   // concept notes: kind "note" sits under `parent` ({ href, label })
   kind = "topic",
   parent,
+  // related skills: [{id, label}]
+  relatedSkills = [],
   children,
 }) {
   const { t, locale = "en-AU" } = useI18n();
@@ -127,7 +129,7 @@ export default function KnowledgeLayout({
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <article className="max-w-[720px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1 w-full">
           <Link
-            href={isNote ? parent.href : "/knowledge"}
+            href={isNote ? parent.href : "/skills/?tab=notes"}
             className="inline-flex items-center gap-1 font-mono text-[11px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
           >
             ← {isNote ? parent.label : t("knowledgeLayout.back")}
@@ -228,6 +230,25 @@ export default function KnowledgeLayout({
 
           {!isNote && <ConceptNotes topic={slug} />}
 
+          {!isNote && relatedSkills.length > 0 && (
+            <div className="mt-12 pt-8 border-t border-[#E0E0E0] dark:border-[#2A2A2A]">
+              <p className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#6E6E6E] mb-4">
+                {t("knowledgeLayout.skillsThisSupports")}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {relatedSkills.map((skill) => (
+                  <Link
+                    key={skill.id}
+                    href={`/skills/?skill=${skill.id}`}
+                    className="inline-flex items-center px-3 py-1.5 text-[13px] border border-[#E0E0E0] dark:border-[#2A2A2A] text-[#3D3D3D] dark:text-[#AAAAAA] hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors"
+                  >
+                    {locale === "zh-Hans" && skill.zh ? skill.zh : skill.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           <footer className="mt-16 pt-8 border-t border-[#E0E0E0] dark:border-[#2A2A2A]">
             {(prev || next) && (
               <div className="grid sm:grid-cols-2 gap-4 mb-10">
@@ -263,7 +284,7 @@ export default function KnowledgeLayout({
             )}
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/knowledge"
+                href="/skills/?tab=notes"
                 className="font-mono text-[11px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
               >
                 {t("knowledgeLayout.allTopics")}

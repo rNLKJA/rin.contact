@@ -1,6 +1,7 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
 import PageHero from "@/components/layout/PageHero";
 import { useI18n } from "@/contexts/I18nContext";
@@ -11,9 +12,6 @@ import AboutOpener from "@/components/sections/AboutOpener";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
 
-const SkillsSection = dynamic(() => import("@/components/sections/SkillsSection"), {
-  loading: () => <div className="min-h-[480px]" />,
-});
 const CertificationsSection = dynamic(() => import("@/components/sections/CertificationsSection"), {
   loading: () => <div className="min-h-[320px]" />,
 });
@@ -88,11 +86,14 @@ export default function AboutPage({ faqJsonLd }) {
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
         <AboutIntro />
-      </div>
-
-      <div className="bg-[#F5F5F5] dark:bg-[#141414] relative overflow-hidden">
-        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <SkillsSection />
+        <div className="mt-8 mb-12">
+          <p className="text-[15px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+            {t("about.skillsLinkIntro")}{" "}
+            <Link href="/skills" className="text-[#FF3C3C] hover:underline font-medium">
+              {t("about.skillsLinkText")}
+            </Link>
+            .
+          </p>
         </div>
       </div>
 

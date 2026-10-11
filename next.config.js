@@ -82,10 +82,18 @@ const nextConfig = {
       // The teaching page moved to /projects/classbro. i18n prefixes these.
       ["projects/teaching", "projects/classbro"],
     ];
-    return moved.flatMap(([from, to]) => [
+    const redirects = moved.flatMap(([from, to]) => [
       { source: `/${from}`, destination: `/${to}`, permanent: true },
       { source: `/${from}/`, destination: `/${to}/`, permanent: true },
     ]);
+
+    // /knowledge index → /skills?tab=notes (both locales)
+    redirects.push(
+      { source: "/knowledge", destination: "/skills/?tab=notes", permanent: true },
+      { source: "/knowledge/", destination: "/skills/?tab=notes", permanent: true }
+    );
+
+    return redirects;
   },
 
   // ── HTTP headers ──────────────────────────────────────────────────────────
