@@ -175,7 +175,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden cursor-crosshair bg-white dark:bg-[#0A0A0A]"
+      className="relative pt-20 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-white dark:bg-[#0A0A0A]"
       aria-label="Introduction"
       itemScope
       itemType="https://schema.org/Person"

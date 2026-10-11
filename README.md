@@ -95,6 +95,11 @@ The interface is built at the intersection of two design languages:
 
 A live, in-product summary is available via the **Design System** link in the site footer.
 
+## Content rules
+
+- **No emoji anywhere on the site.** Use the text glyphs the design already uses (■ ● → ↗ ✕ ·) or a drawn shape. `npm run check:career` fails the build on any emoji; only ↗, ↔ and © are allowed, because here they are typography.
+- **Standard system cursor.** Don't hide or replace the pointer. Cursor-reactive backgrounds are fine as long as nothing follows the pointer on top of the content.
+
 ## Deployment
 
 Deployed on **Vercel**, served from the custom domain [rin.contact](https://rin.contact).
