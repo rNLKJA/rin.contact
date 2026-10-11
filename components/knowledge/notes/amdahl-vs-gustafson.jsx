@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
 import { Formula, TeX } from "@/components/knowledge/KatexFormula";
 import AmdahlGustafson from "@/components/knowledge/widgets/AmdahlGustafson";

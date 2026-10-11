@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function OptimiserRace({ copy, locale }) {
+export default function OptimiserRace() {
   const [learningRate, setLearningRate] = useState(0.1);
   const [batchSize, setBatchSize] = useState(32);
 

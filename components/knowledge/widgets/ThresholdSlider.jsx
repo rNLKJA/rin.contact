@@ -12,14 +12,12 @@ function mulberry32(a) {
   };
 }
 
-export default function ThresholdSlider({ copy, locale }) {
+export default function ThresholdSlider({ copy }) {
   const [threshold, setThreshold] = useState(0.5);
-  const [seed, setSeed] = useState(42);
-
-  const rng = useMemo(() => mulberry32(seed), [seed]);
+  const [seed] = useState(42);
 
   // Generate synthetic score distributions
-  const generateScores = () => {
+  const { pos, neg } = useMemo(() => {
     const r = mulberry32(seed);
     const pos = Array.from({ length: 100 }, () => {
       const u1 = r();
@@ -32,9 +30,7 @@ export default function ThresholdSlider({ copy, locale }) {
       return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2) * 0.15 + 0.3;
     });
     return { pos, neg };
-  };
-
-  const { pos, neg } = useMemo(generateScores, [seed]);
+  }, [seed]);
 
   const tp = pos.filter((s) => s >= threshold).length;
   const fp = neg.filter((s) => s >= threshold).length;

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function GcnStepper({ copy, locale }) {
+export default function GcnStepper() {
   const [step, setStep] = useState(0);
   const [selectedNode, setSelectedNode] = useState(0);
 

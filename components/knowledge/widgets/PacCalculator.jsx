@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 
-export default function PacCalculator({ copy, locale }) {
+export default function PacCalculator() {
   const [epsilon, setEpsilon] = useState(0.1);
   const [delta, setDelta] = useState(0.05);
   const [hypothesisCount, setHypothesisCount] = useState(100);

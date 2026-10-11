@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function RestGraphql({ copy, locale }) {
+export default function RestGraphql() {
   const [selectedFields, setSelectedFields] = useState(["id", "name", "postCount"]);
 
   const fields = ["id", "name", "email", "bio", "postCount", "followersCount", "createdAt"];

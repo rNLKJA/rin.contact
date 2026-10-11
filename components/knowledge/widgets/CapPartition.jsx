@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function CapPartition({ copy, locale }) {
+export default function CapPartition() {
   const [partitioned, setPartitioned] = useState(false);
   const [choice, setChoice] = useState("cp");
 

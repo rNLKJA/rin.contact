@@ -1,5 +1,5 @@
-import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
-import { Formula, TeX } from "@/components/knowledge/KatexFormula";
+import { KSection, Callout, Figure } from "@/components/knowledge/KnowledgeLayout";
+import { TeX } from "@/components/knowledge/KatexFormula";
 import { findNote, noteCopy } from "@/lib/knowledge-notes";
 import OptimiserRace from "@/components/knowledge/widgets/OptimiserRace";
 

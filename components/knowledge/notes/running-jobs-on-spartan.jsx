@@ -1,4 +1,4 @@
-import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
+import { KSection, Callout, Figure } from "@/components/knowledge/KnowledgeLayout";
 import { findNote, noteCopy } from "@/lib/knowledge-notes";
 import SlurmBuilder from "@/components/knowledge/widgets/SlurmBuilder";
 

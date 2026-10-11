@@ -12,7 +12,7 @@ function mulberry32(a) {
   };
 }
 
-export default function AuctionSimulator({ copy, locale }) {
+export default function AuctionSimulator() {
   const [yourValue, setYourValue] = useState(50);
   const [seed, setSeed] = useState(42);
   const [auctionType, setAuctionType] = useState("second");

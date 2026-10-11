@@ -2,12 +2,12 @@
 
 import { useState, useMemo } from "react";
 
-export default function GlmFitness({ copy, locale }) {
+export default function GlmFitness() {
   const [probability, setProbability] = useState(0.5);
 
   const data = useMemo(() => {
     const observed = [8, 12, 15, 18, 20];
-    const fitted = observed.map((o) => Math.round(20 * probability));
+    const fitted = observed.map(() => Math.round(20 * probability));
 
     let pearson = 0;
     let deviance = 0;

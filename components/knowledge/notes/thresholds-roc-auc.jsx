@@ -1,13 +1,9 @@
-import Link from "next/link";
 import { KSection, Callout, Figure, Term } from "@/components/knowledge/KnowledgeLayout";
-import { Formula, TeX } from "@/components/knowledge/KatexFormula";
+import { Formula } from "@/components/knowledge/KatexFormula";
 import ThresholdSlider from "@/components/knowledge/widgets/ThresholdSlider";
 import { findNote, noteCopy } from "@/lib/knowledge-notes";
 
 const SLUG = "thresholds-roc-auc";
-
-const CALLOUT_LINK =
-  "text-accent-ink font-medium underline decoration-[#FF3C3C]/40 underline-offset-4 hover:decoration-current";
 
 const TEX = {
   tpr: String.raw`\mathrm{TPR} = \frac{\mathrm{TP}}{P} = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}}`,

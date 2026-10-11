@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function SlurmBuilder({ copy, locale }) {
+export default function SlurmBuilder() {
   const [nodes, setNodes] = useState(1);
   const [tasksPerNode, setTasksPerNode] = useState(4);
   const [cpusPerTask, setCpusPerTask] = useState(2);

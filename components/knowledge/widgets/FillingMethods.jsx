@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function FillingMethods({ copy, locale }) {
+export default function FillingMethods() {
   const [method, setMethod] = useState("ffill");
 
   const methods = ["none", "ffill", "bfill", "linear", "mean"];

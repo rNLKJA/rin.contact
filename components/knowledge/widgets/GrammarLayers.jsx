@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function GrammarLayers({ copy, locale }) {
+export default function GrammarLayers() {
   const [layers, setLayers] = useState({
     data: true,
     aesthetics: false,

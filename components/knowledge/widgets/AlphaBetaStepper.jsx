@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 
-export default function AlphaBetaStepper({ copy, locale }) {
+export default function AlphaBetaStepper() {
   const [step, setStep] = useState(0);
   const [showOrdering, setShowOrdering] = useState(false);
 
-  const depths = ["Depth 1", "Depth 2", "Depth 3"];
   const maxSteps = 5;
 
   return (

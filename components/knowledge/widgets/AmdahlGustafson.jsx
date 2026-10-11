@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 
-export default function AmdahlGustafson({ copy, locale }) {
+export default function AmdahlGustafson({ copy }) {
   const [cores, setCores] = useState(16);
   const [serialFraction, setSerialFraction] = useState(0.1);
 

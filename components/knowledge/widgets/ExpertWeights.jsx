@@ -12,7 +12,7 @@ function mulberry32(a) {
   };
 }
 
-export default function ExpertWeights({ copy, locale }) {
+export default function ExpertWeights() {
   const [eta, setEta] = useState(0.1);
   const [round, setRound] = useState(10);
   const [seed, setSeed] = useState(42);
@@ -24,15 +24,11 @@ export default function ExpertWeights({ copy, locale }) {
     let totalRegret = 0;
 
     for (let t = 1; t <= round; t++) {
-      const sum = weights.reduce((a, b) => a + b, 0);
-      const probs = weights.map((w) => w / sum);
-
       const actual = experts.map((p) => (r() < p ? 1 : 0));
       const losses = actual.map((a) => 1 - a);
 
       weights = weights.map((w, i) => w * Math.exp(-eta * losses[i]));
 
-      const bestLoss = Math.min(...losses);
       totalRegret += Math.min(...losses);
     }
 

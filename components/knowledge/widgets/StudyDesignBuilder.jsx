@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 
-export default function StudyDesignBuilder({ copy, locale }) {
+export default function StudyDesignBuilder() {
   const [exposure, setExposure] = useState(100);
   const [disease, setDisease] = useState(80);
 

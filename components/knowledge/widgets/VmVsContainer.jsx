@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function VmVsContainer({ copy, locale }) {
+export default function VmVsContainer() {
   const [view, setView] = useState("vm");
 
   const vmStack = ["Application", "Guest OS", "Hypervisor", "Host OS", "Hardware"];
