@@ -24,7 +24,7 @@ import {
 } from "react-icons/fi";
 // Lucide is the Feather fork: same 24px grid and stroke, for the glyphs
 // Feather lacks (flask, library, newspaper, contact card).
-import { LuContact, LuFlaskConical, LuLibrary, LuNewspaper } from "react-icons/lu";
+import { LuContact, LuFlaskConical, LuNewspaper } from "react-icons/lu";
 
 // The ⌘K palette and its page index load on first use, never with the page.
 // Hovering, focusing or pressing a search button starts the download early,
@@ -115,7 +115,6 @@ const NAV_LINKS = [
   { href: "/projects/coursework", key: "nav.coursework", icon: FiBookOpen },
   { href: "/skills", key: "nav.skillsShort", icon: FiTool },
   { href: "/lab", key: "nav.lab", icon: LuFlaskConical },
-  { href: "/knowledge", key: "nav.knowledge", icon: LuLibrary },
   { href: "/blog", key: "nav.blog", icon: LuNewspaper },
   { href: "/about", key: "nav.about", icon: FiUser },
   { href: "/resume", key: "nav.resume", icon: FiFileText },

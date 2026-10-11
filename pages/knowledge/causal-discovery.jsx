@@ -1,13 +1,19 @@
 import KnowledgeLayout from "@/components/knowledge/KnowledgeLayout";
 import { useI18n } from "@/contexts/I18nContext";
 import { getContent } from "@/components/knowledge/content/causal-discovery";
+import { getSkillsForTopic } from "@/lib/topic-skills-loader";
 
-export default function CausalDiscoveryKnowledgePage() {
+export async function getStaticProps() {
+  const relatedSkills = getSkillsForTopic("causal-discovery");
+  return { props: { relatedSkills } };
+}
+
+export default function CausalDiscoveryKnowledgePage({ relatedSkills = [] }) {
   const { locale = "en-AU" } = useI18n();
   const { Body, ...meta } = getContent(locale);
 
   return (
-    <KnowledgeLayout {...meta}>
+    <KnowledgeLayout {...meta} relatedSkills={relatedSkills}>
       <Body />
     </KnowledgeLayout>
   );

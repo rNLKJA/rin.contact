@@ -202,14 +202,16 @@
     "back": "返回",
     "sectionLabel": "◈ — 关于我",
     "heading": "技能专长",
-    "description": "七个技术领域。二十三项专业认证。还有一系列大家真正关心的问题，诚实地回答。",
+    "description": "技能、认证和一组常见问题的诚实回答。",
     "intro": {
       "eyebrow": "简介",
       "heading": "以问题为先、在交叉地带工作的分析师。",
       "body1": "我是一名数据分析师与数据科学家，常驻阿德莱德，目前在南澳警察局担任 ASO7 级别的职务。2023 年以来，我的工作横跨 CSIRO 的气候风险建模、南澳政府的部长级仪表盘、WEHI 的基因组学科研软件，以及墨尔本大学的一款心理健康应用。通才的天性，专才的素养。",
       "body2": "贯穿其中的始终是同一条线索：先厘清需要做的决策，以及做好它所需的最少数据，再选择合适的工具，而不是时髦的工具。问题优先，而非模型优先。正是这个习惯，让同一个人能够在科研实验室、政府情报团队和工程项目中都派上用场。",
       "domainsLabel": "工作领域"
-    }
+    },
+    "skillsLinkIntro": "有关所有技术技能的详细证据",
+    "skillsLinkText": "查看技能与知识中心"
   },
   "hireMe": {
     "sectionLabel": "◈ — 招聘意向",
@@ -349,22 +351,46 @@
       }
     ],
     "learning": [
-      { "text": "观测数据的因果推断方法", "sub": "DoWhy、双重机器学习、工具变量 — 有趣的部分" },
-      { "text": "Rust — 缓慢、耐心、满怀谦卑地学", "sub": "我和借用检查器在谈恋爱。关系很复杂。" },
+      {
+        "text": "观测数据的因果推断方法",
+        "sub": "DoWhy、双重机器学习、工具变量 — 有趣的部分"
+      },
+      {
+        "text": "Rust — 缓慢、耐心、满怀谦卑地学",
+        "sub": "我和借用检查器在谈恋爱。关系很复杂。"
+      },
       {
         "text": "如何向非技术干系人解释模型的不确定性",
         "sub": "看来「置信区间」需要一个更好的公关团队"
       }
     ],
     "listening": [
-      { "text": "写 SQL 时听 Lo-fi 嘻哈", "sub": "" },
-      { "text": "Lex Fridman Podcast", "sub": "长篇的科技、哲学与 AI 对谈" },
-      { "text": "Practical AI", "sub": "不浮夸的应用机器学习" }
+      {
+        "text": "写 SQL 时听 Lo-fi 嘻哈",
+        "sub": ""
+      },
+      {
+        "text": "Lex Fridman Podcast",
+        "sub": "长篇的科技、哲学与 AI 对谈"
+      },
+      {
+        "text": "Practical AI",
+        "sub": "不浮夸的应用机器学习"
+      }
     ],
     "notDoing": [
-      { "text": "接受那些本可以用邮件解决的会议", "sub": "" },
-      { "text": "在没搞懂业务问题之前就开始建模", "sub": "" },
-      { "text": "在原生 JS 就够用时还添加更多依赖", "sub": "" }
+      {
+        "text": "接受那些本可以用邮件解决的会议",
+        "sub": ""
+      },
+      {
+        "text": "在没搞懂业务问题之前就开始建模",
+        "sub": ""
+      },
+      {
+        "text": "在原生 JS 就够用时还添加更多依赖",
+        "sub": ""
+      }
     ]
   },
   "infoUses": {
@@ -389,33 +415,72 @@
           "desc": "主力机器。M4 芯片可以同时应付 PyTorch 训练、Docker 容器，以及 47 个浏览器标签页。",
           "badge": "日常主力"
         },
-        { "desc": "一块宽屏显示器。不用再在终端和笔记本之间来回切换。", "badge": "" },
-        { "desc": "机械轴。那一阵阵的敲击声贡献了 40% 的生产力。", "badge": "" },
-        { "desc": "主动降噪 — 仅次于一杯好咖啡的第二好用的生产力工具。", "badge": "" }
+        {
+          "desc": "一块宽屏显示器。不用再在终端和笔记本之间来回切换。",
+          "badge": ""
+        },
+        {
+          "desc": "机械轴。那一阵阵的敲击声贡献了 40% 的生产力。",
+          "badge": ""
+        },
+        {
+          "desc": "主动降噪 — 仅次于一杯好咖啡的第二好用的生产力工具。",
+          "badge": ""
+        }
       ],
       "editorTerminal": [
-        { "desc": "拥有 AI 超能力的 VS Code。整个网站都是用它构建的。", "badge": "你正在用它" },
-        { "desc": "搭配 zsh 与 Oh My Zsh。主题：极简。插件：git、z、语法高亮。", "badge": "" },
-        { "desc": "终端复用器。当我不可避免地关错窗口时，它能让会话保持存活。", "badge": "" }
+        {
+          "desc": "拥有 AI 超能力的 VS Code。整个网站都是用它构建的。",
+          "badge": "你正在用它"
+        },
+        {
+          "desc": "搭配 zsh 与 Oh My Zsh。主题：极简。插件：git、z、语法高亮。",
+          "badge": ""
+        },
+        {
+          "desc": "终端复用器。当我不可避免地关错窗口时，它能让会话保持存活。",
+          "badge": ""
+        }
       ],
       "languages": [
         {
           "desc": "主力语言。NumPy、Pandas、scikit-learn、PyTorch、FastAPI — 整个生态。",
           "badge": "主力"
         },
-        { "desc": "用于一切面向 Web 的东西。类型让未来的我免受过去的我之苦。", "badge": "" },
+        {
+          "desc": "用于一切面向 Web 的东西。类型让未来的我免受过去的我之苦。",
+          "badge": ""
+        },
         {
           "desc": "日常用 PostgreSQL，大规模场景用 BigQuery。仍是数据科学中最被低估的技能。",
           "badge": ""
         },
-        { "desc": "用于统计分析与出版级可视化。ggplot2 是真的漂亮。", "badge": "" },
-        { "desc": "把一切本不该需要自动化、却莫名其妙需要自动化的事都自动化。", "badge": "" }
+        {
+          "desc": "用于统计分析与出版级可视化。ggplot2 是真的漂亮。",
+          "badge": ""
+        },
+        {
+          "desc": "把一切本不该需要自动化、却莫名其妙需要自动化的事都自动化。",
+          "badge": ""
+        }
       ],
       "dataMl": [
-        { "desc": "首选的深度学习框架。动态图、Pythonic、生态出色。", "badge": "" },
-        { "desc": "依然是经典机器学习的黄金标准。Pipeline 被严重低估了。", "badge": "" },
-        { "desc": "SQL 转换层。终于有了受版本控制的数据模型。", "badge": "" },
-        { "desc": "用于探索与分享分析。生产环境用 VS Code notebooks。", "badge": "" },
+        {
+          "desc": "首选的深度学习框架。动态图、Pythonic、生态出色。",
+          "badge": ""
+        },
+        {
+          "desc": "依然是经典机器学习的黄金标准。Pipeline 被严重低估了。",
+          "badge": ""
+        },
+        {
+          "desc": "SQL 转换层。终于有了受版本控制的数据模型。",
+          "badge": ""
+        },
+        {
+          "desc": "用于探索与分享分析。生产环境用 VS Code notebooks。",
+          "badge": ""
+        },
         {
           "desc": "面向非技术干系人的仪表板。有时候，正确的工具就是那个人人都能用的。",
           "badge": ""
@@ -426,15 +491,36 @@
           "desc": "Web 的首选框架。基于 React 19 的 Pages Router — 快速、基于文件、开发体验极佳。",
           "badge": "本站"
         },
-        { "desc": "实用优先的样式方案。一开始持怀疑态度，如今已被收服。", "badge": "" },
-        { "desc": "部署 → 完成。每次 push 都有预览 URL。我用过最好的 CI/CD 体验。", "badge": "" },
-        { "desc": "设计与原型。也用于和不写代码的设计师沟通。", "badge": "" }
+        {
+          "desc": "实用优先的样式方案。一开始持怀疑态度，如今已被收服。",
+          "badge": ""
+        },
+        {
+          "desc": "部署 → 完成。每次 push 都有预览 URL。我用过最好的 CI/CD 体验。",
+          "badge": ""
+        },
+        {
+          "desc": "设计与原型。也用于和不写代码的设计师沟通。",
+          "badge": ""
+        }
       ],
       "productivity": [
-        { "desc": "项目笔记、研究日志与第二大脑。不完美，但灵活。", "badge": "" },
-        { "desc": "Mapiva 的问题跟踪。快速、极简、有主见 — 很有 Nothing OS 的味道。", "badge": "" },
-        { "desc": "密码管理器。没有商量余地。", "badge": "" },
-        { "desc": "macOS 上的窗口管理。免费、简单、不可或缺。", "badge": "" }
+        {
+          "desc": "项目笔记、研究日志与第二大脑。不完美，但灵活。",
+          "badge": ""
+        },
+        {
+          "desc": "Mapiva 的问题跟踪。快速、极简、有主见 — 很有 Nothing OS 的味道。",
+          "badge": ""
+        },
+        {
+          "desc": "密码管理器。没有商量余地。",
+          "badge": ""
+        },
+        {
+          "desc": "macOS 上的窗口管理。免费、简单、不可或缺。",
+          "badge": ""
+        }
       ]
     }
   },
@@ -457,20 +543,48 @@
     },
     "rows": {
       "framework": [
-        { "name": "框架", "value": "Next.js 16", "note": "Pages Router — SSG + SSR + CSR 混合" },
-        { "name": "运行时", "value": "Node.js", "note": "通过 Vercel 无服务器函数" },
-        { "name": "语言", "value": "TypeScript / JSX", "note": "在关键处启用严格模式" },
-        { "name": "包管理器", "value": "npm", "note": "没什么花哨的" }
+        {
+          "name": "框架",
+          "value": "Next.js 16",
+          "note": "Pages Router — SSG + SSR + CSR 混合"
+        },
+        {
+          "name": "运行时",
+          "value": "Node.js",
+          "note": "通过 Vercel 无服务器函数"
+        },
+        {
+          "name": "语言",
+          "value": "TypeScript / JSX",
+          "note": "在关键处启用严格模式"
+        },
+        {
+          "name": "包管理器",
+          "value": "npm",
+          "note": "没什么花哨的"
+        }
       ],
       "styling": [
-        { "name": "工具类 CSS", "value": "Tailwind CSS", "note": "v3 — 移动优先，生产环境裁剪" },
-        { "name": "理念", "value": "Nothing OS 美学", "note": "硬朗、极简、单色 — 扁平、无阴影" },
+        {
+          "name": "工具类 CSS",
+          "value": "Tailwind CSS",
+          "note": "v3 — 移动优先，生产环境裁剪"
+        },
+        {
+          "name": "理念",
+          "value": "Nothing OS 美学",
+          "note": "硬朗、极简、单色 — 扁平、无阴影"
+        },
         {
           "name": "配色",
           "value": "#FFFFFF · #000000 · #FF3C3C",
           "note": "白 · 黑 · 圆点红 — 克制使用"
         },
-        { "name": "圆角", "value": "无或全圆", "note": "绝不取中间值" },
+        {
+          "name": "圆角",
+          "value": "无或全圆",
+          "note": "绝不取中间值"
+        },
         {
           "name": "动效",
           "value": "CSS keyframes",
@@ -483,50 +597,194 @@
           "value": "Bitcount Prop Double",
           "note": "字重 300–600 · 仅用于标题"
         },
-        { "name": "正文字体", "value": "DM Sans", "note": "字重 300–500 · 阅读舒适" },
-        { "name": "点缀字体", "value": "Playfair Display", "note": "仅用于编辑式点缀" },
-        { "name": "等宽字体", "value": "Courier New", "note": "系统后备 · 终端与标签" },
-        { "name": "加载器", "value": "next/font", "note": "零布局偏移，自托管" }
+        {
+          "name": "正文字体",
+          "value": "DM Sans",
+          "note": "字重 300–500 · 阅读舒适"
+        },
+        {
+          "name": "点缀字体",
+          "value": "Playfair Display",
+          "note": "仅用于编辑式点缀"
+        },
+        {
+          "name": "等宽字体",
+          "value": "Courier New",
+          "note": "系统后备 · 终端与标签"
+        },
+        {
+          "name": "加载器",
+          "value": "next/font",
+          "note": "零布局偏移，自托管"
+        }
       ],
       "deployment": [
-        { "name": "托管", "value": "Vercel", "note": "边缘网络 · 每次 push 都有预览部署" },
-        { "name": "域名", "value": "rin.contact", "note": "通过 Namecheap 注册" },
-        { "name": "CDN", "value": "Vercel Edge Network", "note": "全球、自动" },
-        { "name": "CI/CD", "value": "GitHub + Vercel CLI", "note": "git push → 构建 → 别名" },
-        { "name": "分析", "value": "无", "note": "隐私优先 — 无追踪像素" }
+        {
+          "name": "托管",
+          "value": "Vercel",
+          "note": "边缘网络 · 每次 push 都有预览部署"
+        },
+        {
+          "name": "域名",
+          "value": "rin.contact",
+          "note": "通过 Namecheap 注册"
+        },
+        {
+          "name": "CDN",
+          "value": "Vercel Edge Network",
+          "note": "全球、自动"
+        },
+        {
+          "name": "CI/CD",
+          "value": "GitHub + Vercel CLI",
+          "note": "git push → 构建 → 别名"
+        },
+        {
+          "name": "分析",
+          "value": "无",
+          "note": "隐私优先 — 无追踪像素"
+        }
       ],
       "services": [
-        { "name": "邮件", "value": "EmailJS", "note": "联系表单 → 收件箱，无需后端" },
-        { "name": "二维码", "value": "api.qrserver.com", "note": "为 /card 实时生成二维码" },
-        { "name": "字体", "value": "Google Fonts", "note": "通过 next/font 加载 — 不被追踪" }
+        {
+          "name": "邮件",
+          "value": "EmailJS",
+          "note": "联系表单 → 收件箱，无需后端"
+        },
+        {
+          "name": "二维码",
+          "value": "api.qrserver.com",
+          "note": "为 /card 实时生成二维码"
+        },
+        {
+          "name": "字体",
+          "value": "Google Fonts",
+          "note": "通过 next/font 加载 — 不被追踪"
+        }
       ],
       "performance": [
-        { "name": "图片", "value": "next/image", "note": "懒加载、WebP 转换、响应式尺寸" },
-        { "name": "代码分割", "value": "动态导入", "note": "首屏以下的区块按需加载" },
-        { "name": "LCP 目标", "value": "4G 下 < 1.5s", "note": "首屏渲染无任何阻塞资源" },
-        { "name": "重点", "value": "无布局偏移", "note": "font display:swap + 明确的图片尺寸" }
+        {
+          "name": "图片",
+          "value": "next/image",
+          "note": "懒加载、WebP 转换、响应式尺寸"
+        },
+        {
+          "name": "代码分割",
+          "value": "动态导入",
+          "note": "首屏以下的区块按需加载"
+        },
+        {
+          "name": "LCP 目标",
+          "value": "4G 下 < 1.5s",
+          "note": "首屏渲染无任何阻塞资源"
+        },
+        {
+          "name": "重点",
+          "value": "无布局偏移",
+          "note": "font display:swap + 明确的图片尺寸"
+        }
       ],
       "easterEggs": [
-        { "name": "/resume/terminal", "value": "交互式命令行", "note": "输入命令，探索职业数据" },
-        { "name": "/fun/matrix", "value": "数据科学之雨", "note": "∑ ∇ λ σ 等等" },
-        { "name": "/fun/art", "value": "生成式螺旋", "note": "斐波那契叶序" },
-        { "name": "/fun/haiku", "value": "俳句集", "note": "5–7–5 数据科学荒诞主义" },
-        { "name": "/fun/coffee", "value": "你懂的", "note": "" },
-        { "name": "/fun/roast", "value": "诚实的反馈", "note": "数据科学吐槽" },
-        { "name": "/fun/spin", "value": "Rin 在做什么？", "note": "转动转盘" },
-        { "name": "/fun/secret", "value": "摩斯密码揭秘", "note": "" },
-        { "name": "/tools/card", "value": "可拖拽名片", "note": "试着甩一甩" },
-        { "name": "/ds", "value": "以数据科学呈现的 Rin", "note": "模型卡、SHAP、混淆矩阵" },
-        { "name": "/info/site-map", "value": "人类可读站点地图", "note": "每一页，而非 XML" },
-        { "name": "/info/changelog", "value": "更新了什么", "note": "" },
-        { "name": "↑↑↓↓←→←→BA", "value": "科乐美秘籍", "note": "在主页上试试" },
-        { "name": "DevTools", "value": "控制台彩蛋", "note": "打开浏览器控制台" },
-        { "name": "curl", "value": "终端视图", "note": "curl rin.contact" },
-        { "name": "/api/rin.json", "value": "个人资料 API", "note": "" },
-        { "name": "/api/fortune", "value": "随机箴言", "note": "" },
-        { "name": "/api/roast", "value": "诚实的反馈", "note": "" },
-        { "name": "/api/now", "value": "当前状态", "note": "" },
-        { "name": "/api/stack", "value": "本站技术栈", "note": "" }
+        {
+          "name": "/resume/terminal",
+          "value": "交互式命令行",
+          "note": "输入命令，探索职业数据"
+        },
+        {
+          "name": "/fun/matrix",
+          "value": "数据科学之雨",
+          "note": "∑ ∇ λ σ 等等"
+        },
+        {
+          "name": "/fun/art",
+          "value": "生成式螺旋",
+          "note": "斐波那契叶序"
+        },
+        {
+          "name": "/fun/haiku",
+          "value": "俳句集",
+          "note": "5–7–5 数据科学荒诞主义"
+        },
+        {
+          "name": "/fun/coffee",
+          "value": "你懂的",
+          "note": ""
+        },
+        {
+          "name": "/fun/roast",
+          "value": "诚实的反馈",
+          "note": "数据科学吐槽"
+        },
+        {
+          "name": "/fun/spin",
+          "value": "Rin 在做什么？",
+          "note": "转动转盘"
+        },
+        {
+          "name": "/fun/secret",
+          "value": "摩斯密码揭秘",
+          "note": ""
+        },
+        {
+          "name": "/tools/card",
+          "value": "可拖拽名片",
+          "note": "试着甩一甩"
+        },
+        {
+          "name": "/ds",
+          "value": "以数据科学呈现的 Rin",
+          "note": "模型卡、SHAP、混淆矩阵"
+        },
+        {
+          "name": "/info/site-map",
+          "value": "人类可读站点地图",
+          "note": "每一页，而非 XML"
+        },
+        {
+          "name": "/info/changelog",
+          "value": "更新了什么",
+          "note": ""
+        },
+        {
+          "name": "↑↑↓↓←→←→BA",
+          "value": "科乐美秘籍",
+          "note": "在主页上试试"
+        },
+        {
+          "name": "DevTools",
+          "value": "控制台彩蛋",
+          "note": "打开浏览器控制台"
+        },
+        {
+          "name": "curl",
+          "value": "终端视图",
+          "note": "curl rin.contact"
+        },
+        {
+          "name": "/api/rin.json",
+          "value": "个人资料 API",
+          "note": ""
+        },
+        {
+          "name": "/api/fortune",
+          "value": "随机箴言",
+          "note": ""
+        },
+        {
+          "name": "/api/roast",
+          "value": "诚实的反馈",
+          "note": ""
+        },
+        {
+          "name": "/api/now",
+          "value": "当前状态",
+          "note": ""
+        },
+        {
+          "name": "/api/stack",
+          "value": "本站技术栈",
+          "note": ""
+        }
       ],
       "philosophy": [
         {
@@ -534,15 +792,31 @@
           "value": "每个决定都是有意为之",
           "note": "如果它配不上自己的位置，就不会上线"
         },
-        { "name": "原则 2", "value": "留白也是设计的一部分", "note": "密度 ≠ 质量" },
-        { "name": "原则 3", "value": "始终移动优先", "note": "375px 是唯一的真理基准" },
-        { "name": "原则 4", "value": "无渐变，无投影", "note": "扁平单色 — Nothing 之道" },
+        {
+          "name": "原则 2",
+          "value": "留白也是设计的一部分",
+          "note": "密度 ≠ 质量"
+        },
+        {
+          "name": "原则 3",
+          "value": "始终移动优先",
+          "note": "375px 是唯一的真理基准"
+        },
+        {
+          "name": "原则 4",
+          "value": "无渐变，无投影",
+          "note": "扁平单色 — Nothing 之道"
+        },
         {
           "name": "原则 5",
           "value": "无障碍并非可选项",
           "note": "AA 对比度、焦点环、描述性替代文本"
         },
-        { "name": "原则 6", "value": "先上线，再改进", "note": "v{version}，仍在继续" }
+        {
+          "name": "原则 6",
+          "value": "先上线，再改进",
+          "note": "v{version}，仍在继续"
+        }
       ]
     }
   },
@@ -567,16 +841,34 @@
     },
     "lists": {
       "done": [
-        { "title": "带贪吃蛇游戏的自定义 404", "note": "等待时玩两把。排行榜会保存。" },
+        {
+          "title": "带贪吃蛇游戏的自定义 404",
+          "note": "等待时玩两把。排行榜会保存。"
+        },
         {
           "title": "命令行风格的交互式简历",
           "note": "输入命令探索职业数据，现位于 /resume/terminal。"
         },
-        { "title": "数据科学符号的矩阵雨", "note": "∑ ∇ λ σ — 你懂那感觉。" },
-        { "title": "复制邮箱 → 撒花特效", "note": "选中 huang@rin.contact，Ctrl+C，尽情享受。" },
-        { "title": "状态徽章里的阿德莱德实时天气", "note": "wttr.in。无需 API key。免费。" },
-        { "title": "30+ 个隐藏路由与彩蛋", "note": "到这地步我们已经数不清了。" },
-        { "title": "Nothing OS + Wisr 设计系统", "note": "硬朗。极简。单色。" },
+        {
+          "title": "数据科学符号的矩阵雨",
+          "note": "∑ ∇ λ σ — 你懂那感觉。"
+        },
+        {
+          "title": "复制邮箱 → 撒花特效",
+          "note": "选中 huang@rin.contact，Ctrl+C，尽情享受。"
+        },
+        {
+          "title": "状态徽章里的阿德莱德实时天气",
+          "note": "wttr.in。无需 API key。免费。"
+        },
+        {
+          "title": "30+ 个隐藏路由与彩蛋",
+          "note": "到这地步我们已经数不清了。"
+        },
+        {
+          "title": "Nothing OS + Wisr 设计系统",
+          "note": "硬朗。极简。单色。"
+        },
         {
           "title": "针对 6+ 个名字变体的 SEO",
           "note": "Sunchuangyu、黄孙创宇、HUANGSUNCHUANGYU 等。"
@@ -585,27 +877,72 @@
           "title": "博客 / 写作板块",
           "note": "已上线，含阅读时长与「下一篇」推荐。八篇且仍在增加。"
         },
-        { "title": "RSS 订阅", "note": "/blog/feed.xml — 用任意阅读器订阅。" },
-        { "title": "国际化 — 中文版", "note": "完整的简体中文站点。黄孙创宇有了自己的页面。" },
-        { "title": "PWA / 离线支持", "note": "Service worker、web manifest，可安装。" },
-        { "title": "深色模式", "note": "Nothing OS 天生深色；这个开关让它成为一种选择。" }
+        {
+          "title": "RSS 订阅",
+          "note": "/blog/feed.xml — 用任意阅读器订阅。"
+        },
+        {
+          "title": "国际化 — 中文版",
+          "note": "完整的简体中文站点。黄孙创宇有了自己的页面。"
+        },
+        {
+          "title": "PWA / 离线支持",
+          "note": "Service worker、web manifest，可安装。"
+        },
+        {
+          "title": "深色模式",
+          "note": "Nothing OS 天生深色；这个开关让它成为一种选择。"
+        }
       ],
       "wip": [
-        { "title": "更多彩蛋", "note": "这个清单永无止境。" },
-        { "title": "无障碍审计", "note": "WCAG 2.1 AA。持续改进。" },
-        { "title": "性能调优", "note": "LCP < 1.5s。动态导入。字体优化。" }
+        {
+          "title": "更多彩蛋",
+          "note": "这个清单永无止境。"
+        },
+        {
+          "title": "无障碍审计",
+          "note": "WCAG 2.1 AA。持续改进。"
+        },
+        {
+          "title": "性能调优",
+          "note": "LCP < 1.5s。动态导入。字体优化。"
+        }
       ],
       "planned": [
-        { "title": "更多项目案例研究", "note": "Signal 有了一个。其余的也值得同样的深度。" },
-        { "title": "邮件订阅自动化", "note": "订阅入口已有；发送管线是下一步。" },
-        { "title": "API 版本管理", "note": "v1 永存。等我们把一切搞坏时再上 v2。" }
+        {
+          "title": "更多项目案例研究",
+          "note": "Signal 有了一个。其余的也值得同样的深度。"
+        },
+        {
+          "title": "邮件订阅自动化",
+          "note": "订阅入口已有；发送管线是下一步。"
+        },
+        {
+          "title": "API 版本管理",
+          "note": "v1 永存。等我们把一切搞坏时再上 v2。"
+        }
       ],
       "backlog": [
-        { "title": "用星座替换天气", "note": "射手座：你的模型今天会过拟合。" },
-        { "title": "区块链集成", "note": "不。" },
-        { "title": "404 页面的 NFT", "note": "绝对不行。" },
-        { "title": "只会说「雇佣 Rin」的 AI 聊天机器人", "note": "很诱人。但太直白了。" },
-        { "title": "无限滚动", "note": "我们有分页。我们有子页面。够用了。" }
+        {
+          "title": "用星座替换天气",
+          "note": "射手座：你的模型今天会过拟合。"
+        },
+        {
+          "title": "区块链集成",
+          "note": "不。"
+        },
+        {
+          "title": "404 页面的 NFT",
+          "note": "绝对不行。"
+        },
+        {
+          "title": "只会说「雇佣 Rin」的 AI 聊天机器人",
+          "note": "很诱人。但太直白了。"
+        },
+        {
+          "title": "无限滚动",
+          "note": "我们有分页。我们有子页面。够用了。"
+        }
       ]
     }
   },
@@ -846,101 +1183,306 @@
     "heading": "我学过的，以及仍在学的。",
     "intro": "对我在墨尔本大学学习的数据科学 —— 以及我教过的主题 —— 的详尽、第一性原理式讲解。从零写下每一篇，是我保持基本功扎实的方式。先打基础，再进阶；一次构建一个主题。",
     "liveCounter": "{total} 个中 {live} 个已上线",
-    "statusLabels": { "live": "已上线", "soon": "下一个", "planned": "计划中" },
+    "statusLabels": {
+      "live": "已上线",
+      "soon": "下一个",
+      "planned": "计划中"
+    },
     "tiers": {
       "foundation": {
         "label": "基础",
         "blurb": "数学、统计、数据与系统的基础 —— 理学学士。",
         "topics": [
-          { "label": "线性代数", "note": "向量、矩阵、特征向量与 SVD" },
-          { "label": "概率论", "note": "随机变量、分布与贝叶斯法则" },
-          { "label": "统计学", "note": "估计、推断与假设检验" },
-          { "label": "微积分与最优化", "note": "梯度、梯度下降与反向传播" },
-          { "label": "线性统计模型", "note": "OLS、推断与诊断" },
-          { "label": "数据库系统", "note": "关系模型、SQL 与索引" },
-          { "label": "人工智能", "note": "搜索、逻辑与规划" },
-          { "label": "Web 信息技术", "note": "HTTP、HTML/CSS/JS、REST API 与请求周期" },
-          { "label": "运筹学", "note": "线性规划、可行域与单纯形法" },
-          { "label": "数据处理基础", "note": "数据管线、整洁数据、清洗、重塑与连接" },
-          { "label": "应用数据科学", "note": "项目生命周期、CRISP-DM、问题优先" },
-          { "label": "数据可视化与感知", "note": "编码准确性、前注意线索与诚实图表" },
-          { "label": "特征工程与数据准备", "note": "清洗、缩放、编码与避免数据泄露" },
-          { "label": "抽样与调查方法", "note": "抽样框、概率抽样、偏差与加权" },
-          { "label": "SQL 与数据查询", "note": "执行顺序、连接、窗口函数与 NULL" },
-          { "label": "模型评估与验证", "note": "交叉验证、ROC/AUC 与选对指标" }
+          {
+            "label": "线性代数",
+            "note": "向量、矩阵、特征向量与 SVD"
+          },
+          {
+            "label": "概率论",
+            "note": "随机变量、分布与贝叶斯法则"
+          },
+          {
+            "label": "统计学",
+            "note": "估计、推断与假设检验"
+          },
+          {
+            "label": "微积分与最优化",
+            "note": "梯度、梯度下降与反向传播"
+          },
+          {
+            "label": "线性统计模型",
+            "note": "OLS、推断与诊断"
+          },
+          {
+            "label": "数据库系统",
+            "note": "关系模型、SQL 与索引"
+          },
+          {
+            "label": "人工智能",
+            "note": "搜索、逻辑与规划"
+          },
+          {
+            "label": "Web 信息技术",
+            "note": "HTTP、HTML/CSS/JS、REST API 与请求周期"
+          },
+          {
+            "label": "运筹学",
+            "note": "线性规划、可行域与单纯形法"
+          },
+          {
+            "label": "数据处理基础",
+            "note": "数据管线、整洁数据、清洗、重塑与连接"
+          },
+          {
+            "label": "应用数据科学",
+            "note": "项目生命周期、CRISP-DM、问题优先"
+          },
+          {
+            "label": "数据可视化与感知",
+            "note": "编码准确性、前注意线索与诚实图表"
+          },
+          {
+            "label": "特征工程与数据准备",
+            "note": "清洗、缩放、编码与避免数据泄露"
+          },
+          {
+            "label": "抽样与调查方法",
+            "note": "抽样框、概率抽样、偏差与加权"
+          },
+          {
+            "label": "SQL 与数据查询",
+            "note": "执行顺序、连接、窗口函数与 NULL"
+          },
+          {
+            "label": "模型评估与验证",
+            "note": "交叉验证、ROC/AUC 与选对指标"
+          }
         ]
       },
       "advanced": {
         "label": "进阶",
         "blurb": "建立在基础之上 —— 数据科学硕士。",
         "topics": [
-          { "label": "自然语言处理", "note": "词元、TF-IDF、嵌入与 Transformer" },
-          { "label": "统计机器学习", "note": "偏差-方差、正则化与泛化" },
-          { "label": "贝叶斯统计", "note": "先验、后验与 MCMC" },
-          { "label": "主成分分析与降维", "note": "协方差、特征向量与解释方差" },
-          { "label": "聚类", "note": "k-均值、层次聚类与选择 k" },
-          { "label": "集群与云计算", "note": "MPI、Spark 与大规模 HPC" },
-          { "label": "统计建模", "note": "广义线性模型、逻辑与泊松回归、连接函数、AIC" },
-          { "label": "计算统计", "note": "蒙特卡洛、自助法、置换检验与 EM" },
-          { "label": "高级数据库系统", "note": "查询优化、MVCC、分布式与列式存储" },
-          { "label": "工作中的科学传播", "note": "为决策汇报：先给出建议" },
-          { "label": "时间序列分析", "note": "趋势、季节性、ARIMA 与诚实预测" },
-          { "label": "因果推断与 A/B 测试", "note": "反事实、随机对照试验、混杂与双重差分" },
+          {
+            "label": "自然语言处理",
+            "note": "词元、TF-IDF、嵌入与 Transformer"
+          },
+          {
+            "label": "统计机器学习",
+            "note": "偏差-方差、正则化与泛化"
+          },
+          {
+            "label": "贝叶斯统计",
+            "note": "先验、后验与 MCMC"
+          },
+          {
+            "label": "主成分分析与降维",
+            "note": "协方差、特征向量与解释方差"
+          },
+          {
+            "label": "聚类",
+            "note": "k-均值、层次聚类与选择 k"
+          },
+          {
+            "label": "集群与云计算",
+            "note": "MPI、Spark 与大规模 HPC"
+          },
+          {
+            "label": "统计建模",
+            "note": "广义线性模型、逻辑与泊松回归、连接函数、AIC"
+          },
+          {
+            "label": "计算统计",
+            "note": "蒙特卡洛、自助法、置换检验与 EM"
+          },
+          {
+            "label": "高级数据库系统",
+            "note": "查询优化、MVCC、分布式与列式存储"
+          },
+          {
+            "label": "工作中的科学传播",
+            "note": "为决策汇报：先给出建议"
+          },
+          {
+            "label": "时间序列分析",
+            "note": "趋势、季节性、ARIMA 与诚实预测"
+          },
+          {
+            "label": "因果推断与 A/B 测试",
+            "note": "反事实、随机对照试验、混杂与双重差分"
+          },
           {
             "label": "深度学习与神经网络",
             "note": "神经元、反向传播、梯度下降、CNN 到 Transformer"
           },
-          { "label": "强化学习", "note": "奖励、MDP、贝尔曼方程、Q 学习与奖励作弊" },
-          { "label": "集成方法与梯度提升", "note": "装袋、随机森林、提升与 XGBoost" },
-          { "label": "推荐系统", "note": "协同过滤、矩阵分解与冷启动" },
-          { "label": "生存分析", "note": "删失、Kaplan-Meier 与 Cox 风险比" },
-          { "label": "信息检索与搜索", "note": "倒排索引、BM25、稠密与混合检索" },
-          { "label": "大语言模型", "note": "下一词元预测、RLHF、幻觉与 RAG" },
-          { "label": "主题建模", "note": "LDA、无标签主题发现与主题数选择" },
-          { "label": "AI 智能体与工具调用", "note": "推理-行动循环、工具、规划与验证" },
-          { "label": "空间统计", "note": "空间自相关、Moran's I、热点与克里金" },
-          { "label": "保形预测与不确定性", "note": "为任意模型提供有覆盖保证的区间" },
-          { "label": "因果发现", "note": "学习 DAG、PC 与 GES、马尔可夫等价" },
-          { "label": "状态空间模型与卡尔曼滤波", "note": "隐状态、预测-更新与卡尔曼增益" },
-          { "label": "主动学习与半监督学习", "note": "少标签学习与不确定性采样" },
-          { "label": "极值理论", "note": "尾部风险、GEV/GPD、重现水平与 N 年一遇" },
-          { "label": "分层与混合效应模型", "note": "分组数据、部分汇集与收缩" },
-          { "label": "优化方法", "note": "凸与非凸、线性规划/单纯形、整数规划与元启发式" },
-          { "label": "高斯过程", "note": "函数上的分布、核函数与不确定性" },
-          { "label": "稳健统计", "note": "崩溃点、中位数/MAD、M 估计与 Huber" },
-          { "label": "分位数回归", "note": "条件分位数、弹球损失与整体分布" },
-          { "label": "图神经网络", "note": "消息传递、节点嵌入与 GCN/SAGE/GAT" },
-          { "label": "概率图模型", "note": "贝叶斯网络、因子分解与不确定性推断" }
+          {
+            "label": "强化学习",
+            "note": "奖励、MDP、贝尔曼方程、Q 学习与奖励作弊"
+          },
+          {
+            "label": "集成方法与梯度提升",
+            "note": "装袋、随机森林、提升与 XGBoost"
+          },
+          {
+            "label": "推荐系统",
+            "note": "协同过滤、矩阵分解与冷启动"
+          },
+          {
+            "label": "生存分析",
+            "note": "删失、Kaplan-Meier 与 Cox 风险比"
+          },
+          {
+            "label": "信息检索与搜索",
+            "note": "倒排索引、BM25、稠密与混合检索"
+          },
+          {
+            "label": "大语言模型",
+            "note": "下一词元预测、RLHF、幻觉与 RAG"
+          },
+          {
+            "label": "主题建模",
+            "note": "LDA、无标签主题发现与主题数选择"
+          },
+          {
+            "label": "AI 智能体与工具调用",
+            "note": "推理-行动循环、工具、规划与验证"
+          },
+          {
+            "label": "空间统计",
+            "note": "空间自相关、Moran's I、热点与克里金"
+          },
+          {
+            "label": "保形预测与不确定性",
+            "note": "为任意模型提供有覆盖保证的区间"
+          },
+          {
+            "label": "因果发现",
+            "note": "学习 DAG、PC 与 GES、马尔可夫等价"
+          },
+          {
+            "label": "状态空间模型与卡尔曼滤波",
+            "note": "隐状态、预测-更新与卡尔曼增益"
+          },
+          {
+            "label": "主动学习与半监督学习",
+            "note": "少标签学习与不确定性采样"
+          },
+          {
+            "label": "极值理论",
+            "note": "尾部风险、GEV/GPD、重现水平与 N 年一遇"
+          },
+          {
+            "label": "分层与混合效应模型",
+            "note": "分组数据、部分汇集与收缩"
+          },
+          {
+            "label": "优化方法",
+            "note": "凸与非凸、线性规划/单纯形、整数规划与元启发式"
+          },
+          {
+            "label": "高斯过程",
+            "note": "函数上的分布、核函数与不确定性"
+          },
+          {
+            "label": "稳健统计",
+            "note": "崩溃点、中位数/MAD、M 估计与 Huber"
+          },
+          {
+            "label": "分位数回归",
+            "note": "条件分位数、弹球损失与整体分布"
+          },
+          {
+            "label": "图神经网络",
+            "note": "消息传递、节点嵌入与 GCN/SAGE/GAT"
+          },
+          {
+            "label": "概率图模型",
+            "note": "贝叶斯网络、因子分解与不确定性推断"
+          }
         ]
       },
       "practice": {
         "label": "实践应用",
         "blurb": "我当下的工作——应用于政府数据分析。",
         "topics": [
-          { "label": "商业智能与仪表盘", "note": "Power BI、星型模型、一页一问" },
-          { "label": "地理空间分析与 GIS", "note": "空间连接、分级统计图、比率、MAUP" },
-          { "label": "情报分析与 OSINT", "note": "情报周期、ACH、信源评级、偏见" },
-          { "label": "数据治理、隐私与伦理", "note": "FAIR、隐私、访问控制、公平、血缘" },
-          { "label": "异常检测", "note": "离群点、孤立森林与告警疲劳权衡" },
-          { "label": "网络与图分析", "note": "中心性、桥接者、社群与关系分析" },
-          { "label": "可复现性与分析管线", "note": "版本控制、环境、RAP 与数据血缘" },
-          { "label": "MLOps 与模型监控", "note": "部署、漂移、再训练循环与偏斜" },
-          { "label": "可解释 AI 与可解释性", "note": "SHAP、LIME、玻璃箱模型与可辩护决策" },
-          { "label": "机器学习的公平性与偏见", "note": "代理变量、公平性指标与不可能定理" },
-          { "label": "差分隐私", "note": "重识别、epsilon、校准噪声与可用性" },
-          { "label": "知识图谱", "note": "三元组、本体、实体消解与 GraphRAG" },
-          { "label": "流式与实时分析", "note": "窗口、事件时间、水位线与 Kafka/Flink" },
-          { "label": "数据架构与现代数据栈", "note": "数仓/数据湖/湖仓、ELT、dbt 与奖牌架构" },
-          { "label": "统计过程控制", "note": "常见因与特殊因、控制图与 ±3σ" },
-          { "label": "联邦学习", "note": "不共享数据训练、FedAvg 与非独立同分布" }
+          {
+            "label": "商业智能与仪表盘",
+            "note": "Power BI、星型模型、一页一问"
+          },
+          {
+            "label": "地理空间分析与 GIS",
+            "note": "空间连接、分级统计图、比率、MAUP"
+          },
+          {
+            "label": "情报分析与 OSINT",
+            "note": "情报周期、ACH、信源评级、偏见"
+          },
+          {
+            "label": "数据治理、隐私与伦理",
+            "note": "FAIR、隐私、访问控制、公平、血缘"
+          },
+          {
+            "label": "异常检测",
+            "note": "离群点、孤立森林与告警疲劳权衡"
+          },
+          {
+            "label": "网络与图分析",
+            "note": "中心性、桥接者、社群与关系分析"
+          },
+          {
+            "label": "可复现性与分析管线",
+            "note": "版本控制、环境、RAP 与数据血缘"
+          },
+          {
+            "label": "MLOps 与模型监控",
+            "note": "部署、漂移、再训练循环与偏斜"
+          },
+          {
+            "label": "可解释 AI 与可解释性",
+            "note": "SHAP、LIME、玻璃箱模型与可辩护决策"
+          },
+          {
+            "label": "机器学习的公平性与偏见",
+            "note": "代理变量、公平性指标与不可能定理"
+          },
+          {
+            "label": "差分隐私",
+            "note": "重识别、epsilon、校准噪声与可用性"
+          },
+          {
+            "label": "知识图谱",
+            "note": "三元组、本体、实体消解与 GraphRAG"
+          },
+          {
+            "label": "流式与实时分析",
+            "note": "窗口、事件时间、水位线与 Kafka/Flink"
+          },
+          {
+            "label": "数据架构与现代数据栈",
+            "note": "数仓/数据湖/湖仓、ELT、dbt 与奖牌架构"
+          },
+          {
+            "label": "统计过程控制",
+            "note": "常见因与特殊因、控制图与 ±3σ"
+          },
+          {
+            "label": "联邦学习",
+            "note": "不共享数据训练、FedAvg 与非独立同分布"
+          }
         ]
       },
       "taught": {
         "label": "教学",
         "blurb": "我教过或指导过的主题 —— 从讲台另一侧写下。",
         "topics": [
-          { "label": "数据科学辅导主题", "note": "墨尔本大学朋辈辅导，2024" },
-          { "label": "教育科技与学习科学", "note": "认知负荷、间隔、提取练习与适当难度" }
+          {
+            "label": "数据科学辅导主题",
+            "note": "墨尔本大学朋辈辅导，2024"
+          },
+          {
+            "label": "教育科技与学习科学",
+            "note": "认知负荷、间隔、提取练习与适当难度"
+          }
         ]
       }
     }
@@ -966,7 +1508,8 @@
       "applied": "我在哪用到它",
       "intuition": "直觉",
       "pitfall": "常见陷阱"
-    }
+    },
+    "skillsThisSupports": "支持的技能"
   },
   "statusBadge": {
     "label": "当前状态",
@@ -1345,10 +1888,22 @@
     "liveDemo": "在线演示 ↗",
     "viewGithub": "在 GitHub 查看 ↗",
     "glance": [
-      { "k": "状态", "v": "在线 · v1.14" },
-      { "k": "测试", "v": "128 项通过" },
-      { "k": "辖区", "v": "SA + NYC" },
-      { "k": "开放数据集", "v": "~1,900" }
+      {
+        "k": "状态",
+        "v": "在线 · v1.14"
+      },
+      {
+        "k": "测试",
+        "v": "128 项通过"
+      },
+      {
+        "k": "辖区",
+        "v": "SA + NYC"
+      },
+      {
+        "k": "开放数据集",
+        "v": "~1,900"
+      }
     ],
     "furtherReading": "延伸阅读",
     "essayTitle": "把 AI 治理放在请求路径上，而非一份文档里",
@@ -1447,10 +2002,22 @@
     "privateNote": "这个应用和代码都不公开，因为里面存的是真实的顾客数据，所以真实的应用没有在线演示，也没有公开仓库。本页只讲系统怎么运作，不涉及谁在使用。",
     "sandboxLink": "试试用虚构会员搭的概念沙盒",
     "glance": [
-      { "k": "状态", "v": "已上线使用" },
-      { "k": "开始", "v": "2026 年 4 月 22 日" },
-      { "k": "平台", "v": "网页 · iOS/Android 测试版" },
-      { "k": "角色", "v": "独立开发" }
+      {
+        "k": "状态",
+        "v": "已上线使用"
+      },
+      {
+        "k": "开始",
+        "v": "2026 年 4 月 22 日"
+      },
+      {
+        "k": "平台",
+        "v": "网页 · iOS/Android 测试版"
+      },
+      {
+        "k": "角色",
+        "v": "独立开发"
+      }
     ],
     "footerNote": "为妈妈的工作室而做。应用和代码不公开。",
     "sections": {
@@ -1601,23 +2168,56 @@
       "secKnownBiases": "已知偏差",
       "secLimitations": "局限性",
       "details": [
-        { "label": "模型类型", "value": "GeneralistClassifier（人类）" },
-        { "label": "架构", "value": "数据科学硕士、理学学士、9 个角色、1 家创业公司" },
-        { "label": "训练日期", "value": "2018–至今（持续）" },
-        { "label": "框架", "value": "University of Melbourne、CSIRO、WEHI、SAPOL" }
+        {
+          "label": "模型类型",
+          "value": "GeneralistClassifier（人类）"
+        },
+        {
+          "label": "架构",
+          "value": "数据科学硕士、理学学士、9 个角色、1 家创业公司"
+        },
+        {
+          "label": "训练日期",
+          "value": "2018–至今（持续）"
+        },
+        {
+          "label": "框架",
+          "value": "University of Melbourne、CSIRO、WEHI、SAPOL"
+        }
       ],
       "performance": [
-        { "label": "项目", "value": "20" },
-        { "label": "认证", "value": "23" },
-        { "label": "正常运行时间", "value": "约 26 年（靠咖啡）" }
+        {
+          "label": "项目",
+          "value": "20"
+        },
+        {
+          "label": "认证",
+          "value": "23"
+        },
+        {
+          "label": "正常运行时间",
+          "value": "约 26 年（靠咖啡）"
+        }
       ],
       "biases": [
-        { "label": "过拟合于", "value": "Python、pandas、SQL" },
-        { "label": "欠拟合于", "value": "Rust（借用检查器仍占上风）" }
+        {
+          "label": "过拟合于",
+          "value": "Python、pandas、SQL"
+        },
+        {
+          "label": "欠拟合于",
+          "value": "Rust（借用检查器仍占上风）"
+        }
       ],
       "limitations": [
-        { "label": "之后性能下降", "value": "凌晨 2 点（午夜调试）" },
-        { "label": "推荐用途", "value": "政府、研究、创业、分析" }
+        {
+          "label": "之后性能下降",
+          "value": "凌晨 2 点（午夜调试）"
+        },
+        {
+          "label": "推荐用途",
+          "value": "政府、研究、创业、分析"
+        }
       ]
     },
     "featureImportance": {
@@ -1642,10 +2242,22 @@
       "thMatch": "匹配",
       "footer": "精确率：0.5 · 召回率：0.5 · F1：0.5 · 解读：所有人都很困惑",
       "rows": [
-        { "who": "招聘者以为", "reality": "分析电子表格" },
-        { "who": "妈妈以为", "reality": "修电脑" },
-        { "who": "朋友以为", "reality": "做图表" },
-        { "who": "Rin 实际做", "reality": "分析电子表格" }
+        {
+          "who": "招聘者以为",
+          "reality": "分析电子表格"
+        },
+        {
+          "who": "妈妈以为",
+          "reality": "修电脑"
+        },
+        {
+          "who": "朋友以为",
+          "reality": "做图表"
+        },
+        {
+          "who": "Rin 实际做",
+          "reality": "分析电子表格"
+        }
       ]
     },
     "ensemble": {
@@ -1725,8 +2337,14 @@
       "heading": "过拟合检测器",
       "subtitle": "扫描你的简历。报告流行词密度与泛化能力。",
       "rows": [
-        { "label": "每平方英寸的流行词", "value": "低 ✓" },
-        { "label": "检测到过拟合", "value": "否" },
+        {
+          "label": "每平方英寸的流行词",
+          "value": "低 ✓"
+        },
+        {
+          "label": "检测到过拟合",
+          "value": "否"
+        },
         {
           "label": "检测到欠拟合",
           "value": "也许——你把自己卖低了",
@@ -1767,11 +2385,26 @@
       "heading": "职业即数据流水线",
       "subtitle": "原始 → 清洗 → 转换 → 建模 → 部署。每个环节都是人生的一段。",
       "stages": [
-        { "stage": "原始", "desc": "高中，中国" },
-        { "stage": "清洗", "desc": "三一学院，墨尔本" },
-        { "stage": "转换", "desc": "墨尔本大学 理学士 + 数据科学硕士" },
-        { "stage": "建模", "desc": "CSIRO、WEHI、墨尔本大学" },
-        { "stage": "部署", "desc": "SAPOL、Mapiva、研究" }
+        {
+          "stage": "原始",
+          "desc": "高中，中国"
+        },
+        {
+          "stage": "清洗",
+          "desc": "三一学院，墨尔本"
+        },
+        {
+          "stage": "转换",
+          "desc": "墨尔本大学 理学士 + 数据科学硕士"
+        },
+        {
+          "stage": "建模",
+          "desc": "CSIRO、WEHI、墨尔本大学"
+        },
+        {
+          "stage": "部署",
+          "desc": "SAPOL、Mapiva、研究"
+        }
       ],
       "statusNote": "流水线状态：运行中。无计划停机。"
     },
@@ -1824,9 +2457,21 @@
       "payoffLabel": "偿还",
       "priorityLabel": "优先级",
       "debt": [
-        { "item": "Rust", "payoff": "2030", "priority": "低" },
-        { "item": "凌晨的生产环境调试", "payoff": "永不", "priority": "高" },
-        { "item": "未读的论文", "payoff": "待定", "priority": "中" }
+        {
+          "item": "Rust",
+          "payoff": "2030",
+          "priority": "低"
+        },
+        {
+          "item": "凌晨的生产环境调试",
+          "payoff": "永不",
+          "priority": "高"
+        },
+        {
+          "item": "未读的论文",
+          "payoff": "待定",
+          "priority": "中"
+        }
       ],
       "runNote": "# 运行 `rin --payoff-debt` 来解决。（未实现。）"
     },
@@ -2051,13 +2696,13 @@
     }
   },
   "skillsPage": {
-    "metaTitle": "这些年学过的东西 · Rin Huang · rin.contact",
+    "metaTitle": "技能与知识 · Rin Huang · rin.contact",
     "metaDescription": "Rin Huang（黄孙创宇）从 {from} 年到 {to} 年学过、用过的 {skills} 项技能，每一项都链接到对应的课程、作业、项目、工作、证书和笔记。",
     "ogTitle": "这些年学过的东西 · Rin Huang",
     "ogTitleShort": "这些年学过的东西",
     "ogSubtitle": "{from} 到 {to} 年的 {skills} 项技能，每一项都附出处",
     "sectionLabel": "◆ 技能",
-    "heading": "这些年学过的东西。",
+    "heading": "技能与知识",
     "description": "这一页收录了我从 {from} 年第一门 Python 课到现在工作中学过的每一项技能，每一项都链接到学它和用它的地方。",
     "back": "关于我",
     "present": "至今",
@@ -2214,6 +2859,11 @@
       "history": "这个网站的 {count} 个版本",
       "blog": "{count} 篇博客文章",
       "resume": "简历与 PDF"
+    },
+    "tabs": {
+      "label": "技能与知识选项卡",
+      "evidence": "证据",
+      "notes": "笔记"
     }
   }
 }

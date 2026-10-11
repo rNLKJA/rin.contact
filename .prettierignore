@@ -14,3 +14,6 @@ public/sw.js
 # Agent tooling (kept out of formatting)
 .claude/
 .agents/
+
+# Generated at build time by scripts/generate-topic-skills.mjs
+public/data/topic-skills.json
