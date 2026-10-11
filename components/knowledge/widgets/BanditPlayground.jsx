@@ -235,7 +235,7 @@ export default function BanditPlayground({ copy, locale = "en-AU" }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div data-widget className="space-y-6">
       {/* Controls */}
       <div className="grid gap-5 sm:grid-cols-2">
         <Slider
