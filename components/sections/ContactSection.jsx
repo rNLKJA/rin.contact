@@ -4,7 +4,6 @@ import { FaLinkedin } from "react-icons/fa";
 import {
   FiGithub,
   FiMail,
-  FiPhone,
   FiMapPin,
   FiX,
   FiCheckCircle,
@@ -360,16 +359,6 @@ export default function ContactSection() {
                   huang@rin.contact
                 </a>
                 <CopyEmailButton />
-              </div>
-              <div className="flex items-center gap-3">
-                <FiPhone size={16} className="text-[#7A7A7A]" aria-hidden="true" />
-                <a
-                  href="tel:+61450270703"
-                  itemProp="telephone"
-                  className="text-sm text-[#C0C0C0] hover:text-white transition-colors duration-200"
-                >
-                  +61 450 270 703
-                </a>
               </div>
               <div className="flex items-center gap-3">
                 <FiMapPin size={16} className="text-[#7A7A7A]" aria-hidden="true" />

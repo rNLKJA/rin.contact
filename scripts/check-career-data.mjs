@@ -51,6 +51,10 @@ const SKIP = new Set(["lib/career-check.js"]);
 const EMOJI = /\p{Extended_Pictographic}|\u{FE0F}/u;
 const EMOJI_ALLOWED = new Set(["↗", "↔", "©"]);
 
+// Privacy rule: no personal phone numbers on the site. Fails on any Australian
+// mobile number or tel: link, except public crisis and support lines.
+const PHONE = /(?:\+?61[\s-]?4|\b04)\d{2}[\s-]?\d{3}[\s-]?\d{3}\b|tel:(?!131114|1800|13\d{4}\b)/;
+
 function* walk(path) {
   const st = statSync(path);
   if (st.isDirectory()) {
@@ -126,6 +130,11 @@ for (const entry of SCAN) {
     lines.forEach((line, i) => {
       for (const b of BANNED) {
         if (line.includes(b)) problems.push(`${rel}:${i + 1} contains "${b}"`);
+      }
+      if (PHONE.test(line)) {
+        problems.push(
+          `${rel}:${i + 1} contains a phone number or tel: link; personal numbers stay off the site`
+        );
       }
       for (const ch of line) {
         if (EMOJI.test(ch) && !EMOJI_ALLOWED.has(ch)) {
