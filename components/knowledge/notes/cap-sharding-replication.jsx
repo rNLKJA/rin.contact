@@ -125,9 +125,6 @@ function EnBody() {
           <em>Designing Data-Intensive Applications</em> (2017), Chapter 9. Dynamo and Cassandra
           papers are canonical AP examples; Google Spanner is CP.
         </p>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
-          First drafted 2023, rewritten 2026.
-        </p>
       </KSection>
     </>
   );
@@ -247,8 +244,8 @@ const META = {
     course: "Cluster and Cloud Computing",
     courseCode: "COMP90024",
     level: "Master's",
-    learned: "2024",
-    applied: "Distributed key-value store",
+    learned: "2023 S1",
+    applied: "Social Sense",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
       { id: "idea", label: "The idea" },
@@ -262,11 +259,11 @@ const META = {
   "zh-Hans": {
     subtitle: "分布式系统",
     description: "分布式系统中的 CAP 定理、复制策略和分片",
-    course: "集群和云计算",
+    course: "集群与云计算",
     courseCode: "COMP90024",
     level: "硕士",
-    learned: "2024",
-    applied: "分布式键值存储",
+    learned: "2023 年第一学期",
+    applied: "Social Sense",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
       { id: "idea", label: "基本想法" },

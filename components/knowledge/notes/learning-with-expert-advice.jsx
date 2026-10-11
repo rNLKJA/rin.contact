@@ -142,7 +142,7 @@ function EnBody() {
           </li>
         </ul>
         <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
-          First noted in COMP90049 (2023), expanded in 2026.
+          First noted in (2023), expanded in 2026.
         </p>
       </KSection>
     </>
@@ -253,7 +253,7 @@ function ZhBody() {
           </li>
         </ul>
         <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
-          首次在 COMP90049（2023）中记录，2026 年扩展。
+          首次在 （2023）中记录，2026 年扩展。
         </p>
       </KSection>
     </>
@@ -262,14 +262,14 @@ function ZhBody() {
 
 const META = {
   "en-AU": {
-    subtitle: "Subtitle in English.",
-    description: "Description in English.",
-    course: "Course Name",
-    courseCode: "COMP90000",
+    subtitle: "Multi-expert Algorithms",
+    description: "Multiplicative weight updates for tracking the best expert",
+    course: "Statistical Machine Learning",
+    courseCode: "COMP90051",
     level: "Master's",
     learned: "2023 S1",
-    applied: "Project Name",
-    parent: { href: "/knowledge/topic-slug", label: "Topic Name" },
+    applied: "Project 2",
+    parent: { href: "/knowledge/reinforcement-learning", label: "Reinforcement Learning" },
     sections: [
       { id: "idea", label: "The idea" },
       { id: "maths", label: "The maths" },
@@ -280,14 +280,14 @@ const META = {
     ],
   },
   "zh-Hans": {
-    subtitle: "中文副标题。",
-    description: "中文描述。",
-    course: "课程名称",
-    courseCode: "COMP90000",
+    subtitle: "多专家算法",
+    description: "用乘法权重更新追踪最佳专家",
+    course: "统计机器学习",
+    courseCode: "COMP90051",
     level: "硕士",
     learned: "2023 年第一学期",
-    applied: "项目名称",
-    parent: { href: "/knowledge/topic-slug", label: "主题名称" },
+    applied: "项目 2",
+    parent: { href: "/knowledge/reinforcement-learning", label: "强化学习" },
     sections: [
       { id: "idea", label: "基本想法" },
       { id: "maths", label: "数学" },

@@ -123,13 +123,10 @@ function EnBody() {
 
       <KSection id="sources" eyebrow="06" title="Sources">
         <p>
-          Covered in COMP90054 Automated Planning. Based on Nisan, Roughgarden, Tardos & Vazirani,{" "}
+          Covered in COMP30024 Automated Planning. Based on Nisan, Roughgarden, Tardos & Vazirani,{" "}
           <em>Algorithmic Game Theory</em> (2007), and Shoham & Leyton-Brown,{" "}
           <em>Multiagent Systems</em> (2009). Vickrey's original paper is "Counterspeculation,
           Auctions, and Competitive Sealed Tenders" (1961).
-        </p>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
-          First drafted 2023, rewritten 2026.
         </p>
       </KSection>
     </>
@@ -218,7 +215,7 @@ function ZhBody() {
 
       <KSection id="sources" eyebrow="06" title="参考资料">
         <p>
-          COMP90054 自动规划中涵盖。基于 Nisan, Roughgarden, Tardos &
+          COMP30024 自动规划中涵盖。基于 Nisan, Roughgarden, Tardos &
           Vazirani，《算法博弈论》（2007），和 Shoham &
           Leyton-Brown，《多智能体系统》（2009）。Vickrey
           的原始论文是"反投机、拍卖和竞争性密封投标"（1961）。
@@ -235,11 +232,11 @@ const META = {
   "en-AU": {
     subtitle: "Mechanism Design",
     description: "Auction mechanisms and incentive compatibility in game theory",
-    course: "Automated Planning",
-    courseCode: "COMP90054",
-    level: "Master's",
-    learned: "2024",
-    applied: "Multi-agent systems",
+    course: "Artificial Intelligence",
+    courseCode: "COMP30024",
+    level: "Undergraduate",
+    learned: "2022 S1",
+    applied: "Studied",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
       { id: "idea", label: "The idea" },
@@ -253,11 +250,11 @@ const META = {
   "zh-Hans": {
     subtitle: "机制设计",
     description: "博弈论中的拍卖机制和激励相容",
-    course: "自动规划",
-    courseCode: "COMP90054",
-    level: "硕士",
-    learned: "2024",
-    applied: "多智能体系统",
+    course: "人工智能",
+    courseCode: "COMP30024",
+    level: "本科",
+    learned: "2022 年第一学期",
+    applied: "学习但未使用",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
       { id: "idea", label: "基本想法" },

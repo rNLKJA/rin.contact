@@ -118,12 +118,9 @@ function EnBody() {
 
       <KSection id="sources" eyebrow="06" title="Sources">
         <p>
-          Covered in COMP90054 Automated Planning. Based on Russell & Norvig,{" "}
+          Covered in COMP30024 Automated Planning. Based on Russell & Norvig,{" "}
           <em>Artificial Intelligence: A Modern Approach</em> (2020), Chapter 5. The algorithm was
           first published by McCarthy in 1956 and refined by multiple researchers through the 1970s.
-        </p>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
-          First drafted 2023, rewritten 2026.
         </p>
       </KSection>
     </>
@@ -212,7 +209,7 @@ function ZhBody() {
 
       <KSection id="sources" eyebrow="06" title="参考资料">
         <p>
-          COMP90054自动规划课程中涵盖。基于Russell &
+          COMP30024自动规划课程中涵盖。基于Russell &
           Norvig，《人工智能：现代方法》（2020），第5章。该算法由McCarthy在1956年首次发表，并在20世纪70年代由多位研究人员改进。
         </p>
         <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
@@ -227,11 +224,11 @@ const META = {
   "en-AU": {
     subtitle: "Game Tree Search",
     description: "Alpha-beta pruning for adversarial search in two-player games",
-    course: "Automated Planning",
-    courseCode: "COMP90054",
-    level: "Master's",
-    learned: "2024",
-    applied: "Pacman AI competition",
+    course: "Artificial Intelligence",
+    courseCode: "COMP30024",
+    level: "Undergraduate",
+    learned: "2022 S1",
+    applied: "Cachex Arena",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
       { id: "idea", label: "The idea" },
@@ -245,11 +242,11 @@ const META = {
   "zh-Hans": {
     subtitle: "博弈树搜索",
     description: "双人博弈中的对抗搜索的Alpha-beta剪枝",
-    course: "自动规划",
-    courseCode: "COMP90054",
-    level: "硕士",
-    learned: "2024",
-    applied: "Pacman AI竞赛",
+    course: "人工智能",
+    courseCode: "COMP30024",
+    level: "本科",
+    learned: "2022 年第一学期",
+    applied: "Cachex 竞技场",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
       { id: "idea", label: "基本想法" },

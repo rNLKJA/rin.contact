@@ -83,7 +83,10 @@ function EnBody() {
           Amdahl hits a limit; Gustafson keeps growing. The choice between them is about what
           question you are asking.
         </p>
-        <Figure caption="Simulation with synthetic data, seeded so a run repeats. Sliders for cores and serial fraction.">
+        <Figure
+          caption="
+Sliders for cores and serial fraction."
+        >
           <AmdahlGustafson copy={WIDGET_COPY.en} locale="en-AU" />
         </Figure>
         <ul>
@@ -320,11 +323,11 @@ const META = {
       "Two laws explain parallel speedup differently. Amdahl assumes fixed problem size and hits a limit; Gustafson assumes growing problem size and scales linearly. This note explains when each applies.",
     description:
       "A concept note on Amdahl's and Gustafson's laws for parallel computing. Covers speedup limits, serial fractions, and when each law applies. Interactive simulator shows both curves. Part of Rin Huang's Cluster and Cloud Computing topic.",
-    course: "Distributed Systems",
+    course: "Cluster and Cloud Computing",
     courseCode: "COMP90024",
     level: "Master's",
     learned: "2023 S1",
-    applied: "Cluster algorithms on Spartan",
+    applied: "Spartan Tweet Cruncher",
     parent: { href: "/knowledge/cluster-cloud-computing", label: "Cluster and Cloud Computing" },
     sections: [
       { id: "idea", label: "The idea" },
@@ -340,11 +343,11 @@ const META = {
       "两个定律以不同方式解释并行加速。Amdahl 假设问题大小固定并达到极限；Gustafson 假设问题大小增长并线性扩展。这篇笔记解释什么时候应用每一个。",
     description:
       "关于并行计算中 Amdahl 和 Gustafson 定律的概念笔记。涵盖加速比极限、串行比例和每个定律何时适用。交互式模拟器显示两条曲线。属于 Rin Huang 的集群与云计算主题。",
-    course: "分布式系统",
+    course: "集群与云计算",
     courseCode: "COMP90024",
     level: "硕士",
     learned: "2023 年第一学期",
-    applied: "Spartan 上的集群算法",
+    applied: "Spartan 推文处理器",
     parent: { href: "/knowledge/cluster-cloud-computing", label: "集群与云计算" },
     sections: [
       { id: "idea", label: "基本想法" },

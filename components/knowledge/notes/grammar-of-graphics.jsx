@@ -8,20 +8,23 @@ function EnBody() {
   return (
     <>
       <p>
-        This concept is central to data visualization and builds on foundational principles learned
-        in MAST90083. Understanding this topic requires grasping both the theoretical framework and
-        its practical applications. The interactive widget below demonstrates the key mechanisms and
-        allows you to explore different parameter settings to see how they affect the outcomes in
-        real-time.
+        A chart is not a named template (bar, scatter, line). It is a composition of layers: data
+        mapped to aesthetics (x, y, colour), rendered as geoms (points, bars), with scales and
+        coordinates. ggplot2 implements this grammar, letting you build any chart from a few rules.
       </p>
 
       <KSection id="idea" eyebrow="01" title="The idea">
         <p>
-          The core concept revolves around data visualization principles that are widely used in
-          modern data science and machine learning applications. This approach provides a systematic
-          way to handle complex problems by breaking them down into manageable components. Each
-          component contributes to the overall solution, and understanding how these pieces fit
-          together is essential for mastering the technique.
+          The grammar has seven layers: data (the dataframe), aesthetics (x, y, colour, size), geoms
+          (visual marks: points, bars, lines), stats (transformations: bin, smooth), scales (map
+          data to visual properties), coordinates (Cartesian, polar), and facets (small multiples).
+          Each is independent; changing one does not break others.
+        </p>
+        <p>
+          A scatter plot is data + aes(x, y) + geom_point(). A histogram is data + aes(x) +
+          geom_histogram(), which bins x (a stat) and renders bars (a geom). Colour, facets, and
+          scales are added orthogonally. This composability replaces 40+ named chart types with a
+          syntax that describes what you see.
         </p>
       </KSection>
 
@@ -48,7 +51,7 @@ function EnBody() {
             <li>
               Applying the technique without checking whether its assumptions hold for your specific
               data. Every method has preconditions, and violating them can lead to incorrect or
-              misleading results. Always verify assumptions before trusting the output.
+              misleading results.
             </li>
             <li>
               Misinterpreting the results or reading too much into specific numerical values without
@@ -59,22 +62,18 @@ function EnBody() {
             <li>
               Overlooking computational or practical limitations that make the theoretical solution
               infeasible. Just because something works on paper doesn't mean it scales to large
-              datasets or runs in acceptable time. Always consider implementation constraints.
+              datasets or runs in acceptable time.
             </li>
             <li>
-              Failing to validate the approach on held-out data before deploying it. Training
-              performance can be misleading if the model overfits. Cross-validation and proper
-              train-test splits are essential for honest assessment of predictive performance.
+              Training performance can be misleading if the model overfits. Cross-validation and
+              proper train-test splits are essential for honest assessment of predictive
+              performance.
             </li>
           </ul>
         </Callout>
       </KSection>
 
-      <KSection id="sources" eyebrow="06" title="Sources">
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
-          First drafted 2023, rewritten 2026.
-        </p>
-      </KSection>
+      <KSection id="sources" eyebrow="06" title="Sources"></KSection>
     </>
   );
 }
@@ -82,15 +81,15 @@ function EnBody() {
 function ZhBody() {
   return (
     <>
-      <p>
-        这个概念是Data
-        Visualization的核心，建立在MAST90083课程中学到的基础原则之上。理解这个主题需要掌握理论框架及其实际应用。下面的交互式工具演示了关键机制，并允许您探索不同的参数设置，以实时查看它们如何影响结果。这种动手实践的方法有助于加深理解并建立直觉。
-      </p>
-
       <KSection id="idea" eyebrow="01" title="基本想法">
         <p>
-          核心概念围绕data
-          visualization原则展开，这些原则在现代数据科学和机器学习应用中广泛使用。这种方法提供了一种系统的方式来处理复杂问题，将它们分解为可管理的组件。每个组件都对整体解决方案做出贡献，理解这些部分如何组合在一起对于掌握该技术至关重要。这不仅仅是记住步骤，而是理解背后的原理。
+          语法有七个图层：数据（数据框）、美学（x、y、颜色、大小）、几何对象（视觉标记：点、条、线）、统计（变换：分组、平滑）、比例尺（将数据映射到视觉属性）、坐标（笛卡尔、极坐标）和分面（小倍数）。每个都是独立的；更改一个不会破坏其他。
+        </p>
+        <p>
+          散点图是 data + aes(x, y) + geom_point()。直方图是 data + aes(x) +
+          geom_histogram()，它分组
+          x（统计）并呈现条（几何对象）。颜色、分面和比例尺是正交添加的。这种可组合性用描述您所见的语法替换了
+          40 多种命名图表类型。
         </p>
       </KSection>
 
@@ -112,16 +111,14 @@ function ZhBody() {
         <Callout type="pitfall" label="陷阱">
           <ul className="list-disc pl-5 space-y-2.5">
             <li>
-              在不检查其假设是否适用于您的特定数据的情况下应用该技术。每种方法都有前提条件，违反它们可能导致不正确或误导性的结果。在信任输出之前，始终验证假设。假设检验是关键的第一步。
+              每种方法都有前提条件，违反它们可能导致不正确或误导性的结果。在信任输出之前，始终验证假设。
+            </li>
+            <li>误解结果或在不考虑不确定性的情况下过度解读特定数值。</li>
+            <li>
+              忽视使理论解决方案不可行的计算或实际限制。仅仅因为某事在纸上有效并不意味着它可以扩展到大型数据集或在可接受的时间内运行。始终考虑实现约束。
             </li>
             <li>
-              误解结果或在不考虑不确定性的情况下过度解读特定数值。统计和机器学习输出应该始终在上下文中解释，在适用的情况下使用适当的置信区间或误差条。点估计从来不是完整的故事。
-            </li>
-            <li>
-              忽视使理论解决方案不可行的计算或实际限制。仅仅因为某事在纸上有效并不意味着它可以扩展到大型数据集或在可接受的时间内运行。始终考虑实现约束。可扩展性通常是实际应用中的主要问题。
-            </li>
-            <li>
-              在部署之前未能在保留数据上验证该方法。如果模型过拟合，训练性能可能会产生误导。交叉验证和适当的训练测试分割对于诚实评估预测性能至关重要。验证是确保泛化的关键。
+              在部署之前未能在保留数据上验证该方法。如果模型过拟合，训练性能可能会产生误导。交叉验证和适当的训练测试分割对于诚实评估预测性能至关重要。
             </li>
           </ul>
         </Callout>
@@ -140,11 +137,10 @@ const META = {
   "en-AU": {
     subtitle: "Data Visualization",
     description: "Data Visualization note",
-    course: "Data Visualization",
-    courseCode: "MAST90083",
+    course: "Self-study",
     level: "Master's",
     learned: "2024",
-    applied: "Projects",
+    applied: "Every project",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
       { id: "idea", label: "The idea" },
@@ -158,11 +154,10 @@ const META = {
   "zh-Hans": {
     subtitle: "Data Visualization",
     description: "Data Visualization笔记",
-    course: "Data Visualization",
-    courseCode: "MAST90083",
+    course: "自学",
     level: "硕士",
     learned: "2024",
-    applied: "项目",
+    applied: "每个项目",
     parent: { href: "/knowledge/ml", label: "ML" },
     sections: [
       { id: "idea", label: "基本想法" },

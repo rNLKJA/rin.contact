@@ -120,7 +120,10 @@ function EnBody() {
           one for negatives. The slider sets your threshold. As you move it, watch how the confusion
           matrix, metrics and ROC curve change.
         </p>
-        <Figure caption="Simulation with synthetic data, seeded so a run repeats. The vertical line shows your chosen threshold on the score distributions.">
+        <Figure
+          caption="
+The vertical line shows your chosen threshold on the score distributions."
+        >
           <ThresholdSlider copy={WIDGET_COPY.en} locale="en-AU" />
         </Figure>
         <ul>
@@ -378,11 +381,11 @@ const META = {
       "Classifiers produce scores, and you choose a threshold. This note shows why that choice matters, what it controls and how to measure the trade-off.",
     description:
       "A concept note on classification thresholds, confusion matrices, and ROC curves. Covers TPR, FPR, precision, recall and F₁ with an interactive threshold slider. Part of Rin Huang's Model Evaluation topic.",
-    course: "Machine Learning",
+    course: "Statistical Machine Learning",
     courseCode: "COMP90051",
     level: "Master's",
     learned: "2023 S1",
-    applied: "Classification projects",
+    applied: "Human or Machine?",
     parent: { href: "/knowledge/model-evaluation", label: "Model Evaluation" },
     sections: [
       { id: "idea", label: "The idea" },
@@ -398,11 +401,11 @@ const META = {
       "分类器输出分数，你选一个阈值。这篇笔记讲这个选择为什么重要，它控制什么，怎样衡量权衡。",
     description:
       "关于分类阈值、混淆矩阵和 ROC 曲线的概念笔记，涵盖真正率、假正率、精度、召回率和 F₁，并附带交互式阈值滑块。属于 Rin Huang 的模型评估主题。",
-    course: "机器学习",
+    course: "统计机器学习",
     courseCode: "COMP90051",
     level: "硕士",
     learned: "2023 年第一学期",
-    applied: "分类项目",
+    applied: "人类还是机器？",
     parent: { href: "/knowledge/model-evaluation", label: "模型评估" },
     sections: [
       { id: "idea", label: "基本想法" },

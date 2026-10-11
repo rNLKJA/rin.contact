@@ -295,14 +295,14 @@ function ZhBody() {
 
 const META = {
   "en-AU": {
-    subtitle: "Subtitle in English.",
-    description: "Description in English.",
-    course: "Course Name",
-    courseCode: "COMP90000",
+    subtitle: "Optimisation Algorithms",
+    description: "Comparing SGD, momentum, and Adam for neural network training",
+    course: "Statistical Machine Learning",
+    courseCode: "COMP90051",
     level: "Master's",
     learned: "2023 S1",
-    applied: "Project Name",
-    parent: { href: "/knowledge/topic-slug", label: "Topic Name" },
+    applied: "Human or Machine?",
+    parent: { href: "/knowledge/calculus-optimisation", label: "Calculus & Optimisation" },
     sections: [
       { id: "idea", label: "The idea" },
       { id: "maths", label: "The maths" },
@@ -313,14 +313,14 @@ const META = {
     ],
   },
   "zh-Hans": {
-    subtitle: "中文副标题。",
-    description: "中文描述。",
-    course: "课程名称",
-    courseCode: "COMP90000",
+    subtitle: "优化算法",
+    description: "比较 SGD、动量和 Adam 用于神经网络训练",
+    course: "统计机器学习",
+    courseCode: "COMP90051",
     level: "硕士",
     learned: "2023 年第一学期",
-    applied: "项目名称",
-    parent: { href: "/knowledge/topic-slug", label: "主题名称" },
+    applied: "人类还是机器？",
+    parent: { href: "/knowledge/calculus-optimisation", label: "微积分与优化" },
     sections: [
       { id: "idea", label: "基本想法" },
       { id: "maths", label: "数学" },
