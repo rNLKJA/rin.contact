@@ -104,7 +104,9 @@ function ZhBody() {
 
       <KSection id="used" eyebrow="04" title="我在哪用到它">
         <Callout type="applied" label="学习过，未在项目中使用">
-          <p>我学习过实验设计原则，但尚未在研究项目中使用。</p>
+          <p>
+            我学习过实验设计原则，但尚未在研究项目中使用。理解这些设计对于解读医学研究和公共卫生研究至关重要，它们决定了可以得出什么结论。
+          </p>
         </Callout>
       </KSection>
 
