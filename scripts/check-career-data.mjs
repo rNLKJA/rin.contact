@@ -148,6 +148,22 @@ for (const entry of SCAN) {
   }
 }
 
+// Hard-coded project totals must match the real project list.
+{
+  const { PROJECTS } = await import("../lib/projects-data.js");
+  const n = PROJECTS.length;
+  const term = readFileSync(join(root, "components/MiniTerminal.jsx"), "utf8").match(
+    /const PROJECT_COUNT = (\d+);/
+  );
+  if (!term || Number(term[1]) !== n)
+    problems.push(
+      `components/MiniTerminal.jsx PROJECT_COUNT is ${term?.[1]} but PROJECTS has ${n}`
+    );
+  const rj = JSON.parse(readFileSync(join(root, "public/rin.json"), "utf8"));
+  const rjn = rj.projects ?? rj.stats?.projects;
+  if (rjn !== n) problems.push(`public/rin.json reports ${rjn} projects but PROJECTS has ${n}`);
+}
+
 if (problems.length) {
   console.error(`Career content check failed (${problems.length}):\n- ${problems.join("\n- ")}`);
   process.exit(1);
