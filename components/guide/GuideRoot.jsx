@@ -33,23 +33,6 @@ const QuestLog = dynamic(() => import("./QuestLog"), { ssr: false });
 
 // The boot overlay runs for about 2 seconds on a first visit; wait it out.
 const REVEAL_MS = 2300;
-// The homepage shows a one-off "move your cursor" hint in the same corner on
-// desktop. Hold the launcher back until it has gone (or 9 seconds pass).
-const HINT_KEY = "rin_hero_hint_seen";
-const HINT_WAIT_MS = 9000;
-
-function heroHintPending() {
-  try {
-    const path = window.location.pathname.replace(/^\/zh-Hans(?=\/|$)/, "") || "/";
-    return (
-      normalisePath(path) === "/" &&
-      window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
-      !sessionStorage.getItem(HINT_KEY)
-    );
-  } catch {
-    return false;
-  }
-}
 
 function focusMain() {
   const main = document.getElementById("main-content");
@@ -72,17 +55,7 @@ export default function GuideRoot() {
   const blocked = GUIDE_HIDDEN_ON.test(path);
 
   useEffect(() => {
-    let waited = 0;
-    let timer;
-    const check = () => {
-      if (heroHintPending() && waited < HINT_WAIT_MS) {
-        waited += 500;
-        timer = setTimeout(check, 500);
-      } else {
-        setReady(true);
-      }
-    };
-    timer = setTimeout(check, REVEAL_MS);
+    const timer = setTimeout(() => setReady(true), REVEAL_MS);
     return () => clearTimeout(timer);
   }, []);
 
