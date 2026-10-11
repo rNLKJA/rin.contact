@@ -82,11 +82,11 @@ function EnBody() {
       </KSection>
 
       <KSection id="used" eyebrow="04" title="Where I used it">
-        <Callout type="applied" label="Web & Mobile Development">
+        <Callout type="applied" label="REST APIs in coursework">
           <p>
-            In several projects, I chose between REST and GraphQL based on client constraints. For
-            web dashboards, REST was simpler. For mobile apps with unreliable connections, GraphQL
-            reduced bandwidth by 40-60% on typical queries.
+            I used REST APIs in INFO30005 Snacks in a Van (Express, 2021) and COMP30022 Personal CRM
+            (Express, about 35 REST endpoints, 2021). I have not used GraphQL in a production
+            project.
           </p>
         </Callout>
         <p>
@@ -178,11 +178,6 @@ function ZhBody() {
           需要查询解析和验证，缓存更复杂。对于带宽有限的移动客户端，GraphQL
           通常更好。对于简单的、服务器驱动的 API，REST 通常更简单。
         </p>
-        <p>
-          这个方法在实际应用中具有广泛的适用性。无论是在学术研究还是工业实践中，理解这些核心概念都至关重要。通过深入掌握基础理论，我们能够更好地应对各种复杂场景，做出更明智的技术决策。实践表明，扎实的理论基础是解决实际问题的关键。在学习过程中，将抽象概念与具体案例相结合能够加深理解。每个概念背后都有其产生的历史背景和实际需求。REST
-          的简洁性使其成为许多项目的首选，而 GraphQL
-          的灵活性在复杂数据需求场景中展现出独特优势。在架构选择时，需要权衡团队熟悉度、工具生态系统成熟度以及长期维护成本。
-        </p>
       </KSection>
 
       <KSection id="maths" eyebrow="02" title="数学">
@@ -202,9 +197,6 @@ function ZhBody() {
           当 <code>n</code> 很大且每个资源有许多未使用字段时，延迟节省最大。如果 <code>n=1</code>{" "}
           且需要所有字段，REST 和 GraphQL 等效。
         </p>
-        <p>
-          数学推导虽然一开始可能显得复杂，但它为我们提供了精确的分析工具。通过数学语言，我们能够准确地描述系统行为，预测性能特征，并验证设计决策。掌握这些数学工具不仅能帮助理解现有方法，还能为开发新技术打下基础。在实际应用中，数学模型帮助我们量化性能指标，比较不同方案，并在设计阶段就能预见潜在问题。网络往返延迟通常是性能瓶颈的主要来源，因此减少请求次数往往比优化单个请求的大小更重要。在高延迟网络环境（如移动网络）中，这一点尤为明显。
-        </p>
       </KSection>
 
       <KSection id="try" eyebrow="03" title="动手试">
@@ -223,31 +215,16 @@ function ZhBody() {
           <li>检查更多字段使 REST 中过度获取更明显。</li>
           <li>缓存头工作方式不同：REST 是基于头；GraphQL 需要应用级缓存。</li>
         </ul>
-        <p>
-          通过交互式工具进行实验是加深理解的最有效方法之一。亲手调整参数、观察结果变化，能够建立起直观的感受。这种实践经验往往比单纯阅读理论更容易记忆和应用。建议花时间尝试不同的配置组合，观察边界情况的行为。在实验过程中，不要害怕失败。错误的配置往往能教会我们更多东西。通过系统地测试不同场景，我们能够建立起对方法行为的全面认识。记录观察到的现象，思考背后的原因，这些都是宝贵的学习过程。
-        </p>
       </KSection>
 
       <KSection id="used" eyebrow="04" title="我在哪用到它">
-        <Callout type="applied" label="Web & 移动开发">
+        <Callout type="applied" label="课程作业中的REST API">
           <p>
-            在几个项目中，我根据客户端约束在 REST 和 GraphQL 之间选择。对于 Web 仪表板，REST
-            更简单。对于连接不可靠的移动应用，GraphQL 在典型查询中减少了 40-60%
-            的带宽。在电商平台的移动端重构项目中，我们将原本需要 15-20 个 REST
-            请求的商品详情页改为单个 GraphQL 查询，首屏加载时间从 3.2 秒降至 1.1
-            秒。然而，这种改进并非没有代价。后端团队需要投入额外精力学习 GraphQL
-            的最佳实践，特别是如何正确实现 DataLoader 以避免 N+1 查询问题。
+            我在INFO30005 Snacks in a
+            Van（Express，2021年）和COMP30022个人CRM（Express，约35个REST端点，2021年）中使用了REST
+            API。我还没有在生产项目中使用过GraphQL。
           </p>
         </Callout>
-        <p>
-          在实际项目中应用这一技术时，需要考虑多方面的因素。理论上的最优解在实际环境中可能需要权衡。系统的其他组件、团队的技术栈、维护成本等都会影响最终决策。从小规模实验开始，逐步验证方法的有效性，是稳妥的做法。在生产环境中全面部署前，通过原型验证核心假设能够降低风险。
-        </p>
-        <p>
-          一个值得注意的案例是移动应用的优化。最初使用 REST 时，每个屏幕需要多个 HTTP
-          请求来获取完整数据。切换到 GraphQL
-          后，通过单个查询就能获取所有必要数据，页面加载时间显著改善。这个转换虽然带来了后端复杂性的提升，但对用户体验的改进是显著的。团队需要学习
-          GraphQL 的查询优化技术，包括使用 DataLoader 来批处理数据库查询，避免 N+1 问题。
-        </p>
       </KSection>
 
       <KSection id="pitfalls" eyebrow="05" title="容易出错的地方">
@@ -268,10 +245,6 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p>
-          在实际应用中，避免这些陷阱需要经验的积累和持续的学习。最好的方法是从小规模实验开始，逐步验证每个设计决策。通过监控系统行为、分析性能指标，我们能够及早发现问题并调整策略。与团队成员分享这些经验教训也很重要。记录决策过程、遇到的问题及解决方案，不仅有助于知识传承，也为后续类似项目提供参考。团队需要建立代码审查机制，在设计阶段讨论潜在风险，能够避免许多低级错误。同时，建立最佳实践文档，记录项目中遇到的具体问题和解决方案，为后续开发提供参考。这种知识积累是团队成长的关键。在选择
-          REST 或 GraphQL 时，不仅要考虑技术特性，还要评估团队的学习曲线和长期维护成本。
-        </p>
       </KSection>
 
       <KSection id="sources" eyebrow="06" title="参考资料">

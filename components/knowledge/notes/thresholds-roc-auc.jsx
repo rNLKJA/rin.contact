@@ -145,16 +145,14 @@ function EnBody() {
       </KSection>
 
       <KSection id="used" eyebrow="04" title="Where I used it">
-        <Callout type="applied" label="Machine Learning · Model Evaluation">
+        <Callout type="applied" label="COMP90051 · Project 1">
           <p>
-            In COMP90051 I built classifiers for{" "}
-            <Link href="/knowledge/model-evaluation" className={CALLOUT_LINK}>
-              model evaluation
-            </Link>{" "}
-            on imbalanced datasets. Accuracy alone is misleading when one class is rare, so ROC and
-            AUC became the standard. In each project, I would plot the ROC curve and then choose the
-            threshold based on the cost of errors, not just to maximise a metric. Precision-recall
-            curves are similar but useful when the rare class is the one you care about.
+            COMP90051 Project 1 (2023, team project): an imbalanced human-vs-machine text
+            classification task. The 2026 revival adds calibration checks. The demo is at{" "}
+            <a href="https://comp90051-human-or-machine.vercel.app" className="underline">
+              comp90051-human-or-machine.vercel.app
+            </a>
+            .
           </p>
         </Callout>
       </KSection>
@@ -223,9 +221,6 @@ function EnBody() {
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
-          First drafted in my UOM-DS wiki (2023), rewritten from scratch in 2026.
-        </p>
       </KSection>
     </>
   );
@@ -250,9 +245,6 @@ function ZhBody() {
         <p>
           <Term>混淆矩阵</Term>
           记录四个数：真正例（TP，你说是，你说对了），假正例（FP，你说是，你说错了），真负例（TN，你说否，你说对了）和假负例（FN，你说否，你说错了）。所有指标都是这四个数的某个比例。
-        </p>
-        <p>
-          这个方法在实际应用中具有广泛的适用性，从学术研究到工业界的大规模系统都能看到它的身影。理解其工作原理的关键在于掌握基本假设和适用条件。当这些条件得到满足时，该技术能够提供可靠且高效的解决方案。反之，如果忽视了这些前提条件，可能会导致意外的结果或性能问题。因此，在应用之前进行彻底的分析和验证是至关重要的。许多初学者容易跳过这一步，直接套用现成的工具或库，结果发现输出结果不符合预期。深入理解理论基础能够帮助您在遇到问题时快速定位原因并找到解决方案。
         </p>
       </KSection>
 
@@ -279,9 +271,6 @@ function ZhBody() {
           在你改变阈值时，绘制真正率对假正率。一个角落是"所有都标记为正"（高真正率，高假正率）。对面角落是"都标记为否"（低真正率，低假正率）。随机猜测会沿对角线。好的分类器会从对角线上方弯起。
           <Term>曲线下面积</Term>（AUC）是一个单数字：0.5 表示随机，1 表示完美。
         </p>
-        <p>
-          数学推导虽然一开始可能显得复杂，但每一步都有其明确的目的和意义。通过逐步展开公式，我们可以看到变量之间的依赖关系以及参数如何影响最终结果。这种数学严谨性不仅提供了理论保证，还为算法优化和性能调优提供了指导。在实际实现中，我们经常需要在理论最优解和计算可行性之间做出权衡。例如，某些精确算法可能在数学上是完美的，但在大规模数据集上运行时间过长，因此需要采用近似方法或启发式策略。理解数学基础使您能够做出明智的工程决策，在准确性和效率之间找到合适的平衡点。同时，数学模型还能帮助我们预测系统在不同条件下的行为，从而在部署前进行充分的测试和验证。
-        </p>
       </KSection>
 
       <KSection id="try" eyebrow="03" title="动手试">
@@ -289,9 +278,7 @@ function ZhBody() {
           下面的工具展示两个重叠的分数分布，一个是实际的正例，一个是负例。滑块设定你的阈值。当你移动它时，观察混淆矩阵、指标和
           ROC 曲线的变化。
         </p>
-        <p>
-          通过交互式工具进行实验是加深理解的最有效方法之一。当您调整参数并观察输出变化时，抽象的数学概念变得具体而直观。建议您系统地探索参数空间，从极端情况开始，然后逐步过渡到典型的使用场景。注意观察哪些参数组合会导致意外行为或性能下降。这种动手实践不仅能帮您记住理论知识，还能培养对算法行为的直觉。在真实项目中，这种直觉往往比死记硬背公式更有价值，因为它能帮您快速识别问题并提出解决方案。每次实验都是一次学习机会，即使结果不如预期，您也能从中获得关于方法局限性的宝贵见解。
-        </p>
+
         <Figure caption="合成数据模拟，带随机种子，同样的设置每次结果都一样。竖线显示你选择的阈值在分数分布上的位置。">
           <ThresholdSlider copy={WIDGET_COPY.zh} locale="zh-Hans" />
         </Figure>
@@ -309,28 +296,13 @@ function ZhBody() {
       </KSection>
 
       <KSection id="used" eyebrow="04" title="我在哪用到它">
-        <Callout type="applied" label="机器学习 · 模型评估">
+        <Callout type="applied" label="COMP90051 · 项目1">
           <p>
-            在 COMP90051 中，我在不平衡数据集上构建分类器来做{" "}
-            <Link href="/knowledge/model-evaluation" className={CALLOUT_LINK}>
-              模型评估
-            </Link>
-            。单一准确率在一个类很稀有时会很误导，所以 ROC 和 AUC 成了标准。每个项目中，我都会绘制
-            ROC
-            曲线，然后根据分类错误的成本来选择阈值，而不是只为了最大化一个指标。精度-召回曲线也类似，当你关心的是稀有类时很有用。
-          </p>
-          <p>
-            最具挑战性的部分是理解不同指标如何在不同业务环境中具有不同的含义。在医疗诊断场景中，假阴性（漏诊患病患者）通常比假阳性（将健康人误诊为患病）的成本更高。相反，在垃圾邮件过滤中，假阳性（将正常邮件标记为垃圾邮件）可能比假阴性（让垃圾邮件通过）更令人烦恼。ROC
-            曲线帮助我们可视化整个权衡空间，而不是被单一指标所束缚。
-          </p>
-          <p>
-            实际应用中，我发现绘制 ROC 曲线并计算 AUC
-            是与非技术利益相关者沟通模型质量的有效方式。AUC 在 0.5（随机猜测）到
-            1.0（完美分类器）之间，提供了一个直观的性能衡量标准。但我也学会了在展示 AUC
-            时要谨慎——它可能会隐藏对特定应用重要的细节，比如在特定召回率下的精度。
-          </p>
-          <p>
-            在实际项目中应用这一技术时，我发现理论和实践之间存在一定的差距。课堂上学到的理想化模型需要根据具体问题的特点进行调整和适配。数据质量、计算资源限制、实时性要求等因素都会影响最终的实现方案。与团队成员和导师的讨论也带来了许多有价值的见解，他们从不同角度指出了我最初设计中的不足之处。通过多次迭代和改进，最终的解决方案不仅在技术上可行，而且在实际部署中表现稳定。这个过程让我深刻体会到，掌握一种技术不仅需要理解其工作原理，还需要积累将其应用到实际问题的经验。每个项目都会遇到独特的挑战，需要创造性地运用所学知识来解决。
+            COMP90051项目1（2023年，团队项目）：不平衡的人类vs机器文本分类任务。2026年复现增加了校准检查。演示：
+            <a href="https://comp90051-human-or-machine.vercel.app" className="underline">
+              comp90051-human-or-machine.vercel.app
+            </a>
+            。
           </p>
         </Callout>
       </KSection>
@@ -395,9 +367,6 @@ function ZhBody() {
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
-          最早写在我的 UOM-DS wiki（2023）里，2026 年从头重写。
-        </p>
       </KSection>
     </>
   );

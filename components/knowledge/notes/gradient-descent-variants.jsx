@@ -98,12 +98,15 @@ function EnBody() {
       </KSection>
 
       <KSection id="used" eyebrow="04" title="Where I used it">
-        <Callout type="applied" label="COMP90051 · Deep Learning">
+        <Callout type="applied" label="COMP90051 · Project 1">
           <p>
-            In COMP90051, we trained neural networks with various optimizers. Adam was the default
-            for most tasks because it requires minimal tuning. I experimented with SGD + Momentum
-            for comparison and found that it needed careful learning rate schedules to match Adam's
-            performance.
+            COMP90051 Statistical Machine Learning Project 1 (2023, team project): per-domain
+            SGDClassifier alongside logistic regression for a human-vs-machine text classification
+            task. The demo is at
+            <a href="https://comp90051-human-or-machine.vercel.app" className="underline">
+              comp90051-human-or-machine.vercel.app
+            </a>
+            .
           </p>
         </Callout>
       </KSection>
@@ -171,16 +174,6 @@ function ZhBody() {
           实际选择取决于问题。SGD 简单，通常泛化良好。Adam 快速收敛，需要很少调优。RMSprop
           介于两者之间。Momentum 在现代实践中很少单独使用。
         </p>
-
-        <p>
-          这个方法在实际应用中具有广泛的适用性。无论是在学术研究还是工业实践中，理解这些核心概念都至关重要。通过深入掌握基础理论，我们能够更好地应对各种复杂场景，做出更明智的技术决策。实践表明，扎实的理论基础是解决实际问题的关键。
-        </p>
-        <p>
-          在学习过程中，将抽象概念与具体案例相结合能够加深理解。每个概念背后都有其产生的历史背景和实际需求。通过追溯这些背景，我们不仅能理解"是什么"，更能理解"为什么"。这种深层次的理解对于创新和解决未知问题具有重要意义。
-        </p>
-        <p>
-          在学习过程中，将抽象概念与具体案例相结合能够加深理解。每个概念背后都有其产生的历史背景和实际需求。通过追溯这些背景，我们不仅能理解"是什么"，更能理解"为什么"。这种深层次的理解对于创新和解决未知问题具有重要意义。
-        </p>
       </KSection>
 
       <KSection id="maths" eyebrow="02" title="数学">
@@ -211,16 +204,6 @@ function ZhBody() {
           超参数 <TeX>\alpha</TeX>（学习率）、<TeX>\beta</TeX>
           （动量衰减）和批量大小都影响收敛。更大的批次减少方差但需要更多内存。更高的学习率收敛更快但可能发散。
         </p>
-
-        <p>
-          数学推导虽然一开始可能显得复杂，但它为我们提供了精确的分析工具。通过数学语言，我们能够准确地描述系统行为，预测性能特征，并验证设计决策。掌握这些数学工具不仅能帮助理解现有方法，还能为开发新技术打下基础。
-        </p>
-        <p>
-          在实际应用中，数学模型帮助我们量化性能指标，比较不同方案，并在设计阶段就能预见潜在问题。这种定量分析能力是区分经验判断和科学决策的关键。通过数学建模，我们能够系统地探索参数空间，找到最优配置。
-        </p>
-        <p>
-          在实际应用中，数学模型帮助我们量化性能指标，比较不同方案，并在设计阶段就能预见潜在问题。这种定量分析能力是区分经验判断和科学决策的关键。通过数学建模，我们能够系统地探索参数空间，找到最优配置。
-        </p>
       </KSection>
 
       <KSection id="try" eyebrow="03" title="动手试">
@@ -236,33 +219,19 @@ function ZhBody() {
           <li>大批次：梯度更平滑，整体更慢（更新次数更少）。</li>
           <li>Adam 通常在复杂曲面上获胜；SGD 可能泛化更好。</li>
         </ul>
-
-        <p>
-          通过交互式工具进行实验是加深理解的最有效方法之一。亲手调整参数、观察结果变化，能够建立起直观的感受。这种实践经验往往比单纯阅读理论更容易记忆和应用。建议花时间尝试不同的配置组合，观察边界情况的行为。
-        </p>
-        <p>
-          在实验过程中，不要害怕失败。错误的配置往往能教会我们更多东西。通过系统地测试不同场景，我们能够建立起对方法行为的全面认识。记录观察到的现象，思考背后的原因，这些都是宝贵的学习过程。
-        </p>
       </KSection>
 
       <KSection id="used" eyebrow="04" title="我在哪用到它">
-        <Callout type="applied" label="COMP90051 · 深度学习">
+        <Callout type="applied" label="COMP90051 · 项目1">
           <p>
-            在 COMP90051 中，我们用各种优化器训练神经网络。Adam
-            是大多数任务的默认选择，因为它需要最少的调优。我用 SGD + Momentum
-            做了对比实验，发现它需要仔细的学习率安排才能匹配 Adam 的性能。
+            COMP90051统计机器学习项目1（2023年，团队项目）：在人类vs机器文本分类任务中，使用每域SGDClassifier和逻辑回归。演示：
+            <a href="https://comp90051-human-or-machine.vercel.app" className="underline">
+              comp90051-human-or-machine.vercel.app
+            </a>
+            。
           </p>
         </Callout>
 
-        <p>
-          在实际项目中应用这一技术时，需要考虑多方面的因素。理论上的最优解在实际环境中可能需要权衡。系统的其他组件、团队的技术栈、维护成本等都会影响最终决策。因此，将理论知识转化为实际方案需要经验和判断力。
-        </p>
-        <p>
-          从小规模实验开始，逐步验证方法的有效性，是稳妥的做法。在生产环境中全面部署前，通过原型验证核心假设能够降低风险。同时，建立监控和度量机制，持续跟踪实际效果，根据反馈调整策略。这种迭代的方法论在工程实践中被证明是有效的。
-        </p>
-        <p>
-          与团队成员分享经验和教训也很重要。记录决策过程、遇到的问题及解决方案，不仅有助于知识传承，也为后续类似项目提供参考。建立这样的知识库是团队成熟度的体现。
-        </p>
         <p>
           优化器的选择也受到问题类型的影响。对于计算机视觉任务，Adam
           通常表现最好；对于自然语言处理，某些研究表明 SGD
@@ -289,12 +258,6 @@ function ZhBody() {
         </Callout>
 
         <p>
-          在实际应用中，避免这些陷阱需要经验的积累和持续的学习。最好的方法是从小规模实验开始，逐步验证每个设计决策。通过监控系统行为、分析性能指标，我们能够及早发现问题并调整策略。记住，没有一劳永逸的解决方案，只有根据具体场景不断优化的过程。
-        </p>
-        <p>
-          与团队成员分享这些经验教训同样重要。建立代码审查机制，在设计阶段讨论潜在风险，能够避免许多低级错误。同时，建立最佳实践文档，记录项目中遇到的具体问题和解决方案，为后续开发提供参考。这种知识积累是团队成长的关键。
-        </p>
-        <p>
           避免这些错误的关键是理解优化器背后的原理。Adam
           的自适应学习率机制在大多数情况下表现良好，但在某些任务（如训练 GAN）中可能不稳定。SGD
           虽然需要更多调优，但在适当的学习率计划下往往能达到更好的泛化性能。
@@ -304,9 +267,6 @@ function ZhBody() {
           并行能力，但可能导致泛化能力下降（sharp
           minima）。小批量虽然训练慢，但梯度噪声有助于逃离局部最优并找到更平坦的最小值（flat
           minima），这通常对应更好的测试性能。
-        </p>
-        <p>
-          在实际项目中应用这一技术时，需要考虑多方面的因素。理论上的最优解在实际环境中可能需要权衡。系统的其他组件、团队的技术栈、维护成本等都会影响最终决策。因此，将理论知识转化为实际方案需要经验和判断力。通过系统地记录实验结果和观察到的现象，我们能够逐步建立起对不同优化器行为的直觉。
         </p>
       </KSection>
 

@@ -88,20 +88,8 @@ function EnBody() {
       </KSection>
 
       <KSection id="used" eyebrow="04" title="Where I used it">
-        <Callout type="applied" label="Applied">
-          <p>
-            I studied mechanism design in COMP90054 Automated Planning. We covered auctions as a
-            foundational example of game theory and multi-agent systems. The Vickrey auction's
-            incentive compatibility property made it a clean case study for how to align individual
-            and collective goals through clever rule design.
-          </p>
-          <p>
-            Beyond coursework, I see mechanism design everywhere: eBay uses second-price auctions
-            for some ad slots, Google's ad auctions are a generalization (VCG mechanism), and
-            prediction markets use scoring rules (another incentive-compatible mechanism) to
-            aggregate information. The core insight—design the rules so selfish behavior produces
-            good outcomes—applies to any system with strategic agents.
-          </p>
+        <Callout type="applied" label="Studied, not used">
+          <p>I studied mechanism design, but have not used it in a project.</p>
         </Callout>
       </KSection>
 
@@ -168,9 +156,6 @@ function ZhBody() {
         <p>
           机制设计不仅限于拍卖，还延伸到投票系统、匹配市场（肾脏交换、学校分配）和分布式系统中的协议设计。目标始终相同：将个人激励与集体福利对齐。
         </p>
-        <p>
-          这个方法在实际应用中具有广泛的适用性，从学术研究到工业界的大规模系统都能看到它的身影。理解其工作原理的关键在于掌握基本假设和适用条件。当这些条件得到满足时，该技术能够提供可靠且高效的解决方案。反之，如果忽视了这些前提条件，可能会导致意外的结果或性能问题。因此，在应用之前进行彻底的分析和验证是至关重要的。许多初学者容易跳过这一步，直接套用现成的工具或库，结果发现输出结果不符合预期。深入理解理论基础能够帮助您在遇到问题时快速定位原因并找到解决方案。
-        </p>
       </KSection>
 
       <KSection id="maths" eyebrow="02" title="数学">
@@ -195,9 +180,6 @@ function ZhBody() {
         <p>
           收入等价定理表明，任何物品总是给最高竞标者且输家支付零的拍卖形式，在均衡中产生相同的期望收入，假设竞标者是风险中性的并且具有独立的私有价值。第一价格和第二价格拍卖是收入等价的，即使它们看起来不同。
         </p>
-        <p>
-          数学推导虽然一开始可能显得复杂，但每一步都有其明确的目的和意义。通过逐步展开公式，我们可以看到变量之间的依赖关系以及参数如何影响最终结果。这种数学严谨性不仅提供了理论保证，还为算法优化和性能调优提供了指导。在实际实现中，我们经常需要在理论最优解和计算可行性之间做出权衡。例如，某些精确算法可能在数学上是完美的，但在大规模数据集上运行时间过长，因此需要采用近似方法或启发式策略。理解数学基础使您能够做出明智的工程决策，在准确性和效率之间找到合适的平衡点。同时，数学模型还能帮助我们预测系统在不同条件下的行为，从而在部署前进行充分的测试和验证。
-        </p>
       </KSection>
 
       <KSection id="try" eyebrow="03" title="动手试">
@@ -207,25 +189,11 @@ function ZhBody() {
         <p>
           工具并排运行两种拍卖形式，使用相同的竞标者集合。在第一价格拍卖中，竞标者策略性地压低出价。在第二价格拍卖中，竞标者出价他们的真实价值。注意两者的获胜者相同，但支付不同。第二价格拍卖更容易推理，因为说实话总是最优的。
         </p>
-        <p>
-          通过交互式工具进行实验是加深理解的最有效方法之一。当您调整参数并观察输出变化时，抽象的数学概念变得具体而直观。建议您系统地探索参数空间，从极端情况开始，然后逐步过渡到典型的使用场景。注意观察哪些参数组合会导致意外行为或性能下降。这种动手实践不仅能帮您记住理论知识，还能培养对算法行为的直觉。在真实项目中，这种直觉往往比死记硬背公式更有价值，因为它能帮您快速识别问题并提出解决方案。每次实验都是一次学习机会，即使结果不如预期，您也能从中获得关于方法局限性的宝贵见解。
-        </p>
       </KSection>
 
       <KSection id="used" eyebrow="04" title="我在哪用到它">
-        <Callout type="applied" label="应用">
-          <p>
-            我在 COMP90054
-            自动规划中学习了机制设计。我们将拍卖作为博弈论和多智能体系统的基础例子。维克里拍卖的激励相容性质使其成为一个清晰的案例研究，说明如何通过巧妙的规则设计来对齐个体和集体目标。
-          </p>
-          <p>
-            除了课程作业，我到处都能看到机制设计：eBay 对某些广告位使用第二价格拍卖，Google
-            的广告拍卖是一种推广（VCG
-            机制），预测市场使用评分规则（另一种激励相容机制）来聚合信息。核心见解——设计规则使自私行为产生良好结果——适用于任何具有策略代理的系统。
-          </p>
-          <p>
-            在实际项目中应用这一技术时，我发现理论和实践之间存在一定的差距。课堂上学到的理想化模型需要根据具体问题的特点进行调整和适配。数据质量、计算资源限制、实时性要求等因素都会影响最终的实现方案。与团队成员和导师的讨论也带来了许多有价值的见解，他们从不同角度指出了我最初设计中的不足之处。通过多次迭代和改进，最终的解决方案不仅在技术上可行，而且在实际部署中表现稳定。这个过程让我深刻体会到，掌握一种技术不仅需要理解其工作原理，还需要积累将其应用到实际问题的经验。每个项目都会遇到独特的挑战，需要创造性地运用所学知识来解决。
-          </p>
+        <Callout type="applied" label="学习过，未在项目中使用">
+          <p>我学习过机制设计，但尚未在项目中使用。</p>
         </Callout>
       </KSection>
 
@@ -246,10 +214,6 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-
-        <p>
-          避免常见错误需要经验的积累和对方法细节的深入理解。许多陷阱在理论学习中并不明显，只有在实际应用中才会暴露出来。例如，数据预处理不当、参数设置不合理、忽视边界条件等都可能导致结果不可靠。建立良好的验证和测试习惯是避免这些问题的关键。在部署到生产环境之前，务必在多种场景下进行充分的测试，包括正常情况、边界情况和异常情况。记录和分析失败案例也非常重要，它们往往能揭示方法的局限性和改进方向。与经验丰富的从业者交流可以帮助您提前了解常见陷阱，避免重复他人的错误。同时，保持对最新研究和最佳实践的关注，能够让您的技能保持与时俱进。
-        </p>
       </KSection>
 
       <KSection id="sources" eyebrow="06" title="参考资料">

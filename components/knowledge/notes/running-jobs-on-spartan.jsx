@@ -91,12 +91,14 @@ function EnBody() {
       </KSection>
 
       <KSection id="used" eyebrow="04" title="Where I used it">
-        <Callout type="applied" label="COMP90024 · Cluster Computing">
+        <Callout type="applied" label="COMP90024 · Assignment 1">
           <p>
-            In COMP90024, I ran distributed algorithms on Spartan. Every experiment required writing
-            SLURM scripts to reserve the right topology and measure performance. Understanding the
-            layout of tasks and CPUs was essential to avoid accidentally serialising code that
-            should be parallel.
+            COMP90024 Assignment 1 (2023, with Wei Zhao): Slurm scripts for three configurations on
+            Spartan (1 node × 1 core, 1 node × 8 cores, 2 nodes × 4 cores). The demo is at{" "}
+            <a href="https://comp90024-spartan-twitter.vercel.app" className="underline">
+              comp90024-spartan-twitter.vercel.app
+            </a>
+            .
           </p>
         </Callout>
       </KSection>
@@ -193,9 +195,6 @@ function ZhBody() {
           个节点、每个节点 2 个任务、每个任务 8 个 CPU 的作业运行 8 个进程，跨越 4
           个节点，每个进程有 8 个线程，总共使用 64 个核心。
         </p>
-        <p>
-          这个方法在实际应用中具有广泛的适用性，从学术研究到工业界的大规模系统都能看到它的身影。理解其工作原理的关键在于掌握基本假设和适用条件。当这些条件得到满足时，该技术能够提供可靠且高效的解决方案。反之，如果忽视了这些前提条件，可能会导致意外的结果或性能问题。因此，在应用之前进行彻底的分析和验证是至关重要的。许多初学者容易跳过这一步，直接套用现成的工具或库，结果发现输出结果不符合预期。深入理解理论基础能够帮助您在遇到问题时快速定位原因并找到解决方案。
-        </p>
       </KSection>
 
       <KSection id="maths" eyebrow="02" title="数学">
@@ -217,9 +216,6 @@ function ZhBody() {
           <code>T=1</code> 和 <code>C=1</code>。如果使用带 16 个线程的 OpenMP，设置{" "}
           <code>C=16</code>。
         </p>
-        <p>
-          数学推导虽然一开始可能显得复杂，但每一步都有其明确的目的和意义。通过逐步展开公式，我们可以看到变量之间的依赖关系以及参数如何影响最终结果。这种数学严谨性不仅提供了理论保证，还为算法优化和性能调优提供了指导。在实际实现中，我们经常需要在理论最优解和计算可行性之间做出权衡。例如，某些精确算法可能在数学上是完美的，但在大规模数据集上运行时间过长，因此需要采用近似方法或启发式策略。理解数学基础使您能够做出明智的工程决策，在准确性和效率之间找到合适的平衡点。同时，数学模型还能帮助我们预测系统在不同条件下的行为，从而在部署前进行充分的测试和验证。
-        </p>
       </KSection>
 
       <KSection id="try" eyebrow="03" title="动手试">
@@ -227,9 +223,7 @@ function ZhBody() {
           下面的工具构建 SLURM 脚本。移动滑块以更改节点、任务和
           CPU，总核心数立即更新。生成的脚本已准备好复制和提交。
         </p>
-        <p>
-          通过交互式工具进行实验是加深理解的最有效方法之一。当您调整参数并观察输出变化时，抽象的数学概念变得具体而直观。建议您系统地探索参数空间，从极端情况开始，然后逐步过渡到典型的使用场景。注意观察哪些参数组合会导致意外行为或性能下降。这种动手实践不仅能帮您记住理论知识，还能培养对算法行为的直觉。在真实项目中，这种直觉往往比死记硬背公式更有价值，因为它能帮您快速识别问题并提出解决方案。每次实验都是一次学习机会，即使结果不如预期，您也能从中获得关于方法局限性的宝贵见解。
-        </p>
+
         <Figure caption="SLURM 脚本生成器，带有集群拓扑的滑块。总核心数是节点、任务和 CPU 数的乘积。">
           <SlurmBuilder copy={WIDGET_COPY.zh} locale="zh-Hans" />
         </Figure>
@@ -240,36 +234,19 @@ function ZhBody() {
             对于 4 个节点上有 32 个进程的 MPI：4 个节点、每个节点 8 个任务、每个任务 1 个 CPU。
           </li>
         </ul>
-
-        <p>
-          通过交互式工具进行实验是加深理解的最有效方法之一。亲手调整参数、观察结果变化，能够建立起直观的感受。这种实践经验往往比单纯阅读理论更容易记忆和应用。建议花时间尝试不同的配置组合，观察边界情况的行为。
-        </p>
-        <p>
-          在实验过程中，不要害怕失败。错误的配置往往能教会我们更多东西。通过系统地测试不同场景，我们能够建立起对方法行为的全面认识。记录观察到的现象，思考背后的原因，这些都是宝贵的学习过程。
-        </p>
       </KSection>
 
       <KSection id="used" eyebrow="04" title="我在哪用到它">
-        <Callout type="applied" label="COMP90024 · 集群计算">
+        <Callout type="applied" label="COMP90024 · 作业1">
           <p>
-            在 COMP90024 中，我在 Spartan 上运行分布式算法。每个实验都需要编写 SLURM
-            脚本来保留正确的拓扑并测量性能。理解任务和 CPU
-            的布局对于避免意外地串行化应该是并行的代码至关重要。
-          </p>
-          <p>
-            在实际项目中应用这一技术时，我发现理论和实践之间存在一定的差距。课堂上学到的理想化模型需要根据具体问题的特点进行调整和适配。数据质量、计算资源限制、实时性要求等因素都会影响最终的实现方案。与团队成员和导师的讨论也带来了许多有价值的见解，他们从不同角度指出了我最初设计中的不足之处。通过多次迭代和改进，最终的解决方案不仅在技术上可行，而且在实际部署中表现稳定。这个过程让我深刻体会到，掌握一种技术不仅需要理解其工作原理，还需要积累将其应用到实际问题的经验。每个项目都会遇到独特的挑战，需要创造性地运用所学知识来解决。
+            COMP90024作业1（2023年，与Wei
+            Zhao合作）：为Spartan上的三种配置编写Slurm脚本（1节点×1核心，1节点×8核心，2节点×4核心）。演示：
+            <a href="https://comp90024-spartan-twitter.vercel.app" className="underline">
+              comp90024-spartan-twitter.vercel.app
+            </a>
+            。
           </p>
         </Callout>
-
-        <p>
-          在实际项目中应用这一技术时，需要考虑多方面的因素。理论上的最优解在实际环境中可能需要权衡。系统的其他组件、团队的技术栈、维护成本等都会影响最终决策。因此，将理论知识转化为实际方案需要经验和判断力。
-        </p>
-        <p>
-          从小规模实验开始，逐步验证方法的有效性，是稳妥的做法。在生产环境中全面部署前，通过原型验证核心假设能够降低风险。同时，建立监控和度量机制，持续跟踪实际效果，根据反馈调整策略。这种迭代的方法论在工程实践中被证明是有效的。
-        </p>
-        <p>
-          与团队成员分享经验和教训也很重要。记录决策过程、遇到的问题及解决方案，不仅有助于知识传承，也为后续类似项目提供参考。建立这样的知识库是团队成熟度的体现。
-        </p>
       </KSection>
 
       <KSection id="pitfalls" eyebrow="05" title="容易出错的地方">
@@ -293,10 +270,6 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-
-        <p>
-          避免常见错误需要经验的积累和对方法细节的深入理解。许多陷阱在理论学习中并不明显，只有在实际应用中才会暴露出来。例如，数据预处理不当、参数设置不合理、忽视边界条件等都可能导致结果不可靠。建立良好的验证和测试习惯是避免这些问题的关键。在部署到生产环境之前，务必在多种场景下进行充分的测试，包括正常情况、边界情况和异常情况。记录和分析失败案例也非常重要，它们往往能揭示方法的局限性和改进方向。与经验丰富的从业者交流可以帮助您提前了解常见陷阱，避免重复他人的错误。同时，保持对最新研究和最佳实践的关注，能够让您的技能保持与时俱进。
-        </p>
       </KSection>
 
       <KSection id="sources" eyebrow="06" title="参考资料">
