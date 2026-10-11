@@ -1,66 +1,5 @@
+/* ─── Tailwind v4 ────────────────────────────────────────────────── */
 @import "tailwindcss";
-@config "../../tailwind.config.js";
-
-@theme {
-  /* ─── Colors ─────────────────────────────────────────────────────── */
-  --color-ink-subtle: var(--ink-subtle);
-  --color-accent-ink: var(--accent-ink);
-  --color-accent-fill: #cc0000;
-
-  /* ─── Font families ──────────────────────────────────────────────── */
-  /* Wisr × Nothing three-font system — CSS variables injected by next/font */
-  --font-family-sans: var(--font-dm-sans), system-ui, sans-serif;
-  --font-family-editorial: var(--font-playfair), Georgia, serif;
-  --font-family-display: var(--font-bitcount), monospace;
-
-  /* ─── Animations ─────────────────────────────────────────────────── */
-  /* Rin's motion rules: every UI animation completes within 300ms of its
-     trigger and starts at least 70% of the way to its end state. These use
-     the standalone `translate` / `scale` properties so they compose with
-     existing Tailwind transform classes (e.g. -translate-x-1/2) instead of
-     overwriting them. */
-  @keyframes enter {
-    from {
-      opacity: 0.7;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  @keyframes enter-up {
-    from {
-      opacity: 0.7;
-      translate: 0 4px;
-    }
-    to {
-      opacity: 1;
-      translate: 0 0;
-    }
-  }
-  @keyframes enter-scale {
-    from {
-      opacity: 0.7;
-      scale: 0.96;
-    }
-    to {
-      opacity: 1;
-      scale: 1;
-    }
-  }
-  @keyframes enter-grow-x {
-    from {
-      scale: 0.7 1;
-    }
-    to {
-      scale: 1 1;
-    }
-  }
-
-  --animate-enter: enter 150ms ease-out backwards;
-  --animate-enter-up: enter-up 200ms ease-out backwards;
-  --animate-enter-scale: enter-scale 200ms ease-out backwards;
-  --animate-enter-grow-x: enter-grow-x 200ms ease-out backwards;
-}
 
 /* ─── Dark mode (class-based) ────────────────────────────────────── */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -121,13 +60,10 @@
   --accent-ink: #ff3c3c;
 }
 
-/* ─── Reset ─────────────────────────────────────────────────────── */
+/* ─── Extended reset (beyond Tailwind's Preflight) ─────────────────────── */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   min-height: 0;
   min-width: 0;
 }
@@ -138,48 +74,71 @@
   }
 }
 
-body {
-  font-family: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.7;
-  background-color: var(--white);
-  color: var(--black);
-  -webkit-font-smoothing: antialiased;
-  letter-spacing: -0.01em;
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
+@layer base {
+  body {
+    font-family: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    background-color: var(--white);
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+    transition:
+      background-color 0.2s ease-in-out,
+      color 0.2s ease-in-out;
+  }
+
+  /* ─── Wisr editorial serif — all section headings ───────────────── */
+  h2,
+  h3 {
+    font-family: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    font-feature-settings:
+      "liga" 1,
+      "kern" 1;
+  }
+
+  /* ─── DM Sans UI overrides — nav, labels, buttons ───────────────── */
+  nav,
+  button,
+  input,
+  textarea,
+  label,
+  select {
+    font-family: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+  }
+
+  /* ─── Typography Scale ───────────────────────────────────────────── */
+  /* h1 brand name only — pixel display (Bitcount) */
+  h1 {
+    font-family: var(--font-bitcount), monospace;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
 }
 
-/* ─── Wisr editorial serif — all section headings ───────────────── */
-h2,
-h3 {
-  font-family: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  font-feature-settings:
-    "liga" 1,
-    "kern" 1;
-}
-
-/* ─── DM Sans UI overrides — nav, labels, buttons ───────────────── */
-nav,
-button,
-input,
-textarea,
-label,
-select {
-  font-family: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
-}
-
-/* ─── Typography Scale ───────────────────────────────────────────── */
-/* h1 brand name only — pixel display (Bitcount) */
-h1 {
-  font-family: var(--font-bitcount), monospace;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1;
+/* ─── v4 compatibility fix ────────────────────────────────────────── */
+/* In v3, font-size utilities had fixed line-heights unaffected by leading-* classes.
+   In v4, they use line-height: var(--tw-leading, <default>), so leading-* overrides them.
+   This breaks layouts: text-base md:text-lg leading-relaxed goes from 28px → 29.25px.
+   Fix: Override the line-height defaults to absolute rem values matching v3. */
+@theme {
+  --text-xs--line-height: 1rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base--line-height: 1.5rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl--line-height: 2.5rem;
+  --text-5xl--line-height: 1;
+  --text-6xl--line-height: 1;
+  --text-7xl--line-height: 1;
+  --text-8xl--line-height: 1;
+  --text-9xl--line-height: 1;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────── */
@@ -867,4 +826,144 @@ html.hash-jump .content-visibility-auto {
   border: 2px solid #ff3c3c;
   border-radius: 2px;
   contain: layout style;
+}
+/* ─── v3 line-height restoration (after Tailwind import) ─────────── */
+/* Tailwind v4's font-size utilities use line-height: var(--tw-leading, <default>),
+   so .leading-* classes override them. In v3, font-size utilities had fixed
+   line-heights that .leading-* could NOT override. This broke many layouts.
+   Fix: Re-declare font-size utilities with fixed line-heights, placed after
+   Tailwind's own rules so they win by source order. */
+.text-xs {
+  line-height: 1rem !important;
+}
+.text-sm {
+  line-height: 1.25rem !important;
+}
+.text-base {
+  line-height: 1.5rem !important;
+}
+.text-lg {
+  line-height: 1.75rem !important;
+}
+.text-xl {
+  line-height: 1.75rem !important;
+}
+.text-2xl {
+  line-height: 2rem !important;
+}
+.text-3xl {
+  line-height: 2.25rem !important;
+}
+.text-4xl {
+  line-height: 2.5rem !important;
+}
+.text-5xl,
+.text-6xl,
+.text-7xl,
+.text-8xl,
+.text-9xl {
+  line-height: 1 !important;
+}
+
+/* Responsive variants */
+@media (min-width: 640px) {
+  .sm\:text-xs {
+    line-height: 1rem !important;
+  }
+  .sm\:text-sm {
+    line-height: 1.25rem !important;
+  }
+  .sm\:text-base {
+    line-height: 1.5rem !important;
+  }
+  .sm\:text-lg {
+    line-height: 1.75rem !important;
+  }
+  .sm\:text-xl {
+    line-height: 1.75rem !important;
+  }
+  .sm\:text-2xl {
+    line-height: 2rem !important;
+  }
+  .sm\:text-3xl {
+    line-height: 2.25rem !important;
+  }
+  .sm\:text-4xl {
+    line-height: 2.5rem !important;
+  }
+  .sm\:text-5xl,
+  .sm\:text-6xl,
+  .sm\:text-7xl,
+  .sm\:text-8xl,
+  .sm\:text-9xl {
+    line-height: 1 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:text-xs {
+    line-height: 1rem !important;
+  }
+  .md\:text-sm {
+    line-height: 1.25rem !important;
+  }
+  .md\:text-base {
+    line-height: 1.5rem !important;
+  }
+  .md\:text-lg {
+    line-height: 1.75rem !important;
+  }
+  .md\:text-xl {
+    line-height: 1.75rem !important;
+  }
+  .md\:text-2xl {
+    line-height: 2rem !important;
+  }
+  .md\:text-3xl {
+    line-height: 2.25rem !important;
+  }
+  .md\:text-4xl {
+    line-height: 2.5rem !important;
+  }
+  .md\:text-5xl,
+  .md\:text-6xl,
+  .md\:text-7xl,
+  .md\:text-8xl,
+  .md\:text-9xl {
+    line-height: 1 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:text-xs {
+    line-height: 1rem !important;
+  }
+  .lg\:text-sm {
+    line-height: 1.25rem !important;
+  }
+  .lg\:text-base {
+    line-height: 1.5rem !important;
+  }
+  .lg\:text-lg {
+    line-height: 1.75rem !important;
+  }
+  .lg\:text-xl {
+    line-height: 1.75rem !important;
+  }
+  .lg\:text-2xl {
+    line-height: 2rem !important;
+  }
+  .lg\:text-3xl {
+    line-height: 2.25rem !important;
+  }
+  .lg\:text-4xl {
+    line-height: 2.5rem !important;
+  }
+  .lg\:text-5xl,
+  .lg\:text-6xl,
+  .lg\:text-7xl,
+  .lg\:text-8xl,
+  .lg\:text-9xl {
+    line-height: 1 !important;
+  }
 }
