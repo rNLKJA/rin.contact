@@ -69,7 +69,7 @@ function EnBody() {
 
       <KSection id="sources" eyebrow="06" title="Sources">
         <p>
-          COMP90051 Statistical Machine Learning (2023). GCN architectures for node classification.
+          COMP90051 (2023). GCN architectures and applications for node classification on graphs.
         </p>
       </KSection>
     </>
@@ -128,12 +128,16 @@ function ZhBody() {
               <strong>忽略有向边。</strong>GCN
               将图视为无向的。对于有向图（引用、关注），必须决定是对称化还是使用有向传播规则。
             </li>
+            <li>
+              <strong>使用过大的特征维度。</strong>
+              高维特征在小图上容易过拟合。正则化和dropout是必要的，但降低特征维度通常更有效。图的信息容量由其节点数和边数决定，不是由特征维度决定。
+            </li>
           </ul>
         </Callout>
       </KSection>
 
       <KSection id="sources" eyebrow="06" title="参考资料">
-        <p>COMP90051 统计机器学习（2023）。节点分类的 GCN 架构。</p>
+        <p>COMP90051（2023）。GCN架构及图节点分类应用。</p>
         <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
           初稿于2023，2026年重写。
         </p>
