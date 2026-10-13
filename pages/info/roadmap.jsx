@@ -21,7 +21,7 @@ const Section = ({ label, status, statusLabel, items }) => (
                   ? "border border-[#FF3C3C] text-[#FF3C3C]"
                   : status === "planned"
                     ? "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#7A7A7A]"
-                    : "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6E6E6E] dark:text-[#9A9A9A]"
+                    : "border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A]"
             }`}
           >
             {statusLabel}
@@ -72,7 +72,7 @@ export default function RoadmapPage() {
 
       <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28">
         <div className="mb-14">
-          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">
+          <p className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] font-mono mb-4">
             /info/roadmap
           </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
@@ -92,7 +92,7 @@ export default function RoadmapPage() {
         ))}
 
         <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex justify-between items-center">
-          <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
+          <p className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] font-mono">
             {t("infoRoadmap.footerNote")}
           </p>
           <Link

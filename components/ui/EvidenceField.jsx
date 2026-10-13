@@ -357,15 +357,15 @@ export default function EvidenceField() {
               aria-current={stage === i ? "step" : undefined}
               className={
                 stage === i
-                  ? "text-[#B71C1C] dark:text-[#FF3C3C]"
-                  : "text-[#6E6E6E] dark:text-[#9A9A9A]"
+                  ? "text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+                  : "text-[#6B6B6B] dark:text-[#9A9A9A]"
               }
             >
               {String(i + 1).padStart(2, "0")} {label}
             </li>
           ))}
         </ol>
-        <span className="normal-case tracking-normal text-[#6E6E6E] dark:text-[#9A9A9A]">
+        <span className="normal-case tracking-normal text-[#6B6B6B] dark:text-[#9A9A9A]">
           {CAPTION[lang]}
         </span>
       </figcaption>

@@ -442,7 +442,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The missing-data taxonomy, encoding choices, and the split-before-fit leakage rule reflect
           current data-preparation references alongside coursework.
         </p>
@@ -676,7 +676,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           缺失数据的分类法、编码的选择，以及「先拆分再拟合」的泄漏规则，反映了当前的数据准备参考
           文献，以及课程学习。
         </p>

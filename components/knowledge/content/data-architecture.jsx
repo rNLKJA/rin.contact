@@ -308,7 +308,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The warehouse/lake/lakehouse arc, the ETL→ELT shift, the modern-data-stack (dbt)
           components, and the medallion and data-mesh patterns reflect current data-architecture
           references alongside hands-on work.
@@ -530,7 +530,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           仓库/湖/湖仓的弧线、ETL→ELT
           的转变、现代数据栈（dbt）的组件，以及奖牌架构与数据网格的模式，
           反映了当前的数据架构参考文献以及亲身的工作。

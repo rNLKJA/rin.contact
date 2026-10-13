@@ -138,7 +138,7 @@ function ZhBody() {
 
       <KSection id="sources" eyebrow="06" title="参考资料">
         <p>COMP90051（2023）。GCN架构及图节点分类应用。</p>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6">
           初稿于2023，2026年重写。
         </p>
       </KSection>

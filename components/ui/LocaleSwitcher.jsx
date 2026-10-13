@@ -38,7 +38,7 @@ export default function LocaleSwitcher() {
       aria-label={nextLocale === "zh-Hans" ? "中文" : "English"}
       className="inline-flex items-center justify-center h-9 min-w-9 px-2.5 text-[11px] tracking-widest uppercase
                  border border-[#E0E0E0] dark:border-[#3D3D3D]
-                 text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white
+                 text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white
                  hover:border-black dark:hover:border-white
                  hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-colors duration-200"
     >

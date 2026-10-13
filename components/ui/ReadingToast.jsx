@@ -51,14 +51,14 @@ export default function ReadingToast({ threshold = 0.65 }) {
       >
         ✕
       </button>
-      <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed pr-3">
+      <p className="text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed pr-3">
         {t("readingToast.message")}
       </p>
       <Link
         href="/#contact"
         onClick={dismissNow}
         className="inline-block mt-2.5 text-[10px] tracking-widest uppercase border-b border-black dark:border-white text-black dark:text-white
-                   hover:text-[#FF3C3C] hover:border-[#FF3C3C] dark:hover:text-[#FF3C3C] dark:hover:border-[#FF3C3C] transition-colors"
+                   hover:text-[#CC0000] dark:text-[#FF3C3C] hover:border-[#FF3C3C] dark:hover:text-[#CC0000] dark:text-[#FF3C3C] dark:hover:border-[#FF3C3C] transition-colors"
       >
         Get in touch →
       </Link>

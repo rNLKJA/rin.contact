@@ -219,8 +219,8 @@ function DomainCard({ domain, index }) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-200 ease-out ${
-        inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+      className={`transition-transform duration-200 ease-out ${
+        inView ? "translate-y-0" : "invisible translate-y-1.5"
       }`}
       style={{ transitionDelay: `${Math.min(index * 30, 100)}ms` }}
     >
@@ -248,7 +248,7 @@ function DomainCard({ domain, index }) {
           <h3 className="text-base font-semibold">{domain.label}</h3>
         </div>
         <span
-          className="text-[#6E6E6E] dark:text-[#9A9A9A] text-sm flex-shrink-0 transition-transform duration-200 group-hover:text-black dark:group-hover:text-white z-10"
+          className="text-[#373737] dark:text-[#B4B4B4] text-sm flex-shrink-0 transition-transform duration-200 group-hover:text-black dark:group-hover:text-white z-10"
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
           aria-hidden="true"
         >
@@ -277,14 +277,14 @@ function DomainCard({ domain, index }) {
               }}
             />
           </div>
-          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-4 font-light">
+          <p className="text-sm text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed mb-4 font-light">
             {domain.description}
           </p>
           <div className="flex flex-wrap gap-1.5">
             {domain.skills.map((s) => (
               <span
                 key={s}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wide text-ink-subtle dark:text-[#9A9A9A] rounded-full
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wide text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] rounded-full
                            cursor-default transition-all duration-200"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = domain.color;
@@ -315,8 +315,8 @@ export default function SkillsSection() {
       {/* Header */}
       <div
         ref={ref}
-        className={`mb-4 transition-all duration-200 ease-out ${
-          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+        className={`mb-4 transition-transform duration-200 ease-out ${
+          inView ? "translate-y-0" : "invisible translate-y-1.5"
         }`}
       >
         <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-accent-ink mb-6">
@@ -334,7 +334,7 @@ export default function SkillsSection() {
               <CountUp target={DOMAINS.length} started={inView} />
             </span>
             <span
-              className="text-[10px] tracking-[0.3em] uppercase text-ink-subtle dark:text-[#9A9A9A] mb-3 md:mb-4"
+              className="text-[10px] tracking-[0.3em] uppercase text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mb-3 md:mb-4"
               aria-hidden="true"
             >
               Domains
@@ -344,14 +344,14 @@ export default function SkillsSection() {
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">
               {t("skills.heading")}
             </h2>
-            <p className="text-sm text-ink-subtle dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
+            <p className="text-sm text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
               Seven technical domains, run in deliberate parallel.
             </p>
           </div>
         </div>
         <span className="sr-only">Seven technical domains.</span>
 
-        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed mt-7">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] max-w-2xl leading-relaxed mt-7">
           I have found that the most interesting problems sit at the edges of disciplines. My work
           has taken me from sample-sheet tooling at WEHI to ministerial dashboards at CBS to mobile
           health apps at UniMelb, and each domain has added a new lens to how I approach data,
@@ -385,7 +385,7 @@ export default function SkillsSection() {
               d.skills.map((skill) => (
                 <span
                   key={`${copy}-${d.label}-${skill}`}
-                  className="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-ink-subtle whitespace-nowrap flex-shrink-0"
+                  className="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] whitespace-nowrap flex-shrink-0"
                 >
                   <span
                     className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
@@ -414,7 +414,7 @@ export default function SkillsSection() {
           {t("skills.atlasLink")}
           <span
             aria-hidden="true"
-            className="text-[#CC0000] dark:text-[#FF3C3C] group-hover:translate-x-0.5 transition-transform duration-200"
+            className="text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] group-hover:translate-x-0.5 transition-transform duration-200"
           >
             →
           </span>
@@ -423,8 +423,8 @@ export default function SkillsSection() {
       {/* Certifications */}
       <div
         ref={certRef}
-        className={`mt-16 transition-all duration-200 ease-out ${
-          certInView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+        className={`mt-16 transition-transform duration-200 ease-out ${
+          certInView ? "translate-y-0" : "invisible translate-y-1.5"
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-accent-ink mb-6">
@@ -435,7 +435,7 @@ export default function SkillsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
           {CERT_GROUPS.map((g) => (
             <div key={g.group} className="border-t border-[#E0E0E0] dark:border-[#3D3D3D] py-5">
-              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-3">
+              <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-3">
                 {g.group}
               </p>
               <ul className="space-y-2.5">
@@ -444,7 +444,7 @@ export default function SkillsSection() {
                     <span className="text-sm text-[#1A1A1A] dark:text-white leading-snug">
                       {c.label}
                     </span>
-                    <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] whitespace-nowrap flex-shrink-0 mt-0.5">
+                    <span className="text-xs text-[#373737] dark:text-[#B4B4B4] whitespace-nowrap flex-shrink-0 mt-0.5">
                       {c.issuer}
                     </span>
                   </li>
@@ -456,8 +456,8 @@ export default function SkillsSection() {
       </div>
       {/* Languages */}
       <div
-        className={`mt-16 transition-all duration-200 ease-out ${
-          certInView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+        className={`mt-16 transition-transform duration-200 ease-out ${
+          certInView ? "translate-y-0" : "invisible translate-y-1.5"
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-accent-ink mb-6">Languages</p>
@@ -480,9 +480,13 @@ export default function SkillsSection() {
                          hover:border-black dark:hover:border-white transition-colors duration-200"
             >
               <p className="text-sm font-medium">{l.lang}</p>
-              <p className="text-xs text-ink-subtle dark:text-[#9A9A9A] mt-0.5">{l.level}</p>
+              <p className="text-xs text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mt-0.5">
+                {l.level}
+              </p>
               {l.detail && (
-                <p className="text-xs text-ink-subtle dark:text-[#9A9A9A] mt-0.5">{l.detail}</p>
+                <p className="text-xs text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mt-0.5">
+                  {l.detail}
+                </p>
               )}
             </div>
           ))}

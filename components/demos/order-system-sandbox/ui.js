@@ -8,7 +8,7 @@
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
 
-export const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+export const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 
 export const PANEL =
   "min-w-0 border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg p-4 bg-white dark:bg-[#0A0A0A]";

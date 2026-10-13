@@ -310,7 +310,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The model-to-the-data idea, FedAvg, the update-leakage caveat (DP + secure aggregation),
           and the non-IID challenge reflect current federated-learning references alongside
           privacy-ML work.
@@ -491,7 +491,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           把模型送到数据的想法、FedAvg、更新泄漏的告诫（DP +
           安全聚合），以及非独立同分布的挑战，反映了 当前的联邦学习参考文献以及隐私机器学习工作。
         </p>

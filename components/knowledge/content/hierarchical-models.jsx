@@ -297,7 +297,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The complete/no/partial-pooling framing, the shrinkage-as-regularisation intuition, and
           the fixed-vs-random-effects distinction reflect current multilevel-modelling references
           alongside statistics coursework.
@@ -492,7 +492,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           完全/无/部分汇集的取景、把收缩看作正则化的直觉，以及固定对随机效应的区分，反映了当前的多层建模
           参考文献以及统计学课程。
         </p>

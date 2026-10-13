@@ -218,7 +218,7 @@ export default function ResumePage({ data, jsonLd }) {
               <p className="cv-accent flex items-center gap-2.5 font-mono text-[11px] tracking-[0.3em] uppercase text-[#CC0000] dark:text-[#FF3C3C] mb-5">
                 <span className="block w-2 h-2 bg-current print-keep-bg" aria-hidden="true" />
                 {t("resumePage.eyebrow")}
-                <span className="text-[#6E6E6E] dark:text-[#9A9A9A] tracking-[0.2em]">
+                <span className="text-[#6B6B6B] dark:text-[#9A9A9A] tracking-[0.2em]">
                   · {t("resumePage.updated")} {data.asOfLabel}
                 </span>
               </p>
@@ -227,7 +227,7 @@ export default function ResumePage({ data, jsonLd }) {
                   <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">
                     {profile.nameZh}
                   </h1>
-                  <p lang="en" className="mt-2 text-sm text-[#6E6E6E] dark:text-[#9A9A9A]">
+                  <p lang="en" className="mt-2 text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">
                     {profile.name}
                   </p>
                 </>
@@ -236,7 +236,7 @@ export default function ResumePage({ data, jsonLd }) {
                   <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">
                     {profile.name}
                   </h1>
-                  <p lang="zh-Hans" className="mt-2 text-sm text-[#6E6E6E] dark:text-[#9A9A9A]">
+                  <p lang="zh-Hans" className="mt-2 text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">
                     {profile.nameZh}
                   </p>
                 </>
@@ -244,8 +244,10 @@ export default function ResumePage({ data, jsonLd }) {
               <p className="mt-5 text-lg md:text-xl text-black dark:text-white">
                 {profile.headline}
               </p>
-              <p className="text-base text-[#3D3D3D] dark:text-[#AAAAAA]">{profile.subline}</p>
-              <p className="mt-1 text-sm text-[#6E6E6E] dark:text-[#9A9A9A]">
+              <p className="text-base text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                {profile.subline}
+              </p>
+              <p className="mt-1 text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {profile.location} · ACST/ACDT
               </p>
 
@@ -290,7 +292,7 @@ export default function ResumePage({ data, jsonLd }) {
                   {t("resumePage.actions.email")}
                 </a>
               </div>
-              <div className="flex items-center gap-4 text-[11px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+              <div className="flex items-center gap-4 text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
                 <span>{t("resumePage.pdfMeta")}</span>
                 <button
                   type="button"
@@ -328,7 +330,7 @@ export default function ResumePage({ data, jsonLd }) {
               <dl className="print-glance grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-px bg-[#F0F0F0] dark:bg-[#1E1E1E] border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
                 {glance.map((g) => (
                   <div key={g.k} className="bg-white dark:bg-[#0A0A0A] px-4 py-3 print-avoid">
-                    <dt className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-1">
+                    <dt className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-1">
                       {g.k}
                     </dt>
                     <dd className="text-sm font-medium leading-snug text-[#1A1A1A] dark:text-[#EEEEEE]">
@@ -357,13 +359,13 @@ export default function ResumePage({ data, jsonLd }) {
                   {profile.summary}
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-1.5">
-                  <span className="mr-1 text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+                  <span className="mr-1 text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
                     {t("resumePage.sections.openTo")}
                   </span>
                   {profile.openTo.map((o) => (
                     <span
                       key={o}
-                      className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#3D3D3D] dark:text-[#AAAAAA]"
+                      className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
                     >
                       {o}
                     </span>
@@ -384,7 +386,7 @@ export default function ResumePage({ data, jsonLd }) {
                         <span className="print-value font-display text-3xl tabular-nums leading-none text-black dark:text-white">
                           {m.value}
                         </span>
-                        <span className="mt-2 text-sm leading-snug text-[#3D3D3D] dark:text-[#AAAAAA]">
+                        <span className="mt-2 text-sm leading-snug text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
                           {m.label}
                         </span>
                         <span className="cv-accent mt-3 font-mono text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C]">
@@ -429,7 +431,7 @@ export default function ResumePage({ data, jsonLd }) {
                         {g.items.map((s) => (
                           <span
                             key={s}
-                            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#3D3D3D] dark:text-[#AAAAAA]"
+                            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
                           >
                             {s}
                           </span>
@@ -454,7 +456,7 @@ export default function ResumePage({ data, jsonLd }) {
                           {e.org} · {e.line}
                         </p>
                       </div>
-                      <span className="text-[11px] tabular-nums text-[#6E6E6E] dark:text-[#9A9A9A]">
+                      <span className="text-[11px] tabular-nums text-[#6B6B6B] dark:text-[#9A9A9A]">
                         {e.period}
                       </span>
                     </li>
@@ -481,7 +483,7 @@ export default function ResumePage({ data, jsonLd }) {
                       />
                       <span className="text-[#1A1A1A] dark:text-[#DDDDDD]">
                         {c.name}
-                        <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">
+                        <span className="text-[#6B6B6B] dark:text-[#9A9A9A]">
                           {" "}
                           · {c.issuer}
                           {c.year ? `, ${c.year}` : ""}
@@ -498,7 +500,7 @@ export default function ResumePage({ data, jsonLd }) {
                   </Link>
                 </p>
 
-                <h3 className="mt-7 mb-3 font-mono text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+                <h3 className="mt-7 mb-3 font-mono text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
                   {t("resumePage.sections.languages")}
                 </h3>
                 <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
@@ -546,7 +548,7 @@ export default function ResumePage({ data, jsonLd }) {
                 </ul>
               </nav>
 
-              <p className="border-t border-[#F0F0F0] dark:border-[#1E1E1E] py-6 text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]">
+              <p className="border-t border-[#F0F0F0] dark:border-[#1E1E1E] py-6 text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {t("resumePage.footer.referees")} · {t("resumePage.updated")} {data.asOfLabel} ·{" "}
                 rin.contact/resume
               </p>

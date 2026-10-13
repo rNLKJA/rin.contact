@@ -57,7 +57,7 @@ export default function Segmented({
               size === "sm" ? "min-h-[32px] px-2.5" : "min-h-[36px] px-3",
               checked
                 ? "bg-[#1A1A1A] text-white dark:bg-[#EEEEEE] dark:text-black"
-                : "text-[#3D3D3D] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white"
+                : "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
             )}
           >
             {o.label}

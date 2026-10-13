@@ -281,7 +281,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The convex/non-convex divide, LP/simplex and integer-programming/branch-and-bound, and the
           metaheuristics + no-free-lunch framing reflect current optimisation references alongside
           OR coursework.
@@ -479,7 +479,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           凸/非凸的分水岭、LP/单纯形与整数规划/分支定界，以及元启发式 +
           没有免费午餐的框架，反映了当前的 优化参考文献以及运筹学课程。
         </p>

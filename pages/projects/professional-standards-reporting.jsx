@@ -27,12 +27,12 @@ const PATH = "/projects/professional-standards-reporting";
 const OG_TITLE = "EPSB Analytics";
 const OG_SUBTITLE = "Professional standards reporting and tooling";
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
-const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
+const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed";
 const H2 =
   "text-xl md:text-2xl font-semibold tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] flex items-baseline gap-3";
 const OUTLINE_BTN =
-  "inline-flex items-center gap-2 min-h-[40px] border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none";
+  "inline-flex items-center gap-2 min-h-[40px] border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none";
 const SOLID_BTN =
   "inline-flex items-center gap-2 min-h-[40px] rounded-full px-5 text-xs tracking-widest uppercase bg-[#1A1A1A] text-white dark:bg-[#EEEEEE] dark:text-black hover:bg-[#CC0000] dark:hover:bg-[#FF3C3C] transition-colors duration-200 motion-reduce:transition-none";
 
@@ -40,7 +40,7 @@ function Notice({ children, className = "" }) {
   return (
     <p
       role="note"
-      className={`max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed ${className}`}
+      className={`max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed ${className}`}
     >
       {children}
     </p>
@@ -118,7 +118,7 @@ export default function ProfessionalStandardsReportingPage() {
       <div className="max-w-[960px] mx-auto px-6 md:px-12 py-16 md:py-24">
         <Link
           href="/projects"
-          className="inline-block text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors mb-8"
+          className="inline-block text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors mb-8"
         >
           ← {L(COPY.back)}
         </Link>
@@ -133,7 +133,7 @@ export default function ProfessionalStandardsReportingPage() {
             <span className="block font-display text-5xl sm:text-6xl lg:text-7xl leading-none tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE]">
               {L(COPY.title)}
             </span>
-            <span className="mt-3 block font-mono text-xs md:text-sm tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A]">
+            <span className="mt-3 block font-mono text-xs md:text-sm tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
               {L(COPY.fullName)}
             </span>
           </h1>
@@ -141,7 +141,7 @@ export default function ProfessionalStandardsReportingPage() {
             {L(COPY.tagline)}
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">
+            <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
               <span
                 className="w-1.5 h-1.5 shrink-0 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
                 aria-hidden="true"
@@ -181,7 +181,7 @@ export default function ProfessionalStandardsReportingPage() {
                 <h3 className="text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE] mb-2">
                   {L(s.title)}
                 </h3>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+                <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
                   {L(s.body)}
                 </p>
               </li>
@@ -200,7 +200,7 @@ export default function ProfessionalStandardsReportingPage() {
                 key={m.value.en}
                 className="bg-white dark:bg-[#0A0A0A] px-4 py-5 flex flex-col min-w-0"
               >
-                <dt className="order-2 text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-snug">
+                <dt className="order-2 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-snug">
                   {L(m.label)}
                 </dt>
                 <dd className="order-1 font-display text-2xl sm:text-3xl leading-none text-[#1A1A1A] dark:text-[#EEEEEE] mb-3 break-words">
@@ -234,7 +234,7 @@ export default function ProfessionalStandardsReportingPage() {
             {STACK.map((s) => (
               <li
                 key={s}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full"
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full"
               >
                 {s}
               </li>
@@ -267,7 +267,7 @@ export default function ProfessionalStandardsReportingPage() {
 
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D]">
-          <p className="max-w-[680px] text-sm text-[#6E6E6E] dark:text-[#AAAAAA] leading-relaxed mb-4">
+          <p className="max-w-[680px] text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-4">
             {L(COPY.footerNote)}
           </p>
           <div className="flex flex-wrap items-center gap-3">

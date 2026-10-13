@@ -153,7 +153,7 @@ export default function ApiClient({ lang = "en" }) {
 
   return (
     <div className="space-y-6">
-      <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed max-w-[680px]">
+      <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed max-w-[680px]">
         {fill(L(A.intro), { endpoints: CATALOGUE.length, resources: RESOURCE_COUNT })}
       </p>
 
@@ -219,7 +219,7 @@ export default function ApiClient({ lang = "en" }) {
             <h4 id={`${uid}-results`} className={`${META} mb-2`}>
               {L(A.results)}
             </h4>
-            <p className="text-xs text-[#595959] dark:text-[#9A9A9A] mb-2" aria-live="polite">
+            <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] mb-2" aria-live="polite">
               {matches.length
                 ? fill(L(A.showing), { n: shown.length, total: matches.length })
                 : L(A.noMatch)}
@@ -244,7 +244,7 @@ export default function ApiClient({ lang = "en" }) {
                         <span className="block font-mono text-xs text-[#1A1A1A] dark:text-[#EEEEEE] break-all">
                           {e.path}
                         </span>
-                        <span className="block text-xs text-[#595959] dark:text-[#9A9A9A] break-words">
+                        <span className="block text-xs text-[#6B6B6B] dark:text-[#9A9A9A] break-words">
                           {summaryOf(e, lang)}
                         </span>
                       </span>
@@ -280,7 +280,7 @@ export default function ApiClient({ lang = "en" }) {
                 {endpoint.path}
               </span>
             </p>
-            <p className="mt-1.5 text-sm text-[#3D3D3D] dark:text-[#AAAAAA]">
+            <p className="mt-1.5 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
               {summaryOf(endpoint, lang)} ·{" "}
               <span className="font-mono text-xs break-all">{endpoint.id}</span>
             </p>
@@ -297,7 +297,7 @@ export default function ApiClient({ lang = "en" }) {
             <fieldset className="min-w-0">
               <legend className={`${META} mb-2`}>{L(A.params)}</legend>
               {endpoint.params.length === 0 ? (
-                <p className="text-sm text-[#595959] dark:text-[#9A9A9A]">{L(A.noParams)}</p>
+                <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">{L(A.noParams)}</p>
               ) : (
                 <div className="grid gap-3 sm:grid-cols-2">
                   {endpoint.params.map((p) => {
@@ -344,7 +344,7 @@ export default function ApiClient({ lang = "en" }) {
                         )}
                         <p
                           id={hint}
-                          className="mt-1 text-[11px] text-[#595959] dark:text-[#9A9A9A]"
+                          className="mt-1 text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]"
                         >
                           {paramMeta(p)}
                         </p>
@@ -382,7 +382,7 @@ export default function ApiClient({ lang = "en" }) {
             >
               {statusLine}
             </p>
-            {!result && <p className="text-sm text-[#595959] dark:text-[#9A9A9A]">{L(A.before)}</p>}
+            {!result && <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">{L(A.before)}</p>}
             {result && result.errors.length > 0 && (
               <div className="border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-3 space-y-1">
                 <ul className="space-y-1">
@@ -392,7 +392,7 @@ export default function ApiClient({ lang = "en" }) {
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs text-[#595959] dark:text-[#9A9A9A]">{L(A.blocked)}</p>
+                <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{L(A.blocked)}</p>
               </div>
             )}
             {result && result.errors.length === 0 && (

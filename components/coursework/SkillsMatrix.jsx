@@ -3,7 +3,7 @@ import ScrollRegion from "@/components/ui/ScrollRegion";
 
 const K = "courseworkPage.matrix";
 const GROUP =
-  "font-mono text-[10px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#FF3C3C] text-left";
+  "font-mono text-[10px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] text-left";
 
 /**
  * Skill -> project dot matrix: one row per canonical skill, one column per
@@ -36,8 +36,8 @@ export default function SkillsMatrix({
       onClick={() => onSelectSkill(c.id)}
       aria-pressed={activeSkill === c.id}
       title={fill(t(`${K}.filterBy`), { skill: c.label })}
-      className={`text-left hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200 ${
-        activeSkill === c.id ? "text-[#CC0000] dark:text-[#FF3C3C]" : ""
+      className={`text-left hover:text-[#CC0000] dark:hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 ${
+        activeSkill === c.id ? "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]" : ""
       } ${className}`}
     >
       {c.label}
@@ -73,7 +73,7 @@ export default function SkillsMatrix({
                       {...(shown ? { href: `#${p.slug}` } : {})}
                       className={`mx-auto inline-block max-h-[168px] overflow-hidden text-[11px] leading-tight text-[#3D3D3D] dark:text-[#CCCCCC] [writing-mode:vertical-rl] ${
                         shown
-                          ? "hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200"
+                          ? "hover:text-[#CC0000] dark:hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200"
                           : ""
                       } ${isZh ? "" : "rotate-180"}`}
                     >

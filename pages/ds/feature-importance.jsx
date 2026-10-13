@@ -68,7 +68,7 @@ export default function FeatureImportancePage() {
             ))}
           </div>
 
-          <p className="text-[9px] text-[#AAAAAA] mt-8 font-mono">
+          <p className="text-[9px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-8 font-mono">
             {t("ds.featureImportance.footnote")}
           </p>
 

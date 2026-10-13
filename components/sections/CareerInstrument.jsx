@@ -177,19 +177,19 @@ export default function CareerInstrument({ compact = false }) {
       <HeroDotField />
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-10 md:py-14">
         <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] m-0">
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] m-0">
             <span aria-hidden="true">■ — </span>
             {copy.label}
           </p>
           {compact ? (
             <Link
               href="/career"
-              className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
+              className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
             >
               {copy.open} <span aria-hidden="true">→</span>
             </Link>
           ) : (
-            <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] m-0">{copy.note}</p>
+            <p className="text-xs text-[#5A5A5A] dark:text-[#9A9A9A] m-0">{copy.note}</p>
           )}
         </div>
 
@@ -203,12 +203,15 @@ export default function CareerInstrument({ compact = false }) {
               <p className="font-display text-2xl md:text-4xl leading-tight text-black dark:text-white m-0">
                 {current.role}
               </p>
-              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-2 m-0">
+              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-2 m-0">
                 {compact
                   ? `${current.org} · ${copy.roleCount(current.count)}`
                   : `${current.org} · ${current.period} · ${copy.months(current.e - current.s + 1)}`}
                 {current.current && (
-                  <span className="text-[#B71C1C] dark:text-[#FF3C3C]"> · {copy.ongoing}</span>
+                  <span className="text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+                    {" "}
+                    · {copy.ongoing}
+                  </span>
                 )}
               </p>
             </>
@@ -219,10 +222,12 @@ export default function CareerInstrument({ compact = false }) {
                   ? nowRoles.map((r) => r.orgShort || r.org).join(" + ")
                   : copy.idle(allRoles.length)}
               </p>
-              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-3 m-0">
+              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-3 m-0">
                 {compact ? (
                   <>
-                    <span className="text-[#B71C1C] dark:text-[#FF3C3C]">{copy.now}</span>
+                    <span className="text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+                      {copy.now}
+                    </span>
                     {" · "}
                     {nowRoles.map((r) => r.role).join(" · ")}
                     {" · "}
@@ -243,7 +248,7 @@ export default function CareerInstrument({ compact = false }) {
             {lanes.map((g) => (
               <div key={g.track}>
                 {!compact && (
-                  <p className="h-8 flex items-end pb-1 m-0 font-mono text-[10px] md:text-[11px] tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C]">
+                  <p className="h-8 flex items-end pb-1 m-0 font-mono text-[10px] md:text-[11px] tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]">
                     {copy.tracks[g.track]}
                   </p>
                 )}
@@ -269,7 +274,7 @@ export default function CareerInstrument({ compact = false }) {
                     }
                     className={`h-7 flex items-center text-xs truncate transition-colors duration-200 outline-none focus-visible:ring-1 focus-visible:ring-[#FF3C3C] ${
                       active === r.id
-                        ? "text-[#B71C1C] dark:text-[#FF3C3C]"
+                        ? "text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]"
                         : active
                           ? "text-[#9A9A9A] dark:text-[#5C5C5C]"
                           : "text-black dark:text-white"
@@ -278,7 +283,7 @@ export default function CareerInstrument({ compact = false }) {
                     <span className="font-medium md:mr-2 truncate md:shrink-0">
                       {r.orgShort || r.org}
                     </span>
-                    <span className="hidden md:inline min-w-0 text-[#6E6E6E] dark:text-[#9A9A9A] truncate">
+                    <span className="hidden md:inline min-w-0 text-[#5A5A5A] dark:text-[#9A9A9A] truncate">
                       {compact ? r.org : r.role}
                     </span>
                   </a>
@@ -340,7 +345,7 @@ export default function CareerInstrument({ compact = false }) {
                 transition: reduce ? "none" : "left 2.4s cubic-bezier(0.2, 0.7, 0.2, 1)",
               }}
             >
-              <span className="absolute -top-5 -translate-x-1/2 font-mono text-[10px] tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] whitespace-nowrap">
+              <span className="absolute -top-5 -translate-x-1/2 font-mono text-[10px] tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] whitespace-nowrap">
                 {copy.now}
               </span>
             </div>
@@ -350,7 +355,7 @@ export default function CareerInstrument({ compact = false }) {
               {years.map((y) => (
                 <span
                   key={y}
-                  className="absolute top-0 font-mono text-[10px] md:text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]"
+                  className="absolute top-0 font-mono text-[10px] md:text-[11px] text-[#5A5A5A] dark:text-[#9A9A9A]"
                   style={{ left: `${(((y - ORIGIN_YEAR) * 12) / total) * 100}%` }}
                 >
                   {y}

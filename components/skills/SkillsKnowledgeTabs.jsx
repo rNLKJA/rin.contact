@@ -19,22 +19,22 @@ function Row({ href, status, label, note, statusLabel }) {
         <span
           className={`text-[15px] ${
             isLive
-              ? "text-[#1A1A1A] dark:text-white group-hover:text-[#FF3C3C]"
-              : "text-[#9A9A9A] dark:text-[#6E6E6E]"
+              ? "text-[#1A1A1A] dark:text-white group-hover:text-[#CC0000] dark:text-[#FF3C3C]"
+              : "text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
           } transition-colors`}
         >
           {label}
         </span>
-        <span className="block mt-0.5 text-[12px] text-[#AAAAAA] dark:text-[#6E6E6E] [text-wrap:pretty]">
+        <span className="block mt-0.5 text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
           {note}
         </span>
       </div>
       <span
         className={`flex-shrink-0 font-mono text-[9px] tracking-widest uppercase px-1.5 py-0.5 border ${
           isLive
-            ? "text-[#FF3C3C] border-[#FF3C3C]"
+            ? "text-[#CC0000] dark:text-[#FF3C3C] border-[#FF3C3C]"
             : status === "soon"
-              ? "text-[#7A7A7A] border-[#D0D0D0] dark:border-[#3D3D3D]"
+              ? "text-[#6B6B6B] border-[#D0D0D0] dark:border-[#3D3D3D]"
               : "text-[#BFBFBF] dark:text-[#555] border-[#ECECEC] dark:border-[#262626]"
         }`}
       >
@@ -117,8 +117,8 @@ export default function SkillsKnowledgeTabs({ evidenceContent }) {
               onKeyDown={onKeyDown}
               className={`px-4 py-3 text-sm font-medium transition-colors border-b-2 -mb-px ${
                 isActive
-                  ? "border-[#FF3C3C] text-[#CC0000] dark:text-[#FF3C3C]"
-                  : "border-transparent text-[#7A7A7A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
+                  ? "border-[#FF3C3C] text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+                  : "border-transparent text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
               }`}
             >
               {t(`skillsPage.tabs.${tab}`)}
@@ -145,10 +145,10 @@ export default function SkillsKnowledgeTabs({ evidenceContent }) {
         hidden={activeTab !== "notes"}
       >
         <div className="max-w-[720px]">
-          <p className="text-base text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed [text-wrap:pretty] mb-3">
+          <p className="text-base text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed [text-wrap:pretty] mb-3">
             {t("knowledgeIndex.intro")}
           </p>
-          <p className="font-mono text-[11px] text-[#9A9A9A] dark:text-[#6E6E6E] mb-10">
+          <p className="font-mono text-[11px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-10">
             {t("knowledgeIndex.liveCounter")
               .replace("{live}", liveCount)
               .replace("{total}", totalCount)}
@@ -160,14 +160,14 @@ export default function SkillsKnowledgeTabs({ evidenceContent }) {
               return (
                 <section key={tier.key}>
                   <div className="flex items-baseline justify-between gap-4 mb-2">
-                    <h3 className="font-mono text-[11px] tracking-widest uppercase text-[#FF3C3C]">
+                    <h3 className="font-mono text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C]">
                       {tierCopy.label}
                     </h3>
                     <span className="font-mono text-[10px] text-[#BFBFBF] dark:text-[#555]">
                       {tier.topics.filter((tp) => tp.status === "live").length}/{tier.topics.length}
                     </span>
                   </div>
-                  <p className="text-[12px] text-[#AAAAAA] dark:text-[#6E6E6E] mb-3 [text-wrap:pretty]">
+                  <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-3 [text-wrap:pretty]">
                     {tierCopy.blurb}
                   </p>
                   <div className="divide-y divide-[#E8E8E8] dark:divide-[#1E1E1E] border-t border-[#E8E8E8] dark:border-[#1E1E1E]">

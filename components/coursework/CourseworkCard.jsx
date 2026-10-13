@@ -4,7 +4,7 @@ import { fill, joinNames } from "@/lib/fill";
 import ProjectStatus from "@/components/ui/ProjectStatus";
 
 const K = "courseworkPage.card";
-const LABEL = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const LABEL = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const ROWS =
   "grid grid-cols-1 sm:grid-cols-[112px_minmax(0,1fr)] gap-x-4 text-[13px] leading-relaxed";
 const SECONDARY =
@@ -16,9 +16,12 @@ const SHOWN = 2;
 function Highlight({ text, className = "" }) {
   return (
     <li
-      className={`flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] ${className}`}
+      className={`flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] ${className}`}
     >
-      <span className="text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0" aria-hidden="true">
+      <span
+        className="text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0"
+        aria-hidden="true"
+      >
         ·
       </span>
       <span>{text}</span>
@@ -93,7 +96,9 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
       {/* Subject, date and status */}
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[11px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]">
-          <span className="font-mono text-[#CC0000] dark:text-[#FF3C3C]">{p.subjectCode}</span>
+          <span className="font-mono text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+            {p.subjectCode}
+          </span>
           <span className="sr-only"> </span>
           <span>{p.subject}</span>
         </p>
@@ -118,7 +123,7 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
       >
         {p.title}
       </h5>
-      <p className="mt-2 text-[15px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] max-w-[68ch]">
+      <p className="mt-2 text-[15px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-[68ch]">
         {p.summary}
       </p>
 
@@ -177,7 +182,7 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
           {p.skills.map((s) => (
             <li
               key={s}
-              className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA]"
+              className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]"
             >
               {s}
             </li>

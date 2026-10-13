@@ -153,8 +153,8 @@ function NavIconLink({ href, icon: Icon, label, active }) {
       aria-current={active ? "page" : undefined}
       className={`group relative inline-flex items-center h-9 px-[9px] [@media(hover:none)]:px-1 max-xl:[@media(hover:none)]:tracking-wider rounded-full transition-colors duration-200 ${
         active
-          ? "text-[#CC0000] dark:text-[#FF3C3C]"
-          : "text-[#595959] dark:text-[#AAAAAA] [@media(hover:hover)]:hover:text-black dark:[@media(hover:hover)]:hover:text-white [@media(hover:hover)]:hover:bg-[#F5F5F5] dark:[@media(hover:hover)]:hover:bg-[#1A1A1A] focus-visible:text-black dark:focus-visible:text-white"
+          ? "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+          : "text-[#6B6B6B] dark:text-[#9A9A9A] [@media(hover:hover)]:hover:text-black dark:[@media(hover:hover)]:hover:text-white [@media(hover:hover)]:hover:bg-[#F5F5F5] dark:[@media(hover:hover)]:hover:bg-[#1A1A1A] focus-visible:text-black dark:focus-visible:text-white"
       }`}
     >
       <Icon
@@ -191,8 +191,8 @@ function ToolIconLink({ href, icon: Icon, label, active, className = "" }) {
       aria-current={active ? "page" : undefined}
       className={`group relative inline-flex items-center justify-center w-9 h-9 border transition-colors duration-200 ${className} ${
         active
-          ? "border-[#FF3C3C] text-[#CC0000] dark:text-[#FF3C3C]"
-          : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
+          ? "border-[#FF3C3C] text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+          : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
       }`}
     >
       <Icon size={18} strokeWidth={1.5} aria-hidden="true" />
@@ -215,7 +215,7 @@ function SearchButton({ label, tip, shortcut, open, onOpen, className = "" }) {
       aria-haspopup="dialog"
       aria-expanded={open}
       aria-keyshortcuts={shortcut === "⌘K" ? "Meta+K" : "Control+K"}
-      className={`group relative inline-flex items-center justify-center w-9 h-9 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-colors duration-200 ${className}`}
+      className={`group relative inline-flex items-center justify-center w-9 h-9 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-colors duration-200 ${className}`}
     >
       <FiSearch size={18} strokeWidth={1.5} aria-hidden="true" />
       <span aria-hidden="true" className={TIP}>
@@ -421,8 +421,8 @@ export default function Header() {
           {/* Locale switcher */}
           <LocaleSwitcher />
 
-          {/* Theme toggle — desktop */}
-          <ThemeToggle className="ml-1" />
+          {/* Theme toggle — desktop segmented control */}
+          <ThemeSegmented className="ml-1" />
 
           {/* Page links — card (square icon, like the toggles) + hire-me (CTA) */}
           {PAGE_LINKS.map(({ href, key, titleKey, cta, icon }) => {
@@ -519,13 +519,13 @@ export default function Header() {
             onPointerDown={preloadPalette}
             onFocus={preloadPalette}
             aria-haspopup="dialog"
-            className="w-full flex items-center gap-3 h-11 px-3 border border-[#E0E0E0] dark:border-[#3D3D3D] text-left text-sm text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+            className="w-full flex items-center gap-3 h-11 px-3 border border-[#E0E0E0] dark:border-[#3D3D3D] text-left text-sm text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
           >
             <FiSearch size={16} strokeWidth={1.5} aria-hidden="true" className="flex-shrink-0" />
             <span className="flex-1 min-w-0 truncate">{t("search.open")}</span>
             <span
               aria-hidden="true"
-              className="hidden [@media(hover:hover)]:inline font-mono text-[10px] tracking-widest text-ink-subtle"
+              className="hidden [@media(hover:hover)]:inline font-mono text-[10px] tracking-widest text-[#6B6B6B] dark:text-[#9A9A9A]"
             >
               {shortcut}
             </span>
@@ -549,12 +549,16 @@ export default function Header() {
                   onClick={closeMenu}
                   aria-current={active ? "page" : undefined}
                   className={`flex flex-shrink-0 items-baseline gap-4 py-4 [@media(max-height:900px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
-                    active ? "text-[#FF3C3C]" : "text-black dark:text-white hover:text-[#FF3C3C]"
+                    active
+                      ? "text-[#CC0000] dark:text-[#FF3C3C]"
+                      : "text-black dark:text-white hover:text-[#CC0000] dark:text-[#FF3C3C]"
                   }`}
                 >
                   <span
                     className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
-                      active ? "text-accent-ink" : "text-ink-subtle group-hover:text-[#FF3C3C]"
+                      active
+                        ? "text-accent-ink"
+                        : "text-[#6B6B6B] dark:text-[#9A9A9A] group-hover:text-[#CC0000] dark:text-[#FF3C3C]"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -568,7 +572,7 @@ export default function Header() {
                   ) : (
                     <span
                       aria-hidden="true"
-                      className="ml-auto text-[#E0E0E0] group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm"
+                      className="ml-auto text-[#E0E0E0] group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 text-sm"
                     >
                       ↗
                     </span>
@@ -578,7 +582,7 @@ export default function Header() {
             })}
 
             {/* Page links — separated by a subtle label */}
-            <p className="flex-shrink-0 text-[9px] tracking-widest uppercase text-ink-subtle mt-5 mb-1">
+            <p className="flex-shrink-0 text-[9px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mt-5 mb-1">
               {t("nav.pages")}
             </p>
             {PAGE_LINKS.map(({ href, key, cta }) => {
@@ -594,7 +598,7 @@ export default function Header() {
                       ? "text-accent-ink"
                       : active
                         ? "text-accent-ink"
-                        : "text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white"
+                        : "text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
                   }`}
                 >
                   <span
@@ -643,7 +647,7 @@ export default function Header() {
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center min-h-[36px] rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 text-[10px] tracking-widest uppercase
-                           text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+                           text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
               >
                 {label}
               </a>

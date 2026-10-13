@@ -30,7 +30,7 @@ export default function PageHero({
       <div className="relative" data-guide="page-hero">
         <Link
           href={backHref}
-          className="animate-fade-up inline-flex items-center gap-1.5 py-1.5 -mt-1.5 mb-[22px] text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors"
+          className="animate-fade-up inline-flex items-center gap-1.5 py-1.5 -mt-1.5 mb-[22px] text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors"
         >
           <span aria-hidden="true">&larr;</span> {backLabel}
         </Link>
@@ -45,7 +45,7 @@ export default function PageHero({
         </h1>
 
         {description && (
-          <p className="animate-fade-up delay-300 text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
+          <p className="animate-fade-up delay-300 text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
             {description}
           </p>
         )}

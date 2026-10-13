@@ -389,7 +389,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The bagging-vs-boosting framing, gradient-boosting-as-residual-fitting, and XGBoost's
           regularisation/early-stopping practice reflect current ensemble-learning references
           alongside ML coursework.
@@ -613,7 +613,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           bagging 对 boosting 的取景、把梯度提升看作残差拟合，以及 XGBoost
           的正则化/提前停止实务，反映 了当前的集成学习参考文献以及机器学习课程。
         </p>

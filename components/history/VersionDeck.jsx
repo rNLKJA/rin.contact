@@ -110,7 +110,7 @@ function Slide({ v, i, total, lang, locale, t, archiveOpen, onToggleArchive, sli
           </div>
         </div>
         {caption && (
-          <figcaption className="mt-2 text-[11px] leading-relaxed text-ink-subtle">
+          <figcaption className="mt-2 text-[11px] leading-relaxed text-[#6B6B6B] dark:text-[#9A9A9A]">
             {caption}
           </figcaption>
         )}
@@ -135,7 +135,7 @@ function Slide({ v, i, total, lang, locale, t, archiveOpen, onToggleArchive, sli
         </ul>
         <dl className="mt-5 space-y-4">
           <div>
-            <dt className="text-[10px] font-mono tracking-widest uppercase text-ink-subtle mb-1">
+            <dt className="text-[10px] font-mono tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-1">
               {t("infoHistory.changedLabel")}
             </dt>
             <dd className="text-sm leading-relaxed text-[#3D3D3D] dark:text-[#CCCCCC]">
@@ -143,7 +143,7 @@ function Slide({ v, i, total, lang, locale, t, archiveOpen, onToggleArchive, sli
             </dd>
           </div>
           <div>
-            <dt className="text-[10px] font-mono tracking-widest uppercase text-ink-subtle mb-1">
+            <dt className="text-[10px] font-mono tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-1">
               {t("infoHistory.thinkingLabel")}
             </dt>
             <dd className="text-sm leading-relaxed text-[#3D3D3D] dark:text-[#CCCCCC]">

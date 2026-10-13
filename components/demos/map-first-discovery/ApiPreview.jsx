@@ -9,7 +9,7 @@ import { fill } from "@/lib/fill";
 import { DEMO as D } from "@/lib/demos/map-first-discovery-data";
 import { toLatLng } from "./geo";
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const CODE =
   "rounded-lg border border-[#F0F0F0] dark:border-[#3D3D3D] bg-[#F7F7F7] dark:bg-[#141414] p-3 font-mono text-[11px] leading-relaxed text-[#1A1A1A] dark:text-[#EEEEEE] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
 const SHOW_ITEMS = 2;
@@ -65,7 +65,7 @@ export default function ApiPreview({ you, radius, show, cell, items, lang, id })
       <h3 id={id} className="text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE] mb-2">
         {L(D.apiTitle)}
       </h3>
-      <p className="max-w-[680px] text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-4">
+      <p className="max-w-[680px] text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-4">
         {L(D.apiNote)}
       </p>
       <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
@@ -85,7 +85,7 @@ export default function ApiPreview({ you, radius, show, cell, items, lang, id })
           >
             <code>{JSON.stringify(response, null, 2)}</code>
           </pre>
-          <p className="mt-1.5 text-xs text-[#595959] dark:text-[#9A9A9A]">
+          <p className="mt-1.5 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
             {fill(L(D.apiShowing), { n: shown.length, total: items.length })}
           </p>
         </div>

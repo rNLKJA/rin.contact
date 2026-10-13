@@ -95,7 +95,9 @@ export default function TestimonialsSection() {
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black dark:text-white">
             Trusted by.
           </h2>
-          <p className="text-sm text-ink-subtle mt-2">What people say about working with Rin.</p>
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] mt-2">
+            What people say about working with Rin.
+          </p>
         </div>
 
         {/* quote card */}
@@ -111,15 +113,15 @@ export default function TestimonialsSection() {
             {TESTIMONIALS.map((t, i) => (
               <blockquote
                 key={i}
-                className={`[grid-area:1/1] transition-opacity duration-200 ${
-                  i === current ? "opacity-100 animate-enter-up" : "opacity-0 pointer-events-none"
+                className={`[grid-area:1/1] ${
+                  i === current ? "opacity-100 animate-enter-up" : "invisible"
                 }`}
               >
-                <p className="text-lg md:text-xl leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] mb-6">
+                <p className="text-lg md:text-xl leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-6">
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <footer className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#F5F5F5] dark:bg-[#1A1A1A] flex items-center justify-center text-[10px] font-mono text-ink-subtle">
+                  <div className="w-8 h-8 rounded-full bg-[#F5F5F5] dark:bg-[#1A1A1A] flex items-center justify-center text-[10px] font-mono text-[#6B6B6B] dark:text-[#9A9A9A]">
                     {t.name.charAt(0)}
                   </div>
                   <div>
@@ -129,7 +131,7 @@ export default function TestimonialsSection() {
                           href={t.linkedIn}
                           target="_blank"
                           rel="noreferrer"
-                          className="hover:text-[#FF3C3C] transition-colors"
+                          className="hover:text-[#CC0000] dark:text-[#FF3C3C] dark:hover:text-[#FFF0F0] transition-colors"
                         >
                           {t.name}
                         </a>
@@ -137,7 +139,7 @@ export default function TestimonialsSection() {
                         t.name
                       )}
                     </p>
-                    <p className="text-xs text-ink-subtle">{t.title}</p>
+                    <p className="text-xs text-[#3A3A3A] dark:text-[#B4B4B4]">{t.title}</p>
                   </div>
                 </footer>
               </blockquote>
@@ -150,7 +152,7 @@ export default function TestimonialsSection() {
           <div className="flex items-center gap-2 mt-10 font-mono text-[11px] tracking-[0.3em]">
             <span className="text-accent-ink">{String(current + 1).padStart(2, "0")}</span>
             <span className="text-[#D0D0D0] dark:text-[#3D3D3D]">/</span>
-            <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">
+            <span className="text-[#6B6B6B] dark:text-[#9A9A9A]">
               {String(total).padStart(2, "0")}
             </span>
             {!reduced && (
@@ -158,7 +160,7 @@ export default function TestimonialsSection() {
                 onClick={() => setAutoPlay((p) => !p)}
                 aria-label={autoPlay ? "Pause testimonials" : "Play testimonials"}
                 aria-pressed={!autoPlay}
-                className="ml-3 w-6 h-6 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] text-ink-subtle hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors"
+                className="ml-3 w-6 h-6 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors"
               >
                 {autoPlay ? (
                   <svg

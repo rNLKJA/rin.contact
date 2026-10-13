@@ -134,7 +134,7 @@ export default function ArtPage() {
           {/* Floating label */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center pointer-events-none">
             <p
-              className="animate-enter font-mono text-[10px] tracking-[0.3em] uppercase text-[#AAAAAA]"
+              className="animate-enter font-mono text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B] dark:text-[#9A9A9A]"
               key={labelIdx}
             >
               {labels[labelIdx] || ""}

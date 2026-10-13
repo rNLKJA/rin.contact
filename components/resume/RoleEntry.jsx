@@ -23,10 +23,10 @@ function Bullet({ id, text }) {
     <li
       id={id}
       tabIndex={-1}
-      className="scroll-mt-24 flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] -mx-2 px-2 py-0.5 rounded-sm target:bg-[#FFF1F1] dark:target:bg-[#1F0E0E] target:shadow-[inset_2px_0_0_#CC0000] dark:target:shadow-[inset_2px_0_0_#FF3C3C] target:animate-enter"
+      className="scroll-mt-24 flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] -mx-2 px-2 py-0.5 rounded-sm target:bg-[#FFF1F1] dark:target:bg-[#1F0E0E] target:shadow-[inset_2px_0_0_#CC0000] dark:target:shadow-[inset_2px_0_0_#FF3C3C] target:animate-enter"
     >
       <span
-        className="cv-accent text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0"
+        className="cv-accent text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0"
         aria-hidden="true"
       >
         ·
@@ -53,13 +53,13 @@ export default function RoleEntry({ role, t }) {
       className="scroll-mt-24 grid md:grid-cols-[136px_minmax(0,1fr)] gap-x-6 gap-y-2 py-6 border-t border-[#F0F0F0] dark:border-[#1E1E1E] first:border-t-0 first:pt-0"
     >
       {/* Date gutter: a single meta line on mobile, a column from md */}
-      <div className="flex flex-wrap md:flex-col items-start gap-x-3 gap-y-1.5 text-[11px] uppercase tracking-widest tabular-nums text-[#6E6E6E] dark:text-[#9A9A9A]">
+      <div className="flex flex-wrap md:flex-col items-start gap-x-3 gap-y-1.5 text-[11px] uppercase tracking-widest tabular-nums text-[#6B6B6B] dark:text-[#9A9A9A]">
         <time dateTime={role.start}>{role.period}</time>
         {role.duration && <span>{role.duration}</span>}
         <span>{t(`resumePage.track.${role.track}`)}</span>
         {role.current && (
           <span
-            className={`${CHIP} cv-accent border-[#CC0000] text-[#CC0000] dark:border-[#FF3C3C] dark:text-[#FF3C3C]`}
+            className={`${CHIP} cv-accent border-[#CC0000] text-[#CC0000] dark:border-[#FF3C3C] dark:text-[#CC0000] dark:text-[#FF3C3C]`}
           >
             {t("resumePage.role.current")}
           </span>
@@ -80,14 +80,14 @@ export default function RoleEntry({ role, t }) {
         >
           {role.role}
         </h3>
-        <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] mt-1">
+        <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-1">
           {role.org}
           {showTeam && <span> · {role.team}</span>}
-          <span className="text-[#6E6E6E] dark:text-[#9A9A9A]"> · {role.location}</span>
+          <span className="text-[#6B6B6B] dark:text-[#9A9A9A]"> · {role.location}</span>
         </p>
 
         {role.summary && (
-          <p className="text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] mt-3 max-w-[68ch]">
+          <p className="text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-3 max-w-[68ch]">
             {role.summary}
           </p>
         )}
@@ -110,7 +110,7 @@ export default function RoleEntry({ role, t }) {
               aria-expanded={open}
               aria-controls={moreId}
               onClick={() => setOpen((o) => !o)}
-              className="print:hidden py-1.5 mt-0.5 -mb-1.5 text-[11px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
+              className="print:hidden py-1.5 mt-0.5 -mb-1.5 text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
             >
               {open
                 ? t("resumePage.role.showLess")
@@ -125,7 +125,7 @@ export default function RoleEntry({ role, t }) {
             {role.tools.slice(0, 8).map((tool) => (
               <span
                 key={tool}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA]"
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]"
               >
                 {tool}
               </span>
@@ -133,7 +133,7 @@ export default function RoleEntry({ role, t }) {
           </div>
         )}
 
-        <p className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-xs text-[#6E6E6E] dark:text-[#9A9A9A]">
+        <p className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
           {role.links.map((l) =>
             l.href.startsWith("http") ? (
               <a

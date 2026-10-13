@@ -81,7 +81,7 @@ const csvCell = (v) => {
   return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 };
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const PANEL = "border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg p-4";
 const BTN =
   "inline-flex items-center justify-center min-h-[36px] rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 text-xs text-[#3D3D3D] dark:text-[#CCCCCC] hover:border-[#1A1A1A] dark:hover:border-[#EEEEEE] disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-150 motion-reduce:transition-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
@@ -308,7 +308,7 @@ export default function PlateDemo({ lang = "en" }) {
 
         {/* Plate */}
         <div className="min-w-0 lg:order-1 lg:row-span-3">
-          <p id={helpId} className="text-xs text-[#595959] dark:text-[#9A9A9A] mb-3">
+          <p id={helpId} className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] mb-3">
             {L(D.plateHelp)}
           </p>
           <div
@@ -323,7 +323,7 @@ export default function PlateDemo({ lang = "en" }) {
               <span
                 key={c}
                 aria-hidden="true"
-                className={`text-center font-mono text-[#6E6E6E] dark:text-[#9A9A9A] ${small ? "text-[7px] sm:text-[9px]" : "text-[10px]"}`}
+                className={`text-center font-mono text-[#6B6B6B] dark:text-[#9A9A9A] ${small ? "text-[7px] sm:text-[9px]" : "text-[10px]"}`}
               >
                 {c + 1}
               </span>
@@ -332,7 +332,7 @@ export default function PlateDemo({ lang = "en" }) {
               <Fragment key={r}>
                 <span
                   aria-hidden="true"
-                  className={`flex items-center justify-center font-mono text-[#6E6E6E] dark:text-[#9A9A9A] ${small ? "text-[7px] sm:text-[9px]" : "text-[10px]"}`}
+                  className={`flex items-center justify-center font-mono text-[#6B6B6B] dark:text-[#9A9A9A] ${small ? "text-[7px] sm:text-[9px]" : "text-[10px]"}`}
                 >
                   {ROW_LETTERS[r]}
                 </span>
@@ -402,7 +402,7 @@ export default function PlateDemo({ lang = "en" }) {
             <span className="font-display text-3xl leading-none text-[#1A1A1A] dark:text-[#EEEEEE]">
               {activeId}
             </span>
-            <span className="flex items-center gap-1.5 text-sm text-[#3D3D3D] dark:text-[#AAAAAA]">
+            <span className="flex items-center gap-1.5 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
               <Swatch id={assign[active] || "empty"} />
               {nameOf(assign[active])}
             </span>
@@ -423,7 +423,7 @@ export default function PlateDemo({ lang = "en" }) {
             aria-describedby={barcodeHelpId}
             className="w-full rounded-md border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#0A0A0A] px-3 py-2 font-mono text-base tracking-[0.2em] text-[#1A1A1A] dark:text-[#EEEEEE] aria-[invalid=true]:border-[#CC0000] dark:aria-[invalid=true]:border-[#FF3C3C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]"
           />
-          <p id={barcodeHelpId} className="mt-1 text-xs text-[#595959] dark:text-[#9A9A9A]">
+          <p id={barcodeHelpId} className="mt-1 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
             {L(D.barcodeHint)}
           </p>
           <div className="mt-3 flex flex-wrap gap-1.5">
@@ -476,7 +476,7 @@ export default function PlateDemo({ lang = "en" }) {
               </li>
             ))}
             {report.empty > 0 && (
-              <li className="flex gap-2 text-[#3D3D3D] dark:text-[#AAAAAA]">
+              <li className="flex gap-2 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
                 <span aria-hidden="true">·</span>
                 {report.empty === 1 ? L(D.emptyOne) : fill(L(D.emptyMany), { n: report.empty })}
               </li>
@@ -536,7 +536,7 @@ export default function PlateDemo({ lang = "en" }) {
           </p>
         )}
         {report.filled === 0 ? (
-          <p className="text-sm text-[#595959] dark:text-[#9A9A9A]">{L(D.noRows)}</p>
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">{L(D.noRows)}</p>
         ) : (
           <>
             <div
@@ -581,7 +581,7 @@ export default function PlateDemo({ lang = "en" }) {
                 </tbody>
               </table>
             </div>
-            <p className="mt-2 text-xs text-[#595959] dark:text-[#9A9A9A]">
+            <p className="mt-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
               {fill(L(D.showing), {
                 n: Math.min(PREVIEW_ROWS, report.sheet.length),
                 total: report.sheet.length,

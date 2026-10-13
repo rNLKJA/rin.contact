@@ -27,7 +27,7 @@ export default function HistoryPage() {
 
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex flex-col">
         <div className="w-full max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">
+          <p className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] font-mono mb-4">
             /info/history
           </p>
           <div data-guide="history-intro" className="mb-12">
@@ -39,7 +39,7 @@ export default function HistoryPage() {
 
           <VersionDeck versions={VERSIONS} />
 
-          <h2 className="mt-20 mb-6 text-[10px] font-mono tracking-widest uppercase text-ink-subtle flex items-center gap-2">
+          <h2 className="mt-20 mb-6 text-[10px] font-mono tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] flex items-center gap-2">
             <span aria-hidden="true" className="inline-block w-1.5 h-1.5 bg-[#FF3C3C]" />
             {t("infoHistory.timelineHeading")}
           </h2>

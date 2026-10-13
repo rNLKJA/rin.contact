@@ -327,7 +327,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Reflects current data-governance and FAIR-principles guidance (the original FAIR paper in
           Scientific Data; government FAIR-readiness and Australian privacy practice) alongside
           hands-on government work.
@@ -549,7 +549,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           反映了当前的数据治理与 FAIR 原则指引（《Scientific Data》上 FAIR 的原始论文；政府的 FAIR
           就绪度与澳大利亚隐私实践），以及亲身的政府工作。
         </p>

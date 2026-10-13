@@ -311,7 +311,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The distribution-free coverage guarantee, the split-conformal calibration mechanism, and
           the marginal-coverage / exchangeability caveats reflect current conformal-prediction
           references alongside ML coursework.
@@ -521,7 +521,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           无分布的覆盖保证、分裂保形的校准机制，以及边际覆盖／可交换性的告诫，反映了当前的保形预测参考
           文献以及机器学习课程。
         </p>

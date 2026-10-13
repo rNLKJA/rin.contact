@@ -303,7 +303,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The sacred-test-set principle, stratified cross-validation, the accuracy-on-imbalance
           trap, and the often-skipped calibration step reflect current model-evaluation references
           alongside coursework.
@@ -534,7 +534,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           神圣测试集的原则、分层交叉验证、不平衡上的准确率陷阱，以及那个常被跳过的校准步骤，反映了当前的
           模型评估参考文献以及课程。
         </p>

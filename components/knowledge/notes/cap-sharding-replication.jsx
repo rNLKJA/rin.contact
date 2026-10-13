@@ -229,7 +229,7 @@ function ZhBody() {
           的正式证明（2002），和 Kleppmann 的《设计数据密集型应用》（2017），第 9 章。Dynamo 和
           Cassandra 论文是典型的 AP 例子；Google Spanner 是 CP。
         </p>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6">
           初稿于2023，2026年重写。
         </p>
       </KSection>

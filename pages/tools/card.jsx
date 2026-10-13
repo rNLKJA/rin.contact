@@ -285,7 +285,7 @@ function TiltFlipCard() {
         </div>
       </div>
 
-      <p className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A] whitespace-nowrap pointer-events-none">
+      <p className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-mono text-[#6B6B6B] dark:text-[#9A9A9A] whitespace-nowrap pointer-events-none">
         {t("cardPage.tapHint")}
       </p>
     </div>
@@ -341,7 +341,7 @@ export default function CardPage() {
           <div className="flex gap-3">
             <a
               href="mailto:huang@rin.contact"
-              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
+              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
             >
               {t("cardPage.email")}
             </a>
@@ -349,7 +349,7 @@ export default function CardPage() {
               href="https://www.linkedin.com/in/sunchuangyuhuang"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
+              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
             >
               LinkedIn
             </a>
@@ -357,7 +357,7 @@ export default function CardPage() {
               href="https://github.com/rNLKJA"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
+              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
             >
               GitHub
             </a>
@@ -370,7 +370,7 @@ export default function CardPage() {
           </Link>
         </div>
 
-        <p className="mt-8 text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono text-center">
+        <p className="mt-8 text-[10px] text-[#6B6B6B] dark:text-[#9A9A9A] font-mono text-center">
           rin.contact/tools/card · Adelaide SA · UTC+9:30
         </p>
       </div>

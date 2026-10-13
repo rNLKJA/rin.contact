@@ -241,7 +241,7 @@ export default function UChart({ rows, chart, reporting, title, desc, quarterLab
 export function UChartLegend({ labels }) {
   const item = "flex items-center gap-2";
   return (
-    <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#595959] dark:text-[#9A9A9A]">
+    <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
       <li className={item}>
         <span aria-hidden="true" className="inline-block w-5 h-px bg-[#1A1A1A] dark:bg-[#EEEEEE]" />
         {labels.centre}

@@ -20,7 +20,7 @@ export default function InceptionPage() {
 
       {/* Outer shell — visible label */}
       <div className="min-h-screen bg-[#F5F5F5] flex flex-col items-center justify-center p-6">
-        <p className="font-mono text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">
+        <p className="font-mono text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-4">
           /inception · level 0
         </p>
         <p className="font-mono text-xs text-[#7A7A7A] mb-6 text-center max-w-xs">

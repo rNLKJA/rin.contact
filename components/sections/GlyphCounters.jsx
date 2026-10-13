@@ -93,11 +93,11 @@ function Counter({ id, target, started, reduce, index, copy }) {
       href={HREF[id]}
       className="group relative flex flex-col gap-3 px-6 py-8 md:px-8 md:py-10 bg-white/80 dark:bg-[#0A0A0A]/80 hover:bg-white dark:hover:bg-[#0A0A0A] transition-colors duration-200"
     >
-      <span className="font-mono text-[11px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+      <span className="font-mono text-[11px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A]">
         {String(index + 1).padStart(2, "0")}
       </span>
       <span
-        className="font-display text-5xl md:text-6xl leading-none tabular-nums text-black dark:text-white group-hover:text-[#FF3C3C] transition-colors duration-200"
+        className="font-display text-5xl md:text-6xl leading-none tabular-nums text-black dark:text-white group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200"
         aria-hidden="true"
       >
         {value}
@@ -124,7 +124,7 @@ function Counter({ id, target, started, reduce, index, copy }) {
       <span className="text-sm font-medium tracking-wide uppercase text-black dark:text-white">
         {label}
       </span>
-      <span className="text-xs font-light text-[#6E6E6E] dark:text-[#9A9A9A] -mt-2">{sub}</span>
+      <span className="text-xs font-light text-[#5A5A5A] dark:text-[#9A9A9A] -mt-2">{sub}</span>
     </Link>
   );
 }
@@ -167,11 +167,11 @@ export default function GlyphCounters({ stats }) {
       <HeroDotField />
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-10 md:py-14">
         <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] m-0">
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] m-0">
             <span aria-hidden="true">■ — </span>
             {copy.label}
           </p>
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] m-0">{copy.note}</p>
+          <p className="text-xs text-[#5A5A5A] dark:text-[#9A9A9A] m-0">{copy.note}</p>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#E0E0E0] dark:bg-[#3D3D3D] border border-[#E0E0E0] dark:border-[#3D3D3D]">
           {ids.map((id, i) => (

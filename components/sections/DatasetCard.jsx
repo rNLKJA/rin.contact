@@ -107,7 +107,7 @@ export default function DatasetCard() {
           <p className="text-xs tracking-widest uppercase text-accent-ink mb-1 font-mono">
             ◈ — If I were a dataset
           </p>
-          <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
+          <p className="text-[10px] text-[#6B6B6B] dark:text-[#9A9A9A] font-mono">
             What does a data scientist look like as data?
           </p>
         </div>
@@ -120,7 +120,7 @@ export default function DatasetCard() {
               className={`px-4 py-1.5 text-[10px] tracking-widest uppercase transition-colors ${
                 tab === t
                   ? "bg-black text-white"
-                  : "text-ink-subtle dark:text-[#9A9A9A] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
+                  : "text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
               }`}
             >
               .{t}()
@@ -152,14 +152,18 @@ export default function DatasetCard() {
               className="w-2.5 h-2.5 rounded-full bg-[#DDD] dark:bg-[#222]"
               aria-hidden="true"
             />
-            <span className="ml-3 text-[10px] font-mono text-ink-subtle dark:text-[#9A9A9A]">
+            <span className="ml-3 text-[10px] font-mono text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A]">
               rin@universe:~$ python3
             </span>
           </div>
 
           <div className="p-5 font-mono text-xs leading-relaxed">
-            <p className="text-ink-subtle dark:text-[#9A9A9A] mb-0.5">&gt;&gt;&gt; import rin</p>
-            <p className="text-ink-subtle dark:text-[#9A9A9A] mb-4">&gt;&gt;&gt; rin.{tab}()</p>
+            <p className="text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] mb-0.5">
+              &gt;&gt;&gt; import rin
+            </p>
+            <p className="text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] mb-4">
+              &gt;&gt;&gt; rin.{tab}()
+            </p>
 
             {/* ── .info() view ──────────────────────────────────────────────── */}
             {tab === "info" && (
@@ -191,10 +195,10 @@ export default function DatasetCard() {
                     <span className="w-5 flex-shrink-0 text-[#AAA] dark:text-[#2E2E2E] select-none">
                       {i}
                     </span>
-                    <span className="w-36 flex-shrink-0 text-ink-subtle dark:text-[#686868]">
+                    <span className="w-36 flex-shrink-0 text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#686868]">
                       {r.col}
                     </span>
-                    <span className="w-14 flex-shrink-0 text-ink-subtle dark:text-[#494949]">
+                    <span className="w-14 flex-shrink-0 text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#494949]">
                       {r.dtype}
                     </span>
                     <span className="flex-shrink-0 whitespace-nowrap text-[#333] dark:text-[#CCCCCC] group-hover:text-black dark:group-hover:text-white transition-colors">
@@ -204,10 +208,10 @@ export default function DatasetCard() {
                 ))}
 
                 <p className="text-[#DDD] dark:text-[#252525] mt-2 mb-1">{LINE}</p>
-                <p className="text-ink-subtle dark:text-[#444]">
+                <p className="text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#444]">
                   dtypes: bool(3), int64(3), object(5)
                 </p>
-                <p className="text-ink-subtle dark:text-[#333]">
+                <p className="text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#333]">
                   memory_usage:{" "}
                   <span className="text-[#777] dark:text-[#9A9A9A]">
                     not applicable — experience doesn&apos;t compress
@@ -241,7 +245,7 @@ export default function DatasetCard() {
                       transition: `opacity 200ms ease-out ${Math.min(i * 30, 100)}ms, transform 200ms ease-out ${Math.min(i * 30, 100)}ms, background-color 0.15s`,
                     }}
                   >
-                    <span className="w-40 flex-shrink-0 text-ink-subtle dark:text-[#686868]">
+                    <span className="w-40 flex-shrink-0 text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#686868]">
                       {r.metric}
                     </span>
                     <span className="w-14 flex-shrink-0 text-accent-ink">{r.val}</span>
@@ -252,7 +256,7 @@ export default function DatasetCard() {
                 ))}
 
                 <p className="text-[#DDD] dark:text-[#252525] mt-2 mb-1">{LINE}</p>
-                <p className="text-ink-subtle dark:text-[#333]">
+                <p className="text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#333]">
                   distribution:{" "}
                   <span className="text-[#777] dark:text-[#9A9A9A]">right-skewed · </span>
                   outliers: <span className="text-[#777] dark:text-[#9A9A9A]">1 confirmed · </span>
@@ -262,7 +266,7 @@ export default function DatasetCard() {
             )}
 
             {/* Blinking cursor */}
-            <p className="text-ink-subtle dark:text-[#9A9A9A] mt-4">
+            <p className="text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] mt-4">
               &gt;&gt;&gt;{" "}
               <span
                 className="inline-block w-1.5 h-3 bg-[#999] dark:bg-[#555] animate-pulse align-middle"
@@ -288,7 +292,7 @@ export default function DatasetCard() {
         />
       </div>
 
-      <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-2 font-mono leading-relaxed">
+      <p className="text-[10px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-2 font-mono leading-relaxed">
         For reference only · self-assessed metrics calibrated against role deliverables · generated
         with the assistance of an AI tool (Claude · Anthropic)
       </p>

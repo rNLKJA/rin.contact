@@ -63,7 +63,7 @@ export default function ProjectStatus({ stage, updated, checklist, className = "
       {/* Status pill */}
       <div
         className="inline-flex items-center gap-2 border border-[#E8E8E8] dark:border-[#2A2A2A]
-                   px-3 py-1.5 font-mono text-[10px] tracking-wide text-[#595959] dark:text-[#9A9A9A]"
+                   px-3 py-1.5 font-mono text-[10px] tracking-wide text-[#6B6B6B] dark:text-[#9A9A9A]"
       >
         <span
           className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${stageDots[stage]}`}
@@ -73,14 +73,14 @@ export default function ProjectStatus({ stage, updated, checklist, className = "
         <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
           ·
         </span>
-        <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">
+        <span className="text-[#6B6B6B] dark:text-[#9A9A9A]">
           {isZh ? "更新于 " : "updated "}
           {formattedDate}
         </span>
       </div>
 
       {/* Stage checklist */}
-      <ul className="flex flex-col gap-1.5 text-xs text-[#595959] dark:text-[#9A9A9A]">
+      <ul className="flex flex-col gap-1.5 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
         {items.map((item) => {
           const label = isZh ? checklistLabels[item.key]?.zh : checklistLabels[item.key]?.en;
           return (
@@ -94,7 +94,13 @@ export default function ProjectStatus({ stage, updated, checklist, className = "
                 }`}
                 aria-hidden="true"
               />
-              <span className={item.done ? "" : "text-[#AAAAAA] dark:text-[#6B6B6B]"}>{label}</span>
+              <span
+                className={
+                  item.done ? "" : "text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B]"
+                }
+              >
+                {label}
+              </span>
               <span className="sr-only">
                 {item.done ? (isZh ? "（已完成）" : " (done)") : isZh ? "（未完成）" : " (not yet)"}
               </span>

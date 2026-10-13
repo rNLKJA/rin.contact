@@ -191,7 +191,7 @@ export default function SnakeGame() {
           </span>
           {allTime > 0 && (
             <span>
-              all-time: <span className="text-[#FF3C3C]">{allTime}</span>
+              all-time: <span className="text-[#CC0000] dark:text-[#FF3C3C]">{allTime}</span>
             </span>
           )}
         </div>
@@ -206,7 +206,7 @@ export default function SnakeGame() {
       />
 
       {status === "dead" && (
-        <p className="font-mono text-[10px] text-[#FF3C3C] mt-1.5">
+        <p className="font-mono text-[10px] text-[#CC0000] dark:text-[#FF3C3C] mt-1.5">
           {t("snakeGame.gameOver")} · {t("snakeGame.score")}: {score} · SPACE to retry
         </p>
       )}

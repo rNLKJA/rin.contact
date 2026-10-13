@@ -18,7 +18,7 @@ const Section = ({ title, children }) => (
     <h2 className="text-lg font-semibold tracking-tight text-[#1A1A1A] dark:text-white mb-4">
       {title}
     </h2>
-    <div className="space-y-3 text-sm text-[#3D3D3D] dark:text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed">
+    <div className="space-y-3 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
       {children}
     </div>
   </div>
@@ -104,7 +104,7 @@ export default function AccessibilityPage() {
         </Section>
 
         <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex justify-between items-center">
-          <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
+          <p className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] font-mono">
             {t("infoAccessibility.footerNote")}
           </p>
           <Link

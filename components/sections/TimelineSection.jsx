@@ -66,11 +66,11 @@ function TimelineItem({ item, index }) {
 
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-3 mb-1">
-            <span className="text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+            <span className="text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
               {item.period}
             </span>
             {item.tag && (
-              <span className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs tracking-wider uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+              <span className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs tracking-wider uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {item.tag}
               </span>
             )}
@@ -80,19 +80,21 @@ function TimelineItem({ item, index }) {
               </span>
             )}
             {item.future && (
-              <span className="border border-[#7A7A7A] px-2 py-0.5 text-xs tracking-wider uppercase text-[#6E6E6E]">
+              <span className="border border-[#7A7A7A] px-2 py-0.5 text-xs tracking-wider uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
                 Future
               </span>
             )}
           </div>
 
           <h3 className="text-base font-semibold leading-tight">{item.role}</h3>
-          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] mb-1">{item.org}</p>
+          <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-1">
+            {item.org}
+          </p>
           {item.orgDesc && (
-            <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] mb-3 italic">{item.orgDesc}</p>
+            <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] mb-3 italic">{item.orgDesc}</p>
           )}
 
-          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-3">
+          <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-3">
             {item.summary}
           </p>
 
@@ -101,7 +103,7 @@ function TimelineItem({ item, index }) {
             <>
               <button
                 onClick={() => setExpanded((e) => !e)}
-                className="text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white
+                className="text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white
                            transition-colors duration-200 flex items-center gap-1 py-1.5 -mt-1.5 mb-1.5"
                 aria-expanded={expanded}
               >
@@ -112,8 +114,14 @@ function TimelineItem({ item, index }) {
                 <div className="animate-fade-in">
                   <ul className="space-y-1.5 mb-3">
                     {item.bullets.map((b, i) => (
-                      <li key={i} className="flex gap-2 text-sm text-[#3D3D3D] dark:text-[#AAAAAA]">
-                        <span className="text-[#FF3C3C] flex-shrink-0 mt-0.5" aria-hidden="true">
+                      <li
+                        key={i}
+                        className="flex gap-2 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                      >
+                        <span
+                          className="text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0 mt-0.5"
+                          aria-hidden="true"
+                        >
                           ·
                         </span>
                         {b}
@@ -126,7 +134,7 @@ function TimelineItem({ item, index }) {
                       {item.tools.map((t) => (
                         <span
                           key={t}
-                          className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#6E6E6E] dark:text-[#9A9A9A]"
+                          className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]"
                         >
                           {t}
                         </span>
@@ -219,13 +227,13 @@ export default function TimelineSection() {
           inView ? "translate-y-0" : "translate-y-1.5"
         }`}
       >
-        <p className="text-xs tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] mb-3">
+        <p className="text-xs tracking-widest uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] mb-3">
           {t("timeline.sectionLabel")}
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
           {t("timeline.heading")}
         </h2>
-        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
           {t("timeline.intro")}
         </p>
 
@@ -238,7 +246,7 @@ export default function TimelineSection() {
               className={`px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
                 tab === tabKey
                   ? "bg-[#CC0000] text-white border-[#CC0000]"
-                  : "bg-white dark:bg-[#0A0A0A] text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-[#FF3C3C]"
+                  : "bg-white dark:bg-[#0A0A0A] text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-[#CC0000] dark:text-[#FF3C3C]"
               }`}
             >
               {t(
@@ -276,7 +284,7 @@ export default function TimelineSection() {
                     className="hidden md:block absolute -left-20 top-2 w-14 text-right"
                     aria-hidden="true"
                   >
-                    <span className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-medium">
+                    <span className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] font-medium">
                       {item.year}
                     </span>
                   </div>

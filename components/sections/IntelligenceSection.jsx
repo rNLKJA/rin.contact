@@ -466,7 +466,7 @@ function BubblePanel() {
   return (
     <div>
       {/* Framing context */}
-      <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4 leading-relaxed">
+      <p className="text-[11px] text-[#373737] dark:text-[#B4B4B4] font-mono mb-4 leading-relaxed">
         Plotted against the typical career trajectory for analytics professionals at each year of
         experience. Bubble size = cross-domain breadth (number of distinct technical domains
         actively used). Source: APS Career Pathfinder (APSC 2024) · LinkedIn Work Change Report
@@ -484,13 +484,13 @@ function BubblePanel() {
               <p className="font-medium text-black dark:text-white text-sm">
                 {hovPt.label?.replace(/\n/g, " ")}
                 {hovPt.year ? (
-                  <span className="text-[#6E6E6E] dark:text-[#9A9A9A] ml-2 text-xs">
+                  <span className="text-[#373737] dark:text-[#B4B4B4] ml-2 text-xs">
                     · {hovPt.year}
                   </span>
                 ) : null}
               </p>
               {hovPt.domain && (
-                <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5 mb-1.5">
+                <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mt-0.5 mb-1.5">
                   {hovPt.domain}
                 </p>
               )}
@@ -498,7 +498,7 @@ function BubblePanel() {
                 {hovPt.detail || hovPt.source}
               </p>
               {hovPt.why && (
-                <p className="text-[#6E6E6E] dark:text-[#9A9A9A] mt-1.5 text-[10px] italic leading-relaxed">
+                <p className="text-[#373737] dark:text-[#B4B4B4] mt-1.5 text-[10px] italic leading-relaxed">
                   {hovPt.why}
                 </p>
               )}
@@ -767,7 +767,7 @@ function BubblePanel() {
       </ScrollRegion>
 
       {/* Legend */}
-      <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
+      <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[10px] text-[#373737] dark:text-[#B4B4B4] font-mono">
         <span>Bubble size = cross-domain breadth</span>
         {[
           { color: "#FF3C3C", label: "Government" },
@@ -794,13 +794,13 @@ function BubblePanel() {
           onClick={handleRun}
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
-              ? "border-[#CCC] dark:border-[#444] text-[#6E6E6E] dark:text-[#9A9A9A] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
+              ? "border-[#CCC] dark:border-[#444] text-[#373737] dark:text-[#B4B4B4] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
               : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:border-accent-fill hover:text-white"
           }`}
         >
           {step === 0 ? "Run Analysis →" : "↺  Reset"}
         </button>
-        <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
+        <span className="text-xs text-[#373737] dark:text-[#B4B4B4] font-mono">
           {step === 0 &&
             "5 employed roles (3 pre-career + 2 formal, excluding co-founded Mapiva) · 5 benchmark cohorts · click to reveal the pattern"}
           {step === 1 && "Plotting true positions…"}
@@ -815,13 +815,13 @@ function BubblePanel() {
             <p className="text-[10px] text-accent-ink uppercase tracking-widest mb-2 font-mono">
               Pattern Detected
             </p>
-            <p className="text-sm text-[#666] dark:text-[#AAAAAA] leading-relaxed font-light">
+            <p className="text-sm text-[#666] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed font-light">
               Formal career starts at CBS/AGD (level 4). From there, Rin reached SAPOL ASO7 (level
               7) in <span className="text-black dark:text-white font-normal">14 months</span>. The
               typical analyst pathway requires{" "}
               <span className="text-black dark:text-white font-normal">4 years minimum</span> to
               reach ASO7-equivalent
-              <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">
+              <span className="text-[#373737] dark:text-[#B4B4B4]">
                 {" "}
                 (APSC Career Pathfinder, 2024)
               </span>
@@ -831,10 +831,10 @@ function BubblePanel() {
             </p>
           </div>
           <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">
-            <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-[#373737] dark:text-[#B4B4B4] uppercase tracking-widest mb-2 font-mono">
               What the bubble sizes say
             </p>
-            <p className="text-sm text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed font-light">
+            <p className="text-sm text-[#373737] dark:text-[#B4B4B4] leading-relaxed font-light">
               The largest bubbles (SAPOL, CBS, UniMelb RA) each operated across 6–7 distinct
               technical domains simultaneously. The benchmark cohort at Year 4 is plotted with
               breadth ≈ 3.5 domains, consistent with IAPA 2023 findings that fewer than 15% of
@@ -844,10 +844,10 @@ function BubblePanel() {
             </p>
           </div>
           <div className="border-l-2 border-[#DDD] dark:border-[#1A1A1A] pl-4">
-            <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-[#373737] dark:text-[#B4B4B4] uppercase tracking-widest mb-2 font-mono">
               A note of honest context
             </p>
-            <p className="text-sm text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed font-light">
+            <p className="text-sm text-[#373737] dark:text-[#B4B4B4] leading-relaxed font-light">
               Rapid cross-sector mobility carries a real cost: less specialist depth than a domain
               expert who stayed in one area for four years. UniMelb RA is plotted as a casual role
               before the official career start, with high breadth and lower seniority. CBS
@@ -857,29 +857,29 @@ function BubblePanel() {
             </p>
           </div>
           <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">
-            <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-[#373737] dark:text-[#B4B4B4] uppercase tracking-widest mb-2 font-mono">
               Cross-jurisdiction equivalence
             </p>
-            <p className="text-sm text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed font-light mb-3">
+            <p className="text-sm text-[#373737] dark:text-[#B4B4B4] leading-relaxed font-light mb-3">
               Approximate level mapping across Australian government streams (roles vary by agency):
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
               <div className="border border-[#E0E0E0] dark:border-[#1E1E1E] p-3 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
                 <p className="text-accent-ink font-medium mb-2">CBS ASO4 (mid-junior)</p>
-                <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">SA · ASO4</p>
-                <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">APS · APS5</p>
-                <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">VPS · VPS4</p>
-                <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">NSW · Clerk 5/6</p>
+                <p className="text-[#373737] dark:text-[#B4B4B4]">SA · ASO4</p>
+                <p className="text-[#373737] dark:text-[#B4B4B4]">APS · APS5</p>
+                <p className="text-[#373737] dark:text-[#B4B4B4]">VPS · VPS4</p>
+                <p className="text-[#373737] dark:text-[#B4B4B4]">NSW · Clerk 5/6</p>
               </div>
               <div className="border border-[#E0E0E0] dark:border-[#1E1E1E] p-3 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
                 <p className="text-accent-ink font-medium mb-2">SAPOL ASO7 (mid-management)</p>
-                <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">SA · ASO7</p>
-                <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">APS · EL1</p>
-                <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">VPS · VPS6</p>
-                <p className="text-[#6E6E6E] dark:text-[#9A9A9A]">NSW · Clerk 9/10</p>
+                <p className="text-[#373737] dark:text-[#B4B4B4]">SA · ASO7</p>
+                <p className="text-[#373737] dark:text-[#B4B4B4]">APS · EL1</p>
+                <p className="text-[#373737] dark:text-[#B4B4B4]">VPS · VPS6</p>
+                <p className="text-[#373737] dark:text-[#B4B4B4]">NSW · Clerk 9/10</p>
               </div>
             </div>
-            <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-2 font-mono">
+            <p className="text-[10px] text-[#373737] dark:text-[#B4B4B4] mt-2 font-mono">
               Sources: SA Public Sector Wages Parity, VPS Agreement, NSW Crown Employees, APSC
               classification guides. Equivalence is indicative — actual duties and seniority vary by
               role and agency.
@@ -927,7 +927,7 @@ function GrowthPanel() {
 
   return (
     <div>
-      <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-5 leading-relaxed">
+      <p className="text-[11px] text-[#373737] dark:text-[#B4B4B4] font-mono mb-5 leading-relaxed">
         Compound growth index — not a capped score, but a ratio against the 2020 baseline. Strategic
         thinking and continuous improvement have no ceiling; every new context reactivates and
         deepens all prior knowledge. Benchmark: linear learner — single-sector, no cross-domain
@@ -940,7 +940,7 @@ function GrowthPanel() {
         overlay={
           hovPt &&
           step >= 2 && (
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] px-4 py-2.5 text-xs font-mono text-[#6E6E6E] dark:text-[#9A9A9A] pointer-events-none whitespace-nowrap">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 border border-[#DDD] dark:border-[#2A2A2A] bg-white dark:bg-[#0A0A0A] px-4 py-2.5 text-xs font-mono text-[#373737] dark:text-[#B4B4B4] pointer-events-none whitespace-nowrap">
               <span className="text-black dark:text-white font-medium mr-2">{hovPt.year}</span>
               <span className="text-accent-ink mr-2">{hovPt.idx.toFixed(2)}×</span>
               {hovPt.event}
@@ -1266,13 +1266,13 @@ function GrowthPanel() {
           onClick={handleRun}
           className={`border px-6 py-2 text-xs tracking-widest uppercase transition-colors duration-200 ${
             step > 0
-              ? "border-[#CCC] dark:border-[#444] text-[#6E6E6E] dark:text-[#9A9A9A] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
+              ? "border-[#CCC] dark:border-[#444] text-[#373737] dark:text-[#B4B4B4] hover:border-[#888] dark:hover:border-[#888] hover:text-black dark:hover:text-[#ccc]"
               : "border-[#FF3C3C] text-accent-ink hover:bg-accent-fill hover:border-accent-fill hover:text-white"
           }`}
         >
           {step === 0 ? "Play →" : "↺  Reset"}
         </button>
-        <span className="text-xs font-mono text-[#6E6E6E] dark:text-[#9A9A9A]">
+        <span className="text-xs font-mono text-[#373737] dark:text-[#B4B4B4]">
           {step === 0 && "compound vs linear — click to compare"}
           {step === 1 && "benchmark drawn — a straight, predictable climb"}
           {step >= 2 && "hover the dots · see what drove each leap"}
@@ -1286,27 +1286,27 @@ function GrowthPanel() {
           style={{ animation: "fadeUp 200ms ease-out 75ms both" }}
         >
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A] mb-1 font-mono">
+            <p className="text-[10px] uppercase tracking-widest text-[#373737] dark:text-[#B4B4B4] mb-1 font-mono">
               Index at 2026
             </p>
             <p className="text-2xl font-semibold tabular-nums text-black dark:text-white">
-              5.37<span className="text-[#6E6E6E] dark:text-[#9A9A9A] text-base">×</span>
+              5.37<span className="text-[#373737] dark:text-[#B4B4B4] text-base">×</span>
             </p>
           </div>
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A] mb-1 font-mono">
+            <p className="text-[10px] uppercase tracking-widest text-[#373737] dark:text-[#B4B4B4] mb-1 font-mono">
               CAGR (2020–26)
             </p>
-            <p className="text-2xl font-semibold tabular-nums text-[#FF3C3C]">
+            <p className="text-2xl font-semibold tabular-nums text-[#CC0000] dark:text-[#FF3C3C]">
               32.7<span className="text-base">%</span>
             </p>
           </div>
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A] mb-1 font-mono">
+            <p className="text-[10px] uppercase tracking-widest text-[#373737] dark:text-[#B4B4B4] mb-1 font-mono">
               vs Benchmark
             </p>
-            <p className="text-2xl font-semibold tabular-nums text-[#6E6E6E] dark:text-[#9A9A9A]">
-              2.0<span className="text-base text-[#6E6E6E] dark:text-[#9A9A9A]">× ahead</span>
+            <p className="text-2xl font-semibold tabular-nums text-[#373737] dark:text-[#B4B4B4]">
+              2.0<span className="text-base text-[#373737] dark:text-[#B4B4B4]">× ahead</span>
             </p>
           </div>
         </div>
@@ -1319,7 +1319,7 @@ function GrowthPanel() {
             <p className="text-[10px] text-accent-ink uppercase tracking-widest mb-2 font-mono">
               Why compound beats linear
             </p>
-            <p className="text-sm text-[#666] dark:text-[#AAAAAA] leading-relaxed font-light">
+            <p className="text-sm text-[#666] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed font-light">
               A linear learner adds knowledge sequentially. A compound learner puts each new context
               to work <em>on top of</em> everything before it. Strategic thinking deepened at CSIRO
               made the CBS intelligence framework sharper. Bioinformatics at WEHI informed how data
@@ -1329,10 +1329,10 @@ function GrowthPanel() {
             </p>
           </div>
           <div className="border-l-2 border-[#CCC] dark:border-[#2A2A2A] pl-4">
-            <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-[#373737] dark:text-[#B4B4B4] uppercase tracking-widest mb-2 font-mono">
               The two skills with no ceiling
             </p>
-            <p className="text-sm text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed font-light">
+            <p className="text-sm text-[#373737] dark:text-[#B4B4B4] leading-relaxed font-light">
               Every technical domain has a practical depth boundary — there is only so much Python
               one person needs. Strategic thinking and continuous improvement do not. They grow
               every time a new problem is encountered, every time a mentee asks a question that
@@ -1362,14 +1362,14 @@ function FPLeaf({ leaf }) {
     <div className="border-l border-[#DDD] dark:border-[#222] pl-4 py-1">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors text-left flex items-center gap-2 w-full"
+        className="text-xs text-[#373737] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white transition-colors text-left flex items-center gap-2 w-full"
       >
-        <span className="text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">{open ? "▾" : "▸"}</span>
+        <span className="text-[#373737] dark:text-[#B4B4B4] flex-shrink-0">{open ? "▾" : "▸"}</span>
         {leaf.label}
       </button>
       {open && (
         <p
-          className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-1.5 leading-relaxed font-mono"
+          className="text-[11px] text-[#373737] dark:text-[#B4B4B4] mt-1.5 leading-relaxed font-mono"
           style={{ animation: "fadeUp 0.2s ease" }}
         >
           {leaf.proof}
@@ -1396,11 +1396,11 @@ function FPBranch({ branch }) {
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium text-black dark:text-white group-hover:text-[#555] dark:group-hover:text-[#DDDDDD] transition-colors flex items-center gap-2">
             {branch.label}
-            <span className="text-[#6E6E6E] dark:text-[#9A9A9A] text-xs font-normal">
+            <span className="text-[#373737] dark:text-[#B4B4B4] text-xs font-normal">
               {open ? "▾" : "▸"}
             </span>
           </p>
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] font-light">{branch.desc}</p>
+          <p className="text-xs text-[#373737] dark:text-[#B4B4B4] font-light">{branch.desc}</p>
         </div>
       </button>
       {open && (
@@ -1419,7 +1419,7 @@ function FirstPrinciplesPanel() {
 
   return (
     <div>
-      <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-5 leading-relaxed">
+      <p className="text-[11px] text-[#373737] dark:text-[#B4B4B4] font-mono mb-5 leading-relaxed">
         Each branch is a capability cluster. Each leaf is a real project, deliverable, or
         credentialled outcome. The fourth branch — Continuous Improvement — is the meta-skill that
         enables the other three to compound.
@@ -1427,12 +1427,12 @@ function FirstPrinciplesPanel() {
 
       <button onClick={() => setRootOpen((o) => !o)} className="w-full text-left mb-6 group">
         <div className="border border-[#DDD] dark:border-[#2A2A2A] px-5 py-4 hover:border-[#FF3C3C] transition-colors duration-200 hover:bg-[#FAFAFA] dark:hover:bg-[#111]">
-          <p className="text-[10px] uppercase tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A] mb-1 font-mono">
+          <p className="text-[10px] uppercase tracking-widest text-[#373737] dark:text-[#B4B4B4] mb-1 font-mono">
             First Principles Question
           </p>
           <p className="text-base font-medium text-black dark:text-white group-hover:text-[#333] dark:group-hover:text-[#DDDDDD] transition-colors flex items-center gap-3">
             {FP_TREE.label}
-            <span className="text-[#6E6E6E] dark:text-[#9A9A9A] text-sm font-normal">
+            <span className="text-[#373737] dark:text-[#B4B4B4] text-sm font-normal">
               {rootOpen ? "▾ collapse" : "▸ decompose"}
             </span>
           </p>
@@ -1449,7 +1449,7 @@ function FirstPrinciplesPanel() {
           ))}
 
           <div className="mt-6 pt-4 border-t border-[#E0E0E0] dark:border-[#1A1A1A] space-y-2">
-            <p className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono leading-relaxed">
+            <p className="text-[11px] text-[#373737] dark:text-[#B4B4B4] font-mono leading-relaxed">
               Strategy + Data Science + Engineering compound naturally when embedded in real
               problems. Continuous Improvement is the meta-layer that keeps the other three growing
               — and the one most frequently missing from a standard CV.
@@ -1494,8 +1494,8 @@ export default function IntelligenceSection() {
       {/* Section header */}
       <div
         ref={ref}
-        className={`mb-10 transition-all duration-200 ease-out ${
-          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+        className={`mb-10 transition-transform duration-200 ease-out ${
+          inView ? "translate-y-0" : "invisible translate-y-1.5"
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-accent-ink mb-3">
@@ -1514,7 +1514,7 @@ export default function IntelligenceSection() {
             strokeLinecap="round"
           />
         </svg>
-        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] max-w-2xl leading-relaxed">
           Three interactive lenses on the same dataset — my career. Each one tells a different part
           of the same story: deliberate growth, compounding breadth, and the principle that
           continuous improvement is not a soft skill. It&apos;s infrastructure.
@@ -1538,7 +1538,7 @@ export default function IntelligenceSection() {
             `px-5 py-3 text-xs tracking-widest uppercase flex-shrink-0 transition-colors duration-150 border-b-2 -mb-px ${
               selected
                 ? "border-[#FF3C3C] text-black dark:text-white"
-                : "border-transparent text-ink-subtle hover:text-black dark:hover:text-white"
+                : "border-transparent text-[#373737] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white"
             }`
           }
         />
@@ -1556,8 +1556,8 @@ export default function IntelligenceSection() {
 
       {/* Disclaimer */}
       <div className="mt-4 border-t border-[#E0E0E0] dark:border-[#3D3D3D] pt-4">
-        <p className="text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed max-w-4xl">
-          <span className="text-ink-subtle dark:text-[#9A9A9A] font-medium">
+        <p className="text-[10px] text-[#373737] dark:text-[#B4B4B4] leading-relaxed max-w-4xl">
+          <span className="text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] font-medium">
             For reference only.
           </span>{" "}
           Career seniority scores and domain depth values are self-assessed approximations

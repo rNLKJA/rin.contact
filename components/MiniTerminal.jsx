@@ -15,7 +15,7 @@ import { ROLES, CERTS } from "@/lib/career-data";
 const CLS = {
   normal: "text-[#B0B0B0]",
   white: "text-white font-medium",
-  red: "text-[#FF3C3C]",
+  red: "text-[#CC0000] dark:text-[#FF3C3C]",
   dim: "text-[#585858]",
   green: "text-[#4ADE80]",
   error: "text-[#FF6B6B]",
@@ -472,7 +472,9 @@ export default function MiniTerminal({ onClose }) {
 
       {/* Input row */}
       <div className="flex items-center gap-2 px-4 py-3 border-t border-[#1E1E1E] flex-shrink-0">
-        <span className="font-mono text-xs text-[#FF3C3C] flex-shrink-0">$</span>
+        <span className="font-mono text-xs text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0">
+          $
+        </span>
         <input
           ref={inputRef}
           type="text"

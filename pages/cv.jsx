@@ -91,7 +91,7 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
           <div className="cv-noprint flex items-center justify-between gap-4 mb-12">
             <Link
               href="/resume"
-              className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
+              className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
             >
               ← {t("cvPage.backToResume")}
             </Link>
@@ -112,7 +112,7 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white mb-1">
               Sunchuangyu (Rin) Huang
             </h1>
-            <p className="text-base text-[#3D3D3D] dark:text-[#AAAAAA] mb-5">
+            <p className="text-base text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-5">
               {t("cvPage.tagline")}
             </p>
             <ul className="flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-[#5C5C5C] dark:text-[#9A9A9A]">
@@ -120,7 +120,7 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
                 const value = c.value ?? t("cvPage.locationValue");
                 return (
                   <li key={c.key}>
-                    <span className="text-[#6E6E6E] dark:text-[#9A9A9A] mr-1.5">
+                    <span className="text-[#6B6B6B] dark:text-[#9A9A9A] mr-1.5">
                       {t(`cvPage.contact.${c.key}`)}
                     </span>
                     {c.href ? (
@@ -141,14 +141,14 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
 
           {/* Summary */}
           <ResumeSection id="profile" title={t("cvPage.sections.profile")} className="border-t-0">
-            <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
               {t("cvPage.profileBody")}
             </p>
           </ResumeSection>
 
           {/* Objective — positioning statement (求职意向 in zh) */}
           <ResumeSection id="objective" title={t("cvPage.objective.title")}>
-            <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
               {t("cvPage.objective.body")}
             </p>
           </ResumeSection>
@@ -160,18 +160,18 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
                 <article key={i} className="break-inside-avoid">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
                     <h3 className="text-sm font-semibold text-black dark:text-white">{x.role}</h3>
-                    <span className="text-[11px] tabular-nums text-[#6E6E6E] dark:text-[#9A9A9A]">
+                    <span className="text-[11px] tabular-nums text-[#6B6B6B] dark:text-[#9A9A9A]">
                       {x.period}
                     </span>
                   </div>
                   <p className="text-xs text-[#5C5C5C] dark:text-[#9A9A9A] mb-1.5">
                     {x.org}
                     {x.location ? (
-                      <span className="text-[#6E6E6E] dark:text-[#9A9A9A]"> · {x.location}</span>
+                      <span className="text-[#6B6B6B] dark:text-[#9A9A9A]"> · {x.location}</span>
                     ) : null}
                   </p>
                   {x.summary && (
-                    <p className="text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-1.5">
+                    <p className="text-[13px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-1.5">
                       {x.summary}
                     </p>
                   )}
@@ -180,7 +180,7 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
                       {x.bullets.map((b, j) => (
                         <li
                           key={j}
-                          className="flex gap-2 text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed"
+                          className="flex gap-2 text-[13px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed"
                         >
                           <span
                             className="cv-accent text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0 mt-0.5"
@@ -212,7 +212,7 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
                     </h3>
                     <span className="text-xs text-[#5C5C5C] dark:text-[#9A9A9A]"> — {e.org}</span>
                   </div>
-                  <span className="text-[11px] tabular-nums text-[#6E6E6E] dark:text-[#9A9A9A]">
+                  <span className="text-[11px] tabular-nums text-[#6B6B6B] dark:text-[#9A9A9A]">
                     {e.period}
                   </span>
                 </div>
@@ -228,7 +228,7 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
                   <dt className="text-xs font-semibold text-black dark:text-white sm:w-48 flex-shrink-0">
                     {t(`cvPage.skills.${key}.group`)}
                   </dt>
-                  <dd className="text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+                  <dd className="text-[13px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
                     {t(`cvPage.skills.${key}.items`)}
                   </dd>
                 </div>
@@ -262,7 +262,10 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
           <ResumeSection id="languages" title={t("resumePage.sections.languages")}>
             <dl className="space-y-1">
               {languages.map((l) => (
-                <div key={l.name} className="text-[13px] text-[#3D3D3D] dark:text-[#AAAAAA]">
+                <div
+                  key={l.name}
+                  className="text-[13px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                >
                   <dt className="inline font-semibold text-black dark:text-white">{l.name}</dt>
                   <dd className="inline"> · {l.level}</dd>
                 </div>
@@ -271,7 +274,7 @@ export default function CvPage({ experience, education, certGroups, certTotal, l
           </ResumeSection>
 
           {/* Foot */}
-          <p className="cv-noprint mt-12 pt-6 border-t border-[#E5E5E5] dark:border-[#262626] text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]">
+          <p className="cv-noprint mt-12 pt-6 border-t border-[#E5E5E5] dark:border-[#262626] text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]">
             {t("cvPage.footPrefix")}{" "}
             <Link
               href="/"

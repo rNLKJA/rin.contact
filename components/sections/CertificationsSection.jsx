@@ -67,7 +67,7 @@ export default function CertificationsSection() {
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black dark:text-white">
                 Credentials.
               </h2>
-              <p className="text-sm text-ink-subtle dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
+              <p className="text-sm text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
                 {CERTS.length} credentials across data, analytics, graph databases, intelligence,
                 language and leadership, each one verifiable.
               </p>
@@ -93,8 +93,8 @@ export default function CertificationsSection() {
           {SORTED_CERTS.map((cert, i) => (
             <div
               key={cert.name}
-              className={`flex items-center gap-3 border border-[#E8E8E8] dark:border-[#2A2A2A] px-4 py-3 transition-all duration-200 ease-out ${
-                inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1"
+              className={`flex items-center gap-3 border border-[#E8E8E8] dark:border-[#2A2A2A] px-4 py-3 transition-transform duration-200 ease-out ${
+                inView ? "translate-y-0" : "invisible translate-y-1"
               }`}
               style={{ transitionDelay: `${Math.min(i * 30, 100)}ms` }}
             >
@@ -104,10 +104,10 @@ export default function CertificationsSection() {
               />
               <div className="min-w-0">
                 <p className="text-sm text-black dark:text-white truncate">{cert.name}</p>
-                <p className="text-[11px] text-ink-subtle">
+                <p className="text-[11px] text-[#373737] dark:text-[#B4B4B4]">
                   {cert.issuer}
                   {cert.year && (
-                    <span className="text-[#CCCCCC] dark:text-[#9A9A9A] ml-1.5">{cert.year}</span>
+                    <span className="text-[#6B6B6B] dark:text-[#9A9A9A] ml-1.5">{cert.year}</span>
                   )}
                 </p>
               </div>

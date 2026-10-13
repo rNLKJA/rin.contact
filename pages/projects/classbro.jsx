@@ -22,12 +22,12 @@ const PATH = "/projects/classbro";
 const OG_TITLE = "ClassBro";
 const OG_SUBTITLE = "Tutoring and mentoring across computer science";
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
-const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
+const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed";
 const H2 =
   "text-xl md:text-2xl font-semibold tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] flex items-baseline gap-3";
 const OUTLINE_BTN =
-  "inline-flex items-center gap-2 min-h-[40px] border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none";
+  "inline-flex items-center gap-2 min-h-[40px] border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none";
 
 function SectionTitle({ n, children, id }) {
   return (
@@ -99,7 +99,7 @@ export default function ClassBroPage() {
       <div className="max-w-[960px] mx-auto px-6 md:px-12 py-16 md:py-24">
         <Link
           href="/projects"
-          className="inline-block text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors mb-8"
+          className="inline-block text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors mb-8"
         >
           ← {L(CLASSBRO_DATA.back)}
         </Link>
@@ -117,7 +117,7 @@ export default function ClassBroPage() {
             {L(CLASSBRO_DATA.tagline)}
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">
+            <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
               <span
                 className="w-1.5 h-1.5 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
                 aria-hidden="true"
@@ -174,7 +174,7 @@ export default function ClassBroPage() {
           <SectionTitle n={3} id="classbro-demo">
             {L(COPY.lesson.title)}
           </SectionTitle>
-          <p className={`${BODY} max-w-[680px] mb-6 text-[#6E6E6E] dark:text-[#9A9A9A]`}>
+          <p className={`${BODY} max-w-[680px] mb-6 text-[#6B6B6B] dark:text-[#9A9A9A]`}>
             {L(CLASSBRO_DATA.demoIntro)}
           </p>
           <p className={`${BODY} max-w-[680px] mb-6`}>{L(COPY.lesson.intro)}</p>
@@ -188,7 +188,7 @@ export default function ClassBroPage() {
                 <h3 className="text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE] mb-2">
                   {L(s.title)}
                 </h3>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+                <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
                   {L(s.body)}
                 </p>
               </li>
@@ -199,7 +199,7 @@ export default function ClassBroPage() {
 
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D] flex flex-wrap items-center justify-between gap-4">
-          <p className="text-sm text-[#6E6E6E] dark:text-[#AAAAAA]">
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
             {L(CLASSBRO_DATA.footerNote)}
           </p>
           <Link href="/projects" className={OUTLINE_BTN}>

@@ -85,7 +85,7 @@ export default function StatusBadge() {
   return (
     <div
       className="inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A]
-                 px-4 py-2 font-mono text-[10px] tracking-wide text-[#595959] dark:text-[#9A9A9A]"
+                 px-4 py-2 font-mono text-[10px] tracking-wide text-[#6B6B6B] dark:text-[#9A9A9A]"
       aria-label={t("statusBadge.label")}
     >
       {STATUS_KEYS.map(({ dot, labelKey, subKey }) => (
@@ -101,7 +101,7 @@ export default function StatusBadge() {
             aria-hidden="true"
           />
           {t(labelKey)}
-          {subKey && <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">· {t(subKey)}</span>}
+          {subKey && <span className="text-[#6B6B6B] dark:text-[#9A9A9A]">· {t(subKey)}</span>}
         </span>
       ))}
       {AVAILABLE_PILL && (
@@ -109,7 +109,7 @@ export default function StatusBadge() {
           <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
             ·
           </span>
-          <span className="flex items-center gap-1.5 text-[#FF3C3C]">
+          <span className="flex items-center gap-1.5 text-[#CC0000] dark:text-[#FF3C3C]">
             <span
               className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-blink"
               aria-hidden="true"
@@ -123,7 +123,7 @@ export default function StatusBadge() {
           <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
             ·
           </span>
-          <span className="text-[#6E6E6E] dark:text-[#9A9A9A]">
+          <span className="text-[#6B6B6B] dark:text-[#9A9A9A]">
             {t("statusBadge.adl")} {time}
           </span>
         </>
@@ -133,7 +133,7 @@ export default function StatusBadge() {
           <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
             ·
           </span>
-          <span className="text-[#6E6E6E] dark:text-[#9A9A9A]" title={weather.desc}>
+          <span className="text-[#6B6B6B] dark:text-[#9A9A9A]" title={weather.desc}>
             {weather.tempC}°C {weather.word}
           </span>
         </>

@@ -21,13 +21,13 @@ import { PROJECTS, projectAnchor } from "@/lib/projects-data";
 
 const DOMAIN_COLORS = {
   Government: { color: "#2563EB", bg: "#EFF6FF" }, // blue-600  4.53:1 ✓
-  "Climate Research": { color: "#0F766E", bg: "#F0FDFA" }, // teal-700  6.18:1 ✓
+  "Climate Research": { color: "#0F766E", dark: "#14B8A6", bg: "#F0FDFA" }, // teal-700 6.18:1 ✓ (dark: teal-500 5.02:1)
   Biotech: { color: "#7C3AED", bg: "#F5F3FF" }, // violet-700 6.26:1 ✓
   Startup: { color: "#C2410C", bg: "#FFF7ED" }, // orange-700 7.24:1 ✓
   Research: { color: "#15803D", bg: "#F0FDF4" }, // green-700  7.55:1 ✓
-  "AI / ML": { color: "#CC0000", dark: "#FF3C3C", bg: "#FFF1F1" }, // dark red   5.53:1 ✓ (dark: 5.62:1)
+  "AI / ML": { color: "#CC0000", dark: "#FF6B6B", bg: "#FFF1F1" }, // dark red   5.53:1 ✓ (dark: 5.5:1)
   "Cloud / HPC": { color: "#B45309", bg: "#FFFBEB" }, // amber-700  5.25:1 ✓
-  "Open Source": { color: "#0E7490", bg: "#ECFEFF" }, // cyan-700   5.87:1 ✓
+  "Open Source": { color: "#0F766E", dark: "#14B8A6", bg: "#ECFEFF" }, // teal-700 6.35:1 ✓ (dark: teal-500 5.02:1)
   Personal: { color: "#595959", bg: "#F5F5F5" }, // neutral    5.05:1 ✓
 };
 
@@ -78,7 +78,29 @@ const BTN =
 const BTN_CASE_STUDY = `${BTN} border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] text-white dark:text-[#0A0A0A] hover:bg-black dark:hover:bg-white`;
 const BTN_DEMO = `${BTN} border border-[#CC0000] bg-[#CC0000] text-white hover:bg-[#A30000] hover:border-[#A30000]`;
 const BTN_TOUR = `${BTN} border border-[#1A1A1A] dark:border-[#EEEEEE] text-[#1A1A1A] dark:text-[#EEEEEE] hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-[#EEEEEE] dark:hover:text-[#0A0A0A]`;
-const BTN_LINK = `${BTN} border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white`;
+const BTN_LINK = `${BTN} border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#373737] dark:text-[#B4B4B4] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white`;
+
+// Domain badge component that reads theme context directly
+function DomainBadge({ primaryDomain, tag }) {
+  const { resolved } = useTheme();
+  const isDark = resolved === "dark";
+  const dc = DOMAIN_COLORS[primaryDomain];
+
+  return (
+    <span className="hidden md:flex items-center gap-3 justify-end">
+      <span
+        className="text-[10px] tracking-widest uppercase border px-2.5 py-0.5 rounded-full"
+        style={
+          dc
+            ? { borderColor: domainInk(dc, isDark), color: domainInk(dc, isDark) }
+            : { borderColor: isDark ? "#B4B4B4" : "#595959", color: isDark ? "#B4B4B4" : "#595959" }
+        }
+      >
+        {tag}
+      </span>
+    </span>
+  );
+}
 
 /** The bare GitHub profile: the link for a card with no public repository. */
 const GITHUB_PROFILE = "https://github.com/rNLKJA";
@@ -196,16 +218,16 @@ function ProjectDetail({ project, coursework }) {
               </span>
             )}
           </h3>
-          <p className="text-xs text-[#595959] dark:text-[#AAAAAA] tracking-wide">
+          <p className="text-xs text-[#373737] dark:text-[#B4B4B4] tracking-wide">
             {project.subtitle}
           </p>
         </div>
-        <div className="flex flex-wrap gap-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
+        <div className="flex flex-wrap gap-2 text-xs text-[#373737] dark:text-[#B4B4B4]">
           <span>{project.org}</span>
           <span>·</span>
           <span>{project.period}</span>
         </div>
-        <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+        <p className="text-sm text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
           {project.summary}
         </p>
         <div className="mt-3 p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
@@ -223,7 +245,7 @@ function ProjectDetail({ project, coursework }) {
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://rin.contact/projects")}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-3 py-1.5 text-[10px] tracking-widest uppercase text-ink-subtle hover:border-[#0A66C2] hover:text-[#0A66C2] transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-3 py-1.5 text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] hover:border-[#0A66C2] hover:text-[#0A66C2] transition-colors duration-200"
             aria-label={`Share ${project.title} on LinkedIn`}
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -235,7 +257,7 @@ function ProjectDetail({ project, coursework }) {
             href={`https://x.com/intent/tweet?text=${encodeURIComponent(`Check out "${project.title}" — ${project.summary.split(".")[0]}.`)}&url=${encodeURIComponent("https://rin.contact/projects")}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-3 py-1.5 text-[10px] tracking-widest uppercase text-ink-subtle hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-3 py-1.5 text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
             aria-label={`Tweet ${project.title}`}
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -247,15 +269,15 @@ function ProjectDetail({ project, coursework }) {
       </div>
       <div className="space-y-5">
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">
+          <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-2">
             {t("projects.stack")}
           </p>
           <div className="flex flex-wrap gap-1.5">
             {project.stack.map((t) => (
               <span
                 key={t}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full
-                           cursor-default hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full
+                           cursor-default hover:border-[#FF3C3C] hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200"
               >
                 {t}
               </span>
@@ -263,10 +285,10 @@ function ProjectDetail({ project, coursework }) {
           </div>
         </div>
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">
+          <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-1">
             {t("projects.status")}
           </p>
-          <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">{project.status}</p>
+          <p className="text-xs text-[#3D3D3D] dark:text-[#B4B4B4]">{project.status}</p>
           {project.buildStatus && (
             <div className="mt-3">
               <ProjectStatus
@@ -278,10 +300,10 @@ function ProjectDetail({ project, coursework }) {
           )}
         </div>
         <div>
-          <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">
+          <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-1">
             {t("projects.domain")}
           </p>
-          <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">
+          <p className="text-xs text-[#3D3D3D] dark:text-[#B4B4B4]">
             {Array.isArray(project.domain) ? project.domain.join(" · ") : project.domain}
           </p>
         </div>
@@ -306,7 +328,7 @@ function FeaturedSpotlight({ project, coursework }) {
           />
           Featured — Flagship
         </span>
-        <span className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] truncate">
+        <span className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] truncate">
           {project.status}
         </span>
       </div>
@@ -316,14 +338,14 @@ function FeaturedSpotlight({ project, coursework }) {
             <h3 className="text-2xl md:text-3xl font-semibold tracking-tight mb-1">
               {project.title}
             </h3>
-            <p className="text-sm text-[#595959] dark:text-[#AAAAAA]">{project.subtitle}</p>
+            <p className="text-sm text-[#373737] dark:text-[#B4B4B4]">{project.subtitle}</p>
           </div>
-          <div className="flex flex-wrap gap-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
+          <div className="flex flex-wrap gap-2 text-xs text-[#373737] dark:text-[#B4B4B4]">
             <span>{project.org}</span>
             <span>·</span>
             <span>{project.period}</span>
           </div>
-          <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+          <p className="text-sm text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
             {project.summary}
           </p>
           <div className="p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
@@ -335,15 +357,15 @@ function FeaturedSpotlight({ project, coursework }) {
         </div>
         <div className="space-y-5">
           <div>
-            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-2">
+            <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-2">
               Stack
             </p>
             <div className="flex flex-wrap gap-1.5">
               {project.stack.map((s) => (
                 <span
                   key={s}
-                  className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full
-                             cursor-default hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
+                  className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full
+                             cursor-default hover:border-[#FF3C3C] hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200"
                 >
                   {s}
                 </span>
@@ -351,13 +373,10 @@ function FeaturedSpotlight({ project, coursework }) {
             </div>
           </div>
           <div>
-            <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] mb-1">
+            <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-1">
               Domain
             </p>
-            <p
-              className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA]"
-              style={dc ? { color: domainInk(dc, isDark) } : undefined}
-            >
+            <p className="text-xs text-[#3D3D3D] dark:text-[#B4B4B4]">
               {Array.isArray(project.domain) ? project.domain.join(" · ") : project.domain}
             </p>
           </div>
@@ -483,6 +502,13 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
 
   const activeProject = filtered.find((p) => p.id === openId) ?? null;
 
+  // ── Select first tab by default when switching to a filtered view ──
+  useEffect(() => {
+    if (!isAllView && filtered.length > 0 && openId === null) {
+      setOpenId(filtered[0].id);
+    }
+  }, [isAllView, filtered, openId]);
+
   const handleSelect = (id) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
@@ -492,8 +518,8 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
       {/* Section header */}
       <div
         ref={ref}
-        className={`mb-12 transition-all duration-200 ease-out ${
-          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+        className={`mb-12 transition-transform duration-200 ease-out ${
+          inView ? "translate-y-0" : "invisible translate-y-1.5"
         }`}
       >
         <p className="text-xs tracking-widest uppercase text-accent-ink mb-3">
@@ -513,7 +539,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
             strokeLinecap="round"
           />
         </svg>
-        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#B4B4B4] max-w-xl leading-relaxed">
           {t("projects.headingDesc")}
         </p>
 
@@ -530,7 +556,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
               <button
                 key={d}
                 onClick={() => selectFilter(d)}
-                className="border px-4 py-1.5 text-xs tracking-widest uppercase transition-all duration-200 flex items-center gap-1 rounded-full"
+                className="border px-4 py-1.5 text-xs tracking-widest uppercase transition-colors duration-200 flex items-center gap-1 rounded-full"
                 style={isActive ? activeStyle : idleStyle}
                 onMouseEnter={(e) => {
                   if (isActive) return;
@@ -572,7 +598,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
         <div className="w-full">
           {/* Search */}
           <div className="mb-4 flex items-center border border-[#E0E0E0] dark:border-[#3D3D3D] focus-within:border-[#FF3C3C] focus-within:outline-none transition-colors duration-200">
-            <span className="pl-4 text-[#6B6B6B] dark:text-[#9A9A9A] text-sm select-none">⌕</span>
+            <span className="pl-4 text-[#373737] dark:text-[#B4B4B4] text-sm select-none">⌕</span>
             <input
               type="text"
               value={search}
@@ -587,7 +613,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
             {search && (
               <button
                 onClick={() => setSearch("")}
-                className="pr-4 text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
+                className="pr-4 text-[#373737] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 aria-label="Clear search"
               >
                 ✕
@@ -598,7 +624,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
           {/* List */}
           <div className="border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
             {filtered.length === 0 && (
-              <p className="py-8 text-sm text-[#6B6B6B] dark:text-[#9A9A9A] text-center">
+              <p className="py-8 text-sm text-[#373737] dark:text-[#B4B4B4] text-center">
                 No projects match &ldquo;{search}&rdquo;
               </p>
             )}
@@ -625,7 +651,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                     className="w-full flex items-center gap-4 py-3.5 text-left group pl-2"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-[10px] text-[#6B6B6B] dark:text-[#9A9A9A] tabular-nums w-6 flex-shrink-0">
+                    <span className="text-[10px] text-[#373737] dark:text-[#B4B4B4] tabular-nums w-6 flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="flex-1 min-w-0 grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-4 items-center">
@@ -635,27 +661,13 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                           <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" />
                         )}
                       </span>
-                      <span className="text-xs text-[#595959] dark:text-[#AAAAAA] truncate hidden md:block">
+                      <span className="text-xs text-[#373737] dark:text-[#B4B4B4] truncate hidden md:block">
                         {project.subtitle}
                       </span>
-                      <span className="hidden md:flex items-center gap-3 justify-end">
-                        <span
-                          className="text-[10px] tracking-widest uppercase border px-2.5 py-0.5 rounded-full"
-                          style={
-                            dc
-                              ? { borderColor: dc.color, color: domainInk(dc, isDark) }
-                              : { borderColor: "#595959", color: "#595959" }
-                          }
-                        >
-                          {project.tag}
-                        </span>
-                        <span className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
-                          {project.period}
-                        </span>
-                      </span>
+                      <DomainBadge primaryDomain={primaryDomain} tag={project.tag} />
                     </span>
                     <span
-                      className={`text-[#6B6B6B] transition-transform duration-200 flex-shrink-0 text-sm ${isOpen ? "rotate-45 text-accent-ink" : "group-hover:text-[#FF3C3C]"}`}
+                      className={`text-[#6B6B6B] transition-transform duration-200 flex-shrink-0 text-sm ${isOpen ? "rotate-45 text-accent-ink" : "group-hover:text-[#CC0000] dark:text-[#FF3C3C]"}`}
                     >
                       +
                     </span>
@@ -669,7 +681,6 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                     inert={!isOpen}
                     style={{
                       maxHeight: isOpen ? "none" : "0px",
-                      opacity: isOpen ? 1 : 0,
                     }}
                   >
                     <div
@@ -685,7 +696,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
           {(() => {
             const shown = filtered.length + (showSpotlight ? 1 : 0);
             return (
-              <p className="mt-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
+              <p className="mt-3 text-xs text-[#373737] dark:text-[#B4B4B4]">
                 {shown} project{shown !== 1 ? "s" : ""}
               </p>
             );
@@ -718,7 +729,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                       ${
                         isActive
                           ? "bg-accent-fill text-white border-accent-fill"
-                          : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#AAAAAA] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
+                          : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#B4B4B4] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C]"
                       }
                     `}
                 tabStyle={{ borderRadius: "4px 4px 0 0" }}
@@ -728,7 +739,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                     <>
                       <span
                         aria-hidden="true"
-                        className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}`}
+                        className={`text-[10px] tabular-nums mb-1 ${isActive ? "text-white opacity-60" : "text-[#373737] dark:text-[#B4B4B4]"}`}
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
@@ -760,7 +771,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
               }}
             >
               {!activeProject && (
-                <div className="px-6 py-4 flex items-center gap-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] tracking-wide select-none">
+                <div className="px-6 py-4 flex items-center gap-3 text-xs text-[#373737] dark:text-[#B4B4B4] tracking-wide select-none">
                   <span>↑</span>
                   <span>{t("projectsPage.selectFolder")}</span>
                 </div>
@@ -787,12 +798,12 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                     className="w-full flex items-center gap-4 py-4 text-left"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] tabular-nums w-5 flex-shrink-0">
+                    <span className="text-xs text-[#373737] dark:text-[#B4B4B4] tabular-nums w-5 flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="flex-1 min-w-0">
                       <span className="text-sm font-medium block truncate">{project.title}</span>
-                      <span className="text-xs text-[#595959] dark:text-[#AAAAAA]">
+                      <span className="text-xs text-[#373737] dark:text-[#B4B4B4]">
                         {project.tag}
                       </span>
                     </span>
@@ -800,7 +811,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                       <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] flex-shrink-0" />
                     )}
                     <span
-                      className={`text-[#595959] dark:text-[#AAAAAA] transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-45" : ""}`}
+                      className={`text-[#373737] dark:text-[#B4B4B4] transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-45" : ""}`}
                     >
                       +
                     </span>
@@ -813,14 +824,13 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                     inert={!isOpen}
                     style={{
                       maxHeight: isOpen ? "none" : "0px",
-                      opacity: isOpen ? 1 : 0,
                     }}
                   >
                     <div className={`pb-6 pl-9 space-y-4 ${isOpen ? "animate-enter-up" : ""}`}>
-                      <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">
+                      <p className="text-xs text-[#373737] dark:text-[#B4B4B4]">
                         {project.org} · {project.period}
                       </p>
-                      <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+                      <p className="text-sm text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
                         {project.summary}
                       </p>
                       <div className="p-3 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
@@ -835,7 +845,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                         {project.stack.map((t) => (
                           <span
                             key={t}
-                            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+                            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
                           >
                             {t}
                           </span>
@@ -847,7 +857,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                           href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://rin.contact/projects")}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-ink-subtle hover:border-[#0A66C2] hover:text-[#0A66C2] transition-colors"
+                          className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] hover:border-[#0A66C2] hover:text-[#0A66C2] transition-colors"
                           aria-label="Share on LinkedIn"
                         >
                           <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
@@ -858,7 +868,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                           href={`https://x.com/intent/tweet?text=${encodeURIComponent(`Check out "${project.title}" — ${project.summary.split(".")[0]}.`)}&url=${encodeURIComponent("https://rin.contact/projects")}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-ink-subtle hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
+                          className="inline-flex items-center gap-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A] px-2.5 py-1 text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
                           aria-label="Share on X"
                         >
                           <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">

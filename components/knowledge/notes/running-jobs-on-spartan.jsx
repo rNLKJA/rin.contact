@@ -137,10 +137,10 @@ function EnBody() {
             >
               Spartan Documentation
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               University of Melbourne HPC
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Official Spartan documentation with job submission, resource allocation, and queue
               information.
             </span>
@@ -153,15 +153,15 @@ function EnBody() {
             >
               SLURM sbatch Reference
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               SchedMD
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Complete reference for all SLURM sbatch directives and options.
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           First drafted in 2023, rewritten in 2026.
         </p>
       </KSection>
@@ -282,10 +282,10 @@ function ZhBody() {
             >
               Spartan 文档
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               墨尔本大学 HPC
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Spartan 官方文档，包含作业提交、资源分配和队列信息。
             </span>
           </li>
@@ -297,15 +297,15 @@ function ZhBody() {
             >
               SLURM sbatch 参考
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               SchedMD
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               所有 SLURM sbatch 指令和选项的完整参考。
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           最初于 2023 年写作，2026 年重写。
         </p>
       </KSection>

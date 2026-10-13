@@ -30,7 +30,7 @@ const GROUP_ORDER = PAGE_INDEX.columns.flatMap((c) => c.groups);
 // Each footer column's own group holds its main pages: the list before typing.
 const MAIN_GROUPS = new Set(PAGE_INDEX.columns.map((c) => c.id));
 
-const MUTED = "text-[#6E6E6E] dark:text-[#9A9A9A]";
+const MUTED = "text-[#6B6B6B] dark:text-[#9A9A9A]";
 const KBD =
   "inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 border border-[#E0E0E0] dark:border-[#3D3D3D] font-mono text-[10px] leading-none normal-case";
 
@@ -176,7 +176,7 @@ export default function CommandPalette({ onClose }) {
             autoCapitalize="off"
             spellCheck={false}
             enterKeyHint="go"
-            className="flex-1 min-w-0 h-14 bg-transparent text-base focus:outline-none focus-visible:outline-none placeholder:text-[#6E6E6E] dark:placeholder:text-[#9A9A9A]"
+            className="flex-1 min-w-0 h-14 bg-transparent text-base focus:outline-none focus-visible:outline-none placeholder:text-[#6B6B6B] dark:text-[#9A9A9A] dark:placeholder:text-[#9A9A9A]"
           />
           <button
             type="button"

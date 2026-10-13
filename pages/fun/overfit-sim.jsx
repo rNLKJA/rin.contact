@@ -56,7 +56,7 @@ export default function OverfitSimPage() {
             </div>
           </div>
 
-          <p className="text-[11px] text-[#AAAAAA] font-mono mb-8">
+          <p className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] font-mono mb-8">
             Prescription: more data, regularization, or a simpler model. /fun/fortune for recovery.
           </p>
 

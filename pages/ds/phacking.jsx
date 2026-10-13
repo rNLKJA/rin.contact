@@ -47,7 +47,9 @@ export default function PhackingPage() {
             ))}
           </div>
 
-          <p className="text-[9px] text-[#AAAAAA] mt-6 font-mono">{t("ds.phacking.footnote")}</p>
+          <p className="text-[9px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 font-mono">
+            {t("ds.phacking.footnote")}
+          </p>
 
           <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
             <Link

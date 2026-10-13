@@ -123,7 +123,7 @@ function EnBody() {
             >
               GraphQL Official
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               graphql.org
             </span>
           </li>
@@ -135,12 +135,12 @@ function EnBody() {
             >
               RESTful API Design
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               restfulapi.net
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Compared across projects (2022-2026).
         </p>
       </KSection>
@@ -250,7 +250,7 @@ function ZhBody() {
             >
               GraphQL 官方
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               graphql.org
             </span>
           </li>
@@ -262,12 +262,12 @@ function ZhBody() {
             >
               RESTful API 设计
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               restfulapi.net
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           在各个项目中比较（2022-2026）。这些实践经验帮助我深入理解了两种架构的适用场景。REST
           的成熟工具链和广泛支持使其成为快速原型开发的首选，而 GraphQL
           在需要精细控制数据传输的场景中展现出明显优势。在实际项目中，技术选择往往需要权衡多个因素：团队经验、现有基础设施、性能需求、开发效率以及长期维护成本。通过对比不同项目的实施经验，可以更清晰地认识到没有绝对的优劣，只有更适合具体场景的方案。

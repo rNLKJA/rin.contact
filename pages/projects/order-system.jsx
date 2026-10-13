@@ -75,7 +75,7 @@ function Section({ title, paragraphs }) {
       <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-[#1A1A1A] dark:text-[#EEEEEE]">
         {title}
       </h2>
-      <div className="space-y-4 text-[15px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+      <div className="space-y-4 text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
         {(paragraphs || []).map((p, i) => (
           <p key={i}>{p}</p>
         ))}
@@ -111,7 +111,7 @@ export default function OrderSystemCaseStudy() {
         {/* Header */}
         <Link
           href="/projects"
-          className="inline-block text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors mb-8"
+          className="inline-block text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors mb-8"
         >
           ← {t("orderSystem.back")}
         </Link>
@@ -123,13 +123,13 @@ export default function OrderSystemCaseStudy() {
         <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-[#EEEEEE]">
           {t("orderSystem.title")}
         </h1>
-        <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-6">
+        <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-6">
           {t("orderSystem.tagline")}
         </p>
 
         {/* Private by design: no source links, said plainly, then the sandbox. */}
         <div className="mb-10 border-l-2 border-[#E0E0E0] dark:border-[#3D3D3D] pl-4">
-          <p className="text-sm text-[#595959] dark:text-[#9A9A9A] leading-relaxed">
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
             {t("orderSystem.privateNote")}
           </p>
           <Link
@@ -144,7 +144,7 @@ export default function OrderSystemCaseStudy() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mb-6 border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
           {(t("orderSystem.glance") || []).map(({ k, v }) => (
             <div key={k} className="bg-white dark:bg-[#0A0A0A] px-4 py-4">
-              <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-1">
+              <p className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-1">
                 {k}
               </p>
               <p className="text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">{v}</p>
@@ -157,7 +157,7 @@ export default function OrderSystemCaseStudy() {
           {STACK.map((s) => (
             <span
               key={s}
-              className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full"
+              className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full"
             >
               {s}
             </span>
@@ -174,12 +174,12 @@ export default function OrderSystemCaseStudy() {
 
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D] flex flex-wrap items-center justify-between gap-4">
-          <p className="text-sm text-[#6E6E6E] dark:text-[#AAAAAA]">
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
             {t("orderSystem.footerNote")}
           </p>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+            className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
           >
             {t("orderSystem.back")}
           </Link>

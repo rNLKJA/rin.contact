@@ -58,7 +58,9 @@ export default function RoastPage() {
                   Sin detected
                 </p>
                 <p className="text-white text-sm font-mono mb-4">{data.sin}</p>
-                <p className="text-[#AAAAAA] text-sm leading-relaxed">{data.roast}</p>
+                <p className="text-[#6B6B6B] dark:text-[#9A9A9A] text-sm leading-relaxed">
+                  {data.roast}
+                </p>
               </div>
               <p className="text-[10px] text-[#555] mb-8">Severity: {data.severity}</p>
             </>

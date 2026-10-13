@@ -20,14 +20,14 @@ import { FIRST_SEED, makeCohort, mulberry32, summarise } from "./synthetic";
 const AXIS_MAX = 30; // minutes
 const AXIS_TICKS = [0, 10, 20, 30];
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
-const BTN = `inline-flex items-center justify-center min-h-[44px] rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none ${FOCUS}`;
+const BTN = `inline-flex items-center justify-center min-h-[44px] rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none ${FOCUS}`;
 const PILL =
   "flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border px-3 font-mono text-xs transition-colors duration-150 motion-reduce:transition-none border-[#E0E0E0] text-[#3D3D3D] hover:border-[#1A1A1A] dark:border-[#3D3D3D] dark:text-[#CCCCCC] dark:hover:border-[#EEEEEE] peer-checked:border-[#1A1A1A] peer-checked:bg-[#1A1A1A] peer-checked:text-white dark:peer-checked:border-[#EEEEEE] dark:peer-checked:bg-[#EEEEEE] dark:peer-checked:text-black peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#CC0000] dark:peer-focus-visible:outline-[#FF3C3C]";
 const EASE = "transition-all duration-300 ease-out motion-reduce:transition-none";
-const TH = "py-1.5 pr-3 text-left font-normal text-[#6E6E6E] dark:text-[#9A9A9A]";
+const TH = "py-1.5 pr-3 text-left font-normal text-[#6B6B6B] dark:text-[#9A9A9A]";
 const TD = "py-1.5 pr-3 tabular-nums text-[#1A1A1A] dark:text-[#EEEEEE]";
 
 const nextSeed = (seed) => 1000 + Math.floor(mulberry32(seed)() * 9000);
@@ -39,7 +39,7 @@ function ChartTitle({ title, note }) {
       <span className="block text-sm font-semibold text-[#1A1A1A] dark:text-[#EEEEEE]">
         {title}
       </span>
-      <span className="block text-xs text-[#595959] dark:text-[#AAAAAA] leading-relaxed mt-0.5">
+      <span className="block text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mt-0.5">
         {note}
       </span>
     </figcaption>
@@ -129,12 +129,12 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 sm:px-5 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#111111]">
         <h3
           id={`${uid}-title`}
-          className={`${META} font-mono flex items-center gap-2 text-[#CC0000] dark:text-[#FF3C3C]`}
+          className={`${META} font-mono flex items-center gap-2 text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]`}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
           {L(D.kicker)}
         </h3>
-        <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">
+        <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
           {fill(L(D.label), { n: s.n, seed })}
         </p>
       </div>
@@ -149,7 +149,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
                 <dd className="font-display text-2xl sm:text-3xl leading-none text-[#1A1A1A] dark:text-[#EEEEEE] tabular-nums">
                   {v}
                 </dd>
-                <dd className="mt-1.5 text-[11px] text-[#595959] dark:text-[#AAAAAA] leading-snug">
+                <dd className="mt-1.5 text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] leading-snug">
                   {note}
                 </dd>
               </div>
@@ -159,7 +159,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
             <button type="button" onClick={reseed} className={BTN}>
               {L(D.reseed)}
             </button>
-            {visitor && <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">{L(D.joined)}</p>}
+            {visitor && <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{L(D.joined)}</p>}
           </div>
         </div>
 
@@ -175,7 +175,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
               const isDrop = i === s.drop.m;
               return (
                 <div key={i} className="contents">
-                  <span className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] truncate">
+                  <span className="text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] truncate">
                     {stage(i)}
                   </span>
                   <span className="relative h-4 bg-[#F0F0F0] dark:bg-[#1A1A1A]">
@@ -186,9 +186,9 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
                   </span>
                   <span className="font-mono text-[11px] tabular-nums text-right text-[#1A1A1A] dark:text-[#EEEEEE] whitespace-nowrap">
                     {count}
-                    <span className="text-[#6E6E6E] dark:text-[#9A9A9A]"> · {s.pct(count)}%</span>
+                    <span className="text-[#6B6B6B] dark:text-[#9A9A9A]"> · {s.pct(count)}%</span>
                     {isDrop && (
-                      <span className="ml-1 text-[#CC0000] dark:text-[#FF3C3C]">
+                      <span className="ml-1 text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
                         −{s.drop.pct}%
                       </span>
                     )}
@@ -208,7 +208,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
                 const you = visitor && m === 0;
                 return (
                   <div key={m} className="contents">
-                    <span className="font-mono text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">
+                    <span className="font-mono text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
                       M{m + 1}
                     </span>
                     <span className="relative h-5">
@@ -236,7 +236,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
               })}
               {/* Axis */}
               <span />
-              <span className="relative h-4 font-mono text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A]">
+              <span className="relative h-4 font-mono text-[10px] text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {AXIS_TICKS.map((tick) => (
                   <span
                     key={tick}
@@ -251,7 +251,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
               </span>
               <span className={`${META} text-right`}>{L(D.time.unit)}</span>
             </div>
-            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-[#595959] dark:text-[#AAAAAA]">
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]">
               <span className="flex items-center gap-1.5">
                 <span className="inline-block w-4 h-2.5 bg-[#BDBDBD] dark:bg-[#595959]" />
                 {L(D.time.legendRange)}
@@ -294,7 +294,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
               ))}
             </div>
           </fieldset>
-          <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] mb-3">
+          <p className="text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-3">
             {fill(L(D.score.pillLabel), { m: mod + 1 })} · {L(COURSE[mod])}
           </p>
           <div
@@ -309,7 +309,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
                   <span
                     className={`font-mono text-[11px] tabular-nums mb-1 ${
                       you
-                        ? "text-[#CC0000] dark:text-[#FF3C3C]"
+                        ? "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
                         : "text-[#1A1A1A] dark:text-[#EEEEEE]"
                     }`}
                   >
@@ -331,7 +331,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
             {bins.map((_, score) => (
               <span
                 key={score}
-                className="text-center font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]"
+                className="text-center font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]"
               >
                 {fill(L(D.score.bar), { score })}
               </span>
@@ -342,7 +342,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
         {/* The same figures as tables */}
         <details className="group border-t border-[#F0F0F0] dark:border-[#3D3D3D] pt-4">
           <summary
-            className={`cursor-pointer list-none [&::-webkit-details-marker]:hidden inline-flex items-center gap-2 min-h-[44px] text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] hover:text-black dark:hover:text-white ${FOCUS}`}
+            className={`cursor-pointer list-none [&::-webkit-details-marker]:hidden inline-flex items-center gap-2 min-h-[44px] text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white ${FOCUS}`}
           >
             <span
               aria-hidden="true"
@@ -436,7 +436,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
         </details>
       </div>
 
-      <p className="px-4 sm:px-5 py-3 border-t border-[#E0E0E0] dark:border-[#3D3D3D] text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed">
+      <p className="px-4 sm:px-5 py-3 border-t border-[#E0E0E0] dark:border-[#3D3D3D] text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
         {L(D.footer)}
       </p>
 

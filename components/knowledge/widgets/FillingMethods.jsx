@@ -63,7 +63,12 @@ export default function FillingMethods() {
           <div className="font-mono text-xs text-gray-600 dark:text-gray-400 mb-2">{method}</div>
           <div className="text-xs space-y-1 font-mono">
             {filled.map((v, i) => (
-              <div key={i} className={data[i] === null && v !== null ? "text-[#FF3C3C]" : ""}>
+              <div
+                key={i}
+                className={
+                  data[i] === null && v !== null ? "text-[#CC0000] dark:text-[#FF3C3C]" : ""
+                }
+              >
                 {v}
               </div>
             ))}

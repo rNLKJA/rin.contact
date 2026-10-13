@@ -22,7 +22,7 @@ export default function ConceptNotes({ topic }) {
         <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
         {t("knowledgeLayout.conceptNotes")}
       </h2>
-      <p className="mt-2 text-[13px] text-[#6E6E6E] dark:text-[#9A9A9A] [text-wrap:pretty]">
+      <p className="mt-2 text-[13px] text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
         {t("knowledgeLayout.conceptNotesBlurb")}
       </p>
       <ul className="mt-5 grid gap-4">
@@ -34,13 +34,13 @@ export default function ConceptNotes({ topic }) {
                 href={noteHref(n.slug)}
                 className="group block border border-[#E0E0E0] dark:border-[#2A2A2A] p-5 hover:border-black dark:hover:border-white transition-colors"
               >
-                <span className="block text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#FF3C3C] transition-colors">
+                <span className="block text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors">
                   {copy.title}
                 </span>
-                <span className="block mt-1.5 text-[13px] text-[#6E6E6E] dark:text-[#9A9A9A] [text-wrap:pretty]">
+                <span className="block mt-1.5 text-[13px] text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
                   {copy.note}
                 </span>
-                <span className="block mt-2 font-mono text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+                <span className="block mt-2 font-mono text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
                   {copy.readingTime}
                 </span>
               </Link>

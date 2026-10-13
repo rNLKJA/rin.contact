@@ -34,7 +34,7 @@ export default function BlankPage() {
         </p>
         <Link
           href="/fun"
-          className="mt-8 text-[10px] font-mono text-[#AAAAAA] hover:text-black transition-colors"
+          className="mt-8 text-[10px] font-mono text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black transition-colors"
         >
           ← /fun
         </Link>

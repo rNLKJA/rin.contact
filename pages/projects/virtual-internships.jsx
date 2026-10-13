@@ -30,22 +30,22 @@ const PATH = "/projects/virtual-internships";
 const OG_TITLE = "Virtual Internships";
 const OG_SUBTITLE = "What twelve Forage job simulations built";
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
-const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
+const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed";
 const H2 =
   "text-xl md:text-2xl font-semibold tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] flex items-baseline gap-3";
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
 const SOLID_BTN = `inline-flex items-center gap-2 min-h-[40px] rounded-full px-5 text-xs tracking-widest uppercase bg-[#1A1A1A] text-white dark:bg-[#EEEEEE] dark:text-black hover:bg-[#CC0000] dark:hover:bg-[#FF3C3C] transition-colors duration-200 motion-reduce:transition-none ${FOCUS}`;
-const OUTLINE_BTN = `inline-flex items-center gap-2 min-h-[40px] border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 text-xs tracking-widest uppercase text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none ${FOCUS}`;
+const OUTLINE_BTN = `inline-flex items-center gap-2 min-h-[40px] border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none ${FOCUS}`;
 const CHIP =
-  "border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full";
+  "border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full";
 
 function Notice({ children, className = "" }) {
   return (
     <p
       role="note"
-      className={`max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed ${className}`}
+      className={`max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed ${className}`}
     >
       {children}
     </p>
@@ -133,7 +133,7 @@ function SkillMap({ L, lang }) {
                 >
                   <abbr
                     title={L(a.name)}
-                    className={`inline-block no-underline font-mono text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A] ${headTurn}`}
+                    className={`inline-block no-underline font-mono text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] ${headTurn}`}
                   >
                     {L(a.short)}
                   </abbr>
@@ -157,7 +157,7 @@ function SkillMap({ L, lang }) {
                     className={`block text-sm text-[#1A1A1A] dark:text-[#EEEEEE] hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors motion-reduce:transition-none ${FOCUS}`}
                   >
                     {L(p.company)}
-                    <span className="block text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]">
+                    <span className="block text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]">
                       {L(p.programme)}
                     </span>
                   </a>
@@ -183,7 +183,7 @@ function SkillMap({ L, lang }) {
                 return (
                   <td
                     key={a.id}
-                    className="px-1 sm:px-2 py-3 text-center font-mono text-[10px] text-[#3D3D3D] dark:text-[#AAAAAA] whitespace-nowrap"
+                    className="px-1 sm:px-2 py-3 text-center font-mono text-[10px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] whitespace-nowrap"
                   >
                     {L(COPY.map.total).replace("{n}", n)}
                   </td>
@@ -193,7 +193,7 @@ function SkillMap({ L, lang }) {
           </tfoot>
         </table>
       </div>
-      <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[#595959] dark:text-[#9A9A9A]">
+      <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
         {[2, 1, 0].map((v) => (
           <li key={v} className="inline-flex items-center gap-2">
             <span className="inline-flex w-2.5 justify-center">
@@ -223,16 +223,16 @@ function ProgrammeCard({ p, L, lang }) {
           className="text-base md:text-lg font-semibold tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE]"
         >
           {L(p.company)}
-          <span className="font-normal text-[#595959] dark:text-[#9A9A9A]">
+          <span className="font-normal text-[#6B6B6B] dark:text-[#9A9A9A]">
             {" · "}
             {L(p.programme)}
           </span>
         </h4>
-        <p className="font-mono text-[11px] tracking-wider text-[#6E6E6E] dark:text-[#9A9A9A]">
+        <p className="font-mono text-[11px] tracking-wider text-[#6B6B6B] dark:text-[#9A9A9A]">
           {formatPeriod(p.from, p.to, lang)}
         </p>
       </header>
-      <p className="inline-flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#AAAAAA] mb-5">
+      <p className="inline-flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-5">
         <Pixel value={p.own ? 2 : 1} />
         {L(p.own ? c.badgeOwn : c.badgeSet)}
       </p>
@@ -244,7 +244,7 @@ function ProgrammeCard({ p, L, lang }) {
         </dd>
 
         <dt className={`${META} md:pt-0.5`}>{L(p.own ? c.workOwn : c.workSet)}</dt>
-        <dd className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-3 md:mb-0">
+        <dd className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-3 md:mb-0">
           {L(p.work)}
         </dd>
 
@@ -270,7 +270,7 @@ function ProgrammeCard({ p, L, lang }) {
             {p.tools.map((t) => (
               <li
                 key={t}
-                className="font-mono text-[11px] text-[#595959] dark:text-[#9A9A9A] bg-[#F5F5F5] dark:bg-[#1A1A1A] px-2 py-0.5 rounded"
+                className="font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] bg-[#F5F5F5] dark:bg-[#1A1A1A] px-2 py-0.5 rounded"
               >
                 {t}
               </li>
@@ -332,7 +332,7 @@ export default function VirtualInternshipsPage() {
       <div className="max-w-[960px] mx-auto px-6 md:px-12 py-16 md:py-24">
         <Link
           href="/projects"
-          className={`inline-block text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors motion-reduce:transition-none mb-8 ${FOCUS}`}
+          className={`inline-block text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors motion-reduce:transition-none mb-8 ${FOCUS}`}
         >
           ← {L(COPY.back)}
         </Link>
@@ -350,7 +350,7 @@ export default function VirtualInternshipsPage() {
           <p className="max-w-[640px] text-lg md:text-2xl font-light text-[#3D3D3D] dark:text-[#CCCCCC] leading-snug mb-6">
             {L(COPY.tagline)}
           </p>
-          <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#AAAAAA] mb-8">
+          <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-8">
             <span
               className="w-1.5 h-1.5 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
               aria-hidden="true"
@@ -399,7 +399,7 @@ export default function VirtualInternshipsPage() {
                 <h3 className="text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE] mb-2">
                   {L(s.title)}
                 </h3>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+                <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
                   {L(s.body)}
                 </p>
               </li>
@@ -438,13 +438,13 @@ export default function VirtualInternshipsPage() {
                   >
                     {L(g.title)}
                     <span
-                      className="font-mono text-[10px] tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]"
+                      className="font-mono text-[10px] tracking-widest text-[#6B6B6B] dark:text-[#9A9A9A]"
                       aria-hidden="true"
                     >
                       ×{items.length}
                     </span>
                   </h3>
-                  <p className="text-sm text-[#595959] dark:text-[#9A9A9A] leading-relaxed max-w-[680px] mb-5">
+                  <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed max-w-[680px] mb-5">
                     {L(g.intro)}
                   </p>
                   <div className="space-y-4">
@@ -477,7 +477,7 @@ export default function VirtualInternshipsPage() {
                   />
                   {L(it.title)}
                 </h3>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+                <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
                   {L(it.body)}
                 </p>
               </li>
@@ -487,7 +487,7 @@ export default function VirtualInternshipsPage() {
 
         {/* Footer */}
         <div className="pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D] flex flex-wrap items-center justify-between gap-4">
-          <p className="text-sm text-[#6E6E6E] dark:text-[#AAAAAA] max-w-[640px]">
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-[640px]">
             {L(COPY.footerNote)}
           </p>
           <Link href="/projects" className={OUTLINE_BTN}>

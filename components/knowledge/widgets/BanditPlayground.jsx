@@ -33,20 +33,20 @@ const M = { top: 24, right: 72, bottom: 34, left: 40 };
 // comparison and greedy the dashed baseline. Text labels use ink tokens
 // that pass 4.5:1, so the red line's label is the darker accent ink.
 const SERIES = {
-  ucb: { line: "text-[#FF3C3C]", label: "fill-accent-ink", dash: undefined },
+  ucb: { line: "text-[#CC0000] dark:text-[#FF3C3C]", label: "fill-accent-ink", dash: undefined },
   eps: {
     line: "text-[#1A1A1A] dark:text-[#CFCFCF]",
     label: "fill-[#1A1A1A] dark:fill-[#E8E8E8]",
     dash: undefined,
   },
   greedy: {
-    line: "text-[#8A8A8A] dark:text-[#7A7A7A]",
+    line: "text-[#6B6B6B] dark:text-[#6B6B6B]",
     label: "fill-[#6E6E6E] dark:fill-[#9A9A9A]",
     dash: "5 4",
   },
 };
 
-const LABEL = "font-mono text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const LABEL = "font-mono text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const BTN =
   "inline-flex items-center justify-center min-h-[36px] px-3 border border-[#E0E0E0] dark:border-[#3D3D3D] font-mono text-[10px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#CCCCCC] hover:border-black dark:hover:border-white transition-colors duration-150 motion-reduce:transition-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
 // The table sits inside .prose, so the site's table rules in globals.css give
@@ -283,7 +283,7 @@ export default function BanditPlayground({ copy, locale = "en-AU" }) {
           <button type="button" className={BTN} onClick={reset}>
             {copy.reset}
           </button>
-          <span className="font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] tabular-nums">
+          <span className="font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] tabular-nums">
             {fill(copy.seed, { seed })}
           </span>
         </div>
@@ -474,7 +474,7 @@ export default function BanditPlayground({ copy, locale = "en-AU" }) {
       {/* The same result as a table */}
       <ScrollRegion label={copy.tableCaption} fade="16px">
         <table className="w-full min-w-[300px] border-collapse text-[12px]">
-          <caption className="text-left mb-2 text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] [text-wrap:pretty]">
+          <caption className="text-left mb-2 text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
             {fill(copy.tableCaption, { t: nf0.format(shownT), runs: RUNS })}
           </caption>
           <thead>

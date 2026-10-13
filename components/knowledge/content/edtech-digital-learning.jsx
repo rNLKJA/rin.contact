@@ -331,7 +331,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Principles reflect established learning-science research (cognitive load — Sweller;
           desirable difficulties — Bjork; the testing and spacing effects) alongside hands-on
           peer-mentoring and EdTech work.
@@ -560,7 +560,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           这些原则反映了既有的学习科学研究（认知负荷——Sweller；合意难度——Bjork；测试效应与间隔
           效应），以及亲身的同伴带教与教育科技工作。
         </p>

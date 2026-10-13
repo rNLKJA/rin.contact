@@ -97,7 +97,7 @@ export default function CorrelationPage() {
             Generate another
           </button>
 
-          <p className="text-[9px] text-[#AAAAAA] mt-8 font-mono">
+          <p className="text-[9px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-8 font-mono">
             * Confounding variable: {confounder}. Probably.
           </p>
 

@@ -67,7 +67,9 @@ export default function DsIndexPage() {
                 <span className="font-mono text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#FF3C3C] transition-colors">
                   /ds/{label}
                 </span>
-                <span className="text-[11px] text-[#AAAAAA] flex-shrink-0">{notes[i]}</span>
+                <span className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] flex-shrink-0">
+                  {notes[i]}
+                </span>
               </Link>
             ))}
           </div>

@@ -29,7 +29,7 @@ module.exports = {
           to: { opacity: "1" },
         },
         "enter-up": {
-          from: { opacity: "0.7", translate: "0 4px" },
+          from: { opacity: "1", translate: "0 4px" },
           to: { opacity: "1", translate: "0 0" },
         },
         "enter-scale": {

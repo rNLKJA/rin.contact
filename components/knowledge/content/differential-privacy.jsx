@@ -326,7 +326,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The re-identification cases, the ε/budget definition, the noise mechanism, and the
           local-vs-global distinction reflect current differential-privacy references alongside
           hands-on work.
@@ -533,7 +533,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           重新识别的案例、ε/预算的定义、噪声机制，以及本地对全局的区分，反映了当前的差分隐私参考文献
           以及亲身的工作。
         </p>

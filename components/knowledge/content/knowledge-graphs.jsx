@@ -324,7 +324,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The triple/ontology foundations, entity-resolution emphasis, SPARQL querying, and the
           emerging GraphRAG pattern reflect current knowledge-graph references alongside hands-on
           entity-linking work.
@@ -522,7 +522,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           三元组/本体的基础、对实体消解的强调、SPARQL 查询，以及兴起中的 GraphRAG 模式，反映了当前的
           知识图谱参考文献以及亲身的实体链接工作。
         </p>

@@ -387,7 +387,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The state-space formulation, the predict-update recursion, the Kalman-gain intuition, and
           the nonlinear extensions reflect current estimation/sensor-fusion references alongside
           coursework.
@@ -607,7 +607,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           状态空间的表述、预测-更新的递归、卡尔曼增益的直觉，以及非线性扩展，反映了当前的估计/传感器
           融合参考文献以及课程。
         </p>

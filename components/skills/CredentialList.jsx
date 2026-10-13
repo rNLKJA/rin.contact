@@ -16,7 +16,7 @@ export default function CredentialList({ credentials, skills, onSelectSkill, cou
 
   return (
     <div>
-      <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+      <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
         {fill(t(`${K}.intro`), { count })}
       </p>
 

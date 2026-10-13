@@ -35,7 +35,7 @@ export default function RejectPage() {
             <p className="font-mono text-sm text-[#FF3C3C]">Reject H₀.</p>
           </div>
 
-          <p className="text-[11px] text-[#AAAAAA]">
+          <p className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]">
             This page is statistically significant. You found it. Well done.
           </p>
 
