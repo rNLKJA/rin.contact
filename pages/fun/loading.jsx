@@ -90,7 +90,7 @@ export default function LoadingPage() {
           </div>
 
           {/* Footer note */}
-          <p className="text-[11px] text-[#AAAAAA] leading-relaxed mb-6">
+          <p className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-6">
             Some things take time.
             <br />
             The model is still training.

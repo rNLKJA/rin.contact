@@ -132,16 +132,16 @@ function EnBody() {
             >
               Introduction to Online Convex Optimization (Hazan)
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               arXiv 1206.4670
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Comprehensive treatment of multiplicative weights and online learning algorithms with
               detailed regret analysis.
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           First noted in (2023), expanded in 2026.
         </p>
       </KSection>
@@ -244,15 +244,15 @@ function ZhBody() {
             >
               在线凸优化导论（Hazan）
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               arXiv 1206.4670
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               乘法权重和在线学习算法的全面处理，包含详细的后悔分析。
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           首次在 （2023）中记录，2026 年扩展。
         </p>
       </KSection>

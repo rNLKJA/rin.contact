@@ -350,7 +350,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The common/special-cause framing, the ±3σ control chart, the Western Electric rules, and
           CUSUM/EWMA for small shifts reflect current SPC references alongside quality coursework.
         </p>
@@ -560,7 +560,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           常因/特因的框架、±3σ 控制图、西部电气规则，以及用于小偏移的 CUSUM/EWMA，反映了当前的 SPC
           参考 文献以及质量课程。
         </p>

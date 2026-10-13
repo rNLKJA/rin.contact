@@ -136,11 +136,11 @@ export default function SemesterGrid({ coursework = [] }) {
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-10 md:py-14">
         {/* Label row */}
         <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] m-0">
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] m-0">
             <span aria-hidden="true">■ — </span>
             {copy.label}
           </p>
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] m-0">{copy.note}</p>
+          <p className="text-xs text-[#5A5A5A] dark:text-[#9A9A9A] m-0">{copy.note}</p>
         </div>
 
         {/* Readout box */}
@@ -153,7 +153,7 @@ export default function SemesterGrid({ coursework = [] }) {
               <p className="font-display text-2xl md:text-4xl leading-tight text-black dark:text-white m-0">
                 {current.title}
               </p>
-              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-2 m-0">
+              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-2 m-0">
                 {current.subjectCode} · {termLabel(current.term, lang)} ·{" "}
                 {current.team.length === 0 ? copy.individual : copy.team(current.team.length + 1)}
               </p>
@@ -163,7 +163,7 @@ export default function SemesterGrid({ coursework = [] }) {
               <p className="font-display text-3xl md:text-5xl leading-none text-black dark:text-white m-0">
                 {copy.idle(coursework.length)}
               </p>
-              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-3 m-0">
+              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-3 m-0">
                 {copy.idleSub(from, to)}
               </p>
             </>
@@ -175,7 +175,7 @@ export default function SemesterGrid({ coursework = [] }) {
           {/* Level labels column (always first) */}
           <div className="w-[72px] md:w-20 flex-shrink-0 flex flex-col gap-2">
             <div className="h-6 flex items-center">
-              <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C]">
+              <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]">
                 Level
               </span>
             </div>
@@ -200,7 +200,7 @@ export default function SemesterGrid({ coursework = [] }) {
               >
                 {/* Term header */}
                 <div className="h-6 flex items-center justify-center">
-                  <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+                  <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A]">
                     {termLabel(termObj, lang)}
                   </span>
                 </div>

@@ -47,7 +47,7 @@ function CopyEmailButton() {
         onClick={() => copy(EMAIL)}
         aria-label={t("contact.copyEmail")}
         title={t("contact.copyEmail")}
-        className="inline-flex items-center justify-center w-8 h-8 -my-1.5 flex-shrink-0 border border-[#3D3D3D] text-[#AAAAAA] hover:border-white hover:text-white transition-colors duration-200"
+        className="inline-flex items-center justify-center w-8 h-8 -my-1.5 flex-shrink-0 border border-[#3D3D3D] text-[#373737] dark:text-[#B4B4B4] hover:border-white hover:text-white transition-colors duration-200"
       >
         {copied ? (
           <FiCheck size={14} aria-hidden="true" />
@@ -59,7 +59,10 @@ function CopyEmailButton() {
         {copied ? t("contact.emailCopied") : failed ? t("contact.copyFailed") : ""}
       </span>
       {failed && (
-        <span aria-hidden="true" className="basis-full pl-7 text-[11px] text-[#AAAAAA]">
+        <span
+          aria-hidden="true"
+          className="basis-full pl-7 text-[11px] text-[#373737] dark:text-[#B4B4B4]"
+        >
           {t("contact.copyFailed")}
         </span>
       )}
@@ -87,7 +90,10 @@ function Toast({ type, message, onClose }) {
       {isSuccess ? (
         <FiCheckCircle size={18} className="flex-shrink-0 mt-0.5 text-[#22C55E]" />
       ) : (
-        <FiAlertCircle size={18} className="flex-shrink-0 mt-0.5 text-[#FF3C3C]" />
+        <FiAlertCircle
+          size={18}
+          className="flex-shrink-0 mt-0.5 text-[#CC0000] dark:text-[#FF3C3C]"
+        />
       )}
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-white">
@@ -130,8 +136,8 @@ function EngagementBand() {
   return (
     <div
       ref={ref}
-      className={`mb-16 transition-all duration-200 ease-out relative z-10 ${
-        inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+      className={`mb-16 transition-transform duration-200 ease-out relative z-10 ${
+        inView ? "translate-y-0" : "invisible translate-y-1.5"
       }`}
     >
       <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#9A9A9A] mb-7">
@@ -159,12 +165,12 @@ function EngagementBand() {
             </span>
 
             <div className="relative z-10">
-              <p className="flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#7A7A7A] mb-4">
+              <p className="flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#9A9A9A] mb-4">
                 <span className="block w-1 h-1 rotate-45 bg-[#FF3C3C]" aria-hidden="true" />
                 {item.domain}
               </p>
               <h3 className="text-lg font-medium text-white leading-snug mb-2.5">{item.title}</h3>
-              <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">{item.desc}</p>
+              <p className="text-sm text-[#B4B4B4] leading-relaxed font-light">{item.desc}</p>
             </div>
 
             {/* HUD accent line — draws across the foot on hover */}
@@ -301,10 +307,10 @@ export default function ContactSection() {
         <div
           ref={ref}
           className={`mb-16 transition-all duration-200 ease-out relative z-10 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+            inView ? "translate-y-0" : "invisible translate-y-1.5"
           }`}
         >
-          <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#FF3C3C] mb-5">
+          <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-[#CC0000] dark:text-[#FF3C3C] mb-5">
             <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
             {t("contact.sectionLabel")}
           </p>
@@ -322,7 +328,7 @@ export default function ContactSection() {
               strokeLinecap="round"
             />
           </svg>
-          <p className="text-base md:text-lg text-[#AAAAAA] max-w-xl leading-relaxed font-light">
+          <p className="text-base md:text-lg text-[#373737] dark:text-[#B4B4B4] max-w-xl leading-relaxed font-light">
             {t("contact.description")}
           </p>
         </div>
@@ -332,8 +338,8 @@ export default function ContactSection() {
 
         <div
           ref={formRef}
-          className={`grid grid-cols-1 md:grid-cols-2 gap-16 transition-all duration-200 ease-out relative z-10 ${
-            formInView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+          className={`grid grid-cols-1 md:grid-cols-2 gap-16 transition-transform duration-200 ease-out relative z-10 ${
+            formInView ? "translate-y-0" : "invisible translate-y-1.5"
           }`}
         >
           {/* Left — contact details */}
@@ -350,7 +356,7 @@ export default function ContactSection() {
               <meta itemProp="url" content="https://rin.contact/" />
 
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-                <FiMail size={16} className="text-[#7A7A7A]" aria-hidden="true" />
+                <FiMail size={16} className="text-[#6B6B6B]" aria-hidden="true" />
                 <a
                   href="mailto:huang@rin.contact"
                   itemProp="email"
@@ -361,7 +367,7 @@ export default function ContactSection() {
                 <CopyEmailButton />
               </div>
               <div className="flex items-center gap-3">
-                <FiMapPin size={16} className="text-[#7A7A7A]" aria-hidden="true" />
+                <FiMapPin size={16} className="text-[#6B6B6B]" aria-hidden="true" />
                 {/* Visible display text */}
                 <span className="text-sm text-[#9A9A9A]">Adelaide &amp; Melbourne, Australia</span>
                 {/* Hidden microdata — all locations associated with Rin Huang */}
@@ -417,7 +423,7 @@ export default function ContactSection() {
             {/* Schedule a call — Calendly */}
             {process.env.NEXT_PUBLIC_CALENDLY_URL && (
               <div className="flex flex-col gap-3">
-                <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+                <p className="text-xs tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4]">
                   {t("contact.schedule")}
                 </p>
                 <a
@@ -425,7 +431,7 @@ export default function ContactSection() {
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2.5 self-start border border-[#FF3C3C] px-5 py-2.5
-                             rounded-full text-xs text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white
+                             rounded-full text-xs text-[#CC0000] dark:text-[#FF3C3C] hover:bg-[#FF3C3C] hover:text-white
                              transition-colors duration-200"
                   aria-label={t("contact.schedule")}
                 >
@@ -439,7 +445,7 @@ export default function ContactSection() {
 
             {/* Buy Me a Coffee */}
             <div className="flex flex-col gap-3">
-              <p className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+              <p className="text-xs tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4]">
                 {t("contact.support")}
               </p>
               <a
@@ -476,7 +482,10 @@ export default function ContactSection() {
               className="absolute left-[-9999px] top-0 h-px w-px opacity-0 pointer-events-none"
             />
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+              <label
+                htmlFor="name"
+                className="text-xs tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4]"
+              >
                 {t("contact.form.name")}
               </label>
               <input
@@ -495,7 +504,10 @@ export default function ContactSection() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+              <label
+                htmlFor="email"
+                className="text-xs tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4]"
+              >
                 {t("contact.form.email")}
               </label>
               <input
@@ -514,7 +526,10 @@ export default function ContactSection() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="text-xs tracking-widest uppercase text-[#AAAAAA]">
+              <label
+                htmlFor="message"
+                className="text-xs tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4]"
+              >
                 {t("contact.form.message")}
               </label>
               <textarea
@@ -539,7 +554,7 @@ export default function ContactSection() {
                          ${
                            status === "sent"
                              ? "border-[#22C55E] text-[#22C55E] bg-transparent"
-                             : "border-[#FF3C3C] bg-[#FF3C3C] text-white hover:bg-transparent hover:text-[#FF3C3C]"
+                             : "border-[#FF3C3C] bg-[#FF3C3C] text-white hover:bg-transparent hover:text-[#CC0000] dark:text-[#FF3C3C]"
                          }`}
               aria-live="polite"
             >

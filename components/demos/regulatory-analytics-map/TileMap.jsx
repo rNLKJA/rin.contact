@@ -12,7 +12,7 @@ import { GRID_COLS, neighbour } from "./model";
 
 // Greys only, so red stays for flags and focus. Index 0 is lightest.
 const SHADE = {
-  "-1": "bg-transparent text-[#3D3D3D] dark:text-[#AAAAAA]",
+  "-1": "bg-transparent text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]",
   0: "bg-[#F5F5F5] text-[#1A1A1A] dark:bg-[#141414] dark:text-[#EEEEEE]",
   1: "bg-[#D6D6D6] text-[#1A1A1A] dark:bg-[#3D3D3D] dark:text-[#EEEEEE]",
   2: "bg-[#A3A3A3] text-[#1A1A1A] dark:bg-[#6E6E6E] dark:text-white",

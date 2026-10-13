@@ -217,7 +217,7 @@ function ZhBody() {
           COMP30024（2022）。拍卖理论和多智能体系统的激励设计。教材：Nisan, Roughgarden, Tardos &
           Vazirani《算法博弈论》（2007）；Shoham & Leyton-Brown《多智能体系统》（2009）。
         </p>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6">
           初稿于2023，2026年重写。
         </p>
       </KSection>

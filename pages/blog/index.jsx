@@ -125,7 +125,7 @@ export default function BlogIndex({ posts }) {
               strokeLinecap="round"
             />
           </svg>
-          <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-2xl leading-relaxed">
+          <p className="text-base font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-2xl leading-relaxed">
             {t("blog.description")}
           </p>
         </div>

@@ -83,7 +83,7 @@ export default function Custom404() {
         </div>
 
         {/* Suggestions */}
-        <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-3">
+        <p className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-3">
           {t("notFound.availableRoutes")}
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6">
@@ -91,7 +91,7 @@ export default function Custom404() {
             <Link
               key={href}
               href={href}
-              className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-2 text-xs text-[#595959] dark:text-[#AAAAAA]
+              className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]
                          hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-150"
             >
               → {t(key)}

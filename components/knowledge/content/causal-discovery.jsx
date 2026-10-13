@@ -363,7 +363,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The Markov-equivalence/CPDAG framing, the PC and GES algorithm families, and the
           no-hidden-confounders / hypotheses-not-proof cautions reflect current causal-discovery
           references alongside coursework.
@@ -557,7 +557,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           马尔可夫等价/CPDAG 的取景、PC 与 GES
           算法家族，以及没有隐藏混杂因子／假设而非证明的告诫，反映
           了当前的因果发现参考文献以及课程。

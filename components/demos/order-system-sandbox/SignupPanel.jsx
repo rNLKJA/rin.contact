@@ -14,10 +14,11 @@ import { BTN_PRIMARY, ERROR, INPUT, META, NOTICE } from "./ui";
 const TAG = {
   ready:
     "border-[#1A1A1A] bg-[#1A1A1A] text-white dark:border-[#EEEEEE] dark:bg-[#EEEEEE] dark:text-black",
-  entered: "border-[#BDBDBD] text-[#595959] dark:border-[#595959] dark:text-[#9A9A9A]",
+  entered:
+    "border-[#BDBDBD] text-[#6B6B6B] dark:text-[#9A9A9A] dark:border-[#595959] dark:text-[#9A9A9A]",
   held: "border-[#CC0000] text-[#CC0000] dark:border-[#FF6B6B] dark:text-[#FF6B6B]",
   skipped:
-    "border-dashed border-[#BDBDBD] text-[#595959] dark:border-[#595959] dark:text-[#9A9A9A]",
+    "border-dashed border-[#BDBDBD] text-[#6B6B6B] dark:text-[#9A9A9A] dark:border-[#595959] dark:text-[#9A9A9A]",
 };
 
 export default function SignupPanel({ state, dispatch, lang, uid }) {
@@ -70,7 +71,7 @@ export default function SignupPanel({ state, dispatch, lang, uid }) {
       <div className="rounded-lg bg-[#F7F7F7] dark:bg-[#141414] p-3 mb-4">
         <p className={`${META} font-mono mb-2`}>{L(S.chat)}</p>
         <div className="max-w-[92%] rounded-lg rounded-tl-none bg-white dark:bg-[#0A0A0A] border border-[#F0F0F0] dark:border-[#2A2A2A] px-3 py-2 mb-3">
-          <p className="text-[10px] font-semibold text-[#6E6E6E] dark:text-[#9A9A9A] mb-0.5">
+          <p className="text-[10px] font-semibold text-[#6B6B6B] dark:text-[#9A9A9A] mb-0.5">
             {L(S.studio)}
           </p>
           <p className="text-sm text-[#1A1A1A] dark:text-[#EEEEEE] leading-relaxed">
@@ -93,7 +94,7 @@ export default function SignupPanel({ state, dispatch, lang, uid }) {
         />
         <p
           id={`${uid}-text-help`}
-          className="mt-1 text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed"
+          className="mt-1 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed"
         >
           {L(S.help)}
         </p>
@@ -101,7 +102,7 @@ export default function SignupPanel({ state, dispatch, lang, uid }) {
 
       <h4 className={`${META} mb-2`}>{L(S.check)}</h4>
       {rows.length === 0 ? (
-        <p className="text-sm text-[#595959] dark:text-[#9A9A9A] mb-4">{L(S.empty)}</p>
+        <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] mb-4">{L(S.empty)}</p>
       ) : (
         <ol className="mb-4 divide-y divide-[#F0F0F0] dark:divide-[#2A2A2A] border-y border-[#F0F0F0] dark:border-[#2A2A2A]">
           {rows.map((r) => (
@@ -112,7 +113,7 @@ export default function SignupPanel({ state, dispatch, lang, uid }) {
                 {L(S.tag[r.status])}
               </span>
               <span className="min-w-0 text-sm leading-relaxed">
-                <span className="block font-mono text-xs text-[#6E6E6E] dark:text-[#9A9A9A] break-words">
+                <span className="block font-mono text-xs text-[#6B6B6B] dark:text-[#9A9A9A] break-words">
                   {r.raw}
                 </span>
                 <span

@@ -30,7 +30,7 @@ const parseKey = (key) => {
   return { board: cells.split("").map((c) => (c === "." ? null : c)), order };
 };
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
 const BTN = `inline-flex items-center justify-center min-h-[40px] rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 text-xs text-[#3D3D3D] dark:text-[#CCCCCC] hover:border-[#1A1A1A] dark:hover:border-[#EEEEEE] aria-disabled:opacity-40 aria-disabled:cursor-not-allowed aria-disabled:hover:border-[#E0E0E0] dark:aria-disabled:hover:border-[#3D3D3D] transition-colors duration-150 motion-reduce:transition-none ${FOCUS}`;
@@ -72,7 +72,7 @@ function RadioPills({ legend, name, options, value, onChange, note }) {
         ))}
       </div>
       {note && (
-        <p className="mt-2 text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed">{note}</p>
+        <p className="mt-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">{note}</p>
       )}
     </fieldset>
   );
@@ -102,7 +102,7 @@ function Bar({ label, value, max, solid, format }) {
   const pct = max > 0 ? (value / max) * 100 : 0;
   return (
     <div className="grid grid-cols-[72px_minmax(0,1fr)_52px] sm:grid-cols-[84px_minmax(0,1fr)_64px] items-center gap-2">
-      <span className="text-[11px] text-[#595959] dark:text-[#9A9A9A]">{label}</span>
+      <span className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]">{label}</span>
       <span aria-hidden="true" className="h-2 bg-[#F0F0F0] dark:bg-[#1F1F1F] overflow-hidden">
         <span
           className={`block h-full transition-[width] duration-200 motion-reduce:transition-none ${
@@ -264,7 +264,7 @@ export default function GameTreeLesson({ lang = "en" }) {
           </p>
           <p
             id={helpId}
-            className="text-xs text-[#595959] dark:text-[#9A9A9A] mb-3 leading-relaxed"
+            className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] mb-3 leading-relaxed"
           >
             {L(D.boardHelp)}
           </p>
@@ -301,7 +301,7 @@ export default function GameTreeLesson({ lang = "en" }) {
                   onKeyDown={(e) => onCellKey(e, i)}
                   className={`relative aspect-square w-full rounded-md border flex items-center justify-center select-none transition-colors duration-150 motion-reduce:transition-none ${FOCUS} ${
                     inLine
-                      ? "border-[#CC0000] dark:border-[#FF3C3C] text-[#CC0000] dark:text-[#FF3C3C]"
+                      ? "border-[#CC0000] dark:border-[#FF3C3C] text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
                       : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#1A1A1A] dark:text-[#EEEEEE]"
                   } ${
                     mark || over
@@ -325,7 +325,7 @@ export default function GameTreeLesson({ lang = "en" }) {
               );
             })}
           </div>
-          <p className="mt-2 flex items-center gap-2 text-[11px] text-[#595959] dark:text-[#9A9A9A]">
+          <p className="mt-2 flex items-center gap-2 text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]">
             <span aria-hidden="true" className="w-2 h-2 bg-[#CC0000] dark:bg-[#FF3C3C]" />
             {L(D.bestMarker)}
           </p>
@@ -387,7 +387,7 @@ export default function GameTreeLesson({ lang = "en" }) {
                   </div>
                 ))}
               </dl>
-              <p className="mt-3 text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+              <p className="mt-3 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
                 <span className={`${META} mr-2`}>{L(D.best)}</span>
                 {fill(L(D.bestLine), {
                   cell: cap(cellName(result.bestCell)),
@@ -419,7 +419,7 @@ export default function GameTreeLesson({ lang = "en" }) {
               {stepping && <Btn onClick={showAll}>{L(D.all)}</Btn>}
             </div>
           </div>
-          <p className="text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed mb-3 max-w-[640px]">
+          <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-3 max-w-[640px]">
             {L(D.movesHelp)}
           </p>
           <ol className="divide-y divide-[#F0F0F0] dark:divide-[#3D3D3D] border-y border-[#F0F0F0] dark:border-[#3D3D3D]">
@@ -434,7 +434,7 @@ export default function GameTreeLesson({ lang = "en" }) {
                     <span className="text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">
                       {cap(cellName(r.cell))}
                     </span>
-                    <span className="font-mono text-[11px] text-[#3D3D3D] dark:text-[#AAAAAA]">
+                    <span className="font-mono text-[11px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
                       {L(D.value[r.value])}
                     </span>
                   </p>
@@ -455,7 +455,7 @@ export default function GameTreeLesson({ lang = "en" }) {
                     className={`text-xs leading-relaxed ${
                       r.exact
                         ? "text-[#CC0000] dark:text-[#FF6B6B]"
-                        : "text-[#595959] dark:text-[#9A9A9A]"
+                        : "text-[#6B6B6B] dark:text-[#9A9A9A]"
                     }`}
                   >
                     {r.exact ? L(D.newBest) : fill(L(D.cannotBeat), { cell: cellName(r.beatenBy) })}
@@ -465,7 +465,7 @@ export default function GameTreeLesson({ lang = "en" }) {
             ))}
           </ol>
           {stepping && (
-            <p className="mt-2 text-xs text-[#595959] dark:text-[#9A9A9A]">
+            <p className="mt-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
               {fill(L(D.showing), { n: visible, total: rows.length })}
             </p>
           )}
@@ -529,7 +529,7 @@ export default function GameTreeLesson({ lang = "en" }) {
             </code>
           </pre>
         </div>
-        <p className="mt-2 text-xs text-[#595959] dark:text-[#9A9A9A]">{L(D.code.note)}</p>
+        <p className="mt-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{L(D.code.note)}</p>
       </div>
     </div>
   );

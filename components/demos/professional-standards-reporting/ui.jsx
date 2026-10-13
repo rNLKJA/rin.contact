@@ -6,7 +6,7 @@
  * The only motion is a colour change, switched off for reduced motion.
  */
 
-export const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+export const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 export const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
 export const BTN = `inline-flex items-center justify-center min-h-[36px] rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 text-xs text-[#3D3D3D] dark:text-[#CCCCCC] hover:border-[#1A1A1A] dark:hover:border-[#EEEEEE] disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-150 motion-reduce:transition-none ${FOCUS}`;

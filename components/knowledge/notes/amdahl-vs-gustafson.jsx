@@ -151,10 +151,10 @@ Sliders for cores and serial fraction."
             >
               Amdahl's Law
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               Wikipedia
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Clear derivation of the speedup limit and discussion of its implications for parallel
               computing.
             </span>
@@ -167,10 +167,10 @@ Sliders for cores and serial fraction."
             >
               Gustafson's Law
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               Wikipedia
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Gustafson's 1988 rebuttal to Amdahl, showing how scaled speedup differs when problem
               size grows with processor count.
             </span>
@@ -287,10 +287,10 @@ function ZhBody() {
             >
               Amdahl 定律
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               维基百科
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               加速比极限的清晰推导及其对并行计算含义的讨论。
             </span>
           </li>
@@ -302,10 +302,10 @@ function ZhBody() {
             >
               Gustafson 定律
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               维基百科
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Gustafson 对 Amdahl 的 1988
               年反驳，展示了当问题大小随处理器数量增长时缩放加速比的不同。
             </span>

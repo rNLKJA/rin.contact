@@ -143,12 +143,12 @@ function EnBody() {
             >
               Adam: A Method for Stochastic Optimization
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               arXiv 1412.6980
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           First studied in COMP90051 (2024), expanded in 2026.
         </p>
       </KSection>
@@ -274,12 +274,12 @@ function ZhBody() {
             >
               Adam：随机优化方法
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               arXiv 1412.6980
             </span>
           </li>
         </ul>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           首次在 COMP90051（2024）中学习，2026 年扩展。
         </p>
       </KSection>

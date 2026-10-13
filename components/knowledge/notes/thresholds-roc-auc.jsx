@@ -196,10 +196,10 @@ The vertical line shows your chosen threshold on the score distributions."
             >
               Receiver Operating Characteristic
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               Wikipedia
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Clear overview of ROC, TPR, FPR and AUC with historical context from signal detection
               theory.
             </span>
@@ -212,10 +212,10 @@ The vertical line shows your chosen threshold on the score distributions."
             >
               Model evaluation: quantifying the quality of predictions
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               scikit-learn documentation
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Comprehensive reference for all metrics, with code examples and when to use each.
             </span>
           </li>
@@ -343,10 +343,10 @@ function ZhBody() {
             >
               接收机操作特性曲线
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               维基百科
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               清晰地介绍 ROC、真正率、假正率和 AUC，还有来自信号检测论的历史背景。
             </span>
           </li>
@@ -358,10 +358,10 @@ function ZhBody() {
             >
               模型评估：定量化预测质量
             </a>
-            <span className="block font-mono text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-0.5">
+            <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               scikit-learn 文档
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#AAAAAA] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
               所有指标的全面参考，带代码例子和每个的使用时机。
             </span>
           </li>

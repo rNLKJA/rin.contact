@@ -17,10 +17,10 @@ export default function ActivityLog({ log, lang, uid }) {
         <h3 id={`${uid}-log`} className={`${META} font-mono`}>
           {L(T.title)}
         </h3>
-        <p className="text-xs text-[#595959] dark:text-[#9A9A9A]">{L(T.hint)}</p>
+        <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{L(T.hint)}</p>
       </div>
       {log.length === 0 ? (
-        <p className="text-sm text-[#595959] dark:text-[#9A9A9A]">{L(T.empty)}</p>
+        <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">{L(T.empty)}</p>
       ) : (
         <ol className="divide-y divide-[#F0F0F0] dark:divide-[#2A2A2A] border-y border-[#F0F0F0] dark:border-[#2A2A2A]">
           {log.map((ev, i) => (

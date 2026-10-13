@@ -40,7 +40,9 @@ export default function RegressionPage() {
             <p className="text-[#7A7A7A] mb-4">{t("ds.regression.model")}</p>
             <p className="text-[#1A1A1A] dark:text-white mb-4">{t("ds.regression.predicted")}</p>
             <p className="text-[#7A7A7A] mb-4">{t("ds.regression.ci")}</p>
-            <p className="text-[9px] text-[#AAAAAA]">{t("ds.regression.note")}</p>
+            <p className="text-[9px] text-[#6B6B6B] dark:text-[#9A9A9A]">
+              {t("ds.regression.note")}
+            </p>
           </div>
 
           <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">

@@ -45,7 +45,7 @@ export default function MarqueeBand() {
           </span>
           {orgs.map((org, i) => (
             <Fragment key={org}>
-              <span className="whitespace-nowrap text-[#6E6E6E] dark:text-[#9A9A9A]">
+              <span className="whitespace-nowrap text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {org}
                 {i < orgs.length - 1 && (
                   <span aria-hidden="true" className="ml-2.5 text-[#D0D0D0] dark:text-[#3D3D3D]">

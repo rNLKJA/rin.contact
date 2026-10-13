@@ -297,7 +297,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The breakdown point, median/MAD resistance, the Huber-loss M-estimator, and the
           robustify-vs-investigate judgement reflect current robust-statistics references alongside
           coursework.
@@ -505,7 +505,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           崩溃点、中位数/MAD 的抵抗性、Huber 损失 M
           估计量，以及稳健化对调查的判断，反映了当前的稳健统计 参考文献以及课程。
         </p>

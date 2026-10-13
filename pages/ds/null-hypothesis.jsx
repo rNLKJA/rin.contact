@@ -46,7 +46,7 @@ export default function NullHypothesisPage() {
             <p className="text-sm text-[#7A7A7A] mt-4">{t("ds.nullHypothesis.boxConclusion")}</p>
           </div>
 
-          <p className="text-[9px] text-[#AAAAAA] mt-6 font-mono">
+          <p className="text-[9px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 font-mono">
             {t("ds.nullHypothesis.footnote")}
           </p>
 

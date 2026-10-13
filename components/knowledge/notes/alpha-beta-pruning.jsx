@@ -211,7 +211,7 @@ function ZhBody() {
           COMP30024（2022）。对抗搜索和博弈树算法。Russell &
           Norvig《人工智能：现代方法》（2020），第5章。
         </p>
-        <p className="text-[12px] text-[#6E6E6E] dark:text-[#9A9A9A] mt-6">
+        <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6">
           初稿于2023，2026年重写。
         </p>
       </KSection>

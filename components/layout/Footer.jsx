@@ -66,7 +66,7 @@ const Footer = () => {
               </div>
               <span className="font-semibold text-sm text-white tracking-tight">rNLKJA</span>
             </div>
-            <p className="text-xs text-[#AAAAAA] leading-relaxed max-w-[220px]">
+            <p className="text-xs text-[#B4B4B4] leading-relaxed max-w-[220px]">
               {t("common.siteDescription")}
             </p>
             {/* Wisr wavy micro accent */}
@@ -84,7 +84,7 @@ const Footer = () => {
           {/* Nav columns */}
           {FOOTER_COLUMNS.map(({ headingKey, links }) => (
             <div key={headingKey}>
-              <p className="text-[10px] tracking-widest uppercase text-[#AAAAAA] mb-4">
+              <p className="text-[10px] tracking-widest uppercase text-[#B4B4B4] mb-4">
                 {t(headingKey)}
               </p>
               <ul className="space-y-2.5">
@@ -95,10 +95,10 @@ const Footer = () => {
                         href={href}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200 flex items-center gap-1.5 group"
+                        className="text-xs text-[#B4B4B4] hover:text-white transition-colors duration-200 flex items-center gap-1.5 group"
                       >
                         {t(key)}
-                        <span className="text-[#555555] group-hover:text-white transition-colors duration-200 text-[10px]">
+                        <span className="text-[#B4B4B4] group-hover:text-white transition-colors duration-200 text-[10px]">
                           ↗
                         </span>
                       </a>
@@ -108,7 +108,7 @@ const Footer = () => {
                         className={`text-xs transition-colors duration-200 ${
                           cta
                             ? "text-[#FF3C3C] hover:text-white font-medium"
-                            : "text-[#AAAAAA] hover:text-white"
+                            : "text-[#B4B4B4] hover:text-white"
                         }`}
                       >
                         {t(key)}
@@ -117,7 +117,7 @@ const Footer = () => {
                     ) : (
                       <a
                         href={href}
-                        className="text-xs text-[#AAAAAA] hover:text-white transition-colors duration-200"
+                        className="text-xs text-[#B4B4B4] hover:text-white transition-colors duration-200"
                       >
                         {t(key)}
                       </a>
@@ -128,7 +128,7 @@ const Footer = () => {
 
               {/* Subtle easter egg hint under the "Tools" column */}
               {headingKey === "footer.tools" && (
-                <p className="text-[9px] text-[#333333] mt-5 leading-relaxed font-mono">
+                <p className="text-[9px] text-[#B4B4B4] mt-5 leading-relaxed font-mono">
                   · · · <span title="Try /fun/secret">{t("common.thereIsMore")}</span>
                 </p>
               )}
@@ -153,7 +153,7 @@ const Footer = () => {
                 rel={key === "nav.email" ? "noreferrer" : "me noreferrer"}
                 aria-label={t(key)}
                 className="inline-flex items-center gap-1.5 border border-[#333333] px-3.5 py-1.5 rounded-full
-                           text-[10px] tracking-widest uppercase text-[#AAAAAA]
+                           text-[10px] tracking-widest uppercase text-[#B4B4B4]
                            hover:border-white hover:text-white transition-all duration-200"
               >
                 <Icon size={11} aria-hidden="true" />
@@ -165,11 +165,11 @@ const Footer = () => {
           {/* Design system + copyright */}
           <div className="flex flex-wrap items-center gap-4">
             <DesignPhilosophyModal />
-            <p className="text-[11px] text-[#AAAAAA] tracking-wide">
+            <p className="text-[11px] text-[#B4B4B4] tracking-wide">
               © 2020–{year}{" "}
               <Link
                 href="/"
-                className="text-white underline underline-offset-2 decoration-[#555555] hover:text-[#FF3C3C] hover:decoration-[#FF3C3C] transition-colors duration-200"
+                className="text-white underline underline-offset-2 decoration-[#555555] hover:text-[#FF3C3C] dark:hover:text-[#FF6B6B] hover:decoration-[#FF3C3C] transition-colors duration-200"
               >
                 rNLKJA
               </Link>

@@ -307,7 +307,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Practical guidance on this page draws on current industry writing about data storytelling
           for decision-makers (ThoughtSpot, ClicData, and others), alongside the UniMelb subject.
         </p>
@@ -509,7 +509,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           本页上的实用指引，取材于当前业界关于「面向决策者的数据叙事」的文章（ThoughtSpot、 ClicData
           等），以及墨尔本大学的这门课。
         </p>

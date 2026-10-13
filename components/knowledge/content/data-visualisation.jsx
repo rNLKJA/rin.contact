@@ -304,7 +304,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The encoding ranking (Cleveland-McGill), pre-attentive processing, and
           colour-accessibility guidance reflect current data-visualisation and perception references
           alongside coursework.
@@ -531,7 +531,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           编码排序（Cleveland-McGill）、前注意处理与颜色无障碍指引，反映了当前的数据可视化与感知参考
           文献，以及课程学习。
         </p>

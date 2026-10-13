@@ -265,7 +265,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The independence-as-graph idea, the Bayesian-network factorisation, and the
           exact-vs-approximate inference framing reflect current probabilistic-graphical-model
           references alongside coursework.
@@ -444,7 +444,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           把独立性化为图的想法、贝叶斯网络的因子分解，以及精确对近似推断的框架，反映了当前的概率图模型
           参考文献以及课程。
         </p>

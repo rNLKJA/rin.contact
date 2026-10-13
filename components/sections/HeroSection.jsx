@@ -223,7 +223,7 @@ export default function HeroSection() {
           {/* Time-of-day greeting — client-side only, fades in */}
           {greeting && (
             <p
-              className="text-[11px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-5 font-mono"
+              className="text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-5 font-mono"
               style={{ animation: "fade-in 200ms ease-out both" }}
               aria-label={greeting}
             >
@@ -240,7 +240,7 @@ export default function HeroSection() {
             {t("hero.statusPill")}
           </div>
 
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] mb-4">
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] mb-4">
             {t("hero.sectionLabel")}
           </p>
 
@@ -274,7 +274,7 @@ export default function HeroSection() {
                 {t("hero.subtitle")}
               </span>
               <span
-                className="text-sm tracking-wide text-black dark:text-white md:text-[#7A7A7A] dark:md:text-[#AAAAAA]"
+                className="text-sm tracking-wide text-black dark:text-white md:text-[#6B6B6B] dark:md:text-[#6B6B6B] dark:text-[#9A9A9A]"
                 lang="zh-Hans"
                 itemProp="alternateName"
               >
@@ -292,7 +292,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn profile"
-              className="p-1.5 -m-1.5 text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
+              className="p-1.5 -m-1.5 text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
             >
               <LinkedInIcon />
             </a>
@@ -301,7 +301,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub profile"
-              className="p-1.5 -m-1.5 text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
+              className="p-1.5 -m-1.5 text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 flex-shrink-0"
             >
               <GitHubIcon />
             </a>
@@ -312,7 +312,7 @@ export default function HeroSection() {
             role="status"
             aria-live="polite"
             aria-label={role ? `Current role: ${role}` : undefined}
-            className="hero-role text-xl md:text-2xl font-light text-[#3D3D3D] dark:text-[#AAAAAA] mb-8 h-8 md:animate-fade-up md:delay-200"
+            className="hero-role text-xl md:text-2xl font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-8 h-8 md:animate-fade-up md:delay-200"
           >
             {role}
             <span
@@ -326,7 +326,7 @@ export default function HeroSection() {
           {/* Bio — LCP element: no animation on mobile so it paints immediately */}
           <p
             id="hero-bio"
-            className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-10 md:animate-fade-up md:delay-300"
+            className="text-base font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-10 md:animate-fade-up md:delay-300"
           >
             {t("hero.bio")}
           </p>
@@ -347,7 +347,7 @@ export default function HeroSection() {
               <span
                 key={tag}
                 className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wider uppercase text-black dark:text-white md:text-[#5C5C5C] dark:md:text-[#9A9A9A]
-                           rounded-full hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200 cursor-default
+                           rounded-full hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 cursor-default
                            md:animate-enter-up"
                 style={{ animationDelay: `${Math.min(i * 30, 100)}ms` }}
               >

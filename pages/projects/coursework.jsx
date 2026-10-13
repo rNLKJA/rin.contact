@@ -276,14 +276,14 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
                       <h3 className="mt-2 text-lg font-semibold text-black dark:text-white">
                         {s.title}
                       </h3>
-                      <p className="mt-1.5 text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+                      <p className="mt-1.5 text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
                         {s.body}
                       </p>
                     </li>
                   ))}
                 </ol>
                 {sharedStack.length > 0 && (
-                  <p className="mt-5 text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA] max-w-[72ch]">
+                  <p className="mt-5 text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-[72ch]">
                     <span className={STACK_LABEL}>{t("courseworkPage.sharedStack")}</span>
                     {sharedStack.join(" · ")}
                   </p>
@@ -415,11 +415,11 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
           {/* 03 Skills matrix */}
           <ResumeSection id="skills" n="03" title={t("courseworkPage.sections.matrix")}>
             <div className="mb-6 max-w-[68ch] space-y-3">
-              <p className="text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+              <p className="text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {t("courseworkPage.matrix.intro")}
               </p>
               {sharedCapabilities.length > 0 && (
-                <p className="text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+                <p className="text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
                   <span className={STACK_LABEL}>{t("courseworkPage.matrix.everyProject")}</span>
                   {sharedCapabilities.join(" · ")}
                 </p>
@@ -439,7 +439,7 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
 
           {/* 04 Coming next: placeholders until each rebuild ships */}
           <ResumeSection id="coming-next" n="04" title={t("courseworkPage.sections.pipeline")}>
-            <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+            <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
               {t("courseworkPage.pipeline.intro")}
             </p>
             <PipelineList items={localisePipeline(COURSEWORK_PIPELINE, locale)} t={t} />

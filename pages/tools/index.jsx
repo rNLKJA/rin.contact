@@ -50,7 +50,7 @@ export default function ToolsIndexPage() {
 
       <div className="min-h-screen bg-white flex flex-col">
         <div className="max-w-[680px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1">
-          <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] font-mono mb-4">
+          <p className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] font-mono mb-4">
             /tools
           </p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
@@ -68,7 +68,7 @@ export default function ToolsIndexPage() {
                 <span className="font-mono text-sm text-[#1A1A1A] group-hover:text-black transition-colors">
                   /tools/{label}
                 </span>
-                <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] flex-shrink-0">
+                <span className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] flex-shrink-0">
                   {note}
                 </span>
               </Link>

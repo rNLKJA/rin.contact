@@ -20,14 +20,14 @@ import { MODULE as C } from "@/lib/demos/hex-micro-course-data";
 const STEPS = C.steps.length;
 const QUESTIONS = C.quiz.questions;
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
 const BTN_PRIMARY = `inline-flex items-center justify-center min-h-[44px] rounded-full px-5 text-xs tracking-widest uppercase bg-[#1A1A1A] text-white dark:bg-[#EEEEEE] dark:text-black hover:bg-[#CC0000] dark:hover:bg-[#FF3C3C] dark:hover:text-black disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 motion-reduce:transition-none ${FOCUS}`;
-const BTN = `inline-flex items-center justify-center min-h-[44px] rounded-full px-4 text-xs tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 motion-reduce:transition-none ${FOCUS}`;
+const BTN = `inline-flex items-center justify-center min-h-[44px] rounded-full px-4 text-xs tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 motion-reduce:transition-none ${FOCUS}`;
 const HEADING =
   "text-lg font-semibold tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] mb-3 outline-none";
-const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed";
+const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed";
 
 /** A pixel tick or cross, drawn on a 7 by 7 grid. */
 function Mark({ ok }) {
@@ -65,7 +65,7 @@ function Concept({ L, headingRef }) {
           <li key={part.key} className="bg-white dark:bg-[#0A0A0A] p-4 min-w-0">
             <p className="flex items-baseline gap-2 mb-1">
               <span
-                className="font-display text-xl leading-none text-[#CC0000] dark:text-[#FF3C3C]"
+                className="font-display text-xl leading-none text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
                 aria-hidden="true"
               >
                 {i + 1}
@@ -74,7 +74,7 @@ function Concept({ L, headingRef }) {
                 {L(part.label)}
               </span>
             </p>
-            <p className="text-sm text-[#595959] dark:text-[#AAAAAA] leading-relaxed">
+            <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
               {L(part.hint)}
             </p>
           </li>
@@ -112,7 +112,7 @@ function Example({ L, headingRef, shown, setShown, announce }) {
         {L(C.example.heading)}
       </h4>
       <p className={`${META} mb-1`}>{L(C.example.beforeLabel)}</p>
-      <p className="mb-5 text-[15px] text-[#595959] dark:text-[#9A9A9A] line-through decoration-[#BDBDBD] dark:decoration-[#595959]">
+      <p className="mb-5 text-[15px] text-[#6B6B6B] dark:text-[#9A9A9A] line-through decoration-[#BDBDBD] dark:decoration-[#595959]">
         {L(C.example.before)}
       </p>
       <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
@@ -129,14 +129,14 @@ function Example({ L, headingRef, shown, setShown, announce }) {
           }}
         />
         {shown === 0 ? (
-          <p className="relative text-sm text-[#6E6E6E] dark:text-[#9A9A9A]">
+          <p className="relative text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">
             {L(C.example.empty)}
           </p>
         ) : (
           <ol className="relative space-y-2">
             {C.example.parts.slice(0, shown).map((part) => (
               <li key={part.key} className="min-w-0">
-                <span className="block font-display text-[10px] leading-none tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] mb-1">
+                <span className="block font-display text-[10px] leading-none tracking-widest uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] mb-1">
                   {labelOf(part.key)}
                 </span>
                 <span className="text-[15px] text-[#1A1A1A] dark:text-[#EEEEEE] leading-relaxed">
@@ -158,7 +158,7 @@ function Example({ L, headingRef, shown, setShown, announce }) {
         )}
       </div>
       {complete && (
-        <p className="border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-3 text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+        <p className="border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-3 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
           {L(C.example.tip)}
         </p>
       )}
@@ -228,7 +228,7 @@ function Quiz({ L, headingRef, quiz, setQuiz, onFinish, announce }) {
                       ? "border-[#CC0000] dark:border-[#FF3C3C] text-[#1A1A1A] dark:text-[#EEEEEE]"
                       : choice === i
                         ? "border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#FAFAFA] dark:bg-[#111111] text-[#1A1A1A] dark:text-[#EEEEEE]"
-                        : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA]"
+                        : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
                 } ${checked ? "cursor-default" : "cursor-pointer hover:border-[#1A1A1A] dark:hover:border-[#EEEEEE]"}`}
               >
                 <input
@@ -261,7 +261,9 @@ function Quiz({ L, headingRef, quiz, setQuiz, onFinish, announce }) {
           <div className="border border-[#1A1A1A] dark:border-[#CCCCCC] p-3">
             <p
               className={`font-display text-[11px] leading-none tracking-widest uppercase flex items-center gap-2 mb-2 ${
-                ok ? "text-[#1A1A1A] dark:text-[#EEEEEE]" : "text-[#CC0000] dark:text-[#FF3C3C]"
+                ok
+                  ? "text-[#1A1A1A] dark:text-[#EEEEEE]"
+                  : "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
               }`}
             >
               <Mark ok={ok} />
@@ -276,7 +278,11 @@ function Quiz({ L, headingRef, quiz, setQuiz, onFinish, announce }) {
         <button type="button" onClick={primary} className={BTN_PRIMARY}>
           {!checked ? L(C.quiz.check) : last ? L(C.quiz.finish) : L(C.quiz.next)}
         </button>
-        {hint && <p className="text-sm text-[#CC0000] dark:text-[#FF3C3C]">{L(C.quiz.pick)}</p>}
+        {hint && (
+          <p className="text-sm text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+            {L(C.quiz.pick)}
+          </p>
+        )}
       </div>
     </div>
   );
@@ -372,7 +378,7 @@ export default function MicroModule({ lang = "en", result, onFinish, onReset }) 
                       className={`w-full min-h-[44px] flex flex-col items-start gap-1 border px-2 py-1.5 text-left transition-colors duration-150 motion-reduce:transition-none ${FOCUS} ${
                         active
                           ? "border-[#1A1A1A] dark:border-[#EEEEEE] text-[#1A1A1A] dark:text-[#EEEEEE]"
-                          : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#9A9A9A] hover:border-[#1A1A1A] dark:hover:border-[#EEEEEE]"
+                          : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-[#1A1A1A] dark:hover:border-[#EEEEEE]"
                       }`}
                     >
                       <span className="flex items-center gap-1.5">
@@ -407,10 +413,10 @@ export default function MicroModule({ lang = "en", result, onFinish, onReset }) 
             <dl className="grid grid-cols-2 gap-px bg-[#E0E0E0] dark:bg-[#3D3D3D] border border-[#E0E0E0] dark:border-[#3D3D3D] mb-4">
               <div className="bg-white dark:bg-[#0A0A0A] p-4 min-w-0">
                 <dt className={`${META} mb-1`}>{L(C.result.scoreLabel)}</dt>
-                <dd className="font-display text-3xl leading-none text-[#CC0000] dark:text-[#FF3C3C]">
+                <dd className="font-display text-3xl leading-none text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
                   {result.score}/{QUESTIONS.length}
                 </dd>
-                <dd className="mt-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
+                <dd className="mt-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
                   {fill(L(C.result.score), { score: result.score, total: QUESTIONS.length })}
                 </dd>
               </div>
@@ -419,7 +425,7 @@ export default function MicroModule({ lang = "en", result, onFinish, onReset }) 
                 <dd className="font-display text-3xl leading-none text-[#1A1A1A] dark:text-[#EEEEEE]">
                   {result.minutes.toFixed(1)}
                 </dd>
-                <dd className="mt-2 text-xs text-[#595959] dark:text-[#AAAAAA]">
+                <dd className="mt-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
                   {fill(L(C.result.time), { min: result.minutes.toFixed(1) })}
                 </dd>
               </div>

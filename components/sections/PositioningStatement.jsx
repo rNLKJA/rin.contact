@@ -44,11 +44,11 @@ export default function PositioningStatement() {
             className="hidden md:block flex-1 h-px bg-[#E5E5E5] dark:bg-[#262626]"
             aria-hidden="true"
           />
-          <span className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+          <span className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
             {safeDomains.map((d, i) => (
               <span key={d} className="flex items-center gap-2">
                 {i > 0 && (
-                  <span className="text-[#FF3C3C]" aria-hidden="true">
+                  <span className="text-[#CC0000] dark:text-[#FF3C3C]" aria-hidden="true">
                     ·
                   </span>
                 )}
@@ -69,7 +69,7 @@ export default function PositioningStatement() {
             {safeLines.map((ln, i) => (
               <span
                 key={i}
-                className={`line block ${i === safeLines.length - 1 ? "text-[#FF3C3C] dark:text-[#FF5C5C]" : ""}`}
+                className={`line block ${i === safeLines.length - 1 ? "text-[#CC0000] dark:text-[#FF3C3C] dark:text-[#FF5C5C]" : ""}`}
                 style={{ "--i": i }}
               >
                 {ln}
@@ -80,7 +80,7 @@ export default function PositioningStatement() {
 
         {/* gloss — faithful operating-principle line */}
         <p
-          className="gloss mt-9 md:mt-12 max-w-2xl text-base md:text-lg font-light leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]"
+          className="gloss mt-9 md:mt-12 max-w-2xl text-base md:text-lg font-light leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
           style={{ "--i": safeLines.length }}
         >
           {gloss}

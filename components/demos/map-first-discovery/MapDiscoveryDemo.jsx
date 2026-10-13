@@ -29,7 +29,7 @@ const GROUP_PX = 46;
 const FEED_STEP = 8;
 const PLACE_BY_ID = Object.fromEntries(PLACES.map((p) => [p.id, p]));
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]";
 const BTN = `inline-flex items-center justify-center min-h-[36px] min-w-[36px] rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 text-xs text-[#3D3D3D] dark:text-[#CCCCCC] hover:border-[#1A1A1A] dark:hover:border-[#EEEEEE] disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-150 motion-reduce:transition-none ${FOCUS}`;
@@ -328,7 +328,7 @@ export default function MapDiscoveryDemo({ lang = "en" }) {
               >
                 <span aria-hidden="true">−</span>
               </button>
-              <span className="font-mono text-[11px] text-[#595959] dark:text-[#9A9A9A] tabular-nums px-1">
+              <span className="font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] tabular-nums px-1">
                 {fill(L(D.zoomLevel), { n: level + 1, total: SPANS.length })}
               </span>
               <button
@@ -353,7 +353,7 @@ export default function MapDiscoveryDemo({ lang = "en" }) {
             </div>
           </div>
 
-          <p id={helpId} className="text-xs text-[#595959] dark:text-[#9A9A9A] mb-2">
+          <p id={helpId} className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] mb-2">
             {L(D.mapHelp)}
           </p>
           <div
@@ -386,7 +386,7 @@ export default function MapDiscoveryDemo({ lang = "en" }) {
           </div>
 
           {/* Legend */}
-          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">
+          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
             {["you", "person", "event", "group", ...(reveal ? ["truth"] : [])].map((k) => (
               <li key={k} className="flex items-center gap-1.5">
                 <Glyph kind={k} />
@@ -498,15 +498,15 @@ export default function MapDiscoveryDemo({ lang = "en" }) {
               className="text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE] mb-1 flex items-baseline justify-between gap-3"
             >
               {L(D.feedTitle)}
-              <span className="font-mono text-xs font-normal text-[#595959] dark:text-[#9A9A9A]">
+              <span className="font-mono text-xs font-normal text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {nearby.length}
               </span>
             </h3>
-            <p className="text-xs text-[#595959] dark:text-[#9A9A9A] mb-3">
+            <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] mb-3">
               {fill(L(D.near), { place: placeName })} · {fmt.distance(radius)}
             </p>
             {nearby.length === 0 ? (
-              <p className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA]">
+              <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {fill(L(D.feedEmpty), { radius: fmt.distance(radius) })}
               </p>
             ) : (
@@ -539,7 +539,7 @@ export default function MapDiscoveryDemo({ lang = "en" }) {
                             <span className="block text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE] break-words">
                               {it.kind === "event" ? it.title[lang] : it.name}
                             </span>
-                            <span className="block text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed break-words">
+                            <span className="block text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed break-words">
                               {fmt.describe(it, cell)}
                             </span>
                           </span>

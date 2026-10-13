@@ -34,7 +34,7 @@ function Cell({ n, colour }) {
           ))}
         </span>
       )}
-      <span className="font-mono text-[10px] tabular-nums text-[#3D3D3D] dark:text-[#AAAAAA]">
+      <span className="font-mono text-[10px] tabular-nums text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
         {n > 0 ? (
           n
         ) : (
@@ -76,7 +76,7 @@ function YearEntry({ year, evidence, kinds, skillLabel, onSelectSkill }) {
         {year.year}
       </h3>
       <div className="min-w-0">
-        <p className="text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+        <p className="text-[13px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
           {itemCount(t, count, `${K}.itemSummary`, `${K}.itemsSummary`)}
           {count > 0 && (
             <span className="text-[#5C5C5C] dark:text-[#9A9A9A]">
@@ -171,7 +171,7 @@ export default function LearningTimeline({ atlas, onSelectSkill }) {
 
   return (
     <div>
-      <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+      <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
         {t(`${K}.intro`)}
       </p>
 
@@ -200,7 +200,7 @@ export default function LearningTimeline({ atlas, onSelectSkill }) {
                 <th key={y.year} scope="col" className="pb-3 px-2 text-left font-normal">
                   <a
                     href={`#year-${y.year}`}
-                    className="font-display text-sm tabular-nums text-black dark:text-white hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200"
+                    className="font-display text-sm tabular-nums text-black dark:text-white hover:text-[#CC0000] dark:hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200"
                   >
                     {y.year}
                   </a>
@@ -227,7 +227,7 @@ export default function LearningTimeline({ atlas, onSelectSkill }) {
             <tr className="border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
               <th
                 scope="row"
-                className="py-2.5 pr-4 text-left font-normal text-[12px] text-[#CC0000] dark:text-[#FF3C3C] whitespace-nowrap"
+                className="py-2.5 pr-4 text-left font-normal text-[12px] text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] whitespace-nowrap"
               >
                 {t(`${K}.newSkills`)}
               </th>

@@ -261,7 +261,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The probability-vs-non-probability distinction, non-response/weighting practice, and the
           sampling-vs-non-sampling-error framing reflect current survey-methodology references
           alongside statistics coursework.
@@ -494,7 +494,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           概率与非概率的区分、无应答/加权的实务，以及抽样与非抽样误差的取景，反映了当前的调查方法参考
           文献以及统计学课程。
         </p>

@@ -105,11 +105,11 @@ export default function SkillMatrix({ skills = [], areas = [] }) {
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-8 md:py-12">
         {/* Label row */}
         <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] m-0">
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] m-0">
             <span aria-hidden="true">■ — </span>
             {copy.label}
           </p>
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] m-0">{copy.note}</p>
+          <p className="text-xs text-[#5A5A5A] dark:text-[#9A9A9A] m-0">{copy.note}</p>
         </div>
 
         {/* Readout box */}
@@ -122,7 +122,7 @@ export default function SkillMatrix({ skills = [], areas = [] }) {
               <p className="font-display text-2xl md:text-4xl leading-tight text-black dark:text-white m-0">
                 {current.label}
               </p>
-              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-2 m-0">
+              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-2 m-0">
                 {current.lastWhere && current.lastWhen
                   ? `${copy.lastUsed(current.lastWhere, current.lastWhen)} · `
                   : ""}
@@ -134,7 +134,7 @@ export default function SkillMatrix({ skills = [], areas = [] }) {
               <p className="font-display text-3xl md:text-5xl leading-none text-black dark:text-white m-0">
                 {copy.idle(totalSkills)}
               </p>
-              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-3 m-0">
+              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-3 m-0">
                 {copy.idleSub(activeSkills)}
               </p>
             </>
@@ -150,7 +150,7 @@ export default function SkillMatrix({ skills = [], areas = [] }) {
             return (
               <div key={area.id}>
                 {/* Area label */}
-                <h3 className="text-xs font-mono tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] mb-3">
+                <h3 className="text-xs font-mono tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] mb-3">
                   {area.label} ({areaSkills.length})
                 </h3>
 

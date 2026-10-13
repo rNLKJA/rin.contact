@@ -30,7 +30,7 @@ const dot = (v) => `${Math.round(30 + ((v - 1) / 4) * 70)}%`;
 const mean = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 const one = (n) => n.toFixed(1);
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 
 function RatingGroup({ question, value, onChange, lang }) {
   const L = (o) => o[lang];
@@ -60,7 +60,7 @@ function RatingGroup({ question, value, onChange, lang }) {
               />
               <span
                 aria-hidden="true"
-                className="flex h-10 w-10 items-center justify-center rounded-full border font-mono text-sm transition-colors duration-150 motion-reduce:transition-none border-[#E0E0E0] text-[#595959] hover:border-[#1A1A1A] dark:border-[#3D3D3D] dark:text-[#AAAAAA] dark:hover:border-[#EEEEEE] peer-checked:border-[#1A1A1A] peer-checked:bg-[#1A1A1A] peer-checked:text-white dark:peer-checked:border-[#EEEEEE] dark:peer-checked:bg-[#EEEEEE] dark:peer-checked:text-black peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#CC0000] dark:peer-focus-visible:outline-[#FF3C3C]"
+                className="flex h-10 w-10 items-center justify-center rounded-full border font-mono text-sm transition-colors duration-150 motion-reduce:transition-none border-[#E0E0E0] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-[#1A1A1A] dark:border-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] dark:hover:border-[#EEEEEE] peer-checked:border-[#1A1A1A] peer-checked:bg-[#1A1A1A] peer-checked:text-white dark:peer-checked:border-[#EEEEEE] dark:peer-checked:bg-[#EEEEEE] dark:peer-checked:text-black peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#CC0000] dark:peer-focus-visible:outline-[#FF3C3C]"
               >
                 {n}
               </span>
@@ -134,12 +134,12 @@ export default function Daybook({ lang = "en" }) {
       {/* Label strip: what this is, stated before anything else. */}
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-5 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#111111]">
         <p
-          className={`${META} font-mono flex items-center gap-2 text-[#CC0000] dark:text-[#FF3C3C]`}
+          className={`${META} font-mono flex items-center gap-2 text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]`}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
           {L(C.kicker)}
         </p>
-        <p className="text-xs text-[#595959] dark:text-[#AAAAAA]">{L(C.label)}</p>
+        <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">{L(C.label)}</p>
       </div>
 
       {/* Questions */}
@@ -167,7 +167,7 @@ export default function Daybook({ lang = "en" }) {
         <button
           type="button"
           onClick={reset}
-          className="min-h-[40px] rounded-full px-4 text-xs tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]"
+          className="min-h-[40px] rounded-full px-4 text-xs tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 motion-reduce:transition-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] dark:focus-visible:outline-[#FF3C3C]"
         >
           {L(C.reset)}
         </button>
@@ -177,7 +177,7 @@ export default function Daybook({ lang = "en" }) {
         <p
           role="status"
           aria-live="polite"
-          className="basis-full text-sm text-[#3D3D3D] dark:text-[#AAAAAA] min-h-[1.25rem]"
+          className="basis-full text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] min-h-[1.25rem]"
         >
           {message}
         </p>
@@ -202,8 +202,8 @@ export default function Daybook({ lang = "en" }) {
                 <dd
                   className={`font-display text-2xl leading-none mt-1 ${
                     today == null
-                      ? "text-[#9A9A9A] dark:text-[#6E6E6E]"
-                      : "text-[#CC0000] dark:text-[#FF3C3C]"
+                      ? "text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                      : "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
                   }`}
                 >
                   {today == null ? (
@@ -239,7 +239,7 @@ export default function Daybook({ lang = "en" }) {
 
             {weeks.map((days, w) => (
               <Fragment key={w}>
-                <span className="whitespace-nowrap pr-1 text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A]">
+                <span className="whitespace-nowrap pr-1 text-[10px] text-[#6B6B6B] dark:text-[#9A9A9A]">
                   {L(C.weeks[w])}
                 </span>
                 {days.map((v, d) => {
@@ -299,7 +299,7 @@ export default function Daybook({ lang = "en" }) {
             {Array.from({ length: COLS - 1 }, (_, d) => (
               <span key={d} />
             ))}
-            <span className="whitespace-nowrap text-center text-[10px] text-[#CC0000] dark:text-[#FF3C3C]">
+            <span className="whitespace-nowrap text-center text-[10px] text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
               {L(C.today)}
             </span>
             <span />
@@ -307,7 +307,7 @@ export default function Daybook({ lang = "en" }) {
 
           <div
             aria-hidden="true"
-            className="mt-4 flex items-center gap-2 text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]"
+            className="mt-4 flex items-center gap-2 text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]"
           >
             <span className="flex items-center gap-1">
               {RATINGS.map((n) => (
@@ -324,7 +324,7 @@ export default function Daybook({ lang = "en" }) {
         </div>
       </div>
 
-      <p className="px-5 py-3 border-t border-[#E0E0E0] dark:border-[#3D3D3D] text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed">
+      <p className="px-5 py-3 border-t border-[#E0E0E0] dark:border-[#3D3D3D] text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
         {L(C.privacy)}
       </p>
     </div>

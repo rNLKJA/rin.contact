@@ -22,7 +22,7 @@ import { DEFAULT_SEED, analyse, generateAreas, shadeClasses } from "./model";
 import TileMap, { SHADE_STEPS } from "./TileMap";
 import TrendScatter from "./TrendScatter";
 
-const META = "text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]";
+const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const PANEL = "border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg p-4";
 const H3 = "text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE]";
 const FOCUS =
@@ -234,7 +234,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
             />
             {L(D.small)}
           </label>
-          <p id={smallHintId} className="text-xs text-[#595959] dark:text-[#9A9A9A]">
+          <p id={smallHintId} className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
             {L(D.smallHint)}
           </p>
         </div>
@@ -243,7 +243,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
       {/* Map and the selected area */}
       <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_280px]">
         <div className="min-w-0">
-          <p id={helpId} className="text-xs text-[#595959] dark:text-[#9A9A9A] mb-4 max-w-[360px]">
+          <p id={helpId} className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] mb-4 max-w-[360px]">
             {L(D.mapHelp)}
           </p>
           <TileMap
@@ -263,7 +263,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
           />
 
           {/* Legend */}
-          <div className="mt-5 max-w-[360px] space-y-2 text-xs text-[#3D3D3D] dark:text-[#AAAAAA]">
+          <div className="mt-5 max-w-[360px] space-y-2 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
             <div className="flex items-center gap-2">
               <span className="font-mono shrink-0">
                 {view === "gap" ? L(D.legendBelow) : L(D.legendLow)}
@@ -281,7 +281,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
               </span>
             </div>
             {shown.length > 0 && (
-              <p className="font-mono text-[11px] text-[#595959] dark:text-[#9A9A9A]">
+              <p className="font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {legendFormat(Math.min(...shown))} … {legendFormat(Math.max(...shown))}
               </p>
             )}
@@ -312,7 +312,9 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
             <span className="font-display text-3xl leading-none text-[#1A1A1A] dark:text-[#EEEEEE]">
               {sel.code}
             </span>
-            <span className="text-sm text-[#3D3D3D] dark:text-[#AAAAAA]">{areaName(sel)}</span>
+            <span className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+              {areaName(sel)}
+            </span>
           </p>
           <dl className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1.5 text-sm">
             {[
@@ -325,7 +327,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
               [L(D.fields.gap), fill(L(D.gapShort), { z: fmt.signed(sel.z) })],
             ].map(([k, v]) => (
               <div key={k} className="contents">
-                <dt className="text-[#595959] dark:text-[#9A9A9A]">{k}</dt>
+                <dt className="text-[#6B6B6B] dark:text-[#9A9A9A]">{k}</dt>
                 <dd className="font-mono text-right text-[#1A1A1A] dark:text-[#EEEEEE]">{v}</dd>
               </div>
             ))}
@@ -334,7 +336,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
             className={`mt-4 flex gap-2 text-sm leading-relaxed ${
               sel.above
                 ? "text-[#CC0000] dark:text-[#FF6B6B]"
-                : "text-[#3D3D3D] dark:text-[#AAAAAA]"
+                : "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
             }`}
           >
             <span aria-hidden="true">{sel.above ? "▲" : "·"}</span>
@@ -385,7 +387,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
           >
             {fitText}
           </p>
-          <p className="text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed">
+          <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
             {L(D.caveat)}
           </p>
         </div>
@@ -412,10 +414,10 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
                       className={`w-full min-h-[36px] flex items-center gap-3 rounded-md px-2 text-left text-sm transition-colors duration-150 motion-reduce:transition-none hover:bg-[#F7F7F7] dark:hover:bg-[#141414] ${FOCUS} ${
                         i === active
                           ? "bg-[#F0F0F0] dark:bg-[#1A1A1A] text-[#1A1A1A] dark:text-[#EEEEEE]"
-                          : "text-[#3D3D3D] dark:text-[#AAAAAA]"
+                          : "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
                       }`}
                     >
-                      <span className="font-mono text-xs text-[#6E6E6E] dark:text-[#9A9A9A]">
+                      <span className="font-mono text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">
                         {k + 1}
                       </span>
                       <span className="font-mono font-medium">{r.code}</span>
@@ -433,7 +435,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed max-w-[680px]">
+        <p className="mt-3 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed max-w-[680px]">
           {L(D.compareNote)}
         </p>
       </div>
@@ -482,7 +484,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
                   >
                     {r.code} · {areaName(r)}
                     {!r.included && (
-                      <span className="text-[#6E6E6E] dark:text-[#9A9A9A]"> · {L(D.notInFit)}</span>
+                      <span className="text-[#6B6B6B] dark:text-[#9A9A9A]"> · {L(D.notInFit)}</span>
                     )}
                   </th>
                   {[
@@ -514,7 +516,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
       <p role="status" className="mt-4 text-xs text-[#1A1A1A] dark:text-[#EEEEEE] min-h-[1rem]">
         {status}
       </p>
-      <p className="mt-2 text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed">
+      <p className="mt-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
         {L(D.helpline)}
       </p>
     </div>

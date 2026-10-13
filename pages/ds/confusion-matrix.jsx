@@ -64,7 +64,9 @@ export default function ConfusionMatrixPage() {
                     <td className="p-3 text-[#1A1A1A] dark:text-white">{reality}</td>
                     <td className="p-3">
                       {CORRECT[i] ? (
-                        <span className="text-[#3D3D3D] dark:text-[#AAAAAA]">✓</span>
+                        <span className="text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                          ✓
+                        </span>
                       ) : (
                         <span className="text-[#FF3C3C]">✗</span>
                       )}
@@ -75,7 +77,7 @@ export default function ConfusionMatrixPage() {
             </table>
           </div>
 
-          <p className="text-[9px] text-[#AAAAAA] mt-6 font-mono">
+          <p className="text-[9px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 font-mono">
             {t("ds.confusionMatrix.footer")}
           </p>
 

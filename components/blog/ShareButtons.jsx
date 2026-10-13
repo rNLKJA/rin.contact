@@ -25,12 +25,12 @@ export default function ShareButtons({ url, title }) {
   const pill =
     "inline-flex items-center gap-1.5 border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 py-1.5 rounded-full " +
     "text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A] " +
-    "hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200 " +
+    "hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 " +
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FF3C3C]";
 
   return (
     <div className="mt-12 pt-6 border-t border-[#F0F0F0] dark:border-[#1E1E1E]">
-      <p className="text-[10px] tracking-[0.3em] uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-3">
+      <p className="text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-3">
         {t("blog.shareLabel")}
       </p>
       <div className="flex flex-wrap gap-2">

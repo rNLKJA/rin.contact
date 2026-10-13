@@ -142,7 +142,7 @@ function Counter({ label, target, started, reduce }) {
       >
         {value}
       </span>
-      <span className="text-xs tracking-wide uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+      <span className="text-xs tracking-wide uppercase text-[#5A5A5A] dark:text-[#9A9A9A]">
         {label}
       </span>
     </div>
@@ -193,7 +193,7 @@ function TimePanel() {
         <span className="font-display text-5xl md:text-6xl leading-none tabular-nums text-black dark:text-white">
           {time}
         </span>
-        <span className="text-sm tracking-wide uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+        <span className="text-sm tracking-wide uppercase text-[#5A5A5A] dark:text-[#9A9A9A]">
           {weekday}
         </span>
       </div>
@@ -215,7 +215,7 @@ function TimePanel() {
           );
         })}
       </div>
-      <span className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A]">{copy.timeCaption}</span>
+      <span className="text-xs text-[#5A5A5A] dark:text-[#9A9A9A]">{copy.timeCaption}</span>
     </div>
   );
 }
@@ -263,7 +263,7 @@ function HowIWorkPanel({ started, reduce }) {
               aria-label={`${stage}: ${examples[i].text}, ${examples[i].role}`}
             >
               <span className="flex w-full items-center justify-between">
-                <span className="font-mono text-[10px] md:text-[11px] tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]">
+                <span className="font-mono text-[10px] md:text-[11px] tracking-widest text-[#5A5A5A] dark:text-[#9A9A9A]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span
@@ -292,7 +292,7 @@ function HowIWorkPanel({ started, reduce }) {
         <p className="font-display text-sm md:text-base leading-relaxed text-black dark:text-white m-0 mb-2">
           {example.text}
         </p>
-        <p className="font-mono text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] m-0">
+        <p className="font-mono text-[10px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] m-0">
           {stages[displayStage]} · {example.role}
         </p>
       </div>
@@ -356,7 +356,7 @@ function AboutOpenerClient() {
     >
       <HeroDotField />
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-10 md:py-14">
-        <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] mb-6 m-0">
+        <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] mb-6 m-0">
           <span aria-hidden="true">■ — </span>
           {copy.label}
         </p>

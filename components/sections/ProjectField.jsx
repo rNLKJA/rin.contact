@@ -167,11 +167,11 @@ export default function ProjectField({ projects = [] }) {
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-10 md:py-14">
         {/* Label row */}
         <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] m-0">
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] m-0">
             <span aria-hidden="true">■ — </span>
             {copy.label}
           </p>
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] m-0">{copy.note}</p>
+          <p className="text-xs text-[#5A5A5A] dark:text-[#9A9A9A] m-0">{copy.note}</p>
         </div>
 
         {/* Readout box */}
@@ -184,7 +184,7 @@ export default function ProjectField({ projects = [] }) {
               <p className="font-display text-2xl md:text-4xl leading-tight text-black dark:text-white m-0">
                 {current.title}
               </p>
-              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-2 m-0">
+              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-2 m-0">
                 {current.period} · {current.domain}
               </p>
             </>
@@ -193,7 +193,7 @@ export default function ProjectField({ projects = [] }) {
               <p className="font-display text-3xl md:text-5xl leading-none text-black dark:text-white m-0">
                 {copy.idle(filtered.length)}
               </p>
-              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mt-3 m-0">
+              <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-3 m-0">
                 {copy.idleSub}
               </p>
             </>
@@ -235,7 +235,7 @@ export default function ProjectField({ projects = [] }) {
           {/* Lane labels (left) */}
           <div
             data-lane-labels
-            className="w-20 md:w-24 flex-shrink-0 flex flex-col justify-around text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] py-2"
+            className="w-20 md:w-24 flex-shrink-0 flex flex-col justify-around text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] py-2"
           >
             {allDomains.map((d) => (
               <span
@@ -312,7 +312,7 @@ export default function ProjectField({ projects = [] }) {
 
             {/* Year ticks (bottom) */}
             <div
-              className="absolute left-0 right-0 bottom-0 flex justify-between items-end h-6 px-3 text-[10px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A] pointer-events-none"
+              className="absolute left-0 right-0 bottom-0 flex justify-between items-end h-6 px-3 text-[10px] font-mono text-[#5A5A5A] dark:text-[#9A9A9A] pointer-events-none"
               aria-hidden="true"
             >
               {[Math.floor(minX), Math.floor((minX + maxX) / 2), maxX].map((yr) => (

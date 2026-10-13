@@ -87,9 +87,12 @@ export default function AboutPage({ faqJsonLd }) {
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
         <AboutIntro />
         <div className="mt-8 mb-12">
-          <p className="text-[15px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+          <p className="text-[15px] text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
             {t("about.skillsLinkIntro")}{" "}
-            <Link href="/skills" className="text-[#FF3C3C] hover:underline font-medium">
+            <Link
+              href="/skills"
+              className="text-[#CC0000] dark:text-[#FF3C3C] hover:underline font-medium"
+            >
               {t("about.skillsLinkText")}
             </Link>
             .

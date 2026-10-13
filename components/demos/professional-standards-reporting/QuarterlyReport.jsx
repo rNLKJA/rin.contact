@@ -268,7 +268,7 @@ export default function QuarterlyReport({ lang = "en" }) {
           >
             {L(R.docTitle)}
           </h3>
-          <p className="text-sm text-[#595959] dark:text-[#9A9A9A] mb-5">{subtitle}</p>
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] mb-5">{subtitle}</p>
 
           <dl className="grid grid-cols-2 sm:grid-cols-4 gap-px mb-6 border border-[#F0F0F0] dark:border-[#3D3D3D] bg-[#F0F0F0] dark:bg-[#3D3D3D] rounded-lg overflow-hidden">
             {[
@@ -303,13 +303,13 @@ export default function QuarterlyReport({ lang = "en" }) {
             ))}
           </ul>
           {plantedNote && (
-            <p className="border-l-2 border-[#E0E0E0] dark:border-[#3D3D3D] pl-3 text-sm text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed mb-5">
+            <p className="border-l-2 border-[#E0E0E0] dark:border-[#3D3D3D] pl-3 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-5">
               {plantedNote}
             </p>
           )}
 
           <h4 className={`${META} mb-2`}>{L(R.method)}</h4>
-          <p className="text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed mb-5">
+          <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-5">
             {L(R.methodNote)}
           </p>
 
@@ -373,7 +373,7 @@ export default function QuarterlyReport({ lang = "en" }) {
                     >
                       {qLabel(row)}
                       {row.planted && (
-                        <span className="ml-2 text-[10px] uppercase tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A]">
+                        <span className="ml-2 text-[10px] uppercase tracking-widest text-[#6B6B6B] dark:text-[#9A9A9A]">
                           {L(R.plantedTag)}
                         </span>
                       )}
@@ -387,14 +387,14 @@ export default function QuarterlyReport({ lang = "en" }) {
                     <td className="px-3 py-1.5 text-right whitespace-nowrap text-[#1A1A1A] dark:text-[#EEEEEE]">
                       {dec(pt.u)}
                     </td>
-                    <td className="px-3 py-1.5 whitespace-nowrap text-[#3D3D3D] dark:text-[#AAAAAA]">
+                    <td className="px-3 py-1.5 whitespace-nowrap text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
                       {dec(intervals[i][0])}–{dec(intervals[i][1])}
                     </td>
                     <td
                       className={`px-3 py-1.5 whitespace-nowrap ${
                         outside
                           ? "text-[#CC0000] dark:text-[#FF6B6B]"
-                          : "text-[#3D3D3D] dark:text-[#AAAAAA]"
+                          : "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
                       }`}
                     >
                       {statusLabel(pt.status)}

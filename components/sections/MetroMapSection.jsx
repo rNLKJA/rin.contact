@@ -201,7 +201,7 @@ export default function MetroMapSection() {
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
           {t("metroMap.heading")}
         </h2>
-        <p className="text-sm font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed">
+        <p className="text-sm font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
           {t("metroMap.description")}
         </p>
       </div>
@@ -475,10 +475,10 @@ export default function MetroMapSection() {
 
         {/* Info panel */}
         <div
-          className={`mt-4 border-l-2 pl-4 transition-all duration-200 ${
+          className={`mt-4 border-l-2 pl-4 transition-transform duration-200 ${
             active
-              ? "opacity-100 animate-enter"
-              : "opacity-30 pointer-events-none border-[#E0E0E0] dark:border-[#3D3D3D]"
+              ? "animate-enter"
+              : "invisible pointer-events-none border-[#E0E0E0] dark:border-[#3D3D3D]"
           }`}
           style={
             active ? { borderColor: LINES.find((l) => l.id === active?.line)?.color } : undefined
@@ -487,12 +487,14 @@ export default function MetroMapSection() {
         >
           {active ? (
             <>
-              <p className="text-[10px] tracking-widest uppercase text-ink-subtle dark:text-[#9A9A9A] mb-0.5">
+              <p className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] mb-0.5">
                 {active.period}
               </p>
               <p className="font-semibold text-sm mb-0.5">{active.label}</p>
-              <p className="text-xs text-[#3D3D3D] dark:text-[#AAAAAA] mb-1">{active.role}</p>
-              <p className="text-xs text-ink-subtle dark:text-[#9A9A9A] leading-relaxed max-w-xl">
+              <p className="text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-1">
+                {active.role}
+              </p>
+              <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] leading-relaxed max-w-xl">
                 {active.detail}
               </p>
               {active.current && (
@@ -502,7 +504,7 @@ export default function MetroMapSection() {
               )}
             </>
           ) : (
-            <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] italic">
+            <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] italic">
               Tap or hover a station to read its record.
             </p>
           )}
@@ -510,7 +512,7 @@ export default function MetroMapSection() {
       </div>
 
       {/* Legend */}
-      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] text-[#6E6E6E] dark:text-[#9A9A9A] font-mono">
+      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] text-[#6B6B6B] dark:text-[#9A9A9A] font-mono">
         {LINES.map((ln) => (
           <span key={ln.id} className="flex items-center gap-1.5">
             <span className="inline-block w-5 h-0.5" style={{ backgroundColor: ln.color }} />

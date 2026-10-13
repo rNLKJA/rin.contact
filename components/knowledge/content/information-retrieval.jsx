@@ -403,7 +403,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The inverted-index/BM25 foundations, the sparse-vs-dense framing, and hybrid-search/RAG
           practice reflect current information-retrieval references alongside coursework.
         </p>
@@ -606,7 +606,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           倒排索引/BM25 的基础、稀疏对稠密的取景，以及混合搜索/RAG 的实务，反映了当前的信息检索参考
           文献以及课程。
         </p>

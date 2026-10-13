@@ -19,7 +19,7 @@ export default function VersionTimeline({ milestones, lang }) {
                   : "bg-white dark:bg-[#0A0A0A] border border-[#6B6B6B] dark:border-[#9A9A9A]"
               }`}
             />
-            <p className="font-display text-[11px] tracking-widest text-ink-subtle">
+            <p className="font-display text-[11px] tracking-widest text-[#6B6B6B] dark:text-[#9A9A9A]">
               {m.date}
               {m.to ? ` → ${m.to}` : ""}
             </p>

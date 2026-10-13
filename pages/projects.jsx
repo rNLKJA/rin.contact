@@ -109,7 +109,7 @@ export default function ProjectsPage({ count = 0, courseworkLinks = {} }) {
           >
             {t("projectsPage.pipeline.heading")}
           </h2>
-          <p className="mt-3 mb-8 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+          <p className="mt-3 mb-8 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
             {t("projectsPage.pipeline.intro")}
           </p>
           <PipelineList items={localisePipeline(PROJECT_PIPELINE, locale)} t={t} />

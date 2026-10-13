@@ -212,10 +212,10 @@ function AboutTile() {
 
   return (
     <span className="flex flex-col gap-4" data-glyph>
-      <div className="font-display text-3xl tabular-nums text-[#FF3C3C] tracking-wide leading-none">
+      <div className="font-display text-3xl tabular-nums text-[#CC0000] dark:text-[#FF3C3C] tracking-wide leading-none">
         {time}
       </div>
-      <span className="text-[9px] font-mono text-[#6E6E6E] dark:text-[#9A9A9A]">Adelaide</span>
+      <span className="text-[9px] font-mono text-[#5A5A5A] dark:text-[#9A9A9A]">Adelaide</span>
     </span>
   );
 }
@@ -280,14 +280,14 @@ function ExploreTile({ href, num, title, desc, children }) {
         {children}
         <div className="flex flex-col gap-2">
           <div className="flex items-baseline gap-2">
-            <span className="font-mono text-[9px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A]">
+            <span className="font-mono text-[9px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A]">
               {num}
             </span>
             <h3 className="font-editorial text-sm md:text-base font-medium text-black dark:text-white">
               {title}
             </h3>
           </div>
-          <p className="text-xs text-[#6E6E6E] dark:text-[#9A9A9A] leading-tight">{desc}</p>
+          <p className="text-xs text-[#5A5A5A] dark:text-[#9A9A9A] leading-tight">{desc}</p>
         </div>
       </div>
     </div>
@@ -346,7 +346,7 @@ export default function SectionExplorer({
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">
           {copy.heading}
         </h2>
-        <p className="text-base font-light text-[#3D3D3D] dark:text-[#AAAAAA] max-w-xl leading-relaxed mt-3">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#5A5A5A] dark:text-[#9A9A9A] max-w-xl leading-relaxed mt-3">
           {copy.intro}
         </p>
       </div>

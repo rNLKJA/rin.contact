@@ -24,7 +24,7 @@ function MealDots({ n }) {
           }`}
         />
       ))}
-      <span className="w-3 font-mono text-[10px] leading-none text-[#6E6E6E] dark:text-[#9A9A9A]">
+      <span className="w-3 font-mono text-[10px] leading-none text-[#6B6B6B] dark:text-[#9A9A9A]">
         {n > DOTS ? "+" : ""}
       </span>
     </span>
@@ -53,7 +53,7 @@ export default function TopUpPanel({ state, dispatch, lang, uid }) {
                 className={`ml-auto font-mono text-xs ${
                   m.remaining === 0
                     ? "text-[#CC0000] dark:text-[#FF6B6B]"
-                    : "text-[#3D3D3D] dark:text-[#AAAAAA]"
+                    : "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
                 }`}
               >
                 {m.remaining === 0 ? L(T.usedUp) : fill(L(T.left), { n: m.remaining })}
@@ -111,7 +111,7 @@ export default function TopUpPanel({ state, dispatch, lang, uid }) {
 
         <p
           id={`${uid}-topup-hint`}
-          className="text-xs text-[#595959] dark:text-[#9A9A9A] leading-relaxed"
+          className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed"
         >
           {L(T.hint)}
         </p>

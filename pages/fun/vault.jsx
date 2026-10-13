@@ -85,7 +85,7 @@ export default function VaultPage() {
           <p className="text-sm text-[#7A7A7A] mb-4">
             Track the easter eggs you&apos;ve found. Click to mark as discovered.
           </p>
-          <p className="text-[11px] text-[#AAAAAA] font-mono mb-14">
+          <p className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] font-mono mb-14">
             {count}/{total} discovered
           </p>
 

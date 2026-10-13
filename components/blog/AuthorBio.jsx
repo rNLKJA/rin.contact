@@ -28,7 +28,7 @@ export default function AuthorBio() {
         <p className="text-base font-semibold tracking-tight text-black dark:text-white mb-1">
           {t("common.siteName")}
         </p>
-        <p className="text-sm text-[#6E6E6E] dark:text-[#9A9A9A] leading-relaxed mb-4">
+        <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-4">
           {t("common.siteDescription")}
         </p>
         <div className="flex flex-wrap gap-2.5">
@@ -40,7 +40,7 @@ export default function AuthorBio() {
           </Link>
           <Link
             href="/about"
-            className="inline-flex items-center gap-1.5 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#595959] dark:text-[#AAAAAA] px-4 py-1.5 text-[11px] tracking-widest uppercase rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] px-4 py-1.5 text-[11px] tracking-widest uppercase rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
           >
             {t("nav.about")} <span aria-hidden="true">&rarr;</span>
           </Link>

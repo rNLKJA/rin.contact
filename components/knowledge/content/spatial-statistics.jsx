@@ -302,7 +302,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Tobler's law, the Moran's I / LISA hotspot framing, spatial weights, and kriging reflect
           current spatial-statistics references alongside statistics coursework.
         </p>
@@ -508,7 +508,7 @@ function ZhBody() {
             <li>贯穿始终的：尊重「在哪里」，否则得到自信而错误的答案（并留意 MAUP）。</li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           托布勒定律、Moran's I / LISA
           热点框架、空间权重，以及克里金，反映了当前的空间统计参考文献以及 统计学课程。
         </p>

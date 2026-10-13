@@ -136,13 +136,13 @@ function FAQItem({ q, a, index }) {
         </span>
         <span
           className={`flex-1 text-sm font-medium leading-snug transition-colors duration-200
-                      ${open ? "text-[#000] dark:text-white" : "text-[#3D3D3D] dark:text-[#AAAAAA] group-hover:text-[#000] dark:group-hover:text-white"}`}
+                      ${open ? "text-[#000] dark:text-white" : "text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] group-hover:text-[#000] dark:group-hover:text-white"}`}
         >
           {q}
         </span>
         <span
           className={`flex-shrink-0 mt-0.5 transition-transform duration-200 ${
-            open ? "rotate-45 text-accent-ink" : "text-[#CCCCCC] dark:text-[#666666]"
+            open ? "rotate-45 text-accent-ink" : "text-[#6B6B6B] dark:text-[#9A9A9A]"
           }`}
         >
           <FiPlus size={14} />
@@ -152,7 +152,7 @@ function FAQItem({ q, a, index }) {
       {/* Height snaps (never animates from 0); the answer enters from 70% opacity + 4px */}
       <div className="overflow-hidden" style={{ maxHeight: open ? "800px" : "0px" }}>
         <p
-          className={`text-sm text-[#5A5A5A] dark:text-[#9A9A9A] leading-relaxed pb-5 pl-9 pr-6 border-l border-[#FF3C3C] ml-5 ${
+          className={`text-sm text-[#373737] dark:text-[#B4B4B4] leading-relaxed pb-5 pl-9 pr-6 border-l border-[#FF3C3C] ml-5 ${
             open ? "animate-enter-up" : ""
           }`}
         >
@@ -190,20 +190,20 @@ function CategoryBlock({ cat, catIndex, defaultOpen }) {
           <span className="font-editorial text-base md:text-lg font-semibold text-[#1A1A1A] dark:text-white leading-tight block">
             {cat.label}
           </span>
-          <span className="text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A] leading-none mt-0.5 block">
+          <span className="text-[11px] text-[#373737] dark:text-[#B4B4B4] leading-none mt-0.5 block">
             {cat.description}
           </span>
         </div>
 
         {/* Question count pill */}
-        <span className="flex-shrink-0 text-[10px] tracking-widest text-[#6E6E6E] dark:text-[#9A9A9A] border border-[#EBEBEB] dark:border-[#3D3D3D] px-2.5 py-0.5 rounded-full select-none hidden md:block">
+        <span className="flex-shrink-0 text-[10px] tracking-widest text-[#373737] dark:text-[#B4B4B4] border border-[#EBEBEB] dark:border-[#3D3D3D] px-2.5 py-0.5 rounded-full select-none hidden md:block">
           {cat.items.length} {cat.items.length === 1 ? "question" : "questions"}
         </span>
 
         {/* Chevron */}
         <FiChevronDown
           size={16}
-          className={`flex-shrink-0 text-ink-subtle transition-transform duration-200 ${
+          className={`flex-shrink-0 text-[#373737] dark:text-[#B4B4B4] transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
           aria-hidden="true"
@@ -239,8 +239,8 @@ export default function FAQSection() {
     <section id="faq" aria-label={t("faq.ariaLabel")} className="py-24">
       <div
         ref={ref}
-        className={`transition-all duration-200 ease-out ${
-          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+        className={`transition-transform duration-200 ease-out ${
+          inView ? "translate-y-0" : "invisible translate-y-1.5"
         }`}
       >
         {/* Header */}
@@ -259,7 +259,7 @@ export default function FAQSection() {
               strokeLinecap="round"
             />
           </svg>
-          <p className="text-sm text-ink-subtle dark:text-[#9A9A9A] max-w-xl leading-relaxed">
+          <p className="text-sm text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
             Browse by topic — open a category then expand any question.
           </p>
         </div>

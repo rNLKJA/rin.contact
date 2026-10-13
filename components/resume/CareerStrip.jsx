@@ -31,7 +31,7 @@ export default function CareerStrip({ rows, asOf, t }) {
           {years.map((y) => (
             <span
               key={y}
-              className="absolute top-0 -translate-x-1/2 font-mono text-[10px] tabular-nums text-[#6E6E6E] dark:text-[#9A9A9A] first:translate-x-0 last:-translate-x-full"
+              className="absolute top-0 -translate-x-1/2 font-mono text-[10px] tabular-nums text-[#6B6B6B] dark:text-[#9A9A9A] first:translate-x-0 last:-translate-x-full"
               style={{ left: `${((y - min) / span) * 100}%` }}
             >
               {y}
@@ -52,7 +52,7 @@ export default function CareerStrip({ rows, asOf, t }) {
               <a
                 href={`#role-${r.id}`}
                 onClick={(e) => jump(e, `role-${r.id}`)}
-                className="font-mono text-[10px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#CCCCCC] hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200 truncate"
+                className="font-mono text-[10px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#CCCCCC] hover:text-[#CC0000] dark:hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 truncate"
               >
                 {r.label}
                 <span className="sr-only">
@@ -86,7 +86,7 @@ export default function CareerStrip({ rows, asOf, t }) {
       </ol>
 
       {/* Legend */}
-      <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5 text-[11px] text-[#6E6E6E] dark:text-[#9A9A9A]">
+      <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5 text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A]">
         {["government", "research", "engineering"].map((k) => (
           <li key={k} className="inline-flex items-center gap-2">
             <span

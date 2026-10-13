@@ -351,7 +351,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The global/local distinction, SHAP-vs-LIME comparison, and the "explanations can mislead"
           caution (and the prefer-interpretable-models argument) reflect current XAI references
           alongside hands-on work.
@@ -584,7 +584,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6E6E6E] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           全局/局部的区分、SHAP 对 LIME
           的比较，以及「解释可能误导」的告诫（还有偏向可解释模型的论点）， 反映了当前的 XAI
           参考文献以及亲身的工作。

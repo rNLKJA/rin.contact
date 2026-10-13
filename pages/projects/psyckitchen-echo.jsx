@@ -175,7 +175,7 @@ export default function PsyckitchenEchoPage() {
       <div className="max-w-[960px] mx-auto px-6 md:px-12 py-16 md:py-24">
         <Link
           href="/projects"
-          className="inline-block text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors mb-8"
+          className="inline-block text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors mb-8"
         >
           ← {L(COPY.back)}
         </Link>

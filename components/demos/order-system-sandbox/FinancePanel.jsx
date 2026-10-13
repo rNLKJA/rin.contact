@@ -101,7 +101,7 @@ export default function FinancePanel({ state, dispatch, lang, uid }) {
                 >
                   {entryText(l)}
                 </span>
-                <span className="text-[10px] tracking-wide text-[#6E6E6E] dark:text-[#9A9A9A]">
+                <span className="text-[10px] tracking-wide text-[#6B6B6B] dark:text-[#9A9A9A]">
                   {l.kind === "expense" ? L(F.manual) : L(F.auto)}
                   {l.voided ? ` · ${L(F.voided)}` : ""}
                 </span>
@@ -111,7 +111,7 @@ export default function FinancePanel({ state, dispatch, lang, uid }) {
                   l.voided
                     ? "line-through text-[#9A9A9A]"
                     : l.kind === "expense"
-                      ? "text-[#3D3D3D] dark:text-[#AAAAAA]"
+                      ? "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
                       : "text-[#1A1A1A] dark:text-[#EEEEEE]"
                 }`}
               >
@@ -128,7 +128,7 @@ export default function FinancePanel({ state, dispatch, lang, uid }) {
             <div className="min-w-0">
               <label
                 htmlFor={`${uid}-amount`}
-                className="block mb-1 text-xs text-[#3D3D3D] dark:text-[#AAAAAA]"
+                className="block mb-1 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
               >
                 {L(F.amount)}
               </label>
@@ -148,7 +148,7 @@ export default function FinancePanel({ state, dispatch, lang, uid }) {
             <div className="min-w-0">
               <label
                 htmlFor={`${uid}-desc`}
-                className="block mb-1 text-xs text-[#3D3D3D] dark:text-[#AAAAAA]"
+                className="block mb-1 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
               >
                 {L(F.desc)}
               </label>

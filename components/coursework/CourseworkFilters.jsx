@@ -8,7 +8,7 @@ export const PILL =
 export const PILL_ON =
   "border-[#1A1A1A] bg-[#1A1A1A] text-white dark:border-[#EEEEEE] dark:bg-[#EEEEEE] dark:text-black";
 export const PILL_OFF =
-  "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#AAAAAA] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white";
+  "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white";
 
 function Pills({ id, label, options, value, onChange }) {
   return (
@@ -108,7 +108,7 @@ export default function CourseworkFilters({
           tabIndex={-1}
           role="status"
           aria-live="polite"
-          className="text-xs tabular-nums text-[#3D3D3D] dark:text-[#AAAAAA]"
+          className="text-xs tabular-nums text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
         >
           {fill(t(`${K}.showing`), { shown, total })}
         </p>
@@ -116,7 +116,7 @@ export default function CourseworkFilters({
           <button
             type="button"
             onClick={() => onChange({ area: "all", level: "all", skill: "all" })}
-            className="min-h-[24px] text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200"
+            className="min-h-[24px] text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200"
           >
             {t(`${K}.clear`)}
           </button>

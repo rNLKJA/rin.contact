@@ -47,7 +47,7 @@ export default function NewsletterSignup() {
       <h3 className="text-lg font-semibold tracking-tight mb-2 text-black dark:text-white">
         {t("newsletter.title")}
       </h3>
-      <p className="text-sm text-ink-subtle dark:text-[#9A9A9A] mb-6 leading-relaxed">
+      <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] mb-6 leading-relaxed">
         {t("newsletter.description")}
       </p>
 

@@ -91,7 +91,7 @@ export default function FeaturedWork() {
       <div
         onPointerMove={onMove}
         onPointerLeave={onLeave}
-        className={`transition-all duration-200 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"}`}
+        className={`transition-all duration-200 ease-out ${inView ? "translate-y-0" : "invisible translate-y-1.5"}`}
         style={{ perspective: "1500px" }}
       >
         <div
@@ -108,7 +108,7 @@ export default function FeaturedWork() {
           />
           {/* header bar */}
           <div className="px-6 md:px-8 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
-            <span className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] truncate">
+            <span className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] truncate">
               Independent Product · Jun 2026 – Present
             </span>
             <span className="text-[10px] tracking-widest uppercase text-accent-ink flex items-center gap-1.5 flex-shrink-0">
@@ -127,11 +127,11 @@ export default function FeaturedWork() {
                 <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#1A1A1A] dark:text-white">
                   Signal
                 </h2>
-                <p className="text-sm text-[#595959] dark:text-[#AAAAAA] mt-1">
+                <p className="text-sm text-[#373737] dark:text-[#B4B4B4] mt-1">
                   Governance Layer for AI-Assisted Government Data
                 </p>
               </div>
-              <p className="text-[15px] text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+              <p className="text-[15px] text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed">
                 A governed data product that puts AI governance on the request path — tamper-evident
                 hash-chained audit logs, auto-generated DTA and EU AI Act compliance artefacts, and
                 faithfulness-checked LLM narratives. The live reference implementation analyses
@@ -166,7 +166,7 @@ export default function FeaturedWork() {
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
-                           text-[#595959] dark:text-[#AAAAAA] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+                           text-[#373737] dark:text-[#B4B4B4] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
                 >
                   View on GitHub ↗
                 </a>
@@ -178,7 +178,7 @@ export default function FeaturedWork() {
               <div className="grid grid-cols-2 gap-px border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
                 {STATS.map(({ k, v }) => (
                   <div key={k} className="bg-white dark:bg-[#0A0A0A] px-4 py-3.5">
-                    <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-1">
+                    <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-1">
                       {k}
                     </p>
                     <p className="text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">{v}</p>
@@ -186,15 +186,15 @@ export default function FeaturedWork() {
                 ))}
               </div>
               <div>
-                <p className="text-[10px] tracking-widest uppercase text-[#595959] dark:text-[#9A9A9A] mb-2">
+                <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-2">
                   Stack
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {STACK.map((s) => (
                     <span
                       key={s}
-                      className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#595959] dark:text-[#AAAAAA] rounded-full
-                               cursor-default hover:border-[#FF3C3C] hover:text-[#FF3C3C] transition-colors duration-200"
+                      className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full
+                               cursor-default hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200"
                     >
                       {s}
                     </span>

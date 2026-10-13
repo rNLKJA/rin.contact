@@ -116,7 +116,9 @@ export default function FunIndexPage() {
                 <span className="font-mono text-sm text-[#1A1A1A] group-hover:text-[#FF3C3C] transition-colors">
                   {href.startsWith("/fun") ? `/fun/${label}` : href}
                 </span>
-                <span className="text-[11px] text-[#AAAAAA] flex-shrink-0">{note}</span>
+                <span className="text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] flex-shrink-0">
+                  {note}
+                </span>
               </Link>
             ))}
           </div>

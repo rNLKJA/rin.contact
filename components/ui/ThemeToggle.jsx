@@ -22,7 +22,7 @@ export default function ThemeToggle({ className = "", size = "desktop" }) {
       aria-label={t(isDark ? "themeToggle.switchToLight" : "themeToggle.switchToDark")}
       className={`inline-flex items-center justify-center w-10 h-10 md:w-9 md:h-9
                    border border-[#E0E0E0] dark:border-[#3D3D3D]
-                   text-[#595959] dark:text-[#AAAAAA]
+                   text-[#6B6B6B] dark:text-[#9A9A9A]
                    hover:border-black dark:hover:border-white
                    hover:text-black dark:hover:text-white
                    hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]

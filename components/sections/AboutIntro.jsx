@@ -23,8 +23,8 @@ export default function AboutIntro() {
   return (
     <section ref={ref} aria-label={t("about.intro.eyebrow")} className="py-20 md:py-24">
       <div
-        className={`transition-all duration-200 ease-out ${
-          inView ? "opacity-100 translate-y-0" : "opacity-70 translate-y-1.5"
+        className={`transition-transform duration-200 ease-out ${
+          inView ? "translate-y-0" : "invisible translate-y-1.5"
         }`}
       >
         <p className="flex items-center gap-2.5 text-[11px] tracking-[0.3em] uppercase text-accent-ink mb-6">
@@ -39,17 +39,17 @@ export default function AboutIntro() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {/* Narrative */}
           <div className="md:col-span-2 space-y-5 max-w-2xl">
-            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed">
               {t("about.intro.body1")}
             </p>
-            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#AAAAAA] leading-relaxed">
+            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed">
               {t("about.intro.body2")}
             </p>
           </div>
 
           {/* Domains — visual anchor, reuses the positioning band's three lines */}
           <div className="md:pt-1">
-            <p className="text-[10px] tracking-widest uppercase text-[#6E6E6E] dark:text-[#9A9A9A] mb-4">
+            <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-4">
               {t("about.intro.domainsLabel")}
             </p>
             <ul className="space-y-3.5">

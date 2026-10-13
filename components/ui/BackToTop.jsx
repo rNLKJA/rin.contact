@@ -62,7 +62,7 @@ export default function BackToTop() {
       }}
       className="fixed bottom-6 right-6 z-40 hidden md:flex print:!hidden items-center justify-center w-10 h-10 rounded-full
                  border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#1A1A1A]
-                 text-[#595959] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#FF3C3C] shadow-sm"
+                 text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C] shadow-sm"
     >
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
         <path

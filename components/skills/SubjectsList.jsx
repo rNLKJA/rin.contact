@@ -5,7 +5,7 @@ import { MICRO_LABEL, SkillChip } from "@/components/skills/EvidenceList";
 
 const K = "skillsPage.subjects";
 const LINK =
-  "inline-flex min-h-[32px] items-center text-[13px] text-[#1A1A1A] dark:text-[#DDDDDD] underline decoration-[#D0D0D0] dark:decoration-[#555555] underline-offset-4 hover:text-[#CC0000] hover:decoration-current dark:hover:text-[#FF3C3C] transition-colors duration-200 [overflow-wrap:anywhere]";
+  "inline-flex min-h-[32px] items-center text-[13px] text-[#1A1A1A] dark:text-[#DDDDDD] underline decoration-[#D0D0D0] dark:decoration-[#555555] underline-offset-4 hover:text-[#CC0000] hover:decoration-current dark:hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 [overflow-wrap:anywhere]";
 
 function termHeading(t, term) {
   if (term === null) return t(`${K}.yearOnly`);
@@ -29,7 +29,7 @@ export default function SubjectsList({ subjects, evidence, skills, onSelectSkill
 
   return (
     <div>
-      <p className="mb-8 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#AAAAAA]">
+      <p className="mb-8 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
         {fill(t(`${K}.intro`), { count })}
       </p>
 
@@ -40,7 +40,7 @@ export default function SubjectsList({ subjects, evidence, skills, onSelectSkill
               id={`subjects-${level}`}
               className="flex flex-wrap items-baseline gap-x-3 gap-y-1 pb-4 border-b border-[#F0F0F0] dark:border-[#1E1E1E]"
             >
-              <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#FF3C3C]">
+              <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
                 {t(`courseworkPage.levels.${level}`)}
               </span>
               {degree && (

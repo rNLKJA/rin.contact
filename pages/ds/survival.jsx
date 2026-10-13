@@ -80,7 +80,7 @@ export default function SurvivalPage({ rows = [], median = 0 }) {
                 </div>
               ))}
             </div>
-            <p className="text-[9px] text-[#AAAAAA] mt-6">
+            <p className="text-[9px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-6">
               {t("ds.survival.medianNote").replace("{median}", median)}
             </p>
           </div>
