@@ -83,6 +83,7 @@ function Slide({ v, i, total, lang, locale, t, archiveOpen, onToggleArchive, sli
                     fill
                     sizes="(min-width: 768px) 620px, 100vw"
                     priority={i === 0}
+                    quality={85}
                     loading={i === 0 ? undefined : "lazy"}
                     className={img.w / img.h === 1.6 ? "object-cover object-top" : "object-contain"}
                   />
@@ -93,6 +94,7 @@ function Slide({ v, i, total, lang, locale, t, archiveOpen, onToggleArchive, sli
                         alt={fill(t("infoHistory.mobileAlt"), { version: v.version })}
                         fill
                         sizes="84px"
+                        quality={85}
                         loading="lazy"
                         className="object-cover object-top"
                       />

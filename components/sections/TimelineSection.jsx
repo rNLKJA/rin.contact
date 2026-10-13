@@ -47,6 +47,7 @@ function TimelineItem({ item, index }) {
                 src={item.logo}
                 alt={`${item.org} logo`}
                 fill
+                quality={85}
                 sizes="36px"
                 className="object-contain"
               />

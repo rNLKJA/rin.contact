@@ -1,0 +1,249 @@
+> node scripts/generate-topic-skills.mjs && next build --webpack
+Generated topic-skills mapping: 68 topics, written to /Volumes/Rin T705 M2 Drive/GitHub/rin.contact/public/data/topic-skills.json
+▲ Next.js 16.3.8 (webpack)
+- Environments: .env.local, .env
+✓ Running next.config.js took 8ms
+  Running TypeScript ...
+  Finished TypeScript in 2ms ...
+  Creating an optimized production build ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/418) ...
+  Generating static pages using 9 workers (104/418) 
+  Generating static pages using 9 workers (208/418) 
+  Generating static pages using 9 workers (313/418) 
+✓ Generating static pages using 9 workers (418/418) in 1098ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+Route (pages)
+┌ ● /
+├   /_app
+├ ○ /404
+├ ● /about
+├ ƒ /api/blog/subscribe
+├ ƒ /api/curl
+├ ƒ /api/fortune
+├ ƒ /api/now
+├ ƒ /api/og
+├ ƒ /api/ping
+├ ƒ /api/ping-indexnow
+├ ƒ /api/rin.json
+├ ƒ /api/roast
+├ ƒ /api/stack
+├ ● /blog
+├   /blog/[slug] (5054 ms)
+│ ├ ● /en-AU/blog/208-applications-one-yes (351 ms)
+│ ├ ● /en-AU/blog/a-forecast-is-about-uncertainty (351 ms)
+│ ├ ● /en-AU/blog/a-lookup-table-beat-my-regression (350 ms)
+│ ├ ● /en-AU/blog/a-trend-line-is-not-a-trend (350 ms)
+│ ├ ● /en-AU/blog/academia-industry-real-work (350 ms)
+│ ├ ● /en-AU/blog/analytics-tells-you-what-happened (350 ms)
+│ ├ ● /en-AU/blog/automated-fact-checking-climate (350 ms)
+│ └ ● [+33 more paths]
+├ ƒ /blog/feed.xml
+├ ● /career
+├ ● /cv
+├ ○ /ds
+├ ○ /ds/ab-test
+├ ○ /ds/bias-variance
+├ ○ /ds/cicd
+├ ○ /ds/confusion-matrix
+├ ○ /ds/data-drift
+├ ○ /ds/eda
+├ ○ /ds/ensemble
+├ ○ /ds/feature-importance
+├ ○ /ds/model-card
+├ ○ /ds/null-hypothesis
+├ ○ /ds/overfitting
+├ ○ /ds/phacking
+├ ○ /ds/pipeline
+├ ○ /ds/recommendation
+├ ○ /ds/regression
+├ ○ /ds/sentiment
+├ ● /ds/survival
+├ ○ /ds/technical-debt
+├ ○ /ds/training-curves
+├ ○ /ds/version-control
+├ ○ /fun
+├ ○ /fun/art
+├ ○ /fun/blank
+├ ○ /fun/breakup
+├ ○ /fun/ci
+├ ○ /fun/coffee
+├ ○ /fun/correlation
+├ ○ /fun/csv
+├ ○ /fun/debug
+├ ○ /fun/dice
+├ ○ /fun/error
+├ ○ /fun/eta
+├ ○ /fun/float404
+├ ○ /fun/forest
+├ ○ /fun/glitch
+├ ○ /fun/haiku
+├ ○ /fun/inception
+├ ○ /fun/late
+├ ○ /fun/loading
+├ ○ /fun/matrix
+├ ○ /fun/mood
+├ ○ /fun/name
+├ ○ /fun/normalise
+├ ○ /fun/outlier
+├ ○ /fun/overfit-sim
+├ ○ /fun/pronouns
+├ ○ /fun/pvalue
+├ ○ /fun/reject
+├ ○ /fun/rejections
+├ ○ /fun/residuals
+├ ○ /fun/rickroll
+├ ○ /fun/roast
+├ ○ /fun/secret
+├ ○ /fun/silence
+├ ○ /fun/spin
+├ ○ /fun/sudo
+├ ○ /fun/tarot
+├ ○ /fun/timezone
+├ ○ /fun/typing
+├ ○ /fun/vault
+├ ○ /fun/void
+├ ○ /hire-me
+├ ○ /info
+├ ○ /info/accessibility
+├ ○ /info/api
+├ ○ /info/changelog
+├ ○ /info/colophon
+├ ● /info/history
+├ ○ /info/manifest
+├ ○ /info/now
+├ ○ /info/references
+├ ○ /info/roadmap
+├ ● /info/site-map
+├ ○ /info/thank-you
+├ ○ /info/uses
+├ ○ /knowledge
+├ ● /knowledge/active-semi-supervised-learning
+├ ● /knowledge/advanced-database-systems
+├ ● /knowledge/ai-agents
+├ ● /knowledge/anomaly-detection
+├ ● /knowledge/applied-data-science
+├ ● /knowledge/artificial-intelligence
+├ ● /knowledge/bayesian-statistics
+├ ● /knowledge/business-intelligence-dashboards
+├ ● /knowledge/calculus-optimisation
+├ ● /knowledge/causal-discovery
+├ ● /knowledge/causal-inference
+├ ● /knowledge/cluster-cloud-computing
+├ ● /knowledge/clustering
+├ ● /knowledge/computational-statistics
+├ ● /knowledge/conformal-prediction
+├ ● /knowledge/data-architecture
+├ ● /knowledge/data-governance
+├ ● /knowledge/data-science-mentoring
+├ ● /knowledge/data-visualisation
+├ ● /knowledge/database-systems
+├ ● /knowledge/deep-learning
+├ ● /knowledge/differential-privacy
+├ ● /knowledge/edtech-digital-learning
+├ ● /knowledge/elements-of-data-processing
+├ ● /knowledge/ensemble-methods
+├ ● /knowledge/explainable-ai
+├ ● /knowledge/extreme-value-theory
+├ ● /knowledge/fairness-bias
+├ ● /knowledge/feature-engineering
+├ ● /knowledge/federated-learning
+├ ● /knowledge/gaussian-processes
+├ ● /knowledge/geospatial-analysis
+├ ● /knowledge/graph-neural-networks
+├ ● /knowledge/hierarchical-models
+├ ● /knowledge/information-retrieval
+├ ● /knowledge/intelligence-analysis
+├ ● /knowledge/kalman-filter
+├ ● /knowledge/knowledge-graphs
+├ ● /knowledge/large-language-models
+├ ● /knowledge/linear-algebra
+├ ● /knowledge/linear-statistical-models
+├ ● /knowledge/mlops-monitoring
+├ ● /knowledge/model-evaluation
+├ ● /knowledge/natural-language-processing
+├ ● /knowledge/network-graph-analysis
+├ ○ /knowledge/notes/alpha-beta-pruning
+├ ○ /knowledge/notes/amdahl-vs-gustafson
+├ ○ /knowledge/notes/auctions-and-mechanism-design
+├ ○ /knowledge/notes/cap-sharding-replication
+├ ○ /knowledge/notes/exploration-vs-exploitation
+├ ○ /knowledge/notes/filling-gaps-in-time-series
+├ ○ /knowledge/notes/glm-goodness-of-fit
+├ ○ /knowledge/notes/gradient-descent-variants
+├ ○ /knowledge/notes/grammar-of-graphics
+├ ○ /knowledge/notes/graph-convolution-layer
+├ ○ /knowledge/notes/learning-with-expert-advice
+├ ○ /knowledge/notes/rest-vs-graphql
+├ ○ /knowledge/notes/risk-and-pac-learning
+├ ○ /knowledge/notes/running-jobs-on-spartan
+├ ○ /knowledge/notes/study-designs
+├ ○ /knowledge/notes/thresholds-roc-auc
+├ ○ /knowledge/notes/vms-vs-containers
+├ ● /knowledge/operations-research
+├ ● /knowledge/optimisation-methods
+├ ● /knowledge/pca-dimensionality-reduction
+├ ● /knowledge/probabilistic-graphical-models
+├ ● /knowledge/probability
+├ ● /knowledge/quantile-regression
+├ ● /knowledge/recommender-systems
+├ ● /knowledge/reinforcement-learning
+├ ● /knowledge/reproducibility
+├ ● /knowledge/robust-statistics
+├ ● /knowledge/sampling-survey-methodology
+├ ● /knowledge/science-communication
+├ ● /knowledge/spatial-statistics
+├ ● /knowledge/sql-querying-data
+├ ● /knowledge/statistical-machine-learning
+├ ● /knowledge/statistical-modelling
+├ ● /knowledge/statistical-process-control
+├ ● /knowledge/statistics
+├ ● /knowledge/streaming-analytics
+├ ● /knowledge/survival-analysis
+├ ● /knowledge/time-series-analysis
+├ ● /knowledge/topic-modelling
+├ ● /knowledge/web-information-technology
+├ ○ /lab
+├ ● /projects
+├ ○ /projects/classbro
+├ ● /projects/coursework
+├ ○ /projects/hex-micro-course
+├ ○ /projects/map-first-discovery
+├ ○ /projects/moodist
+├ ○ /projects/order-system
+├ ○ /projects/order-system-sandbox
+├ ○ /projects/professional-standards-reporting
+├ ○ /projects/psyckitchen-echo
+├ ● /projects/regulatory-analytics-map
+├ ○ /projects/signal
+├ ○ /projects/virtual-internships
+├ ○ /projects/wehi-genomics
+├ ● /resume
+├ ○ /resume/terminal
+├ ƒ /sitemap.xml
+├ ● /skills
+├ ○ /strategic
+├ ○ /tools
+└ ○ /tools/card
+ƒ Proxy (Middleware)
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses getStaticProps)
+ƒ  (Dynamic)  server-rendered on demand
+(node:57314) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/Rin%20T705%20M2%20Drive/GitHub/rin.contact/lib/skills-taxonomy.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/Rin T705 M2 Drive/GitHub/rin.contact/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+⚠ Warning: Next.js ignored package-lock.json in /Volumes/Rin T705 M2 Drive/GitHub because it is outside the current Git repository (/Volumes/Rin T705 M2 Drive/GitHub/rin.contact).
+ To use this directory, set `outputFileTracingRoot` in your Next.js config.
+⚠ The Edge Runtime is deprecated. You can use the "nodejs" runtime instead. Learn more: https://nextjs.org/docs/messages/edge-runtime-deprecated
+⚠ Compiled with warnings in 4.4s
+./lib/newsletter.js
+Module not found: Can't resolve '@vercel/kv' in '/Volumes/Rin T705 M2 Drive/GitHub/rin.contact/lib'
+Import trace for requested module:
+./lib/newsletter.js
+./pages/api/blog/subscribe.js
+(node:57437) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:57441) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -96,7 +96,7 @@ function LogoWithGlitch() {
           transition: "filter 0.08s",
         }}
       >
-        <Image src="/logo.svg" alt="rNLKJA logo" width={32} height={32} priority />
+        <Image src="/logo.svg" alt="rNLKJA logo" width={32} height={32} priority quality={85} />
       </div>
       <span
         className="font-semibold text-sm tracking-tight group-hover:opacity-60 transition-opacity duration-200"

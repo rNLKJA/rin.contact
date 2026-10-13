@@ -13,6 +13,35 @@ const SECTION_KEYS = [
   "limitations",
 ];
 
+// Breadcrumb schema for info pages
+function getBreadcrumbSchema(pageName, pagePath) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `https://rin.contact${pagePath}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Rin Huang",
+        item: "https://rin.contact/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Info",
+        item: "https://rin.contact/info/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: pageName,
+        item: `https://rin.contact${pagePath}`,
+      },
+    ],
+  };
+}
+
 const Section = ({ title, children }) => (
   <div className="mb-10">
     <h2 className="text-lg font-semibold tracking-tight text-[#1A1A1A] dark:text-white mb-4">
@@ -56,6 +85,12 @@ export default function AccessibilityPage() {
         <meta
           name="twitter:image"
           content="https://rin.contact/api/og/?title=Accessibility&subtitle=WCAG%202&section=info"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getBreadcrumbSchema("Accessibility", "/info/accessibility/")),
+          }}
         />
       </Head>
 

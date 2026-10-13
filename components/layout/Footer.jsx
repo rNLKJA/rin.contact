@@ -62,7 +62,7 @@ const Footer = () => {
                 className="rounded-full bg-white flex items-center justify-center flex-shrink-0"
                 style={{ width: 32, height: 32 }}
               >
-                <Image src="/logo.svg" alt="rNLKJA logo" width={24} height={24} />
+                <Image src="/logo.svg" alt="rNLKJA logo" width={24} height={24} quality={85} />
               </div>
               <span className="font-semibold text-sm text-white tracking-tight">rNLKJA</span>
             </div>

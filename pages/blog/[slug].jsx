@@ -110,6 +110,37 @@ export default function BlogPost({ post, relatedPosts = [] }) {
             }),
           }}
         />
+        {/* Breadcrumb schema for blog posts */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "@id": `https://rin.contact/blog/${post.slug}/#breadcrumb`,
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Rin Huang",
+                  item: "https://rin.contact/",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Blog",
+                  item: "https://rin.contact/blog/",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: post.title,
+                  item: `https://rin.contact/blog/${post.slug}/`,
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <ReadingProgress />

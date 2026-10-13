@@ -211,6 +211,23 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          {/* DM Sans: body text, loaded early to reduce FOUT */}
+          <link
+            rel="preload"
+            href="/fonts/dm-sans-variable.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          {/* Playfair Display: section headings, secondary priority */}
+          <link
+            rel="preload"
+            href="/fonts/playfair-display-variable.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+
           {/* ── Character set ── */}
           <meta charSet="utf-8" />
           {/* ── Locale-aware meta ── */}
@@ -327,11 +344,11 @@ class MyDocument extends Document {
             No external Google Fonts requests — eliminates the critical request chain.
           */}
 
-          {/* ── JSON-LD structured data ── */}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
-          />
+          {/* ── JSON-LD structured data — GLOBAL (WEBSITE_SCHEMA only) ── */}
+          {/* PERSON_SCHEMA moved to pages/index.jsx and pages/about.jsx to reduce
+              false positives in Search Console. WEBSITE_SCHEMA remains global as
+              the root entity for all pages. Other page-specific schemas (ProfilePage,
+              Breadcrumb, Projects, Credentials) are defined only on pages that need them. */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}

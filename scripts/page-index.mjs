@@ -329,6 +329,7 @@ export function buildPageIndex(root = ROOT, { unlabelled = [] } = {}) {
       groups: GROUPS.filter((g) => g.column === c.id).map((g) => g.id),
     })),
     entries: sorted,
+    projects: PROJECTS.length,
   };
 }
 

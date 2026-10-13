@@ -1,129 +1,1656 @@
 {
-  "meta": {
-    "api_version": "v1",
-    "schema": "ProfileSchema/2026",
-    "generated_at": "2026-10-03T00:00:00.000Z",
-    "source": "https://rin.contact",
-    "note": "A living document. Static build. Updated manually."
-  },
-  "profile": {
-    "id": "rin-huang",
-    "name": "Rin Huang",
-    "legal_name": "Sunchuangyu Huang",
-    "zh": "黄孙创宇",
-    "pronouns": "he/him",
-    "location": {
-      "city": "Adelaide",
-      "state": "SA",
-      "country": "Australia",
-      "timezone": "ACST (UTC+9:30)"
-    },
-    "status": "open_to_opportunities",
-    "current_role": "ASO7 Senior Data Analyst · South Australia Police",
-    "tagline": "Generalist by nature. Specialist by discipline.",
-    "fun_fact": "I debug production on dark-mode at midnight and call it strategic thinking."
-  },
-  "skills": {
-    "languages": ["Python", "R", "SQL", "TypeScript", "Bash"],
-    "frameworks": ["Next.js", "React", "FastAPI", "PyTorch", "scikit-learn"],
-    "data": ["dbt", "Spark", "Tableau", "BigQuery", "Pandas"],
-    "cloud": ["AWS", "GCP", "Vercel", "Docker"],
-    "domains": [
-      "Data Science",
-      "Strategic Analytics",
-      "Government Technology",
-      "Research Engineering",
-      "Full-Stack Development",
-      "UI/UX Design"
-    ],
-    "soft": ["Strategic Thinking", "Continuous Improvement", "Cross-discipline Communication"],
-    "max_level": "still_loading"
-  },
-  "education": [
+  "columns": [
     {
-      "degree": "Master of Data Science",
-      "institution": "University of Melbourne",
-      "year": 2024
+      "id": "work",
+      "headingKey": "footer.work",
+      "groups": ["work", "caseStudies", "projects", "coursework"]
     },
     {
-      "degree": "Bachelor of Science (Data Science)",
-      "institution": "University of Melbourne",
-      "year": 2022
+      "id": "learn",
+      "headingKey": "footer.learn",
+      "groups": ["learn", "knowledge", "explainers", "posts"]
     },
-    {
-      "degree": "Foundation Studies Programme",
-      "institution": "Trinity College, University of Melbourne",
-      "year": 2019
-    }
+    { "id": "site", "headingKey": "footer.site", "groups": ["site"] },
+    { "id": "tools", "headingKey": "footer.tools", "groups": ["tools"] }
   ],
-  "experience": [
+  "entries": [
+    { "href": "/", "group": "work", "title": { "en": "Home", "zh": "首页" } },
+    { "href": "/strategic", "group": "work", "title": { "en": "Strategic", "zh": "战略能力" } },
+    { "href": "/career", "group": "work", "title": { "en": "Career", "zh": "职业经历" } },
+    { "href": "/projects", "group": "work", "title": { "en": "Projects", "zh": "项目" } },
     {
-      "role": "ASO7 Senior Data Analyst",
-      "org": "South Australia Police, Intelligence & Probity Unit, Ethical and Professional Standards Branch (EPSB)",
-      "period": "Mar 2026–present"
+      "href": "/projects/coursework",
+      "group": "work",
+      "title": { "en": "Coursework", "zh": "课程作业" }
+    },
+    { "href": "/resume", "group": "work", "title": { "en": "Resume", "zh": "简历" } },
+    { "href": "/cv", "group": "work", "title": { "en": "Full CV", "zh": "完整简历" } },
+    { "href": "/#contact", "group": "work", "title": { "en": "Contact", "zh": "联系" } },
+    { "href": "/hire-me", "group": "work", "title": { "en": "Hire Me", "zh": "招聘意向" } },
+    {
+      "href": "/projects/signal",
+      "group": "caseStudies",
+      "title": "Signal",
+      "note": {
+        "en": "Governance Layer for AI-Assisted Government Data",
+        "zh": "面向 AI 辅助政府数据的治理层"
+      },
+      "keywords": "AI Governance case study 案例"
     },
     {
-      "role": "Co-Founder & Dev Lead",
-      "org": "Mapiva",
-      "period": "Aug 2025–present"
+      "href": "/projects/classbro",
+      "group": "caseStudies",
+      "title": "ClassBro",
+      "note": {
+        "en": "Tutoring and Mentoring Across Computer Science",
+        "zh": "计算机科学跨领域家教与导师工作"
+      },
+      "keywords": "Mentoring case study 案例"
     },
     {
-      "role": "ASO4 Intelligence & Coordination Officer",
-      "org": "Consumer and Business Services (CBS), Attorney-General's Department SA",
-      "period": "Jan 2025–Mar 2026"
+      "href": "/projects/order-system",
+      "group": "caseStudies",
+      "title": { "en": "Meal-Prep Studio Order System", "zh": "订餐会员管理系统" },
+      "note": {
+        "en": "Members, Prepaid Cards, Orders & Finance App",
+        "zh": "会员、餐卡、订餐和财务管理应用"
+      },
+      "keywords": "Full Stack case study 案例"
     },
     {
-      "role": "Cloud Engineer",
-      "org": "Psyckitchen",
-      "period": "Oct 2024–Dec 2024"
+      "href": "/projects/ethical-standing",
+      "group": "caseStudies",
+      "title": { "en": "Ethical Standing in Police Environment", "zh": "警察环境中的伦理地位" },
+      "note": {
+        "en": "Strategic Research and Analysis on Ethical Frameworks",
+        "zh": "伦理框架的战略研究与分析"
+      },
+      "keywords": "Research case study 案例"
     },
     {
-      "role": "Research Assistant (RA.1), digital mental health",
-      "org": "University of Melbourne, Department of Psychiatry",
-      "period": "Aug 2024–Feb 2026"
+      "href": "/projects/professional-standards-reporting",
+      "group": "caseStudies",
+      "title": "SAPOL EPSB Analytics",
+      "note": "Professional Standards Reporting & Tooling",
+      "keywords": "Analytics case study 案例"
     },
     {
-      "role": "Operating Officer & Organisational Development Lead",
-      "org": "Psyckitchen",
-      "period": "Jul 2024–Dec 2024"
+      "href": "/projects/map-first-discovery",
+      "group": "caseStudies",
+      "title": "Mapiva",
+      "note": "Map-First Social Discovery App",
+      "keywords": "Mobile Dev case study 案例"
     },
     {
-      "role": "AI Product and LLM Prompt Specialist",
-      "org": "Psyckitchen",
-      "period": "Jun 2024–Dec 2024"
+      "href": "/projects/regulatory-analytics-map",
+      "group": "caseStudies",
+      "title": "CBS Intelligence",
+      "note": "Regulatory Analytics from the Ground Up",
+      "keywords": "Analytics case study 案例"
     },
     {
-      "role": "Research Software Engineer",
-      "org": "WEHI",
-      "period": "Feb 2024–Jul 2024"
+      "href": "/projects/moodist",
+      "group": "caseStudies",
+      "title": "Moodist",
+      "note": { "en": "Mental Health Mobile Application", "zh": "心理健康手机应用" },
+      "keywords": "Mobile Dev case study 案例"
     },
     {
-      "role": "Data Science Industrial Consultant",
-      "org": "CSIRO",
-      "period": "Feb 2023–Nov 2023"
-    }
+      "href": "/projects/wehi-genomics",
+      "group": "caseStudies",
+      "title": "Genomics Metadata Multiplexing",
+      "note": {
+        "en": "Sample-sheet tooling for plate-based single-cell sequencing",
+        "zh": "为孔板式单细胞测序整理样本表的工具"
+      },
+      "keywords": "Research Software case study 案例"
+    },
+    {
+      "href": "/projects/psyckitchen-echo",
+      "group": "caseStudies",
+      "title": "Psyckitchen Echo",
+      "note": {
+        "en": "Memory-Aware Companion Chatbot Prototype",
+        "zh": "会记事的陪伴型聊天机器人原型"
+      },
+      "keywords": "Full Stack case study 案例"
+    },
+    {
+      "href": "/projects/hex-micro-course",
+      "group": "caseStudies",
+      "title": "HEX",
+      "note": "Digital Content Library Builder",
+      "keywords": "EdTech case study 案例"
+    },
+    {
+      "href": "/projects/virtual-internships",
+      "group": "caseStudies",
+      "title": { "en": "Virtual internships (Forage)", "zh": "虚拟实习（Forage）" },
+      "note": {
+        "en": "Twelve Company-Designed Job Simulations",
+        "zh": "十二个由企业设计的工作模拟"
+      },
+      "keywords": "Data Science impact 成果"
+    },
+    {
+      "href": "/projects/order-system-sandbox",
+      "group": "caseStudies",
+      "title": {
+        "en": "Meal-Prep Studio Order System · Live demo",
+        "zh": "订餐会员管理系统 · 在线演示"
+      },
+      "note": {
+        "en": "Members, Prepaid Cards, Orders & Finance App",
+        "zh": "会员、餐卡、订餐和财务管理应用"
+      },
+      "keywords": "Full Stack live demo 在线演示"
+    },
+    {
+      "href": "/projects#nsw-strata-law",
+      "group": "projects",
+      "title": { "en": "NSW Strata Law Guide", "zh": "新州分契法指南" },
+      "note": {
+        "en": "Interactive Calculators for Strata Scheme Management",
+        "zh": "分契物业管理互动计算器"
+      },
+      "keywords": "Legal Tech"
+    },
+    {
+      "href": "/projects#brewscope",
+      "group": "projects",
+      "title": "brewscope",
+      "note": { "en": "Read-Only macOS Homebrew Inspector", "zh": "macOS Homebrew 只读检查工具" },
+      "keywords": "DevTools"
+    },
+    {
+      "href": "/projects#timezone-calendar",
+      "group": "projects",
+      "title": { "en": "Timezone Calendar Visualisation", "zh": "时区日历可视化" },
+      "note": { "en": "Weekly Calendar with Timezone Switching", "zh": "支持时区切换的周历" },
+      "keywords": "Data Visualisation"
+    },
+    {
+      "href": "/projects#data-engineer-bootcamp",
+      "group": "projects",
+      "title": { "en": "Data Engineer BootCamp", "zh": "数据工程训练营" },
+      "note": {
+        "en": "Notes and Exercises from DataTalksClub Zoomcamp 2024",
+        "zh": "DataTalksClub 2024 课程笔记与练习"
+      },
+      "keywords": "Data Engineering"
+    },
+    {
+      "href": "/projects#life-system-template",
+      "group": "projects",
+      "title": { "en": "Life System Template", "zh": "生活系统模板" },
+      "note": {
+        "en": "Obsidian Vault Template for a Personal Operating System",
+        "zh": "个人操作系统的 Obsidian 知识库模板"
+      },
+      "keywords": "Productivity"
+    },
+    {
+      "href": "/projects#wechat-style-distiller",
+      "group": "projects",
+      "title": { "en": "WeChat Style Distiller", "zh": "微信风格提炼器" },
+      "note": {
+        "en": "Turn Chat History into an LLM Persona Prompt",
+        "zh": "把聊天记录变成 LLM 人设提示词"
+      },
+      "keywords": "GenAI / NLP"
+    },
+    {
+      "href": "/projects#sa-au-open-data",
+      "group": "projects",
+      "title": { "en": "SA & AU Open Data Atlas", "zh": "南澳与澳大利亚开放数据图谱" },
+      "note": {
+        "en": "Curated South Australian & Australian Government Datasets",
+        "zh": "精选南澳与澳大利亚政府数据集"
+      },
+      "keywords": "Open Data"
+    },
+    {
+      "href": "/projects#gmail-labeler",
+      "group": "projects",
+      "title": { "en": "Gmail Labeler", "zh": "Gmail 自动分类工具" },
+      "note": { "en": "AI-Powered Email Triage Skill", "zh": "AI 驱动的邮件归类技能" },
+      "keywords": "Productivity"
+    },
+    {
+      "href": "/projects#ranking-radar",
+      "group": "projects",
+      "title": "Ranking Radar",
+      "note": "University Rankings Visualisation & Open Dataset",
+      "keywords": "Data Visualisation"
+    },
+    {
+      "href": "/projects#em-algorithm",
+      "group": "projects",
+      "title": { "en": "EM Algorithm, Explained", "zh": "EM 算法图解" },
+      "note": {
+        "en": "An Interactive Expectation-Maximisation Lab",
+        "zh": "可交互的期望最大化算法实验室"
+      },
+      "keywords": "Statistics"
+    },
+    {
+      "href": "/projects#sa-gaming-machines",
+      "group": "projects",
+      "title": { "en": "SA Gaming Machine Statistics", "zh": "南澳博彩机统计" },
+      "note": {
+        "en": "Public Gaming-Machine Figures, FY 2009/10 to FY 2024/25",
+        "zh": "2009/10 至 2024/25 财年的公开博彩机数据"
+      },
+      "keywords": "Data Visualisation"
+    },
+    {
+      "href": "/projects#sa-address",
+      "group": "projects",
+      "title": { "en": "SA Address Generator", "zh": "南澳模拟地址生成器" },
+      "note": {
+        "en": "Mock South Australian Addresses for Software Testing",
+        "zh": "用于软件测试的南澳模拟地址"
+      },
+      "keywords": "Data Engineering"
+    },
+    {
+      "href": "/projects#us-political",
+      "group": "projects",
+      "title": { "en": "US Political Data", "zh": "美国政治文本数据" },
+      "note": {
+        "en": "Presidential Debate & Campaign Document Scraper",
+        "zh": "总统辩论与竞选文件采集"
+      },
+      "keywords": "Data Engineering"
+    },
+    {
+      "href": "/projects#lecture-revision-lab",
+      "group": "projects",
+      "title": { "en": "Lecture Revision Lab", "zh": "讲义复习实验室" },
+      "note": {
+        "en": "Revision Material That Cites Its Sources",
+        "zh": "每一条都注明出处的复习材料"
+      },
+      "keywords": "GenAI / RAG"
+    },
+    {
+      "href": "/projects#factcheck",
+      "group": "projects",
+      "title": "Climate Fact-Checker",
+      "note": "Automated Fact-Checking for Climate Claims",
+      "keywords": "NLP / ML"
+    },
+    {
+      "href": "/projects#selfdriving-db",
+      "group": "projects",
+      "title": "Self-Driving Databases",
+      "note": "Workload-Driven Optimisation & Index Selection",
+      "keywords": "Research"
+    },
+    {
+      "href": "/projects#social-cloud",
+      "group": "projects",
+      "title": "Social Media Analytics",
+      "note": "Australia on the Cloud",
+      "keywords": "Cloud / Analytics"
+    },
+    {
+      "href": "/projects#twitter-hpc",
+      "group": "projects",
+      "title": "Twitter HPC Analysis",
+      "note": "Big Data on SPARTAN",
+      "keywords": "HPC / Big Data"
+    },
+    {
+      "href": "/projects#climate",
+      "group": "projects",
+      "title": { "en": "ENSO Climate Risk", "zh": "ENSO 气候风险" },
+      "note": {
+        "en": "Climate and Staple Food Prices, a Public-Data Revival",
+        "zh": "气候与主粮价格：公开数据复活版"
+      },
+      "keywords": "Data Science"
+    },
+    {
+      "href": "/projects#ml-gallery",
+      "group": "projects",
+      "title": "40 Reps, Re-checked",
+      "note": {
+        "en": "A Machine Learning Notebook Gallery, Audited",
+        "zh": "机器学习笔记本合集与复查"
+      },
+      "keywords": "Data Science"
+    },
+    {
+      "href": "/projects#cachex",
+      "group": "projects",
+      "title": "Cachex AI",
+      "note": "Game-Playing AI Agent",
+      "keywords": "AI / Algorithms"
+    },
+    {
+      "href": "/projects#project-cradle",
+      "group": "projects",
+      "title": "Project Cradle",
+      "note": { "en": "Invite-Only Member Hub", "zh": "邀请制会员社区" },
+      "keywords": "Full Stack"
+    },
+    {
+      "href": "/projects#hplc",
+      "group": "projects",
+      "title": { "en": "HPLC Pipeline", "zh": "HPLC 数据管线" },
+      "note": {
+        "en": "Lab-Data Quality, an Industry Capstone with CSL",
+        "zh": "与 CSL 合作的实验室数据质量毕业项目"
+      },
+      "keywords": "Data Science"
+    },
+    {
+      "href": "/projects#pcrm",
+      "group": "projects",
+      "title": "PCRM",
+      "note": "Personal Customer Relationship Management",
+      "keywords": "Full Stack"
+    },
+    {
+      "href": "/projects#nyc-taxi",
+      "group": "projects",
+      "title": "NYC Taxi Analysis",
+      "note": "Quantitative Analysis with Spark",
+      "keywords": "Data Science"
+    },
+    {
+      "href": "/projects#portfolio",
+      "group": "projects",
+      "title": "rin.contact",
+      "note": "Personal Portfolio, v5",
+      "keywords": "Web Dev"
+    },
+    {
+      "href": "/projects/coursework#comp10001-playground",
+      "group": "coursework",
+      "title": { "en": "COMP10001 Playground", "zh": "COMP10001 编程游乐场" },
+      "note": { "en": "COMP10001 · Foundations of Computing", "zh": "COMP10001 · 计算基础" }
+    },
+    {
+      "href": "/projects/coursework#louvre-ops-db",
+      "group": "coursework",
+      "title": { "en": "Louvre Ops DB", "zh": "Louvre Ops DB 卢浮宫运营数据库" },
+      "note": { "en": "INFO20003 · Database Systems", "zh": "INFO20003 · 数据库系统" }
+    },
+    {
+      "href": "/projects/coursework#message-cleanser",
+      "group": "coursework",
+      "title": { "en": "Message Cleanser", "zh": "表情消息清洗器" },
+      "note": { "en": "COMP10002 · Foundations of Algorithms", "zh": "COMP10002 · 算法基础" }
+    },
+    {
+      "href": "/projects/coursework#kd-tree-explorer",
+      "group": "coursework",
+      "title": { "en": "K-d Tree Explorer", "zh": "k-d 树探索器" },
+      "note": {
+        "en": "COMP20003 · Algorithms and Data Structures",
+        "zh": "COMP20003 · 算法与数据结构"
+      }
+    },
+    {
+      "href": "/projects/coursework#data-processing-lab",
+      "group": "coursework",
+      "title": { "en": "Data Processing Lab", "zh": "数据处理实验室" },
+      "note": { "en": "COMP20008 · Elements of Data Processing", "zh": "COMP20008 · 数据处理基础" }
+    },
+    {
+      "href": "/projects/coursework#statistics-lab",
+      "group": "coursework",
+      "title": { "en": "MAST20005 Statistics Lab", "zh": "MAST20005 统计学实验室" },
+      "note": { "en": "MAST20005 · Statistics", "zh": "MAST20005 · 统计学" }
+    },
+    {
+      "href": "/projects/coursework#recipe-timer-lab",
+      "group": "coursework",
+      "title": { "en": "Recipe Timer Lab", "zh": "食谱计时实验室" },
+      "note": { "en": "COMP30027 · Machine Learning", "zh": "COMP30027 · 机器学习" }
+    },
+    {
+      "href": "/projects/coursework#snacks-in-a-van",
+      "group": "coursework",
+      "title": { "en": "Snacks in a Van", "zh": "Snacks in a Van 流动餐车点单" },
+      "note": { "en": "INFO30005 · Web Information Technologies", "zh": "INFO30005 · Web 信息技术" }
+    },
+    {
+      "href": "/projects/coursework#nyc-taxi-2019",
+      "group": "coursework",
+      "title": { "en": "NYC Taxi 2019", "zh": "纽约出租车 2019" },
+      "note": { "en": "MAST30034 · Applied Data Science", "zh": "MAST30034 · 应用数据科学" }
+    },
+    {
+      "href": "/projects/coursework#source-separation-lab",
+      "group": "coursework",
+      "title": { "en": "Source Separation Lab", "zh": "信号源分离实验室" },
+      "note": { "en": "MAST30034 · Applied Data Science", "zh": "MAST30034 · 应用数据科学" }
+    },
+    {
+      "href": "/projects/coursework#hplc-qc-lab",
+      "group": "coursework",
+      "title": { "en": "HPLC QC Lab", "zh": "HPLC 质控实验室" },
+      "note": { "en": "MAST30034 · Applied Data Science", "zh": "MAST30034 · 应用数据科学" }
+    },
+    {
+      "href": "/projects/coursework#personal-crm",
+      "group": "coursework",
+      "title": { "en": "4399 CRM", "zh": "4399 CRM 个人关系管理" },
+      "note": { "en": "COMP30022 · IT Project", "zh": "COMP30022 · IT 项目" }
+    },
+    {
+      "href": "/projects/coursework#battery-arbitrage-lab",
+      "group": "coursework",
+      "title": { "en": "Battery Arbitrage Lab (practice task)", "zh": "电池套利实验室（练习）" },
+      "note": { "en": "MAST30034 · Applied Data Science", "zh": "MAST30034 · 应用数据科学" }
+    },
+    {
+      "href": "/projects/coursework#cachex-arena",
+      "group": "coursework",
+      "title": { "en": "Cachex Arena", "zh": "Cachex 对战场" },
+      "note": { "en": "COMP30024 · Artificial Intelligence", "zh": "COMP30024 · 人工智能" }
+    },
+    {
+      "href": "/projects/coursework#human-or-machine",
+      "group": "coursework",
+      "title": { "en": "Human or Machine?", "zh": "人还是机器？" },
+      "note": { "en": "COMP90051 · Statistical Machine Learning", "zh": "COMP90051 · 统计机器学习" }
+    },
+    {
+      "href": "/projects/coursework#spartan-tweet-cruncher",
+      "group": "coursework",
+      "title": { "en": "Spartan Tweet Cruncher", "zh": "Spartan 推文并行分析" },
+      "note": { "en": "COMP90024 · Cluster and Cloud Computing", "zh": "COMP90024 · 集群与云计算" }
+    },
+    {
+      "href": "/projects/coursework#social-sense",
+      "group": "coursework",
+      "title": { "en": "Social Sense", "zh": "Social Sense 社媒情绪看板" },
+      "note": { "en": "COMP90024 · Cluster and Cloud Computing", "zh": "COMP90024 · 集群与云计算" }
+    },
+    {
+      "href": "/projects/coursework#bandit-lab",
+      "group": "coursework",
+      "title": { "en": "Bandit Lab", "zh": "多臂老虎机实验室" },
+      "note": { "en": "COMP90051 · Statistical Machine Learning", "zh": "COMP90051 · 统计机器学习" }
+    },
+    {
+      "href": "/projects/coursework#glm-playground",
+      "group": "coursework",
+      "title": { "en": "GLM Playground", "zh": "GLM 演练场" },
+      "note": {
+        "en": "MAST90139 · Statistical Modelling for Data Science",
+        "zh": "MAST90139 · 数据科学统计建模"
+      }
+    },
+    {
+      "href": "/projects/coursework#self-driving-db-lab",
+      "group": "coursework",
+      "title": { "en": "Self-Driving DB Lab", "zh": "自驱数据库实验室" },
+      "note": { "en": "COMP90050 · Advanced Database Systems", "zh": "COMP90050 · 高级数据库系统" }
+    },
+    {
+      "href": "/projects/coursework#compstats-playground",
+      "group": "coursework",
+      "title": { "en": "CompStats Playground", "zh": "计算统计演练场" },
+      "note": {
+        "en": "MAST90083 · Computational Statistics & Data Science",
+        "zh": "MAST90083 · 计算统计与数据科学"
+      }
+    },
+    {
+      "href": "/projects/coursework#four-roads-to-a-posterior",
+      "group": "coursework",
+      "title": { "en": "Four Roads to a Posterior", "zh": "通往后验的四条路" },
+      "note": {
+        "en": "MAST90125 · Bayesian Statistical Learning",
+        "zh": "MAST90125 · 贝叶斯统计学习"
+      }
+    },
+    {
+      "href": "/projects/coursework#multivariate-lab",
+      "group": "coursework",
+      "title": { "en": "Multivariate Lab", "zh": "多元统计实验室" },
+      "note": {
+        "en": "MAST90138 · Multivariate Statistics for Data Science",
+        "zh": "MAST90138 · 面向数据科学的多元统计"
+      }
+    },
+    {
+      "href": "/projects/coursework#enso-commodity-prices",
+      "group": "coursework",
+      "title": { "en": "Climate and the Price of Bread", "zh": "气候与面包价格" },
+      "note": {
+        "en": "MAST90107 · Data Science Project Pt2",
+        "zh": "MAST90107 · 数据科学项目（第 2 部分）"
+      }
+    },
+    {
+      "href": "/projects/coursework#nlp-playground",
+      "group": "coursework",
+      "title": { "en": "NLP Playground", "zh": "NLP 实验场" },
+      "note": { "en": "COMP90042 · Natural Language Processing", "zh": "COMP90042 · 自然语言处理" }
+    },
+    {
+      "href": "/projects/coursework#climate-claim-checker",
+      "group": "coursework",
+      "title": { "en": "Climate Claim Checker", "zh": "气候声明核查器" },
+      "note": { "en": "COMP90042 · Natural Language Processing", "zh": "COMP90042 · 自然语言处理" }
+    },
+    {
+      "href": "/skills",
+      "group": "learn",
+      "title": { "en": "Everything I've learned", "zh": "这些年学过的东西" }
+    },
+    { "href": "/knowledge", "group": "learn", "title": { "en": "Knowledge", "zh": "知识" } },
+    {
+      "href": "/ds",
+      "group": "learn",
+      "title": { "en": "Data science explainers", "zh": "数据科学小讲解" }
+    },
+    { "href": "/lab", "group": "learn", "title": { "en": "Lab", "zh": "实验室" } },
+    { "href": "/blog", "group": "learn", "title": { "en": "Blog", "zh": "博客" } },
+    {
+      "href": "/knowledge/linear-algebra",
+      "group": "knowledge",
+      "title": { "en": "Linear Algebra", "zh": "线性代数" },
+      "note": {
+        "en": "Vectors, matrices, eigenvectors, the SVD",
+        "zh": "向量、矩阵、特征向量与 SVD"
+      }
+    },
+    {
+      "href": "/knowledge/probability",
+      "group": "knowledge",
+      "title": { "en": "Probability", "zh": "概率论" },
+      "note": {
+        "en": "Random variables, distributions, Bayes' rule",
+        "zh": "随机变量、分布与贝叶斯法则"
+      }
+    },
+    {
+      "href": "/knowledge/statistics",
+      "group": "knowledge",
+      "title": { "en": "Statistics", "zh": "统计学" },
+      "note": { "en": "Estimation, inference, hypothesis tests", "zh": "估计、推断与假设检验" }
+    },
+    {
+      "href": "/knowledge/calculus-optimisation",
+      "group": "knowledge",
+      "title": { "en": "Calculus & Optimisation", "zh": "微积分与最优化" },
+      "note": { "en": "Gradients, gradient descent, backprop", "zh": "梯度、梯度下降与反向传播" }
+    },
+    {
+      "href": "/knowledge/notes/gradient-descent-variants",
+      "group": "knowledge",
+      "title": { "en": "Gradient Descent Variants", "zh": "梯度下降的变种" },
+      "note": {
+        "en": "Concept note · Calculus & Optimisation. Why mini-batch, momentum and adaptive learning rates help, with a racer that shows the paths on a…",
+        "zh": "概念笔记 · 微积分与最优化。小批量、动量和自适应学习率有什么好处，附带一个展示非凸损失面上最优化路径的比赛工具。"
+      },
+      "keywords": "concept note 概念笔记 SGD momentum Adam batch size learning rate"
+    },
+    {
+      "href": "/knowledge/linear-statistical-models",
+      "group": "knowledge",
+      "title": { "en": "Linear Statistical Models", "zh": "线性统计模型" },
+      "note": { "en": "OLS, inference, diagnostics", "zh": "OLS、推断与诊断" }
+    },
+    {
+      "href": "/knowledge/database-systems",
+      "group": "knowledge",
+      "title": { "en": "Database Systems", "zh": "数据库系统" },
+      "note": { "en": "Relational model, SQL, indexing", "zh": "关系模型、SQL 与索引" }
+    },
+    {
+      "href": "/knowledge/artificial-intelligence",
+      "group": "knowledge",
+      "title": { "en": "Artificial Intelligence", "zh": "人工智能" },
+      "note": { "en": "Search, logic, planning", "zh": "搜索、逻辑与规划" }
+    },
+    {
+      "href": "/knowledge/notes/alpha-beta-pruning",
+      "group": "knowledge",
+      "title": { "en": "Alpha-Beta Pruning", "zh": "α-β 剪枝" },
+      "note": {
+        "en": "Concept note · Artificial Intelligence. Why a game tree search can skip branches that cannot affect the best move, and when move ordering…",
+        "zh": "概念笔记 · 人工智能。博弈树搜索为什么可以跳过不会影响最优着法的分支，以及什么时候着法排序有帮助。"
+      },
+      "keywords": "concept note 概念笔记 alpha-beta pruning minimax game tree"
+    },
+    {
+      "href": "/knowledge/notes/auctions-and-mechanism-design",
+      "group": "knowledge",
+      "title": { "en": "Auctions and Mechanism Design", "zh": "拍卖与机制设计" },
+      "note": {
+        "en": "Concept note · Artificial Intelligence. Why a second-price sealed-bid auction makes truthful bidding dominant, and what that tells you…",
+        "zh": "概念笔记 · 人工智能。第二价格密封拍卖为什么让诚实出价成为主导战略，以及这对激励有什么启示。"
+      },
+      "keywords": "concept note 概念笔记 auction Vickrey mechanism design incentive"
+    },
+    {
+      "href": "/knowledge/web-information-technology",
+      "group": "knowledge",
+      "title": { "en": "Web Information Technology", "zh": "Web 信息技术" },
+      "note": {
+        "en": "HTTP, HTML/CSS/JS, REST APIs, the request cycle",
+        "zh": "HTTP、HTML/CSS/JS、REST API 与请求周期"
+      }
+    },
+    {
+      "href": "/knowledge/notes/rest-vs-graphql",
+      "group": "knowledge",
+      "title": { "en": "REST vs GraphQL", "zh": "REST 与 GraphQL" },
+      "note": {
+        "en": "Concept note · Web Information Technology. Why REST fetches related resources in separate requests while GraphQL shapes one request to the…",
+        "zh": "概念笔记 · Web 信息技术。为什么 REST 用多个请求获取关联资源，而 GraphQL 可以把一个请求调整成你需要的形状。"
+      },
+      "keywords": "concept note 概念笔记 REST GraphQL API fetch over-fetching schema"
+    },
+    {
+      "href": "/knowledge/operations-research",
+      "group": "knowledge",
+      "title": { "en": "Operations Research", "zh": "运筹学" },
+      "note": {
+        "en": "Linear programming, feasible regions, the simplex method",
+        "zh": "线性规划、可行域与单纯形法"
+      }
+    },
+    {
+      "href": "/knowledge/elements-of-data-processing",
+      "group": "knowledge",
+      "title": { "en": "Elements of Data Processing", "zh": "数据处理基础" },
+      "note": {
+        "en": "The pipeline, tidy data, cleaning, reshaping, joins",
+        "zh": "数据管线、整洁数据、清洗、重塑与连接"
+      }
+    },
+    {
+      "href": "/knowledge/applied-data-science",
+      "group": "knowledge",
+      "title": { "en": "Applied Data Science", "zh": "应用数据科学" },
+      "note": {
+        "en": "The project lifecycle, CRISP-DM, problem-first",
+        "zh": "项目生命周期、CRISP-DM、问题优先"
+      }
+    },
+    {
+      "href": "/knowledge/data-visualisation",
+      "group": "knowledge",
+      "title": { "en": "Data Visualisation & Perception", "zh": "数据可视化与感知" },
+      "note": {
+        "en": "Encoding accuracy, pre-attentive cues, honest charts",
+        "zh": "编码准确性、前注意线索与诚实图表"
+      }
+    },
+    {
+      "href": "/knowledge/notes/grammar-of-graphics",
+      "group": "knowledge",
+      "title": { "en": "Grammar of Graphics", "zh": "图形语法" },
+      "note": {
+        "en": "Concept note · Data Visualisation & Perception. Why ggplot layers—data, aesthetics, geoms, stats, scales, coordinates—let you build any…",
+        "zh": "概念笔记 · 数据可视化与感知。ggplot 的图层为什么能让你用几条规则搭建任何图表。"
+      },
+      "keywords": "concept note 概念笔记 ggplot grammar of graphics visualization"
+    },
+    {
+      "href": "/knowledge/feature-engineering",
+      "group": "knowledge",
+      "title": { "en": "Feature Engineering & Data Preparation", "zh": "特征工程与数据准备" },
+      "note": {
+        "en": "Cleaning, scaling, encoding, and avoiding leakage",
+        "zh": "清洗、缩放、编码与避免数据泄露"
+      }
+    },
+    {
+      "href": "/knowledge/sampling-survey-methodology",
+      "group": "knowledge",
+      "title": { "en": "Sampling & Survey Methodology", "zh": "抽样与调查方法" },
+      "note": {
+        "en": "Frames, probability sampling, bias, weighting",
+        "zh": "抽样框、概率抽样、偏差与加权"
+      }
+    },
+    {
+      "href": "/knowledge/sql-querying-data",
+      "group": "knowledge",
+      "title": { "en": "SQL & Querying Data", "zh": "SQL 与数据查询" },
+      "note": {
+        "en": "Execution order, joins, window functions, NULLs",
+        "zh": "执行顺序、连接、窗口函数与 NULL"
+      }
+    },
+    {
+      "href": "/knowledge/model-evaluation",
+      "group": "knowledge",
+      "title": { "en": "Model Evaluation & Validation", "zh": "模型评估与验证" },
+      "note": {
+        "en": "Cross-validation, ROC/AUC, the metric that matters",
+        "zh": "交叉验证、ROC/AUC 与选对指标"
+      }
+    },
+    {
+      "href": "/knowledge/notes/thresholds-roc-auc",
+      "group": "knowledge",
+      "title": { "en": "Thresholds and ROC-AUC", "zh": "分类阈值与 ROC 曲线" },
+      "note": {
+        "en": "Concept note · Model Evaluation & Validation. Why a classifier has a threshold, why ROC curves show the trade-off between sensitivity and…",
+        "zh": "概念笔记 · 模型评估与验证。分类器为什么有阈值，ROC 曲线怎样展示真正率和假正率之间的权衡，AUC 衡量什么。"
+      },
+      "keywords": "concept note 概念笔记 ROC AUC threshold precision recall FPR TPR"
+    },
+    {
+      "href": "/knowledge/natural-language-processing",
+      "group": "knowledge",
+      "title": { "en": "Natural Language Processing", "zh": "自然语言处理" },
+      "note": {
+        "en": "Tokens, TF-IDF, embeddings, transformers",
+        "zh": "词元、TF-IDF、嵌入与 Transformer"
+      }
+    },
+    {
+      "href": "/knowledge/statistical-machine-learning",
+      "group": "knowledge",
+      "title": { "en": "Statistical Machine Learning", "zh": "统计机器学习" },
+      "note": {
+        "en": "Bias-variance, regularisation, generalisation",
+        "zh": "偏差-方差、正则化与泛化"
+      }
+    },
+    {
+      "href": "/knowledge/notes/risk-and-pac-learning",
+      "group": "knowledge",
+      "title": { "en": "Risk and PAC Learning", "zh": "风险与 PAC 学习" },
+      "note": {
+        "en": "Concept note · Statistical Machine Learning. How expected risk splits into estimation and approximation error, and what probably…",
+        "zh": "概念笔记 · 统计机器学习。期望风险怎样分解为估计误差和近似误差，以及 PAC 学习是什么意思。"
+      },
+      "keywords": "concept note 概念笔记 PAC learning generalization estimation error approximation error"
+    },
+    {
+      "href": "/knowledge/bayesian-statistics",
+      "group": "knowledge",
+      "title": { "en": "Bayesian Statistics", "zh": "贝叶斯统计" },
+      "note": { "en": "Priors, posteriors, MCMC", "zh": "先验、后验与 MCMC" }
+    },
+    {
+      "href": "/knowledge/pca-dimensionality-reduction",
+      "group": "knowledge",
+      "title": { "en": "PCA & Dimensionality Reduction", "zh": "主成分分析与降维" },
+      "note": {
+        "en": "Covariance, eigenvectors, variance explained",
+        "zh": "协方差、特征向量与解释方差"
+      }
+    },
+    {
+      "href": "/knowledge/clustering",
+      "group": "knowledge",
+      "title": { "en": "Clustering", "zh": "聚类" },
+      "note": { "en": "k-means, hierarchical, choosing k", "zh": "k-均值、层次聚类与选择 k" }
+    },
+    {
+      "href": "/knowledge/cluster-cloud-computing",
+      "group": "knowledge",
+      "title": { "en": "Cluster & Cloud Computing", "zh": "集群与云计算" },
+      "note": { "en": "MPI, Spark, HPC at scale", "zh": "MPI、Spark 与大规模 HPC" }
+    },
+    {
+      "href": "/knowledge/notes/amdahl-vs-gustafson",
+      "group": "knowledge",
+      "title": { "en": "Amdahl's vs Gustafson's Law", "zh": "阿姆达尔与古斯塔夫森定律" },
+      "note": {
+        "en": "Concept note · Cluster & Cloud Computing. Why two formulas for parallel speed-up give different limits, and when to use each.",
+        "zh": "概念笔记 · 集群与云计算。两个平行加速公式为什么给出不同的极限，以及什么时候用哪个。"
+      },
+      "keywords": "concept note 概念笔记 Amdahl Gustafson speed-up parallel scaling"
+    },
+    {
+      "href": "/knowledge/notes/running-jobs-on-spartan",
+      "group": "knowledge",
+      "title": { "en": "Running Jobs on Spartan", "zh": "在 Spartan 上运行任务" },
+      "note": {
+        "en": "Concept note · Cluster & Cloud Computing. How to write a Slurm job script and submit it to a cluster, with a builder that shows the header.",
+        "zh": "概念笔记 · 集群与云计算。怎样写 Slurm 任务脚本并提交到集群，附带一个显示头部的生成工具。"
+      },
+      "keywords": "concept note 概念笔记 Slurm HPC cluster job submission SBATCH"
+    },
+    {
+      "href": "/knowledge/notes/cap-sharding-replication",
+      "group": "knowledge",
+      "title": { "en": "CAP, Sharding and Replication", "zh": "CAP 与分片复制" },
+      "note": {
+        "en": "Concept note · Cluster & Cloud Computing. Why you cannot have consistency, availability and partition tolerance at once, and why databases…",
+        "zh": "概念笔记 · 集群与云计算。为什么你不能同时有一致性、可用性和分片容错，以及为什么数据库要做不同的权衡。"
+      },
+      "keywords": "concept note 概念笔记 CAP theorem consistency availability partition sharding replication"
+    },
+    {
+      "href": "/knowledge/notes/vms-vs-containers",
+      "group": "knowledge",
+      "title": { "en": "VMs vs Containers", "zh": "虚拟机与容器" },
+      "note": {
+        "en": "Concept note · Cluster & Cloud Computing. Why containers share the host kernel while VMs run a full OS, and what each is good for.",
+        "zh": "概念笔记 · 集群与云计算。容器为什么共享主机内核，而虚拟机运行完整的操作系统，以及各自的用途。"
+      },
+      "keywords": "concept note 概念笔记 container VM Docker virtualisation orchestration"
+    },
+    {
+      "href": "/knowledge/statistical-modelling",
+      "group": "knowledge",
+      "title": { "en": "Statistical Modelling", "zh": "统计建模" },
+      "note": {
+        "en": "GLMs, logistic & Poisson, link functions, AIC",
+        "zh": "广义线性模型、逻辑与泊松回归、连接函数、AIC"
+      }
+    },
+    {
+      "href": "/knowledge/notes/glm-goodness-of-fit",
+      "group": "knowledge",
+      "title": { "en": "Goodness of Fit in GLM", "zh": "GLM 中的拟合优度" },
+      "note": {
+        "en": "Concept note · Statistical Modelling. Why Pearson's X² and deviance both measure fit to grouped data, and why they can disagree.",
+        "zh": "概念笔记 · 统计建模。Pearson X² 和偏差为什么都衡量分组数据的拟合，以及为什么它们可能不一致。"
+      },
+      "keywords": "concept note 概念笔记 GLM deviance Pearson X² goodness-of-fit"
+    },
+    {
+      "href": "/knowledge/computational-statistics",
+      "group": "knowledge",
+      "title": { "en": "Computational Statistics", "zh": "计算统计" },
+      "note": {
+        "en": "Monte Carlo, the bootstrap, permutation tests, EM",
+        "zh": "蒙特卡洛、自助法、置换检验与 EM"
+      }
+    },
+    {
+      "href": "/knowledge/advanced-database-systems",
+      "group": "knowledge",
+      "title": { "en": "Advanced Database Systems", "zh": "高级数据库系统" },
+      "note": {
+        "en": "Query optimisation, MVCC, distribution, columnar",
+        "zh": "查询优化、MVCC、分布式与列式存储"
+      }
+    },
+    {
+      "href": "/knowledge/science-communication",
+      "group": "knowledge",
+      "title": { "en": "Science Communication at Work", "zh": "工作中的科学传播" },
+      "note": {
+        "en": "Briefing decisions: lead with the recommendation",
+        "zh": "为决策汇报：先给出建议"
+      }
+    },
+    {
+      "href": "/knowledge/time-series-analysis",
+      "group": "knowledge",
+      "title": { "en": "Time Series Analysis", "zh": "时间序列分析" },
+      "note": {
+        "en": "Trend, seasonality, ARIMA, forecasting honestly",
+        "zh": "趋势、季节性、ARIMA 与诚实预测"
+      }
+    },
+    {
+      "href": "/knowledge/notes/filling-gaps-in-time-series",
+      "group": "knowledge",
+      "title": { "en": "Filling Gaps in Time Series", "zh": "时间序列中的缺失值" },
+      "note": {
+        "en": "Concept note · Time Series Analysis. Why forward fill, backward fill and interpolation work differently, and why backward fill leaks…",
+        "zh": "概念笔记 · 时间序列分析。前向填充、后向填充和插值为什么效果不同，以及为什么后向填充会泄露未来信息。"
+      },
+      "keywords": "concept note 概念笔记 time series missing values forward fill backward fill"
+    },
+    {
+      "href": "/knowledge/causal-inference",
+      "group": "knowledge",
+      "title": { "en": "Causal Inference & A/B Testing", "zh": "因果推断与 A/B 测试" },
+      "note": {
+        "en": "Counterfactuals, RCTs, confounders, DiD",
+        "zh": "反事实、随机对照试验、混杂与双重差分"
+      }
+    },
+    {
+      "href": "/knowledge/notes/study-designs",
+      "group": "knowledge",
+      "title": { "en": "Study Designs", "zh": "研究设计" },
+      "note": {
+        "en": "Concept note · Causal Inference & A/B Testing. Why case-control, cohort and cross-sectional studies estimate different quantities, and…",
+        "zh": "概念笔记 · 因果推断与 A/B 测试。病例对照、队列和横断面研究为什么估计不同的量，以及什么时候用哪个。"
+      },
+      "keywords": "concept note 概念笔记 case-control cohort cross-sectional odds ratio risk ratio"
+    },
+    {
+      "href": "/knowledge/deep-learning",
+      "group": "knowledge",
+      "title": { "en": "Deep Learning & Neural Networks", "zh": "深度学习与神经网络" },
+      "note": {
+        "en": "Neurons, backprop, gradient descent, CNNs to transformers",
+        "zh": "神经元、反向传播、梯度下降、CNN 到 Transformer"
+      }
+    },
+    {
+      "href": "/knowledge/reinforcement-learning",
+      "group": "knowledge",
+      "title": { "en": "Reinforcement Learning", "zh": "强化学习" },
+      "note": {
+        "en": "Reward, MDPs, Bellman, Q-learning, reward hacking",
+        "zh": "奖励、MDP、贝尔曼方程、Q 学习与奖励作弊"
+      }
+    },
+    {
+      "href": "/knowledge/notes/exploration-vs-exploitation",
+      "group": "knowledge",
+      "title": { "en": "Exploration vs Exploitation", "zh": "探索与利用" },
+      "note": {
+        "en": "Concept note · Reinforcement Learning. Why a learner has to try options that look worse, and how ε-greedy and UCB1 decide when.",
+        "zh": "概念笔记 · 强化学习。学习者为什么要去试看起来更差的选项，以及 ε-贪心和 UCB1 怎么决定什么时候去试。"
+      },
+      "keywords": "concept note 概念笔记 multi-armed bandit epsilon-greedy UCB regret 多臂老虎机 遗憾"
+    },
+    {
+      "href": "/knowledge/notes/learning-with-expert-advice",
+      "group": "knowledge",
+      "title": { "en": "Learning with Expert Advice", "zh": "向专家学习" },
+      "note": {
+        "en": "Concept note · Reinforcement Learning. Why a learner can ask multiple experts and use a multiplicative-weight rule to track the best one.",
+        "zh": "概念笔记 · 强化学习。学习者为什么可以问多个专家，并用乘法权重规则来追踪最好的。"
+      },
+      "keywords": "concept note 概念笔记 expert advice multiplicative weight regret"
+    },
+    {
+      "href": "/knowledge/ensemble-methods",
+      "group": "knowledge",
+      "title": { "en": "Ensemble Methods & Gradient Boosting", "zh": "集成方法与梯度提升" },
+      "note": {
+        "en": "Bagging, random forests, boosting, XGBoost",
+        "zh": "装袋、随机森林、提升与 XGBoost"
+      }
+    },
+    {
+      "href": "/knowledge/recommender-systems",
+      "group": "knowledge",
+      "title": { "en": "Recommender Systems", "zh": "推荐系统" },
+      "note": {
+        "en": "Collaborative filtering, matrix factorisation, cold start",
+        "zh": "协同过滤、矩阵分解与冷启动"
+      }
+    },
+    {
+      "href": "/knowledge/survival-analysis",
+      "group": "knowledge",
+      "title": { "en": "Survival Analysis", "zh": "生存分析" },
+      "note": {
+        "en": "Censoring, Kaplan-Meier, Cox hazard ratios",
+        "zh": "删失、Kaplan-Meier 与 Cox 风险比"
+      }
+    },
+    {
+      "href": "/knowledge/information-retrieval",
+      "group": "knowledge",
+      "title": { "en": "Information Retrieval & Search", "zh": "信息检索与搜索" },
+      "note": {
+        "en": "Inverted index, BM25, dense & hybrid retrieval",
+        "zh": "倒排索引、BM25、稠密与混合检索"
+      }
+    },
+    {
+      "href": "/knowledge/large-language-models",
+      "group": "knowledge",
+      "title": { "en": "Large Language Models", "zh": "大语言模型" },
+      "note": {
+        "en": "Next-token prediction, RLHF, hallucination, RAG",
+        "zh": "下一词元预测、RLHF、幻觉与 RAG"
+      }
+    },
+    {
+      "href": "/knowledge/topic-modelling",
+      "group": "knowledge",
+      "title": { "en": "Topic Modelling", "zh": "主题建模" },
+      "note": {
+        "en": "LDA, themes without labels, choosing topics",
+        "zh": "LDA、无标签主题发现与主题数选择"
+      }
+    },
+    {
+      "href": "/knowledge/ai-agents",
+      "group": "knowledge",
+      "title": { "en": "AI Agents & Tool Use", "zh": "AI 智能体与工具调用" },
+      "note": {
+        "en": "The reason-act loop, tools, planning, verification",
+        "zh": "推理-行动循环、工具、规划与验证"
+      }
+    },
+    {
+      "href": "/knowledge/spatial-statistics",
+      "group": "knowledge",
+      "title": { "en": "Spatial Statistics", "zh": "空间统计" },
+      "note": {
+        "en": "Autocorrelation, Moran's I, hotspots, kriging",
+        "zh": "空间自相关、Moran's I、热点与克里金"
+      }
+    },
+    {
+      "href": "/knowledge/conformal-prediction",
+      "group": "knowledge",
+      "title": { "en": "Conformal Prediction & Uncertainty", "zh": "保形预测与不确定性" },
+      "note": {
+        "en": "Guaranteed coverage intervals around any model",
+        "zh": "为任意模型提供有覆盖保证的区间"
+      }
+    },
+    {
+      "href": "/knowledge/causal-discovery",
+      "group": "knowledge",
+      "title": { "en": "Causal Discovery", "zh": "因果发现" },
+      "note": {
+        "en": "Learning the DAG, PC & GES, Markov equivalence",
+        "zh": "学习 DAG、PC 与 GES、马尔可夫等价"
+      }
+    },
+    {
+      "href": "/knowledge/kalman-filter",
+      "group": "knowledge",
+      "title": { "en": "State-Space Models & the Kalman Filter", "zh": "状态空间模型与卡尔曼滤波" },
+      "note": {
+        "en": "Hidden state, predict-update, the Kalman gain",
+        "zh": "隐状态、预测-更新与卡尔曼增益"
+      }
+    },
+    {
+      "href": "/knowledge/active-semi-supervised-learning",
+      "group": "knowledge",
+      "title": { "en": "Active & Semi-Supervised Learning", "zh": "主动学习与半监督学习" },
+      "note": {
+        "en": "Learning with few labels, uncertainty sampling",
+        "zh": "少标签学习与不确定性采样"
+      }
+    },
+    {
+      "href": "/knowledge/extreme-value-theory",
+      "group": "knowledge",
+      "title": { "en": "Extreme Value Theory", "zh": "极值理论" },
+      "note": {
+        "en": "Tail risk, GEV/GPD, return levels, the 1-in-N event",
+        "zh": "尾部风险、GEV/GPD、重现水平与 N 年一遇"
+      }
+    },
+    {
+      "href": "/knowledge/hierarchical-models",
+      "group": "knowledge",
+      "title": { "en": "Hierarchical & Mixed-Effects Models", "zh": "分层与混合效应模型" },
+      "note": { "en": "Grouped data, partial pooling, shrinkage", "zh": "分组数据、部分汇集与收缩" }
+    },
+    {
+      "href": "/knowledge/optimisation-methods",
+      "group": "knowledge",
+      "title": { "en": "Optimisation Methods", "zh": "优化方法" },
+      "note": {
+        "en": "Convex vs not, LP/simplex, integer, metaheuristics",
+        "zh": "凸与非凸、线性规划/单纯形、整数规划与元启发式"
+      }
+    },
+    {
+      "href": "/knowledge/gaussian-processes",
+      "group": "knowledge",
+      "title": { "en": "Gaussian Processes", "zh": "高斯过程" },
+      "note": {
+        "en": "Distribution over functions, kernels, uncertainty",
+        "zh": "函数上的分布、核函数与不确定性"
+      }
+    },
+    {
+      "href": "/knowledge/robust-statistics",
+      "group": "knowledge",
+      "title": { "en": "Robust Statistics", "zh": "稳健统计" },
+      "note": {
+        "en": "Breakdown point, median/MAD, M-estimators, Huber",
+        "zh": "崩溃点、中位数/MAD、M 估计与 Huber"
+      }
+    },
+    {
+      "href": "/knowledge/quantile-regression",
+      "group": "knowledge",
+      "title": { "en": "Quantile Regression", "zh": "分位数回归" },
+      "note": {
+        "en": "Conditional quantiles, pinball loss, the whole spread",
+        "zh": "条件分位数、弹球损失与整体分布"
+      }
+    },
+    {
+      "href": "/knowledge/graph-neural-networks",
+      "group": "knowledge",
+      "title": { "en": "Graph Neural Networks", "zh": "图神经网络" },
+      "note": {
+        "en": "Message passing, node embeddings, GCN/SAGE/GAT",
+        "zh": "消息传递、节点嵌入与 GCN/SAGE/GAT"
+      }
+    },
+    {
+      "href": "/knowledge/notes/graph-convolution-layer",
+      "group": "knowledge",
+      "title": { "en": "Graph Convolution Layer", "zh": "图卷积层" },
+      "note": {
+        "en": "Concept note · Graph Neural Networks. Why graph convolutions average neighbour features with a renormalised adjacency, and what each step…",
+        "zh": "概念笔记 · 图神经网络。图卷积为什么用重新规范化的邻接矩阵来平均邻居特征，以及每一步做什么。"
+      },
+      "keywords": "concept note 概念笔记 GCN graph neural network message passing adjacency"
+    },
+    {
+      "href": "/knowledge/probabilistic-graphical-models",
+      "group": "knowledge",
+      "title": { "en": "Probabilistic Graphical Models", "zh": "概率图模型" },
+      "note": {
+        "en": "Bayes nets, factorisation, inference under uncertainty",
+        "zh": "贝叶斯网络、因子分解与不确定性推断"
+      }
+    },
+    {
+      "href": "/knowledge/business-intelligence-dashboards",
+      "group": "knowledge",
+      "title": { "en": "Business Intelligence & Dashboards", "zh": "商业智能与仪表盘" },
+      "note": {
+        "en": "Power BI, star schema, one question per page",
+        "zh": "Power BI、星型模型、一页一问"
+      }
+    },
+    {
+      "href": "/knowledge/geospatial-analysis",
+      "group": "knowledge",
+      "title": { "en": "Geospatial Analysis & GIS", "zh": "地理空间分析与 GIS" },
+      "note": {
+        "en": "Spatial joins, choropleths, rates, the MAUP",
+        "zh": "空间连接、分级统计图、比率、MAUP"
+      }
+    },
+    {
+      "href": "/knowledge/intelligence-analysis",
+      "group": "knowledge",
+      "title": { "en": "Intelligence Analysis & OSINT", "zh": "情报分析与 OSINT" },
+      "note": {
+        "en": "The intelligence cycle, ACH, source grading, bias",
+        "zh": "情报周期、ACH、信源评级、偏见"
+      }
+    },
+    {
+      "href": "/knowledge/data-governance",
+      "group": "knowledge",
+      "title": { "en": "Data Governance, Privacy & Ethics", "zh": "数据治理、隐私与伦理" },
+      "note": {
+        "en": "FAIR, privacy, access, fairness, lineage",
+        "zh": "FAIR、隐私、访问控制、公平、血缘"
+      }
+    },
+    {
+      "href": "/knowledge/anomaly-detection",
+      "group": "knowledge",
+      "title": { "en": "Anomaly Detection", "zh": "异常检测" },
+      "note": {
+        "en": "Outliers, isolation forest, alert-fatigue trade-off",
+        "zh": "离群点、孤立森林与告警疲劳权衡"
+      }
+    },
+    {
+      "href": "/knowledge/network-graph-analysis",
+      "group": "knowledge",
+      "title": { "en": "Network & Graph Analysis", "zh": "网络与图分析" },
+      "note": {
+        "en": "Centrality, brokers, communities, link analysis",
+        "zh": "中心性、桥接者、社群与关系分析"
+      }
+    },
+    {
+      "href": "/knowledge/reproducibility",
+      "group": "knowledge",
+      "title": { "en": "Reproducibility & Analytical Pipelines", "zh": "可复现性与分析管线" },
+      "note": {
+        "en": "Version control, environments, RAP, lineage",
+        "zh": "版本控制、环境、RAP 与数据血缘"
+      }
+    },
+    {
+      "href": "/knowledge/mlops-monitoring",
+      "group": "knowledge",
+      "title": { "en": "MLOps & Model Monitoring", "zh": "MLOps 与模型监控" },
+      "note": {
+        "en": "Deployment, drift, the retrain loop, skew",
+        "zh": "部署、漂移、再训练循环与偏斜"
+      }
+    },
+    {
+      "href": "/knowledge/explainable-ai",
+      "group": "knowledge",
+      "title": { "en": "Explainable AI & Interpretability", "zh": "可解释 AI 与可解释性" },
+      "note": {
+        "en": "SHAP, LIME, glass-box models, defensible calls",
+        "zh": "SHAP、LIME、玻璃箱模型与可辩护决策"
+      }
+    },
+    {
+      "href": "/knowledge/fairness-bias",
+      "group": "knowledge",
+      "title": { "en": "Fairness & Bias in ML", "zh": "机器学习的公平性与偏见" },
+      "note": {
+        "en": "Proxies, fairness metrics, the impossibility result",
+        "zh": "代理变量、公平性指标与不可能定理"
+      }
+    },
+    {
+      "href": "/knowledge/differential-privacy",
+      "group": "knowledge",
+      "title": { "en": "Differential Privacy", "zh": "差分隐私" },
+      "note": {
+        "en": "Re-identification, epsilon, calibrated noise, utility",
+        "zh": "重识别、epsilon、校准噪声与可用性"
+      }
+    },
+    {
+      "href": "/knowledge/knowledge-graphs",
+      "group": "knowledge",
+      "title": { "en": "Knowledge Graphs", "zh": "知识图谱" },
+      "note": {
+        "en": "Triples, ontologies, entity resolution, GraphRAG",
+        "zh": "三元组、本体、实体消解与 GraphRAG"
+      }
+    },
+    {
+      "href": "/knowledge/streaming-analytics",
+      "group": "knowledge",
+      "title": { "en": "Streaming & Real-Time Analytics", "zh": "流式与实时分析" },
+      "note": {
+        "en": "Windowing, event time, watermarks, Kafka/Flink",
+        "zh": "窗口、事件时间、水位线与 Kafka/Flink"
+      }
+    },
+    {
+      "href": "/knowledge/data-architecture",
+      "group": "knowledge",
+      "title": { "en": "Data Architecture & the Modern Stack", "zh": "数据架构与现代数据栈" },
+      "note": {
+        "en": "Warehouse/lake/lakehouse, ELT, dbt, medallion",
+        "zh": "数仓/数据湖/湖仓、ELT、dbt 与奖牌架构"
+      }
+    },
+    {
+      "href": "/knowledge/statistical-process-control",
+      "group": "knowledge",
+      "title": { "en": "Statistical Process Control", "zh": "统计过程控制" },
+      "note": {
+        "en": "Common vs special cause, control charts, ±3σ",
+        "zh": "常见因与特殊因、控制图与 ±3σ"
+      }
+    },
+    {
+      "href": "/knowledge/federated-learning",
+      "group": "knowledge",
+      "title": { "en": "Federated Learning", "zh": "联邦学习" },
+      "note": {
+        "en": "Train without sharing data, FedAvg, non-IID",
+        "zh": "不共享数据训练、FedAvg 与非独立同分布"
+      }
+    },
+    {
+      "href": "/knowledge/data-science-mentoring",
+      "group": "knowledge",
+      "title": { "en": "Data Science mentoring themes", "zh": "数据科学辅导主题" },
+      "note": { "en": "UniMelb peer mentoring, 2024", "zh": "墨尔本大学朋辈辅导，2024" }
+    },
+    {
+      "href": "/knowledge/edtech-digital-learning",
+      "group": "knowledge",
+      "title": { "en": "EdTech & the Science of Learning", "zh": "教育科技与学习科学" },
+      "note": {
+        "en": "Cognitive load, spacing, retrieval, desirable difficulties",
+        "zh": "认知负荷、间隔、提取练习与适当难度"
+      }
+    },
+    {
+      "href": "/ds/model-card",
+      "group": "explainers",
+      "title": { "en": "Model Card: Rin Huang", "zh": "模型卡：Rin Huang" },
+      "note": { "en": "Rin as an ML model", "zh": "把 Rin 当作一个 ML 模型" }
+    },
+    {
+      "href": "/ds/feature-importance",
+      "group": "explainers",
+      "title": { "en": "Feature Importance", "zh": "特征重要性" },
+      "note": { "en": "SHAP-style contributions", "zh": "SHAP 式的贡献" }
+    },
+    {
+      "href": "/ds/confusion-matrix",
+      "group": "explainers",
+      "title": { "en": "Confusion Matrix", "zh": "混淆矩阵" },
+      "note": { "en": "what people think vs reality", "zh": "人们以为的 vs 现实" }
+    },
+    {
+      "href": "/ds/ensemble",
+      "group": "explainers",
+      "title": { "en": "Ensemble Model", "zh": "集成模型" },
+      "note": { "en": "30% Analyst, 25% Engineer...", "zh": "30% 分析师，25% 工程师……" }
+    },
+    {
+      "href": "/ds/bias-variance",
+      "group": "explainers",
+      "title": { "en": "Bias–Variance Tradeoff", "zh": "偏差–方差权衡" },
+      "note": { "en": "generalist tradeoff", "zh": "通才的取舍" }
+    },
+    {
+      "href": "/ds/training-curves",
+      "group": "explainers",
+      "title": { "en": "Training Curves", "zh": "训练曲线" },
+      "note": { "en": "loss over life epochs", "zh": "人生各纪元上的损失" }
+    },
+    {
+      "href": "/ds/pipeline",
+      "group": "explainers",
+      "title": { "en": "Career as Data Pipeline", "zh": "职业即数据流水线" },
+      "note": { "en": "career as data pipeline", "zh": "把职业生涯当作数据管线" }
+    },
+    {
+      "href": "/ds/survival",
+      "group": "explainers",
+      "title": { "en": "Survival Analysis", "zh": "生存分析" },
+      "note": { "en": "Kaplan-Meier of tenure", "zh": "任期的 Kaplan-Meier" }
+    },
+    {
+      "href": "/ds/version-control",
+      "group": "explainers",
+      "title": { "en": "Version Control for Your Life", "zh": "你人生的版本控制" },
+      "note": { "en": "git commits for your life", "zh": "为你的人生做 git 提交" }
+    },
+    {
+      "href": "/ds/null-hypothesis",
+      "group": "explainers",
+      "title": { "en": "Null Hypothesis Test", "zh": "原假设检验" },
+      "note": { "en": "H₀: Rin is not hireable", "zh": "H₀：Rin 不可雇用" }
+    },
+    {
+      "href": "/ds/regression",
+      "group": "explainers",
+      "title": { "en": "Regression to the Mean", "zh": "向均值回归" },
+      "note": { "en": "predict Rin in 5 years", "zh": "预测五年后的 Rin" }
+    },
+    {
+      "href": "/ds/ab-test",
+      "group": "explainers",
+      "title": { "en": "A/B Test Results", "zh": "A/B 测试结果" },
+      "note": { "en": "corporate vs this website", "zh": "企业版 vs 这个网站" }
+    },
+    {
+      "href": "/ds/phacking",
+      "group": "explainers",
+      "title": { "en": "P-Hacking (Satire)", "zh": "P 值篡改（讽刺）" },
+      "note": { "en": "1000 regressions, 3 published", "zh": "1000 个回归，3 个发表" }
+    },
+    {
+      "href": "/ds/eda",
+      "group": "explainers",
+      "title": { "en": "Exploratory Data Analysis", "zh": "探索性数据分析" },
+      "note": { "en": "Rin as a dataset", "zh": "把 Rin 当作一个数据集" }
+    },
+    {
+      "href": "/ds/recommendation",
+      "group": "explainers",
+      "title": { "en": "Recommendation Engine", "zh": "推荐引擎" },
+      "note": { "en": "users who viewed Rin also viewed", "zh": "看过 Rin 的用户也看了" }
+    },
+    {
+      "href": "/ds/sentiment",
+      "group": "explainers",
+      "title": { "en": "NLP Sentiment Analysis", "zh": "NLP 情感分析" },
+      "note": { "en": "NLP analysis of Rin", "zh": "对 Rin 做 NLP 分析" }
+    },
+    {
+      "href": "/ds/overfitting",
+      "group": "explainers",
+      "title": { "en": "Overfitting Detector", "zh": "过拟合检测器" },
+      "note": { "en": "CV buzzword detector", "zh": "简历热词探测器" }
+    },
+    {
+      "href": "/ds/data-drift",
+      "group": "explainers",
+      "title": { "en": "Data Drift Detected", "zh": "检测到数据漂移" },
+      "note": { "en": "retrain your mental model", "zh": "重训你的心智模型" }
+    },
+    {
+      "href": "/ds/cicd",
+      "group": "explainers",
+      "title": { "en": "CI/CD for Your Career", "zh": "你职业的 CI/CD" },
+      "note": { "en": "career deployment pipeline", "zh": "职业部署流水线" }
+    },
+    {
+      "href": "/ds/technical-debt",
+      "group": "explainers",
+      "title": { "en": "Technical Debt", "zh": "技术债" },
+      "note": { "en": "known debt, estimated payoff", "zh": "已知的债，估算的回报" }
+    },
+    {
+      "href": "/blog/a-lookup-table-beat-my-regression",
+      "group": "posts",
+      "title": "I Audited My Own Coursework. A Lookup Table Won.",
+      "note": "I rebuilt nineteen of my University of Melbourne assignments and re-checked them with methods I did not know as a student. The first…",
+      "keywords": "data-science statistics ai reproducibility career"
+    },
+    {
+      "href": "/blog/what-ai-didnt-automate",
+      "group": "posts",
+      "title": "What AI Didn't Automate",
+      "note": "AI took the repetitive execution off the table. It didn't touch theory, strategic judgement, or the ability to write a clear sentence.…",
+      "keywords": "ai career philosophy productivity writing"
+    },
+    {
+      "href": "/blog/a-trend-line-is-not-a-trend",
+      "group": "posts",
+      "title": "A Trend Line Is Not a Trend",
+      "note": "Drawing a line through some points always produces a trend. Whether that movement is real, or just noise dressed up as a finding, is a…",
+      "keywords": "statistics data-science decision-making government"
+    },
+    {
+      "href": "/blog/put-governance-on-the-request-path",
+      "group": "posts",
+      "title": "Put AI Governance on the Request Path, Not in a Document",
+      "note": "Most AI governance is a document written once and filed away. The more useful version makes every AI-assisted answer carry its own audit…",
+      "keywords": "ai-governance government data-science decision-making"
+    },
+    {
+      "href": "/blog/a-forecast-is-about-uncertainty",
+      "group": "posts",
+      "title": "A Forecast Is a Statement About Uncertainty, Not the Future",
+      "note": "People want a forecast to tell them what will happen. The useful thing a forecast actually does is tell you how sure you are allowed to…",
+      "keywords": "data-science statistics decision-making forecasting"
+    },
+    {
+      "href": "/blog/analytics-tells-you-what-happened",
+      "group": "posts",
+      "title": "Analytics Tells You What Happened. Intelligence Tells You What To Do.",
+      "note": "Most data work stops at describing the past. The harder and more valuable step is turning that description into a recommendation someone…",
+      "keywords": "strategic-intelligence data-science decision-making government"
+    },
+    {
+      "href": "/blog/mentoring-made-me-a-better-analyst",
+      "group": "posts",
+      "title": "Mentoring Made Me a Better Analyst",
+      "note": "I started mentoring data science students to give something back. It turned out to sharpen the exact skill my day job depends on: making…",
+      "keywords": "mentoring communication data-science continuous-improvement"
+    },
+    {
+      "href": "/blog/no-playbook",
+      "group": "posts",
+      "title": "Building Something Workable When There Is No Playbook",
+      "note": "The hardest projects are not the technically hard ones. They are the ones with no infrastructure, no brief, and no precedent. What I…",
+      "keywords": "career data-science government continuous-improvement"
+    },
+    {
+      "href": "/blog/when-the-categories-change",
+      "group": "posts",
+      "title": "When the Categories Change Underneath You",
+      "note": "The flashy part of data work is the model. The part that actually decides whether you can trust the answer is the quiet taxonomy work…",
+      "keywords": "data-engineering government data-science reproducibility"
+    },
+    {
+      "href": "/blog/the-dashboard-is-not-the-deliverable",
+      "group": "posts",
+      "title": "The Dashboard Is Not the Deliverable",
+      "note": "Early on I thought the chart was the work. It took a few years of building analysis for people who had to act on it to learn that the real…",
+      "keywords": "data-science communication decision-making continuous-improvement"
+    },
+    {
+      "href": "/blog/the-deliberate-generalist",
+      "group": "posts",
+      "title": "The Case for the Deliberate Generalist",
+      "note": "Why I built my career across seven technical domains on purpose, and why breadth held to a consistent method is a strategic choice rather…",
+      "keywords": "career data-science philosophy continuous-improvement"
+    },
+    {
+      "href": "/blog/reproducibility-is-a-feature",
+      "group": "posts",
+      "title": "Reproducibility Is a Feature, Not a Chore",
+      "note": "Automating manual data workflows taught me that being able to run something again, the same way, on demand, is not housekeeping. It is the…",
+      "keywords": "engineering data-science reproducibility continuous-improvement"
+    },
+    {
+      "href": "/blog/208-applications-one-yes",
+      "group": "posts",
+      "title": "208 Applications. One Yes. What the Data Says About Job Hunting.",
+      "note": "A data-driven retrospective on 208 job applications, a 9.91% interview rate, 20+ resume versions, and what the numbers actually tell you…",
+      "keywords": "career data-science data-analysis job-hunt"
+    },
+    {
+      "href": "/blog/academia-industry-real-work",
+      "group": "posts",
+      "title": "Academia, Internships, Industry: Three Worlds, Three Lessons",
+      "note": "One month into industry after years in academia and internships. What I thought would transfer, what actually did, and the one skill that…",
+      "keywords": "career continuous-improvement reflection philosophy"
+    },
+    {
+      "href": "/blog/building-the-blog",
+      "group": "posts",
+      "title": "I Let Claude Build My Blog. Here's What Happened.",
+      "note": "94 pages, 6 months of iteration, and one weekend where an AI agent built the blog, RSS feed, newsletter backend, and dark mode. A…",
+      "keywords": "meta ai engineering philosophy"
+    },
+    {
+      "href": "/blog/gmail-labeler-ai-agent",
+      "group": "posts",
+      "title": "My Inbox Had 3,000 Unread Emails. So I Built an AI Agent to Triage It.",
+      "note": "How Claude Cowork + Gmail MCP became a side project: an agent skill that labels email by provider, builds sender rules, and archives the…",
+      "keywords": "ai ai-agents engineering claude mcp productivity"
+    },
+    {
+      "href": "/blog/vibe-coding-experiment",
+      "group": "posts",
+      "title": "I Let AI Build a Business App. It Worked. But Was I Thinking?",
+      "note": "Building a CRM for my mum's food business with pure vibe coding. 10 hours of planning, zero manual input, and one uncomfortable question I…",
+      "keywords": "ai engineering philosophy cursor vibe-coding"
+    },
+    {
+      "href": "/blog/hello-world",
+      "group": "posts",
+      "title": "Hello World — Knowledge Compounds",
+      "note": "Starting a blog. A reflection on why knowledge compounds, how first-principles thinking keeps it growing, and what you can expect to find…",
+      "keywords": "meta data-science philosophy"
+    },
+    {
+      "href": "/blog/automated-fact-checking-climate",
+      "group": "posts",
+      "title": "I Built an AI Fact-Checker for Climate Claims. Here's What I Learned.",
+      "note": "Building a Transformer-based fact-checking system for climate change claims from scratch — no pretrained models, no BERT, no shortcuts. A…",
+      "keywords": "nlp ai engineering data-science climate"
+    },
+    {
+      "href": "/blog/new-year-milestone",
+      "group": "posts",
+      "title": "2024, New Year, New Milestone",
+      "note": "A heartfelt reflection on starting a master's degree, interning at HEX, rebuilding a portfolio, and the goals I carry into 2024 — the year…",
+      "keywords": "reflection personal career goals"
+    },
+    { "href": "/about", "group": "site", "title": { "en": "About", "zh": "关于我" } },
+    { "href": "/info", "group": "site", "title": { "en": "Site info", "zh": "网站信息" } },
+    {
+      "href": "/info/now",
+      "group": "site",
+      "title": { "en": "Now", "zh": "近况" },
+      "note": { "en": "what I'm doing right now", "zh": "我现在在做什么" }
+    },
+    {
+      "href": "/info/uses",
+      "group": "site",
+      "title": { "en": "Uses", "zh": "我的工具" },
+      "note": { "en": "tools, apps, setup", "zh": "工具、应用与配置" }
+    },
+    {
+      "href": "/info/colophon",
+      "group": "site",
+      "title": { "en": "Colophon", "zh": "本站构成" },
+      "note": { "en": "how this site is built", "zh": "本站是如何搭建的" }
+    },
+    {
+      "href": "/info/history",
+      "group": "site",
+      "title": { "en": "History", "zh": "网站历史" },
+      "note": { "en": "how this site changed", "zh": "这个网站是怎么一路改过来的" }
+    },
+    {
+      "href": "/info/changelog",
+      "group": "site",
+      "title": { "en": "Changelog", "zh": "更新日志" },
+      "note": { "en": "what changed", "zh": "更新了什么" }
+    },
+    {
+      "href": "/info/roadmap",
+      "group": "site",
+      "title": { "en": "Roadmap", "zh": "路线图" },
+      "note": { "en": "where this site is headed", "zh": "这个网站的发展方向" }
+    },
+    {
+      "href": "/info/accessibility",
+      "group": "site",
+      "title": { "en": "Accessibility", "zh": "无障碍" },
+      "note": { "en": "how this site is accessible", "zh": "本站的无障碍设计" }
+    },
+    {
+      "href": "/info/site-map",
+      "group": "site",
+      "title": { "en": "Site map", "zh": "网站地图" },
+      "note": { "en": "every page, with a filter", "zh": "全站页面一览，可以筛选" }
+    },
+    {
+      "href": "/info/manifest",
+      "group": "site",
+      "title": { "en": "Manifest", "zh": "宣言" },
+      "note": { "en": "what I believe", "zh": "我的信念" }
+    },
+    {
+      "href": "/info/references",
+      "group": "site",
+      "title": { "en": "References", "zh": "推荐人" },
+      "note": { "en": "people who might say nice things", "zh": "愿意为我美言几句的人" }
+    },
+    {
+      "href": "/info/thank-you",
+      "group": "site",
+      "title": { "en": "Thank you", "zh": "致谢" },
+      "note": { "en": "thanks for reaching out", "zh": "感谢你的联系" }
+    },
+    { "href": "/tools", "group": "tools", "title": { "en": "Tools", "zh": "工具" } },
+    {
+      "href": "/tools/card",
+      "group": "tools",
+      "title": { "en": "Business Card", "zh": "电子名片" }
+    },
+    {
+      "href": "/resume/terminal",
+      "group": "tools",
+      "title": { "en": "CLI Resume", "zh": "命令行简历" }
+    },
+    {
+      "href": "/info/api",
+      "group": "tools",
+      "title": "API",
+      "note": { "en": "available API endpoints", "zh": "可用的 API 接口" }
+    },
+    { "href": "/fun", "group": "tools", "title": { "en": "Easter eggs", "zh": "彩蛋" } }
   ],
-  "stats": {
-    "roles": 9,
-    "projects": 37,
-    "certifications": 23,
-    "degrees": 2,
-    "coffees_consumed": "undefined (stack overflow)"
-  },
-  "links": {
-    "web": "https://rin.contact",
-    "resume": "https://rin.contact/resume",
-    "skills": "https://rin.contact/skills",
-    "linkedin": "https://www.linkedin.com/in/sunchuangyuhuang/",
-    "github": "https://github.com/rNLKJA",
-    "card": "https://rin.contact/tools/card",
-    "hire": "https://rin.contact/hire-me"
-  },
-  "easter_eggs": {
-    "terminal": "curl rin.contact",
-    "cli_resume": "https://rin.contact/resume/terminal",
-    "konami": "↑↑↓↓←→←→BA",
-    "matrix": "https://rin.contact/fun/matrix",
-    "source": "check the HTML comments"
-  }
+  "projects": 38
 }

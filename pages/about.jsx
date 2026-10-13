@@ -12,6 +12,170 @@ import AboutOpener from "@/components/sections/AboutOpener";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
 
+// PERSON_SCHEMA — moved from _document.jsx to only appear on homepage and /about
+// to reduce false positives in Search Console. See pages/index.jsx and _document.jsx.
+const PERSON_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://rin.contact/#person",
+  name: "Sunchuangyu (Rin) Huang",
+  alternateName: [
+    "Rin Huang",
+    "黄孙创宇",
+    "黄孙 Rin",
+    "Sunchuangyu Huang",
+    "Huang Sunchuangyu",
+    "HUANG SUNCHUANGYU",
+    "HUANGSUNCHUANGYU",
+    "HUANG SUN CHUANG YU",
+    "Huang Sun Chuang Yu",
+    "Sun Chuang Yu Huang",
+  ],
+  givenName: "Sunchuangyu",
+  additionalName: "Rin",
+  familyName: "Huang",
+  url: "https://rin.contact",
+  image:
+    "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
+  email: "huang@rin.contact",
+  gender: "Male",
+  nationality: { "@type": "Country", name: "Australia" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Adelaide",
+    addressRegion: "SA",
+    addressCountry: "AU",
+  },
+  homeLocation: [
+    {
+      "@type": "Place",
+      name: "Adelaide, South Australia, Australia",
+      geo: { "@type": "GeoCoordinates", latitude: -34.9285, longitude: 138.6007 },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Adelaide",
+        addressRegion: "SA",
+        addressCountry: "AU",
+      },
+    },
+    {
+      "@type": "Place",
+      name: "Melbourne, Victoria, Australia",
+      geo: { "@type": "GeoCoordinates", latitude: -37.8136, longitude: 144.9631 },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Melbourne",
+        addressRegion: "VIC",
+        addressCountry: "AU",
+      },
+    },
+    {
+      "@type": "Place",
+      name: "Sydney, New South Wales, Australia",
+      geo: { "@type": "GeoCoordinates", latitude: -33.8688, longitude: 151.2093 },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Sydney",
+        addressRegion: "NSW",
+        addressCountry: "AU",
+      },
+    },
+    {
+      "@type": "Place",
+      name: "Anshun, Guizhou, China",
+      geo: { "@type": "GeoCoordinates", latitude: 26.2457, longitude: 105.9468 },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Anshun",
+        addressRegion: "Guizhou",
+        addressCountry: "CN",
+      },
+    },
+  ],
+  workLocation: {
+    "@type": "Place",
+    name: "Adelaide, South Australia, Australia",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Adelaide",
+      addressRegion: "SA",
+      addressCountry: "AU",
+    },
+  },
+  jobTitle: "ASO7 Senior Data Analyst",
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "Senior Data Analyst",
+    description:
+      "Produces statistical reports, workflow reviews and analytics tooling for the Ethical and Professional Standards Branch of South Australia Police, including the quarterly Use of Force and Vehicle Pursuit reports.",
+    occupationLocation: { "@type": "City", name: "Adelaide" },
+    skills:
+      "Python, R, SQL, Power BI, Statistical Modelling, Strategic Intelligence, GIS, Machine Learning",
+  },
+  knowsLanguage: [
+    { "@type": "Language", name: "English", alternateName: "en" },
+    { "@type": "Language", name: "Mandarin Chinese", alternateName: "zh" },
+  ],
+  worksFor: [
+    {
+      "@type": "GovernmentOrganization",
+      name: "South Australia Police",
+      alternateName: "SAPOL",
+      url: "https://www.police.sa.gov.au",
+      department: {
+        "@type": "GovernmentOrganization",
+        name: "Ethical and Professional Standards Branch",
+        alternateName: "EPSB",
+      },
+    },
+    {
+      "@type": "Organization",
+      name: "Mapiva",
+      description:
+        "Melbourne startup building a map-first social discovery app. Rin is Co-Founder & Dev Lead.",
+    },
+  ],
+  alumniOf: [
+    {
+      "@type": "CollegeOrUniversity",
+      name: "University of Melbourne",
+      url: "https://www.unimelb.edu.au",
+    },
+  ],
+  knowsAbout: [
+    "Data Science",
+    "Statistical Analysis",
+    "Strategic Intelligence",
+    "Python",
+    "Machine Learning",
+    "Full-Stack Web Development",
+    "Mobile Development",
+    "Cloud Infrastructure",
+    "Government Analytics",
+    "Research Software Engineering",
+  ],
+  sameAs: [
+    "https://github.com/rNLKJA",
+    "https://linkedin.com/in/sunchuangyuhuang",
+    "https://www.instagram.com/chuangyu_hscy/",
+    "https://twitter.com/rNLKJA",
+    "https://buymeacoffee.com/rNLKJA",
+  ],
+  mainEntityOfPage: { "@id": "https://rin.contact/#profilepage" },
+  subjectOf: { "@id": "https://rin.contact/#profilepage" },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "huang@rin.contact",
+    contactType: "professional enquiries",
+    availableLanguage: [
+      { "@type": "Language", name: "English" },
+      { "@type": "Language", name: "Mandarin Chinese" },
+    ],
+  },
+  description:
+    "Sunchuangyu (Rin) Huang, also known as 黄孙创宇 (黄孙 Rin), Huang Sunchuangyu, HUANG SUNCHUANGYU and HUANGSUNCHUANGYU, is an ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead of Mapiva, working across data science, strategic intelligence and research software engineering.",
+};
+
 const CertificationsSection = dynamic(() => import("@/components/sections/CertificationsSection"), {
   loading: () => <div className="min-h-[320px]" />,
 });
@@ -53,6 +217,10 @@ export default function AboutPage({ faqJsonLd }) {
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
           />
         </Head>
       )}

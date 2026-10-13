@@ -16,6 +16,14 @@ const IMAGES = [
     caption: "Senior Data Analyst & Research Software Engineer, Adelaide, Australia",
     license: BASE_URL,
   },
+  // Blog post cover images
+  {
+    loc: `${BASE_URL}/images/blog/coursework-audit/cover.webp`,
+    title: "Coursework Audit: How the Data Science Degree Evolved",
+    caption: "Blog post cover featuring NYC taxi dataset analysis",
+    license: BASE_URL,
+  },
+  // Career organization logos
   {
     loc: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Coat_of_arms_of_the_South_Australia_Police.svg",
     title: "South Australia Police",
@@ -76,6 +84,7 @@ const CORE = [
   { path: "/projects/teaching", priority: 0.5, freq: "monthly" },
   { path: "/projects/psyckitchen-echo", priority: 0.6, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
+  { path: "/projects/ethical-standing", priority: 0.7, freq: "monthly" },
   { path: "/skills", priority: 0.8, freq: "monthly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
   { path: "/lab", priority: 0.8, freq: "monthly" },
@@ -229,6 +238,7 @@ const ZH_COVERED = [
   { path: "/projects/teaching", priority: 0.5, freq: "monthly" },
   { path: "/projects/psyckitchen-echo", priority: 0.6, freq: "monthly" },
   { path: "/projects/coursework", priority: 0.8, freq: "monthly" },
+  { path: "/projects/ethical-standing", priority: 0.7, freq: "monthly" },
   { path: "/skills", priority: 0.8, freq: "monthly" },
   { path: "/tools/card", priority: 0.7, freq: "monthly" },
   { path: "/knowledge", priority: 0.7, freq: "weekly" },
