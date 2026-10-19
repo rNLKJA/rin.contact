@@ -21,15 +21,15 @@ import { fill } from "@/lib/fill";
 import { PROJECTS, projectAnchor } from "@/lib/projects-data";
 
 const DOMAIN_COLORS = {
-  Government: { color: "#2563EB", bg: "#EFF6FF" }, // blue-600  4.53:1 ✓
+  Government: { color: "#2563EB", dark: "#3B82F6", bg: "#EFF6FF" }, // blue-600  4.53:1 ✓ (dark: blue-500 5.38:1)
   "Climate Research": { color: "#0F766E", dark: "#14B8A6", bg: "#F0FDFA" }, // teal-700 6.18:1 ✓ (dark: teal-500 5.02:1)
-  Biotech: { color: "#7C3AED", bg: "#F5F3FF" }, // violet-700 6.26:1 ✓
-  Startup: { color: "#C2410C", bg: "#FFF7ED" }, // orange-700 7.24:1 ✓
-  Research: { color: "#15803D", bg: "#F0FDF4" }, // green-700  7.55:1 ✓
+  Biotech: { color: "#7C3AED", dark: "#A78BFA", bg: "#F5F3FF" }, // violet-700 6.26:1 ✓ (dark: violet-400 7.27:1)
+  Startup: { color: "#C2410C", dark: "#F97316", bg: "#FFF7ED" }, // orange-700 7.24:1 ✓ (dark: orange-500 7.06:1)
+  Research: { color: "#15803D", dark: "#22C55E", bg: "#F0FDF4" }, // green-700  7.55:1 ✓ (dark: green-500 8.69:1)
   "AI / ML": { color: "#CC0000", dark: "#FF6B6B", bg: "#FFF1F1" }, // dark red   5.53:1 ✓ (dark: 5.5:1)
-  "Cloud / HPC": { color: "#B45309", bg: "#FFFBEB" }, // amber-700  5.25:1 ✓
+  "Cloud / HPC": { color: "#B45309", dark: "#F59E0B", bg: "#FFFBEB" }, // amber-700  5.25:1 ✓ (dark: amber-500 9.22:1)
   "Open Source": { color: "#0F766E", dark: "#14B8A6", bg: "#ECFEFF" }, // teal-700 6.35:1 ✓ (dark: teal-500 5.02:1)
-  Personal: { color: "#595959", bg: "#F5F5F5" }, // neutral    5.05:1 ✓
+  Personal: { color: "#595959", dark: "#B4B4B4", bg: "#F5F5F5" }, // neutral    5.05:1 ✓ (dark: 9.55:1)
 };
 
 // Text colour for a domain in the current theme; #CC0000 only reaches 3.36:1 on

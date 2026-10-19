@@ -42,15 +42,16 @@ const Footer = () => {
         />
       </svg>
 
-      {/* Ghost word — Wisr editorial texture */}
+      {/* Ghost word — Wisr editorial texture. Pure decoration (WCAG 1.4.3
+          incidental text), so the word is CSS generated content, not a text
+          node: it looks the same but is not read as low-contrast page text. */}
       <span
         aria-hidden="true"
         className="absolute right-0 bottom-4 text-[10rem] md:text-[14rem] font-bold leading-none
-                   select-none pointer-events-none tracking-tighter text-white opacity-[0.025]"
+                   select-none pointer-events-none tracking-tighter text-white opacity-[0.025]
+                   before:content-['RIN']"
         style={{ fontFamily: "var(--font-bitcount), monospace" }}
-      >
-        RIN
-      </span>
+      />
 
       <div className="max-w-[1100px] mx-auto px-6 md:px-12 pt-14 pb-10 relative z-10">
         {/* ── Top row — brand + nav columns ── */}
