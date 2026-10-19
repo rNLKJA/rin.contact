@@ -10,6 +10,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import ArchFrame from "@/components/covers/ArchFrame";
 import { useI18n } from "@/contexts/I18nContext";
 
 const PATH = "/projects/order-system";
@@ -97,7 +98,12 @@ export default function OrderSystemCaseStudy() {
         path={PATH}
         ogType="article"
         ogTitle={t("orderSystem.ogTitle")}
-        ogImage={{ title: TITLE, subtitle: OG_SUBTITLE, section: "projects" }}
+        ogImage={{
+          title: TITLE,
+          subtitle: OG_SUBTITLE,
+          section: "projects",
+          project: "order-system",
+        }}
         locale={locale}
       />
       <Head>
@@ -116,16 +122,21 @@ export default function OrderSystemCaseStudy() {
           ← {t("orderSystem.back")}
         </Link>
 
-        <p className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
-          {t("orderSystem.label")}
-        </p>
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-[#EEEEEE]">
-          {t("orderSystem.title")}
-        </h1>
-        <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-6">
-          {t("orderSystem.tagline")}
-        </p>
+        <div className="md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,220px)] md:gap-10 md:items-start">
+          <div className="min-w-0">
+            <p className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
+              {t("orderSystem.label")}
+            </p>
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-[#EEEEEE]">
+              {t("orderSystem.title")}
+            </h1>
+            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-6">
+              {t("orderSystem.tagline")}
+            </p>
+          </div>
+          <ArchFrame id="order-system" className="mb-10 w-full max-w-[280px] mx-auto md:mx-0" />
+        </div>
 
         {/* Private by design: no source links, said plainly, then the sandbox. */}
         <div className="mb-10 border-l-2 border-[#E0E0E0] dark:border-[#3D3D3D] pl-4">

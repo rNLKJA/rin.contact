@@ -12,6 +12,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import ArchFrame from "@/components/covers/ArchFrame";
 import GameTreeLesson from "@/components/demos/teaching/GameTreeLesson";
 import { useI18n } from "@/contexts/I18nContext";
 import { COPY, DEMO, STACK } from "@/lib/demos/teaching-data";
@@ -86,7 +87,12 @@ export default function ClassBroPage() {
         path={PATH}
         ogType="article"
         ogTitle={`${OG_TITLE} · Rin Huang`}
-        ogImage={{ title: OG_TITLE, subtitle: OG_SUBTITLE, section: "projects" }}
+        ogImage={{
+          title: OG_TITLE,
+          subtitle: OG_SUBTITLE,
+          section: "projects",
+          project: "classbro",
+        }}
         locale={locale}
       />
       <Head>
@@ -106,30 +112,38 @@ export default function ClassBroPage() {
 
         {/* Hero */}
         <header className="mb-16 md:mb-20">
-          <p className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
-            {L(CLASSBRO_DATA.label)}
-          </p>
-          <h1 className="font-display text-5xl md:text-7xl leading-none tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] mb-6 break-words">
-            {L(CLASSBRO_DATA.title)}
-          </h1>
-          <p className="max-w-[640px] text-lg md:text-2xl font-light text-[#3D3D3D] dark:text-[#CCCCCC] leading-snug mb-6">
-            {L(CLASSBRO_DATA.tagline)}
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-              <span
-                className="w-1.5 h-1.5 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
-                aria-hidden="true"
-              />
-              {L(CLASSBRO_DATA.status)}
-            </p>
-            <a
-              href="#demo"
-              className="inline-flex items-center gap-2 min-h-[36px] rounded-full px-4 text-xs tracking-widest uppercase bg-[#1A1A1A] text-white dark:bg-[#EEEEEE] dark:text-black hover:bg-[#CC0000] dark:hover:bg-[#FF3C3C] transition-colors duration-200 motion-reduce:transition-none"
-            >
-              {L(CLASSBRO_DATA.demoButton)} ↓
-            </a>
+          <div className="md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,260px)] md:gap-12 md:items-start">
+            <div className="min-w-0">
+              <p className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
+                {L(CLASSBRO_DATA.label)}
+              </p>
+              <h1 className="font-display text-5xl md:text-7xl leading-none tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] mb-6 break-words">
+                {L(CLASSBRO_DATA.title)}
+              </h1>
+              <p className="max-w-[640px] text-lg md:text-2xl font-light text-[#3D3D3D] dark:text-[#CCCCCC] leading-snug mb-6">
+                {L(CLASSBRO_DATA.tagline)}
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                  <span
+                    className="w-1.5 h-1.5 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
+                    aria-hidden="true"
+                  />
+                  {L(CLASSBRO_DATA.status)}
+                </p>
+                <a
+                  href="#demo"
+                  className="inline-flex items-center gap-2 min-h-[36px] rounded-full px-4 text-xs tracking-widest uppercase bg-[#1A1A1A] text-white dark:bg-[#EEEEEE] dark:text-black hover:bg-[#CC0000] dark:hover:bg-[#FF3C3C] transition-colors duration-200 motion-reduce:transition-none"
+                >
+                  {L(CLASSBRO_DATA.demoButton)} ↓
+                </a>
+              </div>
+            </div>
+            <ArchFrame
+              id="classbro"
+              className="mt-10 md:mt-0 w-full max-w-[300px] mx-auto md:mx-0"
+            />
           </div>
         </header>
 

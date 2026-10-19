@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import ArchFrame from "@/components/covers/ArchFrame";
 import { useI18n } from "@/contexts/I18nContext";
 
 const LIVE = "https://rnlkja--signal-api-api.modal.run";
@@ -96,7 +97,12 @@ export default function SignalCaseStudy() {
         path="/projects/signal"
         ogType="article"
         ogTitle={t("signal.ogTitle")}
-        ogImage={{ title: "Signal", subtitle: t("signal.ogSubtitle"), section: "projects" }}
+        ogImage={{
+          title: "Signal",
+          subtitle: t("signal.ogSubtitle"),
+          section: "projects",
+          project: "signal",
+        }}
         locale={locale}
       />
       <Head>
@@ -115,38 +121,43 @@ export default function SignalCaseStudy() {
           ← {t("signal.back")}
         </Link>
 
-        <p className="text-[10px] tracking-widest uppercase text-accent-ink font-mono mb-4 flex items-center gap-2">
-          <span
-            className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse"
-            aria-hidden="true"
-          />
-          {t("signal.flagship")}
-        </p>
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-[#EEEEEE]">
-          Signal
-        </h1>
-        <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-6">
-          {t("signal.tagline")}
-        </p>
+        <div className="md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,220px)] md:gap-10 md:items-start">
+          <div className="min-w-0">
+            <p className="text-[10px] tracking-widest uppercase text-accent-ink font-mono mb-4 flex items-center gap-2">
+              <span
+                className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse"
+                aria-hidden="true"
+              />
+              {t("signal.flagship")}
+            </p>
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-[#EEEEEE]">
+              Signal
+            </h1>
+            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-6">
+              {t("signal.tagline")}
+            </p>
 
-        {/* CTAs */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          <a
-            href={LIVE}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200"
-          >
-            {t("signal.liveDemo")}
-          </a>
-          <a
-            href={REPO}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
-          >
-            {t("signal.viewGithub")}
-          </a>
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-2 mb-10">
+              <a
+                href={LIVE}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200"
+              >
+                {t("signal.liveDemo")}
+              </a>
+              <a
+                href={REPO}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+              >
+                {t("signal.viewGithub")}
+              </a>
+            </div>
+          </div>
+          <ArchFrame id="signal" className="mb-10 w-full max-w-[280px] mx-auto md:mx-0" />
         </div>
 
         {/* At a glance */}
