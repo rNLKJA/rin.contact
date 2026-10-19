@@ -40,6 +40,7 @@ const PERSON_SCHEMA = {
     title: "Rin Huang",
     subtitle: "Senior Data Analyst @ SAPOL",
     section: "home",
+    path: "/",
   }),
   email: "huang@rin.contact",
   gender: "Male",

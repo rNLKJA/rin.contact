@@ -8,7 +8,7 @@ import { PROJECTS } from "@/lib/projects-data";
 import { getCoursework } from "@/lib/coursework-data";
 import PipelineList from "@/components/sections/PipelineList";
 import { PROJECT_PIPELINE, localisePipeline } from "@/lib/pipeline-data";
-import { ogImageUrl } from "@/lib/og";
+import { ogImageUrl, ogPath } from "@/lib/og";
 
 const ProjectsSection = dynamic(() => import("@/components/sections/ProjectsSection"), {
   loading: () => <div className="min-h-[480px]" />,
@@ -44,6 +44,7 @@ export default function ProjectsPage({ count = 0, courseworkLinks = {} }) {
     title: `${count} Projects`,
     subtitle: "Data engineering, cloud, mobile & open-source",
     section: "projects",
+    path: ogPath("/projects/", locale),
   });
   return (
     <>

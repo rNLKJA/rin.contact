@@ -11,7 +11,7 @@ import AuthorBio from "@/components/blog/AuthorBio";
 import PostCover from "@/components/covers/PostCover";
 import { useI18n } from "@/contexts/I18nContext";
 import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
-import { ogImageUrl } from "@/lib/og";
+import { ogImageUrl, ogPath } from "@/lib/og";
 
 const NewsletterSignup = dynamic(() => import("@/components/blog/NewsletterSignup"), {
   ssr: false,
@@ -58,7 +58,8 @@ export default function BlogPost({ post, relatedPosts = [] }) {
     section: "blog",
     post: post.slug,
   };
-  const ogImageSrc = ogImageUrl(ogImage);
+  // The same URL SeoHead builds for og:image, path and locale included.
+  const ogImageSrc = ogImageUrl({ ...ogImage, path: ogPath(`/blog/${post.slug}/`, locale) });
 
   return (
     <>
@@ -213,7 +214,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
           </div>
         </header>
 
-        {/* 2C cover: the post's own numbers in dots, or its title when it has none */}
+        {/* 2C cover: the post's own numbers in dots, or its outline when it has none */}
         <PostCover
           slug={post.slug}
           cover={post.cover}

@@ -7,8 +7,8 @@ cover:
   kind: waffle
   values: ["187", "20", "1"]
   labels: ["No", "Interview", "Yes"]
-  highlight: 2
-  alt: "208 dots, one per application: 187 rejected or ghosted, 20 interviewed and 1 offer, the offer in red."
+  emphasis: 2
+  alt: "208 small squares, one per application: 187 rejected or ghosted drawn faint, 20 interviews drawn darker and 1 offer in full ink with a ring around it."
 ---
 
 Job hunting is a black box. You send applications into a void, occasionally get a rejection email, and try not to take it personally. But after 208 applications, I decided to treat the whole thing like a data problem.

@@ -17,10 +17,12 @@
  * Every page gets a share image (lib/og.js, pages/api/og.jsx). Without an
  * ogImage prop the card is drawn from the page's own title, description and
  * path. ogImage may also name a `project` id or a `post` slug, whose cover
- * becomes the card's art.
+ * becomes the card's art. The card always prints the page's path, locale
+ * included, so no two pages share one.
  */
 import Head from "next/head";
-import { ogImageUrl, sectionFromPath } from "@/lib/og";
+import { useRouter } from "next/router";
+import { ogImageUrl, ogPath, sectionFromPath } from "@/lib/og";
 
 const BASE_URL = "https://rin.contact";
 const SITE_NAME = "Rin Huang";
@@ -59,13 +61,18 @@ export default function SeoHead({
     ? "noindex, nofollow"
     : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
 
-  const ogImageSrc = ogImageUrl(
-    ogImage ?? {
+  // The card prints the path the page is actually served at. Some English-only
+  // pages keep an English canonical in zh-Hans too, so the route's own locale
+  // decides here, not the `locale` prop.
+  const { locale: routeLocale } = useRouter();
+  const ogImageSrc = ogImageUrl({
+    ...(ogImage ?? {
       title: resolvedOgTitle,
       subtitle: resolvedOgDesc,
       section: sectionFromPath(path),
-    }
-  );
+    }),
+    path: ogPath(path, routeLocale ?? locale),
+  });
 
   return (
     <Head>

@@ -6,7 +6,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
 import { assertCareerData } from "@/lib/career-check";
-import { ogImageUrl } from "@/lib/og";
+import { ogImageUrl, ogPath } from "@/lib/og";
 
 const TimelineSection = dynamic(() => import("@/components/sections/TimelineSection"), {
   loading: () => <div className="min-h-[480px]" />,
@@ -29,7 +29,7 @@ export function getStaticProps() {
 }
 
 export default function CareerPage() {
-  const { t } = useI18n();
+  const { t, locale = "en-AU" } = useI18n();
   return (
     <>
       <ReadingProgress />
@@ -54,6 +54,7 @@ export default function CareerPage() {
             title: "Career Journey",
             subtitle: "9 roles across Government, Research & Engineering",
             section: "career",
+            path: ogPath("/career/", locale),
           })}
         />
         <meta property="og:image:width" content="1200" />
@@ -70,6 +71,7 @@ export default function CareerPage() {
             title: "Career Journey",
             subtitle: "9 roles across Government, Research & Engineering",
             section: "career",
+            path: ogPath("/career/", locale),
           })}
         />
       </Head>

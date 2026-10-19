@@ -189,7 +189,7 @@ export default function PsyckitchenEchoPage() {
         {/* Hero */}
         <header className={`${CARD} relative overflow-hidden p-6 md:p-10 mb-6`}>
           <div className="grid gap-6 md:gap-10 md:grid-cols-[auto_minmax(0,1fr)] items-center">
-            <ArchFrame id="psyckitchen-echo" className="w-40 md:w-56">
+            <ArchFrame id="psyckitchen-echo" className="w-40 md:w-56" inkClassName={INK}>
               <EchoIllustration label={L(COPY.artAlt)} className="h-full w-full" />
             </ArchFrame>
             <div className="min-w-0">

@@ -2,7 +2,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import PageHero from "@/components/layout/PageHero";
 import { useI18n } from "@/contexts/I18nContext";
-import { ogImageUrl } from "@/lib/og";
+import { ogImageUrl, ogPath } from "@/lib/og";
 
 const DatasetCard = dynamic(() => import("@/components/sections/DatasetCard"), {
   loading: () => <div className="min-h-[320px]" />,
@@ -12,7 +12,7 @@ const IntelligenceSection = dynamic(() => import("@/components/sections/Intellig
 });
 
 export default function LabPage() {
-  const { t } = useI18n();
+  const { t, locale = "en-AU" } = useI18n();
   return (
     <>
       <Head>
@@ -35,6 +35,7 @@ export default function LabPage() {
             title: "Data Playground",
             subtitle: "Career intelligence reports & self-analysis",
             section: "lab",
+            path: ogPath("/lab/", locale),
           })}
         />
         <meta property="og:image:width" content="1200" />
@@ -51,6 +52,7 @@ export default function LabPage() {
             title: "Data Playground",
             subtitle: "Career intelligence reports & self-analysis",
             section: "lab",
+            path: ogPath("/lab/", locale),
           })}
         />
       </Head>

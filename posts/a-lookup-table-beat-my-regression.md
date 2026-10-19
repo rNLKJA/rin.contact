@@ -7,12 +7,10 @@ cover:
   kind: bars
   values: ["9.5", "6.2"]
   labels: ["2021 regression", "Median lookup"]
-  highlight: 1
+  emphasis: 1
   note: "RMSE, minutes"
-  alt: "Bar chart of the post's own numbers: hold-out RMSE of 9.5 minutes for the 2021 regression and 6.2 minutes for the route-by-hour median lookup, the lookup in red."
+  alt: "Bar chart of the post's own numbers: hold-out RMSE of 9.5 minutes for the 2021 regression and 6.2 minutes for the route-by-hour median lookup, the lookup in full ink."
 ---
-
-![A dot-matrix headline reading 6.2 is less than 9.5, with the caption: a lookup table beat my 2021 regression](/images/blog/coursework-audit/cover.webp)
 
 In 2021 I fitted a regression to predict how long a New York taxi trip would take. It was the centrepiece of my Applied Data Science project. I cleaned more than 84 million trips, joined them to weather, street events and car crashes, and trained the model in PySpark. The notebook reported an error of 9.17 minutes under 10-fold cross-validation, and I took that as the answer.
 

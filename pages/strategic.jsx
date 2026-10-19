@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
-import { ogImageUrl } from "@/lib/og";
+import { ogImageUrl, ogPath } from "@/lib/og";
 
 // ─── Section components (aligned with DesignPhilosophyModal) ───────────────────
 const Section = ({ label, children }) => (
@@ -57,7 +57,7 @@ const FrameworkItem = ({ name, source, desc }) => (
 );
 
 export default function StrategicPage() {
-  const { t } = useI18n();
+  const { t, locale = "en-AU" } = useI18n();
   return (
     <>
       <ReadingProgress />
@@ -82,6 +82,7 @@ export default function StrategicPage() {
             title: "Strategic Data Science",
             subtitle: "Problem-first, not model-first",
             section: "strategic",
+            path: ogPath("/strategic/", locale),
           })}
         />
         <meta property="og:image:width" content="1200" />
@@ -98,6 +99,7 @@ export default function StrategicPage() {
             title: "Strategic Data Science",
             subtitle: "Problem-first, not model-first",
             section: "strategic",
+            path: ogPath("/strategic/", locale),
           })}
         />
       </Head>

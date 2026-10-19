@@ -6,8 +6,8 @@ description: "Building a CRM for my mum's food business with pure vibe coding. 1
 cover:
   kind: count
   values: ["10"]
-  labels: ["hours of planning before any code"]
-  alt: "Ten blocks, one for each hour of planning before a line of code."
+  labels: ["hours of planning"]
+  alt: "Ten blocks for the roughly ten hours of planning before a line of code."
 ---
 
 My mum runs a healthy food business. She needed a better CRM and order system — something to keep her records tidy without spreadsheets that invite human error.

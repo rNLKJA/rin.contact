@@ -665,7 +665,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                       id={project.id}
                       mark
                       describe={false}
-                      className="w-20 md:w-28 flex-shrink-0 border border-[#E0E0E0] dark:border-[#3D3D3D]"
+                      className="w-24 md:w-36 flex-shrink-0 border border-[#E0E0E0] dark:border-[#3D3D3D]"
                     />
                     <span className="flex-1 min-w-0 grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-4 items-center">
                       <span className="text-sm font-medium flex items-center gap-2">

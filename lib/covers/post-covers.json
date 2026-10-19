@@ -12,15 +12,13 @@
       "Interview",
       "Yes"
     ],
-    "highlight": 2,
+    "emphasis": 2,
     "note": "",
-    "alt": "208 dots, one per application: 187 rejected or ghosted, 20 interviewed and 1 offer, the offer in red."
+    "alt": "208 small squares, one per application: 187 rejected or ghosted drawn faint, 20 interviews drawn darker and 1 offer in full ink with a ring around it."
   },
   "a-forecast-is-about-uncertainty": {
     "title": "A Forecast Is a Statement About Uncertainty, Not the Future",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “A Forecast Is a Statement About Uncertainty, Not the Future”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "a-lookup-table-beat-my-regression": {
     "title": "I Audited My Own Coursework. A Lookup Table Won.",
@@ -33,33 +31,25 @@
       "2021 regression",
       "Median lookup"
     ],
-    "highlight": 1,
+    "emphasis": 1,
     "note": "RMSE, minutes",
-    "alt": "Bar chart of the post's own numbers: hold-out RMSE of 9.5 minutes for the 2021 regression and 6.2 minutes for the route-by-hour median lookup, the lookup in red."
+    "alt": "Bar chart of the post's own numbers: hold-out RMSE of 9.5 minutes for the 2021 regression and 6.2 minutes for the route-by-hour median lookup, the lookup in full ink."
   },
   "a-trend-line-is-not-a-trend": {
     "title": "A Trend Line Is Not a Trend",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “A Trend Line Is Not a Trend”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "academia-industry-real-work": {
     "title": "Academia, Internships, Industry: Three Worlds, Three Lessons",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “Academia, Internships, Industry: Three Worlds, Three Lessons”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "analytics-tells-you-what-happened": {
     "title": "Analytics Tells You What Happened. Intelligence Tells You What To Do.",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “Analytics Tells You What Happened. Intelligence Tells You What To Do.”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "automated-fact-checking-climate": {
     "title": "I Built an AI Fact-Checker for Climate Claims. Here's What I Learned.",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “I Built an AI Fact-Checker for Climate Claims. Here's What I Learned.”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "building-the-blog": {
     "title": "I Let Claude Build My Blog. Here's What Happened.",
@@ -70,7 +60,7 @@
     "labels": [
       "pages"
     ],
-    "highlight": null,
+    "emphasis": null,
     "note": "",
     "alt": "94 dots, one for each page the site had when the blog was built."
   },
@@ -83,57 +73,41 @@
     "labels": [
       "unread emails"
     ],
-    "highlight": null,
+    "emphasis": null,
     "note": "",
     "alt": "3,000 dots, one for each unread email in the inbox."
   },
   "hello-world": {
     "title": "Hello World — Knowledge Compounds",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “Hello World — Knowledge Compounds”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "mentoring-made-me-a-better-analyst": {
     "title": "Mentoring Made Me a Better Analyst",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “Mentoring Made Me a Better Analyst”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "new-year-milestone": {
     "title": "2024, New Year, New Milestone",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “2024, New Year, New Milestone”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "no-playbook": {
     "title": "Building Something Workable When There Is No Playbook",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “Building Something Workable When There Is No Playbook”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "put-governance-on-the-request-path": {
     "title": "Put AI Governance on the Request Path, Not in a Document",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “Put AI Governance on the Request Path, Not in a Document”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "reproducibility-is-a-feature": {
     "title": "Reproducibility Is a Feature, Not a Chore",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “Reproducibility Is a Feature, Not a Chore”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "the-dashboard-is-not-the-deliverable": {
     "title": "The Dashboard Is Not the Deliverable",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “The Dashboard Is Not the Deliverable”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "the-deliberate-generalist": {
     "title": "The Case for the Deliberate Generalist",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “The Case for the Deliberate Generalist”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "vibe-coding-experiment": {
     "title": "I Let AI Build a Business App. It Worked. But Was I Thinking?",
@@ -142,22 +116,18 @@
       "10"
     ],
     "labels": [
-      "hours of planning before any code"
+      "hours of planning"
     ],
-    "highlight": null,
+    "emphasis": null,
     "note": "",
-    "alt": "Ten blocks, one for each hour of planning before a line of code."
+    "alt": "Ten blocks for the roughly ten hours of planning before a line of code."
   },
   "what-ai-didnt-automate": {
     "title": "What AI Didn't Automate",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “What AI Didn't Automate”, set in dot-matrix letters."
+    "kind": "outline"
   },
   "when-the-categories-change": {
     "title": "When the Categories Change Underneath You",
-    "kind": "title",
-    "values": [],
-    "alt": "Cover: the title, “When the Categories Change Underneath You”, set in dot-matrix letters."
+    "kind": "outline"
   }
 }

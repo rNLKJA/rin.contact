@@ -9,7 +9,7 @@
   "brewscope": {
     "title": "brewscope",
     "form": "overlap",
-    "alt": "Two overlapping sets of Homebrew packages; the overlap, where one package shadows another, is drawn densest. The sizes are illustrative.",
+    "alt": "Two overlapping sets of Homebrew packages. The overlap, where one package shadows another, is drawn densest. The sizes are illustrative.",
     "current": false,
     "period": "Oct 2026"
   },
@@ -36,8 +36,8 @@
   },
   "wechat-style-distiller": {
     "title": "WeChat Style Distiller",
-    "form": "style-fingerprint",
-    "alt": "A style fingerprint: twelve linguistic features across six synthetic personas, each dot sized by a seeded stand-in value.",
+    "form": "chat-to-prompt",
+    "alt": "Chat bubbles from a conversation on the left funnelling into one persona prompt card on the right.",
     "current": false,
     "period": "Jun 2026"
   },
@@ -58,7 +58,7 @@
   "signal": {
     "title": "Signal",
     "form": "audit-chain",
-    "alt": "A tamper-evident audit log as a chain of hashed records; the newest record, the live end of the chain, is red.",
+    "alt": "A tamper-evident audit log as a chain of hashed records. The newest record, the live end of the chain, is red.",
     "current": true,
     "period": "Jun 2026 – Present"
   },
@@ -86,14 +86,14 @@
   "ethical-standing": {
     "title": "Ethical Standing in Police Environment",
     "form": "balance",
-    "alt": "A level balance, standing for ethical frameworks and professional standards; the pivot is red because the role is current.",
+    "alt": "A level balance, standing for ethical frameworks and professional standards. The pivot is red because the role is current.",
     "current": true,
     "period": "Oct 2024 – Present"
   },
   "sapol-epsb": {
     "title": "SAPOL EPSB Analytics",
     "form": "fan-in",
-    "alt": "Many API endpoints converging on one client, the shape of a single client over more than 1,100 endpoints; the client is red because the work is current.",
+    "alt": "Many API endpoints converging on one client, the shape of a single client over more than 1,100 endpoints. The client is red because the work is current.",
     "current": true,
     "period": "Mar 2026 – Present"
   },
@@ -107,7 +107,7 @@
   "sa-gaming-machines": {
     "title": "SA Gaming Machine Statistics",
     "form": "ledger",
-    "alt": "A workbook of sixteen financial years, FY 2009/10 to FY 2024/25, one row per year.",
+    "alt": "A workbook of sixteen financial years, FY 2009/10 to FY 2024/25, one column per year under a header row. The figures are placeholders.",
     "current": false,
     "period": "Sep 2025"
   },
@@ -121,7 +121,7 @@
   "sa-address": {
     "title": "SA Address Generator",
     "form": "sa-scatter",
-    "alt": "South Australia's outline with mock addresses scattered across it, densest around Adelaide. The points are synthetic.",
+    "alt": "South Australia with mock addresses scattered across it, densest around Adelaide. The points are synthetic.",
     "current": false,
     "period": "Aug 2025"
   },
@@ -135,7 +135,7 @@
   "cbs": {
     "title": "CBS Intelligence",
     "form": "tile-map",
-    "alt": "A tile map of South Australia shaded in four steps with its legend, the shape of regulatory analytics on a map. The shading is illustrative.",
+    "alt": "A tile map of South Australia shaded in three steps with its legend, the shape of regulatory analytics on a map. The shading is illustrative.",
     "current": false,
     "period": "Jan 2025 – Mar 2026"
   },
@@ -198,7 +198,7 @@
   "twitter-hpc": {
     "title": "Twitter HPC Analysis",
     "form": "city-ripples",
-    "alt": "Australia's outline with the capital cities marked as ripples.",
+    "alt": "A dot map of Australia with each capital city marked by a dot and a ripple around it.",
     "current": false,
     "period": "Mar 2023 – Apr 2023"
   },
@@ -212,14 +212,14 @@
   "ml-gallery": {
     "title": "40 Reps, Re-checked",
     "form": "notebook-gallery",
-    "alt": "Forty notebooks as forty dots: the 33 that ran end to end filled, the 7 that did not as faint points, and 8 larger dots for the audits.",
+    "alt": "Forty notebooks as forty squares, the 33 that ran end to end in full ink and the 7 that did not faint, with the eight audits as a separate row of eight hollow squares underneath.",
     "current": false,
     "period": "Nov 2022 – Dec 2022"
   },
   "cachex": {
     "title": "Cachex AI",
     "form": "hex-board",
-    "alt": "A Cachex board, a Hex-like connection game, with one player's stones forming a path from one side to the other.",
+    "alt": "A Cachex board, a Hex-like connection game, with one player's connected stones forming a path from one edge to the other.",
     "current": false,
     "period": "Apr 2022 – Jun 2022"
   },
@@ -233,7 +233,7 @@
   "hplc": {
     "title": "HPLC Pipeline",
     "form": "control-charts",
-    "alt": "Control charts for four assays, each a run of points between control limits with its out-of-control run ringed. The points are synthetic.",
+    "alt": "Control charts for four assays, each a run of points between control limits with the one point outside them circled. The points are synthetic.",
     "current": false,
     "period": "Aug 2021 – Oct 2021"
   },
@@ -247,21 +247,21 @@
   "nyc-taxi": {
     "title": "NYC Taxi Analysis",
     "form": "line-vs-steps",
-    "alt": "Trip times as faint points, the 2021 regression as a straight dotted line and the stepped median lookup that beat it in the 2026 re-check.",
+    "alt": "The 2021 regression, drawn as a straight line, against the median lookup, drawn as steps, each with a bar for its hold-out error: 9.5 minutes against 6.2. The lookup's shorter bar is in full ink.",
     "current": false,
     "period": "Jul 2021 – Aug 2021"
   },
   "portfolio": {
     "title": "rin.contact",
     "form": "version-stack",
-    "alt": "Five versions of the site stacked like layers, back to front; v5, the current version, is red.",
+    "alt": "Five versions of the site stacked like layers, back to front. A red marker on the front layer, v5, shows it is the current version.",
     "current": true,
     "period": "2020 – Present"
   },
   "virtual-internships": {
     "title": "Virtual internships (Forage)",
     "form": "twelve-tiles",
-    "alt": "Twelve job simulations as twelve tiles, each with its own small mark.",
+    "alt": "Twelve job simulations as twelve identical tiles, each with a tick for a completed simulation.",
     "current": false,
     "period": "Oct 2022 – Aug 2023"
   }

@@ -1,13 +1,16 @@
 /**
  * ArchFrame (4A) — a dot-matrix arch that frames a case study's hero visual.
  *
- * The arch is a segmented strip of dots, like a glyph light, with a fanlight
- * of fading spokes above the window. Its keystone is the one red segment and
- * only lights when the work is current; otherwise it stays ink. The window
- * holds the project's own cover (components/covers/ProjectCover.jsx) under the
- * fanlight, unless a page passes its own square hero visual as children, which
- * then fills the arch. A quiet nod to an arch, in the site's dot language. Static: no motion beyond the shared red-dot pulse,
- * which reduced motion turns off.
+ * The arch is an unbroken strip of dots, like a glyph light, parted only
+ * beside the keystone, with a fanlight of fading spokes above the window. The
+ * keystone lights red only when the work is current; otherwise it stays ink.
+ * The window holds the project's own cover (components/covers/ProjectCover.jsx)
+ * drawn in ink only, so on a live page the keystone and the caption's dot are
+ * the only red. A page can pass its own square hero visual as children, which
+ * then fills the arch, and its own ink colour (inkClassName) to sit on a
+ * tinted card. The caption ("Current", and since when) only shows for live
+ * work: for anything else the hero already gives the dates. Static: no
+ * motion beyond the shared red-dot pulse, which reduced motion turns off.
  */
 import { useRouter } from "next/router";
 import ProjectCover from "./ProjectCover";
@@ -54,9 +57,7 @@ function buildArch() {
   outer.forEach((p, i) => {
     const d = Math.abs(i - apex);
     if (d <= 2) key.push(p);
-    else if (d === 3) return;
-    else if ((d - 4) % 7 === 6) return;
-    else ink.push(p);
+    else if (d !== 3) ink.push(p);
   });
   const inner = archPoints(17, 9);
   const spokes = [];
@@ -78,8 +79,25 @@ function buildArch() {
 const ARCH = buildArch();
 
 const CAPTION = { en: "Current", zh: "当前" };
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-export default function ArchFrame({ id, children, className = "" }) {
+/** "Jun 2026 – Present" in the page's language: "2026年6月 – 至今" in zh-Hans. */
+function localPeriod(period = "", lang) {
+  if (lang !== "zh") return period;
+  return period
+    .replace(
+      new RegExp(`\\b(${MONTHS.join("|")}) (\\d{4})\\b`, "g"),
+      (_, mon, year) => `${year}年${MONTHS.indexOf(mon) + 1}月`
+    )
+    .replace("Present", "至今");
+}
+
+export default function ArchFrame({
+  id,
+  children,
+  className = "",
+  inkClassName = "text-[#1A1A1A] dark:text-[#EDEDED]",
+}) {
   const { locale = "en-AU" } = useRouter();
   const lang = locale === "zh-Hans" ? "zh" : "en";
   const c = COVERS[id];
@@ -94,7 +112,7 @@ export default function ArchFrame({ id, children, className = "" }) {
       <div className="relative w-full" style={{ aspectRatio: `${VW} / ${VH}` }}>
         <svg
           viewBox={`0 0 ${VW} ${VH}`}
-          className="absolute inset-0 h-full w-full text-[#1A1A1A] dark:text-[#EDEDED]"
+          className={`absolute inset-0 h-full w-full ${inkClassName}`}
           aria-hidden="true"
         >
           {!children && (
@@ -135,19 +153,17 @@ export default function ArchFrame({ id, children, className = "" }) {
             height: pct(win.h, VH),
           }}
         >
-          {children || <ProjectCover id={id} eager className="w-full" />}
+          {children || <ProjectCover id={id} eager red={false} className="w-full" />}
         </div>
       </div>
-      <figcaption className="mt-3 flex items-center justify-center gap-2 font-mono text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
-        {live && (
-          <>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
-            <span className="text-[#CC0000] dark:text-[#FF3C3C]">{CAPTION[lang]}</span>
-            <span aria-hidden="true">·</span>
-          </>
-        )}
-        <span>{lang === "zh" ? c.period.replace("Present", "至今") : c.period}</span>
-      </figcaption>
+      {live && (
+        <figcaption className="mt-3 flex items-center justify-center gap-2 font-mono text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
+          <span>{CAPTION[lang]}</span>
+          <span aria-hidden="true">·</span>
+          <span>{localPeriod(c.period, lang)}</span>
+        </figcaption>
+      )}
     </figure>
   );
 }

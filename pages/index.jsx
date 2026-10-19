@@ -38,6 +38,7 @@ const PROFILE_PAGE_SCHEMA = {
       title: "Rin Huang",
       subtitle: "Senior Data Analyst @ SAPOL",
       section: "home",
+      path: "/",
     }),
     width: 1200,
     height: 630,
