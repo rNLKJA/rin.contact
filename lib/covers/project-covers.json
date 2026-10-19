@@ -1,0 +1,268 @@
+{
+  "nsw-strata-law": {
+    "title": "NSW Strata Law Guide",
+    "form": "levy-shares",
+    "alt": "A strata building whose three floors follow unit entitlements of 1, 1 and 2, with a disc per lot sized by its levy share: a quarter, a quarter and a half.",
+    "current": false,
+    "period": "Apr 2025 – Oct 2026"
+  },
+  "brewscope": {
+    "title": "brewscope",
+    "form": "overlap",
+    "alt": "Two overlapping sets of Homebrew packages; the overlap, where one package shadows another, is drawn densest. The sizes are illustrative.",
+    "current": false,
+    "period": "Oct 2026"
+  },
+  "timezone-calendar": {
+    "title": "Timezone Calendar Visualisation",
+    "form": "tz-bands",
+    "alt": "Nine timezone bands, Los Angeles to Melbourne, each the same 9 to 5 local working day shifted along a 24-hour UTC axis by the city's standard-time offset.",
+    "current": false,
+    "period": "Oct 2024 – Oct 2026"
+  },
+  "data-engineer-bootcamp": {
+    "title": "Data Engineer BootCamp",
+    "form": "pipeline-weeks",
+    "alt": "Seven week blocks joined like a pipeline: weeks 1 to 6 filled, week 7 still an outline.",
+    "current": false,
+    "period": "Jan 2024 – Oct 2026"
+  },
+  "life-system-template": {
+    "title": "Life System Template",
+    "form": "vault-tree",
+    "alt": "A vault drawn as a tree: one agent contract at the root, then areas, projects, HQ and memory, with notes under each.",
+    "current": false,
+    "period": "Oct 2026"
+  },
+  "wechat-style-distiller": {
+    "title": "WeChat Style Distiller",
+    "form": "style-fingerprint",
+    "alt": "A style fingerprint: twelve linguistic features across six synthetic personas, each dot sized by a seeded stand-in value.",
+    "current": false,
+    "period": "Jun 2026"
+  },
+  "sa-au-open-data": {
+    "title": "SA & AU Open Data Atlas",
+    "form": "atlas",
+    "alt": "A dot map of Australia with South Australia drawn densest.",
+    "current": false,
+    "period": "Jul 2026"
+  },
+  "gmail-labeler": {
+    "title": "Gmail Labeler",
+    "form": "triage",
+    "alt": "Unsorted mail on the left funnelled into ten labelled lanes on the right. The lane lengths are illustrative.",
+    "current": false,
+    "period": "May 2024"
+  },
+  "signal": {
+    "title": "Signal",
+    "form": "audit-chain",
+    "alt": "A tamper-evident audit log as a chain of hashed records; the newest record, the live end of the chain, is red.",
+    "current": true,
+    "period": "Jun 2026 – Present"
+  },
+  "classbro": {
+    "title": "ClassBro",
+    "form": "subject-hub",
+    "alt": "Ten subject areas around one tutor, each joined to the centre by a spoke.",
+    "current": false,
+    "period": "2024 – 2025"
+  },
+  "ranking-radar": {
+    "title": "Ranking Radar",
+    "form": "radar",
+    "alt": "A radar with four axes, one for each ranking system, three range rings and an illustrative profile.",
+    "current": false,
+    "period": "Jun 2026"
+  },
+  "order-system": {
+    "title": "Meal-Prep Studio Order System",
+    "form": "punch-card",
+    "alt": "A prepaid meal card drawn as a punch card: used meals filled, today's order red because the system is in use now, the rest still open. The counts are illustrative.",
+    "current": true,
+    "period": "Apr 2026 – Present"
+  },
+  "ethical-standing": {
+    "title": "Ethical Standing in Police Environment",
+    "form": "balance",
+    "alt": "A level balance, standing for ethical frameworks and professional standards; the pivot is red because the role is current.",
+    "current": true,
+    "period": "Oct 2024 – Present"
+  },
+  "sapol-epsb": {
+    "title": "SAPOL EPSB Analytics",
+    "form": "fan-in",
+    "alt": "Many API endpoints converging on one client, the shape of a single client over more than 1,100 endpoints; the client is red because the work is current.",
+    "current": true,
+    "period": "Mar 2026 – Present"
+  },
+  "em-algorithm": {
+    "title": "EM Algorithm, Explained",
+    "form": "mixture",
+    "alt": "Two overlapping Gaussian components and the mixture they make, drawn as columns of stacked dots under the two curves.",
+    "current": false,
+    "period": "Sep 2025"
+  },
+  "sa-gaming-machines": {
+    "title": "SA Gaming Machine Statistics",
+    "form": "ledger",
+    "alt": "A workbook of sixteen financial years, FY 2009/10 to FY 2024/25, one row per year.",
+    "current": false,
+    "period": "Sep 2025"
+  },
+  "mapiva": {
+    "title": "Mapiva",
+    "form": "map-pins",
+    "alt": "A street grid with people and events nearby as dots and rings of distance around a red pin, which marks the app's current work.",
+    "current": true,
+    "period": "Aug 2025 – Present"
+  },
+  "sa-address": {
+    "title": "SA Address Generator",
+    "form": "sa-scatter",
+    "alt": "South Australia's outline with mock addresses scattered across it, densest around Adelaide. The points are synthetic.",
+    "current": false,
+    "period": "Aug 2025"
+  },
+  "us-political": {
+    "title": "US Political Data",
+    "form": "transcript",
+    "alt": "A debate transcript as alternating lines from two speakers, above a timeline from 1960 to 2024 with a tick every four years.",
+    "current": false,
+    "period": "Aug 2025"
+  },
+  "cbs": {
+    "title": "CBS Intelligence",
+    "form": "tile-map",
+    "alt": "A tile map of South Australia shaded in four steps with its legend, the shape of regulatory analytics on a map. The shading is illustrative.",
+    "current": false,
+    "period": "Jan 2025 – Mar 2026"
+  },
+  "lecture-revision-lab": {
+    "title": "Lecture Revision Lab",
+    "form": "cited-passages",
+    "alt": "Revision material drawn from cited passages: three passages in a column of notes are linked to the item that cites them.",
+    "current": false,
+    "period": "Oct 2024"
+  },
+  "moodq": {
+    "title": "Moodist",
+    "form": "two-screens",
+    "alt": "A patient phone app beside a clinician dashboard, drawn as outlines with placeholder blocks only.",
+    "current": false,
+    "period": "Aug 2024 – Feb 2026"
+  },
+  "wehi-flow": {
+    "title": "Genomics Metadata Multiplexing",
+    "form": "well-plate",
+    "alt": "A 96-well plate, eight rows by twelve columns, with wells shaded by sample block and the last column empty.",
+    "current": false,
+    "period": "Feb 2024 – Jul 2024"
+  },
+  "psyckitchen-echo": {
+    "title": "Psyckitchen Echo",
+    "form": "memory-thread",
+    "alt": "A conversation whose earlier messages are threaded back into the newest reply, the memory Echo was built to keep.",
+    "current": false,
+    "period": "Jun 2024"
+  },
+  "factcheck": {
+    "title": "Climate Fact-Checker",
+    "form": "haystack",
+    "alt": "A claim pulling a handful of evidence passages out of a dense field that stands for about 1.2 million Wikipedia passages.",
+    "current": false,
+    "period": "Apr 2024 – May 2024"
+  },
+  "hex": {
+    "title": "HEX",
+    "form": "learning-path",
+    "alt": "A winding learning path with short course modules at each stop.",
+    "current": false,
+    "period": "Nov 2023 – Jun 2024"
+  },
+  "selfdriving-db": {
+    "title": "Self-Driving Databases",
+    "form": "advisor-race",
+    "alt": "Five index advisors racing in five lanes towards a finish line. The distances are illustrative.",
+    "current": false,
+    "period": "Jun 2023 – Jul 2023"
+  },
+  "social-cloud": {
+    "title": "Social Media Analytics",
+    "form": "stream-fusion",
+    "alt": "Two social data streams, Twitter and Mastodon, merging into one spatial grid.",
+    "current": false,
+    "period": "Apr 2023 – Jun 2023"
+  },
+  "twitter-hpc": {
+    "title": "Twitter HPC Analysis",
+    "form": "city-ripples",
+    "alt": "Australia's outline with the capital cities marked as ripples.",
+    "current": false,
+    "period": "Mar 2023 – Apr 2023"
+  },
+  "climate": {
+    "title": "ENSO Climate Risk",
+    "form": "oscillation",
+    "alt": "An El Niño style oscillation above eight commodities that all sit on the line of no gain: none forecast better with the climate input.",
+    "current": false,
+    "period": "Feb 2023 – Nov 2023"
+  },
+  "ml-gallery": {
+    "title": "40 Reps, Re-checked",
+    "form": "notebook-gallery",
+    "alt": "Forty notebooks as forty dots: the 33 that ran end to end filled, the 7 that did not as faint points, and 8 larger dots for the audits.",
+    "current": false,
+    "period": "Nov 2022 – Dec 2022"
+  },
+  "cachex": {
+    "title": "Cachex AI",
+    "form": "hex-board",
+    "alt": "A Cachex board, a Hex-like connection game, with one player's stones forming a path from one side to the other.",
+    "current": false,
+    "period": "Apr 2022 – Jun 2022"
+  },
+  "project-cradle": {
+    "title": "Project Cradle",
+    "form": "invite-tree",
+    "alt": "An invite tree growing from the root, Cradle, with members as dots and open invite codes as hollow rings, at most two per member at a time.",
+    "current": false,
+    "period": "Jan 2022 – Mar 2022"
+  },
+  "hplc": {
+    "title": "HPLC Pipeline",
+    "form": "control-charts",
+    "alt": "Control charts for four assays, each a run of points between control limits with its out-of-control run ringed. The points are synthetic.",
+    "current": false,
+    "period": "Aug 2021 – Oct 2021"
+  },
+  "pcrm": {
+    "title": "PCRM",
+    "form": "contact-cards",
+    "alt": "Contact cards from a personal CRM, each an avatar and two lines of detail.",
+    "current": false,
+    "period": "Aug 2021 – Nov 2021"
+  },
+  "nyc-taxi": {
+    "title": "NYC Taxi Analysis",
+    "form": "line-vs-steps",
+    "alt": "Trip times as faint points, the 2021 regression as a straight dotted line and the stepped median lookup that beat it in the 2026 re-check.",
+    "current": false,
+    "period": "Jul 2021 – Aug 2021"
+  },
+  "portfolio": {
+    "title": "rin.contact",
+    "form": "version-stack",
+    "alt": "Five versions of the site stacked like layers, back to front; v5, the current version, is red.",
+    "current": true,
+    "period": "2020 – Present"
+  },
+  "virtual-internships": {
+    "title": "Virtual internships (Forage)",
+    "form": "twelve-tiles",
+    "alt": "Twelve job simulations as twelve tiles, each with its own small mark.",
+    "current": false,
+    "period": "Oct 2022 – Aug 2023"
+  }
+}

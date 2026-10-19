@@ -3,6 +3,11 @@ title: "I Let Claude Build My Blog. Here's What Happened."
 date: "2026-06-08"
 tags: ["meta", "ai", "engineering", "philosophy"]
 description: "94 pages, 6 months of iteration, and one weekend where an AI agent built the blog, RSS feed, newsletter backend, and dark mode. A reflection on building with AI."
+cover:
+  kind: count
+  values: ["94"]
+  labels: ["pages"]
+  alt: "94 dots, one for each page the site had when the blog was built."
 ---
 
 A blog is one of those things every developer puts on their roadmap and then quietly ignores for two years. It sat on mine as _"Marketing: Consider blog + RSS + newsletter"_ — priority 3, forever backlog.

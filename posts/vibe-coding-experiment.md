@@ -3,6 +3,11 @@ title: "I Let AI Build a Business App. It Worked. But Was I Thinking?"
 date: "2026-06-08"
 tags: ["ai", "engineering", "philosophy", "cursor", "vibe-coding"]
 description: "Building a CRM for my mum's food business with pure vibe coding. 10 hours of planning, zero manual input, and one uncomfortable question I still can't answer."
+cover:
+  kind: count
+  values: ["10"]
+  labels: ["hours of planning before any code"]
+  alt: "Ten blocks, one for each hour of planning before a line of code."
 ---
 
 My mum runs a healthy food business. She needed a better CRM and order system — something to keep her records tidy without spreadsheets that invite human error.

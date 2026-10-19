@@ -3,6 +3,13 @@ title: "I Audited My Own Coursework. A Lookup Table Won."
 date: "2026-10-07"
 tags: ["data-science", "statistics", "ai", "reproducibility", "career"]
 description: "I rebuilt nineteen of my University of Melbourne assignments and re-checked them with methods I did not know as a student. The first surprise was a median lookup beating my 2021 regression by more than three minutes a trip."
+cover:
+  kind: bars
+  values: ["9.5", "6.2"]
+  labels: ["2021 regression", "Median lookup"]
+  highlight: 1
+  note: "RMSE, minutes"
+  alt: "Bar chart of the post's own numbers: hold-out RMSE of 9.5 minutes for the 2021 regression and 6.2 minutes for the route-by-hour median lookup, the lookup in red."
 ---
 
 ![A dot-matrix headline reading 6.2 is less than 9.5, with the caption: a lookup table beat my 2021 regression](/images/blog/coursework-audit/cover.webp)
