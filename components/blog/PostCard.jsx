@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
+import PostCover from "@/components/covers/PostCover";
 
-export default function PostCard({ slug, title, date, tags, description, readingTime }) {
+export default function PostCard({ slug, title, date, tags, description, readingTime, cover }) {
   const { t } = useI18n();
   const formattedDate = date
     ? new Date(date).toLocaleDateString("en-AU", {
@@ -38,6 +39,12 @@ export default function PostCard({ slug, title, date, tags, description, reading
       />
 
       <div className="relative z-10">
+        <PostCover
+          slug={slug}
+          cover={cover}
+          describe={false}
+          className="-mx-6 -mt-6 mb-5 border-b border-[#E0E0E0] dark:border-[#3D3D3D]"
+        />
         <div className="flex flex-wrap items-center gap-2 mb-3">
           {formattedDate && (
             <time

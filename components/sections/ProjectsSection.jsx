@@ -6,6 +6,7 @@ import { useI18n } from "@/contexts/I18nContext";
 import ScrollRegion from "@/components/ui/ScrollRegion";
 import Tabs, { tabPanelProps } from "@/components/ui/Tabs";
 import ProjectStatus from "@/components/ui/ProjectStatus";
+import ProjectCover from "@/components/covers/ProjectCover";
 
 // Turn a domain label into a clean URL slug ("AI / ML" -> "ai-ml"), so a
 // filtered Projects view can be shared as /projects?category=ai-ml.
@@ -268,6 +269,7 @@ function ProjectDetail({ project, coursework }) {
         </div>
       </div>
       <div className="space-y-5">
+        <ProjectCover id={project.id} className="border border-[#E0E0E0] dark:border-[#3D3D3D]" />
         <div>
           <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-2">
             {t("projects.stack")}
@@ -356,6 +358,11 @@ function FeaturedSpotlight({ project, coursework }) {
           <ProjectLinks project={project} coursework={coursework} className="pt-1" />
         </div>
         <div className="space-y-5">
+          <ProjectCover
+            id={project.id}
+            mark
+            className="border border-[#E0E0E0] dark:border-[#3D3D3D]"
+          />
           <div>
             <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-2">
               Stack
@@ -654,6 +661,12 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                     <span className="text-[10px] text-[#373737] dark:text-[#B4B4B4] tabular-nums w-6 flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
+                    <ProjectCover
+                      id={project.id}
+                      mark
+                      describe={false}
+                      className="w-20 md:w-28 flex-shrink-0 border border-[#E0E0E0] dark:border-[#3D3D3D]"
+                    />
                     <span className="flex-1 min-w-0 grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-4 items-center">
                       <span className="text-sm font-medium flex items-center gap-2">
                         {project.title}
