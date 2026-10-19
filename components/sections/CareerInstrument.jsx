@@ -195,12 +195,12 @@ export default function CareerInstrument({ compact = false }) {
 
         {/* Readout */}
         <div
-          className="border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white/80 dark:bg-[#0A0A0A]/80 px-5 py-4 md:px-6 md:py-5 mb-6 min-h-[104px] md:min-h-[116px]"
+          className="border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white/80 dark:bg-[#0A0A0A]/80 px-5 py-4 md:px-6 md:py-5 mb-6 h-[152px] md:h-[148px]"
           aria-live="polite"
         >
           {current ? (
             <>
-              <p className="font-display text-2xl md:text-4xl leading-tight text-black dark:text-white m-0">
+              <p className="font-display text-2xl md:text-4xl leading-tight text-black dark:text-white m-0 line-clamp-2">
                 {current.role}
               </p>
               <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-2 m-0">
