@@ -6,6 +6,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
 import { assertCareerData } from "@/lib/career-check";
+import { ogImageUrl } from "@/lib/og";
 
 const TimelineSection = dynamic(() => import("@/components/sections/TimelineSection"), {
   loading: () => <div className="min-h-[480px]" />,
@@ -49,7 +50,11 @@ export default function CareerPage() {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://rin.contact/api/og/?title=Career%20Journey&subtitle=9%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career"
+          content={ogImageUrl({
+            title: "Career Journey",
+            subtitle: "9 roles across Government, Research & Engineering",
+            section: "career",
+          })}
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -61,7 +66,11 @@ export default function CareerPage() {
         />
         <meta
           name="twitter:image"
-          content="https://rin.contact/api/og/?title=Career%20Journey&subtitle=9%20roles%20across%20Government%2C%20Research%20%26%20Engineering&section=career"
+          content={ogImageUrl({
+            title: "Career Journey",
+            subtitle: "9 roles across Government, Research & Engineering",
+            section: "career",
+          })}
         />
       </Head>
 

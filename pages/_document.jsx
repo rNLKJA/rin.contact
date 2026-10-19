@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import { ogImageUrl } from "@/lib/og";
 
 const PERSON_SCHEMA = {
   "@context": "https://schema.org",
@@ -21,8 +22,11 @@ const PERSON_SCHEMA = {
   additionalName: "Rin",
   familyName: "Huang",
   url: "https://rin.contact",
-  image:
-    "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
+  image: ogImageUrl({
+    title: "Rin Huang",
+    subtitle: "Senior Data Analyst @ SAPOL",
+    section: "home",
+  }),
   email: "huang@rin.contact",
   gender: "Male",
   nationality: { "@type": "Country", name: "Australia" },

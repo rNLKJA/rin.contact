@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
+import { ogImageUrl } from "@/lib/og";
 
 // ─── Section components (aligned with DesignPhilosophyModal) ───────────────────
 const Section = ({ label, children }) => (
@@ -77,7 +78,11 @@ export default function StrategicPage() {
         <meta property="og:type" content="article" />
         <meta
           property="og:image"
-          content="https://rin.contact/api/og/?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic"
+          content={ogImageUrl({
+            title: "Strategic Data Science",
+            subtitle: "Problem-first, not model-first",
+            section: "strategic",
+          })}
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -89,7 +94,11 @@ export default function StrategicPage() {
         />
         <meta
           name="twitter:image"
-          content="https://rin.contact/api/og/?title=Strategic%20Data%20Science&subtitle=Problem-first%2C%20not%20model-first&section=strategic"
+          content={ogImageUrl({
+            title: "Strategic Data Science",
+            subtitle: "Problem-first, not model-first",
+            section: "strategic",
+          })}
         />
       </Head>
 

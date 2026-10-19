@@ -11,6 +11,7 @@ import { buildSkillsAtlas } from "@/lib/skills-atlas";
 import en from "@/locales/en-AU.json";
 import zh from "@/locales/zh-Hans.json";
 import GlyphCounters from "@/components/sections/GlyphCounters";
+import { ogImageUrl } from "@/lib/og";
 
 // Moved from pages/_document.jsx — these describe homepage-only content
 // (career timeline anchors, project list, credentials) and were previously
@@ -33,7 +34,11 @@ const PROFILE_PAGE_SCHEMA = {
   primaryImageOfPage: {
     "@type": "ImageObject",
     "@id": "https://rin.contact/#og-image",
-    url: "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
+    url: ogImageUrl({
+      title: "Rin Huang",
+      subtitle: "Senior Data Analyst @ SAPOL",
+      section: "home",
+    }),
     width: 1200,
     height: 630,
     caption:

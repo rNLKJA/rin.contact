@@ -13,8 +13,14 @@
  *     ogImage={{ title: "Coffee", subtitle: "You found the coffee page", section: "fun" }}
  *     noindex={true}
  *   />
+ *
+ * Every page gets a share image (lib/og.js, pages/api/og.jsx). Without an
+ * ogImage prop the card is drawn from the page's own title, description and
+ * path. ogImage may also name a `project` id or a `post` slug, whose cover
+ * becomes the card's art.
  */
 import Head from "next/head";
+import { ogImageUrl, sectionFromPath } from "@/lib/og";
 
 const BASE_URL = "https://rin.contact";
 const SITE_NAME = "Rin Huang";
@@ -53,15 +59,13 @@ export default function SeoHead({
     ? "noindex, nofollow"
     : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
 
-  let ogImageUrl = null;
-  if (ogImage) {
-    const params = new URLSearchParams({
-      title: ogImage.title,
-      subtitle: ogImage.subtitle,
-      section: ogImage.section,
-    });
-    ogImageUrl = `${BASE_URL}/api/og/?${params.toString()}`;
-  }
+  const ogImageSrc = ogImageUrl(
+    ogImage ?? {
+      title: resolvedOgTitle,
+      subtitle: resolvedOgDesc,
+      section: sectionFromPath(path),
+    }
+  );
 
   return (
     <Head>
@@ -77,25 +81,17 @@ export default function SeoHead({
       <meta property="og:url" content={url} />
       <meta property="og:title" content={resolvedOgTitle} />
       <meta property="og:description" content={resolvedOgDesc} />
-      {ogImageUrl && (
-        <>
-          <meta property="og:image" content={ogImageUrl} />
-          <meta property="og:image:alt" content={resolvedOgImageAlt} />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-        </>
-      )}
+      <meta property="og:image" content={ogImageSrc} />
+      <meta property="og:image:alt" content={resolvedOgImageAlt} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={resolvedOgTitle} />
       <meta name="twitter:description" content={resolvedOgDesc} />
-      {ogImageUrl && (
-        <>
-          <meta name="twitter:image" content={ogImageUrl} />
-          <meta name="twitter:image:alt" content={resolvedOgImageAlt} />
-        </>
-      )}
+      <meta name="twitter:image" content={ogImageSrc} />
+      <meta name="twitter:image:alt" content={resolvedOgImageAlt} />
 
       {/* Extra page-specific meta */}
       {extraMeta.map((attrs, i) => (
