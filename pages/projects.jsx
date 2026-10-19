@@ -8,6 +8,7 @@ import { PROJECTS } from "@/lib/projects-data";
 import { getCoursework } from "@/lib/coursework-data";
 import PipelineList from "@/components/sections/PipelineList";
 import { PROJECT_PIPELINE, localisePipeline } from "@/lib/pipeline-data";
+import { ogImageUrl, ogPath } from "@/lib/og";
 
 const ProjectsSection = dynamic(() => import("@/components/sections/ProjectsSection"), {
   loading: () => <div className="min-h-[480px]" />,
@@ -39,7 +40,12 @@ export function getStaticProps() {
 
 export default function ProjectsPage({ count = 0, courseworkLinks = {} }) {
   const { t, locale = "en-AU" } = useI18n();
-  const ogImage = `https://rin.contact/api/og/?title=${count}%20Projects&subtitle=Data%20engineering%2C%20cloud%2C%20mobile%20%26%20open-source&section=projects`;
+  const ogImage = ogImageUrl({
+    title: `${count} Projects`,
+    subtitle: "Data engineering, cloud, mobile & open-source",
+    section: "projects",
+    path: ogPath("/projects/", locale),
+  });
   return (
     <>
       <Head>

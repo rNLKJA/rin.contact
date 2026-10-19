@@ -21,6 +21,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import ArchFrame from "@/components/covers/ArchFrame";
 import EchoDemo from "@/components/psyckitchen/EchoDemo";
 import EchoIllustration from "@/components/psyckitchen/EchoIllustration";
 import { useI18n } from "@/contexts/I18nContext";
@@ -162,7 +163,12 @@ export default function PsyckitchenEchoPage() {
         path={PATH}
         ogType="article"
         ogTitle="Echo by Psyckitchen · Rin Huang"
-        ogImage={{ title: OG_TITLE, subtitle: OG_SUBTITLE, section: "projects" }}
+        ogImage={{
+          title: OG_TITLE,
+          subtitle: OG_SUBTITLE,
+          section: "projects",
+          project: "psyckitchen-echo",
+        }}
         locale={locale}
       />
       <Head>
@@ -183,7 +189,9 @@ export default function PsyckitchenEchoPage() {
         {/* Hero */}
         <header className={`${CARD} relative overflow-hidden p-6 md:p-10 mb-6`}>
           <div className="grid gap-6 md:gap-10 md:grid-cols-[auto_minmax(0,1fr)] items-center">
-            <EchoIllustration label={L(COPY.artAlt)} className="h-32 w-32 md:h-44 md:w-44" />
+            <ArchFrame id="psyckitchen-echo" className="w-40 md:w-56" inkClassName={INK}>
+              <EchoIllustration label={L(COPY.artAlt)} className="h-full w-full" />
+            </ArchFrame>
             <div className="min-w-0">
               <p
                 className={`mb-4 inline-flex items-center gap-2 rounded-full bg-[#FFF6E3] dark:bg-[#2E2318] px-3 py-1.5 text-xs font-semibold ${ORANGE_INK}`}

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "node scripts/generate-topic-skills.mjs && next build --webpack",
+    "build": "node scripts/generate-topic-skills.mjs && node --no-warnings scripts/generate-covers.mjs --check && next build --webpack",
+    "covers": "node --no-warnings scripts/generate-covers.mjs",
     "start": "next start",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,jsx,json,css,md}\" --ignore-path .gitignore --ignore-path .prettierignore",

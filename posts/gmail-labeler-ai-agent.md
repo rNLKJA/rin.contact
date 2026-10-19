@@ -3,6 +3,11 @@ title: "My Inbox Had 3,000 Unread Emails. So I Built an AI Agent to Triage It."
 date: "2026-06-08"
 tags: ["ai", "ai-agents", "engineering", "claude", "mcp", "productivity"]
 description: "How Claude Cowork + Gmail MCP became a side project: an agent skill that labels email by provider, builds sender rules, and archives the noise — without ever deleting a message."
+cover:
+  kind: count
+  values: ["3,000"]
+  labels: ["unread emails"]
+  alt: "3,000 dots, one for each unread email in the inbox."
 ---
 
 My inbox hit the point where the unread count stopped being a number and started being a shrug. Grocery receipts. Spotify renewals. Bank alerts. Newsletters I signed up for in 2022 and never read. And somewhere in there, the occasional message from a human who genuinely needed a reply.

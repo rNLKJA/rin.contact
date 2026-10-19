@@ -1,0 +1,133 @@
+{
+  "208-applications-one-yes": {
+    "title": "208 Applications. One Yes. What the Data Says About Job Hunting.",
+    "kind": "waffle",
+    "values": [
+      "187",
+      "20",
+      "1"
+    ],
+    "labels": [
+      "No",
+      "Interview",
+      "Yes"
+    ],
+    "emphasis": 2,
+    "note": "",
+    "alt": "208 small squares, one per application: 187 rejected or ghosted drawn faint, 20 interviews drawn darker and 1 offer in full ink with a ring around it."
+  },
+  "a-forecast-is-about-uncertainty": {
+    "title": "A Forecast Is a Statement About Uncertainty, Not the Future",
+    "kind": "outline"
+  },
+  "a-lookup-table-beat-my-regression": {
+    "title": "I Audited My Own Coursework. A Lookup Table Won.",
+    "kind": "bars",
+    "values": [
+      "9.5",
+      "6.2"
+    ],
+    "labels": [
+      "2021 regression",
+      "Median lookup"
+    ],
+    "emphasis": 1,
+    "note": "RMSE, minutes",
+    "alt": "Bar chart of the post's own numbers: hold-out RMSE of 9.5 minutes for the 2021 regression and 6.2 minutes for the route-by-hour median lookup, the lookup in full ink."
+  },
+  "a-trend-line-is-not-a-trend": {
+    "title": "A Trend Line Is Not a Trend",
+    "kind": "outline"
+  },
+  "academia-industry-real-work": {
+    "title": "Academia, Internships, Industry: Three Worlds, Three Lessons",
+    "kind": "outline"
+  },
+  "analytics-tells-you-what-happened": {
+    "title": "Analytics Tells You What Happened. Intelligence Tells You What To Do.",
+    "kind": "outline"
+  },
+  "automated-fact-checking-climate": {
+    "title": "I Built an AI Fact-Checker for Climate Claims. Here's What I Learned.",
+    "kind": "outline"
+  },
+  "building-the-blog": {
+    "title": "I Let Claude Build My Blog. Here's What Happened.",
+    "kind": "count",
+    "values": [
+      "94"
+    ],
+    "labels": [
+      "pages"
+    ],
+    "emphasis": null,
+    "note": "",
+    "alt": "94 dots, one for each page the site had when the blog was built."
+  },
+  "gmail-labeler-ai-agent": {
+    "title": "My Inbox Had 3,000 Unread Emails. So I Built an AI Agent to Triage It.",
+    "kind": "count",
+    "values": [
+      "3,000"
+    ],
+    "labels": [
+      "unread emails"
+    ],
+    "emphasis": null,
+    "note": "",
+    "alt": "3,000 dots, one for each unread email in the inbox."
+  },
+  "hello-world": {
+    "title": "Hello World — Knowledge Compounds",
+    "kind": "outline"
+  },
+  "mentoring-made-me-a-better-analyst": {
+    "title": "Mentoring Made Me a Better Analyst",
+    "kind": "outline"
+  },
+  "new-year-milestone": {
+    "title": "2024, New Year, New Milestone",
+    "kind": "outline"
+  },
+  "no-playbook": {
+    "title": "Building Something Workable When There Is No Playbook",
+    "kind": "outline"
+  },
+  "put-governance-on-the-request-path": {
+    "title": "Put AI Governance on the Request Path, Not in a Document",
+    "kind": "outline"
+  },
+  "reproducibility-is-a-feature": {
+    "title": "Reproducibility Is a Feature, Not a Chore",
+    "kind": "outline"
+  },
+  "the-dashboard-is-not-the-deliverable": {
+    "title": "The Dashboard Is Not the Deliverable",
+    "kind": "outline"
+  },
+  "the-deliberate-generalist": {
+    "title": "The Case for the Deliberate Generalist",
+    "kind": "outline"
+  },
+  "vibe-coding-experiment": {
+    "title": "I Let AI Build a Business App. It Worked. But Was I Thinking?",
+    "kind": "count",
+    "values": [
+      "10"
+    ],
+    "labels": [
+      "hours of planning"
+    ],
+    "emphasis": null,
+    "note": "",
+    "alt": "Ten blocks for the roughly ten hours of planning before a line of code."
+  },
+  "what-ai-didnt-automate": {
+    "title": "What AI Didn't Automate",
+    "kind": "outline"
+  },
+  "when-the-categories-change": {
+    "title": "When the Categories Change Underneath You",
+    "kind": "outline"
+  }
+}

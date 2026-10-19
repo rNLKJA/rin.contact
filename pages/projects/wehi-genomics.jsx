@@ -10,6 +10,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import ArchFrame from "@/components/covers/ArchFrame";
 import PlateDemo from "@/components/wehi-genomics/PlateDemo";
 import { useI18n } from "@/contexts/I18nContext";
 import { COPY, REPOS, STACK, WIKI_CONTRIBUTORS } from "@/lib/wehi-genomics-data";
@@ -85,7 +86,12 @@ export default function WehiGenomicsPage() {
         path={PATH}
         ogType="article"
         ogTitle="GMM at WEHI · Rin Huang"
-        ogImage={{ title: OG_TITLE, subtitle: OG_SUBTITLE, section: "projects" }}
+        ogImage={{
+          title: OG_TITLE,
+          subtitle: OG_SUBTITLE,
+          section: "projects",
+          project: "wehi-flow",
+        }}
         locale={locale}
       />
       <Head>
@@ -105,28 +111,36 @@ export default function WehiGenomicsPage() {
 
         {/* Hero */}
         <header className="mb-16 md:mb-20">
-          <p className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
-            {L(COPY.label)}
-          </p>
-          <h1 className="mb-6">
-            <span className="block font-display text-6xl md:text-8xl leading-none tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE]">
-              GMM
-            </span>
-            <span className="mt-3 block font-mono text-xs md:text-sm tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
-              {L(COPY.fullName)}
-            </span>
-          </h1>
-          <p className="max-w-[640px] text-lg md:text-2xl font-light text-[#3D3D3D] dark:text-[#CCCCCC] leading-snug mb-6">
-            {L(COPY.tagline)}
-          </p>
-          <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-            <span
-              className="w-1.5 h-1.5 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
-              aria-hidden="true"
+          <div className="md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,260px)] md:gap-12 md:items-start">
+            <div className="min-w-0">
+              <p className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
+                {L(COPY.label)}
+              </p>
+              <h1 className="mb-6">
+                <span className="block font-display text-6xl md:text-8xl leading-none tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE]">
+                  GMM
+                </span>
+                <span className="mt-3 block font-mono text-xs md:text-sm tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
+                  {L(COPY.fullName)}
+                </span>
+              </h1>
+              <p className="max-w-[640px] text-lg md:text-2xl font-light text-[#3D3D3D] dark:text-[#CCCCCC] leading-snug mb-6">
+                {L(COPY.tagline)}
+              </p>
+              <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                <span
+                  className="w-1.5 h-1.5 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
+                  aria-hidden="true"
+                />
+                {L(COPY.status)}
+              </p>
+            </div>
+            <ArchFrame
+              id="wehi-flow"
+              className="mt-10 md:mt-0 w-full max-w-[300px] mx-auto md:mx-0"
             />
-            {L(COPY.status)}
-          </p>
+          </div>
         </header>
 
         {/* 01 Problem */}

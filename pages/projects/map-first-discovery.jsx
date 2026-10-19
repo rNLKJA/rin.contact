@@ -12,6 +12,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
+import ArchFrame from "@/components/covers/ArchFrame";
 import MapDiscoveryDemo from "@/components/demos/map-first-discovery/MapDiscoveryDemo";
 import { useI18n } from "@/contexts/I18nContext";
 import { COPY, STACK } from "@/lib/demos/map-first-discovery-data";
@@ -105,7 +106,7 @@ export default function MapFirstDiscoveryPage() {
         path={PATH}
         ogType="article"
         ogTitle="Mapiva · Rin Huang"
-        ogImage={{ title: OG_TITLE, subtitle: OG_SUBTITLE, section: "projects" }}
+        ogImage={{ title: OG_TITLE, subtitle: OG_SUBTITLE, section: "projects", project: "mapiva" }}
         locale={locale}
       />
       <Head>
@@ -125,35 +126,40 @@ export default function MapFirstDiscoveryPage() {
 
         {/* Hero */}
         <header className="mb-16 md:mb-20">
-          <p className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
-            {L(COPY.label)}
-          </p>
-          <h1 className="mb-6">
-            <span className="block font-display text-6xl md:text-8xl leading-none tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE]">
-              Mapiva
-            </span>
-            <span className="mt-3 block font-mono text-xs md:text-sm tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
-              {L(COPY.fullName)}
-            </span>
-          </h1>
-          <p className="max-w-[680px] text-lg md:text-2xl font-light text-[#3D3D3D] dark:text-[#CCCCCC] leading-snug mb-6">
-            {L(COPY.tagline)}
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-              <span
-                className="w-1.5 h-1.5 shrink-0 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
-                aria-hidden="true"
-              />
-              {L(COPY.status)}
-            </p>
-            <a
-              href="#demo"
-              className="text-xs tracking-widest uppercase text-[#1A1A1A] dark:text-[#EEEEEE] underline underline-offset-4 decoration-[#BDBDBD] hover:decoration-current"
-            >
-              {L(COPY.tryDemo)} ↓
-            </a>
+          <div className="md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,260px)] md:gap-12 md:items-start">
+            <div className="min-w-0">
+              <p className="text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] font-mono mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
+                {L(COPY.label)}
+              </p>
+              <h1 className="mb-6">
+                <span className="block font-display text-6xl md:text-8xl leading-none tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE]">
+                  Mapiva
+                </span>
+                <span className="mt-3 block font-mono text-xs md:text-sm tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
+                  {L(COPY.fullName)}
+                </span>
+              </h1>
+              <p className="max-w-[680px] text-lg md:text-2xl font-light text-[#3D3D3D] dark:text-[#CCCCCC] leading-snug mb-6">
+                {L(COPY.tagline)}
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                  <span
+                    className="w-1.5 h-1.5 shrink-0 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
+                    aria-hidden="true"
+                  />
+                  {L(COPY.status)}
+                </p>
+                <a
+                  href="#demo"
+                  className="text-xs tracking-widest uppercase text-[#1A1A1A] dark:text-[#EEEEEE] underline underline-offset-4 decoration-[#BDBDBD] hover:decoration-current"
+                >
+                  {L(COPY.tryDemo)} ↓
+                </a>
+              </div>
+            </div>
+            <ArchFrame id="mapiva" className="mt-10 md:mt-0 w-full max-w-[300px] mx-auto md:mx-0" />
           </div>
 
           <Notice className="mt-8">{L(COPY.notice)}</Notice>

@@ -8,8 +8,10 @@ import ShareButtons from "@/components/blog/ShareButtons";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
 import AuthorBio from "@/components/blog/AuthorBio";
+import PostCover from "@/components/covers/PostCover";
 import { useI18n } from "@/contexts/I18nContext";
 import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
+import { ogImageUrl, ogPath } from "@/lib/og";
 
 const NewsletterSignup = dynamic(() => import("@/components/blog/NewsletterSignup"), {
   ssr: false,
@@ -49,12 +51,15 @@ export default function BlogPost({ post, relatedPosts = [] }) {
   // which kills engagement on LinkedIn/X. Build the branded card from the post's
   // own title + description, and reuse the same URL for the BlogPosting image so
   // the post is eligible for image-rich search results and Google Discover.
+  // The card reuses the post's 2C cover: the numbers it plots sit beside the title.
   const ogImage = {
     title: post.title,
     subtitle: post.description || "Notes by Rin Huang",
     section: "blog",
+    post: post.slug,
   };
-  const ogImageUrl = `https://rin.contact/api/og/?${new URLSearchParams(ogImage).toString()}`;
+  // The same URL SeoHead builds for og:image, path and locale included.
+  const ogImageSrc = ogImageUrl({ ...ogImage, path: ogPath(`/blog/${post.slug}/`, locale) });
 
   return (
     <>
@@ -85,7 +90,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
               "@type": "BlogPosting",
               headline: post.title,
               description: post.description || "",
-              image: ogImageUrl,
+              image: ogImageSrc,
               datePublished: post.date || undefined,
               dateModified: post.date || undefined,
               // The post body is English in every locale.
@@ -208,6 +213,14 @@ export default function BlogPost({ post, relatedPosts = [] }) {
             )}
           </div>
         </header>
+
+        {/* 2C cover: the post's own numbers in dots, or its outline when it has none */}
+        <PostCover
+          slug={post.slug}
+          cover={post.cover}
+          eager
+          className="mb-10 border border-[#E0E0E0] dark:border-[#3D3D3D]"
+        />
 
         {/* Post content — English in every locale, so mark it for screen readers
             when it sits inside the zh-Hans page */}

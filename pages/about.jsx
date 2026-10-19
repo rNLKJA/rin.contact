@@ -11,6 +11,7 @@ import AboutIntro from "@/components/sections/AboutIntro";
 import AboutOpener from "@/components/sections/AboutOpener";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import BackToTop from "@/components/ui/BackToTop";
+import { ogImageUrl } from "@/lib/og";
 
 // PERSON_SCHEMA — moved from _document.jsx to only appear on homepage and /about
 // to reduce false positives in Search Console. See pages/index.jsx and _document.jsx.
@@ -35,8 +36,12 @@ const PERSON_SCHEMA = {
   additionalName: "Rin",
   familyName: "Huang",
   url: "https://rin.contact",
-  image:
-    "https://rin.contact/api/og/?title=Rin%20Huang&subtitle=Senior%20Data%20Analyst%20%40%20SAPOL&section=home",
+  image: ogImageUrl({
+    title: "Rin Huang",
+    subtitle: "Senior Data Analyst @ SAPOL",
+    section: "home",
+    path: "/",
+  }),
   email: "huang@rin.contact",
   gender: "Male",
   nationality: { "@type": "Country", name: "Australia" },
