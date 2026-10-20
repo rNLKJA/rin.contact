@@ -84,7 +84,7 @@ const STATIONS = [
     period: "Aug 2024 – Feb 2026",
     role: "Research Assistant · UniMelb Psychiatry",
     detail:
-      "Sole developer of a clinical mood-tracking app for the Department of Psychiatry. Rebuilt it from Uniapp to Expo React Native, built the clinician dashboard on a Flask backend, and kept hosting under $500/mo by running each service in its own Docker container on AWS LightSail. Data protection was GDPR-aligned, and the app went to a professional team for production.",
+      "Sole developer of a clinical mood-tracking app for the Department of Psychiatry. Rebuilt it from Uniapp to Expo React Native, built the clinician dashboard on a Flask backend, and kept hosting under $500/mo by running each service in its own Docker container on AWS LightSail. Data handling was privacy-first, and the app went to a professional team for production.",
     current: false,
   },
   {

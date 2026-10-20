@@ -109,7 +109,7 @@ const DOMAINS = [
       "AWS RDS",
       "AWS LightSail",
       "CI/CD",
-      "GDPR-aligned data protection",
+      "Privacy-first data handling",
       "iOS",
       "Android",
     ],
