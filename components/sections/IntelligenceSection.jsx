@@ -311,7 +311,7 @@ const FP_TREE = {
         {
           label: "HPC & Cloud",
           proof:
-            "SPARTAN HPC (UniMelb): ~65 GB Twitter corpus for social media analysis · AWS LightSail + Docker: GDPR-aligned backend for a clinical mood-tracking app, hosted for under $500/mo · GitHub Actions CI/CD pipelines across all active repos.",
+            "SPARTAN HPC (UniMelb): ~65 GB Twitter corpus for social media analysis · AWS LightSail + Docker: privacy-first backend for a clinical mood-tracking app, hosted for under $500/mo · GitHub Actions CI/CD pipelines across all active repos.",
         },
         {
           label: "Data pipelines",
