@@ -78,9 +78,10 @@ export default function PositioningStatement() {
           </h2>
         </div>
 
-        {/* gloss — faithful operating-principle line */}
+        {/* gloss — faithful operating-principle line. Inks clear 4.5:1 even at
+            the 0.7 starting opacity, before the line scrolls into view. */}
         <p
-          className="gloss mt-9 md:mt-12 max-w-2xl text-base md:text-lg font-light leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+          className="gloss mt-9 md:mt-12 max-w-2xl text-base md:text-lg font-light leading-relaxed text-[#333333] dark:text-[#B4B4B4]"
           style={{ "--i": safeLines.length }}
         >
           {gloss}

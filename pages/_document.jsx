@@ -272,6 +272,18 @@ class MyDocument extends Document {
               __html: `(function(){try{if(sessionStorage.getItem("rin_boot_seen"))return;if(/^\\/(zh-Hans\\/)?(resume|cv|hire-me)(\\/|$)/.test(location.pathname))return;var e=document.documentElement;var d=e.classList.contains("dark");e.style.setProperty("--boot-cover-bg",d?"#0A0A0A":"#FFFFFF");e.classList.add("boot-cover");window.__bootCoverTimer=setTimeout(function(){e.classList.remove("boot-cover");},8000);}catch(_){}})();`,
             }}
           />
+          {/* ── Deferred sections (content-visibility) before the main CSS.
+                 The browser can style the page once before globals.css loads;
+                 a deferred section styled then keeps browser-default colours,
+                 and its colour transitions freeze while it is off-screen
+                 (testimonial names stuck at link blue failed contrast). Inline,
+                 the rule defers those sections from the first style pass. The
+                 same rule and its hash-jump override stay in globals.css. ── */}
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `.content-visibility-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}`,
+            }}
+          />
           <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
           <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
           <meta name="msapplication-TileColor" content="#ffffff" />
