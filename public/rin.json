@@ -174,8 +174,8 @@
       "group": "projects",
       "title": { "en": "Data Engineer BootCamp", "zh": "数据工程训练营" },
       "note": {
-        "en": "Six weeks of data engineering study completed. Week 1 in 2024, weeks 2 to 6 in October 2026 with Claude as a pair programmer.",
-        "zh": "六周数据工程学习已完成。第 1 周在 2024 年完成，第 2 到 6 周在 2026 年 10 月与 Claude 配对完成。"
+        "en": "Seven weeks of data engineering study completed, including the course project. Week 1 in 2024, weeks 2 to 7 in October 2026 with Claude as a pair programmer.",
+        "zh": "七周数据工程学习已完成，包括课程项目。第 1 周在 2024 年完成，第 2 到 7 周在 2026 年 10 月与 Claude 配对完成。"
       },
       "keywords": "Data Engineering"
     },
