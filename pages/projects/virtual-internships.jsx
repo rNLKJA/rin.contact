@@ -7,9 +7,11 @@
  * lives in lib/demos/virtual-internships-data.js ({ en, zh } per string), so
  * the page serves en-AU and zh-Hans like the other case studies.
  *
- * The repos are private and eight of the twelve keep only the briefs, so the
- * page has no source links and claims no results for those eight. It hosts no
- * logos, company-provided data, briefs, certificates or scores.
+ * Eight of the twelve repos keep only the briefs, so the page claims no results
+ * for those eight and links no source for them. The four programmes with Rin's
+ * own work each link a public repo (`repo`) that holds only that work, and the
+ * twelve original repos stay private. The page hosts no logos, company-provided
+ * data, briefs, certificates or scores.
  */
 import Head from "next/head";
 import Link from "next/link";
@@ -266,7 +268,7 @@ function ProgrammeCard({ p, L, lang }) {
         </dd>
 
         <dt className={`${META} md:pt-1`}>{L(c.tools)}</dt>
-        <dd>
+        <dd className={p.repo ? "mb-3 md:mb-0" : undefined}>
           <ul className="flex flex-wrap gap-1.5">
             {p.tools.map((t) => (
               <li
@@ -278,6 +280,22 @@ function ProgrammeCard({ p, L, lang }) {
             ))}
           </ul>
         </dd>
+
+        {p.repo && (
+          <>
+            <dt className={`${META} md:pt-0.5`}>{L(c.repo)}</dt>
+            <dd>
+              <a
+                href={p.repo}
+                target="_blank"
+                rel="noreferrer"
+                className={`font-mono text-[13px] break-all text-[#1A1A1A] dark:text-[#EEEEEE] underline underline-offset-4 decoration-[#BDBDBD] dark:decoration-[#595959] hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors motion-reduce:transition-none ${FOCUS}`}
+              >
+                {p.repo.replace("https://", "")} ↗<span className="sr-only">{L(c.newTab)}</span>
+              </a>
+            </dd>
+          </>
+        )}
       </dl>
     </article>
   );
