@@ -99,28 +99,31 @@ export default function ProjectsPage({ count = 0, courseworkLinks = {} }) {
         </div>
       </div>
 
-      {/* Planned and in-progress work: placeholders until each one ships */}
-      <section
-        aria-labelledby="pipeline-heading"
-        className="bg-white dark:bg-[#0A0A0A] border-t border-[#F0F0F0] dark:border-[#1E1E1E]"
-      >
-        <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-16 md:py-20">
-          <p className="text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C]">
-            <span aria-hidden="true">■ </span>
-            {t("projectsPage.pipeline.label")}
-          </p>
-          <h2
-            id="pipeline-heading"
-            className="mt-3 text-2xl md:text-3xl font-medium text-black dark:text-white"
-          >
-            {t("projectsPage.pipeline.heading")}
-          </h2>
-          <p className="mt-3 mb-8 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-            {t("projectsPage.pipeline.intro")}
-          </p>
-          <PipelineList items={localisePipeline(PROJECT_PIPELINE, locale)} t={t} />
-        </div>
-      </section>
+      {/* Planned and in-progress work: placeholders until each one ships,
+          hidden while nothing is in the pipeline (lib/pipeline-data.js) */}
+      {PROJECT_PIPELINE.length > 0 && (
+        <section
+          aria-labelledby="pipeline-heading"
+          className="bg-white dark:bg-[#0A0A0A] border-t border-[#F0F0F0] dark:border-[#1E1E1E]"
+        >
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-16 md:py-20">
+            <p className="text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C]">
+              <span aria-hidden="true">■ </span>
+              {t("projectsPage.pipeline.label")}
+            </p>
+            <h2
+              id="pipeline-heading"
+              className="mt-3 text-2xl md:text-3xl font-medium text-black dark:text-white"
+            >
+              {t("projectsPage.pipeline.heading")}
+            </h2>
+            <p className="mt-3 mb-8 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+              {t("projectsPage.pipeline.intro")}
+            </p>
+            <PipelineList items={localisePipeline(PROJECT_PIPELINE, locale)} t={t} />
+          </div>
+        </section>
+      )}
     </>
   );
 }

@@ -76,6 +76,13 @@
     "current": false,
     "period": "Jun 2026"
   },
+  "outlook-daily-summary": {
+    "title": "Outlook Daily Email Summary",
+    "form": "daily-log",
+    "alt": "A row of envelopes above a Daily Log sheet of 17 columns, one per field the script writes. The envelopes an earlier run counted are dim, and the new one is bright, like today's row at the bottom of the sheet. The number of envelopes and rows is illustrative.",
+    "current": false,
+    "period": "Jun 2026"
+  },
   "order-system": {
     "title": "Meal-Prep Studio Order System",
     "form": "punch-card",

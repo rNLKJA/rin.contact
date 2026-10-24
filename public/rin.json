@@ -133,6 +133,19 @@
       "keywords": "Data Science impact 成果"
     },
     {
+      "href": "/projects/outlook-daily-summary",
+      "group": "caseStudies",
+      "title": {
+        "en": "Outlook Daily Email Summary · Live demo",
+        "zh": "Outlook 每日邮件汇总 · 在线演示"
+      },
+      "note": {
+        "en": "A Daily Excel Report of Your Outlook Email",
+        "zh": "把 Outlook 邮件往来整理成每日 Excel 报告"
+      },
+      "keywords": "Automation live demo 在线演示"
+    },
+    {
       "href": "/projects/order-system-sandbox",
       "group": "caseStudies",
       "title": {
@@ -222,6 +235,16 @@
       "title": "Ranking Radar",
       "note": "University Rankings Visualisation & Open Dataset",
       "keywords": "Data Visualisation"
+    },
+    {
+      "href": "/projects#outlook-daily-summary",
+      "group": "projects",
+      "title": { "en": "Outlook Daily Email Summary", "zh": "Outlook 每日邮件汇总" },
+      "note": {
+        "en": "A Daily Excel Report of Your Outlook Email",
+        "zh": "把 Outlook 邮件往来整理成每日 Excel 报告"
+      },
+      "keywords": "Automation"
     },
     {
       "href": "/projects#em-algorithm",
@@ -1652,5 +1675,5 @@
     },
     { "href": "/fun", "group": "tools", "title": { "en": "Easter eggs", "zh": "彩蛋" } }
   ],
-  "projects": 38
+  "projects": 39
 }

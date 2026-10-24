@@ -153,6 +153,19 @@ export default function ClassBroPage() {
             {L(CLASSBRO_DATA.intro.title)}
           </SectionTitle>
           <Paragraphs items={CLASSBRO_DATA.intro.body} L={L} />
+          <p className={`${BODY} mt-4`}>
+            {L(CLASSBRO_DATA.starterList.body)}{" "}
+            <a
+              href={CLASSBRO_DATA.starterList.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={L(CLASSBRO_DATA.starterList.label)}
+              className="underline underline-offset-4 decoration-[#BDBDBD] dark:decoration-[#4A4A4A] text-[#1A1A1A] dark:text-[#EEEEEE] hover:decoration-current"
+            >
+              {L(CLASSBRO_DATA.starterList.link)}
+              <span aria-hidden="true"> ↗</span>
+            </a>
+          </p>
         </section>
 
         {/* 02 Subjects by area */}
