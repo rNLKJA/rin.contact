@@ -41,7 +41,7 @@ const BR = () => L("normal", "");
 
 // PROJECTS.length in lib/projects-data.js. Hard-coded so the
 // terminal chunk does not pull in the whole project list; update both together.
-const PROJECT_COUNT = 38;
+const PROJECT_COUNT = 39;
 
 const BANNER = [
   D("┌─────────────────────────────────────────────────┐"),

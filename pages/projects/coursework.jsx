@@ -437,13 +437,16 @@ export default function CourseworkPage({ data, jsonLd, ogImage }) {
             />
           </ResumeSection>
 
-          {/* 04 Coming next: placeholders until each rebuild ships */}
-          <ResumeSection id="coming-next" n="04" title={t("courseworkPage.sections.pipeline")}>
-            <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-              {t("courseworkPage.pipeline.intro")}
-            </p>
-            <PipelineList items={localisePipeline(COURSEWORK_PIPELINE, locale)} t={t} />
-          </ResumeSection>
+          {/* 04 Coming next: placeholders until each rebuild ships, hidden while
+              nothing is in the pipeline (lib/pipeline-data.js) */}
+          {COURSEWORK_PIPELINE.length > 0 && (
+            <ResumeSection id="coming-next" n="04" title={t("courseworkPage.sections.pipeline")}>
+              <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                {t("courseworkPage.pipeline.intro")}
+              </p>
+              <PipelineList items={localisePipeline(COURSEWORK_PIPELINE, locale)} t={t} />
+            </ResumeSection>
+          )}
 
           {/* Go deeper */}
           <nav
