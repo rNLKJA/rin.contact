@@ -371,7 +371,7 @@ export default function OutlookSummaryDemo({ lang = "en" }) {
                 onChange={setSheet}
                 className="flex"
                 tabClassName={(selected) =>
-                  `${FOCUS} -mb-px px-3 py-2 text-xs font-mono whitespace-nowrap border ${
+                  `${FOCUS} shrink-0 -mb-px px-3 py-2 text-xs font-mono whitespace-nowrap border ${
                     selected
                       ? "border-[#1A1A1A] dark:border-[#EEEEEE] border-b-white dark:border-b-[#0A0A0A] text-[#1A1A1A] dark:text-[#EEEEEE] bg-white dark:bg-[#0A0A0A]"
                       : "border-transparent text-[#5C5C5C] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
