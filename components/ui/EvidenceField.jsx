@@ -12,21 +12,13 @@
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import EvidenceCaption from "./EvidenceCaption";
 
 const RED = "#FF3C3C";
 const HOLD = 2.4; // seconds each stage rests
 const MOVE = 1.5; // seconds for a regroup, including the stagger
 const STAGGER = 0.4; // share of MOVE spent staggering dots left to right
 const REPEL = 70; // cursor radius in CSS px
-const STAGE_KEYS = ["identity", "evidence", "decision"];
-const LABELS = {
-  en: ["Identity", "Evidence", "Decision"],
-  zh: ["身份", "证据", "决策"],
-};
-const CAPTION = {
-  en: "Illustration: from one name, to the evidence, to a decision.",
-  zh: "示意图：从一个名字，到证据，再到决策。",
-};
 
 /** Deterministic PRNG so the layout is the same on every visit. */
 function prng(seed) {
@@ -349,26 +341,7 @@ export default function EvidenceField() {
           }
         />
       </div>
-      <figcaption className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 font-mono text-[11px] tracking-widest uppercase">
-        <ol className="flex gap-4 m-0 p-0 list-none" aria-label={lang === "zh" ? "阶段" : "Stages"}>
-          {LABELS[lang].map((label, i) => (
-            <li
-              key={STAGE_KEYS[i]}
-              aria-current={stage === i ? "step" : undefined}
-              className={
-                stage === i
-                  ? "text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]"
-                  : "text-[#6B6B6B] dark:text-[#9A9A9A]"
-              }
-            >
-              {String(i + 1).padStart(2, "0")} {label}
-            </li>
-          ))}
-        </ol>
-        <span className="normal-case tracking-normal text-[#6B6B6B] dark:text-[#9A9A9A]">
-          {CAPTION[lang]}
-        </span>
-      </figcaption>
+      <EvidenceCaption lang={lang} stage={stage} />
     </figure>
   );
 }
