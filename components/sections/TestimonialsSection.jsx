@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import { useInView } from "@/hooks/useInView";
 import { SectionHeader, EDITORIAL } from "@/components/home/SectionHeader";
 
@@ -44,6 +45,27 @@ const TESTIMONIALS = [
   },
 ];
 
+/* ── UI copy (the quotes, names and titles stay in the words they were given) ── */
+
+const COPY = {
+  en: {
+    label: "Testimonials",
+    heading: "Trusted by.",
+    sub: "What people say about working with Rin.",
+    pause: "Pause testimonials",
+    play: "Play testimonials",
+    show: (name) => `Show testimonial from ${name}`,
+  },
+  zh: {
+    label: "推荐",
+    heading: "同事评价。",
+    sub: "与 Rin 共事过的人怎么说。",
+    pause: "暂停轮播",
+    play: "继续轮播",
+    show: (name) => `查看 ${name} 的推荐`,
+  },
+};
+
 /* ── Auto-advancing carousel ──────────────────────────────────────────────── */
 
 export default function TestimonialsSection() {
@@ -54,6 +76,11 @@ export default function TestimonialsSection() {
   const [ref, inView] = useInView({ threshold: 0.2 });
   const timerRef = useRef(null);
   const total = TESTIMONIALS.length;
+  const { locale = "en-AU" } = useRouter();
+  const isZh = locale === "zh-Hans";
+  const copy = COPY[isZh ? "zh" : "en"];
+  // On /zh-Hans/ the quotes, names and titles stay in English; mark them so.
+  const en = isZh ? "en" : undefined;
 
   // Honour prefers-reduced-motion: no auto-advance, manual controls only.
   useEffect(() => {
@@ -86,34 +113,27 @@ export default function TestimonialsSection() {
       onMouseLeave={() => setInteracting(false)}
       onFocusCapture={() => setInteracting(true)}
       onBlurCapture={() => setInteracting(false)}
-      aria-label="Testimonials"
+      aria-label={copy.label}
       className={`relative scroll-mt-24 ${EDITORIAL}`}
     >
-      <SectionHeader index="06" label="Testimonials" />
+      <SectionHeader index="06" label={copy.label} />
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-y-10 md:gap-x-8">
         {/* title — first on every width */}
         <div className="md:col-span-4 md:row-start-1">
           <h2 className="m-0 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.05] text-black dark:text-white">
-            Trusted by.
+            {copy.heading}
           </h2>
-          <p className="text-sm text-[#5A5A5A] dark:text-[#9A9A9A] mt-3 m-0">
-            What people say about working with Rin.
-          </p>
+          <p className="text-sm text-[#5A5A5A] dark:text-[#9A9A9A] mt-3 m-0">{copy.sub}</p>
         </div>
 
         {/* right: the quote, in the editorial face */}
-        <div className="md:col-start-6 md:col-span-7 md:row-start-1 md:row-span-2 relative mt-6 md:mt-0">
-          <span
-            aria-hidden="true"
-            className="font-editorial pointer-events-none absolute -top-10 md:-top-14 -left-1 md:-left-10 leading-none select-none text-[120px] md:text-[160px] text-[#EFEFEF] dark:text-[#1C1C1C]"
-          >
-            &ldquo;
-          </span>
+        <div className="md:col-start-6 md:col-span-7 md:row-start-1 md:row-span-2 relative">
           <div className="grid relative z-10">
             {TESTIMONIALS.map((t, i) => (
               <blockquote
                 key={i}
+                lang={en}
                 className={`[grid-area:1/1] m-0 ${
                   i === current ? "opacity-100 animate-enter-up" : "invisible"
                 }`}
@@ -157,7 +177,7 @@ export default function TestimonialsSection() {
                   <li key={i} className="border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
                     <button
                       onClick={() => select(i)}
-                      aria-label={`Show testimonial from ${t.name}`}
+                      aria-label={copy.show(t.name)}
                       aria-pressed={i === current}
                       className={`w-full flex items-center gap-3 py-2.5 text-left text-sm transition-colors duration-200 ${
                         i === current
@@ -168,7 +188,9 @@ export default function TestimonialsSection() {
                       <span className="font-mono text-[11px] tracking-widest tabular-nums text-[#5A5A5A] dark:text-[#9A9A9A]">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="flex-1">{t.name}</span>
+                      <span lang={en} className="flex-1">
+                        {t.name}
+                      </span>
                       <span
                         aria-hidden="true"
                         className={`w-1.5 h-1.5 ${i === current ? "bg-black dark:bg-white" : "bg-transparent"}`}
@@ -189,9 +211,9 @@ export default function TestimonialsSection() {
                 {!reduced && (
                   <button
                     onClick={() => setAutoPlay((p) => !p)}
-                    aria-label={autoPlay ? "Pause testimonials" : "Play testimonials"}
+                    aria-label={autoPlay ? copy.pause : copy.play}
                     aria-pressed={!autoPlay}
-                    className="ml-3 w-7 h-7 flex items-center justify-center border border-[#D0D0D0] dark:border-[#5C5C5C] text-[#3D3D3D] dark:text-[#B4B4B4] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200"
+                    className="group relative ml-3 w-7 h-7 flex items-center justify-center border border-[#D0D0D0] dark:border-[#5C5C5C] text-[#3D3D3D] dark:text-[#B4B4B4] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 before:absolute before:-inset-2 before:content-['']"
                   >
                     {autoPlay ? (
                       <svg
