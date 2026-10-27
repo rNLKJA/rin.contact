@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import ThemeToggle, { ThemeSegmented } from "@/components/ui/ThemeToggle";
 import LocaleSwitcher, { LocaleSegmented } from "@/components/ui/LocaleSwitcher";
+import GuideHeaderButton from "@/components/guide/GuideHeaderButton";
 import { useI18n } from "@/contexts/I18nContext";
 import { useDialog } from "@/hooks/useDialog";
 import {
@@ -453,6 +454,9 @@ export default function Header() {
             );
           })}
         </nav>
+
+        {/* ── Pawsibly on phones: in the bar, not floating over the page ── */}
+        <GuideHeaderButton className="ml-auto mr-1" />
 
         {/* ── Mobile burger ── */}
         {/* 44x44 hit area; negative margins keep the bars and the row height

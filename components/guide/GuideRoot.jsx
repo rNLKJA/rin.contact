@@ -1,8 +1,11 @@
 /**
  * GuideRoot: mounts Pawsibly, the optional site guide, from _app.
  *
- * Off by default. Visitors see a small pixel cat with "PRESS START" in the
- * bottom-left corner; nothing else loads until they press it. The dialogue box
+ * Off by default. Visitors see a small pixel cat in the bottom-left gutter
+ * ("PRESS START" beside it from 1360px, where the gutter has room; from 768 to
+ * 1359px the 40px cat fits inside the 48px gutter, so it never covers text). On
+ * phones the cat sits in the header bar instead (GuideHeaderButton), so nothing
+ * floats over the page. Nothing else loads until they press it. The dialogue box
  * and the quest log are separate chunks fetched on first open, and the tour's
  * copy ships inside the dialogue chunk. Progress lives in localStorage
  * (hooks/useGuideProgress), and "Don't show again" removes the launcher until
@@ -80,11 +83,16 @@ export default function GuideRoot() {
     return () => window.removeEventListener(GUIDE_OPEN_EVENT, onOpen);
   }, []);
 
-  // Put focus back on the launcher after the box closes from the keyboard.
+  // Put focus back on the launcher after the box closes from the keyboard. Below
+  // md the floating launcher is not displayed, so focus goes to the header cat.
   useEffect(() => {
     if (state.minimised && focusLauncherNext.current && launcherRef.current) {
       focusLauncherNext.current = false;
-      launcherRef.current.focus();
+      if (launcherRef.current.offsetParent === null) {
+        requestAnimationFrame(() => document.getElementById("guide-header-launcher")?.focus());
+      } else {
+        launcherRef.current.focus();
+      }
     }
   }, [state.minimised, ready, blocked]);
 
@@ -109,25 +117,6 @@ export default function GuideRoot() {
   // Stop the launcher at the footer's top edge rather than letting it sit on it.
   const footerClearance = useFooterClearance([path]);
 
-  // Below 1400px wide the launcher sits over the content column, so it tucks
-  // away while the visitor scrolls down to read and comes back on any scroll up
-  // (or near the top of the page, or when it takes keyboard focus).
-  const [tucked, setTucked] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 1399px)");
-    let last = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (!mq.matches || y < 120) setTucked(false);
-      else if (y > last + 4) setTucked(true);
-      else if (y < last - 4) setTucked(false);
-      if (Math.abs(y - last) > 4) last = y;
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [path]);
-
   if (state.hidden || blocked || !ready) return null;
 
   const total = STOPS.length;
@@ -141,14 +130,11 @@ export default function GuideRoot() {
           ref={launcherRef}
           type="button"
           onClick={open}
-          onFocus={() => setTucked(false)}
           aria-label={t("guide.launch")}
           style={{
             bottom: `calc(1rem + env(safe-area-inset-bottom, 0px) + ${footerClearance}px)`,
-            transform: tucked ? "translateX(calc(-100% - 1.5rem))" : "none",
-            transition: "transform 200ms ease-in-out",
           }}
-          className="fixed left-4 z-40 print:hidden flex items-center gap-2 h-12 min-w-[48px] p-[6px] xl:pr-3
+          className="hidden md:flex fixed left-1 h-10 min-w-[40px] p-[2px] min-[1360px]:left-4 min-[1360px]:h-12 min-[1360px]:min-w-[48px] min-[1360px]:p-[6px] min-[1360px]:pr-3 z-40 print:hidden items-center gap-2
                      border-2 border-black dark:border-white bg-white dark:bg-[#0A0A0A] text-black dark:text-white
                      hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-colors duration-150 animate-enter
                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF3C3C]"
@@ -156,7 +142,7 @@ export default function GuideRoot() {
           <PixelCat className="w-8 h-8 shrink-0" />
           <span
             aria-hidden="true"
-            className="hidden xl:inline font-display text-[11px] leading-none tracking-widest uppercase"
+            className="hidden min-[1360px]:inline font-display text-[11px] leading-none tracking-widest uppercase"
           >
             {inProgress ? `${t("guide.continue")} ${visited}/${total}` : t("guide.pressStart")}
           </span>
