@@ -312,7 +312,8 @@ export default function Home({ glyphStats, explorerData = {} }) {
 
       {/* Floating terminal trigger — bottom-right, from xl only: between md and
           xl it would sit over the content column. The panel still opens with
-          the backtick key from md. Neutral ink: red is kept for what is live. */}
+          the backtick key from md. Neutral ink at rest: red is kept for what is
+          live; the red focus ring stays, as it shows on light and dark bands. */}
       <button
         onClick={() => setTermOpen((o) => !o)}
         aria-label={termOpen ? "Close terminal" : "Open terminal (or press `)"}
@@ -320,8 +321,7 @@ export default function Home({ glyphStats, explorerData = {} }) {
         className="hidden xl:flex fixed bottom-6 right-6 z-40 w-11 h-11 border border-[#3D3D3D] bg-[#0C0C0C]
                    items-center justify-center text-[#E0E0E0] font-mono text-sm
                    hover:border-white hover:text-white hover:bg-[#111111] transition-colors duration-200
-                   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-                   focus-visible:outline-black dark:focus-visible:outline-white"
+                   focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
         style={{ borderRadius: 0 }}
       >
         {termOpen ? "✕" : ">_"}
