@@ -197,7 +197,7 @@ function ExploreTile({ href, num, title, desc, children }) {
     <a
       href={href}
       data-explore-tile
-      className="group relative flex flex-col bg-white dark:bg-[#0A0A0A] p-4 md:p-6 transition-colors duration-200 hover:bg-[#FAFAFA] dark:hover:bg-[#141414] focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#FF3C3C]"
+      className="group relative flex flex-col bg-white dark:bg-[#0A0A0A] p-4 md:p-6 transition-colors duration-200 hover:bg-[#FAFAFA] dark:hover:bg-[#141414] focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-black dark:focus-visible:outline-white"
     >
       <span
         aria-hidden="true"
