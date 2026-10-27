@@ -91,7 +91,8 @@ const CTA = `${BTN} w-full sm:w-auto`;
 export default function FeaturedWork() {
   const [ref, inView] = useInView({ threshold: 0.15 });
   const { locale = "en-AU" } = useRouter();
-  const copy = COPY[locale === "zh-Hans" ? "zh" : "en"];
+  const isZh = locale === "zh-Hans";
+  const copy = COPY[isZh ? "zh" : "en"];
 
   return (
     <section
@@ -129,7 +130,11 @@ export default function FeaturedWork() {
               <h2 className="m-0 text-4xl md:text-5xl font-semibold tracking-tight leading-none text-black dark:text-white">
                 {SIGNAL.title || "Signal"}
               </h2>
-              <p className="m-0 mt-3 font-editorial italic text-lg md:text-2xl leading-snug text-[#3D3D3D] dark:text-[#C8C8C8]">
+              {/* Playfair italic; Chinese has no italic, so the zh subtitle stays upright
+                  rather than taking a synthetic slant. */}
+              <p
+                className={`m-0 mt-3 font-editorial ${isZh ? "" : "italic"} text-lg md:text-2xl leading-snug text-[#3D3D3D] dark:text-[#C8C8C8]`}
+              >
                 {copy.subtitle}
               </p>
             </div>
