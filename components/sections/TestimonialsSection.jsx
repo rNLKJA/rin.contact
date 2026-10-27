@@ -213,7 +213,7 @@ export default function TestimonialsSection() {
                     onClick={() => setAutoPlay((p) => !p)}
                     aria-label={autoPlay ? copy.pause : copy.play}
                     aria-pressed={!autoPlay}
-                    className="group relative ml-3 w-7 h-7 flex items-center justify-center border border-[#D0D0D0] dark:border-[#5C5C5C] text-[#3D3D3D] dark:text-[#B4B4B4] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 before:absolute before:-inset-2 before:content-['']"
+                    className="group relative ml-3 w-7 h-7 flex items-center justify-center border border-[#D0D0D0] dark:border-[#5C5C5C] text-[#3D3D3D] dark:text-[#B4B4B4] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 before:absolute before:-inset-[9px] before:content-['']"
                   >
                     {autoPlay ? (
                       <svg
