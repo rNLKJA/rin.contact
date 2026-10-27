@@ -54,7 +54,7 @@ export default function ReadingToast({ threshold = 0.65 }) {
     <div
       role="status"
       aria-live="polite"
-      className={`hidden md:block fixed bottom-24 left-4 z-[999] max-w-[220px] border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#1A1A1A] p-4
+      className={`hidden min-[1428px]:block fixed bottom-24 left-4 z-[999] w-[196px] border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#1A1A1A] p-4
                   transition-all duration-200 ${visible ? "opacity-100 translate-y-0 animate-enter-up" : "opacity-0 translate-y-2"}`}
     >
       <button
