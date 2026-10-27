@@ -15,6 +15,9 @@ export default function SectionProgress() {
   ];
 
   const [active, setActive] = useState("hero");
+  // The Contact band and the footer are always dark, whatever the theme, so the
+  // rail switches to its dark-surface inks there.
+  const onDark = active === "contact";
   const navRef = useRef(null);
   const visibleRef = useRef(false);
 
@@ -87,7 +90,11 @@ export default function SectionProgress() {
             {/* Label — slides in on hover */}
             <span
               className={`text-[10px] tracking-widest uppercase transition-all duration-200
-                          ${isActive ? "text-accent-ink opacity-100 animate-enter" : "text-[#6B6B6B] dark:text-[#9A9A9A] opacity-0 group-hover:opacity-100 group-hover:animate-enter"}
+                          ${
+                            isActive
+                              ? `${onDark ? "text-[#FF3C3C]" : "text-accent-ink"} opacity-100 animate-enter`
+                              : `${onDark ? "text-[#9A9A9A]" : "text-[#6B6B6B] dark:text-[#9A9A9A]"} opacity-0 group-hover:opacity-100 group-hover:animate-enter`
+                          }
                           translate-x-1 group-hover:translate-x-0`}
             >
               {label}
@@ -99,7 +106,9 @@ export default function SectionProgress() {
                           ${
                             isActive
                               ? "w-2.5 h-2.5 bg-[#FF3C3C]"
-                              : "w-1.5 h-1.5 bg-[#C0C0C0] group-hover:bg-[#7A7A7A]"
+                              : onDark
+                                ? "w-1.5 h-1.5 bg-[#5C5C5C] group-hover:bg-[#9A9A9A]"
+                                : "w-1.5 h-1.5 bg-[#C0C0C0] group-hover:bg-[#7A7A7A]"
                           }`}
             />
           </a>
