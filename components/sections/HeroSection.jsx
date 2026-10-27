@@ -1,19 +1,30 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useI18n } from "@/contexts/I18nContext";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { BTN, BTN_PRIMARY, BTN_SECONDARY, LabelRow } from "@/components/home/SectionHeader";
+import SlashList from "@/components/home/SlashList";
+import EvidenceCaption from "@/components/ui/EvidenceCaption";
 
 const HeroDotField = dynamic(() => import("@/components/ui/HeroDotField"), { ssr: false });
-// The placeholder reserves the canvas and its caption, so nothing moves when it loads.
+
+// The placeholder reserves the canvas and its caption, so nothing moves when the
+// field loads. The caption is the real one, rendered invisibly, so the reserve
+// wraps exactly like the figure at every width and in both languages.
+function EvidencePlaceholder() {
+  const { locale = "en-AU" } = useRouter();
+  return (
+    <div aria-hidden="true" className="invisible">
+      <div className="w-full aspect-[16/11] md:aspect-[5/4]" />
+      <EvidenceCaption lang={locale === "zh-Hans" ? "zh" : "en"} as="div" />
+    </div>
+  );
+}
 const EvidenceField = dynamic(() => import("@/components/ui/EvidenceField"), {
   ssr: false,
-  loading: () => (
-    <div aria-hidden="true">
-      <div className="w-full aspect-[16/11] md:aspect-[5/4]" />
-      <div className="mt-3 h-[52px] md:h-[40px]" />
-    </div>
-  ),
+  loading: EvidencePlaceholder,
 });
 
 // Inline SVGs — avoids react-icons bundle on critical hero path
@@ -71,13 +82,9 @@ function useRoleCycle(words, reduce, { hold = 4000, type = 55, erase = 22, rest 
   return words[idx].slice(0, chars);
 }
 
-// ─── Call to action — square, monochrome, colour invert on hover ─────────────
+// ─── Call to action — square, outlined, full invert on hover (BTN rule) ──────
 function Cta({ href, primary, children }) {
-  const cls =
-    "inline-flex items-center justify-center gap-2 h-11 px-6 border text-xs font-medium tracking-widest uppercase rounded-none transition-colors duration-200 " +
-    (primary
-      ? "border-black bg-black text-white hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-transparent dark:hover:text-white"
-      : "border-[#D0D0D0] text-black hover:border-black hover:bg-black hover:text-white dark:border-[#5C5C5C] dark:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-black");
+  const cls = `${BTN} ${primary ? BTN_PRIMARY : BTN_SECONDARY}`;
   // Same-page hash links (#contact) keep the native anchor for smooth scroll.
   return href.startsWith("#") ? (
     <a href={href} className={cls}>
@@ -131,6 +138,18 @@ export default function HeroSection() {
   const role = useRoleCycle(roleList, reduce);
   const greeting = useTimeGreeting();
   const { spawn, bursts } = useDotBurst();
+  // Each role renders as two fixed rows, the title then "@ org", at every width.
+  const at = role.indexOf(" @");
+  const head = at < 0 ? role : role.slice(0, at);
+  const tail = at < 0 ? "" : role.slice(at + 1); // "@ SAPOL", partial while typing
+  const caret = (
+    <span
+      className="md:animate-blink ml-0.5 inline-block w-[0.5em] text-center text-[#9A9A9A]"
+      aria-hidden="true"
+    >
+      _
+    </span>
+  );
 
   return (
     <section
@@ -168,30 +187,32 @@ export default function HeroSection() {
       {/* Still dot-matrix backdrop (no cursor reaction, by request) */}
       <HeroDotField />
 
-      {/* ── 12-column grid: copy on the left half, the evidence field on the right ── */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-x-8 md:items-center">
-        <div className="md:col-span-6" data-guide="hero-intro">
-          {/* Time-of-day greeting: the line is always rendered, so filling it in
-              after mount moves nothing. */}
-          <p
-            className="h-4 mb-5 text-[11px] leading-4 tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] font-mono"
-            style={greeting ? { animation: "fade-in 200ms ease-out both" } : undefined}
-          >
-            {greeting ? t(greeting) : " "}
-          </p>
+      {/* ── Masthead: the greeting on the left, live status on the right ── */}
+      <div className="relative z-10 flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 pb-4 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
+        {/* Time-of-day greeting: the line is reserved on the server, so filling
+            it in after mount moves nothing. */}
+        <p className="m-0 h-[18px] leading-[18px] font-mono text-[11px] tracking-widest uppercase whitespace-nowrap overflow-hidden text-ellipsis text-[#5A5A5A] dark:text-[#9A9A9A]">
+          {greeting ? (
+            <span style={{ animation: "fade-in 200ms ease-out both" }}>{t(greeting)}</span>
+          ) : (
+            " "
+          )}
+        </p>
+        <p className="m-0 h-[18px] leading-[18px] min-w-0 flex items-center gap-2 text-[11px] tracking-wider md:tracking-widest uppercase whitespace-nowrap text-[#1A1A1A] dark:text-white">
+          <span
+            className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] shrink-0 md:animate-blink"
+            aria-hidden="true"
+          />
+          <span className="truncate">{t("hero.statusPill")}</span>
+        </p>
+      </div>
 
-          {/* Status pill — one line in any font, so the swap to DM Sans moves nothing */}
-          <div className="inline-flex items-center gap-2 max-w-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 h-8 mb-7 text-[11px] sm:text-xs tracking-wider sm:tracking-widest uppercase whitespace-nowrap rounded-full text-[#1A1A1A] dark:text-white">
-            <span
-              className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] shrink-0 md:animate-blink"
-              aria-hidden="true"
-            />
-            {t("hero.statusPill")}
-          </div>
-
+      {/* ── 12-column grid: copy on five columns, the evidence field on seven ── */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-10 items-center mt-10 md:mt-12">
+        <div className="md:col-span-6 lg:col-span-5" data-guide="hero-intro">
           {/* Name — pinned to Bitcount display font; no animation on mobile for LCP */}
           <h1
-            className="hero-name font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tight m-0 md:animate-fade-up text-black dark:text-white"
+            className="hero-name font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[80px] font-semibold leading-none tracking-tight whitespace-nowrap m-0 md:animate-fade-up text-black dark:text-white"
             itemProp="name"
           >
             Rin Huang
@@ -236,15 +257,17 @@ export default function HeroSection() {
             </p>
           </div>
 
-          {/* Role line — the first role is server-rendered in full */}
-          <p className="hero-role m-0 mb-6 h-14 lg:h-7 text-lg lg:text-xl leading-7 font-light lg:whitespace-nowrap overflow-hidden text-[#3D3D3D] dark:text-[#B4B4B4] md:animate-fade-up md:delay-200">
+          {/* Role — two fixed rows (title, then "@ org"); the first role is
+              server-rendered in full. The caret stays grey. */}
+          <p className="hero-role m-0 mb-6 h-14 text-base lg:text-lg leading-7 font-light overflow-hidden text-[#3D3D3D] dark:text-[#B4B4B4] md:animate-fade-up md:delay-200">
             <span className="sr-only">{roleList[0]}</span>
-            <span aria-hidden="true">{role}</span>
-            <span
-              className="md:animate-blink ml-0.5 inline-block w-[0.5em] text-center text-[#9A9A9A]"
-              aria-hidden="true"
-            >
-              _
+            <span aria-hidden="true" className="block whitespace-nowrap">
+              {head}
+              {!tail && caret}
+            </span>
+            <span aria-hidden="true" className="block whitespace-nowrap">
+              {tail}
+              {tail && caret}
             </span>
           </p>
 
@@ -266,36 +289,26 @@ export default function HeroSection() {
         </div>
 
         {/* RIGHT — the evidence field: name -> trend -> risk-ranked sites. */}
-        <div className="md:col-span-6 md:animate-fade-up md:delay-300">
+        <div className="md:col-span-6 lg:col-span-7 md:animate-fade-up md:delay-300">
           <EvidenceField />
         </div>
       </div>
 
-      {/* Hero foot — practice areas as one plain list across the full width,
-          the same anatomy as the "Worked with" strip (no pills, nothing to orphan). */}
-      <div className="relative z-10 mt-12 md:mt-14 border-t border-[#E0E0E0] dark:border-[#3D3D3D] pt-5 pb-8 md:pb-10">
-        <ul
-          className="m-0 p-0 list-none text-[11px] md:text-[12px] leading-[22px] md:leading-6 tracking-wider md:tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]"
-          style={{ textWrap: "balance" }}
-          aria-label={isZh ? "专长领域" : "Practice areas"}
-        >
-          {(Array.isArray(tags) ? tags : []).map((tag, i, arr) => (
-            <React.Fragment key={tag}>
-              <li className="inline whitespace-nowrap">
-                {tag}
-                {i < arr.length - 1 && (
-                  <span
-                    aria-hidden="true"
-                    className="mx-2 md:mx-2.5 text-[#C8C8C8] dark:text-[#3D3D3D]"
-                  >
-                    /
-                  </span>
-                )}
-              </li>{" "}
-            </React.Fragment>
-          ))}
-        </ul>
-      </div>
+      {/* Hero foot — focus areas in the same anatomy as the Worked with strip:
+          a mono label column, then a plain list whose slashes never start or
+          end a line. */}
+      <LabelRow
+        label={t("hero.tagsLabel")}
+        labelId="hero-focus-label"
+        className="relative z-10 mt-12 md:mt-14 pt-5 pb-8 md:pb-10 border-t border-[#E0E0E0] dark:border-[#3D3D3D]"
+      >
+        <SlashList
+          items={Array.isArray(tags) ? tags : []}
+          labelledBy="hero-focus-label"
+          balance
+          className="font-mono text-[12px] leading-6 text-[#5A5A5A] dark:text-[#9A9A9A]"
+        />
+      </LabelRow>
 
       {/* Name hover charge */}
       <style>{`
