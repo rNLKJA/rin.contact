@@ -17,7 +17,13 @@ import { useInView } from "@/hooks/useInView";
 import { useCopy } from "@/hooks/useCopy";
 import { useI18n } from "@/contexts/I18nContext";
 import { cleanEnv, CALENDLY_URL } from "@/lib/public-env";
-import { SectionHeader, TitleRow, EDITORIAL } from "@/components/home/SectionHeader";
+import {
+  SectionHeader,
+  TitleRow,
+  EDITORIAL,
+  BTN,
+  BTN_PRIMARY_ON_DARK,
+} from "@/components/home/SectionHeader";
 
 // ─── EmailJS config ───────────────────────────────────────────────
 const EMAILJS_SERVICE_ID =
@@ -153,15 +159,6 @@ function EngagementBand() {
             key={item.n || i}
             className="engage-card group relative bg-[#1A1A1A] px-6 py-7 md:px-7 md:py-8 overflow-hidden transition-colors duration-200 hover:bg-[#202020]"
           >
-            {/* Ghost index in the display face */}
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-2 right-4 leading-none select-none text-[4.5rem] text-[#262626]"
-              style={{ fontFamily: "var(--font-bitcount), monospace" }}
-            >
-              {item.n}
-            </span>
-
             <div className="relative z-10">
               <p className="flex items-center gap-2 text-[11px] tracking-widest uppercase text-[#9A9A9A] mb-4 m-0">
                 <span className="font-mono tabular-nums text-white">{item.n}</span>
@@ -454,13 +451,7 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={status === "sending" || status === "sent"}
-              className={`h-12 px-8 text-xs font-medium tracking-widest uppercase transition-colors duration-200
-                         disabled:cursor-not-allowed border rounded-none
-                         ${
-                           status === "sent"
-                             ? "border-[#3D3D3D] text-[#B4B4B4] bg-transparent"
-                             : "border-white bg-white text-black hover:bg-transparent hover:text-white disabled:bg-transparent disabled:text-[#B4B4B4] disabled:border-[#3D3D3D]"
-                         }`}
+              className={`${BTN} ${BTN_PRIMARY_ON_DARK} disabled:cursor-not-allowed`}
               aria-live="polite"
             >
               {status === "sending"
