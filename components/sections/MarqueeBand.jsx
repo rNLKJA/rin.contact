@@ -4,7 +4,8 @@
  *
  * Two rows with one anatomy (LabelRow): a mono label in a fixed column, then a
  * SlashList whose "/" separators never start or end a line. Each item stays
- * whole and lines wrap between items at any width. No animation, no box, no
+ * whole and lines wrap between items at any width; the Worked with row is
+ * balanced so no organisation is left alone on the last line. No animation, no box, no
  * rounded corners. Mark with data-band="employers". Internationalised
  * (EN + zh-Hans).
  */
@@ -45,7 +46,7 @@ export default function MarqueeBand() {
     >
       <div className={`${SHELL} py-6 md:py-7 flex flex-col gap-3`}>
         <LabelRow label={copy.worked} labelId="band-worked-label">
-          <SlashList items={orgs} labelledBy="band-worked-label" className={LIST} />
+          <SlashList items={orgs} labelledBy="band-worked-label" className={LIST} balance />
         </LabelRow>
         <LabelRow label={copy.status} labelId="band-status-label">
           <StatusBadge labelledBy="band-status-label" className={LIST} />
