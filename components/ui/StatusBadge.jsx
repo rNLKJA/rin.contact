@@ -3,9 +3,10 @@
  * Shows current roles, availability, Adelaide local time, and live weather via
  * wttr.in. The clock and weather are client-only and fill in after mount.
  */
-import { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useI18n } from "@/contexts/I18nContext";
 import { AVAILABLE_FOR } from "@/lib/public-env";
+import SlashList from "@/components/home/SlashList";
 
 const ADL_TZ = "Australia/Adelaide";
 
@@ -79,65 +80,59 @@ const STATUS_KEYS = [
 // value pasted with its key ("NEXT_PUBLIC_AVAILABLE_FOR=...") never renders raw.
 // If it is not set, the availability item does not render.
 
-function Sep() {
-  return (
-    <span aria-hidden="true" className="mx-2.5 text-[#C8C8C8] dark:text-[#3D3D3D]">
-      /
-    </span>
-  );
-}
-
 /**
  * One line of status in the same anatomy as the "Worked with" strip: mono text,
- * items separated by a light slash, no box. Safe to server-render: the clock and
- * the weather fill in after mount, at the end of the line.
+ * items separated by a light slash that never starts or ends a line, no box.
+ * Safe to server-render: the clock and the weather fill in after mount, at the
+ * end of the line. The availability item may wrap inside itself.
  */
-export default function StatusBadge() {
+export default function StatusBadge({ labelledBy, label, className = "" }) {
   const { t } = useI18n();
   const time = useClock();
   const weather = useAdelaideWeather();
 
   const items = [
-    ...STATUS_KEYS.map(({ live, labelKey, subKey }) => (
-      <>
-        <span
-          className={`inline-block w-1.5 h-1.5 rounded-full align-middle mr-2 -mt-px ${
-            live ? "bg-[#FF3C3C]" : "border border-[#8A8A8A]"
-          }`}
-          aria-hidden="true"
-        />
-        {t(labelKey)}
-        {subKey && <> · {t(subKey)}</>}
-      </>
-    )),
-    AVAILABLE_FOR.length > 0 && (
-      <>
-        {t("statusBadge.availableFor")} {AVAILABLE_FOR.join(", ")}
-      </>
-    ),
-    time && (
-      <>
-        {t("statusBadge.adl")} {time}
-      </>
-    ),
-    weather && (
-      <span title={weather.desc}>
-        {weather.tempC}°C {weather.word}
-      </span>
-    ),
+    ...STATUS_KEYS.map(({ live, labelKey, subKey }) => ({
+      key: labelKey,
+      content: (
+        <>
+          <span
+            className={`inline-block w-1.5 h-1.5 rounded-full align-middle mr-2 -mt-px ${
+              live ? "bg-[#FF3C3C]" : "border border-[#8A8A8A]"
+            }`}
+            aria-hidden="true"
+          />
+          {t(labelKey)}
+          {subKey && <> · {t(subKey)}</>}
+        </>
+      ),
+    })),
+    AVAILABLE_FOR.length > 0 && {
+      key: "available",
+      wrap: true,
+      content: (
+        <>
+          {t("statusBadge.availableFor")} {AVAILABLE_FOR.join(", ")}
+        </>
+      ),
+    },
+    time && {
+      key: "clock",
+      content: (
+        <>
+          {t("statusBadge.adl")} {time}
+        </>
+      ),
+    },
+    weather && {
+      key: "weather",
+      content: (
+        <span title={weather.desc}>
+          {weather.tempC}°C {weather.word}
+        </span>
+      ),
+    },
   ].filter(Boolean);
 
-  // Each item stays whole with its trailing slash; lines wrap between items.
-  return (
-    <span>
-      {items.map((node, i) => (
-        <Fragment key={i}>
-          <span className="whitespace-nowrap">
-            {node}
-            {i < items.length - 1 && <Sep />}
-          </span>{" "}
-        </Fragment>
-      ))}
-    </span>
-  );
+  return <SlashList items={items} labelledBy={labelledBy} label={label} className={className} />;
 }
