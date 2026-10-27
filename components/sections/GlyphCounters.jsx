@@ -3,8 +3,8 @@
  *
  * Each count is set in the dot-matrix display font and counts up once the band
  * is in view, with a Nothing-style glyph light strip underneath: segments light
- * in proportion as the number climbs, then a red head sweeps the strip every few
- * seconds. A dot field behind the band glows red under the cursor (desktop).
+ * in proportion as the number climbs, with a red head while it counts; once
+ * the count lands the strip holds still (no endless sweep).
  *
  * The numbers come from getStaticProps on the home page, which reads the same
  * data the rest of the site uses, so they can't drift from the pages they link to.
@@ -14,6 +14,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import { SectionHeader, SHELL, BAND } from "@/components/home/SectionHeader";
 
 const HeroDotField = dynamic(() => import("@/components/ui/HeroDotField"), { ssr: false });
 
@@ -93,11 +94,17 @@ function Counter({ id, target, started, reduce, index, copy }) {
       href={HREF[id]}
       className="group relative flex flex-col gap-3 px-6 py-8 md:px-8 md:py-10 bg-white/80 dark:bg-[#0A0A0A]/80 hover:bg-white dark:hover:bg-[#0A0A0A] transition-colors duration-200"
     >
-      <span className="font-mono text-[11px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A]">
+      <span className="flex items-center justify-between font-mono text-[11px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A]">
         {String(index + 1).padStart(2, "0")}
+        <span
+          aria-hidden="true"
+          className="text-[#9A9A9A] group-hover:text-black dark:text-[#5C5C5C] dark:group-hover:text-white transition-colors duration-200"
+        >
+          →
+        </span>
       </span>
       <span
-        className="font-display text-5xl md:text-6xl leading-none tabular-nums text-black dark:text-white group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200"
+        className="font-display text-5xl md:text-6xl font-normal leading-none tabular-nums text-black dark:text-white"
         aria-hidden="true"
       >
         {value}
@@ -116,8 +123,7 @@ function Counter({ id, target, started, reduce, index, copy }) {
                   ? "bg-[#FF3C3C]"
                   : "bg-black/80 dark:bg-white/85"
                 : "bg-black/10 dark:bg-white/10"
-            } ${done && !reduce ? "glyph-sweep" : ""}`}
-            style={done && !reduce ? { animationDelay: `${index * 0.35 + i * 0.06}s` } : undefined}
+            }`}
           />
         ))}
       </span>
@@ -165,14 +171,8 @@ export default function GlyphCounters({ stats }) {
       data-guide="glyph-counters"
     >
       <HeroDotField />
-      <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-10 md:py-14">
-        <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] m-0">
-            <span aria-hidden="true">■ — </span>
-            {copy.label}
-          </p>
-          <p className="text-xs text-[#5A5A5A] dark:text-[#9A9A9A] m-0">{copy.note}</p>
-        </div>
+      <div className={`relative z-10 ${SHELL} ${BAND}`}>
+        <SectionHeader index="01" label={copy.label} aside={copy.note} />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#E0E0E0] dark:bg-[#3D3D3D] border border-[#E0E0E0] dark:border-[#3D3D3D]">
           {ids.map((id, i) => (
             <Counter
@@ -187,21 +187,6 @@ export default function GlyphCounters({ stats }) {
           ))}
         </div>
       </div>
-      <style jsx>{`
-        :global(.glyph-sweep) {
-          animation: glyph-sweep 3.6s ease-in-out infinite;
-        }
-        @keyframes glyph-sweep {
-          92% {
-            background-color: #ff3c3c;
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          :global(.glyph-sweep) {
-            animation: none;
-          }
-        }
-      `}</style>
     </section>
   );
 }

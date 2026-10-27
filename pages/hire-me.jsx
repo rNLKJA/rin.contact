@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
+import { CALENDLY_URL } from "@/lib/public-env";
 
 export default function HireMePage() {
   const { t, locale = "en-AU" } = useI18n();
@@ -151,9 +152,9 @@ export default function HireMePage() {
                   {t("hireMe.ctaEmail")}
                 </a>
                 {/* Schedule a call — Calendly */}
-                {process.env.NEXT_PUBLIC_CALENDLY_URL && (
+                {CALENDLY_URL && (
                   <a
-                    href={process.env.NEXT_PUBLIC_CALENDLY_URL}
+                    href={CALENDLY_URL}
                     target="_blank"
                     rel="noreferrer"
                     className="block border border-[#22C55E] text-[#4ADE80] px-6 py-3 text-xs tracking-widest uppercase hover:bg-[#22C55E] hover:text-black transition-colors duration-200 text-center"

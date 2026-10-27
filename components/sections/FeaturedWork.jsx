@@ -1,21 +1,31 @@
 /**
  * FeaturedWork — homepage flagship spotlight.
  * Leads the marketing page with Signal (live, governed AI product): proof of
- * work up front, with case-study / live-demo / source CTAs. Nothing-OS styling,
- * dot-matrix accent, theme-aware.
+ * work up front, with case-study / live-demo / source CTAs.
+ *
+ * Same anatomy as the /projects spotlight: a square hairline card with a header
+ * bar (label left, live status right), the copy on the left eight columns and
+ * the dot-matrix cover, readouts and stack on the right four. No tilt, no
+ * cursor sheen. Red only marks what is live. Facts come from lib/projects-data
+ * and are unchanged; UI labels are localised.
  */
-import { useCallback, useEffect, useRef } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useInView } from "@/hooks/useInView";
+import { PROJECTS } from "@/lib/projects-data";
+import ProjectCover from "@/components/covers/ProjectCover";
+import { SectionHeader, EDITORIAL } from "@/components/home/SectionHeader";
 
-const LIVE = "https://rnlkja--signal-api-api.modal.run";
-const REPO = "https://github.com/rNLKJA/signal";
+const SIGNAL = PROJECTS.find((p) => p.id === "signal") || {};
+const LIVE = SIGNAL.demo || "https://rnlkja--signal-api-api.modal.run";
+const REPO = SIGNAL.link || "https://github.com/rNLKJA/signal";
 
 const STATS = [
-  { k: "Status", v: "Live · v1.14" },
-  { k: "Tests", v: "128 green" },
-  { k: "Jurisdictions", v: "SA + NYC" },
-  { k: "Governance", v: "DTA + EU AI Act" },
+  { k: "status", v: "Live · v1.14" },
+  { k: "tests", v: "128 green" },
+  { k: "jurisdictions", v: "SA + NYC" },
+  { k: "governance", v: "DTA + EU AI Act" },
 ];
 
 const STACK = [
@@ -30,181 +40,162 @@ const STACK = [
   "DTA v2.0",
 ];
 
+const COPY = {
+  en: {
+    section: "Flagship",
+    aside: "Featured work",
+    kind: "Independent Product · Jun 2026 – Present",
+    live: "Live",
+    subtitle: SIGNAL.subtitle,
+    labels: {
+      status: "Status",
+      tests: "Tests",
+      jurisdictions: "Jurisdictions",
+      governance: "Governance",
+      stack: "Stack",
+    },
+    caseStudy: "Read case study",
+    liveDemo: "Live demo",
+    github: "View on GitHub",
+  },
+  zh: {
+    section: "旗舰项目",
+    aside: "精选作品",
+    kind: "独立产品 · Jun 2026 – Present",
+    live: "在线",
+    subtitle: SIGNAL.zh?.subtitle || SIGNAL.subtitle,
+    labels: {
+      status: "状态",
+      tests: "测试",
+      jurisdictions: "辖区",
+      governance: "治理",
+      stack: "技术栈",
+    },
+    caseStudy: "阅读案例",
+    liveDemo: "在线演示",
+    github: "在 GitHub 上查看",
+  },
+};
+
+const BTN =
+  "w-full sm:w-auto inline-flex items-center justify-center gap-2 h-10 px-5 border text-xs font-medium tracking-widest uppercase rounded-none transition-colors duration-200";
+
 export default function FeaturedWork() {
   const [ref, inView] = useInView({ threshold: 0.15 });
-  const cardRef = useRef(null);
-  const sheenRef = useRef(null);
-  const noTiltRef = useRef(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    // No cursor tilt under reduced-motion, or on touch/coarse pointers.
-    noTiltRef.current =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  }, []);
-
-  // Subtle 3D tilt + red cursor sheen — premium feel on the flagship card.
-  const onMove = useCallback((e) => {
-    if (noTiltRef.current) return;
-    const card = cardRef.current;
-    if (!card) return;
-    const r = card.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width;
-    const py = (e.clientY - r.top) / r.height;
-    card.style.transform = `rotateX(${(0.5 - py) * 6}deg) rotateY(${(px - 0.5) * 6}deg)`;
-    const sheen = sheenRef.current;
-    if (sheen) {
-      sheen.style.background = `radial-gradient(620px circle at ${px * 100}% ${py * 100}%, rgba(255,60,60,0.07), transparent 46%)`;
-      // Motion rules: enter from 70% opacity, not 0. Drop the fade transition for
-      // the entry (it only plays on exit) and run a short 0.7 -> 1 enter instead.
-      if (sheen.style.opacity !== "1") {
-        sheen.style.transition = "none";
-        sheen.style.opacity = "1";
-        sheen.animate?.([{ opacity: 0.7 }, { opacity: 1 }], { duration: 150, easing: "ease-out" });
-      }
-    }
-  }, []);
-
-  const onLeave = useCallback(() => {
-    if (cardRef.current) cardRef.current.style.transform = "rotateX(0deg) rotateY(0deg)";
-    const sheen = sheenRef.current;
-    if (sheen) {
-      sheen.style.transition = "opacity 0.2s ease";
-      sheen.style.opacity = "0";
-    }
-  }, []);
+  const { locale = "en-AU" } = useRouter();
+  const copy = COPY[locale === "zh-Hans" ? "zh" : "en"];
 
   return (
     <section
       id="featured"
-      className="scroll-mt-24 py-20 md:py-24"
+      className={`scroll-mt-24 ${EDITORIAL}`}
       aria-label="Featured work"
       ref={ref}
     >
-      <p className="text-xs tracking-widest uppercase text-accent-ink mb-8 font-mono flex items-center gap-2">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse" aria-hidden="true" />
-        Featured — Flagship
-      </p>
+      <SectionHeader index="03" label={copy.section} />
 
-      {/* perspective wrapper holds the scroll reveal; the inner card tilts */}
-      <div
-        onPointerMove={onMove}
-        onPointerLeave={onLeave}
-        className={`transition-all duration-200 ease-out ${inView ? "translate-y-0" : "invisible translate-y-1.5"}`}
-        style={{ perspective: "1500px" }}
+      <article
+        className={`border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#0A0A0A] transition-transform duration-200 ease-out ${
+          inView ? "translate-y-0" : "translate-y-1.5"
+        }`}
       >
-        <div
-          ref={cardRef}
-          className="relative border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-lg overflow-hidden bg-white dark:bg-[#0A0A0A]"
-          style={{ transition: "transform 0.25s ease-out", willChange: "transform" }}
-        >
-          {/* cursor sheen — subtle red glow, never blocks clicks */}
-          <span
-            ref={sheenRef}
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-20"
-            style={{ opacity: 0, transition: "opacity 0.2s ease" }}
-          />
-          {/* header bar */}
-          <div className="px-6 md:px-8 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
-            <span className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] truncate">
-              Independent Product · Jun 2026 – Present
-            </span>
-            <span className="text-[10px] tracking-widest uppercase text-accent-ink flex items-center gap-1.5 flex-shrink-0">
-              <span
-                className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-pulse"
-                aria-hidden="true"
-              />
-              Live
-            </span>
+        {/* header bar — label left, live status right */}
+        <div className="px-5 md:px-8 h-11 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
+          <span className="text-[11px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#B4B4B4] truncate">
+            {copy.kind}
+          </span>
+          <span className="text-[11px] tracking-widest uppercase text-black dark:text-white flex items-center gap-2 flex-shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
+            {copy.live}
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12">
+          {/* main */}
+          <div className="md:col-span-8 p-5 md:p-8 md:border-r border-[#E0E0E0] dark:border-[#3D3D3D] flex flex-col gap-6">
+            <div>
+              <h2 className="m-0 text-4xl md:text-5xl font-semibold tracking-tight leading-none text-black dark:text-white">
+                {SIGNAL.title || "Signal"}
+              </h2>
+              <p className="text-sm md:text-base text-[#3D3D3D] dark:text-[#B4B4B4] mt-3 m-0">
+                {copy.subtitle}
+              </p>
+            </div>
+            <p className="m-0 max-w-[62ch] text-[15px] text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
+              {SIGNAL.summary}
+            </p>
+            <p className="m-0 border-l-2 border-black dark:border-white pl-4 text-sm text-[#1A1A1A] dark:text-white font-medium leading-relaxed">
+              {SIGNAL.impact}
+            </p>
+            <div className="flex flex-wrap gap-2 mt-auto pt-2">
+              <Link
+                href="/projects/signal"
+                className={`${BTN} border-black bg-black text-white hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-transparent dark:hover:text-white`}
+              >
+                {copy.caseStudy} <span aria-hidden="true">→</span>
+              </Link>
+              <a
+                href={LIVE}
+                target="_blank"
+                rel="noreferrer"
+                className={`${BTN} border-[#D0D0D0] text-black hover:border-black dark:border-[#5C5C5C] dark:text-white dark:hover:border-white`}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
+                {copy.liveDemo} <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                href={REPO}
+                target="_blank"
+                rel="noreferrer"
+                className={`${BTN} border-[#D0D0D0] text-black hover:border-black dark:border-[#5C5C5C] dark:text-white dark:hover:border-white`}
+              >
+                {copy.github} <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
 
-          <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* main */}
-            <div className="md:col-span-2 space-y-5">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#1A1A1A] dark:text-white">
-                  Signal
-                </h2>
-                <p className="text-sm text-[#373737] dark:text-[#B4B4B4] mt-1">
-                  Governance Layer for AI-Assisted Government Data
-                </p>
-              </div>
-              <p className="text-[15px] text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed">
-                A governed data product that puts AI governance on the request path — tamper-evident
-                hash-chained audit logs, auto-generated DTA and EU AI Act compliance artefacts, and
-                faithfulness-checked LLM narratives. The live reference implementation analyses
-                South Australian and NYC crime statistics with Mann-Kendall trend tests, Sen-slope
-                forecasting, and z-score anomaly review.
-              </p>
-              <div className="p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
-                <p className="text-sm text-[#1A1A1A] dark:text-white font-medium leading-relaxed">
-                  Live deployment · 128 tests · Tamper-evident audit + DTA v2.0 governance set ·
-                  Open-core product
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-2 pt-1">
-                <Link
-                  href="/projects/signal"
-                  className="inline-flex items-center gap-2 border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] px-4 py-1.5 text-xs tracking-widest uppercase
-                           text-white dark:text-[#0A0A0A] rounded-full hover:bg-black dark:hover:bg-white transition-colors duration-200"
-                >
-                  Read case study →
-                </Link>
-                <a
-                  href={LIVE}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 border border-[#FF3C3C] bg-[#FF3C3C] px-4 py-1.5 text-xs tracking-widest uppercase
-                           text-white rounded-full hover:bg-[#E02020] hover:border-[#E02020] transition-colors duration-200"
-                >
-                  Live demo ↗
-                </a>
-                <a
-                  href={REPO}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-1.5 text-xs tracking-widest uppercase
-                           text-[#373737] dark:text-[#B4B4B4] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
-                >
-                  View on GitHub ↗
-                </a>
-              </div>
+          {/* side: cover, readouts, stack */}
+          <div className="md:col-span-4 flex flex-col border-t md:border-t-0 border-[#E0E0E0] dark:border-[#3D3D3D]">
+            <div className="p-5 md:p-6 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
+              <ProjectCover id="signal" />
             </div>
-
-            {/* side: stats + stack */}
-            <div className="space-y-6">
-              <div className="grid grid-cols-2 gap-px border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
-                {STATS.map(({ k, v }) => (
-                  <div key={k} className="bg-white dark:bg-[#0A0A0A] px-4 py-3.5">
-                    <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-1">
-                      {k}
-                    </p>
-                    <p className="text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">{v}</p>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <p className="text-[10px] tracking-widest uppercase text-[#373737] dark:text-[#B4B4B4] mb-2">
-                  Stack
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {STACK.map((s) => (
-                    <span
-                      key={s}
-                      className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full
-                               cursor-default hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200"
-                    >
-                      {s}
-                    </span>
-                  ))}
+            <dl className="m-0 grid grid-cols-2 gap-px bg-[#E0E0E0] dark:bg-[#3D3D3D] border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
+              {STATS.map(({ k, v }) => (
+                <div key={k} className="bg-white dark:bg-[#0A0A0A] px-5 py-3.5 md:px-6">
+                  <dt className="font-mono text-[11px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mb-1">
+                    {copy.labels[k]}
+                  </dt>
+                  <dd className="m-0 text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">
+                    {v}
+                  </dd>
                 </div>
-              </div>
+              ))}
+            </dl>
+            <div className="px-5 py-4 md:px-6">
+              <p className="font-mono text-[11px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mb-2 m-0">
+                {copy.labels.stack}
+              </p>
+              <p className="m-0 font-mono text-xs leading-6 text-[#3D3D3D] dark:text-[#B4B4B4]">
+                {STACK.map((s, i) => (
+                  <Fragment key={s}>
+                    <span className="whitespace-nowrap">
+                      {s}
+                      {i < STACK.length - 1 && (
+                        <span
+                          aria-hidden="true"
+                          className="mx-2 text-[#C8C8C8] dark:text-[#3D3D3D]"
+                        >
+                          /
+                        </span>
+                      )}
+                    </span>{" "}
+                  </Fragment>
+                ))}
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
     </section>
   );
 }

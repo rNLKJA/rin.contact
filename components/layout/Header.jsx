@@ -551,14 +551,14 @@ export default function Header() {
                   className={`flex flex-shrink-0 items-baseline gap-4 py-4 [@media(max-height:900px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                     active
                       ? "text-[#CC0000] dark:text-[#FF3C3C]"
-                      : "text-black dark:text-white hover:text-[#CC0000] dark:text-[#FF3C3C]"
+                      : "text-black dark:text-white hover:text-[#CC0000] dark:hover:text-[#FF3C3C]"
                   }`}
                 >
                   <span
                     className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
                       active
                         ? "text-accent-ink"
-                        : "text-[#6B6B6B] dark:text-[#9A9A9A] group-hover:text-[#CC0000] dark:text-[#FF3C3C]"
+                        : "text-[#6B6B6B] dark:text-[#9A9A9A] group-hover:text-[#CC0000] dark:group-hover:text-[#FF3C3C]"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -572,7 +572,7 @@ export default function Header() {
                   ) : (
                     <span
                       aria-hidden="true"
-                      className="ml-auto text-[#E0E0E0] group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 text-sm"
+                      className="ml-auto text-[#C8C8C8] dark:text-[#5C5C5C] group-hover:text-[#CC0000] dark:group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm"
                     >
                       ↗
                     </span>

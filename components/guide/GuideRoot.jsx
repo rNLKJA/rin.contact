@@ -109,6 +109,25 @@ export default function GuideRoot() {
   // Stop the launcher at the footer's top edge rather than letting it sit on it.
   const footerClearance = useFooterClearance([path]);
 
+  // Below 1400px wide the launcher sits over the content column, so it tucks
+  // away while the visitor scrolls down to read and comes back on any scroll up
+  // (or near the top of the page, or when it takes keyboard focus).
+  const [tucked, setTucked] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1399px)");
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (!mq.matches || y < 120) setTucked(false);
+      else if (y > last + 4) setTucked(true);
+      else if (y < last - 4) setTucked(false);
+      if (Math.abs(y - last) > 4) last = y;
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [path]);
+
   if (state.hidden || blocked || !ready) return null;
 
   const total = STOPS.length;
@@ -122,9 +141,14 @@ export default function GuideRoot() {
           ref={launcherRef}
           type="button"
           onClick={open}
+          onFocus={() => setTucked(false)}
           aria-label={t("guide.launch")}
-          style={{ bottom: `calc(1rem + ${footerClearance}px)` }}
-          className="fixed left-4 z-40 print:hidden flex items-center gap-2 h-12 min-w-[48px] p-[6px] sm:pr-3
+          style={{
+            bottom: `calc(1rem + env(safe-area-inset-bottom, 0px) + ${footerClearance}px)`,
+            transform: tucked ? "translateX(calc(-100% - 1.5rem))" : "none",
+            transition: "transform 200ms ease-in-out",
+          }}
+          className="fixed left-4 z-40 print:hidden flex items-center gap-2 h-12 min-w-[48px] p-[6px] xl:pr-3
                      border-2 border-black dark:border-white bg-white dark:bg-[#0A0A0A] text-black dark:text-white
                      hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A] transition-colors duration-150 animate-enter
                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF3C3C]"
@@ -132,7 +156,7 @@ export default function GuideRoot() {
           <PixelCat className="w-8 h-8 shrink-0" />
           <span
             aria-hidden="true"
-            className="hidden sm:inline font-display text-[11px] leading-none tracking-widest uppercase"
+            className="hidden xl:inline font-display text-[11px] leading-none tracking-widest uppercase"
           >
             {inProgress ? `${t("guide.continue")} ${visited}/${total}` : t("guide.pressStart")}
           </span>

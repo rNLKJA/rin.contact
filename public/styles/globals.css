@@ -13,9 +13,21 @@
   font-style: normal;
   font-display: swap;
 }
+/* Metric-matched fallback for DM Sans: local Arial scaled to DM Sans's average
+   glyph width (weighted English letter frequencies) and vertical metrics, so
+   text set before the web font arrives wraps the same way and the swap moves
+   almost nothing (homepage CLS at 390). Derived from the Fontsource latin file. */
+@font-face {
+  font-family: "DM Sans Fallback";
+  src: local("Arial"), local("ArialMT");
+  size-adjust: 105.97%;
+  ascent-override: 93.61%;
+  descent-override: 29.25%;
+  line-gap-override: 0%;
+}
 :root {
   --font-bitcount: "Bitcount Prop Double";
-  --font-dm-sans: "DM Sans Variable";
+  --font-dm-sans: "DM Sans Variable", "DM Sans Fallback";
   --font-playfair: "Playfair Display Variable";
 }
 

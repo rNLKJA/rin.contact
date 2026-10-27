@@ -4,12 +4,13 @@ import { useI18n } from "@/contexts/I18nContext";
 export default function SectionProgress() {
   const { t } = useI18n();
 
+  // The homepage's real section ids, in page order.
   const SECTIONS = [
     { id: "hero", key: "sectionProgress.profile" },
-    { id: "timeline", key: "sectionProgress.journey" },
-    { id: "projects", key: "sectionProgress.work" },
-    { id: "skills", key: "sectionProgress.expertise" },
-    { id: "faq", key: "sectionProgress.faq" },
+    { id: "featured", key: "sectionProgress.work" },
+    { id: "signal", key: "sectionProgress.journey" },
+    { id: "explore", key: "sectionProgress.explore" },
+    { id: "testimonials", key: "sectionProgress.testimonials" },
     { id: "contact", key: "sectionProgress.contact" },
   ];
 
@@ -69,7 +70,7 @@ export default function SectionProgress() {
     <nav
       ref={navRef}
       aria-label={t("sectionProgress.label")}
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-end gap-3
+      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col items-end gap-3
                   transition-all duration-200 opacity-0 pointer-events-none"
     >
       {SECTIONS.map(({ id, key }) => {

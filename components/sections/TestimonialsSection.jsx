@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
+import { SectionHeader, EDITORIAL } from "@/components/home/SectionHeader";
 
 /* ── Testimonial data ───────────────────────────────────────────────────────
 
@@ -80,32 +81,32 @@ export default function TestimonialsSection() {
   return (
     <section
       ref={ref}
+      id="testimonials"
       onMouseEnter={() => setInteracting(true)}
       onMouseLeave={() => setInteracting(false)}
       onFocusCapture={() => setInteracting(true)}
       onBlurCapture={() => setInteracting(false)}
-      className="relative overflow-hidden py-24 md:py-32 border-t border-[#F0F0F0] dark:border-[#1E1E1E]"
+      aria-label="Testimonials"
+      className={`relative scroll-mt-24 ${EDITORIAL}`}
     >
-      <div className="max-w-[800px] mx-auto px-6 md:px-12">
-        {/* section header */}
-        <div className="mb-14">
-          <p className="text-xs tracking-widest uppercase text-accent-ink mb-4 font-mono">
-            ◈ — Testimonials
-          </p>
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black dark:text-white">
+      <SectionHeader index="06" label="Testimonials" />
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-y-10 md:gap-x-8">
+        {/* title — first on every width */}
+        <div className="md:col-span-4 md:row-start-1">
+          <h2 className="m-0 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.05] text-black dark:text-white">
             Trusted by.
           </h2>
-          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] mt-2">
+          <p className="text-sm text-[#5A5A5A] dark:text-[#9A9A9A] mt-3 m-0">
             What people say about working with Rin.
           </p>
         </div>
 
-        {/* quote card */}
-        <div className="relative">
-          {/* giant ghosted quotation mark — editorial flourish */}
+        {/* right: the quote, in the editorial face */}
+        <div className="md:col-start-6 md:col-span-7 md:row-start-1 md:row-span-2 relative mt-6 md:mt-0">
           <span
             aria-hidden="true"
-            className="font-editorial pointer-events-none absolute -top-24 -left-2 md:-left-10 leading-none select-none text-[160px] md:text-[230px] text-[#F2F2F2] dark:text-[#181818]"
+            className="font-editorial pointer-events-none absolute -top-10 md:-top-14 -left-1 md:-left-10 leading-none select-none text-[120px] md:text-[160px] text-[#EFEFEF] dark:text-[#1C1C1C]"
           >
             &ldquo;
           </span>
@@ -113,25 +114,25 @@ export default function TestimonialsSection() {
             {TESTIMONIALS.map((t, i) => (
               <blockquote
                 key={i}
-                className={`[grid-area:1/1] ${
+                className={`[grid-area:1/1] m-0 ${
                   i === current ? "opacity-100 animate-enter-up" : "invisible"
                 }`}
               >
-                <p className="text-lg md:text-xl leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-6">
+                <p className="font-editorial text-xl md:text-2xl font-normal leading-relaxed text-[#1A1A1A] dark:text-[#E0E0E0] m-0 mb-8">
                   &ldquo;{t.quote}&rdquo;
                 </p>
-                <footer className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#F5F5F5] dark:bg-[#1A1A1A] flex items-center justify-center text-[10px] font-mono text-[#6B6B6B] dark:text-[#9A9A9A]">
+                <footer className="flex items-center gap-3 border-t border-[#E0E0E0] dark:border-[#3D3D3D] pt-5">
+                  <div className="w-8 h-8 border border-[#E0E0E0] dark:border-[#3D3D3D] flex items-center justify-center text-[11px] font-mono text-[#5A5A5A] dark:text-[#9A9A9A]">
                     {t.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-black dark:text-white">
+                    <p className="text-sm font-medium text-black dark:text-white m-0">
                       {t.linkedIn ? (
                         <a
                           href={t.linkedIn}
                           target="_blank"
                           rel="noreferrer"
-                          className="hover:text-[#CC0000] dark:text-[#FF3C3C] dark:hover:text-[#FFF0F0] transition-colors"
+                          className="underline decoration-[#C8C8C8] dark:decoration-[#5C5C5C] underline-offset-4 hover:decoration-black dark:hover:decoration-white transition-colors duration-200"
                         >
                           {t.name}
                         </a>
@@ -139,79 +140,87 @@ export default function TestimonialsSection() {
                         t.name
                       )}
                     </p>
-                    <p className="text-xs text-[#3A3A3A] dark:text-[#B4B4B4]">{t.title}</p>
+                    <p className="text-xs text-[#3A3A3A] dark:text-[#B4B4B4] m-0">{t.title}</p>
                   </div>
                 </footer>
               </blockquote>
             ))}
           </div>
         </div>
-
-        {/* editorial counter + play/pause (WCAG 2.2.2: pausable auto-advance) */}
-        {total > 1 && (
-          <div className="flex items-center gap-2 mt-10 font-mono text-[11px] tracking-[0.3em]">
-            <span className="text-accent-ink">{String(current + 1).padStart(2, "0")}</span>
-            <span className="text-[#D0D0D0] dark:text-[#3D3D3D]">/</span>
-            <span className="text-[#6B6B6B] dark:text-[#9A9A9A]">
-              {String(total).padStart(2, "0")}
-            </span>
-            {!reduced && (
-              <button
-                onClick={() => setAutoPlay((p) => !p)}
-                aria-label={autoPlay ? "Pause testimonials" : "Play testimonials"}
-                aria-pressed={!autoPlay}
-                className="ml-3 w-6 h-6 flex items-center justify-center border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors"
-              >
-                {autoPlay ? (
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="currentColor"
-                    aria-hidden="true"
+        {/* named endorsers + play/pause — after the quote on phones, bottom-left on desktop */}
+        <div className="md:col-span-4 md:row-start-2 md:self-end">
+          {total > 1 && (
+            <div>
+              {/* named endorser selectors — direct, keyboard-accessible navigation */}
+              <ul className="m-0 p-0 list-none border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
+                {TESTIMONIALS.map((t, i) => (
+                  <li key={i} className="border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
+                    <button
+                      onClick={() => select(i)}
+                      aria-label={`Show testimonial from ${t.name}`}
+                      aria-pressed={i === current}
+                      className={`w-full flex items-center gap-3 py-2.5 text-left text-sm transition-colors duration-200 ${
+                        i === current
+                          ? "text-black dark:text-white font-medium"
+                          : "text-[#5C5C5C] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
+                      }`}
+                    >
+                      <span className="font-mono text-[11px] tracking-widest tabular-nums text-[#5A5A5A] dark:text-[#9A9A9A]">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="flex-1">{t.name}</span>
+                      <span
+                        aria-hidden="true"
+                        className={`w-1.5 h-1.5 ${i === current ? "bg-black dark:bg-white" : "bg-transparent"}`}
+                      />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              {/* counter + play/pause (WCAG 2.2.2: pausable auto-advance) */}
+              <div className="flex items-center gap-2 mt-4 font-mono text-[11px] tracking-[0.3em]">
+                <span className="text-black dark:text-white">
+                  {String(current + 1).padStart(2, "0")}
+                </span>
+                <span className="text-[#5A5A5A] dark:text-[#9A9A9A]">/</span>
+                <span className="text-[#5A5A5A] dark:text-[#9A9A9A]">
+                  {String(total).padStart(2, "0")}
+                </span>
+                {!reduced && (
+                  <button
+                    onClick={() => setAutoPlay((p) => !p)}
+                    aria-label={autoPlay ? "Pause testimonials" : "Play testimonials"}
+                    aria-pressed={!autoPlay}
+                    className="ml-3 w-7 h-7 flex items-center justify-center border border-[#D0D0D0] dark:border-[#5C5C5C] text-[#3D3D3D] dark:text-[#B4B4B4] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200"
                   >
-                    <rect x="1.5" y="1" width="2.5" height="8" />
-                    <rect x="6" y="1" width="2.5" height="8" />
-                  </svg>
-                ) : (
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M2 1 L9 5 L2 9 Z" />
-                  </svg>
+                    {autoPlay ? (
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <rect x="1.5" y="1" width="2.5" height="8" />
+                        <rect x="6" y="1" width="2.5" height="8" />
+                      </svg>
+                    ) : (
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M2 1 L9 5 L2 9 Z" />
+                      </svg>
+                    )}
+                  </button>
                 )}
-              </button>
-            )}
-          </div>
-        )}
-
-        {/* named endorser selectors — make the breadth of social proof legible at
-            a glance (four credible names across gov, research, and academia),
-            and double as direct, keyboard-accessible carousel navigation. */}
-        {total > 1 && (
-          <ul className="flex flex-wrap gap-x-6 gap-y-2.5 mt-7">
-            {TESTIMONIALS.map((t, i) => (
-              <li key={i}>
-                <button
-                  onClick={() => select(i)}
-                  aria-label={`Show testimonial from ${t.name}`}
-                  aria-pressed={i === current}
-                  className={`text-xs tracking-wide pb-1 border-b-2 transition-colors duration-200 ${
-                    i === current
-                      ? "border-[#FF3C3C] text-[#CC0000] dark:text-[#FF5C5C]"
-                      : "border-transparent text-[#5C5C5C] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white"
-                  }`}
-                >
-                  {t.name}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

@@ -172,9 +172,7 @@ const CREDENTIALS_SCHEMA = {
   })),
 };
 
-// ── Background art helpers (Nothing OS + Wisr design language) ───────────────
-
-// Earth: thin cross/plus mark — precision & structure
+// ── Crop mark (decorative): a thin plus at a container corner ──────────────
 function ArtCross({ className = "" }) {
   return (
     <div
@@ -187,77 +185,14 @@ function ArtCross({ className = "" }) {
   );
 }
 
-// Water: thin-outline circle — smooth, sweeping curves
-function ArtCircle({ className = "", style = {} }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`absolute rounded-full border pointer-events-none select-none opacity-10 md:opacity-40 ${className}`}
-      style={style}
-    />
-  );
-}
-
-// Fire: thin-outline squircle — bold geometric statement (Nothing app-icon shape)
-function ArtSquircle({ className = "", style = {} }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`absolute border pointer-events-none select-none opacity-10 md:opacity-40 ${className}`}
-      style={{ borderRadius: "22%", ...style }}
-    />
-  );
-}
-
-// Water: organic blob — fluid, flowing, morphing shape (Wisr Water element)
-function ArtBlob({ className = "", style = {} }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`absolute border pointer-events-none select-none animate-art-morph opacity-10 md:opacity-40 ${className}`}
-      style={style}
-    />
-  );
-}
-
-// Water: SVG flowing S-curve (Wisr signature wave)
-function WaveArc({ className = "", stroke = "#E0E0E0" }) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 1440 80"
-      preserveAspectRatio="none"
-      className={`absolute w-full pointer-events-none select-none opacity-[0.08] md:opacity-30 ${className}`}
-    >
-      <path
-        d="M0,40 C180,8 360,72 540,40 C720,8 900,72 1080,40 C1260,8 1380,64 1440,40"
-        stroke={stroke}
-        strokeWidth="1"
-        fill="none"
-      />
-    </svg>
-  );
-}
-
-// Air: large ghost label — bleeds off bottom edge, readable as texture not text
-function GhostLabel({ children, className = "" }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={`absolute pointer-events-none select-none font-bold leading-none tracking-tighter
-                  text-[clamp(5rem,11vw,13rem)] ${className}`}
-      style={{ fontFamily: "var(--font-bitcount), monospace" }}
-    >
-      {children}
-    </span>
-  );
-}
-
 // Hero is above the fold — load immediately
 import HeroSection from "@/components/sections/HeroSection";
-import SectionDivider from "@/components/ui/SectionDivider";
+import { SHELL } from "@/components/home/SectionHeader";
 const MiniTerminal = dynamic(() => import("@/components/MiniTerminal"), { ssr: false });
 import ConfettiBurst from "@/components/ui/ConfettiBurst";
+
+// HELLO in Morse: H . . . .  E .  L . - . .  L . - . .  O - - -
+const MORSE = ["....", ".", ".-..", ".-..", "---"];
 
 // ── Konami sequence ───────────────────────────────────────────────────────────
 const KONAMI = [
@@ -298,7 +233,7 @@ function GlitchOverlay({ onDone }) {
           <p className="font-mono text-white text-sm font-bold tracking-wider">
             You found the easter egg.
           </p>
-          <p className="font-mono text-[#585858] text-xs mt-1">
+          <p className="font-mono text-[#9A9A9A] text-xs mt-1">
             Achievement: 30 extra years of curiosity.
           </p>
         </div>
@@ -310,7 +245,6 @@ function GlitchOverlay({ onDone }) {
 const SectionProgress = dynamic(() => import("@/components/layout/SectionProgress"), {
   ssr: false,
 });
-const StatusBadge = dynamic(() => import("@/components/ui/StatusBadge"), { ssr: false });
 const ReadingToast = dynamic(() => import("@/components/ui/ReadingToast"), { ssr: false });
 const PositioningStatement = dynamic(() => import("@/components/sections/PositioningStatement"), {
   loading: () => <div className="min-h-[260px]" aria-hidden="true" />,
@@ -323,16 +257,21 @@ const MarqueeBand = dynamic(() => import("@/components/sections/MarqueeBand"), {
 });
 const CareerInstrument = dynamic(() => import("@/components/sections/CareerInstrument"), {
   ssr: false,
-  loading: () => <div className="min-h-[360px]" aria-hidden="true" />,
+  loading: () => (
+    <div
+      className="min-h-[452px] md:min-h-[424px] border-y border-[#E0E0E0] dark:border-[#3D3D3D]"
+      aria-hidden="true"
+    />
+  ),
 });
-const SectionNavCards = dynamic(() => import("@/components/sections/SectionNavCards"), {
-  loading: () => <div className="min-h-[320px]" aria-hidden="true" />,
+const SectionExplorer = dynamic(() => import("@/components/sections/SectionExplorer"), {
+  loading: () => <div className="min-h-[640px]" aria-hidden="true" />,
 });
 const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"), {
   loading: () => <div className="min-h-[320px]" aria-hidden="true" />,
 });
 const ContactSection = dynamic(() => import("@/components/sections/ContactSection"), {
-  loading: () => <div className="bg-[#1A1A1A] min-h-[320px]" aria-hidden="true" />,
+  loading: () => <div className="bg-[#1A1A1A] min-h-[1200px]" aria-hidden="true" />,
 });
 
 export default function Home({ glyphStats, explorerData = {} }) {
@@ -376,8 +315,8 @@ export default function Home({ glyphStats, explorerData = {} }) {
         onClick={() => setTermOpen((o) => !o)}
         aria-label={termOpen ? "Close terminal" : "Open terminal (or press `)"}
         title={termOpen ? "Close terminal" : "Open terminal  ·  press `"}
-        className="fixed bottom-6 right-6 z-40 w-11 h-11 border border-[#3D3D3D] bg-[#0C0C0C]
-                   flex items-center justify-center text-[#FF3C3C] font-mono text-sm
+        className="hidden md:flex fixed bottom-6 right-6 z-40 w-11 h-11 border border-[#3D3D3D] bg-[#0C0C0C]
+                   items-center justify-center text-[#FF3C3C] font-mono text-sm
                    hover:border-[#FF3C3C] hover:bg-[#111111] transition-colors duration-200
                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FF3C3C]"
         style={{ borderRadius: 0 }}
@@ -387,7 +326,7 @@ export default function Home({ glyphStats, explorerData = {} }) {
 
       {/* Terminal panel */}
       {termOpen && (
-        <div className="fixed bottom-20 right-6 z-40 shadow-2xl animate-fade-up">
+        <div className="hidden md:block fixed bottom-20 right-6 z-40 animate-fade-up">
           <MiniTerminal onClose={() => setTermOpen(false)} />
         </div>
       )}
@@ -562,266 +501,113 @@ export default function Home({ glyphStats, explorerData = {} }) {
       />
 
       <SectionProgress />
+      {/* One container (SHELL) for every section; instrument bands run their
+          hairlines full-bleed, editorial sections share the 12-column grid. */}
       <div className="relative">
-        {/* Dot-matrix — fixed top-right anchor (persists across all sections) */}
-        <div
-          className="dot-matrix fixed top-0 right-0 w-72 h-72 opacity-[0.03] md:opacity-10 pointer-events-none z-0"
-          aria-hidden="true"
-        />
-
-        <div className="relative z-10">
-          {/* ══ HERO — white ══ */}
-          {/* LCP: hero content first in DOM; decorative elements deferred on mobile */}
-          <div className="bg-white dark:bg-[#0A0A0A] relative overflow-hidden">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <HeroSection />
+        {/* ══ HERO ══ */}
+        <div className="relative overflow-hidden">
+          <div className={`${SHELL} relative`}>
+            {/* Crop marks at the container's top corners (desktop, decorative) */}
+            <div className="hidden md:block" aria-hidden="true">
+              <ArtCross className="top-5 left-[38px] text-[#C8C8C8] dark:text-[#3D3D3D]" />
+              <ArtCross className="top-5 right-[38px] text-[#C8C8C8] dark:text-[#3D3D3D]" />
             </div>
-            {/* Decorative elements — hidden on mobile for faster LCP, desktop only */}
+            <HeroSection />
+          </div>
+        </div>
+
+        {/* ══ 01 BY THE NUMBERS — glyph counters, counted at build time ══ */}
+        <GlyphCounters stats={glyphStats} />
+
+        {/* ══ 02 OPERATING PRINCIPLE ══ */}
+        <div>
+          <div className={SHELL}>
+            <PositioningStatement />
+          </div>
+        </div>
+
+        {/* ══ 03 FLAGSHIP ══ */}
+        <div className="border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
+          <div className={SHELL}>
+            <FeaturedWork />
+          </div>
+        </div>
+
+        {/* ══ 04 CAREER SIGNAL — one row per track, links to /career ══ */}
+        <CareerInstrument compact />
+
+        {/* ══ WORKED WITH + STATUS — one strip, two rows ══ */}
+        <MarqueeBand />
+
+        {/* ══ 05 EXPLORE ══ */}
+        <div>
+          <div className={SHELL}>
+            <SectionExplorer
+              postsByMonth={explorerData.postsByMonth}
+              totalPosts={explorerData.totalPosts}
+              careerMonths={explorerData.careerMonths}
+              projectCount={explorerData.projectCount}
+              roleCount={explorerData.roleCount}
+              resumeYears={explorerData.resumeYears}
+              resumeCount={explorerData.resumeCount}
+            />
+          </div>
+        </div>
+
+        {/* ══ 06 TESTIMONIALS ══ */}
+        <div className="border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
+          <div className={SHELL}>
+            <TestimonialsSection />
+          </div>
+        </div>
+
+        {/* Reading nudge — desktop only, retires when Contact is on screen */}
+        <ReadingToast threshold={0.7} />
+
+        {/* ══ 07 CONTACT — always dark ══ */}
+        <div className="bg-[#1A1A1A] relative overflow-hidden border-b border-[#2A2A2A]">
+          {/* Dot patch + crop marks (decorative, desktop) */}
+          <div className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
             <div
-              className="hidden md:block absolute inset-0 pointer-events-none"
-              aria-hidden="true"
-            >
-              <ArtCross className="top-10 left-8 text-[#C0C0C0] dark:text-[#3D3D3D]" />
-              <ArtCross className="bottom-12 right-12 text-[#C0C0C0] dark:text-[#3D3D3D]" />
-              <ArtCircle
-                className="animate-art-breathe border-[#E0E0E0] dark:border-[#3D3D3D]"
-                style={{ width: "1300px", height: "1300px", right: "-450px", bottom: "-450px" }}
-              />
-              <ArtCircle
-                className="animate-art-breathe border-[#E4E4E4] dark:border-[#3D3D3D]"
-                style={{
-                  width: "840px",
-                  height: "840px",
-                  right: "-220px",
-                  bottom: "-220px",
-                  animationDelay: "1.2s",
-                }}
-              />
-              <ArtCircle
-                className="animate-art-breathe border-[#EBEBEB] dark:border-[#3D3D3D]"
-                style={{
-                  width: "420px",
-                  height: "420px",
-                  right: "-10px",
-                  bottom: "-10px",
-                  animationDelay: "2.4s",
-                }}
-              />
-              <ArtSquircle
-                className="animate-art-spin border-[#DCDCDC] dark:border-[#3D3D3D]"
-                style={{
-                  width: "320px",
-                  height: "320px",
-                  top: "48px",
-                  left: "40px",
-                  animationDelay: "1.5s",
-                }}
-              />
-              <ArtBlob
-                className="border-[#E8E8E8] dark:border-[#2A2A2A]"
-                style={{
-                  width: "420px",
-                  height: "380px",
-                  top: "30%",
-                  left: "-100px",
-                  animationDelay: "3s",
-                }}
-              />
-              <WaveArc className="top-[38%] h-20 dark:[&>path]:stroke-[#3D3D3D]" stroke="#EBEBEB" />
-              <div className="dot-matrix absolute left-0 bottom-0 w-80 h-80 opacity-[0.03] md:opacity-[0.08]" />
+              className="absolute left-0 top-0 w-80 h-80 opacity-20"
+              style={{
+                backgroundImage: "radial-gradient(circle, #2E2E2E 1px, transparent 1px)",
+                backgroundSize: "16px 16px",
+              }}
+            />
+          </div>
+          <div className={`${SHELL} relative z-10`}>
+            <div className="hidden md:block" aria-hidden="true">
+              <ArtCross className="top-5 left-[38px] text-[#3D3D3D]" />
+              <ArtCross className="top-5 right-[38px] text-[#3D3D3D]" />
             </div>
-          </div>
-
-          {/* ══ BY THE NUMBERS — glyph counters, counted at build time ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A]">
-            <GlyphCounters stats={glyphStats} />
-          </div>
-
-          {/* ══ POSITIONING — thesis band (identity -> thesis -> proof) ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <PositioningStatement />
-            </div>
-          </div>
-
-          {/* ══ DIVIDER — positioning to featured ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A]">
-            <SectionDivider />
-          </div>
-
-          {/* ══ FEATURED WORK — flagship spotlight ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <FeaturedWork />
-            </div>
-          </div>
-
-          {/* ══ CAREER SIGNAL — compact: one row per track, links to /career ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A]">
-            <CareerInstrument compact />
-          </div>
-
-          {/* ══ MARQUEE — kinetic domains band (full-bleed) ══ */}
-          <MarqueeBand />
-
-          {/* ══ STATUS + SECTION NAV CARDS — white ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] border-t border-[#F5F5F5] dark:border-[#1E1E1E] content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 pt-10">
-              <StatusBadge />
-            </div>
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <SectionNavCards
-                counts={{ projects: PROJECTS.length }}
-                postsByMonth={explorerData.postsByMonth}
-                totalPosts={explorerData.totalPosts}
-                careerMonths={explorerData.careerMonths}
-                projectCount={explorerData.projectCount}
-                roleCount={explorerData.roleCount}
-                experimentCount={explorerData.experimentCount}
-                resumeYears={explorerData.resumeYears}
-                resumeCount={explorerData.resumeCount}
-              />
-            </div>
-          </div>
-
-          {/* ══ DIVIDER — explore to testimonials ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A]">
-            <SectionDivider />
-          </div>
-
-          {/* ══ TESTIMONIALS — social proof ══ */}
-          <div className="bg-white dark:bg-[#0A0A0A] content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-              <TestimonialsSection />
-            </div>
-          </div>
-
-          {/* Reading progress toast — client-side only */}
-          <ReadingToast threshold={0.7} />
-
-          {/* ══ CONTACT — dark ══ */}
-          <div className="bg-[#1A1A1A] relative overflow-hidden content-visibility-auto">
-            <div className="max-w-[1100px] mx-auto px-6 md:px-12 relative z-10">
-              <ContactSection />
-            </div>
+            <ContactSection />
             {/* ── Morse code easter egg — HELLO encoded as dots & dashes ─────── */}
             {/* H=....  E=.  L=.-..  L=.-..  O=--- */}
             {/* Hint: /fun/secret */}
             <div
-              className="flex items-center justify-center pb-5 gap-px"
+              className="flex items-center justify-start pb-8 gap-px"
               aria-hidden="true"
               title="Can you decode this?"
-              style={{ opacity: 0.12 }}
+              style={{ opacity: 0.16 }}
             >
-              {/* H = . . . . */}
-              {[1, 1, 1, 1].map((_, i) => (
-                <span
-                  key={`h${i}`}
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5"
-                />
+              {MORSE.map((letter, li) => (
+                <React.Fragment key={li}>
+                  {li > 0 && <span className="inline-block w-3" />}
+                  {letter
+                    .split("")
+                    .map((sym, si) =>
+                      sym === "." ? (
+                        <span
+                          key={si}
+                          className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5"
+                        />
+                      ) : (
+                        <span key={si} className="inline-block w-4 h-1 bg-white mx-0.5" />
+                      )
+                    )}
+                </React.Fragment>
               ))}
-              <span className="inline-block w-3" />
-              {/* E = . */}
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-3" />
-              {/* L = . - . . */}
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-3" />
-              {/* L = . - . . */}
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white mx-0.5" />
-              <span className="inline-block w-3" />
-              {/* O = - - - */}
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
-              <span className="inline-block w-4 h-1 rounded-sm bg-white mx-0.5" />
-            </div>
-            <div
-              className="hidden md:block absolute inset-0 pointer-events-none"
-              aria-hidden="true"
-            >
-              <GhostLabel className="right-0 bottom-0 translate-y-[28%] text-white opacity-[0.02] md:opacity-[0.06]">
-                CONNECT
-              </GhostLabel>
-              <div
-                className="absolute left-0 top-0 w-80 h-80 opacity-[0.05] md:opacity-20"
-                style={{
-                  backgroundImage: "radial-gradient(circle, #2E2E2E 1px, transparent 1px)",
-                  backgroundSize: "16px 16px",
-                }}
-              />
-              <ArtCross className="top-10 left-8 text-[#2C2C2C]" />
-              <ArtCross className="bottom-12 right-12 text-[#2C2C2C]" />
-              <ArtCircle
-                className="animate-art-breathe border-[#222222]"
-                style={{ width: "1300px", height: "1300px", bottom: "-450px", right: "-450px" }}
-              />
-              <ArtCircle
-                className="animate-art-breathe border-[#242424]"
-                style={{
-                  width: "760px",
-                  height: "760px",
-                  bottom: "-180px",
-                  right: "-180px",
-                  animationDelay: "1.5s",
-                }}
-              />
-              <ArtCircle
-                className="animate-art-breathe border-[#262626]"
-                style={{
-                  width: "360px",
-                  height: "360px",
-                  bottom: "20px",
-                  right: "20px",
-                  animationDelay: "3s",
-                }}
-              />
-              <ArtCircle
-                className="animate-art-float border-[#222222]"
-                style={{
-                  width: "560px",
-                  height: "560px",
-                  top: "-160px",
-                  left: "-160px",
-                  animationDelay: "3s",
-                }}
-              />
-              <ArtCircle
-                className="animate-art-float border-[#232323]"
-                style={{
-                  width: "280px",
-                  height: "280px",
-                  top: "-20px",
-                  left: "-20px",
-                  animationDelay: "4.5s",
-                }}
-              />
-              <ArtSquircle
-                className="animate-art-spin border-[#222222]"
-                style={{
-                  width: "300px",
-                  height: "300px",
-                  top: "30%",
-                  right: "-60px",
-                  animationDelay: "0s",
-                }}
-              />
-              <ArtBlob
-                className="border-[#212121]"
-                style={{
-                  width: "400px",
-                  height: "360px",
-                  bottom: "60px",
-                  left: "-80px",
-                  animationDelay: "7s",
-                }}
-              />
-              <WaveArc className="top-[35%] h-20" stroke="#222222" />
             </div>
           </div>
         </div>
@@ -876,9 +662,6 @@ export async function getStaticProps({ locale = "en-AU" }) {
     careerMonths.push(hasRole);
   }
 
-  // Count experiments/projects in the lab
-  const experimentCount = PROJECTS.filter((p) => p.tags?.includes("experiment")).length || 3;
-
   // Build resume year strip: 2019-2026, mark years with role or degree starts
   const currentYear = now.getFullYear();
   const resumeYears = [];
@@ -912,7 +695,6 @@ export async function getStaticProps({ locale = "en-AU" }) {
         careerMonths,
         projectCount: PROJECTS.length,
         roleCount: ROLES.length,
-        experimentCount,
         resumeYears,
         resumeCount,
       },

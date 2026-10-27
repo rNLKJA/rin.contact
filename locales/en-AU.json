@@ -142,7 +142,7 @@
     "domains": ["Government", "Research", "Engineering"]
   },
   "contact": {
-    "sectionLabel": "07 — Contact",
+    "sectionLabel": "Contact",
     "heading": "Get in Touch",
     "description": "Whether it is a data challenge, a research collaboration, a project idea, or just a coffee — I would genuinely love to hear from you. I am always open to conversations that push things forward.",
     "engage": {
@@ -1722,6 +1722,8 @@
     "work": "Work",
     "expertise": "Expertise",
     "faq": "FAQ",
+    "explore": "Explore",
+    "testimonials": "Testimonials",
     "contact": "Contact"
   },
   "newsletter": {

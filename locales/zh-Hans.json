@@ -137,7 +137,7 @@
     "domains": ["政府", "科研", "工程"]
   },
   "contact": {
-    "sectionLabel": "07 — 联系我",
+    "sectionLabel": "联系我",
     "heading": "保持联系",
     "description": "无论您有数据分析难题、研究合作意向、项目创意，还是只想聊聊——我都很期待收到您的消息。我一直对能够推动进步的对谈持开放态度。",
     "engage": {
@@ -1717,6 +1717,8 @@
     "work": "工作",
     "expertise": "专长",
     "faq": "问答",
+    "explore": "探索",
+    "testimonials": "推荐",
     "contact": "联系"
   },
   "newsletter": {
