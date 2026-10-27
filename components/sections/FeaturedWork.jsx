@@ -9,13 +9,19 @@
  * cursor sheen. Red only marks what is live. Facts come from lib/projects-data
  * and are unchanged; UI labels are localised.
  */
-import { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useInView } from "@/hooks/useInView";
 import { PROJECTS } from "@/lib/projects-data";
 import ProjectCover from "@/components/covers/ProjectCover";
-import { SectionHeader, EDITORIAL } from "@/components/home/SectionHeader";
+import {
+  SectionHeader,
+  EDITORIAL,
+  BTN,
+  BTN_PRIMARY,
+  BTN_SECONDARY,
+} from "@/components/home/SectionHeader";
+import SlashList from "@/components/home/SlashList";
 
 const SIGNAL = PROJECTS.find((p) => p.id === "signal") || {};
 const LIVE = SIGNAL.demo || "https://rnlkja--signal-api-api.modal.run";
@@ -44,7 +50,8 @@ const COPY = {
   en: {
     section: "Flagship",
     aside: "Featured work",
-    kind: "Independent Product · Jun 2026 – Present",
+    kindLabel: "Independent Product",
+    period: "Jun 2026 – Present",
     live: "Live",
     subtitle: SIGNAL.subtitle,
     labels: {
@@ -61,7 +68,8 @@ const COPY = {
   zh: {
     section: "旗舰项目",
     aside: "精选作品",
-    kind: "独立产品 · Jun 2026 – Present",
+    kindLabel: "独立产品",
+    period: "Jun 2026 – Present",
     live: "在线",
     subtitle: SIGNAL.zh?.subtitle || SIGNAL.subtitle,
     labels: {
@@ -77,8 +85,8 @@ const COPY = {
   },
 };
 
-const BTN =
-  "w-full sm:w-auto inline-flex items-center justify-center gap-2 h-10 px-5 border text-xs font-medium tracking-widest uppercase rounded-none transition-colors duration-200";
+// Full width on phones, so the three buttons stack evenly.
+const CTA = `${BTN} w-full sm:w-auto`;
 
 export default function FeaturedWork() {
   const [ref, inView] = useInView({ threshold: 0.15 });
@@ -100,9 +108,13 @@ export default function FeaturedWork() {
         }`}
       >
         {/* header bar — label left, live status right */}
-        <div className="px-5 md:px-8 h-11 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
-          <span className="text-[11px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#B4B4B4] truncate">
-            {copy.kind}
+        <div className="px-5 md:px-8 min-h-11 py-2.5 md:py-0 md:h-11 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
+          <span className="text-[11px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#B4B4B4]">
+            <span className="block sm:inline">{copy.kindLabel}</span>
+            <span className="hidden sm:inline" aria-hidden="true">
+              {" · "}
+            </span>
+            <span className="block sm:inline">{copy.period}</span>
           </span>
           <span className="text-[11px] tracking-widest uppercase text-black dark:text-white flex items-center gap-2 flex-shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
@@ -117,7 +129,7 @@ export default function FeaturedWork() {
               <h2 className="m-0 text-4xl md:text-5xl font-semibold tracking-tight leading-none text-black dark:text-white">
                 {SIGNAL.title || "Signal"}
               </h2>
-              <p className="text-sm md:text-base text-[#3D3D3D] dark:text-[#B4B4B4] mt-3 m-0">
+              <p className="m-0 mt-3 font-editorial italic text-lg md:text-2xl leading-snug text-[#3D3D3D] dark:text-[#C8C8C8]">
                 {copy.subtitle}
               </p>
             </div>
@@ -128,27 +140,14 @@ export default function FeaturedWork() {
               {SIGNAL.impact}
             </p>
             <div className="flex flex-wrap gap-2 mt-auto pt-2">
-              <Link
-                href="/projects/signal"
-                className={`${BTN} border-black bg-black text-white hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-transparent dark:hover:text-white`}
-              >
+              <Link href="/projects/signal" className={`${CTA} ${BTN_PRIMARY}`}>
                 {copy.caseStudy} <span aria-hidden="true">→</span>
               </Link>
-              <a
-                href={LIVE}
-                target="_blank"
-                rel="noreferrer"
-                className={`${BTN} border-[#D0D0D0] text-black hover:border-black dark:border-[#5C5C5C] dark:text-white dark:hover:border-white`}
-              >
+              <a href={LIVE} target="_blank" rel="noreferrer" className={`${CTA} ${BTN_SECONDARY}`}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
                 {copy.liveDemo} <span aria-hidden="true">↗</span>
               </a>
-              <a
-                href={REPO}
-                target="_blank"
-                rel="noreferrer"
-                className={`${BTN} border-[#D0D0D0] text-black hover:border-black dark:border-[#5C5C5C] dark:text-white dark:hover:border-white`}
-              >
+              <a href={REPO} target="_blank" rel="noreferrer" className={`${CTA} ${BTN_SECONDARY}`}>
                 {copy.github} <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -172,26 +171,18 @@ export default function FeaturedWork() {
               ))}
             </dl>
             <div className="px-5 py-4 md:px-6">
-              <p className="font-mono text-[11px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mb-2 m-0">
+              <p
+                id="featured-stack-label"
+                className="font-mono text-[11px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mb-2 m-0"
+              >
                 {copy.labels.stack}
               </p>
-              <p className="m-0 font-mono text-xs leading-6 text-[#3D3D3D] dark:text-[#B4B4B4]">
-                {STACK.map((s, i) => (
-                  <Fragment key={s}>
-                    <span className="whitespace-nowrap">
-                      {s}
-                      {i < STACK.length - 1 && (
-                        <span
-                          aria-hidden="true"
-                          className="mx-2 text-[#C8C8C8] dark:text-[#3D3D3D]"
-                        >
-                          /
-                        </span>
-                      )}
-                    </span>{" "}
-                  </Fragment>
-                ))}
-              </p>
+              <SlashList
+                items={STACK}
+                labelledBy="featured-stack-label"
+                balance
+                className="font-mono text-xs leading-6 text-[#3D3D3D] dark:text-[#B4B4B4]"
+              />
             </div>
           </div>
         </div>
