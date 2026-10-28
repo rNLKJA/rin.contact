@@ -121,8 +121,9 @@ export default function TestimonialsSection({ index } = {}) {
       <SectionHeader index={index} label={copy.label} />
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-y-10 md:gap-x-8">
-        {/* title — first on every width */}
-        <div className="md:col-span-4 md:row-start-1">
+        {/* title — first on every width; five columns below lg so the 48px
+            heading stays on one line at tablet widths */}
+        <div className="md:col-span-5 lg:col-span-4 md:row-start-1">
           <h2 className="m-0 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.05] text-black dark:text-white">
             {copy.heading}
           </h2>
@@ -170,7 +171,7 @@ export default function TestimonialsSection({ index } = {}) {
           </div>
         </div>
         {/* named endorsers + play/pause — after the quote on phones, bottom-left on desktop */}
-        <div className="md:col-span-4 md:row-start-2 md:self-end">
+        <div className="md:col-span-5 lg:col-span-4 md:row-start-2 md:self-end">
           {total > 1 && (
             <div>
               {/* named endorser selectors — direct, keyboard-accessible navigation */}
