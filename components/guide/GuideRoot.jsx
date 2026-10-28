@@ -85,10 +85,12 @@ export default function GuideRoot() {
 
   // Put focus back on the launcher after the box closes from the keyboard. Below
   // md the floating launcher is not displayed, so focus goes to the header cat.
+  // (offsetParent cannot tell: it is null for any position: fixed element, shown
+  // or not, so ask whether the launcher has a box at all.)
   useEffect(() => {
     if (state.minimised && focusLauncherNext.current && launcherRef.current) {
       focusLauncherNext.current = false;
-      if (launcherRef.current.offsetParent === null) {
+      if (launcherRef.current.getClientRects().length === 0) {
         requestAnimationFrame(() => document.getElementById("guide-header-launcher")?.focus());
       } else {
         launcherRef.current.focus();
