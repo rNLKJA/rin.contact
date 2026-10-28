@@ -83,7 +83,7 @@ export default function SkillsGlance({ stats }) {
             <li key={id}>
               <a
                 href={`#${id}`}
-                className="inline-flex min-h-[32px] items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 text-[11px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200"
+                className="inline-flex min-h-[32px] items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 text-[11px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#9A9A9A] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200"
               >
                 {t(`${K}.sections.${id}`)}
               </a>

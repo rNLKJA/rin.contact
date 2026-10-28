@@ -72,7 +72,7 @@ function Section({ title, paragraphs, children, guide }) {
       <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-[#1A1A1A] dark:text-[#EEEEEE]">
         {title}
       </h2>
-      <div className="space-y-4 text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+      <div className="space-y-4 text-[15px] text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
         {(paragraphs || []).map((p, i) => (
           <p key={i}>{renderText(p)}</p>
         ))}
@@ -133,7 +133,7 @@ export default function SignalCaseStudy() {
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-[#EEEEEE]">
               Signal
             </h1>
-            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-6">
+            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-6">
               {t("signal.tagline")}
             </p>
 
@@ -196,9 +196,7 @@ export default function SignalCaseStudy() {
             {(t("signal.artifacts") || []).map(({ t: at, d }) => (
               <div key={at} className="border-l-2 border-[#FF3C3C] pl-4">
                 <p className="text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE] mb-1">{at}</p>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
-                  {d}
-                </p>
+                <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">{d}</p>
               </div>
             ))}
           </div>
@@ -226,16 +224,12 @@ export default function SignalCaseStudy() {
               →
             </span>
           </Link>
-          <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] mt-1">
-            {t("signal.essayDesc")}
-          </p>
+          <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] mt-1">{t("signal.essayDesc")}</p>
         </div>
 
         {/* Footer CTA */}
         <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D] flex flex-wrap items-center justify-between gap-4">
-          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-            {t("signal.footerNote")}
-          </p>
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">{t("signal.footerNote")}</p>
           <div className="flex flex-wrap gap-2">
             <a
               href={LIVE}

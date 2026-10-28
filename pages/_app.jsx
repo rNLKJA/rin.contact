@@ -76,7 +76,7 @@ function IdleToast() {
     <div
       className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[999] font-mono text-[11px]
                  tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D]
-                 bg-white dark:bg-[#1A1A1A] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]
+                 bg-white dark:bg-[#1A1A1A] text-[#3D3D3D] dark:text-[#9A9A9A]
                  px-5 py-2.5 shadow-none pointer-events-none select-none"
       style={{ animation: "fade-in 200ms ease-out both" }}
       aria-live="polite"
@@ -107,7 +107,7 @@ function CopyUrlToast() {
     <div
       className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[999] font-mono text-[10px]
                  tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D]
-                 bg-white dark:bg-[#1A1A1A] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]
+                 bg-white dark:bg-[#1A1A1A] text-[#3D3D3D] dark:text-[#9A9A9A]
                  px-4 py-2 pointer-events-none select-none"
       style={{ animation: "fade-in 200ms ease-out both" }}
       aria-live="polite"
