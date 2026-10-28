@@ -155,7 +155,7 @@ export default function BlogIndex({ posts }) {
             onChange={(e) => onSearch(e.target.value)}
             placeholder={t("blog.searchPlaceholder")}
             aria-label={t("blog.searchPlaceholder")}
-            className="w-full pl-9 pr-3 py-2.5 text-sm bg-transparent border border-[#E0E0E0] dark:border-[#3D3D3D] text-black dark:text-white placeholder:text-[#9A9A9A] focus:border-[#FF3C3C] focus:outline-none transition-colors duration-200"
+            className="w-full pl-9 pr-3 py-2.5 text-sm bg-transparent border border-[#E0E0E0] dark:border-[#3D3D3D] text-black dark:text-white placeholder:text-[#9A9A9A] focus:border-black dark:focus:border-white focus:outline-none transition-colors duration-200"
           />
         </div>
 
