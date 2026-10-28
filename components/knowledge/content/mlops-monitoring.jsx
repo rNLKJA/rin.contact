@@ -358,7 +358,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The data-vs-concept-drift distinction, input-distribution monitoring, training-serving
           skew, and triggered-retraining practice reflect current MLOps references alongside
           hands-on work.
@@ -586,7 +586,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           数据漂移对概念漂移的区分、输入分布监控、训练-服务偏斜，以及触发式重新训练的实务，反映了当前的
           MLOps 参考文献以及亲身的工作。
         </p>

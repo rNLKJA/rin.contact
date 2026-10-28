@@ -286,7 +286,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The censoring framing, Kaplan-Meier/log-rank pairing, and the Cox model with its
           proportional-hazards caveat reflect current survival-analysis references alongside
           statistics coursework.
@@ -484,7 +484,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           删失的框架、Kaplan-Meier/对数秩的配对，以及带有比例风险告诫的 Cox
           模型，反映了当前的生存分析参考 文献以及统计学课程。
         </p>
