@@ -75,7 +75,7 @@ function CountUp({ target, duration = 300, started }) {
 // and repository or site (hairline). The demo red is the accent-fill token
 // (#CC0000, 5.9:1 with white text), the same as the coursework cards.
 const BTN =
-  "inline-flex items-center gap-2 px-4 py-1.5 text-xs tracking-widest uppercase rounded-full transition-colors duration-200";
+  "inline-flex items-center gap-2 px-4 py-1.5 text-xs tracking-widest uppercase transition-colors duration-200";
 const BTN_CASE_STUDY = `${BTN} border border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#1A1A1A] dark:bg-[#EEEEEE] text-white dark:text-[#0A0A0A] hover:bg-black dark:hover:bg-white`;
 const BTN_DEMO = `${BTN} border border-[#CC0000] bg-[#CC0000] text-white hover:bg-[#A30000] hover:border-[#A30000]`;
 const BTN_TOUR = `${BTN} border border-[#1A1A1A] dark:border-[#EEEEEE] text-[#1A1A1A] dark:text-[#EEEEEE] hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-[#EEEEEE] dark:hover:text-[#0A0A0A]`;
@@ -90,7 +90,7 @@ function DomainBadge({ primaryDomain, tag }) {
   return (
     <span className="hidden md:flex items-center gap-3 justify-end">
       <span
-        className="text-[10px] tracking-widest uppercase border px-2.5 py-0.5 rounded-full"
+        className="text-[10px] tracking-widest uppercase border px-2.5 py-0.5"
         style={
           dc
             ? { borderColor: domainInk(dc, isDark), color: domainInk(dc, isDark) }
@@ -214,7 +214,7 @@ function ProjectDetail({ project, coursework }) {
           <h3 className="text-xl font-semibold tracking-tight mb-1 flex items-center gap-3 flex-wrap">
             {project.title}
             {project.current && (
-              <span className="border border-[#FF3C3C] px-3 py-0.5 text-[10px] tracking-widest uppercase text-accent-ink rounded-full">
+              <span className="border border-[#FF3C3C] px-3 py-0.5 text-[10px] tracking-widest uppercase text-accent-ink">
                 {t("projects.active")}
               </span>
             )}
@@ -232,7 +232,7 @@ function ProjectDetail({ project, coursework }) {
           {project.summary}
         </p>
         <div className="mt-3 p-4 bg-[#F5F5F5] dark:bg-[#141414]">
-          <span className="inline-block mb-2 px-2 py-0.5 bg-accent-fill text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
+          <span className="inline-block mb-2 px-2 py-0.5 bg-accent-fill text-white text-[9px] tracking-widest uppercase font-mono">
             {t("projects.impact")}
           </span>
           <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
@@ -278,7 +278,7 @@ function ProjectDetail({ project, coursework }) {
             {project.stack.map((t) => (
               <span
                 key={t}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4]
                            cursor-default hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
               >
                 {t}
@@ -371,7 +371,7 @@ function FeaturedSpotlight({ project, coursework }) {
               {project.stack.map((s) => (
                 <span
                   key={s}
-                  className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full
+                  className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4]
                              cursor-default hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
                 >
                   {s}
@@ -563,7 +563,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
               <button
                 key={d}
                 onClick={() => selectFilter(d)}
-                className="border px-4 py-1.5 text-xs tracking-widest uppercase transition-colors duration-200 flex items-center gap-1 rounded-full"
+                className="border px-4 py-1.5 text-xs tracking-widest uppercase transition-colors duration-200 flex items-center gap-1"
                 style={isActive ? activeStyle : idleStyle}
                 onMouseEnter={(e) => {
                   if (isActive) return;
@@ -571,8 +571,8 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                     e.currentTarget.style.borderColor = dc.color;
                     e.currentTarget.style.color = domainInk(dc, isDark);
                   } else {
-                    e.currentTarget.style.borderColor = "#FF3C3C";
-                    e.currentTarget.style.color = "#FF3C3C";
+                    e.currentTarget.style.borderColor = isDark ? "#FFFFFF" : "#000000";
+                    e.currentTarget.style.color = isDark ? "#FFFFFF" : "#000000";
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -604,7 +604,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
       {isAllView && (
         <div className="w-full">
           {/* Search */}
-          <div className="mb-4 flex items-center border border-[#E0E0E0] dark:border-[#3D3D3D] focus-within:border-[#FF3C3C] focus-within:outline-none transition-colors duration-200">
+          <div className="mb-4 flex items-center border border-[#E0E0E0] dark:border-[#3D3D3D] focus-within:border-black dark:focus-within:border-white focus-within:outline-none transition-colors duration-200">
             <span className="pl-4 text-[#373737] dark:text-[#B4B4B4] text-sm select-none">⌕</span>
             <input
               type="text"
@@ -614,7 +614,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                 setOpenId(null);
               }}
               placeholder={t("projects.searchPlaceholder")}
-              className="flex-1 px-3 py-2.5 text-sm bg-transparent outline-none placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A]"
+              className="flex-1 px-3 py-2.5 text-sm bg-transparent outline-none focus-visible:outline-none placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A]"
               aria-label={t("projects.searchPlaceholder")}
             />
             {search && (
@@ -847,7 +847,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                         {project.summary}
                       </p>
                       <div className="p-3 bg-[#F5F5F5] dark:bg-[#141414]">
-                        <span className="inline-block mb-1.5 px-2 py-0.5 bg-accent-fill text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
+                        <span className="inline-block mb-1.5 px-2 py-0.5 bg-accent-fill text-white text-[9px] tracking-widest uppercase font-mono">
                           {t("projects.impact")}
                         </span>
                         <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
@@ -858,7 +858,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                         {project.stack.map((t) => (
                           <span
                             key={t}
-                            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
+                            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
                           >
                             {t}
                           </span>
