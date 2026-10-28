@@ -129,7 +129,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 sm:px-5 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#111111]">
         <h3
           id={`${uid}-title`}
-          className={`${META} font-mono flex items-center gap-2 text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]`}
+          className={`${META} font-mono flex items-center gap-2 text-[#CC0000] dark:text-[#FF3C3C]`}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
           {L(D.kicker)}
@@ -175,7 +175,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
               const isDrop = i === s.drop.m;
               return (
                 <div key={i} className="contents">
-                  <span className="text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] truncate">
+                  <span className="text-xs text-[#3D3D3D] dark:text-[#9A9A9A] truncate">
                     {stage(i)}
                   </span>
                   <span className="relative h-4 bg-[#F0F0F0] dark:bg-[#1A1A1A]">
@@ -188,7 +188,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
                     {count}
                     <span className="text-[#6B6B6B] dark:text-[#9A9A9A]"> · {s.pct(count)}%</span>
                     {isDrop && (
-                      <span className="ml-1 text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+                      <span className="ml-1 text-[#CC0000] dark:text-[#FF3C3C]">
                         −{s.drop.pct}%
                       </span>
                     )}
@@ -208,7 +208,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
                 const you = visitor && m === 0;
                 return (
                   <div key={m} className="contents">
-                    <span className="font-mono text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                    <span className="font-mono text-xs text-[#3D3D3D] dark:text-[#9A9A9A]">
                       M{m + 1}
                     </span>
                     <span className="relative h-5">
@@ -294,7 +294,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
               ))}
             </div>
           </fieldset>
-          <p className="text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-3">
+          <p className="text-xs text-[#3D3D3D] dark:text-[#9A9A9A] mb-3">
             {fill(L(D.score.pillLabel), { m: mod + 1 })} · {L(COURSE[mod])}
           </p>
           <div
@@ -309,7 +309,7 @@ export default function EngagementDashboard({ lang = "en", visitor = null }) {
                   <span
                     className={`font-mono text-[11px] tabular-nums mb-1 ${
                       you
-                        ? "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+                        ? "text-[#CC0000] dark:text-[#FF3C3C]"
                         : "text-[#1A1A1A] dark:text-[#EEEEEE]"
                     }`}
                   >

@@ -404,7 +404,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The choropleth, classification, and MAUP guidance on this page reflects current
           cartography and spatial-analysis references alongside hands-on government work.
         </p>
@@ -621,7 +621,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           本页上关于等值区域图、分级与 MAUP 的指引，反映了当前的制图学与空间分析参考文献，以及
           亲身的政府工作。
         </p>
