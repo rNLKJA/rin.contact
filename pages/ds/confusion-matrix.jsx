@@ -64,9 +64,7 @@ export default function ConfusionMatrixPage() {
                     <td className="p-3 text-[#1A1A1A] dark:text-white">{reality}</td>
                     <td className="p-3">
                       {CORRECT[i] ? (
-                        <span className="text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-                          ✓
-                        </span>
+                        <span className="text-[#3D3D3D] dark:text-[#9A9A9A]">✓</span>
                       ) : (
                         <span className="text-[#FF3C3C]">✗</span>
                       )}

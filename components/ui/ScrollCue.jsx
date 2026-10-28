@@ -25,7 +25,7 @@ export default function ScrollCue() {
       className={`hidden md:flex fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex-col items-center gap-2 group
                   ${hidden ? "opacity-0 pointer-events-none transition-opacity duration-200" : "opacity-100 animate-enter"}`}
     >
-      <span className="text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B] dark:text-[#9A9A9A] group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200">
+      <span className="text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B] dark:text-[#9A9A9A] group-hover:text-black dark:group-hover:text-white transition-colors duration-200">
         Scroll
       </span>
       <span className="relative block w-px h-10 bg-[#D8D8D8] dark:bg-[#3D3D3D] overflow-hidden">

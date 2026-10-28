@@ -3,7 +3,7 @@ import ScrollRegion from "@/components/ui/ScrollRegion";
 
 const K = "courseworkPage.matrix";
 const GROUP =
-  "font-mono text-[10px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] text-left";
+  "font-mono text-[10px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#FF3C3C] text-left";
 
 /**
  * Skill -> project dot matrix: one row per canonical skill, one column per
@@ -36,8 +36,10 @@ export default function SkillsMatrix({
       onClick={() => onSelectSkill(c.id)}
       aria-pressed={activeSkill === c.id}
       title={fill(t(`${K}.filterBy`), { skill: c.label })}
-      className={`text-left hover:text-[#CC0000] dark:hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 ${
-        activeSkill === c.id ? "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]" : ""
+      className={`text-left transition-colors duration-200 ${
+        activeSkill === c.id
+          ? "text-[#CC0000] dark:text-[#FF3C3C]"
+          : "text-[#1A1A1A] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white"
       } ${className}`}
     >
       {c.label}
@@ -71,9 +73,9 @@ export default function SkillsMatrix({
                   >
                     <Label
                       {...(shown ? { href: `#${p.slug}` } : {})}
-                      className={`mx-auto inline-block max-h-[168px] overflow-hidden text-[11px] leading-tight text-[#3D3D3D] dark:text-[#CCCCCC] [writing-mode:vertical-rl] ${
+                      className={`mx-auto inline-block max-h-[168px] overflow-hidden text-[11px] leading-tight text-[#3D3D3D] dark:text-[#B4B4B4] [writing-mode:vertical-rl] ${
                         shown
-                          ? "hover:text-[#CC0000] dark:hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200"
+                          ? "hover:text-black dark:hover:text-white transition-colors duration-200"
                           : ""
                       } ${isZh ? "" : "rotate-180"}`}
                     >
@@ -143,12 +145,7 @@ export default function SkillsMatrix({
             <ul className="divide-y divide-[#F0F0F0] dark:divide-[#1E1E1E] border-y border-[#F0F0F0] dark:border-[#1E1E1E]">
               {caps.map((c) => (
                 <li key={c.id} className="py-3">
-                  <p>
-                    {skillButton(
-                      c,
-                      "min-h-[24px] text-sm font-medium text-[#1A1A1A] dark:text-[#DDDDDD]"
-                    )}
-                  </p>
+                  <p>{skillButton(c, "min-h-[24px] text-sm font-medium")}</p>
                   <p className="mt-1 text-xs leading-relaxed text-[#5C5C5C] dark:text-[#9A9A9A]">
                     {c.projects.map((slug) => titleOf[slug]).join(" · ")}
                   </p>

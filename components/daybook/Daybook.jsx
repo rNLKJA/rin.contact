@@ -60,7 +60,7 @@ function RatingGroup({ question, value, onChange, lang }) {
               />
               <span
                 aria-hidden="true"
-                className="flex h-10 w-10 items-center justify-center rounded-full border font-mono text-sm transition-colors duration-150 motion-reduce:transition-none border-[#E0E0E0] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-[#1A1A1A] dark:border-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] dark:hover:border-[#EEEEEE] peer-checked:border-[#1A1A1A] peer-checked:bg-[#1A1A1A] peer-checked:text-white dark:peer-checked:border-[#EEEEEE] dark:peer-checked:bg-[#EEEEEE] dark:peer-checked:text-black peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#CC0000] dark:peer-focus-visible:outline-[#FF3C3C]"
+                className="flex h-10 w-10 items-center justify-center rounded-full border font-mono text-sm transition-colors duration-150 motion-reduce:transition-none border-[#E0E0E0] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-[#1A1A1A] dark:border-[#3D3D3D] dark:hover:border-[#EEEEEE] peer-checked:border-[#1A1A1A] peer-checked:bg-[#1A1A1A] peer-checked:text-white dark:peer-checked:border-[#EEEEEE] dark:peer-checked:bg-[#EEEEEE] dark:peer-checked:text-black peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#CC0000] dark:peer-focus-visible:outline-[#FF3C3C]"
               >
                 {n}
               </span>
@@ -134,7 +134,7 @@ export default function Daybook({ lang = "en" }) {
       {/* Label strip: what this is, stated before anything else. */}
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-5 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#111111]">
         <p
-          className={`${META} font-mono flex items-center gap-2 text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]`}
+          className={`${META} font-mono flex items-center gap-2 text-[#CC0000] dark:text-[#FF3C3C]`}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
           {L(C.kicker)}
@@ -177,7 +177,7 @@ export default function Daybook({ lang = "en" }) {
         <p
           role="status"
           aria-live="polite"
-          className="basis-full text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] min-h-[1.25rem]"
+          className="basis-full text-sm text-[#3D3D3D] dark:text-[#9A9A9A] min-h-[1.25rem]"
         >
           {message}
         </p>
@@ -202,8 +202,8 @@ export default function Daybook({ lang = "en" }) {
                 <dd
                   className={`font-display text-2xl leading-none mt-1 ${
                     today == null
-                      ? "text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
-                      : "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+                      ? "text-[#9A9A9A] dark:text-[#9A9A9A]"
+                      : "text-[#CC0000] dark:text-[#FF3C3C]"
                   }`}
                 >
                   {today == null ? (
@@ -299,7 +299,7 @@ export default function Daybook({ lang = "en" }) {
             {Array.from({ length: COLS - 1 }, (_, d) => (
               <span key={d} />
             ))}
-            <span className="whitespace-nowrap text-center text-[10px] text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+            <span className="whitespace-nowrap text-center text-[10px] text-[#CC0000] dark:text-[#FF3C3C]">
               {L(C.today)}
             </span>
             <span />
