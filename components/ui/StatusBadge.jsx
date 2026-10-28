@@ -129,13 +129,11 @@ export default function StatusBadge({ labelledBy, label, className = "" }) {
         </>
       ),
     },
+    // One text node, so the reading stays "14°C Clear" to anything that reads the
+    // page text node by node (the homepage check ignores temperatures that way).
     weather && {
       key: "weather",
-      content: (
-        <span title={weather.desc}>
-          {weather.tempC}°C {weather.word}
-        </span>
-      ),
+      content: <span title={weather.desc}>{`${weather.tempC}°C ${weather.word}`}</span>,
     },
   ].filter(Boolean);
 
