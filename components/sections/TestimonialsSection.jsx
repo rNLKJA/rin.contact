@@ -68,7 +68,9 @@ const COPY = {
 
 /* ── Auto-advancing carousel ──────────────────────────────────────────────── */
 
-export default function TestimonialsSection() {
+// `index` is the homepage's section number ("06"); /about shares this section
+// and numbers its own sections, so it passes none and the header shows no index.
+export default function TestimonialsSection({ index } = {}) {
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true); // user's explicit play/pause intent
   const [interacting, setInteracting] = useState(false); // transient pause on hover/focus
@@ -116,7 +118,7 @@ export default function TestimonialsSection() {
       aria-label={copy.label}
       className={`relative scroll-mt-24 ${EDITORIAL}`}
     >
-      <SectionHeader index="06" label={copy.label} />
+      <SectionHeader index={index} label={copy.label} />
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-y-10 md:gap-x-8">
         {/* title — first on every width */}

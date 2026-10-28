@@ -560,7 +560,7 @@ export default function Home({ glyphStats, explorerData = {} }) {
         {/* ══ 06 TESTIMONIALS ══ */}
         <div className="border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
           <div className={SHELL}>
-            <TestimonialsSection />
+            <TestimonialsSection index="06" />
           </div>
         </div>
 
