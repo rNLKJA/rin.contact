@@ -153,7 +153,7 @@ const Footer = () => {
                 // sameAs identity signal (helps search consolidate the profiles under rin.contact).
                 rel={key === "nav.email" ? "noreferrer" : "me noreferrer"}
                 aria-label={t(key)}
-                className="inline-flex items-center gap-1.5 border border-[#333333] px-3.5 py-1.5 rounded-full
+                className="inline-flex items-center gap-1.5 border border-[#333333] px-3.5 py-1.5 rounded-none
                            text-[10px] tracking-widest uppercase text-[#B4B4B4]
                            hover:border-white hover:text-white transition-all duration-200"
               >

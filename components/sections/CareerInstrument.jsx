@@ -20,6 +20,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { getRoles } from "@/lib/career-data";
+import { SectionHeader, SHELL, BAND } from "@/components/home/SectionHeader";
 
 const HeroDotField = dynamic(() => import("@/components/ui/HeroDotField"), { ssr: false });
 
@@ -170,28 +171,35 @@ export default function CareerInstrument({ compact = false }) {
   return (
     <section
       ref={ref}
+      id={compact ? "signal" : undefined}
       aria-label={copy.label}
-      className="relative overflow-hidden border-y border-[#E0E0E0] dark:border-[#3D3D3D]"
+      className="relative overflow-hidden scroll-mt-24 border-y border-[#E0E0E0] dark:border-[#3D3D3D]"
       onMouseLeave={() => setActive(null)}
     >
       <HeroDotField />
-      <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-10 md:py-14">
-        <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] m-0">
-            <span aria-hidden="true">■ — </span>
-            {copy.label}
-          </p>
-          {compact ? (
-            <Link
-              href="/career"
-              className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
-            >
-              {copy.open} <span aria-hidden="true">→</span>
-            </Link>
-          ) : (
+      <div className={`relative z-10 ${SHELL} ${BAND}`}>
+        {compact ? (
+          <SectionHeader
+            index="04"
+            label={copy.label}
+            aside={
+              <Link
+                href="/career"
+                className="tracking-widest uppercase text-black dark:text-white underline decoration-[#C8C8C8] dark:decoration-[#5C5C5C] underline-offset-4 hover:decoration-black dark:hover:decoration-white transition-colors duration-200"
+              >
+                {copy.open} <span aria-hidden="true">→</span>
+              </Link>
+            }
+          />
+        ) : (
+          <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
+            <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] m-0">
+              <span aria-hidden="true">■ — </span>
+              {copy.label}
+            </p>
             <p className="text-xs text-[#5A5A5A] dark:text-[#9A9A9A] m-0">{copy.note}</p>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Readout */}
         <div
@@ -208,10 +216,7 @@ export default function CareerInstrument({ compact = false }) {
                   ? `${current.org} · ${copy.roleCount(current.count)}`
                   : `${current.org} · ${current.period} · ${copy.months(current.e - current.s + 1)}`}
                 {current.current && (
-                  <span className="text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]">
-                    {" "}
-                    · {copy.ongoing}
-                  </span>
+                  <span className="text-[#B71C1C] dark:text-[#FF3C3C]"> · {copy.ongoing}</span>
                 )}
               </p>
             </>
@@ -225,9 +230,7 @@ export default function CareerInstrument({ compact = false }) {
               <p className="font-mono text-[11px] md:text-xs tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mt-3 m-0">
                 {compact ? (
                   <>
-                    <span className="text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]">
-                      {copy.now}
-                    </span>
+                    <span className="text-[#B71C1C] dark:text-[#FF3C3C]">{copy.now}</span>
                     {" · "}
                     {nowRoles.map((r) => r.role).join(" · ")}
                     {" · "}
@@ -248,7 +251,7 @@ export default function CareerInstrument({ compact = false }) {
             {lanes.map((g) => (
               <div key={g.track}>
                 {!compact && (
-                  <p className="h-8 flex items-end pb-1 m-0 font-mono text-[10px] md:text-[11px] tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+                  <p className="h-8 flex items-end pb-1 m-0 font-mono text-[10px] md:text-[11px] tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C]">
                     {copy.tracks[g.track]}
                   </p>
                 )}
@@ -274,7 +277,7 @@ export default function CareerInstrument({ compact = false }) {
                     }
                     className={`h-7 flex items-center text-xs truncate transition-colors duration-200 outline-none focus-visible:ring-1 focus-visible:ring-[#FF3C3C] ${
                       active === r.id
-                        ? "text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+                        ? "text-[#B71C1C] dark:text-[#FF3C3C]"
                         : active
                           ? "text-[#9A9A9A] dark:text-[#5C5C5C]"
                           : "text-black dark:text-white"
@@ -322,10 +325,13 @@ export default function CareerInstrument({ compact = false }) {
                         return (
                           <span
                             key={m}
-                            className={`block h-[9px] md:h-[10px] flex-1 rounded-[2px] transition-colors duration-300 ${cls}`}
+                            className={`block h-[9px] md:h-[10px] flex-1 rounded-[2px] transition-colors duration-200 ${cls}`}
                             style={
                               lit && !reduce
-                                ? { transitionDelay: started && !active ? `${m * 22}ms` : "0ms" }
+                                ? {
+                                    transitionDelay:
+                                      started && !active ? `${Math.min(m * 3, 100)}ms` : "0ms",
+                                  }
                                 : undefined
                             }
                           />
@@ -342,10 +348,10 @@ export default function CareerInstrument({ compact = false }) {
               className={`absolute ${compact ? "top-0" : "top-6"} bottom-0 w-px bg-[#FF3C3C] pointer-events-none`}
               style={{
                 left: on ? `${((nowIdx + 0.5) / total) * 100}%` : "0%",
-                transition: reduce ? "none" : "left 2.4s cubic-bezier(0.2, 0.7, 0.2, 1)",
+                transition: reduce ? "none" : "left 300ms cubic-bezier(0.2, 0.7, 0.2, 1)",
               }}
             >
-              <span className="absolute -top-5 -translate-x-1/2 font-mono text-[10px] tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] whitespace-nowrap">
+              <span className="absolute -top-5 -translate-x-1/2 font-mono text-[10px] tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] whitespace-nowrap">
                 {copy.now}
               </span>
             </div>

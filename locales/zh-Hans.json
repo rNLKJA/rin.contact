@@ -83,7 +83,8 @@
     "pronouns": "阿德莱德 & 墨尔本",
     "bio": "从CSIRO的气候风险建模到南澳政府的部长级仪表盘，从WEHI的基因组学科研软件到墨尔本大学的心理健康移动应用，我一直在数据、战略和工程交汇的领域工作。通才的天性，专才的素养。",
     "ctaCareer": "职业路径",
-    "ctaContact": "联系我"
+    "ctaContact": "联系我",
+    "tagsLabel": "关注领域"
   },
   "heroRoles": [
     "高级数据分析师 @ 南澳警察局",
@@ -137,7 +138,7 @@
     "domains": ["政府", "科研", "工程"]
   },
   "contact": {
-    "sectionLabel": "07 — 联系我",
+    "sectionLabel": "联系我",
     "heading": "保持联系",
     "description": "无论您有数据分析难题、研究合作意向、项目创意，还是只想聊聊——我都很期待收到您的消息。我一直对能够推动进步的对谈持开放态度。",
     "engage": {
@@ -1717,6 +1718,8 @@
     "work": "工作",
     "expertise": "专长",
     "faq": "问答",
+    "explore": "探索",
+    "testimonials": "推荐",
     "contact": "联系"
   },
   "newsletter": {

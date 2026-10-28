@@ -1,18 +1,19 @@
 /**
  * PositioningStatement — the thesis band, placed right after the hero.
  *
- * States Rin's real LinkedIn positioning line as an oversized, authoritative
- * editorial statement: four clauses stacked and revealed line by line on scroll,
- * the final clause carrying the brand red. An asymmetric eyebrow row (red square
- * dot + label + hairline + the three parallel domains) and HUD corner-ticks frame
- * the block like an instrument readout, with a faint dot-matrix panel behind for
- * depth. Identity (hero) -> thesis (here) -> proof (Featured).
+ * States Rin's real LinkedIn positioning line as one editorial statement: four
+ * clauses stacked and revealed line by line on scroll, the first three in grey
+ * and the last in full ink. The shared section header carries the three domains
+ * on its right; the gloss sits on the right half of the 12-column grid.
+ * Identity (hero) -> thesis (here) -> proof (Featured). No red: nothing here is
+ * live.
  *
  * Content is pulled verbatim from the career profile / LinkedIn line; nothing is
  * invented. Localised (en-AU + zh-Hans). Theme-aware, reduced-motion safe.
  */
 import { useI18n } from "@/contexts/I18nContext";
 import { useInView } from "@/hooks/useInView";
+import { SectionHeader, EDITORIAL } from "@/components/home/SectionHeader";
 
 export default function PositioningStatement() {
   const { t } = useI18n();
@@ -26,112 +27,72 @@ export default function PositioningStatement() {
   const [ref, inView] = useInView({ threshold: 0.2 });
 
   return (
-    <section aria-label="Positioning" className="relative py-24 md:py-32 overflow-hidden">
-      {/* depth — faint dot-matrix panel bleeding off the right edge */}
-      <div
-        aria-hidden="true"
-        className="dot-matrix pointer-events-none absolute right-[-60px] top-1/2 -translate-y-1/2 w-[440px] h-[440px] opacity-[0.05] md:opacity-[0.08]"
-      />
-
+    <section aria-label="Positioning" className={`relative ${EDITORIAL}`}>
       <div ref={ref} className={`relative ${inView ? "in" : ""}`}>
-        {/* eyebrow row — asymmetric: label left, domains far right, hairline between */}
-        <div className="flex items-center gap-3 mb-9 md:mb-12">
-          <span className="block w-2 h-2 bg-[#FF3C3C]" aria-hidden="true" />
-          <span className="text-[11px] tracking-[0.3em] uppercase text-[#6B6B6B] dark:text-[#9A9A9A] whitespace-nowrap">
-            {eyebrow}
-          </span>
-          <span
-            className="hidden md:block flex-1 h-px bg-[#E5E5E5] dark:bg-[#262626]"
-            aria-hidden="true"
-          />
-          <span className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#6B6B6B] dark:text-[#9A9A9A]">
-            {safeDomains.map((d, i) => (
-              <span key={d} className="flex items-center gap-2">
-                {i > 0 && (
-                  <span className="text-[#CC0000] dark:text-[#FF3C3C]" aria-hidden="true">
-                    ·
-                  </span>
-                )}
-                {d}
-              </span>
-            ))}
-          </span>
-        </div>
+        <SectionHeader
+          index="02"
+          label={eyebrow}
+          aside={
+            <span className="flex items-center gap-2 tracking-widest uppercase">
+              {safeDomains.map((d, i) => (
+                <span key={d} className="flex items-center gap-2">
+                  {i > 0 && <span aria-hidden="true">·</span>}
+                  {d}
+                </span>
+              ))}
+            </span>
+          }
+        />
 
-        {/* statement — HUD-framed, oversized, line-by-line reveal */}
-        <div className="statement relative inline-block">
-          <span className="hud-tick tl" aria-hidden="true" />
-          <span className="hud-tick br" aria-hidden="true" />
-          <h2
-            className="font-semibold tracking-tight text-black dark:text-white"
-            style={{ fontSize: "clamp(2.1rem, 6.4vw, 5rem)", lineHeight: 1.0 }}
-          >
-            {safeLines.map((ln, i) => (
-              <span
-                key={i}
-                className={`line block ${i === safeLines.length - 1 ? "text-[#CC0000] dark:text-[#FF3C3C] dark:text-[#FF5C5C]" : ""}`}
-                style={{ "--i": i }}
-              >
-                {ln}
-              </span>
-            ))}
-          </h2>
-        </div>
-
-        {/* gloss — faithful operating-principle line. Inks clear 4.5:1 even at
-            the 0.7 starting opacity, before the line scrolls into view. */}
-        <p
-          className="gloss mt-9 md:mt-12 max-w-2xl text-base md:text-lg font-light leading-relaxed text-[#333333] dark:text-[#B4B4B4]"
-          style={{ "--i": safeLines.length }}
+        {/* statement — full measure; the earlier clauses recede, the last one lands */}
+        <h2
+          className="statement m-0 font-semibold tracking-tight text-black dark:text-white"
+          style={{ fontSize: "clamp(2.25rem, 4.2vw, 3.5rem)", lineHeight: 1.06 }}
         >
-          {gloss}
-        </p>
+          {safeLines.map((ln, i) => (
+            <span
+              key={i}
+              className={`line block ${
+                i === safeLines.length - 1
+                  ? "text-black dark:text-white"
+                  : "text-[#6B6B6B] dark:text-[#8A8A8A]"
+              }`}
+              style={{ "--i": i }}
+            >
+              {ln}
+            </span>
+          ))}
+        </h2>
+
+        {/* gloss — on the right half of the 12-column grid, so the band reads as
+            one composition rather than a left column with an empty right. */}
+        <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-8 mt-8 md:mt-10">
+          <p
+            className="gloss md:col-start-7 md:col-span-6 max-w-xl m-0 text-base md:text-lg font-light leading-relaxed text-[#333333] dark:text-[#B4B4B4]"
+            style={{ "--i": safeLines.length }}
+          >
+            {gloss}
+          </p>
+        </div>
       </div>
 
       <style jsx>{`
-        /* Motion rules: start at 70% (opacity 0.7, 5px) and finish within
-           300ms of the reveal: 200ms + a stagger capped at 100ms. */
+        /* Motion rules: a 5px settle that finishes within 300ms of the reveal
+           (200ms + a stagger capped at 100ms). Opacity stays at 1 so the grey
+           clauses keep their contrast before the band scrolls into view. */
         .line,
         .gloss {
-          opacity: 0.7;
           transform: translateY(5px);
         }
         .in .line,
         .in .gloss {
-          opacity: 1;
           transform: translateY(0);
-          transition:
-            opacity 200ms ease-out,
-            transform 200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+          transition: transform 200ms cubic-bezier(0.2, 0.7, 0.2, 1);
           transition-delay: min(calc(var(--i) * 30ms), 100ms);
-        }
-        .hud-tick {
-          position: absolute;
-          width: 14px;
-          height: 14px;
-          opacity: 0.7;
-        }
-        .hud-tick.tl {
-          top: -16px;
-          left: -14px;
-          border-top: 2px solid #ff3c3c;
-          border-left: 2px solid #ff3c3c;
-        }
-        .hud-tick.br {
-          bottom: -16px;
-          right: -14px;
-          border-bottom: 2px solid #ff3c3c;
-          border-right: 2px solid #ff3c3c;
-        }
-        .in .hud-tick {
-          opacity: 1;
-          transition: opacity 200ms ease-out 100ms;
         }
         @media (prefers-reduced-motion: reduce) {
           .line,
-          .gloss,
-          .hud-tick {
-            opacity: 1;
+          .gloss {
             transform: none;
             transition: none;
           }

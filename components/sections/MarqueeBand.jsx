@@ -1,13 +1,18 @@
 /**
- * MarqueeBand → EmployerBand — a calm static strip listing institutions.
+ * MarqueeBand → EmployerBand — a calm static strip: who Rin has worked with,
+ * and what is live right now.
  *
- * Plain flowing text: a mono-case label, then the organisations separated by a
- * light slash. Each name stays whole and lines wrap between names at any width.
- * No animation, no rounded corners, respects prefers-reduced-motion.
- * Mark with data-band="employers". Internationalised (EN + zh-Hans).
+ * Two rows with one anatomy (LabelRow): a mono label in a fixed column, then a
+ * SlashList whose "/" separators never start or end a line. Each item stays
+ * whole and lines wrap between items at any width; the Worked with row is
+ * balanced so no organisation is left alone on the last line. No animation, no box, no
+ * rounded corners. Mark with data-band="employers". Internationalised
+ * (EN + zh-Hans).
  */
-import { Fragment } from "react";
 import { useRouter } from "next/router";
+import StatusBadge from "@/components/ui/StatusBadge";
+import SlashList from "@/components/home/SlashList";
+import { SHELL, LabelRow } from "@/components/home/SectionHeader";
 
 const ORGS_EN = [
   "South Australia Police",
@@ -21,41 +26,31 @@ const ORGS_EN = [
 const ORGS_ZH = ["南澳警察局", "总检察署", "墨尔本大学", "Mapiva", "CSIRO", "WEHI"];
 
 const COPY = {
-  en: "Worked with",
-  zh: "合作过",
+  en: { worked: "Worked with", status: "Status" },
+  zh: { worked: "合作过", status: "当前状态" },
 };
+
+const LIST = "font-mono text-[12px] md:text-[13px] leading-6 text-[#5C5C5C] dark:text-[#9A9A9A]";
 
 export default function MarqueeBand() {
   const { locale = "en-AU" } = useRouter();
   const lang = locale === "zh-Hans" ? "zh" : "en";
-  const label = COPY[lang];
+  const copy = COPY[lang];
   const orgs = lang === "zh" ? ORGS_ZH : ORGS_EN;
 
   return (
     <section
       data-band="employers"
-      className="border-y border-[#EFEFEF] dark:border-[#1A1A1A] bg-white dark:bg-[#0A0A0A]"
+      aria-label={copy.worked}
+      className="border-b border-[#E0E0E0] dark:border-[#3D3D3D]"
     >
-      <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-4 md:py-5">
-        {/* Plain flowing text: each name stays whole (nowrap) with its separator,
-            and lines wrap naturally between names at any width. */}
-        <p className="font-mono text-[12px] md:text-[13px] tracking-normal leading-loose">
-          <span className="font-medium text-black dark:text-white uppercase tracking-widest mr-4">
-            {label}
-          </span>
-          {orgs.map((org, i) => (
-            <Fragment key={org}>
-              <span className="whitespace-nowrap text-[#6B6B6B] dark:text-[#9A9A9A]">
-                {org}
-                {i < orgs.length - 1 && (
-                  <span aria-hidden="true" className="ml-2.5 text-[#D0D0D0] dark:text-[#3D3D3D]">
-                    /
-                  </span>
-                )}
-              </span>{" "}
-            </Fragment>
-          ))}
-        </p>
+      <div className={`${SHELL} py-6 md:py-7 flex flex-col gap-3`}>
+        <LabelRow label={copy.worked} labelId="band-worked-label">
+          <SlashList items={orgs} labelledBy="band-worked-label" className={LIST} balance />
+        </LabelRow>
+        <LabelRow label={copy.status} labelId="band-status-label">
+          <StatusBadge labelledBy="band-status-label" className={LIST} />
+        </LabelRow>
       </div>
     </section>
   );

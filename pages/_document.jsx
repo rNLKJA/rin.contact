@@ -216,22 +216,9 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
-          {/* DM Sans: body text, loaded early to reduce FOUT */}
-          <link
-            rel="preload"
-            href="/fonts/dm-sans-variable.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          {/* Playfair Display: section headings, secondary priority */}
-          <link
-            rel="preload"
-            href="/fonts/playfair-display-variable.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
+          {/* DM Sans and Playfair come from Fontsource (hashed files, found via the CSS);
+              there is nothing to preload by a fixed URL. DM Sans has a metric-matched
+              fallback face in globals.css so its late swap barely moves the layout. */}
 
           {/* ── Character set ── */}
           <meta charSet="utf-8" />

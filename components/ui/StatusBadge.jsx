@@ -1,10 +1,12 @@
 /**
- * StatusBadge — live system status indicator for the hero section.
- * Shows current roles, Adelaide local time, and live weather via wttr.in.
- * Renders client-side only (clock + matchMedia + fetch).
+ * StatusBadge — the status line inside the "Worked with" band on the homepage.
+ * Shows current roles, availability, Adelaide local time, and live weather via
+ * wttr.in. The clock and weather are client-only and fill in after mount.
  */
 import { useState, useEffect } from "react";
 import { useI18n } from "@/contexts/I18nContext";
+import { AVAILABLE_FOR } from "@/lib/public-env";
+import SlashList from "@/components/home/SlashList";
 
 const ADL_TZ = "Australia/Adelaide";
 
@@ -66,78 +68,74 @@ function useAdelaideWeather() {
   return weather;
 }
 
+// Dot rule: a filled red dot means live or current; a hollow grey ring means
+// anything else.
 const STATUS_KEYS = [
-  { dot: "green", labelKey: "statusBadge.sapol", subKey: "statusBadge.live" },
-  { dot: "red", labelKey: "statusBadge.mapiva", subKey: "statusBadge.building" },
-  { dot: "white", labelKey: "statusBadge.openToCollab" },
+  { live: true, labelKey: "statusBadge.sapol", subKey: "statusBadge.live" },
+  { live: true, labelKey: "statusBadge.mapiva", subKey: "statusBadge.building" },
+  { live: false, labelKey: "statusBadge.openToCollab" },
 ];
 
-// Set NEXT_PUBLIC_AVAILABLE_FOR in .env.local to a comma-separated list
-// e.g. NEXT_PUBLIC_AVAILABLE_FOR=Contract,Consulting,Full-time
-// If not set, the availability pill does not render.
-const AVAILABLE_PILL = process.env.NEXT_PUBLIC_AVAILABLE_FOR || null;
+// NEXT_PUBLIC_AVAILABLE_FOR (comma-separated) is cleaned in lib/public-env, so a
+// value pasted with its key ("NEXT_PUBLIC_AVAILABLE_FOR=...") never renders raw.
+// If it is not set, the availability item does not render.
 
-export default function StatusBadge() {
+/**
+ * One line of status in the same anatomy as the "Worked with" strip: mono text,
+ * items separated by a light slash that never starts or ends a line, no box.
+ * Safe to server-render: the clock and the weather fill in after mount, at the
+ * end of the line. The availability item may wrap inside itself.
+ */
+export default function StatusBadge({ labelledBy, label, className = "" }) {
   const { t } = useI18n();
   const time = useClock();
   const weather = useAdelaideWeather();
+  // A full-width colon (zh "开放机会：") already carries its own space.
+  const availableLabel = t("statusBadge.availableFor");
+  const availableGap = availableLabel.endsWith("：") ? "" : " ";
 
-  return (
-    <div
-      className="inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 border border-[#E8E8E8] dark:border-[#2A2A2A]
-                 px-4 py-2 font-mono text-[10px] tracking-wide text-[#6B6B6B] dark:text-[#9A9A9A]"
-      aria-label={t("statusBadge.label")}
-    >
-      {STATUS_KEYS.map(({ dot, labelKey, subKey }) => (
-        <span key={labelKey} className="flex items-center gap-1.5">
+  const items = [
+    ...STATUS_KEYS.map(({ live, labelKey, subKey }) => ({
+      key: labelKey,
+      content: (
+        <>
           <span
-            className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-              dot === "green"
-                ? "bg-[#22C55E]"
-                : dot === "red"
-                  ? "bg-[#FF3C3C]"
-                  : "border border-[#AAAAAA]"
+            className={`inline-block w-1.5 h-1.5 rounded-full align-middle mr-2 -mt-px ${
+              live ? "bg-[#FF3C3C]" : "border border-[#8A8A8A]"
             }`}
             aria-hidden="true"
           />
           {t(labelKey)}
-          {subKey && <span className="text-[#6B6B6B] dark:text-[#9A9A9A]">· {t(subKey)}</span>}
-        </span>
-      ))}
-      {AVAILABLE_PILL && (
-        <>
-          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
-            ·
-          </span>
-          <span className="flex items-center gap-1.5 text-[#CC0000] dark:text-[#FF3C3C]">
-            <span
-              className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C] animate-blink"
-              aria-hidden="true"
-            />
-            {t("statusBadge.availableFor")} {AVAILABLE_PILL}
-          </span>
+          {subKey && <> · {t(subKey)}</>}
         </>
-      )}
-      {time && (
+      ),
+    })),
+    AVAILABLE_FOR.length > 0 && {
+      key: "available",
+      wrap: true,
+      content: (
         <>
-          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
-            ·
-          </span>
-          <span className="text-[#6B6B6B] dark:text-[#9A9A9A]">
-            {t("statusBadge.adl")} {time}
-          </span>
+          {availableLabel}
+          {availableGap}
+          {AVAILABLE_FOR.join(", ")}
         </>
-      )}
-      {weather && (
+      ),
+    },
+    time && {
+      key: "clock",
+      content: (
         <>
-          <span className="text-[#DDDDDD] dark:text-[#3D3D3D]" aria-hidden="true">
-            ·
-          </span>
-          <span className="text-[#6B6B6B] dark:text-[#9A9A9A]" title={weather.desc}>
-            {weather.tempC}°C {weather.word}
-          </span>
+          {t("statusBadge.adl")} {time}
         </>
-      )}
-    </div>
-  );
+      ),
+    },
+    // One text node, so the reading stays "14°C Clear" to anything that reads the
+    // page text node by node (the homepage check ignores temperatures that way).
+    weather && {
+      key: "weather",
+      content: <span title={weather.desc}>{`${weather.tempC}°C ${weather.word}`}</span>,
+    },
+  ].filter(Boolean);
+
+  return <SlashList items={items} labelledBy={labelledBy} label={label} className={className} />;
 }

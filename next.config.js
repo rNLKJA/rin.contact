@@ -1,5 +1,17 @@
 const path = require("path");
 
+// Vercel env values pasted with their key ("NEXT_PUBLIC_X=value") or a trailing
+// newline used to be inlined into the client bundle verbatim and rendered on the
+// homepage. Clean every NEXT_PUBLIC_* value before Next inlines it; the
+// components clean again at runtime through lib/public-env.js.
+for (const key of Object.keys(process.env)) {
+  if (!key.startsWith("NEXT_PUBLIC_")) continue;
+  let v = String(process.env[key] ?? "").trim();
+  if (v.startsWith(key)) v = v.slice(key.length).replace(/^\s*=\s*/, "");
+  v = v.replace(/^(["'])(.*)\1$/s, "$2").trim();
+  process.env[key] = v;
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
