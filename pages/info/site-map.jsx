@@ -133,7 +133,7 @@ export default function SiteMapPage({ columns, pages }) {
                 autoComplete="off"
                 spellCheck={false}
                 enterKeyHint="search"
-                className="flex-1 min-w-0 h-11 bg-transparent text-base focus:outline-none focus-visible:outline-none placeholder:text-[#6B6B6B] dark:text-[#9A9A9A] dark:placeholder:text-[#9A9A9A] [&::-webkit-search-cancel-button]:appearance-none"
+                className="flex-1 min-w-0 h-11 bg-transparent text-base focus:outline-none focus-visible:outline-none placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A] [&::-webkit-search-cancel-button]:appearance-none"
               />
               {query && (
                 <button

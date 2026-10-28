@@ -231,7 +231,7 @@ function ProjectDetail({ project, coursework }) {
         <p className="text-sm text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
           {project.summary}
         </p>
-        <div className="mt-3 p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
+        <div className="mt-3 p-4 bg-[#F5F5F5] dark:bg-[#141414]">
           <span className="inline-block mb-2 px-2 py-0.5 bg-accent-fill text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
             {t("projects.impact")}
           </span>
@@ -279,7 +279,7 @@ function ProjectDetail({ project, coursework }) {
               <span
                 key={t}
                 className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full
-                           cursor-default hover:border-[#FF3C3C] hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200"
+                           cursor-default hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
               >
                 {t}
               </span>
@@ -321,7 +321,7 @@ function FeaturedSpotlight({ project, coursework }) {
   const primaryDomain = Array.isArray(project.domain) ? project.domain[0] : project.domain;
   const dc = DOMAIN_COLORS[primaryDomain];
   return (
-    <div className="mb-12 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
+    <div className="mb-12 border border-[#E0E0E0] dark:border-[#3D3D3D] overflow-hidden">
       <div className="px-6 md:px-8 py-3 border-b border-[#E0E0E0] dark:border-[#3D3D3D] bg-[#FAFAFA] dark:bg-[#141414] flex items-center justify-between gap-4">
         <span className="text-[10px] tracking-widest uppercase text-accent-ink flex items-center gap-2">
           <span
@@ -350,7 +350,7 @@ function FeaturedSpotlight({ project, coursework }) {
           <p className="text-sm text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
             {project.summary}
           </p>
-          <div className="p-4 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
+          <div className="p-4 bg-[#F5F5F5] dark:bg-[#141414]">
             <p className="text-sm text-[#1A1A1A] dark:text-white leading-relaxed font-medium">
               {project.impact}
             </p>
@@ -372,7 +372,7 @@ function FeaturedSpotlight({ project, coursework }) {
                 <span
                   key={s}
                   className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#373737] dark:text-[#B4B4B4] rounded-full
-                             cursor-default hover:border-[#FF3C3C] hover:text-[#CC0000] dark:hover:text-[#FF3C3C] transition-colors duration-200"
+                             cursor-default hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200"
                 >
                   {s}
                 </span>
@@ -680,7 +680,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                       <DomainBadge primaryDomain={primaryDomain} tag={project.tag} />
                     </span>
                     <span
-                      className={`text-[#6B6B6B] transition-transform duration-200 flex-shrink-0 text-sm ${isOpen ? "rotate-45 text-accent-ink" : "group-hover:text-[#CC0000] dark:text-[#FF3C3C]"}`}
+                      className={`text-[#6B6B6B] transition-transform duration-200 flex-shrink-0 text-sm ${isOpen ? "rotate-45 text-accent-ink" : "dark:text-[#9A9A9A] group-hover:text-black dark:group-hover:text-white"}`}
                     >
                       +
                     </span>
@@ -742,7 +742,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                       ${
                         isActive
                           ? "bg-accent-fill text-white border-accent-fill"
-                          : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#B4B4B4] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C]"
+                          : "bg-white dark:bg-[#0A0A0A] text-[#3D3D3D] dark:text-[#B4B4B4] border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white"
                       }
                     `}
                 tabStyle={{ borderRadius: "4px 4px 0 0" }}
@@ -846,7 +846,7 @@ export default function ProjectsSection({ courseworkLinks = {} }) {
                       <p className="text-sm text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
                         {project.summary}
                       </p>
-                      <div className="p-3 bg-[#FFF5F5] dark:bg-[#1A1111] rounded-lg">
+                      <div className="p-3 bg-[#F5F5F5] dark:bg-[#141414]">
                         <span className="inline-block mb-1.5 px-2 py-0.5 bg-accent-fill text-white text-[9px] tracking-widest uppercase font-mono rounded-full">
                           {t("projects.impact")}
                         </span>

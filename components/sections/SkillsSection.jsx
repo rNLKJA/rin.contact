@@ -277,14 +277,14 @@ function DomainCard({ domain, index }) {
               }}
             />
           </div>
-          <p className="text-sm text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed mb-4 font-light">
+          <p className="text-sm text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed mb-4 font-light">
             {domain.description}
           </p>
           <div className="flex flex-wrap gap-1.5">
             {domain.skills.map((s) => (
               <span
                 key={s}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wide text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] rounded-full
+                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1 text-xs tracking-wide text-[#373737] dark:text-[#B4B4B4] rounded-full
                            cursor-default transition-all duration-200"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = domain.color;
@@ -334,7 +334,7 @@ export default function SkillsSection() {
               <CountUp target={DOMAINS.length} started={inView} />
             </span>
             <span
-              className="text-[10px] tracking-[0.3em] uppercase text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mb-3 md:mb-4"
+              className="text-[10px] tracking-[0.3em] uppercase text-[#373737] dark:text-[#B4B4B4] mb-3 md:mb-4"
               aria-hidden="true"
             >
               Domains
@@ -344,14 +344,14 @@ export default function SkillsSection() {
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-black dark:text-white">
               {t("skills.heading")}
             </h2>
-            <p className="text-sm text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
+            <p className="text-sm text-[#373737] dark:text-[#B4B4B4] mt-2 max-w-md leading-relaxed">
               Seven technical domains, run in deliberate parallel.
             </p>
           </div>
         </div>
         <span className="sr-only">Seven technical domains.</span>
 
-        <p className="text-base font-light text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] max-w-2xl leading-relaxed mt-7">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#B4B4B4] max-w-2xl leading-relaxed mt-7">
           I have found that the most interesting problems sit at the edges of disciplines. My work
           has taken me from sample-sheet tooling at WEHI to ministerial dashboards at CBS to mobile
           health apps at UniMelb, and each domain has added a new lens to how I approach data,
@@ -414,7 +414,7 @@ export default function SkillsSection() {
           {t("skills.atlasLink")}
           <span
             aria-hidden="true"
-            className="text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] group-hover:translate-x-0.5 transition-transform duration-200"
+            className="text-[#CC0000] dark:text-[#FF3C3C] group-hover:translate-x-0.5 transition-transform duration-200"
           >
             →
           </span>
@@ -480,13 +480,9 @@ export default function SkillsSection() {
                          hover:border-black dark:hover:border-white transition-colors duration-200"
             >
               <p className="text-sm font-medium">{l.lang}</p>
-              <p className="text-xs text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mt-0.5">
-                {l.level}
-              </p>
+              <p className="text-xs text-[#373737] dark:text-[#B4B4B4] mt-0.5">{l.level}</p>
               {l.detail && (
-                <p className="text-xs text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mt-0.5">
-                  {l.detail}
-                </p>
+                <p className="text-xs text-[#373737] dark:text-[#B4B4B4] mt-0.5">{l.detail}</p>
               )}
             </div>
           ))}

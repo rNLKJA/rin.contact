@@ -310,7 +310,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Practical limits and rules on this page reflect current Power BI design guidance
           (Microsoft Learn and practitioner write-ups) alongside hands-on experience.
         </p>
@@ -507,7 +507,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           本页上的实际限制与规则，反映了当前 Power BI 的设计指南（Microsoft Learn 与从业者的
           文章）以及亲身经验。
         </p>

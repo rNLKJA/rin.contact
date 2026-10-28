@@ -85,7 +85,7 @@ export function EvidenceLink({ item, hideMeta = false }) {
   const className = "group block py-2 min-h-[32px]";
   const body = (
     <>
-      <span className="block text-[14px] leading-snug text-[#1A1A1A] dark:text-[#DDDDDD] group-hover:text-[#CC0000] dark:group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 [overflow-wrap:anywhere]">
+      <span className="block text-[14px] leading-snug text-[#1A1A1A] dark:text-[#B4B4B4] group-hover:text-black dark:group-hover:text-white transition-colors duration-200 [overflow-wrap:anywhere]">
         <span lang={englishOnly ? "en" : undefined}>{item.label}</span>
         {item.external && (
           <>
