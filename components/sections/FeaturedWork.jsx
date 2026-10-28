@@ -93,12 +93,15 @@ export default function FeaturedWork() {
   const { locale = "en-AU" } = useRouter();
   const isZh = locale === "zh-Hans";
   const copy = COPY[isZh ? "zh" : "en"];
+  // On /zh-Hans/ the summary, impact line, period and readouts stay in English
+  // (as on /zh-Hans/projects); mark them so screen readers use an English voice.
+  const en = isZh ? "en" : undefined;
 
   return (
     <section
       id="featured"
       className={`scroll-mt-24 ${EDITORIAL}`}
-      aria-label="Featured work"
+      aria-label={copy.aside}
       ref={ref}
     >
       <SectionHeader index="03" label={copy.section} />
@@ -115,7 +118,9 @@ export default function FeaturedWork() {
             <span className="hidden sm:inline" aria-hidden="true">
               {" · "}
             </span>
-            <span className="block sm:inline">{copy.period}</span>
+            <span lang={en} className="block sm:inline">
+              {copy.period}
+            </span>
           </span>
           <span className="text-[11px] tracking-widest uppercase text-black dark:text-white flex items-center gap-2 flex-shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" aria-hidden="true" />
@@ -138,10 +143,16 @@ export default function FeaturedWork() {
                 {copy.subtitle}
               </p>
             </div>
-            <p className="m-0 max-w-[62ch] text-[15px] text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
+            <p
+              lang={en}
+              className="m-0 max-w-[62ch] text-[15px] text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed"
+            >
               {SIGNAL.summary}
             </p>
-            <p className="m-0 border-l-2 border-black dark:border-white pl-4 text-sm text-[#1A1A1A] dark:text-white font-medium leading-relaxed">
+            <p
+              lang={en}
+              className="m-0 border-l-2 border-black dark:border-white pl-4 text-sm text-[#1A1A1A] dark:text-white font-medium leading-relaxed"
+            >
               {SIGNAL.impact}
             </p>
             <div className="flex flex-wrap gap-2 mt-auto pt-2">
@@ -169,7 +180,10 @@ export default function FeaturedWork() {
                   <dt className="font-mono text-[11px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mb-1">
                     {copy.labels[k]}
                   </dt>
-                  <dd className="m-0 text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">
+                  <dd
+                    lang={en}
+                    className="m-0 text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]"
+                  >
                     {v}
                   </dd>
                 </div>
