@@ -148,7 +148,7 @@ export default function CommandPalette({ onClose }) {
                    border-2 border-black dark:border-white bg-white dark:bg-[#0A0A0A] text-[#1A1A1A] dark:text-white animate-enter-scale"
       >
         {/* Search field */}
-        <div className="flex-shrink-0 flex items-center gap-3 pl-4 pr-1.5 border-b border-[#E0E0E0] dark:border-[#3D3D3D] focus-within:border-[#FF3C3C] dark:focus-within:border-[#FF3C3C] transition-colors duration-200">
+        <div className="flex-shrink-0 flex items-center gap-3 pl-4 pr-1.5 border-b border-[#E0E0E0] dark:border-[#3D3D3D] focus-within:border-black dark:focus-within:border-white transition-colors duration-200">
           <FiSearch
             size={16}
             strokeWidth={1.5}

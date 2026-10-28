@@ -30,6 +30,7 @@ const DOMAIN_COLORS = {
   "Cloud / HPC": { color: "#B45309", dark: "#F59E0B", bg: "#FFFBEB" }, // amber-700  5.25:1 ✓ (dark: amber-500 9.22:1)
   "Open Source": { color: "#0F766E", dark: "#14B8A6", bg: "#ECFEFF" }, // teal-700 6.35:1 ✓ (dark: teal-500 5.02:1)
   Personal: { color: "#595959", dark: "#B4B4B4", bg: "#F5F5F5" }, // neutral    5.05:1 ✓ (dark: 9.55:1)
+  Education: { color: "#595959", dark: "#B4B4B4", bg: "#F5F5F5" }, // neutral, as Personal (ClassBro)
 };
 
 // Text colour for a domain in the current theme; #CC0000 only reaches 3.36:1 on
