@@ -296,7 +296,8 @@ export default function HeroSection() {
 
       {/* Hero foot — focus areas in the same anatomy as the Worked with strip:
           a mono label column, then a plain list whose slashes never start or
-          end a line. */}
+          end a line. 11px below 375px keeps the list to six lines, the most
+          Chrome will balance, so the last line still holds two items. */}
       <LabelRow
         label={t("hero.tagsLabel")}
         labelId="hero-focus-label"
@@ -306,7 +307,7 @@ export default function HeroSection() {
           items={Array.isArray(tags) ? tags : []}
           labelledBy="hero-focus-label"
           balance
-          className="font-mono text-[12px] leading-6 text-[#5A5A5A] dark:text-[#9A9A9A]"
+          className="font-mono text-[11px] min-[375px]:text-[12px] leading-6 text-[#5A5A5A] dark:text-[#9A9A9A]"
         />
       </LabelRow>
 
