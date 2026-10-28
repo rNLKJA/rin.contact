@@ -163,7 +163,7 @@ export default function FeaturedWork() {
             <div className="p-5 md:p-6 border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
               <ProjectCover id="signal" />
             </div>
-            <dl className="m-0 grid grid-cols-2 gap-px bg-[#E0E0E0] dark:bg-[#3D3D3D] border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
+            <dl className="m-0 grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-px bg-[#E0E0E0] dark:bg-[#3D3D3D] border-b border-[#E0E0E0] dark:border-[#3D3D3D]">
               {STATS.map(({ k, v }) => (
                 <div key={k} className="bg-white dark:bg-[#0A0A0A] px-5 py-3.5 md:px-6">
                   <dt className="font-mono text-[11px] tracking-widest uppercase text-[#5A5A5A] dark:text-[#9A9A9A] mb-1">
