@@ -565,7 +565,7 @@ export default function Home({ glyphStats, explorerData = {} }) {
         </div>
 
         {/* Reading nudge — desktop only, retires when Contact is on screen */}
-        <ReadingToast threshold={0.7} />
+        <ReadingToast threshold={0.55} />
 
         {/* ══ 07 CONTACT — always dark ══ */}
         <div className="bg-[#1A1A1A] relative overflow-hidden border-b border-[#2A2A2A]">
