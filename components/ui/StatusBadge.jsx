@@ -90,6 +90,9 @@ export default function StatusBadge({ labelledBy, label, className = "" }) {
   const { t } = useI18n();
   const time = useClock();
   const weather = useAdelaideWeather();
+  // A full-width colon (zh "开放机会：") already carries its own space.
+  const availableLabel = t("statusBadge.availableFor");
+  const availableGap = availableLabel.endsWith("：") ? "" : " ";
 
   const items = [
     ...STATUS_KEYS.map(({ live, labelKey, subKey }) => ({
@@ -112,7 +115,9 @@ export default function StatusBadge({ labelledBy, label, className = "" }) {
       wrap: true,
       content: (
         <>
-          {t("statusBadge.availableFor")} {AVAILABLE_FOR.join(", ")}
+          {availableLabel}
+          {availableGap}
+          {AVAILABLE_FOR.join(", ")}
         </>
       ),
     },
