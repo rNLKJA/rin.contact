@@ -42,22 +42,43 @@ export default function SectionProgress() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // IntersectionObserver — never touches getBoundingClientRect() on the scroll path
-  // A section is "active" when its top edge enters the upper 40% of the viewport
+  // IntersectionObserver — never touches getBoundingClientRect() on the scroll path.
+  // The active section is the one under a 1px line level with the top of the
+  // rail's last item, so the hand-off happens where the rail sits: Contact turns
+  // active (and the rail takes its dark-surface inks) as the dark band reaches
+  // the rail's bottom, before it can pass under the item above, and scrolling
+  // back up hands over in page order. The line is measured on setup and again
+  // after a resize; below xl the rail is not displayed, so it falls back to 58%.
   // Defer setup to idle so dynamic sections (Timeline, etc.) have time to mount
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        }
-      },
-      { rootMargin: "0px 0px -60% 0px", threshold: 0 }
-    );
+    const ids = SECTIONS.map(({ id }) => id);
+    let observer = null;
 
     const setup = () => {
-      const targets = SECTIONS.map(({ id }) => document.getElementById(id)).filter(Boolean);
-      targets.forEach((el) => observer.observe(el));
+      if (observer) observer.disconnect();
+      const vh = window.innerHeight;
+      const last = navRef.current?.lastElementChild?.getBoundingClientRect();
+      const line = Math.round(last && last.height ? last.top : vh * 0.58);
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            const id = entry.target.id;
+            if (entry.isIntersecting) {
+              setActive(id);
+            } else if (entry.boundingClientRect.top >= line) {
+              // This section has dropped below the line (scrolling up), so the
+              // one before it is current again.
+              const prev = ids[ids.indexOf(id) - 1];
+              if (prev) setActive((cur) => (cur === id ? prev : cur));
+            }
+          }
+        },
+        { rootMargin: `-${line}px 0px -${Math.max(vh - line - 1, 0)}px 0px`, threshold: 0 }
+      );
+      ids
+        .map((id) => document.getElementById(id))
+        .filter(Boolean)
+        .forEach((el) => observer.observe(el));
     };
 
     const idle =
@@ -66,7 +87,18 @@ export default function SectionProgress() {
         : (cb) => setTimeout(cb, 100);
     idle(setup, { timeout: 500 });
 
-    return () => observer.disconnect();
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(setup, 200);
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", onResize);
+      if (observer) observer.disconnect();
+    };
   }, []);
 
   return (
