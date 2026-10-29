@@ -30,7 +30,10 @@ export default function BlogPost({ post, relatedPosts = [] }) {
     return (
       <div className="max-w-[700px] mx-auto px-6 md:px-12 py-24">
         <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">{t("blog.postNotFound")}</p>
-        <Link href="/blog" className="text-sm text-accent-ink hover:underline mt-4 inline-block">
+        <Link
+          href="/blog"
+          className="text-sm text-[#3D3D3D] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white hover:underline mt-4 inline-block"
+        >
           ← {t("blog.backToBlog")}
         </Link>
       </div>

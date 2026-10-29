@@ -116,7 +116,7 @@ export default function CourseworkFilters({
           <button
             type="button"
             onClick={() => onChange({ area: "all", level: "all", skill: "all" })}
-            className="min-h-[24px] text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200"
+            className="min-h-[24px] text-[11px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200"
           >
             {t(`${K}.clear`)}
           </button>
