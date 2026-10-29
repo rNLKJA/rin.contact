@@ -322,12 +322,15 @@ export function KSection({ id, eyebrow, title, children }) {
   );
 }
 
+// Callout bars are neutral ink: red is for live or current things, and the
+// label already names the type. Intuition keeps a softer grey bar. Every label
+// is the micro-label grey (#5C5C5C / #9A9A9A, AA at 10px in both themes).
 const CALLOUT_STYLES = {
-  note: { bar: "#FF3C3C" },
-  refresher: { bar: "#FF3C3C" },
-  applied: { bar: "#1A1A1A" },
-  intuition: { bar: "#7A7A7A" },
-  pitfall: { bar: "#FF3C3C" },
+  note: { bar: "border-[#1A1A1A] dark:border-[#EEEEEE]" },
+  refresher: { bar: "border-[#1A1A1A] dark:border-[#EEEEEE]" },
+  applied: { bar: "border-[#1A1A1A] dark:border-[#EEEEEE]" },
+  intuition: { bar: "border-[#7A7A7A]" },
+  pitfall: { bar: "border-[#1A1A1A] dark:border-[#EEEEEE]" },
 };
 
 // Every link in a callout body gets the prose link style: black / white with a
@@ -341,11 +344,8 @@ export function Callout({ type = "note", label, children }) {
   const { t } = useI18n();
   const style = CALLOUT_STYLES[type] || CALLOUT_STYLES.note;
   return (
-    <aside className="not-prose my-8 border-l-2 pl-5 py-1" style={{ borderColor: style.bar }}>
-      <p
-        className="font-mono text-[10px] tracking-widest uppercase mb-2"
-        style={{ color: style.bar === "#7A7A7A" ? "#7A7A7A" : "#FF3C3C" }}
-      >
+    <aside className={`not-prose my-8 border-l-2 pl-5 py-1 ${style.bar}`}>
+      <p className="font-mono text-[10px] tracking-widest uppercase mb-2 text-[#5C5C5C] dark:text-[#9A9A9A]">
         {label || t(`knowledgeLayout.callouts.${CALLOUT_STYLES[type] ? type : "note"}`)}
       </p>
       <div
