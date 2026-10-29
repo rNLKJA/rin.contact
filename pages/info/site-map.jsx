@@ -111,7 +111,7 @@ export default function SiteMapPage({ columns, pages }) {
             <label htmlFor={inputId} className={`block mb-2 ${LABEL} ${MUTED}`}>
               {t("infoSiteMap.filterLabel")}
             </label>
-            <div className="flex items-center gap-3 pl-3 pr-1 border border-[#E0E0E0] dark:border-[#3D3D3D] focus-within:border-[#FF3C3C] dark:focus-within:border-[#FF3C3C] transition-colors duration-200">
+            <div className="flex items-center gap-3 pl-3 pr-1 border border-[#E0E0E0] dark:border-[#3D3D3D] focus-within:border-black dark:focus-within:border-white transition-colors duration-200">
               <FiSearch
                 size={16}
                 strokeWidth={1.5}
@@ -133,7 +133,7 @@ export default function SiteMapPage({ columns, pages }) {
                 autoComplete="off"
                 spellCheck={false}
                 enterKeyHint="search"
-                className="flex-1 min-w-0 h-11 bg-transparent text-base focus:outline-none focus-visible:outline-none placeholder:text-[#6B6B6B] dark:text-[#9A9A9A] dark:placeholder:text-[#9A9A9A] [&::-webkit-search-cancel-button]:appearance-none"
+                className="flex-1 min-w-0 h-11 bg-transparent text-base focus:outline-none focus-visible:outline-none placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A] [&::-webkit-search-cancel-button]:appearance-none"
               />
               {query && (
                 <button

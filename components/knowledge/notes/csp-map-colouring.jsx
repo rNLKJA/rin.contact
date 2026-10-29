@@ -16,7 +16,7 @@ const SLUG = "csp-map-colouring";
 const CACHEX = "https://cachex-ai.vercel.app";
 
 const CALLOUT_LINK =
-  "text-accent-ink font-medium underline decoration-[#FF3C3C]/40 underline-offset-4 hover:decoration-current";
+  "text-black dark:text-white font-medium underline decoration-black/30 dark:decoration-white/40 underline-offset-4 hover:decoration-current dark:hover:decoration-current";
 
 const SOURCES = {
   aima: "http://aima.cs.berkeley.edu/",

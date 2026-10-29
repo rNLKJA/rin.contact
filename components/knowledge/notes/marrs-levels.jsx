@@ -14,7 +14,7 @@ import { findNote, noteCopy } from "@/lib/knowledge-notes";
 const SLUG = "marrs-levels";
 
 const CALLOUT_LINK =
-  "text-accent-ink font-medium underline decoration-[#FF3C3C]/40 underline-offset-4 hover:decoration-current";
+  "text-black dark:text-white font-medium underline decoration-black/30 dark:decoration-white/40 underline-offset-4 hover:decoration-current dark:hover:decoration-current";
 
 const SOURCES = {
   vision: "https://doi.org/10.7551/mitpress/9780262514620.001.0001",
