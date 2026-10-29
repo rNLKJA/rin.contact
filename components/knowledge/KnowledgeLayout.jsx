@@ -31,7 +31,7 @@ function MetaItem({ label, children }) {
   if (!children) return null;
   return (
     <div className="flex flex-col gap-1">
-      <dt className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+      <dt className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A]">
         {label}
       </dt>
       <dd className="text-[13px] text-[#3D3D3D] dark:text-[#CFCFCF]">{children}</dd>
@@ -130,7 +130,7 @@ export default function KnowledgeLayout({
         <article className="max-w-[720px] mx-auto px-6 md:px-12 py-20 md:py-28 flex-1 w-full">
           <Link
             href={isNote ? parent.href : "/skills/?tab=notes"}
-            className="inline-flex items-center gap-1 font-mono text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
+            className="inline-flex items-center gap-1 font-mono text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
           >
             ← {isNote ? parent.label : t("knowledgeLayout.back")}
           </Link>
@@ -164,7 +164,7 @@ export default function KnowledgeLayout({
               <MetaItem label={t("knowledgeLayout.meta.studied")}>
                 {course}
                 {courseCode && (
-                  <span className="block font-mono text-[11px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                  <span className="block font-mono text-[11px] text-[#9A9A9A] dark:text-[#9A9A9A]">
                     {courseCode}
                   </span>
                 )}
@@ -174,7 +174,7 @@ export default function KnowledgeLayout({
               <MetaItem label={t("knowledgeLayout.meta.readRefreshed")}>
                 {readingTime}
                 {updated && (
-                  <span className="block font-mono text-[11px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                  <span className="block font-mono text-[11px] text-[#9A9A9A] dark:text-[#9A9A9A]">
                     {updated}
                   </span>
                 )}
@@ -187,7 +187,7 @@ export default function KnowledgeLayout({
               aria-label={t("knowledgeLayout.onThisPage")}
               className="mb-14 border border-[#E0E0E0] dark:border-[#2A2A2A] p-6"
             >
-              <p className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-4">
+              <p className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A] mb-4">
                 {t("knowledgeLayout.onThisPage")}
               </p>
               <ol className="space-y-2.5">
@@ -198,7 +198,7 @@ export default function KnowledgeLayout({
                     </span>
                     <a
                       href={`#${s.id}`}
-                      className="text-[13px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors"
+                      className="text-[13px] text-[#3D3D3D] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors"
                     >
                       {s.label}
                     </a>
@@ -209,20 +209,20 @@ export default function KnowledgeLayout({
           )}
 
           <div
-            className="prose prose-sm md:prose-base max-w-none
+            className="prose prose-sm md:prose-base max-w-none dark:text-[#9A9A9A]
                        prose-headings:scroll-mt-24 prose-headings:font-semibold
                        prose-headings:text-black dark:prose-headings:text-white
                        prose-h2:text-xl md:prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-4
                        prose-h3:text-base md:prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-3
-                       prose-a:text-[#CC0000] dark:text-[#FF3C3C] prose-a:no-underline hover:prose-a:underline prose-a:font-medium
+                       prose-a:text-[#CC0000] dark:prose-a:text-[#FF3C3C] prose-a:no-underline hover:prose-a:underline prose-a:font-medium
                        prose-strong:text-black dark:prose-strong:text-white
-                       prose-code:text-[#CC0000] dark:text-[#FF3C3C] prose-code:bg-[#F5F5F5] dark:prose-code:bg-[#1A1A1A] prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-[0.85em] prose-code:before:content-[''] prose-code:after:content-['']
+                       prose-code:text-[#CC0000] dark:prose-code:text-[#FF3C3C] prose-code:bg-[#F5F5F5] dark:prose-code:bg-[#1A1A1A] prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-[0.85em] prose-code:before:content-[''] prose-code:after:content-['']
                        prose-pre:bg-[#F7F7F7] dark:prose-pre:bg-[#0D0D0D] prose-pre:border prose-pre:border-[#E0E0E0] dark:prose-pre:border-[#2A2A2A] prose-pre:text-[#1A1A1A] dark:prose-pre:text-[#CFCFCF]
                        prose-blockquote:border-l-[#FF3C3C] prose-blockquote:not-italic prose-blockquote:text-[#5A5A5A] dark:prose-blockquote:text-[#9A9A9A]
-                       prose-li:text-[#3D3D3D] dark:prose-li:text-[#6B6B6B] dark:text-[#9A9A9A] prose-li:my-1
-                       prose-p:text-[#3D3D3D] dark:prose-p:text-[#6B6B6B] dark:text-[#9A9A9A] prose-p:leading-relaxed prose-p:[text-wrap:pretty]
+                       prose-li:text-[#3D3D3D] dark:prose-li:text-[#9A9A9A] prose-li:my-1
+                       prose-p:text-[#3D3D3D] dark:prose-p:text-[#9A9A9A] prose-p:leading-relaxed prose-p:[text-wrap:pretty]
                        prose-th:text-black dark:prose-th:text-white prose-th:text-[13px]
-                       prose-td:text-[#3D3D3D] dark:prose-td:text-[#6B6B6B] dark:text-[#9A9A9A] prose-td:text-[13px]
+                       prose-td:text-[#3D3D3D] dark:prose-td:text-[#9A9A9A] prose-td:text-[13px]
                        prose-hr:border-[#E0E0E0] dark:prose-hr:border-[#2A2A2A]"
           >
             {children}
@@ -232,7 +232,7 @@ export default function KnowledgeLayout({
 
           {!isNote && relatedSkills.length > 0 && (
             <div className="mt-12 pt-8 border-t border-[#E0E0E0] dark:border-[#2A2A2A]">
-              <p className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-4">
+              <p className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A] mb-4">
                 {t("knowledgeLayout.skillsThisSupports")}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -240,7 +240,7 @@ export default function KnowledgeLayout({
                   <Link
                     key={skill.id}
                     href={`/skills/?skill=${skill.id}`}
-                    className="inline-flex items-center px-3 py-1.5 text-[13px] border border-[#E0E0E0] dark:border-[#2A2A2A] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors"
+                    className="inline-flex items-center px-3 py-1.5 text-[13px] border border-[#E0E0E0] dark:border-[#2A2A2A] text-[#3D3D3D] dark:text-[#B4B4B4] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
                   >
                     {locale === "zh-Hans" && skill.zh ? skill.zh : skill.label}
                   </Link>
@@ -257,10 +257,10 @@ export default function KnowledgeLayout({
                     href={prev.href}
                     className="group border border-[#E0E0E0] dark:border-[#2A2A2A] p-5 hover:border-black dark:hover:border-white transition-colors"
                   >
-                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A]">
                       ← {t("knowledgeLayout.previous")}
                     </span>
-                    <span className="block mt-1.5 text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors">
+                    <span className="block mt-1.5 text-sm text-[#1A1A1A] dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">
                       {prev.label}
                     </span>
                   </Link>
@@ -272,10 +272,10 @@ export default function KnowledgeLayout({
                     href={next.href}
                     className="group border border-[#E0E0E0] dark:border-[#2A2A2A] p-5 hover:border-black dark:hover:border-white transition-colors sm:text-right"
                   >
-                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A]">
                       {t("knowledgeLayout.next")} →
                     </span>
-                    <span className="block mt-1.5 text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors">
+                    <span className="block mt-1.5 text-sm text-[#1A1A1A] dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">
                       {next.label}
                     </span>
                   </Link>
@@ -285,13 +285,13 @@ export default function KnowledgeLayout({
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/skills/?tab=notes"
-                className="font-mono text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+                className="font-mono text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
               >
                 {t("knowledgeLayout.allTopics")}
               </Link>
               <Link
                 href="/"
-                className="font-mono text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
+                className="font-mono text-[11px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white border-b border-[#E0E0E0] dark:border-[#3D3D3D] hover:border-black dark:hover:border-white transition-colors"
               >
                 {t("nav.home")}
               </Link>
@@ -342,7 +342,7 @@ export function Callout({ type = "note", label, children }) {
       >
         {label || t(`knowledgeLayout.callouts.${CALLOUT_STYLES[type] ? type : "note"}`)}
       </p>
-      <div className="text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty] space-y-3">
+      <div className="text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty] space-y-3">
         {children}
       </div>
     </aside>
@@ -357,7 +357,7 @@ export function Figure({ children, caption }) {
         {children}
       </div>
       {caption && (
-        <figcaption className="mt-3 text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+        <figcaption className="mt-3 text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
           {caption}
         </figcaption>
       )}

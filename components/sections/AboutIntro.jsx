@@ -39,10 +39,10 @@ export default function AboutIntro() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {/* Narrative */}
           <div className="md:col-span-2 space-y-5 max-w-2xl">
-            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed">
+            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
               {t("about.intro.body1")}
             </p>
-            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed">
+            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#B4B4B4] leading-relaxed">
               {t("about.intro.body2")}
             </p>
           </div>

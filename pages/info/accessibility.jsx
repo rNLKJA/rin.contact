@@ -47,7 +47,7 @@ const Section = ({ title, children }) => (
     <h2 className="text-lg font-semibold tracking-tight text-[#1A1A1A] dark:text-white mb-4">
       {title}
     </h2>
-    <div className="space-y-3 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+    <div className="space-y-3 text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
       {children}
     </div>
   </div>

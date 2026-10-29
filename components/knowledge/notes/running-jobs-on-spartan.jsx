@@ -140,7 +140,7 @@ function EnBody() {
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               University of Melbourne HPC
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Official Spartan documentation with job submission, resource allocation, and queue
               information.
             </span>
@@ -156,7 +156,7 @@ function EnBody() {
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               SchedMD
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Complete reference for all SLURM sbatch directives and options.
             </span>
           </li>
@@ -285,7 +285,7 @@ function ZhBody() {
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               墨尔本大学 HPC
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Spartan 官方文档，包含作业提交、资源分配和队列信息。
             </span>
           </li>
@@ -300,7 +300,7 @@ function ZhBody() {
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               SchedMD
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               所有 SLURM sbatch 指令和选项的完整参考。
             </span>
           </li>

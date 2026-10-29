@@ -125,7 +125,7 @@ export default function BlogIndex({ posts }) {
               strokeLinecap="round"
             />
           </svg>
-          <p className="text-base font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-2xl leading-relaxed">
+          <p className="text-base font-light text-[#3D3D3D] dark:text-[#9A9A9A] max-w-2xl leading-relaxed">
             {t("blog.description")}
           </p>
         </div>
@@ -138,7 +138,7 @@ export default function BlogIndex({ posts }) {
             viewBox="0 0 15 15"
             fill="none"
             aria-hidden="true"
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-[#9A9A9A] pointer-events-none"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6B6B6B] dark:text-[#9A9A9A] pointer-events-none"
           >
             <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" strokeWidth="1.4" />
             <path
@@ -155,7 +155,7 @@ export default function BlogIndex({ posts }) {
             onChange={(e) => onSearch(e.target.value)}
             placeholder={t("blog.searchPlaceholder")}
             aria-label={t("blog.searchPlaceholder")}
-            className="w-full pl-9 pr-3 py-2.5 text-sm bg-transparent border border-[#E0E0E0] dark:border-[#3D3D3D] text-black dark:text-white placeholder:text-[#9A9A9A] focus:border-[#FF3C3C] focus:outline-none transition-colors duration-200"
+            className="w-full pl-9 pr-3 py-2.5 text-sm bg-transparent border border-[#E0E0E0] dark:border-[#3D3D3D] text-black dark:text-white placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A] focus:border-black dark:focus:border-white focus:outline-none transition-colors duration-200"
           />
         </div>
 
@@ -173,7 +173,7 @@ export default function BlogIndex({ posts }) {
               className={`text-[10px] tracking-widest uppercase px-3 py-1 border transition-colors duration-200 ${
                 activeTag === null
                   ? "border-accent-fill bg-accent-fill text-white"
-                  : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#5C5C5C] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
+                  : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#5C5C5C] dark:text-[#9A9A9A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white"
               }`}
             >
               {t("blog.allTopics")}
@@ -187,7 +187,7 @@ export default function BlogIndex({ posts }) {
                 className={`text-[10px] tracking-widest uppercase px-3 py-1 border transition-colors duration-200 ${
                   activeTag === tag
                     ? "border-accent-fill bg-accent-fill text-white"
-                    : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#5C5C5C] dark:text-[#9A9A9A] hover:border-[#FF3C3C] hover:text-[#FF3C3C]"
+                    : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#5C5C5C] dark:text-[#9A9A9A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white"
                 }`}
               >
                 {tag.replace(/-/g, " ")}
@@ -200,7 +200,10 @@ export default function BlogIndex({ posts }) {
             Language-neutral (matched / total) with the localised noun; aria-live
             announces the new count to screen readers as the query changes. */}
         {(q || activeTag) && filtered.length > 0 && (
-          <p className="text-[11px] tracking-wide text-[#9A9A9A] mb-6" aria-live="polite">
+          <p
+            className="text-[11px] tracking-wide text-[#6B6B6B] dark:text-[#9A9A9A] mb-6"
+            aria-live="polite"
+          >
             <span className="text-accent-ink">{filtered.length}</span> / {posts.length}{" "}
             {t("blog.postsLabel")}
           </p>
