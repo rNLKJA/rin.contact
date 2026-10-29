@@ -18,12 +18,12 @@ function Row({ href, status, label, note, statusLabel }) {
           className={`text-[15px] ${
             isLive
               ? "text-[#1A1A1A] dark:text-white group-hover:text-[#FF3C3C]"
-              : "text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+              : "text-[#9A9A9A] dark:text-[#9A9A9A]"
           } transition-colors`}
         >
           {label}
         </span>
-        <span className="block mt-0.5 text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+        <span className="block mt-0.5 text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
           {note}
         </span>
       </div>
@@ -85,7 +85,7 @@ export default function KnowledgeIndexPage() {
           <p className="mt-4 text-base text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed max-w-[58ch] [text-wrap:pretty]">
             {t("knowledgeIndex.intro")}
           </p>
-          <p className="mt-3 font-mono text-[11px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+          <p className="mt-3 font-mono text-[11px] text-[#9A9A9A] dark:text-[#9A9A9A]">
             {t("knowledgeIndex.liveCounter")
               .replace("{live}", liveCount)
               .replace("{total}", totalCount)}
@@ -104,7 +104,7 @@ export default function KnowledgeIndexPage() {
                       {tier.topics.filter((tp) => tp.status === "live").length}/{tier.topics.length}
                     </span>
                   </div>
-                  <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-3 [text-wrap:pretty]">
+                  <p className="text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] mb-3 [text-wrap:pretty]">
                     {tierCopy.blurb}
                   </p>
                   <div className="divide-y divide-[#E8E8E8] dark:divide-[#1E1E1E] border-t border-[#E8E8E8] dark:border-[#1E1E1E]">

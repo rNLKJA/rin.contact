@@ -201,7 +201,7 @@ export default function MetroMapSection() {
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-2">
           {t("metroMap.heading")}
         </h2>
-        <p className="text-sm font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
+        <p className="text-sm font-light text-[#3D3D3D] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
           {t("metroMap.description")}
         </p>
       </div>
@@ -487,14 +487,12 @@ export default function MetroMapSection() {
         >
           {active ? (
             <>
-              <p className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] mb-0.5">
+              <p className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-0.5">
                 {active.period}
               </p>
               <p className="font-semibold text-sm mb-0.5">{active.label}</p>
-              <p className="text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-1">
-                {active.role}
-              </p>
-              <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] leading-relaxed max-w-xl">
+              <p className="text-xs text-[#3D3D3D] dark:text-[#9A9A9A] mb-1">{active.role}</p>
+              <p className="text-xs text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed max-w-xl">
                 {active.detail}
               </p>
               {active.current && (
