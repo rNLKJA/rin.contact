@@ -200,7 +200,10 @@ export default function BlogIndex({ posts }) {
             Language-neutral (matched / total) with the localised noun; aria-live
             announces the new count to screen readers as the query changes. */}
         {(q || activeTag) && filtered.length > 0 && (
-          <p className="text-[11px] tracking-wide text-[#9A9A9A] mb-6" aria-live="polite">
+          <p
+            className="text-[11px] tracking-wide text-[#6B6B6B] dark:text-[#9A9A9A] mb-6"
+            aria-live="polite"
+          >
             <span className="text-accent-ink">{filtered.length}</span> / {posts.length}{" "}
             {t("blog.postsLabel")}
           </p>

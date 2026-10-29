@@ -53,7 +53,7 @@ export default function NewsletterSignup() {
 
       {status === "success" ? (
         <div
-          className="flex items-center gap-3 text-sm text-[#22C55E]"
+          className="flex items-center gap-3 text-sm text-[#15803D] dark:text-[#22C55E]"
           role="status"
           aria-live="polite"
         >

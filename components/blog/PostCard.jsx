@@ -19,21 +19,22 @@ export default function PostCard({ slug, title, date, tags, description, reading
       className="relative block group overflow-hidden border border-[#E0E0E0] dark:border-[#3D3D3D] p-6
                  hover:border-black dark:hover:border-white transition-colors duration-200"
     >
-      {/* red dot-matrix wash — blooms from the top-left corner on hover */}
+      {/* dot-matrix wash — blooms from the top-left corner on hover; the dots
+          are currentColor, so they follow the theme (black or white ink) */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:animate-enter transition-opacity duration-200"
+        className="pointer-events-none absolute inset-0 text-black/[0.08] dark:text-white/[0.14] opacity-0 group-hover:opacity-100 group-hover:animate-enter transition-opacity duration-200"
         style={{
-          backgroundImage: "radial-gradient(rgba(255,60,60,0.16) 1px, transparent 1.6px)",
+          backgroundImage: "radial-gradient(currentColor 1px, transparent 1.6px)",
           backgroundSize: "16px 16px",
           WebkitMaskImage: "radial-gradient(120% 110% at 0% 0%, #000 0%, transparent 70%)",
           maskImage: "radial-gradient(120% 110% at 0% 0%, #000 0%, transparent 70%)",
         }}
       />
-      {/* red accent line — draws across the foot on hover */}
+      {/* ink line — draws across the foot on hover */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 bottom-0 h-[2px] w-full bg-[#FF3C3C]
+        className="pointer-events-none absolute left-0 bottom-0 h-[2px] w-full bg-black dark:bg-white
                    origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-200 ease-out
                    group-hover:transition-none group-hover:animate-enter-grow-x"
       />
@@ -89,7 +90,7 @@ export default function PostCard({ slug, title, date, tags, description, reading
 
         {/* read affordance — signifier appears and slides in on hover (no layout shift; held in flow) */}
         <span
-          className="inline-flex items-center gap-1.5 text-[10px] tracking-widest uppercase text-accent-ink
+          className="inline-flex items-center gap-1.5 text-[10px] tracking-widest uppercase text-black dark:text-white
                      opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:animate-enter transition-all duration-200"
           aria-hidden="true"
         >

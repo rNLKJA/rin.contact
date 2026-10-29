@@ -3,7 +3,8 @@ import clsx from "clsx";
 
 /**
  * Empty / no-results block: solid hairline box, red round dot, the message,
- * and an optional recovery action styled like the coursework "Clear" link.
+ * and an optional recovery action: grey ink, black or white with an underline
+ * on hover.
  * The message is a status live region by default; pass `role={null}` where a
  * nearby live region already announces the change.
  * Pattern from the COMP90042 status-message and INFO30005 empty-state.
@@ -24,7 +25,7 @@ export default function EmptyState({ children, action, role = "status", classNam
         <button
           type="button"
           onClick={action.onClick}
-          className="min-h-[24px] text-[11px] tracking-widest uppercase text-accent-ink underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200"
+          className="min-h-[24px] text-[11px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200"
         >
           {action.label}
         </button>
