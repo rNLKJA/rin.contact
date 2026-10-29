@@ -89,13 +89,13 @@ export default function KnowledgeLayout({
           isPartOf: {
             "@type": "Collection",
             name: "Knowledge — rin.contact",
-            url: "https://rin.contact/knowledge",
+            url: "https://rin.contact/skills/?tab=notes",
           },
         }
       : {
           "@type": "Collection",
           name: "Knowledge — rin.contact",
-          url: "https://rin.contact/knowledge",
+          url: "https://rin.contact/skills/?tab=notes",
         },
     author: {
       "@type": "Person",
