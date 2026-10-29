@@ -214,7 +214,7 @@ export default function KnowledgeLayout({
                        prose-headings:text-black dark:prose-headings:text-white
                        prose-h2:text-xl md:prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-4
                        prose-h3:text-base md:prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-3
-                       prose-a:text-[#CC0000] dark:prose-a:text-[#FF3C3C] prose-a:no-underline hover:prose-a:underline prose-a:font-medium
+                       prose-a:text-black dark:prose-a:text-white prose-a:underline prose-a:decoration-black/30 dark:prose-a:decoration-white/40 prose-a:underline-offset-4 hover:prose-a:decoration-current dark:hover:prose-a:decoration-current prose-a:font-medium
                        prose-strong:text-black dark:prose-strong:text-white
                        prose-code:text-[#CC0000] dark:prose-code:text-[#FF3C3C] prose-code:bg-[#F5F5F5] dark:prose-code:bg-[#1A1A1A] prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-[0.85em] prose-code:before:content-[''] prose-code:after:content-['']
                        prose-pre:bg-[#F7F7F7] dark:prose-pre:bg-[#0D0D0D] prose-pre:border prose-pre:border-[#E0E0E0] dark:prose-pre:border-[#2A2A2A] prose-pre:text-[#1A1A1A] dark:prose-pre:text-[#CFCFCF]

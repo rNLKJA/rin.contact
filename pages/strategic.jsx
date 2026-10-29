@@ -273,7 +273,7 @@ export default function StrategicPage() {
           <div className="pt-10 border-t border-[#F0F0F0] dark:border-[#1E1E1E] flex flex-wrap gap-4 mt-10">
             <Link
               href="/hire-me"
-              className="text-[11px] font-mono tracking-widest uppercase text-accent-ink hover:text-black dark:hover:text-white border-b border-[#FF3C3C] hover:border-black dark:hover:border-white transition-colors"
+              className="text-[11px] font-mono tracking-widest uppercase text-[#3D3D3D] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white border-b border-[#3D3D3D] dark:border-[#B4B4B4] hover:border-black dark:hover:border-white transition-colors"
             >
               Hire me for strategic data challenges →
             </Link>
