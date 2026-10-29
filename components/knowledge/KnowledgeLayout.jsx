@@ -330,6 +330,12 @@ const CALLOUT_STYLES = {
   pitfall: { bar: "#FF3C3C" },
 };
 
+// Every link in a callout body gets the prose link style: black / white with a
+// resting underline that turns solid on hover. The callout is `not-prose`, so
+// the prose-a styles never reach it, and most of its links carry no class.
+const CALLOUT_BODY_LINKS =
+  "[&_a]:text-black dark:[&_a]:text-white [&_a]:font-medium [&_a]:underline [&_a]:decoration-black/30 dark:[&_a]:decoration-white/40 [&_a]:underline-offset-4 hover:[&_a]:decoration-current dark:hover:[&_a]:decoration-current";
+
 /** Bordered callout block. `type` picks the default (localised) label + accent. */
 export function Callout({ type = "note", label, children }) {
   const { t } = useI18n();
@@ -342,7 +348,9 @@ export function Callout({ type = "note", label, children }) {
       >
         {label || t(`knowledgeLayout.callouts.${CALLOUT_STYLES[type] ? type : "note"}`)}
       </p>
-      <div className="text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty] space-y-3">
+      <div
+        className={`text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty] space-y-3 ${CALLOUT_BODY_LINKS}`}
+      >
         {children}
       </div>
     </aside>
