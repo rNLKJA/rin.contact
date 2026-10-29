@@ -264,7 +264,7 @@ export default function AboutPage({ faqJsonLd }) {
             {t("about.skillsLinkIntro")}{" "}
             <Link
               href="/skills"
-              className="text-[#CC0000] dark:text-[#FF3C3C] hover:underline font-medium"
+              className="text-black dark:text-white underline decoration-black/30 dark:decoration-white/40 underline-offset-4 hover:decoration-current dark:hover:decoration-current font-medium"
             >
               {t("about.skillsLinkText")}
             </Link>

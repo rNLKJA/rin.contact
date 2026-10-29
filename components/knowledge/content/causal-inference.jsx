@@ -417,7 +417,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The internal-validity spectrum (RCT → RDD/DiD → matching) and A/B pitfalls (peeking,
           power, multiple metrics) reflect current causal-inference and experimentation references
           alongside coursework.
@@ -670,7 +670,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           内部效度的谱（RCT → 断点回归/双重差分 → 匹配）与 A/B 的陷阱（偷看、功效、多指标），反映了
           当前的因果推断与实验参考文献，以及课程学习。
         </p>

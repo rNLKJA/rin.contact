@@ -67,7 +67,7 @@ export default function CertificationsSection() {
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black dark:text-white">
                 Credentials.
               </h2>
-              <p className="text-sm text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] mt-2 max-w-md leading-relaxed">
+              <p className="text-sm text-[#373737] dark:text-[#B4B4B4] mt-2 max-w-md leading-relaxed">
                 {CERTS.length} credentials across data, analytics, graph databases, intelligence,
                 language and leadership, each one verifiable.
               </p>
