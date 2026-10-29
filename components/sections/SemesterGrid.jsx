@@ -136,7 +136,7 @@ export default function SemesterGrid({ coursework = [] }) {
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-10 md:py-14">
         {/* Label row */}
         <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] m-0">
+          <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] m-0">
             <span aria-hidden="true">■ — </span>
             {copy.label}
           </p>
@@ -175,7 +175,7 @@ export default function SemesterGrid({ coursework = [] }) {
           {/* Level labels column (always first) */}
           <div className="w-[72px] md:w-20 flex-shrink-0 flex flex-col gap-2">
             <div className="h-6 flex items-center">
-              <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+              <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C]">
                 Level
               </span>
             </div>

@@ -9,7 +9,7 @@ const SHOWN = 6;
 export const MICRO_LABEL =
   "font-mono text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]";
 export const MORE_BUTTON =
-  "min-h-[32px] text-[11px] tracking-widest uppercase text-accent-ink underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200";
+  "min-h-[32px] text-[11px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200";
 const CHIP =
   "inline-flex min-h-[32px] items-center border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 text-[12px] leading-tight text-[#3D3D3D] dark:text-[#CCCCCC] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 [overflow-wrap:anywhere]";
 
@@ -85,7 +85,7 @@ export function EvidenceLink({ item, hideMeta = false }) {
   const className = "group block py-2 min-h-[32px]";
   const body = (
     <>
-      <span className="block text-[14px] leading-snug text-[#1A1A1A] dark:text-[#DDDDDD] group-hover:text-[#CC0000] dark:group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 [overflow-wrap:anywhere]">
+      <span className="block text-[14px] leading-snug text-[#1A1A1A] dark:text-[#B4B4B4] group-hover:text-black dark:group-hover:text-white transition-colors duration-200 [overflow-wrap:anywhere]">
         <span lang={englishOnly ? "en" : undefined}>{item.label}</span>
         {item.external && (
           <>

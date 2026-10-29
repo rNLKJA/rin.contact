@@ -17,7 +17,7 @@ const MULTIVARIATE_LAB = "https://mast90138-multivariate-lab.vercel.app";
 const SOURCE_LAB = "https://mast30034-source-separation.vercel.app";
 
 const CALLOUT_LINK =
-  "text-accent-ink font-medium underline decoration-[#FF3C3C]/40 underline-offset-4 hover:decoration-current";
+  "text-black dark:text-white font-medium underline decoration-black/30 dark:decoration-white/40 underline-offset-4 hover:decoration-current dark:hover:decoration-current";
 
 const SOURCES = {
   baldi: "https://doi.org/10.1016/0893-6080%2889%2990014-2",

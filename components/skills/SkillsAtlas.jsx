@@ -170,7 +170,7 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
 
   return (
     <div>
-      <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+      <p className="mb-6 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A]">
         {fill(t(`${K}.intro`), { skills: skills.length, domains: domains.length })}
       </p>
 
@@ -205,7 +205,7 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
                 clearSearch();
               }
             }}
-            className="min-h-[40px] w-full border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#0A0A0A] dark:[color-scheme:dark] px-3 py-2 text-sm text-black dark:text-white placeholder:text-[#6B6B6B] dark:placeholder:text-[#6B6B6B] dark:text-[#9A9A9A] focus:border-black dark:focus:border-white"
+            className="min-h-[40px] w-full border border-[#E0E0E0] dark:border-[#3D3D3D] bg-white dark:bg-[#0A0A0A] dark:[color-scheme:dark] px-3 py-2 text-sm text-black dark:text-white placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A] focus:border-black dark:focus:border-white"
           />
           <p id="atlas-search-hint" className="text-[11px] text-[#5C5C5C] dark:text-[#9A9A9A]">
             {t(`${K}.searchHint`)}
@@ -271,7 +271,7 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
             tabIndex={-1}
             role="status"
             aria-live="polite"
-            className="text-xs tabular-nums text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+            className="text-xs tabular-nums text-[#3D3D3D] dark:text-[#9A9A9A]"
           >
             {fill(t(`${K}.showing`), { shown: shownSkills.length, total: skills.length })}
           </p>
@@ -282,7 +282,7 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
                 setText("");
                 onClear();
               }}
-              className="min-h-[24px] text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200"
+              className="min-h-[24px] text-[11px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white underline decoration-transparent underline-offset-4 hover:decoration-current transition-colors duration-200"
             >
               {t(`${K}.clear`)}
             </button>
@@ -311,7 +311,7 @@ export default function SkillsAtlas({ atlas, filters, ready, onChange, onClear, 
         {groups.map(({ domain: d, skills: rows }) => (
           <section key={d.id} aria-labelledby={`area-${d.id}`}>
             <div className="pb-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E]">
-              <p className="flex items-center gap-2 font-mono text-[10px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+              <p className="flex items-center gap-2 font-mono text-[10px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#FF3C3C]">
                 <span aria-hidden="true" className="block w-1.5 h-1.5 bg-current" />
                 {d.short}
               </p>
