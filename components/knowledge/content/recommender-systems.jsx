@@ -666,7 +666,7 @@ const META = {
       href: "/knowledge/pca-dimensionality-reduction",
       label: "PCA & Dimensionality Reduction",
     },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "推荐系统",
@@ -695,7 +695,7 @@ const META = {
       href: "/knowledge/pca-dimensionality-reduction",
       label: "PCA 与降维",
     },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 

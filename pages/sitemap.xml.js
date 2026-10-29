@@ -106,8 +106,9 @@ const ZH_PAGES = [
 ];
 
 // ── Section index pages ───────────────────────────────────────────────────────
+// No /knowledge: it redirects to the Knowledge tab of /skills, and /skills is
+// listed above (its canonical URL leaves out ?tab).
 const INDEXES = [
-  { path: "/knowledge", priority: 0.7, freq: "weekly" },
   { path: "/ds", priority: 0.6, freq: "monthly" },
   { path: "/info", priority: 0.5, freq: "monthly" },
   { path: "/tools", priority: 0.5, freq: "monthly" },
@@ -243,7 +244,6 @@ const ZH_COVERED = [
   { path: "/projects/ethical-standing", priority: 0.7, freq: "monthly" },
   { path: "/skills", priority: 0.8, freq: "monthly" },
   { path: "/tools/card", priority: 0.7, freq: "monthly" },
-  { path: "/knowledge", priority: 0.7, freq: "weekly" },
   { path: "/info", priority: 0.5, freq: "monthly" },
   { path: "/fun/art", priority: 0.4, freq: "monthly" },
   ...INFO,

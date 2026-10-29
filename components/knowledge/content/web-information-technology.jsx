@@ -278,10 +278,10 @@ function EnBody() {
           Every response carries a <Term>status code</Term> — the three-digit number that says how
           it went: <code>200</code> OK, <code>301/302</code> redirect, <code>404</code> not found,{" "}
           <code>403</code> forbidden, <code>500</code> server error. (If you've read the{" "}
-          <Link href="/knowledge">site's link checks</Link>, that's exactly what they verify.)
-          Crucially, HTTP is <Term>stateless</Term>: each request stands alone, the server remembers
-          nothing between them by default. Keeping you logged in across pages is a layer built on
-          top — cookies and tokens that re-send your identity with every request.
+          <Link href="/skills/?tab=notes">site's link checks</Link>, that's exactly what they
+          verify.) Crucially, HTTP is <Term>stateless</Term>: each request stands alone, the server
+          remembers nothing between them by default. Keeping you logged in across pages is a layer
+          built on top — cookies and tokens that re-send your identity with every request.
         </p>
       </KSection>
 
@@ -568,7 +568,8 @@ function ZhBody() {
         <p>
           每个响应都带着一个<Term>状态码</Term>——那个说明结果如何的三位数：<code>200</code> 成功、
           <code>301/302</code> 重定向、<code>404</code> 未找到、<code>403</code> 禁止、
-          <code>500</code> 服务器错误。（如果你读过 <Link href="/knowledge">本站的链接检查</Link>
+          <code>500</code> 服务器错误。（如果你读过{" "}
+          <Link href="/skills/?tab=notes">本站的链接检查</Link>
           ，它们验证的正是这个。）关键在于， HTTP 是<Term>无状态</Term>
           的：每个请求各自独立，服务器默认在它们之间什么都不记得。
           让你跨页面保持登录是搭在其上的一层——cookie 与令牌随每个请求重新发送你的身份。
@@ -786,7 +787,7 @@ const META = {
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
     prev: { href: "/knowledge/database-systems", label: "Database Systems" },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "Web 信息技术",
@@ -813,7 +814,7 @@ const META = {
       { id: "refresher", label: "60 秒回顾" },
     ],
     prev: { href: "/knowledge/database-systems", label: "数据库系统" },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 

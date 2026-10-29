@@ -59,6 +59,15 @@ export const GROUPS = [
 /** Routes never indexed: the easter eggs under /fun (the hub itself is listed). */
 export const SECRET_ROUTE = /^\/fun\/./;
 
+/**
+ * Pages next.config.js redirects before they render, so no one reaches them:
+ * /knowledge goes to the Knowledge tab of /skills, which the footer links to.
+ */
+const REDIRECTED_ROUTES = new Set(["/knowledge"]);
+
+/** The page an href opens: "/skills/?tab=notes" -> "/skills", "/projects#x" -> "/projects". */
+const pagePath = (href) => href.split(/[?#]/)[0].replace(/(.)\/$/, "$1");
+
 // Where a page that no source names goes, by its path.
 const PLACE_BY_PREFIX = [
   [/^\/projects\//, "caseStudies"],
@@ -102,8 +111,9 @@ function titleFromSlug(route) {
 
 /**
  * Every route Next.js builds from pages/: no API routes, no _app/_document,
- * no error pages, no dynamic segments (blog posts come from posts/), and no
- * generated files such as sitemap.xml.
+ * no error pages, no dynamic segments (blog posts come from posts/), no
+ * generated files such as sitemap.xml, and no page a redirect hides
+ * (REDIRECTED_ROUTES).
  */
 export function pageRoutes(root = ROOT) {
   const dir = join(root, "pages");
@@ -122,7 +132,7 @@ export function pageRoutes(root = ROOT) {
       if (base.startsWith("_") || base.includes("[") || base.includes(".")) continue;
       if (["404", "500"].includes(base)) continue;
       const route = `/${m[1]}`.replace(/\/index$/, "") || "/";
-      routes.push(route);
+      if (!REDIRECTED_ROUTES.has(route)) routes.push(route);
     }
   };
   walk(dir);
@@ -363,7 +373,7 @@ export function pageIndexProblems({ dicts, root = ROOT }) {
   const routes = new Set(pageRoutes(root));
   const posts = new Set(postsMeta(root).map((p) => p.slug));
   const groupIds = new Set(GROUPS.map((g) => g.id));
-  const indexed = new Set(index.entries.map((e) => e.href.split("#")[0]));
+  const indexed = new Set(index.entries.map((e) => pagePath(e.href)));
 
   for (const route of routes) {
     if (!SECRET_ROUTE.test(route) && !indexed.has(route)) {
@@ -371,7 +381,7 @@ export function pageIndexProblems({ dicts, root = ROOT }) {
     }
   }
   for (const entry of index.entries) {
-    const path = entry.href.split("#")[0];
+    const path = pagePath(entry.href);
     const where = `page index: ${entry.href}`;
     if (SECRET_ROUTE.test(path)) problems.push(`${where} lists an easter egg`);
     if (!groupIds.has(entry.group)) problems.push(`${where} has unknown group "${entry.group}"`);

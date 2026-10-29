@@ -568,7 +568,11 @@
       "group": "learn",
       "title": { "en": "Everything I've learned", "zh": "这些年学过的东西" }
     },
-    { "href": "/knowledge", "group": "learn", "title": { "en": "Knowledge", "zh": "知识" } },
+    {
+      "href": "/skills/?tab=notes",
+      "group": "learn",
+      "title": { "en": "Knowledge", "zh": "知识" }
+    },
     {
       "href": "/ds",
       "group": "learn",
