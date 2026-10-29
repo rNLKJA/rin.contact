@@ -56,18 +56,18 @@
     ]
   },
   "devDependencies": {
-    "@axe-core/puppeteer": "^4.13.0",
-    "@typescript-eslint/parser": "^8.60.1",
-    "autoprefixer": "^10.4.16",
+    "@axe-core/puppeteer": "^4.14.0",
+    "@typescript-eslint/parser": "^8.72.1",
+    "autoprefixer": "^10.6.1",
     "axe-core": "^4.14.0",
-    "eslint": "^9.39.4",
-    "eslint-config-next": "^16.2.7",
+    "eslint": "^10.13.0",
+    "eslint-config-next": "^16.4.3",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.8",
-    "playwright": "^1.64.0",
-    "postcss": "^8.4.32",
-    "prettier": "^3.8.1",
-    "puppeteer": "^25.13.0",
-    "tailwindcss": "^3.4.0"
+    "lint-staged": "^17.6.0",
+    "playwright": "^1.64.1",
+    "postcss": "^8.5.31",
+    "prettier": "^3.9.10",
+    "puppeteer": "^25.16.0",
+    "tailwindcss": "^4.3.3"
   }
 }
