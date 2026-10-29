@@ -1,27 +1,27 @@
 /**
- * /projects/ethical-standing: Rin's write-up of his work as a Research Officer
- * in the Intelligence & Probity Unit of South Australia Police's Ethical and
- * Professional Standards Branch, focusing on ethical frameworks and strategic
- * research on ethical decision-making in policing.
+ * /projects/ethical-standing: Rin's write-up of the ongoing research on ethical
+ * and professional standards, part of the ASO7 Senior Data Analyst role in the
+ * Intelligence & Probity Unit of South Australia Police's Ethical and
+ * Professional Standards Branch.
  *
  * The research outputs remain internal to SAPOL. This page repeats only what
- * the card and the 'sapol' role in lib/career-data.js already say in public.
- * It describes the methodologies used and the strategic approach, without
- * disclosing specific frameworks, data sources or policy recommendations.
+ * the card and the 'sapol' role in lib/career-data.js already say in public,
+ * plus the three methods Rin confirmed (lib/demos/ethical-standing-data.js).
+ * It describes the kind of work, without findings, data or recommendations.
  */
 import Head from "next/head";
 import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
 import ArchFrame from "@/components/covers/ArchFrame";
 import { useI18n } from "@/contexts/I18nContext";
-import { COPY, STACK } from "@/lib/demos/ethical-standing-data";
+import { COPY } from "@/lib/demos/ethical-standing-data";
 
 const BASE = "https://rin.contact";
 const PATH = "/projects/ethical-standing";
 // The OG image renderer (pages/api/og.jsx) only loads Latin fonts, so the share
 // card stays in English in every locale rather than rendering CJK as blank boxes.
 const OG_TITLE = "Ethical Standing Research";
-const OG_SUBTITLE = "Strategic research on ethical frameworks in policing";
+const OG_SUBTITLE = "Research on ethical and professional standards in policing";
 
 const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
 const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed";
@@ -177,11 +177,15 @@ export default function EthicalStandingPage() {
         </section>
 
         {/* 02 Methodology */}
-        <section className="mb-16" aria-labelledby="ethical-methodology">
+        <section
+          id="methodology"
+          className="mb-16 scroll-mt-24"
+          aria-labelledby="ethical-methodology"
+        >
           <SectionTitle n={2} id="ethical-methodology">
             {L(COPY.methodology.title)}
           </SectionTitle>
-          <ol className="grid sm:grid-cols-2 gap-px bg-[#F0F0F0] dark:bg-[#3D3D3D] border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
+          <ol className="grid md:grid-cols-3 gap-px bg-[#F0F0F0] dark:bg-[#3D3D3D] border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
             {COPY.methodology.items.map((s, i) => (
               <li key={i} className="bg-white dark:bg-[#0A0A0A] p-5 md:p-6">
                 <p className="font-display text-3xl leading-none text-[#1A1A1A] dark:text-[#EEEEEE] mb-4">
@@ -198,48 +202,12 @@ export default function EthicalStandingPage() {
           </ol>
         </section>
 
-        {/* 03 Key Findings */}
-        <section className="mb-16" aria-labelledby="ethical-findings">
-          <SectionTitle n={3} id="ethical-findings">
-            {L(COPY.keyFindings.title)}
-          </SectionTitle>
-          <Paragraphs items={COPY.keyFindings.body} L={L} />
-        </section>
-
-        {/* 04 Strategic Implications */}
-        <section className="mb-16" aria-labelledby="ethical-implications">
-          <SectionTitle n={4} id="ethical-implications">
-            {L(COPY.implications.title)}
-          </SectionTitle>
-          <Paragraphs items={COPY.implications.body} L={L} />
-        </section>
-
-        {/* 05 My role */}
+        {/* 03 My role */}
         <section className="mb-16" aria-labelledby="ethical-role">
-          <SectionTitle n={5} id="ethical-role">
+          <SectionTitle n={3} id="ethical-role">
             {L(COPY.role.title)}
           </SectionTitle>
           <Paragraphs items={COPY.role.body} L={L} />
-        </section>
-
-        {/* 06 Tech stack */}
-        <section className="mb-16" aria-labelledby="ethical-stack">
-          <SectionTitle n={6} id="ethical-stack">
-            {lang === "zh" ? "研究工具与方法" : "Research tools and methods"}
-          </SectionTitle>
-          <ul
-            className="flex flex-wrap gap-1.5"
-            aria-label={lang === "zh" ? "研究工具" : "Research methodology"}
-          >
-            {STACK.map((s) => (
-              <li
-                key={s}
-                className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2.5 py-0.5 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] rounded-full"
-              >
-                {s}
-              </li>
-            ))}
-          </ul>
         </section>
 
         {/* Footer */}
