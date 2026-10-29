@@ -101,8 +101,8 @@ const nextConfig = {
 
     // /knowledge index → /skills?tab=notes (both locales). For old and outside
     // links only: a client-side navigation to /knowledge shows the error page,
-    // so the site links to /skills/?tab=notes and check:career fails on a link
-    // to any redirected path.
+    // so the site links to /skills/?tab=notes and check:career fails on an
+    // href or Markdown link to any redirected path.
     redirects.push(
       { source: "/knowledge", destination: "/skills/?tab=notes", permanent: true },
       { source: "/knowledge/", destination: "/skills/?tab=notes", permanent: true }
