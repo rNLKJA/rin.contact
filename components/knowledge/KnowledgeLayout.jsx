@@ -31,7 +31,7 @@ function MetaItem({ label, children }) {
   if (!children) return null;
   return (
     <div className="flex flex-col gap-1">
-      <dt className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A]">
+      <dt className="font-mono text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]">
         {label}
       </dt>
       <dd className="text-[13px] text-[#3D3D3D] dark:text-[#CFCFCF]">{children}</dd>
@@ -164,7 +164,7 @@ export default function KnowledgeLayout({
               <MetaItem label={t("knowledgeLayout.meta.studied")}>
                 {course}
                 {courseCode && (
-                  <span className="block font-mono text-[11px] text-[#9A9A9A] dark:text-[#9A9A9A]">
+                  <span className="block font-mono text-[11px] text-[#5C5C5C] dark:text-[#9A9A9A]">
                     {courseCode}
                   </span>
                 )}
@@ -174,7 +174,7 @@ export default function KnowledgeLayout({
               <MetaItem label={t("knowledgeLayout.meta.readRefreshed")}>
                 {readingTime}
                 {updated && (
-                  <span className="block font-mono text-[11px] text-[#9A9A9A] dark:text-[#9A9A9A]">
+                  <span className="block font-mono text-[11px] text-[#5C5C5C] dark:text-[#9A9A9A]">
                     {updated}
                   </span>
                 )}
@@ -187,7 +187,7 @@ export default function KnowledgeLayout({
               aria-label={t("knowledgeLayout.onThisPage")}
               className="mb-14 border border-[#E0E0E0] dark:border-[#2A2A2A] p-6"
             >
-              <p className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A] mb-4">
+              <p className="font-mono text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A] mb-4">
                 {t("knowledgeLayout.onThisPage")}
               </p>
               <ol className="space-y-2.5">
@@ -232,7 +232,7 @@ export default function KnowledgeLayout({
 
           {!isNote && relatedSkills.length > 0 && (
             <div className="mt-12 pt-8 border-t border-[#E0E0E0] dark:border-[#2A2A2A]">
-              <p className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A] mb-4">
+              <p className="font-mono text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A] mb-4">
                 {t("knowledgeLayout.skillsThisSupports")}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -257,7 +257,7 @@ export default function KnowledgeLayout({
                     href={prev.href}
                     className="group border border-[#E0E0E0] dark:border-[#2A2A2A] p-5 hover:border-black dark:hover:border-white transition-colors"
                   >
-                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A]">
+                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]">
                       ← {t("knowledgeLayout.previous")}
                     </span>
                     <span className="block mt-1.5 text-sm text-[#1A1A1A] dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">
@@ -272,7 +272,7 @@ export default function KnowledgeLayout({
                     href={next.href}
                     className="group border border-[#E0E0E0] dark:border-[#2A2A2A] p-5 hover:border-black dark:hover:border-white transition-colors sm:text-right"
                   >
-                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#9A9A9A] dark:text-[#9A9A9A]">
+                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]">
                       {t("knowledgeLayout.next")} →
                     </span>
                     <span className="block mt-1.5 text-sm text-[#1A1A1A] dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">

@@ -148,7 +148,7 @@ export default function SkillsKnowledgeTabs({ evidenceContent }) {
           <p className="text-base text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed [text-wrap:pretty] mb-3">
             {t("knowledgeIndex.intro")}
           </p>
-          <p className="font-mono text-[11px] text-[#9A9A9A] dark:text-[#9A9A9A] mb-10">
+          <p className="font-mono text-[11px] text-[#5C5C5C] dark:text-[#9A9A9A] mb-10">
             {t("knowledgeIndex.liveCounter")
               .replace("{live}", liveCount)
               .replace("{total}", totalCount)}
