@@ -17,7 +17,7 @@ const HPLC_LAB = "https://mast30034-hplc-qc-lab.vercel.app";
 
 // Links inside a Callout sit outside .prose, so they set their own ink.
 const CALLOUT_LINK =
-  "text-accent-ink font-medium underline decoration-[#FF3C3C]/40 underline-offset-4 hover:decoration-current";
+  "text-black dark:text-white font-medium underline decoration-black/30 dark:decoration-white/40 underline-offset-4 hover:decoration-current dark:hover:decoration-current";
 
 const SOURCES = {
   jordon: "https://arxiv.org/abs/2205.03257",

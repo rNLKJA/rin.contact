@@ -16,12 +16,9 @@ const SHOWN = 2;
 function Highlight({ text, className = "" }) {
   return (
     <li
-      className={`flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] ${className}`}
+      className={`flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A] ${className}`}
     >
-      <span
-        className="text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0"
-        aria-hidden="true"
-      >
+      <span className="text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0" aria-hidden="true">
         ·
       </span>
       <span>{text}</span>
@@ -96,9 +93,7 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
       {/* Subject, date and status */}
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[11px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]">
-          <span className="font-mono text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
-            {p.subjectCode}
-          </span>
+          <span className="font-mono text-[#CC0000] dark:text-[#FF3C3C]">{p.subjectCode}</span>
           <span className="sr-only"> </span>
           <span>{p.subject}</span>
         </p>
@@ -123,7 +118,7 @@ export default function CourseworkCard({ project: p, termLabel, t }) {
       >
         {p.title}
       </h5>
-      <p className="mt-2 text-[15px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-[68ch]">
+      <p className="mt-2 text-[15px] leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A] max-w-[68ch]">
         {p.summary}
       </p>
 

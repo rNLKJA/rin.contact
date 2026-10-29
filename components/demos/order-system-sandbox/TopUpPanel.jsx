@@ -53,7 +53,7 @@ export default function TopUpPanel({ state, dispatch, lang, uid }) {
                 className={`ml-auto font-mono text-xs ${
                   m.remaining === 0
                     ? "text-[#CC0000] dark:text-[#FF6B6B]"
-                    : "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                    : "text-[#3D3D3D] dark:text-[#9A9A9A]"
                 }`}
               >
                 {m.remaining === 0 ? L(T.usedUp) : fill(L(T.left), { n: m.remaining })}

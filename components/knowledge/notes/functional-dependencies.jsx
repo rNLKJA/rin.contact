@@ -16,7 +16,7 @@ const LOUVRE = "https://info20003-louvre-ops-db.vercel.app";
 const SELF_DRIVING = "https://comp90050-self-driving-db.vercel.app";
 
 const CALLOUT_LINK =
-  "text-accent-ink font-medium underline decoration-[#FF3C3C]/40 underline-offset-4 hover:decoration-current";
+  "text-black dark:text-white font-medium underline decoration-black/30 dark:decoration-white/40 underline-offset-4 hover:decoration-current dark:hover:decoration-current";
 
 const SOURCES = {
   codd: "https://doi.org/10.1145/362384.362685",
