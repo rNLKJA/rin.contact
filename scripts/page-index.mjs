@@ -59,12 +59,6 @@ export const GROUPS = [
 /** Routes never indexed: the easter eggs under /fun (the hub itself is listed). */
 export const SECRET_ROUTE = /^\/fun\/./;
 
-/**
- * Pages next.config.js redirects before they render, so no one reaches them:
- * /knowledge goes to the Knowledge tab of /skills, which the footer links to.
- */
-const REDIRECTED_ROUTES = new Set(["/knowledge"]);
-
 /** The page an href opens: "/skills/?tab=notes" -> "/skills", "/projects#x" -> "/projects". */
 const pagePath = (href) => href.split(/[?#]/)[0].replace(/(.)\/$/, "$1");
 
@@ -111,9 +105,8 @@ function titleFromSlug(route) {
 
 /**
  * Every route Next.js builds from pages/: no API routes, no _app/_document,
- * no error pages, no dynamic segments (blog posts come from posts/), no
- * generated files such as sitemap.xml, and no page a redirect hides
- * (REDIRECTED_ROUTES).
+ * no error pages, no dynamic segments (blog posts come from posts/), and no
+ * generated files such as sitemap.xml.
  */
 export function pageRoutes(root = ROOT) {
   const dir = join(root, "pages");
@@ -132,7 +125,7 @@ export function pageRoutes(root = ROOT) {
       if (base.startsWith("_") || base.includes("[") || base.includes(".")) continue;
       if (["404", "500"].includes(base)) continue;
       const route = `/${m[1]}`.replace(/\/index$/, "") || "/";
-      if (!REDIRECTED_ROUTES.has(route)) routes.push(route);
+      routes.push(route);
     }
   };
   walk(dir);
