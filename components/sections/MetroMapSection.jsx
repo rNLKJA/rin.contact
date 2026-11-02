@@ -43,7 +43,9 @@ const RAILS = [
   { line: "research", x1: toX(2024.6), x2: toX(2026.1) }, // UniMelb Psychiatry
   // Engineering
   { line: "eng", x1: toX(2024.42), x2: toX(2025.0) }, // Psyckitchen
-  { line: "eng", x1: toX(2025.6), x2: toX(2027) + 8 }, // Mapiva → ongoing
+  // Mapiva wrapped in Oct 2026: the rail stops inside October, as CBS stops
+  // inside March, so it does not run on to the NOW marker.
+  { line: "eng", x1: toX(2025.6), x2: toX(2026.79) }, // Mapiva, to Oct 2026
 ];
 
 // ── Stations ──────────────────────────────────────────────────────────────────
@@ -120,11 +122,11 @@ const STATIONS = [
     y: 246,
     label: "Mapiva",
     labelAbove: true,
-    period: "Aug 2025 – present",
+    period: "Aug 2025 – Oct 2026",
     role: "Co-founder · Dev Lead",
     detail:
-      "Melbourne startup building a map-first social discovery app. As Dev Lead: architecture, the Expo React Native client, a Django, Rust and PostgreSQL backend, GitHub Actions CI/CD. Beta planned for early 2027.",
-    current: true,
+      "Melbourne startup behind a map-first social discovery app. As Dev Lead: architecture, the Expo React Native client, a Django, Rust and PostgreSQL backend, GitHub Actions CI/CD. Development wrapped in October 2026 with a working alpha test build, and the team is evaluating the market.",
+    current: false,
   },
   {
     id: "sapol",

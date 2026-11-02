@@ -90,7 +90,7 @@
     "Senior Data Analyst @ SAPOL",
     "Former Research Software Engineer @ WEHI",
     "Data Science Consultant @ CSIRO",
-    "Co-Founder & Dev Lead @ Mapiva",
+    "Co-Founder, led the alpha build @ Mapiva",
     "Intelligence & Coordination Officer @ AGD",
     "Research Assistant (sole developer) @ UniMelb",
     "Continuous Improvement Specialist @ Life",
@@ -329,12 +329,13 @@
     "metaDescription": "What Rin Huang is working on, reading, and thinking about right now.",
     "ogSubtitle": "What Rin Huang is working on, reading, and thinking about...",
     "updated": "updated",
-    "updatedDate": "3 October 2026",
+    "updatedDate": "3 November 2026",
     "heading": "What I'm doing now.",
     "introPrefix": "A snapshot. Last updated from Adelaide, SA — ACST (UTC+9:30). Inspired by ",
     "introSuffix": ".",
     "sections": {
       "building": "Building",
+      "wrapped": "Recently wrapped",
       "learning": "Learning",
       "reading": "Reading",
       "listening": "Listening",
@@ -344,16 +345,18 @@
     "footerNote": "This page updates manually — no bots, no automation.",
     "building": [
       {
-        "text": "Mapiva — a mobile social discovery app that helps people discover and connect",
-        "sub": "Co-founder & Dev Lead · iOS + Android · beta planned for early 2027"
-      },
-      {
         "text": "Quarterly Use of Force and Vehicle Pursuit reporting and a complaint-management API client for SAPOL's Ethical and Professional Standards Branch",
         "sub": "ASO7 Senior Data Analyst · government-grade, high-stakes"
       },
       {
         "text": "This website, apparently. New hidden routes every sprint.",
         "sub": "rin.contact · Next.js · because a static CV felt boring"
+      }
+    ],
+    "wrapped": [
+      {
+        "text": "Mapiva, a map-first social discovery app for iOS and Android. Development wrapped in October 2026 with a working alpha test build, and the team is evaluating the market.",
+        "sub": "Co-founder & Dev Lead · Aug 2025 to Oct 2026"
       }
     ],
     "learning": [
@@ -516,7 +519,7 @@
           "badge": ""
         },
         {
-          "desc": "Issue tracking for Mapiva. Fast, minimal, opinionated — very Nothing OS.",
+          "desc": "Issue tracking during Mapiva's development. Fast, minimal, opinionated — very Nothing OS.",
           "badge": ""
         },
         {
@@ -1523,7 +1526,7 @@
     "mapiva": "Mapiva",
     "openToCollab": "Open to collab",
     "live": "Live",
-    "building": "Building",
+    "mapivaStage": "Alpha built",
     "availableFor": "Available for:",
     "adl": "ADL"
   },
@@ -2523,9 +2526,9 @@
   },
   "resumePage": {
     "metaTitle": "Resume · Sunchuangyu (Rin) Huang · rin.contact",
-    "metaDescription": "Resume of Sunchuangyu (Rin) Huang, ASO7 Senior Data Analyst at South Australia Police and co-founder of Mapiva: impact, experience, skills and credentials, ready to save as a PDF.",
+    "metaDescription": "Resume of Sunchuangyu (Rin) Huang, ASO7 Senior Data Analyst at South Australia Police, who also co-founded Mapiva. Impact, experience, skills and credentials, ready to save as a PDF.",
     "ogTitle": "Resume · Sunchuangyu (Rin) Huang",
-    "ogSubtitle": "Senior Data Analyst · SA Police · Mapiva",
+    "ogSubtitle": "Senior Data Analyst · South Australia Police",
     "eyebrow": "Resume",
     "updated": "Updated",
     "pdfMeta": "A4 · text PDF",

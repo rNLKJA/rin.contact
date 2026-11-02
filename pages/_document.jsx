@@ -119,18 +119,28 @@ const PERSON_SCHEMA = {
         alternateName: "EPSB",
       },
     },
-    {
-      "@type": "Organization",
-      name: "Mapiva",
-      description:
-        "Melbourne startup building a map-first social discovery app. Rin is Co-Founder & Dev Lead.",
-    },
   ],
+  // Past roles sit in alumniOf as an OrganizationRole with start and end dates,
+  // so worksFor lists current employers only. Mapiva's development wrapped in
+  // October 2026 with a working alpha test build.
   alumniOf: [
     {
       "@type": "CollegeOrUniversity",
       name: "University of Melbourne",
       url: "https://www.unimelb.edu.au",
+    },
+    {
+      "@type": "OrganizationRole",
+      roleName: "Co-Founder & Dev Lead",
+      startDate: "2025-08",
+      endDate: "2026-10",
+      alumniOf: {
+        "@type": "Organization",
+        name: "Mapiva",
+        description:
+          "Melbourne startup behind a map-first social discovery app, co-founded by Rin. Development wrapped in October 2026 with a working alpha test build.",
+        founder: { "@id": "https://rin.contact/#person" },
+      },
     },
   ],
   knowsAbout: [
@@ -166,7 +176,7 @@ const PERSON_SCHEMA = {
     ],
   },
   description:
-    "Sunchuangyu (Rin) Huang, also known as 黄孙创宇 (黄孙 Rin), Huang Sunchuangyu, HUANG SUNCHUANGYU and HUANGSUNCHUANGYU, is an ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead of Mapiva, working across data science, strategic intelligence and research software engineering.",
+    "Sunchuangyu (Rin) Huang, also known as 黄孙创宇 (黄孙 Rin), Huang Sunchuangyu, HUANG SUNCHUANGYU and HUANGSUNCHUANGYU, is an ASO7 Senior Data Analyst at South Australia Police working across data science, strategic intelligence and research software engineering, and co-founded the Melbourne startup Mapiva.",
 };
 
 const WEBSITE_SCHEMA = {
@@ -182,7 +192,7 @@ const WEBSITE_SCHEMA = {
   inLanguage: ["en-AU", "zh-Hans"],
   copyrightYear: 2026,
   datePublished: "2024-01-01T00:00:00+10:30",
-  dateModified: "2026-10-03T00:00:00+09:30",
+  dateModified: "2026-11-03T00:00:00+10:30",
   // SearchAction points at the blog's real text search (/blog/?q=…), which filters
   // posts by title, summary, and tags. The template must resolve to a working
   // endpoint — pointing it at a dead URL declares a search box that leads nowhere.
