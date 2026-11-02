@@ -65,9 +65,9 @@
   "classbro": {
     "title": "ClassBro",
     "form": "subject-hub",
-    "alt": "Ten subject areas around one tutor, each joined to the centre by a spoke.",
-    "current": false,
-    "period": "2024 – 2025"
+    "alt": "Ten subject areas around one tutor, each joined to the centre by a spoke. The tutor at the centre is red because the tutoring is current.",
+    "current": true,
+    "period": "2024 – Present"
   },
   "ranking-radar": {
     "title": "Ranking Radar",
