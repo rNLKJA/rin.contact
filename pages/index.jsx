@@ -23,7 +23,7 @@ const PROFILE_PAGE_SCHEMA = {
   url: "https://rin.contact",
   name: "Rin Huang (黄孙创宇) — Official Portfolio",
   datePublished: "2024-01-01T00:00:00+10:30",
-  dateModified: "2026-10-03T00:00:00+09:30",
+  dateModified: "2026-11-03T00:00:00+10:30",
   mainEntity: { "@id": "https://rin.contact/#person" },
   about: { "@id": "https://rin.contact/#person" },
   // isPartOf links this page into the WebSite entity — completing the entity graph
@@ -347,8 +347,8 @@ export default function Home({ glyphStats, explorerData = {} }) {
           name="description"
           content={
             isZh
-              ? "Rin Huang（黄孙创宇）的官方网站。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任职于南澳总检察长部消费者与商业服务局（CBS）、墨尔本大学、WEHI 和 CSIRO。完整的职业经历、项目成果和联系方式。"
-              : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI and CSIRO. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+              ? "Rin Huang（黄孙创宇）的官方网站。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师，曾联合创办 Mapiva，并曾任职于南澳总检察长部消费者与商业服务局（CBS）、墨尔本大学、WEHI 和 CSIRO。完整的职业经历、项目成果和联系方式。"
+              : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police. He co-founded Mapiva and previously worked at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI and CSIRO. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
           }
         />
         <meta
@@ -458,8 +458,8 @@ export default function Home({ glyphStats, explorerData = {} }) {
         }
         description={
           isZh
-            ? `Rin Huang（黄孙创宇）的官方网站。南澳大利亚警察局（SAPOL）ASO7 高级数据分析师，Mapiva 联合创始人兼开发负责人。职业经历、项目成果、${CERTS.length} 项专业认证。亦被称为 Huang Sunchuangyu、HUANGSUNCHUANGYU。`
-            : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI and CSIRO. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
+            ? `Rin Huang（黄孙创宇）的官方网站。南澳大利亚警察局（SAPOL）ASO7 高级数据分析师，曾联合创办 Mapiva。职业经历、项目成果、${CERTS.length} 项专业认证。亦被称为 Huang Sunchuangyu、HUANGSUNCHUANGYU。`
+            : "Official website of Rin Huang, ASO7 Senior Data Analyst at South Australia Police. He co-founded Mapiva and previously worked at CBS (Attorney-General's Department SA), the University of Melbourne, WEHI and CSIRO. Full career history, projects and contact. Also known as 黄孙创宇 (Huang Sunchuangyu)."
         }
         path="/"
         ogImage={{
@@ -475,8 +475,8 @@ export default function Home({ glyphStats, explorerData = {} }) {
         }
         ogDescription={
           isZh
-            ? "Rin Huang（黄孙创宇）的个人主页。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师、Mapiva 联合创始人兼开发负责人，曾任 WEHI 研究软件工程师和 CSIRO 数据科学产业顾问。职业经历、项目成果、技能与联系方式。"
-            : "Official portfolio of Rin Huang (黄孙创宇), ASO7 Senior Data Analyst at South Australia Police and Co-Founder & Dev Lead at Mapiva. Previously a Research Software Engineer at WEHI and a Data Science Industrial Consultant at CSIRO. Career history, projects, skills and contact."
+            ? "Rin Huang（黄孙创宇）的个人主页。现任南澳大利亚警察局（SAPOL）ASO7 高级数据分析师。曾联合创办 Mapiva，也曾任 WEHI 研究软件工程师和 CSIRO 数据科学产业顾问。职业经历、项目成果、技能与联系方式。"
+            : "Official portfolio of Rin Huang (黄孙创宇), ASO7 Senior Data Analyst at South Australia Police. He co-founded Mapiva and was previously a Research Software Engineer at WEHI and a Data Science Industrial Consultant at CSIRO. Career history, projects, skills and contact."
         }
         locale={locale}
         extraMeta={[
@@ -498,7 +498,7 @@ export default function Home({ glyphStats, explorerData = {} }) {
           { property: "profile:first_name", content: "Sunchuangyu" },
           { property: "profile:last_name", content: "Huang" },
           { property: "profile:username", content: "rNLKJA" },
-          { property: "og:updated_time", content: "2026-10-03T00:00:00+09:30" },
+          { property: "og:updated_time", content: "2026-11-03T00:00:00+10:30" },
           { property: "og:locale:alternate", content: isZh ? "en_AU" : "zh_CN" },
         ]}
       />
