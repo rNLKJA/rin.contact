@@ -99,6 +99,10 @@ export function getStaticProps({ locale = "en-AU" }) {
 const SECTION_LINK =
   "underline decoration-[#E0E0E0] dark:decoration-[#3D3D3D] underline-offset-4 hover:decoration-current transition-colors duration-200";
 
+// From sm the glance rail has 4 columns: how far its last cell spans, by the
+// number of cells in the last row (glance.length % 4).
+const GLANCE_FILL_SM = { 1: "sm:col-span-4", 2: "sm:col-span-3", 3: "sm:col-span-2" };
+
 export default function ResumePage({ data, jsonLd }) {
   const { t, locale = "en-AU" } = useI18n();
   const isZh = locale === "zh-Hans";
@@ -182,6 +186,16 @@ export default function ResumePage({ data, jsonLd }) {
     },
     { k: t("resumePage.glance.screening"), v: profile.screening },
   ].filter(Boolean);
+  // The rail is 2 columns on phones and 4 from sm (and in print), so the last
+  // cell stretches over any columns left empty in its row: no grey gap shows
+  // when a row such as "Also" drops out.
+  const glanceFill = [
+    glance.length % 2 ? "col-span-2" : "",
+    GLANCE_FILL_SM[glance.length % 4],
+    "lg:col-span-1",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <>
@@ -244,7 +258,9 @@ export default function ResumePage({ data, jsonLd }) {
               <p className="mt-5 text-lg md:text-xl text-black dark:text-white">
                 {profile.headline}
               </p>
-              <p className="text-base text-[#3D3D3D] dark:text-[#9A9A9A]">{profile.subline}</p>
+              {profile.subline && (
+                <p className="text-base text-[#3D3D3D] dark:text-[#9A9A9A]">{profile.subline}</p>
+              )}
               <p className="mt-1 text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {profile.location} · ACST/ACDT
               </p>
@@ -326,8 +342,13 @@ export default function ResumePage({ data, jsonLd }) {
                 <span className="cv-accent">{t("resumePage.glance.heading")}</span>
               </h2>
               <dl className="print-glance grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-px bg-[#F0F0F0] dark:bg-[#1E1E1E] border border-[#F0F0F0] dark:border-[#3D3D3D] rounded-lg overflow-hidden">
-                {glance.map((g) => (
-                  <div key={g.k} className="bg-white dark:bg-[#0A0A0A] px-4 py-3 print-avoid">
+                {glance.map((g, i) => (
+                  <div
+                    key={g.k}
+                    className={`bg-white dark:bg-[#0A0A0A] px-4 py-3 print-avoid ${
+                      i === glance.length - 1 ? glanceFill : ""
+                    }`}
+                  >
                     <dt className="text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] mb-1">
                       {g.k}
                     </dt>
