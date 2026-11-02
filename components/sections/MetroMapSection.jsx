@@ -43,7 +43,9 @@ const RAILS = [
   { line: "research", x1: toX(2024.6), x2: toX(2026.1) }, // UniMelb Psychiatry
   // Engineering
   { line: "eng", x1: toX(2024.42), x2: toX(2025.0) }, // Psyckitchen
-  { line: "eng", x1: toX(2025.6), x2: toX(2026 + 10 / 12) }, // Mapiva, to Oct 2026
+  // Mapiva wrapped in Oct 2026: the rail stops inside October, as CBS stops
+  // inside March, so it does not run on to the NOW marker.
+  { line: "eng", x1: toX(2025.6), x2: toX(2026.79) }, // Mapiva, to Oct 2026
 ];
 
 // ── Stations ──────────────────────────────────────────────────────────────────
