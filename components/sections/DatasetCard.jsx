@@ -27,7 +27,7 @@ const INFO_ROWS = [
     value: `${CERTS.length}  # cloud, analytics, agile, language`,
   },
   { col: "current_role", dtype: "object", value: `'ASO7 Senior Data Analyst, SAPOL'` },
-  { col: "is_founder", dtype: "bool", value: `True   # Mapiva, Aug 2025–present` },
+  { col: "is_founder", dtype: "bool", value: `True   # co-founded Mapiva, Aug 2025` },
   { col: "open_to_collab", dtype: "bool", value: `True` },
   { col: "outlier", dtype: "bool", value: `True   # confirmed ≥ 3σ · see Signal vs Noise below` },
 ];
