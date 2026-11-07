@@ -356,7 +356,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The Bellman/Q-learning formulation, exploration-exploitation framing, and reward-hacking
           caution reflect current reinforcement-learning references alongside ML coursework.
         </p>
@@ -588,7 +588,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           贝尔曼/Q 学习的表述、探索-利用的取景，以及奖励作弊的告诫，反映了当前的强化学习参考文献以及
           机器学习课程。
         </p>

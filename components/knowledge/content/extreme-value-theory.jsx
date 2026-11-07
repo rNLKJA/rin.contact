@@ -359,7 +359,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The block-maxima/GEV and POT/GPD frameworks, the shape-parameter tail types, return-period
           interpretation, and the non-stationarity caution reflect current extreme-value references
           alongside climate-risk work.
@@ -585,7 +585,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           块极大值/GEV 与 POT/GPD 框架、形状参数的尾部类型、重现期的解读，以及非平稳性的告诫，反映了
           当前的极值参考文献以及气候风险工作。
         </p>

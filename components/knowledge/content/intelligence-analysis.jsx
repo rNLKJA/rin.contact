@@ -322,7 +322,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Tradecraft on this page reflects established intelligence-analysis references (the CIA/IC
           "Tradecraft Primer" on structured analytic techniques, OSINT practice) alongside hands-on
           government work.
@@ -549,7 +549,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           本页上的技艺反映了既有的情报分析参考（CIA/情报界关于结构化分析技术的《技艺入门》、OSINT
           实践），以及亲身的政府工作。
         </p>

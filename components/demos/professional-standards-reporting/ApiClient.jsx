@@ -153,7 +153,7 @@ export default function ApiClient({ lang = "en" }) {
 
   return (
     <div className="space-y-6">
-      <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed max-w-[680px]">
+      <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed max-w-[680px]">
         {fill(L(A.intro), { endpoints: CATALOGUE.length, resources: RESOURCE_COUNT })}
       </p>
 
@@ -280,7 +280,7 @@ export default function ApiClient({ lang = "en" }) {
                 {endpoint.path}
               </span>
             </p>
-            <p className="mt-1.5 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+            <p className="mt-1.5 text-sm text-[#3D3D3D] dark:text-[#9A9A9A]">
               {summaryOf(endpoint, lang)} ·{" "}
               <span className="font-mono text-xs break-all">{endpoint.id}</span>
             </p>

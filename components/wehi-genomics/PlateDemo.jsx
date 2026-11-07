@@ -402,7 +402,7 @@ export default function PlateDemo({ lang = "en" }) {
             <span className="font-display text-3xl leading-none text-[#1A1A1A] dark:text-[#EEEEEE]">
               {activeId}
             </span>
-            <span className="flex items-center gap-1.5 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+            <span className="flex items-center gap-1.5 text-sm text-[#3D3D3D] dark:text-[#9A9A9A]">
               <Swatch id={assign[active] || "empty"} />
               {nameOf(assign[active])}
             </span>
@@ -476,7 +476,7 @@ export default function PlateDemo({ lang = "en" }) {
               </li>
             ))}
             {report.empty > 0 && (
-              <li className="flex gap-2 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+              <li className="flex gap-2 text-[#3D3D3D] dark:text-[#9A9A9A]">
                 <span aria-hidden="true">·</span>
                 {report.empty === 1 ? L(D.emptyOne) : fill(L(D.emptyMany), { n: report.empty })}
               </li>

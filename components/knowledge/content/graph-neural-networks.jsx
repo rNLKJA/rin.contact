@@ -307,7 +307,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The message-passing framework, the GCN/GraphSAGE/GAT variants, and the over-smoothing
           limit reflect current GNN references alongside deep-learning coursework.
         </p>
@@ -521,7 +521,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           消息传递框架、GCN/GraphSAGE/GAT 变体，以及过平滑的局限，反映了当前的 GNN
           参考文献以及深度学习 课程。
         </p>

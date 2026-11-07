@@ -302,7 +302,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Forecast-evaluation and ARIMA guidance on this page reflects current practitioner and
           academic references on backtesting and common pitfalls, alongside hands-on work.
         </p>
@@ -531,7 +531,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           本页关于预测评估与 ARIMA 的指引，反映了当前关于回测与常见陷阱的从业者与学术参考文献，以及
           亲身的工作。
         </p>

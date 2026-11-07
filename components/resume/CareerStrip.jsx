@@ -52,7 +52,7 @@ export default function CareerStrip({ rows, asOf, t }) {
               <a
                 href={`#role-${r.id}`}
                 onClick={(e) => jump(e, `role-${r.id}`)}
-                className="font-mono text-[10px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#CCCCCC] hover:text-[#CC0000] dark:hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 truncate"
+                className="font-mono text-[10px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#B4B4B4] hover:text-black dark:hover:text-white transition-colors duration-200 truncate"
               >
                 {r.label}
                 <span className="sr-only">

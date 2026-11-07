@@ -315,7 +315,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Reflects current writing on teaching data science and statistics (data-science education
           pieces, the apprenticeship/mentoring model) alongside hands-on mentoring experience.
         </p>
@@ -512,7 +512,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           反映了当前关于讲授数据科学与统计的文章（数据科学教育类文章、学徒/带教模型），以及亲身的
           带教经验。
         </p>

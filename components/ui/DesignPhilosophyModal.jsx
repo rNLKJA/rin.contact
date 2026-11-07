@@ -119,7 +119,7 @@ function Modal({ onClose }) {
         <div className="px-6 py-8 space-y-10">
           {/* Intro */}
           <section>
-            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
               This site is built at the intersection of two design languages —
               <strong className="font-medium text-black dark:text-white"> Nothing OS</strong> and{" "}
               <strong className="font-medium text-black dark:text-white">Wisr</strong>. Both share
@@ -137,7 +137,7 @@ function Modal({ onClose }) {
               </span>
               <div className="flex-1 h-px bg-[#E0E0E0] dark:bg-[#3D3D3D]" />
             </div>
-            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-4">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-4">
               Nothing's visual language is defined by stark contrast, squircle icon geometry, and a
               single accent colour. Buttons are outlined, never filled. Cards have sharp corners or
               none. The dot-matrix motif — a reference to Nothing's physical device aesthetic —
@@ -207,7 +207,7 @@ function Modal({ onClose }) {
               </span>
               <div className="flex-1 h-px bg-[#E0E0E0] dark:bg-[#3D3D3D]" />
             </div>
-            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-5">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-5">
               Wisr's brand uses a four-element compositional system to give each section its own
               visual character while maintaining a unified whole. Water, Fire, and Air each
               contribute specific shape types and motion qualities.

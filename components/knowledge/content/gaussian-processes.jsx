@@ -262,7 +262,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The distribution-over-functions framing, the kernel/covariance role, the closed-form
           posterior, and the O(n³) scaling limit reflect current Gaussian-process references
           alongside Bayesian-ML coursework.
@@ -451,7 +451,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           函数之上的分布的取景、核/协方差的角色、闭式的后验，以及 O(n³) 的缩放极限，反映了当前的高斯
           过程参考文献以及贝叶斯机器学习课程。
         </p>

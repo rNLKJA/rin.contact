@@ -386,7 +386,7 @@ export default function MapDiscoveryDemo({ lang = "en" }) {
           </div>
 
           {/* Legend */}
-          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-[#3D3D3D] dark:text-[#9A9A9A]">
             {["you", "person", "event", "group", ...(reveal ? ["truth"] : [])].map((k) => (
               <li key={k} className="flex items-center gap-1.5">
                 <Glyph kind={k} />
@@ -506,7 +506,7 @@ export default function MapDiscoveryDemo({ lang = "en" }) {
               {fill(L(D.near), { place: placeName })} · {fmt.distance(radius)}
             </p>
             {nearby.length === 0 ? (
-              <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+              <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A]">
                 {fill(L(D.feedEmpty), { radius: fmt.distance(radius) })}
               </p>
             ) : (

@@ -12,8 +12,7 @@ import {
 const K = "skillsPage.now";
 const SUBHEAD =
   "flex items-center gap-2.5 font-mono text-[10px] tracking-[0.25em] uppercase text-[#1A1A1A] dark:text-white";
-const NOTE =
-  "mt-2 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]";
+const NOTE = "mt-2 max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A]";
 const HAIRLINE = "border-[#F0F0F0] dark:border-[#1E1E1E]";
 
 /** How many skills "In active use" shows before "Show all". */
@@ -28,7 +27,7 @@ function PixelMark() {
       height="9"
       viewBox="0 0 3 3"
       shapeRendering="crispEdges"
-      className="shrink-0 text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+      className="shrink-0 text-[#CC0000] dark:text-[#FF3C3C]"
       fill="currentColor"
     >
       <rect x="0" y="0" width="1" height="1" />
@@ -154,7 +153,7 @@ export default function SkillsNow({ atlas, onSelectSkill }) {
                 {...skillLinkProps(a.id, onSelectSkill)}
                 className="group flex min-h-[44px] flex-col justify-center py-2"
               >
-                <span className="text-[14px] leading-snug text-[#1A1A1A] dark:text-[#DDDDDD] group-hover:text-[#CC0000] dark:group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 [overflow-wrap:anywhere]">
+                <span className="text-[14px] leading-snug text-[#1A1A1A] dark:text-[#B4B4B4] group-hover:text-black dark:group-hover:text-white transition-colors duration-200 [overflow-wrap:anywhere]">
                   {skillLabel[a.id]}
                 </span>
                 <span

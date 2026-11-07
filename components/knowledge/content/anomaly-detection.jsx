@@ -336,7 +336,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Method comparisons and the alert-fatigue framing reflect current anomaly-detection
           references (isolation forest / LOF practice, alert-fatigue research) alongside hands-on
           work.
@@ -566,7 +566,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           方法比较与告警疲劳的取景，反映了当前的异常检测参考（孤立森林 / LOF 实践、告警疲劳研究），
           以及亲身的工作。
         </p>

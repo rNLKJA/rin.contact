@@ -76,7 +76,7 @@ function Section({ title, paragraphs }) {
       <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-[#1A1A1A] dark:text-[#EEEEEE]">
         {title}
       </h2>
-      <div className="space-y-4 text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+      <div className="space-y-4 text-[15px] text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
         {(paragraphs || []).map((p, i) => (
           <p key={i}>{p}</p>
         ))}
@@ -131,7 +131,7 @@ export default function OrderSystemCaseStudy() {
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-3 text-[#1A1A1A] dark:text-[#EEEEEE]">
               {t("orderSystem.title")}
             </h1>
-            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-6">
+            <p className="text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-6">
               {t("orderSystem.tagline")}
             </p>
           </div>
@@ -185,7 +185,7 @@ export default function OrderSystemCaseStudy() {
 
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D] flex flex-wrap items-center justify-between gap-4">
-          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">
             {t("orderSystem.footerNote")}
           </p>
           <Link

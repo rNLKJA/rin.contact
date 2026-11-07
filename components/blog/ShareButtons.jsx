@@ -25,7 +25,7 @@ export default function ShareButtons({ url, title }) {
   const pill =
     "inline-flex items-center gap-1.5 border border-[#E0E0E0] dark:border-[#3D3D3D] px-3.5 py-1.5 rounded-full " +
     "text-[10px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A] " +
-    "hover:border-[#FF3C3C] hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200 " +
+    "hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors duration-200 " +
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FF3C3C]";
 
   return (

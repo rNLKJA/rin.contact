@@ -312,7 +312,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The semi-supervised assumptions, pseudo-labelling/label-propagation methods,
           active-learning query strategies, and the confirmation-bias caution reflect current
           references alongside ML coursework.
@@ -511,7 +511,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           半监督的假设、伪标注/标签传播的方法、主动学习的查询策略，以及确认偏误的告诫，反映了当前的参考
           文献以及机器学习课程。
         </p>

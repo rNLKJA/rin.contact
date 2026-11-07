@@ -331,7 +331,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The reproducibility-crisis framing, notebook cautions, environment pinning, and
           Reproducible Analytical Pipelines (RAP) reflect current references on reproducible
           research and government analysis alongside hands-on work.
@@ -533,7 +533,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           可复现性危机的取景、笔记本的告诫、环境锁定，以及可复现分析流水线（RAP），反映了当前关于
           可复现研究与政府分析的参考文献，以及亲身的工作。
         </p>

@@ -356,7 +356,7 @@ function AboutOpenerClient() {
     >
       <HeroDotField />
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-10 md:py-14">
-        <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#CC0000] dark:text-[#FF3C3C] mb-6 m-0">
+        <p className="text-xs tracking-widest uppercase text-[#B71C1C] dark:text-[#FF3C3C] mb-6 m-0">
           <span aria-hidden="true">■ — </span>
           {copy.label}
         </p>

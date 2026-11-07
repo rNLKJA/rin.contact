@@ -154,7 +154,7 @@ function NavIconLink({ href, icon: Icon, label, active }) {
       aria-current={active ? "page" : undefined}
       className={`group relative inline-flex items-center h-9 px-[9px] [@media(hover:none)]:px-1 max-xl:[@media(hover:none)]:tracking-wider rounded-full transition-colors duration-200 ${
         active
-          ? "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+          ? "text-[#CC0000] dark:text-[#FF3C3C]"
           : "text-[#6B6B6B] dark:text-[#9A9A9A] [@media(hover:hover)]:hover:text-black dark:[@media(hover:hover)]:hover:text-white [@media(hover:hover)]:hover:bg-[#F5F5F5] dark:[@media(hover:hover)]:hover:bg-[#1A1A1A] focus-visible:text-black dark:focus-visible:text-white"
       }`}
     >
@@ -192,7 +192,7 @@ function ToolIconLink({ href, icon: Icon, label, active, className = "" }) {
       aria-current={active ? "page" : undefined}
       className={`group relative inline-flex items-center justify-center w-9 h-9 border transition-colors duration-200 ${className} ${
         active
-          ? "border-[#FF3C3C] text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+          ? "border-[#FF3C3C] text-[#CC0000] dark:text-[#FF3C3C]"
           : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
       }`}
     >
@@ -555,14 +555,14 @@ export default function Header() {
                   className={`flex flex-shrink-0 items-baseline gap-4 py-4 [@media(max-height:900px)]:py-3 border-b border-[#F0F0F0] dark:border-[#1E1E1E] group transition-colors duration-200 ${
                     active
                       ? "text-[#CC0000] dark:text-[#FF3C3C]"
-                      : "text-black dark:text-white hover:text-[#CC0000] dark:hover:text-[#FF3C3C]"
+                      : "text-black dark:text-white hover:text-black dark:hover:text-white"
                   }`}
                 >
                   <span
                     className={`text-[10px] tracking-widest tabular-nums flex-shrink-0 w-5 transition-colors duration-200 ${
                       active
                         ? "text-accent-ink"
-                        : "text-[#6B6B6B] dark:text-[#9A9A9A] group-hover:text-[#CC0000] dark:group-hover:text-[#FF3C3C]"
+                        : "text-[#6B6B6B] dark:text-[#9A9A9A] group-hover:text-black dark:group-hover:text-white"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -576,7 +576,7 @@ export default function Header() {
                   ) : (
                     <span
                       aria-hidden="true"
-                      className="ml-auto text-[#C8C8C8] dark:text-[#5C5C5C] group-hover:text-[#CC0000] dark:group-hover:text-[#FF3C3C] transition-colors duration-200 text-sm"
+                      className="ml-auto text-[#C8C8C8] dark:text-[#5C5C5C] group-hover:text-black dark:group-hover:text-white transition-colors duration-200 text-sm"
                     >
                       ↗
                     </span>

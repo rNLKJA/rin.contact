@@ -303,7 +303,7 @@ export default function QuarterlyReport({ lang = "en" }) {
             ))}
           </ul>
           {plantedNote && (
-            <p className="border-l-2 border-[#E0E0E0] dark:border-[#3D3D3D] pl-3 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-5">
+            <p className="border-l-2 border-[#E0E0E0] dark:border-[#3D3D3D] pl-3 text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-5">
               {plantedNote}
             </p>
           )}
@@ -387,14 +387,14 @@ export default function QuarterlyReport({ lang = "en" }) {
                     <td className="px-3 py-1.5 text-right whitespace-nowrap text-[#1A1A1A] dark:text-[#EEEEEE]">
                       {dec(pt.u)}
                     </td>
-                    <td className="px-3 py-1.5 whitespace-nowrap text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                    <td className="px-3 py-1.5 whitespace-nowrap text-[#3D3D3D] dark:text-[#9A9A9A]">
                       {dec(intervals[i][0])}–{dec(intervals[i][1])}
                     </td>
                     <td
                       className={`px-3 py-1.5 whitespace-nowrap ${
                         outside
                           ? "text-[#CC0000] dark:text-[#FF6B6B]"
-                          : "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                          : "text-[#3D3D3D] dark:text-[#9A9A9A]"
                       }`}
                     >
                       {statusLabel(pt.status)}

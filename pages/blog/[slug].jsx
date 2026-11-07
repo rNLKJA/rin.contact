@@ -29,9 +29,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
   if (!post) {
     return (
       <div className="max-w-[700px] mx-auto px-6 md:px-12 py-24">
-        <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A]">
-          {t("blog.postNotFound")}
-        </p>
+        <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">{t("blog.postNotFound")}</p>
         <Link href="/blog" className="text-sm text-accent-ink hover:underline mt-4 inline-block">
           ← {t("blog.backToBlog")}
         </Link>
@@ -155,7 +153,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
         {/* Back link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
+          className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200 mb-12"
         >
           ← {t("blog.backToBlog")}
         </Link>
@@ -163,7 +161,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
         {isZh && (
           <p
             role="note"
-            className="flex flex-wrap items-center gap-x-2 gap-y-1 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-3 mb-10 text-xs text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A]"
+            className="flex flex-wrap items-center gap-x-2 gap-y-1 border border-[#E0E0E0] dark:border-[#3D3D3D] px-4 py-3 mb-10 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]"
           >
             <span className="block w-1.5 h-1.5 bg-[#FF3C3C]" aria-hidden="true" />
             <span>{ENGLISH_ONLY_NOTE.zh}</span>
@@ -204,7 +202,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A]"
+                    className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]"
                   >
                     {tag}
                   </span>
@@ -226,15 +224,15 @@ export default function BlogPost({ post, relatedPosts = [] }) {
             when it sits inside the zh-Hans page */}
         <div
           lang={isZh ? "en-AU" : undefined}
-          className="prose prose-base max-w-none
+          className="prose prose-base max-w-none dark:text-[#9A9A9A]
                      prose-headings:text-black dark:prose-headings:text-white
                      prose-a:text-[#FF3C3C] prose-a:no-underline hover:prose-a:underline
                      prose-strong:text-black dark:prose-strong:text-white
                      prose-code:text-[#FF3C3C] prose-code:bg-[#F5F5F5] dark:prose-code:bg-[#1A1A1A] prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs
                      prose-pre:bg-[#F5F5F5] dark:prose-pre:bg-[#0D0D0D] prose-pre:border prose-pre:border-[#E0E0E0] dark:prose-pre:border-[#2A2A2A]
                      prose-blockquote:border-l-[#FF3C3C] prose-blockquote:text-[#7A7A7A] dark:prose-blockquote:text-[#9A9A9A]
-                     prose-li:text-[#3D3D3D] dark:prose-li:text-[#6B6B6B] dark:text-[#9A9A9A]
-                     prose-p:text-[#3D3D3D] dark:prose-p:text-[#6B6B6B] dark:text-[#9A9A9A]
+                     prose-li:text-[#3D3D3D] dark:prose-li:text-[#9A9A9A]
+                     prose-p:text-[#3D3D3D] dark:prose-p:text-[#9A9A9A]
                      prose-p:mb-5
                      leading-relaxed"
           suppressHydrationWarning
@@ -271,7 +269,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
         <div className="mt-8 pt-8 border-t border-[#E0E0E0] dark:border-[#3D3D3D]">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
+            className="inline-flex items-center gap-1 text-xs tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A] hover:text-black dark:hover:text-white transition-colors duration-200"
           >
             ← {t("blog.backToAllPosts")}
           </Link>

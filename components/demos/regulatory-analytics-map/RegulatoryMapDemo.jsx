@@ -263,7 +263,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
           />
 
           {/* Legend */}
-          <div className="mt-5 max-w-[360px] space-y-2 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+          <div className="mt-5 max-w-[360px] space-y-2 text-xs text-[#3D3D3D] dark:text-[#9A9A9A]">
             <div className="flex items-center gap-2">
               <span className="font-mono shrink-0">
                 {view === "gap" ? L(D.legendBelow) : L(D.legendLow)}
@@ -312,9 +312,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
             <span className="font-display text-3xl leading-none text-[#1A1A1A] dark:text-[#EEEEEE]">
               {sel.code}
             </span>
-            <span className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-              {areaName(sel)}
-            </span>
+            <span className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A]">{areaName(sel)}</span>
           </p>
           <dl className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1.5 text-sm">
             {[
@@ -336,7 +334,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
             className={`mt-4 flex gap-2 text-sm leading-relaxed ${
               sel.above
                 ? "text-[#CC0000] dark:text-[#FF6B6B]"
-                : "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                : "text-[#3D3D3D] dark:text-[#9A9A9A]"
             }`}
           >
             <span aria-hidden="true">{sel.above ? "▲" : "·"}</span>
@@ -414,7 +412,7 @@ export default function RegulatoryMapDemo({ lang = "en" }) {
                       className={`w-full min-h-[36px] flex items-center gap-3 rounded-md px-2 text-left text-sm transition-colors duration-150 motion-reduce:transition-none hover:bg-[#F7F7F7] dark:hover:bg-[#141414] ${FOCUS} ${
                         i === active
                           ? "bg-[#F0F0F0] dark:bg-[#1A1A1A] text-[#1A1A1A] dark:text-[#EEEEEE]"
-                          : "text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                          : "text-[#3D3D3D] dark:text-[#9A9A9A]"
                       }`}
                     >
                       <span className="font-mono text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">

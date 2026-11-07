@@ -815,7 +815,7 @@ function BubblePanel() {
             <p className="text-[10px] text-accent-ink uppercase tracking-widest mb-2 font-mono">
               Pattern Detected
             </p>
-            <p className="text-sm text-[#666] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed font-light">
+            <p className="text-sm text-[#666] dark:text-[#B4B4B4] leading-relaxed font-light">
               Formal career starts at CBS/AGD (level 4). From there, Rin reached SAPOL ASO7 (level
               7) in <span className="text-black dark:text-white font-normal">14 months</span>. The
               typical analyst pathway requires{" "}
@@ -1319,7 +1319,7 @@ function GrowthPanel() {
             <p className="text-[10px] text-accent-ink uppercase tracking-widest mb-2 font-mono">
               Why compound beats linear
             </p>
-            <p className="text-sm text-[#666] dark:text-[#373737] dark:text-[#B4B4B4] leading-relaxed font-light">
+            <p className="text-sm text-[#666] dark:text-[#B4B4B4] leading-relaxed font-light">
               A linear learner adds knowledge sequentially. A compound learner puts each new context
               to work <em>on top of</em> everything before it. Strategic thinking deepened at CSIRO
               made the CBS intelligence framework sharper. Bioinformatics at WEHI informed how data
@@ -1514,7 +1514,7 @@ export default function IntelligenceSection() {
             strokeLinecap="round"
           />
         </svg>
-        <p className="text-base font-light text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] max-w-2xl leading-relaxed">
+        <p className="text-base font-light text-[#3D3D3D] dark:text-[#B4B4B4] max-w-2xl leading-relaxed">
           Three interactive lenses on the same dataset — my career. Each one tells a different part
           of the same story: deliberate growth, compounding breadth, and the principle that
           continuous improvement is not a soft skill. It&apos;s infrastructure.
@@ -1557,7 +1557,7 @@ export default function IntelligenceSection() {
       {/* Disclaimer */}
       <div className="mt-4 border-t border-[#E0E0E0] dark:border-[#3D3D3D] pt-4">
         <p className="text-[10px] text-[#373737] dark:text-[#B4B4B4] leading-relaxed max-w-4xl">
-          <span className="text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] font-medium">
+          <span className="text-[#373737] dark:text-[#B4B4B4] font-medium">
             For reference only.
           </span>{" "}
           Career seniority scores and domain depth values are self-assessed approximations

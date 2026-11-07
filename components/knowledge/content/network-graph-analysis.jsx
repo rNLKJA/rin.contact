@@ -328,7 +328,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           Centrality definitions, modern community-detection methods, and the
           centrality-isn't-importance caution reflect current network-analysis references alongside
           hands-on link analysis.
@@ -534,7 +534,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           中心性的定义、现代的社区发现方法，以及「中心性不是重要性」的告诫，反映了当前的网络分析
           参考文献，以及亲身的链路分析。
         </p>

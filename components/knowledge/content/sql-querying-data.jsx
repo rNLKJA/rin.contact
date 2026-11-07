@@ -340,7 +340,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The logical-execution-order framing, window-function placement, and NULL
           three-valued-logic cautions reflect current SQL references alongside coursework.
         </p>
@@ -566,7 +566,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           逻辑执行顺序的取景、窗口函数的位置，以及 NULL 三值逻辑的告诫，反映了当前的 SQL
           参考文献以及 课程。
         </p>

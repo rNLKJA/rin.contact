@@ -259,9 +259,7 @@ export default function ResumePage({ data, jsonLd }) {
                 {profile.headline}
               </p>
               {profile.subline && (
-                <p className="text-base text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-                  {profile.subline}
-                </p>
+                <p className="text-base text-[#3D3D3D] dark:text-[#9A9A9A]">{profile.subline}</p>
               )}
               <p className="mt-1 text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">
                 {profile.location} · ACST/ACDT
@@ -386,7 +384,7 @@ export default function ResumePage({ data, jsonLd }) {
                   {profile.openTo.map((o) => (
                     <span
                       key={o}
-                      className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                      className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#3D3D3D] dark:text-[#9A9A9A]"
                     >
                       {o}
                     </span>
@@ -407,7 +405,7 @@ export default function ResumePage({ data, jsonLd }) {
                         <span className="print-value font-display text-3xl tabular-nums leading-none text-black dark:text-white">
                           {m.value}
                         </span>
-                        <span className="mt-2 text-sm leading-snug text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                        <span className="mt-2 text-sm leading-snug text-[#3D3D3D] dark:text-[#9A9A9A]">
                           {m.label}
                         </span>
                         <span className="cv-accent mt-3 font-mono text-[10px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C]">
@@ -452,7 +450,7 @@ export default function ResumePage({ data, jsonLd }) {
                         {g.items.map((s) => (
                           <span
                             key={s}
-                            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                            className="border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-xs text-[#3D3D3D] dark:text-[#9A9A9A]"
                           >
                             {s}
                           </span>

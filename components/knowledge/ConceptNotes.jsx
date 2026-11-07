@@ -34,7 +34,7 @@ export default function ConceptNotes({ topic }) {
                 href={noteHref(n.slug)}
                 className="group block border border-[#E0E0E0] dark:border-[#2A2A2A] p-5 hover:border-black dark:hover:border-white transition-colors"
               >
-                <span className="block text-sm text-[#1A1A1A] dark:text-white group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors">
+                <span className="block text-sm text-[#1A1A1A] dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">
                   {copy.title}
                 </span>
                 <span className="block mt-1.5 text-[13px] text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">

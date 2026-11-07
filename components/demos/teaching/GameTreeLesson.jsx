@@ -301,7 +301,7 @@ export default function GameTreeLesson({ lang = "en" }) {
                   onKeyDown={(e) => onCellKey(e, i)}
                   className={`relative aspect-square w-full rounded-md border flex items-center justify-center select-none transition-colors duration-150 motion-reduce:transition-none ${FOCUS} ${
                     inLine
-                      ? "border-[#CC0000] dark:border-[#FF3C3C] text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+                      ? "border-[#CC0000] dark:border-[#FF3C3C] text-[#CC0000] dark:text-[#FF3C3C]"
                       : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#1A1A1A] dark:text-[#EEEEEE]"
                   } ${
                     mark || over
@@ -387,7 +387,7 @@ export default function GameTreeLesson({ lang = "en" }) {
                   </div>
                 ))}
               </dl>
-              <p className="mt-3 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+              <p className="mt-3 text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
                 <span className={`${META} mr-2`}>{L(D.best)}</span>
                 {fill(L(D.bestLine), {
                   cell: cap(cellName(result.bestCell)),
@@ -434,7 +434,7 @@ export default function GameTreeLesson({ lang = "en" }) {
                     <span className="text-sm font-medium text-[#1A1A1A] dark:text-[#EEEEEE]">
                       {cap(cellName(r.cell))}
                     </span>
-                    <span className="font-mono text-[11px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                    <span className="font-mono text-[11px] text-[#3D3D3D] dark:text-[#9A9A9A]">
                       {L(D.value[r.value])}
                     </span>
                   </p>

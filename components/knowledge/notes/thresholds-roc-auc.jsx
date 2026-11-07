@@ -199,7 +199,7 @@ The vertical line shows your chosen threshold on the score distributions."
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               Wikipedia
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Clear overview of ROC, TPR, FPR and AUC with historical context from signal detection
               theory.
             </span>
@@ -215,7 +215,7 @@ The vertical line shows your chosen threshold on the score distributions."
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               scikit-learn documentation
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Comprehensive reference for all metrics, with code examples and when to use each.
             </span>
           </li>
@@ -346,7 +346,7 @@ function ZhBody() {
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               维基百科
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               清晰地介绍 ROC、真正率、假正率和 AUC，还有来自信号检测论的历史背景。
             </span>
           </li>
@@ -361,7 +361,7 @@ function ZhBody() {
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               scikit-learn 文档
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               所有指标的全面参考，带代码例子和每个的使用时机。
             </span>
           </li>
