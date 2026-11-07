@@ -64,6 +64,10 @@
     "note": "",
     "alt": "94 dots, one for each page the site had when the blog was built."
   },
+  "fix-the-data-before-the-model": {
+    "title": "Fix the Data Before You Touch the Model",
+    "kind": "outline"
+  },
   "gmail-labeler-ai-agent": {
     "title": "My Inbox Had 3,000 Unread Emails. So I Built an AI Agent to Triage It.",
     "kind": "count",
