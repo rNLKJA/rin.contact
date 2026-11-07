@@ -289,10 +289,11 @@ function EnBody() {
             the method.
           </p>
           <p>
-            It's also why this whole <Link href="/knowledge">knowledge section</Link> is built the
-            way it is: each page chunks material, pairs an SVG with prose (<em>dual coding</em>),
-            and ends with a deliberate <em>retrieval</em> box rather than a summary. Teaching the
-            content taught me the format — and the format is the part that lasts.
+            It's also why this whole <Link href="/skills/?tab=notes">knowledge section</Link> is
+            built the way it is: each page chunks material, pairs an SVG with prose (
+            <em>dual coding</em>), and ends with a deliberate <em>retrieval</em> box rather than a
+            summary. Teaching the content taught me the format — and the format is the part that
+            lasts.
           </p>
         </Callout>
       </KSection>
@@ -521,7 +522,7 @@ function ZhBody() {
             ——合上笔记、重建推导、 把题型混起来，好让他们不得不选方法。
           </p>
           <p>
-            这也是为什么整个<Link href="/knowledge">知识板块</Link>
+            这也是为什么整个<Link href="/skills/?tab=notes">知识板块</Link>
             建成这个样子：每一页都把材料分块、 把一张 SVG 与文字配对（<em>双重编码</em>
             ），并以一个刻意的提取框、而非一份摘要收尾。讲授
             内容教会了我这个格式——而格式才是持续下去的那部分。
@@ -594,7 +595,7 @@ const META = {
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
     prev: { href: "/knowledge/data-science-mentoring", label: "Data Science Mentoring" },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "教育科技与学习的科学",
@@ -620,7 +621,7 @@ const META = {
       { id: "refresher", label: "60 秒回顾" },
     ],
     prev: { href: "/knowledge/data-science-mentoring", label: "数据科学带教" },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 

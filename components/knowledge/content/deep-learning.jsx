@@ -681,7 +681,7 @@ const META = {
       href: "/knowledge/statistical-machine-learning",
       label: "Statistical Machine Learning",
     },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "深度学习与神经网络",
@@ -708,7 +708,7 @@ const META = {
       { id: "refresher", label: "60 秒回顾" },
     ],
     prev: { href: "/knowledge/statistical-machine-learning", label: "统计机器学习" },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 

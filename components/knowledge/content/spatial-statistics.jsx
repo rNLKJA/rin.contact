@@ -542,7 +542,7 @@ const META = {
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
     prev: { href: "/knowledge/geospatial-analysis", label: "Geospatial Analysis & GIS" },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "空间统计",
@@ -568,7 +568,7 @@ const META = {
       { id: "refresher", label: "60 秒回顾" },
     ],
     prev: { href: "/knowledge/geospatial-analysis", label: "地理空间分析与 GIS" },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 

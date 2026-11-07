@@ -59,6 +59,9 @@ export const GROUPS = [
 /** Routes never indexed: the easter eggs under /fun (the hub itself is listed). */
 export const SECRET_ROUTE = /^\/fun\/./;
 
+/** The page an href opens: "/skills/?tab=notes" -> "/skills", "/projects#x" -> "/projects". */
+const pagePath = (href) => href.split(/[?#]/)[0].replace(/(.)\/$/, "$1");
+
 // Where a page that no source names goes, by its path.
 const PLACE_BY_PREFIX = [
   [/^\/projects\//, "caseStudies"],
@@ -363,7 +366,7 @@ export function pageIndexProblems({ dicts, root = ROOT }) {
   const routes = new Set(pageRoutes(root));
   const posts = new Set(postsMeta(root).map((p) => p.slug));
   const groupIds = new Set(GROUPS.map((g) => g.id));
-  const indexed = new Set(index.entries.map((e) => e.href.split("#")[0]));
+  const indexed = new Set(index.entries.map((e) => pagePath(e.href)));
 
   for (const route of routes) {
     if (!SECRET_ROUTE.test(route) && !indexed.has(route)) {
@@ -371,7 +374,7 @@ export function pageIndexProblems({ dicts, root = ROOT }) {
     }
   }
   for (const entry of index.entries) {
-    const path = entry.href.split("#")[0];
+    const path = pagePath(entry.href);
     const where = `page index: ${entry.href}`;
     if (SECRET_ROUTE.test(path)) problems.push(`${where} lists an easter egg`);
     if (!groupIds.has(entry.group)) problems.push(`${where} has unknown group "${entry.group}"`);

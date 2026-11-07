@@ -593,7 +593,7 @@ const META = {
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
     prev: { href: "/knowledge/anomaly-detection", label: "Anomaly Detection" },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "统计过程控制",
@@ -618,7 +618,7 @@ const META = {
       { id: "refresher", label: "60 秒回顾" },
     ],
     prev: { href: "/knowledge/anomaly-detection", label: "异常检测" },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 

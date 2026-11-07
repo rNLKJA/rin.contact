@@ -23,10 +23,14 @@
  *    registry (lib/knowledge-notes.js): a live parent topic for every note, a
  *    page and a content module for every live note, a registry entry for every
  *    page, and no marks or em dashes in the note content.
+ * 8. Searches the same source for internal links to a path next.config.js
+ *    redirects. A client-side navigation to a redirected path shows the error
+ *    page, so links name where the page lives (/skills/?tab=notes, not /knowledge).
  * Exits non-zero on any problem. Node 22, no dependencies.
  */
 /* eslint-disable no-console -- a CLI reports to the console */
 import { readdirSync, readFileSync, statSync } from "node:fs";
+import { createRequire } from "node:module";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { BANNED, careerDataProblems } from "../lib/career-check.js";
@@ -44,6 +48,16 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const SCAN = ["components", "pages", "lib", "locales", "posts", "public/rin.json"];
 const EXT = /\.(jsx?|mjs|json|md|txt|xml)$/;
 const SKIP = new Set(["lib/career-check.js"]);
+
+// Paths next.config.js redirects (plain sources, no :params), without the
+// trailing slash. An href or a Markdown link to one of them fails (step 8).
+const REDIRECTED = new Set(
+  (await createRequire(import.meta.url)("../next.config.js").redirects())
+    .map((r) => r.source)
+    .filter((source) => !/[:(*]/.test(source))
+    .map((source) => source.replace(/(.)\/$/, "$1"))
+);
+const INTERNAL_LINK = /\bhref"?\s*[:=]\s*\{?\s*["'`](\/[^"'`?#\s]*)|\]\((\/[^)?#\s]*)/g;
 
 // Site rule: no emoji anywhere on rin.contact. The design uses text glyphs
 // (■ ● → ↗ ✕), so any pictographic character fails the build. A few symbols
@@ -135,6 +149,14 @@ for (const entry of SCAN) {
         problems.push(
           `${rel}:${i + 1} contains a phone number or tel: link; personal numbers stay off the site`
         );
+      }
+      for (const m of line.matchAll(INTERNAL_LINK)) {
+        const path = (m[1] || m[2]).replace(/(.)\/$/, "$1");
+        if (REDIRECTED.has(path)) {
+          problems.push(
+            `${rel}:${i + 1} links to ${path}, which next.config.js redirects; link to where it goes`
+          );
+        }
       }
       for (const ch of line) {
         if (EMOJI.test(ch) && !EMOJI_ALLOWED.has(ch)) {

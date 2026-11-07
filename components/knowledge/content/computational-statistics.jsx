@@ -605,7 +605,7 @@ const META = {
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
     prev: { href: "/knowledge/statistics", label: "Statistics" },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "计算统计",
@@ -632,7 +632,7 @@ const META = {
       { id: "refresher", label: "60 秒回顾" },
     ],
     prev: { href: "/knowledge/statistics", label: "统计学" },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 

@@ -172,8 +172,8 @@ function EnBody() {
           </li>
           <li>
             <Term>Analogy</Term> — connect the new idea to something they already know. The whole{" "}
-            <Link href="/knowledge">knowledge section</Link> is built on this: a model card, a foggy
-            hillside, a shadow on a tabletop.
+            <Link href="/skills/?tab=notes">knowledge section</Link> is built on this: a model card,
+            a foggy hillside, a shadow on a tabletop.
           </li>
           <li>
             <Term>The "explain it back" test</Term> — the real check of understanding isn't whether
@@ -275,8 +275,8 @@ function EnBody() {
             page is this skill pointed at decision-makers.
           </p>
           <p>
-            And the <Link href="/knowledge">whole knowledge section</Link> you're reading is the
-            same instinct: I learn by teaching, and I keep what I've learned sharp by having to
+            And the <Link href="/skills/?tab=notes">whole knowledge section</Link> you're reading is
+            the same instinct: I learn by teaching, and I keep what I've learned sharp by having to
             explain it clearly. Generalist by nature, specialist by discipline — and a teacher
             throughout, because explaining something is how I make sure I actually understand it.
           </p>
@@ -384,8 +384,8 @@ function ZhBody() {
           </li>
           <li>
             <Term>类比</Term>——把新想法连到他们已经知道的东西上。整个
-            <Link href="/knowledge">知识板块</Link>都建立在这之上：一张模型卡、一片有雾的山坡、桌面
-            上的一道影子。
+            <Link href="/skills/?tab=notes">知识板块</Link>
+            都建立在这之上：一张模型卡、一片有雾的山坡、桌面 上的一道影子。
           </li>
           <li>
             <Term>「讲回来」测试</Term>——理解的真正检验不是他们点不点头；而是他们能否用自己的话把它
@@ -476,7 +476,8 @@ function ZhBody() {
             决策者。
           </p>
           <p>
-            而你正在读的整个<Link href="/knowledge">知识板块</Link>，是同一种本能：我靠教学而学，并
+            而你正在读的整个<Link href="/skills/?tab=notes">知识板块</Link>
+            ，是同一种本能：我靠教学而学，并
             通过不得不把所学讲清楚来让它保持锋利。天性是通才，训练成专才——且自始至终是一名教师，
             因为讲解一样东西，正是我确保自己真正理解它的方式。
           </p>
@@ -546,7 +547,7 @@ const META = {
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
     prev: { href: "/knowledge/applied-data-science", label: "Applied Data Science" },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "数据科学带教",
@@ -572,7 +573,7 @@ const META = {
       { id: "refresher", label: "60 秒回顾" },
     ],
     prev: { href: "/knowledge/applied-data-science", label: "应用数据科学" },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 

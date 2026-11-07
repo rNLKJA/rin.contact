@@ -24,7 +24,7 @@ const SUGGESTION_KEYS = [
   { href: "/career", key: "nav.career" },
   { href: "/projects", key: "nav.projects" },
   { href: "/lab", key: "nav.lab" },
-  { href: "/knowledge", key: "nav.knowledge" },
+  { href: "/skills/?tab=notes", key: "nav.knowledge" },
   { href: "/blog", key: "nav.blog" },
   { href: "/strategic", key: "nav.strategic" },
   { href: "/about", key: "nav.about" },
