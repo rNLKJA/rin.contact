@@ -98,42 +98,29 @@ const PROJECTS_SCHEMA = {
   name: "Projects by Rin Huang (Sunchuangyu Huang)",
   description: "Software, data science, and analytics projects by Rin Huang",
   author: { "@id": "https://rin.contact/#person" },
+  // A project with a public GitHub repository is SoftwareSourceCode, with its
+  // stack and repository. Every other project is a plain CreativeWork with the
+  // stack as keywords. They used to be SoftwareApplication, a type Google only
+  // accepts with offers and a rating or review, and these projects have neither.
   itemListElement: PROJECTS.map((project, index) => {
-    const baseItem = {
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type":
-          project.link && project.link.includes("github.com")
-            ? "SoftwareSourceCode"
-            : "SoftwareApplication",
-        name: project.title,
-        description: project.summary,
-        author: { "@id": "https://rin.contact/#person" },
-      },
+    const repository = project.link && project.link.includes("github.com") ? project.link : null;
+    const stack = project.stack && project.stack.length > 0 ? project.stack : null;
+
+    const item = {
+      "@type": repository ? "SoftwareSourceCode" : "CreativeWork",
+      name: project.title,
+      description: project.summary,
+      author: { "@id": "https://rin.contact/#person" },
     };
 
-    // Add programming languages if stack exists
-    if (project.stack && project.stack.length > 0) {
-      baseItem.item.programmingLanguage = project.stack;
+    if (repository) {
+      if (stack) item.programmingLanguage = stack;
+      item.codeRepository = repository;
+    } else if (stack) {
+      item.keywords = stack.join(", ");
     }
 
-    // Add repository link if it's a GitHub link
-    if (project.link && project.link.includes("github.com")) {
-      baseItem.item.codeRepository = project.link;
-    }
-
-    // Add application category for apps
-    if (project.tag === "Mobile Dev") {
-      baseItem.item.applicationCategory = "MobileApplication";
-      baseItem.item.operatingSystem = "iOS, Android";
-    } else if (project.tag === "Analytics" || project.domain === "Government") {
-      baseItem.item.applicationCategory = "BusinessApplication";
-    } else if (project.domain === "Startup") {
-      baseItem.item.applicationCategory = "SocialNetworkingApplication";
-    }
-
-    return baseItem;
+    return { "@type": "ListItem", position: index + 1, item };
   }),
 };
 
