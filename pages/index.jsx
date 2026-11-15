@@ -12,6 +12,8 @@ import en from "@/locales/en-AU.json";
 import zh from "@/locales/zh-Hans.json";
 import GlyphCounters from "@/components/sections/GlyphCounters";
 import { ogImageUrl } from "@/lib/og";
+import { PERSON_ID, personWithout } from "@/lib/person-schema";
+import { assertProfilePage } from "@/lib/structured-data-check";
 
 // Moved from pages/_document.jsx — these describe homepage-only content
 // (career timeline anchors, project list, credentials) and were previously
@@ -24,8 +26,12 @@ const PROFILE_PAGE_SCHEMA = {
   name: "Rin Huang (黄孙创宇) — Official Portfolio",
   datePublished: "2024-01-01T00:00:00+10:30",
   dateModified: "2026-11-03T00:00:00+10:30",
-  mainEntity: { "@id": "https://rin.contact/#person" },
-  about: { "@id": "https://rin.contact/#person" },
+  // mainEntity carries the whole Person, name included. It used to be a bare
+  // { "@id": ".../#person" } with no Person node on this page, which Search
+  // Console reported as "Missing field 'name' (in 'mainEntity')". The other
+  // #person references on this page resolve to it. No image: see personWithout.
+  mainEntity: personWithout("image"),
+  about: { "@id": PERSON_ID },
   // isPartOf links this page into the WebSite entity — completing the entity graph
   isPartOf: { "@id": "https://rin.contact/#website" },
   // breadcrumb cross-reference tightens the structured data graph
@@ -623,6 +629,9 @@ export default function Home({ glyphStats, explorerData = {} }) {
 // projects, coursework and the skills atlas), so the numbers can't drift.
 // The explorer tiles also read live data computed at build time.
 export async function getStaticProps({ locale = "en-AU" }) {
+  // Fails the build if the ProfilePage loses its Person name or a valid date.
+  assertProfilePage(PROFILE_PAGE_SCHEMA, "/");
+
   const posts = (await getAllPosts()).map(({ slug, title, date, tags }) => ({
     slug,
     title,
