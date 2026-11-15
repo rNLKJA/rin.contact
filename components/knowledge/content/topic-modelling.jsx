@@ -561,7 +561,7 @@ const META = {
       href: "/knowledge/natural-language-processing",
       label: "Natural Language Processing",
     },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "主题建模",
@@ -590,7 +590,7 @@ const META = {
       href: "/knowledge/natural-language-processing",
       label: "自然语言处理",
     },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 

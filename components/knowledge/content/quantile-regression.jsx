@@ -477,7 +477,7 @@ const META = {
       { id: "refresher", label: "Refresh in 60 seconds" },
     ],
     prev: { href: "/knowledge/linear-statistical-models", label: "Linear Statistical Models" },
-    next: { href: "/knowledge", label: "Back to all topics" },
+    next: { href: "/skills/?tab=notes", label: "Back to all topics" },
   },
   "zh-Hans": {
     title: "分位数回归",
@@ -502,7 +502,7 @@ const META = {
       { id: "refresher", label: "60 秒回顾" },
     ],
     prev: { href: "/knowledge/linear-statistical-models", label: "线性统计模型" },
-    next: { href: "/knowledge", label: "返回全部主题" },
+    next: { href: "/skills/?tab=notes", label: "返回全部主题" },
   },
 };
 
