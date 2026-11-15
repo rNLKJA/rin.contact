@@ -161,7 +161,7 @@ const META = {
     level: "Master's",
     learned: "2024 S1",
     applied: "Studied",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/statistical-modelling", label: "Statistical Modelling" },
     sections: [
       { id: "idea", label: "The idea" },
       { id: "maths", label: "The maths" },
@@ -179,7 +179,7 @@ const META = {
     level: "硕士",
     learned: "2024 年第一学期",
     applied: "学习但未使用",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/statistical-modelling", label: "统计建模" },
     sections: [
       { id: "idea", label: "基本想法" },
       { id: "maths", label: "数学" },

@@ -155,7 +155,7 @@ const META = {
     level: "Master's",
     learned: "2023 S1",
     applied: "Studied",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/graph-neural-networks", label: "Graph Neural Networks" },
     sections: [
       { id: "idea", label: "The idea" },
       { id: "maths", label: "The maths" },
@@ -173,7 +173,7 @@ const META = {
     level: "硕士",
     learned: "2023 年第一学期",
     applied: "学习但未使用",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/graph-neural-networks", label: "图神经网络" },
     sections: [
       { id: "idea", label: "基本想法" },
       { id: "maths", label: "数学" },

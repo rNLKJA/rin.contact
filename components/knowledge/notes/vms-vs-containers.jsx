@@ -155,7 +155,7 @@ const META = {
     level: "Master's",
     learned: "2023 S1",
     applied: "Social Sense",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/cluster-cloud-computing", label: "Cluster & Cloud Computing" },
     sections: [
       { id: "idea", label: "The idea" },
       { id: "maths", label: "The maths" },
@@ -173,7 +173,7 @@ const META = {
     level: "硕士",
     learned: "2023 年第一学期",
     applied: "Social Sense",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/cluster-cloud-computing", label: "集群与云计算" },
     sections: [
       { id: "idea", label: "基本想法" },
       { id: "maths", label: "数学" },
