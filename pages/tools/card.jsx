@@ -341,7 +341,7 @@ export default function CardPage() {
           <div className="flex gap-3">
             <a
               href="mailto:huang@rin.contact"
-              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
+              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#9A9A9A] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
             >
               {t("cardPage.email")}
             </a>
@@ -349,7 +349,7 @@ export default function CardPage() {
               href="https://www.linkedin.com/in/sunchuangyuhuang"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
+              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#9A9A9A] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
             >
               LinkedIn
             </a>
@@ -357,7 +357,7 @@ export default function CardPage() {
               href="https://github.com/rNLKJA"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
+              className="flex-1 border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#9A9A9A] px-4 py-2.5 text-xs tracking-widest uppercase hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white transition-colors duration-200 font-mono text-center"
             >
               GitHub
             </a>

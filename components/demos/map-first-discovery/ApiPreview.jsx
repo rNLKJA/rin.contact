@@ -65,7 +65,7 @@ export default function ApiPreview({ you, radius, show, cell, items, lang, id })
       <h3 id={id} className="text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE] mb-2">
         {L(D.apiTitle)}
       </h3>
-      <p className="max-w-[680px] text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-4">
+      <p className="max-w-[680px] text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-4">
         {L(D.apiNote)}
       </p>
       <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">

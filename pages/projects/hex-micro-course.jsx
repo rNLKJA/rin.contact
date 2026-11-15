@@ -25,7 +25,7 @@ const OG_TITLE = "HEX";
 const OG_SUBTITLE = "Course content, and whether learners make it through";
 
 const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
-const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed";
+const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed";
 const H2 =
   "text-xl md:text-2xl font-semibold tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] flex items-baseline gap-3";
 const OUTLINE_BTN =
@@ -126,7 +126,7 @@ export default function HexMicroCoursePage() {
               <p className="max-w-[640px] text-lg md:text-2xl font-light text-[#3D3D3D] dark:text-[#CCCCCC] leading-snug mb-6">
                 {L(COPY.tagline)}
               </p>
-              <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+              <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#9A9A9A]">
                 <span
                   className="w-1.5 h-1.5 shrink-0 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
                   aria-hidden="true"
@@ -184,7 +184,7 @@ export default function HexMicroCoursePage() {
                 <h3 className="text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE] mb-2">
                   {L(s.title)}
                 </h3>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+                <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
                   {L(s.body)}
                 </p>
               </li>
@@ -223,7 +223,7 @@ export default function HexMicroCoursePage() {
           </SectionTitle>
           <p
             role="note"
-            className="max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-6"
+            className="max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-6"
           >
             {L(COPY.demo.notice)}
           </p>
@@ -241,9 +241,7 @@ export default function HexMicroCoursePage() {
 
         {/* Footer: HEX's public site and the way back */}
         <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D]">
-          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-4">
-            {L(COPY.footerNote)}
-          </p>
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] mb-4">{L(COPY.footerNote)}</p>
           <div className="flex flex-wrap items-center gap-3">
             <a href={HEX_HOME} target="_blank" rel="noreferrer" className={OUTLINE_BTN}>
               {L(COPY.homeLink)} ↗<span className="sr-only">{L(COPY.newTab)}</span>

@@ -114,7 +114,7 @@ export default function StrategicPage() {
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
               {t("strategic.heading")}
             </h1>
-            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
               It&apos;s not only about building models. It&apos;s not only about building
               dashboards. It&apos;s about understanding the problem, framing the right question, and
               applying data science strategically to resolve meaningful problems — starting from the
@@ -124,7 +124,7 @@ export default function StrategicPage() {
 
           {/* Value proposition */}
           <Section label="Why it matters">
-            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-4">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-4">
               Strategic thinking plus data science expertise can impact the world. The combination
               translates probabilistic outputs into strategic judgment — bridging business and
               technical domains so that insights drive real decisions, not just reports.
@@ -138,7 +138,7 @@ export default function StrategicPage() {
 
           {/* Problem-first approach */}
           <Section label="The problem-first approach">
-            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-5">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-5">
               &quot;If I had an hour to solve a problem and my life depended on the solution, I
               would spend the first 55 minutes determining the proper question to ask.&quot; —
               Einstein (attributed). The same applies to data science.
@@ -169,7 +169,7 @@ export default function StrategicPage() {
 
           {/* Domains of impact */}
           <Section label="Domains of impact">
-            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-5">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-5">
               Strategic data science creates value across government, business, and social good —
               wherever complex problems need rigorous analysis and clear communication.
             </p>
@@ -189,7 +189,7 @@ export default function StrategicPage() {
 
           {/* Frameworks */}
           <Section label="Frameworks I use">
-            <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-4">
+            <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed mb-4">
               Structured thinking and problem framing underpin how I approach data challenges.
             </p>
             <div className="border-t border-[#F5F5F5] dark:border-[#1E1E1E] -mt-2">

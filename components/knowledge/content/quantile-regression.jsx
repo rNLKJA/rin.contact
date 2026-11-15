@@ -261,7 +261,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The conditional-quantile idea, the pinball-loss asymmetry, the heteroscedasticity reading,
           and the quantile-crossing / tail-data caveats reflect current quantile-regression
           references alongside coursework.
@@ -444,7 +444,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           条件分位数的想法、弹球损失的不对称、异方差的读法，以及分位数交叉/尾部数据的告诫，反映了当前的
           分位数回归参考文献以及课程。
         </p>

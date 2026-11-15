@@ -404,7 +404,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The content-vs-collaborative split, matrix-factorisation/cold-start framing, and
           filter-bubble / feedback-loop cautions reflect current recommender-systems references
           alongside coursework.
@@ -629,7 +629,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           基于内容对协同的划分、矩阵分解/冷启动的框架，以及过滤气泡/反馈回路的告诫，反映了当前的推荐系统
           参考文献以及课程。
         </p>

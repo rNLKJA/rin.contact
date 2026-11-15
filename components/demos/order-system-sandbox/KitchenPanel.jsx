@@ -17,7 +17,7 @@ const CHIP = {
   delivered:
     "border-[#1A1A1A] bg-[#1A1A1A] text-white dark:border-[#EEEEEE] dark:bg-[#EEEEEE] dark:text-black",
   cancelled:
-    "border-dashed border-[#BDBDBD] text-[#6B6B6B] dark:text-[#9A9A9A] dark:border-[#595959] dark:text-[#9A9A9A]",
+    "border-dashed border-[#BDBDBD] text-[#6B6B6B] dark:text-[#9A9A9A] dark:border-[#595959]",
 };
 
 export default function KitchenPanel({ state, dispatch, lang, uid }) {
@@ -50,7 +50,7 @@ export default function KitchenPanel({ state, dispatch, lang, uid }) {
             <tr key={s} className="border-t border-[#F0F0F0] dark:border-[#2A2A2A]">
               <th
                 scope="row"
-                className="py-2 pr-2 text-xs font-normal text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                className="py-2 pr-2 text-xs font-normal text-[#3D3D3D] dark:text-[#9A9A9A]"
               >
                 {L(K.status[s])}
               </th>

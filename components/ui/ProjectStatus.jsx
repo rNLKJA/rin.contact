@@ -94,13 +94,7 @@ export default function ProjectStatus({ stage, updated, checklist, className = "
                 }`}
                 aria-hidden="true"
               />
-              <span
-                className={
-                  item.done ? "" : "text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B]"
-                }
-              >
-                {label}
-              </span>
+              <span className={item.done ? "" : "text-[#6B6B6B] dark:text-[#9A9A9A]"}>{label}</span>
               <span className="sr-only">
                 {item.done ? (isZh ? "（已完成）" : " (done)") : isZh ? "（未完成）" : " (not yet)"}
               </span>

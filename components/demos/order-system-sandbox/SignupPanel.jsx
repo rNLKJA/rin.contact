@@ -14,11 +14,10 @@ import { BTN_PRIMARY, ERROR, INPUT, META, NOTICE } from "./ui";
 const TAG = {
   ready:
     "border-[#1A1A1A] bg-[#1A1A1A] text-white dark:border-[#EEEEEE] dark:bg-[#EEEEEE] dark:text-black",
-  entered:
-    "border-[#BDBDBD] text-[#6B6B6B] dark:text-[#9A9A9A] dark:border-[#595959] dark:text-[#9A9A9A]",
+  entered: "border-[#BDBDBD] text-[#6B6B6B] dark:text-[#9A9A9A] dark:border-[#595959]",
   held: "border-[#CC0000] text-[#CC0000] dark:border-[#FF6B6B] dark:text-[#FF6B6B]",
   skipped:
-    "border-dashed border-[#BDBDBD] text-[#6B6B6B] dark:text-[#9A9A9A] dark:border-[#595959] dark:text-[#9A9A9A]",
+    "border-dashed border-[#BDBDBD] text-[#6B6B6B] dark:text-[#9A9A9A] dark:border-[#595959]",
 };
 
 export default function SignupPanel({ state, dispatch, lang, uid }) {

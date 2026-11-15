@@ -30,14 +30,14 @@ export default function PipelineList({ items, t }) {
           <p className="text-[11px] tracking-widest uppercase text-[#5C5C5C] dark:text-[#9A9A9A]">
             {p.meta}
           </p>
-          <p className="max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+          <p className="max-w-[68ch] text-sm leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A]">
             {p.summary}
           </p>
           {p.demo && (
             <Link
               href={p.demo}
               aria-label={fill(t("projects.liveDemoPageLabel"), { title: p.title })}
-              className="mt-auto self-start text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
+              className="mt-auto self-start text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
             >
               {t("projects.liveDemo")} <span aria-hidden="true">→</span>
             </Link>
@@ -48,7 +48,7 @@ export default function PipelineList({ items, t }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={fill(t("projectsPage.pipeline.repoLabel"), { title: p.title })}
-              className="mt-auto self-start text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
+              className="mt-auto self-start text-[11px] tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] hover:text-black dark:hover:text-white transition-colors duration-200"
             >
               {t("projectsPage.pipeline.repo")} <span aria-hidden="true">↗</span>
             </a>

@@ -321,7 +321,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The next-token/transformer framing, the pretrain→SFT→RLHF pipeline, the
           intrinsic-hallucination point, and RAG-as-grounding reflect current LLM references
           alongside hands-on use.
@@ -552,7 +552,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           下一个词元/transformer 的取景、预训练→SFT→RLHF 的流程、幻觉内在性这一点，以及把 RAG
           当作锚定， 反映了当前的 LLM 参考文献以及亲身的使用。
         </p>

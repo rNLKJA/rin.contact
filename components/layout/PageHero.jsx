@@ -45,7 +45,7 @@ export default function PageHero({
         </h1>
 
         {description && (
-          <p className="animate-fade-up delay-300 text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
+          <p className="animate-fade-up delay-300 text-base md:text-lg font-light text-[#3D3D3D] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
             {description}
           </p>
         )}

@@ -27,7 +27,7 @@ const OG_TITLE = "Order System Sandbox";
 const OG_SUBTITLE = "A meal-prep studio's day on synthetic data";
 
 const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
-const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed";
+const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed";
 const H2 =
   "text-xl md:text-2xl font-semibold tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] flex items-baseline gap-3";
 const FOCUS =
@@ -39,7 +39,7 @@ function Notice({ children, className = "" }) {
   return (
     <p
       role="note"
-      className={`max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed ${className}`}
+      className={`max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed ${className}`}
     >
       {children}
     </p>
@@ -142,7 +142,7 @@ export default function OrderSystemSandboxPage() {
               <p className="max-w-[640px] text-lg md:text-2xl font-light text-[#3D3D3D] dark:text-[#CCCCCC] leading-snug mb-6">
                 {L(COPY.tagline)}
               </p>
-              <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mb-8">
+              <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#9A9A9A] mb-8">
                 <span
                   className="w-1.5 h-1.5 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
                   aria-hidden="true"
@@ -194,7 +194,7 @@ export default function OrderSystemSandboxPage() {
                 <h3 className="text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE] mb-2">
                   {L(s.title)}
                 </h3>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+                <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
                   {L(s.body)}
                 </p>
               </li>
@@ -265,9 +265,7 @@ export default function OrderSystemSandboxPage() {
 
         {/* Footer */}
         <div className="pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D] flex flex-wrap items-center justify-between gap-4">
-          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
-            {L(COPY.footerNote)}
-          </p>
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A]">{L(COPY.footerNote)}</p>
           <div className="flex flex-wrap items-center gap-3">
             <Link href="/projects/order-system" className={OUTLINE_BTN}>
               {L(COPY.caseStudy)}

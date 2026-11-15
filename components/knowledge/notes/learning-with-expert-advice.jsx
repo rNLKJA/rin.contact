@@ -135,7 +135,7 @@ function EnBody() {
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               arXiv 1206.4670
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               Comprehensive treatment of multiplicative weights and online learning algorithms with
               detailed regret analysis.
             </span>
@@ -247,7 +247,7 @@ function ZhBody() {
             <span className="block font-mono text-[11px] text-[#6B6B6B] dark:text-[#9A9A9A] mt-0.5">
               arXiv 1206.4670
             </span>
-            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+            <span className="block mt-1.5 text-[#3D3D3D] dark:text-[#9A9A9A] [text-wrap:pretty]">
               乘法权重和在线学习算法的全面处理，包含详细的后悔分析。
             </span>
           </li>

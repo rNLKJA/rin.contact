@@ -27,7 +27,7 @@ const BTN_PRIMARY = `inline-flex items-center justify-center min-h-[44px] rounde
 const BTN = `inline-flex items-center justify-center min-h-[44px] rounded-full px-4 text-xs tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] text-[#6B6B6B] dark:text-[#9A9A9A] hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 motion-reduce:transition-none ${FOCUS}`;
 const HEADING =
   "text-lg font-semibold tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] mb-3 outline-none";
-const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed";
+const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed";
 
 /** A pixel tick or cross, drawn on a 7 by 7 grid. */
 function Mark({ ok }) {
@@ -65,7 +65,7 @@ function Concept({ L, headingRef }) {
           <li key={part.key} className="bg-white dark:bg-[#0A0A0A] p-4 min-w-0">
             <p className="flex items-baseline gap-2 mb-1">
               <span
-                className="font-display text-xl leading-none text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+                className="font-display text-xl leading-none text-[#CC0000] dark:text-[#FF3C3C]"
                 aria-hidden="true"
               >
                 {i + 1}
@@ -136,7 +136,7 @@ function Example({ L, headingRef, shown, setShown, announce }) {
           <ol className="relative space-y-2">
             {C.example.parts.slice(0, shown).map((part) => (
               <li key={part.key} className="min-w-0">
-                <span className="block font-display text-[10px] leading-none tracking-widest uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] mb-1">
+                <span className="block font-display text-[10px] leading-none tracking-widest uppercase text-[#CC0000] dark:text-[#FF3C3C] mb-1">
                   {labelOf(part.key)}
                 </span>
                 <span className="text-[15px] text-[#1A1A1A] dark:text-[#EEEEEE] leading-relaxed">
@@ -158,7 +158,7 @@ function Example({ L, headingRef, shown, setShown, announce }) {
         )}
       </div>
       {complete && (
-        <p className="border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-3 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+        <p className="border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-3 text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
           {L(C.example.tip)}
         </p>
       )}
@@ -228,7 +228,7 @@ function Quiz({ L, headingRef, quiz, setQuiz, onFinish, announce }) {
                       ? "border-[#CC0000] dark:border-[#FF3C3C] text-[#1A1A1A] dark:text-[#EEEEEE]"
                       : choice === i
                         ? "border-[#1A1A1A] dark:border-[#EEEEEE] bg-[#FAFAFA] dark:bg-[#111111] text-[#1A1A1A] dark:text-[#EEEEEE]"
-                        : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
+                        : "border-[#E0E0E0] dark:border-[#3D3D3D] text-[#3D3D3D] dark:text-[#9A9A9A]"
                 } ${checked ? "cursor-default" : "cursor-pointer hover:border-[#1A1A1A] dark:hover:border-[#EEEEEE]"}`}
               >
                 <input
@@ -261,9 +261,7 @@ function Quiz({ L, headingRef, quiz, setQuiz, onFinish, announce }) {
           <div className="border border-[#1A1A1A] dark:border-[#CCCCCC] p-3">
             <p
               className={`font-display text-[11px] leading-none tracking-widest uppercase flex items-center gap-2 mb-2 ${
-                ok
-                  ? "text-[#1A1A1A] dark:text-[#EEEEEE]"
-                  : "text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+                ok ? "text-[#1A1A1A] dark:text-[#EEEEEE]" : "text-[#CC0000] dark:text-[#FF3C3C]"
               }`}
             >
               <Mark ok={ok} />
@@ -278,11 +276,7 @@ function Quiz({ L, headingRef, quiz, setQuiz, onFinish, announce }) {
         <button type="button" onClick={primary} className={BTN_PRIMARY}>
           {!checked ? L(C.quiz.check) : last ? L(C.quiz.finish) : L(C.quiz.next)}
         </button>
-        {hint && (
-          <p className="text-sm text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
-            {L(C.quiz.pick)}
-          </p>
-        )}
+        {hint && <p className="text-sm text-[#CC0000] dark:text-[#FF3C3C]">{L(C.quiz.pick)}</p>}
       </div>
     </div>
   );
@@ -413,7 +407,7 @@ export default function MicroModule({ lang = "en", result, onFinish, onReset }) 
             <dl className="grid grid-cols-2 gap-px bg-[#E0E0E0] dark:bg-[#3D3D3D] border border-[#E0E0E0] dark:border-[#3D3D3D] mb-4">
               <div className="bg-white dark:bg-[#0A0A0A] p-4 min-w-0">
                 <dt className={`${META} mb-1`}>{L(C.result.scoreLabel)}</dt>
-                <dd className="font-display text-3xl leading-none text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]">
+                <dd className="font-display text-3xl leading-none text-[#CC0000] dark:text-[#FF3C3C]">
                   {result.score}/{QUESTIONS.length}
                 </dd>
                 <dd className="mt-2 text-xs text-[#6B6B6B] dark:text-[#9A9A9A]">

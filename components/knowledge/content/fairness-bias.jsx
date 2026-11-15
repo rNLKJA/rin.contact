@@ -344,7 +344,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The proxy/redundant-encoding trap, the group-fairness metrics, the impossibility result,
           and the COMPAS case reflect current fairness-in-ML references alongside hands-on work.
         </p>
@@ -547,7 +547,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           代理/冗余编码陷阱、群体公平指标、不可能性结果，以及 COMPAS
           案例，反映了当前机器学习公平性的 参考文献以及亲身的工作。
         </p>

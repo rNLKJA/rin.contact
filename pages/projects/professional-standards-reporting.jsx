@@ -29,7 +29,7 @@ const OG_TITLE = "EPSB Analytics";
 const OG_SUBTITLE = "Professional standards reporting and tooling";
 
 const META = "text-[10px] tracking-widest uppercase text-[#6B6B6B] dark:text-[#9A9A9A]";
-const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed";
+const BODY = "text-[15px] text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed";
 const H2 =
   "text-xl md:text-2xl font-semibold tracking-tight text-[#1A1A1A] dark:text-[#EEEEEE] flex items-baseline gap-3";
 const OUTLINE_BTN =
@@ -41,7 +41,7 @@ function Notice({ children, className = "" }) {
   return (
     <p
       role="note"
-      className={`max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed ${className}`}
+      className={`max-w-[680px] border-l-2 border-[#CC0000] dark:border-[#FF3C3C] pl-4 text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed ${className}`}
     >
       {children}
     </p>
@@ -149,7 +149,7 @@ export default function ProfessionalStandardsReportingPage() {
                 {L(COPY.tagline)}
               </p>
               <div className="flex flex-wrap items-center gap-3">
-                <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+                <p className="inline-flex items-center gap-2 border border-[#E0E0E0] dark:border-[#3D3D3D] rounded-full px-3 py-1.5 text-xs text-[#3D3D3D] dark:text-[#9A9A9A]">
                   <span
                     className="w-1.5 h-1.5 shrink-0 rounded-full bg-[#1A1A1A] dark:bg-[#EEEEEE]"
                     aria-hidden="true"
@@ -195,7 +195,7 @@ export default function ProfessionalStandardsReportingPage() {
                 <h3 className="text-base font-semibold text-[#1A1A1A] dark:text-[#EEEEEE] mb-2">
                   {L(s.title)}
                 </h3>
-                <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+                <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
                   {L(s.body)}
                 </p>
               </li>
@@ -214,7 +214,7 @@ export default function ProfessionalStandardsReportingPage() {
                 key={m.value.en}
                 className="bg-white dark:bg-[#0A0A0A] px-4 py-5 flex flex-col min-w-0"
               >
-                <dt className="order-2 text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-snug">
+                <dt className="order-2 text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-snug">
                   {L(m.label)}
                 </dt>
                 <dd className="order-1 font-display text-2xl sm:text-3xl leading-none text-[#1A1A1A] dark:text-[#EEEEEE] mb-3 break-words">
@@ -281,7 +281,7 @@ export default function ProfessionalStandardsReportingPage() {
 
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#3D3D3D]">
-          <p className="max-w-[680px] text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-4">
+          <p className="max-w-[680px] text-sm text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed mb-4">
             {L(COPY.footerNote)}
           </p>
           <div className="flex flex-wrap items-center gap-3">

@@ -68,7 +68,7 @@ export default function PostCard({ slug, title, date, tags, description, reading
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[9px] tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A]"
+                  className="text-[9px] tracking-widest uppercase border border-[#E0E0E0] dark:border-[#3D3D3D] px-2 py-0.5 text-[#6B6B6B] dark:text-[#9A9A9A]"
                 >
                   {tag}
                 </span>
@@ -77,12 +77,12 @@ export default function PostCard({ slug, title, date, tags, description, reading
           )}
         </div>
 
-        <h3 className="text-xl md:text-2xl font-semibold tracking-tight mb-2 text-black dark:text-white group-hover:text-[#CC0000] dark:text-[#FF3C3C] transition-colors duration-200">
+        <h3 className="text-xl md:text-2xl font-semibold tracking-tight mb-2 text-black dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors duration-200">
           {title}
         </h3>
 
         {description && (
-          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#9A9A9A] leading-relaxed line-clamp-2 mb-4">
+          <p className="text-sm text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed line-clamp-2 mb-4">
             {description}
           </p>
         )}

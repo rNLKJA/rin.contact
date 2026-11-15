@@ -305,7 +305,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The ReAct loop, tool-use/function-calling, planning-and-memory architecture, and the
           error-compounding/verification cautions reflect current AI-agent references alongside
           hands-on use.
@@ -495,7 +495,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           ReAct 循环、工具使用/函数调用、规划与记忆的架构，以及错误累积/验证的告诫，反映了当前的 AI
           智能体参考文献以及亲身的使用。
         </p>

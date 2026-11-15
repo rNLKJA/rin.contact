@@ -176,7 +176,7 @@ export default function CommandPalette({ onClose }) {
             autoCapitalize="off"
             spellCheck={false}
             enterKeyHint="go"
-            className="flex-1 min-w-0 h-14 bg-transparent text-base focus:outline-none focus-visible:outline-none placeholder:text-[#6B6B6B] dark:text-[#9A9A9A] dark:placeholder:text-[#9A9A9A]"
+            className="flex-1 min-w-0 h-14 bg-transparent text-base focus:outline-none focus-visible:outline-none placeholder:text-[#6B6B6B] dark:placeholder:text-[#9A9A9A]"
           />
           <button
             type="button"

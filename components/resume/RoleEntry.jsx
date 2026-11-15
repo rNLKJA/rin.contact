@@ -23,10 +23,10 @@ function Bullet({ id, text }) {
     <li
       id={id}
       tabIndex={-1}
-      className="scroll-mt-24 flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] -mx-2 px-2 py-0.5 rounded-sm target:bg-[#FFF1F1] dark:target:bg-[#1F0E0E] target:shadow-[inset_2px_0_0_#CC0000] dark:target:shadow-[inset_2px_0_0_#FF3C3C] target:animate-enter"
+      className="scroll-mt-24 flex gap-2 text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A] -mx-2 px-2 py-0.5 rounded-sm target:bg-[#FFF1F1] dark:target:bg-[#1F0E0E] target:shadow-[inset_2px_0_0_#CC0000] dark:target:shadow-[inset_2px_0_0_#FF3C3C] target:animate-enter"
     >
       <span
-        className="cv-accent text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0"
+        className="cv-accent text-[#CC0000] dark:text-[#FF3C3C] flex-shrink-0"
         aria-hidden="true"
       >
         ·
@@ -59,7 +59,7 @@ export default function RoleEntry({ role, t }) {
         <span>{t(`resumePage.track.${role.track}`)}</span>
         {role.current && (
           <span
-            className={`${CHIP} cv-accent border-[#CC0000] text-[#CC0000] dark:border-[#FF3C3C] dark:text-[#CC0000] dark:text-[#FF3C3C]`}
+            className={`${CHIP} cv-accent border-[#CC0000] text-[#CC0000] dark:border-[#FF3C3C] dark:text-[#FF3C3C]`}
           >
             {t("resumePage.role.current")}
           </span>
@@ -80,14 +80,14 @@ export default function RoleEntry({ role, t }) {
         >
           {role.role}
         </h3>
-        <p className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-1">
+        <p className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] mt-1">
           {role.org}
           {showTeam && <span> · {role.team}</span>}
           <span className="text-[#6B6B6B] dark:text-[#9A9A9A]"> · {role.location}</span>
         </p>
 
         {role.summary && (
-          <p className="text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-3 max-w-[68ch]">
+          <p className="text-[14px] leading-relaxed text-[#3D3D3D] dark:text-[#9A9A9A] mt-3 max-w-[68ch]">
             {role.summary}
           </p>
         )}

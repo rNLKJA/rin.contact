@@ -136,7 +136,7 @@ function FAQItem({ q, a, index }) {
         </span>
         <span
           className={`flex-1 text-sm font-medium leading-snug transition-colors duration-200
-                      ${open ? "text-[#000] dark:text-white" : "text-[#3D3D3D] dark:text-[#373737] dark:text-[#B4B4B4] group-hover:text-[#000] dark:group-hover:text-white"}`}
+                      ${open ? "text-[#000] dark:text-white" : "text-[#3D3D3D] dark:text-[#B4B4B4] group-hover:text-[#000] dark:group-hover:text-white"}`}
         >
           {q}
         </span>
@@ -259,7 +259,7 @@ export default function FAQSection() {
               strokeLinecap="round"
             />
           </svg>
-          <p className="text-sm text-[#373737] dark:text-[#B4B4B4] dark:text-[#9A9A9A] max-w-xl leading-relaxed">
+          <p className="text-sm text-[#373737] dark:text-[#B4B4B4] max-w-xl leading-relaxed">
             Browse by topic — open a category then expand any question.
           </p>
         </div>

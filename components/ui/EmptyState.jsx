@@ -17,10 +17,7 @@ export default function EmptyState({ children, action, role = "status", classNam
       )}
     >
       <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[#FF3C3C]" />
-      <p
-        role={role || undefined}
-        className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]"
-      >
+      <p role={role || undefined} className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A]">
         {children}
       </p>
       {action && (

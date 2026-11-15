@@ -327,7 +327,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The LDA generative framing, coherence-based topic-count selection, and the BERTopic
           comparison reflect current topic-modelling references alongside NLP coursework.
         </p>
@@ -524,7 +524,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           LDA 的生成框架、基于一致性的主题数量选择，以及 BERTopic
           的对比，反映了当前的主题建模参考文献以及 NLP 课程。
         </p>

@@ -15,7 +15,7 @@ export default function Panel({ n, id, title, lang, className = "", children }) 
       >
         <span
           aria-hidden="true"
-          className="font-display text-2xl leading-none text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C]"
+          className="font-display text-2xl leading-none text-[#CC0000] dark:text-[#FF3C3C]"
         >
           {n}
         </span>

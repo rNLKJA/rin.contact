@@ -34,7 +34,7 @@ export function Formula({ children, label, caption }) {
         </ScrollRegion>
       </div>
       {caption && (
-        <p className="mt-2 text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
+        <p className="mt-2 text-[12px] text-[#6B6B6B] dark:text-[#9A9A9A] [text-wrap:pretty]">
           {caption}
         </p>
       )}

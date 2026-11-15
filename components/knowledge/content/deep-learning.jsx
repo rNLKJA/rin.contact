@@ -413,7 +413,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The backprop/gradient-descent split, vanishing-gradient and learning-rate cautions reflect
           current deep-learning references alongside ML coursework.
         </p>
@@ -643,7 +643,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           反向传播/梯度下降的划分、梯度消失与学习率的告诫，反映了当前的深度学习参考文献，以及机器
           学习课程。
         </p>

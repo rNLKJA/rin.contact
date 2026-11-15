@@ -33,7 +33,7 @@ export default function OrderSystemSandbox({ lang = "en" }) {
   return (
     <div role="region" aria-label={L(D.regionLabel)} className="min-w-0">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-        <p className="inline-flex items-center gap-2 rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1.5 font-mono text-[10px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A]">
+        <p className="inline-flex items-center gap-2 rounded-full border border-[#E0E0E0] dark:border-[#3D3D3D] px-3 py-1.5 font-mono text-[10px] tracking-widest uppercase text-[#3D3D3D] dark:text-[#9A9A9A]">
           <span aria-hidden="true" className="grid grid-cols-2 gap-[2px]">
             <span className="h-[3px] w-[3px] bg-[#CC0000] dark:bg-[#FF3C3C]" />
             <span className="h-[3px] w-[3px] bg-[#1A1A1A] dark:bg-[#EEEEEE]" />

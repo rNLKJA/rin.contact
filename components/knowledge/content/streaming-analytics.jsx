@@ -297,7 +297,7 @@ function EnBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           The batch-vs-stream split, windowing types, event-time/watermark handling, and delivery
           guarantees reflect current stream-processing references (Kafka/Flink practice) alongside
           hands-on work.
@@ -512,7 +512,7 @@ function ZhBody() {
             </li>
           </ul>
         </Callout>
-        <p className="text-[12px] text-[#9A9A9A] dark:text-[#6B6B6B] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
+        <p className="text-[12px] text-[#9A9A9A] dark:text-[#9A9A9A] mt-6 [text-wrap:pretty]">
           批处理对流处理的分野、窗口类型、事件时间/水位线处理，以及投递保证，反映了当前的流处理参考文献
           （Kafka/Flink 实践）以及动手工作。
         </p>

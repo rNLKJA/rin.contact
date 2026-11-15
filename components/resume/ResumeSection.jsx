@@ -12,7 +12,7 @@ export default function ResumeSection({ id, n, title, children, className = "" }
     >
       <h2
         id={`${id}-h`}
-        className="cv-accent flex items-center gap-2.5 font-mono text-[11px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#CC0000] dark:text-[#FF3C3C] mb-5 break-after-avoid"
+        className="cv-accent flex items-center gap-2.5 font-mono text-[11px] tracking-[0.25em] uppercase text-[#CC0000] dark:text-[#FF3C3C] mb-5 break-after-avoid"
       >
         <span className="block w-1.5 h-1.5 bg-current print-keep-bg" aria-hidden="true" />
         {n && <span className="cv-accent tabular-nums">{n}</span>}

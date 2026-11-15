@@ -33,7 +33,7 @@ export default function LearningPath({ lang = "en" }) {
             {facets.map((f) => (
               <div key={f}>
                 <dt className={`${META} mb-0.5`}>{L(P[f])}</dt>
-                <dd className="text-sm text-[#3D3D3D] dark:text-[#6B6B6B] dark:text-[#9A9A9A] leading-relaxed">
+                <dd className="text-sm text-[#3D3D3D] dark:text-[#9A9A9A] leading-relaxed">
                   {L(s[f])}
                 </dd>
               </div>
