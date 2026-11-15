@@ -132,7 +132,6 @@ export default function HaikuPage() {
           name="description"
           content="Data science haikus by Rin Huang. Absurd, accurate, 5-7-5."
         />
-        <link rel="canonical" href="https://rin.contact/fun/haiku" />
         <meta name="robots" content="noindex" />
       </Head>
 

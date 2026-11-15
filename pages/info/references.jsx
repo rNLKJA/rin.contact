@@ -11,7 +11,6 @@ export default function ReferencesPage() {
       <Head>
         <title>{t("infoReferences.metaTitle")}</title>
         <meta name="description" content={t("infoReferences.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/info/references" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

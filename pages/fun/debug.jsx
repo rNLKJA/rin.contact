@@ -9,7 +9,6 @@ export default function DebugPage() {
         <title>Debug — rin.contact</title>
         <meta name="description" content="Breakpoint hit: rin.brain" />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/debug" />
       </Head>
 
       <SeoHead

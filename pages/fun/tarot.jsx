@@ -25,7 +25,6 @@ export default function TarotPage() {
         <title>Tarot — rin.contact</title>
         <meta name="description" content="Data science tarot." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/tarot" />
       </Head>
 
       <SeoHead

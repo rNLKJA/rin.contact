@@ -27,7 +27,6 @@ export default function FeatureImportancePage() {
         <title>{t("ds.featureImportance.metaTitle")}</title>
         <meta name="description" content={t("ds.featureImportance.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/feature-importance" />
       </Head>
       <SeoHead
         title={t("ds.featureImportance.metaTitle")}

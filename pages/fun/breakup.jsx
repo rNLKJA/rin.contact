@@ -20,7 +20,6 @@ export default function BreakupPage() {
         <title>{t("fun.breakup.metaTitle")}</title>
         <meta name="description" content={t("fun.breakup.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/breakup" />
       </Head>
 
       <SeoHead

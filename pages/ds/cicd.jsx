@@ -21,7 +21,6 @@ export default function CicdPage() {
         <title>{t("ds.cicd.metaTitle")}</title>
         <meta name="description" content={t("ds.cicd.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/cicd" />
       </Head>
       <SeoHead
         title={t("ds.cicd.metaTitle")}

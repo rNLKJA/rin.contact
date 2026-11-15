@@ -12,7 +12,6 @@ export default function BiasVariancePage() {
         <title>{t("ds.biasVariance.metaTitle")}</title>
         <meta name="description" content={t("ds.biasVariance.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/bias-variance" />
       </Head>
       <SeoHead
         title={t("ds.biasVariance.metaTitle")}

@@ -17,7 +17,6 @@ export default function ConfusionMatrixPage() {
         <title>{t("ds.confusionMatrix.metaTitle")}</title>
         <meta name="description" content={t("ds.confusionMatrix.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/confusion-matrix" />
       </Head>
       <SeoHead
         title={t("ds.confusionMatrix.metaTitle")}

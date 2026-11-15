@@ -29,7 +29,6 @@ export default function ApiPage() {
       <Head>
         <title>{t("infoApi.metaTitle")}</title>
         <meta name="description" content={t("infoApi.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/info/api" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

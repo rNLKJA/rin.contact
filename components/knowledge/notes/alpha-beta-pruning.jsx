@@ -228,7 +228,7 @@ const META = {
     level: "Undergraduate",
     learned: "2022 S1",
     applied: "Cachex Arena",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/artificial-intelligence", label: "Artificial Intelligence" },
     sections: [
       { id: "idea", label: "The idea" },
       { id: "maths", label: "The maths" },
@@ -246,7 +246,7 @@ const META = {
     level: "本科",
     learned: "2022 年第一学期",
     applied: "Cachex 竞技场",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/artificial-intelligence", label: "人工智能" },
     sections: [
       { id: "idea", label: "基本想法" },
       { id: "maths", label: "数学" },

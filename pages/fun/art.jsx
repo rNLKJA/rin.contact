@@ -107,7 +107,6 @@ export default function ArtPage() {
       <Head>
         <title>{t("fun.art.metaTitle")}</title>
         <meta name="description" content={t("fun.art.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/fun/art" />
       </Head>
 
       <SeoHead

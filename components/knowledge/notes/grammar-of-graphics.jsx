@@ -149,7 +149,7 @@ const META = {
     level: "Master's",
     learned: "2024",
     applied: "Every project",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/data-visualisation", label: "Data Visualisation & Perception" },
     sections: [
       { id: "idea", label: "The idea" },
       { id: "maths", label: "The maths" },
@@ -166,7 +166,7 @@ const META = {
     level: "硕士",
     learned: "2024",
     applied: "每个项目",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/data-visualisation", label: "数据可视化与感知" },
     sections: [
       { id: "idea", label: "基本想法" },
       { id: "maths", label: "数学" },

@@ -30,7 +30,6 @@ export default function PValuePage() {
         <title>P-Value Oracle — rin.contact</title>
         <meta name="description" content="Always returns p < 0.05." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/pvalue" />
       </Head>
 
       <SeoHead

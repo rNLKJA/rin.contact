@@ -63,7 +63,6 @@ export default function FunIndexPage() {
           name="description"
           content="Easter eggs and hidden routes. Coffee, matrix rain, haiku, and more."
         />
-        <link rel="canonical" href="https://rin.contact/fun" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

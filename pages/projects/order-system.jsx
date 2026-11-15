@@ -12,6 +12,7 @@ import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
 import ArchFrame from "@/components/covers/ArchFrame";
 import { useI18n } from "@/contexts/I18nContext";
+import { projectBreadcrumb, projectPageUrl } from "@/lib/project-breadcrumb";
 
 const PATH = "/projects/order-system";
 const TITLE = "Meal-Prep Studio Order System";
@@ -36,39 +37,31 @@ const STACK = [
   "Linear",
 ];
 
-// JSON-LD is machine-readable structured data (schema.org), kept in English.
-const JSONLD = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TechArticle",
-      headline: `${TITLE}: case study`,
-      description:
-        "How Rin Huang built the members, prepaid card, ordering and finance system for his mum's meal-prep studio: one Expo app for iOS, Android and the web on a Hono API with Turso and Drizzle.",
-      url: `https://rin.contact${PATH}/`,
-      inLanguage: "en-AU",
-      author: { "@type": "Person", name: "Sunchuangyu (Rin) Huang", url: "https://rin.contact" },
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://rin.contact/" },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Projects",
-          item: "https://rin.contact/projects/",
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: TITLE,
-          item: `https://rin.contact${PATH}/`,
-        },
-      ],
-    },
-  ],
-};
+// The English headline and description were written for the schema. zh-Hans
+// reuses the page's own title and meta description.
+const DESCRIPTION =
+  "How Rin Huang built the members, prepaid card, ordering and finance system for his mum's meal-prep studio: one Expo app for iOS, Android and the web on a Hono API with Turso and Drizzle.";
+
+// JSON-LD (schema.org) for the page in the locale it is served in: its own
+// URL, language, headline and breadcrumb. It used to be one English constant
+// marked en-AU, so the zh-Hans page described the English one.
+function jsonLd({ t, locale }) {
+  const isZh = locale === "zh-Hans";
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        headline: isZh ? t("orderSystem.title") : `${TITLE}: case study`,
+        description: isZh ? t("orderSystem.metaDescription") : DESCRIPTION,
+        url: projectPageUrl(locale, PATH),
+        inLanguage: locale,
+        author: { "@type": "Person", name: "Sunchuangyu (Rin) Huang", url: "https://rin.contact" },
+      },
+      projectBreadcrumb({ t, locale, path: PATH, name: t("orderSystem.title") }),
+    ],
+  };
+}
 
 function Section({ title, paragraphs }) {
   return (
@@ -109,7 +102,7 @@ export default function OrderSystemCaseStudy() {
       <Head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd({ t, locale })) }}
         />
       </Head>
 

@@ -9,7 +9,6 @@ export default function RejectPage() {
         <title>Reject H₀ — rin.contact</title>
         <meta name="description" content="This page is not boring." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/reject" />
       </Head>
 
       <SeoHead

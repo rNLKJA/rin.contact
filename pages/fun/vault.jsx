@@ -59,7 +59,6 @@ export default function VaultPage() {
         <title>Vault — rin.contact</title>
         <meta name="description" content="Achievement vault. Track your discoveries." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/vault" />
       </Head>
 
       <SeoHead

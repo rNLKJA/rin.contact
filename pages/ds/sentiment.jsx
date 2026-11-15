@@ -17,7 +17,6 @@ export default function SentimentPage() {
         <title>{t("ds.sentiment.metaTitle")}</title>
         <meta name="description" content={t("ds.sentiment.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/sentiment" />
       </Head>
       <SeoHead
         title={t("ds.sentiment.metaTitle")}

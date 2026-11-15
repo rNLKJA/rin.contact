@@ -15,6 +15,7 @@ import SeoHead from "@/components/seo/SeoHead";
 import ArchFrame from "@/components/covers/ArchFrame";
 import GameTreeLesson from "@/components/demos/teaching/GameTreeLesson";
 import { useI18n } from "@/contexts/I18nContext";
+import { projectBreadcrumb } from "@/lib/project-breadcrumb";
 import { COPY, DEMO, STACK } from "@/lib/demos/teaching-data";
 import { CLASSBRO_DATA } from "@/lib/demos/classbro-data";
 
@@ -52,7 +53,7 @@ function Paragraphs({ items, L, className = "" }) {
 }
 
 export default function ClassBroPage() {
-  const { locale = "en-AU" } = useI18n();
+  const { t, locale = "en-AU" } = useI18n();
   const lang = locale === "zh-Hans" ? "zh" : "en";
   const L = (o) => o[lang];
 
@@ -68,14 +69,7 @@ export default function ClassBroPage() {
         inLanguage: locale,
         author: { "@type": "Person", name: "Sunchuangyu (Rin) Huang", url: BASE },
       },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
-          { "@type": "ListItem", position: 2, name: "Projects", item: `${BASE}/projects/` },
-          { "@type": "ListItem", position: 3, name: L(CLASSBRO_DATA.title), item: pageUrl },
-        ],
-      },
+      projectBreadcrumb({ t, locale, path: PATH, name: L(CLASSBRO_DATA.title) }),
     ],
   };
 

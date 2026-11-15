@@ -22,7 +22,6 @@ export default function CsvPage() {
         <title>Data-And-More — rin.contact</title>
         <meta name="description" content="Joke CSV. Data science puns as column headers." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/csv" />
       </Head>
 
       <SeoHead

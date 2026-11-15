@@ -30,7 +30,6 @@ export default function InfoIndexPage() {
           name="description"
           content="Site info — now, uses, roadmap, accessibility, colophon."
         />
-        <link rel="canonical" href="https://rin.contact/info" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

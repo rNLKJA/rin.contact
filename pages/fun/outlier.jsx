@@ -9,7 +9,6 @@ export default function OutlierPage() {
         <title>Outlier — rin.contact</title>
         <meta name="description" content="You are an outlier." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/outlier" />
       </Head>
 
       <SeoHead

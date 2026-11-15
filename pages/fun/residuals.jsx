@@ -12,7 +12,6 @@ export default function ResidualsPage() {
           content="What's left after you subtract expectations from reality."
         />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/residuals" />
       </Head>
 
       <SeoHead

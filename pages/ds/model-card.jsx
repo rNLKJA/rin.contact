@@ -21,7 +21,6 @@ export default function ModelCardPage() {
         <title>{t("ds.modelCard.metaTitle")}</title>
         <meta name="description" content={t("ds.modelCard.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/model-card" />
       </Head>
       <SeoHead
         title={t("ds.modelCard.metaTitle")}

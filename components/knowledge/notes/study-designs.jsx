@@ -146,7 +146,7 @@ const META = {
     level: "Master's",
     learned: "2024",
     applied: "Studied",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/causal-inference", label: "Causal Inference & A/B Testing" },
     sections: [
       { id: "idea", label: "The idea" },
       { id: "maths", label: "The maths" },
@@ -163,7 +163,7 @@ const META = {
     level: "硕士",
     learned: "2024",
     applied: "学习但未使用",
-    parent: { href: "/knowledge/ml", label: "ML" },
+    parent: { href: "/knowledge/causal-inference", label: "因果推断与 A/B 测试" },
     sections: [
       { id: "idea", label: "基本想法" },
       { id: "maths", label: "数学" },

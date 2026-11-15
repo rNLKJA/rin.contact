@@ -22,7 +22,6 @@ export default function LatePage() {
         <title>Late — rin.contact</title>
         <meta name="description" content="Time-based wisdom." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/late" />
       </Head>
 
       <SeoHead

@@ -23,7 +23,6 @@ export default function VersionControlPage() {
         <title>{t("ds.versionControl.metaTitle")}</title>
         <meta name="description" content={t("ds.versionControl.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/version-control" />
       </Head>
       <SeoHead
         title={t("ds.versionControl.metaTitle")}

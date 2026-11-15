@@ -70,7 +70,6 @@ export default function AccessibilityPage() {
       <Head>
         <title>{t("infoAccessibility.metaTitle")}</title>
         <meta name="description" content={t("infoAccessibility.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/info/accessibility" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

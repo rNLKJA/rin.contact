@@ -13,7 +13,6 @@ export default function PipelinePage() {
         <title>{t("ds.pipeline.metaTitle")}</title>
         <meta name="description" content={t("ds.pipeline.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/pipeline" />
       </Head>
       <SeoHead
         title={t("ds.pipeline.metaTitle")}

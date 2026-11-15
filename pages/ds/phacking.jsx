@@ -13,7 +13,6 @@ export default function PhackingPage() {
         <title>{t("ds.phacking.metaTitle")}</title>
         <meta name="description" content={t("ds.phacking.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/phacking" />
       </Head>
       <SeoHead
         title={t("ds.phacking.metaTitle")}

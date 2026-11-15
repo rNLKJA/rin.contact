@@ -98,42 +98,29 @@ const PROJECTS_SCHEMA = {
   name: "Projects by Rin Huang (Sunchuangyu Huang)",
   description: "Software, data science, and analytics projects by Rin Huang",
   author: { "@id": "https://rin.contact/#person" },
+  // A project with a public GitHub repository is SoftwareSourceCode, with its
+  // stack and repository. Every other project is a plain CreativeWork with the
+  // stack as keywords. They used to be SoftwareApplication, a type Google only
+  // accepts with offers and a rating or review, and these projects have neither.
   itemListElement: PROJECTS.map((project, index) => {
-    const baseItem = {
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type":
-          project.link && project.link.includes("github.com")
-            ? "SoftwareSourceCode"
-            : "SoftwareApplication",
-        name: project.title,
-        description: project.summary,
-        author: { "@id": "https://rin.contact/#person" },
-      },
+    const repository = project.link && project.link.includes("github.com") ? project.link : null;
+    const stack = project.stack && project.stack.length > 0 ? project.stack : null;
+
+    const item = {
+      "@type": repository ? "SoftwareSourceCode" : "CreativeWork",
+      name: project.title,
+      description: project.summary,
+      author: { "@id": "https://rin.contact/#person" },
     };
 
-    // Add programming languages if stack exists
-    if (project.stack && project.stack.length > 0) {
-      baseItem.item.programmingLanguage = project.stack;
+    if (repository) {
+      if (stack) item.programmingLanguage = stack;
+      item.codeRepository = repository;
+    } else if (stack) {
+      item.keywords = stack.join(", ");
     }
 
-    // Add repository link if it's a GitHub link
-    if (project.link && project.link.includes("github.com")) {
-      baseItem.item.codeRepository = project.link;
-    }
-
-    // Add application category for apps
-    if (project.tag === "Mobile Dev") {
-      baseItem.item.applicationCategory = "MobileApplication";
-      baseItem.item.operatingSystem = "iOS, Android";
-    } else if (project.tag === "Analytics" || project.domain === "Government") {
-      baseItem.item.applicationCategory = "BusinessApplication";
-    } else if (project.domain === "Startup") {
-      baseItem.item.applicationCategory = "SocialNetworkingApplication";
-    }
-
-    return baseItem;
+    return { "@type": "ListItem", position: index + 1, item };
   }),
 };
 
@@ -156,9 +143,14 @@ const ISSUER_URL = {
   "University of Melbourne": "https://www.unimelb.edu.au",
 };
 
+// schema.org has no `holder` property on a credential, so the link runs from
+// the person instead: the #person node hasCredential each of these, the same
+// shape /resume uses.
 const CREDENTIALS_SCHEMA = {
   "@context": "https://schema.org",
-  "@graph": CERTS.map((c) => ({
+  "@type": "Person",
+  "@id": "https://rin.contact/#person",
+  hasCredential: CERTS.map((c) => ({
     "@type": "EducationalOccupationalCredential",
     name: c.name,
     credentialCategory: CREDENTIAL_CATEGORY[c.issuer] || "certification",
@@ -168,7 +160,6 @@ const CREDENTIALS_SCHEMA = {
       ...(ISSUER_URL[c.issuer] ? { url: ISSUER_URL[c.issuer] } : {}),
     },
     ...(c.year ? { dateCreated: c.year } : {}),
-    holder: { "@id": "https://rin.contact/#person" },
   })),
 };
 
@@ -361,75 +352,6 @@ export default function Home({ glyphStats, explorerData = {} }) {
         <meta name="geo.placename" content="Adelaide, South Australia" />
         <meta name="geo.position" content="-34.9285;138.6007" />
         <meta name="ICBM" content="-34.9285, 138.6007" />
-
-        {/* ── FAQPage structured data ── */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: [
-                {
-                  "@type": "Question",
-                  name: "What does a Senior Data Analyst do at South Australia Police?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "As an ASO7 Senior Data Analyst in the Intelligence & Probity Unit of SAPOL's Ethical and Professional Standards Branch (EPSB), I turn complaint, investigation and workforce data into reports and advice that executives and oversight bodies can act on. That includes the quarterly Use of Force and Vehicle Pursuit statistical reports, a review of the branch's complaint administration workflow, an analysis of expiation notices, and tooling such as a Python client and web console for the complaint-management system APIs, covering more than 1,100 endpoints.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What is strategic intelligence analytics and how does it differ from standard data analysis?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Standard data analysis answers 'what happened'. Strategic intelligence analytics answers 'what should we do about it' — it frames data within operational context, risk tolerance, and organisational objectives, producing intelligence products that directly inform executive and ministerial decision-making.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What programming languages and tools do you use professionally?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Python is my primary language for data engineering, statistical modelling, and automation. I also use R for advanced statistical analysis, SQL for structured queries, Power BI and Tableau for dashboards, ArcGIS and Mapbox for geospatial work, and Next.js, React Native, and AWS for software development.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Are you available for consulting, contract, or advisory work?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes — I am open to strategic data consulting, government analytics advisory, and research data engineering engagements. You can reach me at huang@rin.contact.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What is your educational background?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: `I hold two degrees from the University of Melbourne: a Bachelor of Science majoring in Data Science and a Master of Data Science. Alongside them I hold ${CERTS.length} professional credentials and assessments across data, analytics, cloud, project management and language, including a VETASSESS Statistician skills assessment, IELTS General Training Band 8 and NAATI Credentialed Community Language (Mandarin).`,
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What is your Chinese name, and how do you spell it?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "My Chinese legal name is 黄孙创宇 (Huang Sunchuangyu). 黄 (Huang) is my family name and 孙创宇 (Sunchuangyu) is my given name. In Australian formal documents you may also see it written as HUANG SUNCHUANGYU, HUANGSUNCHUANGYU, HUANG SUN CHUANG YU, or informally as 黄孙 Rin. All of these forms refer to the same person. In everyday English I go by Rin Huang, and you can find me at rin.contact.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Who is 黄孙创宇 / 黄孙 Rin / HUANGSUNCHUANGYU?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "黄孙创宇 — also written 黄孙 Rin, Huang Sunchuangyu, HUANG SUNCHUANGYU, HUANGSUNCHUANGYU, or HUANG SUN CHUANG YU — is the Chinese legal name of Sunchuangyu (Rin) Huang, a Senior Data Analyst at South Australia Police and Research Software Engineer based in Adelaide, Australia. The family name is 黄 (Huang) and the given name is 孙创宇 (Sunchuangyu). All of these name forms refer to the same person at rin.contact.",
-                  },
-                },
-              ],
-            }),
-          }}
-        />
 
         {/* ── Profile page / breadcrumb / projects / credentials — homepage-only ── */}
         <script

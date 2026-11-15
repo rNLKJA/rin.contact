@@ -9,7 +9,6 @@ export default function SilencePage() {
         <title>Silence — rin.contact</title>
         <meta name="description" content="No analytics. No tracking." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/silence" />
       </Head>
 
       <SeoHead

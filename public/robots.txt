@@ -1,14 +1,20 @@
 # robots.txt — rin.contact
 
+# /api/og/ draws the share card behind every page's og:image and the images
+# named in the structured data, so crawlers must be able to fetch it. The rest
+# of /api/ stays blocked.
+
 # Allow all well-behaved crawlers
 User-agent: *
 Allow: /
+Allow: /api/og/
 Disallow: /api/
 
 # ── Baidu ───────────────────────────────────────────────────────────────────
 # Explicitly welcome Baiduspider (covers both desktop and mobile variants)
 User-agent: Baiduspider
 Allow: /
+Allow: /api/og/
 Disallow: /api/
 
 User-agent: Baiduspider-image
@@ -20,6 +26,7 @@ Allow: /
 # ── Bing ─────────────────────────────────────────────────────────────────────
 User-agent: Bingbot
 Allow: /
+Allow: /api/og/
 Disallow: /api/
 
 User-agent: msnbot
