@@ -143,9 +143,14 @@ const ISSUER_URL = {
   "University of Melbourne": "https://www.unimelb.edu.au",
 };
 
+// schema.org has no `holder` property on a credential, so the link runs from
+// the person instead: the #person node hasCredential each of these, the same
+// shape /resume uses.
 const CREDENTIALS_SCHEMA = {
   "@context": "https://schema.org",
-  "@graph": CERTS.map((c) => ({
+  "@type": "Person",
+  "@id": "https://rin.contact/#person",
+  hasCredential: CERTS.map((c) => ({
     "@type": "EducationalOccupationalCredential",
     name: c.name,
     credentialCategory: CREDENTIAL_CATEGORY[c.issuer] || "certification",
@@ -155,7 +160,6 @@ const CREDENTIALS_SCHEMA = {
       ...(ISSUER_URL[c.issuer] ? { url: ISSUER_URL[c.issuer] } : {}),
     },
     ...(c.year ? { dateCreated: c.year } : {}),
-    holder: { "@id": "https://rin.contact/#person" },
   })),
 };
 
