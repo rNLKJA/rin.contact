@@ -86,7 +86,7 @@ export default function NowPage() {
           </p>
         </div>
 
-        {["building", "learning"].map((key) => (
+        {["building", "wrapped", "learning"].map((key) => (
           <Section key={key} label={t(`infoNow.sections.${key}`)}>
             {t(`infoNow.${key}`).map((it, i) => (
               <Item key={i} text={it.text} sub={it.sub || undefined} />

@@ -38,7 +38,7 @@ export default function CareerPage() {
         <title>Career — Rin Huang · rin.contact</title>
         <meta
           name="description"
-          content="Rin Huang's full career timeline: ASO7 Senior Data Analyst at SA Police, co-founder of Mapiva, and earlier roles at CBS, the University of Melbourne, Psyckitchen, WEHI and CSIRO. Interactive career metro map across Government, Research and Engineering."
+          content="Rin Huang's full career timeline: ASO7 Senior Data Analyst at SA Police, with earlier roles at Mapiva (which he co-founded), CBS, the University of Melbourne, Psyckitchen, WEHI and CSIRO. Interactive career metro map across Government, Research and Engineering."
         />
         <link rel="canonical" href="https://rin.contact/career/" />
         <meta property="og:title" content="Career — Sunchuangyu (Rin) Huang" />

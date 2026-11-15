@@ -5,7 +5,7 @@ export default function handler(req, res) {
 
   res.status(200).json({
     meta: {
-      updated: "2026-10-03",
+      updated: "2026-11-03",
       timezone: "ACST (UTC+9:30)",
       location: "Adelaide, SA, Australia",
       note: "Manually curated. Inspired by nownownow.com",
@@ -13,9 +13,11 @@ export default function handler(req, res) {
     },
     status: "open_to_opportunities",
     building: [
-      "Mapiva, a map-first social discovery app for iOS and Android, working towards a beta in early 2027",
       "Quarterly Use of Force and Vehicle Pursuit reports and complaint-management API tooling for SAPOL's Ethical and Professional Standards Branch",
       "This website, apparently — new easter eggs every sprint",
+    ],
+    recently_wrapped: [
+      "Mapiva, a map-first social discovery app for iOS and Android: development wrapped in October 2026 with a working alpha test build, and the team is evaluating the market",
     ],
     learning: [
       "Causal inference methods for observational data",

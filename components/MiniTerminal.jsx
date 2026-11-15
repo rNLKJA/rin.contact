@@ -124,7 +124,7 @@ const SKILLS = [
 const FEATURED_PROJECT_LINES = [
   W("  ● Signal                AI Gov · Governed data product · FastAPI"),
   W("  ● Mapiva               Mobile · Map-first social discovery"),
-  D("               Co-founded · Dev Lead · Beta in early 2027"),
+  D("               Co-founded · Dev Lead · Alpha test build, Oct 2026"),
   W("  ● SAPOL EPSB           Analytics · Complaints API tooling · Gov"),
   W("  ● CBS Intelligence     Analytics · Ministerial dashboards · Gov"),
   W("  ● Moodist              Mobile · Mental health · UniMelb Psychiatry"),
@@ -172,7 +172,7 @@ const CURL_OUTPUT = [
   W("  2026  ─●─  ASO7 Senior Data Analyst             South Australia Police"),
   D("         │   EPSB  ·  Adelaide, SA  ·  2026 → present"),
   D("         │"),
-  W("  2025  ─●─  Co-Founder & Dev Lead                Mapiva"),
+  N("  2025  ─○─  Co-Founder & Dev Lead                Mapiva"),
   N("  2025  ─○─  Intelligence & Coordination Officer  CBS · AGD SA"),
   N("  2024  ─○─  Cloud Engineer                       Psyckitchen"),
   N("        ─○─  Research Assistant (RA.1)            UniMelb Psychiatry"),

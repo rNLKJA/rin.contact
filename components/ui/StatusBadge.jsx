@@ -69,10 +69,11 @@ function useAdelaideWeather() {
 }
 
 // Dot rule: a filled red dot means live or current; a hollow grey ring means
-// anything else.
+// anything else. Mapiva's development wrapped in October 2026 (alpha built,
+// the team is evaluating the market), so it takes a ring.
 const STATUS_KEYS = [
   { live: true, labelKey: "statusBadge.sapol", subKey: "statusBadge.live" },
-  { live: true, labelKey: "statusBadge.mapiva", subKey: "statusBadge.building" },
+  { live: false, labelKey: "statusBadge.mapiva", subKey: "statusBadge.mapivaStage" },
   { live: false, labelKey: "statusBadge.openToCollab" },
 ];
 

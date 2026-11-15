@@ -42,7 +42,7 @@ export default function SudoPage() {
               <br />
               <span className="text-[#666] ml-2">• SAPOL (production)</span>
               <br />
-              <span className="text-[#666] ml-2">• Mapiva core team (staging)</span>
+              <span className="text-[#666] ml-2">• Mapiva core team (alpha)</span>
               <br />
               <span className="text-[#666] ml-2">• Future employer (pending approval)</span>
             </p>

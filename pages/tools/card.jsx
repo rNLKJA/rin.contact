@@ -14,7 +14,7 @@ EMAIL;TYPE=WORK,INTERNET:huang@rin.contact
 URL:https://rin.contact
 X-SOCIALPROFILE;type=github:https://github.com/rNLKJA
 X-SOCIALPROFILE;type=linkedin:https://www.linkedin.com/in/sunchuangyuhuang
-NOTE:Data Scientist · Government Intelligence Analyst · Co-founder of Mapiva. Bilingual: English / Mandarin. Adelaide\\, SA\\, Australia.
+NOTE:Data Scientist · Government Intelligence Analyst · Co-founded Mapiva. Bilingual: English / Mandarin. Adelaide\\, SA\\, Australia.
 END:VCARD`;
 
 const QR_SRC =

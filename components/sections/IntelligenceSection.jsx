@@ -44,7 +44,7 @@ const toY = (seniority) => Math.round(280 - (seniority / 10) * 260);
 // X  = years in formal workforce (0 = CBS). Pre-career roles at -1.5 to -0.5 (not officially workforce).
 // Y  = career seniority level (0–10; Entry≈2, Junior≈3–4, Mid≈5–6, Senior≈7, Principal≈9)
 // Key: CBS (yr 0) → SAPOL (yr ~1.2) = level 4 to 7 in 14 months. Typical: 4 years minimum.
-// Plots the 5 employed roles; Mapiva (co-founded, Aug 2025–present) is left out.
+// Plots the 5 employed roles; Mapiva (co-founded, Aug 2025 to Oct 2026) is left out.
 // Sources: APS Career Pathfinder (APSC 2024), IAPA Skills & Salary Survey 2023
 // ═══════════════════════════════════════════════════════════════════════════════
 const RIN_BUBBLES = [
@@ -306,7 +306,7 @@ const FP_TREE = {
         {
           label: "Mobile & Web",
           proof:
-            "Expo React Native: a clinical mood-tracking app (UniMelb Psychiatry, handed to a production team) and Mapiva (co-founded, beta in early 2027) · Next.js: rin.contact · Uniapp → Expo RN migration of the mood-tracking app as sole developer.",
+            "Expo React Native: a clinical mood-tracking app (UniMelb Psychiatry, handed to a production team) and Mapiva (co-founded; development wrapped in October 2026 with a working alpha test build) · Next.js: rin.contact · Uniapp → Expo RN migration of the mood-tracking app as sole developer.",
         },
         {
           label: "HPC & Cloud",

@@ -4,8 +4,9 @@
  * in lib/demos/map-first-discovery-data.js ({ en, zh } per string), and the
  * page serves both locales through the i18n router like the other case studies.
  *
- * Mapiva's code is private and the app is still in development, so the page
- * repeats only what the card already says in public and links to no repository.
+ * Mapiva's code is private and development wrapped in October 2026 with an
+ * alpha test build, so the page repeats only what the card already says in
+ * public and links to no repository.
  * The demo (components/demos/map-first-discovery) is a concept illustration
  * with synthetic people and events. It says so on screen and is not the app.
  */
@@ -231,7 +232,7 @@ export default function MapFirstDiscoveryPage() {
           <MapDiscoveryDemo lang={lang} />
         </section>
 
-        {/* 05 How it is built, and my role */}
+        {/* 05 How it was built, and my role */}
         <section className="mb-16" aria-labelledby="mfd-build">
           <SectionTitle n={5} id="mfd-build">
             {L(COPY.build.title)}
@@ -271,7 +272,7 @@ export default function MapFirstDiscoveryPage() {
           </div>
         </section>
 
-        {/* 06 What's next */}
+        {/* 06 Where it stands */}
         <section className="mb-16 max-w-[680px]" aria-labelledby="mfd-next">
           <SectionTitle n={6} id="mfd-next">
             {L(COPY.next.title)}

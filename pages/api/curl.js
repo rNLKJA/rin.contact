@@ -104,11 +104,11 @@ const lines = [
 
   tEntry(
     "2025",
-    true,
+    false,
     "Co-Founder & Dev Lead",
     "Mapiva",
-    "Startup  ·  Engineering",
-    "2025 → present",
+    "Startup  ·  Engineering  ·  Alpha test build",
+    "2025 – 2026",
     "Melbourne, VIC (remote)"
   ),
 
