@@ -11,6 +11,9 @@ import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
 import { getResume } from "@/lib/career-data";
 import { assertCareerData } from "@/lib/career-check";
+import { schemaDateTime } from "@/lib/career-format";
+import { PERSON_ID, personWithout } from "@/lib/person-schema";
+import { assertProfilePage } from "@/lib/structured-data-check";
 import ResumeSection from "@/components/resume/ResumeSection";
 import RoleEntry from "@/components/resume/RoleEntry";
 import CareerStrip from "@/components/resume/CareerStrip";
@@ -26,68 +29,74 @@ export function getStaticProps({ locale = "en-AU" }) {
   const prefix = locale === "zh-Hans" ? "/zh-Hans" : "";
   const pageUrl = `${BASE}${prefix}/resume/`;
 
+  // The ProfilePage carries the whole Person in mainEntity (name included) plus
+  // the resume's own credentials. A separate, partial Person node with the same
+  // @id and no name is what Search Console reported as "Missing field 'name'
+  // (in 'mainEntity')". dateModified is a full date-time: a bare date is an
+  // "Invalid datetime value" to Google's ProfilePage check. The Person leaves
+  // out its two references to the homepage's #profilepage node, which is not
+  // on this page (this page's own mainEntity states the relationship), and its
+  // image (see personWithout).
+  const person = personWithout("image", "mainEntityOfPage", "subjectOf");
+  const profilePage = {
+    "@type": "ProfilePage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: locale === "zh-Hans" ? "简历 · 黄孙创宇" : "Resume · Sunchuangyu (Rin) Huang",
+    inLanguage: locale,
+    dateModified: schemaDateTime(data.asOf),
+    isPartOf: { "@id": `${BASE}/#website` },
+    about: { "@id": PERSON_ID },
+    mainEntity: {
+      ...person,
+      hasCredential: [
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "Master of Data Science",
+          credentialCategory: "degree",
+          recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Melbourne" },
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "Bachelor of Science (Data Science)",
+          credentialCategory: "degree",
+          recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Melbourne" },
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "Skills Assessment: Statistician (ANZSCO 224113)",
+          credentialCategory: "professional assessment",
+          recognizedBy: { "@type": "Organization", name: "VETASSESS" },
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "IELTS General Training, Band 8",
+          credentialCategory: "language proficiency",
+          recognizedBy: { "@type": "Organization", name: "IELTS" },
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "NAATI Credentialed Community Language (Mandarin)",
+          credentialCategory: "language credential",
+          recognizedBy: { "@type": "Organization", name: "NAATI" },
+        },
+      ],
+    },
+    breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+  };
+  // Fails the build if the ProfilePage loses its Person name or a valid date.
+  assertProfilePage(profilePage, pageUrl);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "ProfilePage",
-        "@id": `${pageUrl}#webpage`,
-        url: pageUrl,
-        name: locale === "zh-Hans" ? "简历 · 黄孙创宇" : "Resume · Sunchuangyu (Rin) Huang",
-        inLanguage: locale,
-        dateModified: data.asOf,
-        isPartOf: { "@id": `${BASE}/#website` },
-        about: { "@id": `${BASE}/#person` },
-        mainEntity: { "@id": `${BASE}/#person` },
-        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
-      },
+      profilePage,
       {
         "@type": "BreadcrumbList",
         "@id": `${pageUrl}#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}${prefix}/` },
           { "@type": "ListItem", position: 2, name: "Resume", item: pageUrl },
-        ],
-      },
-      {
-        "@type": "Person",
-        "@id": `${BASE}/#person`,
-        alumniOf: {
-          "@type": "CollegeOrUniversity",
-          name: "University of Melbourne",
-          url: "https://www.unimelb.edu.au",
-        },
-        hasCredential: [
-          {
-            "@type": "EducationalOccupationalCredential",
-            name: "Master of Data Science",
-            credentialCategory: "degree",
-            recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Melbourne" },
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            name: "Bachelor of Science (Data Science)",
-            credentialCategory: "degree",
-            recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Melbourne" },
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            name: "Skills Assessment: Statistician (ANZSCO 224113)",
-            credentialCategory: "professional assessment",
-            recognizedBy: { "@type": "Organization", name: "VETASSESS" },
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            name: "IELTS General Training, Band 8",
-            credentialCategory: "language proficiency",
-            recognizedBy: { "@type": "Organization", name: "IELTS" },
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            name: "NAATI Credentialed Community Language (Mandarin)",
-            credentialCategory: "language credential",
-            recognizedBy: { "@type": "Organization", name: "NAATI" },
-          },
         ],
       },
     ],
