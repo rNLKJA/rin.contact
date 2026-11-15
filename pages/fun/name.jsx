@@ -9,7 +9,6 @@ export default function NamePage() {
         <title>Name — rin.contact</title>
         <meta name="description" content="黄孙创宇 · Huang Sunchuangyu · Rin" />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/name" />
       </Head>
 
       <SeoHead

@@ -11,7 +11,6 @@ export default function ThankYouPage() {
       <Head>
         <title>{t("infoThankYou.metaTitle")}</title>
         <meta name="description" content={t("infoThankYou.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/info/thank-you" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

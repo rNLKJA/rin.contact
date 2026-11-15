@@ -23,7 +23,6 @@ export default function MoodPage() {
         <title>Mood — rin.contact</title>
         <meta name="description" content="How is Rin today?" />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/mood" />
       </Head>
 
       <SeoHead

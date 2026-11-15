@@ -12,7 +12,6 @@ export default function BlankPage() {
         <title>{t("fun.blank.metaTitle")}</title>
         <meta name="description" content={t("fun.blank.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/blank" />
       </Head>
 
       <SeoHead

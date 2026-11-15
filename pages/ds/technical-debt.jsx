@@ -15,7 +15,6 @@ export default function TechnicalDebtPage() {
         <title>{t("ds.technicalDebt.metaTitle")}</title>
         <meta name="description" content={t("ds.technicalDebt.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/technical-debt" />
       </Head>
       <SeoHead
         title={t("ds.technicalDebt.metaTitle")}

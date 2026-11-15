@@ -17,7 +17,6 @@ export default function EnsemblePage() {
         <title>{t("ds.ensemble.metaTitle")}</title>
         <meta name="description" content={t("ds.ensemble.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/ensemble" />
       </Head>
       <SeoHead
         title={t("ds.ensemble.metaTitle")}

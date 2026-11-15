@@ -30,7 +30,6 @@ export default function DicePage() {
         <title>Dice — rin.contact</title>
         <meta name="description" content="Roll a d20." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/dice" />
       </Head>
 
       <SeoHead

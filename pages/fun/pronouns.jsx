@@ -9,7 +9,6 @@ export default function PronounsPage() {
         <title>Pronouns — rin.contact</title>
         <meta name="description" content="Pronouns are like variables." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/pronouns" />
       </Head>
 
       <SeoHead

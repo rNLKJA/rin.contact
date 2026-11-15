@@ -44,7 +44,6 @@ export default function RoadmapPage() {
       <Head>
         <title>{t("infoRoadmap.metaTitle")}</title>
         <meta name="description" content={t("infoRoadmap.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/info/roadmap" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

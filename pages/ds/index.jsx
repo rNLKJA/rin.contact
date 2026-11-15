@@ -17,7 +17,6 @@ export default function DsIndexPage() {
       <Head>
         <title>{t("ds.index.metaTitle")}</title>
         <meta name="description" content={t("ds.index.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/ds" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

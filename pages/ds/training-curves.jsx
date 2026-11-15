@@ -24,7 +24,6 @@ export default function TrainingCurvesPage() {
         <title>{t("ds.trainingCurves.metaTitle")}</title>
         <meta name="description" content={t("ds.trainingCurves.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/training-curves" />
       </Head>
       <SeoHead
         title={t("ds.trainingCurves.metaTitle")}

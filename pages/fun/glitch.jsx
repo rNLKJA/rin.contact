@@ -34,7 +34,6 @@ export default function GlitchPage() {
         <title>Glitch — rin.contact</title>
         <meta name="description" content="Sometimes it glitches." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/glitch" />
       </Head>
 
       <SeoHead

@@ -13,7 +13,6 @@ export default function EdaPage() {
         <title>{t("ds.eda.metaTitle")}</title>
         <meta name="description" content={t("ds.eda.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/eda" />
       </Head>
       <SeoHead
         title={t("ds.eda.metaTitle")}

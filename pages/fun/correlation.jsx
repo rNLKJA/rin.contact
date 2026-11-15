@@ -50,7 +50,6 @@ export default function CorrelationPage() {
         <title>Correlation — rin.contact</title>
         <meta name="description" content="Correlation ≠ causation." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/correlation" />
       </Head>
 
       <SeoHead

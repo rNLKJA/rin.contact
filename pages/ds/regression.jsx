@@ -11,7 +11,6 @@ export default function RegressionPage() {
         <title>{t("ds.regression.metaTitle")}</title>
         <meta name="description" content={t("ds.regression.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/regression" />
       </Head>
       <SeoHead
         title={t("ds.regression.metaTitle")}

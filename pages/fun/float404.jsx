@@ -9,7 +9,6 @@ export default function Float404Page() {
         <title>404.404 — rin.contact</title>
         <meta name="description" content="Floating-point precision error." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/float404" />
       </Head>
 
       <SeoHead

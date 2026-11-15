@@ -9,7 +9,6 @@ export default function EtaPage() {
         <title>ETA — rin.contact</title>
         <meta name="description" content="Training model… ETA: ∞" />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/eta" />
       </Head>
 
       <SeoHead

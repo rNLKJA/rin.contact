@@ -12,7 +12,6 @@ export default function NullHypothesisPage() {
         <title>{t("ds.nullHypothesis.metaTitle")}</title>
         <meta name="description" content={t("ds.nullHypothesis.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/null-hypothesis" />
       </Head>
       <SeoHead
         title={t("ds.nullHypothesis.metaTitle")}

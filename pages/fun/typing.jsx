@@ -34,7 +34,6 @@ export default function TypingPage() {
         <title>Typing — rin.contact</title>
         <meta name="description" content="Typing speed test with data science quotes." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/typing" />
       </Head>
 
       <SeoHead

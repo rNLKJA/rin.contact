@@ -9,7 +9,6 @@ export default function OverfitSimPage() {
         <title>Overfitting Simulator — rin.contact</title>
         <meta name="description" content="Your model memorised the training set." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/overfit-sim" />
       </Head>
 
       <SeoHead

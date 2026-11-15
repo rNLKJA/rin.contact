@@ -11,7 +11,6 @@ export default function DataDriftPage() {
         <title>{t("ds.dataDrift.metaTitle")}</title>
         <meta name="description" content={t("ds.dataDrift.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/data-drift" />
       </Head>
       <SeoHead
         title={t("ds.dataDrift.metaTitle")}

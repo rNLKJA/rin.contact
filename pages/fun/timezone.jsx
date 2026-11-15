@@ -9,7 +9,6 @@ export default function TimezonePage() {
         <title>Timezone — rin.contact</title>
         <meta name="description" content="Adelaide UTC+9:30. We're not on a full hour." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/timezone" />
       </Head>
 
       <SeoHead

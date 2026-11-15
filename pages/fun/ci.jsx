@@ -43,7 +43,6 @@ export default function CIPage() {
         <title>{t("fun.ci.metaTitle")}</title>
         <meta name="description" content={t("fun.ci.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/ci" />
       </Head>
 
       <SeoHead

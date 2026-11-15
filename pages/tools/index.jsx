@@ -16,7 +16,6 @@ export default function ToolsIndexPage() {
       <Head>
         <title>Tools — rin.contact</title>
         <meta name="description" content="Handy tools — digital business card, contact download." />
-        <link rel="canonical" href="https://rin.contact/tools" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

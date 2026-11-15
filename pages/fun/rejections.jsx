@@ -9,7 +9,6 @@ export default function RejectionsPage() {
         <title>Rejections — rin.contact</title>
         <meta name="description" content="Every no is training data." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/rejections" />
       </Head>
 
       <SeoHead

@@ -9,7 +9,6 @@ export default function NormalisePage() {
         <title>Normalise — rin.contact</title>
         <meta name="description" content="Normalising your expectations." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/normalise" />
       </Head>
 
       <SeoHead

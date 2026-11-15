@@ -38,7 +38,6 @@ export default function SurvivalPage({ rows = [], median = 0 }) {
         <title>{t("ds.survival.metaTitle")}</title>
         <meta name="description" content={t("ds.survival.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/survival" />
       </Head>
       <SeoHead
         title={t("ds.survival.metaTitle")}

@@ -17,7 +17,6 @@ export default function ForestPage() {
         <title>Model Escalation — rin.contact</title>
         <meta name="description" content="Tell me more about random forest." />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/fun/forest" />
       </Head>
 
       <SeoHead

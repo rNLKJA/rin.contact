@@ -93,7 +93,6 @@ export default function ColophonPage() {
       <Head>
         <title>{t("infoColophon.metaTitle")}</title>
         <meta name="description" content={t("infoColophon.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/info/colophon/" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

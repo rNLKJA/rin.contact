@@ -13,7 +13,6 @@ export default function OverfittingPage() {
         <title>{t("ds.overfitting.metaTitle")}</title>
         <meta name="description" content={t("ds.overfitting.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/overfitting" />
       </Head>
       <SeoHead
         title={t("ds.overfitting.metaTitle")}

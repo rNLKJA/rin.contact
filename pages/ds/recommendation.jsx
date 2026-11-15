@@ -13,7 +13,6 @@ export default function RecommendationPage() {
         <title>{t("ds.recommendation.metaTitle")}</title>
         <meta name="description" content={t("ds.recommendation.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/recommendation" />
       </Head>
       <SeoHead
         title={t("ds.recommendation.metaTitle")}

@@ -105,7 +105,6 @@ export default function UsesPage() {
       <Head>
         <title>{t("infoUses.metaTitle")}</title>
         <meta name="description" content={t("infoUses.metaDescription")} />
-        <link rel="canonical" href="https://rin.contact/info/uses" />
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

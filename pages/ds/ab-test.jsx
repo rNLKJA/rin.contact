@@ -11,7 +11,6 @@ export default function AbTestPage() {
         <title>{t("ds.abTest.metaTitle")}</title>
         <meta name="description" content={t("ds.abTest.metaDescription")} />
         <meta name="robots" content="noindex" />
-        <link rel="canonical" href="https://rin.contact/ds/ab-test" />
       </Head>
       <SeoHead
         title={t("ds.abTest.metaTitle")}
