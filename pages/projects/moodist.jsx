@@ -15,6 +15,7 @@ import SeoHead from "@/components/seo/SeoHead";
 import ArchFrame from "@/components/covers/ArchFrame";
 import Daybook from "@/components/daybook/Daybook";
 import { useI18n } from "@/contexts/I18nContext";
+import { projectBreadcrumb } from "@/lib/project-breadcrumb";
 import { COPY, STACK } from "@/lib/moodist-data";
 import { DAYBOOK } from "@/lib/daybook-data";
 
@@ -53,7 +54,7 @@ function SectionTitle({ n, children, id }) {
 }
 
 export default function MoodistPage() {
-  const { locale = "en-AU" } = useI18n();
+  const { t, locale = "en-AU" } = useI18n();
   const lang = locale === "zh-Hans" ? "zh" : "en";
   const L = (o) => o[lang];
 
@@ -70,14 +71,7 @@ export default function MoodistPage() {
         inLanguage: locale,
         author: { "@type": "Person", name: "Sunchuangyu (Rin) Huang", url: BASE },
       },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
-          { "@type": "ListItem", position: 2, name: "Projects", item: `${BASE}/projects/` },
-          { "@type": "ListItem", position: 3, name: OG_TITLE, item: pageUrl },
-        ],
-      },
+      projectBreadcrumb({ t, locale, path: PATH, name: OG_TITLE }),
     ],
   };
 

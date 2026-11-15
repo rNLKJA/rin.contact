@@ -18,6 +18,7 @@ import SeoHead from "@/components/seo/SeoHead";
 import ArchFrame from "@/components/covers/ArchFrame";
 import RegulatoryMapDemo from "@/components/demos/regulatory-analytics-map/RegulatoryMapDemo";
 import { useI18n } from "@/contexts/I18nContext";
+import { projectBreadcrumb } from "@/lib/project-breadcrumb";
 import { ROLES } from "@/lib/career-data";
 import { COPY, STACK } from "@/lib/demos/regulatory-analytics-map-data";
 
@@ -67,7 +68,7 @@ function SectionTitle({ n, children, id }) {
 }
 
 export default function RegulatoryAnalyticsMapPage({ metrics = [] }) {
-  const { locale = "en-AU" } = useI18n();
+  const { t, locale = "en-AU" } = useI18n();
   const lang = locale === "zh-Hans" ? "zh" : "en";
   const L = (o) => o[lang];
 
@@ -84,14 +85,7 @@ export default function RegulatoryAnalyticsMapPage({ metrics = [] }) {
         inLanguage: locale,
         author: { "@type": "Person", name: "Sunchuangyu (Rin) Huang", url: BASE },
       },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
-          { "@type": "ListItem", position: 2, name: "Projects", item: `${BASE}/projects/` },
-          { "@type": "ListItem", position: 3, name: OG_TITLE, item: pageUrl },
-        ],
-      },
+      projectBreadcrumb({ t, locale, path: PATH, name: OG_TITLE }),
     ],
   };
 

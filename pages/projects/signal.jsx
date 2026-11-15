@@ -3,7 +3,9 @@ import Link from "next/link";
 import SeoHead from "@/components/seo/SeoHead";
 import ArchFrame from "@/components/covers/ArchFrame";
 import { useI18n } from "@/contexts/I18nContext";
+import { projectBreadcrumb, projectPageUrl } from "@/lib/project-breadcrumb";
 
+const PATH = "/projects/signal";
 const LIVE = "https://rnlkja--signal-api-api.modal.run";
 const REPO = "https://github.com/rNLKJA/signal";
 
@@ -22,41 +24,33 @@ const STACK = [
   "GitHub Actions",
 ];
 
-// JSON-LD is machine-readable structured data (schema.org) — kept in English.
-const JSONLD = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "SoftwareSourceCode",
-      name: "Signal",
-      description:
-        "A governance layer for AI-assisted government data — tamper-evident audit log and DTA / EU AI Act compliance artefacts generated live from the request path.",
-      codeRepository: REPO,
-      url: "https://rin.contact/projects/signal",
-      programmingLanguage: "Python",
-      license: "https://opensource.org/licenses/MIT",
-      author: { "@type": "Person", name: "Sunchuangyu (Rin) Huang", url: "https://rin.contact" },
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://rin.contact/" },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Projects",
-          item: "https://rin.contact/projects/",
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: "Signal",
-          item: "https://rin.contact/projects/signal/",
-        },
-      ],
-    },
-  ],
-};
+// The English description was written for the schema. zh-Hans reuses the
+// page's own meta description.
+const DESCRIPTION =
+  "A governance layer for AI-assisted government data — tamper-evident audit log and DTA / EU AI Act compliance artefacts generated live from the request path.";
+
+// JSON-LD (schema.org) for the page in the locale it is served in: its own
+// URL, language and breadcrumb. It used to be one English constant, so the
+// zh-Hans page described the English one.
+function jsonLd({ t, locale }) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareSourceCode",
+        name: "Signal",
+        description: locale === "zh-Hans" ? t("signal.metaDescription") : DESCRIPTION,
+        codeRepository: REPO,
+        url: projectPageUrl(locale, PATH),
+        inLanguage: locale,
+        programmingLanguage: "Python",
+        license: "https://opensource.org/licenses/MIT",
+        author: { "@type": "Person", name: "Sunchuangyu (Rin) Huang", url: "https://rin.contact" },
+      },
+      projectBreadcrumb({ t, locale, path: PATH, name: "Signal" }),
+    ],
+  };
+}
 
 // Render *emphasis* markers in localised prose as <em> without trusting raw HTML.
 function renderText(text) {
@@ -94,7 +88,7 @@ export default function SignalCaseStudy() {
       <SeoHead
         title={t("signal.metaTitle")}
         description={t("signal.metaDescription")}
-        path="/projects/signal"
+        path={PATH}
         ogType="article"
         ogTitle={t("signal.ogTitle")}
         ogImage={{
@@ -108,7 +102,7 @@ export default function SignalCaseStudy() {
       <Head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd({ t, locale })) }}
         />
       </Head>
 

@@ -13,6 +13,7 @@ import SeoHead from "@/components/seo/SeoHead";
 import ArchFrame from "@/components/covers/ArchFrame";
 import PlateDemo from "@/components/wehi-genomics/PlateDemo";
 import { useI18n } from "@/contexts/I18nContext";
+import { projectBreadcrumb } from "@/lib/project-breadcrumb";
 import { COPY, REPOS, STACK, WIKI_CONTRIBUTORS } from "@/lib/wehi-genomics-data";
 
 const BASE = "https://rin.contact";
@@ -49,7 +50,7 @@ function NewTab({ lang }) {
 }
 
 export default function WehiGenomicsPage() {
-  const { locale = "en-AU" } = useI18n();
+  const { t, locale = "en-AU" } = useI18n();
   const lang = locale === "zh-Hans" ? "zh" : "en";
   const L = (o) => o[lang];
 
@@ -67,14 +68,7 @@ export default function WehiGenomicsPage() {
         author: { "@type": "Person", name: "Sunchuangyu (Rin) Huang", url: BASE },
         about: { "@type": "SoftwareSourceCode", codeRepository: REPOS[0].href },
       },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
-          { "@type": "ListItem", position: 2, name: "Projects", item: `${BASE}/projects/` },
-          { "@type": "ListItem", position: 3, name: OG_TITLE, item: pageUrl },
-        ],
-      },
+      projectBreadcrumb({ t, locale, path: PATH, name: OG_TITLE }),
     ],
   };
 

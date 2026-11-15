@@ -17,6 +17,7 @@ import SeoHead from "@/components/seo/SeoHead";
 import ArchFrame from "@/components/covers/ArchFrame";
 import OutlookSummaryDemo from "@/components/demos/outlook-daily-summary/OutlookSummaryDemo";
 import { useI18n } from "@/contexts/I18nContext";
+import { projectBreadcrumb } from "@/lib/project-breadcrumb";
 import { COPY, REPO_URL, STACK } from "@/lib/demos/outlook-daily-summary-data";
 
 const BASE = "https://rin.contact";
@@ -82,7 +83,7 @@ function RepoLink({ L, className = OUTLINE_BTN }) {
 }
 
 export default function OutlookDailySummaryPage() {
-  const { locale = "en-AU" } = useI18n();
+  const { t, locale = "en-AU" } = useI18n();
   const lang = locale === "zh-Hans" ? "zh" : "en";
   const L = (o) => o[lang];
 
@@ -102,14 +103,7 @@ export default function OutlookDailySummaryPage() {
         inLanguage: locale,
         author: { "@type": "Person", name: "Sunchuangyu (Rin) Huang", url: BASE },
       },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
-          { "@type": "ListItem", position: 2, name: "Projects", item: `${BASE}/projects/` },
-          { "@type": "ListItem", position: 3, name: OG_TITLE, item: pageUrl },
-        ],
-      },
+      projectBreadcrumb({ t, locale, path: PATH, name: OG_TITLE }),
     ],
   };
 
