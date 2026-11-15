@@ -4,6 +4,7 @@ import ConceptNotes from "@/components/knowledge/ConceptNotes";
 import SeoHead from "@/components/seo/SeoHead";
 import { useI18n } from "@/contexts/I18nContext";
 import { noteNeighbours } from "@/lib/knowledge-notes";
+import { ogPath } from "@/lib/og";
 
 /**
  * KnowledgeLayout — shared shell for the /knowledge section.
@@ -25,6 +26,16 @@ import { noteNeighbours } from "@/lib/knowledge-notes";
  */
 
 const ACCENT = "#FF3C3C";
+
+const SITE = "https://rin.contact";
+
+/**
+ * A page's absolute URL in the locale it is served in, with the trailing slash
+ * the site serves. The JSON-LD uses it so that a zh-Hans page describes its own
+ * /zh-Hans/ URL, and no URL in the block is a slash-less one that only redirects.
+ * `path` has no locale prefix ("/knowledge/probability").
+ */
+const pageUrl = (path, locale) => `${SITE}${ogPath(path, locale)}`;
 
 /** Provenance row — "where this knowledge comes from". */
 function MetaItem({ label, children }) {
@@ -65,12 +76,21 @@ export default function KnowledgeLayout({
 }) {
   const { t, locale = "en-AU" } = useI18n();
   const path = `/knowledge/${slug}`;
-  const url = `https://rin.contact${path}`;
+  const url = pageUrl(path, locale);
   const isNote = kind === "note" && Boolean(parent);
   const noteSlug = isNote ? slug.replace(/^notes\//, "") : null;
   const siblings = isNote ? noteNeighbours(noteSlug, parent, locale) : {};
   const prev = prevProp ?? siblings.prev;
   const next = nextProp ?? siblings.next;
+
+  // The library every topic belongs to. /knowledge is not a page of its own:
+  // next.config.js redirects it to the Notes tab of /skills in both locales,
+  // which is also where the back link and the "all topics" link below go.
+  const collection = {
+    "@type": "Collection",
+    name: "Knowledge — rin.contact",
+    url: `${pageUrl("/skills", locale)}?tab=notes`,
+  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -85,18 +105,10 @@ export default function KnowledgeLayout({
       ? {
           "@type": "LearningResource",
           name: parent.label,
-          url: `https://rin.contact${parent.href}`,
-          isPartOf: {
-            "@type": "Collection",
-            name: "Knowledge — rin.contact",
-            url: "https://rin.contact/knowledge",
-          },
+          url: pageUrl(parent.href, locale),
+          isPartOf: collection,
         }
-      : {
-          "@type": "Collection",
-          name: "Knowledge — rin.contact",
-          url: "https://rin.contact/knowledge",
-        },
+      : collection,
     author: {
       "@type": "Person",
       name: "Rin Huang",
